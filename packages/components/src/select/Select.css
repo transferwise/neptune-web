@@ -1,0 +1,9 @@
+.tw-dropdown-item--clickable {
+  cursor: pointer;
+}
+
+.tw-dropdown-item--divider {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #f2f5f7;
+}
