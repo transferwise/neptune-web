@@ -28,13 +28,23 @@ describe('Select', () => {
     };
     documentEventCallbacks = {};
     originalAddEventListener = global.document.addEventListener;
-    global.document.addEventListener = jest.fn((name, cb) => documentEventCallbacks[name] = cb);
+    global.document.addEventListener = jest.fn((name, cb) => {
+      documentEventCallbacks[name] = cb;
+    });
     shallowRenderComponent();
   });
 
   afterEach(() => {
     global.document.addEventListener = originalAddEventListener;
   });
+
+  function fakeEvent() {
+    return {
+      nativeEvent: { stopImmediatePropagation() {} },
+      stopPropagation() {},
+      preventDefault() {},
+    };
+  }
 
   function openSelect() {
     component.find('button.dropdown-toggle').simulate('click', fakeEvent());
@@ -57,14 +67,6 @@ describe('Select', () => {
     return component.find(Option).at(n);
   }
 
-  function fakeEvent() {
-    return {
-      nativeEvent: { stopImmediatePropagation() {} },
-      stopPropagation() {},
-      preventDefault() {},
-    };
-  }
-
   function expectDropdownToBe() {
     return {
       open() {
@@ -74,7 +76,7 @@ describe('Select', () => {
       closed() {
         expect(component.find('ul.dropdown-menu').length).toBe(0);
         expect(component.find('.dropdown.open').length).toBe(0);
-      }
+      },
     };
   }
 
@@ -150,7 +152,7 @@ describe('Select', () => {
   });
 
   it('renders the selected option if given instead of the placeholder', () => {
-    const selected = { value: 0, label: 'ayy', note: 'yo', icon: 'red thing' };
+    const selected = { value: 0, label: 'ayy', note: 'yo', icon: 'red thing', currency: '', secondary: '' };
     component.setProps({ selected });
     const buttonChild = component.find('button').children().first();
     expect(buttonChild.type()).toEqual(Option);

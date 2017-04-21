@@ -33,6 +33,16 @@ export default class Select extends Component {
     searchPlaceholder: Types.string,
   };
 
+  static defaultProps = {
+    placeholder: 'Select an option...',
+    required: false,
+    disabled: false,
+    selected: null,
+    onSearchChange: undefined,
+    searchValue: '',
+    searchPlaceholder: 'Search...',
+  };
+
   constructor(props) {
     super(props);
     this.state = { open: false };
@@ -52,7 +62,7 @@ export default class Select extends Component {
     }
   };
 
-  handleButtonClick = event => {
+  handleButtonClick = (event) => {
     if (!this.props.disabled) {
       this.stopPropagation(event);
       this.open();
@@ -61,56 +71,41 @@ export default class Select extends Component {
 
   open() {
     this.setState({ open: true });
-  };
+  }
 
   close() {
     this.setState({ open: false });
-  };
+  }
 
-  stopPropagation = event => {
+  stopPropagation = (event) => {
     event.stopPropagation();
     event.preventDefault();
     event.nativeEvent.stopImmediatePropagation();
     // document listener does not use SyntheticEvents
   };
 
-  renderOption = (option, index) => {
-    if (option.header) {
-      return (
-        <li key={index} onClick={this.stopPropagation} className="dropdown-header">
-          {option.header}
-        </li>
-      );
-    }
-
-    const isActive = this.props.selected && this.props.selected.value === option.value;
-    return (
-      <li
-        key={index}
-        onClick={this.createSelectHandlerForOption(option)}
-        className={`tw-dropdown-item--clickable ${isActive ? 'active' : ''}`}>
-        <a><Option {...option} /></a>
-      </li>
-    );
-  };
-
-  renderPlaceHolderOption() {
-    const { placeholder = 'Select an option...' } = this.props;
-    return (
-      <li
-        onClick={this.createSelectHandlerForOption({ placeholder })}
-        className="tw-dropdown-item--clickable tw-dropdown-item--divider">
-        <a>{placeholder}</a>
-      </li>
-    );
-  }
-
-  handleSearchChange = event => {
+  handleSearchChange = (event) => {
     this.props.onSearchChange(event.target.value);
   }
 
+  createSelectHandlerForOption(option) {
+    return (event) => {
+      this.stopPropagation(event);
+      if (!option.placeholder) {
+        this.props.onChange(option);
+      } else {
+        this.props.onChange(null);
+      }
+      this.close();
+    };
+  }
+
+  renderOptions() {
+    return this.props.options.map(this.renderOption);
+  }
+
   renderSearchBox() {
-    const { searchValue, searchPlaceholder = 'Search...' } = this.props;
+    const { searchValue, searchPlaceholder } = this.props;
     return (
       <li className="tw-dropdown-item--divider">
         <a className="tw-select-filter-link p-a-0">
@@ -124,39 +119,61 @@ export default class Select extends Component {
               placeholder={searchPlaceholder}
               onChange={this.handleSearchChange}
               onClick={this.stopPropagation}
-              value={searchValue} />
+              value={searchValue}
+            />
           </div>
         </a>
       </li>
     );
   }
 
-  renderOptions() {
-    return this.props.options.map(this.renderOption);
+  renderPlaceHolderOption() {
+    const { placeholder } = this.props;
+    return (
+      <li // eslint-disable-line jsx-a11y/no-static-element-interactions
+        onClick={this.createSelectHandlerForOption({ placeholder })}
+        className="tw-dropdown-item--clickable tw-dropdown-item--divider"
+      >
+        <a>{placeholder}</a>
+      </li>
+    );
   }
 
-  createSelectHandlerForOption(option) {
-    return event => {
-      this.stopPropagation(event);
-      if (!option.placeholder) {
-        this.props.onChange(option);
-      } else {
-        this.props.onChange(null);
-      }
-      this.close();
-    };
+  renderOption = (option, index) => {
+    if (option.header) {
+      return (
+        <li // eslint-disable-line jsx-a11y/no-static-element-interactions
+          key={index}
+          onClick={this.stopPropagation}
+          className="dropdown-header"
+        >
+          {option.header}
+        </li>
+      );
+    }
+
+    const isActive = this.props.selected && this.props.selected.value === option.value;
+    return (
+      <li // eslint-disable-line jsx-a11y/no-static-element-interactions
+        key={index}
+        onClick={this.createSelectHandlerForOption(option)}
+        className={`tw-dropdown-item--clickable ${isActive ? 'active' : ''}`}
+      >
+        <a><Option {...option} /></a>
+      </li>
+    );
   };
 
   renderButtonInternals() {
-    const { selected, placeholder = 'Select an option...' } = this.props;
+    const { selected, placeholder } = this.props;
     if (selected) {
-      return <Option {...selected} />
+      return <Option {...selected} />;
     }
     return (
       <span className="form-control-placeholder">
         {placeholder}
       </span>
-    )
+    );
   }
 
   render() {
@@ -171,7 +188,8 @@ export default class Select extends Component {
           className="btn btn-input dropdown-toggle"
           type="button"
           aria-expanded={open}
-          onClick={this.handleButtonClick}>
+          onClick={this.handleButtonClick}
+        >
           {this.renderButtonInternals()}
           <span className="caret" />
         </button>

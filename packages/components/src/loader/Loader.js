@@ -3,7 +3,7 @@ import Types from 'prop-types';
 
 const Loader = ({ small }) => {
   if (small) {
-    return <span className="btn-loader" />
+    return <span className="btn-loader" />;
   }
   return (
     <div className="loader">
@@ -20,17 +20,20 @@ const Loader = ({ small }) => {
             strokeDasharray="300"
             strokeDashoffset="300"
             fill="none"
-            points="24.6,27.3 0,27.3 14.3,13.7 6.1,0 48.2,0 26.3,52 19.5,52 39.2,5.5 16.8,5.5 21.6,13.6 13.4,21.8 27,21.8" />
+            points="24.6,27.3 0,27.3 14.3,13.7 6.1,0 48.2,0 26.3,52 19.5,52 39.2,5.5 16.8,5.5 21.6,13.6 13.4,21.8 27,21.8"
+          />
         </svg>
         <svg
           className="loader-flag-fill"
           xmlns="http://www.w3.org/2000/svg"
           width="52"
           height="52"
-          viewBox="0 2 52 48">
+          viewBox="0 2 52 48"
+        >
           <polygon
             fill="#00B9FF"
-            points="6.1,0 14.3,13.7 0,27.3 24.6,27.3 27,21.8 13.4,21.8 21.6,13.6 16.8,5.5 39.2,5.5 19.5,52 26.3,52 48.2,0 " />
+            points="6.1,0 14.3,13.7 0,27.3 24.6,27.3 27,21.8 13.4,21.8 21.6,13.6 16.8,5.5 39.2,5.5 19.5,52 26.3,52 48.2,0 "
+          />
         </svg>
       </div>
     </div>
@@ -38,5 +41,6 @@ const Loader = ({ small }) => {
 };
 
 Loader.propTypes = { small: Types.bool };
+Loader.defaultProps = { small: false };
 
 export default Loader;

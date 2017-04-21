@@ -44,16 +44,6 @@ export default class App extends Component {
     };
   }
 
-  createStateLink(name) {
-    return value => {
-      this.setState({ [name]: value });
-    };
-  }
-
-  createEventStateLink(name) {
-    return event => this.setState({ [name]: event.target.value });
-  }
-
   getOptions() {
     if (!this.state.searchable) {
       return this.options;
@@ -61,9 +51,10 @@ export default class App extends Component {
 
     const headerMapping = this.options.reduce((accumulator, option) => {
       if (option.header) {
-        accumulator.currentHeader = option.header;
+        accumulator.currentHeader = option.header; // eslint-disable-line no-param-reassign
       } else if (option.value) {
-        accumulator.mapping[option.value] = accumulator.currentHeader;
+        accumulator  // eslint-disable-line no-param-reassign
+          .mapping[option.value] = accumulator.currentHeader;
       }
       return accumulator;
     }, { currentHeader: null, mapping: {} }).mapping;
@@ -73,7 +64,7 @@ export default class App extends Component {
       option.label.toLowerCase().indexOf(this.state.searchValue) !== -1
     ));
 
-    return this.options.filter(option => {
+    return this.options.filter((option) => {
       if (option.header) {
         return foundOptions
           .reduce((headerVisible, foundOption) =>
@@ -81,6 +72,14 @@ export default class App extends Component {
       }
       return foundOptions.indexOf(option) !== -1;
     });
+  }
+
+  createStateLink(name) {
+    return value => this.setState({ [name]: value });
+  }
+
+  createEventStateLink(name) {
+    return event => this.setState({ [name]: event.target.value });
   }
 
   render() {
@@ -119,11 +118,13 @@ export default class App extends Component {
                 searchPlaceholder={
                   this.state.hasSearchPlaceholder ? this.state.searchPlaceholder : undefined}
                 onSearchChange={
-                  this.state.searchable ? this.createStateLink('searchValue') : undefined} />
+                  this.state.searchable ? this.createStateLink('searchValue') : undefined}
+              />
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
+              {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
 {`<Select
   placeholder={${this.state.hasPlaceholder ? `"${this.state.placeholder}"` : undefined}}
@@ -136,9 +137,10 @@ export default class App extends Component {
   disabled={${this.state.selectDisabled}}
   options={${JSON.stringify(this.getOptions(), null, '  ')}} />`}
               </pre>
+              {/* eslint-enable react/jsx-indent */}
               <p>
                 Search implementation is left to the user, change passed in options
-                property with value gotten from onSearchChange. Search won't render if no
+                property with value gotten from onSearchChange. Search won&quot;t render if no
                 onSearchChange passed.
               </p>
               <p>
@@ -152,46 +154,53 @@ export default class App extends Component {
               <Checkbox
                 label="Required?"
                 onChange={this.createStateLink('selectRequired')}
-                checked={this.state.selectRequired} />
+                checked={this.state.selectRequired}
+              />
               <div className="m-t-3" />
               <Checkbox
                 label="Disabled?"
                 onChange={this.createStateLink('selectDisabled')}
-                checked={this.state.selectDisabled} />
+                checked={this.state.selectDisabled}
+              />
               <div className="m-t-3" />
               <Checkbox
                 label="Searchable?"
                 onChange={this.createStateLink('searchable')}
-                checked={this.state.searchable} />
+                checked={this.state.searchable}
+              />
               <div className="m-t-3" />
               <Checkbox
                 label="Custom placeholder?"
                 onChange={this.createStateLink('hasPlaceholder')}
-                checked={this.state.hasPlaceholder} />
+                checked={this.state.hasPlaceholder}
+              />
               <div className="m-t-3" />
               {
                 this.state.hasPlaceholder ?
-                <input
-                  type="text"
-                  value={this.state.placeholder}
-                  onChange={this.createEventStateLink('placeholder')}
-                  placeholder="Placeholder"
-                  className="form-control" /> : ''
+                  <input
+                    type="text"
+                    value={this.state.placeholder}
+                    onChange={this.createEventStateLink('placeholder')}
+                    placeholder="Placeholder"
+                    className="form-control"
+                  /> : ''
               }
               <div className="m-t-3" />
               <Checkbox
                 label="Custom search placeholder?"
                 onChange={this.createStateLink('hasSearchPlaceholder')}
-                checked={this.state.hasSearchPlaceholder} />
+                checked={this.state.hasSearchPlaceholder}
+              />
               <div className="m-t-3" />
               {
                 this.state.hasSearchPlaceholder ?
-                <input
-                  type="text"
-                  value={this.state.searchPlaceholder}
-                  onChange={this.createEventStateLink('searchPlaceholder')}
-                  placeholder="Search placeholder"
-                  className="form-control" /> : ''
+                  <input
+                    type="text"
+                    value={this.state.searchPlaceholder}
+                    onChange={this.createEventStateLink('searchPlaceholder')}
+                    placeholder="Search placeholder"
+                    className="form-control"
+                  /> : ''
               }
             </div>
           </div>
@@ -209,11 +218,13 @@ export default class App extends Component {
                 onChange={this.createStateLink('checked')}
                 checked={this.state.checked}
                 required={this.state.checkRequired}
-                disabled={this.state.checkDisabled} />
+                disabled={this.state.checkDisabled}
+              />
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
+              {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
 {`<Checkbox
   label={"${this.state.checkboxLabel}"}
@@ -222,6 +233,7 @@ export default class App extends Component {
   disabled={${this.state.checkDisabled}}
   checked={${this.state.checked}} />`}
               </pre>
+              {/* eslint-enable react/jsx-indent */}
             </div>
             <div className="col-md-6">
               <input
@@ -229,17 +241,20 @@ export default class App extends Component {
                 value={this.state.checkboxLabel}
                 onChange={this.createEventStateLink('checkboxLabel')}
                 placeholder="Checkbox label"
-                className="form-control" />
+                className="form-control"
+              />
               <div className="m-t-3" />
               <Checkbox
                 label="Required?"
                 onChange={this.createStateLink('checkRequired')}
-                checked={this.state.checkRequired} />
+                checked={this.state.checkRequired}
+              />
               <div className="m-t-3" />
               <Checkbox
                 label="Disabled?"
                 onChange={this.createStateLink('checkDisabled')}
-                checked={this.state.checkDisabled} />
+                checked={this.state.checkDisabled}
+              />
             </div>
           </div>
         </section>
@@ -248,7 +263,7 @@ export default class App extends Component {
           <div className="row">
             <div className="col-md-6">
               <h2>Radio</h2>
-              <p>I'm radioing this in</p>
+              <p>I&quot;m radioing this in</p>
             </div>
             <div className="col-md-6">
               <Radio
@@ -256,11 +271,13 @@ export default class App extends Component {
                 name={this.state.radioName}
                 checked={this.state.radioChecked}
                 disabled={this.state.radioDisabled}
-                onChange={this.createStateLink('radioChecked')} />
+                onChange={this.createStateLink('radioChecked')}
+              />
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
+              {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
 {`<Radio
   label={"${this.state.radioLabel}"}
@@ -269,6 +286,7 @@ export default class App extends Component {
   disabled={${this.state.radioDisabled}}
   onChange={this.handleRadioChange} />`}
               </pre>
+              {/* eslint-enable react/jsx-indent */}
             </div>
             <div className="col-md-6">
               <input
@@ -276,19 +294,22 @@ export default class App extends Component {
                 value={this.state.radioLabel}
                 onChange={this.createEventStateLink('radioLabel')}
                 placeholder="Radio label"
-                className="form-control" />
+                className="form-control"
+              />
               <div className="m-t-3" />
               <input
                 type="text"
                 value={this.state.radioName}
                 onChange={this.createEventStateLink('radioName')}
                 placeholder="Radio name"
-                className="form-control" />
+                className="form-control"
+              />
               <div className="m-t-3" />
               <Checkbox
                 label="Disabled?"
                 onChange={this.createStateLink('radioDisabled')}
-                checked={this.state.radioDisabled} />
+                checked={this.state.radioDisabled}
+              />
             </div>
           </div>
         </section>
@@ -305,15 +326,18 @@ export default class App extends Component {
           </div>
           <div className="row">
             <div className="col-md-6">
+              {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
 {`<Loader small={${this.state.loaderSmall}} />`}
               </pre>
+              {/* eslint-enable react/jsx-indent */}
             </div>
             <div className="col-md-6">
               <Checkbox
                 label="Small?"
                 checked={this.state.loaderSmall}
-                onChange={this.createStateLink('loaderSmall')} />
+                onChange={this.createStateLink('loaderSmall')}
+              />
             </div>
           </div>
         </section>

@@ -5,6 +5,11 @@
   "devDependencies": {
     "bootstrap": "github:transferwise/bootstrap",
     "enzyme": "^2.8.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
     "react-scripts": "0.9.5",
     "react-test-renderer": "^15.5.4"
   },
@@ -21,6 +26,14 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "./node_modules/react-scripts/config/eslint.js"
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "rules": {
+      "react/jsx-filename-extension": 0
+    },
+    "env": {
+      "browser": true,
+      "jest": true
+    }
   }
 }

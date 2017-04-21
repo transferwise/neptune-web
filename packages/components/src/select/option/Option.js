@@ -25,4 +25,11 @@ Option.propTypes = {
   icon: Types.string,
 };
 
+Option.defaultProps = {
+  currency: '',
+  note: '',
+  secondary: '',
+  icon: '',
+};
+
 export default Option;
