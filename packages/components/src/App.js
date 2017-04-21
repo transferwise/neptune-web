@@ -135,7 +135,8 @@ export default class App extends Component {
   searchPlaceholder={${searchPlaceholder}}
   required={${this.state.selectRequired}}
   disabled={${this.state.selectDisabled}}
-  options={${JSON.stringify(this.getOptions(), null, '  ')}} />`}
+  options={${JSON.stringify(this.getOptions(), null, '  ')}}
+/>`}
               </pre>
               {/* eslint-enable react/jsx-indent */}
               <p>
@@ -231,7 +232,8 @@ export default class App extends Component {
   onChange={this.handleCheckChange}
   required={${this.state.checkRequired}}
   disabled={${this.state.checkDisabled}}
-  checked={${this.state.checked}} />`}
+  checked={${this.state.checked}}
+/>`}
               </pre>
               {/* eslint-enable react/jsx-indent */}
             </div>
@@ -284,7 +286,8 @@ export default class App extends Component {
   name={"${this.state.radioName}"}
   checked={${this.state.radioChecked}}
   disabled={${this.state.radioDisabled}}
-  onChange={this.handleRadioChange} />`}
+  onChange={this.handleRadioChange}
+/>`}
               </pre>
               {/* eslint-enable react/jsx-indent */}
             </div>
