@@ -4,6 +4,8 @@
   "private": true,
   "devDependencies": {
     "bootstrap": "github:transferwise/bootstrap",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
@@ -15,7 +17,10 @@
   },
   "dependencies": {
     "currency-flags": "git+https://github.com/transferwise/currency-flags.git",
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.5.8"
+  },
+  "peerDependencies": {
+    "bootstrap": "github:transferwise/bootstrap",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
