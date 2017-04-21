@@ -1,4 +1,5 @@
-import React, { PropTypes as Types } from 'react';
+import React from 'react';
+import Types from 'prop-types';
 
 const Loader = ({ small }) => {
   if (small) {

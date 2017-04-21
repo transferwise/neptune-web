@@ -1,4 +1,5 @@
-import React, { Component, PropTypes as Types } from 'react';
+import React from 'react';
+import Types from 'prop-types';
 
 const Radio = ({ label, disabled, name, checked, onChange }) => {
   const handleClick = () => !disabled && onChange(!checked);

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes as Types } from 'react';
+import React, { Component } from 'react';
+import Types from 'prop-types';
 
 import Option from './option';
 
