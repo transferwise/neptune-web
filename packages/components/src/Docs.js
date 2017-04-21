@@ -3,9 +3,9 @@ import Select from './select';
 import Checkbox from './checkbox';
 import Loader from './loader';
 import Radio from './radio';
-import './App.css';
+import './Docs.css';
 
-export default class App extends Component {
+export default class Docs extends Component {
   constructor(props) {
     super(props);
     this.options = [
