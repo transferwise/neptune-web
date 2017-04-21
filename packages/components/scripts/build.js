@@ -9,12 +9,14 @@ process.env.NODE_ENV = 'production';
 // https://github.com/motdotla/dotenv
 require('dotenv').config({silent: true});
 
+var buildingDocs = process.argv.indexOf('docs') !== -1;
+
 var chalk = require('chalk');
 var fs = require('fs-extra');
 var path = require('path');
 var url = require('url');
 var webpack = require('webpack');
-var config = require('../config/webpack.config.prod');
+var config = buildingDocs ? require('../config/webpack.config.docs') : require('../config/webpack.config.prod');
 var paths = require('../config/paths');
 var checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 var FileSizeReporter = require('react-dev-utils/FileSizeReporter');
@@ -28,18 +30,23 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
 }
 
+var buildDirectory = buildingDocs ? paths.docsBuild : paths.appBuild;
+
 // First, read the current file sizes in build directory.
 // This lets us display how much they changed later.
-measureFileSizesBeforeBuild(paths.appBuild).then(previousFileSizes => {
+measureFileSizesBeforeBuild(buildDirectory).then(previousFileSizes => {
   // Remove all content but keep the directory so that
   // if you're in it, you don't end up in Trash
   fs.emptyDirSync(paths.appBuild);
+  fs.emptyDirSync(paths.docsBuild);
 
   // Start the webpack build
   build(previousFileSizes);
 
-  // Merge with the public folder
-  copyPublicFolder();
+  // Merge with the public folder if we are building docs
+  if (buildingDocs) {
+    copyPublicFolder();
+  }
 });
 
 // Print out errors
@@ -151,7 +158,7 @@ function build(previousFileSizes) {
 }
 
 function copyPublicFolder() {
-  fs.copySync(paths.appPublic, paths.appBuild, {
+  fs.copySync(paths.appPublic, buildDirectory, {
     dereference: true,
     filter: file => file !== paths.appHtml
   });

@@ -36,7 +36,6 @@
     "json-loader": "0.5.4",
     "object-assign": "4.1.1",
     "postcss-loader": "1.2.2",
-    "promise": "7.1.1",
     "react": "^15.5.4",
     "react-dev-utils": "^0.5.2",
     "react-dom": "^15.5.4",
@@ -45,8 +44,7 @@
     "url-loader": "0.5.7",
     "webpack": "1.14.0",
     "webpack-dev-server": "1.16.2",
-    "webpack-manifest-plugin": "1.1.0",
-    "whatwg-fetch": "2.0.2"
+    "webpack-manifest-plugin": "1.1.0"
   },
   "dependencies": {
     "currency-flags": "git+https://github.com/transferwise/currency-flags.git",
@@ -60,6 +58,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "build:docs": "node scripts/build.js docs",
     "test": "node scripts/test.js --env=jsdom"
   },
   "eslintConfig": {
