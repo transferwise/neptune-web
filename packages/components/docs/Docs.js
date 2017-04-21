@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import Select from './select';
-import Checkbox from './checkbox';
-import Loader from './loader';
-import Radio from './radio';
+import { Select, Radio, Checkbox, Loader } from '../src';
 import './Docs.css';
 
 export default class Docs extends Component {

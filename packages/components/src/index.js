@@ -1,7 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-// TODO: separate bundle for the demo part.
-import 'bootstrap/dist/css/bootstrap.css'; // eslint-disable-line import/no-extraneous-dependencies
-import Docs from './Docs';
+import CheckboxModule from './checkbox';
+import LoaderModule from './loader';
+import RadioModule from './radio';
+import SelectModule from './select';
 
-ReactDOM.render(<Docs />, document.getElementById('root'));
+export const Checkbox = CheckboxModule;
+export const Loader = LoaderModule;
+export const Radio = RadioModule;
+export const Select = SelectModule;
