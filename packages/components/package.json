@@ -74,6 +74,7 @@
       "jest": true
     }
   },
+  "homepage": "https://transferwise.github.io/components/",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
