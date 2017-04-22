@@ -88,11 +88,17 @@ export default class Docs extends Component {
           <div className="col-md-6">
             <h1>Components 🎉</h1>
             <p>
-              This is a shitty port of some styleguide components to react. It tries to mimic
-              the api of styleguide components.
+              TransferWise styleguide components in react.
             </p>
+            {/* eslint-disable react/jsx-indent */}
+            <pre className="tw-docs-code">
+{'yarn add @transferwise/components'}
+            </pre>
+            {/* eslint-enable react/jsx-indent */}
             <p>
-              <b>TODO:</b> I need to set up proper peerDependencies structure and put it on npm.
+              <b>TODO: </b>
+              We need to add keyboard navigation, missing components, changelog and version in docs,
+              along with just better documentation overall.
             </p>
           </div>
         </section>
