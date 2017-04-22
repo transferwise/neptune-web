@@ -61,7 +61,7 @@
     "build:docs": "node scripts/build.js docs",
     "test": "node scripts/test.js --env=jsdom",
     "deploy:docs": "node_modules/.bin/gh-pages -d docs-build",
-    "predeploy:docs": "npm run build:docs",
+    "predeploy:docs": "npm run build:docs"
   },
   "eslintConfig": {
     "extends": "airbnb",
