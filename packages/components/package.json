@@ -4,6 +4,11 @@
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
+  "repository": {
+    "fullname": "transferwise/components",
+    "type": "git",
+    "url": "git+https://github.com/transferwise/components.git"
+  },
   "devDependencies": {
     "autoprefixer": "6.7.2",
     "babel-core": "6.22.1",
