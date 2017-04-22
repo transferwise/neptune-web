@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "bootstrap": "github:transferwise/bootstrap",
     "autoprefixer": "6.7.2",
     "babel-core": "6.22.1",
     "babel-eslint": "7.1.1",
@@ -30,6 +29,7 @@
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.10.0",
     "fs-extra": "0.30.0",
+    "gh-pages": "^0.12.0",
     "html-webpack-plugin": "2.24.0",
     "http-proxy-middleware": "0.17.3",
     "jest": "18.1.0",
@@ -59,7 +59,9 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "build:docs": "node scripts/build.js docs",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "deploy:docs": "node_modules/.bin/gh-pages -d docs-build",
+    "predeploy:docs": "npm run build:docs",
   },
   "eslintConfig": {
     "extends": "airbnb",
