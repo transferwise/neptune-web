@@ -10,8 +10,13 @@ dependencies:
     - sudo apt-get install -y -qq yarn
     # Login to npm
     - echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
+  override:
+    - yarn
+test:
+  override:
+    - yarn test
 deployment:
   production:
     branch: master
     commands:
-      - yarn test && yarn deploy:docs && yarn deploy
+      - yarn deploy:docs && yarn deploy
