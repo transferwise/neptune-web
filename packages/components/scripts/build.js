@@ -95,29 +95,6 @@ function build(previousFileSizes) {
       console.log('The project was built assuming it is hosted at ' + chalk.green(publicPathname) + '.');
       console.log('You can control this with the ' + chalk.green('homepage') + ' field in your '  + chalk.cyan('package.json') + '.');
       console.log();
-      console.log('The ' + chalk.cyan('build') + ' folder is ready to be deployed.');
-      console.log('To publish it at ' + chalk.green(publicUrl) + ', run:');
-      // If script deploy has been added to package.json, skip the instructions
-      if (typeof appPackage.scripts.deploy === 'undefined') {
-        console.log();
-        if (useYarn) {
-          console.log('  ' + chalk.cyan('yarn') +  ' add --dev gh-pages');
-        } else {
-          console.log('  ' + chalk.cyan('npm') +  ' install --save-dev gh-pages');
-        }
-        console.log();
-        console.log('Add the following script in your ' + chalk.cyan('package.json') + '.');
-        console.log();
-        console.log('    ' + chalk.dim('// ...'));
-        console.log('    ' + chalk.yellow('"scripts"') + ': {');
-        console.log('      ' + chalk.dim('// ...'));
-        console.log('      ' + chalk.yellow('"predeploy"') + ': ' + chalk.yellow('"npm run build",'));
-        console.log('      ' + chalk.yellow('"deploy"') + ': ' + chalk.yellow('"gh-pages -d build"'));
-        console.log('    }');
-        console.log();
-        console.log('Then run:');
-      }
-      console.log();
       console.log('  ' + chalk.cyan(useYarn ? 'yarn' : 'npm') +  ' run deploy');
       console.log();
     } else if (publicPath !== '/') {
