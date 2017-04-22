@@ -5,13 +5,16 @@ components 🎉
 
 `yarn add @transferwise/components`
 
-This is a shitty port of our styleguide components to react.
+This is a port of our styleguide components to react.
 
 [Documentation and demo can be found here](https://transferwise.github.io/components/)
 
-Heavily a work in progress
+Heavily a work in progress.
 
 Work that still needs doing:
 - Keyboard navigation
 - Missing styleguide components
-- Documentation on contributing
+
+## Contributing
+
+Docs will be automatically deployed when merging to master, and a new npm release (with corresponding github release) will be created as well. Be sure to increment the version in `package.json` according to semver.
