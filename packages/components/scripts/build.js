@@ -92,11 +92,7 @@ function build(previousFileSizes) {
     var publicPathname = url.parse(publicPath).pathname;
     if (publicUrl && publicUrl.indexOf('.github.io/') !== -1) {
       // "homepage": "http://user.github.io/project"
-      console.log('The project was built assuming it is hosted at ' + chalk.green(publicPathname) + '.');
-      console.log('You can control this with the ' + chalk.green('homepage') + ' field in your '  + chalk.cyan('package.json') + '.');
-      console.log();
-      console.log('  ' + chalk.cyan(useYarn ? 'yarn' : 'npm') +  ' run deploy');
-      console.log();
+      console.log('The docs were built assuming they are hosted at ' + chalk.green(publicUrl) + '.');
     } else if (publicPath !== '/') {
       // "homepage": "http://mywebsite.com/project"
       console.log('The project was built assuming it is hosted at ' + chalk.green(publicPath) + '.');
