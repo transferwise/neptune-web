@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
+  "main": "./build/main.js",
   "devDependencies": {
     "autoprefixer": "6.7.2",
     "babel-core": "6.22.1",
