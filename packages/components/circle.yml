@@ -17,4 +17,8 @@ deployment:
   production:
     branch: master
     commands:
-      - yarn deploy:docs && npm run deploy
+      - git config --global -l
+      - git config --global user.email circleci@transferwise.com
+      - git config --global user.name CircleCI
+      - yarn deploy:docs
+      - npm run deploy
