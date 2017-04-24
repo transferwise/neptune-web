@@ -17,4 +17,4 @@ deployment:
   production:
     branch: master
     commands:
-      - yarn deploy:docs && yarn deploy
+      - yarn deploy:docs && npm run deploy
