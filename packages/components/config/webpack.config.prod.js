@@ -58,7 +58,12 @@ module.exports = {
     // We don't currently advertise code splitting but Webpack supports it.
     filename: '[name].js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
-    publicPath: publicPath
+    publicPath: publicPath,
+    library: '@transferwise/components',
+    libraryTarget: 'umd',
+    externals: {
+      react: 'react'
+    }
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.

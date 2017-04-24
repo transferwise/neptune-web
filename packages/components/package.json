@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -60,8 +60,7 @@
   },
   "peerDependencies": {
     "bootstrap": "github:transferwise/bootstrap",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react": "^15.5.4"
   },
   "scripts": {
     "start": "node scripts/start.js",
