@@ -12,7 +12,6 @@ This is a port of our styleguide components to react.
 Heavily a work in progress.
 
 Work that still needs doing:
-- Keyboard navigation
 - Missing styleguide components
 
 ## Contributing

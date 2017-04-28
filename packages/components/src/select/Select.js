@@ -5,6 +5,28 @@ import Option from './option';
 
 import './Select.css';
 
+const KeyCodes = {
+  DOWN: 40,
+  UP: 38,
+  ENTER: 13,
+  ESCAPE: 27,
+};
+
+function clamp(from, to, value) {
+  return Math.max(Math.min(to, value), from);
+}
+
+function notHeader(option) {
+  return !option.header;
+}
+
+function stopPropagation(event) {
+  event.stopPropagation();
+  event.preventDefault();
+  event.nativeEvent.stopImmediatePropagation();
+  // document listener does not use SyntheticEvents
+}
+
 export default class Select extends Component {
   static propTypes = {
     placeholder: Types.string,
@@ -45,7 +67,7 @@ export default class Select extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { open: false };
+    this.state = { open: false, keyboardFocusedOptionIndex: null };
   }
 
   componentDidMount() {
@@ -56,17 +78,68 @@ export default class Select extends Component {
     document.removeEventListener('click', this.handleDocumentClick, false);
   }
 
-  handleDocumentClick = () => {
-    if (this.state.open) {
-      this.close();
+  getIndexWithoutHeadersForIndexWithHeaders(index) {
+    return this.props.options.reduce((sum, option, currentIndex) => {
+      if (currentIndex < index && notHeader(option)) {
+        return sum + 1;
+      }
+      return sum;
+    }, 0);
+  }
+
+  handleSearchChange = event => this.props.onSearchChange(event.target.value);
+
+  handleKeyDown = (event) => {
+    switch (event.keyCode) {
+      case KeyCodes.UP:
+        this.moveFocusWithDifference(-1);
+        event.preventDefault();
+        break;
+      case KeyCodes.DOWN:
+        this.moveFocusWithDifference(1);
+        event.preventDefault();
+        break;
+      case KeyCodes.ENTER:
+        this.selectKeyboardFocusedOption();
+        event.preventDefault();
+        break;
+      case KeyCodes.ESCAPE:
+        this.close();
+        event.preventDefault();
+        break;
+      default: break;
     }
   };
 
-  handleButtonClick = (event) => {
-    if (!this.props.disabled) {
-      this.stopPropagation(event);
-      this.open();
+  selectKeyboardFocusedOption() {
+    if (this.state.keyboardFocusedOptionIndex !== null) {
+      const index = this.state.keyboardFocusedOptionIndex;
+      this.selectOption(this.props.options.filter(notHeader)[index]);
     }
+  }
+
+  moveFocusWithDifference(difference) {
+    this.setState((previousState, previousProps) => {
+      const optionsWithoutHeaders = previousProps.options.filter(notHeader);
+      const selectedOptionIndex = optionsWithoutHeaders.reduce((optionIndex, current, index) => {
+        if (optionIndex !== null) {
+          return optionIndex;
+        } else if (previousProps.selected && previousProps.selected.value === current.value) {
+          return index;
+        }
+        return null;
+      }, null);
+      const previousFocusedIndex = previousState.keyboardFocusedOptionIndex;
+      let indexToStartMovingFrom = previousFocusedIndex;
+      if (previousFocusedIndex === null && selectedOptionIndex === null) {
+        return { keyboardFocusedOptionIndex: 0 };
+      } else if (previousFocusedIndex === null && selectedOptionIndex !== null) {
+        indexToStartMovingFrom = selectedOptionIndex;
+      }
+      const unClampedNewIndex = indexToStartMovingFrom + difference;
+      const newIndex = clamp(0, optionsWithoutHeaders.length - 1, unClampedNewIndex);
+      return { keyboardFocusedOptionIndex: newIndex };
+    });
   }
 
   open() {
@@ -74,30 +147,36 @@ export default class Select extends Component {
   }
 
   close() {
-    this.setState({ open: false });
+    this.setState({ open: false, keyboardFocusedOptionIndex: null });
   }
 
-  stopPropagation = (event) => {
-    event.stopPropagation();
-    event.preventDefault();
-    event.nativeEvent.stopImmediatePropagation();
-    // document listener does not use SyntheticEvents
+  handleButtonClick = (event) => {
+    if (!this.props.disabled) {
+      stopPropagation(event);
+      this.open();
+    }
   };
 
-  handleSearchChange = (event) => {
-    this.props.onSearchChange(event.target.value);
-  }
+  handleDocumentClick = () => {
+    if (this.state.open) {
+      this.close();
+    }
+  };
 
   createSelectHandlerForOption(option) {
     return (event) => {
-      this.stopPropagation(event);
-      if (!option.placeholder) {
-        this.props.onChange(option);
-      } else {
-        this.props.onChange(null);
-      }
-      this.close();
+      stopPropagation(event);
+      this.selectOption(option);
     };
+  }
+
+  selectOption(option) {
+    if (!option.placeholder) {
+      this.props.onChange(option);
+    } else {
+      this.props.onChange(null);
+    }
+    this.close();
   }
 
   renderOptions() {
@@ -118,7 +197,7 @@ export default class Select extends Component {
               className="form-control tw-select-filter"
               placeholder={searchPlaceholder}
               onChange={this.handleSearchChange}
-              onClick={this.stopPropagation}
+              onClick={stopPropagation}
               value={searchValue}
             />
           </div>
@@ -144,7 +223,7 @@ export default class Select extends Component {
       return (
         <li // eslint-disable-line jsx-a11y/no-static-element-interactions
           key={index}
-          onClick={this.stopPropagation}
+          onClick={stopPropagation}
           className="dropdown-header"
         >
           {option.header}
@@ -152,7 +231,12 @@ export default class Select extends Component {
       );
     }
 
-    const isActive = this.props.selected && this.props.selected.value === option.value;
+    const isActive = (
+      (this.props.selected && this.props.selected.value === option.value) ||
+      this.state.keyboardFocusedOptionIndex ===
+        this.getIndexWithoutHeadersForIndexWithHeaders(index)
+    );
+
     return (
       <li // eslint-disable-line jsx-a11y/no-static-element-interactions
         key={index}
@@ -182,7 +266,10 @@ export default class Select extends Component {
     const { open } = this.state;
     const groupClass = `btn-group btn-block dropdown ${open ? 'open' : ''}`;
     return (
-      <div className={groupClass} aria-hidden="false">
+      <div // eslint-disable-line jsx-a11y/no-static-element-interactions
+        className={groupClass}
+        onKeyDown={this.handleKeyDown}
+      >
         <button
           disabled={disabled}
           className="btn btn-input dropdown-toggle"

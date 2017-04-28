@@ -97,7 +97,7 @@ export default class Docs extends Component {
             {/* eslint-enable react/jsx-indent */}
             <p>
               <b>TODO: </b>
-              We need to add keyboard navigation, missing components, changelog and version in docs,
+              We need to add missing components, changelog and version in docs,
               along with just better documentation overall.
             </p>
           </div>
@@ -144,14 +144,11 @@ export default class Docs extends Component {
               {/* eslint-enable react/jsx-indent */}
               <p>
                 Search implementation is left to the user, change passed in options
-                property with value gotten from onSearchChange. Search won&quot;t render if no
+                property with value gotten from onSearchChange. Search won&apos;t render if no
                 onSearchChange passed.
               </p>
               <p>
                 Every property that is false or undefined can be omitted.
-              </p>
-              <p>
-                <strong>TODO</strong>: keyboard navigation, do not use before this is done.
               </p>
             </div>
             <div className="col-md-6">
@@ -268,7 +265,7 @@ export default class Docs extends Component {
           <div className="row">
             <div className="col-md-6">
               <h2>Radio</h2>
-              <p>I&quot;m radioing this in</p>
+              <p>I&apos;m radioing this in</p>
             </div>
             <div className="col-md-6">
               <Radio

@@ -10,6 +10,13 @@ describe('Select', () => {
   let documentEventCallbacks;
   let originalAddEventListener;
 
+  const KeyCodes = {
+    DOWN: 40,
+    UP: 38,
+    ENTER: 13,
+    ESCAPE: 27,
+  };
+
   function mountComponent() {
     component = mount(<Select {...props} />);
   }
@@ -38,11 +45,26 @@ describe('Select', () => {
     global.document.addEventListener = originalAddEventListener;
   });
 
+
+  function doTimes(count, func) {
+    while (count) {
+      func();
+      count -= 1; // eslint-disable-line no-param-reassign
+    }
+  }
+
   function fakeEvent() {
     return {
       nativeEvent: { stopImmediatePropagation() {} },
       stopPropagation() {},
       preventDefault() {},
+    };
+  }
+
+  function fakeKeyDownEventForKey(keyCode) {
+    return {
+      ...fakeEvent(),
+      keyCode,
     };
   }
 
@@ -93,6 +115,12 @@ describe('Select', () => {
     mountComponent(); // Need lifecycle methods to be called.
     openSelect();
     clickOnDocument();
+    expectDropdownToBe().closed();
+  });
+
+  it('can be closed by pressing escape', () => {
+    openSelect();
+    component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.ESCAPE));
     expectDropdownToBe().closed();
   });
 
@@ -218,5 +246,71 @@ describe('Select', () => {
     expect(component.find('ul').text()).toContain('ayy lmao');
     openSearchableSelect();
     expect(component.find('ul').text()).not.toContain('ayy lmao');
+  });
+
+  it('allows you to move around items with arrow keys while ignoring headers', () => {
+    component.setProps({
+      options: [
+        { value: 0, label: 'yo' },
+        { value: 1, label: 'dawg' },
+        { header: 'ignore me' },
+        { value: 2, label: 'yo' },
+        { value: 3, label: 'dawg' },
+        { header: 'ignore me too' },
+        { value: 4, label: 'dawg' },
+        { value: 5, label: 'dawg' },
+      ],
+      required: true,
+    });
+    openSelect();
+
+    expect(findNthListElement(3).hasClass('active')).toBe(false);
+    doTimes(3, () => component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.DOWN)));
+    expect(findNthListElement(3).hasClass('active')).toBe(true); // skips header!
+
+    doTimes(4, () => component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.DOWN)));
+    expect(findNthListElement(3).hasClass('active')).toBe(false);
+    expect(findNthListElement(7).hasClass('active')).toBe(true); // skips header again!
+
+    expect(findNthListElement(0).hasClass('active')).toBe(false);
+    doTimes(5, () => component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.UP)));
+    expect(findNthListElement(7).hasClass('active')).toBe(false);
+    expect(findNthListElement(0).hasClass('active')).toBe(true);
+  });
+
+  it('binds keyboard movement to the current options', () => {
+    component.setProps({
+      options: [
+        { value: 0, label: 'yo' },
+        { value: 1, label: 'dawg' },
+      ],
+      required: true,
+    });
+    openSelect();
+    doTimes(103, () => component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.UP)));
+    expect(findNthListElement(0).hasClass('active')).toBe(true);
+    expect(findNthListElement(1).hasClass('active')).toBe(false);
+    doTimes(103, () => component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.DOWN)));
+    expect(findNthListElement(0).hasClass('active')).toBe(false);
+    expect(findNthListElement(1).hasClass('active')).toBe(true);
+  });
+
+  it('allows you to select the item currently focused with your keyboard', () => {
+    const onChange = jest.fn();
+    component.setProps({
+      options: [
+        { value: 0, label: 'yo' },
+        { value: 1, label: 'dawg' },
+        { value: 2, label: 'boi' },
+      ],
+      required: true,
+      onChange,
+    });
+    doTimes(2, () => component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.DOWN)));
+    // hitting it once will only make the selector appear, so we hit it twice to go down once.
+    expect(onChange).not.toHaveBeenCalled();
+    component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.ENTER));
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith({ value: 1, label: 'dawg' });
   });
 });
