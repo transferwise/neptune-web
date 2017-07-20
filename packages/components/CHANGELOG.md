@@ -1,3 +1,10 @@
+# v0.2.1
+## Fixes prop type warning
+
+Updates the min prop-type version to 15.5.10 package.
+
+<!-- -->
+
 # v0.2.0
 ## Adds keyboard navigation to `Select`
 
