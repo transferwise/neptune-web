@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "currency-flags": "git+https://github.com/transferwise/currency-flags.git",
-    "prop-types": "^15.5.8"
+    "prop-types": "^15.5.10"
   },
   "peerDependencies": {
     "bootstrap": "github:transferwise/bootstrap",
