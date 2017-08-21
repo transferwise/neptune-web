@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Select, Radio, Checkbox, Loader } from '../src';
+import npmPackage from '../package.json';
 import './Docs.css';
 
 export default class Docs extends Component {
@@ -88,7 +89,7 @@ export default class Docs extends Component {
       <div className="container">
         <section className="section row">
           <div className="col-md-6">
-            <h1>Components 🎉</h1>
+            <h1>Components 🎉 <small>{npmPackage.version}</small></h1>
             <p>
               TransferWise styleguide components in react.
             </p>
