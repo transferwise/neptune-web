@@ -44,6 +44,7 @@
     "object-assign": "4.1.1",
     "postcss-loader": "1.2.2",
     "react": "^15.5.4",
+    "marked": "^0.3.6",
     "react-dev-utils": "^0.5.2",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import marked from 'marked'; // eslint-disable-line import/no-extraneous-dependencies
 import { Select, Radio, Checkbox, Loader } from '../src';
 import npmPackage from '../package.json';
+import changelog from '../CHANGELOG.md';
 import './Docs.css';
+
+const changelogText = atob(changelog.substring(28));
 
 export default class Docs extends Component {
   constructor(props) {
@@ -41,6 +45,8 @@ export default class Docs extends Component {
       radioName: 'Radio name',
 
       loaderSmall: false,
+
+      showChangelog: false,
     };
   }
 
@@ -99,11 +105,22 @@ export default class Docs extends Component {
             </pre>
             {/* eslint-enable react/jsx-indent */}
             <p>
-              <b>TODO: </b>
-              We need to add missing components, changelog and version in docs,
-              along with just better documentation overall.
+              <strong>TODO: </strong>
+              We need to add missing components and missing props to some components.
             </p>
+            <button className="btn btn-default" onClick={() => this.setState(({ showChangelog }) => ({ showChangelog: !showChangelog }))}>
+              { this.state.showChangelog ? 'Hide' : 'Show' } changelog
+            </button>
           </div>
+          {
+            this.state.showChangelog ?
+              <div
+                className="col-md-6 tw-docs-code"
+                /* eslint-disable react/no-danger */
+                dangerouslySetInnerHTML={{ __html: marked(changelogText) }}
+                /* eslint-enable react/no-danger */
+              /> : ''
+          }
         </section>
 
         <section className="section">
