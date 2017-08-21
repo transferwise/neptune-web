@@ -322,4 +322,13 @@ describe('Select', () => {
       expect(openerButton().hasClass(`btn-${size}`)).toBe(true);
     });
   });
+
+  it('can be a block button or a normal button', () => {
+    const openerButtonIsBlock = () => component.find('.btn-group').hasClass('btn-block');
+    expect(openerButtonIsBlock()).toBe(true);
+    component.setProps({ block: false });
+    expect(openerButtonIsBlock()).toBe(false);
+    component.setProps({ block: true });
+    expect(openerButtonIsBlock()).toBe(true);
+  });
 });

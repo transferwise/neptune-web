@@ -33,6 +33,7 @@ export default class Select extends Component {
     required: Types.bool,
     disabled: Types.bool,
     size: Types.oneOf(['xs', 'sm', 'md', 'lg']),
+    block: Types.bool,
     selected: Types.shape({
       value: Types.any.isRequired,
       label: Types.string,
@@ -61,6 +62,7 @@ export default class Select extends Component {
     size: 'md',
     required: false,
     disabled: false,
+    block: true,
     selected: null,
     onSearchChange: undefined,
     searchValue: '',
@@ -263,10 +265,10 @@ export default class Select extends Component {
   }
 
   render() {
-    const { disabled, required, onSearchChange, size } = this.props;
+    const { disabled, required, onSearchChange, size, block } = this.props;
     const canSearch = !!onSearchChange;
     const { open } = this.state;
-    const groupClass = `btn-group btn-block dropdown ${open ? 'open' : ''}`;
+    const groupClass = `btn-group ${block ? 'btn-block' : ''} dropdown ${open ? 'open' : ''}`;
     const buttonClass = `btn btn-input btn-${size} dropdown-toggle`;
     return (
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
