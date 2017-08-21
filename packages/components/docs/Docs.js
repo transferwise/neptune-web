@@ -5,8 +5,6 @@ import npmPackage from '../package.json';
 import changelog from '../CHANGELOG.md';
 import './Docs.css';
 
-const changelogText = atob(changelog.substring(28));
-
 export default class Docs extends Component {
   constructor(props) {
     super(props);
@@ -117,7 +115,7 @@ export default class Docs extends Component {
               <div
                 className="col-md-6 tw-docs-code"
                 /* eslint-disable react/no-danger */
-                dangerouslySetInnerHTML={{ __html: marked(changelogText) }}
+                dangerouslySetInnerHTML={{ __html: marked(atob(changelog.substring(28))) }}
                 /* eslint-enable react/no-danger */
               /> : ''
           }
