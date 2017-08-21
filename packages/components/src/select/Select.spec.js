@@ -313,4 +313,13 @@ describe('Select', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith({ value: 1, label: 'dawg' });
   });
+
+  it('can have different sizes', () => {
+    const openerButton = () => component.find('button');
+    expect(openerButton().hasClass('btn-md')).toBe(true);
+    ['xs', 'sm', 'md', 'lg'].forEach((size) => {
+      component.setProps({ size });
+      expect(openerButton().hasClass(`btn-${size}`)).toBe(true);
+    });
+  });
 });
