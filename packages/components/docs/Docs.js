@@ -20,7 +20,8 @@ export default class Docs extends Component {
       selectedOption: null,
       selectRequired: false,
       selectDisabled: false,
-      selectSize: null,
+      selectBlock: undefined,
+      selectSize: undefined,
       searchable: false,
       hasPlaceholder: false,
       hasSearchPlaceholder: false,
@@ -115,6 +116,7 @@ export default class Docs extends Component {
                 size={this.state.selectSize}
                 placeholder={this.state.hasPlaceholder ? this.state.placeholder : undefined}
                 options={this.getOptions()}
+                block={this.state.selectBlock}
                 selected={this.state.selectedOption}
                 disabled={this.state.selectDisabled}
                 onChange={this.createStateLink('selectedOption')}
@@ -134,6 +136,7 @@ export default class Docs extends Component {
 {`<Select
   placeholder={${this.state.hasPlaceholder ? `"${this.state.placeholder}"` : undefined}}
   size={${this.state.selectSize ? `"${this.state.selectSize}"` : undefined}}
+  block={${this.state.selectBlock}}
   selected={${JSON.stringify(this.state.selectedOption, null, '  ')}}
   onChange={this.handleOptionChange}
   onSearchChange={${this.state.searchable ? 'this.handleSearchChange' : undefined}}
@@ -173,6 +176,12 @@ export default class Docs extends Component {
                 label="Required?"
                 onChange={this.createStateLink('selectRequired')}
                 checked={this.state.selectRequired}
+              />
+              <div className="m-t-3" />
+              <Checkbox
+                label="Block button?"
+                onChange={this.createStateLink('selectBlock')}
+                checked={this.state.selectBlock || this.state.selectBlock === undefined}
               />
               <div className="m-t-3" />
               <Checkbox
