@@ -20,6 +20,7 @@ export default class Docs extends Component {
       selectedOption: null,
       selectRequired: false,
       selectDisabled: false,
+      selectSize: null,
       searchable: false,
       hasPlaceholder: false,
       hasSearchPlaceholder: false,
@@ -111,6 +112,7 @@ export default class Docs extends Component {
             </div>
             <div className="col-md-6">
               <Select
+                size={this.state.selectSize}
                 placeholder={this.state.hasPlaceholder ? this.state.placeholder : undefined}
                 options={this.getOptions()}
                 selected={this.state.selectedOption}
@@ -131,6 +133,7 @@ export default class Docs extends Component {
               <pre className="tw-docs-code">
 {`<Select
   placeholder={${this.state.hasPlaceholder ? `"${this.state.placeholder}"` : undefined}}
+  size={${this.state.selectSize ? `"${this.state.selectSize}"` : undefined}}
   selected={${JSON.stringify(this.state.selectedOption, null, '  ')}}
   onChange={this.handleOptionChange}
   onSearchChange={${this.state.searchable ? 'this.handleSearchChange' : undefined}}
@@ -152,6 +155,20 @@ export default class Docs extends Component {
               </p>
             </div>
             <div className="col-md-6">
+              {/* eslint-disable jsx-a11y/label-has-for */}
+              <label>Size</label>
+              {/* eslint-enable jsx-a11y/label-has-for */}
+              <Select
+                selected={
+                  this.state.selectSize ?
+                  { value: this.state.selectSize, label: this.state.selectSize } :
+                  undefined}
+                options={['xs', 'sm', 'md', 'lg'].map(size => ({ value: size, label: size }))}
+                onChange={
+                  selection =>
+                  (selection ? this.setState({ selectSize: selection.value }) : undefined)}
+              />
+              <div className="m-t-3" />
               <Checkbox
                 label="Required?"
                 onChange={this.createStateLink('selectRequired')}
