@@ -5,6 +5,7 @@ Adds the following to the `Select` component:
 
 * Pass a `block` property to toggle if the `Select` button is a block button or normal one (defaults to `true`)
 * Pass a `size` property (one of `xs, sm, md, lg`) to select the size of the `Select` button (defaults to `md`)
+* Pass an `id` property to `Select` to set the id of the toggler button
 
 <!-- -->
 

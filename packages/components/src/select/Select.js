@@ -30,6 +30,7 @@ function stopPropagation(event) {
 export default class Select extends Component {
   static propTypes = {
     placeholder: Types.string,
+    id: Types.string,
     required: Types.bool,
     disabled: Types.bool,
     size: Types.oneOf(['xs', 'sm', 'md', 'lg']),
@@ -43,21 +44,24 @@ export default class Select extends Component {
       secondary: Types.secondary,
     }),
     onChange: Types.func.isRequired,
-    options: Types.arrayOf(Types.shape({
-      value: Types.any,
-      label: Types.string,
-      header: Types.string,
-      icon: Types.string,
-      currency: Types.string,
-      note: Types.string,
-      secondary: Types.secondary,
-    })).isRequired,
+    options: Types.arrayOf(
+      Types.shape({
+        value: Types.any,
+        label: Types.string,
+        header: Types.string,
+        icon: Types.string,
+        currency: Types.string,
+        note: Types.string,
+        secondary: Types.secondary,
+      }),
+    ).isRequired,
     onSearchChange: Types.func,
     searchValue: Types.string,
     searchPlaceholder: Types.string,
   };
 
   static defaultProps = {
+    id: undefined,
     placeholder: 'Select an option...',
     size: 'md',
     required: false,
@@ -111,7 +115,8 @@ export default class Select extends Component {
         this.close();
         event.preventDefault();
         break;
-      default: break;
+      default:
+        break;
     }
   };
 
@@ -217,7 +222,9 @@ export default class Select extends Component {
         onClick={this.createSelectHandlerForOption({ placeholder })}
         className="tw-dropdown-item--clickable tw-dropdown-item--divider"
       >
-        <a>{placeholder}</a>
+        <a>
+          {placeholder}
+        </a>
       </li>
     );
   }
@@ -235,11 +242,10 @@ export default class Select extends Component {
       );
     }
 
-    const isActive = (
+    const isActive =
       (this.props.selected && this.props.selected.value === option.value) ||
       this.state.keyboardFocusedOptionIndex ===
-        this.getIndexWithoutHeadersForIndexWithHeaders(index)
-    );
+        this.getIndexWithoutHeadersForIndexWithHeaders(index);
 
     return (
       <li // eslint-disable-line jsx-a11y/no-static-element-interactions
@@ -247,7 +253,9 @@ export default class Select extends Component {
         onClick={this.createSelectHandlerForOption(option)}
         className={`tw-dropdown-item--clickable ${isActive ? 'active' : ''}`}
       >
-        <a><Option {...option} /></a>
+        <a>
+          <Option {...option} />
+        </a>
       </li>
     );
   };
@@ -265,7 +273,7 @@ export default class Select extends Component {
   }
 
   render() {
-    const { disabled, required, onSearchChange, size, block } = this.props;
+    const { disabled, required, onSearchChange, size, block, id } = this.props;
     const canSearch = !!onSearchChange;
     const { open } = this.state;
     const groupClass = `btn-group ${block ? 'btn-block' : ''} dropdown ${open ? 'open' : ''}`;
@@ -279,21 +287,20 @@ export default class Select extends Component {
           disabled={disabled}
           className={buttonClass}
           type="button"
+          id={id}
           aria-expanded={open}
           onClick={this.handleButtonClick}
         >
           {this.renderButtonInternals()}
           <span className="caret" />
         </button>
-        {
-          open ? (
-            <ul className="dropdown-menu" role="menu">
-              {!required && !canSearch ? this.renderPlaceHolderOption() : ''}
-              {canSearch ? this.renderSearchBox() : '' }
-              {this.renderOptions()}
-            </ul>
-          ) : ''
-        }
+        {open
+          ? <ul className="dropdown-menu" role="menu">
+            {!required && !canSearch ? this.renderPlaceHolderOption() : ''}
+            {canSearch ? this.renderSearchBox() : ''}
+            {this.renderOptions()}
+          </ul>
+          : ''}
       </div>
     );
   }

@@ -28,10 +28,7 @@ describe('Select', () => {
   beforeEach(() => {
     props = {
       onChange: jest.fn(),
-      options: [
-        { value: 0, label: 'yo' },
-        { value: 1, label: 'dawg' },
-      ],
+      options: [{ value: 0, label: 'yo' }, { value: 1, label: 'dawg' }],
     };
     documentEventCallbacks = {};
     originalAddEventListener = global.document.addEventListener;
@@ -44,7 +41,6 @@ describe('Select', () => {
   afterEach(() => {
     global.document.addEventListener = originalAddEventListener;
   });
-
 
   function doTimes(count, func) {
     while (count) {
@@ -180,7 +176,14 @@ describe('Select', () => {
   });
 
   it('renders the selected option if given instead of the placeholder', () => {
-    const selected = { value: 0, label: 'ayy', note: 'yo', icon: 'red thing', currency: '', secondary: '' };
+    const selected = {
+      value: 0,
+      label: 'ayy',
+      note: 'yo',
+      icon: 'red thing',
+      currency: '',
+      secondary: '',
+    };
     component.setProps({ selected });
     const buttonChild = component.find('button').children().first();
     expect(buttonChild.type()).toEqual(Option);
@@ -280,10 +283,7 @@ describe('Select', () => {
 
   it('binds keyboard movement to the current options', () => {
     component.setProps({
-      options: [
-        { value: 0, label: 'yo' },
-        { value: 1, label: 'dawg' },
-      ],
+      options: [{ value: 0, label: 'yo' }, { value: 1, label: 'dawg' }],
       required: true,
     });
     openSelect();
@@ -298,11 +298,7 @@ describe('Select', () => {
   it('allows you to select the item currently focused with your keyboard', () => {
     const onChange = jest.fn();
     component.setProps({
-      options: [
-        { value: 0, label: 'yo' },
-        { value: 1, label: 'dawg' },
-        { value: 2, label: 'boi' },
-      ],
+      options: [{ value: 0, label: 'yo' }, { value: 1, label: 'dawg' }, { value: 2, label: 'boi' }],
       required: true,
       onChange,
     });
@@ -330,5 +326,10 @@ describe('Select', () => {
     expect(openerButtonIsBlock()).toBe(false);
     component.setProps({ block: true });
     expect(openerButtonIsBlock()).toBe(true);
+  });
+
+  it('passes the given id forward to the button', () => {
+    component.setProps({ id: 'some-id' });
+    expect(component.find('#some-id').type()).toBe('button');
   });
 });

@@ -53,26 +53,30 @@ export default class Docs extends Component {
       return this.options;
     }
 
-    const headerMapping = this.options.reduce((accumulator, option) => {
-      if (option.header) {
-        accumulator.currentHeader = option.header; // eslint-disable-line no-param-reassign
-      } else if (option.value) {
-        accumulator  // eslint-disable-line no-param-reassign
-          .mapping[option.value] = accumulator.currentHeader;
-      }
-      return accumulator;
-    }, { currentHeader: null, mapping: {} }).mapping;
+    const headerMapping = this.options.reduce(
+      (accumulator, option) => {
+        if (option.header) {
+          accumulator.currentHeader = option.header; // eslint-disable-line no-param-reassign
+        } else if (option.value) {
+          accumulator.mapping[option.value] = // eslint-disable-line no-param-reassign
+            accumulator.currentHeader;
+        }
+        return accumulator;
+      },
+      { currentHeader: null, mapping: {} },
+    ).mapping;
 
-    const foundOptions = this.options.filter(option => (
-      option.label &&
-      option.label.toLowerCase().indexOf(this.state.searchValue) !== -1
-    ));
+    const foundOptions = this.options.filter(
+      option => option.label && option.label.toLowerCase().indexOf(this.state.searchValue) !== -1,
+    );
 
     return this.options.filter((option) => {
       if (option.header) {
-        return foundOptions
-          .reduce((headerVisible, foundOption) =>
-            headerVisible || headerMapping[foundOption.value] === option.header, false);
+        return foundOptions.reduce(
+          (headerVisible, foundOption) =>
+            headerVisible || headerMapping[foundOption.value] === option.header,
+          false,
+        );
       }
       return foundOptions.indexOf(option) !== -1;
     });
@@ -87,38 +91,42 @@ export default class Docs extends Component {
   }
 
   render() {
-    const searchPlaceholder = this.state.hasSearchPlaceholder ?
-      `"${this.state.searchPlaceholder}"` : undefined;
+    const searchPlaceholder = this.state.hasSearchPlaceholder
+      ? `"${this.state.searchPlaceholder}"`
+      : undefined;
     return (
       <div className="container">
         <section className="section row">
           <div className="col-md-6">
-            <h1>Components 🎉 <small>v{npmPackage.version}</small></h1>
-            <p>
-              TransferWise styleguide components in react.
-            </p>
+            <h1>
+              Components 🎉 <small>v{npmPackage.version}</small>
+            </h1>
+            <p>TransferWise styleguide components in react.</p>
             {/* eslint-disable react/jsx-indent */}
             <pre className="tw-docs-code">
-{'yarn add @transferwise/components'}
+              {'yarn add @transferwise/components'}
             </pre>
             {/* eslint-enable react/jsx-indent */}
             <p>
               <strong>TODO: </strong>
               We need to add missing components and missing props to some components.
             </p>
-            <button className="btn btn-default" onClick={() => this.setState(({ showChangelog }) => ({ showChangelog: !showChangelog }))}>
-              { this.state.showChangelog ? 'Hide' : 'Show' } changelog
+            <button
+              className="btn btn-default"
+              onClick={() =>
+                this.setState(({ showChangelog }) => ({ showChangelog: !showChangelog }))}
+            >
+              {this.state.showChangelog ? 'Hide' : 'Show'} changelog
             </button>
           </div>
-          {
-            this.state.showChangelog ?
-              <div
-                className="col-md-6 tw-docs-code"
-                /* eslint-disable react/no-danger */
-                dangerouslySetInnerHTML={{ __html: marked(atob(changelog.substring(28))) }}
-                /* eslint-enable react/no-danger */
-              /> : ''
-          }
+          {/* eslint-disable react/no-danger */}
+          {this.state.showChangelog
+            ? <div
+              className="col-md-6 tw-docs-code"
+              dangerouslySetInnerHTML={{ __html: marked(atob(changelog.substring(28))) }}
+            />
+            : ''}
+          {/* eslint-enable react/no-danger */}
         </section>
 
         <section className="section">
@@ -139,9 +147,11 @@ export default class Docs extends Component {
                 required={this.state.selectRequired}
                 searchValue={this.state.searchable ? this.state.searchValue : undefined}
                 searchPlaceholder={
-                  this.state.hasSearchPlaceholder ? this.state.searchPlaceholder : undefined}
+                  this.state.hasSearchPlaceholder ? this.state.searchPlaceholder : undefined
+                }
                 onSearchChange={
-                  this.state.searchable ? this.createStateLink('searchValue') : undefined}
+                  this.state.searchable ? this.createStateLink('searchValue') : undefined
+                }
               />
             </div>
           </div>
@@ -149,7 +159,7 @@ export default class Docs extends Component {
             <div className="col-md-6">
               {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
-{`<Select
+                {`<Select
   placeholder={${this.state.hasPlaceholder ? `"${this.state.placeholder}"` : undefined}}
   size={${this.state.selectSize ? `"${this.state.selectSize}"` : undefined}}
   block={${this.state.selectBlock}}
@@ -165,27 +175,26 @@ export default class Docs extends Component {
               </pre>
               {/* eslint-enable react/jsx-indent */}
               <p>
-                Search implementation is left to the user, change passed in options
-                property with value gotten from onSearchChange. Search won&apos;t render if no
-                onSearchChange passed.
+                Search implementation is left to the user, change passed in options property with
+                value gotten from onSearchChange. Search won&apos;t render if no onSearchChange
+                passed.
               </p>
-              <p>
-                Every property that is false or undefined can be omitted.
-              </p>
+              <p>Every property that is false or undefined can be omitted.</p>
             </div>
             <div className="col-md-6">
-              {/* eslint-disable jsx-a11y/label-has-for */}
-              <label>Size</label>
-              {/* eslint-enable jsx-a11y/label-has-for */}
+              <label htmlFor="size-selector" className="control-label">
+                Size
+              </label>
               <Select
+                id="size-selector"
                 selected={
-                  this.state.selectSize ?
-                  { value: this.state.selectSize, label: this.state.selectSize } :
-                  undefined}
+                  this.state.selectSize
+                    ? { value: this.state.selectSize, label: this.state.selectSize }
+                    : undefined
+                }
                 options={['xs', 'sm', 'md', 'lg'].map(size => ({ value: size, label: size }))}
-                onChange={
-                  selection =>
-                  (selection ? this.setState({ selectSize: selection.value }) : undefined)}
+                onChange={selection =>
+                  this.setState({ selectSize: selection ? selection.value : undefined })}
               />
               <div className="m-t-3" />
               <Checkbox
@@ -218,16 +227,15 @@ export default class Docs extends Component {
                 checked={this.state.hasPlaceholder}
               />
               <div className="m-t-3" />
-              {
-                this.state.hasPlaceholder ?
-                  <input
-                    type="text"
-                    value={this.state.placeholder}
-                    onChange={this.createEventStateLink('placeholder')}
-                    placeholder="Placeholder"
-                    className="form-control"
-                  /> : ''
-              }
+              {this.state.hasPlaceholder
+                ? <input
+                  type="text"
+                  value={this.state.placeholder}
+                  onChange={this.createEventStateLink('placeholder')}
+                  placeholder="Placeholder"
+                  className="form-control"
+                />
+                : ''}
               <div className="m-t-3" />
               <Checkbox
                 label="Custom search placeholder?"
@@ -235,16 +243,15 @@ export default class Docs extends Component {
                 checked={this.state.hasSearchPlaceholder}
               />
               <div className="m-t-3" />
-              {
-                this.state.hasSearchPlaceholder ?
-                  <input
-                    type="text"
-                    value={this.state.searchPlaceholder}
-                    onChange={this.createEventStateLink('searchPlaceholder')}
-                    placeholder="Search placeholder"
-                    className="form-control"
-                  /> : ''
-              }
+              {this.state.hasSearchPlaceholder
+                ? <input
+                  type="text"
+                  value={this.state.searchPlaceholder}
+                  onChange={this.createEventStateLink('searchPlaceholder')}
+                  placeholder="Search placeholder"
+                  className="form-control"
+                />
+                : ''}
             </div>
           </div>
         </section>
@@ -269,7 +276,7 @@ export default class Docs extends Component {
             <div className="col-md-6">
               {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
-{`<Checkbox
+                {`<Checkbox
   label={"${this.state.checkboxLabel}"}
   onChange={this.handleCheckChange}
   required={${this.state.checkRequired}}
@@ -323,7 +330,7 @@ export default class Docs extends Component {
             <div className="col-md-6">
               {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
-{`<Radio
+                {`<Radio
   label={"${this.state.radioLabel}"}
   name={"${this.state.radioName}"}
   checked={${this.state.radioChecked}}
@@ -373,7 +380,7 @@ export default class Docs extends Component {
             <div className="col-md-6">
               {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
-{`<Loader small={${this.state.loaderSmall}} />`}
+                {`<Loader small={${this.state.loaderSmall}} />`}
               </pre>
               {/* eslint-enable react/jsx-indent */}
             </div>
