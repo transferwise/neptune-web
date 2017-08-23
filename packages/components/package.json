@@ -48,7 +48,7 @@
     "react-dev-utils": "^0.5.2",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
-    "release-to-github-with-changelog": "^0.7.0",
+    "release-to-github-with-changelog": "^1.1.4",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.14.0",
@@ -88,12 +88,8 @@
   },
   "homepage": "https://transferwise.github.io/components/",
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
-    ],
+    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+    "testPathIgnorePatterns": ["<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"],
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
@@ -101,16 +97,12 @@
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     }
   },
   "babel": {
-    "presets": [
-      "react-app"
-    ]
+    "presets": ["react-app"]
   }
 }
