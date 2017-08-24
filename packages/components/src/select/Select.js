@@ -41,7 +41,7 @@ export default class Select extends Component {
       icon: Types.string,
       currency: Types.string,
       note: Types.string,
-      secondary: Types.secondary,
+      secondary: Types.string,
     }),
     onChange: Types.func.isRequired,
     options: Types.arrayOf(
@@ -52,7 +52,7 @@ export default class Select extends Component {
         icon: Types.string,
         currency: Types.string,
         note: Types.string,
-        secondary: Types.secondary,
+        secondary: Types.string,
       }),
     ).isRequired,
     onSearchChange: Types.func,
