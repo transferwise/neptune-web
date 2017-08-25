@@ -17,11 +17,9 @@ export default class Header extends Component {
             Components 🎉 <small>v{npmPackage.version}</small>
           </h1>
           <p>TransferWise styleguide components in react.</p>
-          {/* eslint-disable react/jsx-indent */}
           <pre className="tw-docs-code">
             {'yarn add @transferwise/components'}
           </pre>
-          {/* eslint-enable react/jsx-indent */}
           <p>
             <strong>TODO: </strong>
             We need to add missing components and missing props to some components.
