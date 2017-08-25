@@ -20,6 +20,9 @@ export default class Docs extends Component {
       { value: 5, label: 'Euro', currency: 'eur' },
     ];
     this.state = {
+      stepperSteps: ['Amount', 'My details', 'Recipient', 'Done'],
+      activeStepperStep: 1,
+
       selectedOption: null,
       selectRequired: false,
       selectDisabled: false,
@@ -136,14 +139,17 @@ export default class Docs extends Component {
               <p>These boots are made for steppin&lsquo;</p>
             </div>
             <div className="col-md-6">
-              <Stepper steps={['Amount', 'My details', 'Recipient', 'Done']} activeStep={3} />
+              <Stepper steps={this.state.stepperSteps} activeStep={this.state.activeStepperStep} />
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
               {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
-                {'<Stepper />'}
+                {`<Stepper
+  steps={${JSON.stringify(this.state.stepperSteps)}}
+  activeStep={${this.state.activeStepperStep}}
+/>`}
               </pre>
               {/* eslint-enable react/jsx-indent */}
             </div>

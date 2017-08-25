@@ -29,11 +29,16 @@
   transition: width .6s ease-in-out;
 }
 
+.tw-stepper-steps {
+  position: relative;
+}
+
 .tw-stepper__step {
   position: absolute;
   color: #a8aaac;
-  text-align: center;
   transform: translateX(-50%);
+  list-style-type: none;
+  transition: color .6s ease-in-out;
 }
 
 .tw-stepper__step--active {
@@ -42,13 +47,4 @@
 
 .tw-stepper__step--done {
   color: #1bc0ff;
-}
-
-.tw-stepper__step:last-child {
-  left: 100%;
-}
-
-.tw-stepper__step:first-child {
-  text-align: left;
-  left: 0;
 }
