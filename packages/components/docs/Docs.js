@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import marked from 'marked'; // eslint-disable-line import/no-extraneous-dependencies
-import { Select, Radio, Checkbox, Loader } from '../src';
+import { Select, Radio, Checkbox, Loader, Stepper } from '../src';
 import npmPackage from '../package.json';
 import changelog from '../CHANGELOG.md';
 import './Docs.css';
@@ -127,6 +127,28 @@ export default class Docs extends Component {
             />
             : ''}
           {/* eslint-enable react/no-danger */}
+        </section>
+
+        <section className="section">
+          <div className="row">
+            <div className="col-md-6">
+              <h2>Stepper</h2>
+              <p>These boots are made for steppin&lsquo;</p>
+            </div>
+            <div className="col-md-6">
+              <Stepper />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-6">
+              {/* eslint-disable react/jsx-indent */}
+              <pre className="tw-docs-code">
+                {'<Stepper />'}
+              </pre>
+              {/* eslint-enable react/jsx-indent */}
+            </div>
+            <div className="col-md-6" />
+          </div>
         </section>
 
         <section className="section">
