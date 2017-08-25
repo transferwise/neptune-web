@@ -6,6 +6,7 @@ import changelog from '../CHANGELOG.md';
 import './Docs.css';
 
 import SelectDocs from './SelectDocs';
+import CheckboxDocs from './CheckboxDocs';
 
 export default class Docs extends Component {
   constructor(props) {
@@ -13,11 +14,6 @@ export default class Docs extends Component {
     this.state = {
       stepperSteps: ['Amount', 'My details', 'Recipient', 'Done'],
       activeStepperStep: 1,
-
-      checked: false,
-      checkDisabled: false,
-      checkRequired: false,
-      checkboxLabel: 'Check me out',
 
       radioLabel: 'Selecteroni',
       radioChecked: false,
@@ -28,40 +24,6 @@ export default class Docs extends Component {
 
       showChangelog: false,
     };
-  }
-
-  getOptions() {
-    if (!this.state.searchable) {
-      return this.options;
-    }
-
-    const headerMapping = this.options.reduce(
-      (accumulator, option) => {
-        if (option.header) {
-          accumulator.currentHeader = option.header; // eslint-disable-line no-param-reassign
-        } else if (option.value) {
-          accumulator.mapping[option.value] = // eslint-disable-line no-param-reassign
-            accumulator.currentHeader;
-        }
-        return accumulator;
-      },
-      { currentHeader: null, mapping: {} },
-    ).mapping;
-
-    const foundOptions = this.options.filter(
-      option => option.label && option.label.toLowerCase().indexOf(this.state.searchValue) !== -1,
-    );
-
-    return this.options.filter((option) => {
-      if (option.header) {
-        return foundOptions.reduce(
-          (headerVisible, foundOption) =>
-            headerVisible || headerMapping[foundOption.value] === option.header,
-          false,
-        );
-      }
-      return foundOptions.indexOf(option) !== -1;
-    });
   }
 
   createStateLink(name) {
@@ -135,59 +97,7 @@ export default class Docs extends Component {
 
         <SelectDocs />
 
-        <section className="section">
-          <div className="row">
-            <div className="col-md-6">
-              <h2>Checkbox</h2>
-              <p>Check yourself before you wreck yourself</p>
-            </div>
-            <div className="col-md-6">
-              <Checkbox
-                label={this.state.checkboxLabel}
-                onChange={this.createStateLink('checked')}
-                checked={this.state.checked}
-                required={this.state.checkRequired}
-                disabled={this.state.checkDisabled}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              {/* eslint-disable react/jsx-indent */}
-              <pre className="tw-docs-code">
-                {`<Checkbox
-  label={"${this.state.checkboxLabel}"}
-  onChange={this.handleCheckChange}
-  required={${this.state.checkRequired}}
-  disabled={${this.state.checkDisabled}}
-  checked={${this.state.checked}}
-/>`}
-              </pre>
-              {/* eslint-enable react/jsx-indent */}
-            </div>
-            <div className="col-md-6">
-              <input
-                type="text"
-                value={this.state.checkboxLabel}
-                onChange={this.createEventStateLink('checkboxLabel')}
-                placeholder="Checkbox label"
-                className="form-control"
-              />
-              <div className="m-t-3" />
-              <Checkbox
-                label="Required?"
-                onChange={this.createStateLink('checkRequired')}
-                checked={this.state.checkRequired}
-              />
-              <div className="m-t-3" />
-              <Checkbox
-                label="Disabled?"
-                onChange={this.createStateLink('checkDisabled')}
-                checked={this.state.checkDisabled}
-              />
-            </div>
-          </div>
-        </section>
+        <CheckboxDocs />
 
         <section className="section">
           <div className="row">

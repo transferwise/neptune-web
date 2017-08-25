@@ -67,6 +67,10 @@ export default class SelectDocs extends Component {
     return value => this.setState({ [name]: value });
   }
 
+  createEventStateLink(name) {
+    return event => this.setState({ [name]: event.target.value });
+  }
+
   render() {
     const searchPlaceholder = this.state.hasSearchPlaceholder
       ? `"${this.state.searchPlaceholder}"`
