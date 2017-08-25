@@ -1,3 +1,8 @@
+# v0.4.0
+## Adds `Stepper` component
+
+A sweet new component for all your flow needs.
+
 # v0.3.0
 ## Adds enhancements to `Select`
 
