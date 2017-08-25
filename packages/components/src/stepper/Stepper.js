@@ -4,15 +4,30 @@ import './Stepper.css';
 
 /* eslint-disable react/no-array-index-key */
 const Stepper = ({ steps, activeStep }) => {
-  const stepPercentage = 1 / steps.length;
-  const percentageCompleted = activeStep / steps.length;
-  const filledPercentage = Math.max(percentageCompleted - stepPercentage, 0);
-  const endingWidthPercentage = Math.min(activeStep, 1) * stepPercentage;
+  const stepPercentage = 1 / (steps.length - 1);
+  const percentageCompleted = activeStep / (steps.length - 1);
+  const filledWidth = Math.max(percentageCompleted - stepPercentage, 0);
+  const endingWidth = Math.min(activeStep, 1) * stepPercentage;
   return (
     <div>
       <div className="progress">
-        <div className="progress-bar-filler" style={{ width: `${filledPercentage * 100}%` }} />
-        <div className="progress-bar-ending" style={{ width: `${endingWidthPercentage * 100}%` }} />
+        <div className="progress-bar-filler" style={{ width: `${filledWidth * 100}%` }} />
+        <div className="progress-bar-ending" style={{ width: `${endingWidth * 100}%` }} />
+      </div>
+      <div className="tw-stepper-steps">
+        {steps.map((step, index) =>
+          <div
+            key={step}
+            style={{ left: `${index * stepPercentage * 100}%` }}
+            className={`
+              tw-stepper__step
+              ${index === activeStep ? 'tw-stepper__step--active' : ''}
+              ${index < activeStep ? 'tw-stepper__step--done' : ''}
+            `}
+          >
+            {step}
+          </div>,
+        )}
       </div>
     </div>
   );

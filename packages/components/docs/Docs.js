@@ -136,7 +136,7 @@ export default class Docs extends Component {
               <p>These boots are made for steppin&lsquo;</p>
             </div>
             <div className="col-md-6">
-              <Stepper steps={['hello', 'this is', 'a step', 'and', 'more']} activeStep={5} />
+              <Stepper steps={['Amount', 'My details', 'Recipient', 'Done']} activeStep={3} />
             </div>
           </div>
           <div className="row">

@@ -2,13 +2,10 @@
   float: left;
   width: 0%;
   height: 100%;
-  font-size: 16px;
-  font-weight: bold;
-  color: #ffffff;
-  text-align: right;
   background: linear-gradient(to right, #00b9ff, #2e4369);
   border-top-right-radius: 1px;
   border-bottom-right-radius: 1px;
+  transition: width .6s ease-in-out;
 }
 
 .progress-bar-ending::after {
@@ -26,12 +23,32 @@
   float: left;
   width: 0%;
   height: 100%;
-  font-size: 16px;
-  font-weight: bold;
-  color: #ffffff;
-  text-align: right;
   background-color: #00b9ff;
   border-top-left-radius: 1px;
   border-bottom-left-radius: 1px;
   transition: width .6s ease-in-out;
+}
+
+.tw-stepper__step {
+  position: absolute;
+  color: #a8aaac;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.tw-stepper__step--active {
+  color: #2e4369;
+}
+
+.tw-stepper__step--done {
+  color: #1bc0ff;
+}
+
+.tw-stepper__step:last-child {
+  left: 100%;
+}
+
+.tw-stepper__step:first-child {
+  text-align: left;
+  left: 0;
 }
