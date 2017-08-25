@@ -1,39 +1,18 @@
 import React, { Component } from 'react';
 import marked from 'marked'; // eslint-disable-line import/no-extraneous-dependencies
-import { Select, Radio, Checkbox, Loader, Stepper } from '../src';
+import { Radio, Checkbox, Loader, Stepper } from '../src';
 import npmPackage from '../package.json';
 import changelog from '../CHANGELOG.md';
 import './Docs.css';
 
+import SelectDocs from './SelectDocs';
+
 export default class Docs extends Component {
   constructor(props) {
     super(props);
-    this.options = [
-      { header: 'Basic' },
-      { value: 0, label: 'A thing', note: 'with a note' },
-      { value: 1, label: 'Another thing', secondary: 'with secondary text this time' },
-      { header: 'Icons' },
-      { value: 2, label: 'Profile', icon: 'icon-profile' },
-      { value: 3, label: 'Globe', icon: 'icon-globe' },
-      { header: 'Currencies' },
-      { value: 4, label: 'British Pound', currency: 'gbp' },
-      { value: 5, label: 'Euro', currency: 'eur' },
-    ];
     this.state = {
       stepperSteps: ['Amount', 'My details', 'Recipient', 'Done'],
       activeStepperStep: 1,
-
-      selectedOption: null,
-      selectRequired: false,
-      selectDisabled: false,
-      selectBlock: undefined,
-      selectSize: undefined,
-      searchable: false,
-      hasPlaceholder: false,
-      hasSearchPlaceholder: false,
-      searchPlaceholder: 'Search...',
-      searchValue: '',
-      placeholder: 'Select an option...',
 
       checked: false,
       checkDisabled: false,
@@ -94,9 +73,6 @@ export default class Docs extends Component {
   }
 
   render() {
-    const searchPlaceholder = this.state.hasSearchPlaceholder
-      ? `"${this.state.searchPlaceholder}"`
-      : undefined;
     return (
       <div className="container">
         <section className="section row">
@@ -157,132 +133,7 @@ export default class Docs extends Component {
           </div>
         </section>
 
-        <section className="section">
-          <div className="row">
-            <div className="col-md-6">
-              <h2>Select</h2>
-              <p>It ... selects things</p>
-            </div>
-            <div className="col-md-6">
-              <Select
-                size={this.state.selectSize}
-                placeholder={this.state.hasPlaceholder ? this.state.placeholder : undefined}
-                options={this.getOptions()}
-                block={this.state.selectBlock}
-                selected={this.state.selectedOption}
-                disabled={this.state.selectDisabled}
-                onChange={this.createStateLink('selectedOption')}
-                required={this.state.selectRequired}
-                searchValue={this.state.searchable ? this.state.searchValue : undefined}
-                searchPlaceholder={
-                  this.state.hasSearchPlaceholder ? this.state.searchPlaceholder : undefined
-                }
-                onSearchChange={
-                  this.state.searchable ? this.createStateLink('searchValue') : undefined
-                }
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              {/* eslint-disable react/jsx-indent */}
-              <pre className="tw-docs-code">
-                {`<Select
-  placeholder={${this.state.hasPlaceholder ? `"${this.state.placeholder}"` : undefined}}
-  size={${this.state.selectSize ? `"${this.state.selectSize}"` : undefined}}
-  block={${this.state.selectBlock}}
-  selected={${JSON.stringify(this.state.selectedOption, null, '  ')}}
-  onChange={this.handleOptionChange}
-  onSearchChange={${this.state.searchable ? 'this.handleSearchChange' : undefined}}
-  searchValue={${this.state.searchable ? `"${this.state.searchValue}"` : undefined}}
-  searchPlaceholder={${searchPlaceholder}}
-  required={${this.state.selectRequired}}
-  disabled={${this.state.selectDisabled}}
-  options={${JSON.stringify(this.getOptions(), null, '  ')}}
-/>`}
-              </pre>
-              {/* eslint-enable react/jsx-indent */}
-              <p>
-                Search implementation is left to the user, change passed in options property with
-                value gotten from onSearchChange. Search won&apos;t render if no onSearchChange
-                passed.
-              </p>
-              <p>Every property that is false or undefined can be omitted.</p>
-            </div>
-            <div className="col-md-6">
-              <label htmlFor="size-selector" className="control-label">
-                Size
-              </label>
-              <Select
-                id="size-selector"
-                selected={
-                  this.state.selectSize
-                    ? { value: this.state.selectSize, label: this.state.selectSize }
-                    : undefined
-                }
-                options={['xs', 'sm', 'md', 'lg'].map(size => ({ value: size, label: size }))}
-                onChange={selection =>
-                  this.setState({ selectSize: selection ? selection.value : undefined })}
-              />
-              <div className="m-t-3" />
-              <Checkbox
-                label="Required?"
-                onChange={this.createStateLink('selectRequired')}
-                checked={this.state.selectRequired}
-              />
-              <div className="m-t-3" />
-              <Checkbox
-                label="Block button?"
-                onChange={this.createStateLink('selectBlock')}
-                checked={this.state.selectBlock || this.state.selectBlock === undefined}
-              />
-              <div className="m-t-3" />
-              <Checkbox
-                label="Disabled?"
-                onChange={this.createStateLink('selectDisabled')}
-                checked={this.state.selectDisabled}
-              />
-              <div className="m-t-3" />
-              <Checkbox
-                label="Searchable?"
-                onChange={this.createStateLink('searchable')}
-                checked={this.state.searchable}
-              />
-              <div className="m-t-3" />
-              <Checkbox
-                label="Custom placeholder?"
-                onChange={this.createStateLink('hasPlaceholder')}
-                checked={this.state.hasPlaceholder}
-              />
-              <div className="m-t-3" />
-              {this.state.hasPlaceholder
-                ? <input
-                  type="text"
-                  value={this.state.placeholder}
-                  onChange={this.createEventStateLink('placeholder')}
-                  placeholder="Placeholder"
-                  className="form-control"
-                />
-                : ''}
-              <div className="m-t-3" />
-              <Checkbox
-                label="Custom search placeholder?"
-                onChange={this.createStateLink('hasSearchPlaceholder')}
-                checked={this.state.hasSearchPlaceholder}
-              />
-              <div className="m-t-3" />
-              {this.state.hasSearchPlaceholder
-                ? <input
-                  type="text"
-                  value={this.state.searchPlaceholder}
-                  onChange={this.createEventStateLink('searchPlaceholder')}
-                  placeholder="Search placeholder"
-                  className="form-control"
-                />
-                : ''}
-            </div>
-          </div>
-        </section>
+        <SelectDocs />
 
         <section className="section">
           <div className="row">
