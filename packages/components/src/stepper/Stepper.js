@@ -18,7 +18,7 @@ const Stepper = ({ steps, activeStep }) => {
       <ul className="tw-stepper-steps">
         {steps.map((step, index) =>
           <li
-            key={step}
+            key={index}
             style={{ left: `${index * stepPercentage * 100}%` }}
             className={`
               tw-stepper__step
