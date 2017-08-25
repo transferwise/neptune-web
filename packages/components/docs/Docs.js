@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import marked from 'marked'; // eslint-disable-line import/no-extraneous-dependencies
-import { Radio, Checkbox, Loader } from '../src';
+import { Checkbox, Loader } from '../src';
 import npmPackage from '../package.json';
 import changelog from '../CHANGELOG.md';
 import './Docs.css';
@@ -8,16 +8,12 @@ import './Docs.css';
 import StepperDocs from './StepperDocs';
 import SelectDocs from './SelectDocs';
 import CheckboxDocs from './CheckboxDocs';
+import RadioDocs from './RadioDocs';
 
 export default class Docs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      radioLabel: 'Selecteroni',
-      radioChecked: false,
-      radioDisabled: false,
-      radioName: 'Radio name',
-
       loaderSmall: false,
 
       showChangelog: false,
@@ -71,62 +67,7 @@ export default class Docs extends Component {
         <StepperDocs />
         <SelectDocs />
         <CheckboxDocs />
-
-        <section className="section">
-          <div className="row">
-            <div className="col-md-6">
-              <h2>Radio</h2>
-              <p>I&apos;m radioing this in</p>
-            </div>
-            <div className="col-md-6">
-              <Radio
-                label={this.state.radioLabel}
-                name={this.state.radioName}
-                checked={this.state.radioChecked}
-                disabled={this.state.radioDisabled}
-                onChange={this.createStateLink('radioChecked')}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              {/* eslint-disable react/jsx-indent */}
-              <pre className="tw-docs-code">
-                {`<Radio
-  label={"${this.state.radioLabel}"}
-  name={"${this.state.radioName}"}
-  checked={${this.state.radioChecked}}
-  disabled={${this.state.radioDisabled}}
-  onChange={this.handleRadioChange}
-/>`}
-              </pre>
-              {/* eslint-enable react/jsx-indent */}
-            </div>
-            <div className="col-md-6">
-              <input
-                type="text"
-                value={this.state.radioLabel}
-                onChange={this.createEventStateLink('radioLabel')}
-                placeholder="Radio label"
-                className="form-control"
-              />
-              <div className="m-t-3" />
-              <input
-                type="text"
-                value={this.state.radioName}
-                onChange={this.createEventStateLink('radioName')}
-                placeholder="Radio name"
-                className="form-control"
-              />
-              <div className="m-t-3" />
-              <Checkbox
-                label="Disabled?"
-                onChange={this.createStateLink('radioDisabled')}
-                checked={this.state.radioDisabled}
-              />
-            </div>
-          </div>
-        </section>
+        <RadioDocs />
 
         <section className="section">
           <div className="row">
