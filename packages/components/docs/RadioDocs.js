@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Radio, Checkbox } from '../src';
 
-export default class CheckboxDocs extends Component {
+export default class RadioDocs extends Component {
   constructor(props) {
     super(props);
     this.state = {
