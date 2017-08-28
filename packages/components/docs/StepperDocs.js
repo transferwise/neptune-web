@@ -19,13 +19,13 @@ const presets = [
       {
         label: 'Clickable step 1',
         onClick() {
-          alert('You clicked on step 1!'); // eslint-disable-line
+          alert('You clicked on step 1, which triggered this function, which alerted you.'); // eslint-disable-line
         },
       },
       {
         label: 'Clickable step 2',
         onClick() {
-          alert('You clicked on step 2!'); // eslint-disable-line
+          alert('You clicked on step 2, which triggered this function, which alerted you.'); // eslint-disable-line
         },
       },
       { label: 'Recipient' },
@@ -86,9 +86,16 @@ export default class StepperDocs extends Component {
             <label htmlFor="stepper-step-select">Active step</label>
             <Select
               id="stepper-step-select"
-              options={this.state.preset.steps.map((_, index) => ({ label: index, value: index }))}
+              options={this.state.preset.steps.map((step, index) => ({
+                label: `${index} - ${step.label}`,
+                value: index,
+              }))}
               onChange={value => value && this.setState({ activeStep: value.value })}
-              selected={{ label: this.state.activeStep, value: this.state.activeStep }}
+              selected={{
+                label: `${this.state.activeStep} - ${this.state.preset.steps[this.state.activeStep]
+                  .label}`,
+                value: this.state.activeStep,
+              }}
               required
             />
 
