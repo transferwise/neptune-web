@@ -104,7 +104,7 @@ export default class StepperDocs extends Component {
             <Select
               id="stepper-preset-select"
               options={presets}
-              onChange={preset => preset && this.setState({ preset })}
+              onChange={preset => preset && this.setState({ preset, activeStep: 0 })}
               selected={this.state.preset}
               required
             />
