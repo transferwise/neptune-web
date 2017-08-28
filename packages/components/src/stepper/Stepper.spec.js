@@ -18,7 +18,7 @@ describe('Stepper', () => {
   const activeStep = step => component.setProps({ activeStep: step });
   const steps = howMany =>
     component.setProps({
-      steps: Array(...Array(howMany)).map((_, index) => `${index}`).map(label => ({ label })),
+      steps: Array(...Array(howMany)).map((_, index) => ({ label: index })),
     });
 
   describe('progress bar', () => {
