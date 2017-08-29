@@ -1,8 +1,3 @@
-# v0.3.1
-## Tiny copy fix
-
-Test description was off
-
 # v0.3.0
 ## Adds enhancements to `Select`
 
