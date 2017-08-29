@@ -74,7 +74,7 @@ describe('Checkbox', () => {
     expect(hasError()).toBe(true);
   });
 
-  it('adds an asterisk to the label if it is disabled', () => {
+  it('adds an asterisk to the label if it is required', () => {
     component.setProps({ required: true });
     expect(component.text()).toEqual(`${props.label}*`);
   });
