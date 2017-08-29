@@ -18,7 +18,7 @@ describe('Stepper', () => {
   const activeStep = step => component.setProps({ activeStep: step });
   const steps = howMany =>
     component.setProps({
-      steps: Array(...Array(howMany)).map((_, index) => ({ label: index })),
+      steps: Array(...Array(howMany)).map((_, index) => ({ label: index.toString() })),
     });
 
   describe('progress bar', () => {
@@ -58,6 +58,92 @@ describe('Stepper', () => {
       expect(totalWidth()).toEqual('100%');
       activeStep(-10);
       expect(totalWidth()).toEqual('0%');
+    });
+  });
+
+  describe('steps', () => {
+    it('have rendered labels', () => {
+      steps(5);
+      [0, 1, 2, 3, 4].forEach((label, index) => {
+        expect(
+          component
+            .find('.tw-stepper__step')
+            .at(index)
+            .text(),
+        ).toEqual(`${label}`);
+      });
+    });
+
+    it('are active when clickable and completed', () => {
+      const stepActive = index =>
+        component
+          .find('.tw-stepper__step')
+          .at(index)
+          .hasClass('tw-stepper__step--done');
+
+      component.setProps({
+        steps: [
+          { label: '0' },
+          { label: '1', onClick: () => null },
+          { label: '2', onClick: () => null },
+        ],
+        activeStep: 0,
+      });
+
+      expect(stepActive(0)).toBe(false);
+      expect(stepActive(1)).toBe(false);
+      expect(stepActive(2)).toBe(false);
+      activeStep(1);
+      expect(stepActive(0)).toBe(false);
+      expect(stepActive(1)).toBe(false);
+      expect(stepActive(2)).toBe(false);
+      activeStep(2);
+      expect(stepActive(0)).toBe(false);
+      expect(stepActive(1)).toBe(true);
+      expect(stepActive(2)).toBe(false);
+    });
+
+    it('are clickable when active', () => {
+      const clickOnStep = index =>
+        component
+          .find('.tw-stepper__step')
+          .at(index)
+          .simulate('click');
+      const clickedOnFirstStep = jest.fn();
+      const clickedOnSecondStep = jest.fn();
+      component.setProps({
+        steps: [
+          { label: '0', onClick: clickedOnFirstStep },
+          { label: '1', onClick: clickedOnSecondStep },
+        ],
+        activeStep: 0,
+      });
+      clickOnStep(0);
+      expect(clickedOnFirstStep).not.toHaveBeenCalled();
+      activeStep(1);
+      clickOnStep(0);
+      expect(clickedOnFirstStep).toHaveBeenCalledTimes(1);
+      clickOnStep(1);
+      expect(clickedOnSecondStep).not.toHaveBeenCalled();
+    });
+
+    it('are active when they are the currently active step', () => {
+      const stepActive = index =>
+        component
+          .find('.tw-stepper__step')
+          .at(index)
+          .hasClass('tw-stepper__step--active');
+      steps(4);
+      activeStep(1);
+      expect(stepActive(0)).toBe(false);
+      expect(stepActive(1)).toBe(true);
+      expect(stepActive(2)).toBe(false);
+      expect(stepActive(3)).toBe(false);
+      activeStep(2);
+      expect(stepActive(0)).toBe(false);
+      expect(stepActive(1)).toBe(false);
+      expect(stepActive(2)).toBe(true);
+      expect(stepActive(3)).toBe(false);
     });
   });
 });

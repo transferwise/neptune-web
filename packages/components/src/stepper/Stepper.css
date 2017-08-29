@@ -41,14 +41,12 @@
   transition: color .6s ease-in-out;
 }
 
-.tw-stepper__step--clickable {
-  cursor: pointer;
-}
-
 .tw-stepper__step--active {
   color: #2e4369;
+  cursor: pointer;
 }
 
 .tw-stepper__step--done {
   color: #1bc0ff;
+  cursor: pointer;
 }

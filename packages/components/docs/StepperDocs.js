@@ -67,7 +67,7 @@ export default class StepperDocs extends Component {
             <h2>Stepper</h2>
             <p>These boots are made for steppin&lsquo;</p>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 p-x-3">
             <Stepper steps={this.state.preset.steps} activeStep={this.state.activeStep} />
           </div>
         </div>

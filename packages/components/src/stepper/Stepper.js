@@ -2,9 +2,13 @@ import React from 'react';
 import Types from 'prop-types';
 import './Stepper.css';
 
+function clamp(from, to, value) {
+  return Math.max(Math.min(to, value), from);
+}
+
 /* eslint-disable react/no-array-index-key */
 const Stepper = ({ steps, activeStep }) => {
-  const activeStepIndex = Math.max(Math.min(steps.length - 1, activeStep), 0);
+  const activeStepIndex = clamp(0, steps.length - 1, activeStep);
   const stepPercentage = 1 / (steps.length - 1);
   const percentageCompleted = activeStepIndex / (steps.length - 1);
   const filledWidth = Math.max(percentageCompleted - stepPercentage, 0);
@@ -20,8 +24,7 @@ const Stepper = ({ steps, activeStep }) => {
         className={`
             tw-stepper__step
             ${index === activeStepIndex ? 'tw-stepper__step--active' : ''}
-            ${index < activeStepIndex ? 'tw-stepper__step--done' : ''}
-            ${clickable ? 'tw-stepper__step--clickable' : ''}
+            ${clickable ? 'tw-stepper__step--done' : ''}
           `}
       >
         {step.label}
@@ -34,9 +37,7 @@ const Stepper = ({ steps, activeStep }) => {
         <div className="progress-bar-filler" style={{ width: `${filledWidth * 100}%` }} />
         <div className="progress-bar-ending" style={{ width: `${endingWidth * 100}%` }} />
       </div>
-      <ul className="tw-stepper-steps">
-        {steps.map(renderStep)}
-      </ul>
+      <ul className="tw-stepper-steps">{steps.map(renderStep)}</ul>
     </div>
   );
 };
