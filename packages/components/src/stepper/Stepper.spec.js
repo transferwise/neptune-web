@@ -103,7 +103,7 @@ describe('Stepper', () => {
       expect(stepActive(2)).toBe(false);
     });
 
-    it('are clickable when active', () => {
+    it('are not clickable when active', () => {
       const clickOnStep = index =>
         component
           .find('.tw-stepper__step')
