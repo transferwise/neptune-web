@@ -1,5 +1,5 @@
 # v0.3.1
-## Tiny Bug fix
+## Tiny copy fix
 
 Test description was off
 
