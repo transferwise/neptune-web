@@ -27,7 +27,7 @@ const Stepper = ({ steps, activeStep }) => {
             ${clickable ? 'tw-stepper__step--done' : ''}
           `}
       >
-        {step.label}
+        {clickable ? <button className="btn-unstyled">{step.label}</button> : step.label}
       </li>
     );
   };
@@ -48,6 +48,8 @@ Stepper.propTypes = {
     Types.shape({
       label: Types.string.isRequired,
       onClick: Types.func,
+      hoverLabel: Types.string,
+      hoverHTML: Types.bool,
     }),
   ).isRequired,
   activeStep: Types.number,
