@@ -36,9 +36,61 @@
 .tw-stepper__step {
   position: absolute;
   color: #a8aaac;
-  transform: translateX(-50%);
   list-style-type: none;
   transition: color 0.6s ease-in-out;
+}
+
+.tw-stepper__step-label {
+  position: absolute;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.tw-stepper__step-hover-label {
+  display: block;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  transform: translateY(calc(-100% - 19px)) translateX(-50%);
+  background-color: white;
+  box-shadow: 2px 2px 12px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  width: 420px;
+  left: -50%;
+}
+
+.tw-stepper__step-hover-label::before {
+  /* triangle */
+  box-shadow: 2px 2px 12px 2px rgba(0, 0, 0, 0.3);
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  transform: rotate(45deg);
+  content: '';
+  display: block;
+  position: absolute;
+
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+}
+
+.tw-stepper__step-hover-label::after {
+  /* triangle top part covering box */
+  width: 64px;
+  height: 20px;
+  background-color: white;
+  content: '';
+  display: block;
+  position: absolute;
+
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .tw-stepper__step--active {
@@ -56,5 +108,5 @@
   border: none;
   margin: 0;
   padding: 0;
-  display: inline;
+  display: block;
 }

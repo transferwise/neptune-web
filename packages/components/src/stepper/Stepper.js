@@ -16,6 +16,15 @@ const Stepper = ({ steps, activeStep }) => {
 
   const renderStep = (step, index) => {
     const clickable = step.onClick && index < activeStepIndex;
+    const label = <span className="tw-stepper__step-label">{step.label}</span>;
+    const hoverLabel = step.hoverHTML ? (
+      <div
+        className="tw-stepper__step-hover-label p-a-2"
+        dangerouslySetInnerHTML={{ __html: step.hoverLabel }}
+      />
+    ) : (
+      <div className="tw-stepper__step-hover-label p-a-2">{step.hoverLabel}</div>
+    );
     return (
       <li // eslint-disable-line jsx-a11y/no-static-element-interactions
         key={index}
@@ -27,7 +36,8 @@ const Stepper = ({ steps, activeStep }) => {
             ${clickable ? 'tw-stepper__step--done' : ''}
           `}
       >
-        {clickable ? <button className="btn-unstyled">{step.label}</button> : step.label}
+        {step.hoverLabel ? hoverLabel : ''}
+        {clickable ? <button className="btn-unstyled">{label}</button> : label}
       </li>
     );
   };
@@ -37,7 +47,7 @@ const Stepper = ({ steps, activeStep }) => {
         <div className="progress-bar-filler" style={{ width: `${filledWidth * 100}%` }} />
         <div className="progress-bar-ending" style={{ width: `${endingWidth * 100}%` }} />
       </div>
-      <ul className="tw-stepper-steps">{steps.map(renderStep)}</ul>
+      <ul className="tw-stepper-steps p-t-1">{steps.map(renderStep)}</ul>
     </div>
   );
 };
