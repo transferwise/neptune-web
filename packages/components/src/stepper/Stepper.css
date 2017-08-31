@@ -35,18 +35,30 @@
 
 .tw-stepper__step {
   position: absolute;
-  color: #a8aaac;
   list-style-type: none;
-  transition: color 0.6s ease-in-out;
 }
 
 .tw-stepper__step-label {
+  color: #a8aaac;
+  transition: color 0.6s ease-in-out;
   position: absolute;
   white-space: nowrap;
   transform: translateX(-50%);
 }
 
+.tw-stepper__step--active .tw-stepper__step-label {
+  color: #2e4369;
+}
+
+.tw-stepper__step--done .tw-stepper__step-label {
+  color: #1bc0ff;
+}
+
 .tw-stepper__step-hover-label {
+  display: none;
+}
+
+.tw-stepper__step:hover .tw-stepper__step-hover-label {
   display: block;
   position: absolute;
   text-align: center;
@@ -91,15 +103,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-}
-
-.tw-stepper__step--active {
-  color: #2e4369;
-}
-
-.tw-stepper__step--done {
-  color: #1bc0ff;
-  cursor: pointer;
 }
 
 .btn-unstyled {
