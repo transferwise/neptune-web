@@ -6,7 +6,7 @@ const presets = [
     label: 'Simple',
     value: 'simple',
     steps: [
-      { label: 'Amount' },
+      { label: 'Amount', hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH', hoverHTML: true },
       { label: 'My details', hoverLabel: 'Uku Tammet <br> ukutammet@gmail.com', hoverHTML: true },
       { label: 'Recipient' },
       { label: 'Done' },

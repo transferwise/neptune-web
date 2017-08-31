@@ -55,20 +55,26 @@
 }
 
 .tw-stepper__step-hover-label {
-  display: none;
-}
-
-.tw-stepper__step:hover .tw-stepper__step-hover-label {
-  display: block;
+  visibility: hidden;
   position: absolute;
   text-align: center;
-  top: 0;
-  transform: translateY(calc(-100% - 19px)) translateX(-50%);
+  display: block;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out, visibility 0s linear 0.15s;
+  transform: translateY(calc(-100% - 19px)) translateX(-50%) scale(0.98);
+  transform-origin: bottom;
   background-color: white;
   box-shadow: 2px 2px 12px 2px rgba(0, 0, 0, 0.3);
   border-radius: 2px;
   width: 420px;
-  left: -50%;
+  top: 0;
+}
+
+.tw-stepper__step:hover .tw-stepper__step-hover-label {
+  transform: translateY(calc(-100% - 19px)) translateX(-50%) scale(1);
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out, visibility 0.15s linear 0s;
+  visibility: visible;
+  opacity: 1;
 }
 
 .tw-stepper__step-hover-label::before {
