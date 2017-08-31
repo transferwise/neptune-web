@@ -66,7 +66,7 @@
   background-color: white;
   box-shadow: 2px 2px 12px 2px rgba(0, 0, 0, 0.3);
   border-radius: 2px;
-  width: 420px;
+  min-width: 150px;
   top: 0;
 }
 
@@ -75,6 +75,22 @@
   transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out, visibility 0.15s linear 0s;
   visibility: visible;
   opacity: 1;
+}
+
+.tw-stepper__step:first-child .tw-stepper__step-hover-label {
+  transform: translateY(calc(-100% - 19px)) translateX(-32px) scale(0.98);
+}
+
+.tw-stepper__step:first-child:hover .tw-stepper__step-hover-label {
+  transform: translateY(calc(-100% - 19px)) translateX(-32px) scale(1);
+}
+
+.tw-stepper__step:last-child .tw-stepper__step-hover-label {
+  transform: translateY(calc(-100% - 19px)) translateX(calc(-100% + 32px)) scale(0.98);
+}
+
+.tw-stepper__step:last-child:hover .tw-stepper__step-hover-label {
+  transform: translateY(calc(-100% - 19px)) translateX(calc(-100% + 32px)) scale(1);
 }
 
 .tw-stepper__step-hover-label::before {
@@ -95,6 +111,14 @@
   bottom: -8px;
 }
 
+.tw-stepper__step:first-child .tw-stepper__step-hover-label::before {
+  left: calc(-100% + 64px);
+}
+
+.tw-stepper__step:last-child .tw-stepper__step-hover-label::before {
+  right: calc(-100% + 64px);
+}
+
 .tw-stepper__step-hover-label::after {
   /* triangle top part covering box */
   width: 64px;
@@ -109,6 +133,14 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.tw-stepper__step:first-child .tw-stepper__step-hover-label::after {
+  left: calc(-100% + 84px);
+}
+
+.tw-stepper__step:last-child .tw-stepper__step-hover-label::after {
+  right: calc(-100% + 84px);
 }
 
 .btn-unstyled {

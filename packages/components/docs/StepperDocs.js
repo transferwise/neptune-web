@@ -9,7 +9,7 @@ const presets = [
       { label: 'Amount', hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH', hoverHTML: true },
       { label: 'My details', hoverLabel: 'Uku Tammet <br> ukutammet@gmail.com', hoverHTML: true },
       { label: 'Recipient' },
-      { label: 'Done' },
+      { label: 'Done', hoverLabel: 'Amazing' },
     ],
   },
   {
@@ -18,19 +18,31 @@ const presets = [
     steps: [
       {
         label: 'Clickable step 1',
+        hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH',
+        hoverHTML: true,
         onClick() {
           alert('You clicked on step 1, which triggered this function, which alerted you.'); // eslint-disable-line
         },
       },
       {
         label: 'Clickable step 2',
+        hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH',
+        hoverHTML: true,
         onClick() {
           alert('You clicked on step 2, which triggered this function, which alerted you.'); // eslint-disable-line
         },
       },
-      { label: 'Recipient' },
-      { label: 'Smellification' },
-      { label: 'Done' },
+      {
+        label: 'Recipient',
+        hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH',
+        hoverHTML: true,
+      },
+      {
+        label: 'Smellification',
+        hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH',
+        hoverHTML: true,
+      },
+      { label: 'Done', hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH', hoverHTML: true },
     ],
   },
 ];
@@ -67,7 +79,7 @@ export default class StepperDocs extends Component {
             <h2>Stepper</h2>
             <p>These boots are made for steppin&lsquo;</p>
           </div>
-          <div className="col-md-6 p-x-3">
+          <div className="col-md-12 p-x-3">
             <Stepper steps={this.state.preset.steps} activeStep={this.state.activeStep} />
           </div>
         </div>
