@@ -16,7 +16,6 @@ const Stepper = ({ steps, activeStep }) => {
 
   const renderStep = (step, index) => {
     const clickable = step.onClick && index < activeStepIndex;
-    const label = <span className="tw-stepper__step-label">{step.label}</span>;
     const hoverLabel = step.hoverHTML ? (
       <div
         className="tw-stepper__step-hover-label p-a-2"
@@ -28,7 +27,6 @@ const Stepper = ({ steps, activeStep }) => {
     return (
       <li // eslint-disable-line jsx-a11y/no-static-element-interactions
         key={index}
-        onClick={() => clickable && step.onClick()}
         style={{ left: `${index * stepPercentage * 100}%` }}
         className={`
             tw-stepper__step
@@ -37,7 +35,13 @@ const Stepper = ({ steps, activeStep }) => {
           `}
       >
         {step.hoverLabel ? hoverLabel : ''}
-        {clickable ? <button className="btn-unstyled">{label}</button> : label}
+        <button
+          className="btn-unstyled tw-stepper__step-label"
+          disabled={!clickable}
+          onClick={() => clickable && step.onClick()}
+        >
+          {step.label}
+        </button>
       </li>
     );
   };

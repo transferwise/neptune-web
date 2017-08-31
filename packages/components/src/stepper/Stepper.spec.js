@@ -106,9 +106,14 @@ describe('Stepper', () => {
     it('are not clickable when active', () => {
       const clickOnStep = index =>
         component
-          .find('.tw-stepper__step')
+          .find('.tw-stepper__step button')
           .at(index)
           .simulate('click');
+      const buttonDisabled = index =>
+        component
+          .find('.tw-stepper__step button')
+          .at(index)
+          .prop('disabled');
       const clickedOnFirstStep = jest.fn();
       const clickedOnSecondStep = jest.fn();
       component.setProps({
@@ -119,8 +124,10 @@ describe('Stepper', () => {
         activeStep: 0,
       });
       clickOnStep(0);
+      expect(buttonDisabled(0)).toBe(true);
       expect(clickedOnFirstStep).not.toHaveBeenCalled();
       activeStep(1);
+      expect(buttonDisabled(0)).toBe(false);
       clickOnStep(0);
       expect(clickedOnFirstStep).toHaveBeenCalledTimes(1);
       clickOnStep(1);
