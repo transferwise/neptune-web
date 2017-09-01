@@ -79,7 +79,7 @@ describe('Stepper', () => {
         component
           .find('.tw-stepper__step')
           .at(index)
-          .hasClass('tw-stepper__step--done');
+          .hasClass('tw-stepper__step--clickable');
 
       component.setProps({
         steps: [

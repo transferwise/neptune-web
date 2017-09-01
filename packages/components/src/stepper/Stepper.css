@@ -46,7 +46,7 @@
   color: #2e4369;
 }
 
-.tw-stepper__step--done .tw-stepper__step-label {
+.tw-stepper__step--clickable .tw-stepper__step-label {
   color: #1bc0ff;
 }
 

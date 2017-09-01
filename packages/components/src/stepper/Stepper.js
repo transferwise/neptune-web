@@ -32,7 +32,7 @@ const Stepper = ({ steps, activeStep }) => {
           hidden-xs
           tw-stepper__step
           ${index === activeStepIndex ? 'tw-stepper__step--active' : ''}
-          ${clickable ? 'tw-stepper__step--done' : ''}
+          ${clickable ? 'tw-stepper__step--clickable' : ''}
         `}
       >
         {step.hoverLabel ? hoverLabel : ''}
