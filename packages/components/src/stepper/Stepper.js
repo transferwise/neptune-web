@@ -19,7 +19,7 @@ const Stepper = ({ steps, activeStep }) => {
     const hoverLabel = step.hoverHTML ? (
       <div
         className="tw-stepper__step-hover-label p-a-2"
-        dangerouslySetInnerHTML={{ __html: step.hoverLabel }}
+        dangerouslySetInnerHTML={{ __html: step.hoverLabel }} // eslint-disable-line react/no-danger
       />
     ) : (
       <div className="tw-stepper__step-hover-label p-a-2">{step.hoverLabel}</div>
