@@ -25,7 +25,7 @@ const Stepper = ({ steps, activeStep }) => {
       <div className="tw-stepper__step-hover-label p-a-2">{step.hoverLabel}</div>
     );
     return (
-      <li // eslint-disable-line jsx-a11y/no-static-element-interactions
+      <li
         key={index}
         style={{ left: `${index * stepPercentage * 100}%` }}
         className={`
