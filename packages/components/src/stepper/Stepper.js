@@ -29,11 +29,11 @@ const Stepper = ({ steps, activeStep }) => {
         key={index}
         style={{ left: `${index * stepPercentage * 100}%` }}
         className={`
-            hidden-xs
-            tw-stepper__step
-            ${index === activeStepIndex ? 'tw-stepper__step--active' : ''}
-            ${clickable ? 'tw-stepper__step--done' : ''}
-          `}
+          hidden-xs
+          tw-stepper__step
+          ${index === activeStepIndex ? 'tw-stepper__step--active' : ''}
+          ${clickable ? 'tw-stepper__step--done' : ''}
+        `}
       >
         {step.hoverLabel ? hoverLabel : ''}
         <button
