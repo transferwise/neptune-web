@@ -153,4 +153,38 @@ describe('Stepper', () => {
       expect(stepActive(3)).toBe(false);
     });
   });
+
+  describe('hover labels', () => {
+    const step = index => component.find('.tw-stepper__step').at(index);
+    it('will be rendered when provided', () => {
+      component.setProps({
+        steps: [{ hoverLabel: 'hover', label: 'label' }, { label: 'label 2' }],
+      });
+      expect(step(0).text()).toEqual('hoverlabel');
+      expect(step(1).text()).toEqual('label 2');
+    });
+
+    it('will be rendered as html when hoverHTML is truthy', () => {
+      component.setProps({
+        steps: [
+          { hoverLabel: 'hover <p>label</p>', hoverHTML: true, label: '1' },
+          { hoverLabel: 'hover <p>label</p>', label: '2' },
+        ],
+      });
+      expect(
+        step(0)
+          .render()
+          .find('p')
+          .text(),
+      ).toEqual('label');
+      expect(step(0).text()).toEqual('1');
+      expect(
+        step(1)
+          .render()
+          .find('p')
+          .text(),
+      ).toEqual('');
+      expect(step(1).text()).toEqual('hover <p>label</p>2');
+    });
+  });
 });
