@@ -57,36 +57,37 @@
   display: block;
   opacity: 0;
   transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out, visibility 0s linear 0.15s;
-  transform: translateY(calc(-100% - 19px)) translateX(-50%) scale(0.98);
+  transform: translateY(40px) translateX(-50%) scale(0.98);
   transform-origin: bottom;
   background-color: white;
   box-shadow: 2px 2px 12px 2px rgba(0, 0, 0, 0.3);
   border-radius: 2px;
   min-width: 150px;
   top: 0;
+  z-index: 1;
 }
 
 .tw-stepper__step:hover .tw-stepper__step-hover-label {
-  transform: translateY(calc(-100% - 19px)) translateX(-50%) scale(1);
+  transform: translateY(40px) translateX(-50%) scale(1);
   transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out, visibility 0.15s linear 0s;
   visibility: visible;
   opacity: 1;
 }
 
 .tw-stepper__step:first-child .tw-stepper__step-hover-label {
-  transform: translateY(calc(-100% - 19px)) translateX(-32px) scale(0.98);
+  transform: translateY(40px) translateX(-32px) scale(0.98);
 }
 
 .tw-stepper__step:first-child:hover .tw-stepper__step-hover-label {
-  transform: translateY(calc(-100% - 19px)) translateX(-32px) scale(1);
+  transform: translateY(40px) translateX(-32px) scale(1);
 }
 
 .tw-stepper__step:last-child .tw-stepper__step-hover-label {
-  transform: translateY(calc(-100% - 19px)) translateX(calc(-100% + 32px)) scale(0.98);
+  transform: translateY(48px) translateX(calc(-100% + 32px)) scale(0.98);
 }
 
 .tw-stepper__step:last-child:hover .tw-stepper__step-hover-label {
-  transform: translateY(calc(-100% - 19px)) translateX(calc(-100% + 32px)) scale(1);
+  transform: translateY(40px) translateX(calc(-100% + 32px)) scale(1);
 }
 
 .tw-stepper__step-hover-label::before {
@@ -104,7 +105,7 @@
   margin-right: auto;
   left: 0;
   right: 0;
-  bottom: -8px;
+  top: -8px;
 }
 
 .tw-stepper__step:first-child .tw-stepper__step-hover-label::before {
@@ -128,7 +129,7 @@
   margin-right: auto;
   left: 0;
   right: 0;
-  bottom: 0;
+  top: 0;
 }
 
 .tw-stepper__step:first-child .tw-stepper__step-hover-label::after {
