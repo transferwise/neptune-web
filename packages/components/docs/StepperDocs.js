@@ -3,13 +3,17 @@ import { Stepper, Select } from '../src';
 
 const presets = [
   {
-    label: 'Simple',
-    value: 'simple',
+    label: 'Labels',
+    value: 'labels',
     steps: [
       { label: 'Amount', hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH', hoverHTML: true },
-      { label: 'My details', hoverLabel: 'Uku Tammet <br> ukutammet@gmail.com', hoverHTML: true },
-      { label: 'Recipient' },
-      { label: 'Done', hoverLabel: 'Amazing' },
+      {
+        label: 'My details',
+        hoverLabel: '<strong>Diana Jaramillo</strong> <br> dianajarm123@gmail.com',
+        hoverHTML: true,
+      },
+      { label: 'Recipient', hoverLabel: 'Some person/dog' },
+      { label: 'Done', hoverLabel: 'Cool' },
     ],
   },
   {
@@ -18,31 +22,19 @@ const presets = [
     steps: [
       {
         label: 'Clickable step 1',
-        hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH',
-        hoverHTML: true,
         onClick() {
           alert('You clicked on step 1, which triggered this function, which alerted you.'); // eslint-disable-line
         },
       },
       {
         label: 'Clickable step 2',
-        hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH',
-        hoverHTML: true,
         onClick() {
           alert('You clicked on step 2, which triggered this function, which alerted you.'); // eslint-disable-line
         },
       },
-      {
-        label: 'Recipient',
-        hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH',
-        hoverHTML: true,
-      },
-      {
-        label: 'Smellification',
-        hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH',
-        hoverHTML: true,
-      },
-      { label: 'Done', hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH', hoverHTML: true },
+      { label: 'Recipient' },
+      { label: 'Smellification' },
+      { label: 'Done' },
     ],
   },
 ];
