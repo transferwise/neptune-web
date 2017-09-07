@@ -1,3 +1,8 @@
+# v0.4.1
+## Fixes padding issue with `Stepper`
+
+Fixes the `Stepper` component having some leftover padding when collapsing the step labels on small sizes.
+
 # v0.4.0
 ## Adds initial `Stepper` component
 
