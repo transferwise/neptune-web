@@ -47,12 +47,12 @@ const Stepper = ({ steps, activeStep }) => {
     );
   };
   return (
-    <div className="p-b-4">
+    <div className="tw-stepper">
       <div className="progress">
         <div className="progress-bar-filler" style={{ width: `${filledWidth * 100}%` }} />
         <div className="progress-bar-ending" style={{ width: `${endingWidth * 100}%` }} />
       </div>
-      <ul className="tw-stepper-steps p-t-1">{steps.map(renderStep)}</ul>
+      <ul className="tw-stepper-steps p-t-1 m-b-0">{steps.map(renderStep)}</ul>
     </div>
   );
 };
