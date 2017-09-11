@@ -57,6 +57,8 @@
   },
   "dependencies": {
     "currency-flags": "git+https://github.com/transferwise/currency-flags.git",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
     "prop-types": "^15.5.10"
   },
   "peerDependencies": {
@@ -88,8 +90,12 @@
   },
   "homepage": "https://transferwise.github.io/components/",
   "jest": {
-    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
-    "testPathIgnorePatterns": ["<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
+    ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
@@ -97,12 +103,16 @@
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     }
   },
   "babel": {
-    "presets": ["react-app"]
+    "presets": [
+      "react-app"
+    ]
   }
 }

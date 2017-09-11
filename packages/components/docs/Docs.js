@@ -1,5 +1,5 @@
 import React from 'react';
-import './Docs.css';
+import './Docs.less';
 
 import Header from './Header';
 import StepperDocs from './StepperDocs';

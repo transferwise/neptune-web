@@ -3,7 +3,7 @@ import Types from 'prop-types';
 
 import Option from './option';
 
-import './Select.css';
+import './Select.less';
 
 const KeyCodes = {
   DOWN: 40,

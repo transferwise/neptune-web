@@ -1,6 +1,6 @@
 import React from 'react';
 import Types from 'prop-types';
-import './Stepper.css';
+import './Stepper.less';
 
 function clamp(from, to, value) {
   return Math.max(Math.min(to, value), from);

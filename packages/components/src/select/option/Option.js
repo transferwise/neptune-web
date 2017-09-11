@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 
-import 'currency-flags/dist/currency-flags.css';
+import './Option.less';
 
 const Option = ({ currency, label, note, secondary, icon }) => {
   const iconClass = currency ?
