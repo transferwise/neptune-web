@@ -26,6 +26,7 @@ export default class SelectDocs extends Component {
       searchPlaceholder: 'Search...',
       searchValue: '',
       placeholder: 'Select an option...',
+      hasClassNames: false,
     };
   }
 
@@ -75,6 +76,26 @@ export default class SelectDocs extends Component {
     const searchPlaceholder = this.state.hasSearchPlaceholder
       ? `"${this.state.searchPlaceholder}"`
       : undefined;
+
+    let docsCode = `<Select
+  placeholder={${this.state.hasPlaceholder ? `"${this.state.placeholder}"` : undefined}}
+  size={${this.state.size ? `"${this.state.size}"` : undefined}}
+  block={${this.state.block}}
+  selected={${JSON.stringify(this.state.selectedOption, null, '  ')}}
+  onChange={this.handleOptionChange}
+  onSearchChange={${this.state.searchable ? 'this.handleSearchChange' : undefined}}
+  searchValue={${this.state.searchable ? `"${this.state.searchValue}"` : undefined}}
+  searchPlaceholder={${searchPlaceholder}}
+  required={${this.state.required}}
+  disabled={${this.state.disabled}}
+  options={${JSON.stringify(this.getOptions(), null, '  ')}}
+/>`;
+
+    if (this.state.hasClassNames) {
+      docsCode = docsCode.replace('<Select', `<Select
+  classNames={{ 'btn-group': 'btn-group_33HEu6aS3s' }}`);
+    }
+
     return (
       <section className="section">
         <div className="row">
@@ -106,19 +127,7 @@ export default class SelectDocs extends Component {
           <div className="col-md-6">
             {/* eslint-disable react/jsx-indent */}
             <pre className="tw-docs-code">
-              {`<Select
-  placeholder={${this.state.hasPlaceholder ? `"${this.state.placeholder}"` : undefined}}
-  size={${this.state.size ? `"${this.state.size}"` : undefined}}
-  block={${this.state.block}}
-  selected={${JSON.stringify(this.state.selectedOption, null, '  ')}}
-  onChange={this.handleOptionChange}
-  onSearchChange={${this.state.searchable ? 'this.handleSearchChange' : undefined}}
-  searchValue={${this.state.searchable ? `"${this.state.searchValue}"` : undefined}}
-  searchPlaceholder={${searchPlaceholder}}
-  required={${this.state.required}}
-  disabled={${this.state.disabled}}
-  options={${JSON.stringify(this.getOptions(), null, '  ')}}
-/>`}
+              {docsCode}
             </pre>
             {/* eslint-enable react/jsx-indent */}
             <p>
@@ -140,6 +149,12 @@ export default class SelectDocs extends Component {
               options={['xs', 'sm', 'md', 'lg'].map(size => ({ value: size, label: size }))}
               onChange={selection =>
                 this.setState({ size: selection ? selection.value : undefined })}
+            />
+            <div className="m-t-3" />
+            <Checkbox
+              label="Scoped className?"
+              onChange={this.createStateLink('hasClassNames')}
+              checked={this.state.hasClassNames}
             />
             <div className="m-t-3" />
             <Checkbox

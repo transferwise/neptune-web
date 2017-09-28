@@ -1,17 +1,19 @@
 import React from 'react';
 import Types from 'prop-types';
 
-const Loader = ({ small }) => {
+const Loader = ({ small, classNames }) => {
+  const style = className => classNames[className] || className;
+
   if (small) {
-    return <span className="btn-loader" />;
+    return <span className={style('btn-loader')} />;
   }
   return (
-    <div className="loader">
-      <div className="loader-spinner" />
-      <div className="loader-flag">
+    <div className={style('loader')}>
+      <div className={style('loader-spinner')} />
+      <div className={style('loader-flag')}>
         <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="-2 -2 56 56">
           <polygon
-            className="loader-flag-stroke"
+            className={style('loader-flag-stroke')}
             stroke="#00B9FF"
             strokeWidth="2"
             strokeLinejoin="miter"
@@ -24,7 +26,7 @@ const Loader = ({ small }) => {
           />
         </svg>
         <svg
-          className="loader-flag-fill"
+          className={style('loader-flag-fill')}
           xmlns="http://www.w3.org/2000/svg"
           width="52"
           height="52"
@@ -40,7 +42,7 @@ const Loader = ({ small }) => {
   );
 };
 
-Loader.propTypes = { small: Types.bool };
-Loader.defaultProps = { small: false };
+Loader.propTypes = { small: Types.bool, classNames: Types.objectOf(Types.string) };
+Loader.defaultProps = { small: false, classNames: {} };
 
 export default Loader;

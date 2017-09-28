@@ -1,3 +1,11 @@
+# v0.5.0
+## Accept className from `props`
+
+Use custom classNames via props:
+
+* Pass object `classNames` with classes name: `classNames={{ active: "active_3Ur-d" }}`
+
+
 # v0.4.1
 ## Fixes padding issue with `Stepper`
 

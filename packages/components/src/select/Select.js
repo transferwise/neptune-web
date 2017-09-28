@@ -58,6 +58,7 @@ export default class Select extends Component {
     onSearchChange: Types.func,
     searchValue: Types.string,
     searchPlaceholder: Types.string,
+    classNames: Types.objectOf(Types.string),
   };
 
   static defaultProps = {
@@ -71,6 +72,7 @@ export default class Select extends Component {
     onSearchChange: undefined,
     searchValue: '',
     searchPlaceholder: 'Search...',
+    classNames: {},
   };
 
   constructor(props) {
@@ -188,6 +190,8 @@ export default class Select extends Component {
     this.close();
   }
 
+  style = className => this.props.classNames[className] || className;
+
   renderOptions() {
     return this.props.options.map(this.renderOption);
   }
@@ -197,13 +201,13 @@ export default class Select extends Component {
     return (
       <li className="tw-dropdown-item--divider">
         <a className="tw-select-filter-link p-a-0">
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="icon icon-search" />
+          <div className={this.style('input-group')}>
+            <span className={this.style('input-group-addon')}>
+              <i className={`${this.style('icon')} ${this.style('icon-search')}`} />
             </span>
             <input
               type="text"
-              className="form-control tw-select-filter"
+              className={`tw-select-filter ${this.style('form-control')}`}
               placeholder={searchPlaceholder}
               onChange={this.handleSearchChange}
               onClick={stopPropagation}
@@ -235,7 +239,7 @@ export default class Select extends Component {
         <li // eslint-disable-line jsx-a11y/no-static-element-interactions
           key={index}
           onClick={stopPropagation}
-          className="dropdown-header"
+          className={this.style('dropdown-header')}
         >
           {option.header}
         </li>
@@ -246,12 +250,11 @@ export default class Select extends Component {
       (this.props.selected && this.props.selected.value === option.value) ||
       this.state.keyboardFocusedOptionIndex ===
         this.getIndexWithoutHeadersForIndexWithHeaders(index);
-
     return (
       <li // eslint-disable-line jsx-a11y/no-static-element-interactions
         key={index}
         onClick={this.createSelectHandlerForOption(option)}
-        className={`tw-dropdown-item--clickable ${isActive ? 'active' : ''}`}
+        className={`tw-dropdown-item--clickable ${isActive ? this.style('active') : ''}`}
       >
         <a>
           <Option {...option} />
@@ -266,7 +269,7 @@ export default class Select extends Component {
       return <Option {...selected} />;
     }
     return (
-      <span className="form-control-placeholder">
+      <span className={this.style('form-control-placeholder')}>
         {placeholder}
       </span>
     );
@@ -276,8 +279,21 @@ export default class Select extends Component {
     const { disabled, required, onSearchChange, size, block, id } = this.props;
     const canSearch = !!onSearchChange;
     const { open } = this.state;
-    const groupClass = `btn-group ${block ? 'btn-block' : ''} dropdown ${open ? 'open' : ''}`;
-    const buttonClass = `btn btn-input btn-${size} dropdown-toggle`;
+    const btn = this.style('btn');
+    const openDropdown = this.style('open');
+    const btnBlock = this.style('btn-block');
+    const btnGroup = this.style('btn-group');
+    const btnInput = this.style('btn-input');
+    const dropdown = this.style('dropdown');
+    const dropdownToggle = this.style('dropdown-toggle');
+    const btnSize = {
+      xs: this.style('btn-xs'),
+      sm: this.style('btn-sm'),
+      md: this.style('btn-md'),
+      lg: this.style('btn-lg'),
+    };
+    const groupClass = `${btnGroup} ${block ? btnBlock : ''} ${dropdown} ${open ? openDropdown : ''}`;
+    const buttonClass = `${btn} ${btnInput} ${btnSize[size]} ${dropdownToggle}`;
     return (
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
         className={groupClass}
@@ -292,10 +308,10 @@ export default class Select extends Component {
           onClick={this.handleButtonClick}
         >
           {this.renderButtonInternals()}
-          <span className="caret" />
+          <span className={this.style('caret')} />
         </button>
         {open
-          ? <ul className="dropdown-menu" role="menu">
+          ? <ul className={this.style('dropdown-menu')} role="menu">
             {!required && !canSearch ? this.renderPlaceHolderOption() : ''}
             {canSearch ? this.renderSearchBox() : ''}
             {this.renderOptions()}
