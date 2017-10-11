@@ -1,3 +1,6 @@
+# v0.5.1
+## Stepper step labels to be in semi-bold
+
 # v0.5.0
 ## Accept className from `props`
 
