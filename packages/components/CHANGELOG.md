@@ -1,3 +1,6 @@
+# v0.5.2
+## Prevent line breaks for stepper labels
+
 # v0.5.1
 ## Make active and clickable Stepper labels semibold
 
