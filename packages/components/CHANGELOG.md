@@ -1,5 +1,5 @@
 # v0.5.1
-## Stepper step labels to be in semi-bold
+## Make active and clickable Stepper labels semibold
 
 # v0.5.0
 ## Accept className from `props`
