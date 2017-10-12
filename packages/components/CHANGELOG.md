@@ -1,6 +1,12 @@
 # v0.5.1
 ## Make active and clickable Stepper labels semibold
 
+Before:
+<img src="https://user-images.githubusercontent.com/8721312/31447161-fac2d04e-aea9-11e7-896b-907df05a70bd.png" width="300" />
+
+After:
+<img src="https://user-images.githubusercontent.com/8721312/31491306-8d484c82-af4f-11e7-903c-9fe16a568996.png" width="300" />
+
 # v0.5.0
 ## Accept className from `props`
 
