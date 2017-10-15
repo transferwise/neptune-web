@@ -257,7 +257,7 @@ export default class Select extends Component {
         className={`tw-dropdown-item--clickable ${isActive ? this.style('active') : ''}`}
       >
         <a>
-          <Option {...option} />
+          <Option {...option} classNames={this.props.classNames} />
         </a>
       </li>
     );
@@ -266,7 +266,7 @@ export default class Select extends Component {
   renderButtonInternals() {
     const { selected, placeholder } = this.props;
     if (selected) {
-      return <Option {...selected} />;
+      return <Option {...selected} classNames={this.props.classNames} />;
     }
     return (
       <span className={this.style('form-control-placeholder')}>

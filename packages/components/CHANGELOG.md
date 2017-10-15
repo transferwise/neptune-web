@@ -1,3 +1,6 @@
+# v0.5.3
+## Add missing className as props to `Option`
+
 # v0.5.2
 ## Prevent line breaks for stepper labels
 

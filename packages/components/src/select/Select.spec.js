@@ -183,6 +183,7 @@ describe('Select', () => {
       icon: 'red thing',
       currency: '',
       secondary: '',
+      classNames: {},
     };
     component.setProps({ selected });
     const buttonChild = component.find('button').children().first();
