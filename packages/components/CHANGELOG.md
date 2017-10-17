@@ -1,3 +1,8 @@
+# v0.5.4
+## Makes stepper labels smaller
+
+Makes them 14px instead of 16px.
+
 # v0.5.3
 ## Add missing className as props to `Option`
 
