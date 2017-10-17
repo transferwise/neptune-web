@@ -41,7 +41,7 @@ const Stepper = ({ steps, activeStep }) => {
           disabled={!clickable}
           onClick={() => clickable && step.onClick()}
         >
-          {step.label}
+          <small>{step.label}</small>
         </button>
       </li>
     );
