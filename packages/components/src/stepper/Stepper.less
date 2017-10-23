@@ -19,6 +19,11 @@
     &--clickable .tw-stepper__step-label {
       color: @brand-light-blue;
       font-weight: @font-weight-semi-bold;
+      transition: color 0.15s ease-in-out;
+
+      &:hover {
+        color: @brand-light-blue-minus-10;
+      }
     }
 
     &:hover .tw-stepper__step-hover-label {
