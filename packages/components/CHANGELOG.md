@@ -1,3 +1,8 @@
+# v0.5.5
+## Adds a hover state for clickable stepper labels
+
+It's pretty.
+
 # v0.5.4
 ## Makes stepper labels smaller
 
