@@ -1,6 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 import './Stepper.less';
+import Tooltip from '../tooltip';
 
 function clamp(from, to, value) {
   return Math.max(Math.min(to, value), from);
@@ -17,12 +18,11 @@ const Stepper = ({ steps, activeStep }) => {
   const renderStep = (step, index) => {
     const clickable = step.onClick && index < activeStepIndex;
     const hoverLabel = step.hoverHTML ? (
-      <div
-        className="tw-stepper__step-hover-label p-a-2"
+      <span
         dangerouslySetInnerHTML={{ __html: step.hoverLabel }} // eslint-disable-line react/no-danger
       />
     ) : (
-      <div className="tw-stepper__step-hover-label p-a-2">{step.hoverLabel}</div>
+      <span>{step.hoverLabel}</span>
     );
     return (
       <li
@@ -35,14 +35,15 @@ const Stepper = ({ steps, activeStep }) => {
           ${clickable ? 'tw-stepper__step--clickable' : ''}
         `}
       >
-        {step.hoverLabel ? hoverLabel : ''}
-        <button
-          className="btn-unstyled tw-stepper__step-label"
-          disabled={!clickable}
-          onClick={() => clickable && step.onClick()}
-        >
-          <small>{step.label}</small>
-        </button>
+        <Tooltip position={Tooltip.Position.BOTTOM} label={hoverLabel}>
+          <button
+            className="btn-unstyled tw-stepper__step-label"
+            disabled={!clickable}
+            onClick={() => clickable && step.onClick()}
+          >
+            <small>{step.label}</small>
+          </button>
+        </Tooltip>
       </li>
     );
   };

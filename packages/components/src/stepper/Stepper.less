@@ -25,49 +25,6 @@
         color: @brand-light-blue-minus-10;
       }
     }
-
-    &:hover .tw-stepper__step-hover-label {
-      transform: translateY(40px) translateX(-50%) scale(1);
-      transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out, visibility 0.15s linear 0s;
-      visibility: visible;
-      opacity: 1;
-    }
-
-    &:first-child {
-      & .tw-stepper__step-hover-label {
-        transform: translateY(40px) translateX(-32px) scale(0.98);
-      }
-
-      &:hover .tw-stepper__step-hover-label {
-        transform: translateY(40px) translateX(-32px) scale(1);
-      }
-
-      & .tw-stepper__step-hover-label::before {
-        left: ~'calc(-100% + 64px)';
-      }
-
-      & .tw-stepper__step-hover-label::after {
-        left: ~'calc(-100% + 84px)';
-      }
-    }
-
-    &:last-child {
-      & .tw-stepper__step-hover-label {
-        transform: translateY(48px) translateX(~'calc(-100% + 32px)') scale(0.98);
-      }
-
-      &:hover .tw-stepper__step-hover-label {
-        transform: translateY(40px) translateX(~'calc(-100% + 32px)') scale(1);
-      }
-
-      & .tw-stepper__step-hover-label::before {
-        right: ~'calc(-100% + 64px)';
-      }
-
-      & .tw-stepper__step-hover-label::after {
-        right: ~'calc(-100% + 84px)';
-      }
-    }
   }
 
   &__step-label {
@@ -77,57 +34,13 @@
     white-space: nowrap;
     transform: translateX(-50%);
   }
-}
 
-.tw-stepper__step-hover-label {
-  visibility: hidden;
-  position: absolute;
-  text-align: center;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out, visibility 0s linear 0.15s;
-  transform: translateY(40px) translateX(-50%) scale(0.98);
-  transform-origin: bottom;
-  background-color: white;
-  box-shadow: 2px 2px 12px 2px rgba(0, 0, 0, 0.3);
-  border-radius: 2px;
-  min-width: 150px;
-  top: 0;
-  z-index: 1;
-  white-space: nowrap;
-
-  &::before {
-    /* triangle */
-    box-shadow: 2px 2px 12px 2px rgba(0, 0, 0, 0.3);
-    width: 16px;
-    height: 16px;
-    background-color: white;
-    transform: rotate(45deg);
-    content: '';
-    display: block;
-    position: absolute;
-
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: -8px;
+  & .tooltip {
+    top: 24px !important;
   }
 
-  &::after {
-    /* triangle bottom part covering box */
-    width: 64px;
-    height: 20px;
-    background-color: white;
-    content: '';
+  & .tooltip-container {
     display: block;
-    position: absolute;
-
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 0;
   }
 }
 
