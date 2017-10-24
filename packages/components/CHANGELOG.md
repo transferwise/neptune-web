@@ -1,3 +1,8 @@
+# v0.6.0
+## Adds a Tooltip element
+
+In addition, makes the Stepper use the tooltip.
+
 # v0.5.5
 ## Adds a hover state for clickable stepper labels
 
