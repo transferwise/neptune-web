@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Types from 'prop-types';
 
+import './Tooltip.less';
+
 const Position = {
   TOP: 'top',
   LEFT: 'left',
@@ -66,8 +68,8 @@ class Tooltip extends Component {
         ref={(elementReference) => {
           this.elementReference = elementReference;
         }}
-        style={{ display: 'inline-block' }}
         aria-describedby={this.tooltipId}
+        className="tooltip-container"
       >
         <div
           onMouseEnter={(event) => {
