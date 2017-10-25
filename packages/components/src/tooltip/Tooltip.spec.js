@@ -16,11 +16,11 @@ describe('Tooltip', () => {
   });
 
   function hover() {
-    component.simulate('mouseEnter');
+    component.simulate('mouseOver');
   }
 
   function stopHover() {
-    component.simulate('mouseLeave');
+    component.simulate('mouseOut');
   }
 
   function focus() {

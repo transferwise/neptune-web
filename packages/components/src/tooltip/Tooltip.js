@@ -61,9 +61,9 @@ class Tooltip extends Component {
     return (
       <span
         tabIndex="0"
-        onMouseEnter={() => this.show()}
+        onMouseOver={() => this.show()}
         onFocus={() => this.show()}
-        onMouseLeave={() => this.hide()}
+        onMouseOut={() => this.hide()}
         onBlur={() => this.hide()}
         ref={(elementReference) => {
           this.elementReference = elementReference;
@@ -72,7 +72,7 @@ class Tooltip extends Component {
         className="tooltip-container"
       >
         <div
-          onMouseEnter={(event) => {
+          onMouseOver={(event) => {
             if (!this.state.show) {
               event.stopPropagation();
               this.hide();
