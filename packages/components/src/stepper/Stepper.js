@@ -22,7 +22,16 @@ const Stepper = ({ steps, activeStep }) => {
         dangerouslySetInnerHTML={{ __html: step.hoverLabel }} // eslint-disable-line react/no-danger
       />
     ) : (
-      <span>{step.hoverLabel}</span>
+      step.hoverLabel
+    );
+    const labelButton = (
+      <button
+        className="btn-unstyled tw-stepper__step-label"
+        disabled={!clickable}
+        onClick={() => clickable && step.onClick()}
+      >
+        <small>{step.label}</small>
+      </button>
     );
     return (
       <li
@@ -35,15 +44,13 @@ const Stepper = ({ steps, activeStep }) => {
           ${clickable ? 'tw-stepper__step--clickable' : ''}
         `}
       >
-        <Tooltip position={Tooltip.Position.BOTTOM} label={hoverLabel}>
-          <button
-            className="btn-unstyled tw-stepper__step-label"
-            disabled={!clickable}
-            onClick={() => clickable && step.onClick()}
-          >
-            <small>{step.label}</small>
-          </button>
-        </Tooltip>
+        {
+          step.hoverLabel ? (
+            <Tooltip position={Tooltip.Position.BOTTOM} label={hoverLabel}>
+              {labelButton}
+            </Tooltip>
+          ) : labelButton
+        }
       </li>
     );
   };

@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Stepper from './';
+import Tooltip from '../tooltip';
 
 describe('Stepper', () => {
   let props;
@@ -160,7 +161,14 @@ describe('Stepper', () => {
       component.setProps({
         steps: [{ hoverLabel: 'hover', label: 'label' }, { label: 'label 2' }],
       });
-      expect(step(0).text()).toEqual('hoverlabel');
+      const firstStepHoverLabel = step(0).children();
+      expect(firstStepHoverLabel.type()).toBe(Tooltip);
+      expect(
+        firstStepHoverLabel
+          .children()
+          .render()
+          .text(),
+      ).toEqual('label');
       expect(step(1).text()).toEqual('label 2');
     });
 
@@ -173,18 +181,14 @@ describe('Stepper', () => {
       });
       expect(
         step(0)
-          .render()
-          .find('p')
-          .text(),
-      ).toEqual('label');
-      expect(step(0).text()).toEqual('1');
+          .children()
+          .prop('label'),
+      ).toEqual(<span dangerouslySetInnerHTML={{ __html: 'hover <p>label</p>' }} />);
       expect(
         step(1)
-          .render()
-          .find('p')
-          .text(),
-      ).toEqual('');
-      expect(step(1).text()).toEqual('hover <p>label</p>2');
+          .children()
+          .prop('label'),
+      ).toEqual('hover <p>label</p>');
     });
   });
 });
