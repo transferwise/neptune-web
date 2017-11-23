@@ -59,6 +59,7 @@
     "webpack-manifest-plugin": "1.1.0"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "currency-flags": "git+https://github.com/transferwise/currency-flags.git",
     "prop-types": "^15.5.10"
   },
