@@ -1,6 +1,5 @@
 import React from 'react';
 import Types from 'prop-types';
-import classNames from 'classnames';
 import './Stepper.less';
 import Tooltip from '../tooltip';
 
@@ -17,16 +16,8 @@ const Stepper = ({ steps, activeStep }) => {
   const endingWidth = Math.min(activeStepIndex, 1) * stepPercentage;
 
   const renderStep = (step, index) => {
-    const clickable = step.onClick && index < activeStepIndex;
     const active = index === activeStepIndex;
-    const visited = index > activeStepIndex && step.onClick;
-    const disabled = !clickable && !visited;
-
-    const stepClasses = classNames({
-      'tw-stepper__step--active': active,
-      'tw-stepper__step--visited': visited,
-      'tw-stepper__step--clickable': clickable,
-    });
+    const clickable = step.onClick && !active;
 
     const hoverLabel = step.hoverHTML ? (
       <span
@@ -38,8 +29,8 @@ const Stepper = ({ steps, activeStep }) => {
     const labelButton = (
       <button
         className="btn-unstyled tw-stepper__step-label"
-        disabled={disabled}
-        onClick={() => !disabled && step.onClick()}
+        disabled={!clickable}
+        onClick={() => clickable && step.onClick()}
       >
         <small>{step.label}</small>
       </button>
@@ -48,7 +39,12 @@ const Stepper = ({ steps, activeStep }) => {
       <li
         key={index}
         style={{ left: `${index * stepPercentage * 100}%` }}
-        className={`hidden-xs tw-stepper__step ${stepClasses}`}
+        className={`
+          hidden-xs
+          tw-stepper__step
+          ${active ? 'tw-stepper__step--active' : ''}
+          ${clickable ? 'tw-stepper__step--clickable' : ''}
+        `}
       >
         {
           step.hoverLabel ? (

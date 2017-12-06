@@ -1,51 +1,71 @@
 import React, { Component } from 'react';
 import { Stepper, Select } from '../src';
 
-const presets = [
-  {
-    label: 'Labels',
-    value: 'labels',
-    steps: [
-      { label: 'Amount', hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH', hoverHTML: true },
-      {
-        label: 'My details',
-        hoverLabel: '<strong>Diana Jaramillo</strong> <br> dianajarm123@gmail.com',
-        hoverHTML: true,
-      },
-      { label: 'Recipient', hoverLabel: 'Some person/dog' },
-      { label: 'Done', hoverLabel: 'Cool' },
-    ],
-  },
-  {
-    label: 'With actions',
-    value: 'with-actions',
-    steps: [
-      {
-        label: 'Clickable step 1',
-        onClick() {
-          alert('You clicked on step 1, which triggered this function, which alerted you.'); // eslint-disable-line
-        },
-      },
-      {
-        label: 'Clickable step 2',
-        onClick() {
-          alert('You clicked on step 2, which triggered this function, which alerted you.'); // eslint-disable-line
-        },
-      },
-      { label: 'Recipient' },
-      { label: 'Smellification' },
-      { label: 'Done' },
-    ],
-  },
-];
-
 export default class StepperDocs extends Component {
   constructor(props) {
     super(props);
+    const presets = this.getPresets();
     this.state = {
+      presetList: presets,
       preset: presets[0],
-      activeStep: 1,
+      activeStep: 0,
+      highestVisitedStep: 0,
     };
+  }
+
+  getBackAndForthSteps(highestVisitedStep) {
+    return [
+      { index: 0, label: 'Clickable step 1' },
+      { index: 1, label: 'Clickable step 2' },
+      { index: 2, label: 'Clickable step 3' },
+      { index: 3, label: 'Clickable step 4' },
+    ].map(step => ({
+      ...step,
+      onClick: step.index <= highestVisitedStep ? this.goToBackAndForthStep.bind(this, step) : null, // eslint-disable-line
+    }));
+  }
+
+  getPresets() {
+    return [{
+      label: 'Labels',
+      value: 'labels',
+      steps: [
+        { label: 'Amount', hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH', hoverHTML: true },
+        {
+          label: 'My details',
+          hoverLabel: '<strong>Diana Jaramillo</strong> <br> dianajarm123@gmail.com',
+          hoverHTML: true,
+        },
+        { label: 'Recipient', hoverLabel: 'Some person/dog' },
+        { label: 'Done', hoverLabel: 'Cool' },
+      ],
+    },
+    {
+      label: 'With actions',
+      value: 'with-actions',
+      steps: [
+        {
+          label: 'Clickable step 1',
+          onClick() {
+            alert('You clicked on step 1, which triggered this function, which alerted you.'); // eslint-disable-line
+          },
+        },
+        {
+          label: 'Clickable step 2',
+          onClick() {
+            alert('You clicked on step 2, which triggered this function, which alerted you.'); // eslint-disable-line
+          },
+        },
+        { label: 'Recipient' },
+        { label: 'Smellification' },
+        { label: 'Done' },
+      ],
+    },
+    {
+      label: 'Back and Forth between visited steps',
+      value: 'back-and-forth',
+      steps: this.getBackAndForthSteps(),
+    }];
   }
 
   getStringifiedSteps() {
@@ -61,6 +81,24 @@ export default class StepperDocs extends Component {
       null,
       '  ',
     );
+  }
+
+  goToBackAndForthStep(step) {
+    const index = step.index === undefined ? step.value : step.index;
+    const highestVisitedStep = Math.max(index, this.state.highestVisitedStep);
+
+    const preset = this.state.preset;
+    preset.steps = this.getBackAndForthSteps(highestVisitedStep);
+
+    this.setState(() => ({ preset, highestVisitedStep, activeStep: index }));
+  }
+
+  goToStep(step) {
+    if (this.state.preset.value === 'back-and-forth') {
+      this.goToBackAndForthStep(step);
+    } else {
+      this.setState(() => ({ activeStep: step.value }));
+    }
   }
 
   render() {
@@ -94,7 +132,7 @@ export default class StepperDocs extends Component {
                 label: `${index} - ${step.label}`,
                 value: index,
               }))}
-              onChange={value => value && this.setState({ activeStep: value.value })}
+              onChange={value => this.goToStep(value)}
               selected={{
                 label: `${this.state.activeStep} - ${this.state.preset.steps[this.state.activeStep]
                   .label}`,
@@ -107,8 +145,9 @@ export default class StepperDocs extends Component {
             <label htmlFor="stepper-preset-select">Step preset</label>
             <Select
               id="stepper-preset-select"
-              options={presets}
-              onChange={preset => preset && this.setState({ preset, activeStep: 0 })}
+              options={this.state.presetList}
+              onChange={preset =>
+                  preset && this.setState({ preset, activeStep: 0, highestVisitedStep: 0 })}
               selected={this.state.preset}
               required
             />

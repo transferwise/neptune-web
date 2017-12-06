@@ -92,12 +92,9 @@ describe('Stepper', () => {
       });
 
       expect(stepActive(0)).toBe(false);
-      expect(stepActive(1)).toBe(false);
-      expect(stepActive(2)).toBe(false);
       activeStep(1);
       expect(stepActive(0)).toBe(false);
       expect(stepActive(1)).toBe(false);
-      expect(stepActive(2)).toBe(false);
       activeStep(2);
       expect(stepActive(0)).toBe(false);
       expect(stepActive(1)).toBe(true);
@@ -156,44 +153,35 @@ describe('Stepper', () => {
 
     it('are marked as visited when active index is less than or equals to current index', () => {
       const step = (index) => {
-        const btnStates = ['tw-stepper__step--visited', 'tw-stepper__step--active'];
+        const btnStates = ['tw-stepper__step--active', 'tw-stepper__step--clickable'];
         const stepEl = component.find('.tw-stepper__step').at(index);
         return {
-          active: stepEl.hasClass(btnStates[1]),
-          visited: stepEl.hasClass(btnStates[0]),
-          visitedAndActive: btnStates.every(c => stepEl.hasClass(c)),
+          active: stepEl.hasClass(btnStates[0]),
+          clickable: stepEl.hasClass(btnStates[1]),
+          clickableAndActive: btnStates.every(c => stepEl.hasClass(c)),
           disabled: stepEl.find('button').prop('disabled'),
         };
       };
 
       component.setProps({
         steps: [
-          { label: '0', onClick: jest.fn() },
-          { label: '1', onClick: jest.fn() },
-          { label: '2' },
-          { label: '3', onClick: jest.fn() },
+          { label: '0', onClick: () => {} },
+          { label: '1', onClick: () => {} },
+          { label: '2', onClick: () => {} },
         ],
         activeStep: 0,
       });
 
-      expect(step(0).visitedAndActive).toBe(true);
-      expect(step(1).visitedAndActive).toBe(false);
-      expect(step(2).visitedAndActive).toBe(false);
-      expect(step(3).visitedAndActive).toBe(false);
-      expect(step(1).disabled).toBe(true);
+      expect(step(0).active).toBe(true);
+      expect(step(0).disabled).toBe(true);
+      expect(step(1).clickableAndActive).toBe(false);
+      expect(step(2).clickableAndActive).toBe(false);
 
-      activeStep(1);
+      activeStep(2);
+      activeStep(0);
 
-      expect(step(1).visitedAndActive).toBe(true);
-      expect(step(0).active).toBe(false);
-      expect(step(0).visited).toBe(true);
-
-      activeStep(3);
-
-      expect(step(0).visited).toBe(true);
-      expect(step(1).visited).toBe(true);
-      expect(step(2).visited).toBe(false);
-      expect(step(2).disabled).toBe(true);
+      expect(step(1).clickable).toBe(true);
+      expect(step(2).clickable).toBe(true);
     });
   });
 
