@@ -6,8 +6,8 @@ export default class StepperDocs extends Component {
     super(props);
     const presets = this.getPresets();
     this.state = {
-      presetList: presets,
-      preset: presets[0],
+      presets,
+      selectedPreset: presets[0],
       activeStep: 0,
       highestVisitedStep: 0,
     };
@@ -70,7 +70,7 @@ export default class StepperDocs extends Component {
 
   getStringifiedSteps() {
     return JSON.stringify(
-      this.state.preset.steps.map(step =>
+      this.state.selectedPreset.steps.map(step =>
         Object.keys(step)
           .map(key => ({
             key,
@@ -87,14 +87,14 @@ export default class StepperDocs extends Component {
     const index = step.index === undefined ? step.value : step.index;
     const highestVisitedStep = Math.max(index, this.state.highestVisitedStep);
 
-    const preset = this.state.preset;
-    preset.steps = this.getBackAndForthSteps(highestVisitedStep);
+    const selectedPreset = this.state.selectedPreset;
+    selectedPreset.steps = this.getBackAndForthSteps(highestVisitedStep);
 
-    this.setState(() => ({ preset, highestVisitedStep, activeStep: index }));
+    this.setState(() => ({ selectedPreset, highestVisitedStep, activeStep: index }));
   }
 
   goToStep(step) {
-    if (this.state.preset.value === 'back-and-forth') {
+    if (this.state.selectedPreset.value === 'back-and-forth') {
       this.goToBackAndForthStep(step);
     } else {
       this.setState(() => ({ activeStep: step.value }));
@@ -110,7 +110,7 @@ export default class StepperDocs extends Component {
             <p>These boots are made for steppin&lsquo;</p>
           </div>
           <div className="col-md-6 p-x-3">
-            <Stepper steps={this.state.preset.steps} activeStep={this.state.activeStep} />
+            <Stepper steps={this.state.selectedPreset.steps} activeStep={this.state.activeStep} />
           </div>
         </div>
         <div className="row">
@@ -128,13 +128,13 @@ export default class StepperDocs extends Component {
             <label htmlFor="stepper-step-select">Active step</label>
             <Select
               id="stepper-step-select"
-              options={this.state.preset.steps.map((step, index) => ({
+              options={this.state.selectedPreset.steps.map((step, index) => ({
                 label: `${index} - ${step.label}`,
                 value: index,
               }))}
               onChange={value => this.goToStep(value)}
               selected={{
-                label: `${this.state.activeStep} - ${this.state.preset.steps[this.state.activeStep]
+                label: `${this.state.activeStep} - ${this.state.selectedPreset.steps[this.state.activeStep]
                   .label}`,
                 value: this.state.activeStep,
               }}
@@ -145,10 +145,11 @@ export default class StepperDocs extends Component {
             <label htmlFor="stepper-preset-select">Step preset</label>
             <Select
               id="stepper-preset-select"
-              options={this.state.presetList}
-              onChange={preset =>
-                  preset && this.setState({ preset, activeStep: 0, highestVisitedStep: 0 })}
-              selected={this.state.preset}
+              options={this.state.presets}
+              onChange={selectedPreset =>
+                  selectedPreset &&
+                    this.setState({ selectedPreset, activeStep: 0, highestVisitedStep: 0 })}
+              selected={this.state.selectedPreset}
               required
             />
           </div>
