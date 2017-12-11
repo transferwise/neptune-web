@@ -1,3 +1,8 @@
+# v1.0.0
+## Allow all steps to be clickable in stepper instead of only the previous ones
+
+Steps after the active one get clickable style when having an onClick prop.
+
 # v0.6.0
 ## Adds a Tooltip element
 
