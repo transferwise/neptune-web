@@ -17,11 +17,14 @@ export default class LoaderDocs extends Component {
 />`;
 
     if (this.state.hasClassNames) {
-      docsCode = docsCode.replace('/>', `  classNames={{
+      docsCode = docsCode.replace(
+        '/>',
+        `  classNames={{
     loader: 'loader_33HEu6aS3s',
     loader-spinner: 'loader-spinner_z0k4VBxn-L',
   }}
-/>`);
+/>`,
+      );
     }
 
     return (
@@ -32,17 +35,13 @@ export default class LoaderDocs extends Component {
             <p>Like a record baby</p>
           </div>
           <div className="col-md-6 p-b-2 text-xs-center">
-            <Loader
-              small={this.state.small}
-            />
+            <Loader small={this.state.small} />
           </div>
         </div>
         <div className="row">
           <div className="col-md-6">
             {/* eslint-disable react/jsx-indent */}
-            <pre className="tw-docs-code">
-              {docsCode}
-            </pre>
+            <pre className="tw-docs-code">{docsCode}</pre>
             {/* eslint-enable react/jsx-indent */}
           </div>
           <div className="col-md-6">
@@ -52,7 +51,7 @@ export default class LoaderDocs extends Component {
               onChange={this.createStateLink('small')}
             />
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 m-t-3">
             <Checkbox
               label="Scoped className?"
               checked={this.state.hasClassNames}

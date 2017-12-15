@@ -1,3 +1,8 @@
+# v1.0.1
+## Fix tooltip hovering
+
+Before you could trigger tooltips by clicking on the tooltip body. Now you actually have to hover or focus the element
+
 # v1.0.0
 ## Allow all steps to be clickable in stepper instead of only the previous ones
 

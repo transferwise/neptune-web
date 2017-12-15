@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -69,7 +69,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom && node_modules/.bin/release-to-github-with-changelog-pre-release-checks",
+    "test":
+      "node scripts/test.js --env=jsdom && node_modules/.bin/release-to-github-with-changelog-pre-release-checks",
     "pretest": "npm run lint",
     "lint": "node_modules/.bin/eslint src && node_modules/.bin/eslint docs",
     "deploy": "node_modules/.bin/release-to-github-with-changelog && npm publish",
@@ -82,7 +83,8 @@
     "extends": "airbnb",
     "parser": "babel-eslint",
     "rules": {
-      "react/jsx-filename-extension": 0
+      "react/jsx-filename-extension": 0,
+      "no-mixed-operators": 0
     },
     "env": {
       "browser": true,
@@ -91,12 +93,8 @@
   },
   "homepage": "https://transferwise.github.io/components/",
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
-    ],
+    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+    "testPathIgnorePatterns": ["<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"],
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
@@ -104,16 +102,12 @@
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     }
   },
   "babel": {
-    "presets": [
-      "react-app"
-    ]
+    "presets": ["react-app"]
   }
 }

@@ -14,23 +14,23 @@ function getTooltipStyle(parent, tooltip, position, offset) {
   switch (position) {
     case Position.TOP:
       return {
-        top: `${(parent.offsetTop - tooltip.offsetHeight) - offset}px`,
-        left: `${(parent.offsetLeft + (parent.offsetWidth / 2)) - (tooltip.offsetWidth / 2)}px`,
+        top: `${parent.offsetTop - tooltip.offsetHeight - offset}px`,
+        left: `${parent.offsetLeft + parent.offsetWidth / 2 - tooltip.offsetWidth / 2}px`,
       };
     case Position.LEFT:
       return {
-        top: `${(parent.offsetTop + (parent.offsetHeight / 2)) - (tooltip.offsetHeight / 2)}px`,
-        left: `${(parent.offsetLeft - tooltip.offsetWidth) - offset}px`,
+        top: `${parent.offsetTop + parent.offsetHeight / 2 - tooltip.offsetHeight / 2}px`,
+        left: `${parent.offsetLeft - tooltip.offsetWidth - offset}px`,
       };
     case Position.RIGHT:
       return {
-        top: `${(parent.offsetTop + (parent.offsetHeight / 2)) - (tooltip.offsetHeight / 2)}px`,
-        left: `${(parent.offsetLeft + parent.offsetWidth) + offset}px`,
+        top: `${parent.offsetTop + parent.offsetHeight / 2 - tooltip.offsetHeight / 2}px`,
+        left: `${parent.offsetLeft + parent.offsetWidth + offset}px`,
       };
     case Position.BOTTOM:
       return {
-        top: `${(parent.offsetTop + tooltip.offsetHeight) + offset}px`,
-        left: `${(parent.offsetLeft + (parent.offsetWidth / 2)) - (tooltip.offsetWidth / 2)}px`,
+        top: `${parent.offsetTop + tooltip.offsetHeight + offset}px`,
+        left: `${parent.offsetLeft + parent.offsetWidth / 2 - tooltip.offsetWidth / 2}px`,
       };
     default:
       return {};
@@ -41,7 +41,9 @@ class Tooltip extends Component {
   constructor(props) {
     super(props);
     this.state = { show: false };
-    this.tooltipId = Math.random().toString(36).substring(7);
+    this.tooltipId = Math.random()
+      .toString(36)
+      .substring(7);
   }
 
   show() {
