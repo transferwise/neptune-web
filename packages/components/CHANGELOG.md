@@ -1,3 +1,8 @@
+# v1.0.2
+## Make stepper tooltips adapt to length and not go off screen
+
+Stepper tooltips max width now 100%. In sm and md screens the first and last tooltips are moved so they won't go offscreen.
+
 # v1.0.1
 ## Fix tooltip hovering
 

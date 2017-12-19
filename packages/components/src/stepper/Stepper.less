@@ -26,6 +26,20 @@
         color: @brand-light-blue-minus-10;
       }
     }
+
+    @media screen and (min-width: @screen-sm-min) and (max-width: @screen-md-max) {
+      &:first-child .tooltip-inner{
+        transform: translateX(~'calc(50% - 32px)');
+      }
+      
+      &:last-child .tooltip-inner {
+        transform: translateX(~'calc(-50% + 32px)');
+      } 
+
+      .tooltip-arrow {
+        z-index: 1;
+      }
+    }
   }
 
   &__step-label {
@@ -39,6 +53,10 @@
   & .tooltip {
     top: 24px !important;
     white-space: nowrap;
+	
+    & .tooltip-inner {
+      max-width: 100%;
+    }
   }
 
   & .tooltip-container {
