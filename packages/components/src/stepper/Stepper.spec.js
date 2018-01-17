@@ -4,11 +4,18 @@ import { shallow } from 'enzyme';
 import Stepper from './';
 import Tooltip from '../tooltip';
 
+jest.mock('./deviceDetection', () => ({
+  isTouchDevice: jest.fn(() => false),
+}));
+
 describe('Stepper', () => {
   let props;
   let component;
+  let fakeDeviceDetection;
 
   beforeEach(() => {
+    // eslint-disable-next-line global-require
+    fakeDeviceDetection = require('./deviceDetection');
     props = {
       activeStep: 0,
       steps: ['one', 'two', 'three'].map(label => ({ label })),
@@ -219,6 +226,17 @@ describe('Stepper', () => {
           .children()
           .prop('label'),
       ).toEqual('hover <p>label</p>');
+    });
+
+    it('will not be rendered if the user is on a touch device', () => {
+      fakeDeviceDetection.isTouchDevice = jest.fn(() => true);
+      component.setProps({
+        steps: [{ hoverLabel: 'hover', label: 'label' }, { label: 'label 2' }],
+      });
+      const firstStepHoverLabel = step(0).children();
+      expect(firstStepHoverLabel.type()).toBe('button');
+      expect(firstStepHoverLabel.text()).toEqual('label');
+      expect(step(1).text()).toEqual('label 2');
     });
   });
 });

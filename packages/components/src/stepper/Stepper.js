@@ -2,6 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import './Stepper.less';
 import Tooltip from '../tooltip';
+import { isTouchDevice } from './deviceDetection';
 
 function clamp(from, to, value) {
   return Math.max(Math.min(to, value), from);
@@ -46,13 +47,13 @@ const Stepper = ({ steps, activeStep }) => {
           ${clickable ? 'tw-stepper__step--clickable' : ''}
         `}
       >
-        {
-          step.hoverLabel ? (
-            <Tooltip position={Tooltip.Position.BOTTOM} label={hoverLabel}>
-              {labelButton}
-            </Tooltip>
-          ) : labelButton
-        }
+        {step.hoverLabel && !isTouchDevice() ? (
+          <Tooltip position={Tooltip.Position.BOTTOM} label={hoverLabel}>
+            {labelButton}
+          </Tooltip>
+        ) : (
+          labelButton
+        )}
       </li>
     );
   };
