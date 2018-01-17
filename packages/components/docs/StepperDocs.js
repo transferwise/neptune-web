@@ -26,46 +26,52 @@ export default class StepperDocs extends Component {
   }
 
   getPresets() {
-    return [{
-      label: 'Labels',
-      value: 'labels',
-      steps: [
-        { label: 'Amount', hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH', hoverHTML: true },
-        {
-          label: 'My details',
-          hoverLabel: '<strong>Diana Jaramillo</strong> <br> dianajarm123@gmail.com',
-          hoverHTML: true,
-        },
-        { label: 'Recipient', hoverLabel: 'Some person/dog' },
-        { label: 'Done', hoverLabel: 'Cool' },
-      ],
-    },
-    {
-      label: 'With actions',
-      value: 'with-actions',
-      steps: [
-        {
-          label: 'Clickable step 1',
-          onClick() {
-            alert('You clicked on step 1, which triggered this function, which alerted you.'); // eslint-disable-line
+    return [
+      {
+        label: 'Labels',
+        value: 'labels',
+        steps: [
+          {
+            label: 'Amount',
+            hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH',
+            hoverHTML: true,
           },
-        },
-        {
-          label: 'Clickable step 2',
-          onClick() {
-            alert('You clicked on step 2, which triggered this function, which alerted you.'); // eslint-disable-line
+          {
+            label: 'My details',
+            hoverLabel: '<strong>Diana Jaramillo</strong> <br> dianajarm123@gmail.com',
+            hoverHTML: true,
           },
-        },
-        { label: 'Recipient' },
-        { label: 'Smellification' },
-        { label: 'Done' },
-      ],
-    },
-    {
-      label: 'Back and Forth between visited steps',
-      value: 'back-and-forth',
-      steps: this.getBackAndForthSteps(),
-    }];
+          { label: 'Recipient', hoverLabel: 'Some person/dog' },
+          { label: 'Done', hoverLabel: 'Cool' },
+        ],
+      },
+      {
+        label: 'With actions',
+        value: 'with-actions',
+        steps: [
+          {
+            label: 'Clickable step 1',
+            onClick() {
+              alert('You clicked on step 1, which triggered this function, which alerted you.'); // eslint-disable-line
+            },
+          },
+          {
+            label: 'Clickable step 2',
+            onClick() {
+              alert('You clicked on step 2, which triggered this function, which alerted you.'); // eslint-disable-line
+            },
+          },
+          { label: 'Recipient' },
+          { label: 'Smellification' },
+          { label: 'Done' },
+        ],
+      },
+      {
+        label: 'Back and Forth between visited steps',
+        value: 'back-and-forth',
+        steps: this.getBackAndForthSteps(),
+      },
+    ];
   }
 
   getStringifiedSteps() {
@@ -134,8 +140,9 @@ export default class StepperDocs extends Component {
               }))}
               onChange={value => this.goToStep(value)}
               selected={{
-                label: `${this.state.activeStep} - ${this.state.selectedPreset.steps[this.state.activeStep]
-                  .label}`,
+                label: `${this.state.activeStep} - ${
+                  this.state.selectedPreset.steps[this.state.activeStep].label
+                }`,
                 value: this.state.activeStep,
               }}
               required
@@ -147,8 +154,9 @@ export default class StepperDocs extends Component {
               id="stepper-preset-select"
               options={this.state.presets}
               onChange={selectedPreset =>
-                  selectedPreset &&
-                    this.setState({ selectedPreset, activeStep: 0, highestVisitedStep: 0 })}
+                selectedPreset &&
+                this.setState({ selectedPreset, activeStep: 0, highestVisitedStep: 0 })
+              }
               selected={this.state.selectedPreset}
               required
             />
