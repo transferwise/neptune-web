@@ -1,3 +1,8 @@
+# v1.0.3
+## Make stepper tooltips only appear on non-touch devices
+
+Tooltips on the stepper on touch devices have caused problems with going back and overall confusion because of their behaviour, so we removed them.
+
 # v1.0.2
 ## Make stepper tooltips adapt to length and not go off screen
 
