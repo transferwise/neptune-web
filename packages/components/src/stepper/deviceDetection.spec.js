@@ -7,10 +7,15 @@ describe('Device detection', () => {
     // need to use this instead of defineProperty, as it's blocked from overriding
   }
 
+  function fakeMaxTouchPoints(maxTouchPoints) {
+    // eslint-disable-next-line
+    navigator.__defineGetter__('maxTouchPoints', () => maxTouchPoints);
+  }
+
   beforeEach(() => {
     delete window.ontouchstart;
     fakeUserAgent('FAKE');
-    global.navigator.maxTouchPoints = undefined;
+    fakeMaxTouchPoints(undefined);
   });
 
   it('recognizes touch devices via window events', () => {
@@ -21,7 +26,7 @@ describe('Device detection', () => {
 
   it('recognizes touch devices via microsoft touch points api', () => {
     expect(isTouchDevice()).toBe(false);
-    global.navigator.maxTouchPoints = 10;
+    fakeMaxTouchPoints(10);
     expect(isTouchDevice()).toBe(true);
   });
 
