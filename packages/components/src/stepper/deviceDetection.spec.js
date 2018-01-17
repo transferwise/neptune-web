@@ -12,8 +12,9 @@ describe('Device detection', () => {
     navigator.__defineGetter__('maxTouchPoints', () => maxTouchPoints);
   }
 
+  // We don't test DocumentTouch api as it's basically impossible to test :(
   beforeEach(() => {
-    delete window.ontouchstart;
+    window.ontouchstart = undefined;
     fakeUserAgent('FAKE');
     fakeMaxTouchPoints(undefined);
   });

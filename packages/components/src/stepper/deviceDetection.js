@@ -1,5 +1,9 @@
 function supportsTouchEvents() {
-  return !!('ontouchstart' in window || navigator.maxTouchPoints);
+  return !!(
+    window.ontouchstart !== undefined ||
+    navigator.maxTouchPoints ||
+    (window.DocumentTouch && document instanceof window.DocumentTouch)
+  );
 }
 
 function userAgentSuggestsTouchDevice() {
