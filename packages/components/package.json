@@ -28,6 +28,7 @@
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-loader": "1.6.0",
     "eslint-plugin-flowtype": "2.21.0",
     "eslint-plugin-import": "^2.2.0",
@@ -39,14 +40,17 @@
     "gh-pages": "^0.12.0",
     "html-webpack-plugin": "2.24.0",
     "http-proxy-middleware": "0.17.3",
+    "husky": "^0.14.3",
     "jest": "21.2.1",
     "jest-cli": "^21.2.1",
     "json-loader": "0.5.4",
     "less": "2.7.2",
     "less-loader": "2.2.3",
+    "lint-staged": "^6.0.1",
     "marked": "^0.3.6",
     "object-assign": "4.1.1",
     "postcss-loader": "1.2.2",
+    "prettier-eslint-cli": "^4.7.0",
     "react": "^15.5.4",
     "react-dev-utils": "^0.5.2",
     "react-dom": "^15.5.4",
@@ -67,6 +71,7 @@
     "react": "^15.5.4"
   },
   "scripts": {
+    "precommit": "lint-staged",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test":
@@ -80,7 +85,7 @@
     "predeploy:docs": "npm run build:docs"
   },
   "eslintConfig": {
-    "extends": "airbnb",
+    "extends": ["airbnb", "prettier"],
     "parser": "babel-eslint",
     "rules": {
       "react/jsx-filename-extension": 0,
@@ -109,5 +114,8 @@
   },
   "babel": {
     "presets": ["react-app"]
+  },
+  "lint-staged": {
+    "*.js": ["prettier-eslint '**/*.js' --write", "git add"]
   }
 }
