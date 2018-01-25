@@ -1,0 +1,12 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-filename-extension": 0,
+    "no-mixed-operators": 0
+  },
+  "env": {
+    "browser": true,
+    "jest": true
+  }
+}
