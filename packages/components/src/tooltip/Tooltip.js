@@ -67,14 +67,14 @@ class Tooltip extends Component {
         onFocus={() => this.show()}
         onMouseOut={() => this.hide()}
         onBlur={() => this.hide()}
-        ref={(elementReference) => {
+        ref={elementReference => {
           this.elementReference = elementReference;
         }}
         aria-describedby={this.tooltipId}
         className="tooltip-container"
       >
         <div
-          onMouseOver={(event) => {
+          onMouseOver={event => {
             if (!this.state.show) {
               event.stopPropagation();
               this.hide();
@@ -83,7 +83,7 @@ class Tooltip extends Component {
           className={`tooltip fade ${position} ${this.state.show ? 'in' : ''}`}
           role="tooltip"
           style={tooltipStyle}
-          ref={(tooltipReference) => {
+          ref={tooltipReference => {
             this.tooltipReference = tooltipReference;
           }}
           id={this.tooltipId}

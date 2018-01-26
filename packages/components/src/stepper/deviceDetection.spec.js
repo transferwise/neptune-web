@@ -42,7 +42,7 @@ describe('Device detection', () => {
       // Internet explorer on Windows phone
       'Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; HTC; Windows Phone 8X by HTC)',
     ];
-    touchUserAgents.forEach((userAgent) => {
+    touchUserAgents.forEach(userAgent => {
       fakeUserAgent(userAgent);
       expect(isTouchDevice()).toBe(true);
     });
@@ -57,7 +57,7 @@ describe('Device detection', () => {
       // safari mac
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7',
     ];
-    nonTouchUserAgents.forEach((userAgent) => {
+    nonTouchUserAgents.forEach(userAgent => {
       fakeUserAgent(userAgent);
       expect(isTouchDevice()).toBe(false);
     });

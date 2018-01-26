@@ -43,10 +43,9 @@ describe('Checkbox', () => {
   });
 
   it('disables the button and div if the component is disabled', () => {
-    const isDisabled = () => (
+    const isDisabled = () =>
       component.find('div.checkbox').hasClass('disabled') &&
-      !!component.find('button').prop('disabled')
-    );
+      !!component.find('button').prop('disabled');
     expect(isDisabled()).toBe(false);
 
     component.setProps({ disabled: true });
@@ -60,10 +59,9 @@ describe('Checkbox', () => {
   });
 
   it('shows an error if it is required and not disabled', () => {
-    const hasError = () => (
+    const hasError = () =>
       component.find('div.checkbox').hasClass('has-error') &&
-      component.find('button').hasClass('has-error')
-    );
+      component.find('button').hasClass('has-error');
     expect(hasError()).toBe(false);
     component.setProps({ disabled: true, required: true });
     expect(hasError()).toBe(false);

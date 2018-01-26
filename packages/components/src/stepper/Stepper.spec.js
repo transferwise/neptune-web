@@ -159,7 +159,7 @@ describe('Stepper', () => {
     });
 
     it('are marked as visited when active index is less than or equals to current index', () => {
-      const step = (index) => {
+      const step = index => {
         const btnStates = ['tw-stepper__step--active', 'tw-stepper__step--clickable'];
         const stepEl = component.find('.tw-stepper__step').at(index);
         return {

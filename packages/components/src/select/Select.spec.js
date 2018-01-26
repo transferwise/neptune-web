@@ -186,7 +186,10 @@ describe('Select', () => {
       classNames: {},
     };
     component.setProps({ selected });
-    const buttonChild = component.find('button').children().first();
+    const buttonChild = component
+      .find('button')
+      .children()
+      .first();
     expect(buttonChild.type()).toEqual(Option);
     expect(buttonChild.props()).toEqual(selected);
   });
@@ -195,9 +198,22 @@ describe('Select', () => {
     openSelect();
     component.setProps({ options: [{ header: 'hello' }, { header: 'good morning' }] });
 
-    expect(component.find('li.dropdown-header').first().text()).toEqual('hello');
-    expect(component.find('li.dropdown-header').at(1).text()).toEqual('good morning');
-    component.find('li.dropdown-header').first().simulate('click', fakeEvent());
+    expect(
+      component
+        .find('li.dropdown-header')
+        .first()
+        .text(),
+    ).toEqual('hello');
+    expect(
+      component
+        .find('li.dropdown-header')
+        .at(1)
+        .text(),
+    ).toEqual('good morning');
+    component
+      .find('li.dropdown-header')
+      .first()
+      .simulate('click', fakeEvent());
     expect(props.onChange).not.toBeCalled();
     expectDropdownToBe().open();
   });
@@ -314,7 +330,7 @@ describe('Select', () => {
   it('can have different sizes', () => {
     const openerButton = () => component.find('button');
     expect(openerButton().hasClass('btn-md')).toBe(true);
-    ['xs', 'sm', 'md', 'lg'].forEach((size) => {
+    ['xs', 'sm', 'md', 'lg'].forEach(size => {
       component.setProps({ size });
       expect(openerButton().hasClass(`btn-${size}`)).toBe(true);
     });

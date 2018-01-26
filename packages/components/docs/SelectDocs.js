@@ -52,7 +52,7 @@ export default class SelectDocs extends Component {
       option => option.label && option.label.toLowerCase().indexOf(this.state.searchValue) !== -1,
     );
 
-    return this.options.filter((option) => {
+    return this.options.filter(option => {
       if (option.header) {
         return foundOptions.reduce(
           (headerVisible, foundOption) =>
@@ -92,8 +92,11 @@ export default class SelectDocs extends Component {
 />`;
 
     if (this.state.hasClassNames) {
-      docsCode = docsCode.replace('<Select', `<Select
-  classNames={{ 'btn-group': 'btn-group_33HEu6aS3s' }}`);
+      docsCode = docsCode.replace(
+        '<Select',
+        `<Select
+  classNames={{ 'btn-group': 'btn-group_33HEu6aS3s' }}`,
+      );
     }
 
     return (
@@ -126,9 +129,7 @@ export default class SelectDocs extends Component {
         <div className="row">
           <div className="col-md-6">
             {/* eslint-disable react/jsx-indent */}
-            <pre className="tw-docs-code">
-              {docsCode}
-            </pre>
+            <pre className="tw-docs-code">{docsCode}</pre>
             {/* eslint-enable react/jsx-indent */}
             <p>
               Search implementation is left to the user, change passed in options property with
@@ -148,7 +149,8 @@ export default class SelectDocs extends Component {
               }
               options={['xs', 'sm', 'md', 'lg'].map(size => ({ value: size, label: size }))}
               onChange={selection =>
-                this.setState({ size: selection ? selection.value : undefined })}
+                this.setState({ size: selection ? selection.value : undefined })
+              }
             />
             <div className="m-t-3" />
             <Checkbox
@@ -187,15 +189,17 @@ export default class SelectDocs extends Component {
               checked={this.state.hasPlaceholder}
             />
             <div className="m-t-3" />
-            {this.state.hasPlaceholder
-              ? <input
+            {this.state.hasPlaceholder ? (
+              <input
                 type="text"
                 value={this.state.placeholder}
                 onChange={this.createEventStateLink('placeholder')}
                 placeholder="Placeholder"
                 className="form-control"
               />
-              : ''}
+            ) : (
+              ''
+            )}
             <div className="m-t-3" />
             <Checkbox
               label="Custom search placeholder?"
@@ -203,15 +207,17 @@ export default class SelectDocs extends Component {
               checked={this.state.hasSearchPlaceholder}
             />
             <div className="m-t-3" />
-            {this.state.hasSearchPlaceholder
-              ? <input
+            {this.state.hasSearchPlaceholder ? (
+              <input
                 type="text"
                 value={this.state.searchPlaceholder}
                 onChange={this.createEventStateLink('searchPlaceholder')}
                 placeholder="Search placeholder"
                 className="form-control"
               />
-              : ''}
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </section>

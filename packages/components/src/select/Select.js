@@ -99,7 +99,7 @@ export default class Select extends Component {
 
   handleSearchChange = event => this.props.onSearchChange(event.target.value);
 
-  handleKeyDown = (event) => {
+  handleKeyDown = event => {
     switch (event.keyCode) {
       case KeyCodes.UP:
         this.moveFocusWithDifference(-1);
@@ -161,7 +161,7 @@ export default class Select extends Component {
     this.setState({ open: false, keyboardFocusedOptionIndex: null });
   }
 
-  handleButtonClick = (event) => {
+  handleButtonClick = event => {
     if (!this.props.disabled) {
       stopPropagation(event);
       this.open();
@@ -175,7 +175,7 @@ export default class Select extends Component {
   };
 
   createSelectHandlerForOption(option) {
-    return (event) => {
+    return event => {
       stopPropagation(event);
       this.selectOption(option);
     };
@@ -226,9 +226,7 @@ export default class Select extends Component {
         onClick={this.createSelectHandlerForOption({ placeholder })}
         className="tw-dropdown-item--clickable tw-dropdown-item--divider"
       >
-        <a>
-          {placeholder}
-        </a>
+        <a>{placeholder}</a>
       </li>
     );
   }
@@ -268,11 +266,7 @@ export default class Select extends Component {
     if (selected) {
       return <Option {...selected} classNames={this.props.classNames} />;
     }
-    return (
-      <span className={this.style('form-control-placeholder')}>
-        {placeholder}
-      </span>
-    );
+    return <span className={this.style('form-control-placeholder')}>{placeholder}</span>;
   }
 
   render() {
@@ -292,7 +286,9 @@ export default class Select extends Component {
       md: this.style('btn-md'),
       lg: this.style('btn-lg'),
     };
-    const groupClass = `${btnGroup} ${block ? btnBlock : ''} ${dropdown} ${open ? openDropdown : ''}`;
+    const groupClass = `${btnGroup} ${block ? btnBlock : ''} ${dropdown} ${
+      open ? openDropdown : ''
+    }`;
     const buttonClass = `${btn} ${btnInput} ${btnSize[size]} ${dropdownToggle}`;
     return (
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
@@ -310,13 +306,15 @@ export default class Select extends Component {
           {this.renderButtonInternals()}
           <span className={this.style('caret')} />
         </button>
-        {open
-          ? <ul className={this.style('dropdown-menu')} role="menu">
+        {open ? (
+          <ul className={this.style('dropdown-menu')} role="menu">
             {!required && !canSearch ? this.renderPlaceHolderOption() : ''}
             {canSearch ? this.renderSearchBox() : ''}
             {this.renderOptions()}
           </ul>
-          : ''}
+        ) : (
+          ''
+        )}
       </div>
     );
   }

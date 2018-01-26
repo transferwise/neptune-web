@@ -5,9 +5,9 @@ import './Option.less';
 
 const Option = ({ currency, label, note, secondary, icon, classNames }) => {
   const style = classes => classes.map(className => classNames[className] || className).join(' ');
-  const iconClass = currency ?
-    `currency-flag currency-flag-${currency} ${style(['pull-left', 'm-r-1'])}` :
-    `${style(['icon', 'pull-left', 'm-r-1'])} ${icon}`;
+  const iconClass = currency
+    ? `currency-flag currency-flag-${currency} ${style(['pull-left', 'm-r-1'])}`
+    : `${style(['icon', 'pull-left', 'm-r-1'])} ${icon}`;
   return (
     <span>
       {icon || currency ? <i className={iconClass} /> : ''}

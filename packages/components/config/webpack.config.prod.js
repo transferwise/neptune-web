@@ -1,25 +1,21 @@
-'use strict';
-
-var autoprefixer = require('autoprefixer');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var paths = require('./paths');
-var getClientEnvironment = require('./env');
-
-
+const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const paths = require('./paths');
+const getClientEnvironment = require('./env');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
-var publicPath = paths.servedPath;
+const publicPath = paths.servedPath;
 // Some apps do not use client-side routing with pushState.
 // For these, "homepage" can be set to "." to enable relative asset paths.
-var shouldUseRelativeAssetPaths = publicPath === './';
+const shouldUseRelativeAssetPaths = publicPath === './';
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
-var publicUrl = publicPath.slice(0, -1);
+const publicUrl = publicPath.slice(0, -1);
 // Get environment variables to inject into our app.
-var env = getClientEnvironment(publicUrl);
+const env = getClientEnvironment(publicUrl);
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
@@ -35,8 +31,8 @@ const cssFilename = '[name].css';
 // However, our output is structured with css, js and media folders.
 // To have this structure working with relative paths, we have to use custom options.
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
-  // Making sure that the publicPath goes back to to build folder.
-  ? { publicPath: Array(cssFilename.split('/').length).join('../') }
+  ? // Making sure that the publicPath goes back to to build folder.
+    { publicPath: Array(cssFilename.split('/').length).join('../') }
   : undefined;
 
 // This is the production configuration.
@@ -58,12 +54,12 @@ module.exports = {
     // We don't currently advertise code splitting but Webpack supports it.
     filename: '[name].js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
-    publicPath: publicPath,
+    publicPath,
     library: '@transferwise/components',
     libraryTarget: 'umd',
     externals: {
-      react: 'react'
-    }
+      react: 'react',
+    },
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
@@ -80,8 +76,8 @@ module.exports = {
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web'
-    }
+      'react-native': 'react-native-web',
+    },
   },
 
   module: {
@@ -91,8 +87,8 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         loader: 'eslint',
-        include: paths.appSrc
-      }
+        include: paths.appSrc,
+      },
     ],
     loaders: [
       // ** ADDING/UPDATING LOADERS **
@@ -104,18 +100,12 @@ module.exports = {
       // "url" loader embeds assets smaller than specified size as data URLs to avoid requests.
       // Otherwise, it acts like the "file" loader.
       {
-        exclude: [
-          /\.html$/,
-          /\.(js|jsx)$/,
-          /\.(css|less)$/,
-          /\.json$/,
-          /\.svg$/
-        ],
+        exclude: [/\.html$/, /\.(js|jsx)$/, /\.(css|less)$/, /\.json$/, /\.svg$/],
         loader: 'url',
         query: {
           limit: 10000,
-          name: 'static/media/[name].[hash:8].[ext]'
-        }
+          name: 'static/media/[name].[hash:8].[ext]',
+        },
       },
       // Process JS with Babel.
       {
@@ -140,30 +130,30 @@ module.exports = {
         loader: ExtractTextPlugin.extract(
           'style',
           'css?importLoaders=1!postcss!less',
-          extractTextPluginOptions
-        )
+          extractTextPluginOptions,
+        ),
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
       {
         test: /\.json$/,
-        loader: 'json'
+        loader: 'json',
       },
       // "file" loader for svg
       {
         test: /\.svg$/,
         loader: 'file',
         query: {
-          name: 'static/media/[name].[hash:8].[ext]'
-        }
-      }
+          name: 'static/media/[name].[hash:8].[ext]',
+        },
+      },
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "url" loader exclusion list.
-    ]
+    ],
   },
 
   // We use PostCSS for autoprefixing only.
-  postcss: function() {
+  postcss() {
     return [
       autoprefixer({
         browsers: [
@@ -171,7 +161,7 @@ module.exports = {
           'last 4 versions',
           'Firefox ESR',
           'not ie < 9', // React doesn't support IE8 anyway
-        ]
+        ],
       }),
     ];
   },
@@ -189,24 +179,24 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         screw_ie8: true, // React doesn't support IE8
-        warnings: false
+        warnings: false,
       },
       mangle: {
-        screw_ie8: true
+        screw_ie8: true,
       },
       output: {
         comments: false,
-        screw_ie8: true
-      }
+        screw_ie8: true,
+      },
     }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-    new ExtractTextPlugin(cssFilename)
+    new ExtractTextPlugin(cssFilename),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
   node: {
     fs: 'empty',
     net: 'empty',
-    tls: 'empty'
-  }
+    tls: 'empty',
+  },
 };

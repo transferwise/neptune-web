@@ -41,9 +41,11 @@ export default class TooltipDocs extends Component {
             <pre className="tw-docs-code">
               {`<Tooltip
   label={"${this.state.label}"}
-  position={${this.state.customPosition && this.state.position
-    ? `Tooltip.Position.${this.state.position.toUpperCase()}`
-    : undefined}}
+  position={${
+    this.state.customPosition && this.state.position
+      ? `Tooltip.Position.${this.state.position.toUpperCase()}`
+      : undefined
+  }}
   offset={${this.state.customOffset ? this.state.offset : undefined}}
 >
   <button className="btn btn-default">
@@ -84,7 +86,8 @@ export default class TooltipDocs extends Component {
                     label: Tooltip.Position[position],
                   }))}
                   onChange={position =>
-                    this.setState({ position: position ? position.value : undefined })}
+                    this.setState({ position: position ? position.value : undefined })
+                  }
                 />
               </div>
             ) : (
