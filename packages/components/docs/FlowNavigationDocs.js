@@ -10,7 +10,6 @@ export default class FlowNavigationDocs extends Component {
       selectedPreset: presets[0],
       activeStep: 0,
       highestVisitedStep: 0,
-      closable: true,
       canGoBack: true,
       profileType: { value: 'PERSONAL', label: 'Personal' },
       avatarUrl: 'https://github.com/transferwise.png',
@@ -138,7 +137,7 @@ export default class FlowNavigationDocs extends Component {
           steps={this.state.selectedPreset.steps}
           activeStep={this.state.activeStep}
           // eslint-disable-next-line no-alert
-          onClose={this.state.closable ? () => alert('Close clicked') : undefined}
+          onClose={() => alert('Close clicked')}
           avatarUrl={this.state.avatarUrl}
           profileType={this.state.profileType ? this.state.profileType.value : undefined}
           onGoBack={this.canGoBack() ? () => this.goBack() : undefined}
@@ -149,7 +148,7 @@ export default class FlowNavigationDocs extends Component {
               {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
                 {`<FlowNavigation
-  onClose={${this.state.closable ? '[a function]' : undefined}}
+  onClose={[a function]}
   onGoBack={${this.state.canGoBack ? '[a function]' : undefined}}
   profileType={${this.state.profileType ? `"${this.state.profileType.value}"` : undefined}}
   avatarUrl={"${this.state.avatarUrl}"}
@@ -213,13 +212,6 @@ export default class FlowNavigationDocs extends Component {
                 onChange={event => this.setState({ avatarUrl: event.target.value })}
                 placeholder="http://"
                 className="form-control"
-              />
-
-              <div className="m-t-3" />
-              <Checkbox
-                label="Closable?"
-                onChange={this.createStateLink('closable')}
-                checked={this.state.closable}
               />
 
               <div className="m-t-3" />
