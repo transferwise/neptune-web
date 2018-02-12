@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Stepper, Select } from '../src';
+import { Select, FlowNavigation, Checkbox } from '../src';
 
-export default class StepperDocs extends Component {
+export default class FlowNavigationDocs extends Component {
   constructor(props) {
     super(props);
     const presets = this.getPresets();
@@ -10,6 +10,10 @@ export default class StepperDocs extends Component {
       selectedPreset: presets[0],
       activeStep: 0,
       highestVisitedStep: 0,
+      closable: true,
+      canGoBack: true,
+      profileType: { value: 'PERSONAL', label: 'Personal' },
+      avatarUrl: 'https://github.com/transferwise.png',
     };
   }
 
@@ -89,6 +93,10 @@ export default class StepperDocs extends Component {
     );
   }
 
+  createStateLink(key) {
+    return value => this.setState({ [key]: value });
+  }
+
   goToBackAndForthStep(step) {
     const index = step.index === undefined ? step.value : step.index;
     const highestVisitedStep = Math.max(index, this.state.highestVisitedStep);
@@ -107,24 +115,44 @@ export default class StepperDocs extends Component {
     }
   }
 
+  canGoBack() {
+    return this.state.canGoBack && !!this.state.activeStep;
+  }
+
+  goBack() {
+    this.setState(oldState => ({ ...oldState, activeStep: Math.max(oldState.activeStep - 1, 0) }));
+  }
+
   render() {
     return (
-      <div className="container">
-        <section className="section">
+      <section className="section">
+        <div className="container">
           <div className="row">
-            <div className="col-md-6">
-              <h2>Stepper</h2>
-              <p>These boots are made for steppin&lsquo;</p>
-            </div>
-            <div className="col-md-6 p-x-3">
-              <Stepper steps={this.state.selectedPreset.steps} activeStep={this.state.activeStep} />
+            <div className="col-xs-12">
+              <h2>Flow Navigation</h2>
+              <p>Go with the flow</p>
             </div>
           </div>
+        </div>
+        <FlowNavigation
+          steps={this.state.selectedPreset.steps}
+          activeStep={this.state.activeStep}
+          // eslint-disable-next-line no-alert
+          onClose={this.state.closable ? () => alert('Close clicked') : undefined}
+          avatarUrl={this.state.avatarUrl}
+          profileType={this.state.profileType ? this.state.profileType.value : undefined}
+          onGoBack={this.canGoBack() ? () => this.goBack() : undefined}
+        />
+        <div className="container m-t-4">
           <div className="row">
             <div className="col-md-6">
               {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
-                {`<Stepper
+                {`<FlowNavigation
+  onClose={${this.state.closable ? '[a function]' : undefined}}
+  onGoBack={${this.state.canGoBack ? '[a function]' : undefined}}
+  profileType={${this.state.profileType ? `"${this.state.profileType.value}"` : undefined}}
+  avatarUrl={"${this.state.avatarUrl}"}
   activeStep={${this.state.activeStep}}
   steps={${this.getStringifiedSteps()}}
 />`}
@@ -132,9 +160,9 @@ export default class StepperDocs extends Component {
               {/* eslint-enable react/jsx-indent */}
             </div>
             <div className="col-md-6">
-              <label htmlFor="stepper-step-select">Active step</label>
+              <label htmlFor="flow-navigation-step-select">Active step</label>
               <Select
-                id="stepper-step-select"
+                id="flow-navigation-step-select"
                 options={this.state.selectedPreset.steps.map((step, index) => ({
                   label: `${index} - ${step.label}`,
                   value: index,
@@ -150,9 +178,9 @@ export default class StepperDocs extends Component {
               />
 
               <div className="m-t-3" />
-              <label htmlFor="stepper-preset-select">Step preset</label>
+              <label htmlFor="flow-navigation-preset-select">Step preset</label>
               <Select
-                id="stepper-preset-select"
+                id="flow-navigation-preset-select"
                 options={this.state.presets}
                 onChange={selectedPreset =>
                   selectedPreset &&
@@ -161,10 +189,49 @@ export default class StepperDocs extends Component {
                 selected={this.state.selectedPreset}
                 required
               />
+
+              <div className="m-t-3" />
+              <label htmlFor="flow-navigation-profile-type">
+                Active profile type (used for avatar fallback)
+              </label>
+              <Select
+                id="flow-navigation-profile-type"
+                options={['Personal', 'Business'].map(label => ({
+                  label,
+                  value: label.toUpperCase(),
+                }))}
+                onChange={profileType => this.setState({ profileType })}
+                selected={this.state.profileType}
+              />
+
+              <div className="m-t-3" />
+              <label htmlFor="flow-navigation-avatar-url">Avatar url</label>
+              <input
+                id="flow-navigation-avatar-url"
+                type="text"
+                value={this.state.avatarUrl}
+                onChange={event => this.setState({ avatarUrl: event.target.value })}
+                placeholder="http://"
+                className="form-control"
+              />
+
+              <div className="m-t-3" />
+              <Checkbox
+                label="Closable?"
+                onChange={this.createStateLink('closable')}
+                checked={this.state.closable}
+              />
+
+              <div className="m-t-3" />
+              <Checkbox
+                label="Can you go back on mobile?"
+                onChange={this.createStateLink('canGoBack')}
+                checked={this.state.canGoBack}
+              />
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     );
   }
 }

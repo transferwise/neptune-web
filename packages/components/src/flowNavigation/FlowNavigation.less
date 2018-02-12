@@ -1,0 +1,123 @@
+@import '~bootstrap/less/variables';
+
+.tw-flow-navigation {
+  background-color: white;
+  border-bottom: 1px solid @brand-smoke-plus-10;
+  position: relative;
+
+  .flag {
+    margin-top: 4px;
+    background-position: left center;
+    opacity: 1;
+    transform: rotate(0deg);
+    position: absolute;
+    transform-origin: 12px center;
+
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    z-index: 0;
+
+    &--hidden {
+      opacity: 0;
+      transform: rotate(90deg);
+    }
+  }
+
+  &__back-button {
+    opacity: 1;
+    transform: rotate(0deg);
+    position: absolute;
+    z-index: 1;
+
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
+    path {
+      transition: fill 0.15s ease-in-out;
+      fill: @brand-light-blue;
+    }
+
+    &:hover path {
+      fill: @brand-light-blue-minus-10;
+    }
+
+    &--hidden {
+      opacity: 0;
+      cursor: default;
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__wrapper {
+    padding-bottom: 0px;
+
+    @media only screen and (min-width: @screen-sm-min) {
+      padding-bottom: 24px;
+    }
+  }
+
+  &__stepper {
+    padding-right: 8px;
+    padding-left: 8px;
+
+    @media only screen and (min-width: @screen-sm-min) and (max-width: @screen-md-max) {
+      padding-right: 36px;
+      padding-left: 36px;
+    }
+
+    @media only screen and (min-width: @screen-lg-min) {
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+  }
+
+  & .circle {
+    display: inline-block;
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    position: relative;
+    top: -2px;
+    margin-right: 12px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+
+    & img {
+      vertical-align: bottom;
+    }
+
+    & .icon {
+      line-height: 40px !important;
+    }
+  }
+
+  & .tw-avatar--with-image {
+    top: -8px;
+  }
+
+  &__close-button {
+    display: inline;
+    transition: color 0.15s ease-in-out;
+    color: @brand-light-blue;
+
+    &:hover {
+      color: @brand-light-blue-minus-10;
+    }
+
+    &::after {
+      cursor: default;
+      content: '';
+      height: 100%;
+      border-left: solid 1px @brand-smoke-plus-10;
+      left: -48px;
+      position: relative;
+    }
+  }
+
+  .m-lg-t-1 {
+    margin-top: 0px;
+
+    @media only screen and (min-width: @screen-lg-min) {
+      margin-top: 8px;
+    }
+  }
+}

@@ -28,39 +28,41 @@ export default class LoaderDocs extends Component {
     }
 
     return (
-      <section className="section">
-        <div className="row">
-          <div className="col-md-6">
-            <h2>Loader</h2>
-            <p>Like a record baby</p>
+      <div className="container">
+        <section className="section">
+          <div className="row">
+            <div className="col-md-6">
+              <h2>Loader</h2>
+              <p>Like a record baby</p>
+            </div>
+            <div className="col-md-6 p-b-2 text-xs-center">
+              <Loader small={this.state.small} />
+            </div>
           </div>
-          <div className="col-md-6 p-b-2 text-xs-center">
-            <Loader small={this.state.small} />
+          <div className="row">
+            <div className="col-md-6">
+              {/* eslint-disable react/jsx-indent */}
+              <pre className="tw-docs-code">{docsCode}</pre>
+              {/* eslint-enable react/jsx-indent */}
+            </div>
+            <div className="col-md-6">
+              <Checkbox
+                label="Small?"
+                checked={this.state.small}
+                onChange={this.createStateLink('small')}
+              />
+            </div>
+            <div className="col-md-6 m-t-3">
+              <Checkbox
+                label="Scoped className?"
+                checked={this.state.hasClassNames}
+                onChange={this.createStateLink('hasClassNames')}
+              />
+            </div>
+            <div className="col-md-6" />
           </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            {/* eslint-disable react/jsx-indent */}
-            <pre className="tw-docs-code">{docsCode}</pre>
-            {/* eslint-enable react/jsx-indent */}
-          </div>
-          <div className="col-md-6">
-            <Checkbox
-              label="Small?"
-              checked={this.state.small}
-              onChange={this.createStateLink('small')}
-            />
-          </div>
-          <div className="col-md-6 m-t-3">
-            <Checkbox
-              label="Scoped className?"
-              checked={this.state.hasClassNames}
-              onChange={this.createStateLink('hasClassNames')}
-            />
-          </div>
-          <div className="col-md-6" />
-        </div>
-      </section>
+        </section>
+      </div>
     );
   }
 }

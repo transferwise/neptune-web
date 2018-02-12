@@ -8,12 +8,14 @@ import TooltipDocs from './TooltipDocs';
 import CheckboxDocs from './CheckboxDocs';
 import RadioDocs from './RadioDocs';
 import LoaderDocs from './LoaderDocs';
+import FlowNavigationDocs from './FlowNavigationDocs';
 
 const Docs = () => (
-  <div className="container">
+  <div>
     <Header />
 
     <StepperDocs />
+    <FlowNavigationDocs />
     <SelectDocs />
     <TooltipDocs />
     <CheckboxDocs />

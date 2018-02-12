@@ -11,37 +11,39 @@ export default class Header extends Component {
 
   render() {
     return (
-      <section className="section row">
-        <div className="col-md-6">
-          <h1>
-            Components 🎉 <small>v{npmPackage.version}</small>
-          </h1>
-          <p>TransferWise styleguide components in react.</p>
-          <pre className="tw-docs-code">{'yarn add @transferwise/components'}</pre>
-          <p>
-            <strong>TODO: </strong>
-            We need to add missing components and missing props to some components.
-          </p>
-          <button
-            className="btn btn-default"
-            onClick={() =>
-              this.setState(({ showChangelog }) => ({ showChangelog: !showChangelog }))
-            }
-          >
-            {this.state.showChangelog ? 'Hide' : 'Show'} changelog
-          </button>
-        </div>
-        {/* eslint-disable react/no-danger */}
-        {this.state.showChangelog ? (
-          <div
-            className="col-md-6 tw-docs-code"
-            dangerouslySetInnerHTML={{ __html: marked(atob(changelog.substring(28))) }}
-          />
-        ) : (
-          ''
-        )}
-        {/* eslint-enable react/no-danger */}
-      </section>
+      <div className="container">
+        <section className="section row">
+          <div className="col-md-6">
+            <h1>
+              Components 🎉 <small>v{npmPackage.version}</small>
+            </h1>
+            <p>TransferWise styleguide components in react.</p>
+            <pre className="tw-docs-code">{'yarn add @transferwise/components'}</pre>
+            <p>
+              <strong>TODO: </strong>
+              We need to add missing components and missing props to some components.
+            </p>
+            <button
+              className="btn btn-default"
+              onClick={() =>
+                this.setState(({ showChangelog }) => ({ showChangelog: !showChangelog }))
+              }
+            >
+              {this.state.showChangelog ? 'Hide' : 'Show'} changelog
+            </button>
+          </div>
+          {/* eslint-disable react/no-danger */}
+          {this.state.showChangelog ? (
+            <div
+              className="col-md-6 tw-docs-code"
+              dangerouslySetInnerHTML={{ __html: marked(atob(changelog.substring(28))) }}
+            />
+          ) : (
+            ''
+          )}
+          {/* eslint-enable react/no-danger */}
+        </section>
+      </div>
     );
   }
 }
