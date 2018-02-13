@@ -1,3 +1,8 @@
+# v1.1.0
+## Add FlowNavigation component
+
+This is a component used for our flows (like card ordering, borderless topups, transfers), to be displayed at the top as navigation. It's an enhancement of the stepper.
+
 # v1.0.3
 ## Make stepper tooltips only appear on non-touch devices
 
