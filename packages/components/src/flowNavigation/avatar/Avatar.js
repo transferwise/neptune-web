@@ -75,6 +75,8 @@ Avatar.defaultProps = {
 
 Avatar.propTypes = {
   url: Types.string,
+  // because of the way we're checking nextprops, eslint fails to detect usage here
+  // eslint-disable-next-line react/no-unused-prop-types
   profileType: Types.oneOf(Object.keys(ProfileType)),
 };
 
