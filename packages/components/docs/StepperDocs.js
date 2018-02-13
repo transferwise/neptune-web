@@ -15,10 +15,10 @@ export default class StepperDocs extends Component {
 
   getBackAndForthSteps(highestVisitedStep) {
     return [
-      { index: 0, label: 'Clickable step 1' },
-      { index: 1, label: 'Clickable step 2' },
-      { index: 2, label: 'Clickable step 3' },
-      { index: 3, label: 'Clickable step 4' },
+      { index: 0, label: 'One' },
+      { index: 1, label: 'Two' },
+      { index: 2, label: 'Three' },
+      { index: 3, label: 'Four' },
     ].map(step => ({
       ...step,
       onClick: step.index <= highestVisitedStep ? this.goToBackAndForthStep.bind(this, step) : null, // eslint-disable-line
@@ -42,7 +42,7 @@ export default class StepperDocs extends Component {
             hoverHTML: true,
           },
           { label: 'Recipient', hoverLabel: 'Some person/dog' },
-          { label: 'Done', hoverLabel: 'Cool' },
+          { label: 'Something', hoverLabel: 'Cool' },
         ],
       },
       {
@@ -50,20 +50,20 @@ export default class StepperDocs extends Component {
         value: 'with-actions',
         steps: [
           {
-            label: 'Clickable step 1',
+            label: 'One',
             onClick() {
               alert('You clicked on step 1, which triggered this function, which alerted you.'); // eslint-disable-line
             },
           },
           {
-            label: 'Clickable step 2',
+            label: 'Two',
             onClick() {
               alert('You clicked on step 2, which triggered this function, which alerted you.'); // eslint-disable-line
             },
           },
           { label: 'Recipient' },
           { label: 'Smellification' },
-          { label: 'Done' },
+          { label: 'Battle' },
         ],
       },
       {

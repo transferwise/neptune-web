@@ -28,13 +28,13 @@
     }
 
     @media screen and (min-width: @screen-sm-min) and (max-width: @screen-md-max) {
-      &:first-child .tooltip-inner{
+      &:first-child .tooltip-inner {
         transform: translateX(~'calc(50% - 32px)');
       }
-      
+
       &:last-child .tooltip-inner {
         transform: translateX(~'calc(-50% + 32px)');
-      } 
+      }
 
       .tooltip-arrow {
         z-index: 1;
@@ -53,7 +53,7 @@
   & .tooltip {
     top: 24px !important;
     white-space: nowrap;
-	
+
     & .tooltip-inner {
       max-width: 100%;
     }
@@ -93,6 +93,7 @@
   border-top-left-radius: 1px;
   border-bottom-left-radius: 1px;
   transition: width 0.6s ease-in-out;
+  will-change: width;
 }
 
 .btn-unstyled {
