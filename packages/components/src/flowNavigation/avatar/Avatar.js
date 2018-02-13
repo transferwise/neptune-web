@@ -21,16 +21,16 @@ class Avatar extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.url !== this.props.url) {
-      this.loadImageIfNeeded(nextProps.url);
+      this.loadImageIfNeeded(nextProps.url, nextProps);
     }
   }
 
-  shouldShowPersonalAvatar() {
-    return this.props.profileType !== ProfileType.BUSINESS;
+  shouldShowPersonalAvatar(props = this.props) {
+    return props.profileType !== ProfileType.BUSINESS;
   }
 
-  loadImageIfNeeded(url) {
-    if (this.shouldShowPersonalAvatar() && url) {
+  loadImageIfNeeded(url, props) {
+    if (this.shouldShowPersonalAvatar(props) && url) {
       const component = this;
       const possibleImage = new Image();
       possibleImage.onload = function onload() {
@@ -41,7 +41,7 @@ class Avatar extends Component {
   }
 
   canShowImage() {
-    return this.state.image && this.props.url;
+    return this.shouldShowPersonalAvatar() && this.state.image && this.props.url;
   }
 
   renderPersonalAvatar() {
