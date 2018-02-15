@@ -130,7 +130,7 @@ export default class StepperDocs extends Component {
 />`}
               </pre>
               {/* eslint-enable react/jsx-indent */}
-              <p>Usually you would use the FlowNavigation component instead of just the Stepper</p>
+              <p>Usually you would use the FlowNavigation component instead of just the Stepper.</p>
             </div>
             <div className="col-md-6">
               <label htmlFor="stepper-step-select">Active step</label>

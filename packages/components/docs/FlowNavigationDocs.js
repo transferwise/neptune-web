@@ -157,6 +157,10 @@ export default class FlowNavigationDocs extends Component {
 />`}
               </pre>
               {/* eslint-enable react/jsx-indent */}
+              <p>
+                You have to control mobile back button behaviour yourself, by passing in{' '}
+                <pre className="tw-docs-inline-code">onGoBack</pre> when it is possible to back.
+              </p>
             </div>
             <div className="col-md-6">
               <label htmlFor="flow-navigation-step-select">Active step</label>
