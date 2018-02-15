@@ -1,11 +1,11 @@
 machine:
   node:
-    version: 6.9.1
+    version: 8.9.4
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
 dependencies:
   pre:
-    - echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
+    - echo -e "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
   override:
     - yarn
   cache_directories:
