@@ -3,6 +3,8 @@
 
 This is a component used for our flows (like card ordering, borderless topups, transfers), to be displayed at the top as navigation. It's an enhancement of the stepper.
 
+![image](https://user-images.githubusercontent.com/9271565/36148989-9c174dfc-10c6-11e8-9fb4-175a00b37217.png)
+
 # v1.0.3
 ## Make stepper tooltips only appear on non-touch devices
 

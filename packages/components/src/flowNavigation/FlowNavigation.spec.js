@@ -5,7 +5,7 @@ import FlowNavigation from './';
 import Avatar from './avatar';
 import Stepper from '../stepper';
 
-describe('Avatar', () => {
+describe('Flow navigation', () => {
   let component;
   let props;
 

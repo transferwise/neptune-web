@@ -10,6 +10,19 @@ const ProfileType = {
   PERSONAL: 'PERSONAL',
 };
 
+const BackArrow = () => (
+  <svg
+    width="20"
+    height="16"
+    viewBox="0 0 20 16"
+    xmlns="http://www.w3.org/2000/svg"
+    className="m-t-1"
+  >
+    <title>ICON: Back</title>
+    <path d="M0 8l8-8 1.5 1.5L4 7h16v2H4l5.5 5.5L8 16" fill="#00B9FF" fillRule="evenodd" />
+  </svg>
+);
+
 const FlowNavigation = ({ steps, activeStep, avatarUrl, profileType, onClose, onGoBack }) => (
   <div className="tw-flow-navigation">
     <div className="container">
@@ -22,20 +35,7 @@ const FlowNavigation = ({ steps, activeStep, avatarUrl, profileType, onClose, on
             }`}
             onClick={() => onGoBack && onGoBack()}
           >
-            <svg
-              width="20"
-              height="16"
-              viewBox="0 0 20 16"
-              xmlns="http://www.w3.org/2000/svg"
-              className="m-t-1"
-            >
-              <title>ICON: Back</title>
-              <path
-                d="M0 8l8-8 1.5 1.5L4 7h16v2H4l5.5 5.5L8 16"
-                fill="#00B9FF"
-                fillRule="evenodd"
-              />
-            </svg>
+            <BackArrow />
           </button>
           <div className={`flag flag-info logo-3 visible-xs ${onGoBack ? 'flag--hidden' : ''}`} />
         </div>
