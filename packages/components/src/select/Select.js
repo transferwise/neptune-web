@@ -2,15 +2,9 @@ import React, { Component } from 'react';
 import Types from 'prop-types';
 
 import Option from './option';
+import KeyCodes from '../common/keyCodes';
 
 import './Select.less';
-
-const KeyCodes = {
-  DOWN: 40,
-  UP: 38,
-  ENTER: 13,
-  ESCAPE: 27,
-};
 
 function clamp(from, to, value) {
   return Math.max(Math.min(to, value), from);
@@ -80,12 +74,8 @@ export default class Select extends Component {
     this.state = { open: false, keyboardFocusedOptionIndex: null };
   }
 
-  componentDidMount() {
-    document.addEventListener('click', this.handleDocumentClick, false);
-  }
-
   componentWillUnmount() {
-    document.removeEventListener('click', this.handleDocumentClick, false);
+    this.close();
   }
 
   getIndexWithoutHeadersForIndexWithHeaders(index) {
@@ -100,13 +90,30 @@ export default class Select extends Component {
   handleSearchChange = event => this.props.onSearchChange(event.target.value);
 
   handleKeyDown = event => {
+    const { open } = this.state;
     switch (event.keyCode) {
       case KeyCodes.UP:
-        this.moveFocusWithDifference(-1);
+        if (open) {
+          this.moveFocusWithDifference(-1);
+        } else {
+          this.open();
+        }
         event.preventDefault();
         break;
       case KeyCodes.DOWN:
-        this.moveFocusWithDifference(1);
+        if (open) {
+          this.moveFocusWithDifference(1);
+        } else {
+          this.open();
+        }
+        event.preventDefault();
+        break;
+      case KeyCodes.SPACE:
+        if (open) {
+          this.selectKeyboardFocusedOption();
+        } else {
+          this.open();
+        }
         event.preventDefault();
         break;
       case KeyCodes.ENTER:
@@ -116,6 +123,11 @@ export default class Select extends Component {
       case KeyCodes.ESCAPE:
         this.close();
         event.preventDefault();
+        break;
+      case KeyCodes.TAB:
+        if (open) {
+          event.preventDefault();
+        }
         break;
       default:
         break;
@@ -155,15 +167,16 @@ export default class Select extends Component {
 
   open() {
     this.setState({ open: true });
+    document.addEventListener('click', this.handleDocumentClick, false);
   }
 
   close() {
     this.setState({ open: false, keyboardFocusedOptionIndex: null });
+    document.removeEventListener('click', this.handleDocumentClick, false);
   }
 
-  handleButtonClick = event => {
+  handleButtonClick = () => {
     if (!this.props.disabled) {
-      stopPropagation(event);
       this.open();
     }
   };

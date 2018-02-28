@@ -1,3 +1,16 @@
+# v1.1.1
+## Select fixes
+
+- Open Select by pressing UP/DOWN arrows
+- Open Select by pressing SPACE
+- Select an option by pressing SPACE
+- Disable TAB navigation when Select is open, mimicking default behaviour
+- Close Select when clicking on another one (no more multiple Selects open)
+- Attach document event listeners only when Select is open
+- Add tests for the functionalities above
+- Extract helper utilities to common directory to be shared by specs
+- Simplify existing tests for better readability
+
 # v1.1.0
 ## Add FlowNavigation component
 

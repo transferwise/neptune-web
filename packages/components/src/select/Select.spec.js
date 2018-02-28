@@ -1,8 +1,11 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import doTimes from 'lodash.times';
 
 import Select from './';
 import Option from './option';
+import KEY_CODES from '../common/keyCodes';
+import { fakeEvent, fakeKeyDownEventForKey } from '../common/fakeEvents';
 
 describe('Select', () => {
   let component;
@@ -10,93 +13,60 @@ describe('Select', () => {
   let documentEventCallbacks;
   let originalAddEventListener;
 
-  const KeyCodes = {
-    DOWN: 40,
-    UP: 38,
-    ENTER: 13,
-    ESCAPE: 27,
-  };
-
-  function mountComponent() {
-    component = mount(<Select {...props} />);
-  }
-
-  function shallowRenderComponent() {
-    component = shallow(<Select {...props} />);
-  }
-
   beforeEach(() => {
     props = {
       onChange: jest.fn(),
-      options: [{ value: 0, label: 'yo' }, { value: 1, label: 'dawg' }],
+      options: [{ value: 0, label: 'yo' }, { value: 1, label: 'dawg' }, { value: 2, label: 'boi' }],
     };
     documentEventCallbacks = {};
     originalAddEventListener = global.document.addEventListener;
     global.document.addEventListener = jest.fn((name, cb) => {
       documentEventCallbacks[name] = cb;
     });
-    shallowRenderComponent();
+    component = shallow(<Select {...props} />);
   });
 
   afterEach(() => {
     global.document.addEventListener = originalAddEventListener;
   });
 
-  function doTimes(count, func) {
-    while (count) {
-      func();
-      count -= 1; // eslint-disable-line no-param-reassign
-    }
-  }
-
-  function fakeEvent() {
-    return {
-      nativeEvent: { stopImmediatePropagation() {} },
-      stopPropagation() {},
-      preventDefault() {},
-    };
-  }
-
-  function fakeKeyDownEventForKey(keyCode) {
-    return {
-      ...fakeEvent(),
-      keyCode,
-    };
-  }
-
-  function openSelect() {
-    component.find('button.dropdown-toggle').simulate('click', fakeEvent());
-  }
-
-  function openSearchableSelect() {
-    component.find('button.dropdown-toggle').simulate('click', fakeEvent());
+  const element = selector => component.find(selector);
+  const clickOnDocument = () => documentEventCallbacks.click();
+  const findNthListElement = n => element('li').at(n);
+  const findNthOption = n => element(Option).at(n);
+  const container = () => element('.dropdown');
+  const dropdownMenu = () => element('ul.dropdown-menu');
+  const openerButton = () => element('button.dropdown-toggle');
+  const openSelect = () => openerButton().simulate('click', fakeEvent());
+  const openSearchableSelect = () => {
+    openSelect();
     component.setProps({ onSearchChange: jest.fn() });
-  }
+  };
 
-  function clickOnDocument() {
-    documentEventCallbacks.click();
-  }
+  const activeOptionIndex = () => {
+    let elementIndex = null;
+    element('li').forEach((el, index) => {
+      if (el.is('.active')) {
+        expect(element('.active').length).toBe(1);
+        elementIndex = index;
+      }
+    });
 
-  function findNthListElement(n) {
-    return component.find('li').at(n);
-  }
+    return elementIndex;
+  };
 
-  function findNthOption(n) {
-    return component.find(Option).at(n);
-  }
-
-  function expectDropdownToBe() {
-    return {
-      open() {
-        expect(component.find('ul.dropdown-menu').length).toBe(1);
-        expect(component.find('.dropdown.open').length).toBe(1);
-      },
-      closed() {
-        expect(component.find('ul.dropdown-menu').length).toBe(0);
-        expect(component.find('.dropdown.open').length).toBe(0);
-      },
-    };
-  }
+  const expectDropdownToBe = () => ({
+    open() {
+      expect(dropdownMenu().length).toBe(1);
+      expect(container().is('.open')).toBe(true);
+      expect(openerButton().is('[aria-expanded=true]')).toBe(true);
+    },
+    closed() {
+      expect(dropdownMenu().length).toBe(0);
+      expect(container().is('.open')).toBe(false);
+      expect(openerButton().is('[aria-expanded=false]')).toBe(true);
+    },
+  });
 
   it('starts closed', () => {
     expectDropdownToBe().closed();
@@ -107,8 +77,22 @@ describe('Select', () => {
     expectDropdownToBe().open();
   });
 
+  it('can be opened by DOWN arrow', () => {
+    component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN));
+    expectDropdownToBe().open();
+  });
+
+  it('can be opened by UP arrow', () => {
+    component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.UP));
+    expectDropdownToBe().open();
+  });
+
+  it('can be opened by SPACE', () => {
+    component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.SPACE));
+    expectDropdownToBe().open();
+  });
+
   it('can be closed by clicking somewhere else', () => {
-    mountComponent(); // Need lifecycle methods to be called.
     openSelect();
     clickOnDocument();
     expectDropdownToBe().closed();
@@ -116,7 +100,7 @@ describe('Select', () => {
 
   it('can be closed by pressing escape', () => {
     openSelect();
-    component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.ESCAPE));
+    component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.ESCAPE));
     expectDropdownToBe().closed();
   });
 
@@ -158,15 +142,9 @@ describe('Select', () => {
   it('shows the currently selected option as active in the dropdown', () => {
     openSelect();
     component.setProps({ required: true });
-    const isFirstElementActive = () => findNthListElement(0).hasClass('active');
-    const amountOfActiveElements = () => component.find('.active').length;
-
-    expect(isFirstElementActive()).toBe(false);
-    expect(amountOfActiveElements()).toBe(0);
-
+    expect(activeOptionIndex()).toBe(null);
     component.setProps({ selected: props.options[0] });
-    expect(isFirstElementActive()).toBe(true);
-    expect(amountOfActiveElements()).toBe(1);
+    expect(activeOptionIndex()).toBe(0);
   });
 
   it('calls onChange with nothing when selecting the placeholder', () => {
@@ -285,50 +263,69 @@ describe('Select', () => {
     openSelect();
 
     expect(findNthListElement(3).hasClass('active')).toBe(false);
-    doTimes(3, () => component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.DOWN)));
+    doTimes(3, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
     expect(findNthListElement(3).hasClass('active')).toBe(true); // skips header!
 
-    doTimes(4, () => component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.DOWN)));
+    doTimes(4, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
     expect(findNthListElement(3).hasClass('active')).toBe(false);
     expect(findNthListElement(7).hasClass('active')).toBe(true); // skips header again!
 
     expect(findNthListElement(0).hasClass('active')).toBe(false);
-    doTimes(5, () => component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.UP)));
+    doTimes(5, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.UP)));
     expect(findNthListElement(7).hasClass('active')).toBe(false);
     expect(findNthListElement(0).hasClass('active')).toBe(true);
   });
 
   it('binds keyboard movement to the current options', () => {
-    component.setProps({
-      options: [{ value: 0, label: 'yo' }, { value: 1, label: 'dawg' }],
-      required: true,
-    });
+    component.setProps({ required: true });
     openSelect();
-    doTimes(103, () => component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.UP)));
-    expect(findNthListElement(0).hasClass('active')).toBe(true);
-    expect(findNthListElement(1).hasClass('active')).toBe(false);
-    doTimes(103, () => component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.DOWN)));
-    expect(findNthListElement(0).hasClass('active')).toBe(false);
-    expect(findNthListElement(1).hasClass('active')).toBe(true);
+
+    // Move to the bottom of Select with 3 options
+    doTimes(3, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
+    expect(activeOptionIndex()).toBe(2);
+
+    // Make sure we can't move past the last option
+    doTimes(3, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
+    expect(activeOptionIndex()).toBe(2);
+
+    // Now move up 1 option
+    component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.UP));
+    expect(activeOptionIndex()).toBe(1);
+
+    // Move to first option and make sure we can't move past the first one
+    doTimes(3, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.UP)));
+    expect(activeOptionIndex()).toBe(0);
   });
 
-  it('allows you to select the item currently focused with your keyboard', () => {
-    const onChange = jest.fn();
-    component.setProps({
-      options: [{ value: 0, label: 'yo' }, { value: 1, label: 'dawg' }, { value: 2, label: 'boi' }],
-      required: true,
-      onChange,
-    });
-    doTimes(2, () => component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.DOWN)));
-    // hitting it once will only make the selector appear, so we hit it twice to go down once.
+  it('allows you to select the item currently focused with your keyboard by pressing ENTER', () => {
+    component.setProps({ required: true });
+    const onChange = component.instance().props.onChange;
+
+    // Hitting it once will only make the selector appear, so we hit it twice to go down once
+    doTimes(2, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
     expect(onChange).not.toHaveBeenCalled();
-    component.simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.ENTER));
+
+    // Select an option with ENTER
+    component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.ENTER));
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange).toHaveBeenCalledWith({ value: 1, label: 'dawg' });
+    expect(onChange).toHaveBeenLastCalledWith(props.options[0]);
+  });
+
+  it('allows you to select the item currently focused with your keyboard by pressing SPACE', () => {
+    component.setProps({ required: true });
+    const onChange = component.instance().props.onChange;
+
+    // Hitting it once will only make the selector appear, so we hit it twice to go down once
+    doTimes(2, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
+    expect(onChange).not.toHaveBeenCalled();
+
+    // Select an option with SPACE
+    component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.SPACE));
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenLastCalledWith(props.options[0]);
   });
 
   it('can have different sizes', () => {
-    const openerButton = () => component.find('button');
     expect(openerButton().hasClass('btn-md')).toBe(true);
     ['xs', 'sm', 'md', 'lg'].forEach(size => {
       component.setProps({ size });
