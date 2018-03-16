@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -23,6 +23,7 @@
     "connect-history-api-fallback": "1.3.0",
     "cross-spawn": "4.0.2",
     "css-loader": "0.26.1",
+    "currency-flags": "^1.2.1",
     "detect-port": "1.1.0",
     "dotenv": "2.0.0",
     "enzyme": "^2.8.2",
@@ -64,11 +65,11 @@
     "webpack-manifest-plugin": "1.1.0"
   },
   "dependencies": {
-    "currency-flags": "git+https://github.com/transferwise/currency-flags.git",
     "prop-types": "^15.5.10"
   },
   "peerDependencies": {
     "bootstrap": "github:transferwise/bootstrap",
+    "currency-flags": "^1.2.1",
     "react": "^15.5.4"
   },
   "scripts": {

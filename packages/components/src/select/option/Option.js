@@ -1,8 +1,6 @@
 import React from 'react';
 import Types from 'prop-types';
 
-import './Option.less';
-
 const Option = ({ currency, label, note, secondary, icon, classNames }) => {
   const style = classes => classes.map(className => classNames[className] || className).join(' ');
   const iconClass = currency

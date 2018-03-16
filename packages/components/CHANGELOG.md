@@ -1,3 +1,9 @@
+# v2.0.0
+## Stops bundling currency flags
+
+This makes the output CSS smaller and means we can avoid duplicating the flags CSS
+if our app needs it in other places as well.
+
 # v1.1.1
 ## Select fixes
 
