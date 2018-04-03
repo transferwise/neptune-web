@@ -33,6 +33,14 @@ describe('Flow navigation', () => {
     return backButton().hasClass('tw-flow-navigation__back-button--hidden');
   }
 
+  function closeButtonWithAvatar() {
+    return closeButton().hasClass('close-button-with-avatar');
+  }
+
+  function bottomBorderHidden() {
+    return component.hasClass('tw-flow-navigation--done');
+  }
+
   beforeEach(() => {
     props = {
       avatarUrl: '',
@@ -66,6 +74,7 @@ describe('Flow navigation', () => {
       url: props.avatarUrl,
       profileType: props.profileType,
     });
+    expect(closeButtonWithAvatar()).toBe(true);
   });
 
   it('calls onClose callback when close button clicked', () => {
@@ -92,5 +101,21 @@ describe('Flow navigation', () => {
     expect(props.onGoBack).not.toHaveBeenCalled();
     backButton().simulate('click');
     expect(props.onGoBack).toHaveBeenCalled();
+  });
+
+  it('hides the avatar if done is true', () => {
+    component.setProps({ done: true });
+    expect(avatar().length).toBe(0);
+    expect(closeButtonWithAvatar()).toBe(false);
+  });
+
+  it('hides the stepper if done is true', () => {
+    component.setProps({ done: true });
+    expect(stepper().length).toBe(0);
+  });
+
+  it('hides the bottom border if done is true', () => {
+    component.setProps({ done: true });
+    expect(bottomBorderHidden()).toBe(true);
   });
 });

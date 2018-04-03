@@ -13,6 +13,7 @@ export default class FlowNavigationDocs extends Component {
       canGoBack: true,
       profileType: { value: 'PERSONAL', label: 'Personal' },
       avatarUrl: 'https://github.com/transferwise.png',
+      done: false,
     };
   }
 
@@ -139,6 +140,7 @@ export default class FlowNavigationDocs extends Component {
           // eslint-disable-next-line no-alert
           onClose={() => alert('Close clicked')}
           avatarUrl={this.state.avatarUrl}
+          done={this.state.done}
           profileType={this.state.profileType ? this.state.profileType.value : undefined}
           onGoBack={this.canGoBack() ? () => this.goBack() : undefined}
         />
@@ -154,12 +156,18 @@ export default class FlowNavigationDocs extends Component {
   avatarUrl={"${this.state.avatarUrl}"}
   activeStep={${this.state.activeStep}}
   steps={${this.getStringifiedSteps()}}
+  done={"${this.state.done}"}
 />`}
               </pre>
               {/* eslint-enable react/jsx-indent */}
               <p>
                 You have to control mobile back button behaviour yourself, by passing in{' '}
                 <pre className="tw-docs-inline-code">onGoBack</pre> when it is possible to back.
+              </p>
+
+              <p>
+                You can put the component in done state, keeping only the logo and cross, by passing
+                in <pre className="tw-docs-inline-code">done=true</pre>.
               </p>
             </div>
             <div className="col-md-6">
@@ -223,6 +231,13 @@ export default class FlowNavigationDocs extends Component {
                 label="Can you go back on mobile?"
                 onChange={this.createStateLink('canGoBack')}
                 checked={this.state.canGoBack}
+              />
+
+              <div className="m-t-3" />
+              <Checkbox
+                label="Done?"
+                onChange={this.createStateLink('done')}
+                checked={this.state.done}
               />
             </div>
           </div>

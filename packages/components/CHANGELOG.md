@@ -1,3 +1,7 @@
+# v2.0.1
+## Make flow navigation more flexible
+- Hide avatar and stepper if the done prop passed is true
+
 # v2.0.0
 ## Stops bundling currency flags
 

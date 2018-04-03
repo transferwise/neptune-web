@@ -3,6 +3,10 @@
 .tw-flow-navigation {
   border-bottom: 1px solid @brand-smoke-plus-10;
   position: relative;
+  
+  &__done {
+    border-bottom: 0;
+  }
 
   .flag {
     margin-top: 4px;
@@ -101,7 +105,9 @@
     &:hover {
       color: @brand-light-blue-minus-10;
     }
+  }
 
+  & .close-button-with-avatar {
     &::after {
       cursor: default;
       content: '';
