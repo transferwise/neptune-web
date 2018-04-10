@@ -1,6 +1,10 @@
+# v2.0.3
+## Move babel config to babelrc file
+- This should allow this module to be used within a babel 7 setup by not publishing its babelrc config
+
 # v2.0.2
 ## Select - search with space
-- Fix ability to type SPACE in the search box input field of Select (skip preventDefault when typing into the search field) 
+- Fix ability to type SPACE in the search box input field of Select (skip preventDefault when typing into the search field)
 
 # v2.0.1
 ## Make flow navigation more flexible

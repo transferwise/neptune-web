@@ -12,3 +12,4 @@ src
 public
 docs-build
 scripts
+.babelrc
