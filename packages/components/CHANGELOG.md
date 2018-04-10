@@ -1,3 +1,7 @@
+# v2.0.2
+## Select - search with space
+- Fix ability to type SPACE in the search box input field of Select (skip preventDefault when typing into the search field) 
+
 # v2.0.1
 ## Make flow navigation more flexible
 - Hide avatar and stepper if the done prop passed is true
