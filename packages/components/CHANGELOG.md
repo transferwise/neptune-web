@@ -1,3 +1,8 @@
+# v2.0.4
+## Remove babel-preset-react-app
+- The React preset for Babel was shipped with `useBuiltIns: true` which led to broken functionality in IE
+- The caveat is bundle size increased from ~13 Kb to ~19Kb.
+
 # v2.0.3
 ## Move babel config to babelrc file
 - This should allow this module to be used within a babel 7 setup by not publishing its babelrc config

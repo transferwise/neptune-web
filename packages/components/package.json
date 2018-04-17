@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -11,12 +11,24 @@
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",
-    "babel-core": "6.22.1",
+    "babel-core": "6.26.0",
     "babel-eslint": "7.1.1",
     "babel-jest": "18.0.0",
     "babel-loader": "6.2.10",
-    "babel-preset-react-app": "^2.2.0",
-    "babel-runtime": "^6.20.0",
+    "babel-plugin-dynamic-import-node": "1.1.0",
+    "babel-plugin-syntax-dynamic-import": "6.18.0",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-es2015-destructuring": "6.23.0",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-plugin-transform-react-constant-elements": "6.23.0",
+    "babel-plugin-transform-react-jsx": "6.24.1",
+    "babel-plugin-transform-react-jsx-self": "6.22.0",
+    "babel-plugin-transform-react-jsx-source": "6.22.0",
+    "babel-plugin-transform-regenerator": "6.26.0",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-react": "6.24.1",
+    "babel-runtime": "6.26.0",
     "bootstrap": "github:transferwise/bootstrap",
     "case-sensitive-paths-webpack-plugin": "1.1.4",
     "chalk": "1.1.3",
@@ -87,7 +99,10 @@
     "predeploy:docs": "npm run build:docs"
   },
   "eslintConfig": {
-    "extends": ["airbnb", "prettier"],
+    "extends": [
+      "airbnb",
+      "prettier"
+    ],
     "parser": "babel-eslint",
     "rules": {
       "react/jsx-filename-extension": 0,
@@ -100,8 +115,12 @@
   },
   "homepage": "https://transferwise.github.io/components/",
   "jest": {
-    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
-    "testPathIgnorePatterns": ["<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
+    ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
@@ -109,12 +128,17 @@
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     }
   },
   "lint-staged": {
-    "*.js": ["prettier-eslint '**/*.js' --write", "git add"]
+    "*.js": [
+      "prettier-eslint '**/*.js' --write",
+      "git add"
+    ]
   }
 }

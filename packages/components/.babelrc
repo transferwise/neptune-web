@@ -1,3 +1,29 @@
 {
-  "presets": ["react-app"]
+  "presets": [
+    [
+      "env",
+      {
+        "useBuiltIns": "entry",
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "safari >= 9",
+            "ie >= 11"
+          ]
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    "babel-plugin-dynamic-import-node",
+    "babel-plugin-syntax-dynamic-import",
+    "babel-plugin-transform-class-properties",
+    "babel-plugin-transform-es2015-destructuring",
+    "babel-plugin-transform-object-rest-spread",
+    "babel-plugin-transform-react-constant-elements",
+    "babel-plugin-transform-react-jsx",
+    "babel-plugin-transform-react-jsx-self",
+    "babel-plugin-transform-react-jsx-source",
+    "babel-plugin-transform-runtime"
+  ]
 }
