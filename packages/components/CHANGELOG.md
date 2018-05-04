@@ -1,3 +1,7 @@
+# v2.0.5
+## Select - search with space II.
+- Disable preventDefault of SPACE entirely when typed into searchBox (need for option selection, opening of Select)
+
 # v2.0.4
 ## Remove babel-preset-react-app
 - The React preset for Babel was shipped with `useBuiltIns: true` which led to broken functionality in IE
