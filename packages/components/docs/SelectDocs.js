@@ -14,10 +14,13 @@ export default class SelectDocs extends Component {
       { header: 'Currencies' },
       { value: 4, label: 'British Pound', currency: 'gbp' },
       { value: 5, label: 'Euro', currency: 'eur' },
+      { separator: true },
+      { value: 6, label: 'Something else' },
     ];
     this.state = {
       selectedOption: null,
       required: false,
+      inverse: false,
       disabled: false,
       block: undefined,
       searchable: false,
@@ -80,6 +83,8 @@ export default class SelectDocs extends Component {
     let docsCode = `<Select
   placeholder={${this.state.hasPlaceholder ? `"${this.state.placeholder}"` : undefined}}
   size={${this.state.size ? `"${this.state.size}"` : undefined}}
+  dropdownRight={${this.state.dropdownRight ? `"${this.state.dropdownRight}"` : undefined}}
+  dropdownWidth={${this.state.dropdownWidth ? `"${this.state.dropdownRight}"` : undefined}}
   block={${this.state.block}}
   selected={${JSON.stringify(this.state.selectedOption, null, '  ')}}
   onChange={this.handleOptionChange}
@@ -87,6 +92,7 @@ export default class SelectDocs extends Component {
   searchValue={${this.state.searchable ? `"${this.state.searchValue}"` : undefined}}
   searchPlaceholder={${searchPlaceholder}}
   required={${this.state.required}}
+  inverse={${this.state.inverse}}
   disabled={${this.state.disabled}}
   options={${JSON.stringify(this.getOptions(), null, '  ')}}
 />`;
@@ -111,6 +117,9 @@ export default class SelectDocs extends Component {
               <Select
                 size={this.state.size}
                 placeholder={this.state.hasPlaceholder ? this.state.placeholder : undefined}
+                dropdownRight={this.state.dropdownRight}
+                dropdownWidth={this.state.dropdownWidth}
+                inverse={this.state.inverse}
                 options={this.getOptions()}
                 block={this.state.block}
                 selected={this.state.selectedOption}
@@ -149,7 +158,7 @@ export default class SelectDocs extends Component {
                 selected={
                   this.state.size ? { value: this.state.size, label: this.state.size } : undefined
                 }
-                options={['xs', 'sm', 'md', 'lg'].map(size => ({ value: size, label: size }))}
+                options={['sm', 'md', 'lg'].map(size => ({ value: size, label: size }))}
                 onChange={selection =>
                   this.setState({ size: selection ? selection.value : undefined })
                 }
@@ -159,6 +168,44 @@ export default class SelectDocs extends Component {
                 label="Scoped className?"
                 onChange={this.createStateLink('hasClassNames')}
                 checked={this.state.hasClassNames}
+              />
+              <div className="m-t-3" />
+              <Checkbox
+                label="Inverse?"
+                onChange={this.createStateLink('inverse')}
+                checked={this.state.inverse}
+              />
+              <div className="m-t-3" />
+              <label htmlFor="dropdown-width-selector" className="control-label">
+                Dropdown width
+              </label>
+              <Select
+                id="dropdown-width-selector"
+                selected={
+                  this.state.dropdownWidth
+                    ? { value: this.state.dropdownWidth, label: this.state.dropdownWidth }
+                    : undefined
+                }
+                options={['sm', 'md', 'lg'].map(size => ({ value: size, label: size }))}
+                onChange={selection =>
+                  this.setState({ dropdownWidth: selection ? selection.value : undefined })
+                }
+              />
+              <div className="m-t-3" />
+              <label htmlFor="right-breakpoint-selector" className="control-label">
+                Breakpoint to open dropdown from the right
+              </label>
+              <Select
+                id="right-breakpoint-selector"
+                selected={
+                  this.state.dropdownRight
+                    ? { value: this.state.dropdownRight, label: this.state.dropdownRight }
+                    : undefined
+                }
+                options={['xs', 'sm', 'md', 'lg', 'xl'].map(size => ({ value: size, label: size }))}
+                onChange={selection =>
+                  this.setState({ dropdownRight: selection ? selection.value : undefined })
+                }
               />
               <div className="m-t-3" />
               <Checkbox

@@ -1,3 +1,10 @@
+# v2.1.0
+## Add money input component
+
+![image](https://user-images.githubusercontent.com/9271565/39634480-9a40aff0-4fc3-11e8-8685-f5550f6324b0.png)
+
+Also adds a "separator" element to the select component.
+
 # v2.0.5
 ## Select - search with space II.
 - Disable preventDefault of SPACE entirely when typed into searchBox (need for option selection, opening of Select)

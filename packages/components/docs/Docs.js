@@ -4,6 +4,7 @@ import './Docs.less';
 import Header from './Header';
 import StepperDocs from './StepperDocs';
 import SelectDocs from './SelectDocs';
+import MoneyInputDocs from './MoneyInputDocs';
 import TooltipDocs from './TooltipDocs';
 import CheckboxDocs from './CheckboxDocs';
 import RadioDocs from './RadioDocs';
@@ -17,6 +18,7 @@ const Docs = () => (
     <StepperDocs />
     <FlowNavigationDocs />
     <SelectDocs />
+    <MoneyInputDocs />
     <TooltipDocs />
     <CheckboxDocs />
     <RadioDocs />

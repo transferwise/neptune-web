@@ -246,13 +246,46 @@ describe('Select', () => {
     expect(component.find('ul').text()).not.toContain('ayy lmao');
   });
 
-  it('allows you to move around items with arrow keys while ignoring headers', () => {
+  it('can be inverse coloured', () => {
+    expect(component.find('.btn-input').hasClass('btn-input-inverse')).toBe(false);
+    component.setProps({ inverse: true });
+    expect(component.find('.btn-input').hasClass('btn-input-inverse')).toBe(true);
+  });
+
+  it('can be given a dropdown width', () => {
+    openSelect();
+    ['sm', 'md', 'lg'].forEach(dropdownWidth => {
+      expect(component.find('.dropdown-menu').hasClass(`dropdown-menu-${dropdownWidth}`)).toBe(
+        false,
+      );
+      component.setProps({ dropdownWidth });
+      expect(component.find('.dropdown-menu').hasClass(`dropdown-menu-${dropdownWidth}`)).toBe(
+        true,
+      );
+    });
+  });
+
+  it('can be given a breakpoint to make the dropdown open from the right', () => {
+    openSelect();
+    ['xs', 'sm', 'md', 'lg', 'xl'].forEach(dropdownRight => {
+      expect(
+        component.find('.dropdown-menu').hasClass(`dropdown-menu-${dropdownRight}-right`),
+      ).toBe(false);
+      component.setProps({ dropdownRight });
+      expect(
+        component.find('.dropdown-menu').hasClass(`dropdown-menu-${dropdownRight}-right`),
+      ).toBe(true);
+    });
+  });
+
+  it('allows you to move around items with arrow keys while ignoring headers and separators', () => {
     component.setProps({
       options: [
         { value: 0, label: 'yo' },
         { value: 1, label: 'dawg' },
         { header: 'ignore me' },
         { value: 2, label: 'yo' },
+        { separator: true }, // ignore me too
         { value: 3, label: 'dawg' },
         { header: 'ignore me too' },
         { value: 4, label: 'dawg' },
@@ -268,11 +301,11 @@ describe('Select', () => {
 
     doTimes(4, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
     expect(findNthListElement(3).hasClass('active')).toBe(false);
-    expect(findNthListElement(7).hasClass('active')).toBe(true); // skips header again!
+    expect(findNthListElement(8).hasClass('active')).toBe(true); // skips header and separator again!
 
     expect(findNthListElement(0).hasClass('active')).toBe(false);
     doTimes(5, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.UP)));
-    expect(findNthListElement(7).hasClass('active')).toBe(false);
+    expect(findNthListElement(8).hasClass('active')).toBe(false);
     expect(findNthListElement(0).hasClass('active')).toBe(true);
   });
 
@@ -327,7 +360,7 @@ describe('Select', () => {
 
   it('can have different sizes', () => {
     expect(openerButton().hasClass('btn-md')).toBe(true);
-    ['xs', 'sm', 'md', 'lg'].forEach(size => {
+    ['sm', 'md', 'lg'].forEach(size => {
       component.setProps({ size });
       expect(openerButton().hasClass(`btn-${size}`)).toBe(true);
     });
@@ -345,5 +378,14 @@ describe('Select', () => {
   it('passes the given id forward to the button', () => {
     component.setProps({ id: 'some-id' });
     expect(component.find('#some-id').type()).toBe('button');
+  });
+
+  it('renders separators', () => {
+    component.setProps({
+      options: [{ separator: true }],
+    });
+    openSelect();
+    expect(findNthListElement(1).prop('className')).toBe('divider');
+    expect(findNthListElement(1).children().length).toBe(0);
   });
 });

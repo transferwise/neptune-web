@@ -1,0 +1,29 @@
+@import '~bootstrap/less/variables';
+
+.tw-money-input {
+  .input-group-addon {
+    padding-left: 0 !important;
+  }
+
+  &__keyline {
+    width: 2px;
+    border: solid 1px @brand-smoke;
+    height: 24px;
+    display: inline-block;
+    margin-right: 24px;
+    transform: translateY(4px);
+  }
+
+  &--disabled {
+    background-color: @brand-smoke-plus-20;
+    cursor: not-allowed;
+  }
+
+  &__fixed-currency {
+    span {
+      color: @brand-grey-plus-10;
+    }
+
+    position: relative;
+  }
+}
