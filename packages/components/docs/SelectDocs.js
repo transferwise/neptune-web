@@ -84,7 +84,7 @@ export default class SelectDocs extends Component {
   placeholder={${this.state.hasPlaceholder ? `"${this.state.placeholder}"` : undefined}}
   size={${this.state.size ? `"${this.state.size}"` : undefined}}
   dropdownRight={${this.state.dropdownRight ? `"${this.state.dropdownRight}"` : undefined}}
-  dropdownWidth={${this.state.dropdownWidth ? `"${this.state.dropdownRight}"` : undefined}}
+  dropdownWidth={${this.state.dropdownWidth ? `"${this.state.dropdownWidth}"` : undefined}}
   block={${this.state.block}}
   selected={${JSON.stringify(this.state.selectedOption, null, '  ')}}
   onChange={this.handleOptionChange}

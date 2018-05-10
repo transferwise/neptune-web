@@ -1,3 +1,8 @@
+# v2.1.1
+## Fix money input search icon
+
+Also fix Select demo component in docs.
+
 # v2.1.0
 ## Add money input component
 
