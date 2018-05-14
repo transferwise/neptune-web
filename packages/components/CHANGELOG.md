@@ -1,3 +1,7 @@
+# v2.1.3
+## Fix money input z-index problems
+- Multiple MoneyInputs visible (Calculator), currency select button was on top of dropdown
+
 # v2.1.2
 ## Clear money input search when selecting a currency
 
