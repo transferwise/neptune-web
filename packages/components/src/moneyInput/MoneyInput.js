@@ -142,6 +142,11 @@ class MoneyInput extends Component {
     );
   }
 
+  handleSelectChange = value => {
+    this.setState({ searchQuery: '' });
+    this.props.onCurrencyChange(value);
+  };
+
   render() {
     const { selectedCurrency, onCurrencyChange, size, addon } = this.props;
     const selectOptions = this.getSelectOptions();
@@ -194,7 +199,7 @@ class MoneyInput extends Component {
             <Select
               options={selectOptions}
               selected={{ ...selectedCurrency, note: null }}
-              onChange={onCurrencyChange}
+              onChange={this.handleSelectChange}
               searchPlaceholder={this.props.searchPlaceholder}
               onSearchChange={searchQuery => this.setState({ searchQuery })}
               searchValue={this.state.searchQuery}

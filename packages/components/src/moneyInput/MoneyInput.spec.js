@@ -376,4 +376,13 @@ describe('Money Input', () => {
     component.setProps({ searchPlaceholder: 'a placeholder' });
     expect(currencySelect().prop('searchPlaceholder')).toBe('a placeholder');
   });
+
+  it('clears the search value when selecting an option', () => {
+    searchCurrencies('eur');
+    expect(currencySelect().prop('options').length).toBe(2);
+    expect(currencySelect().prop('searchValue')).toBe('eur');
+    currencySelect().prop('onChange')(props.currencies[1]);
+    expect(currencySelect().prop('options').length).toBe(7);
+    expect(currencySelect().prop('searchValue')).toBe('');
+  });
 });
