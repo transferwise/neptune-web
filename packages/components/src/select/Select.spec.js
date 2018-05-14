@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import doTimes from 'lodash.times';
 
 import Select from './';
@@ -387,5 +387,12 @@ describe('Select', () => {
     openSelect();
     expect(findNthListElement(1).prop('className')).toBe('divider');
     expect(findNthListElement(1).children().length).toBe(0);
+  });
+
+  it('focuses on the search box once opened', () => {
+    props.onSearchChange = jest.fn();
+    const mountedComponent = mount(<Select {...props} />);
+    mountedComponent.find('button.dropdown-toggle').simulate('click', fakeEvent());
+    expect(mountedComponent.find('input').matchesElement(document.activeElement)).toBe(true);
   });
 });

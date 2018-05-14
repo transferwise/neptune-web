@@ -176,11 +176,17 @@ export default class Select extends Component {
   }
 
   open() {
-    this.setState({ open: true });
+    this.setState({ open: true }, () => {
+      const searchable = !!this.props.onSearchChange;
+      if (searchable && this.searchBox) {
+        this.searchBox.focus();
+      }
+    });
     document.addEventListener('click', this.handleDocumentClick, false);
   }
 
   close() {
+    this.searchBox = null;
     this.setState({ open: false, keyboardFocusedOptionIndex: null });
     document.removeEventListener('click', this.handleDocumentClick, false);
   }
