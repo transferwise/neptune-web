@@ -1,3 +1,8 @@
+# v2.1.2
+## Clear money input search when selecting a currency
+
+Also adds auto-focusing on search input when opening a searchable select
+
 # v2.1.1
 ## Fix money input search icon
 
