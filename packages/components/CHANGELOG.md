@@ -1,3 +1,7 @@
+# v2.1.4
+## Fix done class name in FlowNavigation
+- Bottom border was not being removed when done was passed in to FlowNavigation
+
 # v2.1.3
 ## Fix money input z-index problems
 - Multiple MoneyInputs visible (Calculator), currency select button was on top of dropdown
