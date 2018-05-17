@@ -1,3 +1,7 @@
+# v3.0.1
+## CSS cleanup
+- No need for z-index fix (see v2.1.3) anymore, bootstrap was changed
+
 # v3.0.0
 ## React 16 and not accidentally bundling react 🙄
 

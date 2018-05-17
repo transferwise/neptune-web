@@ -26,15 +26,4 @@
 
     position: relative;
   }
-
-  /*
-  Currency select button is visible on top of the dropdown when there are multiple MoneyInputs visible (Calculator for example).
-  Bootstrap sets the z-index of .btn to 2 (https://github.com/twbs/bootstrap/issues/15944)
-  We'll reset it to the default value.
-  */
-  .input-group-btn:last-child {
-    > .btn, > .btn-group {
-      z-index: auto;
-    }
-  }
 }
