@@ -48,6 +48,7 @@ module.exports = {
   entry: [paths.appIndexJs],
   externals: {
     react: 'react',
+    'prop-types': 'prop-types',
   },
   output: {
     // The build folder.
