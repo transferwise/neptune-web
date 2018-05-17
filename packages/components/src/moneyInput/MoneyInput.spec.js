@@ -76,6 +76,7 @@ describe('Money Input', () => {
 
   function searchCurrencies(query) {
     currencySelect().prop('onSearchChange')(query);
+    component.update();
   }
 
   function displayedCurrencies() {
@@ -382,6 +383,7 @@ describe('Money Input', () => {
     expect(currencySelect().prop('options').length).toBe(2);
     expect(currencySelect().prop('searchValue')).toBe('eur');
     currencySelect().prop('onChange')(props.currencies[1]);
+    component.update();
     expect(currencySelect().prop('options').length).toBe(7);
     expect(currencySelect().prop('searchValue')).toBe('');
   });

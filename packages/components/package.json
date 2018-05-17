@@ -38,7 +38,8 @@
     "currency-flags": "^1.2.1",
     "detect-port": "1.1.0",
     "dotenv": "2.0.0",
-    "enzyme": "^2.8.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -65,24 +66,25 @@
     "object-assign": "4.1.1",
     "postcss-loader": "1.2.2",
     "prettier-eslint-cli": "^4.7.0",
-    "react": "^15.5.4",
+    "prop-types": "^15.6.1",
+    "raf": "^3.4.0",
+    "react": "^16.3.2",
     "react-dev-utils": "^0.5.2",
-    "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.5.4",
+    "react-dom": "^16.3.2",
+    "react-test-renderer": "^16.3.2",
     "release-to-github-with-changelog": "^1.1.4",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.14.0",
     "webpack-dev-server": "1.16.2",
-    "webpack-manifest-plugin": "1.1.0",
-    "prop-types": "^15.5.10"
+    "webpack-manifest-plugin": "1.1.0"
   },
   "dependencies": {},
   "peerDependencies": {
     "bootstrap": "github:transferwise/bootstrap",
     "currency-flags": "^1.2.1",
-    "react": "^15.5.4",
-    "prop-types": "^15.5.10"
+    "react": "^16.3.2",
+    "prop-types": "^15.6.1"
   },
   "scripts": {
     "precommit": "lint-staged",
@@ -117,6 +119,10 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
+    ],
+    "setupFiles": [
+      "raf/polyfill",
+      "<rootDir>/config/jest/setupTests.js"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"

@@ -57,6 +57,7 @@ describe('Avatar', () => {
 
     expect(fakeImageInstance.src).toEqual(url);
     fakeImageInstance.triggerFakeOnloadListeners();
+    component.update();
     expect(component.find('.icon').length).toBe(0);
     expect(component.find('.circle').hasClass('tw-avatar--with-image')).toBe(true);
     expect(component.find('img').prop('src')).toBe(url);

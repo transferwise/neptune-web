@@ -31,7 +31,10 @@ describe('Select', () => {
   });
 
   const element = selector => component.find(selector);
-  const clickOnDocument = () => documentEventCallbacks.click();
+  const clickOnDocument = () => {
+    documentEventCallbacks.click();
+    component.update();
+  };
   const findNthListElement = n => element('li').at(n);
   const findNthOption = n => element(Option).at(n);
   const container = () => element('.dropdown');
@@ -393,6 +396,6 @@ describe('Select', () => {
     props.onSearchChange = jest.fn();
     const mountedComponent = mount(<Select {...props} />);
     mountedComponent.find('button.dropdown-toggle').simulate('click', fakeEvent());
-    expect(mountedComponent.find('input').matchesElement(document.activeElement)).toBe(true);
+    expect(mountedComponent.find('input').prop('className')).toBe(document.activeElement.className);
   });
 });
