@@ -6,13 +6,9 @@ machine:
 dependencies:
   pre:
     - echo -e "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
-  override:
-    - yarn
-  cache_directories:
-    - ~/.cache/yarn
 test:
   override:
-    - if [[ $CIRCLE_BRANCH != "gh-pages" ]] ; then yarn test ; fi
+    - if [[ $CIRCLE_BRANCH != "gh-pages" ]] ; then npm test ; fi
 deployment:
   production:
     branch: master
@@ -20,5 +16,5 @@ deployment:
       - git config --global -l
       - git config --global user.email circleci@transferwise.com
       - git config --global user.name CircleCI
-      - yarn deploy:docs
+      - npm run deploy:docs
       - npm run deploy
