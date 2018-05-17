@@ -46,6 +46,9 @@ module.exports = {
   devtool: 'source-map',
   // In production, we only want to load app code
   entry: [paths.appIndexJs],
+  externals: {
+    react: 'react',
+  },
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -57,9 +60,6 @@ module.exports = {
     publicPath,
     library: '@transferwise/components',
     libraryTarget: 'umd',
-    externals: {
-      react: 'react',
-    },
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
