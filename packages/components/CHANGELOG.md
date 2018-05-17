@@ -1,3 +1,8 @@
+# v3.0.0
+## React 16 and not accidentally bundling react 🙄
+
+Moves to react 16 and stops bundling react and prop-types.
+
 # v2.1.4
 ## Fix done class name in FlowNavigation
 - Bottom border was not being removed when done was passed in to FlowNavigation
