@@ -1,3 +1,8 @@
+# v3.1.0
+## Add previous step name to back button for flow navigation
+
+![flow_navigation](https://user-images.githubusercontent.com/5443561/40305152-3f0fd508-5cf1-11e8-9018-f3b7b941845b.gif)
+
 # v3.0.1
 ## CSS cleanup
 - No need for z-index fix (see v2.1.3) anymore, bootstrap was changed

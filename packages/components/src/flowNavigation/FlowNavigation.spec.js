@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import FlowNavigation from './';
 import Avatar from './avatar';
 import Stepper from '../stepper';
+import BackButton from './backButton';
 
 describe('Flow navigation', () => {
   let component;
@@ -26,11 +27,7 @@ describe('Flow navigation', () => {
   }
 
   function backButton() {
-    return component.find('.tw-flow-navigation__back-button');
-  }
-
-  function backButtonHidden() {
-    return backButton().hasClass('tw-flow-navigation__back-button--hidden');
+    return component.find(BackButton);
   }
 
   function closeButtonWithAvatar() {
@@ -83,11 +80,20 @@ describe('Flow navigation', () => {
     expect(props.onClose).toHaveBeenCalled();
   });
 
-  it('shows the back button on mobile when user can go back', () => {
-    component.setProps({ onGoBack: jest.fn() });
-    expect(backButtonHidden()).toBe(false);
-    component.setProps({ onGoBack: null });
-    expect(backButtonHidden()).toBe(true);
+  it('passes steps to back button', () => {
+    component.setProps({ steps: [{ label: '1' }, { label: '2' }] });
+    expect(backButton().prop('steps')).toEqual([{ label: '1' }, { label: '2' }]);
+  });
+
+  it('passes active step to back button', () => {
+    component.setProps({ activeStep: 2 });
+    expect(backButton().prop('activeStep')).toBe(2);
+  });
+
+  it('passes onGoBack callback to back button', () => {
+    const onGoBack = jest.fn();
+    component.setProps({ onGoBack });
+    expect(backButton().prop('onGoBack')).toBe(onGoBack);
   });
 
   it('hides the flag when user can go back', () => {
@@ -95,12 +101,6 @@ describe('Flow navigation', () => {
     expect(flagHidden()).toBe(true);
     component.setProps({ onGoBack: null });
     expect(flagHidden()).toBe(false);
-  });
-
-  it('calls onGoBack callback when back button clicked', () => {
-    expect(props.onGoBack).not.toHaveBeenCalled();
-    backButton().simulate('click');
-    expect(props.onGoBack).toHaveBeenCalled();
   });
 
   it('hides the avatar if done is true', () => {

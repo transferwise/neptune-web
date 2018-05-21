@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -80,7 +80,9 @@
     "webpack-dev-server": "1.16.2",
     "webpack-manifest-plugin": "1.1.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-transition-group": "^2.3.1"
+  },
   "peerDependencies": {
     "bootstrap": "github:transferwise/bootstrap",
     "currency-flags": "^1.2.1",

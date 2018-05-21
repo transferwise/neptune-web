@@ -1,0 +1,87 @@
+@import '~bootstrap/less/variables';
+
+@transition-timing-function: ease-in-out;
+@transition-duration: 0.3s;
+@short-transition-duration: 0.15s;
+
+.tw-flow-navigation__back-button {
+  position: absolute;
+  z-index: 1;
+  opacity: 1;
+  color: @brand-light-blue;
+  font-weight: @font-weight-semi-bold;
+
+  transition: all @short-transition-duration @transition-timing-function;
+
+  path {
+    transition: fill @short-transition-duration @transition-timing-function;
+    fill: @brand-light-blue;
+  }
+
+  &:hover, &:focus {
+    color: @brand-light-blue-minus-10;
+
+    path {
+      fill: @brand-light-blue-minus-10;
+    }
+  }
+
+  .tw-flow-navigation__back-arrow {
+    transform: rotate(0deg);
+
+    transition: transform @transition-duration @transition-timing-function;
+  }
+
+  &--hidden {
+    opacity: 0;
+    cursor: default;
+
+    .tw-flow-navigation__back-arrow {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.tw-flow-navigation__back-text {
+  @slide-length: 8px;
+
+  position: absolute;
+  top: 6px;
+  left: 28px;
+
+  white-space: nowrap;
+
+  &-enter {
+    opacity: 0;
+    transform: translateX(@slide-length);
+
+    &.tw-flow-navigation__back-text--moving-backward {
+      transform: translateX(-@slide-length);
+    }
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transform: translateX(0px);
+    transition: all @transition-duration @transition-timing-function @short-transition-duration;
+
+    &.tw-flow-navigation__back-text--moving-backward {
+      transform: translateX(0px);
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transform: translateX(-@slide-length);
+    transition: all @transition-duration @transition-timing-function;
+
+    &.tw-flow-navigation__back-text--moving-backward {
+      transform: translateX(@slide-length);
+    }
+  }
+}
