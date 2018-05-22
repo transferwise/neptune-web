@@ -36,6 +36,7 @@
     "cross-spawn": "4.0.2",
     "css-loader": "0.26.1",
     "currency-flags": "^1.2.1",
+    "deploy-directory-on-branch-to-gh-pages": "^0.2.4",
     "detect-port": "1.1.0",
     "dotenv": "2.0.0",
     "enzyme": "^3.3.0",
@@ -94,11 +95,11 @@
     "pretest": "npm run check-format && npm run check-release-format",
     "check-release-format": "node_modules/.bin/release-to-github-with-changelog-pre-release-checks",
     "check-format": "prettier-eslint '**/*.js' --list-different",
-    "deploy": "node_modules/.bin/release-to-github-with-changelog && npm publish",
+    "release-to-github": "release-to-github-with-changelog",
     "predeploy": "npm run build",
-    "build:docs": "node scripts/build.js docs",
-    "deploy:docs": "node_modules/.bin/gh-pages -d docs-build",
-    "predeploy:docs": "npm run build:docs"
+    "build-docs": "node scripts/build.js docs",
+    "deploy-docs": "gh-pages -d docs-build",
+    "deploy-docs-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build"
   },
   "eslintConfig": {
     "extends": [

@@ -1,0 +1,114 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+  test:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Test
+          command: npm test
+  release:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - attach_workspace:
+          at: .
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Release to GitHub
+          command: npm run release-to-github
+      - run:
+          name: Publish on npm
+          command: |
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+            npm publish --access=public
+  deploy-docs-to-root:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - attach_workspace:
+          at: .
+      - run:
+          name: Build docs
+          command: npm run build-docs
+      - run:
+          name: Deploy docs
+          command: |
+            git config --global user.email "circleci@transferwise.com"
+            git config --global user.name "CircleCI"
+            npm run deploy-docs
+  deploy-docs-for-branch:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - attach_workspace:
+          at: .
+      - run:
+          name: Build docs
+          command: npm run build-docs
+      - run:
+          name: Deploy docs
+          command: |
+            git config --global user.email "circleci@transferwise.com"
+            git config --global user.name "CircleCI"
+            npm run deploy-docs-for-branch
+
+workflows:
+  version: 2
+  build-test-release-and-build-docs:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: gh-pages
+      - test:
+          requires:
+            - build
+      - deploy-docs-to-root:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
+      - deploy-docs-for-branch:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - master
+      - release:
+          requires:
+            - deploy-docs-to-root
+          filters:
+            branches:
+              only: master
