@@ -47,8 +47,20 @@ module.exports = {
   // In production, we only want to load app code
   entry: [paths.appIndexJs],
   externals: {
-    react: 'react',
-    'prop-types': 'prop-types',
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react',
+      umd: 'react',
+    },
+    'prop-types': {
+      root: 'PropTypes',
+      commonjs2: 'prop-types',
+      commonjs: 'prop-types',
+      amd: 'prop-types',
+      umd: 'prop-types',
+    },
   },
   output: {
     // The build folder.
