@@ -1,3 +1,9 @@
+# v3.1.1
+## Fix externals for root
+
+External React and PropTypes did not work,
+as they are exposed as variables different to the library name on the window.
+
 # v3.1.0
 ## Add previous step name to back button for flow navigation
 
