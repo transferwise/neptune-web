@@ -61,6 +61,13 @@ module.exports = {
       amd: 'prop-types',
       umd: 'prop-types',
     },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+      umd: 'react-dom',
+    },
   },
   output: {
     // The build folder.

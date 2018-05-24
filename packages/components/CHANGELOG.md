@@ -1,3 +1,8 @@
+# v4.0.0
+## Fix bundling of transition group
+
+In v3.1.0, we introduced bundling of react's transition group library, but it pulled in react dom as a dependency. This fixes that.
+
 # v3.1.1
 ## Fix externals for root
 
