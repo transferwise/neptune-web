@@ -1,3 +1,8 @@
+# v4.0.1
+## Set checkbox type to button
+
+Set checkbox type to button to prevent form submissions.
+
 # v4.0.0
 ## Fix bundling of transition group
 

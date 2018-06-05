@@ -11,6 +11,7 @@ const Checkbox = ({ checked, required, disabled, label, onChange }) => {
         {/* eslint-enable jsx-a11y/label-has-for */}
         {label + (required ? '*' : '')}
         <button
+          type="button"
           className={`tw-checkbox-button ${errorClass} ${checked ? 'checked' : ''}`}
           aria-pressed={checked}
           onClick={handleClick}
