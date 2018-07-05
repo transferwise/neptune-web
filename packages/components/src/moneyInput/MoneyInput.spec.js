@@ -145,110 +145,61 @@ describe('Money Input', () => {
   });
 
   describe('when searching', () => {
-    let testCurrencies;
-
-    beforeEach(() => {
-      testCurrencies = [
-        {
-          header: 'group 1',
-        },
-        {
-          value: 'value-xYz',
-          label: 'label-xYz',
-          note: 'note-xYz',
-          currency: 'currency-xYz',
-          searchable: 'searchable-xYz',
-        },
-        {
-          value: 'value-QwE',
-          label: 'label-QwE',
-          note: 'note-QwE',
-          currency: 'currency-QwE',
-          searchable: 'searchable-QwE',
-        },
-        {
-          header: 'group 2',
-        },
-        {
-          value: 'value-[];',
-          label: 'label-[];',
-          note: 'note-[];',
-          currency: 'currency-[];',
-          searchable: 'searchable-[];',
-        },
-        {
-          value: 'value-+=}',
-          label: 'label-+=}',
-          note: 'note-+=}',
-          currency: 'currency-+=}',
-          searchable: 'searchable-+=}',
-        },
-      ];
-    });
-
-    function filterPropertiesBesides(obj, property) {
-      return Object.keys(obj).reduce((filtered, currentKey, index) => {
-        if (currentKey !== property) {
-          obj[currentKey] = `${index}`; // eslint-disable-line no-param-reassign
-        }
-        return obj;
-      }, obj);
-    }
-
-    function notHeader(option) {
-      return !option.header;
-    }
-
-    it('passes the search value to the selector', () => {
+    it('passes search value to currency select', () => {
       expect(currencySelect().prop('searchValue')).toBe('');
-      searchCurrencies('hello?');
-      expect(currencySelect().prop('searchValue')).toBe('hello?');
+      searchCurrencies('EEK');
+      expect(currencySelect().prop('searchValue')).toBe('EEK');
     });
 
-    it('hides elements where the label does not match', () => {
-      const currencies = testCurrencies
-        .filter(notHeader)
-        .map(currency => filterPropertiesBesides(currency, 'label'));
-      component.setProps({
-        currencies,
-      });
-      expect(displayedCurrencies()).toEqual(currencies);
-      searchCurrencies('Xy');
-      expect(displayedCurrencies()).toEqual([currencies[0]]);
-    });
-
-    it('hides elements where the note does not match', () => {
-      const currencies = testCurrencies
-        .filter(notHeader)
-        .map(currency => filterPropertiesBesides(currency, 'note'));
-      component.setProps({
-        currencies,
-      });
-      expect(displayedCurrencies()).toEqual(currencies);
-      searchCurrencies('[]');
-      expect(displayedCurrencies()).toEqual([currencies[2]]);
-    });
-
-    it('hides elements where the searchable does not match', () => {
-      const currencies = testCurrencies
-        .filter(notHeader)
-        .map(currency => filterPropertiesBesides(currency, 'searchable'));
-      component.setProps({
-        currencies,
-      });
-      expect(displayedCurrencies()).toEqual(currencies);
-      searchCurrencies('=}');
-      expect(displayedCurrencies()).toEqual([currencies[3]]);
-    });
-
-    it('displayes header for the group that search results reside in', () => {
-      const currencies = testCurrencies;
+    it('hides headers', () => {
+      const currencies = [
+        { header: 'A currency' },
+        { value: 'GBP', label: 'Pound' },
+        { header: 'Another currency' },
+        { value: 'EUR', label: 'Euro' },
+      ];
       component.setProps({ currencies });
       expect(displayedCurrencies()).toEqual(currencies);
-      searchCurrencies('=}');
+
+      searchCurrencies('O');
       expect(displayedCurrencies()).toEqual([
-        currencies[3], // header
-        currencies[5],
+        { value: 'GBP', label: 'Pound' },
+        { value: 'EUR', label: 'Euro' },
+      ]);
+    });
+
+    it('searches by label', () => {
+      const currencies = [{ value: 'GBP', label: 'Pound' }, { value: 'EUR', label: 'Euro' }];
+      component.setProps({ currencies });
+      expect(displayedCurrencies()).toEqual(currencies);
+
+      searchCurrencies('P');
+      expect(displayedCurrencies()).toEqual([{ value: 'GBP', label: 'Pound' }]);
+    });
+
+    it('searches by note', () => {
+      const currencies = [
+        { value: 'GBP', note: 'Queen money' },
+        { value: 'EUR', note: 'Other money' },
+      ];
+      component.setProps({ currencies });
+      expect(displayedCurrencies()).toEqual(currencies);
+
+      searchCurrencies('Other');
+      expect(displayedCurrencies()).toEqual([{ value: 'EUR', note: 'Other money' }]);
+    });
+
+    it('searches by searchable string', () => {
+      const currencies = [
+        { value: 'GBP', searchable: 'Great Britain, United Kingdom' },
+        { value: 'EUR', searchable: 'Europe' },
+      ];
+      component.setProps({ currencies });
+      expect(displayedCurrencies()).toEqual(currencies);
+
+      searchCurrencies('Britain');
+      expect(displayedCurrencies()).toEqual([
+        { value: 'GBP', searchable: 'Great Britain, United Kingdom' },
       ]);
     });
   });
@@ -380,7 +331,7 @@ describe('Money Input', () => {
 
   it('clears the search value when selecting an option', () => {
     searchCurrencies('eur');
-    expect(currencySelect().prop('options').length).toBe(2);
+    expect(currencySelect().prop('options').length).toBe(1);
     expect(currencySelect().prop('searchValue')).toBe('eur');
     currencySelect().prop('onChange')(props.currencies[1]);
     component.update();

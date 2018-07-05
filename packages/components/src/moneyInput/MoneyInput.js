@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Types from 'prop-types';
 import Select from '../select';
 import './MoneyInput.less';
@@ -14,7 +14,7 @@ const Currency = Types.shape({
   searchable: Types.string,
 });
 
-class MoneyInput extends Component {
+export default class MoneyInput extends Component {
   static propTypes = {
     id: Types.string,
     currencies: Types.arrayOf(Currency).isRequired,
@@ -38,14 +38,15 @@ class MoneyInput extends Component {
     onAmountChange: null,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchQuery: '',
-      formattedAmount: formatCurrency(props.amount, props.locale, props.selectedCurrency.currency),
-      amountFocused: false,
-    };
-  }
+  state = {
+    searchQuery: '',
+    formattedAmount: formatCurrency(
+      this.props.amount,
+      this.props.locale,
+      this.props.selectedCurrency.currency,
+    ),
+    amountFocused: false,
+  };
 
   componentWillReceiveProps(nextProps) {
     if (!this.amountFocused) {
@@ -80,33 +81,7 @@ class MoneyInput extends Component {
   };
 
   getSelectOptions() {
-    const headerMapping = this.props.currencies.reduce(
-      (accumulator, option) => {
-        if (option.header) {
-          accumulator.currentHeader = option.header; // eslint-disable-line no-param-reassign
-        } else if (option.value) {
-          accumulator.mapping[option.value] = // eslint-disable-line no-param-reassign
-            accumulator.currentHeader;
-        }
-        return accumulator;
-      },
-      { currentHeader: null, mapping: {} },
-    ).mapping;
-
-    const foundOptions = this.props.currencies.filter(option =>
-      this.includeCurrencyInSearchResults(option),
-    );
-
-    return this.props.currencies.filter(option => {
-      if (option.header) {
-        return foundOptions.reduce(
-          (headerVisible, foundOption) =>
-            headerVisible || headerMapping[foundOption.value] === option.header,
-          false,
-        );
-      }
-      return foundOptions.indexOf(option) !== -1;
-    });
+    return filterOptionsForQuery(this.props.currencies, this.state.searchQuery);
   }
 
   formatAmount() {
@@ -131,17 +106,6 @@ class MoneyInput extends Component {
     });
   }
 
-  includeCurrencyInSearchResults(currency) {
-    const searchQuery = this.state.searchQuery.toLowerCase();
-    return (
-      !searchQuery ||
-      (currency.label &&
-        (currency.label.toLowerCase().indexOf(searchQuery) !== -1 ||
-          (currency.searchable && currency.searchable.toLowerCase().indexOf(searchQuery) !== -1) ||
-          (currency.note && currency.note.toLowerCase().indexOf(searchQuery) !== -1)))
-    );
-  }
-
   handleSelectChange = value => {
     this.setState({ searchQuery: '' });
     this.props.onCurrencyChange(value);
@@ -151,8 +115,10 @@ class MoneyInput extends Component {
     const { selectedCurrency, onCurrencyChange, size, addon } = this.props;
     const selectOptions = this.getSelectOptions();
     const isFixedCurrency =
-      (selectOptions.length === 1 && selectOptions[0].currency === selectedCurrency.currency) ||
-      !onCurrencyChange;
+      !this.state.searchQuery &&
+      ((selectOptions.length === 1 && selectOptions[0].currency === selectedCurrency.currency) ||
+        !onCurrencyChange);
+
     const disabled = !this.props.onAmountChange;
     return (
       <div className={`tw-money-input input-group input-group-${size}`}>
@@ -181,15 +147,14 @@ class MoneyInput extends Component {
               disabled ? 'tw-money-input--disabled' : ''
             }`}
           >
-            {size === 'lg'
-              ? [
-                <i className="tw-money-input__keyline" key="keyline" />,
+            {size === 'lg' && (
+              <Fragment>
+                <i className="tw-money-input__keyline" />
                 <i
                   className={`currency-flag currency-flag-${selectedCurrency.currency.toLowerCase()} hidden-xs m-r-2`}
-                  key="flag"
-                />,
-                ]
-              : ''}
+                />
+              </Fragment>
+            )}
             <span className={size === 'lg' ? 'm-r-1' : ''}>
               {selectedCurrency.currency.toUpperCase()}
             </span>
@@ -216,4 +181,42 @@ class MoneyInput extends Component {
   }
 }
 
-export default MoneyInput;
+function filterOptionsForQuery(options, query) {
+  if (!query) {
+    return options;
+  }
+
+  return removeDuplicateValueOptions(options).filter(option =>
+    isCurrencyOptionAndFitsQuery(option, query),
+  );
+}
+
+function removeDuplicateValueOptions(options) {
+  const result = [];
+  const resultValues = [];
+
+  options.forEach(option => {
+    if (option.value && resultValues.indexOf(option.value) === -1) {
+      result.push(option);
+      resultValues.push(option.value);
+    }
+  });
+
+  return result;
+}
+
+function isCurrencyOptionAndFitsQuery(option, query) {
+  if (!option.value) {
+    return false;
+  }
+
+  return (
+    contains(option.label, query) ||
+    contains(option.searchable, query) ||
+    contains(option.note, query)
+  );
+}
+
+function contains(property, query) {
+  return property && property.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+}

@@ -1,3 +1,8 @@
+# v4.0.2
+## Allow duplicates in MoneyInput, remove headers when searching
+
+<img src="https://user-images.githubusercontent.com/5443561/42321960-81e08010-8052-11e8-9631-beba369482f8.gif" width="480">
+
 # v4.0.1
 ## Set checkbox type to button
 

@@ -14,11 +14,33 @@ const currencies = [
     searchable: 'Spain, Germany, France, Austria, Estonia',
   },
   {
-    value: 'USD',
-    label: 'USD',
-    note: 'United States Dollar',
-    currency: 'usd',
-    searchable: 'Hong Kong, Saudi Arabia',
+    value: 'GBP',
+    label: 'GBP',
+    note: 'Great British Pound',
+    currency: 'gbp',
+    searchable: 'England, Scotland, Wales',
+  },
+  {
+    header: 'All currencies',
+  },
+  {
+    value: 'AUD',
+    label: 'AUD',
+    note: 'Australia Dollar',
+    currency: 'aud',
+  },
+  {
+    value: 'CAD',
+    label: 'CAD',
+    note: 'Canada Dollar',
+    currency: 'cad',
+  },
+  {
+    value: 'EUR',
+    label: 'EUR',
+    note: 'Euro',
+    currency: 'eur',
+    searchable: 'Spain, Germany, France, Austria, Estonia',
   },
   {
     value: 'GBP',
@@ -28,25 +50,17 @@ const currencies = [
     searchable: 'England, Scotland, Wales',
   },
   {
-    header: 'Some other currencies',
-  },
-  {
     value: 'JPY',
     label: 'JPY',
     note: 'Japanese Yen',
     currency: 'jpy',
   },
   {
-    value: 'CAD',
-    label: 'CAD',
-    note: 'Canada Dollar',
-    currency: 'cad',
-  },
-  {
-    value: 'AUD',
-    label: 'AUD',
-    note: 'Australia Dollar',
-    currency: 'aud',
+    value: 'USD',
+    label: 'USD',
+    note: 'United States Dollar',
+    currency: 'usd',
+    searchable: 'Hong Kong, Saudi Arabia',
   },
 ];
 
