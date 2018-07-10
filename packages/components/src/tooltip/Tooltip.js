@@ -54,6 +54,13 @@ class Tooltip extends Component {
     this.setState(() => ({ show: false }));
   }
 
+  ensureHidden = event => {
+    if (!this.state.show) {
+      event.stopPropagation();
+      this.hide();
+    }
+  };
+
   render() {
     const { position, children, label, offset } = this.props;
     const tooltipStyle =
@@ -62,7 +69,6 @@ class Tooltip extends Component {
         : {};
     return (
       <span
-        tabIndex="0"
         onMouseOver={() => this.show()}
         onFocus={() => this.show()}
         onMouseOut={() => this.hide()}
@@ -74,12 +80,8 @@ class Tooltip extends Component {
         className="tooltip-container"
       >
         <div
-          onMouseOver={event => {
-            if (!this.state.show) {
-              event.stopPropagation();
-              this.hide();
-            }
-          }}
+          onMouseOver={this.ensureHidden}
+          onFocus={this.ensureHidden}
           className={`tooltip fade ${position} ${this.state.show ? 'in' : ''}`}
           role="tooltip"
           style={tooltipStyle}

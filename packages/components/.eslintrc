@@ -4,7 +4,12 @@
   "rules": {
     "react/jsx-filename-extension": 0,
     "no-mixed-operators": 0,
-    "no-use-before-define": 0
+    "no-use-before-define": 0,
+    "jsx-a11y/label-has-for": [2, {
+      "required": {
+        "some": ["nesting", "id"]
+      }
+    }]
   },
   "env": {
     "browser": true,

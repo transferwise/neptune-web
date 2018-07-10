@@ -81,7 +81,6 @@ export default class MoneyInputDocs extends Component {
       amount: 1000,
       locale: 'en-GB',
       fixedCurrency: false,
-      disabled: false,
       searchPlaceholder: 'Type a currency or country',
       form: {
         locale: 'en-GB',
@@ -230,7 +229,7 @@ export default class MoneyInputDocs extends Component {
 
               <div className="m-t-3" />
               <Checkbox
-                label={'Addon'}
+                label="Addon"
                 onChange={() => this.setState({ addonEnabled: !this.state.addonEnabled })}
                 required={false}
                 disabled={false}

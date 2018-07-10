@@ -45,7 +45,6 @@ export default class MoneyInput extends Component {
       this.props.locale,
       this.props.selectedCurrency.currency,
     ),
-    amountFocused: false,
   };
 
   componentWillReceiveProps(nextProps) {

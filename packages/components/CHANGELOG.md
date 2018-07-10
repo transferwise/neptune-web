@@ -1,3 +1,6 @@
+# v4.0.3
+## Update Airbnb ESLint config and related dependencies
+
 # v4.0.2
 ## Allow duplicates in MoneyInput, remove headers when searching
 

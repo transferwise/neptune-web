@@ -15,10 +15,14 @@ export default class Header extends Component {
         <section className="section row">
           <div className="col-md-6">
             <h1>
-              Components 🎉 <small>v{npmPackage.version}</small>
+              Components{' '}
+              <span role="img" aria-label="none">
+                🎉
+              </span>{' '}
+              <small>v{npmPackage.version}</small>
             </h1>
             <p>TransferWise styleguide components in react.</p>
-            <pre className="tw-docs-code">{'npm install --save @transferwise/components'}</pre>
+            <pre className="tw-docs-code">npm install --save @transferwise/components</pre>
             <p>
               <strong>TODO: </strong>
               We need to add missing components and missing props to some components.

@@ -18,19 +18,15 @@ const BackArrow = () => (
 );
 
 class BackButton extends Component {
+  state = {
+    activeStep: this.props.activeStep,
+    isMovingBackward: false,
+  };
+
   static getDerivedStateFromProps = (nextProps, prevState) => ({
     isMovingBackward: nextProps.activeStep < prevState.activeStep,
     activeStep: nextProps.activeStep,
   });
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeStep: props.activeStep,
-      isMovingBackward: false,
-    };
-  }
 
   render() {
     const { steps, activeStep, onGoBack } = this.props;

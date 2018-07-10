@@ -229,6 +229,7 @@ export default class Select extends Component {
     const { searchValue, searchPlaceholder } = this.props;
     return (
       <li className="tw-dropdown-item--divider">
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a className="tw-select-filter-link p-a-0">
           <div className={this.style('input-group')}>
             <span className={this.style('input-group-addon')}>
@@ -254,10 +255,13 @@ export default class Select extends Component {
   renderPlaceHolderOption() {
     const { placeholder } = this.props;
     return (
-      <li // eslint-disable-line jsx-a11y/no-static-element-interactions
+      /* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */
+      <li
         onClick={this.createSelectHandlerForOption({ placeholder })}
+        onKeyPress={this.createSelectHandlerForOption({ placeholder })}
         className="tw-dropdown-item--clickable tw-dropdown-item--divider"
       >
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a>{placeholder}</a>
       </li>
     );
@@ -270,9 +274,10 @@ export default class Select extends Component {
 
     if (option.header) {
       return (
-        <li // eslint-disable-line jsx-a11y/no-static-element-interactions
+        <li // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
           key={index}
           onClick={stopPropagation}
+          onKeyPress={stopPropagation}
           className={this.style('dropdown-header')}
         >
           {option.header}
@@ -285,13 +290,15 @@ export default class Select extends Component {
       this.state.keyboardFocusedOptionIndex ===
         this.getIndexWithoutHeadersForIndexWithHeaders(index);
     return (
-      <li // eslint-disable-line jsx-a11y/no-static-element-interactions
+      <li // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
         key={index}
         onClick={this.createSelectHandlerForOption(option)}
+        onKeyPress={this.createSelectHandlerForOption(option)}
         className={`tw-dropdown-item tw-dropdown-item--clickable ${
           isActive ? this.style('active') : ''
         }`}
       >
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a>
           <Option {...option} classNames={this.props.classNames} />
         </a>

@@ -93,7 +93,7 @@ export default class StepperDocs extends Component {
     const index = step.index === undefined ? step.value : step.index;
     const highestVisitedStep = Math.max(index, this.state.highestVisitedStep);
 
-    const selectedPreset = this.state.selectedPreset;
+    const { selectedPreset } = this.state;
     selectedPreset.steps = this.getBackAndForthSteps(highestVisitedStep);
 
     this.setState(() => ({ selectedPreset, highestVisitedStep, activeStep: index }));
