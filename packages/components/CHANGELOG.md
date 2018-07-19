@@ -1,3 +1,6 @@
+# v4.0.4
+## Set correct token for npm publish
+
 # v4.0.3
 ## Update Airbnb ESLint config and related dependencies
 

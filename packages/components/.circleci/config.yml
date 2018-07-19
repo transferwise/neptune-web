@@ -1,56 +1,31 @@
+defaults: &defaults
+  working_directory: ~/components
+  docker:
+    - image: circleci/node:10.6-browsers
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node:latest
+    <<: *defaults
     steps:
       - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
-          command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          command: npm ci
+      - persist_to_workspace:
+          root: .
           paths:
-            - node_modules
+            - '*'
   test:
-    docker:
-      - image: circleci/node:latest
+    <<: *defaults
     steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: Test
-          command: npm test
-  release:
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - attach_workspace:
           at: .
       - run:
-          name: Build
-          command: npm run build
-      - run:
-          name: Release to GitHub
-          command: npm run release-to-github
-      - run:
-          name: Publish on npm
-          command: |
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            npm publish --access=public
+          name: Test
+          command: npm test
   deploy-docs-to-root:
-    docker:
-      - image: circleci/node:latest
+    <<: *defaults
     steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - attach_workspace:
           at: .
       - run:
@@ -63,12 +38,8 @@ jobs:
             git config --global user.name "CircleCI"
             npm run deploy-docs
   deploy-docs-for-branch:
-    docker:
-      - image: circleci/node:latest
+    <<: *defaults
     steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - attach_workspace:
           at: .
       - run:
@@ -80,6 +51,26 @@ jobs:
             git config --global user.email "circleci@transferwise.com"
             git config --global user.name "CircleCI"
             npm run deploy-docs-for-branch
+  release:
+    <<: *defaults
+    steps:
+      - run:
+          name: Setup npm token
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_PUBLISH" >> ~/.npmrc
+      - attach_workspace:
+          at: .
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Release to GitHub
+          command: |
+            mkdir ~/.ssh
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            npm run release-to-github
+      - run:
+          name: Publish on npm
+          command: npm publish --access=public
 
 workflows:
   version: 2
@@ -107,6 +98,7 @@ workflows:
                 - gh-pages
                 - master
       - release:
+          context: frontend-deploy-library
           requires:
             - deploy-docs-to-root
           filters:
