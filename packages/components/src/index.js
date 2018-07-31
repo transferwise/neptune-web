@@ -1,10 +1,9 @@
-import Checkbox from './checkbox';
-import Loader from './loader';
-import Radio from './radio';
-import Select from './select';
-import MoneyInput from './moneyInput';
-import Tooltip from './tooltip';
-import Stepper from './stepper';
-import FlowNavigation from './flowNavigation';
-
-export { Checkbox, Loader, Radio, Select, MoneyInput, Stepper, Tooltip, FlowNavigation };
+export { default as Checkbox } from './checkbox';
+export { default as Loader } from './loader';
+export { default as Radio } from './radio';
+export { default as Select } from './select';
+export { default as MoneyInput } from './moneyInput';
+export { default as Tooltip } from './tooltip';
+export { default as Stepper } from './stepper';
+export { default as FlowNavigation } from './flowNavigation';
+export { default as Popover } from './popover';

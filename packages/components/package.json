@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "4.0.4",
+  "version": "4.1.0",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -81,6 +81,7 @@
     "webpack-manifest-plugin": "1.1.0"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "react-transition-group": "^2.3.1"
   },
   "peerDependencies": {

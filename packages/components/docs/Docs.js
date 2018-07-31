@@ -6,6 +6,7 @@ import StepperDocs from './StepperDocs';
 import SelectDocs from './SelectDocs';
 import MoneyInputDocs from './MoneyInputDocs';
 import TooltipDocs from './TooltipDocs';
+import PopoverDocs from './PopoverDocs';
 import CheckboxDocs from './CheckboxDocs';
 import RadioDocs from './RadioDocs';
 import LoaderDocs from './LoaderDocs';
@@ -20,6 +21,7 @@ const Docs = () => (
     <SelectDocs />
     <MoneyInputDocs />
     <TooltipDocs />
+    <PopoverDocs />
     <CheckboxDocs />
     <RadioDocs />
     <LoaderDocs />
