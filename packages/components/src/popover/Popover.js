@@ -25,6 +25,10 @@ export default class Popover extends Component {
     isOpen: false,
   };
 
+  componentWillUnmount() {
+    document.removeEventListener('click', this.closePopoverOnOutsideClick, true);
+  }
+
   closePopoverOnOutsideClick = event => {
     const popoverClicked = this.popoverElement.contains(event.target);
 

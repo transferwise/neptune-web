@@ -80,6 +80,21 @@ describe('Popover', () => {
     expect(listener).not.toBeCalled();
   });
 
+  it('removes document listener when unmounted', () => {
+    component = mount(
+      <Popover content="Some content.">
+        <button id="trigger">Trigger</button>
+      </Popover>,
+    );
+    jest.spyOn(component.instance(), 'closePopoverOnOutsideClick');
+    const listener = component.instance().closePopoverOnOutsideClick;
+
+    clickPopoverTrigger();
+    component.unmount();
+    clickOutsideOfPopover();
+    expect(listener).not.toBeCalled();
+  });
+
   it('gets placement for popover element and preferred placement', () => {
     component = mount(
       <Popover content="Some content.">
