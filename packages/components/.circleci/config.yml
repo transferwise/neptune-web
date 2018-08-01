@@ -108,7 +108,7 @@ workflows:
                 - gh-pages
                 - master
       - publish:
-          context: frontend-deploy-library
+          context: frontend-publish
           requires:
             - deploy-docs-to-root
           filters:
