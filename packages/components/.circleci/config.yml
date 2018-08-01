@@ -51,7 +51,7 @@ jobs:
             git config --global user.email "circleci@transferwise.com"
             git config --global user.name "CircleCI"
             npm run deploy-docs-for-branch
-  release:
+  publish:
     <<: *defaults
     steps:
       - run:
@@ -63,14 +63,19 @@ jobs:
           name: Build
           command: npm run build
       - run:
+          name: Publish on npm
+          command: npm publish --access=public
+  release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
           name: Release to GitHub
           command: |
             mkdir ~/.ssh
             ssh-keyscan github.com >> ~/.ssh/known_hosts
             npm run release-to-github
-      - run:
-          name: Publish on npm
-          command: npm publish --access=public
 
 workflows:
   version: 2
@@ -84,6 +89,7 @@ workflows:
           requires:
             - build
       - deploy-docs-to-root:
+          context: frontend-publish
           requires:
             - test
           filters:
@@ -97,10 +103,17 @@ workflows:
               ignore:
                 - gh-pages
                 - master
-      - release:
+      - publish:
           context: frontend-deploy-library
           requires:
             - deploy-docs-to-root
+          filters:
+            branches:
+              only: master
+      - release:
+          context: frontend-publish
+          requires:
+            - publish
           filters:
             branches:
               only: master
