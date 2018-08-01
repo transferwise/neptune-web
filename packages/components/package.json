@@ -102,7 +102,7 @@
     "release-to-github": "release-to-github-with-changelog",
     "predeploy": "npm run build",
     "build-docs": "node scripts/build.js docs",
-    "deploy-docs": "gh-pages -d docs-build",
+    "deploy-docs": "gh-pages -a -d docs-build",
     "deploy-docs-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build"
   },
   "eslintConfig": {
