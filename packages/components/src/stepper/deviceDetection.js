@@ -22,7 +22,6 @@ function userAgentSuggestsTouchDevice() {
 }
 // Important: this is not fool-proof! It gives false positives and negatives, and will be outdated.
 // Only use this for small vanity changes where it still works either way.
-// eslint-disable-next-line
 export function isTouchDevice() {
   return supportsTouchEvents() || userAgentSuggestsTouchDevice();
 }
