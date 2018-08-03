@@ -11,7 +11,7 @@ export default class Popover extends Component {
 
   static propTypes = {
     children: Types.oneOfType([Types.element, Types.string]).isRequired,
-    title: Types.string,
+    title: Types.oneOfType([Types.element, Types.string]),
     content: Types.oneOfType([Types.element, Types.string]).isRequired,
     preferredPlacement: Types.oneOf(PlacementValues),
   };

@@ -8,7 +8,7 @@ const defaultTitle = 'I’m a string';
 export default class PopoverDocs extends Component {
   state = {
     title: defaultTitle,
-    content: 'I could be a React element too.',
+    content: 'We could be React elements too.',
     preferredPlacementKey: undefined,
     rightTrigger: false,
   };

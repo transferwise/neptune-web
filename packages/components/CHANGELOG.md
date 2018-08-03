@@ -1,3 +1,8 @@
+# v4.1.1
+## Make popover title accept React elements as type
+
+This is necessary when we pass in translated strings using `retranslate` `Message` component.
+
 # v4.1.0
 ## Add popover component
 
