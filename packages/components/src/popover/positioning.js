@@ -7,7 +7,7 @@ export function getPlacement(popover, preferredPlacement) {
     return '';
   }
 
-  const { parentNode: trigger, offsetWidth: popoverWidth } = popover;
+  const { previousElementSibling: trigger, offsetWidth: popoverWidth } = popover;
   const triggerLeft = trigger.getBoundingClientRect().left;
   const { offsetWidth: triggerWidth } = trigger;
   const documentRight = document.documentElement.clientWidth;
@@ -48,7 +48,11 @@ export function getPopoverPosition(popover, placement) {
     return {};
   }
 
-  const { parentNode: trigger, offsetWidth: popoverWidth, offsetHeight: popoverHeight } = popover;
+  const {
+    previousElementSibling: trigger,
+    offsetWidth: popoverWidth,
+    offsetHeight: popoverHeight,
+  } = popover;
   const {
     offsetTop: triggerTop,
     offsetLeft: triggerLeft,

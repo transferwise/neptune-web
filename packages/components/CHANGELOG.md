@@ -1,3 +1,12 @@
+# v4.1.2
+## Change internal popover markup
+
+Previously, popover created a container element for the trigger passed as a child and the popover itself, and overrode styles to make the popover itself not be styled like the container that acted as a trigger.
+
+Now, popover decorates the trigger passed as a child with accessibility props and an event handler, removing the need for a wrapper element and custom styles.
+
+This also enables focus style support out of the box.
+
 # v4.1.1
 ## Make popover title accept React elements as type
 

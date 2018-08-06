@@ -23,6 +23,23 @@ describe('Popover', () => {
     expect(trigger().exists()).toBe(true);
   });
 
+  it('decorates passed trigger with accessibility props', () => {
+    expect(trigger().prop('data-toggle')).toBe('popover');
+    expect(trigger().prop('role')).toBe('button');
+    expect(trigger().prop('tabIndex')).toBe(0);
+  });
+
+  it('wraps passed child in a span with accessibility props when child is a string', () => {
+    component = shallow(<Popover content="Some content.">Just a simple string</Popover>);
+
+    const createdTrigger = component.find('span');
+
+    expect(createdTrigger.text()).toBe('Just a simple string');
+    expect(createdTrigger.prop('data-toggle')).toBe('popover');
+    expect(createdTrigger.prop('role')).toBe('button');
+    expect(createdTrigger.prop('tabIndex')).toBe(0);
+  });
+
   it('has content', () => {
     component.setProps({ content: 'A content.' });
     expect(content().text()).toBe('A content.');
@@ -150,12 +167,8 @@ describe('Popover', () => {
     return component.find('#trigger');
   }
 
-  function container() {
-    return component.find('.tw-popover__container');
-  }
-
   function clickPopoverTrigger() {
-    container().simulate('click');
+    trigger().simulate('click');
   }
 
   function clickOutsideOfPopover() {

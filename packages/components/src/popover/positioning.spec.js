@@ -171,7 +171,7 @@ class Popover {
   }
 
   trigger = ({ top, left, width, height }) => {
-    this.parentNode = {
+    this.previousElementSibling = {
       offsetTop: top,
       offsetLeft: left,
       getBoundingClientRect: () => ({ left }),

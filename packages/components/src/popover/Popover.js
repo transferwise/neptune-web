@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment, cloneElement } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
 import Placement, { PlacementValues } from './Placement';
 import { getPlacement, getPopoverPosition } from './positioning';
-import './Popover.less';
 
 export default class Popover extends Component {
   static Placement = Placement;
@@ -47,27 +46,30 @@ export default class Popover extends Component {
     document.removeEventListener('click', this.closePopoverOnOutsideClick, true);
   };
 
+  createTrigger = () => {
+    const { children: child } = this.props;
+
+    return cloneElement(typeof child === 'string' ? <span>{child}</span> : child, {
+      'data-toggle': 'popover',
+      role: 'button',
+      tabIndex: 0,
+      onClick: this.open,
+    });
+  };
+
   render() {
-    const { children, title, content, preferredPlacement } = this.props;
+    const { title, content, preferredPlacement } = this.props;
     const { isOpen } = this.state;
 
+    const trigger = this.createTrigger();
+
     const placement = getPlacement(this.popoverElement, preferredPlacement);
-    const popoverClassName = classNames(
-      'tw-popover popover animate in',
-      { 'scale-down': !isOpen },
-      placement,
-    );
+    const popoverClassName = classNames('popover animate in', { 'scale-down': !isOpen }, placement);
     const { top, left } = getPopoverPosition(this.popoverElement, placement);
 
     return (
-      <span
-        onClick={this.open}
-        onKeyPress={this.open}
-        role="button"
-        className="tw-popover__container"
-        tabIndex={0}
-      >
-        {children}
+      <Fragment>
+        {trigger}
         <div
           className={popoverClassName}
           ref={element => {
@@ -78,7 +80,7 @@ export default class Popover extends Component {
           {title && <h3 className="popover-title">{title}</h3>}
           <p className="popover-content m-b-0">{content}</p>
         </div>
-      </span>
+      </Fragment>
     );
   }
 }
