@@ -1,3 +1,6 @@
+# v4.2.0
+## Allow adding custom action to the end of MoneyInput options
+
 # v4.1.2
 ## Change internal popover markup
 

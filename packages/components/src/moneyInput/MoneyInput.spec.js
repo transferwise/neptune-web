@@ -121,6 +121,7 @@ describe('Money Input', () => {
 
   it('calls onCurrencyChange when the user selects a different currency', () => {
     expect(props.onCurrencyChange).not.toHaveBeenCalled();
+
     currencySelect().prop('onChange')(props.currencies[2]);
     expect(props.onCurrencyChange).toHaveBeenCalledTimes(1);
     expect(props.onCurrencyChange).toHaveBeenLastCalledWith(props.currencies[2]);
@@ -138,6 +139,7 @@ describe('Money Input', () => {
 
   it('configures the select visually correctly', () => {
     const options = currencySelect().props();
+
     expect(options.required).toBe(true);
     expect(options.dropdownRight).toBe('xs');
     expect(options.dropdownWidth).toBe('lg');
@@ -147,6 +149,7 @@ describe('Money Input', () => {
   describe('when searching', () => {
     it('passes search value to currency select', () => {
       expect(currencySelect().prop('searchValue')).toBe('');
+
       searchCurrencies('EEK');
       expect(currencySelect().prop('searchValue')).toBe('EEK');
     });
@@ -202,6 +205,32 @@ describe('Money Input', () => {
         { value: 'GBP', searchable: 'Great Britain, United Kingdom' },
       ]);
     });
+
+    it('shows custom action option on every search when onCustomAction is passed to MoneyInput', () => {
+      const currencies = [
+        { value: 'GBP', searchable: 'Great Britain, United Kingdom' },
+        { value: 'EUR', searchable: 'Europe' },
+      ];
+      const CUSTOM_ACTION = 'CUSTOM_ACTION';
+      component.setProps({
+        currencies,
+        onCustomAction: jest.fn(),
+        customActionLabel: 'I am a label',
+      });
+      expect(displayedCurrencies()).toEqual([
+        ...currencies,
+        { value: CUSTOM_ACTION, label: 'I am a label' },
+      ]);
+
+      searchCurrencies('Britain');
+      expect(displayedCurrencies()).toEqual([
+        { value: 'GBP', searchable: 'Great Britain, United Kingdom' },
+        { value: CUSTOM_ACTION, label: 'I am a label' },
+      ]);
+
+      searchCurrencies('Random search string');
+      expect(displayedCurrencies()).toEqual([{ value: CUSTOM_ACTION, label: 'I am a label' }]);
+    });
   });
 
   it('formats the amount passed in', () => {
@@ -220,6 +249,7 @@ describe('Money Input', () => {
     numberFormatting.parseCurrency = jest.fn(parseFloat);
     enterAmount('123.45');
     expect(amountInput().prop('value')).toBe('123.45');
+
     blurAmount();
     expect(amountInput().prop('value')).toBe('formatted 123.45, en-US, eur');
   });
@@ -236,6 +266,7 @@ describe('Money Input', () => {
       return 500.1;
     });
     expect(onAmountChange).not.toHaveBeenCalled();
+
     enterAmount('500.1234');
     expect(onAmountChange).toHaveBeenCalledTimes(1);
     expect(onAmountChange).toHaveBeenLastCalledWith(500.1);
@@ -253,6 +284,7 @@ describe('Money Input', () => {
   it('passes the id given to the input element', () => {
     expect(amountInput().prop('id')).toBeNull();
     component.setProps({ id: 'some-id' });
+
     expect(amountInput().prop('id')).toBe('some-id');
   });
 
@@ -260,6 +292,7 @@ describe('Money Input', () => {
     const addonElement = <span id="test-addon" />;
     component.setProps({ addon: addonElement });
     expect(addon().length).toEqual(1);
+
     const passedInAddon = () =>
       addon()
         .children()
@@ -270,6 +303,7 @@ describe('Money Input', () => {
 
   it('shows fixed currency view if only one currency available and selected', () => {
     expect(fixedCurrencyDisplay().length).toBe(0);
+
     const EEK = { value: 'EEK', currency: 'EEK' };
     component.setProps({
       currencies: [EEK],
@@ -306,7 +340,7 @@ describe('Money Input', () => {
     expect(component.find('.currency-flag').length).toBe(1);
   });
 
-  it('amount input will be disabled when there is no onAmpuntChange prop', () => {
+  it('amount input will be disabled when there is no onAmountChange prop', () => {
     const EEK = { value: 'EEK', currency: 'EEK' };
     component.setProps({
       currencies: [EEK],
@@ -317,6 +351,7 @@ describe('Money Input', () => {
     expect(
       component.find('.tw-money-input__fixed-currency').hasClass('tw-money-input--disabled'),
     ).toBe(false);
+
     component.setProps({ onAmountChange: undefined });
     expect(amountInput().prop('disabled')).toBe(true);
     expect(
@@ -333,9 +368,43 @@ describe('Money Input', () => {
     searchCurrencies('eur');
     expect(currencySelect().prop('options').length).toBe(1);
     expect(currencySelect().prop('searchValue')).toBe('eur');
+
     currencySelect().prop('onChange')(props.currencies[1]);
     component.update();
     expect(currencySelect().prop('options').length).toBe(7);
     expect(currencySelect().prop('searchValue')).toBe('');
+  });
+
+  it('shows custom action last when onCustomAction prop is passed to MoneyInput', () => {
+    const currencies = [
+      { value: 'GBP', searchable: 'Great Britain, United Kingdom' },
+      { value: 'EUR', searchable: 'Europe' },
+    ];
+    component.setProps({
+      currencies,
+      onCustomAction: jest.fn(),
+      customActionLabel: 'Label boy',
+    });
+
+    expect(displayedCurrencies()).toEqual([
+      ...currencies,
+      { value: 'CUSTOM_ACTION', label: 'Label boy' },
+    ]);
+
+    expect(displayedCurrencies()[displayedCurrencies().length - 1]).toEqual({
+      value: 'CUSTOM_ACTION',
+      label: 'Label boy',
+    });
+  });
+
+  it('calls onCustomAction callback when custom action is selected', () => {
+    const onCustomAction = jest.fn();
+    component.setProps({ onCustomAction });
+    expect(onCustomAction).not.toHaveBeenCalled();
+    expect(props.onCurrencyChange).not.toHaveBeenCalled();
+
+    currencySelect().prop('onChange')({ value: 'CUSTOM_ACTION', label: '' });
+    expect(onCustomAction).toHaveBeenCalledTimes(1);
+    expect(props.onCurrencyChange).toHaveBeenCalledTimes(0);
   });
 });

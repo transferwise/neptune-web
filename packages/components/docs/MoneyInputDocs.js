@@ -88,6 +88,7 @@ export default class MoneyInputDocs extends Component {
       },
       addonEnabled: false,
       amountChangeEnabled: true,
+      customActionEnabled: false,
     };
   }
 
@@ -136,6 +137,10 @@ export default class MoneyInputDocs extends Component {
                   }
                   addon={this.state.addonEnabled ? <i className="icon icon-unlock" /> : undefined}
                   searchPlaceholder={this.state.searchPlaceholder}
+                  onCustomAction={
+                    this.state.customActionEnabled ? () => alert('Custom action') : null // eslint-disable-line no-alert
+                  }
+                  customActionLabel={this.state.customActionEnabled ? 'Custom action label' : null}
                 />
               </div>
             </div>
@@ -155,6 +160,8 @@ export default class MoneyInputDocs extends Component {
   selectedCurrency={${
     this.state.selectedCurrency ? JSON.stringify(this.state.selectedCurrency, null, '  ') : null
   }}
+  onCustomAction={${this.state.customActionEnabled ? '[a function]' : null}}
+  customActionLabel={${this.state.customActionEnabled ? '"Custom action label"' : null}}
   currencies={${JSON.stringify(this.getCurrencies(), null, '  ')}}
   />
 `}
@@ -230,7 +237,9 @@ export default class MoneyInputDocs extends Component {
               <div className="m-t-3" />
               <Checkbox
                 label="Addon"
-                onChange={() => this.setState({ addonEnabled: !this.state.addonEnabled })}
+                onChange={() =>
+                  this.setState(({ addonEnabled }) => ({ addonEnabled: !addonEnabled }))
+                }
                 required={false}
                 disabled={false}
                 checked={this.state.addonEnabled}
@@ -250,7 +259,20 @@ export default class MoneyInputDocs extends Component {
                 label="Disabled"
                 checked={!this.state.amountChangeEnabled}
                 onChange={() =>
-                  this.setState({ amountChangeEnabled: !this.state.amountChangeEnabled })
+                  this.setState(({ amountChangeEnabled }) => ({
+                    amountChangeEnabled: !amountChangeEnabled,
+                  }))
+                }
+              />
+
+              <div className="m-t-3" />
+              <Checkbox
+                label="Custom action"
+                checked={this.state.customActionEnabled}
+                onChange={() =>
+                  this.setState(({ customActionEnabled }) => ({
+                    customActionEnabled: !customActionEnabled,
+                  }))
                 }
               />
 

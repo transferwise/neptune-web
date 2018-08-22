@@ -13,6 +13,7 @@ const Currency = Types.shape({
   note: Types.string,
   searchable: Types.string,
 });
+const CUSTOM_ACTION = 'CUSTOM_ACTION';
 
 export default class MoneyInput extends Component {
   static propTypes = {
@@ -26,6 +27,8 @@ export default class MoneyInput extends Component {
     locale: Types.string,
     addon: Types.node,
     searchPlaceholder: Types.string,
+    customActionLabel: Types.string,
+    onCustomAction: Types.func,
   };
 
   static defaultProps = {
@@ -36,6 +39,8 @@ export default class MoneyInput extends Component {
     searchPlaceholder: '',
     onCurrencyChange: null,
     onAmountChange: null,
+    customActionLabel: '',
+    onCustomAction: null,
   };
 
   state = {
@@ -80,7 +85,13 @@ export default class MoneyInput extends Component {
   };
 
   getSelectOptions() {
-    return filterOptionsForQuery(this.props.currencies, this.state.searchQuery);
+    const selectOptions = [...filterOptionsForQuery(this.props.currencies, this.state.searchQuery)];
+
+    if (this.props.onCustomAction) {
+      selectOptions.push({ value: CUSTOM_ACTION, label: this.props.customActionLabel });
+    }
+
+    return selectOptions;
   }
 
   formatAmount() {
@@ -107,7 +118,12 @@ export default class MoneyInput extends Component {
 
   handleSelectChange = value => {
     this.setState({ searchQuery: '' });
-    this.props.onCurrencyChange(value);
+
+    if (this.props.onCustomAction && value.value === CUSTOM_ACTION) {
+      this.props.onCustomAction();
+    } else {
+      this.props.onCurrencyChange(value);
+    }
   };
 
   render() {
