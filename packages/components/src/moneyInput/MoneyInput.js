@@ -27,7 +27,7 @@ export default class MoneyInput extends Component {
     locale: Types.string,
     addon: Types.node,
     searchPlaceholder: Types.string,
-    customActionLabel: Types.string,
+    customActionLabel: Types.node,
     onCustomAction: Types.func,
   };
 

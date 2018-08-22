@@ -1,3 +1,8 @@
+# v4.2.1
+## Allow adding custom action label and Select elemnt props as node
+
+This is necessary for translations
+
 # v4.2.0
 ## Allow adding custom action to the end of MoneyInput options
 
