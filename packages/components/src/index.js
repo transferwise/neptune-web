@@ -7,3 +7,4 @@ export { default as Tooltip } from './tooltip';
 export { default as Stepper } from './stepper';
 export { default as FlowNavigation } from './flowNavigation';
 export { default as Popover } from './popover';
+export { default as Money } from './money';

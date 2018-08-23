@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './Docs.less';
 
 import Header from './Header';
@@ -11,9 +11,10 @@ import CheckboxDocs from './CheckboxDocs';
 import RadioDocs from './RadioDocs';
 import LoaderDocs from './LoaderDocs';
 import FlowNavigationDocs from './FlowNavigationDocs';
+import MoneyDocs from './MoneyDocs';
 
 const Docs = () => (
-  <div>
+  <Fragment>
     <Header />
 
     <StepperDocs />
@@ -25,7 +26,8 @@ const Docs = () => (
     <CheckboxDocs />
     <RadioDocs />
     <LoaderDocs />
-  </div>
+    <MoneyDocs />
+  </Fragment>
 );
 
 export default Docs;

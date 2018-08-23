@@ -1,3 +1,10 @@
+# v4.3.0
+## Add money component
+
+![image](https://user-images.githubusercontent.com/5443561/44519282-40310780-a6d5-11e8-9ee6-07b85dc810e5.png)
+
+Docs can be seen [here](https://transferwise.github.io/components#money).
+
 # v4.2.1
 ## Allow adding custom action label and Select elemnt props as node
 
