@@ -1,3 +1,8 @@
+# v4.3.1
+## Change Option's label, note and secondary proptypes to node
+
+This is necessary for translations
+
 # v4.3.0
 ## Add money component
 

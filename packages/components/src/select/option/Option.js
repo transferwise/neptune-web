@@ -17,10 +17,10 @@ const Option = ({ currency, label, note, secondary, icon, classNames }) => {
 };
 
 Option.propTypes = {
-  label: Types.string.isRequired,
+  label: Types.node.isRequired,
   currency: Types.string,
-  note: Types.string,
-  secondary: Types.string,
+  note: Types.node,
+  secondary: Types.node,
   icon: Types.string,
   classNames: Types.objectOf(Types.string),
 };
