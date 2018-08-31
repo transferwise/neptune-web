@@ -3,14 +3,17 @@ import { shallow, mount } from 'enzyme';
 
 import Popover from '.';
 import { getPlacement, getPopoverPosition } from './positioning';
+import { wrapInDOMElementIfNecessary } from './DOMWrapping';
 
 jest.mock('./positioning');
+jest.mock('./DOMWrapping');
 
 describe('Popover', () => {
   let component;
   beforeEach(() => {
     getPlacement.mockReturnValue('');
     getPopoverPosition.mockReturnValue({});
+    wrapInDOMElementIfNecessary.mockImplementation(node => node);
 
     component = shallow(
       <Popover content="Some content.">
@@ -29,15 +32,12 @@ describe('Popover', () => {
     expect(trigger().prop('tabIndex')).toBe(0);
   });
 
-  it('wraps passed child in a span with accessibility props when child is a string', () => {
-    component = shallow(<Popover content="Some content.">Just a simple string</Popover>);
+  it('wraps passed child in dom element if necessary', () => {
+    wrapInDOMElementIfNecessary.mockImplementation(node => <span className="wrapped">{node}</span>);
 
-    const createdTrigger = component.find('span');
+    component = shallow(<Popover content="Some content.">Just a string</Popover>);
 
-    expect(createdTrigger.text()).toBe('Just a simple string');
-    expect(createdTrigger.prop('data-toggle')).toBe('popover');
-    expect(createdTrigger.prop('role')).toBe('button');
-    expect(createdTrigger.prop('tabIndex')).toBe(0);
+    expect(trigger().matchesElement(<span className="wrapped">Just a string</span>)).toBe(true);
   });
 
   it('has content', () => {
@@ -164,7 +164,7 @@ describe('Popover', () => {
   }
 
   function trigger() {
-    return component.find('#trigger');
+    return component.childAt(0);
   }
 
   function clickPopoverTrigger() {

@@ -1,3 +1,8 @@
+# v4.3.2
+## Wrap popover trigger in span unless it is a DOM element itself
+
+This allows passing `Message` and `Fragment` as the trigger in addition to string.
+
 # v4.3.1
 ## Change Option's label, note and secondary proptypes to node
 

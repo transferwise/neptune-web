@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import Placement, { PlacementValues } from './Placement';
 import { getPlacement, getPopoverPosition } from './positioning';
+import { wrapInDOMElementIfNecessary } from './DOMWrapping';
 
 export default class Popover extends Component {
   static Placement = Placement;
@@ -48,8 +49,9 @@ export default class Popover extends Component {
 
   createTrigger = () => {
     const { children: child } = this.props;
+    const wrappedChild = wrapInDOMElementIfNecessary(child);
 
-    return cloneElement(typeof child === 'string' ? <span>{child}</span> : child, {
+    return cloneElement(wrappedChild, {
       'data-toggle': 'popover',
       role: 'button',
       tabIndex: 0,
