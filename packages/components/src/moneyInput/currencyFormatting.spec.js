@@ -11,13 +11,13 @@ describe('Number formatting', () => {
     },
 
     toString() {
-      return '1234,56';
+      return '1234.56';
     },
   };
 
   it('uses toLocaleString to format if it is supported', () => {
-    expect(formatCurrency(fakeNumber, 'et-EE', 'eur')).toBe(
-      'formatted for et-EE and options {"minimumFractionDigits":2,"maximumFractionDigits":2}',
+    expect(formatCurrency(fakeNumber, 'en-GB', 'eur')).toBe(
+      'formatted for en-GB and options {"minimumFractionDigits":2,"maximumFractionDigits":2}',
     );
 
     expect(formatCurrency(1234.5, 'en-GB', 'gbp')).toBe('1,234.50'); // sanity check
