@@ -1,3 +1,8 @@
+# v4.3.3
+## Make money input not have decimals for integer amounts
+
+Changes formatting of money input so that when no decimals are provided, it shows an integer amount when formatting. If a user inputs decimals, we format with the currency's decimals.
+
 # v4.3.2
 ## Wrap popover trigger in span unless it is a DOM element itself
 
