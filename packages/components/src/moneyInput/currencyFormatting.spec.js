@@ -9,6 +9,10 @@ describe('Number formatting', () => {
     toFixed(precision) {
       return `fixed for precision ${precision}`;
     },
+
+    toString() {
+      return '1234,56';
+    },
   };
 
   it('uses toLocaleString to format if it is supported', () => {
@@ -33,6 +37,11 @@ describe('Number formatting', () => {
 
     // eslint-disable-next-line no-extend-native
     Number.prototype.toLocaleString = toLocaleString;
+  });
+
+  it("does change a formatted number's precision if one is not set earlier", () => {
+    expect(formatCurrency(1234, 'en-GB', 'eur')).toBe('1,234');
+    expect(formatCurrency(1234.1, 'en-GB', 'eur')).toBe('1,234.10');
   });
 
   it('parses localized numbers', () => {

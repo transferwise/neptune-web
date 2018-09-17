@@ -42,8 +42,22 @@ function getCurrencyDecimals(currency = '') {
   return DEFAULT_CURRENCY_DECIMALS;
 }
 
+function countDecimalPlaces(number, locale) {
+  const decimalSeparator = getDecimalSeparator(locale);
+  if (number.toString().indexOf(decimalSeparator) === -1) {
+    return 0;
+  }
+  return number.toString().split(decimalSeparator)[1].length || 0;
+}
+
+function getDecimalSeparator(locale) {
+  return isNumberLocaleSupported() ? (1.1).toLocaleString(locale)[1] : '.';
+}
+
 export function formatCurrency(number, locale = 'en-GB', currency) {
-  const precision = getCurrencyDecimals(currency);
+  const previouslyUsedPrecision = countDecimalPlaces(number, locale);
+  const currencyPrecision = getCurrencyDecimals(currency);
+  const precision = previouslyUsedPrecision ? currencyPrecision : 0;
   if (!isNumberLocaleSupported()) {
     return number.toFixed(precision);
   }
@@ -58,7 +72,7 @@ export function parseCurrency(num, locale, currency) {
   const precision = getCurrencyDecimals(currency);
   const number = formatCurrency(num, locale, currency);
   const groupSeparator = isNumberLocaleSupported() ? (1000).toLocaleString(locale)[1] : ',';
-  const decimalSeparator = isNumberLocaleSupported() ? (1.1).toLocaleString(locale)[1] : '.';
+  const decimalSeparator = getDecimalSeparator(locale);
   const trimmedNumber = number.replace(/\s/g, '');
   const numberWithoutGroupSeparator = trimmedNumber.replace(
     new RegExp(`\\${groupSeparator}`, 'g'),
