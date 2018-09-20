@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { MoneyInput, Select, Checkbox } from '../src';
-import { formatCurrency } from '../src/moneyInput/currencyFormatting';
 
 const currencies = [
   {
@@ -66,7 +65,8 @@ const currencies = [
 
 function formattingWorksWithLocale(locale) {
   try {
-    formatCurrency(10, locale, 'GBP');
+    const number = 10;
+    number.toLocaleString(locale);
     return true;
   } catch (e) {
     return false;

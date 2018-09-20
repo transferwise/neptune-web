@@ -4,8 +4,8 @@ import { shallow } from 'enzyme';
 import { Select, MoneyInput } from '../';
 
 jest.mock('./currencyFormatting', () => ({
-  parseCurrency: jest.fn(),
-  formatCurrency: jest.fn(),
+  parseAmount: jest.fn(),
+  formatAmount: jest.fn(),
 }));
 
 const numberFormatting = require('./currencyFormatting');
@@ -234,19 +234,19 @@ describe('Money Input', () => {
   });
 
   it('formats the amount passed in', () => {
-    numberFormatting.formatCurrency = jest.fn(
-      (num, locale, currency) => `formatted ${num}, ${locale}, ${currency}`,
+    numberFormatting.formatAmount = jest.fn(
+      (num, currency, locale) => `formatted ${num}, ${locale}, ${currency}`,
     );
     component.setProps({ amount: 123, locale: 'et-EE', numberFormatPrecision: 3 });
     expect(amountInput().prop('value')).toBe('formatted 123, et-EE, eur');
   });
 
   it('formats the number you input after you blur it', () => {
-    numberFormatting.formatCurrency = jest.fn(
-      (num, locale, currency) => `formatted ${num}, ${locale}, ${currency}`,
+    numberFormatting.formatAmount = jest.fn(
+      (num, currency, locale) => `formatted ${num}, ${locale}, ${currency}`,
     );
     component.setProps({ locale: 'en-US', numberFormatPrecision: 3 });
-    numberFormatting.parseCurrency = jest.fn(parseFloat);
+    numberFormatting.parseAmount = jest.fn(parseFloat);
     enterAmount('123.45');
     expect(amountInput().prop('value')).toBe('123.45');
 
@@ -258,7 +258,7 @@ describe('Money Input', () => {
     const onAmountChange = jest.fn();
     let assertions = 0;
     component.setProps({ onAmountChange, locale: 'es-ES', numberFormatPrecision: 1 });
-    numberFormatting.parseCurrency = jest.fn((amount, locale, currency) => {
+    numberFormatting.parseAmount = jest.fn((amount, currency, locale) => {
       expect(amount).toBe('500.1234');
       expect(locale).toBe('es-ES');
       expect(currency).toBe('eur');
@@ -276,7 +276,7 @@ describe('Money Input', () => {
   it('does not call onAmountChange with a parsed number if unable to parse', () => {
     const onAmountChange = jest.fn();
     component.setProps({ onAmountChange });
-    numberFormatting.parseCurrency = jest.fn(() => NaN);
+    numberFormatting.parseAmount = jest.fn(() => NaN);
     enterAmount('cannot parse this yo');
     expect(onAmountChange).not.toHaveBeenCalled();
   });

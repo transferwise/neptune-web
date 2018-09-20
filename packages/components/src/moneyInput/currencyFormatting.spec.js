@@ -1,56 +1,17 @@
-import { formatCurrency, parseCurrency } from './currencyFormatting';
+import { formatAmount, parseAmount } from './currencyFormatting';
+
+jest.mock('@transferwise/formatting', () => ({
+  formatAmount: number => `formatted ${number}`,
+}));
 
 describe('Number formatting', () => {
-  const fakeNumber = {
-    toLocaleString(locale, options) {
-      return `formatted for ${locale} and options ${JSON.stringify(options)}`;
-    },
-
-    toFixed(precision) {
-      return `fixed for precision ${precision}`;
-    },
-
-    toString() {
-      return '1234.56';
-    },
-  };
-
-  it('uses toLocaleString to format if it is supported', () => {
-    expect(formatCurrency(fakeNumber, 'en-GB', 'eur')).toBe(
-      'formatted for en-GB and options {"minimumFractionDigits":2,"maximumFractionDigits":2}',
-    );
-
-    expect(formatCurrency(1234.5, 'en-GB', 'gbp')).toBe('1,234.50'); // sanity check
-  });
-
-  it('uses toFixed to format if localeString not supported or acts weirdly', () => {
-    const toLocaleString = Number.prototype.toLocaleString;
-    // eslint-disable-next-line no-extend-native
-    Number.prototype.toLocaleString = null;
-
-    expect(formatCurrency(fakeNumber, 'en-GB', 'jpy')).toBe('fixed for precision 0');
-
-    // eslint-disable-next-line no-extend-native
-    Number.prototype.toLocaleString = () => 'some weird value';
-
-    expect(formatCurrency(1234.56, 'en-GB', 'eur')).toBe('1234.56'); // sanity check
-
-    // eslint-disable-next-line no-extend-native
-    Number.prototype.toLocaleString = toLocaleString;
-  });
-
-  it("does change a formatted number's precision if one is not set earlier", () => {
-    expect(formatCurrency(1234, 'en-GB', 'eur')).toBe('1,234');
-    expect(formatCurrency(1234.1, 'en-GB', 'eur')).toBe('1,234.10');
+  it('uses @transferwise/formatting for formatting numbers', () => {
+    expect(formatAmount(100)).toBe('formatted 100');
   });
 
   it('parses localized numbers', () => {
     [['1234.56', 'en-GB'], ['1,23,4.56', 'en-US']].forEach(([number, locale]) => {
-      expect(parseCurrency(number, locale, 'gbp')).toBe(1234.56);
+      expect(parseAmount(number, 'gbp', locale)).toBe(1234.56);
     });
-  });
-
-  it('has a precision fallback for unknown currencies', () => {
-    expect(formatCurrency(123.4, 'en-GB', 'not existent')).toBe('123.40');
   });
 });

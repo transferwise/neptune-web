@@ -3,7 +3,7 @@ import Types from 'prop-types';
 import Select from '../select';
 import './MoneyInput.less';
 
-import { formatCurrency, parseCurrency } from './currencyFormatting';
+import { formatAmount, parseAmount } from './currencyFormatting';
 
 const Currency = Types.shape({
   header: Types.string,
@@ -45,20 +45,20 @@ export default class MoneyInput extends Component {
 
   state = {
     searchQuery: '',
-    formattedAmount: formatCurrency(
+    formattedAmount: formatAmount(
       this.props.amount,
-      this.props.locale,
       this.props.selectedCurrency.currency,
+      this.props.locale,
     ),
   };
 
   componentWillReceiveProps(nextProps) {
     if (!this.amountFocused) {
       this.setState({
-        formattedAmount: formatCurrency(
+        formattedAmount: formatAmount(
           nextProps.amount,
-          nextProps.locale,
           nextProps.selectedCurrency.currency,
+          nextProps.locale,
         ),
       });
     }
@@ -69,7 +69,7 @@ export default class MoneyInput extends Component {
     this.setState({
       formattedAmount: value,
     });
-    const parsed = parseCurrency(value, this.props.locale, this.props.selectedCurrency.currency);
+    const parsed = parseAmount(value, this.props.selectedCurrency.currency, this.props.locale);
     if (!Number.isNaN(parsed)) {
       this.props.onAmountChange(parsed);
     }
@@ -96,10 +96,10 @@ export default class MoneyInput extends Component {
 
   formatAmount() {
     this.setState(previousState => {
-      const parsed = parseCurrency(
+      const parsed = parseAmount(
         previousState.formattedAmount,
-        this.props.locale,
         this.props.selectedCurrency.currency,
+        this.props.locale,
       );
       if (Number.isNaN(parsed)) {
         return {
@@ -107,10 +107,10 @@ export default class MoneyInput extends Component {
         };
       }
       return {
-        formattedAmount: formatCurrency(
+        formattedAmount: formatAmount(
           parsed,
-          this.props.locale,
           this.props.selectedCurrency.currency,
+          this.props.locale,
         ),
       };
     });
