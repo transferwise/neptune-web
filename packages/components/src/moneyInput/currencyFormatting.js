@@ -51,7 +51,7 @@ function getDecimalSeparator(locale) {
   return isNumberLocaleSupported() ? (1.1).toLocaleString(locale)[1] : '.';
 }
 
-export function parseAmount(number, currency, locale) {
+export function parseAmount(number, currency, locale = 'en-GB') {
   const precision = getCurrencyDecimals(currency);
   const groupSeparator = isNumberLocaleSupported() ? (1000).toLocaleString(locale)[1] : ',';
   const decimalSeparator = getDecimalSeparator(locale);
