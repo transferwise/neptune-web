@@ -294,6 +294,8 @@ describe('Select', () => {
   });
 
   it('allows you to move around items with arrow keys while ignoring headers and separators', () => {
+    const keyboardFocusIsOnElementWithIndex = index =>
+      findNthListElement(index).hasClass('tw-dropdown-item--focused');
     component.setProps({
       options: [
         { value: 0, label: 'yo' },
@@ -310,18 +312,18 @@ describe('Select', () => {
     });
     openSelect();
 
-    expect(findNthListElement(3).hasClass('tw-dropdown-item--focused')).toBe(false);
+    expect(keyboardFocusIsOnElementWithIndex(3)).toBe(false);
     doTimes(3, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
-    expect(findNthListElement(3).hasClass('tw-dropdown-item--focused')).toBe(true); // skips header!
+    expect(keyboardFocusIsOnElementWithIndex(3)).toBe(true); // skips header!
 
     doTimes(4, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
-    expect(findNthListElement(3).hasClass('tw-dropdown-item--focused')).toBe(false);
-    expect(findNthListElement(8).hasClass('tw-dropdown-item--focused')).toBe(true); // skips header and separator again!
+    expect(keyboardFocusIsOnElementWithIndex(3)).toBe(false);
+    expect(keyboardFocusIsOnElementWithIndex(8)).toBe(true); // skips header and separator again!
 
-    expect(findNthListElement(0).hasClass('tw-dropdown-item--focused')).toBe(false);
+    expect(keyboardFocusIsOnElementWithIndex(0)).toBe(false);
     doTimes(5, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.UP)));
-    expect(findNthListElement(8).hasClass('tw-dropdown-item--focused')).toBe(false);
-    expect(findNthListElement(0).hasClass('tw-dropdown-item--focused')).toBe(true);
+    expect(keyboardFocusIsOnElementWithIndex(8)).toBe(false);
+    expect(keyboardFocusIsOnElementWithIndex(0)).toBe(true);
   });
 
   it('binds keyboard movement to the current options', () => {
