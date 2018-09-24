@@ -1,3 +1,8 @@
+# v4.3.4
+## Change Select component's styles
+
+Currency options now show the flag in every device size and keyboard focused options have the same style as hovered elements, rather than active ones.
+
 # v4.3.3
 ## Make money input not have decimals for integer amounts
 
