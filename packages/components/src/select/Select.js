@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Types from 'prop-types';
+import classNames from 'classnames';
 
 import Option from './option';
 import KeyCodes from '../common/keyCodes';
@@ -289,14 +290,17 @@ export default class Select extends Component {
     const isFocusedWithKeyboard =
       this.state.keyboardFocusedOptionIndex ===
       this.getIndexWithoutHeadersForIndexWithHeaders(index);
+
+    const className = classNames('tw-dropdown-item tw-dropdown-item--clickable', {
+      [this.style('active')]: isActive,
+      [this.style('tw-dropdown-item--focused')]: isFocusedWithKeyboard,
+    });
     return (
       <li // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
         key={index}
         onClick={this.createSelectHandlerForOption(option)}
         onKeyPress={this.createSelectHandlerForOption(option)}
-        className={`tw-dropdown-item tw-dropdown-item--clickable ${
-          isActive ? this.style('active') : ''
-        } ${isFocusedWithKeyboard ? this.style('tw-dropdown-item--focused') : ''}`}
+        className={className}
       >
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a>
