@@ -58,6 +58,18 @@ describe('Select', () => {
     return elementIndex;
   };
 
+  const focusedOptionIndex = () => {
+    let elementIndex = null;
+    element('li').forEach((el, index) => {
+      if (el.is('.tw-dropdown-item--focused')) {
+        expect(element('.tw-dropdown-item--focused').length).toBe(1);
+        elementIndex = index;
+      }
+    });
+
+    return elementIndex;
+  };
+
   const expectDropdownToBe = () => ({
     open() {
       expect(dropdownMenu().length).toBe(1);
@@ -298,18 +310,18 @@ describe('Select', () => {
     });
     openSelect();
 
-    expect(findNthListElement(3).hasClass('active')).toBe(false);
+    expect(findNthListElement(3).hasClass('tw-dropdown-item--focused')).toBe(false);
     doTimes(3, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
-    expect(findNthListElement(3).hasClass('active')).toBe(true); // skips header!
+    expect(findNthListElement(3).hasClass('tw-dropdown-item--focused')).toBe(true); // skips header!
 
     doTimes(4, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
-    expect(findNthListElement(3).hasClass('active')).toBe(false);
-    expect(findNthListElement(8).hasClass('active')).toBe(true); // skips header and separator again!
+    expect(findNthListElement(3).hasClass('tw-dropdown-item--focused')).toBe(false);
+    expect(findNthListElement(8).hasClass('tw-dropdown-item--focused')).toBe(true); // skips header and separator again!
 
-    expect(findNthListElement(0).hasClass('active')).toBe(false);
+    expect(findNthListElement(0).hasClass('tw-dropdown-item--focused')).toBe(false);
     doTimes(5, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.UP)));
-    expect(findNthListElement(8).hasClass('active')).toBe(false);
-    expect(findNthListElement(0).hasClass('active')).toBe(true);
+    expect(findNthListElement(8).hasClass('tw-dropdown-item--focused')).toBe(false);
+    expect(findNthListElement(0).hasClass('tw-dropdown-item--focused')).toBe(true);
   });
 
   it('binds keyboard movement to the current options', () => {
@@ -318,19 +330,19 @@ describe('Select', () => {
 
     // Move to the bottom of Select with 3 options
     doTimes(3, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
-    expect(activeOptionIndex()).toBe(2);
+    expect(focusedOptionIndex()).toBe(2);
 
     // Make sure we can't move past the last option
     doTimes(3, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
-    expect(activeOptionIndex()).toBe(2);
+    expect(focusedOptionIndex()).toBe(2);
 
     // Now move up 1 option
     component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.UP));
-    expect(activeOptionIndex()).toBe(1);
+    expect(focusedOptionIndex()).toBe(1);
 
     // Move to first option and make sure we can't move past the first one
     doTimes(3, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.UP)));
-    expect(activeOptionIndex()).toBe(0);
+    expect(focusedOptionIndex()).toBe(0);
   });
 
   it('allows you to select the item currently focused with your keyboard by pressing ENTER', () => {

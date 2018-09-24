@@ -285,10 +285,10 @@ export default class Select extends Component {
       );
     }
 
-    const isActive =
-      (this.props.selected && this.props.selected.value === option.value) ||
+    const isActive = this.props.selected && this.props.selected.value === option.value;
+    const isFocusedWithKeyboard =
       this.state.keyboardFocusedOptionIndex ===
-        this.getIndexWithoutHeadersForIndexWithHeaders(index);
+      this.getIndexWithoutHeadersForIndexWithHeaders(index);
     return (
       <li // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
         key={index}
@@ -296,7 +296,7 @@ export default class Select extends Component {
         onKeyPress={this.createSelectHandlerForOption(option)}
         className={`tw-dropdown-item tw-dropdown-item--clickable ${
           isActive ? this.style('active') : ''
-        }`}
+        } ${isFocusedWithKeyboard ? this.style('tw-dropdown-item--focused') : ''}`}
       >
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a>
