@@ -97,6 +97,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
+    "test:watch": "jest --watch --env=jsdom",
     "pretest": "npm run check-format && npm run check-release-format",
     "check-release-format": "node_modules/.bin/release-to-github-with-changelog-pre-release-checks",
     "check-format": "prettier-eslint '**/*.js' --list-different",
