@@ -166,7 +166,7 @@ export default class MoneyInput extends Component {
               <Fragment>
                 <i className="tw-money-input__keyline" />
                 <i
-                  className={`currency-flag currency-flag-${selectedCurrency.currency.toLowerCase()} m-r-2`}
+                  className={`currency-flag currency-flag-${selectedCurrency.currency.toLowerCase()} hidden-xs m-r-2`}
                 />
               </Fragment>
             )}
