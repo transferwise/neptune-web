@@ -35,4 +35,12 @@ describe('option', () => {
     component.setProps({ currency: 'hustle' });
     expect(component.find('i.currency-flag.currency-flag-hustle').length).toBe(1);
   });
+
+  it('does not show currency icons on mobile if it is selected', () => {
+    const flagHiddenOnMobile = () => component.find('i.currency-flag').hasClass('hidden-xs');
+    component.setProps({ currency: 'hustle' });
+    expect(flagHiddenOnMobile()).toBe(false);
+    component.setProps({ selected: true });
+    expect(flagHiddenOnMobile()).toBe(true);
+  });
 });

@@ -1,10 +1,10 @@
 import React from 'react';
 import Types from 'prop-types';
 
-const Option = ({ currency, label, note, secondary, icon, classNames }) => {
+const Option = ({ currency, label, note, secondary, icon, classNames, selected }) => {
   const style = classes => classes.map(className => classNames[className] || className).join(' ');
   const iconClass = currency
-    ? `currency-flag currency-flag-${currency.toLowerCase()}`
+    ? `currency-flag currency-flag-${currency.toLowerCase()} ${selected ? 'hidden-xs' : ''}`
     : `${style(['icon'])} ${icon}`;
   return (
     <span>
@@ -23,6 +23,7 @@ Option.propTypes = {
   secondary: Types.node,
   icon: Types.string,
   classNames: Types.objectOf(Types.string),
+  selected: Types.bool,
 };
 
 Option.defaultProps = {
@@ -31,6 +32,7 @@ Option.defaultProps = {
   secondary: '',
   icon: '',
   classNames: {},
+  selected: false,
 };
 
 export default Option;

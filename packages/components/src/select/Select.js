@@ -313,7 +313,7 @@ export default class Select extends Component {
   renderButtonInternals() {
     const { selected, placeholder } = this.props;
     if (selected) {
-      return <Option {...selected} classNames={this.props.classNames} />;
+      return <Option {...selected} classNames={this.props.classNames} selected />;
     }
     return <span className={this.style('form-control-placeholder')}>{placeholder}</span>;
   }

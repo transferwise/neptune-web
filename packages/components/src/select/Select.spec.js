@@ -177,6 +177,8 @@ describe('Select', () => {
       currency: '',
       secondary: '',
       classNames: {},
+
+      selected: true,
     };
     component.setProps({ selected });
     const buttonChild = component
