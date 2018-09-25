@@ -1,3 +1,8 @@
+# v4.3.5
+## Parse MoneyInput inputs as positive numbers
+
+Since you're entering money, you can't enter negative numbers. When you enter a negative amount now, it'll be parsed as positive.
+
 # v4.3.4
 ## Change Select component's styles
 
