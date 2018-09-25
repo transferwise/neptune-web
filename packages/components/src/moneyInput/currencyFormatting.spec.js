@@ -14,4 +14,8 @@ describe('Number formatting', () => {
       expect(parseAmount(number, 'gbp', locale)).toBe(1234.56);
     });
   });
+
+  it('parses negative numbers into positive ones', () => {
+    expect(parseAmount('-123.45', 'gbp')).toBe(123.45);
+  });
 });

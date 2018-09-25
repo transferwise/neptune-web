@@ -64,5 +64,8 @@ export function parseAmount(number, currency, locale = 'en-GB') {
     new RegExp(`\\${decimalSeparator}`, 'g'),
     '.',
   );
-  return parseFloat(parseFloat(numberWithStandardDecimalSeparator).toFixed(precision));
+  const parsedAmount = parseFloat(
+    parseFloat(numberWithStandardDecimalSeparator).toFixed(precision),
+  );
+  return Math.abs(parsedAmount);
 }
