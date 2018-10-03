@@ -1,3 +1,9 @@
+# v4.4.0
+## Add modal component
+
+![modal-mobile](https://user-images.githubusercontent.com/1889234/44737897-20da1600-aaeb-11e8-8f76-288598d30b41.gif)
+![modal-desktop](https://user-images.githubusercontent.com/1889234/44737899-20da1600-aaeb-11e8-8bc8-ac993273423c.gif)
+
 # v4.3.5
 ## Parse MoneyInput inputs as positive numbers
 

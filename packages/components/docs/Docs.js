@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import './Docs.less';
 
 import Header from './Header';
+import ModalDocs from './ModalDocs';
 import StepperDocs from './StepperDocs';
 import SelectDocs from './SelectDocs';
 import MoneyInputDocs from './MoneyInputDocs';
@@ -17,6 +18,7 @@ const Docs = () => (
   <Fragment>
     <Header />
 
+    <ModalDocs />
     <StepperDocs />
     <FlowNavigationDocs />
     <SelectDocs />

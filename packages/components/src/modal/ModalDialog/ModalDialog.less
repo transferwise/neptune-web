@@ -1,0 +1,57 @@
+/*
+ We will not need this in very near future as we would want all our modals,
+ to be full-screen on mobiles. This code will then move to our common CSS
+ library the @transferwise/bootstrap repo.
+ */
+@import '~bootstrap/less/variables';
+
+@media only screen and (max-width: @screen-md) {
+  .modal-dialog {
+    height: 100%;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+    background-clip: padding-box;
+    outline: 0;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .modal-header {
+    justify-content: flex-start;
+    min-height: 50px;
+    line-height: 50px;
+    padding: 16px;
+  }
+
+  .modal-body {
+    overflow: auto;
+    position: relative;
+    flex: 1 1 auto;
+    padding: 15px;
+    flex-shrink: 3;
+  }
+
+  .modal-footer {
+    margin: 0;
+    padding: 16px;
+    .btn {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+.modal-footer {
+  .btn {
+    display: inline-block;
+  }
+}
