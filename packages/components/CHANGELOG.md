@@ -1,4 +1,4 @@
-# 4.5.0
+# v4.5.0
 ## Proxy over other properties of modal to the rendered component
 
 When the `Modal` component gets passed any unknown properties, it'll proxy them to the modal instance that gets rendered.
