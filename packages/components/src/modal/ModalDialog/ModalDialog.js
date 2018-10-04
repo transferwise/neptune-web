@@ -29,7 +29,7 @@ export default class ModalDialog extends Component {
   };
 
   render() {
-    const { title, body, footer, onClose, role } = this.props;
+    const { title, body, footer, onClose, role, className } = this.props;
 
     const dialogBaseClass = 'modal-dialog';
     const classes = classNames(dialogBaseClass, {
@@ -38,7 +38,7 @@ export default class ModalDialog extends Component {
 
     return (
       <div
-        className="modal fade"
+        className={`modal fade ${className}`}
         style={{ display: 'block' }}
         tabIndex="-1"
         role={role}

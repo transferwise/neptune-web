@@ -6,6 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ModalDialog
     body="Some body"
+    className=""
     footer={null}
     onClose={[Function]}
     role="dialog"
@@ -59,7 +60,7 @@ ShallowWrapper {
           </div>
         </div>
       </div>,
-      "className": "modal fade",
+      "className": "modal fade ",
       "role": "dialog",
       "style": Object {
         "display": "block",
@@ -277,7 +278,473 @@ ShallowWrapper {
             </div>
           </div>
         </div>,
-        "className": "modal fade",
+        "className": "modal fade ",
+        "role": "dialog",
+        "style": Object {
+          "display": "block",
+        },
+        "tabIndex": "-1",
+      },
+      "ref": [Function],
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            className="modal-content"
+          >
+            <div
+              className="modal-header"
+            >
+              <button
+                aria-label="close"
+                className="close"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+              <h4
+                className="modal-title"
+              >
+                Some title
+              </h4>
+            </div>
+            <div
+              className="modal-body"
+            >
+              Some body
+            </div>
+          </div>,
+          "className": "modal-dialog modal-md",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="modal-header"
+              >
+                <button
+                  aria-label="close"
+                  className="close"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>
+                </button>
+                <h4
+                  className="modal-title"
+                >
+                  Some title
+                </h4>
+              </div>,
+              <div
+                className="modal-body"
+              >
+                Some body
+              </div>,
+              null,
+            ],
+            "className": "modal-content",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <button
+                    aria-label="close"
+                    className="close"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      ×
+                    </span>
+                  </button>,
+                  <h4
+                    className="modal-title"
+                  >
+                    Some title
+                  </h4>,
+                ],
+                "className": "modal-header",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "aria-label": "close",
+                    "children": <span
+                      aria-hidden="true"
+                    >
+                      ×
+                    </span>,
+                    "className": "close",
+                    "onClick": [Function],
+                    "type": "button",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "aria-hidden": "true",
+                      "children": "×",
+                    },
+                    "ref": null,
+                    "rendered": "×",
+                    "type": "span",
+                  },
+                  "type": "button",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Some title",
+                    "className": "modal-title",
+                  },
+                  "ref": null,
+                  "rendered": "Some title",
+                  "type": "h4",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Some body",
+                "className": "modal-body",
+              },
+              "ref": null,
+              "rendered": "Some body",
+              "type": "div",
+            },
+            null,
+          ],
+          "type": "div",
+        },
+        "type": "div",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`ModalDialog renders with a custom className 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ModalDialog
+    body="Some body"
+    className="a-custom-className"
+    footer={null}
+    onClose={[Function]}
+    role="dialog"
+    size="md"
+    title="Some title"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "aria-modal": true,
+      "children": <div
+        className="modal-dialog modal-md"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <button
+              aria-label="close"
+              className="close"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+            <h4
+              className="modal-title"
+            >
+              Some title
+            </h4>
+          </div>
+          <div
+            className="modal-body"
+          >
+            Some body
+          </div>
+        </div>
+      </div>,
+      "className": "modal fade a-custom-className",
+      "role": "dialog",
+      "style": Object {
+        "display": "block",
+      },
+      "tabIndex": "-1",
+    },
+    "ref": [Function],
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <button
+              aria-label="close"
+              className="close"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+            <h4
+              className="modal-title"
+            >
+              Some title
+            </h4>
+          </div>
+          <div
+            className="modal-body"
+          >
+            Some body
+          </div>
+        </div>,
+        "className": "modal-dialog modal-md",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="modal-header"
+            >
+              <button
+                aria-label="close"
+                className="close"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+              <h4
+                className="modal-title"
+              >
+                Some title
+              </h4>
+            </div>,
+            <div
+              className="modal-body"
+            >
+              Some body
+            </div>,
+            null,
+          ],
+          "className": "modal-content",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <button
+                  aria-label="close"
+                  className="close"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>
+                </button>,
+                <h4
+                  className="modal-title"
+                >
+                  Some title
+                </h4>,
+              ],
+              "className": "modal-header",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "aria-label": "close",
+                  "children": <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>,
+                  "className": "close",
+                  "onClick": [Function],
+                  "type": "button",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "aria-hidden": "true",
+                    "children": "×",
+                  },
+                  "ref": null,
+                  "rendered": "×",
+                  "type": "span",
+                },
+                "type": "button",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Some title",
+                  "className": "modal-title",
+                },
+                "ref": null,
+                "rendered": "Some title",
+                "type": "h4",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Some body",
+              "className": "modal-body",
+            },
+            "ref": null,
+            "rendered": "Some body",
+            "type": "div",
+          },
+          null,
+        ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "aria-modal": true,
+        "children": <div
+          className="modal-dialog modal-md"
+        >
+          <div
+            className="modal-content"
+          >
+            <div
+              className="modal-header"
+            >
+              <button
+                aria-label="close"
+                className="close"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+              <h4
+                className="modal-title"
+              >
+                Some title
+              </h4>
+            </div>
+            <div
+              className="modal-body"
+            >
+              Some body
+            </div>
+          </div>
+        </div>,
+        "className": "modal fade a-custom-className",
         "role": "dialog",
         "style": Object {
           "display": "block",
@@ -475,6 +942,7 @@ ShallowWrapper {
         Some paragraph text
       </p>
     }
+    className=""
     footer={null}
     onClose={[Function]}
     role="dialog"
@@ -530,7 +998,7 @@ ShallowWrapper {
           </div>
         </div>
       </div>,
-      "className": "modal fade",
+      "className": "modal fade ",
       "role": "dialog",
       "style": Object {
         "display": "block",
@@ -766,7 +1234,7 @@ ShallowWrapper {
             </div>
           </div>
         </div>,
-        "className": "modal fade",
+        "className": "modal fade ",
         "role": "dialog",
         "style": Object {
           "display": "block",
@@ -976,6 +1444,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ModalDialog
     body="Some body"
+    className=""
     footer={
       <button>
         Some button
@@ -1040,7 +1509,7 @@ ShallowWrapper {
           </div>
         </div>
       </div>,
-      "className": "modal fade",
+      "className": "modal fade ",
       "role": "dialog",
       "style": Object {
         "display": "block",
@@ -1301,7 +1770,7 @@ ShallowWrapper {
             </div>
           </div>
         </div>,
-        "className": "modal fade",
+        "className": "modal fade ",
         "role": "dialog",
         "style": Object {
           "display": "block",
@@ -1531,6 +2000,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ModalDialog
     body="Some body"
+    className=""
     footer={null}
     onClose={[Function]}
     role="dialog"
@@ -1584,7 +2054,7 @@ ShallowWrapper {
           </div>
         </div>
       </div>,
-      "className": "modal fade",
+      "className": "modal fade ",
       "role": "dialog",
       "style": Object {
         "display": "block",
@@ -1802,7 +2272,7 @@ ShallowWrapper {
             </div>
           </div>
         </div>,
-        "className": "modal fade",
+        "className": "modal fade ",
         "role": "dialog",
         "style": Object {
           "display": "block",
@@ -1996,6 +2466,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ModalDialog
     body="Some body"
+    className=""
     footer={null}
     onClose={[Function]}
     role="dialog"
@@ -2049,7 +2520,7 @@ ShallowWrapper {
           </div>
         </div>
       </div>,
-      "className": "modal fade",
+      "className": "modal fade ",
       "role": "dialog",
       "style": Object {
         "display": "block",
@@ -2267,7 +2738,7 @@ ShallowWrapper {
             </div>
           </div>
         </div>,
-        "className": "modal fade",
+        "className": "modal fade ",
         "role": "dialog",
         "style": Object {
           "display": "block",
@@ -2461,6 +2932,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ModalDialog
     body="Some body"
+    className=""
     footer={null}
     onClose={[Function]}
     role="dialog"
@@ -2514,7 +2986,7 @@ ShallowWrapper {
           </div>
         </div>
       </div>,
-      "className": "modal fade",
+      "className": "modal fade ",
       "role": "dialog",
       "style": Object {
         "display": "block",
@@ -2732,7 +3204,7 @@ ShallowWrapper {
             </div>
           </div>
         </div>,
-        "className": "modal fade",
+        "className": "modal fade ",
         "role": "dialog",
         "style": Object {
           "display": "block",
@@ -2926,6 +3398,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ModalDialog
     body="Some body"
+    className=""
     footer={null}
     onClose={[Function]}
     role="dialog"
@@ -2979,7 +3452,7 @@ ShallowWrapper {
           </div>
         </div>
       </div>,
-      "className": "modal fade",
+      "className": "modal fade ",
       "role": "dialog",
       "style": Object {
         "display": "block",
@@ -3197,7 +3670,7 @@ ShallowWrapper {
             </div>
           </div>
         </div>,
-        "className": "modal fade",
+        "className": "modal fade ",
         "role": "dialog",
         "style": Object {
           "display": "block",
@@ -3391,6 +3864,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ModalDialog
     body="Some body"
+    className=""
     footer={null}
     onClose={[Function]}
     role="dialog"
@@ -3444,7 +3918,7 @@ ShallowWrapper {
           </div>
         </div>
       </div>,
-      "className": "modal fade",
+      "className": "modal fade ",
       "role": "dialog",
       "style": Object {
         "display": "block",
@@ -3662,7 +4136,7 @@ ShallowWrapper {
             </div>
           </div>
         </div>,
-        "className": "modal fade",
+        "className": "modal fade ",
         "role": "dialog",
         "style": Object {
           "display": "block",

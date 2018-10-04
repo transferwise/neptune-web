@@ -12,7 +12,6 @@ describe('ModalDialog', () => {
     component = shallow(<ModalDialog title="Some title" body="Some body" onClose={jest.fn()} />);
   });
 
-  // Mainly snapshot tests with contents being checked in snapshots.
   describe('renders', () => {
     it('default dialog', () => {
       expect(component).toMatchSnapshot();
@@ -41,6 +40,11 @@ describe('ModalDialog', () => {
       expect(component).toMatchSnapshot();
     });
 
+    it('with a custom className', () => {
+      component.setProps({ className: 'a-custom-className' });
+      expect(component).toMatchSnapshot();
+    });
+
     it('with body content', () => {
       component.setProps({
         body: <p>Some paragraph text</p>,
@@ -66,10 +70,10 @@ describe('ModalDialog', () => {
     });
   });
 
-  // Mainly behaviour tests
   describe('behaviourally', () => {
     let originalAddEventListener;
     let documentEventCallbacks;
+
     beforeEach(() => {
       originalAddEventListener = global.document.addEventListener;
       documentEventCallbacks = {};
@@ -81,6 +85,7 @@ describe('ModalDialog', () => {
     afterEach(() => {
       global.document.addEventListener = originalAddEventListener;
     });
+
     it('calls close handler on close button click', () => {
       const onClose = jest.fn();
       component.setProps({ onClose });
