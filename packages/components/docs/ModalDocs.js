@@ -7,6 +7,7 @@ export default class ModalDocs extends Component {
   state = {
     open: false,
     size: 'md',
+    className: '',
   };
 
   open = () => {
@@ -18,7 +19,7 @@ export default class ModalDocs extends Component {
   };
 
   render() {
-    const { open, size } = this.state;
+    const { open, size, className } = this.state;
 
     const title = 'A title';
     const body = bodyText();
@@ -54,7 +55,7 @@ export default class ModalDocs extends Component {
   title="${title}"
   body="${body}"
   footer={<FooterComponent/>}
-  onClose={this.close}
+  onClose={this.close}${className ? `\n  className="${className}"` : ''}
 />`}
               </pre>
               {/* eslint-enable react/jsx-indent */}
@@ -71,6 +72,17 @@ export default class ModalDocs extends Component {
                 options={SIZES.map(s => ({ value: s, label: s }))}
                 onChange={selection => this.setState({ size: selection ? selection.value : null })}
               />
+
+              <label htmlFor="modal-custom-classname" className="control-label m-t-3">
+                Add a custom class to the modal
+              </label>
+              <input
+                id="modal-custom-classname"
+                type="text"
+                className="form-control"
+                value={className}
+                onChange={event => this.setState({ className: event.target.value })}
+              />
             </div>
 
             <Modal
@@ -80,6 +92,7 @@ export default class ModalDocs extends Component {
               footer={footer}
               onClose={this.close}
               size={size}
+              className={className}
             />
           </div>
         </section>
