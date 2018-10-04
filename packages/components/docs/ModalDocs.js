@@ -55,7 +55,8 @@ export default class ModalDocs extends Component {
   title="${title}"
   body="${body}"
   footer={<FooterComponent/>}
-  onClose={this.close}${className ? `\n  className="${className}"` : ''}
+  onClose={this.close}
+  {...anyOtherPropsThatWillBePassedDirectlyToTheModal}
 />`}
               </pre>
               {/* eslint-enable react/jsx-indent */}

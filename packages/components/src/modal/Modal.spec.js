@@ -57,7 +57,7 @@ describe('Modal', () => {
       body: 'Some body',
       footer: 'Some footer',
       onClose: jest.fn(),
-      className: 'someClassName',
+      someOtherProp: 'someOtherProp',
     };
     component.setProps(dialogProps);
 

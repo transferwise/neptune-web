@@ -40,8 +40,8 @@ describe('ModalDialog', () => {
       expect(component).toMatchSnapshot();
     });
 
-    it('with a custom className', () => {
-      component.setProps({ className: 'a-custom-className' });
+    it('with some random other props className', () => {
+      component.setProps({ className: 'a-custom-className', someOtherRandomProp: 'thing' });
       expect(component).toMatchSnapshot();
     });
 

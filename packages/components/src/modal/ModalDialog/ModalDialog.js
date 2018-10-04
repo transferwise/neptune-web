@@ -29,7 +29,7 @@ export default class ModalDialog extends Component {
   };
 
   render() {
-    const { title, body, footer, onClose, role, className } = this.props;
+    const { title, body, footer, onClose, role, className, ...otherProps } = this.props;
 
     const dialogBaseClass = 'modal-dialog';
     const classes = classNames(dialogBaseClass, {
@@ -46,6 +46,7 @@ export default class ModalDialog extends Component {
         ref={dialog => {
           this.modalDialog = dialog;
         }}
+        {...otherProps}
       >
         <div className={classes}>
           <div className="modal-content">
