@@ -56,6 +56,7 @@ export default class ModalDocs extends Component {
   body="${body}"
   footer={<FooterComponent/>}
   onClose={this.close}
+  className="${className}"
   {...anyOtherPropsThatWillBePassedDirectlyToTheModal}
 />`}
               </pre>
