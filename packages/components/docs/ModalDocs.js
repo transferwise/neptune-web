@@ -47,7 +47,16 @@ export default class ModalDocs extends Component {
           <div className="row">
             <div className="col-md-6">
               {/* eslint-disable react/jsx-indent */}
-              <pre className="tw-docs-code">{`<Modal${open ? ' open' : ''} size="${size}" />`}</pre>
+              <pre className="tw-docs-code">
+                {`<Modal
+  size="${size}"
+  open={${open}}
+  title="${title}"
+  body="${body}"
+  footer={<FooterComponent/>}
+  onClose={this.close}
+/>`}
+              </pre>
               {/* eslint-enable react/jsx-indent */}
             </div>
 
