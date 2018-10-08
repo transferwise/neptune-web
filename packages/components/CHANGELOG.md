@@ -1,3 +1,8 @@
+# v4.5.1
+## Make modals not destroy ssr
+
+Previously, modals would throw when trying to ssr as they are accessing document directly, this release fixes that issue.
+
 # v4.5.0
 ## Proxy over other properties of modal to the rendered component
 
