@@ -23,4 +23,11 @@ Modal.propTypes = { open: Types.bool, ...dialogPropTypes };
 Modal.defaultProps = { open: false, ...dialogDefaultProps };
 
 export { Modal };
-export default props => createPortal(<Modal {...props} />, document.body);
+export default props => {
+  const mountPoint = getMountPoint();
+  return mountPoint ? createPortal(<Modal {...props} />, mountPoint) : '';
+};
+
+function getMountPoint() {
+  return typeof document !== 'undefined' ? document.body : null;
+}
