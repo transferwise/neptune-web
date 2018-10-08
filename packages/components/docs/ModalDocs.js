@@ -61,6 +61,10 @@ export default class ModalDocs extends Component {
 />`}
               </pre>
               {/* eslint-enable react/jsx-indent */}
+              <p>
+                Note: trying to render an open modal on the server will currently render an empty
+                string.
+              </p>
             </div>
 
             <div className="col-md-6">
