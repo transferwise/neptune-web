@@ -1,3 +1,7 @@
+# v4.5.2
+## Allow class names to be overridden on Select component flags
+Custom classNames supplied as a prop to the Select component are now applied to the flag icons.
+
 # v4.5.1
 ## Make modals not destroy ssr
 

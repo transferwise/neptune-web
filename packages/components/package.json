@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "4.5.1",
+  "version": "4.5.2",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",

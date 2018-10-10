@@ -43,4 +43,15 @@ describe('option', () => {
     component.setProps({ selected: true });
     expect(flagHiddenOnMobile()).toBe(true);
   });
+
+  it('can override class names', () => {
+    component.setProps({
+      currency: 'hustle',
+      classNames: {
+        'currency-flag-hustle': 'currency-flag-hustle-xyz',
+        'currency-flag': 'currency-flag-xyz',
+      },
+    });
+    expect(component.find('i.currency-flag-xyz.currency-flag-hustle-xyz').length).toBe(1);
+  });
 });

@@ -4,7 +4,11 @@ import Types from 'prop-types';
 const Option = ({ currency, label, note, secondary, icon, classNames, selected }) => {
   const style = classes => classes.map(className => classNames[className] || className).join(' ');
   const iconClass = currency
-    ? `currency-flag currency-flag-${currency.toLowerCase()} ${selected ? 'hidden-xs' : ''}`
+    ? `${style([
+        'currency-flag',
+        `currency-flag-${currency.toLowerCase()}`,
+        `${selected ? 'hidden-xs' : ''}`,
+      ])}`
     : `${style(['icon'])} ${icon}`;
   return (
     <span>
