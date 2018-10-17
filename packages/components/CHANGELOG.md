@@ -1,3 +1,7 @@
+# v4.5.3
+## Class names can now be overridden consistently on Select component 
+Custom classNames supplied as a prop to the Select component are now applied consistently across the entire component.
+
 # v4.5.2
 ## Allow class names to be overridden on Select component flags
 Custom classNames supplied as a prop to the Select component are now applied to the flag icons.

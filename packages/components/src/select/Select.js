@@ -229,16 +229,16 @@ export default class Select extends Component {
   renderSearchBox() {
     const { searchValue, searchPlaceholder } = this.props;
     return (
-      <li className="tw-dropdown-item--divider">
+      <li className={this.style('tw-dropdown-item--divider')}>
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a className="tw-select-filter-link p-a-0">
+        <a className={`${this.style('tw-select-filter-link')} ${this.style('p-a-0')}`}>
           <div className={this.style('input-group')}>
             <span className={this.style('input-group-addon')}>
               <i className={`${this.style('icon')} ${this.style('icon-search')}`} />
             </span>
             <input
               type="text"
-              className={`tw-select-filter ${this.style('form-control')}`}
+              className={`${this.style('tw-select-filter')} ${this.style('form-control')}`}
               placeholder={searchPlaceholder}
               onChange={this.handleSearchChange}
               onClick={stopPropagation}
@@ -260,7 +260,10 @@ export default class Select extends Component {
       <li
         onClick={this.createSelectHandlerForOption({ placeholder })}
         onKeyPress={this.createSelectHandlerForOption({ placeholder })}
-        className="tw-dropdown-item--clickable tw-dropdown-item--divider"
+        className={classNames(
+          this.style('tw-dropdown-item--clickable'),
+          this.style('tw-dropdown-item--divider'),
+        )}
       >
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a>{placeholder}</a>
@@ -291,10 +294,14 @@ export default class Select extends Component {
       this.state.keyboardFocusedOptionIndex ===
       this.getIndexWithoutHeadersForIndexWithHeaders(index);
 
-    const className = classNames('tw-dropdown-item tw-dropdown-item--clickable', {
-      [this.style('active')]: isActive,
-      [this.style('tw-dropdown-item--focused')]: isFocusedWithKeyboard,
-    });
+    const className = classNames(
+      this.style('tw-dropdown-item'),
+      this.style('tw-dropdown-item--clickable'),
+      {
+        [this.style('active')]: isActive,
+        [this.style('tw-dropdown-item--focused')]: isFocusedWithKeyboard,
+      },
+    );
     return (
       <li // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
         key={index}
