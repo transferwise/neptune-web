@@ -1,3 +1,7 @@
+# v4.6.0
+## Close button for FlowNavigation is now hidden if onClose is undefined 
+The FlowNavigation component no longer renders the close button if the onClose prop is undefined.
+
 # v4.5.3
 ## Class names can now be overridden consistently on Select component 
 Custom classNames supplied as a prop to the Select component are now applied consistently across the entire component.

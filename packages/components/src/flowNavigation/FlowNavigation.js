@@ -22,11 +22,13 @@ const FlowNavigation = ({ steps, activeStep, avatarUrl, done, profileType, onClo
         </div>
         <div className="col-lg-2 col-xs-6 col-lg-push-8 text-xs-right m-lg-t-1">
           {done ? '' : <Avatar url={avatarUrl} profileType={profileType} />}
-          <button
-            className={`btn-unstyled tw-flow-navigation__close-button
+          {onClose && (
+            <button
+              className={`btn-unstyled tw-flow-navigation__close-button
               ${done ? '' : 'close-button-with-avatar'} icon icon-close icon-lg m-l-3`}
-            onClick={onClose}
-          />
+              onClick={onClose}
+            />
+          )}
         </div>
         {done ? (
           ''

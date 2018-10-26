@@ -14,6 +14,7 @@ export default class FlowNavigationDocs extends Component {
       profileType: { value: 'PERSONAL', label: 'Personal' },
       avatarUrl: 'https://github.com/transferwise.png',
       done: false,
+      onClose: true,
     };
   }
 
@@ -138,11 +139,12 @@ export default class FlowNavigationDocs extends Component {
           steps={this.state.selectedPreset.steps}
           activeStep={this.state.activeStep}
           // eslint-disable-next-line no-alert
-          onClose={() => alert('Close clicked')}
+          onClose={this.state.onClose ? () => alert('Close clicked') : undefined}
           avatarUrl={this.state.avatarUrl}
           done={this.state.done}
           profileType={this.state.profileType ? this.state.profileType.value : undefined}
           onGoBack={this.canGoBack() ? () => this.goBack() : undefined}
+          showCloseButton={this.state.showCloseButton}
         />
         <div className="container m-t-4">
           <div className="row">
@@ -150,13 +152,13 @@ export default class FlowNavigationDocs extends Component {
               {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
                 {`<FlowNavigation
-  onClose={[a function]}
+  onClose={${this.state.onClose ? '[a function]' : undefined}}
   onGoBack={${this.state.canGoBack ? '[a function]' : undefined}}
   profileType={${this.state.profileType ? `"${this.state.profileType.value}"` : undefined}}
   avatarUrl={"${this.state.avatarUrl}"}
   activeStep={${this.state.activeStep}}
   steps={${this.getStringifiedSteps()}}
-  done={"${this.state.done}"}
+  done={${this.state.done}}
 />`}
               </pre>
               {/* eslint-enable react/jsx-indent */}
@@ -238,6 +240,11 @@ export default class FlowNavigationDocs extends Component {
                 label="Done?"
                 onChange={this.createStateLink('done')}
                 checked={this.state.done}
+              />
+              <Checkbox
+                label="Is onClose defined?"
+                onChange={this.createStateLink('onClose')}
+                checked={this.state.onClose}
               />
             </div>
           </div>

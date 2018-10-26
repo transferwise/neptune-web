@@ -118,4 +118,9 @@ describe('Flow navigation', () => {
     component.setProps({ done: true });
     expect(bottomBorderHidden()).toBe(true);
   });
+
+  it('hides the close button if onClose is not defined', () => {
+    component.setProps({ onClose: undefined });
+    expect(closeButton().exists()).toBe(false);
+  });
 });
