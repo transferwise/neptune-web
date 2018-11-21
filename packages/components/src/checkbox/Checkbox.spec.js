@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Checkbox from './';
+import CheckboxButton from '../common/CheckboxButton';
 
 describe('Checkbox', () => {
   let component;
@@ -15,65 +16,76 @@ describe('Checkbox', () => {
     component = shallow(<Checkbox {...props} />);
   });
 
-  function click() {
-    component.find('button').simulate('click');
-  }
-
   it('renders the given label', () => {
-    expect(component.text()).toEqual(props.label);
+    expect(component.text()).toContain(props.label);
   });
 
-  it('switches the given checked value when clicked', () => {
-    component.setProps({ checked: true });
-    expect(props.onChange).not.toBeCalled();
-    click();
-    expect(props.onChange).toBeCalledWith(false);
+  it('calls change handler with new checked value when not disabled and checkbox button is clicked', () => {
+    const onChange = jest.fn();
+    component.setProps({ onChange });
 
-    component.setProps({ checked: false });
-    click();
-    expect(props.onChange).toBeCalledWith(true);
-  });
-
-  it('sets the button as checked when the component is checked', () => {
-    const buttonChecked = () => component.find('button').hasClass('checked');
-    expect(buttonChecked()).toBe(false);
+    expect(onChange).not.toBeCalled();
+    clickCheckboxButton();
+    expect(onChange).toBeCalledWith(true);
 
     component.setProps({ checked: true });
-    expect(buttonChecked()).toBe(true);
+    clickCheckboxButton();
+    expect(onChange).toBeCalledWith(false);
   });
 
-  it('disables the button and div if the component is disabled', () => {
-    const isDisabled = () =>
-      component.find('div.checkbox').hasClass('disabled') &&
-      !!component.find('button').prop('disabled');
+  it('does not call change handler on checkbox button click when disabled', () => {
+    const onChange = jest.fn();
+    component.setProps({ onChange, disabled: true });
+
+    expect(onChange).not.toBeCalled();
+    clickCheckboxButton();
+    expect(onChange).not.toBeCalled();
+  });
+
+  it('has disabled class when the flag is passed', () => {
     expect(isDisabled()).toBe(false);
 
     component.setProps({ disabled: true });
     expect(isDisabled()).toBe(true);
   });
 
-  it('can not be clicked when it is disabled', () => {
-    component.setProps({ disabled: true });
-    click();
-    expect(props.onChange).not.toBeCalled();
-  });
-
-  it('shows an error if it is required and not disabled', () => {
-    const hasError = () =>
-      component.find('div.checkbox').hasClass('has-error') &&
-      component.find('button').hasClass('has-error');
-    expect(hasError()).toBe(false);
+  it('has error class and passes it to checkbox button when required and not disabled', () => {
     component.setProps({ disabled: true, required: true });
-    expect(hasError()).toBe(false);
+    expect(hasErrorClass()).toBe(false);
+    expect(checkboxButtonHasError()).toBe(false);
     component.setProps({ disabled: false, required: true, checked: true });
-    expect(hasError()).toBe(false);
+    expect(hasErrorClass()).toBe(false);
+    expect(checkboxButtonHasError()).toBe(false);
 
     component.setProps({ disabled: false, required: true, checked: false });
-    expect(hasError()).toBe(true);
+    expect(hasErrorClass()).toBe(true);
+    expect(checkboxButtonHasError()).toBe(true);
   });
 
-  it('adds an asterisk to the label if it is required', () => {
+  it('has an asterisk after the label when required', () => {
+    expect(component.text()).not.toContain(`${props.label}*`);
     component.setProps({ required: true });
-    expect(component.text()).toEqual(`${props.label}*`);
+    expect(component.text()).toContain(`${props.label}*`);
   });
+
+  it('passes checked to checkbox button', () => {
+    expect(checkboxButton().prop('checked')).toBe(false);
+    component.setProps({ checked: true });
+    expect(checkboxButton().prop('checked')).toBe(true);
+  });
+
+  it('passes disabled to checkbox button', () => {
+    expect(checkboxButton().prop('disabled')).toBe(false);
+    component.setProps({ disabled: true });
+    expect(checkboxButton().prop('disabled')).toBe(true);
+  });
+
+  const isDisabled = () => component.hasClass('disabled');
+  const hasErrorClass = () => component.hasClass('has-error');
+  const checkboxButton = () => component.find(CheckboxButton);
+  const checkboxButtonHasError = () => checkboxButton().hasClass('has-error');
+
+  function clickCheckboxButton() {
+    checkboxButton().simulate('click');
+  }
 });

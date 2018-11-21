@@ -1,5 +1,6 @@
 import React from 'react';
 import Types from 'prop-types';
+import CheckboxButton from '../common/CheckboxButton';
 
 const Checkbox = ({ checked, required, disabled, label, onChange }) => {
   const handleClick = () => (!disabled ? onChange(!checked) : null);
@@ -8,17 +9,13 @@ const Checkbox = ({ checked, required, disabled, label, onChange }) => {
     <div className={`checkbox ${errorClass} ${disabled ? 'disabled' : ''}`}>
       {/* eslint-disable jsx-a11y/label-has-for */}
       <label>
-        {/* eslint-enable jsx-a11y/label-has-for */}
         {label + (required ? '*' : '')}
-        <button
-          type="button"
-          className={`tw-checkbox-button ${errorClass} ${checked ? 'checked' : ''}`}
-          aria-pressed={checked}
+        <CheckboxButton
+          checked={checked}
+          className={errorClass}
           onClick={handleClick}
           disabled={disabled}
-        >
-          <span className="tw-checkbox-check glyphicon glyphicon-ok" />
-        </button>
+        />
       </label>
     </div>
   );

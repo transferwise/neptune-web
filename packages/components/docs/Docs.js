@@ -13,6 +13,9 @@ import RadioDocs from './RadioDocs';
 import LoaderDocs from './LoaderDocs';
 import FlowNavigationDocs from './FlowNavigationDocs';
 import MoneyDocs from './MoneyDocs';
+import RadioOptionDocs from './RadioOptionDocs';
+import CheckboxOptionDocs from './CheckboxOptionDocs';
+import NavigationOptionDocs from './NavigationOptionDocs';
 
 const Docs = () => (
   <Fragment>
@@ -29,6 +32,9 @@ const Docs = () => (
     <RadioDocs />
     <LoaderDocs />
     <MoneyDocs />
+    <RadioOptionDocs />
+    <CheckboxOptionDocs />
+    <NavigationOptionDocs />
   </Fragment>
 );
 

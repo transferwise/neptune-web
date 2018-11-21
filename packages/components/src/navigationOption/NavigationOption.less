@@ -1,0 +1,23 @@
+@import '~bootstrap/less/variables';
+
+// TODO: Move to Bootstrap if considered reasonable
+.tw-navigation-option__chevron {
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+
+  &:hover,
+  &:focus {
+    color: @link-hover-color;
+  }
+  &:active {
+    color: @link-active-color;
+  }
+  &[disabled] {
+    &:hover,
+    &:focus {
+      color: @link-disabled-color;
+    }
+  }
+}

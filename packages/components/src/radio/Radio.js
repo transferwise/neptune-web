@@ -1,39 +1,21 @@
 import React from 'react';
 import Types from 'prop-types';
 
-const Radio = ({ label, disabled, name, checked, onChange }) => {
-  const handleClick = () => !disabled && onChange(!checked);
-  const buttonClass = `tw-radio-button ${checked ? 'checked' : ''}`;
-  return (
-    <div className="radio">
-      {/* eslint-disable jsx-a11y/label-has-for */}
-      <label>
-        {/* eslint-enable jsx-a11y/label-has-for */}
-        <input
-          type="radio"
-          className="sr-only"
-          name={name}
-          value={checked}
-          onChange={handleClick}
-          disabled={disabled}
-        />
-        <button
-          type="button"
-          className={buttonClass}
-          onClick={handleClick}
-          disabled={disabled}
-          aria-pressed={checked}
-        >
-          <span className="tw-radio-check" />
-        </button>
-        {label}
-      </label>
-    </div>
-  );
-};
+import RadioButton from '../common/RadioButton';
+
+const Radio = ({ label, id, ...otherProps }) => (
+  <div className="radio">
+    <label htmlFor={id}>
+      {/* eslint-enable jsx-a11y/label-has-for */}
+      <RadioButton id={id} {...otherProps} />
+      {label}
+    </label>
+  </div>
+);
 
 Radio.propTypes = {
   label: Types.string.isRequired,
+  id: Types.string,
   name: Types.string.isRequired,
   onChange: Types.func.isRequired,
   checked: Types.bool,
@@ -43,6 +25,7 @@ Radio.propTypes = {
 Radio.defaultProps = {
   checked: false,
   disabled: false,
+  id: null,
 };
 
 export default Radio;

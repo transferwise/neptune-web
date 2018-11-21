@@ -1,3 +1,8 @@
+# v4.7.0
+## Add RadioOption, CheckboxOption, and NavigationOption
+
+![image](https://user-images.githubusercontent.com/5443561/47721187-78aa1000-dc47-11e8-9155-8cb9b5feead0.png)
+
 # v4.6.0
 ## Close button for FlowNavigation is now hidden if onClose is undefined 
 The FlowNavigation component no longer renders the close button if the onClose prop is undefined.
