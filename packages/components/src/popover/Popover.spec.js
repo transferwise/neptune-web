@@ -4,6 +4,8 @@ import { shallow, mount } from 'enzyme';
 import Popover from '.';
 import { getPlacement, getPopoverPosition } from './positioning';
 import { wrapInDOMElementIfNecessary } from './DOMWrapping';
+import { fakeKeyDownEventForKey } from '../common/fakeEvents';
+import KEY_CODES from '../common/keyCodes';
 
 jest.mock('./positioning');
 jest.mock('./DOMWrapping');
@@ -61,6 +63,12 @@ describe('Popover', () => {
   it('opens on click', () => {
     expect(popoverIsOpen()).toBe(false);
     clickPopoverTrigger();
+    expect(popoverIsOpen()).toBe(true);
+  });
+
+  it('opens when Enter is pressed while active', () => {
+    expect(popoverIsOpen()).toBe(false);
+    trigger().simulate('keyUp', fakeKeyDownEventForKey(KEY_CODES.ENTER));
     expect(popoverIsOpen()).toBe(true);
   });
 

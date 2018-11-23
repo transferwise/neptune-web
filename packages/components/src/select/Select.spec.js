@@ -45,6 +45,8 @@ describe('Select', () => {
     openSelect();
     component.setProps({ onSearchChange: jest.fn() });
   };
+  const callSearchChangeWith = str =>
+    component.find('input').simulate('change', { target: { value: str } });
 
   const activeOptionIndex = () => {
     let elementIndex = null;
@@ -104,6 +106,11 @@ describe('Select', () => {
 
   it('can be opened by SPACE', () => {
     component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.SPACE));
+    expectDropdownToBe().open();
+  });
+
+  it('can be opened by ENTER', () => {
+    component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.ENTER));
     expectDropdownToBe().open();
   });
 
@@ -233,7 +240,7 @@ describe('Select', () => {
     openSelect();
     const onSearchChange = jest.fn();
     component.setProps({ onSearchChange });
-    component.find('input').simulate('change', { target: { value: 'hello' } });
+    callSearchChangeWith('hello');
     expect(onSearchChange).toBeCalledWith('hello');
   });
 
@@ -253,6 +260,24 @@ describe('Select', () => {
     openSearchableSelect();
     component.setProps({ searchPlaceholder: 'hello' });
     expect(component.find('input').prop('placeholder')).toEqual('hello');
+  });
+
+  it('has first search result in focus', () => {
+    openSearchableSelect();
+
+    component.setProps({ options: [{ value: 2, label: 'yo' }, { value: 3, label: 'dawg' }] });
+    callSearchChangeWith('hello');
+
+    expect(focusedOptionIndex()).toBe(1); // ignore search bar
+  });
+
+  it('has no focused element if no search result', () => {
+    openSearchableSelect();
+
+    component.setProps({ options: [] });
+    callSearchChangeWith('hello');
+
+    expect(focusedOptionIndex()).toBe(null);
   });
 
   it('does not show placeholder option when search enabled', () => {

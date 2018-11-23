@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Placement, { PlacementValues } from './Placement';
 import { getPlacement, getPopoverPosition } from './positioning';
 import { wrapInDOMElementIfNecessary } from './DOMWrapping';
+import KeyCodes from '../common/keyCodes';
 
 export default class Popover extends Component {
   static Placement = Placement;
@@ -37,6 +38,12 @@ export default class Popover extends Component {
     }
   };
 
+  handleKeyUp = ({ keyCode }) => {
+    if (keyCode === KeyCodes.ENTER) {
+      this.open();
+    }
+  };
+
   open = () => {
     this.setState({ isOpen: true });
     document.addEventListener('click', this.closePopoverOnOutsideClick, true);
@@ -56,6 +63,7 @@ export default class Popover extends Component {
       role: 'button',
       tabIndex: 0,
       onClick: this.open,
+      onKeyUp: this.handleKeyUp,
     });
   };
 

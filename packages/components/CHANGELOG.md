@@ -1,3 +1,10 @@
+# v4.8.0
+## Improved UX in multiple components:
+
+* Focus first option after searching in Select
+* Allow opening of Select by pressing Enter while focused
+* Allow opening popovers by pressing Enter while focused
+
 # v4.7.0
 ## Add RadioOption, CheckboxOption, and NavigationOption
 

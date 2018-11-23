@@ -96,7 +96,12 @@ export default class Select extends Component {
     }, 0);
   }
 
-  handleSearchChange = event => this.props.onSearchChange(event.target.value);
+  handleSearchChange = event => {
+    this.props.onSearchChange(event.target.value);
+
+    const hasActiveOptions = !!this.props.options.length;
+    this.setState({ keyboardFocusedOptionIndex: hasActiveOptions ? 0 : null });
+  };
 
   handleKeyDown = event => {
     const { open } = this.state;
@@ -128,7 +133,11 @@ export default class Select extends Component {
         }
         break;
       case KeyCodes.ENTER:
-        this.selectKeyboardFocusedOption();
+        if (open) {
+          this.selectKeyboardFocusedOption();
+        } else {
+          this.open();
+        }
         event.preventDefault();
         break;
       case KeyCodes.ESCAPE:
