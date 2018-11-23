@@ -1,3 +1,7 @@
+# v4.8.1
+## Fix proptypes for FlowNavigation
+onClose no longer a required prop for FlowNavigation
+
 # v4.8.0
 ## Improved UX in multiple components:
 

@@ -48,6 +48,7 @@ FlowNavigation.defaultProps = {
   done: false,
   profileType: ProfileType.PERSONAL,
   onGoBack: null,
+  onClose: null,
 };
 
 FlowNavigation.propTypes = {
@@ -64,7 +65,7 @@ FlowNavigation.propTypes = {
   done: Types.bool,
   profileType: Types.oneOf(Object.keys(ProfileType)),
   onGoBack: Types.func,
-  onClose: Types.func.isRequired,
+  onClose: Types.func,
 };
 
 export default FlowNavigation;
