@@ -1,3 +1,8 @@
+# v4.9.0
+## Fix Select options to bottom on XS screens
+This emulates dropdown behavior in apps
+![image](https://user-images.githubusercontent.com/43746750/49293523-113ae680-f4b9-11e8-963c-ad5f23fdc7ac.png)
+
 # v4.8.1
 ## Fix proptypes for FlowNavigation
 onClose no longer a required prop for FlowNavigation

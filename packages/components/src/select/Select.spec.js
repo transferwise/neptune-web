@@ -161,6 +161,12 @@ describe('Select', () => {
     expectDropdownToBe().closed();
   });
 
+  it('closes itself when backdrop is touched', () => {
+    openSelect();
+    container().simulate('touchMove', fakeEvent());
+    expectDropdownToBe().closed();
+  });
+
   it('shows the currently selected option as active in the dropdown', () => {
     openSelect();
     component.setProps({ required: true });

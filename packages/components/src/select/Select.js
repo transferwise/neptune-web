@@ -186,6 +186,7 @@ export default class Select extends Component {
   }
 
   open() {
+    // TODO: should also add breakpoint-specific overflow:hidden class to body
     this.setState({ open: true }, () => {
       const searchable = !!this.props.onSearchChange;
       if (searchable && this.searchBox) {
@@ -209,6 +210,12 @@ export default class Select extends Component {
 
   handleDocumentClick = () => {
     if (this.state.open) {
+      this.close();
+    }
+  };
+
+  handleTouchStart = event => {
+    if (event.currentTarget === event.target && this.state.open) {
       this.close();
     }
   };
@@ -371,6 +378,7 @@ export default class Select extends Component {
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
         className={groupClass}
         onKeyDown={this.handleKeyDown}
+        onTouchMove={this.handleTouchStart}
       >
         <button
           disabled={disabled}
@@ -383,14 +391,12 @@ export default class Select extends Component {
           {this.renderButtonInternals()}
           <span className={this.style('caret')} />
         </button>
-        {open ? (
+        {open && (
           <ul className={dropdownClass} role="menu">
             {!required && !canSearch ? this.renderPlaceHolderOption() : ''}
             {canSearch ? this.renderSearchBox() : ''}
             {this.renderOptions()}
           </ul>
-        ) : (
-          ''
         )}
       </div>
     );

@@ -43,8 +43,7 @@ export default class SelectDocs extends Component {
         if (option.header) {
           accumulator.currentHeader = option.header; // eslint-disable-line no-param-reassign
         } else if (option.value) {
-          accumulator.mapping[option.value] = // eslint-disable-line no-param-reassign
-            accumulator.currentHeader;
+          accumulator.mapping[option.value] = accumulator.currentHeader; // eslint-disable-line no-param-reassign
         }
         return accumulator;
       },
@@ -160,7 +159,9 @@ export default class SelectDocs extends Component {
                 }
                 options={['sm', 'md', 'lg'].map(size => ({ value: size, label: size }))}
                 onChange={selection =>
-                  this.setState({ size: selection ? selection.value : undefined })
+                  this.setState({
+                    size: selection ? selection.value : undefined,
+                  })
                 }
               />
               <div className="m-t-3" />
@@ -188,7 +189,9 @@ export default class SelectDocs extends Component {
                 }
                 options={['sm', 'md', 'lg'].map(size => ({ value: size, label: size }))}
                 onChange={selection =>
-                  this.setState({ dropdownWidth: selection ? selection.value : undefined })
+                  this.setState({
+                    dropdownWidth: selection ? selection.value : undefined,
+                  })
                 }
               />
               <div className="m-t-3" />
@@ -204,7 +207,9 @@ export default class SelectDocs extends Component {
                 }
                 options={['xs', 'sm', 'md', 'lg', 'xl'].map(size => ({ value: size, label: size }))}
                 onChange={selection =>
-                  this.setState({ dropdownRight: selection ? selection.value : undefined })
+                  this.setState({
+                    dropdownRight: selection ? selection.value : undefined,
+                  })
                 }
               />
               <div className="m-t-3" />
