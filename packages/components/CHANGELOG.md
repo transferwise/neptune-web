@@ -1,3 +1,6 @@
+# v4.9.1
+## Ignore Select dropdownWidth prop on XS screens
+
 # v4.9.0
 ## Fix Select options to bottom on XS screens
 This emulates dropdown behavior in apps
