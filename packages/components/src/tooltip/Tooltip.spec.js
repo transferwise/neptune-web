@@ -35,6 +35,10 @@ describe('Tooltip', () => {
     return component.find('.tooltip').hasClass('in');
   }
 
+  function tooltipId() {
+    return component.prop('aria-describedby');
+  }
+
   it('renders the children given to it', () => {
     expect(component.find('button').length).toBe(1);
   });
@@ -66,5 +70,9 @@ describe('Tooltip', () => {
   it('is accessible', () => {
     expect(component.prop('aria-describedby')).toBeTruthy();
     expect(component.prop('aria-describedby')).toEqual(component.find('.tooltip').prop('id'));
+  });
+
+  it('has a tooltipId', () => {
+    expect(tooltipId()).toEqual(expect.any(String));
   });
 });

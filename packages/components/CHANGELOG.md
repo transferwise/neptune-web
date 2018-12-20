@@ -1,3 +1,6 @@
+# v4.9.2
+## Generate random ID only in browser to get rid of differing markup in SSR vs client
+
 # v4.9.1
 ## Ignore Select dropdownWidth prop on XS screens
 

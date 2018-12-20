@@ -38,12 +38,15 @@ function getTooltipStyle(parent, tooltip, position, offset) {
 }
 
 class Tooltip extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { show: false };
-    this.tooltipId = Math.random()
-      .toString(36)
-      .substring(7);
+  state = { show: false, tooltipId: null };
+
+  componentDidMount() {
+    // eslint-disable-next-line react/no-did-mount-set-state
+    this.setState({
+      tooltipId: Math.random()
+        .toString(36)
+        .substring(7),
+    });
   }
 
   show() {
@@ -62,6 +65,7 @@ class Tooltip extends Component {
   };
 
   render() {
+    const { tooltipId } = this.state;
     const { position, children, label, offset } = this.props;
     const tooltipStyle =
       this.elementReference && this.tooltipReference
@@ -76,7 +80,7 @@ class Tooltip extends Component {
         ref={elementReference => {
           this.elementReference = elementReference;
         }}
-        aria-describedby={this.tooltipId}
+        aria-describedby={tooltipId}
         className="tooltip-container"
       >
         <div
@@ -88,7 +92,7 @@ class Tooltip extends Component {
           ref={tooltipReference => {
             this.tooltipReference = tooltipReference;
           }}
-          id={this.tooltipId}
+          id={tooltipId}
         >
           <div className="tooltip-arrow" />
           <div className="tooltip-inner">{label}</div>
