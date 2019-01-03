@@ -17,6 +17,17 @@ describe('Server side rendering', () => {
     currencies: [],
     steps: [],
     children: 'yo',
+    id: '1',
+    title: 'trolo',
+    name: 'lolo',
+    label: 'hello',
+    content: 'world',
+    currency: 'XYZ',
+    amount: 0,
+    options: [],
+    media: <h1>Hello</h1>,
+    onChange: () => {},
+    onClick: () => {},
   };
 
   componentNames.forEach(componentName => {

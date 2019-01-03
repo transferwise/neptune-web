@@ -164,12 +164,12 @@ export default class FlowNavigationDocs extends Component {
               {/* eslint-enable react/jsx-indent */}
               <p>
                 You have to control mobile back button behaviour yourself, by passing in{' '}
-                <pre className="tw-docs-inline-code">onGoBack</pre> when it is possible to back.
+                <code className="tw-docs-inline-code">onGoBack</code> when it is possible to back.
               </p>
 
               <p>
                 You can put the component in done state, keeping only the logo and cross, by passing
-                in <pre className="tw-docs-inline-code">done=true</pre>.
+                in <code className="tw-docs-inline-code">done=true</code>.
               </p>
             </div>
             <div className="col-md-6">

@@ -16,6 +16,7 @@ import MoneyDocs from './MoneyDocs';
 import RadioOptionDocs from './RadioOptionDocs';
 import CheckboxOptionDocs from './CheckboxOptionDocs';
 import NavigationOptionDocs from './NavigationOptionDocs';
+import DateLookupDocs from './DateLookupDocs';
 
 const Docs = () => (
   <Fragment>
@@ -35,6 +36,7 @@ const Docs = () => (
     <RadioOptionDocs />
     <CheckboxOptionDocs />
     <NavigationOptionDocs />
+    <DateLookupDocs />
   </Fragment>
 );
 

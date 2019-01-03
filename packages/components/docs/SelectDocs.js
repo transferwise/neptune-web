@@ -142,8 +142,9 @@ export default class SelectDocs extends Component {
               {/* eslint-enable react/jsx-indent */}
               <p>
                 Search implementation is left to the user, change passed in options property with
-                value gotten from <pre className="tw-docs-inline-code">onSearchChange</pre>. Search
-                won&apos;t render if no <pre className="tw-docs-inline-code">onSearchChange</pre>
+                value gotten from <code className="tw-docs-inline-code">onSearchChange</code>.
+                Search won&apos;t render if no{' '}
+                <code className="tw-docs-inline-code">onSearchChange</code>
                 passed.
               </p>
               <p>Every property that is false or undefined can be omitted.</p>

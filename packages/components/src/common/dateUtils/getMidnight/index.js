@@ -1,0 +1,1 @@
+export { getMidnight } from './getMidnight';
