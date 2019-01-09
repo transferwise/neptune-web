@@ -1,0 +1,1 @@
+export { isValidPhoneNumber } from './isValidPhoneNumber';

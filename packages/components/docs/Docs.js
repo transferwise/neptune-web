@@ -17,11 +17,11 @@ import RadioOptionDocs from './RadioOptionDocs';
 import CheckboxOptionDocs from './CheckboxOptionDocs';
 import NavigationOptionDocs from './NavigationOptionDocs';
 import DateLookupDocs from './DateLookupDocs';
+import PhoneNumberInputDocs from './PhoneNumberInputDocs';
 
 const Docs = () => (
   <Fragment>
     <Header />
-
     <ModalDocs />
     <StepperDocs />
     <FlowNavigationDocs />
@@ -37,6 +37,7 @@ const Docs = () => (
     <CheckboxOptionDocs />
     <NavigationOptionDocs />
     <DateLookupDocs />
+    <PhoneNumberInputDocs />
   </Fragment>
 );
 

@@ -13,3 +13,4 @@ export { default as RadioOption } from './radioOption';
 export { default as CheckboxOption } from './checkboxOption';
 export { default as NavigationOption } from './navigationOption';
 export { default as DateLookup } from './dateLookup';
+export { default as PhoneNumberInput } from './phoneNumberInput';
