@@ -18,6 +18,7 @@ import CheckboxOptionDocs from './CheckboxOptionDocs';
 import NavigationOptionDocs from './NavigationOptionDocs';
 import DateLookupDocs from './DateLookupDocs';
 import PhoneNumberInputDocs from './PhoneNumberInputDocs';
+import DateInputDocs from './DateInputDocs';
 
 const Docs = () => (
   <Fragment>
@@ -38,6 +39,7 @@ const Docs = () => (
     <NavigationOptionDocs />
     <DateLookupDocs />
     <PhoneNumberInputDocs />
+    <DateInputDocs />
   </Fragment>
 );
 

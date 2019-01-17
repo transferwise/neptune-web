@@ -1,3 +1,6 @@
+# v4.12.0
+## Add Date Component 
+
 # v4.11.0
 ## Add telephone input component
 

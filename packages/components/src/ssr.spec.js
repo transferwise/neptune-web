@@ -26,8 +26,8 @@ describe('Server side rendering', () => {
     amount: 0,
     options: [],
     media: <h1>Hello</h1>,
-    onChange: () => {},
-    onClick: () => {},
+    onClick: jest.fn(),
+    onChange: jest.fn(),
   };
 
   componentNames.forEach(componentName => {
