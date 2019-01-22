@@ -33,6 +33,7 @@ export default class RadioDocs extends Component {
               <Radio
                 label={this.state.label}
                 name={this.state.name}
+                id={this.state.name}
                 checked={this.state.checked}
                 disabled={this.state.disabled}
                 onChange={this.createStateLink('checked')}

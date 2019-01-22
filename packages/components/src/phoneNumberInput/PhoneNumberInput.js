@@ -1,14 +1,18 @@
-/* eslint-disable */
 import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 
 import Select from '../select';
-import { explodeNumberModel, filterOptionsForQuery, isValidPhoneNumber } from './utils';
+import {
+  explodeNumberModel,
+  filterOptionsForQuery,
+  isValidPhoneNumber,
+  cleanNumber,
+  setDefaultPrefix,
+} from './utils';
 
 import countries from './data/countries';
 
 const ALLOWED_PHONE_CHARS = /^$|^[\d-\s]+$/;
-const DIGITS_MATCH = /^$|\d+/g;
 
 class PhoneNumberInput extends PureComponent {
   static propTypes = {
@@ -34,39 +38,67 @@ class PhoneNumberInput extends PureComponent {
 
   constructor(props) {
     super(props);
-    const { suffix = '', prefix = '' } = explodeNumberModel(this.props.value, this.props.locale);
+    const { value, locale } = this.props;
+    const cleanValue = value ? cleanNumber(value) : null;
+    const initialValue = cleanValue && isValidPhoneNumber(cleanValue) ? cleanValue : null;
+
     this.state = {
-      suffix,
-      prefix,
-      value: suffix + prefix,
-      previousReturned: null,
+      internalValue: initialValue,
+      broadcastValue: initialValue,
+      locale,
       searchQuery: '',
     };
   }
 
   static getDerivedStateFromProps(nextProps, state) {
-    const { value } = nextProps;
-    const { prefix, suffix } = explodeNumberModel(value, nextProps.locale);
+    const { value, locale } = nextProps;
 
-    if (value !== state.value) {
-      const resetValue = isValidPhoneNumber(value) ? value : null;
+    if (locale !== state.locale) {
+      const { suffix } = PhoneNumberInput.getSuffixPrefix(state.internalValue, state.locale);
 
-      if (state.previousReturned !== resetValue) {
-        nextProps.onChange(resetValue);
+      if (!suffix) {
+        const { prefix } = PhoneNumberInput.getSuffixPrefix('', locale);
+        return {
+          ...state,
+          internalValue: prefix,
+          locale: nextProps.locale,
+        };
       }
       return {
-        suffix,
-        prefix,
-        value: resetValue,
-        previousReturned: resetValue,
+        ...state,
+        locale: nextProps.locale,
+      };
+    }
+
+    const cleanValue = value ? cleanNumber(value) : null;
+    const valueToCheck = cleanValue && isValidPhoneNumber(cleanValue) ? cleanValue : null;
+
+    if (cleanValue !== state.internalValue) {
+      if (valueToCheck !== state.broadcastValue) {
+        nextProps.onChange(valueToCheck);
+      }
+      return {
+        ...state,
+        broadcastValue: valueToCheck,
+        internalValue: valueToCheck,
         searchQuery: '',
       };
     }
+
     return null;
   }
 
   onChangeSearch = searchQuery => {
     this.setState({ searchQuery });
+  };
+
+  static getSuffixPrefix = (value, locale) => {
+    let prefix = setDefaultPrefix(locale);
+    let suffix = '';
+    if (value) {
+      ({ prefix, suffix } = explodeNumberModel(value));
+    }
+    return { prefix, suffix };
   };
 
   getSelectOptions = () => {
@@ -82,41 +114,41 @@ class PhoneNumberInput extends PureComponent {
   };
 
   handleChangeSelect = event => {
-    const { suffix } = this.state;
+    const { internalValue, locale } = this.state;
+    const { suffix } = PhoneNumberInput.getSuffixPrefix(internalValue, locale);
     const prefix = event.value;
-    const value = prefix + this.cleanNumber(suffix);
 
-    this.setState({ searchQuery: '', prefix, value }, () => {
-      this.returnValue(value);
+    this.setState({ searchQuery: '', internalValue: prefix + suffix }, () => {
+      this.returnValue(this.state.internalValue);
     });
   };
 
-  cleanNumber = number => (number.match(DIGITS_MATCH) && number.match(DIGITS_MATCH).join('')) || '';
-
   handleInputChange = event => {
     const suffix = event.target.value;
+
     if (ALLOWED_PHONE_CHARS.test(suffix)) {
-      const { prefix } = this.state;
-      const value = prefix + this.cleanNumber(suffix);
-      this.setState({ suffix, value }, () => {
-        this.returnValue(value);
+      const { internalValue, locale } = this.state;
+      const { prefix } = PhoneNumberInput.getSuffixPrefix(internalValue, locale);
+      this.setState({ internalValue: prefix + suffix }, () => {
+        this.returnValue(this.state.internalValue);
       });
     }
   };
 
   returnValue = value => {
-    const returnValue = isValidPhoneNumber(value) ? value : null;
-    if (this.state.previousReturned !== returnValue) {
-      this.setState({ previousReturned: returnValue }, () => {
-        this.props.onChange(returnValue);
-      });
+    const broadcastValue = isValidPhoneNumber(value) ? cleanNumber(value) : null;
+    if (broadcastValue !== this.state.broadcastValue) {
+      this.props.onChange(broadcastValue);
+      this.setState({ broadcastValue });
     }
   };
 
   render() {
     const { searchPlaceholder, disabled, required, size, placeholder } = this.props;
+    const { internalValue, locale } = this.state;
     const selectOptions = this.getSelectOptions();
-    const { prefix, suffix } = this.state;
+
+    const { prefix, suffix } = PhoneNumberInput.getSuffixPrefix(internalValue, locale);
 
     return (
       <div className="tw-telephone">

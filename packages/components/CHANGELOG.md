@@ -1,3 +1,6 @@
+# v4.12.1
+## Improved regex for allowed chars for PhoneInput. And improved test coverage  
+
 # v4.12.0
 ## Add Date Component 
 

@@ -6,3 +6,4 @@ export { findCountryByPrefix } from './findCountryByPrefix';
 export { findCountryByCode } from './findCountryByCode';
 export { filterOptionsForQuery } from './filterOptionsForQuery';
 export { isOptionAndFitsQuery, contains } from './isOptionAndFitsQuery';
+export { cleanNumber } from './cleanNumber';

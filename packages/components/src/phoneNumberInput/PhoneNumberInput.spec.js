@@ -4,7 +4,6 @@ import { shallow } from 'enzyme';
 import PhoneNumberInput from './';
 
 describe('Given a telephone number component', () => {
-  console.log = jest.fn();
   let select;
   let input;
   let component;
@@ -243,6 +242,17 @@ describe('Given a telephone number component', () => {
       select.simulate('change', { value: '+1', label: '+1' });
       input.simulate('change', { target: { value: '12' } });
       expect(props.onChange).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('when user insert invalid character ', () => {
+    it('should strip them', () => {
+      component = shallow(<PhoneNumberInput {...props} value="+12345678" />);
+      input = component.find(NUMBER_SELECTOR);
+      select = component.find(PREFIX_SELECT_SELECTOR);
+      input.simulate('change', { target: { value: '123--' } });
+      select.simulate('change', { value: '+39', label: '+39' });
+      expect(props.onChange).toHaveBeenCalledWith('+39123');
     });
   });
 });

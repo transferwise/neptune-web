@@ -3,13 +3,20 @@ import { Checkbox, PhoneNumberInput } from '../src';
 import Select from '../src/select';
 
 const SIZES = ['sm', 'md', 'lg'];
+const LOCALES = [
+  { value: 'en-GB', label: 'English UK' },
+  { value: 'en-US', label: 'English US' },
+  { value: 'fr-FR', label: 'French' },
+  { value: 'es-ES', label: 'Spain' },
+  { value: 'js-JP', label: 'Japanese' },
+];
 
 export default class PhoneNumberInputDocs extends PureComponent {
   state = {
     required: false,
     disabled: false,
-    value: '+447573135343',
-    locale: 'en-GB',
+    value: '',
+    locale: LOCALES[0],
     size: 'md',
     searchPlaceholder: 'Prefix',
     placeholder: 'placeholder',
@@ -22,7 +29,7 @@ export default class PhoneNumberInputDocs extends PureComponent {
 
   render() {
     const docsCode = `<PhoneNumberInput
-  locale="${this.state.locale}"
+  locale="${this.state.locale.value}"
   value="${this.state.value}"
   disabled={${this.state.disabled}}
   required={${this.state.required}}
@@ -44,7 +51,7 @@ export default class PhoneNumberInputDocs extends PureComponent {
               <PhoneNumberInput
                 onChange={value => this.handleOnChange(value)}
                 value={this.state.value}
-                locale={this.state.locale}
+                locale={this.state.locale.value}
                 disabled={this.state.disabled}
                 required={this.state.required}
                 size={this.state.size}
@@ -90,9 +97,28 @@ export default class PhoneNumberInputDocs extends PureComponent {
               </div>
               <div className="row m-t-3">
                 <div className="col-md-6">
+                  <label htmlFor="phone-number-input-locale">Locale</label>
+                  <Select
+                    id="phone-number-input-locale"
+                    selected={{ ...this.state.locale }}
+                    options={LOCALES.map(l => ({ ...l }))}
+                    onChange={locale => this.setState({ locale })}
+                  />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="phone-number-input-value">Value</label>
+                  <input
+                    value={this.state.value}
+                    onChange={event => this.setState({ value: event.target.value })}
+                    className="form-control phone-number-input-value"
+                  />
+                </div>
+              </div>
+              <div className="row m-t-3">
+                <div className="col-md-6">
                   <label htmlFor="phone-number-input-size">Size</label>
                   <Select
-                    id="phone-size-selector"
+                    id="phone-number-input-size"
                     selected={
                       this.state.size ? { value: this.state.size, label: this.state.size } : null
                     }
@@ -118,14 +144,6 @@ export default class PhoneNumberInputDocs extends PureComponent {
                     value={this.state.placeholder}
                     onChange={event => this.setState({ placeholder: event.target.value })}
                     className="form-control"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="phone-number-input-value">Value</label>
-                  <input
-                    value={this.state.value}
-                    onChange={event => this.setState({ value: event.target.value })}
-                    className="form-control phone-number-input-value"
                   />
                 </div>
               </div>
