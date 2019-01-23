@@ -1,3 +1,7 @@
+# v4.13.0
+## Allow Select to open upwards
+Pass prop `dropdownUp` to `Select` to use it
+
 # v4.12.1
 ## Improved regex for allowed chars for PhoneInput. And improved test coverage  
 

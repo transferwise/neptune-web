@@ -30,6 +30,7 @@ export default class SelectDocs extends Component {
       searchValue: '',
       placeholder: 'Select an option...',
       hasClassNames: false,
+      dropdownUp: false,
     };
   }
 
@@ -83,6 +84,7 @@ export default class SelectDocs extends Component {
   placeholder={${this.state.hasPlaceholder ? `"${this.state.placeholder}"` : undefined}}
   size={${this.state.size ? `"${this.state.size}"` : undefined}}
   dropdownRight={${this.state.dropdownRight ? `"${this.state.dropdownRight}"` : undefined}}
+  dropdownUp={${this.state.dropdownUp}}
   dropdownWidth={${this.state.dropdownWidth ? `"${this.state.dropdownWidth}"` : undefined}}
   block={${this.state.block}}
   selected={${JSON.stringify(this.state.selectedOption, null, '  ')}}
@@ -132,6 +134,7 @@ export default class SelectDocs extends Component {
                 onSearchChange={
                   this.state.searchable ? this.createStateLink('searchValue') : undefined
                 }
+                dropdownUp={this.state.dropdownUp}
               />
             </div>
           </div>
@@ -212,6 +215,12 @@ export default class SelectDocs extends Component {
                     dropdownRight: selection ? selection.value : undefined,
                   })
                 }
+              />
+              <div className="m-t-3" />
+              <Checkbox
+                label="Open upwards?"
+                onChange={this.createStateLink('dropdownUp')}
+                checked={this.state.dropdownUp}
               />
               <div className="m-t-3" />
               <Checkbox

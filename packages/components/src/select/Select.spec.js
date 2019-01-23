@@ -94,6 +94,12 @@ describe('Select', () => {
     expectDropdownToBe().open();
   });
 
+  it('opens upward when dropdownUp prop is passed', () => {
+    component.setProps({ dropdownUp: true });
+
+    expect(component.hasClass('dropup')).toBe(true);
+  });
+
   it('can be opened by DOWN arrow', () => {
     component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN));
     expectDropdownToBe().open();

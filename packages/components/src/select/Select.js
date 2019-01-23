@@ -58,6 +58,7 @@ export default class Select extends Component {
     searchValue: Types.string,
     searchPlaceholder: Types.string,
     classNames: Types.objectOf(Types.string),
+    dropdownUp: Types.bool,
   };
 
   static defaultProps = {
@@ -75,6 +76,7 @@ export default class Select extends Component {
     searchValue: '',
     searchPlaceholder: 'Search...',
     classNames: {},
+    dropdownUp: false,
   };
 
   constructor(props) {
@@ -342,7 +344,7 @@ export default class Select extends Component {
   }
 
   render() {
-    const { disabled, required, onSearchChange, size, block, id } = this.props;
+    const { disabled, required, onSearchChange, size, block, id, dropdownUp } = this.props;
     const canSearch = !!onSearchChange;
     const { open } = this.state;
     const btn = this.style('btn');
@@ -351,6 +353,7 @@ export default class Select extends Component {
     const btnGroup = this.style('btn-group');
     const btnInput = this.style('btn-input');
     const dropdown = this.style('dropdown');
+    const dropup = this.style('dropup');
     const dropdownToggle = this.style('dropdown-toggle');
     const btnSize = {
       xs: this.style('btn-xs'),
@@ -358,7 +361,7 @@ export default class Select extends Component {
       md: this.style('btn-md'),
       lg: this.style('btn-lg'),
     };
-    const groupClass = `${btnGroup} ${block ? btnBlock : ''} ${dropdown} ${
+    const groupClass = `${btnGroup} ${block ? btnBlock : ''} ${dropdownUp ? dropup : dropdown} ${
       open ? openDropdown : ''
     }`;
     const inverse = this.props.inverse
