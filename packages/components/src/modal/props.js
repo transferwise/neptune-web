@@ -4,7 +4,7 @@ export const dialogPropTypes = {
   title: Types.node.isRequired,
   body: Types.node.isRequired,
   footer: Types.node,
-  size: Types.oneOf(['lg', 'md', 'sm']),
+  size: Types.oneOf(['xl', 'lg', 'md', 'sm']),
   onClose: Types.func.isRequired,
   role: Types.string,
   className: Types.string,

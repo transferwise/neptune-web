@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Select } from '../src';
 
-const SIZES = ['sm', 'md', 'lg'];
+const SIZES = ['sm', 'md', 'lg', 'xl'];
 
 export default class ModalDocs extends Component {
   state = {

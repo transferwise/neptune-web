@@ -1,3 +1,6 @@
+# v4.14.0
+## Add an XL version of the modal component
+
 # v4.13.0
 ## Allow Select to open upwards
 Pass prop `dropdownUp` to `Select` to use it
