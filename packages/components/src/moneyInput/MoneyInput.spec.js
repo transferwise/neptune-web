@@ -231,6 +231,32 @@ describe('Money Input', () => {
       searchCurrencies('Random search string');
       expect(displayedCurrencies()).toEqual([{ value: CUSTOM_ACTION, label: 'I am a label' }]);
     });
+
+    it('it sorts labels to first', () => {
+      searchCurrencies('au');
+      expect(displayedCurrencies()).toEqual([
+        {
+          value: 'AUD',
+          label: 'AUD',
+          note: 'Australia Dollar',
+          currency: 'aud',
+        },
+        {
+          value: 'EUR',
+          label: 'EUR',
+          note: 'Euro',
+          currency: 'eur',
+          searchable: 'Spain, Germany, France, Austria, Estonia',
+        },
+        {
+          value: 'USD',
+          label: 'USD',
+          note: 'United States Dollar',
+          currency: 'usd',
+          searchable: 'Hong Kong, Saudi Arabia',
+        },
+      ]);
+    });
   });
 
   it('formats the amount passed in', () => {

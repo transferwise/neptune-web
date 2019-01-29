@@ -201,9 +201,11 @@ function filterOptionsForQuery(options, query) {
     return options;
   }
 
-  return removeDuplicateValueOptions(options).filter(option =>
+  const filteredOptions = removeDuplicateValueOptions(options).filter(option =>
     isCurrencyOptionAndFitsQuery(option, query),
   );
+
+  return sortOptionsLabelsToFirst(filteredOptions, query);
 }
 
 function removeDuplicateValueOptions(options) {
@@ -234,4 +236,22 @@ function isCurrencyOptionAndFitsQuery(option, query) {
 
 function contains(property, query) {
   return property && property.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+}
+
+function sortOptionsLabelsToFirst(options, query) {
+  return options.sort((first, second) => {
+    const firstContains = contains(first.label, query);
+    const secondContains = contains(second.label, query);
+
+    if (firstContains && secondContains) {
+      return 0;
+    }
+    if (firstContains) {
+      return -1;
+    }
+    if (secondContains) {
+      return 1;
+    }
+    return 0;
+  });
 }

@@ -1,3 +1,7 @@
+# v4.14.1
+## Improve `MoneyInput` search 
+Sort options labels to first
+
 # v4.14.0
 ## Add an XL version of the modal component
 
