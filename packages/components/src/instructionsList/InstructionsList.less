@@ -1,0 +1,23 @@
+@import '~bootstrap/less/variables.less';
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+
+  .instruction {
+    display: flex;
+
+    .do,
+    .dont {
+      flex-shrink: 0;
+    }
+
+    .do {
+      color: @brand-green;
+    }
+
+    .dont {
+      color: @brand-red;
+    }
+  }
+}

@@ -1,3 +1,6 @@
+# v4.15.0
+## Add InstructionList component
+
 # v4.14.1
 ## Improve `MoneyInput` search 
 Sort options labels to first

@@ -15,3 +15,4 @@ export { default as NavigationOption } from './navigationOption';
 export { default as DateLookup } from './dateLookup';
 export { default as PhoneNumberInput } from './phoneNumberInput';
 export { default as DateInput } from './dateInput';
+export { default as InstructionsList } from './instructionsList';

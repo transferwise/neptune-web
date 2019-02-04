@@ -19,6 +19,7 @@ import NavigationOptionDocs from './NavigationOptionDocs';
 import DateLookupDocs from './DateLookupDocs';
 import PhoneNumberInputDocs from './PhoneNumberInputDocs';
 import DateInputDocs from './DateInputDocs';
+import InstructionListDocs from './InstructionListDocs';
 
 const Docs = () => (
   <Fragment>
@@ -40,6 +41,7 @@ const Docs = () => (
     <DateLookupDocs />
     <PhoneNumberInputDocs />
     <DateInputDocs />
+    <InstructionListDocs />
   </Fragment>
 );
 

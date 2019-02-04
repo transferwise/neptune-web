@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "4.14.1",
+  "version": "4.15.0",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -10,7 +10,6 @@
     "url": "git+https://github.com/transferwise/components.git"
   },
   "devDependencies": {
-    "@transferwise/icons": "^0.13.2",
     "autoprefixer": "6.7.2",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
@@ -83,6 +82,7 @@
   },
   "dependencies": {
     "@transferwise/formatting": "^1.3.2",
+    "@transferwise/icons": "^0.13.2",
     "classnames": "^2.2.6",
     "react-transition-group": "^2.3.1"
   },
