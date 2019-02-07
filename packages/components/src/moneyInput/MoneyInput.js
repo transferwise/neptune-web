@@ -146,6 +146,7 @@ export default class MoneyInput extends Component {
           onFocus={this.onAmountFocus}
           onBlur={this.onAmountBlur}
           disabled={disabled}
+          autoComplete="off"
         />
         {addon && (
           <span

@@ -1,3 +1,6 @@
+# v4.15.1
+## Disable autocomplete for MoneyInput
+
 # v4.15.0
 ## Add InstructionList component
 
