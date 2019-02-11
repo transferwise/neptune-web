@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 
 import KeyCodes from '../common/keyCodes';
-import { getMidnight, isWithinRange, moveToWithinRange } from '../common/dateUtils';
+import { isWithinRange, moveToWithinRange } from '../common/dateUtils';
+import { getStartOfDay } from './getStartOfDay';
 
 import OpenButton from './openButton';
 import DayCalendar from './dayCalendar';
@@ -42,19 +43,19 @@ class DateLookup extends PureComponent {
   };
 
   state = {
-    selectedDate: getMidnight(this.props.value),
-    min: getMidnight(this.props.min),
-    max: getMidnight(this.props.max),
-    viewMonth: getMidnight(this.props.value || new Date()).getMonth(),
-    viewYear: getMidnight(this.props.value || new Date()).getFullYear(),
+    selectedDate: getStartOfDay(this.props.value),
+    min: getStartOfDay(this.props.min),
+    max: getStartOfDay(this.props.max),
+    viewMonth: (this.props.value || new Date()).getMonth(),
+    viewYear: (this.props.value || new Date()).getFullYear(),
     open: false,
     mode: MODE.DAY,
   };
 
   static getDerivedStateFromProps(props, state) {
-    const propsSelected = getMidnight(props.value);
-    const propsMin = getMidnight(props.min);
-    const propsMax = getMidnight(props.max);
+    const propsSelected = getStartOfDay(props.value);
+    const propsMin = getStartOfDay(props.min);
+    const propsMax = getStartOfDay(props.max);
     const hasSelectedChanged = +state.selectedDate !== +propsSelected;
     const hasMinChanged = +state.min !== +propsMin;
     const hasMaxChanged = +state.max !== +propsMax;
@@ -154,7 +155,7 @@ class DateLookup extends PureComponent {
         mode === MODE.DAY ? selectedDate.getDate() + daysToAdd : selectedDate.getDate(),
       );
     } else {
-      date = getMidnight(new Date());
+      date = getStartOfDay(new Date());
     }
     date = moveToWithinRange(date, min, max);
     if (+date !== +selectedDate) this.props.onChange(date);

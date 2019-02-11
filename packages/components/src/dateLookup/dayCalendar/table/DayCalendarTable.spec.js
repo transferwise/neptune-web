@@ -13,8 +13,11 @@ jest.mock('@transferwise/formatting', () => ({
 
 jest.mock('../../../common/dateUtils', () => ({
   getDayNames: () => ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-  getMidnight: date => new Date(date.getFullYear(), date.getMonth(), date.getDate()),
   isWithinRange: jest.fn().mockReturnValue(true),
+}));
+
+jest.mock('../../getStartOfDay', () => ({
+  getStartOfDay: date => new Date(date.getFullYear(), date.getMonth(), date.getDate()),
 }));
 
 describe('DayCalendarTable', () => {

@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 import { formatDate } from '@transferwise/formatting';
 
-import { getDayNames, getMidnight, isWithinRange } from '../../../common/dateUtils';
+import { getDayNames, isWithinRange } from '../../../common/dateUtils';
+import { getStartOfDay } from '../../getStartOfDay';
 
 import TableLink from '../../tableLink';
 
@@ -115,7 +116,7 @@ class DayCalendarTable extends PureComponent {
                       longTitle={formatDate(new Date(viewYear, viewMonth, day), locale)}
                       active={this.isActive(day)}
                       disabled={this.isDisabled(day)}
-                      today={+getMidnight(new Date()) === +new Date(viewYear, viewMonth, day)}
+                      today={+getStartOfDay(new Date()) === +new Date(viewYear, viewMonth, day)}
                       onClick={this.selectDay}
                     />
                   )}

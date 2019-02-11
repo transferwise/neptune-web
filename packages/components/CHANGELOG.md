@@ -1,3 +1,7 @@
+# v4.15.2
+## refactor `getMidnight` to `getStartOfDay`
+Fix failing test and make code more clear
+
 # v4.15.1
 ## Disable autocomplete for MoneyInput
 
