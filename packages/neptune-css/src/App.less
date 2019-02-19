@@ -1,0 +1,51 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap/less/variables.less";
+@import "less/settings/variables.less";
+
+#root {
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.doc {
+  h2,
+  h3 {
+    margin-bottom: calc(var(--spacer) * 2);
+  }
+
+  .doc-item {
+    padding: var(--spacer);
+    border: 1px dashed #829ca9;
+  }
+
+  .doc-text--inverse {
+    color: white;
+  }
+
+  .doc-bg {
+    background: #f2f5f7;
+  }
+
+  .doc-bg--dark {
+    background: var(--brand-primary);
+  }
+
+  .doc-block {
+    margin-top: calc(var(--spacer) * 6);
+    margin-bottom: calc(var(--spacer) * 6);
+  }
+
+  .doc-section {
+    min-height: 50vh;
+  }
+
+  .doc-box {
+    height: 15vh;
+  }
+}

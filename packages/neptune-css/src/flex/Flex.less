@@ -1,0 +1,21 @@
+@import "~bootstrap/less/variables.less";
+@import "../less/settings/variables.less";
+@import "flex-mixin.less";
+
+.flex-properties(~'');
+
+@media (min-width: @screen-sm-min) {
+  .flex-properties(--sm);
+}
+
+@media (min-width: @screen-md-min) {
+  .flex-properties(--md);
+}
+
+@media (min-width: @screen-lg-min) {
+  .flex-properties(--lg);
+}
+
+@media (min-width: @screen-xl-min) {
+  .flex-properties(--xl);
+}
