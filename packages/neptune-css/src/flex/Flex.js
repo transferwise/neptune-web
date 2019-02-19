@@ -7,7 +7,7 @@ class Flex extends Component {
       <section id="flex" className="wrap--page section">
         <h1 className="colored-dot">Flexbox system <span className="badge badge-success">new</span></h1>
         <p className="lead">7kB minified</p>
-        <p>@import "~talasa/dist/flex.min.css";</p>
+        <p>@import "~thalassa/dist/flex.min.css";</p>
         <div className="doc-block">
           <h2 className="doc-info">.d-flex</h2>
           <div className="d-flex doc-bg">

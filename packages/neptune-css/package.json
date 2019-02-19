@@ -1,5 +1,5 @@
 {
-  "name": "talasa",
+  "name": "thalassa",
   "version": "1.0.0",
   "private": true,
   "description": "",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transferwise/talasa.git"
+    "url": "git+https://github.com/transferwise/thalassa.git"
   },
   "author": {
     "name": "TransferWise",
@@ -21,9 +21,9 @@
   "contributors": [],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/transferwise/talasa/issues"
+    "url": "https://github.com/transferwise/thalassa/issues"
   },
-  "homepage": "https://github.com/transferwise/talasa#readme",
+  "homepage": "https://github.com/transferwise/thalassa#readme",
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>setupTests.js"
   },

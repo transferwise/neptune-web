@@ -1,4 +1,4 @@
-# Talasa
+# thalassa
 
 TW CSS library
 

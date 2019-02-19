@@ -1,4 +1,4 @@
 export default {
-  name: "talasa",
+  name: "thalassa",
   rootComponentPath: "./src/Root"
 };

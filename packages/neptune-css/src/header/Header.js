@@ -23,7 +23,7 @@ const Header = ({locale}) => (
         <ul class="nav navbar-nav subnav-menu">
           <li class="active">
             <a class="navbar-title-link" href="">
-              <span>Talasa</span>
+              <span>Thalassa</span>
             </a>
           </li>
           <li><a href="#skew">Skew</a></li>
