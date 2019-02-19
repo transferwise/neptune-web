@@ -1,3 +1,6 @@
+# v4.15.3
+## Refactor PhoneNumberInput internal function to prefer map() to forEach plus storage
+
 # v4.15.2
 ## refactor `getMidnight` to `getStartOfDay`
 Fix failing test and make code more clear

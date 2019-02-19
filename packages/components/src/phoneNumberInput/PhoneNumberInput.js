@@ -102,15 +102,13 @@ class PhoneNumberInput extends PureComponent {
   };
 
   getSelectOptions = () => {
-    const options = [];
     const filteredOptions = this.state.searchQuery
       ? filterOptionsForQuery(countries, this.state.searchQuery)
       : countries;
-    filteredOptions.forEach(option => {
+    return filteredOptions.map(option => {
       const { phone, iso3, iso2 } = option;
-      options.push({ value: phone, label: phone, note: iso3 || iso2 });
+      return { value: phone, label: phone, note: iso3 || iso2 };
     });
-    return options;
   };
 
   handleChangeSelect = event => {
