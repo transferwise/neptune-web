@@ -44,7 +44,7 @@
     "@transferwise/components": "^4.11.0",
     "@transferwise/public-navigation": "^2.6.0",
     "babel-loader": "^8.0.5",
-    "bootstrap": "github:transferwise/bootstrap#v5.18.2",
+    "bootstrap": "github:transferwise/bootstrap#v5.18.10",
     "css-loader": "^2.1.0",
     "file-loader": "^3.0.1",
     "google-maps-react": "^2.0.2",

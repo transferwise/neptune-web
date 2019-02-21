@@ -4,9 +4,9 @@ import "./Spacing.less";
 class Spacing extends Component {
   render() {
     return (
-      <section id="spacing" className="wrap--container">
+      <section id="spacing" className="wrap--content">
         <div className="bs-docs-section">
-          <h1 className="colored-dot">Spacing</h1>
+          <h1 className="colored-dot">Spacing <span className="badge badge-info">BT</span></h1>
           <p className="lead"><span className="badge">WIP</span> Testing a existing component of TW Bootstrap</p>
           <p>Several utility classes are available for spacing. </p>
           <p>The classes are named using the format <code>[property]-[sides]-[size]</code></p>

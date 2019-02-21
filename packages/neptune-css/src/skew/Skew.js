@@ -6,7 +6,7 @@ class Skew extends Component {
     return (
       <section className="section" id="skew">
         <h1 className="wrap--content colored-dot">Skew system <span className="badge badge-success">new</span></h1>
-        <p class="wrap--content lead">Skew of 2deg using clip-path</p>
+        <p className="wrap--content lead">Skew of 2deg using clip-path</p>
         <div className="skew doc-bg--dark doc-section doc-block d-flex align-items-center justify-content-center">
           <h2 className="doc-text--inverse">.skew</h2>
         </div>
