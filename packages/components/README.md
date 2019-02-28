@@ -18,6 +18,12 @@ Work that still needs doing:
 
 ## Contributing
 
-Clone the repo, run `npm install` to install dependencies. Then run `npm start` to get a live-reloading test environment, and `npm run test:watch` to run livereloading tests.
+1. Clone the repo
+2. Run `npm install` to install dependencies. 
+3. Then run `npm start` to get a live-reloading dev environment
+4. **For tests** run `npm run test:watch` to run livereloading tests.
+
+
+Add components in feature branches, before creating a pull request **update changelog and semantic version** so the branch will be deployed and can be shared.
 
 Docs will be automatically deployed when merging to master, and a new npm release (with corresponding github release) will be created as well. Be sure to increment the version in `package.json` according to semver.

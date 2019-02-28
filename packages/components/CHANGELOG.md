@@ -1,3 +1,6 @@
+# v4.15.4
+## Update readme with more instructions on how to contribute
+
 # v4.15.3
 ## Refactor PhoneNumberInput internal function to prefer map() to forEach plus storage
 
