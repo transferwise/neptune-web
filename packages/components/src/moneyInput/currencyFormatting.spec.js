@@ -15,6 +15,10 @@ describe('Number formatting', () => {
     });
   });
 
+  it('parses numbers with invalid locale', () => {
+    expect(parseAmount('123.45', 'gbp', 'de_DE12345')).toBe(123.45);
+  });
+
   it('parses negative numbers into positive ones', () => {
     expect(parseAmount('-123.45', 'gbp')).toBe(123.45);
   });

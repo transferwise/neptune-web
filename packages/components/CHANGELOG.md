@@ -1,5 +1,5 @@
 # v4.16.1
-## Bump @transferwise/formatting version
+## Bump @transferwise/formatting version and check for valid locale in MoneyInput
 Formatting money strings with an invalid locale doesnt crash anymore, so the check in the demo was removed.
 
 # v4.16.0

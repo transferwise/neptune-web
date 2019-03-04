@@ -39,6 +39,17 @@ function isNumberLocaleSupported() {
   return numberString === '1,234';
 }
 
+function getValidLocale(locale) {
+  try {
+    const noUnderscoreLocale = locale.replace(/_/, '-');
+
+    Intl.NumberFormat(noUnderscoreLocale);
+    return noUnderscoreLocale;
+  } catch (e) {
+    return 'en-GB';
+  }
+}
+
 function getCurrencyDecimals(currency = '') {
   const upperCaseCurrency = currency.toUpperCase();
   if (Object.prototype.hasOwnProperty.call(currencyDecimals, upperCaseCurrency)) {
@@ -51,10 +62,12 @@ function getDecimalSeparator(locale) {
   return isNumberLocaleSupported() ? (1.1).toLocaleString(locale)[1] : '.';
 }
 
-export function parseAmount(number, currency, locale = 'en-GB') {
+export function parseAmount(number, currency, locale) {
+  const validLocale = getValidLocale(locale);
+
   const precision = getCurrencyDecimals(currency);
-  const groupSeparator = isNumberLocaleSupported() ? (1000).toLocaleString(locale)[1] : ',';
-  const decimalSeparator = getDecimalSeparator(locale);
+  const groupSeparator = isNumberLocaleSupported() ? (1000).toLocaleString(validLocale)[1] : ',';
+  const decimalSeparator = getDecimalSeparator(validLocale);
   const trimmedNumber = number.replace(/\s/g, '');
   const numberWithoutGroupSeparator = trimmedNumber.replace(
     new RegExp(`\\${groupSeparator}`, 'g'),
