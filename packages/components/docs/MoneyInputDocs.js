@@ -63,16 +63,6 @@ const currencies = [
   },
 ];
 
-function formattingWorksWithLocale(locale) {
-  try {
-    const number = 10;
-    number.toLocaleString(locale);
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
 export default class MoneyInputDocs extends Component {
   constructor(props) {
     super(props);
@@ -226,9 +216,7 @@ export default class MoneyInputDocs extends Component {
                       form: { ...form, locale },
                     }),
                     () => {
-                      if (formattingWorksWithLocale(locale)) {
-                        this.setState({ locale });
-                      }
+                      this.setState({ locale });
                     },
                   );
                 }}
