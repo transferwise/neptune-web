@@ -16,3 +16,4 @@ export { default as DateLookup } from './dateLookup';
 export { default as PhoneNumberInput } from './phoneNumberInput';
 export { default as DateInput } from './dateInput';
 export { default as InstructionsList } from './instructionsList';
+export { default as ProcessIndicator } from './processIndicator';

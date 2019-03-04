@@ -28,6 +28,8 @@ describe('Server side rendering', () => {
     media: <h1>Hello</h1>,
     onClick: jest.fn(),
     onChange: jest.fn(),
+    status: 'processing',
+    size: 'sm',
   };
 
   componentNames.forEach(componentName => {

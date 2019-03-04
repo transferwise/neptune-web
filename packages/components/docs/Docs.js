@@ -20,6 +20,7 @@ import DateLookupDocs from './DateLookupDocs';
 import PhoneNumberInputDocs from './PhoneNumberInputDocs';
 import DateInputDocs from './DateInputDocs';
 import InstructionListDocs from './InstructionListDocs';
+import ProcessIndicatorDocs from './ProcessIndicatorDocs';
 
 const Docs = () => (
   <Fragment>
@@ -42,6 +43,7 @@ const Docs = () => (
     <PhoneNumberInputDocs />
     <DateInputDocs />
     <InstructionListDocs />
+    <ProcessIndicatorDocs />
   </Fragment>
 );
 
