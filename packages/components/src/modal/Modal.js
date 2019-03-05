@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { createPortal } from 'react-dom';
 import Types from 'prop-types';
+import './Modal.less';
 
 import { dialogPropTypes, dialogDefaultProps } from './props';
 import Backdrop from './Backdrop';
