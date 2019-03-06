@@ -1,0 +1,135 @@
+@import "~bootstrap/less/variables.less";
+@import "../less/settings/variables.less";
+@import "./mixin/container.less";
+
+.wrap--page {
+  width: 100%;
+  padding-right: calc(var(--spacer) * 2);
+  padding-left: calc(var(--spacer) * 2);
+
+  @media all and (min-width: @screen-sm) {
+    padding-right: calc(var(--spacer) * 3);
+    padding-left: calc(var(--spacer) * 3);
+  }
+
+  @media all and (min-width: @screen-md) {
+    padding-right: calc(var(--spacer) * 4);
+    padding-left: calc(var(--spacer) * 4);
+  }
+
+  @media all and (min-width: @screen-lg) {
+    padding-right: calc(var(--spacer) * 6);
+    padding-left: calc(var(--spacer) * 6);
+  }
+}
+
+.wrap--content {
+  width: 100%;
+  max-width: 1500px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: calc(var(--spacer) * 2);
+  padding-left: calc(var(--spacer) * 2);
+  overflow: hidden;
+
+  @media all and (min-width: @screen-sm) {
+    padding-right: calc(var(--spacer) * 3);
+    padding-left: calc(var(--spacer) * 3);
+  }
+
+  @media all and (min-width: @screen-md) {
+    padding-right: calc(var(--spacer) * 4);
+    padding-left: calc(var(--spacer) * 4);
+  }
+
+  @media all and (min-width: @screen-lg) {
+    padding-right: calc(var(--spacer) * 6);
+    padding-left: calc(var(--spacer) * 6);
+  }
+}
+
+.wrap--container {
+  width: 100%;
+  max-width: 1164px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: calc(var(--spacer) * 2);
+  padding-left: calc(var(--spacer) * 2);
+  overflow: hidden;
+
+  @media all and (min-width: @screen-sm) {
+    padding-right: calc(var(--spacer) * 3);
+    padding-left: calc(var(--spacer) * 3);
+  }
+
+  @media all and (min-width: @screen-md) {
+    padding-right: calc(var(--spacer) * 4);
+    padding-left: calc(var(--spacer) * 4);
+  }
+
+  @media all and (min-width: @screen-lg) {
+    padding-right: calc(var(--spacer) * 6);
+    padding-left: calc(var(--spacer) * 6);
+  }
+}
+
+.wrap--text {
+  width: 100%;
+  max-width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: calc(var(--spacer) * 2);
+  padding-left: calc(var(--spacer) * 2);
+  overflow: hidden;
+
+  @media all and (min-width: @screen-sm) {
+    padding-right: calc(var(--spacer) * 3);
+    padding-left: calc(var(--spacer) * 3);
+  }
+
+  @media all and (min-width: @screen-md) {
+    padding-right: calc(var(--spacer) * 4);
+    padding-left: calc(var(--spacer) * 4);
+  }
+
+  @media all and (min-width: @screen-lg) {
+    padding-right: calc(var(--spacer) * 6);
+    padding-left: calc(var(--spacer) * 6);
+  }
+}
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+.container {
+  .container-fixed();
+
+  @media (min-width: @screen-xl-min) {
+    max-width: @container-xl;
+  }
+}
+
+
+// Fluid container
+//
+// Utilizes the mixin meant for fixed width containers, but without any defined
+// width for fluid, full width layouts.
+
+.container-fluid {
+  .container-fixed();
+}
+
+.container {
+  padding-right: @spacing-1-mobile;
+  padding-left: @spacing-1-mobile;
+
+  @media (min-width: @screen-sm-min) {
+    padding-right: @spacing-1-tablet;
+    padding-left: @spacing-1-tablet;
+  }
+  @media (min-width: @screen-lg-min) {
+    padding-right: @spacing-1-desktop;
+    padding-left: @spacing-1-desktop;
+  }
+}

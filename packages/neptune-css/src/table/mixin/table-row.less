@@ -1,0 +1,46 @@
+// Tables
+
+.table-row-variant(@state; @background; @border; @color:none) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+  .table {
+    > thead > tr,
+    > tbody > tr,
+    > tfoot > tr {
+      > td.@{state},
+      > th.@{state},
+      &.@{state} > td,
+      &.@{state} > th {
+        background-color: @background;
+        .set-color(@color);
+      }
+    }
+  }
+
+  // Adds support for contextual colours on description table
+  //.table > .tbody > dl {
+  //  > dd.@{state},
+  //  &.@{state} > dd,
+  //  &.@{state} {
+  //    background-color: @background;
+  //  }
+  //}
+
+  // Hover states for `.table-hover`
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  .table-hover > tbody > tr {
+    > td.@{state}:hover,
+    > th.@{state}:hover,
+    &.@{state}:hover > td,
+    &:hover > .@{state},
+    &.@{state}:hover > th {
+      background-color: darken(@background, 5%);
+    }
+  }
+}
+
+.set-color(@color:none) when (iscolor(@color)) {
+    color: @color;
+}
+
+.set-color(@color:none) when not (iscolor(@color)) {}
