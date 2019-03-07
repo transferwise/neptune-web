@@ -1,13 +1,13 @@
 {
-  "name": "@transferwise/triton",
+  "name": "@transferwise/thalassa",
   "version": "1.0.0",
   "description": "TransferWise style-guide molecules in react",
   "license": "MIT",
   "main": "./build/main.js",
   "repository": {
-    "fullname": "transferwise/triton",
+    "fullname": "transferwise/thalassa",
     "type": "git",
-    "url": "git+https://github.com/transferwise/triton.git"
+    "url": "git+https://github.com/transferwise/thalassa.git"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
