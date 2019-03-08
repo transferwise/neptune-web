@@ -3,6 +3,7 @@ import "./Docs.less";
 import "@transferwise/public-navigation/dist/public-navigation.css";
 
 import "../build/badge.css";
+import "../build/buttons.css";
 import "../build/componentlist.css";
 import "../build/core.css";
 import "../build/flex.css";
@@ -17,12 +18,14 @@ import "../build/background.css";
 import { PublicNavigation, Footer } from "@transferwise/public-navigation";
 import Core from "./coreDocs";
 import ComponentList from "./componentListDocs";
+import Badge from "./BadgeDocs";
+import Buttons from "./ButtonsDocs";
 import Grid from "./gridDocs";
 import Wrap from "./wrapDocs";
 import Skew from "./skewDocs";
 import Flex from "./flexDocs";
 import Background from "./backgroundDocs";
-import Badge from "./BadgeDocs";
+
 import Table from "./tableDocs";
 import Spacing from "./spacingDocs";
 import Header from "./HeaderDocs";
@@ -39,13 +42,15 @@ export default class Docs extends Component {
           </header>
           <ComponentList />
           <Core />
+          <Badge />
+          <Buttons />
           <Skew />
           <Flex />
           <Grid />
           <Wrap />
           <Background />
           <Header />
-          <Badge />
+
           <Table />
           <Spacing />
         </div>

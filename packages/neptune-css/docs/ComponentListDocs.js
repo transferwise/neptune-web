@@ -12,6 +12,9 @@ class ComponentList extends Component {
               <li>
                 <a href="#badge">Badge</a>
               </li>
+              <li>
+                <a href="#buttons">Buttons</a>
+              </li>
             </ul>
           </div>
           <div>
