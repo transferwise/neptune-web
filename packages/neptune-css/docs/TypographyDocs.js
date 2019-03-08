@@ -6,9 +6,8 @@ class Typography extends Component {
       <section id="typography" className="wrap--page section">
         <h1 className="colored-dot">
           Typography
-          <span className="badge badge-primary">BT</span>
         </h1>
-        <p className="lead">7kB minified [WIP]</p>
+        <p className="lead">2 KB</p>
         <div className="section">
           <h2 id="headings">Headings</h2>
 
@@ -16,7 +15,8 @@ class Typography extends Component {
             All HTML headings,
             <code>&lt;h1&gt;</code>
             through
-            <code>&lt;h6&gt;</code>, are available.
+            <code>&lt;h6&gt;</code>
+, are available.
             <code>.h1</code>
             through
             <code>.h6</code>
@@ -131,17 +131,23 @@ class Typography extends Component {
           <figure className="highlight">
             <pre>
               <code className="language-html" data-lang="html">
-                <span className="nt">&lt;h1&gt;</span>h1. heading
+                <span className="nt">&lt;h1&gt;</span>
+h1. heading
                 <span className="nt">&lt;/h1&gt;</span>
-                <span className="nt">&lt;h2&gt;</span>h2. heading
+                <span className="nt">&lt;h2&gt;</span>
+h2. heading
                 <span className="nt">&lt;/h2&gt;</span>
-                <span className="nt">&lt;h3&gt;</span>h3. heading
+                <span className="nt">&lt;h3&gt;</span>
+h3. heading
                 <span className="nt">&lt;/h3&gt;</span>
-                <span className="nt">&lt;h4&gt;</span>h4. heading
+                <span className="nt">&lt;h4&gt;</span>
+h4. heading
                 <span className="nt">&lt;/h4&gt;</span>
-                <span className="nt">&lt;h5&gt;</span>h5. heading
+                <span className="nt">&lt;h5&gt;</span>
+h5. heading
                 <span className="nt">&lt;/h5&gt;</span>
-                <span className="nt">&lt;h6&gt;</span>h6. heading
+                <span className="nt">&lt;h6&gt;</span>
+h6. heading
                 <span className="nt">&lt;/h6&gt;</span>
               </code>
             </pre>
@@ -180,55 +186,76 @@ class Typography extends Component {
           <figure className="highlight">
             <pre>
               <code className="language-html" data-lang="html">
-                <span className="nt">&lt;div</span>{" "}
+                <span className="nt">&lt;div</span>
+                {" "}
                 <span className="na">className=</span>
                 <span className="s">"bg-default"</span>
                 <span className="nt">&gt;</span>
-                <span className="nt">&lt;h1&gt;</span>h1. heading
+                <span className="nt">&lt;h1&gt;</span>
+h1. heading
                 <span className="nt">&lt;/h1&gt;</span>
-                <span className="nt">&lt;h2&gt;</span>h2. heading
+                <span className="nt">&lt;h2&gt;</span>
+h2. heading
                 <span className="nt">&lt;/h2&gt;</span>
-                <span className="nt">&lt;h3&gt;</span>h3. heading
+                <span className="nt">&lt;h3&gt;</span>
+h3. heading
                 <span className="nt">&lt;/h3&gt;</span>
-                <span className="nt">&lt;h4&gt;</span>h4. heading
+                <span className="nt">&lt;h4&gt;</span>
+h4. heading
                 <span className="nt">&lt;/h4&gt;</span>
-                <span className="nt">&lt;h5&gt;</span>h5. heading
+                <span className="nt">&lt;h5&gt;</span>
+h5. heading
                 <span className="nt">&lt;/h5&gt;</span>
-                <span className="nt">&lt;h6&gt;</span>h6. heading
+                <span className="nt">&lt;h6&gt;</span>
+h6. heading
                 <span className="nt">&lt;/h6&gt;</span>
                 <span className="nt">&lt;/div&gt;</span>
-                <span className="nt">&lt;div</span>{" "}
+                <span className="nt">&lt;div</span>
+                {" "}
                 <span className="na">className=</span>
                 <span className="s">"bg-info"</span>
                 <span className="nt">&gt;</span>
-                <span className="nt">&lt;h1&gt;</span>h1. heading
+                <span className="nt">&lt;h1&gt;</span>
+h1. heading
                 <span className="nt">&lt;/h1&gt;</span>
-                <span className="nt">&lt;h2&gt;</span>h2. heading
+                <span className="nt">&lt;h2&gt;</span>
+h2. heading
                 <span className="nt">&lt;/h2&gt;</span>
-                <span className="nt">&lt;h3&gt;</span>h3. heading
+                <span className="nt">&lt;h3&gt;</span>
+h3. heading
                 <span className="nt">&lt;/h3&gt;</span>
-                <span className="nt">&lt;h4&gt;</span>h4. heading
+                <span className="nt">&lt;h4&gt;</span>
+h4. heading
                 <span className="nt">&lt;/h4&gt;</span>
-                <span className="nt">&lt;h5&gt;</span>h5. heading
+                <span className="nt">&lt;h5&gt;</span>
+h5. heading
                 <span className="nt">&lt;/h5&gt;</span>
-                <span className="nt">&lt;h6&gt;</span>h6. heading
+                <span className="nt">&lt;h6&gt;</span>
+h6. heading
                 <span className="nt">&lt;/h6&gt;</span>
                 <span className="nt">&lt;/div&gt;</span>
-                <span className="nt">&lt;div</span>{" "}
+                <span className="nt">&lt;div</span>
+                {" "}
                 <span className="na">className=</span>
                 <span className="s">"bg-primary"</span>
                 <span className="nt">&gt;</span>
-                <span className="nt">&lt;h1&gt;</span>h1. heading
+                <span className="nt">&lt;h1&gt;</span>
+h1. heading
                 <span className="nt">&lt;/h1&gt;</span>
-                <span className="nt">&lt;h2&gt;</span>h2. heading
+                <span className="nt">&lt;h2&gt;</span>
+h2. heading
                 <span className="nt">&lt;/h2&gt;</span>
-                <span className="nt">&lt;h3&gt;</span>h3. heading
+                <span className="nt">&lt;h3&gt;</span>
+h3. heading
                 <span className="nt">&lt;/h3&gt;</span>
-                <span className="nt">&lt;h4&gt;</span>h4. heading
+                <span className="nt">&lt;h4&gt;</span>
+h4. heading
                 <span className="nt">&lt;/h4&gt;</span>
-                <span className="nt">&lt;h5&gt;</span>h5. heading
+                <span className="nt">&lt;h5&gt;</span>
+h5. heading
                 <span className="nt">&lt;/h5&gt;</span>
-                <span className="nt">&lt;h6&gt;</span>h6. heading
+                <span className="nt">&lt;h6&gt;</span>
+h6. heading
                 <span className="nt">&lt;/h6&gt;</span>
                 <span className="nt">&lt;/div&gt;</span>
               </code>
@@ -239,7 +266,8 @@ class Typography extends Component {
         <p>
           Traditional heading elements are designed to work best in the meat of
           your page content. When you need a heading to stand out, consider
-          using a<strong>display heading</strong>
+          using a
+          <strong>display heading</strong>
           —a larger, slightly more opinionated heading style.
         </p>
         <div className="tw-example" data-example-id="display-headings">
@@ -271,25 +299,33 @@ class Typography extends Component {
         <figure className="highlight">
           <pre>
             <code className="language-html" data-lang="html">
-              <span className="nt">&lt;h1</span>{" "}
+              <span className="nt">&lt;h1</span>
+              {" "}
               <span className="na">className=</span>
               <span className="s">"display-1"</span>
-              <span className="nt">&gt;</span>Display 1
+              <span className="nt">&gt;</span>
+Display 1
               <span className="nt">&lt;/h1&gt;</span>
-              <span className="nt">&lt;h1</span>{" "}
+              <span className="nt">&lt;h1</span>
+              {" "}
               <span className="na">className=</span>
               <span className="s">"display-2"</span>
-              <span className="nt">&gt;</span>Display 2
+              <span className="nt">&gt;</span>
+Display 2
               <span className="nt">&lt;/h1&gt;</span>
-              <span className="nt">&lt;h1</span>{" "}
+              <span className="nt">&lt;h1</span>
+              {" "}
               <span className="na">className=</span>
               <span className="s">"display-3"</span>
-              <span className="nt">&gt;</span>Display 3
+              <span className="nt">&gt;</span>
+Display 3
               <span className="nt">&lt;/h1&gt;</span>
-              <span className="nt">&lt;h1</span>{" "}
+              <span className="nt">&lt;h1</span>
+              {" "}
               <span className="na">className=</span>
               <span className="s">"display-4"</span>
-              <span className="nt">&gt;</span>Display 4
+              <span className="nt">&gt;</span>
+Display 4
               <span className="nt">&lt;/h1&gt;</span>
             </code>
           </pre>
@@ -305,9 +341,12 @@ class Typography extends Component {
           Bootstrap's global default
           <code>font-size</code>
           is
-          <strong>16px</strong>, with a<code>line-height</code>
+          <strong>16px</strong>
+, with a
+          <code>line-height</code>
           of
-          <strong>24px</strong>. This is applied to the
+          <strong>24px</strong>
+. This is applied to the
           <code>&lt;body&gt;</code>
           and all paragraphs. In addition,
           <code>&lt;p&gt;</code>
@@ -337,7 +376,8 @@ class Typography extends Component {
         <figure className="highlight">
           <pre>
             <code className="language-html" data-lang="html">
-              <span className="nt">&lt;p&gt;</span>...
+              <span className="nt">&lt;p&gt;</span>
+...
               <span className="nt">&lt;/p&gt;</span>
             </code>
           </pre>
@@ -352,7 +392,8 @@ class Typography extends Component {
         </h3>
         <p>
           Make a paragraph stand out by adding
-          <code>.lead</code>.
+          <code>.lead</code>
+.
         </p>
         <div className="tw-example" data-example-id="lead-copy">
           <p className="lead">
@@ -363,10 +404,12 @@ class Typography extends Component {
         <figure className="highlight">
           <pre>
             <code className="language-html" data-lang="html">
-              <span className="nt">&lt;p</span>{" "}
+              <span className="nt">&lt;p</span>
+              {" "}
               <span className="na">className=</span>
               <span className="s">"lead"</span>
-              <span className="nt">&gt;</span>...
+              <span className="nt">&gt;</span>
+...
               <span className="nt">&lt;/p&gt;</span>
             </code>
           </pre>
@@ -381,9 +424,12 @@ class Typography extends Component {
         </h3>
         <p>
           The typographic scale is based on two Less variables in
-          <strong>variables.less</strong>:<code>@font-size-base</code>
+          <strong>variables.less</strong>
+:
+          <code>@font-size-base</code>
           and
-          <code>@line-height-base</code>. The first is the base font-size used
+          <code>@line-height-base</code>
+. The first is the base font-size used
           throughout and the second is the base line-height. We use those
           variables and some simple math to create the margins, paddings, and
           line-heights of all our type and more. Customize them and Bootstrap
@@ -419,9 +465,13 @@ class Typography extends Component {
         <figure className="highlight">
           <pre>
             <code className="language-html" data-lang="html">
-              You can use the mark tag to{" "}
+              You can use the mark tag to
+              {" "}
               <span className="nt">&lt;mark&gt;</span>
-              highlight<span className="nt">&lt;/mark&gt;</span> text.
+              highlight
+              <span className="nt">&lt;/mark&gt;</span>
+              {' '}
+text.
             </code>
           </pre>
         </figure>
@@ -445,7 +495,8 @@ class Typography extends Component {
         <figure className="highlight">
           <pre>
             <code className="language-html" data-lang="html">
-              <span className="nt">&lt;del&gt;</span>This line of text is meant
+              <span className="nt">&lt;del&gt;</span>
+This line of text is meant
               to be treated as deleted text.
               <span className="nt">&lt;/del&gt;</span>
             </code>
@@ -473,7 +524,8 @@ class Typography extends Component {
         <figure className="highlight">
           <pre>
             <code className="language-html" data-lang="html">
-              <span className="nt">&lt;s&gt;</span>This line of text is meant to
+              <span className="nt">&lt;s&gt;</span>
+This line of text is meant to
               be treated as no longer accurate.
               <span className="nt">&lt;/s&gt;</span>
             </code>
@@ -502,7 +554,8 @@ class Typography extends Component {
         <figure className="highlight">
           <pre>
             <code className="language-html" data-lang="html">
-              <span className="nt">&lt;ins&gt;</span>This line of text is meant
+              <span className="nt">&lt;ins&gt;</span>
+This line of text is meant
               to be treated as an addition to the document.
               <span className="nt">&lt;/ins&gt;</span>
             </code>
@@ -528,8 +581,10 @@ class Typography extends Component {
         <figure className="highlight">
           <pre>
             <code className="language-html" data-lang="html">
-              <span className="nt">&lt;u&gt;</span>This line of text will render
-              as underlined<span className="nt">&lt;/u&gt;</span>
+              <span className="nt">&lt;u&gt;</span>
+This line of text will render
+              as underlined
+              <span className="nt">&lt;/u&gt;</span>
             </code>
           </pre>
         </figure>
@@ -556,7 +611,8 @@ class Typography extends Component {
           You may alternatively use an inline element with
           <code>.small</code>
           in place of any
-          <code>&lt;small&gt;</code>.
+          <code>&lt;small&gt;</code>
+.
         </p>
         <div className="tw-example" data-example-id="simple-small">
           <p>
@@ -568,7 +624,8 @@ class Typography extends Component {
         <figure className="highlight">
           <pre>
             <code className="language-html" data-lang="html">
-              <span className="nt">&lt;small&gt;</span>This line of text is
+              <span className="nt">&lt;small&gt;</span>
+This line of text is
               meant to be treated as fine print.
               <span className="nt">&lt;/small&gt;</span>
             </code>
@@ -585,13 +642,15 @@ class Typography extends Component {
         <div className="tw-example" data-example-id="simple-strong">
           <p>
             The following snippet of text is
-            <strong>rendered as bold text</strong>.
+            <strong>rendered as bold text</strong>
+.
           </p>
         </div>
         <figure className="highlight">
           <pre>
             <code className="language-html" data-lang="html">
-              <span className="nt">&lt;strong&gt;</span>rendered as bold text
+              <span className="nt">&lt;strong&gt;</span>
+rendered as bold text
               <span className="nt">&lt;/strong&gt;</span>
             </code>
           </pre>
@@ -607,13 +666,15 @@ class Typography extends Component {
         <div className="tw-example" data-example-id="simple-em">
           <p>
             The following snippet of text is
-            <em>rendered as italicized text</em>.
+            <em>rendered as italicized text</em>
+.
           </p>
         </div>
         <figure className="highlight">
           <pre>
             <code className="language-html" data-lang="html">
-              <span className="nt">&lt;em&gt;</span>rendered as italicized text
+              <span className="nt">&lt;em&gt;</span>
+rendered as italicized text
               <span className="nt">&lt;/em&gt;</span>
             </code>
           </pre>
