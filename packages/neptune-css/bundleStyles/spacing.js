@@ -1,1 +1,1 @@
-import "../src/spacing/Spacing.less";
+import "../src/less/spacing/Spacing.less";

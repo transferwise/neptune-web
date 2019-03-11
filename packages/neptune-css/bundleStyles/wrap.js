@@ -1,1 +1,1 @@
-import "../src/wrap/Wrap.less";
+import "../src/less/wrap/Wrap.less";

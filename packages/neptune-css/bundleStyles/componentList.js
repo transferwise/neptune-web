@@ -1,1 +1,1 @@
-import "../src/badge/Badge.less";
+import "../src/less/badge/Badge.less";

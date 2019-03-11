@@ -1,1 +1,1 @@
-import "../src/buttons/Buttons.less";
+import "../src/less/buttons/Buttons.less";

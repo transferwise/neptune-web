@@ -32,15 +32,32 @@ module.exports = function(mode, entries) {
           }
         },
         {
-          test: /\.svg/,
-          use: {
-            loader: "svg-url-loader",
-            options: {}
-          }
-        },
-        {
           test: /\.less$/,
           use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"]
+        },
+        {
+          test: /fonts.*\.(woff|woff2|svg|eot|ttf)/,
+          use: [
+            {
+              loader: "file-loader",
+              options: {
+                name: "[name].[ext]",
+                outputPath: "fonts/",
+              }
+            }
+          ]
+        },
+        {
+          test: /img.*\.(png|svg|jpg|gif)$/,
+          use: [
+            {
+              loader: "file-loader",
+              options: {
+                name: "[name].[ext]",
+                outputPath: "img/",
+              }
+            }
+          ]
         }
       ]
     },

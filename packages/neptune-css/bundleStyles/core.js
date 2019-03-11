@@ -1,1 +1,1 @@
-import "../src/core/Core.less";
+import "../src/less/core/Core.less";
