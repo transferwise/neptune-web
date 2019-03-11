@@ -10,10 +10,13 @@ class ComponentList extends Component {
             <h3>Components</h3>
             <ul>
               <li>
-                <a href="#badge">Badge</a>
+                <a href="#badge">Badge</a> <small>703 bytes</small>
               </li>
               <li>
-                <a href="#buttons">Buttons</a>
+                <a href="#buttons">Buttons</a> <small>30 KB</small>
+              </li>
+              <li>
+                <a href="#circles">Circles</a> <small>4 KB</small>
               </li>
             </ul>
           </div>
@@ -21,18 +24,18 @@ class ComponentList extends Component {
             <h3>Layout</h3>
             <ul>
               <li>
-                <a href="#flex">Flex</a>
+                <a href="#flex">Flex</a> <small>5 KB</small>
                 <span className="badge badge-success m-l-1">New</span>
               </li>
               <li>
-                <a href="#grid">Grid layout</a>
+                <a href="#grid">Grid layout</a> <small>2 KB</small>
                 <span className="badge badge-success m-l-1">New</span>
               </li>
               <li>
                 <a href="#grid">Column system</a>
               </li>
               <li>
-                <a href="#wrap">Wrapping</a>
+                <a href="#wrap">Wrapping</a> <small>2 KB</small>
                 <span className="badge badge-success m-l-1">New</span>
               </li>
             </ul>
@@ -42,11 +45,11 @@ class ComponentList extends Component {
             <h3>Styling</h3>
             <ul>
               <li>
-                <a href="#skew">Skew</a>
+                <a href="#skew">Skew</a> <small>1 KB</small>
                 <span className="badge badge-success m-l-1">New</span>
               </li>
               <li>
-                <a href="#background">Background</a>
+                <a href="#background">Background</a> <small>1 KB</small>
                 <span className="badge badge-success m-l-1">New</span>
               </li>
             </ul>
@@ -57,11 +60,11 @@ class ComponentList extends Component {
           <div>
             <h3>Core</h3>
             <ul><li>
-              <a href="#core">Core</a>
+              <a href="#core">Core</a> <small>18 KB</small>
               <span className="badge badge-success m-l-1">New</span>
             </li>
               <li>
-                <a href="#typography">Typography</a>
+                <a href="#typography">Typography</a> <small>2 KB</small>
                 <ul>
                   <li>
                     <a href="#headings">Headings</a>
@@ -77,7 +80,7 @@ class ComponentList extends Component {
             <h3>Header / navbar</h3>
             <ul>
               <li>
-                <a href="#navbar">Navbar</a>
+                <a href="#navbar">Navbar</a> <small>100 KB</small>
               </li>
             </ul>
           </div>

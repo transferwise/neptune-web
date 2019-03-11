@@ -4,6 +4,7 @@ import "@transferwise/public-navigation/dist/public-navigation.css";
 
 import "../build/badge.css";
 import "../build/buttons.css";
+import "../build/circles.css";
 import "../build/componentlist.css";
 import "../build/core.css";
 import "../build/flex.css";
@@ -20,6 +21,7 @@ import Core from "./coreDocs";
 import ComponentList from "./componentListDocs";
 import Badge from "./BadgeDocs";
 import Buttons from "./ButtonsDocs";
+import Circles from "./CirclesDocs";
 import Grid from "./gridDocs";
 import Wrap from "./wrapDocs";
 import Skew from "./skewDocs";
@@ -49,6 +51,7 @@ export default class Docs extends Component {
           <Core />
           <Badge />
           <Buttons />
+          <Circles />
           <Skew />
           <Flex />
           <Grid />
