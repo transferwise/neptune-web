@@ -96,7 +96,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server --hot --port 9000 --config=./config/webpack.dev.config.js",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "dev": "node scripts/build.js | webpack-dev-server --hot --port 9000 --config=./config/webpack.dev.config.js"
   },
   "eslintConfig": {
     "extends": "react-app"
