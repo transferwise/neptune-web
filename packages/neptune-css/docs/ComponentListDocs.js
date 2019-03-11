@@ -129,7 +129,7 @@ import React from "react";
           <ul>
             <li>
               <a href="#navbar">Navbar</a>
-              <small> 114 KB</small>
+              <small> 53 KB</small>
             </li>
           </ul>
         </div>
