@@ -1,18 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Wrap extends Component {
-  render() {
-    return (
-      <section id="wrap" className="section">
-        <div className="wrap--content">
-          <h1 className="colored-dot">
-            Wrapping <span className="badge badge-success">new</span>
-          </h1>
-          <p>Horizontal containers</p>
-        </div>
-        <div className="wrap--page section-1 doc-block doc-bg">
-          <h2>.wrap-page</h2>
-          <p>
+const Wrap = () => (
+  <section id="wrap" className="section">
+    <div className="wrap--content">
+      <h1 className="colored-dot">
+            Wrapping
+        <span className="badge badge-success">new</span>
+      </h1>
+      <p>2 KB</p>
+      <p>Horizontal containers</p>
+    </div>
+    <div className="wrap--page section-1 doc-block doc-bg">
+      <h2>.wrap-page</h2>
+      <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at
             aliquet tortor. Nullam venenatis mi neque, id ultricies est
             porttitor in. Sed eleifend elit at lorem tincidunt maximus. Etiam
@@ -28,11 +28,11 @@ class Wrap extends Component {
             efficitur sit amet, egestas id felis. Nunc auctor nunc sed nulla
             malesuada, sit amet varius mauris pretium. Nullam ut ornare tortor.
             Curabitur laoree
-          </p>
-        </div>
-        <div className="wrap--content section-1 doc-block doc-bg">
-          <h2>.wrap-content</h2>
-          <p>
+      </p>
+    </div>
+    <div className="wrap--content section-1 doc-block doc-bg">
+      <h2>.wrap-content</h2>
+      <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at
             aliquet tortor. Nullam venenatis mi neque, id ultricies est
             porttitor in. Sed eleifend elit at lorem tincidunt maximus. Etiam
@@ -50,11 +50,11 @@ class Wrap extends Component {
             Curabitur laoreet, nisl euismod auctor venenatis, dolor diam auctor
             erat, sed tristique orci ipsum in erat. Nulla facilisi. Sed id
             tortor nulla. Sed luctus ultrices turpis, vel aliquet eli
-          </p>
-        </div>
-        <div className="wrap--container section-1 doc-block doc-bg">
-          <h2>.wrap-container, .container</h2>
-          <p>
+      </p>
+    </div>
+    <div className="wrap--container section-1 doc-block doc-bg">
+      <h2>.wrap-container, .container</h2>
+      <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at
             aliquet tortor. Nullam venenatis mi neque, id ultricies est
             porttitor in. Sed eleifend elit at lorem tincidunt maximus. Etiam
@@ -72,11 +72,11 @@ class Wrap extends Component {
             Curabitur laoreet, nisl euismod auctor venenatis, dolor diam auctor
             erat, sed tristique orci ipsum in erat. Nulla facilisi. Sed id
             tortor nulla. Sed luctus ultrices turpis, vel aliquet eli
-          </p>
-        </div>
-        <div className="wrap--text section-1 doc-block doc-bg">
-          <h2>.wrap-text</h2>
-          <p>
+      </p>
+    </div>
+    <div className="wrap--text section-1 doc-block doc-bg">
+      <h2>.wrap-text</h2>
+      <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at
             aliquet tortor. Nullam venenatis mi neque, id ultricies est
             porttitor in. Sed eleifend elit at lorem tincidunt maximus. Etiam
@@ -94,11 +94,9 @@ class Wrap extends Component {
             Curabitur laoreet, nisl euismod auctor venenatis, dolor diam auctor
             erat, sed tristique orci ipsum in erat. Nulla facilisi. Sed id
             tortor nulla. Sed luctus ultrices turpis, vel aliquet eli
-          </p>
-        </div>
-      </section>
+      </p>
+    </div>
+  </section>
     );
-  }
-}
 
 export default Wrap;

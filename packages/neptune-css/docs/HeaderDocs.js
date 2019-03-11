@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = ({ locale }) => (
+const Header = () => (
   <header
     className="navbar navbar-inverse navbar-static-top bg-primary subnav"
     id="top"

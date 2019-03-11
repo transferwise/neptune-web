@@ -1,4 +1,4 @@
-import React, { StrictMode, Component } from "react";
+import React, { StrictMode } from "react";
 import "./Docs.less";
 import "@transferwise/public-navigation/dist/public-navigation.css";
 
@@ -34,38 +34,34 @@ import Table from "./tableDocs";
 import Spacing from "./spacingDocs";
 import Header from "./HeaderDocs";
 
-export default class Docs extends Component {
-  render() {
-    return (
-      <StrictMode>
-        <div className="doc" id="top">
-          <a href="#top" className="doc-go-top">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24">
-              <title>up-arrow</title>
-              <polygon fill="#2e4369" points="18.01 7.47 12 1.46 5.99 7.47 6.7 8.18 11.5 3.38 11.5 22 12.5 22 12.5 3.38 17.3 8.18 18.01 7.47" />
-            </svg>
-          </a>
-          <header className="wrap--content section">
-            <h1 className="display-4 colored-dot">Thalassa</h1>
-            <p className="lead">CSS library</p>
-          </header>
-          <ComponentList />
-          <Core />
-          <Badge />
-          <Buttons />
-          <Circles />
-          <Media />
-          <Skew />
-          <Flex />
-          <Grid />
-          <Wrap />
-          <Background />
-          <Header />
-
-          <Table />
-          <Spacing />
-        </div>
-      </StrictMode>
-    );
-  }
-}
+const Docs = () => (
+  <StrictMode>
+    <div className="doc" id="top">
+      <a href="#top" className="doc-go-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24">
+          <title>up-arrow</title>
+          <polygon fill="#2e4369" points="18.01 7.47 12 1.46 5.99 7.47 6.7 8.18 11.5 3.38 11.5 22 12.5 22 12.5 3.38 17.3 8.18 18.01 7.47" />
+        </svg>
+      </a>
+      <header className="wrap--content section">
+        <h1 className="display-4 colored-dot">Thalassa</h1>
+        <p className="lead">CSS library</p>
+      </header>
+      <ComponentList />
+      <Core />
+      <Badge />
+      <Buttons />
+      <Circles />
+      <Media />
+      <Skew />
+      <Flex />
+      <Grid />
+      <Wrap />
+      <Background />
+      <Header />
+      <Table />
+      <Spacing />
+    </div>
+  </StrictMode>
+);
+export default Docs;
