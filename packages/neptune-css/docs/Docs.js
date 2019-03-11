@@ -9,6 +9,7 @@ import "../build/componentlist.css";
 import "../build/core.css";
 import "../build/flex.css";
 import "../build/grid.css";
+import "../build/media.css";
 import "../build/skew.css";
 import "../build/spacing.css";
 import "../build/table.css";
@@ -26,6 +27,7 @@ import Grid from "./gridDocs";
 import Wrap from "./wrapDocs";
 import Skew from "./skewDocs";
 import Flex from "./flexDocs";
+import Media from "./mediaDocs";
 import Background from "./backgroundDocs";
 
 import Table from "./tableDocs";
@@ -52,6 +54,7 @@ export default class Docs extends Component {
           <Badge />
           <Buttons />
           <Circles />
+          <Media />
           <Skew />
           <Flex />
           <Grid />
