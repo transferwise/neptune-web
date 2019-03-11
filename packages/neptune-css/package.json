@@ -16,7 +16,8 @@
     "bootstrap": "github:transferwise/bootstrap",
     "cssnano": "^4.1.10",
     "prop-types": "^15.6.2",
-    "retranslate": "^1.0.3"
+    "retranslate": "^1.0.3",
+    "svg-url-loader": "^2.3.2"
   },
   "devDependencies": {
     "@babel/core": "7.1.6",
