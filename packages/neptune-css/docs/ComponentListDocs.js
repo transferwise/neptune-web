@@ -5,6 +5,19 @@ import React from "react";
       <h2>Individual CSS files</h2>
       <div className="d-flex justify-content-between wrap--container">
         <div>
+          <h3>Foundations</h3>
+          <ul>
+            <li>
+              <a href="#typography">Typography</a>
+              <small> 9 KB</small>
+            </li>
+            <li>
+              <a href="#spacing">Spacing</a>
+              <small> 9 KB</small>
+            </li>
+          </ul>
+        </div>
+        <div>
           <h3>Components</h3>
           <ul>
             <li>
@@ -23,14 +36,7 @@ import React from "react";
               <a href="#circles">Circles</a>
               <small> 4 KB</small>
             </li>
-            <li>
-              <a href="#typography">Typography</a>
-              <small> 2 KB</small>
-            </li>
-            <li>
-              <a href="#spacing">Spacing</a>
-              <small> 9 KB</small>
-            </li>
+
             <li>
               <a href="#spacing">Carousel</a>
               <small> 6 KB</small>
@@ -88,7 +94,7 @@ import React from "react";
               <ul>
                 <li>
                   <a href="#typography">Typography</a>
-                  <small> 2 KB</small>
+                  <small> 9 KB</small>
                 </li>
                 <li>
                   <a href="#headings">Headings</a>
@@ -105,7 +111,7 @@ import React from "react";
           <ul>
             <li>
               <a href="#navbar">Navbar</a>
-              <small> 100 KB</small>
+              <small> 114 KB</small>
             </li>
           </ul>
         </div>

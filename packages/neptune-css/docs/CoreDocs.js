@@ -4,12 +4,11 @@ import Typography from "./TypographyDocs";
 const Core = () => (
   <section id="core" className="wrap--content section">
     <h1 className="colored-dot">
-          Core CSS
+          Core
     </h1>
-    <span className="badge badge-success">new</span>
-    <p>18 KB</p>
     <ul>
       <li>Normalize</li>
+      <li>scaffolding</li>
       <li>
         Type
         <ul>
@@ -18,7 +17,7 @@ const Core = () => (
         </ul>
       </li>
     </ul>
-    
+
     <Typography />
   </section>
     );

@@ -5,7 +5,6 @@ import "@transferwise/public-navigation/dist/public-navigation.css";
 import "../build/badge.css";
 import "../build/buttons.css";
 import "../build/circles.css";
-import "../build/componentlist.css";
 import "../build/core.css";
 import "../build/flex.css";
 import "../build/grid.css";

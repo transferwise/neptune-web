@@ -2,264 +2,261 @@ import React from "react";
 
 const Typography = () => (
   <section id="typography" className="wrap--page section">
-    <h1 className="colored-dot">
-          Typography
-    </h1>
-    <p className="lead">2 KB</p>
-    <div className="section">
-      <h2 id="headings">Headings</h2>
 
-      <p>
+    <h1 className="colored-dot">
+            Typography
+    </h1>
+    <h2 id="headings">Headings</h2>
+    <p>
             All HTML headings,
-        <code>&lt;h1&gt;</code>
+      <code>&lt;h1&gt;</code>
             through
-        <code>&lt;h6&gt;</code>
+      <code>&lt;h6&gt;</code>
 , are available.
-        <code>.h1</code>
+      <code>.h1</code>
             through
-        <code>.h6</code>
+      <code>.h6</code>
             classNamees are also available, for when you want to match the font
             styling of a heading but still want your text to be displayed
             inline.
-      </p>
-      <div className="tw-example tw-example-type">
-        <table className="table">
-          <tbody>
-            <tr>
-              <td>
-                <h1>h1. heading</h1>
-              </td>
-              <td className="type-info">
-                <span className="hidden-xs hidden-sm">
+    </p>
+    <div className="tw-example tw-example-type">
+      <table className="table">
+        <tbody>
+          <tr>
+            <td>
+              <h1>h1. heading</h1>
+            </td>
+            <td className="type-info">
+              <span className="hidden-xs hidden-sm">
                       bold 42px
-                  <br />
+                <br />
                       line-height 48px
-                  <br />
+                <br />
                       margin-bottom 8px
-                </span>
-                <span className="visible-xs visible-sm">
+              </span>
+              <span className="visible-xs visible-sm">
                       bold 28px
-                  <br />
+                <br />
                       line-height 32px
-                  <br />
+                <br />
                       margin-bottom 4px
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h2>h2. heading</h2>
-              </td>
-              <td className="type-info">
-                <span className="hidden-xs hidden-sm">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h2>h2. heading</h2>
+            </td>
+            <td className="type-info">
+              <span className="hidden-xs hidden-sm">
                       bold 28px
-                  <br />
+                <br />
                       line-height 32px
-                  <br />
+                <br />
                       margin-bottom 4px
-                </span>
-                <span className="visible-xs visible-sm">
+              </span>
+              <span className="visible-xs visible-sm">
                       bold 22px
-                  <br />
+                <br />
                       line-height 30px
-                  <br />
+                <br />
                       margin-bottom 2px
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h3>h3. heading</h3>
-              </td>
-              <td className="type-info">
-                <span className="hidden-xs hidden-sm">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h3>h3. heading</h3>
+            </td>
+            <td className="type-info">
+              <span className="hidden-xs hidden-sm">
                       semi-bold 22px
-                  <br />
+                <br />
                       line-height 30px
-                  <br />
+                <br />
                       margin-bottom 2px
-                </span>
-                <span className="visible-xs visible-sm">
+              </span>
+              <span className="visible-xs visible-sm">
                       semi-bold 18px
-                  <br />
+                <br />
                       line-height 24px
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h4>h4. heading</h4>
-              </td>
-              <td className="type-info">
-                <span className="hidden-xs hidden-sm">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4>h4. heading</h4>
+            </td>
+            <td className="type-info">
+              <span className="hidden-xs hidden-sm">
                       semi-bold 18px
-                  <br />
+                <br />
                       line-height 24px
-                </span>
-                <span className="visible-xs visible-sm">
+              </span>
+              <span className="visible-xs visible-sm">
                       semi-bold 16px
-                  <br />
+                <br />
                       line-height 24px
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h5>h5. heading</h5>
-              </td>
-              <td className="type-info">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h5>h5. heading</h5>
+            </td>
+            <td className="type-info">
                     semi-bold 16px
-                <br />
+              <br />
                     line-height 24px
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h6>h6. heading</h6>
-              </td>
-              <td className="type-info">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h6>h6. heading</h6>
+            </td>
+            <td className="type-info">
                     semi-bold 14px
-                <br />
+              <br />
                     line-height 24px
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <figure className="highlight">
-        <pre>
-          <code className="language-html" data-lang="html">
-            <span className="nt">&lt;h1&gt;</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <figure className="highlight">
+      <pre>
+        <code className="language-html" data-lang="html">
+          <span className="nt">&lt;h1&gt;</span>
 h1. heading
-            <span className="nt">&lt;/h1&gt;</span>
-            <span className="nt">&lt;h2&gt;</span>
+          <span className="nt">&lt;/h1&gt;</span>
+          <span className="nt">&lt;h2&gt;</span>
 h2. heading
-            <span className="nt">&lt;/h2&gt;</span>
-            <span className="nt">&lt;h3&gt;</span>
+          <span className="nt">&lt;/h2&gt;</span>
+          <span className="nt">&lt;h3&gt;</span>
 h3. heading
-            <span className="nt">&lt;/h3&gt;</span>
-            <span className="nt">&lt;h4&gt;</span>
+          <span className="nt">&lt;/h3&gt;</span>
+          <span className="nt">&lt;h4&gt;</span>
 h4. heading
-            <span className="nt">&lt;/h4&gt;</span>
-            <span className="nt">&lt;h5&gt;</span>
+          <span className="nt">&lt;/h4&gt;</span>
+          <span className="nt">&lt;h5&gt;</span>
 h5. heading
-            <span className="nt">&lt;/h5&gt;</span>
-            <span className="nt">&lt;h6&gt;</span>
+          <span className="nt">&lt;/h5&gt;</span>
+          <span className="nt">&lt;h6&gt;</span>
 h6. heading
-            <span className="nt">&lt;/h6&gt;</span>
-          </code>
-        </pre>
-      </figure>
+          <span className="nt">&lt;/h6&gt;</span>
+        </code>
+      </pre>
+    </figure>
 
-      <p>
+    <p>
             Create contextual headings with the built in background helper
             classNamees.
-      </p>
-      <div className="d-flex" data-example-id="small-headings">
-        <div className="bg-default p-a-2">
-          <h1>h1. heading</h1>
-          <h2>h2. heading</h2>
-          <h3>h3. heading</h3>
-          <h4>h4. heading</h4>
-          <h5>h5. heading</h5>
-          <h6>h6. heading</h6>
-        </div>
-        <div className="bg-info p-a-2">
-          <h1>h1. heading</h1>
-          <h2>h2. heading</h2>
-          <h3>h3. heading</h3>
-          <h4>h4. heading</h4>
-          <h5>h5. heading</h5>
-          <h6>h6. heading</h6>
-        </div>
-        <div className="bg-primary p-a-2">
-          <h1>h1. heading</h1>
-          <h2>h2. heading</h2>
-          <h3>h3. heading</h3>
-          <h4>h4. heading</h4>
-          <h5>h5. heading</h5>
-          <h6>h6. heading</h6>
-        </div>
+    </p>
+    <div className="d-flex" data-example-id="small-headings">
+      <div className="bg-default p-a-2">
+        <h1>h1. heading</h1>
+        <h2>h2. heading</h2>
+        <h3>h3. heading</h3>
+        <h4>h4. heading</h4>
+        <h5>h5. heading</h5>
+        <h6>h6. heading</h6>
       </div>
-      <figure className="highlight">
-        <pre>
-          <code className="language-html" data-lang="html">
-            <span className="nt">&lt;div</span>
-            {" "}
-            <span className="na">className=</span>
-            <span className="s">"bg-default"</span>
-            <span className="nt">&gt;</span>
-            <span className="nt">&lt;h1&gt;</span>
-h1. heading
-            <span className="nt">&lt;/h1&gt;</span>
-            <span className="nt">&lt;h2&gt;</span>
-h2. heading
-            <span className="nt">&lt;/h2&gt;</span>
-            <span className="nt">&lt;h3&gt;</span>
-h3. heading
-            <span className="nt">&lt;/h3&gt;</span>
-            <span className="nt">&lt;h4&gt;</span>
-h4. heading
-            <span className="nt">&lt;/h4&gt;</span>
-            <span className="nt">&lt;h5&gt;</span>
-h5. heading
-            <span className="nt">&lt;/h5&gt;</span>
-            <span className="nt">&lt;h6&gt;</span>
-h6. heading
-            <span className="nt">&lt;/h6&gt;</span>
-            <span className="nt">&lt;/div&gt;</span>
-            <span className="nt">&lt;div</span>
-            {" "}
-            <span className="na">className=</span>
-            <span className="s">"bg-info"</span>
-            <span className="nt">&gt;</span>
-            <span className="nt">&lt;h1&gt;</span>
-h1. heading
-            <span className="nt">&lt;/h1&gt;</span>
-            <span className="nt">&lt;h2&gt;</span>
-h2. heading
-            <span className="nt">&lt;/h2&gt;</span>
-            <span className="nt">&lt;h3&gt;</span>
-h3. heading
-            <span className="nt">&lt;/h3&gt;</span>
-            <span className="nt">&lt;h4&gt;</span>
-h4. heading
-            <span className="nt">&lt;/h4&gt;</span>
-            <span className="nt">&lt;h5&gt;</span>
-h5. heading
-            <span className="nt">&lt;/h5&gt;</span>
-            <span className="nt">&lt;h6&gt;</span>
-h6. heading
-            <span className="nt">&lt;/h6&gt;</span>
-            <span className="nt">&lt;/div&gt;</span>
-            <span className="nt">&lt;div</span>
-            {" "}
-            <span className="na">className=</span>
-            <span className="s">"bg-primary"</span>
-            <span className="nt">&gt;</span>
-            <span className="nt">&lt;h1&gt;</span>
-h1. heading
-            <span className="nt">&lt;/h1&gt;</span>
-            <span className="nt">&lt;h2&gt;</span>
-h2. heading
-            <span className="nt">&lt;/h2&gt;</span>
-            <span className="nt">&lt;h3&gt;</span>
-h3. heading
-            <span className="nt">&lt;/h3&gt;</span>
-            <span className="nt">&lt;h4&gt;</span>
-h4. heading
-            <span className="nt">&lt;/h4&gt;</span>
-            <span className="nt">&lt;h5&gt;</span>
-h5. heading
-            <span className="nt">&lt;/h5&gt;</span>
-            <span className="nt">&lt;h6&gt;</span>
-h6. heading
-            <span className="nt">&lt;/h6&gt;</span>
-            <span className="nt">&lt;/div&gt;</span>
-          </code>
-        </pre>
-      </figure>
+      <div className="bg-info p-a-2">
+        <h1>h1. heading</h1>
+        <h2>h2. heading</h2>
+        <h3>h3. heading</h3>
+        <h4>h4. heading</h4>
+        <h5>h5. heading</h5>
+        <h6>h6. heading</h6>
+      </div>
+      <div className="bg-primary p-a-2">
+        <h1>h1. heading</h1>
+        <h2>h2. heading</h2>
+        <h3>h3. heading</h3>
+        <h4>h4. heading</h4>
+        <h5>h5. heading</h5>
+        <h6>h6. heading</h6>
+      </div>
     </div>
+    <figure className="highlight">
+      <pre>
+        <code className="language-html" data-lang="html">
+          <span className="nt">&lt;div</span>
+          {" "}
+          <span className="na">className=</span>
+          <span className="s">"bg-default"</span>
+          <span className="nt">&gt;</span>
+          <span className="nt">&lt;h1&gt;</span>
+h1. heading
+          <span className="nt">&lt;/h1&gt;</span>
+          <span className="nt">&lt;h2&gt;</span>
+h2. heading
+          <span className="nt">&lt;/h2&gt;</span>
+          <span className="nt">&lt;h3&gt;</span>
+h3. heading
+          <span className="nt">&lt;/h3&gt;</span>
+          <span className="nt">&lt;h4&gt;</span>
+h4. heading
+          <span className="nt">&lt;/h4&gt;</span>
+          <span className="nt">&lt;h5&gt;</span>
+h5. heading
+          <span className="nt">&lt;/h5&gt;</span>
+          <span className="nt">&lt;h6&gt;</span>
+h6. heading
+          <span className="nt">&lt;/h6&gt;</span>
+          <span className="nt">&lt;/div&gt;</span>
+          <span className="nt">&lt;div</span>
+          {" "}
+          <span className="na">className=</span>
+          <span className="s">"bg-info"</span>
+          <span className="nt">&gt;</span>
+          <span className="nt">&lt;h1&gt;</span>
+h1. heading
+          <span className="nt">&lt;/h1&gt;</span>
+          <span className="nt">&lt;h2&gt;</span>
+h2. heading
+          <span className="nt">&lt;/h2&gt;</span>
+          <span className="nt">&lt;h3&gt;</span>
+h3. heading
+          <span className="nt">&lt;/h3&gt;</span>
+          <span className="nt">&lt;h4&gt;</span>
+h4. heading
+          <span className="nt">&lt;/h4&gt;</span>
+          <span className="nt">&lt;h5&gt;</span>
+h5. heading
+          <span className="nt">&lt;/h5&gt;</span>
+          <span className="nt">&lt;h6&gt;</span>
+h6. heading
+          <span className="nt">&lt;/h6&gt;</span>
+          <span className="nt">&lt;/div&gt;</span>
+          <span className="nt">&lt;div</span>
+          {" "}
+          <span className="na">className=</span>
+          <span className="s">"bg-primary"</span>
+          <span className="nt">&gt;</span>
+          <span className="nt">&lt;h1&gt;</span>
+h1. heading
+          <span className="nt">&lt;/h1&gt;</span>
+          <span className="nt">&lt;h2&gt;</span>
+h2. heading
+          <span className="nt">&lt;/h2&gt;</span>
+          <span className="nt">&lt;h3&gt;</span>
+h3. heading
+          <span className="nt">&lt;/h3&gt;</span>
+          <span className="nt">&lt;h4&gt;</span>
+h4. heading
+          <span className="nt">&lt;/h4&gt;</span>
+          <span className="nt">&lt;h5&gt;</span>
+h5. heading
+          <span className="nt">&lt;/h5&gt;</span>
+          <span className="nt">&lt;h6&gt;</span>
+h6. heading
+          <span className="nt">&lt;/h6&gt;</span>
+          <span className="nt">&lt;/div&gt;</span>
+        </code>
+      </pre>
+    </figure>
     <h2>Display headings</h2>
     <p>
           Traditional heading elements are designed to work best in the meat of
@@ -435,12 +432,6 @@ Display 4
     </p>
 
     <h2>Inline text elements</h2>
-    <h2 id="type-inline-text">
-          Inline text elements
-      <a className="anchorjs-link" href="#type-inline-text">
-        <span className="anchorjs-icon" />
-      </a>
-    </h2>
     <h3 id="marked-text">
           Marked text
       <a className="anchorjs-link" href="#marked-text">
@@ -694,6 +685,6 @@ rendered as italicized text
       </p>
     </div>
   </section>
-    );
+);
 
 export default Typography;
