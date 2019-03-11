@@ -22,6 +22,8 @@ import ComponentList from "./componentListDocs";
 import Badge from "./BadgeDocs";
 import Buttons from "./ButtonsDocs";
 import Circles from "./CirclesDocs";
+import Carousel from "./CarouselDocs";
+import Forms from "./FormsDocs";
 import Grid from "./gridDocs";
 import Wrap from "./wrapDocs";
 import Skew from "./skewDocs";
@@ -51,6 +53,8 @@ const Docs = () => (
       <Badge />
       <Buttons />
       <Circles />
+      <Carousel />
+      <Forms />
       <Media />
       <Skew />
       <Flex />

@@ -105,6 +105,24 @@ import React from "react";
         </div>
         <div>
           <h3>Forms</h3>
+          <ul>
+            <li>
+              <a href="#forms">Forms</a>
+              <small> 28 KB</small>
+              <ul>
+                <li>
+                  <a href="#forms">Forms</a>
+                  <small> 28 KB</small>
+                </li>
+                <li>
+                  <li>
+                    <a href="#buttons">Buttons</a>
+                    <small> 30 KB</small>
+                  </li>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
         <div>
           <h3>Header / navbar</h3>
