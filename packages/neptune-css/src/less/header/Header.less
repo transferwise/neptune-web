@@ -5,6 +5,7 @@
 @import "~bootstrap/less/mixins/arrows.less";
 @import "~bootstrap/less/mixins/border-radius.less";
 @import "~bootstrap/less/mixins/reset-filter.less";
+@import "~bootstrap/less/mixins/grid.less";
 @import "~bootstrap/less/dropdowns.less";
 @import "~bootstrap/less/glyphicons.less";
 @import "~bootstrap/less/logos.less";
@@ -95,6 +96,8 @@
 
 // Extracted from `grid.less`
 .container {
+  .container-fixed();
+
   padding-right: @spacing-1-mobile;
   padding-left: @spacing-1-mobile;
 
@@ -106,6 +109,10 @@
   @media (min-width: @screen-lg-min) {
     padding-right: @spacing-1-desktop;
     padding-left: @spacing-1-desktop;
+  }
+
+  @media (min-width: @screen-xl-min) {
+    max-width: @container-xl;
   }
 }
 
