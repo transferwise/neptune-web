@@ -47,6 +47,10 @@ import React from "react";
           <h3>Layout</h3>
           <ul>
             <li>
+              <a href="#columns">Column system</a>
+              <small> 14 KB</small>
+            </li>
+            <li>
               <a href="#flex">Flex</a>
               <small> 5 KB</small>
               <span className="badge badge-success m-l-1">New</span>
@@ -55,9 +59,6 @@ import React from "react";
               <a href="#grid">Grid layout</a>
               <small> 2 KB</small>
               <span className="badge badge-success m-l-1">New</span>
-            </li>
-            <li>
-              <a href="#grid">Column system</a>
             </li>
             <li>
               <a href="#wrap">Wrapping</a>
@@ -108,7 +109,6 @@ import React from "react";
           <ul>
             <li>
               <a href="#forms">Forms</a>
-              <small> 28 KB</small>
               <ul>
                 <li>
                   <a href="#forms">Forms</a>

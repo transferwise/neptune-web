@@ -15,6 +15,7 @@ import "../build/table.css";
 import "../build/wrap.css";
 import "../build/header.css";
 import "../build/background.css";
+import "../build/columns.css";
 
 import { PublicNavigation, Footer } from "@transferwise/public-navigation";
 import Core from "./coreDocs";
@@ -25,6 +26,7 @@ import Circles from "./CirclesDocs";
 import Carousel from "./CarouselDocs";
 import Forms from "./FormsDocs";
 import Grid from "./gridDocs";
+import Columns from "./columnsDocs";
 import Wrap from "./wrapDocs";
 import Skew from "./skewDocs";
 import Flex from "./flexDocs";
@@ -57,6 +59,7 @@ const Docs = () => (
       <Forms />
       <Media />
       <Skew />
+      <Columns />
       <Flex />
       <Grid />
       <Wrap />
