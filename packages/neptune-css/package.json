@@ -54,7 +54,7 @@
     "start": "webpack-dev-server --hot --port 9000 --config=./config/webpack.dev.config.js",
     "build": "node scripts/build.js",
     "build-docs": "webpack -p --config=./config/webpack.dev.config.js",
-    "deploy-docs-to-dir": "gh-pages -a -d public -e",
+    "deploy-docs-to-dir": "gh-pages -a -d docs-build -e",
     "deploy-docs-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build"
   },
   "eslintConfig": {
