@@ -1,7 +1,7 @@
 import React from "react";
 
 const Grid = () => (
-  <section id="grid" className="wrap--page">
+  <section id="grid" className="wrap--content">
     <h1 className="colored-dot">
           Grid layout system
       <span className="badge badge-success">new</span>
