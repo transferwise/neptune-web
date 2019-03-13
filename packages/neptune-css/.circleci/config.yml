@@ -68,10 +68,3 @@ workflows:
             branches:
               ignore:
                 - master
-      - release:
-          context: frontend-publish
-          requires:
-            - deploy-docs-to-root
-          filters:
-            branches:
-              only: master
