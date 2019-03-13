@@ -2,12 +2,17 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const postcssPresetEnv = require("postcss-preset-env");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const fs = require("fs");
+const path = require('path');
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+
 module.exports = {
   mode: "development",
   devtool: "source-map",
   entry: "./docs",
   output: {
-    path: __dirname + "./dist"
+    path: resolveApp("docs-build"),
   },
   module: {
     rules: [
@@ -83,7 +88,7 @@ module.exports = {
       template: "./docs/index.html"
     }),
     new MiniCssExtractPlugin({
-      filename: "style.css"
+      filename: "css/style.css"
     })
   ]
 };

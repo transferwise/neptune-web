@@ -1,0 +1,77 @@
+defaults: &defaults
+  working_directory: ~/thalassa
+  docker:
+    - image: circleci/node:latest
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm ci
+      - run:
+          name: Build docs
+          command: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - '*'
+  deploy-docs-to-root:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/thalassa
+      - run:
+          name: Build docs
+          command: npm run build-docs
+      - run:
+          name: Deploy docs
+          command: |
+            mkdir ~/.ssh
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            git config --global user.email "circleci@transferwise.com"
+            git config --global user.name "CircleCI"
+            npm run deploy-docs-to-dir .
+  deploy-docs-for-branch:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/thalassa
+      - run:
+          name: Build docs
+          command: npm run build-docs
+      - run:
+          name: Deploy docs
+          command: |
+            mkdir ~/.ssh
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            git config --global user.email "circleci@transferwise.com"
+            git config --global user.name "CircleCI"
+            npm run deploy-docs-for-branch
+workflows:
+  version: 2
+  build-test-release-and-build-docs:
+    jobs:
+      - build
+      - deploy-docs-to-root:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - deploy-docs-for-branch:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - master
+      - release:
+          context: frontend-publish
+          requires:
+            - deploy-docs-to-root
+          filters:
+            branches:
+              only: master

@@ -1,7 +1,7 @@
 {
   "name": "tw-thalassa",
   "version": "1.0.0",
-  "description": "TransferWise style-guide molecules in react",
+  "description": "CSS library",
   "license": "MIT",
   "main": "./build/main.js",
   "repository": {
@@ -40,7 +40,10 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "deploy-directory-on-branch-to-gh-pages": "^0.2.5",
+    "gh-pages": "^2.0.1"
+  },
   "peerDependencies": {
     "react": "^16.8.2",
     "react-app-polyfill": "^0.2.0",
@@ -50,7 +53,9 @@
   "scripts": {
     "start": "webpack-dev-server --hot --port 9000 --config=./config/webpack.dev.config.js",
     "build": "node scripts/build.js",
-    "dev": "node scripts/build.js | webpack-dev-server --hot --port 9000 --config=./config/webpack.dev.config.js"
+    "build-docs": "webpack -p --config=./config/webpack.dev.config.js",
+    "deploy-docs-to-dir": "gh-pages -a -d public -e",
+    "deploy-docs-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build"
   },
   "eslintConfig": {
     "extends": "react-app"
