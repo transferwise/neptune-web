@@ -1,3 +1,7 @@
+# v4.16.3
+## Added `.compact-header` class to modal component
+Added option to reduce bottom padding of modal header
+
 # v4.16.2
 ## Added custom classes to modal
 Added option to hide divider in modal, and use compact layout with reduced padding.
