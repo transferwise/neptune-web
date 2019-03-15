@@ -3,7 +3,7 @@ import { Footer } from '@transferwise/public-navigation';
 
 const FooterDoc = () => (
   <section id="footer">
-    <div className="wrap--content section">
+    <div className="container--wide section">
       <h1 className="colored-dot">Footer</h1>
       <p>
       From &nbsp;
@@ -16,7 +16,7 @@ const FooterDoc = () => (
     </div>
     <Footer id="footer-default" />
     <div className="section">
-      <h2 className="wrap--content">Footer inverse</h2>
+      <h2 className="container--wide">Footer inverse</h2>
     </div>
     <Footer inverse="true" id="footer-inverse" />
   </section>

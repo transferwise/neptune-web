@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const Carousel = () => (
-  <section id="carousel" className="wrap--content section">
+  <section id="carousel" className="container--wide section">
     <h1 className="colored-dot">
       Carousel
     </h1>

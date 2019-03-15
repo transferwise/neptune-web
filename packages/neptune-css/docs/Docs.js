@@ -13,7 +13,7 @@ import '../build/css/media.css';
 import '../build/css/skew.css';
 import '../build/css/spacing.css';
 import '../build/css/table.css';
-import '../build/css/wrap.css';
+import '../build/css/container.css';
 import '../build/css/header.css';
 import '../build/css/background.css';
 import '../build/css/columns.css';
@@ -29,7 +29,7 @@ import Forms from './FormsDocs';
 import FooterDoc from './FooterDocs';
 import Grid from './GridDocs';
 import Columns from './ColumnsDocs';
-import Wrap from './WrapDocs';
+import Container from './ContainerDocs';
 import Skew from './SkewDocs';
 import Flex from './FlexDocs';
 import Media from './MediaDocs';
@@ -52,7 +52,7 @@ const Docs = () => (
           />
         </svg>
       </a>
-      <header className="wrap--content section">
+      <header className="container--wide section">
         <h1 className="display-4 colored-dot">Thalassa</h1>
         <p className="lead">CSS library</p>
       </header>
@@ -68,7 +68,7 @@ const Docs = () => (
       <Columns />
       <Flex />
       <Grid />
-      <Wrap />
+      <Container />
       <Background />
       <Header />
       <FooterDoc />

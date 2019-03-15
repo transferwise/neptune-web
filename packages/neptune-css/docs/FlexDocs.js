@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const Flex = () => (
-  <section id="flex" className="wrap--content section">
+  <section id="flex" className="container--wide section">
     <h1 className="colored-dot">
           Flexbox system
       {' '}
@@ -252,6 +252,6 @@ const Flex = () => (
       </div>
     </div>
   </section>
-    );
+);
 
 export default Flex;

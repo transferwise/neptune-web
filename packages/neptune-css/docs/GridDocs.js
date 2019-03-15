@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const Grid = () => (
-  <section id="grid" className="wrap--content">
+  <section id="grid" className="container--wide">
     <h1 className="colored-dot">
           Grid layout system
       <span className="badge badge-success">new</span>
@@ -126,6 +126,6 @@ const Grid = () => (
       </div>
     </div>
   </section>
-    );
+);
 
 export default Grid;

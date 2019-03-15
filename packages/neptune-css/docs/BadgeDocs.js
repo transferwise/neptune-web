@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const Badge = () => (
-  <section id="badge" className="wrap--content section">
+  <section id="badge" className="container--wide section">
     <h1 className="colored-dot">Badge</h1>
     <p className="lead">703 bytes</p>
     <p className="lead">
@@ -32,6 +32,6 @@ const Badge = () => (
     </div>
 
   </section>
-    );
+);
 
 export default Badge;

@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const Buttons = () => (
-  <section id="buttons" className="wrap--content section">
+  <section id="buttons" className="container--wide section">
     <h1 className="colored-dot">
       Buttons
     </h1>

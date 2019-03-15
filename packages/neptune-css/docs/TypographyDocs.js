@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const Typography = () => (
-  <section id="typography" className="wrap--page section">
+  <section id="typography" className="container--wide section">
 
     <h1 className="colored-dot">
             Typography
@@ -183,7 +183,7 @@ h6. heading
       <pre>
         <code className="language-html" data-lang="html">
           <span className="nt">&lt;div</span>
-          {" "}
+          {' '}
           <span className="na">className=</span>
           <span className="s">"bg-default"</span>
           <span className="nt">&gt;</span>
@@ -207,7 +207,7 @@ h6. heading
           <span className="nt">&lt;/h6&gt;</span>
           <span className="nt">&lt;/div&gt;</span>
           <span className="nt">&lt;div</span>
-          {" "}
+          {' '}
           <span className="na">className=</span>
           <span className="s">"bg-info"</span>
           <span className="nt">&gt;</span>
@@ -231,7 +231,7 @@ h6. heading
           <span className="nt">&lt;/h6&gt;</span>
           <span className="nt">&lt;/div&gt;</span>
           <span className="nt">&lt;div</span>
-          {" "}
+          {' '}
           <span className="na">className=</span>
           <span className="s">"bg-primary"</span>
           <span className="nt">&gt;</span>
@@ -295,28 +295,28 @@ h6. heading
       <pre>
         <code className="language-html" data-lang="html">
           <span className="nt">&lt;h1</span>
-          {" "}
+          {' '}
           <span className="na">className=</span>
           <span className="s">"display-1"</span>
           <span className="nt">&gt;</span>
 Display 1
           <span className="nt">&lt;/h1&gt;</span>
           <span className="nt">&lt;h1</span>
-          {" "}
+          {' '}
           <span className="na">className=</span>
           <span className="s">"display-2"</span>
           <span className="nt">&gt;</span>
 Display 2
           <span className="nt">&lt;/h1&gt;</span>
           <span className="nt">&lt;h1</span>
-          {" "}
+          {' '}
           <span className="na">className=</span>
           <span className="s">"display-3"</span>
           <span className="nt">&gt;</span>
 Display 3
           <span className="nt">&lt;/h1&gt;</span>
           <span className="nt">&lt;h1</span>
-          {" "}
+          {' '}
           <span className="na">className=</span>
           <span className="s">"display-4"</span>
           <span className="nt">&gt;</span>
@@ -400,7 +400,7 @@ Display 4
       <pre>
         <code className="language-html" data-lang="html">
           <span className="nt">&lt;p</span>
-          {" "}
+          {' '}
           <span className="na">className=</span>
           <span className="s">"lead"</span>
           <span className="nt">&gt;</span>
@@ -455,7 +455,7 @@ Display 4
       <pre>
         <code className="language-html" data-lang="html">
               You can use the mark tag to
-          {" "}
+          {' '}
           <span className="nt">&lt;mark&gt;</span>
               highlight
           <span className="nt">&lt;/mark&gt;</span>

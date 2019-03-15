@@ -1,17 +1,14 @@
-import React from "react";
+import React from 'react';
 
-const Wrap = () => (
-  <section id="wrap" className="section">
-    <div className="wrap--content">
+const Container = () => (
+  <section id="container" className="section">
+    <div className="container--wide">
       <h1 className="colored-dot">
-            Wrapping
-        <span className="badge badge-success">new</span>
+            Container
       </h1>
-      <p>2 KB</p>
-      <p>Horizontal containers</p>
     </div>
-    <div className="wrap--page section-1 doc-block doc-bg">
-      <h2>.wrap-page</h2>
+    <div className="container--fullscreen section-1 doc-block doc-bg">
+      <h2>.container--fullscreen</h2>
       <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at
             aliquet tortor. Nullam venenatis mi neque, id ultricies est
@@ -30,8 +27,8 @@ const Wrap = () => (
             Curabitur laoree
       </p>
     </div>
-    <div className="wrap--content section-1 doc-block doc-bg">
-      <h2>.wrap-content</h2>
+    <div className="container--wide section-1 doc-block doc-bg">
+      <h2>.container--wide</h2>
       <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at
             aliquet tortor. Nullam venenatis mi neque, id ultricies est
@@ -52,8 +49,8 @@ const Wrap = () => (
             tortor nulla. Sed luctus ultrices turpis, vel aliquet eli
       </p>
     </div>
-    <div className="wrap--container section-1 doc-block doc-bg">
-      <h2>.wrap-container, .container</h2>
+    <div className="container section-1 doc-block doc-bg">
+      <h2>.container</h2>
       <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at
             aliquet tortor. Nullam venenatis mi neque, id ultricies est
@@ -74,8 +71,8 @@ const Wrap = () => (
             tortor nulla. Sed luctus ultrices turpis, vel aliquet eli
       </p>
     </div>
-    <div className="wrap--text section-1 doc-block doc-bg">
-      <h2>.wrap-text</h2>
+    <div className="container--text section-1 doc-block doc-bg">
+      <h2>.container--text</h2>
       <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at
             aliquet tortor. Nullam venenatis mi neque, id ultricies est
@@ -97,6 +94,6 @@ const Wrap = () => (
       </p>
     </div>
   </section>
-    );
+);
 
-export default Wrap;
+export default Container;

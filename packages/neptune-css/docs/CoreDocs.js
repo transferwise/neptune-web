@@ -1,8 +1,8 @@
-import React from "react";
-import Typography from "./TypographyDocs";
+import React from 'react';
+import Typography from './TypographyDocs';
 
 const Core = () => (
-  <section id="core" className="wrap--content section">
+  <section id="core" className="container--wide section">
     <h1 className="colored-dot">
           Core
     </h1>
@@ -20,6 +20,6 @@ const Core = () => (
 
     <Typography />
   </section>
-    );
+);
 
 export default Core;
