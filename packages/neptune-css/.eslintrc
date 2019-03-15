@@ -1,24 +1,31 @@
 {
-  "extends": ["airbnb", "prettier"],
-  "parser": "babel-eslint",
-  "rules": {
-    "react/jsx-filename-extension": 0,
-    "no-mixed-operators": 0,
-    "no-use-before-define": 0,
-    "jsx-a11y/label-has-for": [2, {
-      "required": {
-        "some": ["nesting", "id"]
-      }
-    }],
-    "jsx-a11y/label-has-associated-control": [2, {
-      "required": {
-        "some": ["nesting", "id"]
-      }
-    }],
-    "import/prefer-default-export": 0
-  },
   "env": {
     "browser": true,
     "jest": true
+  },
+
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "max-len": ["error", { "code": 120 }],
+    "class-methods-use-this": [0],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": [0],
+    "react/no-unused-prop-types": [1, { "skipShapeProps": true}],
+    "import/no-extraneous-dependencies": [
+      "error", {
+        "devDependencies": true,
+        "optionalDependencies": true,
+        "peerDependencies": true
+        }
+    ],
+    "space-before-function-paren": ["error", {
+        "anonymous": "always",
+        "named": "always",
+        "asyncArrow": "always"
+    }],
+    "allowForLoopAfterthoughts": [0],
+    "react/no-did-mount-set-state": [0],
+    "no-plusplus": [2, { "allowForLoopAfterthoughts": true }]
   }
 }
