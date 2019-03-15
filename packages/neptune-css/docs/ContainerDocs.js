@@ -6,6 +6,7 @@ const Container = () => (
       <h1 className="colored-dot">
             Container
       </h1>
+      <span className="badge badge-success">beta</span>
     </div>
     <div className="container--fullscreen section-1 doc-block doc-bg">
       <h2>.container--fullscreen</h2>

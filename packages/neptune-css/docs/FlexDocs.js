@@ -4,9 +4,8 @@ const Flex = () => (
   <section id="flex" className="container--wide section">
     <h1 className="colored-dot">
           Flexbox system
-      {' '}
-      <span className="badge badge-success">new</span>
     </h1>
+    <span className="badge badge-success">beta</span>
     <p className="lead">7kB minified</p>
     <div className="doc-block">
       <h2 className="doc-info">.d-flex</h2>

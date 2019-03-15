@@ -4,8 +4,8 @@ const Grid = () => (
   <section id="grid" className="container--wide">
     <h1 className="colored-dot">
           Grid layout system
-      <span className="badge badge-success">new</span>
     </h1>
+    <span className="badge badge-success">beta</span>
     <h2 className="m-t-4">.d-grid grid--1-1</h2>
     <div className="d-grid grid--1-1">
       <div className="doc-item doc-bg">item</div>

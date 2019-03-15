@@ -57,17 +57,17 @@ const ComponentList = () => (
           <li>
             <a href="#flex">Flex</a>
             <small> 5 KB</small>
-            <span className="badge badge-success m-l-1">New</span>
+            <span className="badge badge-success m-l-1">beta</span>
           </li>
           <li>
             <a href="#grid">Grid layout</a>
             <small> 2 KB</small>
-            <span className="badge badge-success m-l-1">New</span>
+            <span className="badge badge-success m-l-1">beta</span>
           </li>
           <li>
             <a href="#container">Container</a>
             <small> 2 KB</small>
-            <span className="badge badge-success m-l-1">New</span>
+            <span className="badge badge-success m-l-1">beta</span>
           </li>
         </ul>
       </div>
@@ -78,12 +78,12 @@ const ComponentList = () => (
           <li>
             <a href="#skew">Skew</a>
             <small> 1 KB</small>
-            <span className="badge badge-success m-l-1">New</span>
+            <span className="badge badge-success m-l-1">beta</span>
           </li>
           <li>
             <a href="#background">Background</a>
             <small> 1 KB</small>
-            <span className="badge badge-success m-l-1">New</span>
+            <span className="badge badge-success m-l-1">beta</span>
           </li>
         </ul>
       </div>
