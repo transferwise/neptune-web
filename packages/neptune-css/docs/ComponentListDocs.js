@@ -38,7 +38,7 @@ const ComponentList = () => (
           </li>
 
           <li>
-            <a href="#spacing">Carousel</a>
+            <a href="#carousel">Carousel</a>
             <small> 6 KB</small>
           </li>
           <li>
