@@ -8,6 +8,7 @@ import '../build/css/breadcrumbs.css';
 import '../build/css/buttons.css';
 import '../build/css/carousel.css';
 import '../build/css/circles.css';
+import '../build/css/var-color.css';
 import '../build/css/core.css';
 import '../build/css/flex.css';
 import '../build/css/grid.css';
@@ -30,6 +31,7 @@ import Badge from './BadgeDocs';
 import Buttons from './ButtonsDocs';
 import Circles from './CirclesDocs';
 import Carousel from './CarouselDocs';
+import Color from './ColorDocs';
 import Forms from './FormsDocs';
 import FooterDoc from './FooterDocs';
 import Grid from './GridDocs';
@@ -65,6 +67,7 @@ const Docs = () => (
       <Alerts />
       <Breadcrumbs />
       <Core />
+      <Color />
       <Badge />
       <Buttons />
       <Circles />
