@@ -16,10 +16,6 @@ const ComponentList = () => (
             <a href="#typography">Typography</a>
             <small> 9 KB</small>
           </li>
-          <li>
-            <a href="#spacing">Spacing</a>
-            <small> 9 KB</small>
-          </li>
         </ul>
       </div>
       <div>
@@ -86,8 +82,12 @@ const ComponentList = () => (
       </div>
 
       <div>
-        <h3>Styling</h3>
+        <h3>Utilities</h3>
         <ul className="doc-list">
+          <li>
+            <a href="#spacing">Spacing</a>
+            <small> 9 KB</small>
+          </li>
           <li>
             <a href="#skew">Skew</a>
             <small> 1 KB</small>
