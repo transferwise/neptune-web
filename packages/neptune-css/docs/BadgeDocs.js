@@ -1,5 +1,10 @@
 import React from 'react';
 
+import Refractor from 'react-refractor';
+import markup from 'refractor/lang/markup';
+import javascript from 'refractor/lang/javascript';
+import './less/prism.css';
+
 const Badge = () => (
   <section id="badge" className="container--wide section">
     <h1 className="colored-dot">Badge</h1>
@@ -14,7 +19,12 @@ const Badge = () => (
         Inbox&nbsp;
         <span className="badge">42</span>
       </a>
-      <code>{'<a href="#">Inbox <span class="badge">42</span></a>'}</code>
+      <Refractor
+        language="markup"
+        value={`
+          <a href="#">Inbox <span class="badge">42</span></a>
+         `}
+      />
     </div>
 
     <h2 id="color">Color</h2>
@@ -28,7 +38,12 @@ const Badge = () => (
             Inbox&nbsp;
         <span className="badge badge-success">new</span>
       </a>
-      <code>{'<a href="#">Inbox <span class="badge badge-success">new</span></a>'}</code>
+      <Refractor
+        language="markup"
+        value={`
+          <a href="#">Inbox <span class="badge badge-success">new</span></a>
+         `}
+      />
     </div>
 
   </section>

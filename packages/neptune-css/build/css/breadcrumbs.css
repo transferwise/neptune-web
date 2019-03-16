@@ -1,0 +1,1 @@
+.breadcrumb{padding:8px 0;margin-bottom:24px;list-style:none;background-color:none;border-radius:3px}.breadcrumb>li{display:inline-block}.breadcrumb>li+li:before{content:"❯\00a0";padding:0 5px;color:#ccc}.breadcrumb>.active{color:#829ca9}

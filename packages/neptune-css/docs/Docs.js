@@ -4,6 +4,7 @@ import '@transferwise/public-navigation/dist/public-navigation.css';
 
 import '../build/css/alerts.css';
 import '../build/css/badge.css';
+import '../build/css/breadcrumbs.css';
 import '../build/css/buttons.css';
 import '../build/css/carousel.css';
 import '../build/css/circles.css';
@@ -24,6 +25,7 @@ import { PublicNavigation } from '@transferwise/public-navigation';
 import Alerts from './AlertsDocs';
 import Core from './CoreDocs';
 import ComponentList from './ComponentListDocs';
+import Breadcrumbs from './BreadcrumbsDocs';
 import Badge from './BadgeDocs';
 import Buttons from './ButtonsDocs';
 import Circles from './CirclesDocs';
@@ -61,6 +63,7 @@ const Docs = () => (
       </header>
       <ComponentList />
       <Alerts />
+      <Breadcrumbs />
       <Core />
       <Badge />
       <Buttons />
