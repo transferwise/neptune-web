@@ -70,16 +70,18 @@ const Docs = () => (
           value={`import "~thalassa/build/css/[component].css";`} />
       </header>
       <ComponentList />
-      <Alerts />
-      <Breadcrumbs />
-      <Core />
       <Color />
+      <Core />
+      <Spacing />
+      <Alerts />
       <Badge />
+      <Breadcrumbs />
       <Buttons />
-      <Circles />
       <Carousel />
+      <Circles />
       <Forms />
       <Media />
+      <Table />
       <Skew />
       <Columns />
       <Flex />
@@ -88,8 +90,6 @@ const Docs = () => (
       <Background />
       <Header />
       <FooterDoc />
-      <Table />
-      <Spacing />
     </div>
   </StrictMode>
 );
