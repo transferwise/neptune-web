@@ -89,6 +89,10 @@ const ComponentList = () => (
             <small> 9 KB</small>
           </li>
           <li>
+            <a href="#circle-backgrounds">Circle Backgrounds</a>
+            <small> 1 KB</small>
+          </li>
+          <li>
             <a href="#skew">Skew</a>
             <small> 1 KB</small>
             <span className="badge m-l-1">beta</span>

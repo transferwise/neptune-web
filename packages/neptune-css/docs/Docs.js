@@ -13,6 +13,7 @@ import '../build/css/breadcrumbs.css';
 import '../build/css/buttons.css';
 import '../build/css/carousel.css';
 import '../build/css/circles.css';
+import '../build/css/circle-backgrounds.css';
 import '../build/css/var-color.css';
 import '../build/css/core.css';
 import '../build/css/flex.css';
@@ -35,6 +36,7 @@ import Breadcrumbs from './BreadcrumbsDocs';
 import Badge from './BadgeDocs';
 import Buttons from './ButtonsDocs';
 import Circles from './CirclesDocs';
+import CircleBackgrounds from './CircleBackgroundsDocs';
 import Carousel from './CarouselDocs';
 import Color from './ColorDocs';
 import Forms from './FormsDocs';
@@ -75,6 +77,7 @@ const Docs = () => (
       <Color />
       <Core />
       <Spacing />
+      <CircleBackgrounds />
       <Alerts />
       <Badge />
       <Breadcrumbs />
