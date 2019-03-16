@@ -21,6 +21,10 @@ const ComponentList = () => (
         <h3>Components</h3>
         <ul>
           <li>
+            <a href="#alerts">Alerts</a>
+            <small> 4 KB</small>
+          </li>
+          <li>
             <a href="#badge">Badge</a>
             <small> 703 bytes</small>
           </li>

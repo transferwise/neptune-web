@@ -2,6 +2,7 @@ import React, { StrictMode } from 'react';
 import './Docs.less';
 import '@transferwise/public-navigation/dist/public-navigation.css';
 
+import '../build/css/alerts.css';
 import '../build/css/badge.css';
 import '../build/css/buttons.css';
 import '../build/css/carousel.css';
@@ -20,6 +21,7 @@ import '../build/css/background.css';
 import '../build/css/columns.css';
 
 import { PublicNavigation } from '@transferwise/public-navigation';
+import Alerts from './AlertsDocs';
 import Core from './CoreDocs';
 import ComponentList from './ComponentListDocs';
 import Badge from './BadgeDocs';
@@ -58,6 +60,7 @@ const Docs = () => (
         <p className="lead">CSS library</p>
       </header>
       <ComponentList />
+      <Alerts />
       <Core />
       <Badge />
       <Buttons />
