@@ -1,8 +1,10 @@
 import React, { StrictMode } from 'react';
 import './Docs.less';
+
 import Refractor from 'react-refractor';
 import javascript from 'refractor/lang/javascript';
 import './less/prism.css';
+
 import '@transferwise/public-navigation/dist/public-navigation.css';
 
 import '../build/css/alerts.css';

@@ -15,7 +15,19 @@
 .doc {
   h2,
   h3 {
-    margin-bottom: calc(var(--spacer) * 2);
+    margin-bottom: calc(var(--spacer) * 4);
+  }
+
+  &-h1 {
+    margin: (@spacer * 6) 0;
+  }
+
+  &-h2 {
+    margin: (@spacer * 6) 0;
+  }
+
+  &-h3 {
+    margin: (@spacer * 4) 0;
   }
 
   .doc-list {
@@ -25,6 +37,10 @@
 
   .doc-item {
     padding: var(--spacer);
+    border: 1px dashed #829ca9;
+  }
+
+  .doc-box-dashed {
     border: 1px dashed #829ca9;
   }
 
@@ -82,5 +98,9 @@
     display: block;
     color: #2e4369;
     font-weight: 600;
+  }
+
+  .d-inline-block {
+      display: inline-block;
   }
 }
