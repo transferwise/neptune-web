@@ -1,1 +1,1 @@
-import "../src/less/carousel/Carousel.less";
+import '../src/less/carousel/Carousel.less';

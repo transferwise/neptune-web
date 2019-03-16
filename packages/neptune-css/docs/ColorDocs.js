@@ -175,6 +175,7 @@ const Color = () => (
     <h1 className="colored-dot">Color</h1>
     <h2>Color mapping</h2>
     <p>Gray and brand colors for use across the Design system.</p>
+    <div className="alert">All the custom-properties have their equivalent @variable of Less</div>
     <div className="d-flex justify-content-between">
       <div>
         <span className="doc-color" style={style.bgf2f5f7}>

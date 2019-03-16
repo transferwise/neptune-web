@@ -1,5 +1,8 @@
 import React, { StrictMode } from 'react';
 import './Docs.less';
+import Refractor from 'react-refractor';
+import javascript from 'refractor/lang/javascript';
+import './less/prism.css';
 import '@transferwise/public-navigation/dist/public-navigation.css';
 
 import '../build/css/alerts.css';
@@ -62,6 +65,9 @@ const Docs = () => (
       <header className="container--wide section">
         <h1 className="display-4 colored-dot">Thalassa</h1>
         <p className="lead">CSS library</p>
+        <Refractor
+          language="javascript"
+          value={`import "~thalassa/build/css/[component].css";`} />
       </header>
       <ComponentList />
       <Alerts />

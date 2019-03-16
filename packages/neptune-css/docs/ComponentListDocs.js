@@ -150,6 +150,16 @@ const ComponentList = () => (
           </li>
         </ul>
       </div>
+      <div>
+        <h3>All the library</h3>
+        <ul className="doc-list">
+          <li>
+            <a href="">Thalassa</a>
+            <small> 159 KB</small>
+            <span className="badge m-l-1">beta</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 );
