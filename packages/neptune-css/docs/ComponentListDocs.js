@@ -3,7 +3,7 @@ import React from 'react';
 const ComponentList = () => (
   <section className="container--wide">
     <h2>Individual CSS files</h2>
-    <div className="d-flex justify-content-between container--wide">
+    <div className="d-flex justify-content-between">
       <div>
         <h3>Foundations</h3>
         <ul className="doc-list">
@@ -101,8 +101,8 @@ const ComponentList = () => (
         </ul>
       </div>
     </div>
-    <h2>Grouped CSS packages</h2>
-    <div className="d-flex justify-content-between container--wide">
+    <h2 className="m-t-4">Grouped CSS packages</h2>
+    <div className="d-flex justify-content-between">
       <div>
         <h3>Core</h3>
         <ul className="doc-list">
