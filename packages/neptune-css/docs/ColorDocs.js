@@ -113,7 +113,7 @@ const style = {
   },
   bgFFDFDF: {
     background: '#FFDFDF',
-    color: '#B62A18',
+    color: '#4a5860',
   },
   bg1B7940: {
     background: '#1B7940',
@@ -129,7 +129,7 @@ const style = {
   },
   bgD6F5E2: {
     background: '#D6F5E2',
-    color: '#1B7940',
+    color: '#4a5860',
   },
   bg9E5F00: {
     background: '#9E5F00',
@@ -145,7 +145,7 @@ const style = {
   },
   bgFFF3DD: {
     background: '#FFF3DD',
-    color: '#9E5F00',
+    color: '#4a5860',
   },
   bgc0ae10: {
     background: '#c0ae10',
@@ -344,7 +344,7 @@ const Color = () => (
         --brand-green: #2ED06E
         </span>
         <span className="doc-color" style={style.bgD6F5E2}>
-        --brand-green: #D6F5E2
+        --brand-green-wash: #D6F5E2
         </span>
         <h3 className="m-t-2">Oranges</h3>
         <span className="doc-color" style={style.bg9E5F00}>
