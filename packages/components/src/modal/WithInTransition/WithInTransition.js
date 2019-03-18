@@ -6,6 +6,7 @@ const TRANSITION_DURATION_IN_MILLISECONDS = 150;
 
 const WithInTransition = ({ isIn, children }) => (
   <CSSTransition
+    appear
     in={isIn}
     classNames={{ enterDone: 'in' }}
     timeout={TRANSITION_DURATION_IN_MILLISECONDS}
