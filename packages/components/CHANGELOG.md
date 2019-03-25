@@ -1,3 +1,6 @@
+# v4.16.5
+## Fix tooltip to not block interactions when hidden
+
 # v4.16.4
 ## Added `appear` prop to modal's `WithInTransition`
 This allows the modal to animate in, when it's rendered conditionally in an `open` state
