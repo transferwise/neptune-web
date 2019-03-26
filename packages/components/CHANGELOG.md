@@ -1,3 +1,6 @@
+# v4.16.6
+## Add callback for processorIndicator status change
+
 # v4.16.5
 ## Fix tooltip to not block interactions when hidden
 
