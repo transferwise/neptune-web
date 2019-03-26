@@ -9,16 +9,24 @@ const ANIMATION_DURATION_IN_MS = 1500;
 
 class ProcessIndicator extends Component {
   static propTypes = {
-    status: Types.oneOf(processIndicatorStatuses).isRequired,
+    status: Types.oneOf(processIndicatorStatuses),
     size: Types.oneOf(processIndicatorSizes).isRequired,
+    onAnimationCompleted: Types.func,
+  };
+
+  static defaultProps = {
+    status: 'processing',
+    onAnimationCompleted: null,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      status: 'processing',
+      status: props.status,
       size: 'sm',
     };
+    this.interval = null;
+    this.timeout = null;
   }
 
   /**
@@ -34,8 +42,12 @@ class ProcessIndicator extends Component {
       const statusFromProps = this.props.status;
       const sizeFromProps = this.props.size;
 
-      if (statusFromState !== statusFromProps || sizeFromState !== sizeFromProps) {
-        this.setState({ status: statusFromProps, size: sizeFromProps });
+      if (statusFromState !== statusFromProps) {
+        this.setState({ status: statusFromProps }, this.runCallBack(statusFromProps));
+      }
+
+      if (sizeFromState !== sizeFromProps) {
+        this.setState({ size: sizeFromProps });
       }
     }, ANIMATION_DURATION_IN_MS);
   }
@@ -54,7 +66,17 @@ class ProcessIndicator extends Component {
   // Clear interval before destroying component
   componentWillUnmount() {
     clearInterval(this.interval);
+    clearTimeout(this.timeout);
   }
+
+  runCallBack = statusFromProps => {
+    const { onAnimationCompleted } = this.props;
+    if (onAnimationCompleted) {
+      this.timeouts = setTimeout(() => {
+        onAnimationCompleted(statusFromProps);
+      }, ANIMATION_DURATION_IN_MS);
+    }
+  };
 
   render() {
     const { size, status } = this.state;

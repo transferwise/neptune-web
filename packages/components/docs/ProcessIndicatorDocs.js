@@ -26,7 +26,12 @@ export default class ProcessIndicatorDocs extends PureComponent {
               </p>
             </div>
             <div className="col-md-6">
-              <ProcessIndicator status={status} size={size} />
+              <ProcessIndicator
+                status={status}
+                size={size}
+                // eslint-disable-next-line
+                onAnimationCompleted={processStatus => console.log(processStatus)}
+              />
             </div>
           </div>
           <div className="row">
@@ -35,6 +40,7 @@ export default class ProcessIndicatorDocs extends PureComponent {
                 {`<ProcessIndicator
   status={"${status}"}
   size={"${size}"}
+  onAnimationCompleted={"console.log()"}
 />`}
               </pre>
             </div>

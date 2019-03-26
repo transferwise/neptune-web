@@ -1,19 +1,21 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { processIndicatorStatuses } from './ProcessIndicator';
 
 import ProcessIndicator from './';
 
 describe('processIndicator', () => {
   let wrapper;
-  let props;
   const ANIMATION_DURATION = 1500;
+  const props = {
+    size: 'sm',
+    status: 'processing',
+    onAnimationCompleted: jest.fn(),
+  };
 
   beforeEach(() => {
     jest.useFakeTimers();
-    props = {
-      size: 'sm',
-      status: 'processing',
-    };
+
     wrapper = mount(<ProcessIndicator {...props} />);
   });
 
@@ -84,5 +86,16 @@ describe('processIndicator', () => {
     expect(wrapper.find('.process-success')).toHaveLength(0);
     expect(wrapper.find('.process-danger')).toHaveLength(0);
     expect(wrapper.find('.process-stopped')).toHaveLength(1);
+  });
+
+  it('calls onAnimationCompleted with Delay', () => {
+    expect(props.onAnimationCompleted).not.toHaveBeenCalled();
+    wrapper.setProps({ status: processIndicatorStatuses[1] });
+    expect(props.onAnimationCompleted).not.toHaveBeenCalled();
+    jest.runTimersToTime(ANIMATION_DURATION * 2);
+    expect(props.onAnimationCompleted).toHaveBeenCalledWith(processIndicatorStatuses[1]);
+    wrapper.setProps({ status: processIndicatorStatuses[2] });
+    jest.runTimersToTime(ANIMATION_DURATION * 2);
+    expect(props.onAnimationCompleted).toHaveBeenCalledWith(processIndicatorStatuses[2]);
   });
 });
