@@ -1,13 +1,13 @@
 {
-  "name": "tw-thalassa",
+  "name": "neptune-css",
   "version": "1.0.0",
-  "description": "CSS library",
+  "description": "TransferWise Design System CSS library",
   "license": "MIT",
-  "main": "./build/main.js",
+  "main": "./build/css/neptune-css",
   "repository": {
-    "fullname": "transferwise/thalassa",
+    "fullname": "transferwise/neptune-css",
     "type": "git",
-    "url": "git+https://github.com/transferwise/thalassa.git"
+    "url": "git+https://github.com/transferwise/neptune-css.git"
   },
   "dependencies": {
     "@babel/core": "^7.3.4",
@@ -22,6 +22,7 @@
     "browserslist": "^4.4.2",
     "chalk": "^2.4.2",
     "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
     "jquery": "^3.3.1",
     "less": "^3.9.0",

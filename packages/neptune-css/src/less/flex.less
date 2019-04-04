@@ -1,0 +1,25 @@
+// TODO: remove bootstrap dependencies
+
+// variables
+@import (reference) "~bootstrap/less/variables.less";
+
+// mixins
+@import (reference) "./mixins/_flex.less";
+
+.flex-properties(~'');
+
+@media (min-width: @screen-sm-min) {
+  .flex-properties(--sm);
+}
+
+@media (min-width: @screen-md-min) {
+  .flex-properties(--md);
+}
+
+@media (min-width: @screen-lg-min) {
+  .flex-properties(--lg);
+}
+
+@media (min-width: @screen-xl-min) {
+  .flex-properties(--xl);
+}

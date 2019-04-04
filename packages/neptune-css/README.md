@@ -1,9 +1,9 @@
-# Thalassa
+# Neptune CSS
 
 ## CSS library as part of the Neptune Design System
 (POC. WIP)
 
-[Demo](https://transferwise.github.io/thalassa/)
+[Demo](https://transferwise.github.io/neptune-css/)
 
 ## Run the project
 

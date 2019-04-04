@@ -1,0 +1,171 @@
+// TODO: remove bootstrap dependencies
+
+// variables
+@import (reference) "~bootstrap/less/variables.less";
+
+// mixins
+@import (reference) "~bootstrap/less/mixins/nav-vertical-align.less";
+@import (reference) "~bootstrap/less/mixins/nav-divider.less";
+@import (reference) "~bootstrap/less/mixins/vendor-prefixes.less";
+@import (reference) "~bootstrap/less/mixins/arrows.less";
+@import (reference) "~bootstrap/less/mixins/border-radius.less";
+@import (reference) "~bootstrap/less/mixins/clearfix.less";
+@import (reference) "~bootstrap/less/mixins/reset-filter.less";
+@import (reference) "~bootstrap/less/mixins/grid.less";
+
+@import "~bootstrap/less/dropdowns.less";
+@import "~bootstrap/less/glyphicons.less";
+@import "~bootstrap/less/logos.less";
+@import "~bootstrap/less/navbar.less";
+
+// Extracted form 'forms.less'
+
+.form-inline {
+
+  // Kick in the inline
+  @media (min-width: @screen-sm-min) {
+    // Inline-block all the things for "inline"
+    .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    // In navbar-form, allow folks to *not* use `.form-group`
+    .form-control {
+      display: inline-block;
+      width: auto; // Prevent labels from stacking above inputs in `.form-group`
+      vertical-align: middle;
+    }
+
+    // Make static controls behave like regular ones
+    .form-control-static {
+      display: inline-block;
+    }
+
+    .input-group {
+      display: inline-table;
+      vertical-align: middle;
+
+      .input-group-addon,
+      .input-group-btn,
+      .form-control {
+        width: auto;
+      }
+    }
+
+    // Input groups need that 100% width though
+    .input-group > .form-control {
+      width: 100%;
+    }
+
+    .control-label {
+      margin-bottom: 0;
+      vertical-align: calc(-2px);
+    }
+
+    // Remove default margin on radios/checkboxes that were used for stacking, and
+    // then undo the floating of radios and checkboxes to match.
+    .radio,
+    .checkbox {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      vertical-align: middle;
+
+      label {
+        padding-left: 0;
+      }
+    }
+
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"] {
+      position: relative;
+      margin-left: 0;
+    }
+
+    // Re-override the feedback icon.
+    .has-feedback .form-control-feedback {
+      top: 0;
+    }
+  }
+}
+
+// Extracted form 'tranferwise.less'
+.nav,
+.navbar,
+.pager,
+.dropdown-menu {
+  a {
+    text-decoration: none;
+  }
+}
+
+// Extracted from `grid.less`
+.container {
+  .container-fixed();
+
+  padding-right: @spacing-1-mobile;
+  padding-left: @spacing-1-mobile;
+
+  @media (min-width: @screen-sm-min) {
+    padding-right: @spacing-1-tablet;
+    padding-left: @spacing-1-tablet;
+  }
+
+  @media (min-width: @screen-lg-min) {
+    padding-right: @spacing-1-desktop;
+    padding-left: @spacing-1-desktop;
+  }
+
+  @media (min-width: @screen-xl-min) {
+    max-width: @container-xl;
+  }
+
+  .clearfix ();
+}
+
+//Extracted from `utilities.less`
+.pull-right,
+.pull-xs-right {
+  float: right !important;
+}
+
+.pull-left,
+.pull-xs-left {
+  float: left !important;
+}
+
+// Extracted from `navs.less`
+
+.nav {
+  margin-bottom: 0;
+  padding-left: 0; // Override default ul/ol
+  list-style: none;
+  &:extend(.clearfix all);
+
+  > li {
+    position: relative;
+    display: block;
+
+    > a {
+      position: relative;
+      display: block;
+      outline-offset: -1px;
+      padding: @nav-link-padding;
+      font-weight: @font-weight-normal;
+      font-size: @font-size-base;
+      color: @nav-link-color;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        color: @nav-link-hover-color;
+      }
+
+      &:active {
+        color: @nav-link-active-color;
+      }
+    }
+  }
+}

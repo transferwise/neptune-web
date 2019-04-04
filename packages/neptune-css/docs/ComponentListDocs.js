@@ -45,7 +45,6 @@ const ComponentList = () => (
             <a href="#circles">Circles</a>
             <small> 4 KB</small>
           </li>
-
           <li>
             <a href="#carousel">Carousel</a>
             <small> 6 KB</small>
@@ -99,7 +98,7 @@ const ComponentList = () => (
           </li>
           <li>
             <a href="#background">Background</a>
-            <small> 1 KB</small>
+            <small> 4 KB</small>
             <span className="badge m-l-1">beta</span>
           </li>
         </ul>
@@ -129,17 +128,14 @@ const ComponentList = () => (
         <h3>Forms</h3>
         <ul className="doc-list">
           <li>
-            <a href="#forms">Forms</a>
             <ul className="doc-list">
               <li>
                 <a href="#forms">Forms</a>
                 <small> 28 KB</small>
               </li>
               <li>
-                <li>
-                  <a href="#buttons">Buttons</a>
-                  <small> 30 KB</small>
-                </li>
+                <a href="#buttons">Buttons</a>
+                <small> 30 KB</small>
               </li>
             </ul>
           </li>
@@ -158,7 +154,7 @@ const ComponentList = () => (
         <h3>All the library</h3>
         <ul className="doc-list">
           <li>
-            <a href="">Thalassa</a>
+            <a href="">Neptune CSS</a>
             <small> 159 KB</small>
             <span className="badge m-l-1">beta</span>
           </li>

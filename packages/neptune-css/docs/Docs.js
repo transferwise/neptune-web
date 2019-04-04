@@ -7,26 +7,7 @@ import './less/prism.css';
 
 import '@transferwise/public-navigation/dist/public-navigation.css';
 
-import '../build/css/alerts.css';
-import '../build/css/badge.css';
-import '../build/css/breadcrumbs.css';
-import '../build/css/buttons.css';
-import '../build/css/carousel.css';
-import '../build/css/circles.css';
-import '../build/css/circle-backgrounds.css';
-import '../build/css/var-color.css';
-import '../build/css/core.css';
-import '../build/css/flex.css';
-import '../build/css/grid.css';
-import '../build/css/footer.css';
-import '../build/css/media.css';
-import '../build/css/skew.css';
-import '../build/css/spacing.css';
-import '../build/css/table.css';
-import '../build/css/container.css';
-import '../build/css/header.css';
-import '../build/css/background.css';
-import '../build/css/columns.css';
+import '../bundles/neptune';
 
 import { PublicNavigation } from '@transferwise/public-navigation';
 import Alerts from './AlertsDocs';
@@ -67,11 +48,11 @@ const Docs = () => (
         </svg>
       </a>
       <header className="container--wide section">
-        <h1 className="display-4 colored-dot">Thalassa</h1>
+        <h1 className="display-4 colored-dot">Neptune CSS</h1>
         <p className="lead">CSS library</p>
         <Refractor
           language="javascript"
-          value={`import "~thalassa/build/css/[component].css";`} />
+          value={`import "~neptune-css/build/css/[component].css";`} />
       </header>
       <ComponentList />
       <Color />

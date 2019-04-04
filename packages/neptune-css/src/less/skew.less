@@ -1,0 +1,64 @@
+// TODO: remove bootstrap dependencies
+
+// variables
+@import (reference) "~bootstrap/less/variables.less";
+
+:root {
+  --skew-top: 4vw;
+  --skew--bottom-mobile: 96%;
+  --skew--bottom-desktop: 90%;
+}
+
+.skew {
+  clip-path: polygon(0 0, 100% var(--skew-top), 100% 100%, 0% var(--skew--bottom-mobile));
+
+  @media all and (min-width: @screen-md) {
+    clip-path: polygon(0 0, 100% var(--skew-top), 100% 100%, 0% var(--skew--bottom-desktop));
+  }
+}
+
+.skew--negative {
+  clip-path: polygon(0 var(--skew-top), 100% 0, 100% var(--skew--bottom-mobile), 0% 100%);
+
+  @media all and (min-width: @screen-md) {
+    clip-path: polygon(0 var(--skew-top), 100% 0, 100% var(--skew--bottom-desktop), 0% 100%);
+  }
+}
+
+.skew--top {
+  clip-path: polygon(0 0%, 0% 100%, 100% 100%, 100% var(--skew-top));
+
+  @media all and (min-width: @screen-md) {
+    clip-path: polygon(0 0%, 0% 100%, 100% 100%, 100% var(--skew-top));
+  }
+}
+
+.skew--top-negative {
+  clip-path: polygon(0 var(--skew-top), 100% 0, 100% 100%, 0% 100%);
+
+  @media all and (min-width: @screen-md) {
+    clip-path: polygon(0 var(--skew-top), 100% 0, 100% 100%, 0% 100%);
+  }
+}
+
+.skew--bottom {
+  clip-path: polygon(0 0%, 100% 0, 100% 100%, 0% var(--skew--bottom-mobile));
+
+  @media all and (min-width: @screen-md) {
+    clip-path: polygon(0 0%, 100% 0, 100% 100%, 0% var(--skew--bottom-desktop));
+  }
+}
+
+.skew--bottom-negative {
+  clip-path: polygon(0 0%, 100% 0, 100% var(--skew--bottom-mobile), 0% 100%);
+
+  @media all and (min-width: @screen-md) {
+    clip-path: polygon(0 0%, 100% 0, 100% var(--skew--bottom-desktop), 0% 100%);
+  }
+}
+
+.skew--none\@md {
+  @media all and (min-width: @screen-md) {
+    clip-path: polygon(0 0%, 100% 0, 100% 100%, 0% 100%);
+  }
+}

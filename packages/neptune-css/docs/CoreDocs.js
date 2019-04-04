@@ -8,7 +8,7 @@ const Core = () => (
     </h1>
     <ul>
       <li>Normalize</li>
-      <li>scaffolding</li>
+      <li>Scaffolding</li>
       <li>
         Type
         <ul>

@@ -55,8 +55,8 @@ module.exports = function(mode, entries) {
               loader: "file-loader",
               options: {
                 name: "[name].[ext]",
-                outputPath: "img/",
-                publicPath: "../img/"
+                outputPath: "img/background/",
+                publicPath: "../img/background/"
               }
             }
           ]

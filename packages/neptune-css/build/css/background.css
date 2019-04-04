@@ -1,1 +1,1 @@
-.bg--light{background:#f2f5f7 url(../img/bg-light.svg) 0 0 no-repeat;background-attachment:fixed;background-size:cover}@media (min-width:768px){.bg--light{background-size:100%}}
+.bg{background-position:0 0;background-repeat:no-repeat;background-attachment:fixed;background-size:cover}@media (min-width:768px){.bg{background-size:100%}}.bg--light{background-color:var(--gray-base);background-image:url(../img/background/bg-light.svg)}.bg--dark{background-color:var(--brand-primary);background-image:url(../img/background/bg-dark.svg)}

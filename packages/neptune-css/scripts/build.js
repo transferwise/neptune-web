@@ -35,7 +35,7 @@ const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 
 Promise.resolve()
   .then(() => {
-    return getBundleEntries(paths.bundleStyles);
+    return getBundleEntries(paths.appBundles);
   })
   .then(entries => {
     fs.emptyDirSync(paths.appBuild);

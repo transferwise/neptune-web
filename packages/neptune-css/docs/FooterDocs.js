@@ -18,7 +18,7 @@ const FooterDoc = () => (
     <div className="section">
       <h2 className="container--wide">Footer inverse</h2>
     </div>
-    <Footer inverse="true" id="footer-inverse" />
+    <Footer inverse={true} id="footer-inverse" />
   </section>
 );
 

@@ -1,5 +1,5 @@
 defaults: &defaults
-  working_directory: ~/thalassa
+  working_directory: ~/neptune-css
   docker:
     - image: circleci/node:latest
 version: 2
@@ -22,7 +22,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/thalassa
+          at: ~/neptune-css
       - run:
           name: Build docs
           command: npm run build-docs
@@ -38,7 +38,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/thalassa
+          at: ~/neptune-css
       - run:
           name: Build docs
           command: npm run build-docs

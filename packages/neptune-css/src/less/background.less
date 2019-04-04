@@ -1,0 +1,25 @@
+// TODO: remove bootstrap dependencies
+
+// variables
+@import (reference) "~bootstrap/less/variables.less";
+
+.bg {
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+  @media all and (min-width: @screen-md) {
+    background-size: 100%;
+  }
+}
+
+.bg--light {
+  background-color: var(--gray-base);
+  background-image: url(../img/bg-light.svg);
+}
+
+.bg--dark {
+  background-color: var(--brand-primary);
+  background-image: url(../img/bg-dark.svg);
+}
