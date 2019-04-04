@@ -21,6 +21,7 @@ import PhoneNumberInputDocs from './PhoneNumberInputDocs';
 import DateInputDocs from './DateInputDocs';
 import InstructionListDocs from './InstructionListDocs';
 import ProcessIndicatorDocs from './ProcessIndicatorDocs';
+import DefinitionListDocs from './DefinitionListDocs';
 
 const Docs = () => (
   <Fragment>
@@ -44,6 +45,7 @@ const Docs = () => (
     <DateInputDocs />
     <InstructionListDocs />
     <ProcessIndicatorDocs />
+    <DefinitionListDocs />
   </Fragment>
 );
 

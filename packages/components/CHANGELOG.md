@@ -1,3 +1,6 @@
+# v4.17.0
+## Add DefinitionList component
+
 # v4.16.6
 ## Add callback for processorIndicator status change
 
@@ -21,7 +24,7 @@ Added option to hide divider in modal, and use compact layout with reduced paddi
 Formatting money strings with an invalid locale doesnt crash anymore, so the check in the demo was removed.
 
 # v4.16.0
-## Add ProcessIndicator component 
+## Add ProcessIndicator component
 
 # v4.15.4
 ## Update readme with more instructions on how to contribute
@@ -40,7 +43,7 @@ Fix failing test and make code more clear
 ## Add InstructionList component
 
 # v4.14.1
-## Improve `MoneyInput` search 
+## Improve `MoneyInput` search
 Sort options labels to first
 
 # v4.14.0
@@ -54,7 +57,7 @@ Pass prop `dropdownUp` to `Select` to use it
 ## Improved regex for allowed chars for PhoneInput. And improved test coverage  
 
 # v4.12.0
-## Add Date Component 
+## Add Date Component
 
 # v4.11.0
 ## Add telephone input component
@@ -91,11 +94,11 @@ onClose no longer a required prop for FlowNavigation
 ![image](https://user-images.githubusercontent.com/5443561/47721187-78aa1000-dc47-11e8-9155-8cb9b5feead0.png)
 
 # v4.6.0
-## Close button for FlowNavigation is now hidden if onClose is undefined 
+## Close button for FlowNavigation is now hidden if onClose is undefined
 The FlowNavigation component no longer renders the close button if the onClose prop is undefined.
 
 # v4.5.3
-## Class names can now be overridden consistently on Select component 
+## Class names can now be overridden consistently on Select component
 Custom classNames supplied as a prop to the Select component are now applied consistently across the entire component.
 
 # v4.5.2

@@ -25,6 +25,8 @@ describe('Server side rendering', () => {
     currency: 'XYZ',
     amount: 0,
     options: [],
+    model: {},
+    fields: {},
     media: <h1>Hello</h1>,
     onClick: jest.fn(),
     onChange: jest.fn(),
