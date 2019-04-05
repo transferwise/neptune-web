@@ -1,5 +1,3 @@
-/* eslint-disable no-plusplus */
-
 const formatUsingPattern = (value = '', pattern) => {
   if (typeof pattern !== 'string') {
     return value;
@@ -19,12 +17,12 @@ const formatUsingPattern = (value = '', pattern) => {
   while (charactersToAllocate) {
     if (positionIsSeparator(newPattern, position)) {
       newValue += newPattern[position];
-      separators++;
+      separators += 1;
     } else {
       newValue += value[position - separators];
-      charactersToAllocate--;
+      charactersToAllocate -= 1;
     }
-    position++;
+    position += 1;
   }
 
   const separatorsAfterCursor = countSeparatorsAfterCursor(newPattern, position);
@@ -37,7 +35,7 @@ const formatUsingPattern = (value = '', pattern) => {
 const countSeparatorsAfterCursor = (newPattern, position) => {
   let separators = 0;
   while (positionIsSeparator(newPattern, position + separators)) {
-    separators++;
+    separators += 1;
   }
   return separators;
 };
