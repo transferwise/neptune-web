@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "4.17.0",
+  "version": "4.18.0",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -58,6 +58,7 @@
     "husky": "^0.14.3",
     "jest": "21.2.1",
     "jest-cli": "^21.2.1",
+    "jest-fetch-mock": "^2.1.1",
     "json-loader": "0.5.4",
     "less": "2.7.2",
     "less-loader": "2.2.3",

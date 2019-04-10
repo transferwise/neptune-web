@@ -22,6 +22,7 @@ import DateInputDocs from './DateInputDocs';
 import InstructionListDocs from './InstructionListDocs';
 import ProcessIndicatorDocs from './ProcessIndicatorDocs';
 import DefinitionListDocs from './DefinitionListDocs';
+import UploadDocs from './UploadDocs';
 
 const Docs = () => (
   <Fragment>
@@ -46,6 +47,7 @@ const Docs = () => (
     <InstructionListDocs />
     <ProcessIndicatorDocs />
     <DefinitionListDocs />
+    <UploadDocs />
   </Fragment>
 );
 

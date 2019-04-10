@@ -17,4 +17,5 @@ export { default as PhoneNumberInput } from './phoneNumberInput';
 export { default as DateInput } from './dateInput';
 export { default as InstructionsList } from './instructionsList';
 export { default as ProcessIndicator } from './processIndicator';
+export { default as Upload } from './upload';
 export { default as DefinitionList } from './definitionList';

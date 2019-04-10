@@ -1,0 +1,1 @@
+export { isSizeValid } from './isSizeValid';

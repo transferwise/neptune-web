@@ -1,3 +1,6 @@
+# v4.18.0
+## Add Upload component
+
 # v4.17.0
 ## Add DefinitionList component
 
