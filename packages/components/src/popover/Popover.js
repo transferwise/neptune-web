@@ -28,11 +28,7 @@ export default class Popover extends Component {
   };
 
   componentWillUnmount() {
-    document.removeEventListener(
-      isIosDevice() ? 'touchstart' : 'click',
-      this.closePopoverOnOutsideClick,
-      true,
-    );
+    document.removeEventListener(getEventType(), this.closePopoverOnOutsideClick, true);
   }
 
   closePopoverOnOutsideClick = event => {
@@ -51,20 +47,12 @@ export default class Popover extends Component {
 
   open = () => {
     this.setState({ isOpen: true });
-    document.addEventListener(
-      isIosDevice() ? 'touchstart' : 'click',
-      this.closePopoverOnOutsideClick,
-      true,
-    );
+    document.addEventListener(getEventType(), this.closePopoverOnOutsideClick, true);
   };
 
   close = () => {
     this.setState({ isOpen: false });
-    document.removeEventListener(
-      isIosDevice() ? 'touchstart' : 'click',
-      this.closePopoverOnOutsideClick,
-      true,
-    );
+    document.removeEventListener(getEventType(), this.closePopoverOnOutsideClick, true);
   };
 
   createTrigger = () => {
@@ -106,4 +94,8 @@ export default class Popover extends Component {
       </Fragment>
     );
   }
+}
+
+function getEventType() {
+  return isIosDevice() ? 'touchstart' : 'click';
 }

@@ -196,21 +196,13 @@ export default class Select extends Component {
         this.searchBox.focus();
       }
     });
-    document.addEventListener(
-      isIosDevice() ? 'touchstart' : 'click',
-      this.handleDocumentClick,
-      false,
-    );
+    document.addEventListener(getEventType(), this.handleDocumentClick, false);
   }
 
   close() {
     this.searchBox = null;
     this.setState({ open: false, keyboardFocusedOptionIndex: null });
-    document.removeEventListener(
-      isIosDevice() ? 'touchstart' : 'click',
-      this.handleDocumentClick,
-      false,
-    );
+    document.removeEventListener(getEventType(), this.handleDocumentClick, false);
   }
 
   handleButtonClick = () => {
@@ -413,4 +405,8 @@ export default class Select extends Component {
       </div>
     );
   }
+}
+
+function getEventType() {
+  return isIosDevice() ? 'touchstart' : 'click';
 }
