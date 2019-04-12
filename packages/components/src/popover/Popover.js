@@ -6,6 +6,7 @@ import Placement, { PlacementValues } from './Placement';
 import { getPlacement, getPopoverPosition } from './positioning';
 import { wrapInDOMElementIfNecessary } from './DOMWrapping';
 import KeyCodes from '../common/keyCodes';
+import isIosDevice from '../common/deviceDetection';
 
 export default class Popover extends Component {
   static Placement = Placement;
@@ -27,7 +28,11 @@ export default class Popover extends Component {
   };
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.closePopoverOnOutsideClick, true);
+    document.removeEventListener(
+      isIosDevice() ? 'touchstart' : 'click',
+      this.closePopoverOnOutsideClick,
+      true,
+    );
   }
 
   closePopoverOnOutsideClick = event => {
@@ -46,12 +51,20 @@ export default class Popover extends Component {
 
   open = () => {
     this.setState({ isOpen: true });
-    document.addEventListener('click', this.closePopoverOnOutsideClick, true);
+    document.addEventListener(
+      isIosDevice() ? 'touchstart' : 'click',
+      this.closePopoverOnOutsideClick,
+      true,
+    );
   };
 
   close = () => {
     this.setState({ isOpen: false });
-    document.removeEventListener('click', this.closePopoverOnOutsideClick, true);
+    document.removeEventListener(
+      isIosDevice() ? 'touchstart' : 'click',
+      this.closePopoverOnOutsideClick,
+      true,
+    );
   };
 
   createTrigger = () => {

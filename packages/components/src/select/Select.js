@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import Option from './option';
 import KeyCodes from '../common/keyCodes';
+import isIosDevice from '../common/deviceDetection';
 
 import './Select.less';
 
@@ -195,13 +196,21 @@ export default class Select extends Component {
         this.searchBox.focus();
       }
     });
-    document.addEventListener('click', this.handleDocumentClick, false);
+    document.addEventListener(
+      isIosDevice() ? 'touchstart' : 'click',
+      this.handleDocumentClick,
+      false,
+    );
   }
 
   close() {
     this.searchBox = null;
     this.setState({ open: false, keyboardFocusedOptionIndex: null });
-    document.removeEventListener('click', this.handleDocumentClick, false);
+    document.removeEventListener(
+      isIosDevice() ? 'touchstart' : 'click',
+      this.handleDocumentClick,
+      false,
+    );
   }
 
   handleButtonClick = () => {

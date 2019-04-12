@@ -1,3 +1,8 @@
+# v4.18.1
+## Use `touchstart` on ios devices for `Popover` and `Select`
+
+Ios devices don't recognize `click` event on `document` so we have to use `touchstart`
+
 # v4.18.0
 ## Add Upload component
 
