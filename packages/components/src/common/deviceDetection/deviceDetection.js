@@ -3,5 +3,5 @@ export function isIosDevice() {
   const matchString = sampleTouchDevices.map(device => `(${device})`).join('|');
   const regex = new RegExp(matchString, 'ig');
 
-  return navigator && !!navigator.userAgent.match(regex);
+  return typeof navigator !== 'undefined' && !!navigator.userAgent.match(regex);
 }
