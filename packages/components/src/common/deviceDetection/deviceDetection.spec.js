@@ -1,4 +1,4 @@
-import isIosDevice from './deviceDetection';
+import { isIosDevice } from './deviceDetection';
 
 describe('Device detection', () => {
   function fakeUserAgent(userAgent) {

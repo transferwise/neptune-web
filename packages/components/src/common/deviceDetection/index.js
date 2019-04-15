@@ -1,3 +1,1 @@
-import isIosDevice from './deviceDetection';
-
-export default isIosDevice;
+export { isIosDevice } from './deviceDetection';

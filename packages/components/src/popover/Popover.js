@@ -6,7 +6,7 @@ import Placement, { PlacementValues } from './Placement';
 import { getPlacement, getPopoverPosition } from './positioning';
 import { wrapInDOMElementIfNecessary } from './DOMWrapping';
 import KeyCodes from '../common/keyCodes';
-import isIosDevice from '../common/deviceDetection';
+import { isIosDevice } from '../common/deviceDetection';
 
 export default class Popover extends Component {
   static Placement = Placement;

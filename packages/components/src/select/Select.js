@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import Option from './option';
 import KeyCodes from '../common/keyCodes';
-import isIosDevice from '../common/deviceDetection';
+import { isIosDevice } from '../common/deviceDetection';
 
 import './Select.less';
 
