@@ -3,7 +3,7 @@ import React from 'react';
 const Container = () => (
   <section id="container" className="section">
     <div className="container--wide">
-      <h1 className="colored-dot">
+      <h1 className="colored-dot doc-section__title">
             Container
       </h1>
       <span className="badge badge-success">beta</span>

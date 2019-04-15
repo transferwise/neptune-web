@@ -172,8 +172,8 @@ const style = {
 
 const Color = () => (
   <section id="color" className="container--wide section">
-    <h1 className="colored-dot">Color</h1>
-    <h2>Color mapping</h2>
+    <h1 className="colored-dot doc-section__title">Color</h1>
+    <h2 className="doc-section__subtitle">Color mapping</h2>
     <p>Gray and brand colors for use across the Design system.</p>
     <div className="alert">All the custom-properties have their equivalent @variable of Less</div>
     <div className="d-flex justify-content-between">
@@ -230,7 +230,7 @@ const Color = () => (
       </div>
     </div>
 
-    <h2 className="m-t-4">Color tokens</h2>
+    <h2 className="doc-section__subtitle m-t-4">Color tokens</h2>
     <div className="d-flex justify-content-between">
       <div>
         <h3>Blues</h3>

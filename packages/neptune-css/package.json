@@ -16,7 +16,7 @@
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.3.4",
-    "@transferwise/public-navigation": "^2.9.0",
+    "@transferwise/public-navigation": "^3.1.2",
     "babel-loader": "^8.0.5",
     "bootstrap": "transferwise/bootstrap#v5.18.13",
     "browserslist": "^4.4.2",

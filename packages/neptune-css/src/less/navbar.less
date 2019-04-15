@@ -11,8 +11,11 @@
 @import (reference) "~bootstrap/less/mixins/border-radius.less";
 @import (reference) "~bootstrap/less/mixins/clearfix.less";
 @import (reference) "~bootstrap/less/mixins/reset-filter.less";
+@import (reference) "~bootstrap/less/mixins/center-block.less";
+@import (reference) "~bootstrap/less/mixins/hide-text.less";
 @import (reference) "~bootstrap/less/mixins/grid.less";
 
+@import "~bootstrap/less/utilities.less";
 @import "~bootstrap/less/dropdowns.less";
 @import "~bootstrap/less/glyphicons.less";
 @import "~bootstrap/less/logos.less";
@@ -123,17 +126,6 @@
   }
 
   .clearfix ();
-}
-
-//Extracted from `utilities.less`
-.pull-right,
-.pull-xs-right {
-  float: right !important;
-}
-
-.pull-left,
-.pull-xs-left {
-  float: left !important;
 }
 
 // Extracted from `navs.less`

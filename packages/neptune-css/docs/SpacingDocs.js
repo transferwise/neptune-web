@@ -7,7 +7,7 @@ import './less/prism.css';
 
 const Spacing = () => (
   <section id="spacing" className="container--wide">
-    <h1 className="colored-dot doc-h1">
+    <h1 className="colored-dot  doc-section__title doc-h1">
       Spacing
     </h1>
     <p>Several utility classes are available for spacing. </p>
@@ -169,7 +169,7 @@ to
       </li>
     </ul>
 
-    <h2 className="doc-h2">Global clases</h2>
+    <h2 className="doc-h2 doc-section__subtitle">Global clases</h2>
     <div className="d-flex flex-wrap justify-content-between">
       <div className="m-r-1 m-b-2">
         <span className="bg-default doc-box-dashed d-inline-block">
@@ -212,7 +212,7 @@ to
          `}
     />
 
-    <h2 className="doc-h2"> Vertical clases </h2>
+    <h2 className="doc-h2 doc-section__subtitle"> Vertical clases </h2>
     <h3 className="doc-h3">Top</h3>
     <div className="d-flex flex-wrap justify-content-between">
       <div className="m-r-1 m-b-2">
@@ -393,7 +393,7 @@ to
        `}
     />
 
-    <h2 className="doc-h2">Horizontal clases</h2>
+    <h2 className="doc-h2 doc-section__subtitle">Horizontal clases</h2>
     <h3 className="doc-h3">Left</h3>
 
     <div className="d-flex flex-wrap justify-content-between">
@@ -527,7 +527,7 @@ to
     />
 
 
-    <h2 className="doc-h2">Responsive sections</h2>
+    <h2 className="doc-h2 doc-section__subtitle">Responsive sections</h2>
     <p>
             These are the sizes of larger, responsive spacing used for
             separating sections of a page:

@@ -7,14 +7,14 @@ import './less/prism.css';
 
 const Alerts = () => (
   <section id="alerts" className="container--wide section">
-    <h1 className="colored-dot">Alerts</h1>
+    <h1 className="colored-dot doc-section__title">Alerts</h1>
 
     <p className="lead">
 Provide contextual feedback messages for typical user
       actions with the handful of available and flexible alert messages.
     </p>
 
-    <h2 id="alerts-examples">
+    <h2 className="doc-section__subtitle">
 Examples
     </h2>
     <p>
@@ -64,7 +64,7 @@ Change a few things up and try submitting again.
         <div class="alert alert-danger" role="alert">...</div>
        `}
     />
-    <h2 id="alerts-dismissible">
+    <h2 className="doc-section__subtitle">
 Dismissible alerts
     </h2>
     <p>
@@ -111,7 +111,7 @@ data attribute.
       </p>
     </div>
 
-    <h2>
+    <h2 className="doc-section__subtitle">
 Connecting alerts
     </h2>
     <p>
@@ -145,7 +145,7 @@ Better check yourself, you are not looking too good.
         <div class="alert alert-warning arrow arrow-bottom arrow-center" role="alert">...</div>
        `}
     />
-    <h2 id="alerts-links">
+    <h2 className="doc-section__subtitle">
 Links in alerts
     </h2>
     <p>

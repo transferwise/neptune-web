@@ -2,7 +2,7 @@ import React from 'react';
 
 const Buttons = () => (
   <section id="buttons" className="container--wide section">
-    <h1 className="colored-dot">
+    <h1 className="colored-dot doc-section__title">
       Buttons
     </h1>
     <p>30 KB</p>

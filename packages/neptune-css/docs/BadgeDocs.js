@@ -1,13 +1,11 @@
 import React from 'react';
 
 import Refractor from 'react-refractor';
-import markup from 'refractor/lang/markup';
-import javascript from 'refractor/lang/javascript';
 import './less/prism.css';
 
 const Badge = () => (
   <section id="badge" className="container--wide section">
-    <h1 className="colored-dot">Badge</h1>
+    <h1 className="colored-dot doc-section__title">Badge</h1>
     <p className="lead">703 bytes</p>
     <p className="lead">
       Easily highlight new or unread items by adding a
@@ -27,7 +25,7 @@ const Badge = () => (
       />
     </div>
 
-    <h2 id="color">Color</h2>
+    <h2 className="doc-section__subtitle" id="color">Color</h2>
     <p>
       Use
       <code>.badge-success</code>

@@ -3,7 +3,7 @@ import React from 'react';
 const Skew = () => (
   <section className="section" id="skew">
     <div className="container--wide">
-      <h1 className="colored-dot">
+      <h1 className="colored-dot doc-section__title">
           Skew system
       </h1>
       <span className="badge badge-success">new</span>

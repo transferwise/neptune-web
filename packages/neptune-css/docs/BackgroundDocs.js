@@ -3,7 +3,7 @@ import React from 'react';
 const Background = () => (
   <section id="background" className="section">
     <div className="container--wide">
-      <h1 className="colored-dot">
+      <h1 className="colored-dot doc-section__title">
           Background
       </h1>
       <span className="badge badge-success">beta</span>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Grid = () => (
   <section id="grid" className="container--wide">
-    <h1 className="colored-dot">
+    <h1 className="colored-dot doc-section__title">
           Grid layout system
     </h1>
     <span className="badge badge-success">beta</span>

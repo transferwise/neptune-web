@@ -2,7 +2,7 @@ import React from 'react';
 
 const Flex = () => (
   <section id="flex" className="container--wide section">
-    <h1 className="colored-dot">
+    <h1 className="colored-dot doc-section__title">
           Flexbox system
     </h1>
     <span className="badge badge-success">beta</span>

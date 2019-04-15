@@ -9,7 +9,7 @@ import './less/prism.css';
 const Carousel = () => (
   <section id="carousel" className="section">
     <div className="container--wide">
-      <h1 className="colored-dot">
+      <h1 className="colored-dot doc-section__title">
       Carousel
       </h1>
       <p>
@@ -165,9 +165,8 @@ element within any
       </div>
       `}
       />
-      <h2 id="carousel-usage" className="page-subheader">
+    <h2 className="doc-section__subtitle" id="carousel-usage">
 Usage
-        <a className="anchorjs-link" href="#carousel-usage"><span className="anchorjs-icon" /></a>
       </h2>
       <h3 id="multiple-carousels">
 Multiple carousels
@@ -223,7 +222,7 @@ Via JavaScript
         value={`
            $('.carousel').carousel() `}
       />
-      <h3 className="page-subheader" id="carousel-options">
+      <h3 id="carousel-options">
 Options
         <a className="anchorjs-link" href="#carousel-options"><span className="anchorjs-icon" /></a>
       </h3>
@@ -272,7 +271,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
           </tbody>
         </table>
       </div>
-      <h3 className="page-subheader" id="carousel-methods">
+      <h3 id="carousel-methods">
 Methods
         <a className="anchorjs-link" href="#carousel-methods"><span className="anchorjs-icon" /></a>
       </h3>
@@ -319,7 +318,7 @@ and starts cycling through items.
       </h4>
       <p>Cycles to the next item.</p>
 
-      <h3 className="page-subheader" id="carousel-events">
+      <h3 id="carousel-events">
 Events
         <a className="anchorjs-link" href="#carousel-events"><span className="anchorjs-icon" /></a>
       </h3>
@@ -378,9 +377,8 @@ instance method is invoked.
 $('#myCarousel').on('slide.bs.carousel', function () { // do something… })
        `}
       />
-      <h2 className="page-subheader" id="carousel-styles">
+      <h2 className="doc-section__subtitle" id="carousel-styles">
 Styles
-        <a className="anchorjs-link" href="#carousel-styles"><span className="anchorjs-icon" /></a>
       </h2>
       <h4 id="angled-carousel">
 Angled Carousel

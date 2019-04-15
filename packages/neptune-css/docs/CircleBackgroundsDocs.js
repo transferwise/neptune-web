@@ -7,7 +7,7 @@ import './less/prism.css';
 
 const CircleBarckgrounds = () => (
   <section id="circle-backgrounds" className="container--wide section">
-    <h1 className="colored-dot doc-h1">
+    <h1 className="colored-dot doc-section__title doc-h1">
           Circle Backgrounds
     </h1>
     <p className="lead">Backgrounds are applied to box elements. This could be a grid column, a page width block, or something custom.</p>
@@ -17,7 +17,7 @@ The
       {' '}
 of the container. It is slightly larger than the container to make sure content has a background.
     </p>
-    <h2 className="doc-h2" id="circle-bg-default">
+    <h2 className="doc-h2 doc-section__subtitle" id="circle-bg-default">
 Defaults
     </h2>
     <p>
@@ -48,7 +48,7 @@ by the edge of the box.
          `}
       />
 
-    <h2 className="doc-h2" id="circle-bg-sizes">
+    <h2 className="doc-h2 doc-section__subtitle" id="circle-bg-sizes">
 Sizes
     </h2>
     <p>Size modifiers do not move the centre of the circle, they just alter the size.</p>
@@ -112,7 +112,7 @@ Sizes
          `}
       />
 
-    <h2 className="doc-h2" id="circle-bg-pos-c"> Positions (center) </h2>
+    <h2 className="doc-h2 doc-section__subtitle" id="circle-bg-pos-c"> Positions (center) </h2>
     <p>
 The centre of the circle is moved just outside the edge of the container box.
     </p>
@@ -171,7 +171,7 @@ The centre of the circle is moved just outside the edge of the container box.
          `}
       />
 
-    <h2 className="doc-h2" id="position-(center)-x/y-combinations">
+    <h2 className="doc-h2 doc-section__subtitle" id="position-(center)-x/y-combinations">
 Position (center) x/y combinations
     </h2>
       <div className="row">
@@ -224,7 +224,7 @@ Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipisicing 
          `}
       />
 
-    <h2 className="doc-h2" id="circle-bg-pos">
+    <h2 className="doc-h2 doc-section__subtitle" id="circle-bg-pos">
 Position (box edge)
     </h2>
     <p>
@@ -288,7 +288,7 @@ is moved just outside of the edge of the container box.
          `}
       />
 
-    <h2 className="doc-h2" id="position-(box-edge)-x/y-combinations">
+    <h2 className="doc-h2 doc-section__subtitle" id="position-(box-edge)-x/y-combinations">
 Position (box edge) x/y combinations
     </h2>
       <div className="row m-b-5">
@@ -337,7 +337,7 @@ Position (box edge) x/y combinations
          `}
       />
 
-    <h2 className="doc-h2" id="circle-bg-size-pos">
+    <h2 className="doc-h2 doc-section__subtitle" id="circle-bg-size-pos">
 Size and positions
     </h2>
     <p>We can use these together for different effects. </p>
@@ -421,7 +421,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos consequatur repel
 
 
     </div>
-    <h2 className="doc-h2" id="circle-bg-clip">
+    <h2 className="doc-h2 doc-section__subtitle" id="circle-bg-clip">
 Clipping boxes
     </h2>
     <p>Sometime we want to clip the circle, we should do this with a clipping box at a higher level.</p>
@@ -450,7 +450,7 @@ Clipping boxes
           </div>
          `}
       />
-    <h2 className="doc-h2" id="circle-bg-colour">
+    <h2 className="doc-h2 doc-section__subtitle" id="circle-bg-colour">
 Colours
     </h2>
     <p>We need several colour modifiers for our regular background colours:</p>

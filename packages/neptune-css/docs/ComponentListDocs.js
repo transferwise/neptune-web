@@ -2,7 +2,7 @@ import React from 'react';
 
 const ComponentList = () => (
   <section className="container--wide">
-    <h2>Individual CSS files</h2>
+    <h2 className="doc-section__title">Individual CSS files</h2>
     <div className="d-flex justify-content-between">
       <div>
         <h3>Foundations</h3>
@@ -50,6 +50,10 @@ const ComponentList = () => (
             <small> 6 KB</small>
           </li>
           <li>
+            <a href="#navbar">Navbar</a>
+            <small> 54 KB</small>
+          </li>
+          <li>
             <a href="#footer">Footer</a>
             <small> 1 KB</small>
           </li>
@@ -84,6 +88,10 @@ const ComponentList = () => (
         <h3>Utilities</h3>
         <ul className="doc-list">
           <li>
+            <a href="#utilities">Utilities</a>
+            <small> 1 KB</small>
+          </li>
+          <li>
             <a href="#spacing">Spacing</a>
             <small> 9 KB</small>
           </li>
@@ -104,7 +112,7 @@ const ComponentList = () => (
         </ul>
       </div>
     </div>
-    <h2 className="m-t-4">Grouped CSS packages</h2>
+    <h2 className="m-t-4 doc-section__title">Grouped CSS packages</h2>
     <div className="d-flex justify-content-between">
       <div>
         <h3>Core</h3>
@@ -142,12 +150,27 @@ const ComponentList = () => (
         </ul>
       </div>
       <div>
-        <h3>Header / navbar</h3>
+        <h3>Public navigation</h3>
         <ul className="doc-list">
           <li>
-            <a href="#navbar">Navbar</a>
+            <a href="#publicNavigation">Public Navigation</a>
             <small> 53 KB</small>
+            <ul>
+              <li>
+                <a href="#navbar">Navbar</a>
+                <small> 53 KB</small>
+              </li>
+              <li>
+                <a href="#publicNavigation">Public Navigation</a>
+                <small> 7 KB</small>
+              </li>
+              <li>
+                <a href="#utilities">Utilities</a>
+                <small> 1 KB</small>
+              </li>
+            </ul>
           </li>
+
         </ul>
       </div>
       <div>

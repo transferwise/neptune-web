@@ -2,14 +2,12 @@ import React, { StrictMode } from 'react';
 import './Docs.less';
 
 import Refractor from 'react-refractor';
-import javascript from 'refractor/lang/javascript';
 import './less/prism.css';
-
-import '@transferwise/public-navigation/dist/public-navigation.css';
 
 import '../bundles/neptune';
 
-import { PublicNavigation } from '@transferwise/public-navigation';
+import NavbarDoc from './NavbarDocs';
+import PublicNavigationDoc from './PublicNavigationDocs';
 import Alerts from './AlertsDocs';
 import Core from './CoreDocs';
 import ComponentList from './ComponentListDocs';
@@ -29,10 +27,10 @@ import Skew from './SkewDocs';
 import Flex from './FlexDocs';
 import Media from './MediaDocs';
 import Background from './BackgroundDocs';
+import Utilities from './UtilitiesDocs';
 
 import Table from './TableDocs';
 import Spacing from './SpacingDocs';
-import Header from './HeaderDocs';
 
 const Docs = () => (
   <StrictMode>
@@ -52,7 +50,8 @@ const Docs = () => (
         <p className="lead">CSS library</p>
         <Refractor
           language="javascript"
-          value={`import "~neptune-css/build/css/[component].css";`} />
+          value={`import "~neptune-css/build/css/[component].css";`}
+        />
       </header>
       <ComponentList />
       <Color />
@@ -74,7 +73,9 @@ const Docs = () => (
       <Grid />
       <Container />
       <Background />
-      <Header />
+      <Utilities />
+      <NavbarDoc />
+      <PublicNavigationDoc />
       <FooterDoc />
     </div>
   </StrictMode>

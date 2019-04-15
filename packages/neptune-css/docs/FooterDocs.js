@@ -4,7 +4,7 @@ import { Footer } from '@transferwise/public-navigation';
 const FooterDoc = () => (
   <section id="footer">
     <div className="container--wide section">
-      <h1 className="colored-dot">Footer</h1>
+      <h1 className="colored-dot doc-section__title">Footer</h1>
       <p>
       From &nbsp;
         <a href="https://github.com/transferwise/public-navigation">Public navigation components</a>
@@ -15,10 +15,10 @@ const FooterDoc = () => (
       </ul>
     </div>
     <Footer id="footer-default" />
-    <div className="section">
-      <h2 className="container--wide">Footer inverse</h2>
+    <div className="section container--wide">
+      <h2 className="doc-section__title">Footer inverse</h2>
     </div>
-    <Footer inverse={true} id="footer-inverse" />
+    <Footer inverse id="footer-inverse" />
   </section>
 );
 

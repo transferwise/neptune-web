@@ -3,7 +3,6 @@
 
 #root {
   position: relative;
-  overflow: hidden;
 }
 
 .navbar {
@@ -78,18 +77,26 @@
     }
   }
 
-  /* Try to use sticky */
   .doc-go-top {
-    position: fixed;
-    top: 40px;
+    position: sticky;
+    top: calc(var(--spacer) * 2);
     right: 40px;
+    float: right;
     border-radius: 500rem;
     padding: @spacer;
     width: 40px;
     height: 40px;
+    z-index: 2;
 
     &:hover {
       background: @brand-smoke-plus-20;
+    }
+    &::before {
+      position: absolute;
+      top: 40px;
+      right: -16px;
+      // content: "Go to top";
+      width: 100px;
     }
   }
 
@@ -100,11 +107,46 @@
     font-weight: 600;
   }
 
+  .doc-menu--sticky {
+    position: sticky;
+    top: calc(var(--spacer) * 2);
+    float: right;
+    border-radius: 500rem;
+    padding: @spacer;
+    width: 40px;
+    height: 40px;
+    margin-right: 80px;
+    z-index: 2;
+
+    &:hover {
+      background: @brand-smoke-plus-20;
+    }
+  }
+
+  .doc-section__title {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+    padding-top: calc(var(--spacer) * 2);
+  }
+
+  .doc-section__subtitle {
+    position: sticky;
+    top: 60px;
+    background: white;
+    z-index: 1;
+    padding: calc(var(--spacer) * 1) 0;
+  }
+
   .d-inline-block {
       display: inline-block;
   }
 
   .circle-bg-xl-margin-top {
     margin-top: 150%;
+  }
+  .doc-colums--4 {
+    column-count: 4;
   }
 }
