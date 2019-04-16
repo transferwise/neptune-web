@@ -40,8 +40,8 @@ module.exports = {
                 postcssPresetEnv({
                   stage: 3,
                   features: {
-                    "custom-media-queries": true
-                  }
+                    'custom-media-queries': true,
+                  },
                 })
               ]
             }

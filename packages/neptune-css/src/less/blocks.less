@@ -1,0 +1,45 @@
+// TODO: remove bootstrap dependencies
+
+// variables
+@import (reference) "~bootstrap/less/variables.less";
+
+.block {
+  display: block;
+  background: #fff;
+  box-shadow: 0 20px 66px 0 rgba(@brand-blue, .2);
+  padding: calc(var(--spacer) * 2);
+  border-radius: 3px;
+
+  @media (min-width: @screen-sm-min) {
+    padding: calc(var(--spacer) * 3);
+  }
+
+  @media (min-width: @screen-md-min) {
+    padding: calc(var(--spacer) * 4);
+  }
+
+  @media (min-width: @screen-lg-min) {
+    padding: calc(var(--spacer) * 6);
+  }
+}
+
+.block--withLink {
+  text-decoration: none;
+  transition: all .15s;
+
+  &:hover {
+    text-decoration: none;
+    box-shadow: 0 20px 66px 0 rgba(@brand-blue, .3);
+
+    .block-caretLink .glyphicon {
+      transform: translateX(2px);
+    }
+  }
+}
+
+.block-caretLink .glyphicon {
+  position: relative;
+  top: -1px;
+  font-size: 8px;
+  transition: all .15s;
+}

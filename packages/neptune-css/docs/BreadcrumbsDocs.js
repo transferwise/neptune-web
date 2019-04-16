@@ -6,8 +6,8 @@ import javascript from 'refractor/lang/javascript';
 import './less/prism.css';
 
 const Breadcrumbs = () => (
-  <section id="breadcrumbs" className="container--wide section">
-    <h1 className="colored-dot doc-section__title">Breadcrumbs</h1>
+  <section id="breadcrumbs" className="container container--wide section">
+    <h1 className="colored-dot doc-section__title">Breadcrumbs.</h1>
     <p className="lead">Indicate the current page's location within a navigational hierarchy.</p>
     <p>
 Separators are automatically added in CSS through

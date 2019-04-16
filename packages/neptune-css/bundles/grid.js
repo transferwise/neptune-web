@@ -1,1 +1,1 @@
-import '../src/less/grid/grid.less';
+import '../src/less/grid.less';

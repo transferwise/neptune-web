@@ -1,12 +1,11 @@
 import React from 'react';
 
 const Flex = () => (
-  <section id="flex" className="container--wide section">
-    <h1 className="colored-dot doc-section__title">
-          Flexbox system
-    </h1>
+  <section id="flex" className="container container--wide section">
+    <h1 className="colored-dot doc-section__title">Flexbox system.</h1>
     <span className="badge badge-success">beta</span>
     <p className="lead">7kB minified</p>
+
     <div className="doc-block">
       <h2 className="doc-info">.d-flex</h2>
       <div className="d-flex doc-bg">

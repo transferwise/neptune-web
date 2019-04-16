@@ -744,10 +744,10 @@
     npm-run-all "^4.1.5"
     release-to-github-with-changelog "^1.1.5"
 
-"@transferwise/public-navigation@^2.9.0":
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/@transferwise/public-navigation/-/public-navigation-2.9.0.tgz#a4d4651a1be8f0ac4ae0761bed2d92c23f28296a"
-  integrity sha512-D3BJUXlxyCBKbSgWjMUmvay1PADBNF8w8vL73qqPFBMvcKh5FlCskRjRtSRpnlJ5A+DjmdiMS6WnVFQPsp0Fng==
+"@transferwise/public-navigation@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@transferwise/public-navigation/-/public-navigation-3.1.2.tgz#8fbf451a9d2b4ec3df754f7f17508614b91e4fe8"
+  integrity sha512-4N5pl0w5UAtEtA4jAKjZCnh6uvOHwZvlf1sq/5Odplu1tiv8iE//gNZK2pbF4kl5xl9Gm/HoEgfIse96+6vCrQ==
   dependencies:
     "@transferwise/icons" "^0.13.1"
     classnames "^2.2.6"

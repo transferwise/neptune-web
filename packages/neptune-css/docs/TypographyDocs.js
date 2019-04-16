@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Typography = () => (
-  <section id="typography" className="container--wide section">
-    <h1 className="colored-dot doc-section__title">Typography</h1>
+  <section id="typography" className="container container--wide section">
+    <h1 className="colored-dot doc-section__title">Typography.</h1>
     <h2 id="headings">Headings</h2>
     <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>, are available. <code>.h1</code> through <code>.h6</code> classNames are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.</p>
 

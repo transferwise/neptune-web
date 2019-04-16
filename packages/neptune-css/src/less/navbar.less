@@ -104,30 +104,6 @@
   }
 }
 
-// Extracted from `grid.less`
-.container {
-  .container-fixed();
-
-  padding-right: @spacing-1-mobile;
-  padding-left: @spacing-1-mobile;
-
-  @media (min-width: @screen-sm-min) {
-    padding-right: @spacing-1-tablet;
-    padding-left: @spacing-1-tablet;
-  }
-
-  @media (min-width: @screen-lg-min) {
-    padding-right: @spacing-1-desktop;
-    padding-left: @spacing-1-desktop;
-  }
-
-  @media (min-width: @screen-xl-min) {
-    max-width: @container-xl;
-  }
-
-  .clearfix ();
-}
-
 // Extracted from `navs.less`
 
 .nav {
@@ -160,4 +136,8 @@
       }
     }
   }
+}
+
+.tw-public-navigation-item-content__text.text-ellipsis {
+    display: inline-block;
 }

@@ -2,13 +2,12 @@ import React from 'react';
 
 const Container = () => (
   <section id="container" className="section">
-    <div className="container--wide">
-      <h1 className="colored-dot doc-section__title">
-            Container
-      </h1>
+    <div className="container container--wide">
+      <h1 className="colored-dot doc-section__title">Container.</h1>
       <span className="badge badge-success">beta</span>
     </div>
-    <div className="container--fullscreen section-1 doc-block doc-bg">
+
+    <div className="container container--fullscreen section-1 doc-block doc-bg">
       <h2>.container--fullscreen</h2>
       <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at
@@ -28,7 +27,7 @@ const Container = () => (
             Curabitur laoree
       </p>
     </div>
-    <div className="container--wide section-1 doc-block doc-bg">
+    <div className="container container--wide section-1 doc-block doc-bg">
       <h2>.container--wide</h2>
       <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at
@@ -72,7 +71,7 @@ const Container = () => (
             tortor nulla. Sed luctus ultrices turpis, vel aliquet eli
       </p>
     </div>
-    <div className="container--text section-1 doc-block doc-bg">
+    <div className="container container--text section-1 doc-block doc-bg">
       <h2>.container--text</h2>
       <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at

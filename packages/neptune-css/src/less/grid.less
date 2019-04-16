@@ -1,0 +1,94 @@
+// variables
+@import (reference) "~bootstrap/less/variables.less";
+
+// mixins
+@import (reference) "~bootstrap/less/mixins/grid.less";
+@import (reference) "~bootstrap/less/mixins/grid-framework.less";
+@import (reference) "~bootstrap/less/mixins/clearfix.less";
+@import (reference) "./mixins/_grid.less";
+
+@import "~bootstrap/less/grid.less";
+
+.container,
+.make-row {
+  .clearfix ();
+}
+
+.container-fluid {
+  .make-container();
+}
+
+.make-grid-columns-wide(@gutter: @grid-gutter-width) {
+  margin-right: -@gutter / 2;
+  margin-left: -@gutter / 2;
+
+  [class*="col-"] {
+    padding-right: @gutter / 2;
+    padding-left: @gutter / 2;
+  }
+}
+
+.row--wide {
+  .make-grid-columns-wide();
+
+  @media all and (min-width: @screen-sm) {
+    .make-grid-columns-wide(@grid-gutter-width * 2);
+  }
+
+  @media all and (min-width: @screen-lg) {
+    .make-grid-columns-wide(@grid-gutter-width * 4);
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1164px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: calc(var(--spacer) * 2);
+  padding-left: calc(var(--spacer) * 2);
+
+  @media all and (min-width: @screen-sm) {
+    padding-right: calc(var(--spacer) * 3);
+    padding-left: calc(var(--spacer) * 3);
+  }
+
+  @media all and (min-width: @screen-md) {
+    padding-right: calc(var(--spacer) * 4);
+    padding-left: calc(var(--spacer) * 4);
+  }
+
+  @media all and (min-width: @screen-lg) {
+    padding-right: calc(var(--spacer) * 6);
+    padding-left: calc(var(--spacer) * 6);
+  }
+
+  .container-fixed();
+  .clearfix ();
+
+  @media (min-width: @screen-xl-min) {
+    max-width: @container-xl;
+  }
+}
+
+.container--fullscreen {
+  @media (min-width: @screen-xl-min) {
+    max-width: 100%;
+  }
+}
+
+.container--text {
+  max-width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container--wide {
+  max-width: 1500px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: @screen-xl-min) {
+    max-width: 1500px;
+  }
+}

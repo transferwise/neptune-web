@@ -2,13 +2,12 @@ import React from 'react';
 
 const Skew = () => (
   <section className="section" id="skew">
-    <div className="container--wide">
-      <h1 className="colored-dot doc-section__title">
-          Skew system
-      </h1>
+    <div className="container container--wide">
+      <h1 className="colored-dot doc-section__title">Skew system.</h1>
       <span className="badge badge-success">new</span>
     </div>
-    <p className="container--wide lead">Skew of 2deg using clip-path</p>
+
+    <p className="container container--wide lead">Skew of 2deg using clip-path</p>
     <div className="skew doc-bg--dark doc-section doc-block d-flex align-items-center justify-content-center">
       <h2 className="doc-text--inverse">.skew</h2>
     </div>

@@ -1,11 +1,10 @@
 import React from 'react';
 
 const Grid = () => (
-  <section id="grid" className="container--wide">
-    <h1 className="colored-dot doc-section__title">
-          Grid layout system
-    </h1>
+  <section id="grid" className="container container--wide">
+    <h1 className="colored-dot doc-section__title">Grid layout system.</h1>
     <span className="badge badge-success">beta</span>
+
     <h2 className="m-t-4">.d-grid grid--1-1</h2>
     <div className="d-grid grid--1-1">
       <div className="doc-item doc-bg">item</div>
@@ -32,7 +31,7 @@ const Grid = () => (
       <div className="doc-item doc-bg">item</div>
       <div className="doc-item doc-bg">item</div>
     </div>
-    <h1 className="colored-dot m-t-5">Span columns</h1>
+    <h1 className="colored-dot m-t-5">Span columns.</h1>
     <h2 className="m-b-4">5 column based options</h2>
     <h3 className="m-t-4">.d-grid grid--4-1</h3>
     <div className="d-grid grid--4-1">
@@ -93,7 +92,7 @@ const Grid = () => (
       <div className="doc-item doc-bg">item</div>
       <div className="doc-item doc-bg">item</div>
     </div>
-    <h1 className="colored-dot m-t-5">Subgrids</h1>
+    <h1 className="colored-dot m-t-5">Subgrids.</h1>
     <h2 className="m-t-4">.d-grid grid--1-1 inside .d-grid grid--1-1</h2>
     <div className="d-grid grid--1-1">
       <div className="d-grid grid--1-1">

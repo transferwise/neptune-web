@@ -32,7 +32,7 @@ module.exports = function(mode, entries) {
           }
         },
         {
-          test: /\.less$/,
+          test: /\.(css|less)$/,
           use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"]
         },
         {

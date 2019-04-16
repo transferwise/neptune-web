@@ -12,8 +12,8 @@ const HeaderDoc = () => (
         <path d="M2 3.5h20v1H2zM2 11.5h20v1H2zM2 19.5h20v1H2z" />
       </svg>
     </a>
-    <div className="container--wide">
-      <h1 className="colored-dot doc-section__title">Navbar</h1>
+    <div className="container container--wide">
+      <h1 className="colored-dot doc-section__title">Navbar.</h1>
       <ul className="nav doc-colums--4 m-b-4">
         <li className=""><a href="#navbar-default">Default navbar</a></li>
         <li className="active"><a href="#navbar-brand-image">Brand image</a></li>
