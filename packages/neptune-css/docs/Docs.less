@@ -12,11 +12,6 @@
 }
 
 .doc {
-  h2,
-  h3 {
-    margin-bottom: calc(var(--spacer) * 4);
-  }
-
   &-h1 {
     margin: (@spacer * 6) 0;
   }
@@ -69,6 +64,7 @@
   }
 
   .doc-example {
+    position: relative;
     margin: 32px 0;
 
     code {
@@ -86,11 +82,12 @@
     padding: @spacer;
     width: 40px;
     height: 40px;
-    z-index: 2;
+    z-index: 1032;
 
     &:hover {
       background: @brand-smoke-plus-20;
     }
+
     &::before {
       position: absolute;
       top: 40px;
@@ -116,7 +113,7 @@
     width: 40px;
     height: 40px;
     margin-right: 80px;
-    z-index: 2;
+    z-index: 1032;
 
     &:hover {
       background: @brand-smoke-plus-20;
@@ -127,7 +124,7 @@
     position: sticky;
     top: 0;
     background: white;
-    z-index: 1;
+    z-index: 1031;
     padding-top: calc(var(--spacer) * 2);
   }
 
@@ -135,18 +132,43 @@
     position: sticky;
     top: 60px;
     background: white;
-    z-index: 1;
+    z-index: 1031;
     padding: calc(var(--spacer) * 1) 0;
+
+    + * {
+      padding-top: 56px;
+    }
   }
 
   .d-inline-block {
-      display: inline-block;
+    display: inline-block;
   }
 
   .circle-bg-xl-margin-top {
     margin-top: 150%;
   }
+
   .doc-colums--4 {
     column-count: 4;
   }
+
+  p code {
+    padding: 2px 4px;
+    margin: 0 4px;
+    font-size: 90%;
+    color: #4a5860;
+    background-color: #f2f5f7;
+    border-radius: 3px;
+  }
+}
+
+@media (min-width: 768px) {
+  .doc-example .navbar-fixed-top,
+  .doc-example .navbar-fixed-bottom {
+    position: absolute;
+  }
+}
+
+.doc-navbar-top-example {
+  padding-bottom: 60px;
 }
