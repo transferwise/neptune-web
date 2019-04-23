@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "4.18.1",
+  "version": "4.18.2",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -54,7 +54,7 @@
     "fs-extra": "0.30.0",
     "gh-pages": "^0.12.0",
     "html-webpack-plugin": "2.24.0",
-    "http-proxy-middleware": "0.17.3",
+    "http-proxy-middleware": "^0.19.1",
     "husky": "^0.14.3",
     "jest": "21.2.1",
     "jest-cli": "^21.2.1",

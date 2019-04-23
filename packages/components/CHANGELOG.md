@@ -1,3 +1,6 @@
+# v4.18.2
+## Fix Select component animations
+
 # v4.18.1
 ## Use `touchstart` on ios devices for `Popover` and `Select`
 
