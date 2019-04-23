@@ -345,39 +345,48 @@ export default class Select extends Component {
   }
 
   render() {
-    const { disabled, required, onSearchChange, size, block, id, dropdownUp } = this.props;
+    const {
+      disabled,
+      required,
+      onSearchChange,
+      size,
+      block,
+      id,
+      dropdownUp,
+      inverse,
+      dropdownWidth,
+      dropdownRight,
+    } = this.props;
     const canSearch = !!onSearchChange;
     const { open } = this.state;
-    const btn = this.style('btn');
-    const openDropdown = this.style('open');
-    const btnBlock = this.style('btn-block');
-    const btnGroup = this.style('btn-group');
-    const btnInput = this.style('btn-input');
-    const dropdown = this.style('dropdown');
-    const dropup = this.style('dropup');
-    const dropdownToggle = this.style('dropdown-toggle');
     const btnSize = {
       xs: this.style('btn-xs'),
       sm: this.style('btn-sm'),
       md: this.style('btn-md'),
       lg: this.style('btn-lg'),
     };
-    const groupClass = `${btnGroup} ${block ? btnBlock : ''} ${dropdownUp ? dropup : dropdown} ${
-      open ? openDropdown : ''
-    }`;
-    const inverse = this.props.inverse
-      ? `${this.style('btn-input-inverse')} ${this.style('btn-addon')}`
-      : '';
-    const buttonClass = `${btn} ${btnInput} ${inverse} ${btnSize[size]}  ${dropdownToggle}`;
 
-    const dropdownMenu = this.style('dropdown-menu');
-    const dropdownRight = this.props.dropdownRight
-      ? this.style(`dropdown-menu-${this.props.dropdownRight}-right`)
-      : '';
-    const dropdownWidth = this.props.dropdownWidth
-      ? this.style(`dropdown-menu-${this.props.dropdownWidth}`)
-      : '';
-    const dropdownClass = `${dropdownMenu} ${dropdownRight} ${dropdownWidth}`;
+    const groupClass = classNames(this.style('btn-group'), {
+      [this.style('btn-block')]: block,
+      [this.style('dropup')]: dropdownUp,
+      [this.style('dropdown')]: !dropdownUp,
+      [this.style('open')]: open,
+    });
+
+    const buttonClass = classNames(
+      this.style('btn'),
+      this.style('btn-input'),
+      {
+        [`${this.style('btn-input-inverse')} ${this.style('btn-addon')}`]: inverse,
+      },
+      btnSize[size],
+      this.style('dropdown-toggle'),
+    );
+
+    const dropdownClass = classNames(this.style('dropdown-menu'), {
+      [this.style(`dropdown-menu-${dropdownRight}-right`)]: dropdownRight,
+      [this.style(`dropdown-menu-${dropdownWidth}`)]: dropdownWidth,
+    });
     return (
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
         className={groupClass}
