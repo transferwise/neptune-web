@@ -360,12 +360,6 @@ export default class Select extends Component {
     const canSearch = !!onSearchChange;
     const { open } = this.state;
     const s = this.style;
-    const btnSize = {
-      xs: s('btn-xs'),
-      sm: s('btn-sm'),
-      md: s('btn-md'),
-      lg: s('btn-lg'),
-    };
 
     const groupClass = classNames(s('btn-group'), {
       [s('btn-block')]: block,
@@ -379,8 +373,11 @@ export default class Select extends Component {
       s('btn-input'),
       {
         [`${s('btn-input-inverse')} ${s('btn-addon')}`]: inverse,
+        [s('btn-xs')]: size === 'xs',
+        [s('btn-sm')]: size === 'sm',
+        [s('btn-md')]: size === 'md',
+        [s('btn-lg')]: size === 'lg',
       },
-      btnSize[size],
       s('dropdown-toggle'),
     );
 
