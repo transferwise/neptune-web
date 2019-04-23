@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
+import Transition from 'react-transition-group/Transition';
 
 import Option from './option';
 import KeyCodes from '../common/keyCodes';
 import { isIosDevice } from '../common/deviceDetection';
+import { addClassAndTriggerReflow, removeClass } from './domHelpers';
 
 import './Select.less';
 
@@ -22,6 +24,10 @@ function stopPropagation(event) {
   event.nativeEvent.stopImmediatePropagation();
   // document listener does not use SyntheticEvents
 }
+
+const BOOTSTRAP_DROPDOWN_ANIMATION_TIME = 200;
+
+const defer = fn => setTimeout(fn, 0);
 
 export default class Select extends Component {
   static propTypes = {
@@ -83,7 +89,8 @@ export default class Select extends Component {
   constructor(props) {
     super(props);
     this.state = { open: false, keyboardFocusedOptionIndex: null };
-    this.searchBox = null;
+    this.searchBoxRef = createRef();
+    this.dropdownMenuRef = createRef();
   }
 
   componentWillUnmount() {
@@ -126,7 +133,7 @@ export default class Select extends Component {
         event.preventDefault();
         break;
       case KeyCodes.SPACE:
-        if (event.target !== this.searchBox) {
+        if (event.target !== this.searchBoxRef.current) {
           if (open) {
             this.selectKeyboardFocusedOption();
           } else {
@@ -192,15 +199,17 @@ export default class Select extends Component {
     // TODO: should also add breakpoint-specific overflow:hidden class to body
     this.setState({ open: true }, () => {
       const searchable = !!this.props.onSearchChange;
-      if (searchable && this.searchBox) {
-        this.searchBox.focus();
-      }
+      defer(() => {
+        if (searchable && this.searchBoxRef.current) {
+          this.searchBoxRef.current.focus();
+        }
+      });
     });
     document.addEventListener(getEventType(), this.handleDocumentClick, false);
   }
 
   close() {
-    this.searchBox = null;
+    // this.searchBox = null; TODO: do we need this
     this.setState({ open: false, keyboardFocusedOptionIndex: null });
     document.removeEventListener(getEventType(), this.handleDocumentClick, false);
   }
@@ -262,9 +271,7 @@ export default class Select extends Component {
               onChange={this.handleSearchChange}
               onClick={stopPropagation}
               value={searchValue}
-              ref={el => {
-                this.searchBox = el;
-              }}
+              ref={this.searchBoxRef}
             />
           </div>
         </a>
@@ -365,7 +372,6 @@ export default class Select extends Component {
       [s('btn-block')]: block,
       [s('dropup')]: dropdownUp,
       [s('dropdown')]: !dropdownUp,
-      [s('open')]: open,
     });
 
     const buttonClass = classNames(
@@ -385,31 +391,54 @@ export default class Select extends Component {
       [s(`dropdown-menu-${dropdownRight}-right`)]: dropdownRight,
       [s(`dropdown-menu-${dropdownWidth}`)]: dropdownWidth,
     });
+
+    const openClass = s('open');
     return (
-      <div // eslint-disable-line jsx-a11y/no-static-element-interactions
-        className={groupClass}
-        onKeyDown={this.handleKeyDown}
-        onTouchMove={this.handleTouchStart}
+      // A transition is used here in order to mount and unmount the dropdown menu while retaining animations
+      <Transition
+        in={open}
+        timeout={BOOTSTRAP_DROPDOWN_ANIMATION_TIME}
+        onEntering={() => {
+          if (this.dropdownMenuRef.current) {
+            addClassAndTriggerReflow(this.dropdownMenuRef.current, openClass);
+          }
+        }}
+        onExit={() => {
+          if (this.dropdownMenuRef.current) {
+            removeClass(this.dropdownMenuRef.current, openClass);
+          }
+        }}
       >
-        <button
-          disabled={disabled}
-          className={buttonClass}
-          type="button"
-          id={id}
-          aria-expanded={open}
-          onClick={this.handleButtonClick}
-        >
-          {this.renderButtonInternals()}
-          <span className={this.style('caret')} />
-        </button>
-        {open && (
-          <ul className={dropdownClass} role="menu">
-            {!required && !canSearch ? this.renderPlaceHolderOption() : ''}
-            {canSearch ? this.renderSearchBox() : ''}
-            {this.renderOptions()}
-          </ul>
+        {animationState => (
+          <div // eslint-disable-line jsx-a11y/no-static-element-interactions
+            className={groupClass}
+            ref={this.dropdownMenuRef}
+            onKeyDown={this.handleKeyDown}
+            onTouchMove={this.handleTouchStart}
+          >
+            <button
+              disabled={disabled}
+              className={buttonClass}
+              type="button"
+              id={id}
+              aria-expanded={open}
+              onClick={this.handleButtonClick}
+            >
+              {this.renderButtonInternals()}
+              <span className={this.style('caret')} />
+            </button>
+            {animationState !== 'exited' ? (
+              <ul className={dropdownClass} role="menu">
+                {!required && !canSearch ? this.renderPlaceHolderOption() : ''}
+                {canSearch ? this.renderSearchBox() : ''}
+                {this.renderOptions()}
+              </ul>
+            ) : (
+              ''
+            )}
+          </div>
         )}
-      </div>
+      </Transition>
     );
   }
 }

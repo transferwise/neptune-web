@@ -1,46 +1,50 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import doTimes from 'lodash.times';
-
+import Transition from 'react-transition-group/Transition';
 import Select from './';
 import Option from './option';
 import KEY_CODES from '../common/keyCodes';
 import { fakeEvent, fakeKeyDownEventForKey } from '../common/fakeEvents';
+import { addClassAndTriggerReflow, removeClass } from './domHelpers';
+
+jest.mock('react-transition-group/Transition', () => jest.fn('placeholder'));
+jest.mock('./domHelpers');
 
 describe('Select', () => {
   let component;
   let props;
-  let documentEventCallbacks;
-  let originalAddEventListener;
 
   beforeEach(() => {
     props = {
       onChange: jest.fn(),
       options: [{ value: 0, label: 'yo' }, { value: 1, label: 'dawg' }, { value: 2, label: 'boi' }],
     };
-    documentEventCallbacks = {};
-    originalAddEventListener = global.document.addEventListener;
-    global.document.addEventListener = jest.fn((name, cb) => {
-      documentEventCallbacks[name] = cb;
+    Transition.mockImplementation(properties => {
+      const ActualTransition = jest.requireActual('react-transition-group/Transition').default;
+      return <ActualTransition {...properties} timeout={0} />;
     });
-    component = shallow(<Select {...props} />);
+    component = mount(<Select {...props} />);
   });
 
-  afterEach(() => {
-    global.document.addEventListener = originalAddEventListener;
-  });
+  const bustStackAndUpdate = async () => {
+    await new Promise(resolve => setTimeout(resolve, 0));
+    component.update();
+  };
 
   const element = selector => component.find(selector);
-  const clickOnDocument = () => {
-    documentEventCallbacks.click();
-    component.update();
+  const clickOnDocument = async () => {
+    document.dispatchEvent(new Event('click'));
+    return bustStackAndUpdate();
   };
   const findNthListElement = n => element('li').at(n);
   const findNthOption = n => element(Option).at(n);
-  const container = () => element('.dropdown');
+  const container = () => element('.btn-group');
   const dropdownMenu = () => element('ul.dropdown-menu');
   const openerButton = () => element('button.dropdown-toggle');
-  const openSelect = () => openerButton().simulate('click', fakeEvent());
+  const openSelect = () => {
+    openerButton().simulate('click', fakeEvent());
+  };
   const openSearchableSelect = () => {
     openSelect();
     component.setProps({ onSearchChange: jest.fn() });
@@ -72,15 +76,19 @@ describe('Select', () => {
     return elementIndex;
   };
 
+  const expectOpenClassToHaveBeenAdded = () =>
+    expect(addClassAndTriggerReflow).toHaveBeenCalledWith(container().getDOMNode(), 'open');
+
+  const expectOpenClassToHaveBeenRemoved = () =>
+    expect(removeClass).toHaveBeenCalledWith(container().getDOMNode(), 'open');
+
   const expectDropdownToBe = () => ({
     open() {
-      expect(dropdownMenu().length).toBe(1);
-      expect(container().is('.open')).toBe(true);
+      expect(dropdownMenu().exists()).toBe(true);
       expect(openerButton().is('[aria-expanded=true]')).toBe(true);
     },
     closed() {
-      expect(dropdownMenu().length).toBe(0);
-      expect(container().is('.open')).toBe(false);
+      expect(dropdownMenu().exists()).toBe(false);
       expect(openerButton().is('[aria-expanded=false]')).toBe(true);
     },
   });
@@ -92,12 +100,12 @@ describe('Select', () => {
   it('can be opened', () => {
     openSelect();
     expectDropdownToBe().open();
+    expectOpenClassToHaveBeenAdded();
   });
 
   it('opens upward when dropdownUp prop is passed', () => {
     component.setProps({ dropdownUp: true });
-
-    expect(component.hasClass('dropup')).toBe(true);
+    expect(container().hasClass('dropup')).toBe(true);
   });
 
   it('can be opened by DOWN arrow', () => {
@@ -120,15 +128,17 @@ describe('Select', () => {
     expectDropdownToBe().open();
   });
 
-  it('can be closed by clicking somewhere else', () => {
+  it('can be closed by clicking somewhere else', async () => {
     openSelect();
-    clickOnDocument();
+    await clickOnDocument();
     expectDropdownToBe().closed();
+    expectOpenClassToHaveBeenRemoved();
   });
 
-  it('can be closed by pressing escape', () => {
+  it('can be closed by pressing escape', async () => {
     openSelect();
     component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.ESCAPE));
+    await bustStackAndUpdate();
     expectDropdownToBe().closed();
   });
 
@@ -159,17 +169,19 @@ describe('Select', () => {
     expect(findNthListElement(0).text()).not.toEqual('this will not be shown');
   });
 
-  it('can select an option and closes itself', () => {
+  it('can select an option and closes itself', async () => {
     openSelect();
     expect(props.onChange).not.toBeCalled();
     findNthListElement(1).simulate('click', fakeEvent());
+    await bustStackAndUpdate();
     expect(props.onChange).toBeCalledWith(props.options[0]);
     expectDropdownToBe().closed();
   });
 
-  it('closes itself when backdrop is touched', () => {
+  it('closes itself when backdrop is touched', async () => {
     openSelect();
     container().simulate('touchMove', fakeEvent());
+    await bustStackAndUpdate();
     expectDropdownToBe().closed();
   });
 
@@ -388,7 +400,7 @@ describe('Select', () => {
 
   it('allows you to select the item currently focused with your keyboard by pressing ENTER', () => {
     component.setProps({ required: true });
-    const onChange = component.instance().props.onChange;
+    const { onChange } = component.instance().props;
 
     // Hitting it once will only make the selector appear, so we hit it twice to go down once
     doTimes(2, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
@@ -402,7 +414,7 @@ describe('Select', () => {
 
   it('allows you to select the item currently focused with your keyboard by pressing SPACE', () => {
     component.setProps({ required: true });
-    const onChange = component.instance().props.onChange;
+    const { onChange } = component.instance().props;
 
     // Hitting it once will only make the selector appear, so we hit it twice to go down once
     doTimes(2, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
@@ -433,7 +445,7 @@ describe('Select', () => {
 
   it('passes the given id forward to the button', () => {
     component.setProps({ id: 'some-id' });
-    expect(component.find('#some-id').type()).toBe('button');
+    expect(component.find('button#some-id').type()).toBe('button');
   });
 
   it('renders separators', () => {
@@ -445,10 +457,10 @@ describe('Select', () => {
     expect(findNthListElement(1).children().length).toBe(0);
   });
 
-  it('focuses on the search box once opened', () => {
-    props.onSearchChange = jest.fn();
-    const mountedComponent = mount(<Select {...props} />);
-    mountedComponent.find('button.dropdown-toggle').simulate('click', fakeEvent());
-    expect(mountedComponent.find('input').prop('className')).toBe(document.activeElement.className);
+  it('focuses on the search box once opened', async () => {
+    component.setProps({ onSearchChange: jest.fn() });
+    component.find('button.dropdown-toggle').simulate('click', fakeEvent());
+    await bustStackAndUpdate();
+    expect(component.find('input').prop('className')).toBe(document.activeElement.className);
   });
 });
