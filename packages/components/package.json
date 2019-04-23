@@ -64,7 +64,6 @@
     "less-loader": "2.2.3",
     "lint-staged": "^6.0.1",
     "lodash.times": "^4.3.2",
-    "marked": "^0.3.6",
     "object-assign": "4.1.1",
     "postcss-loader": "1.2.2",
     "prettier-eslint-cli": "^4.7.0",
