@@ -209,7 +209,6 @@ export default class Select extends Component {
   }
 
   close() {
-    // this.searchBox = null; TODO: do we need this
     this.setState({ open: false, keyboardFocusedOptionIndex: null });
     document.removeEventListener(getEventType(), this.handleDocumentClick, false);
   }
