@@ -25,12 +25,14 @@ export default class DefinitionListDocs extends Component {
         displayFormat: '***** - *****||*-*-*',
         width: 'md',
         refreshRequirementsOnChange: true,
+        bold: true,
       },
       number: {
         title: 'Number',
         type: 'number',
         width: 'md',
         refreshRequirementsOnChange: true,
+        bold: true,
       },
       select: {
         title: 'Select',
@@ -139,7 +141,6 @@ export default class DefinitionListDocs extends Component {
   fields={this.state.fields}
   locale="en-GB"
   title="This is an awesome component"
-  narrow={false}
   layout="${this.state.layout}"
 />`}
                 </pre>
@@ -165,7 +166,6 @@ export default class DefinitionListDocs extends Component {
                 fields={this.state.fields}
                 locale="en-GB"
                 title="This is an awesome component"
-                narrow={false}
                 layout={this.state.layout}
               />
             </div>

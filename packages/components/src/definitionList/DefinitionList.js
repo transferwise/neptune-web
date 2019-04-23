@@ -13,14 +13,12 @@ class DefinitionList extends PureComponent {
     fields: Types.shape({}).isRequired,
     locale: Types.string,
     title: Types.string,
-    narrow: Types.bool,
     layout: Types.string,
   };
 
   static defaultProps = {
     locale: 'en-GB',
     title: null,
-    narrow: false,
     layout: LAYOUTS[0],
   };
 
@@ -28,12 +26,12 @@ class DefinitionList extends PureComponent {
 
   getClassNameForLine = () =>
     classNames({
-      'dl-horizontal-item': this.props.layout === LAYOUTS[2],
+      'dl-horizontal text-xs-left': this.props.layout === LAYOUTS[2],
       'dl-horizontal': this.props.layout === LAYOUTS[1],
     });
 
   render() {
-    const { model, locale, title, narrow, layout } = this.props;
+    const { model, locale, title, layout } = this.props;
     const { fields } = this.state;
     return (
       <Fragment>
@@ -42,7 +40,7 @@ class DefinitionList extends PureComponent {
             <h4 className="page-header p-t-3">{title}</h4>
           </div>
         )}
-        <div className={classNames({ 'row row-equal-height': !narrow && layout === LAYOUTS[0] })}>
+        <div className={classNames({ 'row row-equal-height': layout === LAYOUTS[0] })}>
           {Object.keys(fields).map((key, index) => {
             const field = fields[key];
 
@@ -52,14 +50,19 @@ class DefinitionList extends PureComponent {
 
             return (
               <div
-                className={classNames({ 'col-xs-12 col-sm-6': !narrow && layout === LAYOUTS[0] })}
+                className={classNames({ 'col-xs-12 col-sm-6': layout === LAYOUTS[0] })}
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
               >
                 {!field.group && (
                   <dl className={this.getClassNameForLine()}>
                     <dt>{field.title}</dt>
-                    <dd className="text-word-break">
+                    <dd
+                      className={classNames(
+                        field.bold ? 'text-word-break font-weight-bold' : 'text-word-break',
+                        { 'text-sm-right': layout === LAYOUTS[2] },
+                      )}
+                    >
                       <DefinitionListItem field={field} value={model[key]} locale={locale} />
                     </dd>
                   </dl>
