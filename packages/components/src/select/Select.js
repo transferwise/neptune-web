@@ -359,33 +359,34 @@ export default class Select extends Component {
     } = this.props;
     const canSearch = !!onSearchChange;
     const { open } = this.state;
+    const s = this.style;
     const btnSize = {
-      xs: this.style('btn-xs'),
-      sm: this.style('btn-sm'),
-      md: this.style('btn-md'),
-      lg: this.style('btn-lg'),
+      xs: s('btn-xs'),
+      sm: s('btn-sm'),
+      md: s('btn-md'),
+      lg: s('btn-lg'),
     };
 
-    const groupClass = classNames(this.style('btn-group'), {
-      [this.style('btn-block')]: block,
-      [this.style('dropup')]: dropdownUp,
-      [this.style('dropdown')]: !dropdownUp,
-      [this.style('open')]: open,
+    const groupClass = classNames(s('btn-group'), {
+      [s('btn-block')]: block,
+      [s('dropup')]: dropdownUp,
+      [s('dropdown')]: !dropdownUp,
+      [s('open')]: open,
     });
 
     const buttonClass = classNames(
-      this.style('btn'),
-      this.style('btn-input'),
+      s('btn'),
+      s('btn-input'),
       {
-        [`${this.style('btn-input-inverse')} ${this.style('btn-addon')}`]: inverse,
+        [`${s('btn-input-inverse')} ${s('btn-addon')}`]: inverse,
       },
       btnSize[size],
-      this.style('dropdown-toggle'),
+      s('dropdown-toggle'),
     );
 
-    const dropdownClass = classNames(this.style('dropdown-menu'), {
-      [this.style(`dropdown-menu-${dropdownRight}-right`)]: dropdownRight,
-      [this.style(`dropdown-menu-${dropdownWidth}`)]: dropdownWidth,
+    const dropdownClass = classNames(s('dropdown-menu'), {
+      [s(`dropdown-menu-${dropdownRight}-right`)]: dropdownRight,
+      [s(`dropdown-menu-${dropdownWidth}`)]: dropdownWidth,
     });
     return (
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
