@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { StrictMode } from 'react';
 import './Docs.less';
 
 import Header from './Header';
@@ -25,7 +25,7 @@ import DefinitionListDocs from './DefinitionListDocs';
 import UploadDocs from './UploadDocs';
 
 const Docs = () => (
-  <Fragment>
+  <StrictMode>
     <Header />
     <ModalDocs />
     <StepperDocs />
@@ -48,7 +48,7 @@ const Docs = () => (
     <ProcessIndicatorDocs />
     <DefinitionListDocs />
     <UploadDocs />
-  </Fragment>
+  </StrictMode>
 );
 
 export default Docs;
