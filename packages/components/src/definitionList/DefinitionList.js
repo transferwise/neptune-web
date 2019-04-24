@@ -2,6 +2,8 @@ import React, { PureComponent, Fragment } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
+import './DefinitionList.less';
+
 import DefinitionListItem from './DefinitionListItem';
 import { prepFields } from './utils/requirements';
 
@@ -59,7 +61,9 @@ class DefinitionList extends PureComponent {
                     <dt>{field.title}</dt>
                     <dd
                       className={classNames(
-                        field.bold ? 'text-word-break font-weight-bold' : 'text-word-break',
+                        field.bold && layout === LAYOUTS[2]
+                          ? 'text-word-break font-weight-bold h3 definition-list__field-value-line-height'
+                          : 'text-word-break',
                         { 'text-sm-right': layout === LAYOUTS[2] },
                       )}
                     >
