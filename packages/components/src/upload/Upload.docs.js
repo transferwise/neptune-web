@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
-import { Upload, Select, Checkbox } from '../src';
-import { CompleteStep, ProcessingStep } from '../src/upload/steps';
+import { Upload, Select, Checkbox } from '..';
+import { CompleteStep, ProcessingStep } from '../upload/steps';
 
 const IMAGES = [
   'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzOTEgMTk2Ij48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6bm9uZTt9LmNscy0ye2ZpbGw6IzAwYjlmZjt9LmNscy0ze2ZpbGw6IzM3NTE3ZTt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPnR3X2hvcml6b250YWxfYmx1ZV9uYXZ5X3JnYjwvdGl0bGU+PGcgaWQ9ImJnIj48cmVjdCBjbGFzcz0iY2xzLTEiIHg9Ii0wLjIiIHk9Ii0wLjAyIiB3aWR0aD0iMzkxLjQxIiBoZWlnaHQ9IjE5Ni4wNCIvPjwvZz48ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIj48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iODEuOCA3OC4zNiA4Ni45NyA4Ny4wMyA3Ny45MiA5NS42OSA5My41NiA5NS42OSA5NS4wNCA5Mi4yMiA4Ni40IDkyLjIyIDkxLjYzIDg3LjAxIDg4LjU3IDgxLjgzIDEwMi44MSA4MS44MyA5MC4zMSAxMTEuNDMgOTQuNiAxMTEuNDMgMTA4LjU3IDc4LjM2IDgxLjggNzguMzYiLz48L2c+PGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PHJlY3QgY2xhc3M9ImNscy0zIiB4PSIyNzEuNzMiIHk9Ijk4LjY0IiB3aWR0aD0iMy41NyIgaGVpZ2h0PSIxOC45MyIvPjxyZWN0IGNsYXNzPSJjbHMtMyIgeD0iMjcxLjU3IiB5PSI5Mi4yNCIgd2lkdGg9IjMuODkiIGhlaWdodD0iMy44NCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMyIgcG9pbnRzPSIyNjUuNjIgOTIuMjQgMjYxLjE4IDExMS45MiAyNjEuMDIgMTExLjkyIDI1Ni40MiA5OC42NCAyNTMuMjMgOTguNjQgMjQ3Ljk4IDExMS45MiAyNDcuODIgMTExLjkyIDI0NC4zIDkyLjI0IDI0MC40NiA5Mi4yNCAyNDUuMjcgMTE3LjU3IDI0OC44NCAxMTcuNTcgMjU0LjUzIDEwMy41NSAyNTQuNjkgMTAzLjU1IDI1OS42MSAxMTcuNTcgMjYzLjE4IDExNy41NyAyNjkuMjkgOTIuMjQgMjY1LjYyIDkyLjI0Ii8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMjE2LDExNC44Yy0zLjQ2LDAtNS44NC0yLjcyLTUuODQtNi42NywwLTMuNjgsMi4wNi02LjgzLDUuNDEtNi44MywzLjg0LDAsNC44NywzLjIsNSw1LjE3aC02LjY0bC0xLjI0LDIuODhoMTEuNTFjLjA1LS43NS4wNS0xLC4wNS0xLjMzLDAtNS40NC0yLjc2LTkuNzYtOC43MS05Ljc2LTUuMTQsMC05LjA5LDQuMTYtOS4wOSw5Ljg3LDAsNS44NywzLjc5LDkuNzYsOS4xOSw5Ljc2YTEwLjA1LDEwLjA1LDAsMCwwLDcuODQtMy4yNWwtMi4xNi0yLjA4YTcuMjksNy4yOSwwLDAsMS01LjMsMi4yNCIvPjxwYXRoIGNsYXNzPSJjbHMtMyIgZD0iTTIwMS44NCw5OC4yN2MwLTIuMzUsMS4xNC0zLjY4LDMuMy0zLjY4YTEwLjQsMTAuNCwwLDAsMSwzLjE0LjU5bDEuMTMtMi42MWExMC4zNiwxMC4zNiwwLDAsMC00LjM4LTFjLTMuNjMsMC02Ljc2LDEuODEtNi43Niw2LjY3di41OWgtMi4zOHYzaDIuMzh2MTUuNzNoMy41N1YxMDEuODRoMy42MmwxLjI0LTNoLTQuODdaIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMTY5LjY1LDk4LjI3QTYuMjUsNi4yNSwwLDAsMCwxNjQsMTAxaC0uMTZ2LTIuNEgxNjAuNHYxOC45M0gxNjRWMTA3LjMzYzAtMy43MywxLjg5LTYsNC44Ny02LDIuODEsMCw0LjQ5LDEuNDksNC40OSw1djExLjI1aDMuNTdWMTA1LjY4YzAtNC44LTIuODEtNy40MS03LjI1LTcuNDEiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xNTIuNzIsMTEwLjI3YzAsMi44My0yLjMzLDQuNjQtNS41Nyw0LjY0LTEuOTUsMC0zLjYyLS45MS0zLjYyLTMuMTUsMC0yLjA4LDEuNzMtMy40Nyw0LjM4LTMuNDcsMi4zOCwwLDMuOTUuNDMsNC44MSwxLjA3Wm0tNS0xMmExNi4xMiwxNi4xMiwwLDAsMC01LjYzLjkxbC41OSwyLjg4YTE0LjkyLDE0LjkyLDAsMCwxLDQuNTQtLjc1YzMsMCw1LjUyLDEuMzksNS41Miw0LjQ4di41M2ExMi42NSwxMi42NSwwLDAsMC00LjcxLS44NWMtNC44NywwLTguMDYsMi40NS04LjA2LDYuNDUsMCw0LjE2LDMuMTQsNiw2LjY1LDZhNy4xOCw3LjE4LDAsMCwwLDYtMi41NmguMTZ2Mi4xOWgzLjQ2VjEwNS43M2MwLTUuMTctMy4zNS03LjQ3LTguNDktNy40NyIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMyIgcG9pbnRzPSIxMDguNTcgOTIuMjQgMTA4LjU3IDk1LjY1IDExNi41OCA5NS42NSAxMTYuNTggMTE3LjU3IDEyMC4zNyAxMTcuNTcgMTIwLjM3IDk1LjY1IDEyOC4zNyA5NS42NSAxMjguMzcgOTIuMjQgMTA4LjU3IDkyLjI0Ii8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMTQwLjExLDk5YTguMTMsOC4xMywwLDAsMC0zLjA4LS41Myw2LjExLDYuMTEsMCwwLDAtNSwyLjI0aC0uMTZWOTguNjRoLTMuNDZ2MTguOTNIMTMyVjEwNy4yM2MwLTQsMS45NS01LjYsNC44MS01LjZhOS4zOCw5LjM4LDAsMCwxLDIuNDkuMzJaIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMjM5LjQ5LDk5LjA3YTguMzcsOC4zNywwLDAsMC0zLjA4LS41OSw2LjU1LDYuNTUsMCwwLDAtNS4xOSwyLjI0SDIzMVY5OC42NGgtMy40NnYxOC45M2gzLjU3VjEwNy4yM2MwLTQsMi4xNi01LjYsNS01LjZhOS4zMiw5LjMyLDAsMCwxLDIuNDkuMzJaIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMzA0LjU1LDExNC44Yy0zLjQ2LDAtNS44NC0yLjcyLTUuODQtNi42NywwLTMuNjgsMi4wNi02LjgzLDUuNDEtNi44MywzLjg0LDAsNC44NywzLjIsNSw1LjE3aC02LjY0bC0xLjI0LDIuODhoMTEuNTFjLjA1LS43NS4wNS0xLC4wNS0xLjMzLDAtNS40NC0yLjc2LTkuNzYtOC43MS05Ljc2LTUuMTQsMC05LjA5LDQuMTYtOS4wOSw5Ljg3LDAsNS44NywzLjc5LDkuNzYsOS4yLDkuNzZhMTAuMDUsMTAuMDUsMCwwLDAsNy44NC0zLjI1bC0yLjE2LTIuMDhhNy4yOSw3LjI5LDAsMCwxLTUuMywyLjI0Ii8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMTg3LjgzLDEwNi42NGMtMi43Ni0uMzctNC4zOC0uOTEtNC4zOC0yLjcyLDAtMS42NSwxLjYyLTIuNjcsMy42My0yLjY3YTkuMTgsOS4xOCwwLDAsMSw1LDEuNmwxLjczLTIuNTZhMTAuOTMsMTAuOTMsMCwwLDAtNi42NS0yYy00LjE3LDAtNy4yNSwyLjUxLTcuMjUsNS44MSwwLDMuNzksMi40NCw1LDYuNTUsNS42NSwyLjMzLjM3LDQuMzMuNjQsNC4zMywyLjYxLDAsMS42NS0xLjYyLDIuNTYtMy43OSwyLjU2YTkuMDcsOS4wNywwLDAsMS01Ljg0LTJsLTEuNTcsMi44M2MxLjM1LDEuMjMsNC4xNywyLjE5LDcuMywyLjE5LDQuMzMsMCw3LjQ3LTIuNTEsNy40Ny01Ljg3LDAtNC4wNS0zLjI1LTUtNi40OS01LjM5Ii8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMjg2LjYxLDEwNi42NWMtMi43Ni0uMzctNC4zOC0uOTEtNC4zOC0yLjcyLDAtMS42NSwxLjYyLTIuNjcsMy42My0yLjY3YTkuMTgsOS4xOCwwLDAsMSw1LDEuNmwxLjczLTIuNTZhMTAuOTMsMTAuOTMsMCwwLDAtNi42NS0yYy00LjE2LDAtNy4yNSwyLjUxLTcuMjUsNS44MSwwLDMuNzksMi40Myw1LDYuNTQsNS42NSwyLjMzLjM3LDQuMzMuNjQsNC4zMywyLjYxLDAsMS42NS0xLjYyLDIuNTYtMy43OSwyLjU2YTkuMDYsOS4wNiwwLDAsMS01Ljg0LTJsLTEuNTcsMi44M2MxLjM1LDEuMjMsNC4xNiwyLjE5LDcuMywyLjE5LDQuMzMsMCw3LjQ2LTIuNTEsNy40Ni01Ljg3LDAtNC4wNS0zLjI1LTUtNi40OS01LjM5Ii8+PC9nPjwvc3ZnPg==',
@@ -131,7 +131,7 @@ const KNOBS = {
   ],
 };
 
-export default class UploadDocs extends PureComponent {
+export default class UploadDocs extends Component {
   constructor() {
     super();
     this.state = { ...this.getState(), processingState: null, completedState: null };
@@ -263,7 +263,9 @@ export default class UploadDocs extends PureComponent {
                     onCancel={() => console.log('onCancel')}
                   />
                 </div>
-                {KNOBS.firstStepKnobs.map(knob => this.generateInput(knob))}
+                <div className="row">
+                  {KNOBS.firstStepKnobs.map(knob => this.generateInput(knob))}
+                </div>
               </div>
 
               <div className="m-t-5 col-xs-12">
@@ -281,7 +283,9 @@ export default class UploadDocs extends PureComponent {
                     }}
                   />
                 </div>
-                {KNOBS.secondStepKnobs.map(knob => this.generateInput(knob))}
+                <div className="row">
+                  {KNOBS.secondStepKnobs.map(knob => this.generateInput(knob))}
+                </div>
               </div>
               <div className="m-t-5 col-xs-12">
                 <pre> Third Step Props (Completed)</pre>
@@ -296,12 +300,14 @@ export default class UploadDocs extends PureComponent {
                     isError={this.state.completedState === COMPONENT_STATUS[0]}
                   />
                 </div>
-                {KNOBS.thirdStepKnobs.map(knob => this.generateInput(knob))}
+                <div className="row">
+                  {KNOBS.thirdStepKnobs.map(knob => this.generateInput(knob))}
+                </div>
               </div>
 
               <div className="m-t-5 col-xs-12">
                 <pre className="m-b-3"> Shared Props</pre>
-                {KNOBS.sharedProps.map(knob => this.generateInput(knob))}
+                <div className="row">{KNOBS.sharedProps.map(knob => this.generateInput(knob))}</div>
               </div>
             </div>
           </div>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import OptionDocs from './common/OptionDocs';
-import { CheckboxOption } from '../src';
+import OptionDocs from '../common/Option/OptionDocs';
+import { RadioOption } from '..';
 
-class CheckboxOptionDocs extends Component {
+class RadioOptionDocs extends Component {
   state = {
     checked: false,
   };
@@ -13,9 +13,9 @@ class CheckboxOptionDocs extends Component {
 
     return (
       <OptionDocs
-        type="checkbox"
-        Option={CheckboxOption}
-        name="CheckboxOption"
+        type="radio"
+        Option={RadioOption}
+        name="RadioOption"
         callbackName="onChange"
         callback={newChecked => {
           this.setState({ checked: newChecked });
@@ -23,11 +23,11 @@ class CheckboxOptionDocs extends Component {
         callbackString="this.handleChange"
         propName="checked"
         propValue={checked}
-        title="Checkbox option"
-        description="Grandmaster checkmate"
+        title="Radio option"
+        description="Video killed the radio option ♫"
       />
     );
   }
 }
 
-export default CheckboxOptionDocs;
+export default RadioOptionDocs;

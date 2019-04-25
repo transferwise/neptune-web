@@ -1,11 +1,8 @@
-import React, { PureComponent } from 'react';
-import { ProcessIndicator, Select, Radio } from '../src';
-import {
-  processIndicatorSizes,
-  processIndicatorStatuses,
-} from '../src/processIndicator/ProcessIndicator';
+import React, { Component } from 'react';
+import { ProcessIndicator, Select, Radio } from '..';
+import { processIndicatorSizes, processIndicatorStatuses } from './ProcessIndicator';
 
-export default class ProcessIndicatorDocs extends PureComponent {
+export default class ProcessIndicatorDocs extends Component {
   state = {
     status: 'processing',
     size: 'sm',

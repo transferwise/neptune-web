@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Select, Checkbox } from '../src';
+import { Select, Checkbox } from '..';
 
 export default class SelectDocs extends Component {
   constructor(props) {

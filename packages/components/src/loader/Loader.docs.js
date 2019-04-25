@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Loader, Checkbox } from '../src';
+import { Loader, Checkbox } from '..';
 
 export default class LoaderDocs extends Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Tooltip, Select, Checkbox } from '../src';
+import { Tooltip, Select, Checkbox } from '..';
 
 export default class TooltipDocs extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Select, MoneyInput } from '../';
+import { Select, MoneyInput } from '..';
 
 jest.mock('./currencyFormatting', () => ({
   parseAmount: jest.fn(),

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Checkbox, Select, DateInput } from '../src';
+import { Checkbox, Select, DateInput } from '..';
 
 export default class DateInputDocs extends Component {
   state = {

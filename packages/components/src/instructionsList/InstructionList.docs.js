@@ -1,5 +1,5 @@
 import React from 'react';
-import { InstructionsList } from '../src';
+import { InstructionsList } from '..';
 
 const InstructionsListDocs = () => {
   const dos = [

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Radio, Checkbox } from '../src';
+import { Radio, Checkbox } from '..';
 
 export default class RadioDocs extends Component {
   constructor(props) {

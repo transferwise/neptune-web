@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MoneyInput, Select, Checkbox } from '../src';
+import { MoneyInput, Select, Checkbox } from '..';
 
 const currencies = [
   {

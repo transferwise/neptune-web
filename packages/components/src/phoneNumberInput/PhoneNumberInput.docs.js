@@ -1,6 +1,5 @@
-import React, { PureComponent } from 'react';
-import { Checkbox, PhoneNumberInput } from '../src';
-import Select from '../src/select';
+import React, { Component } from 'react';
+import { Checkbox, PhoneNumberInput, Select } from '..';
 
 const SIZES = ['sm', 'md', 'lg'];
 const LOCALES = [
@@ -11,7 +10,7 @@ const LOCALES = [
   { value: 'js-JP', label: 'Japanese' },
 ];
 
-export default class PhoneNumberInputDocs extends PureComponent {
+export default class PhoneNumberInputDocs extends Component {
   state = {
     required: false,
     disabled: false,

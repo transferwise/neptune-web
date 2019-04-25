@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Select, FlowNavigation, Checkbox } from '../src';
+import { Select, FlowNavigation, Checkbox } from '..';
 
 export default class FlowNavigationDocs extends Component {
   constructor(props) {

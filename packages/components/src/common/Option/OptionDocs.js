@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Types from 'prop-types';
 import FastFlagIcon from '@transferwise/icons/react/fast-flag'; // eslint-disable-line import/no-extraneous-dependencies
 
-import { Checkbox } from '../../src';
+import { Checkbox } from '../../';
 
 class OptionDocs extends Component {
   static propTypes = {

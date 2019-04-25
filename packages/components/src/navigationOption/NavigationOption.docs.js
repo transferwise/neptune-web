@@ -1,7 +1,7 @@
 import React from 'react';
 
-import OptionDocs from './common/OptionDocs';
-import { NavigationOption } from '../src';
+import OptionDocs from '../common/Option/OptionDocs';
+import { NavigationOption } from '..';
 
 const NavigationOptionDocs = () => (
   <OptionDocs

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Stepper, Select } from '../src';
+import { Stepper, Select } from '..';
 
 export default class StepperDocs extends Component {
   constructor(props) {

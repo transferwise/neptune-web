@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Money } from '../src';
+import { Money } from '..';
 
 class MoneyDocs extends Component {
   state = {

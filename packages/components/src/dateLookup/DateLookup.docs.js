@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DateLookup, Select, Checkbox } from '../src';
+import { DateLookup, Select, Checkbox } from '..';
 
 const SIZES = ['sm', 'md', 'lg'];
 

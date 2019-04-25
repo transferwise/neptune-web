@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import classNames from 'classnames';
 
-import { Popover, Checkbox, Select } from '../src';
+import { Popover, Checkbox, Select } from '..';
 
 const defaultTitle = 'I’m a string';
 

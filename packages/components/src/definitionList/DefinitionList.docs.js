@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
-import { DefinitionList } from '../src';
-import Select from '../src/select';
+import React, { Component } from 'react';
+import { DefinitionList } from '..';
+import Select from '../select';
 
 const LAYOUTS = ['vertical', 'horizontal', 'justified'];
 
-export default class DefinitionListDocs extends PureComponent {
+export default class DefinitionListDocs extends Component {
   state = {
     model: {
       text: 'helloworld',

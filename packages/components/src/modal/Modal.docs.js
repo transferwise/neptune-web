@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Select } from '../src';
+import { Modal, Select } from '..';
 
 const SIZES = ['sm', 'md', 'lg', 'xl'];
 
