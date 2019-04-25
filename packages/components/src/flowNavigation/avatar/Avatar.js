@@ -15,7 +15,7 @@ class Avatar extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.loadImageIfNeeded(this.props.url);
   }
 

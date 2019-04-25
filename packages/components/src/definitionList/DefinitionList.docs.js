@@ -131,7 +131,11 @@ export default class DefinitionListDocs extends Component {
                 display the data model we generated using a fieldset.
               </p>
               <p>
-                You can also specify the layout, which defaults to <code>vertical</code>
+                <code>narrow</code> is used for <code>vertical</code> layout if the goal is to
+                display the items stacked
+              </p>
+              <p>
+                You can also specify the layout, which defaults to <code>vertical</code>.
               </p>
               <div className="m-t-2">
                 {/* eslint-disable react/jsx-indent */}
@@ -141,6 +145,7 @@ export default class DefinitionListDocs extends Component {
   fields={this.state.fields}
   locale="en-GB"
   title="This is an awesome component"
+  narrow={false}
   layout="${this.state.layout}"
 />`}
                 </pre>
@@ -166,6 +171,7 @@ export default class DefinitionListDocs extends Component {
                 fields={this.state.fields}
                 locale="en-GB"
                 title="This is an awesome component"
+                narrow={false}
                 layout={this.state.layout}
               />
             </div>
