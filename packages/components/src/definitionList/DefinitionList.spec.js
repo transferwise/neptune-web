@@ -76,7 +76,7 @@ describe('DefinitionList', () => {
     it('does not have dl element in bold', () => {
       expect(component.find('.font-weight-bold').length).toBe(0);
       expect(component.find('.h3').length).toBe(0);
-      expect(component.find('.definition-list__field-value-bold').length).toBe(0);
+      expect(component.find('.definition-list__custom-field-value').length).toBe(0);
     });
   });
 
@@ -112,7 +112,7 @@ describe('DefinitionList', () => {
     it('does not have dl element in bold', () => {
       expect(component.find('.font-weight-bold').length).toBe(0);
       expect(component.find('.h3').length).toBe(0);
-      expect(component.find('.definition-list__field-value-bold').length).toBe(0);
+      expect(component.find('.definition-list__custom-field-value').length).toBe(0);
     });
     it('has dl element in bold if bold paramater is true', () => {
       props = {
@@ -129,7 +129,7 @@ describe('DefinitionList', () => {
       component = shallow(<DefinitionList {...props} />);
       expect(component.find('.font-weight-bold').length).toBe(1);
       expect(component.find('.h3').length).toBe(1);
-      expect(component.find('.definition-list__field-value-line-height').length).toBe(1);
+      expect(component.find('.definition-list__custom-field-value').length).toBe(1);
     });
   });
 

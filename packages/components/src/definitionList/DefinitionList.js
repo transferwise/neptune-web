@@ -64,7 +64,7 @@ class DefinitionList extends PureComponent {
                     <dd
                       className={classNames(
                         field.bold && layout === LAYOUTS[2]
-                          ? 'text-word-break font-weight-bold h3 definition-list__field-value-bold'
+                          ? 'text-word-break font-weight-bold h3 definition-list__custom-field-value'
                           : 'text-word-break',
                         { 'text-sm-right': layout === LAYOUTS[2] },
                       )}
