@@ -186,7 +186,8 @@ export default class MoneyInput extends Component {
                   className={classNames(
                     this.style('currency-flag'),
                     this.style(`currency-flag-${selectedCurrency.currency.toLowerCase()}`),
-                    this.style('hidden-xs m-r-2'),
+                    this.style('hidden-xs'),
+                    this.style('m-r-2'),
                   )}
                 />
               </Fragment>

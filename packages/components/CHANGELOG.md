@@ -1,3 +1,6 @@
+# v4.19.1
+## Separate joined MoneyInput class names for css modules
+
 # v4.19.0
 ## Add css modules support for MoneyInput and Popover
 
