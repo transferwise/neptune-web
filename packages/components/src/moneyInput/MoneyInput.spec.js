@@ -433,4 +433,13 @@ describe('Money Input', () => {
     expect(onCustomAction).toHaveBeenCalledTimes(1);
     expect(props.onCurrencyChange).toHaveBeenCalledTimes(0);
   });
+
+  it('ensures namespaced classNames can be provided and used ', () => {
+    const styles = { 'tw-money-input': 'tw-money-input_TWISAWESOME125' };
+    expect(component.find('.tw-money-input').exists()).toBe(true);
+
+    component.setProps({ classNames: styles });
+    expect(component.find('.tw-money-input').exists()).toBe(false);
+    expect(component.find('.tw-money-input_TWISAWESOME125').exists()).toBe(true);
+  });
 });

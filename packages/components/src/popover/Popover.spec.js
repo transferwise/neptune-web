@@ -155,6 +155,15 @@ describe('Popover', () => {
     expect(popover().prop('style')).toEqual({ top: 50, left: 100 });
   });
 
+  it('ensures namespaced classNames can be provided and used ', () => {
+    const styles = { popover: 'popover_TWISAWESOME125' };
+    expect(component.find('.popover').exists()).toBe(true);
+
+    component.setProps({ classNames: styles });
+    expect(component.find('.popover').exists()).toBe(false);
+    expect(component.find('.popover_TWISAWESOME125').exists()).toBe(true);
+  });
+
   function popover() {
     return component.find('.popover');
   }

@@ -463,4 +463,13 @@ describe('Select', () => {
     await bustStackAndUpdate();
     expect(component.find('input').prop('className')).toBe(document.activeElement.className);
   });
+
+  it('ensures namespaced classNames can be provided and used ', () => {
+    const styles = { 'dropdown-toggle': 'dropdown-toggle_TWISAWESOME125' };
+    expect(component.find('.dropdown-toggle').exists()).toBe(true);
+
+    component.setProps({ classNames: styles });
+    expect(component.find('.dropdown-toggle').exists()).toBe(false);
+    expect(component.find('.dropdown-toggle_TWISAWESOME125').exists()).toBe(true);
+  });
 });

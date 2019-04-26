@@ -16,11 +16,13 @@ export default class Popover extends Component {
     title: Types.oneOfType([Types.element, Types.string]),
     content: Types.oneOfType([Types.element, Types.string]).isRequired,
     preferredPlacement: Types.oneOf(PlacementValues),
+    classNames: Types.objectOf(Types.string),
   };
 
   static defaultProps = {
     title: null,
     preferredPlacement: Placement.RIGHT,
+    classNames: {},
   };
 
   state = {
@@ -68,6 +70,8 @@ export default class Popover extends Component {
     });
   };
 
+  style = className => this.props.classNames[className] || className;
+
   render() {
     const { title, content, preferredPlacement } = this.props;
     const { isOpen } = this.state;
@@ -75,7 +79,14 @@ export default class Popover extends Component {
     const trigger = this.createTrigger();
 
     const placement = getPlacement(this.popoverElement, preferredPlacement);
-    const popoverClassName = classNames('popover animate in', { 'scale-down': !isOpen }, placement);
+    const popoverClassName = classNames(
+      this.style('popover'),
+      this.style('animate'),
+      this.style('in'),
+      { [this.style('scale-down')]: !isOpen },
+      this.style(placement),
+    );
+
     const { top, left } = getPopoverPosition(this.popoverElement, placement);
 
     return (
@@ -88,8 +99,10 @@ export default class Popover extends Component {
           }}
           style={{ top, left }}
         >
-          {title && <h3 className="popover-title">{title}</h3>}
-          <p className="popover-content m-b-0">{content}</p>
+          {title && <h3 className={classNames(this.style('popover-title'))}>{title}</h3>}
+          <p className={classNames(this.style('popover-content'), this.style('m-b-0'))}>
+            {content}
+          </p>
         </div>
       </Fragment>
     );

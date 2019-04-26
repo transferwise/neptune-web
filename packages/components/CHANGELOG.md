@@ -1,3 +1,6 @@
+# v4.19.0
+## Add css modules support for MoneyInput and Popover
+
 # v4.18.2
 ## Fix Select component animations
 

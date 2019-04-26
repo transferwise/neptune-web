@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Types from 'prop-types';
+import classNames from 'classnames';
 import Select from '../select';
 import './MoneyInput.less';
 
@@ -29,6 +30,7 @@ export default class MoneyInput extends Component {
     searchPlaceholder: Types.string,
     customActionLabel: Types.node,
     onCustomAction: Types.func,
+    classNames: Types.objectOf(Types.string),
   };
 
   static defaultProps = {
@@ -41,6 +43,7 @@ export default class MoneyInput extends Component {
     onAmountChange: null,
     customActionLabel: '',
     onCustomAction: null,
+    classNames: {},
   };
 
   state = {
@@ -126,6 +129,8 @@ export default class MoneyInput extends Component {
     }
   };
 
+  style = className => this.props.classNames[className] || className;
+
   render() {
     const { selectedCurrency, onCurrencyChange, size, addon } = this.props;
     const selectOptions = this.getSelectOptions();
@@ -136,12 +141,18 @@ export default class MoneyInput extends Component {
 
     const disabled = !this.props.onAmountChange;
     return (
-      <div className={`tw-money-input input-group input-group-${size}`}>
+      <div
+        className={classNames(
+          this.style('tw-money-input'),
+          this.style('input-group'),
+          this.style(`input-group-${size}`),
+        )}
+      >
         <input
           id={this.props.id}
           value={this.state.formattedAmount}
           type="text"
-          className="form-control"
+          className={classNames(this.style('form-control'))}
           onChange={this.onAmountChange}
           onFocus={this.onAmountFocus}
           onBlur={this.onAmountBlur}
@@ -150,34 +161,49 @@ export default class MoneyInput extends Component {
         />
         {addon && (
           <span
-            className={`input-group-addon input-${size} ${
-              disabled ? 'tw-money-input--disabled' : ''
-            }`}
+            className={classNames(
+              this.style('input-group-addon'),
+              this.style(`input-${size}`),
+              disabled ? this.style('tw-money-input--disabled') : '',
+            )}
           >
             {addon}
           </span>
         )}
         {isFixedCurrency ? (
           <div
-            className={`input-group-addon input-${size} tw-money-input__fixed-currency ${
-              disabled ? 'tw-money-input--disabled' : ''
-            }`}
+            className={classNames(
+              this.style('input-group-addon'),
+              this.style(`input-${size}`),
+              this.style('tw-money-input__fixed-currency'),
+              disabled ? this.style('tw-money-input--disabled') : '',
+            )}
           >
             {size === 'lg' && (
               <Fragment>
-                <i className="tw-money-input__keyline" />
+                <i className={classNames(this.style('tw-money-input__keyline'))} />
                 <i
-                  className={`currency-flag currency-flag-${selectedCurrency.currency.toLowerCase()} hidden-xs m-r-2`}
+                  className={classNames(
+                    this.style('currency-flag'),
+                    this.style(`currency-flag-${selectedCurrency.currency.toLowerCase()}`),
+                    this.style('hidden-xs m-r-2'),
+                  )}
                 />
               </Fragment>
             )}
-            <span className={size === 'lg' ? 'm-r-1' : ''}>
+            <span className={size === 'lg' ? this.style('m-r-1') : ''}>
               {selectedCurrency.currency.toUpperCase()}
             </span>
           </div>
         ) : (
-          <span className="input-group-btn amount-currency-select-btn">
+          <span
+            className={classNames(
+              this.style('input-group-btn'),
+              this.style('amount-currency-select-btn'),
+            )}
+          >
             <Select
+              classNames={this.props.classNames}
               options={selectOptions}
               selected={{ ...selectedCurrency, note: null }}
               onChange={this.handleSelectChange}
