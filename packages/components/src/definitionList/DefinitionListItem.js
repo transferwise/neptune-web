@@ -1,7 +1,10 @@
 import React from 'react';
 import Types from 'prop-types';
+import classNames from 'classnames';
 import { formatDate, formatNumber } from '@transferwise/formatting';
 import { formatUsingPattern } from './utils/text-format';
+
+import './DefinitionListItem.less';
 
 /**
  *
@@ -20,6 +23,12 @@ const getValueLabel = (options, value) => {
 const mask = value => new Array(value.length + 1).join('*');
 
 const DefinitionListItem = ({ field, value, locale }) => {
+  const style = [];
+  if (field.tagClassName && field.tagClassName.h3) {
+    style.push('h3');
+    style.push('definition-list-item__h3-custom-alignment');
+  }
+
   switch (field.control) {
     case 'select':
     case 'radio':
@@ -39,7 +48,9 @@ const DefinitionListItem = ({ field, value, locale }) => {
     case 'checkbox':
       return <span>{JSON.stringify(value)}</span>;
     default:
-      return <span>{formatUsingPattern(value, field.displayFormat)}</span>;
+      return (
+        <span className={classNames(style)}>{formatUsingPattern(value, field.displayFormat)}</span>
+      );
   }
 };
 

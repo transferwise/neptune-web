@@ -21,6 +21,9 @@ describe('DefinitionListItem', () => {
           title: 'Text',
           type: 'string',
           width: 'md',
+          tagClassName: {
+            h3: true,
+          },
         },
       };
       component = shallow(<DefinitionListItem {...props} />);
@@ -29,6 +32,10 @@ describe('DefinitionListItem', () => {
 
     it('should display the formatted text value', () => {
       expect(definitionListItem.text()).toBe('AB - CD');
+    });
+
+    it('has h3 styling added when provided', () => {
+      expect(definitionListItem.find('.h3').length).toBe(1);
     });
   });
 

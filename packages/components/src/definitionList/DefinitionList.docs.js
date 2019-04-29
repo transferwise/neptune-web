@@ -25,14 +25,18 @@ export default class DefinitionListDocs extends Component {
         displayFormat: '***** - *****||*-*-*',
         width: 'md',
         refreshRequirementsOnChange: true,
-        bold: true,
+        tagClassName: {
+          h3: true,
+        },
       },
       number: {
         title: 'Number',
         type: 'number',
         width: 'md',
         refreshRequirementsOnChange: true,
-        bold: true,
+        tagClassName: {
+          h3: true,
+        },
       },
       select: {
         title: 'Select',

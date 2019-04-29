@@ -2,8 +2,6 @@ import React, { PureComponent, Fragment } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import './DefinitionList.less';
-
 import DefinitionListItem from './DefinitionListItem';
 import { prepFields } from './utils/requirements';
 
@@ -62,12 +60,9 @@ class DefinitionList extends PureComponent {
                   <dl className={this.getClassNameForLine()}>
                     <dt>{field.title}</dt>
                     <dd
-                      className={classNames(
-                        field.bold && layout === LAYOUTS[2]
-                          ? 'text-word-break font-weight-bold h3 definition-list__custom-field-value'
-                          : 'text-word-break',
-                        { 'text-sm-right': layout === LAYOUTS[2] },
-                      )}
+                      className={classNames({
+                        'text-word-break text-sm-right': layout === LAYOUTS[2],
+                      })}
                     >
                       <DefinitionListItem field={field} value={model[key]} locale={locale} />
                     </dd>

@@ -38,11 +38,6 @@ describe('DefinitionList', () => {
       expect(component.find('.text-xs-left').length).toBe(0);
       expect(component.find('.text-sm-right').length).toBe(0);
     });
-    it('does not have dl element in bold', () => {
-      expect(component.find('.font-weight-bold').length).toBe(0);
-      expect(component.find('.h3').length).toBe(0);
-      expect(component.find('.definition-list__field-value-bold').length).toBe(0);
-    });
   });
 
   describe('when given a horizontal layout', () => {
@@ -73,11 +68,6 @@ describe('DefinitionList', () => {
       expect(component.find('.text-xs-left').length).toBe(0);
       expect(component.find('.text-sm-right').length).toBe(0);
     });
-    it('does not have dl element in bold', () => {
-      expect(component.find('.font-weight-bold').length).toBe(0);
-      expect(component.find('.h3').length).toBe(0);
-      expect(component.find('.definition-list__custom-field-value').length).toBe(0);
-    });
   });
 
   describe('when given a justified layout', () => {
@@ -107,29 +97,6 @@ describe('DefinitionList', () => {
       expect(component.find('.dl-horizontal').length).toBe(1);
       expect(component.find('.text-xs-left').length).toBe(1);
       expect(component.find('.text-sm-right').length).toBe(1);
-    });
-
-    it('does not have dl element in bold', () => {
-      expect(component.find('.font-weight-bold').length).toBe(0);
-      expect(component.find('.h3').length).toBe(0);
-      expect(component.find('.definition-list__custom-field-value').length).toBe(0);
-    });
-    it('has dl element in bold if bold paramater is true', () => {
-      props = {
-        layout: LAYOUTS[2],
-        model: { key: '2000-01-01T00:00:00Z' },
-        fields: {
-          key: {
-            title: 'Date label',
-            type: 'date',
-            bold: true,
-          },
-        },
-      };
-      component = shallow(<DefinitionList {...props} />);
-      expect(component.find('.font-weight-bold').length).toBe(1);
-      expect(component.find('.h3').length).toBe(1);
-      expect(component.find('.definition-list__custom-field-value').length).toBe(1);
     });
   });
 
