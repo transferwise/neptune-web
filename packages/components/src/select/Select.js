@@ -5,7 +5,10 @@ import Transition from 'react-transition-group/Transition';
 
 import Option from './option';
 import KeyCodes from '../common/keyCodes';
-import { isIosDevice } from '../common/deviceDetection';
+import {
+  addClickClassToDocumentOnIos,
+  removeClickClassFromDocumentOnIos,
+} from '../common/domHelpers';
 import { addClassAndTriggerReflow, removeClass } from './domHelpers';
 
 import './Select.less';
@@ -205,12 +208,16 @@ export default class Select extends Component {
         }
       });
     });
-    document.addEventListener(getEventType(), this.handleDocumentClick, false);
+
+    addClickClassToDocumentOnIos();
+    document.addEventListener('click', this.handleDocumentClick, false);
   }
 
   close() {
     this.setState({ open: false, keyboardFocusedOptionIndex: null });
-    document.removeEventListener(getEventType(), this.handleDocumentClick, false);
+
+    removeClickClassFromDocumentOnIos();
+    document.removeEventListener('click', this.handleDocumentClick, false);
   }
 
   handleButtonClick = () => {
@@ -440,8 +447,4 @@ export default class Select extends Component {
       </Transition>
     );
   }
-}
-
-function getEventType() {
-  return isIosDevice() ? 'touchstart' : 'click';
 }

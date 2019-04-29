@@ -6,7 +6,12 @@ import Placement, { PlacementValues } from './Placement';
 import { getPlacement, getPopoverPosition } from './positioning';
 import { wrapInDOMElementIfNecessary } from './DOMWrapping';
 import KeyCodes from '../common/keyCodes';
-import { isIosDevice } from '../common/deviceDetection';
+import {
+  addClickClassToDocumentOnIos,
+  removeClickClassFromDocumentOnIos,
+} from '../common/domHelpers';
+
+import './Popover.less';
 
 export default class Popover extends Component {
   static Placement = Placement;
@@ -30,7 +35,7 @@ export default class Popover extends Component {
   };
 
   componentWillUnmount() {
-    document.removeEventListener(getEventType(), this.closePopoverOnOutsideClick, true);
+    this.close();
   }
 
   closePopoverOnOutsideClick = event => {
@@ -49,14 +54,17 @@ export default class Popover extends Component {
 
   open = () => {
     this.setState({ isOpen: true });
-    document.addEventListener(getEventType(), this.closePopoverOnOutsideClick, true);
+
+    addClickClassToDocumentOnIos();
+    document.addEventListener('click', this.closePopoverOnOutsideClick, true);
   };
 
   close = () => {
     this.setState({ isOpen: false });
-    document.removeEventListener(getEventType(), this.closePopoverOnOutsideClick, true);
-  };
 
+    removeClickClassFromDocumentOnIos();
+    document.removeEventListener('click', this.closePopoverOnOutsideClick, true);
+  };
   createTrigger = () => {
     const { children: child } = this.props;
     const wrappedChild = wrapInDOMElementIfNecessary(child);
@@ -107,8 +115,4 @@ export default class Popover extends Component {
       </Fragment>
     );
   }
-}
-
-function getEventType() {
-  return isIosDevice() ? 'touchstart' : 'click';
 }

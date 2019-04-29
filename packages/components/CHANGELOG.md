@@ -1,3 +1,8 @@
+# v4.19.2
+## Fix: Remove `touchstart` from `Select` and `Popover`
+
+Ios devices used `touchstart` for closing `Select` and `Popover` but that broke selecting values from `Select`
+
 # v4.19.1
 ## Separate joined MoneyInput class names for css modules
 
