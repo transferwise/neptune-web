@@ -34,9 +34,6 @@ export default class DefinitionListDocs extends Component {
         type: 'number',
         width: 'md',
         refreshRequirementsOnChange: true,
-        tagClassName: {
-          h3: true,
-        },
       },
       select: {
         title: 'Select',

@@ -1,3 +1,8 @@
+# v4.19.4
+## Adjust DefinitionList
+On justified layout force text to the left, use dl-horizontal for smaller height between items.
+Add the possibility to have values styled as h3
+
 # v4.19.3
 ## Fix: Remove `transition` for mobile `Select` since it uses `animation`
 
