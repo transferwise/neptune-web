@@ -1,3 +1,6 @@
+# v4.19.3
+## Fix: Remove `transition` for mobile `Select` since it uses `animation`
+
 # v4.19.2
 ## Fix: Remove `touchstart` from `Select` and `Popover`
 

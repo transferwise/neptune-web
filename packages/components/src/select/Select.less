@@ -25,7 +25,14 @@ html.ios-click {
 }
 
 @media (max-width: @screen-xs-max) {
-  .dropup.open, .dropdown.open {
+  .dropup,
+  .dropdown {
+    > .dropdown-menu {
+      transition: none;
+    }
+  }
+  .dropup.open,
+  .dropdown.open {
     &:before {
       content: '';
       position: fixed;
