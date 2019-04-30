@@ -1,1 +1,0 @@
-.colored-dot{position:relative}.colored-dot:after{content:".";position:absolute;bottom:0;transform:translate(-100%);color:var(--brand-light-blue)}

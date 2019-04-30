@@ -1,3 +1,5 @@
-# build/
-docs-build/
-node_modules
+.DS_Store
+.next/
+/dist
+/node_modules
+/static/assets/*

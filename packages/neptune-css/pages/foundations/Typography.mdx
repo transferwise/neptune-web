@@ -1,0 +1,256 @@
+import Code from '../../doc-components/Code';
+
+## Headings
+
+All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.
+
+<table className="table">
+ <tbody>
+   <tr>
+     <td>
+       <h1>h1. heading</h1>
+     </td>
+     <td className="type-info"><span className="hidden-xs hidden-sm">bold 42px<br />line-height 48px<br />margin-bottom 8px</span><span className="visible-xs visible-sm">bold 28px<br />line-height 32px<br />margin-bottom 4px</span></td>
+   </tr>
+   <tr>
+     <td>
+       <h2>h2. heading</h2>
+     </td>
+     <td className="type-info"><span className="hidden-xs hidden-sm">bold 28px<br />line-height 32px<br />margin-bottom 4px</span><span className="visible-xs visible-sm">bold 22px<br />line-height 30px<br />margin-bottom 2px</span></td>
+   </tr>
+   <tr>
+     <td>
+       <h3>h3. heading</h3>
+     </td>
+     <td className="type-info"><span className="hidden-xs hidden-sm">semi-bold 22px<br />line-height 30px<br />margin-bottom 2px</span><span className="visible-xs visible-sm">semi-bold 18px<br />line-height 24px</span></td>
+   </tr>
+   <tr>
+     <td>
+       <h4>h4. heading</h4>
+     </td>
+     <td className="type-info"><span className="hidden-xs hidden-sm">semi-bold 18px<br />line-height 24px</span><span className="visible-xs visible-sm">semi-bold 16px<br />line-height 24px</span></td>
+   </tr>
+   <tr>
+     <td>
+       <h5>h5. heading</h5>
+     </td>
+     <td className="type-info">semi-bold 16px<br />line-height 24px</td>
+   </tr>
+   <tr>
+     <td>
+       <h6>h6. heading</h6>
+     </td>
+     <td className="type-info">semi-bold 14px<br />line-height 24px</td>
+   </tr>
+ </tbody>
+</table>
+
+<Code lang="html">{`<h1>h1. heading</h1>
+<h2>h2. heading</h2>
+<h3>h3. heading</h3>
+<h4>h4. heading</h4>
+<h5>h5. heading</h5>
+<h6>h6. heading</h6>`}</Code>
+
+Create contextual headings with the built in background helper classNamees.
+
+<div className="d-flex">
+  <div className="bg-default p-a-2">
+    <h1>h1. heading</h1>
+    <h2>h2. heading</h2>
+    <h3>h3. heading</h3>
+    <h4>h4. heading</h4>
+    <h5>h5. heading</h5>
+    <h6>h6. heading</h6>
+  </div>
+  <div className="bg-info p-a-2">
+    <h1>h1. heading</h1>
+    <h2>h2. heading</h2>
+    <h3>h3. heading</h3>
+    <h4>h4. heading</h4>
+    <h5>h5. heading</h5>
+    <h6>h6. heading</h6>
+  </div>
+  <div className="bg-primary p-a-2">
+    <h1>h1. heading</h1>
+    <h2>h2. heading</h2>
+    <h3>h3. heading</h3>
+    <h4>h4. heading</h4>
+    <h5>h5. heading</h5>
+    <h6>h6. heading</h6>
+  </div>
+</div>
+
+<Code lang="html">{`<div class="bg-default">
+  <h1>h1. heading</h1>
+  <h2>h2. heading</h2>
+  <h3>h3. heading</h3>
+  <h4>h4. heading</h4>
+  <h5>h5. heading</h5>
+  <h6>h6. heading</h6>
+</div>
+<div class="bg-info">
+  <h1>h1. heading</h1>
+  <h2>h2. heading</h2>
+  <h3>h3. heading</h3>
+  <h4>h4. heading</h4>
+  <h5>h5. heading</h5>
+  <h6>h6. heading</h6>
+</div>
+<div class="bg-primary">
+  <h1>h1. heading</h1>
+  <h2>h2. heading</h2>
+  <h3>h3. heading</h3>
+  <h4>h4. heading</h4>
+  <h5>h5. heading</h5>
+  <h6>h6. heading</h6>
+</div>`}</Code>
+
+## Display headings
+
+Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using adisplay heading—a larger, slightly more opinionated heading style.
+
+<table className="table">
+  <tbody>
+    <tr>
+      <td>
+        <h1 className="display-1">Display 1</h1>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h1 className="display-2">Display 2</h1>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h1 className="display-3">Display 3</h1>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h1 className="display-4">Display 4</h1>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<Code lang="html">{`<h1 class="display-1">Display 1</h1>
+<h1 class="display-2">Display 2</h1>
+<h1 class="display-3">Display 3</h1>
+<h1 class="display-4">Display 4</h1>`}</Code>
+
+## Body copy
+
+Bootstrap's global default `font-size` **16px**, with a `line-height` of **24px**. This is applied to the `<body>` and all paragraphs. In addition, `<p>` (paragraphs) receive a bottom margin of their full line-height (24px by default).
+
+<p>
+  Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+</p>
+
+<Code lang="html">{`<p>...</p>`}</Code>
+
+## Body copy .lead
+### Lead body copy
+
+Make a paragraph stand out by adding `.lead`.
+
+<p className="lead">
+  Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
+</p>
+
+<Code lang="html">{`<p class="lead">...</p>`}</Code>
+
+## Using Less
+### Built with Less
+
+The typographic scale is based on two Less variables in `variables.less`: `@font-size-base` and `@line-height-base`. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.
+
+## Inline text elements
+### Marked text
+
+For highlighting a run of text due to its relevance in another context, use the `<mark>` tag.
+
+<Code lang="html">{`You can use the mark tag to <mark>highlight</mark> text.`}</Code>
+
+You can use the mark tag to <mark>highlight</mark> text.
+
+<Code lang="html">{`You can use the mark tag to <mark>highlight</mark> text.`}</Code>
+
+### Deleted text
+
+For indicating blocks of text that have been deleted use the `<del>` tag.
+
+<p>
+  <del>This line of text is meant to be treated as deleted text.</del>
+</p>
+
+<Code lang="html">{`<del>This line of text is meant to be treated as deleted text.</del>`}</Code>
+
+### Strikethrough text
+
+For indicating blocks of text that are no longer relevant use the `<s>` tag.
+
+<p>
+  <s>This line of text is meant to be treated as no longer accurate.</s>
+</p>
+
+<Code lang="html">{`<s>This line of text is meant to be treated as no longer accurate.</s>`}</Code>
+
+### Inserted text
+
+For indicating additions to the document use the `<ins>` tag.
+
+<p>
+  <ins>This line of text is meant to be treated as an addition to the document.</ins>
+</p>
+
+<Code lang="html">{`<ins>This line of text is meant to be treated as an addition to the document.</ins>`}</Code>
+
+### Underlined text
+
+To underline text use the `<u>` tag.
+
+<p>
+  <u>This line of text will render as underlined.</u>
+</p>
+
+<Code lang="html">{`<u>This line of text will render as underlined</u>`}</Code>
+
+Make use of HTML's default emphasis tags with lightweight styles.
+
+### Small text
+
+For de-emphasizing inline or blocks of text, use the `<small>` tag to set text at 85% the size of the parent. Heading elements receive their own `font-size` for nested `<small>` elements.
+
+You may alternatively use an inline element with `.small` in place of any `<small>`.
+
+<p>
+  <small>This line of text is meant to be treated as fine print.</small>
+</p>
+
+<Code lang="html">{`<small>This line of text is meant to be treated as fine print.</small>`}</Code>
+
+### Bold
+
+For emphasizing a snippet of text with a heavier `font-weight`.
+
+<p>
+  <strong>The following snippet of text isrendered as bold text.</strong>
+</p>
+
+<Code lang="html">{`<strong>rendered as bold text</strong>`}</Code>
+
+### Italics
+
+For emphasizing a snippet of text with italics.
+
+<p>
+  <em>The following snippet of text isrendered as italicized text.</em>
+</p>
+
+<Code lang="html">{`<em>rendered as italicized text</em>`}</Code>
+
+export const meta = {
+  displayName: 'Typography'
+}

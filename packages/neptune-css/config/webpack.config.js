@@ -7,12 +7,15 @@ const path = require("path");
 module.exports = function(mode, entries) {
   return {
     mode,
+    performance: {
+      hints: false,
+    },
     entry: entries.reduce((entryPoints, entry) => {
       entryPoints[entry.name] = entry.path;
       return entryPoints;
     }, {}),
     output: {
-      path: paths.appBuild
+      path: paths.appBuild,
     },
     plugins: [
       new MiniCssExtractPlugin({
@@ -64,7 +67,7 @@ module.exports = function(mode, entries) {
       ]
     },
     optimization: {
-      minimizer: [new OptimizeCSSAssetsPlugin({})],
+      minimizer: [new OptimizeCSSAssetsPlugin()],
       splitChunks: {
         cacheGroups: entries.forEach(entry => {
           return {
