@@ -58,29 +58,29 @@ const Layout = ({ children, router }) => {
     <div id="top" className="PageLayout">
       <header className="Header">
         <div className="Header__Fixed">
-          <Link href="/">
+          <Link href={process.env.NODE_ENV === "production" ? "/neptune-css/" : "/"}>
             <a className="Logo"><Logo /></a>
           </Link>
 
           <div className="Header__Inner">
             <ul className="Nav Nav--dark">
               <li>
-                <Link href="/foundations/Colours">
+                <Link href={process.env.NODE_ENV === "production" ? "/neptune-css/foundations/Colours" : "/foundations/Colours"}>
                   <a className={`Nav__Link ${foundation ? 'active' : null}`}>Foundations</a>
                 </Link>{' '}
               </li>
               <li>
-                <Link href="/layout/Flex">
+                <Link href={process.env.NODE_ENV === "production" ? "/neptune-css/layout/Flex" : "/layout/Flex"}>
                   <a className={`Nav__Link ${layout ? 'active' : null}`}>Layout</a>
                 </Link>{' '}
               </li>
               <li>
-                <Link href="/components/Alerts">
+                <Link href={process.env.NODE_ENV === "production" ? "/neptune-css/components/Alerts" : "/components/Alerts"}>
                   <a className={`Nav__Link ${component ? 'active' : null}`}>Components</a>
                 </Link>{' '}
               </li>
               <li>
-                <Link href="/utilities/Background">
+                <Link href={process.env.NODE_ENV === "production" ? "/neptune-css/utilities/Background" : "/utilities/Background"}>
                   <a className={`Nav__Link ${utility ? 'active' : null}`}>Utilities</a>
                 </Link>{' '}
               </li>

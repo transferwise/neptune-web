@@ -10,7 +10,7 @@ const getLink = router => {
 
     return (
       <li key={name}>
-        <Link href={`/foundations/${name}`}>
+        <Link href={process.env.NODE_ENV === "production" ? `/neptune-css/foundations/${name}` : `/foundations/${name}`}>
           <a className={`Nav__Link ${isSelected ? 'active' : ''}`}>
             {name}
             {' '}

@@ -1,5 +1,6 @@
 .DS_Store
 .next/
 /dist
+/docs-build
 /node_modules
 /static/assets/*
