@@ -59,7 +59,7 @@ const Layout = ({ children, router }) => {
       <header className="Header">
         <div className="Header__Fixed">
           <Link href="/">
-            <a className="Logos"><Logo /></a>
+            <a className="Logo"><Logo /></a>
           </Link>
 
           <div className="Header__Inner">

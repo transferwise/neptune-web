@@ -71,12 +71,12 @@ class MyDocument extends Document {
             }
             .PageLayout {
               display: grid;
-              grid-template-columns: 256px auto;
+              grid-template-columns: 200px auto;
               min-height: 100vh;
             }
             .PageLayout__Inner {
               display: grid;
-              grid-template-columns: 256px auto;
+              grid-template-columns: 200px auto;
               background: #f2f5f7;
             }
             .PageLayout__Inner--nosidebar {
@@ -86,15 +86,19 @@ class MyDocument extends Document {
               background: #37517e;
             }
             .Header__Fixed {
-              width: 256px;
+              width: 200px;
               height: 100vh;
               position: fixed;
+            }
+            .Logo {
+              height: 70px;
+              display: flex;
             }
             .Sidebar__Fixed {
               display: flex;
               flex-direction: column;
               border-right: 1px solid #e2e6e8;
-              width: 256px;
+              width: 200px;
               height: 100vh;
               position: fixed;
             }
@@ -126,6 +130,7 @@ class MyDocument extends Document {
               color: #37517e;
               text-decoration: none;
               transition: color 0.15s;
+              outline: 0 !important;
             }
             .Nav__Link:hover,
             .Nav__Link.active {
@@ -150,8 +155,12 @@ class MyDocument extends Document {
             }
             .Content {
               padding: 24px 32px;
-              max-width: 1012px;
               background: #FFF;
+              position: fixed;
+              overflow-y: scroll;
+              left: 400px;
+              height: 100%;
+              width: calc(100% - 400px);
             }
           `}</style>
         </Head>
