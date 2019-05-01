@@ -1,26 +1,42 @@
-Skew of 2deg using clip-path
+import Code from '../../doc-components/Code';
 
-<div className="skew doc-bg--dark doc-section doc-block d-flex align-items-center justify-content-center">
-  <h2 className="doc-text--inverse">.skew</h2>
+<p><strong>Skew of 2 degrees</strong> using clip-path to the background added by pseudo element</p>
+
+<h2>Default</h2>
+<div className="skew doc-section"></div>
+<Code lang="html">{`<div class="skew">`}</Code>
+
+<h2>Negative</h2>
+<div className="skew skew--negative doc-section">
 </div>
-<div className="skew--negative doc-bg--dark doc-section doc-block d-flex align-items-center justify-content-center">
-  <h2 className="doc-text--inverse">.skew--negative</h2>
-</div>
-<div className="skew--top doc-bg--dark doc-section doc-block d-flex align-items-center justify-content-center">
-  <h2 className="doc-text--inverse">.skew--top</h2>
-</div>
-<div className="skew--top-negative doc-bg--dark doc-section doc-block d-flex align-items-center justify-content-center">
-  <h2 className="doc-text--inverse">.skew--top-negative</h2>
-</div>
-<div className="skew--bottom doc-bg--dark doc-section doc-block d-flex align-items-center justify-content-center">
-  <h2 className="doc-text--inverse">.skew--bottom</h2>
-</div>
-<div className="skew--bottom-negative doc-bg--dark doc-section doc-block d-flex align-items-center justify-content-center">
-  <h2 className="doc-text--inverse">.skew--bottom-negative</h2>
-</div>
+<Code lang="html">{`<div class="skew skew--negative">`}</Code>
+
+<h2>Top</h2>
+<div className="skew skew--top doc-section"></div>
+<Code lang="html">{`<div class="skew skew--top">`}</Code>
+
+<h2>Top negative</h2>
+<div className="skew skew--top-negative doc-section"></div>
+<Code lang="html">{`<div class="skew skew--top-negative">`}</Code>
+
+<h2>Bottom</h2>
+<div className="skew skew--bottom doc-section"></div>
+<Code lang="html">{`<div class="skew skew--bottom">`}</Code>
+
+<h2>Bottom negative</h2>
+<div className="skew skew--bottom-negative doc-section"></div>
+<Code lang="html">{`<div class="skew skew--bottom-negative">`}</Code>
+
+<h2>Dark</h2>
+<div className="skew skew--bg-dark doc-section"></div>
+<Code lang="html">{`<div class="skew skew--bg-dark">`}</Code>
+
+<h2>Light</h2>
+<div className="skew skew--bg-light doc-section"></div>
+<Code lang="html">{`<div class="skew skew--bg-light">`}</Code>
 
 export const meta = {
   displayName: 'Skew',
   isBeta: true,
-  size: '256 B'
+  size: '1 KB'
 }

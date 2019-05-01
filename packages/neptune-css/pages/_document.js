@@ -29,11 +29,11 @@ class MyDocument extends Document {
               height: auto;
               vertical-align: middle;
             }
+            pre {
+              margin-top: 24px;
+            }
             .doc-bg {
               background: #f2f5f7;
-            }
-            .doc-bg--dark {
-              background: #37517e;
             }
             .doc-block {
               margin-top: calc(8px * 6);

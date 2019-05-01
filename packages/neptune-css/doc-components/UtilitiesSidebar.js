@@ -15,7 +15,7 @@ const getLink = router => {
             {name}
             {' '}
             {isBeta && (
-              <span className="badge badge-success">new</span>
+              <span className="badge">beta</span>
             )}
           </a>
         </Link>

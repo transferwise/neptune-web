@@ -27,7 +27,7 @@ const getTitle = page => page && (
   </h1>);
 
 const getBetaBadge = page => page && page.isBeta && (
-  <span className="badge badge-success">beta</span>);
+  <span className="badge">beta</span>);
 
 const getSize = page => page && page.size && (
   <p>{page.size} minified</p>);
