@@ -4,14 +4,10 @@
 @import (reference) "~bootstrap/less/variables.less";
 
 .bg {
-  background-position: 0 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
-
-  @media all and (min-width: @screen-md) {
-    background-size: 100%;
-  }
+  background-size: 100%;
+  background-position: bottom;
 
   &--dark {
     background-color: var(--brand-primary);
