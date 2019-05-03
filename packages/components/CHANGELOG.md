@@ -1,3 +1,7 @@
+# v4.19.6
+## Add type checks to deviceDetection
+This was causing FlowNavigation problems when using SSR
+
 # v4.19.5
 ## Bug fix for RadioButton selection
 Users were not allowed to select a radio button by clicking on the circular `<button>` element. This version fixed this issue
