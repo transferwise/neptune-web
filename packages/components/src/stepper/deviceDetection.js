@@ -1,11 +1,12 @@
 function supportsTouchEvents() {
-  return !!(
-    (typeof window !== 'undefined' && window.ontouchstart !== undefined) ||
-    (typeof navigator !== 'undefined' && navigator.maxTouchPoints) ||
-    (typeof window !== 'undefined' &&
-      window.DocumentTouch &&
-      document instanceof window.DocumentTouch)
-  );
+  const ontouchstartIsDefined = typeof window !== 'undefined' && window.ontouchstart !== undefined;
+  const maxTouchPointsIsDefined = typeof navigator !== 'undefined' && navigator.maxTouchPoints;
+  const documentTouchIsDefined =
+    typeof window !== 'undefined' &&
+    window.DocumentTouch &&
+    document instanceof window.DocumentTouch;
+
+  return !!(ontouchstartIsDefined || maxTouchPointsIsDefined || documentTouchIsDefined);
 }
 
 function userAgentSuggestsTouchDevice() {
