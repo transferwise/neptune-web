@@ -1,12 +1,12 @@
 function supportsTouchEvents() {
-  const ontouchstartIsDefined = typeof window !== 'undefined' && window.ontouchstart !== undefined;
+  const onTouchStartIsDefined = typeof window !== 'undefined' && window.ontouchstart !== undefined;
   const maxTouchPointsIsDefined = typeof navigator !== 'undefined' && navigator.maxTouchPoints;
   const documentTouchIsDefined =
     typeof window !== 'undefined' &&
     window.DocumentTouch &&
     document instanceof window.DocumentTouch;
 
-  return !!(ontouchstartIsDefined || maxTouchPointsIsDefined || documentTouchIsDefined);
+  return !!(onTouchStartIsDefined || maxTouchPointsIsDefined || documentTouchIsDefined);
 }
 
 function userAgentSuggestsTouchDevice() {
