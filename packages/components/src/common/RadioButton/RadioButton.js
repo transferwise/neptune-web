@@ -24,6 +24,7 @@ const RadioButton = ({ id, name, checked, onChange, disabled }) => (
       disabled={disabled}
       aria-pressed={checked}
       tabIndex="-1"
+      onClick={() => !checked && onChange(!checked)}
     >
       <span className="tw-radio-check" />
     </button>

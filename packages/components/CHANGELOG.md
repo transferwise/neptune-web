@@ -1,3 +1,7 @@
+# v4.19.5
+## Bug fix for RadioButton selection
+Users were not allowed to select a radio button by clicking on the circular `<button>` element. This version fixed this issue
+
 # v4.19.4
 ## Adjust DefinitionList
 On justified layout force text to the left, use dl-horizontal for smaller height between items.
