@@ -12,6 +12,7 @@
     "@babel/core": "^7.4.3",
     "@mapbox/rehype-prism": "^0.3.1",
     "@mdx-js/mdx": "^1.0.14",
+    "@transferwise/components": "^4.19.6",
     "@transferwise/icons": "^0.13.2",
     "@transferwise/public-navigation": "^3.1.10",
     "@zeit/next-css": "^1.0.1",
