@@ -1,3 +1,7 @@
+# v4.20.0
+## Add Button component
+Added Button component for the supported variants and states
+
 # v4.19.6
 ## Add type checks to deviceDetection
 This was causing FlowNavigation problems when using SSR
