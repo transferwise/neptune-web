@@ -14,12 +14,14 @@
 @import (reference) "~bootstrap/less/mixins/center-block.less";
 @import (reference) "~bootstrap/less/mixins/hide-text.less";
 @import (reference) "~bootstrap/less/mixins/grid.less";
+@import (reference) "~bootstrap/less/mixins/tab-focus.less";
 
 @import "~bootstrap/less/utilities.less";
 @import "~bootstrap/less/dropdowns.less";
 @import "~bootstrap/less/glyphicons.less";
 @import "~bootstrap/less/logos.less";
 @import "~bootstrap/less/navbar.less";
+@import "~bootstrap/less/close.less";
 
 // Extracted form 'forms.less'
 
@@ -134,9 +136,11 @@
       &:active {
         color: @nav-link-active-color;
       }
-
       &.navbar-title-link {
-        padding: 9px 24px 7px 0;
+
+        @media all and (min-width: @screen-md) {
+           padding: 13px 24px 7px 0;
+         }
       }
     }
   }
@@ -148,4 +152,18 @@
 
 .navbar-background--inverse {
   background-color: @brand-primary;
+}
+
+/* Fix until neptune-CSS specificity in navigation is solved */
+
+@media all and (min-width: @screen-md) {
+  .nav.navbar-nav > li > a {
+    padding-bottom: 6px;
+    font-size: 14px;
+  }
+
+  .nav.navbar-nav > li > a.navbar-title-link,
+  .nav.navbar-nav > li > button.navbar-title-link {
+    font-size: 22px;
+  }
 }
