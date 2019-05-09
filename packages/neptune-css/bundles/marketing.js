@@ -17,6 +17,7 @@ import './grid';
 import './grid-layout';
 import './iconfont';
 import './icons';
+import './link-callout';
 import './navbar';
 import './navs';
 import './loaders';

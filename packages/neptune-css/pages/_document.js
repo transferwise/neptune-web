@@ -162,6 +162,10 @@ class MyDocument extends Document {
               height: 100%;
               width: calc(100% - 400px);
             }
+            .doc-dropdown-menu {
+              display: block;
+              clear: none;
+            }
           `}</style>
         </Head>
 
