@@ -1,7 +1,0 @@
-export {default as Code} from './Code'
-export {default as ComponentsSidebar} from './ComponentsSidebar'
-export {default as FoundationsSidebar} from './FoundationsSidebar'
-export {default as GitHubLink} from './GitHubLink'
-export {default as LayoutSidebar} from './LayoutSidebar'
-export {default as UtilitiesSidebar} from './UtilitiesSidebar'
-export * from './_utils'

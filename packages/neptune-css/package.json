@@ -1,6 +1,6 @@
 {
   "name": "neptune-css",
-  "description": "TransferWise Design System CSS library",
+  "description": "Neptune CSS is TransferWise's Design System CSS library",
   "version": "0.1.0",
   "browserslist": [
     ">0.2%",
@@ -9,43 +9,26 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@babel/core": "^7.4.3",
-    "@mapbox/rehype-prism": "^0.3.1",
-    "@mdx-js/mdx": "^1.0.14",
-    "@transferwise/components": "^4.19.6",
+    "@babel/core": "^7.4.4",
     "@transferwise/icons": "^0.13.2",
-    "@transferwise/public-navigation": "^3.1.10",
-    "@zeit/next-css": "^1.0.1",
-    "@zeit/next-mdx": "^1.2.0",
     "babel-loader": "^8.0.5",
-    "babel-plugin-inline-react-svg": "^1.1.0",
-    "bootstrap": "transferwise/bootstrap#v5.18.6",
-    "deploy-directory-on-branch-to-gh-pages": "^0.2.5",
+    "bootstrap": "transferwise/bootstrap",
+    "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
     "fs-extra": "^7.0.1",
     "less": "^3.9.0",
-    "less-loader": "^4.1.0",
-    "next": "^8.1.0",
-    "next-page-map": "^1.0.1",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.6.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "react": "^16.8.6",
-    "react-dev-utils": "^9.0.0",
-    "react-dom": "^16.8.6",
-    "rehype": "^7.0.0",
-    "retranslate": "^1.0.3",
+    "react-dev-utils": "^9.0.1",
     "transferwise-iconfont": "transferwise/iconfont",
-    "webpack": "^4.30.0"
+    "webpack": "^4.31.0"
   },
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
-    "build": "rm -rf dist && node scripts/build.js && rm -rf dist/*.js",
-    "copy": "rm -rf 'static/assets/**/*' && cp -r dist/* static/assets/ && cp -r public/* static/assets/",
-    "start": "next dev",
-    "build-docs": "npm run copy && next build && next export -o docs-build && touch docs-build/.nojekyll",
-    "deploy-docs-to-dir": "gh-pages -a -d docs-build -e",
-    "deploy-docs-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build"
+    "build": "rm -rf dist && node scripts/build.js && rm -rf dist/*.js"
   }
 }
