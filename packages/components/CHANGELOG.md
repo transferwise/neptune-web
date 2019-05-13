@@ -1,3 +1,6 @@
+# v5.0.0
+## Rename Button component's buttonState property to state
+
 # v4.20.0
 ## Add Button component
 Added Button component for the supported variants and states

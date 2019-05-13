@@ -23,9 +23,9 @@ export const ButtonState = {
   Disabled: 'disabled',
 };
 
-const Button = ({ label, buttonState, size, type, block, onClick }) => {
-  const isDisabled = buttonState === ButtonState.Disabled;
-  const isLoading = buttonState === ButtonState.Loading;
+const Button = ({ label, state, size, type, block, onClick }) => {
+  const isDisabled = state === ButtonState.Disabled;
+  const isLoading = state === ButtonState.Loading;
 
   const classes = classNames(`btn btn-${size}`, {
     'btn-loading': isLoading,
@@ -41,7 +41,7 @@ const Button = ({ label, buttonState, size, type, block, onClick }) => {
       type="button"
       className={classes}
       onClick={e => onClick(e)}
-      disabled={isDisabled || buttonState === ButtonState.Loading}
+      disabled={isDisabled || state === ButtonState.Loading}
     >
       {label}
       {isLoading && <span className={classNames('btn-loader', { 'm-l-2': !block })} />}
@@ -52,7 +52,7 @@ const Button = ({ label, buttonState, size, type, block, onClick }) => {
 Button.propTypes = {
   type: Types.oneOf(Object.values(ButtonType)),
   size: Types.oneOf(Object.values(ButtonSize)),
-  buttonState: Types.oneOf(Object.values(ButtonState)),
+  state: Types.oneOf(Object.values(ButtonState)),
   block: Types.bool,
   onClick: Types.func.isRequired,
   label: Types.string.isRequired,
@@ -61,7 +61,7 @@ Button.propTypes = {
 Button.defaultProps = {
   size: ButtonSize.Medium,
   type: ButtonType.Primary,
-  buttonState: ButtonState.Default,
+  state: ButtonState.Default,
   block: false,
 };
 

@@ -32,7 +32,7 @@ export default class ButtonDocs extends Component {
               <Button
                 label={label}
                 size={size}
-                buttonState={stateSelection.value}
+                state={stateSelection.value}
                 type={type}
                 block={block}
                 onClick={onClick}

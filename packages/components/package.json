@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "4.20.0",
+  "version": "5.0.0",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -109,7 +109,10 @@
     "deploy-docs-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build"
   },
   "eslintConfig": {
-    "extends": ["airbnb", "prettier"],
+    "extends": [
+      "airbnb",
+      "prettier"
+    ],
     "parser": "babel-eslint",
     "rules": {
       "react/jsx-filename-extension": 0,
@@ -122,9 +125,16 @@
   },
   "homepage": "https://transferwise.github.io/components/",
   "jest": {
-    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
-    "setupFiles": ["raf/polyfill", "<rootDir>/config/jest/setupTests.js"],
-    "testPathIgnorePatterns": ["<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "setupFiles": [
+      "raf/polyfill",
+      "<rootDir>/config/jest/setupTests.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
+    ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
@@ -132,12 +142,17 @@
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     }
   },
   "lint-staged": {
-    "*.js": ["prettier-eslint '**/*.js' --write", "git add"]
+    "*.js": [
+      "prettier-eslint '**/*.js' --write",
+      "git add"
+    ]
   }
 }

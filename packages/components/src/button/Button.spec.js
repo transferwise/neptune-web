@@ -5,7 +5,7 @@ import Button from './';
 
 describe('Button', () => {
   const props = {
-    buttonState: 'default',
+    state: 'default',
     type: 'pay',
     size: 'md',
     onClick: jest.fn(),
@@ -32,15 +32,15 @@ describe('Button', () => {
     expect(button.hasClass('btn-success')).toBe(true);
   });
 
-  it('is disabled if buttonState prop is disabled', () => {
+  it(`is disabled if button's state prop is disabled`, () => {
     expect(wrapper.find('[disabled=true]')).toHaveLength(0);
-    wrapper.setProps({ buttonState: 'disabled' });
+    wrapper.setProps({ state: 'disabled' });
     expect(wrapper.find('[disabled=true]')).toHaveLength(1);
   });
 
-  it('has loading indicator when buttonState prop is loading', () => {
+  it(`has loading indicator when button's state prop is loading`, () => {
     expect(wrapper.find('.btn-loader')).toHaveLength(0);
-    wrapper.setProps({ buttonState: 'loading' });
+    wrapper.setProps({ state: 'loading' });
     expect(wrapper.find('.btn-loader')).toHaveLength(1);
   });
 
