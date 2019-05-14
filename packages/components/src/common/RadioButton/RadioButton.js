@@ -4,18 +4,16 @@ import classNames from 'classnames';
 
 import './RadioButton.less';
 
-const RadioButton = ({ id, name, checked, onChange, disabled }) => (
+const RadioButton = ({ id, value, name, checked, onChange, disabled }) => (
   <Fragment>
     <input
       type="radio"
       className="sr-only"
       id={id}
-      value={id}
+      value={value}
       name={name}
       checked={checked}
-      onChange={() => {
-        onChange(!checked);
-      }}
+      onChange={() => (!checked ? onChange(value) : null)}
       disabled={disabled}
     />
     <button
@@ -24,7 +22,7 @@ const RadioButton = ({ id, name, checked, onChange, disabled }) => (
       disabled={disabled}
       aria-pressed={checked}
       tabIndex="-1"
-      onClick={() => !checked && onChange(!checked)}
+      onClick={() => (!checked ? onChange(value) : null)}
     >
       <span className="tw-radio-check" />
     </button>
@@ -37,6 +35,7 @@ RadioButton.propTypes = {
   checked: Types.bool,
   onChange: Types.func,
   disabled: Types.bool,
+  value: Types.string,
 };
 
 RadioButton.defaultProps = {
@@ -44,6 +43,7 @@ RadioButton.defaultProps = {
   onChange: () => {},
   disabled: false,
   id: null,
+  value: null,
 };
 
 export default RadioButton;

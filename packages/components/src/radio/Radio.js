@@ -14,18 +14,22 @@ const Radio = ({ label, id, ...otherProps }) => (
 );
 
 Radio.propTypes = {
-  label: Types.string.isRequired,
-  id: Types.string,
-  name: Types.string.isRequired,
-  onChange: Types.func.isRequired,
   checked: Types.bool,
   disabled: Types.bool,
+  id: Types.string,
+  label: Types.string.isRequired,
+  name: Types.string.isRequired,
+  onChange: Types.func.isRequired,
+  secondary: Types.string,
+  value: Types.string,
 };
 
 Radio.defaultProps = {
   checked: false,
   disabled: false,
   id: null,
+  secondary: null,
+  value: null,
 };
 
 export default Radio;

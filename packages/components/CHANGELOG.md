@@ -1,3 +1,9 @@
+# v6.0.0
+## Add Radio Group component
+Added <RadioGroup/> component for rendering multiple (2 or more) radio buttons.
+
+Changed Radio Options to broadcast event instead of true of false if selected.
+
 # v5.0.0
 ## Rename Button component's buttonState property to state
 

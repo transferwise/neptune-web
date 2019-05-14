@@ -20,3 +20,4 @@ export { default as ProcessIndicator } from './processIndicator';
 export { default as Upload } from './upload';
 export { default as DefinitionList } from './definitionList';
 export { default as Button } from './button';
+export { default as RadioGroup } from './radioGroup';

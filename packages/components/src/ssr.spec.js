@@ -32,6 +32,16 @@ describe('Server side rendering', () => {
     onChange: jest.fn(),
     status: 'processing',
     size: 'sm',
+    radios: [
+      {
+        id: 'id-test-0',
+        label: 'Radio1',
+      },
+      {
+        id: 'id-test-0',
+        label: 'Radio1',
+      },
+    ],
   };
 
   componentNames.forEach(componentName => {

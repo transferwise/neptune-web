@@ -73,23 +73,22 @@ describe('Radio button', () => {
     expect(name()).toBe('a-name');
   });
 
-  it('has value of passed id', () => {
-    component.setProps({ id: 'some-id' });
-    expect(value()).toBe('some-id');
+  it('has value of passed value', () => {
+    component.setProps({ value: 'some-value' });
+    expect(value()).toBe('some-value');
   });
 
   it('calls change handler with new checked on change', () => {
     const onChange = jest.fn();
-    component.setProps({ onChange });
-
+    component.setProps({ onChange, value: 'some-value', checked: true });
     expect(onChange).not.toBeCalled();
 
     changeInput();
-    expect(onChange).toBeCalledWith(true);
+    expect(onChange).not.toBeCalled();
 
-    component.setProps({ checked: true });
+    component.setProps({ checked: false });
     changeInput();
-    expect(onChange).toBeCalledWith(false);
+    expect(onChange).toBeCalledWith('some-value');
   });
 
   const id = () => input().prop('id');
