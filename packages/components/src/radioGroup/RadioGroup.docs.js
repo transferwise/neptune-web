@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import { RadioGroup } from '..';
 
+import { generateCodeBlock, generateState } from '../../docs/utils';
+
 const RADIOS = [
   {
     value: 'radio-1',
@@ -53,41 +55,8 @@ const KNOBS = {
 export default class RadioGroupDocs extends Component {
   constructor() {
     super();
-    this.state = { ...this.getState() };
+    this.state = { ...generateState(KNOBS) };
   }
-
-  getState = () => {
-    const state = [];
-    Object.values(KNOBS).map(knob =>
-      knob.map(curr => {
-        state[curr.state] = curr.defaultState;
-        return state;
-      }),
-    );
-    return state;
-  };
-
-  getDocs = () => {
-    const docs = Object.values(KNOBS)
-      .map(knob =>
-        knob
-          .reduce((acc, curr) => {
-            acc.push(`${curr.state} = {"${this.state[curr.state] ? this.state[curr.state] : ''}"}`);
-            return acc;
-          }, [])
-          .join('\n\r  '),
-      )
-      .join();
-
-    return (
-      <pre className="tw-docs-code ">
-        {`<RadioGroup
-  onChange={'console.log'}
-  ${docs}
-/>`}
-      </pre>
-    );
-  };
 
   handleOnChange = selectedValue => {
     this.setState({ selectedValue });
@@ -96,6 +65,7 @@ export default class RadioGroupDocs extends Component {
   };
 
   render() {
+    const extraPropsDocs = ["onChange={'console.log'}"];
     return (
       <div className="container">
         <section className="section">
@@ -107,7 +77,7 @@ export default class RadioGroupDocs extends Component {
                 and no is not the backstreet boys
               </span>
               {getExtraDocs()}
-              {this.getDocs()}
+              {generateCodeBlock('RadioGroup', KNOBS, this, extraPropsDocs)}
             </div>
             <div className="col-md-6">
               <div

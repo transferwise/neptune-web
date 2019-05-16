@@ -29,7 +29,7 @@ Radio.defaultProps = {
   disabled: false,
   id: null,
   secondary: null,
-  value: null,
+  value: '',
 };
 
 export default Radio;

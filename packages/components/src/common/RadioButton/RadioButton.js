@@ -43,7 +43,7 @@ RadioButton.defaultProps = {
   onChange: () => {},
   disabled: false,
   id: null,
-  value: null,
+  value: '',
 };
 
 export default RadioButton;
