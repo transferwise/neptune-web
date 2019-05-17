@@ -1,3 +1,6 @@
+# v6.1.1
+## Fixed empty value for Radio Option
+
 # v6.1.0
 ## Added Alert component
 

@@ -14,9 +14,9 @@ const RadioOption = ({
   onChange,
   complex,
   disabled,
+  value,
 }) => {
   const sharedProps = { media, title, description, name, complex, disabled };
-
   return (
     <Option
       {...sharedProps}
@@ -27,6 +27,7 @@ const RadioOption = ({
           checked={checked}
           onChange={onChange}
           disabled={disabled}
+          value={value}
         />
       }
     />
@@ -43,6 +44,7 @@ RadioOption.propTypes = {
   onChange: Types.func.isRequired,
   complex: Types.bool,
   disabled: Types.bool,
+  value: Types.string,
 };
 
 RadioOption.defaultProps = {
@@ -50,6 +52,7 @@ RadioOption.defaultProps = {
   checked: false,
   complex: false,
   disabled: false,
+  value: '',
 };
 
 export default RadioOption;
