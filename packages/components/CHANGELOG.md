@@ -1,3 +1,6 @@
+# v6.1.0
+## Added Alert component
+
 # v6.0.0
 ## Add Radio Group component
 Added <RadioGroup/> component for rendering multiple (2 or more) radio buttons.
