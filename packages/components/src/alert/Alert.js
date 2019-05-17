@@ -28,9 +28,9 @@ export default class Alert extends Component {
   static propTypes = {
     type: Types.string,
     children: Types.node.isRequired,
-    size: Types.oneOfType(Object.values(AlertSize)),
+    size: Types.oneOf(Object.values(AlertSize)),
     dismissible: Types.bool,
-    arrow: Types.oneOfType(Object.values(AlertArrowPosition)),
+    arrow: Types.oneOf(Object.values(AlertArrowPosition)),
   };
 
   static defaultProps = {
