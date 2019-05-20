@@ -23,6 +23,7 @@ import './navbar';
 import './navs';
 import './loaders';
 import './media';
+import './pagination';
 import './public-navigation';
 import './sequences';
 import './skew';
