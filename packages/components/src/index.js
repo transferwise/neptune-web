@@ -22,3 +22,4 @@ export { default as DefinitionList } from './definitionList';
 export { default as Button } from './button';
 export { default as RadioGroup } from './radioGroup';
 export { default as Alert } from './alert';
+export { default as InputWithTextFormat } from './inputWithTextFormat';

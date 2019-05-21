@@ -1,3 +1,6 @@
+# v6.2.0
+## Add dynamic input formatting based on provided pattern.
+
 # v6.1.1
 ## Fixed empty value for Radio Option
 
