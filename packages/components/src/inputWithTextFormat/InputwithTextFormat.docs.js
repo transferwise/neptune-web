@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import { InputWithTextFormat } from '..';
 
 import { generateInput, generateCodeBlock, generateState } from '../../docs/utils';
+import { withTextFormat } from '../';
+
+const InputWithTextFormat = withTextFormat('input');
 
 const PATTERNS = [
   { label: 'Credit card number **** **** **** ****', value: '**** **** **** ****' },
@@ -58,7 +60,7 @@ export default class InputWithTextFormatDocs extends Component {
                 It dynamically formats the inserted value following a provided pattern
               </span>
               {getExtraDocs()}
-              {generateCodeBlock('Input with Text Format', KNOBS, this)}
+              {generateCodeBlock('InputWithTextFormat', KNOBS, this)}
             </div>
             <div className="col-md-6">
               <div
@@ -70,7 +72,6 @@ export default class InputWithTextFormatDocs extends Component {
                 <InputWithTextFormat
                   placeholder={pattern && PLACEHOLDERS[pattern.value]}
                   pattern={pattern && pattern.value}
-                  ref={React.createRef()}
                   className="form-control"
                   onChange={value => this.handleOnChange(value)}
                 />
@@ -88,7 +89,15 @@ const getExtraDocs = () => (
   <div>
     <p className=" m-t-5">
       Input with text format is a component that formats text entered into controls. The model value
-      is preserved without formatting, and validation continues to function on the unformated @@
+      is preserved without formatting, and validation continues to function on the unformated. Text
+      fomatting functionalities can be added using a simple HOC that provides all the method to
+      current input
+      <br />
+      <br />
+      <pre className="tw-docs-code ">
+        InputWithTextFormat = withTextFormat(&apos;input&apos;) <br />
+        InputWithTextFormat = withTextFormat(&apos;textarea&apos;)
+      </pre>
     </p>
   </div>
 );

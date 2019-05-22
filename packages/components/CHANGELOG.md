@@ -1,3 +1,6 @@
+# v7.0.0
+## Extracted text format from component into HOC
+
 # v6.2.0
 ## Add dynamic input formatting based on provided pattern.
 

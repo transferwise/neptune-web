@@ -1,10 +1,9 @@
 import React from 'react';
-import InputWithTextFormat from './';
+import withTextFormat from './index';
+
+const InputWithTextFormat = withTextFormat('input');
 
 describe('InputWithTextFormat', () => {
-  it(`true `, () => {
-    expect(true).toBe(true);
-  });
   it('should return null if props change to the same value', () => {
     const nextProps = { pattern: '**-**' };
     const prevState = {
@@ -16,6 +15,7 @@ describe('InputWithTextFormat', () => {
       pastedLength: 0,
     };
     const expectedState = null;
+
     expect(InputWithTextFormat.getDerivedStateFromProps(nextProps, prevState)).toEqual(
       expectedState,
     );
