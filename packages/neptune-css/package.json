@@ -29,6 +29,11 @@
     "src"
   ],
   "scripts": {
-    "build": "rm -rf dist && node scripts/build.js && rm -rf dist/*.js"
+    "test": "echo 'No tests defined'",
+    "build": "rm -rf dist && node scripts/build.js && rm -rf dist/*.js",
+    "release-to-github": "release-to-github-with-changelog"
+  },
+  "devDependencies": {
+    "release-to-github-with-changelog": "^1.2.2"
   }
 }

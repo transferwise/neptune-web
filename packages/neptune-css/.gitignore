@@ -3,3 +3,5 @@
 /docs-build
 /node_modules
 /static/assets/*
+/dist
+/public
