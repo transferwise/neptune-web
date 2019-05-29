@@ -26,7 +26,8 @@ jobs:
   build:
     <<: *defaults
     steps:
-      - checkout
+      - attach_workspace:
+          at: .
       - run:
           name: Build dist CSS
           command: npm run build
