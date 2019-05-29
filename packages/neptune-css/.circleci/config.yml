@@ -26,6 +26,7 @@ jobs:
   build:
     <<: *defaults
     steps:
+      - checkout
       - run:
           name: Build dist CSS
           command: npm run build
