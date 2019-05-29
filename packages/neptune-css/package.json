@@ -1,5 +1,5 @@
 {
-  "name": "neptune-css",
+  "name": "@transferwise/neptune-css",
   "description": "Neptune CSS is TransferWise's Design System CSS library",
   "version": "0.1.0",
   "browserslist": [
