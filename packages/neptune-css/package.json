@@ -2,6 +2,12 @@
   "name": "@transferwise/neptune-css",
   "description": "Neptune CSS is TransferWise's Design System CSS library",
   "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "fullname": "transferwise/neptune-css",
+    "type": "git",
+    "url": "git+https://github.com/transferwise/neptune-css.git"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
