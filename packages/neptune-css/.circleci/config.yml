@@ -72,14 +72,14 @@ workflows:
           requires:
               - install
       - publish:
-          context: frontend-publish
+          context: frontend-deploy-library
           requires:
             - build
           filters:
             branches:
               only: master          
       - release:
-          context: frontend-publish
+          context: frontend-deploy-library
           requires:
             - publish
           filters:
