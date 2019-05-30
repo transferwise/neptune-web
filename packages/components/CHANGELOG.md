@@ -1,3 +1,11 @@
+# v7.0.1
+## Add popover bottom right and bottom left placements
+These will be automatically selected if:
+
+* Preferred position is left or right
+* Placing the popover on both the left and the right hand side of the trigger would result in an overflow on that side.
+* Placing the popover below would results in an overflow on one side (it will now therefore be shifted either left, or right).
+
 # v7.0.0
 ## Extracted text format from component into HOC
 

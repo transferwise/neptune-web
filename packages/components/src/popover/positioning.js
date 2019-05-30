@@ -1,46 +1,63 @@
 import Placement from './Placement';
 
-const { TOP, RIGHT, BOTTOM, LEFT, RIGHT_TOP, LEFT_TOP } = Placement;
+const { TOP, RIGHT, BOTTOM, BOTTOM_RIGHT, BOTTOM_LEFT, LEFT, RIGHT_TOP, LEFT_TOP } = Placement;
 
 export function getPlacement(popover, preferredPlacement) {
   if (!popover) {
     return '';
   }
 
-  const { previousElementSibling: trigger, offsetWidth: popoverWidth } = popover;
-  const triggerLeft = trigger.getBoundingClientRect().left;
-  const { offsetWidth: triggerWidth } = trigger;
-  const documentRight = document.documentElement.clientWidth;
-
-  const popoverRight = triggerLeft + triggerWidth + popoverWidth;
-  const popoverLeft = triggerLeft - popoverWidth;
-
-  const overflowsRight = popoverRight > documentRight;
-  const overflowsLeft = popoverLeft < 0;
-
-  return getPlacementForOverflows(preferredPlacement, overflowsLeft, overflowsRight);
+  const documentBounds = {
+    right: document.documentElement.clientWidth,
+    left: 0,
+  };
+  return overridePlacementGivenDocumentBounds(preferredPlacement, popover, documentBounds);
 }
 
-function getPlacementForOverflows(placement, overflowsLeft, overflowsRight) {
-  if (!overflowsRight && !overflowsLeft) {
-    return placement;
+function overridePlacementGivenDocumentBounds(preferredPlacement, popover, documentBounds) {
+  const rightPlacementOverflows = calculateOverflows(popover, RIGHT, documentBounds);
+  const leftPlacementOverflows = calculateOverflows(popover, LEFT, documentBounds);
+
+  if (!rightPlacementOverflows.overflowsRight && !leftPlacementOverflows.overflowsLeft) {
+    return preferredPlacement;
   }
-  if (overflowsRight && overflowsLeft) {
-    return BOTTOM;
+  if (rightPlacementOverflows.overflowsRight && leftPlacementOverflows.overflowsLeft) {
+    return determineBestBottomPlacement(popover, documentBounds);
   }
-  if (overflowsRight && placement === RIGHT) {
+  if (rightPlacementOverflows.overflowsRight && preferredPlacement === RIGHT) {
     return LEFT;
   }
-  if (overflowsRight && placement === RIGHT_TOP) {
+  if (rightPlacementOverflows.overflowsRight && preferredPlacement === RIGHT_TOP) {
     return LEFT_TOP;
   }
-  if (overflowsLeft && placement === LEFT) {
+  if (leftPlacementOverflows.overflowsLeft && preferredPlacement === LEFT) {
     return RIGHT;
   }
-  if (overflowsLeft && placement === LEFT_TOP) {
+  if (leftPlacementOverflows.overflowsLeft && preferredPlacement === LEFT_TOP) {
     return RIGHT_TOP;
   }
-  return placement;
+  return preferredPlacement;
+}
+
+function determineBestBottomPlacement(popover, documentBounds) {
+  const overflowsWithBottomPlacement = calculateOverflows(popover, BOTTOM, documentBounds);
+  if (overflowsWithBottomPlacement.overflowsLeft && !overflowsWithBottomPlacement.overflowsRight) {
+    return BOTTOM_RIGHT;
+  } else if (
+    overflowsWithBottomPlacement.overflowsRight &&
+    !overflowsWithBottomPlacement.overflowsLeft
+  ) {
+    return BOTTOM_LEFT;
+  }
+  return BOTTOM;
+}
+
+function calculateOverflows(popover, placement, documentBounds) {
+  const pos = getPopoverPosition(popover, placement);
+  return {
+    overflowsRight: pos.right > documentBounds.right,
+    overflowsLeft: pos.left < documentBounds.left,
+  };
 }
 
 export function getPopoverPosition(popover, placement) {
@@ -62,39 +79,80 @@ export function getPopoverPosition(popover, placement) {
   const arrowStyles = getComputedStyle(popover, ':before');
   const arrowTop = toInt(arrowStyles.top);
   const arrowHeight = toInt(arrowStyles.height);
+  const arrowWidth = toInt(arrowStyles.width);
+  const arrowLeft = toInt(arrowStyles.left);
+  const arrowRight = toInt(arrowStyles.right);
   const arrowMarginTop = toInt(arrowStyles['margin-top']);
+  const arrowMarginLeft = toInt(arrowStyles['margin-left']);
 
   switch (placement) {
     case TOP:
-      return {
-        top: triggerTop - popoverHeight,
-        left: triggerLeft + triggerWidth / 2 - popoverWidth / 2,
-      };
+      return enrichWithRightPosition(
+        {
+          top: triggerTop - popoverHeight,
+          left: triggerLeft + triggerWidth / 2 - popoverWidth / 2,
+        },
+        popoverWidth,
+      );
     case RIGHT:
-      return {
-        top: triggerTop + triggerHeight / 2 - popoverHeight / 2,
-        left: triggerLeft + triggerWidth,
-      };
+      return enrichWithRightPosition(
+        {
+          top: triggerTop + triggerHeight / 2 - popoverHeight / 2,
+          left: triggerLeft + triggerWidth,
+        },
+        popoverWidth,
+      );
     case BOTTOM:
-      return {
-        top: triggerTop + triggerHeight,
-        left: triggerLeft + triggerWidth / 2 - popoverWidth / 2,
-      };
+      return enrichWithRightPosition(
+        {
+          top: triggerTop + triggerHeight,
+          left: triggerLeft + triggerWidth / 2 - popoverWidth / 2,
+        },
+        popoverWidth,
+      );
+    case BOTTOM_RIGHT:
+      return enrichWithRightPosition(
+        {
+          top: triggerTop + triggerHeight,
+          left: triggerLeft + triggerWidth / 2 - (arrowLeft + arrowMarginLeft + arrowWidth / 2),
+        },
+        popoverWidth,
+      );
+    case BOTTOM_LEFT:
+      return enrichWithRightPosition(
+        {
+          top: triggerTop + triggerHeight,
+          left:
+            triggerLeft +
+            triggerWidth / 2 -
+            (popoverWidth - arrowRight + arrowMarginLeft + arrowWidth / 2),
+        },
+        popoverWidth,
+      );
     case LEFT:
-      return {
-        top: triggerTop + triggerHeight / 2 - popoverHeight / 2,
-        left: triggerLeft - popoverWidth,
-      };
+      return enrichWithRightPosition(
+        {
+          top: triggerTop + triggerHeight / 2 - popoverHeight / 2,
+          left: triggerLeft - popoverWidth,
+        },
+        popoverWidth,
+      );
     case RIGHT_TOP:
-      return {
-        top: triggerTop + triggerHeight / 2 - (arrowTop + arrowMarginTop + arrowHeight / 2),
-        left: triggerLeft + triggerWidth,
-      };
+      return enrichWithRightPosition(
+        {
+          top: triggerTop + triggerHeight / 2 - (arrowTop + arrowMarginTop + arrowHeight / 2),
+          left: triggerLeft + triggerWidth,
+        },
+        popoverWidth,
+      );
     case LEFT_TOP:
-      return {
-        top: triggerTop + triggerHeight / 2 - (arrowTop + arrowMarginTop + arrowHeight / 2),
-        left: triggerLeft - popoverWidth,
-      };
+      return enrichWithRightPosition(
+        {
+          top: triggerTop + triggerHeight / 2 - (arrowTop + arrowMarginTop + arrowHeight / 2),
+          left: triggerLeft - popoverWidth,
+        },
+        popoverWidth,
+      );
     default:
       return {};
   }
@@ -102,4 +160,11 @@ export function getPopoverPosition(popover, placement) {
 
 function toInt(str) {
   return parseInt(str, 10);
+}
+
+function enrichWithRightPosition(pos, popoverWidth) {
+  return {
+    right: pos.left + popoverWidth,
+    ...pos,
+  };
 }
