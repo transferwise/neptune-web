@@ -61,6 +61,7 @@ jobs:
           command: |
             mkdir ~/.ssh
             ssh-keyscan github.com >> ~/.ssh/known_hosts
+            npm run pre-release-check
             npm run release-to-github
 
 workflows:

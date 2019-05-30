@@ -1,7 +1,7 @@
 {
   "name": "@transferwise/neptune-css",
   "description": "Neptune CSS is TransferWise's Design System CSS library",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "repository": {
     "fullname": "transferwise/neptune-css",
@@ -37,6 +37,7 @@
   "scripts": {
     "test": "echo 'No tests defined'",
     "build": "rm -rf dist && node scripts/build.js && rm -rf dist/*.js",
+    "pre-release-check": "release-to-github-with-changelog-pre-release-checks",
     "release-to-github": "release-to-github-with-changelog"
   },
   "devDependencies": {

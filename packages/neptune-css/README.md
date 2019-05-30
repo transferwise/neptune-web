@@ -12,3 +12,7 @@ You can use it as a dependency in your package.json:
 
 ## Build the project
 - `npm run build`
+
+## How to contribute
+Do you want to contribute? Great! Please take a look at our `Contributing` guideline:
+[CONTRIBUTING.md](https://github.com/transferwise/neptune-css/blob/master/CONTRIBUTING.md)
