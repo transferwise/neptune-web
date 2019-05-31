@@ -1,3 +1,7 @@
+# v7.1.0
+## Add Chevron component
+Added new small Chevron component, meant to be used by other components. The styles of the component are coming from Neptune CSS.
+
 # v7.0.1
 ## Add popover bottom right and bottom left placements
 These will be automatically selected if:

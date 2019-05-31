@@ -23,3 +23,4 @@ export { default as Button } from './button';
 export { default as RadioGroup } from './radioGroup';
 export { default as Alert } from './alert';
 export { default as withTextFormat } from './withTextFormat';
+export { default as Chevron } from './common/Chevron';
