@@ -12,6 +12,7 @@ const generateInput = (knobs, componentThis) => {
           </label>
           <Select
             id={state}
+            required
             selected={componentThis.state[state] ? { ...componentThis.state[state] } : undefined}
             options={options.map(option => ({ ...option }))}
             onChange={selection => {
