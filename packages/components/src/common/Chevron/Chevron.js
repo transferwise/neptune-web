@@ -58,7 +58,7 @@ Chevron.defaultProps = {
   orientation: Orientation.Bottom,
   animate: false,
   flip: false,
-  size: Size.Small,
+  size: Size.SMALL,
 };
 
 export default Chevron;

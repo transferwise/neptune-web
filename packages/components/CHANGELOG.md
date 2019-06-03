@@ -1,3 +1,7 @@
+# v7.1.2
+## Bug fix for chevron default Size property
+The cehvron's defaultProp for size had the old PascalCase key, renamed it from `Small` to `SMALL`.
+
 # v7.1.1
 ## Fix dateLookup button type
 The DateLookup component is implemented with a button element, it's type is now set to button to avoid unintended form submissions.
