@@ -14,7 +14,7 @@ We have a [Bootstrap deprecation process](https://docs.google.com/document/d/1Mz
 4. Update the package version and the changelog
 5. Create a PR with your changes
 6. Get reviewed and `squash & merge` you branch once it is approved
-7. Head to the [Neptun Design System repo](https://github.com/transferwise/neptune-design-system) and document your new component
+7. Head to the [Neptune Docs repo](https://github.com/transferwise/neptune-docs) and document your new component
 
 ### Naming convention
 File naming should follow `kebab-case`
