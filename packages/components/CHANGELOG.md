@@ -1,3 +1,7 @@
+# v7.1.1
+## Fix dateLookup button type
+The DateLookup component is implemented with a button element, it's type is now set to button to avoid unintended form submissions.
+
 # v7.1.0
 ## Add Chevron component
 Added new small Chevron component, meant to be used by other components. The styles of the component are coming from Neptune CSS.
@@ -129,7 +133,7 @@ Sort options labels to first
 Pass prop `dropdownUp` to `Select` to use it
 
 # v4.12.1
-## Improved regex for allowed chars for PhoneInput. And improved test coverage  
+## Improved regex for allowed chars for PhoneInput. And improved test coverage
 
 # v4.12.0
 ## Add Date Component

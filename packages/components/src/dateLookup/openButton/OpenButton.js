@@ -22,6 +22,7 @@ const OpenButton = ({
     onClick={onClick}
     className={`btn ${btnSize[size]} btn-input dropdown-toggle`}
     disabled={disabled}
+    type="button"
   >
     {label && <span className="control-label small m-r-1">{label}</span>}
     {selectedDate ? (
