@@ -62,7 +62,7 @@ class UploadImageStep extends PureComponent {
               )}
               <input
                 type="file"
-                accept={usAccept !== '*' ? usAccept : null}
+                accept={usAccept === '*' ? null : usAccept}
                 className="tw-droppable-input hidden"
                 disabled={usDisabled}
                 name="file-upload"

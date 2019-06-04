@@ -42,6 +42,7 @@ describe('Server side rendering', () => {
         label: 'Radio1',
       },
     ],
+    displayPattern: '**-**',
   };
 
   componentNames.forEach(componentName => {

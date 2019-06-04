@@ -24,7 +24,9 @@ function actionableOption(option) {
 function stopPropagation(event) {
   event.stopPropagation();
   event.preventDefault();
-  event.nativeEvent.stopImmediatePropagation();
+  if (event.nativeEvent && event.nativeEvent.stopImmediatePropagation) {
+    event.nativeEvent.stopImmediatePropagation();
+  }
   // document listener does not use SyntheticEvents
 }
 
@@ -52,6 +54,8 @@ export default class Select extends Component {
       secondary: Types.node,
     }),
     onChange: Types.func.isRequired,
+    onFocus: Types.func,
+    onBlur: Types.func,
     options: Types.arrayOf(
       Types.shape({
         value: Types.any,
@@ -82,6 +86,8 @@ export default class Select extends Component {
     disabled: false,
     block: true,
     selected: null,
+    onFocus: null,
+    onBlur: null,
     onSearchChange: undefined,
     searchValue: '',
     searchPlaceholder: 'Search...',
@@ -108,6 +114,10 @@ export default class Select extends Component {
       return sum;
     }, 0);
   }
+
+  handleOnFocus = event => this.props.onFocus && this.props.onFocus(event);
+
+  handleOnBlur = event => this.props.onBlur && this.props.onBlur(event);
 
   handleSearchChange = event => {
     this.props.onSearchChange(event.target.value);
@@ -421,6 +431,8 @@ export default class Select extends Component {
             ref={this.dropdownMenuRef}
             onKeyDown={this.handleKeyDown}
             onTouchMove={this.handleTouchStart}
+            onFocus={this.handleOnFocus}
+            onBlur={this.handleOnBlur}
           >
             <button
               disabled={disabled}

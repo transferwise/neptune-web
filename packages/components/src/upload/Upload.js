@@ -8,6 +8,7 @@ import './Upload.less';
 import { processIndicatorStatuses } from '../processIndicator/ProcessIndicator';
 
 const PROCESS_STATE = ['error', 'success'];
+const ACCEPTED_FORMAT = ['*', 'image/*', 'application/*'];
 
 /*
  * This delay is required for the isError/isSuccess to be fired after isProcessing so the processIndicator, will be
@@ -328,7 +329,7 @@ Upload.propTypes = {
   psProcessingText: Types.string,
   psSuccessText: Types.string,
   size: Types.oneOf(['sm', 'md', 'lg']),
-  usAccept: Types.oneOf(['image/*', 'application/*', '*']),
+  usAccept: Types.oneOf(ACCEPTED_FORMAT),
   usButtonText: Types.string,
   usDisabled: Types.bool,
   usDropMessage: Types.string,

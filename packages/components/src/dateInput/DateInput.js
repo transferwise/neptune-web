@@ -28,6 +28,8 @@ class DateInput extends PureComponent {
     value: Types.oneOfType([Types.string, Types.instanceOf(Date)]),
     locale: Types.string,
     onChange: Types.func.isRequired, // eslint-disable-line
+    onFocus: Types.func,
+    onBlur: Types.func,
     dayLabel: Types.string,
     monthLabel: Types.string,
     yearLabel: Types.string,
@@ -38,6 +40,8 @@ class DateInput extends PureComponent {
     size: 'md',
     value: null,
     locale: DEFAULT_LOCALE,
+    onFocus() {},
+    onBlur() {},
     dayLabel: 'Day',
     monthLabel: 'Month',
     yearLabel: 'Year',
@@ -235,6 +239,8 @@ class DateInput extends PureComponent {
                 className="form-control"
                 value={day || ''}
                 onChange={event => this.handleDayChange(event)}
+                onFocus={this.props.onFocus}
+                onBlur={this.props.onBlur}
                 placeholder="DD"
                 disabled={disabled}
               />
@@ -256,6 +262,8 @@ class DateInput extends PureComponent {
                 placeholder="YYYY"
                 value={year || ''}
                 onChange={event => this.handleYearChange(event)}
+                onFocus={this.props.onFocus}
+                onBlur={this.props.onBlur}
                 disabled={disabled}
               />
             </div>

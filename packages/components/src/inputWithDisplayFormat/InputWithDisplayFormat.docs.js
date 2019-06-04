@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 
 import { generateInput, generateCodeBlock, generateState } from '../../docs/utils';
-import { withTextFormat } from '../';
-
-const InputWithTextFormat = withTextFormat('input');
+import InputWithDisplayFormat from './';
 
 const PATTERNS = [
   { label: 'Credit card number **** **** **** ****', value: '**** **** **** ****' },
@@ -29,7 +27,7 @@ const KNOBS = {
     {
       type: 'select',
       label: 'Pattern',
-      state: 'pattern',
+      state: 'displayPattern',
       options: PATTERNS,
       defaultState: PATTERNS[2],
     },
@@ -48,19 +46,19 @@ export default class InputWithTextFormatDocs extends Component {
   };
 
   render() {
-    const { pattern } = this.state;
+    const { displayPattern } = this.state;
     return (
       <div className="container">
         <section className="section">
           {/* Full Component */}
           <div className="row">
             <div className="col-md-6">
-              <h2>Input with text format</h2>
+              <h2>Input with display format</h2>
               <span role="img" aria-label="uhm">
-                It dynamically formats the inserted value following a provided pattern
+                It dynamically formats the inserted value following a provided displayPattern
               </span>
               {getExtraDocs()}
-              {generateCodeBlock('InputWithTextFormat', KNOBS, this)}
+              {generateCodeBlock('InputWithDisplayFormat', KNOBS, this)}
             </div>
             <div className="col-md-6">
               <div
@@ -69,9 +67,9 @@ export default class InputWithTextFormatDocs extends Component {
                   'droppable-dropping': this.state.isDropping,
                 })}
               >
-                <InputWithTextFormat
-                  placeholder={pattern && PLACEHOLDERS[pattern.value]}
-                  pattern={pattern && pattern.value}
+                <InputWithDisplayFormat
+                  placeholder={displayPattern && PLACEHOLDERS[displayPattern.value]}
+                  displayPattern={displayPattern && displayPattern.value}
                   className="form-control"
                   onChange={value => this.handleOnChange(value)}
                 />
@@ -88,16 +86,9 @@ export default class InputWithTextFormatDocs extends Component {
 const getExtraDocs = () => (
   <div>
     <p className=" m-t-5">
-      Input with text format is a component that formats text entered into controls. The model value
-      is preserved without formatting, and validation continues to function on the unformated. Text
-      fomatting functionalities can be added using a simple HOC that provides all the method to
-      current input
-      <br />
-      <br />
-      <pre className="tw-docs-code ">
-        InputWithTextFormat = withTextFormat(&apos;input&apos;) <br />
-        InputWithTextFormat = withTextFormat(&apos;textarea&apos;)
-      </pre>
+      Input with display format is a component that formats text entered into controls. The model
+      value is preserved without formatting, and validation continues to function on the
+      unformatted.
     </p>
   </div>
 );

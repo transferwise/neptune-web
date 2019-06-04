@@ -40,7 +40,7 @@ const COMPONENT_STATUS = [
 ];
 
 const TESTHTTPOTIONS = {
-  url: 'http://httpbin.org/post',
+  url: 'https://httpbin.org/post',
   method: 'POST',
 };
 

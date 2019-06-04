@@ -20,6 +20,8 @@ class PhoneNumberInput extends PureComponent {
     disabled: Types.bool,
     value: Types.string,
     onChange: Types.func.isRequired,
+    onFocus: Types.func,
+    onBlur: Types.func,
     locale: Types.string,
     searchPlaceholder: Types.string,
     size: Types.oneOf(['sm', 'md', 'lg']),
@@ -30,6 +32,8 @@ class PhoneNumberInput extends PureComponent {
     required: false,
     disabled: false,
     value: null,
+    onFocus() {},
+    onBlur() {},
     locale: 'en-GB',
     searchPlaceholder: 'Prefix',
     size: 'md',
@@ -142,7 +146,15 @@ class PhoneNumberInput extends PureComponent {
   };
 
   render() {
-    const { searchPlaceholder, disabled, required, size, placeholder } = this.props;
+    const {
+      searchPlaceholder,
+      disabled,
+      required,
+      size,
+      placeholder,
+      onFocus,
+      onBlur,
+    } = this.props;
     const { internalValue, locale } = this.state;
     const selectOptions = this.getSelectOptions();
 
@@ -174,6 +186,8 @@ class PhoneNumberInput extends PureComponent {
                 className="form-control"
                 disabled={disabled}
                 onChange={this.handleInputChange}
+                onFocus={onFocus}
+                onBlur={onBlur}
                 required={required}
                 placeholder={placeholder}
               />

@@ -1,14 +1,12 @@
 import React from 'react';
-import withTextFormat from './index';
+import WithDisplayFormat from './';
 
-const InputWithTextFormat = withTextFormat('input');
-
-describe('InputWithTextFormat', () => {
+describe('WithDisplayFormat', () => {
   it('should return null if props change to the same value', () => {
-    const nextProps = { pattern: '**-**' };
+    const nextProps = { displayPattern: '**-**' };
     const prevState = {
       value: '11/11',
-      prevPattern: '**-**',
+      prevDisplayPattern: '**-**',
       historyNavigator: { reset: jest.fn() },
       triggerEvent: null,
       triggerType: null,
@@ -16,16 +14,14 @@ describe('InputWithTextFormat', () => {
     };
     const expectedState = null;
 
-    expect(InputWithTextFormat.getDerivedStateFromProps(nextProps, prevState)).toEqual(
-      expectedState,
-    );
+    expect(WithDisplayFormat.getDerivedStateFromProps(nextProps, prevState)).toEqual(expectedState);
   });
 
-  it('should update pattern on props change', () => {
-    const nextProps = { pattern: '**-**' };
+  it('should update displayPattern on props change', () => {
+    const nextProps = { displayPattern: '**-**' };
     const prevState = {
       value: '11/11',
-      prevPattern: '**/**',
+      prevDisplayPattern: '**/**',
       historyNavigator: { reset: jest.fn() },
       triggerEvent: null,
       triggerType: null,
@@ -33,13 +29,11 @@ describe('InputWithTextFormat', () => {
     };
     const expectedState = {
       value: '11-11',
-      prevPattern: '**-**',
+      prevDisplayPattern: '**-**',
       triggerEvent: null,
       triggerType: null,
       pastedLength: 0,
     };
-    expect(InputWithTextFormat.getDerivedStateFromProps(nextProps, prevState)).toEqual(
-      expectedState,
-    );
+    expect(WithDisplayFormat.getDerivedStateFromProps(nextProps, prevState)).toEqual(expectedState);
   });
 });

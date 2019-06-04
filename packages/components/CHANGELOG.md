@@ -1,6 +1,10 @@
+# v7.2.0
+## Add Form control 
+Add form control used to generate forms dynamically starting from json object.
+
 # v7.1.2
 ## Bug fix for chevron default Size property
-The cehvron's defaultProp for size had the old PascalCase key, renamed it from `Small` to `SMALL`.
+The chevron's defaultProp for size had the old PascalCase key, renamed it from `Small` to `SMALL`.
 
 # v7.1.1
 ## Fix dateLookup button type
