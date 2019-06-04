@@ -1,7 +1,7 @@
 # Neptune CSS 🔱
 The CSS library of Transferwise's Design System: Neptune
 
-To document the components please use the [Neptune Docs library](https://github.com/transferwise/neptune-design-system).
+To document the components please use the [Neptune Docs](https://github.com/transferwise/neptune-docs).
 
 ### How to consume the CSS
 Install the NPM package as a dependency to your project
