@@ -3,3 +3,4 @@
 /docs-build
 /node_modules
 /dist
+yarn.lock

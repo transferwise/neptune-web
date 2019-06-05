@@ -1,34 +1,12 @@
 {
   "name": "@transferwise/neptune-css",
   "description": "Neptune CSS is TransferWise's Design System CSS library",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "repository": {
     "fullname": "transferwise/neptune-css",
     "type": "git",
     "url": "git+https://github.com/transferwise/neptune-css.git"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "dependencies": {
-    "@babel/core": "^7.4.4",
-    "@transferwise/icons": "^0.13.2",
-    "babel-loader": "^8.0.5",
-    "bootstrap": "transferwise/bootstrap",
-    "css-loader": "^2.1.1",
-    "file-loader": "^3.0.1",
-    "fs-extra": "^7.0.1",
-    "less": "^3.9.0",
-    "less-loader": "^5.0.0",
-    "mini-css-extract-plugin": "^0.6.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "react-dev-utils": "^9.0.1",
-    "transferwise-iconfont": "transferwise/iconfont",
-    "webpack": "^4.31.0"
   },
   "files": [
     "dist",
@@ -40,7 +18,29 @@
     "pre-release-check": "release-to-github-with-changelog-pre-release-checks",
     "release-to-github": "release-to-github-with-changelog"
   },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "@transferwise/icons": "^0.14.0",
+    "bootstrap": "transferwise/bootstrap",
+    "transferwise-iconfont": "transferwise/iconfont"
+  },
   "devDependencies": {
-    "release-to-github-with-changelog": "^1.2.2"
+    "@babel/core": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "fs-extra": "^8.0.1",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "react-dev-utils": "^9.0.1",
+    "release-to-github-with-changelog": "^1.2.2",
+    "webpack": "^4.33.0"
   }
 }
