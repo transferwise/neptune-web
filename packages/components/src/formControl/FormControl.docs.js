@@ -9,6 +9,7 @@ import { generateCodeBlock, generateInput, generateState } from '../../docs/util
 const TYPES = [
   { value: FormControlType.CHECKBOX, label: 'Checkbox' },
   { value: FormControlType.DATE, label: 'Date' },
+  { value: FormControlType.DATELOOKUP, label: 'DateLookup' },
   { value: FormControlType.NUMBER, label: 'Number' },
   { value: FormControlType.PASSWORD, label: 'Password' },
   { value: FormControlType.RADIO, label: 'Radio' },
@@ -24,6 +25,12 @@ const KNOBS = {
     { type: 'checkbox', label: 'Is Control disabled?', state: 'disabled', defaultState: false },
     { type: 'checkbox', label: 'Is Control readOnly?', state: 'readOnly', defaultState: false },
     { type: 'checkbox', label: 'Is Control required?', state: 'required', defaultState: false },
+    {
+      type: 'text',
+      label: 'Label',
+      state: 'label',
+      defaultState: 'A label',
+    },
   ],
   numberKnob: [
     {
@@ -39,7 +46,7 @@ const KNOBS = {
       defaultState: 12,
     },
     {
-      type: 'step',
+      type: 'number',
       label: 'Step',
       state: 'step',
       defaultState: 1,
@@ -67,7 +74,7 @@ export default class FormControlDocs extends Component {
   };
 
   handleOnChange = value => {
-    console.log('[FormControl] onChange called');
+    console.log('[FormControl] onChange called with value: ', value);
     this.setState({ value });
   };
   handleOnBlur = () => {
@@ -81,10 +88,11 @@ export default class FormControlDocs extends Component {
     let newValue = '';
 
     if (
+      selectedValue.value === FormControlType.DATELOOKUP ||
       selectedValue.value === FormControlType.DATETIME ||
       selectedValue.value === FormControlType.DATE
     ) {
-      newValue = new Date().toISOString();
+      newValue = new Date();
     }
     if (selectedValue.value === FormControlType.CHECKBOX) {
       newValue = false;
@@ -108,6 +116,7 @@ export default class FormControlDocs extends Component {
       max,
       value,
       searchPlaceholder,
+      label,
     } = this.state;
 
     const extraProps = {
@@ -134,6 +143,7 @@ export default class FormControlDocs extends Component {
             <div className="col-md-6">
               <FormControl
                 {...extraProps}
+                label={label}
                 type={type.value}
                 step={step}
                 options={options}
@@ -147,6 +157,8 @@ export default class FormControlDocs extends Component {
                 maxLength={undefined}
                 min={min}
                 max={max}
+                minDate={null}
+                maxDate={null}
                 value={value}
                 searchPlaceholder={searchPlaceholder}
                 size={Sizes.MEDIUM}
@@ -170,6 +182,10 @@ export default class FormControlDocs extends Component {
                 </div>
 
                 {KNOBS.sharedKnob.map(knob => generateInput(knob, this))}
+                {type.value === FormControlType.NUMBER &&
+                  KNOBS.numberKnob.map(knob => generateInput(knob, this))}
+                {type.value === FormControlType.TEXT &&
+                  KNOBS.textKnob.map(knob => generateInput(knob, this))}
               </div>
             </div>
           </div>

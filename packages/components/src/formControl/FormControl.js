@@ -1,14 +1,18 @@
 import React, { PureComponent, Fragment } from 'react';
 import Types from 'prop-types';
 import { FormControlType } from './FormControlType';
-import Radio from '../radio';
-import Select from '../select';
-import DateInput from '../dateInput/DateInput';
-import PhoneNumberInput from '../phoneNumberInput/PhoneNumberInput';
-import Checkbox from '../checkbox/Checkbox';
-import InputWithDisplayFormat from '../inputWithDisplayFormat';
-import TextareaWithDisplayFormat from '../textareaWithDisplayFormat';
-import Upload from '../upload';
+
+import {
+  Checkbox,
+  DateInput,
+  DateLookup,
+  InputWithDisplayFormat,
+  PhoneNumberInput,
+  Radio,
+  Select,
+  TextareaWithDisplayFormat,
+  Upload,
+} from '..';
 
 import { Sizes } from '../common';
 
@@ -38,6 +42,7 @@ export default class FormControl extends PureComponent {
         secondary: Types.string,
       }),
     ),
+    label: Types.string,
     disabled: Types.bool,
     readOnly: Types.bool,
     required: Types.bool,
@@ -49,6 +54,8 @@ export default class FormControl extends PureComponent {
     maxLength: Types.number,
     min: Types.number,
     max: Types.number,
+    minDate: Types.instanceOf(Date),
+    maxDate: Types.instanceOf(Date),
     displayPattern: Types.string,
     value: Types.oneOfType([Types.string, Types.number, Types.bool, Types.object]),
     // @TODO To be implemented in a second iteration.
@@ -81,6 +88,15 @@ export default class FormControl extends PureComponent {
       usLabel: Types.string,
       usPlaceholder: Types.string,
     }),
+    shortDate: Types.bool,
+    selectedOption: Types.shape({
+      value: Types.any.isRequired,
+      label: Types.node,
+      icon: Types.string,
+      currency: Types.string,
+      note: Types.node,
+      secondary: Types.node,
+    }),
   };
 
   static defaultProps = {
@@ -99,22 +115,27 @@ export default class FormControl extends PureComponent {
     onFocus: null,
     min: null,
     max: null,
+    minDate: null,
+    maxDate: null,
     minLength: null,
     maxLength: null,
-    value: undefined,
+    value: null,
     searchPlaceholder: null,
     size: Sizes.MEDIUM,
     uploadProps: {},
     displayPattern: null,
+    label: '',
+    shortDate: false,
+    selectedOption: null,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: undefined,
-      value: this.props.value,
+      selectedOption: props.selectedOption,
+      value: props.value,
       touched: false,
-      prevValue: this.props.value,
+      prevValue: props.value,
     };
   }
 
@@ -141,11 +162,17 @@ export default class FormControl extends PureComponent {
   handleOnChange = event => {
     let value;
     this.setControlTouched();
+    const { type } = this.props;
 
     if (typeof event === 'object') {
-      if (event.target && event.target.value) {
+      if (event.target) {
         // This is a SyntheticEvent coming from React
-        ({ value } = event.target);
+        // Input type number target value is a string and needs to be a number.
+        if (type === FormControlType.NUMBER) {
+          value = parseFloat(event.target.value);
+        } else {
+          ({ value } = event.target);
+        }
       } else if (event.value) {
         // If we don't have a target but the emitted event
         // has a value it's coming from our Select or Radio
@@ -165,11 +192,13 @@ export default class FormControl extends PureComponent {
     this.props.onChange(value);
   };
 
-  handleOnFocus = event => this.props.onFocus(event);
+  handleOnFocus = event => this.props.onFocus && this.props.onFocus(event);
 
   handleOnBlur = event => {
     this.setControlTouched();
-    this.props.onBlur(event);
+    if (this.props.onBlur) {
+      this.props.onBlur(event);
+    }
   };
 
   render() {
@@ -190,10 +219,15 @@ export default class FormControl extends PureComponent {
       searchPlaceholder,
       size,
       uploadProps,
+      label,
+      shortDate,
       id,
+      minDate,
+      maxDate,
     } = this.props;
 
     const { value } = this.state;
+    const inputDefaultValue = value || '';
 
     switch (type) {
       case FormControlType.RADIO:
@@ -228,7 +262,7 @@ export default class FormControl extends PureComponent {
           <Checkbox
             checked={value}
             disabled={disabled}
-            label={placeholder}
+            label={label}
             onBlur={this.handleOnBlur}
             onChange={this.handleOnChange}
             onFocus={this.handleOnFocus}
@@ -275,12 +309,12 @@ export default class FormControl extends PureComponent {
             required={required}
             step={step}
             type="number"
-            value={value}
+            value={inputDefaultValue}
           />
         );
 
       case FormControlType.HIDDEN:
-        return <input type="hidden" name={name} value={value} id={id} />;
+        return <input type="hidden" name={name} value={inputDefaultValue} id={id} />;
 
       case FormControlType.PASSWORD:
         return (
@@ -296,7 +330,7 @@ export default class FormControl extends PureComponent {
             readOnly={readOnly}
             required={required}
             type="password"
-            value={value}
+            value={inputDefaultValue}
           />
         );
 
@@ -311,6 +345,23 @@ export default class FormControl extends PureComponent {
             onFocus={this.handleOnFocus}
             size={size}
             value={value}
+          />
+        );
+
+      case FormControlType.DATELOOKUP:
+        return (
+          <DateLookup
+            value={value}
+            min={minDate}
+            max={maxDate}
+            locale={locale}
+            placeholder={placeholder}
+            label={label}
+            onChange={this.handleOnChange}
+            shortDate={shortDate}
+            disabled={disabled}
+            onBlur={this.handleOnBlur}
+            onFocus={this.handleOnFocus}
           />
         );
 
@@ -336,7 +387,7 @@ export default class FormControl extends PureComponent {
           id,
           name,
           placeholder,
-          value,
+          value: inputDefaultValue,
           readOnly,
           required,
           minLength,
@@ -379,7 +430,7 @@ export default class FormControl extends PureComponent {
           id,
           name,
           placeholder,
-          value,
+          value: inputDefaultValue,
           readOnly,
           required,
           minLength,

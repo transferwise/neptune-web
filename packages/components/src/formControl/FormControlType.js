@@ -5,6 +5,7 @@ export const FormControlType = {
   FILE: 'file',
   DATE: 'date',
   DATETIME: 'date-time',
+  DATELOOKUP: 'date-lookup',
   TEL: 'tel',
   NUMBER: 'number',
   HIDDEN: 'hidden',

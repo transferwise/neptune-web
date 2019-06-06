@@ -1,3 +1,8 @@
+# v7.3.0
+## Add DateLookup to form control
+Add DateLookup to form control
+Bug fixes for wrong props types declarations and wrong prop values.
+
 # v7.2.0
 ## Add Form control 
 Add form control used to generate forms dynamically starting from json object.

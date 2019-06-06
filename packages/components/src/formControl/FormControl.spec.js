@@ -7,7 +7,7 @@ import Checkbox from '../checkbox/Checkbox';
 import DateInput from '../dateInput/DateInput';
 import PhoneNumberInput from '../phoneNumberInput/PhoneNumberInput';
 import Upload from '../upload';
-
+import DateLookup from '../dateLookup';
 import InputWithDisplayFormat from '../inputWithDisplayFormat';
 import TextareaWithDisplayFormat from '../textareaWithDisplayFormat';
 
@@ -50,6 +50,7 @@ describe('FormControl', () => {
   testCustomControl('upload', Upload);
   testCustomControl('text', InputWithDisplayFormat);
   testCustomControl('textarea', TextareaWithDisplayFormat);
+  testCustomControl('date-lookup', DateLookup);
 
   // testAutoComplete('text', 'input');
   // testAutoComplete('number', 'input');
@@ -455,7 +456,8 @@ describe('FormControl', () => {
         };
         break;
       }
-      case 'date': {
+      case 'date':
+      case 'date-lookup': {
         customProps = { value: new Date() };
         break;
       }

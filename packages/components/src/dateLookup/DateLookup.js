@@ -28,6 +28,8 @@ class DateLookup extends PureComponent {
     shortDate: Types.bool,
     disabled: Types.bool,
     onChange: Types.func.isRequired,
+    onFocus: Types.func,
+    onBlur: Types.func,
   };
 
   static defaultProps = {
@@ -40,6 +42,8 @@ class DateLookup extends PureComponent {
     label: '',
     shortDate: false,
     disabled: false,
+    onFocus: null,
+    onBlur: null,
   };
 
   state = {
@@ -84,14 +88,23 @@ class DateLookup extends PureComponent {
   element = React.createRef();
 
   open = () => {
+    const { onFocus } = this.props;
     this.setState({ open: true, mode: MODE.DAY }, () => {
       this.focusOn('.tw-date-lookup-header-current');
     });
+    if (onFocus) {
+      onFocus();
+    }
+
     document.addEventListener('click', this.handleOutsideClick, true);
   };
 
   close = () => {
+    const { onBlur } = this.props;
     this.setState({ open: false });
+    if (onBlur) {
+      onBlur();
+    }
     document.removeEventListener('click', this.handleOutsideClick, true);
   };
 
