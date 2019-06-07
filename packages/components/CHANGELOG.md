@@ -1,3 +1,8 @@
+# v7.3.1
+## Update dependencies 
+- @transferwise/icons
+- @transferwise/neptune-css
+
 # v7.3.0
 ## Add DateLookup to form control
 Add DateLookup to form control
