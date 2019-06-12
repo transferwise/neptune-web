@@ -16,6 +16,7 @@ describe('Server side rendering', () => {
     selectedCurrency: { currency: 'EUR' },
     currencies: [],
     steps: [],
+    items: [],
     children: 'yo',
     id: '1',
     title: 'trolo',

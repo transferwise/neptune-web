@@ -1,3 +1,6 @@
+# v7.4.0
+## Add Accordion component
+
 # v7.3.1
 ## Update dependencies 
 - @transferwise/icons

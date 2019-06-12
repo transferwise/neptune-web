@@ -1,1 +1,1 @@
-export { default } from './Chevron';
+export { default, Orientation, Size } from './Chevron';
