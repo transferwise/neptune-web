@@ -1,11 +1,44 @@
 import React, { Component } from 'react';
-import { ProcessIndicator, Select, Radio } from '..';
+import { ProcessIndicator } from '..';
 import { processIndicatorSizes, processIndicatorStatuses } from './ProcessIndicator';
+import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
+
+const KNOBS = {
+  knobs: [
+    {
+      type: 'text',
+      label: 'Label',
+      state: 'label',
+      defaultState: 'Send Money',
+    },
+    {
+      type: 'select',
+      label: 'Status',
+      state: 'status',
+      options: processIndicatorStatuses.map(value => ({
+        value,
+        label: value,
+      })),
+      defaultState: { value: processIndicatorStatuses[0], label: processIndicatorStatuses[0] },
+    },
+    {
+      type: 'select',
+      label: 'Size',
+      state: 'size',
+      options: processIndicatorSizes.map(value => ({
+        value,
+        label: value,
+      })),
+      defaultState: { value: processIndicatorSizes[2], label: processIndicatorSizes[2] },
+    },
+  ],
+};
+
+const extraProps = { onAnimationCompleted: 'console.log()' };
 
 export default class ProcessIndicatorDocs extends Component {
   state = {
-    status: 'processing',
-    size: 'sm',
+    ...generateState(KNOBS),
   };
 
   render() {
@@ -21,55 +54,16 @@ export default class ProcessIndicatorDocs extends Component {
                 A component for conveying that a process is occuring, and for communicating a
                 successful or unsuccessful result
               </p>
+              {generateCodeBlock('ProcessIndicator', KNOBS, this, extraProps)}
             </div>
             <div className="col-md-6">
               <ProcessIndicator
-                status={status}
-                size={size}
+                status={status.value}
+                size={size.value}
                 // eslint-disable-next-line
                 onAnimationCompleted={processStatus => console.log(processStatus)}
               />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              <pre className="tw-docs-code">
-                {`<ProcessIndicator
-  status={"${status}"}
-  size={"${size}"}
-  onAnimationCompleted={"console.log()"}
-/>`}
-              </pre>
-            </div>
-            <div className="col-md-6">
-              <div className="m-t-3" />
-              <label htmlFor="select-size">Size</label>
-              <Select
-                required
-                id="select-size"
-                selected={size ? { value: size, label: size } : null}
-                options={processIndicatorSizes.map(sizeValue => ({
-                  value: sizeValue,
-                  label: sizeValue,
-                }))}
-                onChange={selection => this.setState({ size: selection ? selection.value : null })}
-              />
-              <div className="m-t-3" />
-              <label htmlFor="select-status">Status</label>
-              {processIndicatorStatuses.map(statusOption => (
-                <Radio
-                  id={statusOption}
-                  key={statusOption}
-                  label={statusOption}
-                  name={statusOption}
-                  disabled={
-                    (status === 'failed' && statusOption === 'succeeded') ||
-                    (status === 'succeeded' && statusOption === 'failed')
-                  }
-                  checked={status === statusOption}
-                  onChange={() => this.setState({ status: statusOption })}
-                />
-              ))}
+              <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>
           </div>
         </section>

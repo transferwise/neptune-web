@@ -1,17 +1,17 @@
 import React, { Component, Fragment } from 'react';
 
 import Alert, { AlertType, AlertSize, AlertArrowPosition } from './Alert';
-import { Checkbox, Select } from '..';
+import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const CONTENT_EXAMPLES = [
   {
-    type: 'Single Message',
-    content:
+    label: 'Single Message',
+    value:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur aut facilis ipsam iusto nisi quae quis sunt voluptates. Cupiditate, veniam.',
   },
   {
-    type: 'List of Message',
-    content: (
+    label: 'List of Message',
+    value: (
       <Fragment>
         <div>item 1</div>
         <div>item 2</div>
@@ -21,145 +21,80 @@ const CONTENT_EXAMPLES = [
   },
 ];
 
+const KNOBS = {
+  knobs: [
+    {
+      type: 'select',
+      label: 'Content',
+      state: 'content',
+      options: CONTENT_EXAMPLES,
+      defaultState: CONTENT_EXAMPLES[0],
+    },
+    {
+      type: 'select',
+      label: 'Type',
+      state: 'type',
+      options: Object.values(AlertType).map(value => ({
+        label: value,
+        value,
+      })),
+      defaultState: { value: AlertType.Warning, label: AlertType.Warning },
+    },
+    {
+      type: 'select',
+      label: 'Arrow',
+      state: 'arrow',
+      options: Object.values(AlertArrowPosition).map(value => ({ label: `${value}`, value })),
+      defaultState: { value: AlertArrowPosition.UpLeft, label: AlertArrowPosition.UpLeft },
+    },
+    {
+      type: 'select',
+      label: 'Size',
+      state: 'size',
+      options: Object.values(AlertSize).map(value => ({ label: value, value })),
+      defaultState: { value: AlertSize.Small, label: AlertSize.Small },
+    },
+    {
+      type: 'checkbox',
+      label: 'Dismissible?',
+      state: 'dismissible',
+      defaultState: false,
+    },
+  ],
+};
+
 export default class AlertDocs extends Component {
   state = {
-    type: AlertType.Warning,
-    arrow: AlertArrowPosition.UpLeft,
-    size: AlertSize.Small,
-    dismissible: false,
-
-    selectedContentType: CONTENT_EXAMPLES[0].type,
-    content: CONTENT_EXAMPLES[0].content,
+    ...generateState(KNOBS),
   };
 
-  createStateLink(name) {
-    return value => this.setState({ [name]: value });
-  }
-
   render() {
-    const {
-      type,
-
-      arrow,
-      size,
-      dismissible,
-
-      selectedContentType,
-      content,
-    } = this.state;
+    const { type, arrow, size, dismissible, content } = this.state;
 
     return (
       <div className="container">
         <section className="section">
           <div className="row">
-            <div className="col-md-6" id="alert">
+            <div className="col-md-6">
               <h2>Alert</h2>
               <p>
                 Provide contextual feedback messages for typical user actions with the handful of
                 available and flexible alert messages.
               </p>
+
+              {generateCodeBlock('Alert', KNOBS, this, [])}
             </div>
-            <div className="col-md-6">
-              <Alert {...{ type, size, arrow, dismissible }}>{content}</Alert>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              {/* eslint-disable react/jsx-indent */}
-              <pre className="tw-docs-code">
-                {`<Alert
-    type={"${type}"}
-    size={"${size}"}
-    arrow={"${arrow}"}
-    dismissible={"${dismissible}"}>
-    ${content}
-</Alert>`}
-              </pre>
-            </div>
-            <div className="col-md-6">
-              <div className="row">
-                <div className="col-md-6">
-                  <label htmlFor="form-control-selector" className="control-label">
-                    Content
-                  </label>
-                  <Select
-                    id="form-control-selector"
-                    selected={{ label: selectedContentType, value: content }}
-                    required
-                    options={CONTENT_EXAMPLES.map(example => ({
-                      label: example.type,
-                      value: example.content,
-                    }))}
-                    onChange={selection =>
-                      this.setState({
-                        content: selection.value,
-                        selectedContentType: selection.label,
-                      })
-                    }
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="message-content-selector" className="control-label">
-                    Type
-                  </label>
-                  <Select
-                    id="alert-type"
-                    selected={{ label: type, value: type }}
-                    required
-                    options={Object.values(AlertType).map(value => ({
-                      label: value,
-                      value,
-                    }))}
-                    onChange={selection =>
-                      this.setState({
-                        type: selection.value,
-                      })
-                    }
-                  />
-                </div>
-              </div>
-              <div className="m-t-3" />
-              <div className="row">
-                <div className="col-md-6">
-                  <label htmlFor="button-block-checkbox" className="control-label">
-                    Size
-                  </label>
-                  <Select
-                    id="alert-size"
-                    selected={{ label: size, value: size }}
-                    required
-                    options={Object.values(AlertSize).map(value => ({ label: value, value }))}
-                    onChange={selection => this.setState({ size: selection.value })}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="button-block-checkbox" className="control-label">
-                    Dismissible?
-                  </label>
-                  <Checkbox
-                    label="Dismissible"
-                    checked={dismissible}
-                    onChange={this.createStateLink('dismissible')}
-                  />
-                </div>
-              </div>
-              <div className="m-t-3" />
-              <div className="row">
-                <div className="col-md-6">
-                  <label htmlFor="button-block-checkbox" className="control-label">
-                    Arrow
-                  </label>
-                  <Select
-                    id="alert-arrow-position"
-                    selected={{ label: `${arrow}`, value: arrow }}
-                    required
-                    options={Object.values(AlertArrowPosition)
-                      .concat(null)
-                      .map(value => ({ label: `${value}`, value }))}
-                    onChange={selection => this.setState({ arrow: selection.value })}
-                  />
-                </div>
-              </div>
+
+            <div className="col-md-6 m-t-2">
+              <Alert
+                dismissible={dismissible}
+                size={size.value}
+                arrow={arrow.value}
+                type={type.value}
+              >
+                {content.value}
+              </Alert>
+              <div className="row">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>
           </div>
         </section>

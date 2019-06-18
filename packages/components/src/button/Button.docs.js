@@ -1,24 +1,63 @@
 import React, { Component } from 'react';
-import { Button, Select, Checkbox } from '..';
+import { Button } from '..';
 import { ButtonSize, ButtonState, ButtonType } from './Button';
+import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
+
+const KNOBS = {
+  knobs: [
+    {
+      type: 'text',
+      label: 'Label',
+      state: 'label',
+      defaultState: 'Send Money',
+    },
+    {
+      type: 'select',
+      label: 'Size',
+      state: 'size',
+      options: Object.values(ButtonSize).map(value => ({
+        value,
+        label: value,
+      })),
+      defaultState: { value: ButtonSize.Medium, label: ButtonSize.Medium },
+    },
+    {
+      type: 'select',
+      label: 'State',
+      state: 'stateSelection',
+      options: Object.values(ButtonState).map(value => ({
+        value,
+        label: value,
+      })),
+      defaultState: { value: ButtonState.Default, label: ButtonState.Default },
+    },
+    {
+      type: 'select',
+      label: 'Type',
+      state: 'type',
+      options: Object.values(ButtonType).map(value => ({
+        value,
+        label: value,
+      })),
+      defaultState: { value: ButtonType.Pay, label: ButtonType.Pay },
+    },
+    {
+      type: 'checkbox',
+      label: 'Block (Full size of container)',
+      state: 'block',
+      defaultState: false,
+    },
+  ],
+};
+const extraPropsDocs = { onClick: `this.handleClick` };
 
 export default class ButtonDocs extends Component {
   state = {
-    label: 'Send money',
-    stateSelection: { value: ButtonState.Default, label: ButtonState.Default },
-    type: ButtonType.Pay,
-    size: ButtonSize.Medium,
-    block: false,
-    // eslint-disable-next-line
-    onClick: () => alert('Clicked button'),
+    ...generateState(KNOBS),
   };
 
-  createStateLink(name) {
-    return value => this.setState({ [name]: value });
-  }
-
   render() {
-    const { label, stateSelection, size, type, block, onClick } = this.state;
+    const { label, stateSelection, size, type, block } = this.state;
 
     return (
       <div className="container">
@@ -27,104 +66,19 @@ export default class ButtonDocs extends Component {
             <div className="col-md-6">
               <h2>Button</h2>
               <p>Simple wrapper component for all button types and their states</p>
+              {generateCodeBlock('Button', KNOBS, this, extraPropsDocs)}
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 m-t-2">
               <Button
                 label={label}
-                size={size}
+                size={size.value}
                 state={stateSelection.value}
-                type={type}
+                type={type.value}
                 block={block}
-                onClick={onClick}
+                /* eslint-disable no-alert */
+                onClick={() => alert('Clicked button')}
               />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              <pre className="tw-docs-code">
-                {`<Button
-  label={"${label}"}
-  size={"${size}"}
-  type={"${type}"}
-  state={"${stateSelection.value}"}
-  block={${block}}
-  onClick={this.handleClick}
-/>`}
-              </pre>
-            </div>
-            <div className="col-md-6">
-              <label htmlFor="button-label-input" className="control-label">
-                Label
-              </label>
-              <input
-                id="button-label-input"
-                type="text"
-                value={label}
-                onChange={event => this.setState({ label: event.target.value })}
-                placeholder="Add button label.."
-                className="form-control"
-              />
-              <div className="m-t-3" />
-              <div className="row">
-                <div className="col-md-6">
-                  <label htmlFor="button-state-selector" className="control-label">
-                    State
-                  </label>
-                  <Select
-                    id="button-state-selector"
-                    required
-                    selected={stateSelection}
-                    options={Object.values(ButtonState).map(state => ({
-                      value: state,
-                      label: state,
-                    }))}
-                    onChange={selection => this.setState({ stateSelection: selection })}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="button-block-checkbox" className="control-label">
-                    Block (Full size of container)
-                  </label>
-                  <Checkbox
-                    label="block"
-                    checked={block}
-                    onChange={this.createStateLink('block')}
-                  />
-                </div>
-              </div>
-              <div className="m-t-3" />
-              <div className="row">
-                <div className="col-md-6">
-                  <label htmlFor="button-size-selector" className="control-label">
-                    Size
-                  </label>
-                  <Select
-                    id="button-size-selector"
-                    required
-                    selected={{ value: size, label: size }}
-                    options={Object.values(ButtonSize).map(sizeValue => ({
-                      value: sizeValue,
-                      label: sizeValue,
-                    }))}
-                    onChange={selection => this.setState({ size: selection.value })}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="button-type-selector" className="control-label">
-                    Type
-                  </label>
-                  <Select
-                    id="button-type-selector"
-                    required
-                    selected={{ value: type, label: type }}
-                    options={Object.values(ButtonType).map(typeKey => ({
-                      value: typeKey,
-                      label: typeKey,
-                    }))}
-                    onChange={selection => this.setState({ type: selection.value })}
-                  />
-                </div>
-              </div>
+              <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>
           </div>
         </section>

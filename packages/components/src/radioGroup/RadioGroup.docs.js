@@ -29,7 +29,7 @@ const RADIOS = [
 ];
 
 const KNOBS = {
-  firstStepKnobs: [
+  knobs: [
     {
       type: 'select',
       label: 'selectedValue',
@@ -38,13 +38,13 @@ const KNOBS = {
       options: [],
     },
     {
-      type: 'input',
+      type: 'text',
       label: 'radios',
       state: 'radios',
       defaultState: 'Array of radio objects',
     },
     {
-      type: 'input',
+      type: 'text',
       label: 'name',
       state: 'name',
       defaultState: 'radio-group',
@@ -52,11 +52,10 @@ const KNOBS = {
   ],
 };
 
+const extraPropsDocs = { onChange: 'console.log' };
+
 export default class RadioGroupDocs extends Component {
-  constructor() {
-    super();
-    this.state = { ...generateState(KNOBS) };
-  }
+  state = { ...generateState(KNOBS) };
 
   handleOnChange = selectedValue => {
     this.setState({ selectedValue });
@@ -65,18 +64,19 @@ export default class RadioGroupDocs extends Component {
   };
 
   render() {
-    const extraPropsDocs = ["onChange={'console.log'}"];
     return (
       <div className="container">
         <section className="section">
-          {/* Full Component */}
           <div className="row">
             <div className="col-md-6">
               <h2>Radio group</h2>
               <span role="img" aria-label="uhm">
                 and no is not the backstreet boys
               </span>
-              {getExtraDocs()}
+              <p className=" m-t-5">
+                This component render a simple group of radios, and broadcast the index of selected
+                option <code>onChange</code>
+              </p>
               {generateCodeBlock('RadioGroup', KNOBS, this, extraPropsDocs)}
             </div>
             <div className="col-md-6">
@@ -99,12 +99,3 @@ export default class RadioGroupDocs extends Component {
     );
   }
 }
-
-const getExtraDocs = () => (
-  <div>
-    <p className=" m-t-5">
-      This component render a simple group of radios, and broadcast the index of selected option{' '}
-      <code>onChange</code>
-    </p>
-  </div>
-);

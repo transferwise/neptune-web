@@ -28,7 +28,7 @@ In order to generate the component docs with the knobs all is needed it's a conf
   
   where extra Props are additional Props docs that are not part of Docs state
   
-  ex :```const extraPropsDocs = ["onChange={'console.log'}"];```
+  ex :```const extraPropsDocs = {onChange:'console.log'};```
   
 #####   To generate the Docs State 
   

@@ -53,14 +53,14 @@ const ACCEPTED_FORMAT = [
 const KNOBS = {
   firstStepKnobs: [
     {
-      type: 'input',
+      type: 'text',
       label: 'Placeholder',
       state: 'usPlaceholder',
       defaultState: 'Drag and drop a file less than 5MB',
     },
 
-    { type: 'input', label: 'Label', state: 'usLabel', defaultState: '' },
-    { type: 'input', label: 'Button text', state: 'usButtonText', defaultState: 'Or Select File' },
+    { type: 'text', label: 'Label', state: 'usLabel', defaultState: '' },
+    { type: 'text', label: 'Button text', state: 'usButtonText', defaultState: 'Or Select File' },
     {
       type: 'select',
       label: 'Help Image',
@@ -78,7 +78,7 @@ const KNOBS = {
       defaultState: ACCEPTED_FORMAT[1],
     },
     {
-      type: 'input',
+      type: 'text',
       label: 'Drop Message',
       state: 'usDropMessage',
       defaultState: 'Drop file to start upload',
@@ -86,20 +86,20 @@ const KNOBS = {
   ],
   secondStepKnobs: [
     {
-      type: 'input',
+      type: 'text',
       label: 'Processing Text',
       state: 'psProcessingText',
       defaultState: 'Uploading...',
     },
-    { type: 'input', label: 'Button Text', state: 'psButtonText', defaultState: 'Cancel' },
+    { type: 'text', label: 'Button Text', state: 'psButtonText', defaultState: 'Cancel' },
     {
-      type: 'input',
+      type: 'text',
       label: 'Failure text',
       state: 'psFailureText',
       defaultState: 'Upload failed. Please, try again.',
     },
     {
-      type: 'input',
+      type: 'text',
       label: 'Success Text',
       state: 'psSuccessText',
       defaultState: 'Upload completed!',
@@ -114,31 +114,31 @@ const KNOBS = {
   ],
   thirdStepKnobs: [
     {
-      type: 'input',
+      type: 'text',
       label: 'Button text',
       state: 'csButtonText',
       defaultState: 'Select other file?',
     },
     {
-      type: 'input',
+      type: 'text',
       label: 'Failure text',
       state: 'csFailureText',
       defaultState: 'Upload failed. Please, try again',
     },
     {
-      type: 'input',
+      type: 'text',
       label: 'Success Text',
       state: 'csSuccessText',
       defaultState: 'Upload completed!',
     },
     {
-      type: 'input',
+      type: 'text',
       label: 'Too Large Message',
       state: 'csTooLargeMessage',
       defaultState: 'csTooLargeMessage',
     },
     {
-      type: 'input',
+      type: 'text',
       label: 'Wrong type Message',
       state: 'csWrongTypeMessage',
       defaultState: 'csWrongTypeMessage',
@@ -152,8 +152,8 @@ const KNOBS = {
     },
   ],
   sharedProps: [
-    { type: 'input', label: 'Max Size', state: 'maxSize', defaultState: 5000000 },
-    { type: 'input', label: 'Animation Delay', state: 'animationDelay', defaultState: 700 },
+    { type: 'number', label: 'Max Size', state: 'maxSize', defaultState: 5000000 },
+    { type: 'number', label: 'Animation Delay', state: 'animationDelay', defaultState: 700 },
     { type: 'select', label: 'Size', state: 'size', options: SIZES, defaultState: SIZES[1] },
     {
       type: 'checkbox',
@@ -164,6 +164,13 @@ const KNOBS = {
   ],
 };
 
+const extraPropsDocs = {
+  onStart: `console.log('onStart', file)`,
+  onSuccess: `console.log('onSuccess')`,
+  onFailure: `console.log('onFailure')`,
+  onCancel: `console.log('onCancel')`,
+};
+
 export default class UploadDocs extends Component {
   constructor() {
     super();
@@ -171,7 +178,6 @@ export default class UploadDocs extends Component {
   }
 
   render() {
-    const extraProps = ["onChange={'console.log'}", "onChange=2{'console.log'}"];
     return (
       <div className="container">
         <section className="section">
@@ -183,7 +189,7 @@ export default class UploadDocs extends Component {
                 🤔
               </span>
               {getExtraDocs()}
-              {generateCodeBlock('Upload', KNOBS, this, extraProps)}
+              {generateCodeBlock('Upload', KNOBS, this, extraPropsDocs)}
             </div>
             <div className="col-md-6">
               <div className="col-xs-12">

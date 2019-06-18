@@ -45,10 +45,15 @@ const generateFormattedValue = value => {
       return `{${value}}`;
 
     case 'object':
+      if (React.isValidElement(value)) {
+        return `{${value}}`;
+      }
+
       if (value instanceof Date) {
         return `{"${value || ''}"}`;
       }
-      return JSON.stringify(value, null, '    ');
+
+      return JSON.stringify(value, null, '...');
 
     default:
       return `{"${value || ''}"}`;

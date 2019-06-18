@@ -1,91 +1,59 @@
 import React from 'react';
-import { Select, Checkbox, DateLookup } from '../../../src';
+import { FormControl } from '../../../src';
+import { FormControlType } from '../../../src/formControl/FormControlType';
 
 const generateInput = (knobs, componentThis) => {
   const { type, label, state, options } = knobs;
 
-  const handleOnChange = value => componentThis.setState({ [state]: value });
+  const handleOnChange = value => {
+    let newValue = value;
 
-  switch (type) {
-    case 'select':
-      return (
-        <div className="col-md-6 m-b-2" key={state}>
-          <label htmlFor={state} className="control-label">
-            {label}
-          </label>
-          <Select
-            id={state}
-            selected={componentThis.state[state] ? { ...componentThis.state[state] } : null}
-            options={options.map(option => ({ ...option }))}
-            required
-            onChange={handleOnChange}
-          />
-        </div>
-      );
+    if (type === 'select' && options) {
+      newValue = options.find(option => value === option.value);
+    }
 
-    case 'checkbox':
-      return (
-        <div className="col-md-6 m-b-2" key={state}>
-          <label htmlFor={state} className="control-label">
-            {label}
-          </label>
-          <Checkbox
-            id={state}
-            label={label}
-            onChange={handleOnChange}
-            checked={componentThis.state[state]}
-          />
-        </div>
-      );
+    return componentThis.setState({ [state]: newValue });
+  };
 
-    case 'number':
-      return (
-        <div className="col-md-6 m-b-2" key={state}>
-          <label htmlFor={state} className="control-label">
-            {label}
-          </label>
-          <input
-            id={state}
-            type="number"
-            className="form-control"
-            value={componentThis.state[state]}
-            onChange={event => handleOnChange(parseFloat(event.target.value))}
-          />
-        </div>
-      );
+  const { placeholder } = componentThis.state;
 
-    case 'date':
-      return (
-        <div className="col-md-6 m-b-2" key={state}>
-          <label htmlFor={state} className="control-label">
-            {label}
-          </label>
-          <DateLookup
-            id={state}
-            value={componentThis.state[state]}
-            placeholder="Choose a date"
-            onChange={handleOnChange}
-          />
-        </div>
-      );
+  const locale =
+    componentThis.state.locale && componentThis.state.locale.value
+      ? componentThis.state.locale.value
+      : 'en-GB';
 
-    case 'input':
-    default:
-      return (
-        <div className="col-md-6 m-b-2" key={state}>
-          <label htmlFor={state} className="control-label">
-            {label}
-          </label>
-          <input
-            id={state}
-            type="text"
-            className="form-control"
-            value={componentThis.state[state]}
-            onChange={event => handleOnChange(event.target.value)}
-          />
-        </div>
-      );
+  let required = false;
+  let selectedOptions = null;
+  if (type === FormControlType.SELECT && options) {
+    required = true;
+    if (componentThis.state[state] && componentThis.state[state].value) {
+      selectedOptions = options.find(option => componentThis.state[state].value === option.value);
+    }
   }
+
+  return (
+    <div className="col-md-6 m-b-2" key={state}>
+      <label htmlFor={state} className="control-label">
+        {label}
+      </label>
+
+      <FormControl
+        type={type}
+        id={state}
+        label={label}
+        placeholder={placeholder}
+        selectedOption={selectedOptions}
+        options={options && options.map(option => ({ ...option }))}
+        onChange={handleOnChange}
+        name={`docs-${label}`}
+        onBlur={() => {}}
+        onFocus={() => {}}
+        required={required}
+        locale={locale}
+        value={knobs.defaultState}
+      />
+    </div>
+  );
 };
 
 export default generateInput;

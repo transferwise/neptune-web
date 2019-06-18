@@ -1,12 +1,39 @@
 import React, { Component } from 'react';
 import { DefinitionList } from '..';
-import Select from '../select';
+import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const LAYOUTS = ['vertical', 'horizontal', 'justified'];
 
+const KNOBS = {
+  knobs: [
+    {
+      type: 'select',
+      label: 'Layout',
+      state: 'layout',
+      options: LAYOUTS.map(value => ({
+        value,
+        label: value,
+      })),
+      defaultState: { value: LAYOUTS[0], label: LAYOUTS[0] },
+    },
+  ],
+};
+
+const extraPropsDocs = {
+  model: 'this.state.model',
+  fields: 'this.state.fields',
+  locale: 'en-GB',
+  title: 'This is an awesome component',
+  narrow: 'false',
+};
+
 export default class DefinitionListDocs extends Component {
   state = {
-    model: {
+    ...generateState(KNOBS),
+  };
+
+  render() {
+    const MODEL = {
       text: 'helloworld',
       number: 123456,
       select: '1',
@@ -17,8 +44,9 @@ export default class DefinitionListDocs extends Component {
       telephone: '+441234567890',
       textarea:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    },
-    fields: {
+    };
+
+    const FIELDS = {
       text: {
         title: 'Text',
         type: 'text',
@@ -112,16 +140,12 @@ export default class DefinitionListDocs extends Component {
         hidden: true,
         default: 'hidden-value',
       },
-    },
-    layout: LAYOUTS[0],
-  };
-
-  render() {
+    };
     return (
       <div className="container">
         <section className="section">
-          <div className="row m-t-4">
-            <div className="col-md-6">
+          <div className="row">
+            <div className="col-md-6 m-t-3">
               <h2>Definition list</h2>
               <p>
                 <code>DefinitionList</code> is a companion to
@@ -138,43 +162,18 @@ export default class DefinitionListDocs extends Component {
               <p>
                 You can also specify the layout, which defaults to <code>vertical</code>.
               </p>
-              <div className="m-t-2">
-                {/* eslint-disable react/jsx-indent */}
-                <pre className="tw-docs-code">
-                  {`<DefinitionList
-  model={this.state.model}
-  fields={this.state.fields}
-  locale="en-GB"
-  title="This is an awesome component"
-  narrow={false}
-  layout="${this.state.layout}"
-/>`}
-                </pre>
-                {/* eslint-enable react/jsx-indent */}
-              </div>
-              <label htmlFor="definition-list-layout">Layout</label>
-              <Select
-                id="definition-list-layout"
-                selected={
-                  this.state.layout
-                    ? { value: this.state.layout, label: this.state.layout }
-                    : LAYOUTS[0]
-                }
-                options={LAYOUTS.map(s => ({ value: s, label: s }))}
-                onChange={selection =>
-                  this.setState({ layout: selection ? selection.value : LAYOUTS[0] })
-                }
-              />
+              {generateCodeBlock('DefinitionList', KNOBS, this, extraPropsDocs)}
             </div>
             <div className="col-md-6">
               <DefinitionList
-                model={this.state.model}
-                fields={this.state.fields}
+                model={MODEL}
+                fields={FIELDS}
                 locale="en-GB"
                 title="This is an awesome component"
                 narrow={false}
-                layout={this.state.layout}
+                layout={this.state.layout.value}
               />
+              <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>
           </div>
         </section>

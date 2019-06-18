@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Checkbox, PhoneNumberInput, Select } from '..';
+import { PhoneNumberInput } from '..';
+import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const SIZES = ['sm', 'md', 'lg'];
+
 const LOCALES = [
   { value: 'en-GB', label: 'English UK' },
   { value: 'en-US', label: 'English US' },
@@ -10,15 +12,63 @@ const LOCALES = [
   { value: 'js-JP', label: 'Japanese' },
 ];
 
+const KNOBS = {
+  knobs: [
+    {
+      type: 'text',
+      label: 'Value',
+      state: 'value',
+      defaultState: '',
+    },
+    {
+      type: 'select',
+      label: 'Locale',
+      state: 'locale',
+      options: LOCALES,
+      defaultState: LOCALES[0],
+    },
+    {
+      type: 'select',
+      label: 'Size',
+      state: 'size',
+      options: SIZES.map(s => ({ value: s, label: s })),
+      defaultState: { value: SIZES[1], label: SIZES[1] },
+    },
+    {
+      type: 'text',
+      label: 'Search placeholder',
+      state: 'searchPlaceholder',
+      defaultState: 'Prefix',
+    },
+    {
+      type: 'text',
+      label: 'Placeholder',
+      state: 'placeholder',
+      defaultState: 'placeholder',
+    },
+    {
+      type: 'checkbox',
+      label: 'Required',
+      state: 'required',
+      defaultState: false,
+    },
+    {
+      type: 'checkbox',
+      label: 'Disabled',
+      state: 'disabled',
+      defaultState: false,
+    },
+  ],
+};
+
+const extraProps = {
+  onChange: 'console.log',
+};
+
 export default class PhoneNumberInputDocs extends Component {
   state = {
-    required: false,
-    disabled: false,
+    ...generateState(KNOBS),
     value: '',
-    locale: LOCALES[0],
-    size: 'md',
-    searchPlaceholder: 'Prefix',
-    placeholder: 'placeholder',
   };
 
   handleOnChange = value => {
@@ -27,17 +77,6 @@ export default class PhoneNumberInputDocs extends Component {
   };
 
   render() {
-    const docsCode = `<PhoneNumberInput
-  locale="${this.state.locale.value}"
-  value="${this.state.value}"
-  disabled={${this.state.disabled}}
-  required={${this.state.required}}
-  size="${this.state.size}"
-  searchPlaceholder="${this.state.searchPlaceholder}"
-  placeholder="${this.state.placeholder}"
-  onChange = {'console.log'}
- />`;
-
     return (
       <div className="container">
         <section className="section">
@@ -45,25 +84,7 @@ export default class PhoneNumberInputDocs extends Component {
             <div className="col-md-6">
               <h2>PhoneNumberInput</h2>
               <p>It allows to insert a phone number</p>
-            </div>
-            <div className="col-md-6">
-              <PhoneNumberInput
-                onChange={value => this.handleOnChange(value)}
-                value={this.state.value}
-                locale={this.state.locale.value}
-                disabled={this.state.disabled}
-                required={this.state.required}
-                size={this.state.size}
-                searchPlaceholder={this.state.searchPlaceholder}
-                placeholder={this.state.placeholder}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              {/* eslint-disable react/jsx-indent */}
-              <pre className="tw-docs-code">{docsCode}</pre>
-              {/* eslint-enable react/jsx-indent */}
+              {generateCodeBlock('Button', KNOBS, this, extraProps)}
               <p>
                 A control for inputting telephone numbers. While the control allows common special
                 characters (spaces, periods, hyphens), these are stripped from the resulting model,
@@ -76,76 +97,18 @@ export default class PhoneNumberInputDocs extends Component {
                 <strong>+1684</strong> (American Samoa), not <strong>+1</strong> (United States).
               </p>
             </div>
-
             <div className="col-md-6">
-              <div className="row m-t-3">
-                <div className="col-md-6">
-                  <Checkbox
-                    label="Required"
-                    checked={this.state.required}
-                    onChange={() => this.setState({ required: !this.state.required })}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <Checkbox
-                    label="Disabled"
-                    checked={this.state.disabled}
-                    onChange={() => this.setState({ disabled: !this.state.disabled })}
-                  />
-                </div>
-              </div>
-              <div className="row m-t-3">
-                <div className="col-md-6">
-                  <label htmlFor="phone-number-input-locale">Locale</label>
-                  <Select
-                    id="phone-number-input-locale"
-                    selected={{ ...this.state.locale }}
-                    options={LOCALES.map(l => ({ ...l }))}
-                    onChange={locale => this.setState({ locale })}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="phone-number-input-value">Value</label>
-                  <input
-                    value={this.state.value}
-                    onChange={event => this.setState({ value: event.target.value })}
-                    className="form-control phone-number-input-value"
-                  />
-                </div>
-              </div>
-              <div className="row m-t-3">
-                <div className="col-md-6">
-                  <label htmlFor="phone-number-input-size">Size</label>
-                  <Select
-                    id="phone-number-input-size"
-                    selected={
-                      this.state.size ? { value: this.state.size, label: this.state.size } : null
-                    }
-                    options={SIZES.map(s => ({ value: s, label: s }))}
-                    onChange={selection =>
-                      this.setState({ size: selection ? selection.value : null })
-                    }
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="phone-number-input-size">Search placeholder</label>
-                  <input
-                    value={this.state.searchPlaceholder}
-                    onChange={event => this.setState({ searchPlaceholder: event.target.value })}
-                    className="form-control"
-                  />
-                </div>
-              </div>
-              <div className="row m-t-3">
-                <div className="col-md-6">
-                  <label htmlFor="phone-number-input-size">Placeholder</label>
-                  <input
-                    value={this.state.placeholder}
-                    onChange={event => this.setState({ placeholder: event.target.value })}
-                    className="form-control"
-                  />
-                </div>
-              </div>
+              <PhoneNumberInput
+                onChange={value => this.handleOnChange(value)}
+                value={this.state.value}
+                locale={this.state.locale.value}
+                disabled={this.state.disabled}
+                required={this.state.required}
+                size={this.state.size.value}
+                searchPlaceholder={this.state.searchPlaceholder}
+                placeholder={this.state.placeholder}
+              />
+              <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>
           </div>
         </section>

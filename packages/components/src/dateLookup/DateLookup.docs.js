@@ -1,26 +1,80 @@
 import React, { Component } from 'react';
-import { DateLookup, Select, Checkbox } from '..';
+import { DateLookup } from '..';
+import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const SIZES = ['sm', 'md', 'lg'];
 
+const KNOBS = {
+  knobs: [
+    {
+      type: 'text',
+      label: 'Locale',
+      state: 'locale',
+      defaultState: 'en-GB',
+    },
+    {
+      type: 'text',
+      label: 'Label',
+      state: 'label',
+      defaultState: '',
+    },
+    {
+      type: 'text',
+      label: 'Placeholder',
+      state: 'placeholder',
+      defaultState: '',
+    },
+    {
+      type: 'select',
+      label: 'Size',
+      state: 'size',
+      options: SIZES.map(size => ({ value: size, label: size })),
+      defaultState: { value: SIZES[1], label: SIZES[1] },
+    },
+    {
+      type: 'checkbox',
+      label: 'Disabled?',
+      state: 'disabled',
+      defaultState: false,
+    },
+    {
+      type: 'checkbox',
+      label: 'Short Date?',
+      state: 'shortDate',
+      defaultState: false,
+    },
+    {
+      type: 'date-lookup',
+      label: 'Min Date',
+      state: 'min',
+      defaultState: null,
+    },
+    {
+      type: 'date-lookup',
+      label: 'Max Date',
+      state: 'max',
+      defaultState: null,
+    },
+  ],
+  hiddenKnobs: [
+    {
+      type: 'text',
+      label: 'Input',
+      state: 'value',
+      defaultState: null,
+    },
+  ],
+};
+
+const extraProps = { onChange: 'this.handleDateChange' };
+
 export default class DateLookupDocs extends Component {
   state = {
-    date: null,
-    locale: 'en-GB',
-    hasPlaceholder: false,
-    placeholder: 'Choose a date...',
-    hasLabel: false,
-    label: 'Date',
-    shortDate: false,
-    disabled: false,
+    ...generateState(KNOBS),
   };
 
   createStateLink(name) {
     return value => this.setState({ [name]: value });
-  }
-
-  createEventStateLink(name) {
-    return event => this.setState({ [name]: event.target.value });
   }
 
   render() {
@@ -31,42 +85,7 @@ export default class DateLookupDocs extends Component {
             <div className="col-md-6">
               <h2>Date Lookup</h2>
               <p>It&apos;s a date</p>
-            </div>
-            <div className="col-md-6">
-              {/* eslint-disable no-console */}
-              <DateLookup
-                value={this.state.date}
-                min={this.state.min}
-                max={this.state.max}
-                size={this.state.size}
-                locale={this.state.locale}
-                placeholder={this.state.hasPlaceholder ? this.state.placeholder : undefined}
-                label={this.state.hasLabel ? this.state.label : undefined}
-                shortDate={this.state.shortDate}
-                disabled={this.state.disabled}
-                onChange={this.createStateLink('date')}
-              />
-              {/* eslint-enable no-console */}
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              {/* eslint-disable react/jsx-indent */}
-              <pre className="tw-docs-code">
-                {`<DateLookup
-  value={${this.state.date ? 'this.state.date' : undefined}}
-  min={${this.state.min ? 'this.state.min' : undefined}}
-  max={${this.state.max ? 'this.state.max' : undefined}}
-  locale="${this.state.locale}"
-  size=${this.state.size ? `"${this.state.size}"` : `{undefined}`}
-  placeholder=${this.state.hasPlaceholder ? `"${this.state.placeholder}"` : `{undefined}`}
-  label=${this.state.hasLabel ? `"${this.state.label}"` : `{undefined}`}
-  shortDate={${this.state.shortDate}}
-  disabled={${this.state.disabled}}
-  onChange={this.handleDateChange}
-/>`}
-              </pre>
-              {/* eslint-enable react/jsx-indent */}
+              {generateCodeBlock('DateLookup', KNOBS, this, extraProps)}
               <p>
                 Properties <code className="tw-docs-inline-code">value</code>,{' '}
                 <code className="tw-docs-inline-code">min</code> and{' '}
@@ -87,100 +106,22 @@ export default class DateLookupDocs extends Component {
               </p>
             </div>
             <div className="col-md-6">
-              <label htmlFor="date-lookup-min-date" className="control-label">
-                Min Date
-              </label>
+              {/* eslint-disable no-console */}
               <DateLookup
-                id="date-lookup-min-date"
-                value={this.state.min}
-                max={this.state.max}
-                placeholder="Choose min date..."
-                onChange={this.createStateLink('min')}
-              />
-              <div className="m-t-3" />
-              <label htmlFor="date-lookup-max-date" className="control-label">
-                Max Date
-              </label>
-              <DateLookup
-                id="date-lookup-max-date"
-                value={this.state.max}
+                value={this.state.value}
                 min={this.state.min}
-                placeholder="Choose max date..."
-                onChange={this.createStateLink('max')}
+                max={this.state.max}
+                size={this.state.size.value}
+                locale={this.state.locale}
+                placeholder={this.state.placeholder}
+                label={this.state.label}
+                shortDate={this.state.shortDate}
+                disabled={this.state.disabled}
+                onChange={this.createStateLink('value')}
               />
-              <div className="m-t-3" />
-              <label htmlFor="date-lookup-size" className="control-label">
-                Size
-              </label>
-              <Select
-                id="date-lookup-size"
-                selected={
-                  this.state.size ? { value: this.state.size, label: this.state.size } : undefined
-                }
-                options={SIZES.map(size => ({ value: size, label: size }))}
-                onChange={selection =>
-                  this.setState({ size: selection ? selection.value : undefined })
-                }
-              />
-              <div className="m-t-3" />
-              <label htmlFor="date-lookup-locale" className="control-label">
-                Locale
-              </label>
-              <input
-                id="date-lookup-locale"
-                type="text"
-                className="form-control"
-                value={this.state.locale}
-                onChange={this.createEventStateLink('locale')}
-              />
-              <div className="m-t-3" />
-              <Checkbox
-                label="Custom placeholder?"
-                onChange={this.createStateLink('hasPlaceholder')}
-                checked={this.state.hasPlaceholder}
-              />
-              <div className="m-t-3" />
-              {this.state.hasPlaceholder ? (
-                <input
-                  type="text"
-                  value={this.state.placeholder}
-                  onChange={this.createEventStateLink('placeholder')}
-                  placeholder="Placeholder"
-                  className="form-control"
-                />
-              ) : (
-                ''
-              )}
-              <div className="m-t-3" />
-              <Checkbox
-                label="Inline label?"
-                onChange={this.createStateLink('hasLabel')}
-                checked={this.state.hasLabel}
-              />
-              <div className="m-t-3" />
-              {this.state.hasLabel ? (
-                <input
-                  type="text"
-                  value={this.state.label}
-                  onChange={this.createEventStateLink('label')}
-                  placeholder="Label"
-                  className="form-control"
-                />
-              ) : (
-                ''
-              )}
-              <div className="m-t-3" />
-              <Checkbox
-                label="Short Date?"
-                onChange={this.createStateLink('shortDate')}
-                checked={this.state.shortDate}
-              />
-              <div className="m-t-3" />
-              <Checkbox
-                label="Disabled?"
-                onChange={this.createStateLink('disabled')}
-                checked={this.state.disabled}
-              />
+              <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
+
+              {/* eslint-enable no-console */}
             </div>
           </div>
         </section>

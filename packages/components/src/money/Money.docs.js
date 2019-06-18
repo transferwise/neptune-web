@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
-
 import { Money } from '..';
+import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
+
+const KNOBS = {
+  knobs: [
+    {
+      type: 'number',
+      label: 'Amount',
+      state: 'amount',
+      defaultState: 1234.5678,
+    },
+    {
+      type: 'text',
+      label: 'Currency',
+      state: 'currency',
+      defaultState: 'GBP',
+    },
+  ],
+};
 
 class MoneyDocs extends Component {
   state = {
-    amount: 1234.5678,
-    currency: 'GBP',
+    ...generateState(KNOBS),
   };
 
   render() {
@@ -18,7 +34,7 @@ class MoneyDocs extends Component {
             <div className="col-md-6">
               <h2>Money</h2>
               <p>Must be funny...</p>
-              <pre className="tw-docs-code">{`<Money amount={${amount}} currency="${currency}" />`}</pre>
+              {generateCodeBlock('Money', KNOBS, this, {})}
               Uses{' '}
               <a
                 href="https://github.com/transferwise/formatting/"
@@ -32,32 +48,8 @@ class MoneyDocs extends Component {
             <div className="col-md-6">
               <div>
                 <Money amount={amount} currency={currency} />
-              </div>
-
-              <div className="m-t-4 row">
-                <div className="col-sm-6">
-                  <label htmlFor="money-amount-input" className="control-label">
-                    Amount
-                  </label>
-                  <input
-                    id="money-amount-input"
-                    type="number"
-                    value={amount}
-                    onChange={event => this.setState({ amount: event.target.value })}
-                    className="form-control"
-                  />
-                </div>
-                <div className="col-sm-6">
-                  <label htmlFor="money-currency-input" className="control-label">
-                    Currency
-                  </label>
-                  <input
-                    id="money-currency-input"
-                    type="text"
-                    value={currency}
-                    onChange={event => this.setState({ currency: event.target.value })}
-                    className="form-control"
-                  />
+                <div className="row m-t-5">
+                  {KNOBS.knobs.map(knob => generateInput(knob, this))}
                 </div>
               </div>
             </div>

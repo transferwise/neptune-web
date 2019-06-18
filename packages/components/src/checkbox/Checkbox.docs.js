@@ -1,26 +1,45 @@
 import React, { Component } from 'react';
 import { Checkbox } from '..';
+import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
+
+const KNOBS = {
+  knobs: [
+    {
+      type: 'text',
+      label: 'Label',
+      state: 'label',
+      defaultState: 'Send Money',
+    },
+    {
+      type: 'checkbox',
+      label: 'Required?',
+      state: 'required',
+      defaultState: false,
+    },
+    {
+      type: 'checkbox',
+      label: 'Disabled?',
+      state: 'disabled',
+      defaultState: false,
+    },
+  ],
+  hiddenKnobs: [
+    {
+      type: 'checkbox',
+      label: 'checked',
+      state: 'checked',
+      defaultState: false,
+    },
+  ],
+};
+
+const extraPropsDocs = { onChange: 'this.handleCheckChange' };
 
 export default class CheckboxDocs extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: false,
-      disabled: false,
-      required: false,
-      label: 'Check me out',
-    };
-  }
-
-  createStateLink(name) {
-    return value => this.setState({ [name]: value });
-  }
-
-  createEventStateLink(name) {
-    return event => this.setState({ [name]: event.target.value });
-  }
+  state = { ...generateState(KNOBS) };
 
   render() {
+    const { checked, required, disabled, label } = this.state;
     return (
       <div className="container">
         <section className="section">
@@ -28,51 +47,17 @@ export default class CheckboxDocs extends Component {
             <div className="col-md-6">
               <h2>Checkbox</h2>
               <p>Check yourself before you wreck yourself</p>
+              {generateCodeBlock('Checkbox', KNOBS, this, extraPropsDocs)}
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6  m-t-2">
               <Checkbox
-                label={this.state.label}
-                onChange={this.createStateLink('checked')}
-                checked={this.state.checked}
-                required={this.state.required}
-                disabled={this.state.disabled}
+                label={label}
+                onChange={value => this.setState({ checked: value })}
+                checked={checked}
+                required={required}
+                disabled={disabled}
               />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              {/* eslint-disable react/jsx-indent */}
-              <pre className="tw-docs-code">
-                {`<Checkbox
-  label={"${this.state.label}"}
-  onChange={this.handleCheckChange}
-  required={${this.state.required}}
-  disabled={${this.state.disabled}}
-  checked={${this.state.checked}}
-/>`}
-              </pre>
-              {/* eslint-enable react/jsx-indent */}
-            </div>
-            <div className="col-md-6">
-              <input
-                type="text"
-                value={this.state.label}
-                onChange={this.createEventStateLink('label')}
-                placeholder="Checkbox label"
-                className="form-control"
-              />
-              <div className="m-t-3" />
-              <Checkbox
-                label="Required?"
-                onChange={this.createStateLink('required')}
-                checked={this.state.required}
-              />
-              <div className="m-t-3" />
-              <Checkbox
-                label="Disabled?"
-                onChange={this.createStateLink('disabled')}
-                checked={this.state.disabled}
-              />
+              <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>
           </div>
         </section>

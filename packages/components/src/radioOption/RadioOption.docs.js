@@ -5,7 +5,7 @@ import { generateInput, generateCodeBlock, generateState } from '../../docs/util
 import { RadioOption } from '..';
 
 const KNOBS = {
-  firstStepKnobs: [
+  knobs: [
     { type: 'checkbox', label: 'Complex', state: 'complex', defaultState: false },
     { type: 'checkbox', label: 'Disabled', state: 'disabled', defaultState: false },
   ],
@@ -17,14 +17,14 @@ class RadioOptionDocs extends Component {
   render() {
     const { complex, disabled } = this.state;
 
-    const extraProps = [
-      'id="radio-option"',
-      'name="radio-option"',
-      'title="Radio option"',
-      "onChange={'this.handleChange'}",
-      `description={"${getDescriptionForComplexState(complex)}"`,
-      'media={<FastFlagIcon />',
-    ];
+    const extraPropsDocs = {
+      id: 'radio-option',
+      name: 'radio-option',
+      title: 'Radio option',
+      onChange: 'this.handleChange',
+      description: getDescriptionForComplexState(complex),
+      media: '<FastFlagIcon />',
+    };
 
     const { valueSelected } = this.state;
     return (
@@ -34,6 +34,7 @@ class RadioOptionDocs extends Component {
             <div className="col-md-6">
               <h2>Radio option</h2>
               <p>Video killed the radio option ♫</p>
+              {generateCodeBlock('RadioOption', KNOBS, this, extraPropsDocs)}
             </div>
             <div className="col-md-6">
               <RadioOption
@@ -50,16 +51,7 @@ class RadioOptionDocs extends Component {
                 disabled={disabled}
                 value="value"
               />
-            </div>
-          </div>
-          <div className="row m-t-5">
-            <div className="col-md-6">
-              {generateCodeBlock('RadioOption', KNOBS, this, extraProps)}
-            </div>
-            <div className="col-md-6">
-              <div className="row">
-                {KNOBS.firstStepKnobs.map(knob => generateInput(knob, this))}
-              </div>
+              <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>
           </div>
         </div>
