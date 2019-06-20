@@ -1,3 +1,7 @@
+# v7.4.1
+## Add `strictMath` to Less loader
+Less was failing to process files that have custom properties inside calc() functions.
+
 # v7.4.0
 ## Add Accordion component
 

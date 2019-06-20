@@ -149,7 +149,7 @@ module.exports = {
         test: /\.(css|less)$/,
         loader: ExtractTextPlugin.extract(
           'style',
-          'css?importLoaders=1!postcss!less',
+          'css?importLoaders=1!postcss!less?strictMath=1',
           extractTextPluginOptions,
         ),
       },
