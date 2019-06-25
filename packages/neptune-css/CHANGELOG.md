@@ -1,3 +1,7 @@
+# v0.4.0
+## Added dimmer - slider - drawer css
+
+
 # v0.3.0
 ## Move dependencies to devDependencies
 Some packages (like rxjs, less) were installed for consumers as well. Moving these to `devDependencies`.

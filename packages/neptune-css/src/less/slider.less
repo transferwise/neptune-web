@@ -1,0 +1,81 @@
+/* LEVEL 4 */
+
+@import "./variables/_colors.less";
+@import "./variables/_transitions.less";
+@import "./variables/_zindex.less";
+
+.slider {
+  transform: translateX(-100%);
+  transition: var(--transition-transform);
+  background: var(--brand-white);
+  overflow-y: scroll;
+  z-index: var(--zindex-navbar-fixed);
+  position:absolute;
+
+  &.slider--fixed {
+    position:fixed
+  }
+
+  &.slider--open-right,
+  &.slider--open-left {
+    top:0;
+    bottom:0;
+  }
+
+  &.slider--open-right{
+    transform: translateX(100%);
+    right: 0;
+  }
+
+  &.slider--open-left {
+    transform: translateX(-100%);
+    left: 0;
+  }
+
+  &.slider-enter-done {
+    &.slider--open-right,
+    &.slider--open-left {
+      transform: translateX(0);
+    }
+  }
+
+  &.slider--open-top,
+  &.slider--open-bottom {
+    right:0;
+    left:0;
+    width:100%;
+  }
+
+  &.slider--open-top{
+    transform: translateY(-100%);
+    top: 0;
+  }
+
+  &.slider--open-bottom{
+    transform: translateY(100%);
+    bottom: 0;
+  }
+
+  &.slider-enter-done {
+    &.slider--open-top,
+    &.slider--open-bottom {
+      transform: translateY(0);
+    }
+  }
+
+  &.slider--border-top {
+    box-shadow: inset 0 -1px 0 0 rgb(226, 230, 232);
+  }
+
+  &.slider--border-right {
+    box-shadow: inset 1px 0 0 0 rgb(226, 230, 232);
+  }
+
+  &.slider--border-bottom {
+    box-shadow: inset 0 1px 0 0 rgb(226, 230, 232);
+  }
+
+  &.slider--border-left {
+    box-shadow: inset  -1px 0 0 0 rgb(226, 230, 232);
+  }
+}

@@ -1,0 +1,58 @@
+/* LEVEL 4 */
+
+@import "./variables/_sizes.less";
+@import "./spacing.less";
+
+.drawer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.drawer--vertical {
+    height: 100vh;
+    max-height: 100vh;
+  }
+
+  &.drawer--horizontal {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .drawer-header,
+  .drawer-footer {
+    display: flex;
+    align-items: center;
+  }
+
+  .drawer-content {
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  .drawer-header {
+    min-height: calc(var(--spacer) * 8);
+
+    &.drawer-header--withborder {
+      box-shadow: inset 0 -1px 0 0 rgb(226, 230, 232);
+    }
+
+    .tw-icon {
+      fill:rgb(0, 185, 255);
+      cursor: pointer;
+      display: block;
+    }
+  }
+
+  .drawer-footer {
+    min-height: calc(var(--spacer) * 12);
+    box-shadow: inset 0 1px 0 0 rgb(226, 230, 232);
+  }
+}
+
+@media (min-width: 768px) {
+  .drawer {
+    &.drawer--vertical {
+      width: 768px;
+    }
+  }
+}
