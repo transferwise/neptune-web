@@ -1,11 +1,15 @@
-.colored-dot {
-  position: relative;
+/* LEVEL 4 */
 
-  &:after {
+.colored-dot {
+
+  &::after {
     content: '.';
-    position: absolute;
-    bottom: 0;
-    transform: translate(-100%, 0);
     color: var(--brand-light-blue);
+  }
+
+  &--green {
+    &::after {
+      color: var(--brand-green);
+    }
   }
 }

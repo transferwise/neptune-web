@@ -1,3 +1,7 @@
+# v0.4.2
+## Update colored-dot
+Since the headings are not scored, the dot is going to be a decorative thing that is not going to appear on the DOM.
+
 # v0.4.1
 ## Updated drawer sizes
 
