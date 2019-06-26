@@ -50,7 +50,7 @@ const generateInput = (knobs, componentThis) => {
         onFocus={() => {}}
         required={required}
         locale={locale}
-        value={knobs.defaultState}
+        value={componentThis.state[state] || knobs.defaultState}
       />
     </div>
   );

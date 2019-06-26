@@ -133,7 +133,6 @@ export default class FormControl extends PureComponent {
     super(props);
     this.state = {
       selectedOption: props.selectedOption,
-      value: props.value,
       touched: false,
       prevValue: props.value,
     };
@@ -188,7 +187,6 @@ export default class FormControl extends PureComponent {
       value = event;
     }
 
-    this.setState({ value });
     this.props.onChange(value);
   };
 
@@ -224,10 +222,8 @@ export default class FormControl extends PureComponent {
       id,
       minDate,
       maxDate,
+      value,
     } = this.props;
-
-    const { value } = this.state;
-    const inputDefaultValue = value || '';
 
     switch (type) {
       case FormControlType.RADIO:
@@ -309,12 +305,12 @@ export default class FormControl extends PureComponent {
             required={required}
             step={step}
             type="number"
-            value={inputDefaultValue}
+            value={value}
           />
         );
 
       case FormControlType.HIDDEN:
-        return <input type="hidden" name={name} value={inputDefaultValue} id={id} />;
+        return <input type="hidden" name={name} value={value} id={id} />;
 
       case FormControlType.PASSWORD:
         return (
@@ -330,7 +326,7 @@ export default class FormControl extends PureComponent {
             readOnly={readOnly}
             required={required}
             type="password"
-            value={inputDefaultValue}
+            value={value}
           />
         );
 
@@ -387,7 +383,7 @@ export default class FormControl extends PureComponent {
           id,
           name,
           placeholder,
-          value: inputDefaultValue,
+          value,
           readOnly,
           required,
           minLength,
@@ -430,7 +426,7 @@ export default class FormControl extends PureComponent {
           id,
           name,
           placeholder,
-          value: inputDefaultValue,
+          value,
           readOnly,
           required,
           minLength,

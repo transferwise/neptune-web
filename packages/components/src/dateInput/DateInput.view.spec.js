@@ -78,18 +78,6 @@ describe('Date Input Component', () => {
         expect(selectMonth.prop('selected')).toEqual(JANUARY_OPTION);
         expect(inputYear.prop('value')).toBe(1971);
       });
-
-      it('updates values to a new provided value', () => {
-        component.setProps({ value: '1981-02-03' });
-
-        selectMonth = component.find(MONTH_SELECTOR);
-        inputDay = component.find(DAY_SELECTOR);
-        inputYear = component.find(YEAR_SELECTOR);
-
-        expect(inputDay.prop('value')).toBe(3);
-        expect(selectMonth.prop('selected')).toEqual(FEBRUARY_OPTION);
-        expect(inputYear.prop('value')).toBe(1981);
-      });
     });
 
     describe('as a valid short ISO8601 string', () => {
@@ -118,33 +106,6 @@ describe('Date Input Component', () => {
         expect(inputDay.prop('value')).toBe(28);
         expect(selectMonth.prop('selected')).toEqual(FEBRUARY_OPTION);
         expect(inputYear.prop('value')).toBe(1990);
-      });
-
-      it('updates values to a new provided value', () => {
-        component.setProps({ value: '1990-01-13T00:00:00.000Z' });
-
-        selectMonth = component.find(MONTH_SELECTOR);
-        inputDay = component.find(DAY_SELECTOR);
-        inputYear = component.find(YEAR_SELECTOR);
-
-        expect(inputDay.prop('value')).toBe(13);
-        expect(selectMonth.prop('selected')).toEqual(JANUARY_OPTION);
-        expect(inputYear.prop('value')).toBe(1990);
-      });
-
-      it('reset values if new value is not correct', () => {
-        const dateString = '1990-02-28T00:00:00.000Z';
-        component = shallow(<DateInput {...props} value={dateString} />);
-
-        component.setProps({ value: '199-01-13T00:00:00.000Z' });
-
-        selectMonth = component.find(MONTH_SELECTOR);
-        inputDay = component.find(DAY_SELECTOR);
-        inputYear = component.find(YEAR_SELECTOR);
-
-        expect(inputDay.prop('value')).toBe('');
-        expect(selectMonth.prop('selected')).toEqual(JANUARY_OPTION);
-        expect(inputYear.prop('value')).toBe('');
       });
     });
 
@@ -178,12 +139,8 @@ describe('Date Input Component', () => {
   });
 
   describe('when locale is provided', () => {
-    beforeEach(() => {
-      component = shallow(<DateInput {...props} locale={LOCALES.en} />);
-    });
-
     it('updates selectMonth based on locale', () => {
-      component.setProps({ locale: LOCALES.fr });
+      component = shallow(<DateInput {...props} locale={LOCALES.fr} />);
       selectMonth = component.find(MONTH_SELECTOR);
       const frMonths = component.instance().getMonthsOptions();
 
@@ -199,19 +156,8 @@ describe('Date Input Component', () => {
       ).toBe('input');
     });
 
-    it('shows day before month if locale is US', () => {
-      component.setProps({ locale: LOCALES.us });
-
-      expect(
-        component
-          .find('.form-control')
-          .at(0)
-          .type(),
-      ).toBeInstanceOf(Function);
-    });
-
     it('shows day before month if locale is JP', () => {
-      component.setProps({ locale: LOCALES.jp });
+      component = shallow(<DateInput {...props} locale={LOCALES.jp} />);
 
       expect(
         component
@@ -257,17 +203,6 @@ describe('Date Input Component', () => {
         inputYear.simulate('change', { target: { value: '1990' } });
 
         expect(props.onChange).toHaveBeenCalledWith('1990-01-01');
-      });
-
-      it('returns null for invalid input', () => {
-        const date = '2001-01-01';
-        component = shallow(<DateInput {...props} value={date} />);
-
-        inputYear = component.find(YEAR_SELECTOR);
-
-        inputYear.simulate('change', { target: { value: 'aaa' } });
-
-        expect(props.onChange).toHaveBeenCalledWith(null);
       });
     });
 

@@ -1,3 +1,7 @@
+# v8.0.0
+## Update DateInput 
+Remove state props mirroring for DateInput
+
 # v7.4.1
 ## Add `strictMath` to Less loader
 Less was failing to process files that have custom properties inside calc() functions.

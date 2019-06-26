@@ -12,16 +12,6 @@ const MonthBeforeDay = ['en-US', 'ja-JP'];
 const INITIAL_DEFAULT_STATE = { year: null, month: 0, day: null };
 
 class DateInput extends PureComponent {
-  static returnValue = (_props, _state, value) => {
-    let returnValue = null;
-    if (+value !== +_state.value) {
-      if (isDateValid(value)) {
-        returnValue = DateInput.getDateAsString(value);
-      }
-      _props.onChange(returnValue);
-    }
-  };
-
   static propTypes = {
     disabled: Types.bool,
     size: Types.oneOf(['sm', 'md', 'lg']),
@@ -40,8 +30,8 @@ class DateInput extends PureComponent {
     size: 'md',
     value: null,
     locale: DEFAULT_LOCALE,
-    onFocus() {},
-    onBlur() {},
+    onFocus: null,
+    onBlur: null,
     dayLabel: 'Day',
     monthLabel: 'Month',
     yearLabel: 'Year',
@@ -65,47 +55,13 @@ class DateInput extends PureComponent {
       ...explodedDate,
       value: dateObject,
       monthBeforeDay: MonthBeforeDay.indexOf(locale) > -1,
-      locale,
     };
   }
 
-  static getDateAsString = date =>
+  getDateAsString = date =>
     [date.getFullYear(), `0${date.getMonth() + 1}`.slice(-2), `0${date.getDate()}`.slice(-2)].join(
       '-',
     );
-
-  static getDerivedStateFromProps(nextProps, state) {
-    if (nextProps.locale && nextProps.locale !== state.locale) {
-      return {
-        ...state,
-        locale: nextProps.locale,
-        monthBeforeDay: MonthBeforeDay.indexOf(nextProps.locale) > -1,
-      };
-    }
-
-    if (nextProps.value) {
-      if (isDateValid(nextProps.value)) {
-        const dateObject =
-          typeof nextProps.value === 'string'
-            ? convertToLocalMidnight(nextProps.value)
-            : nextProps.value;
-
-        if (+dateObject !== +state.value) {
-          const explodedDate = explodeDate(dateObject);
-          DateInput.returnValue(nextProps, { ...state, ...explodedDate }, dateObject);
-          return {
-            ...state,
-            ...explodedDate,
-            value: dateObject,
-          };
-        }
-      } else {
-        DateInput.returnValue(nextProps, { ...state, ...INITIAL_DEFAULT_STATE }, null);
-        return { ...state, ...INITIAL_DEFAULT_STATE, value: null };
-      }
-    }
-    return null;
-  }
 
   getSelectElement = () => {
     const { disabled, size, locale, monthLabel } = this.props;
@@ -141,6 +97,16 @@ class DateInput extends PureComponent {
     return options;
   };
 
+  returnValue = value => {
+    let returnValue = null;
+    if (+value !== +this.state.value) {
+      if (isDateValid(value)) {
+        returnValue = this.getDateAsString(value);
+      }
+      this.props.onChange(returnValue);
+    }
+  };
+
   handleDayChange = event => {
     const { month, year } = this.state;
     const day = event.target.value;
@@ -150,7 +116,7 @@ class DateInput extends PureComponent {
     value = isDateValid(value) ? value : null;
 
     this.setState({ day: checkedDay }, () => {
-      DateInput.returnValue(this.props, this.state, value);
+      this.returnValue(value);
       // Prevents returning already returned values
       this.setState({ value });
     });
@@ -166,7 +132,7 @@ class DateInput extends PureComponent {
     value = isDateValid(value) ? value : null;
 
     this.setState({ month, day: checkedDay }, () => {
-      DateInput.returnValue(this.props, this.state, value);
+      this.returnValue(value);
       // Prevents returning already returned values
       this.setState({ value });
     });
@@ -185,7 +151,7 @@ class DateInput extends PureComponent {
       date = isDateValid(date) ? date : null;
 
       this.setState({ day: checkedDay, year: checkedYear }, () => {
-        DateInput.returnValue(this.props, this.state, date);
+        this.returnValue(date);
         // Prevents returning already returned values
         this.setState({ value: date });
       });
@@ -193,9 +159,6 @@ class DateInput extends PureComponent {
       this.setState({ year: slicedYear }, () => {
         let date = new Date(slicedYear, month, day);
         date = isDateValid(date) ? date : null;
-
-        DateInput.returnValue(this.props, this.state, date);
-        // Prevents returning already returned values
         this.setState({ value: date });
       });
     }

@@ -50,12 +50,14 @@ export default class DateInputDocs extends Component {
     ...generateState(KNOBS),
   };
 
-  handleChange = date => {
+  handleChange = value => {
     // eslint-disable-next-line
-    console.log(`Returned ${typeof date}`, date);
+    console.log(`Returned ${typeof value}`, value);
+    this.setState({ value });
   };
   render() {
     const { locale, disabled, size, value } = this.state;
+
     return (
       <div className="container">
         <section className="section">
@@ -75,6 +77,7 @@ export default class DateInputDocs extends Component {
                 disabled={disabled}
                 size={size.value}
                 value={value}
+                key={value}
               />
               <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>
