@@ -1,6 +1,8 @@
+# v0.4.1
+## Updated drawer sizes
+
 # v0.4.0
 ## Added dimmer - slider - drawer css
-
 
 # v0.3.0
 ## Move dependencies to devDependencies
