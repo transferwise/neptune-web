@@ -16,7 +16,13 @@ const KNOBS = {
         value,
         label: value,
       })),
-      defaultState: { value: SIZES[0], label: SIZES[0] },
+      defaultState: { value: SIZES[1], label: SIZES[1] },
+    },
+    {
+      type: 'text',
+      label: 'Title',
+      state: 'title',
+      defaultState: 'A title',
     },
     {
       type: 'text',
@@ -36,7 +42,6 @@ const KNOBS = {
 };
 
 const extraPropsDocs = {
-  title: 'A title',
   body: bodyText,
   footer: '<FooterComponent />',
   onClose: 'this.close',
@@ -58,7 +63,7 @@ export default class ModalDocs extends Component {
   };
 
   render() {
-    const { open, size, className } = this.state;
+    const { open, size, title, className } = this.state;
 
     return (
       <div className="container">
@@ -90,6 +95,7 @@ export default class ModalDocs extends Component {
             open={open}
             onClose={this.close}
             size={size.value}
+            title={title}
             className={className}
           />
         </section>

@@ -1,3 +1,7 @@
+# v8.1.0
+## Hide Modal divider if title is not provided
+Hiding all dividers was already possible by passing `.no-divider` as a className to the component, but this removes that necessity while maintaining the divider on the footer when there is one.
+
 # v8.0.0
 ## Update DateInput 
 Remove state props mirroring for DateInput

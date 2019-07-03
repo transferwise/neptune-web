@@ -31,6 +31,11 @@ const generateInput = (knobs, componentThis) => {
     }
   }
 
+  let newValue = knobs.defaultState;
+  if (componentThis.state[state] !== null) {
+    newValue = componentThis.state[state];
+  }
+
   return (
     <div className="col-md-6 m-b-2" key={state}>
       <label htmlFor={state} className="control-label">
@@ -50,7 +55,7 @@ const generateInput = (knobs, componentThis) => {
         onFocus={() => {}}
         required={required}
         locale={locale}
-        value={componentThis.state[state] || knobs.defaultState}
+        value={newValue}
       />
     </div>
   );

@@ -50,7 +50,7 @@ export default class ModalDialog extends Component {
       >
         <div className={classes}>
           <div className="modal-content">
-            <div className="modal-header">
+            <div className={classNames('modal-header', { 'no-divider': !title })}>
               <button type="button" onClick={onClose} className="close" aria-label="close">
                 <span aria-hidden="true">&times;</span>
               </button>

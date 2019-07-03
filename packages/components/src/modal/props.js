@@ -1,7 +1,7 @@
 import Types from 'prop-types';
 
 export const dialogPropTypes = {
-  title: Types.node.isRequired,
+  title: Types.node,
   body: Types.node.isRequired,
   footer: Types.node,
   size: Types.oneOf(['xl', 'lg', 'md', 'sm']),

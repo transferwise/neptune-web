@@ -1,8 +1,16 @@
-.modal.no-divider {
-  .modal-header {
+.no-divider {
+  .modal& {
+    .modal-header {
+      border-bottom: none;
+    }
+    .modal-footer {
+      border-top: none;
+    }
+  }
+  .modal-header& {
     border-bottom: none;
   }
-  .modal-footer {
+  .modal-footer& {
     border-top: none;
   }
 }
