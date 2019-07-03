@@ -1,3 +1,6 @@
+# v0.4.4
+## Update drawer spacing
+
 # v0.4.3
 ## Update transition type and duration
 
