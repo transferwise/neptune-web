@@ -1,3 +1,6 @@
+# v0.4.5
+## TransferWise fonts where missing
+
 # v0.4.4
 ## Update drawer spacing
 
