@@ -16,8 +16,8 @@ const KNOBS = {
   knobs: [
     {
       type: 'text',
-      label: 'Value',
-      state: 'value',
+      label: 'Initial Value',
+      state: 'initialValue',
       defaultState: '',
     },
     {
@@ -68,8 +68,10 @@ const extraProps = {
 export default class PhoneNumberInputDocs extends Component {
   state = {
     ...generateState(KNOBS),
-    value: '',
+    // value: '',
   };
+
+  key = 0;
 
   handleOnChange = value => {
     // eslint-disable-next-line
@@ -77,6 +79,8 @@ export default class PhoneNumberInputDocs extends Component {
   };
 
   render() {
+    // This is only for docs purpose as it simulate the props initialization.
+    this.key += 1;
     return (
       <div className="container">
         <section className="section">
@@ -100,13 +104,14 @@ export default class PhoneNumberInputDocs extends Component {
             <div className="col-md-6">
               <PhoneNumberInput
                 onChange={value => this.handleOnChange(value)}
-                value={this.state.value}
+                initialValue={this.state.initialValue}
                 locale={this.state.locale.value}
                 disabled={this.state.disabled}
                 required={this.state.required}
                 size={this.state.size.value}
                 searchPlaceholder={this.state.searchPlaceholder}
                 placeholder={this.state.placeholder}
+                key={this.key}
               />
               <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>

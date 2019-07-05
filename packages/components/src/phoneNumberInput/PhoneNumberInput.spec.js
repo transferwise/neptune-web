@@ -38,7 +38,7 @@ describe('Given a telephone number component', () => {
 
   describe('when a valid model is supplied', () => {
     beforeEach(() => {
-      component = shallow(<PhoneNumberInput {...props} value="+39123456789" />);
+      component = shallow(<PhoneNumberInput {...props} initialValue="+39123456789" />);
       select = component.find(PREFIX_SELECT_SELECTOR);
       input = component.find(NUMBER_SELECTOR);
     });
@@ -51,7 +51,7 @@ describe('Given a telephone number component', () => {
 
   describe('when a model is supplied that could match more than one prefix', () => {
     beforeEach(() => {
-      component = shallow(<PhoneNumberInput {...props} value="+1868123456789" />);
+      component = shallow(<PhoneNumberInput {...props} initialValue="+1868123456789" />);
       select = component.find(PREFIX_SELECT_SELECTOR);
       input = component.find(NUMBER_SELECTOR);
     });
@@ -66,7 +66,7 @@ describe('Given a telephone number component', () => {
 
   describe('when a model is supplied with no matching prefix', () => {
     beforeEach(() => {
-      component = shallow(<PhoneNumberInput {...props} value="+999123456789" />);
+      component = shallow(<PhoneNumberInput {...props} initialValue="+999123456789" />);
       select = component.find(PREFIX_SELECT_SELECTOR);
       input = component.find(NUMBER_SELECTOR);
     });
@@ -79,27 +79,9 @@ describe('Given a telephone number component', () => {
     });
   });
 
-  describe('when a model is supplied without a prefix', () => {
-    beforeEach(() => {
-      component = shallow(<PhoneNumberInput {...props} value="+44123456789" />);
-      select = component.find(PREFIX_SELECT_SELECTOR);
-      input = component.find(NUMBER_SELECTOR);
-    });
-
-    it('should not re-explode model', () => {
-      component.setProps({ value: '12345' });
-      expect(select.props().selected.value).toEqual('+44');
-      expect(input.prop('value')).toBe('123456789');
-    });
-  });
-
   describe('when an invalid model is supplied', () => {
-    beforeEach(() => {
-      component = shallow(<PhoneNumberInput {...props} value="+44123456789" />);
-    });
-
     it('should not re-explode model', () => {
-      component.setProps({ value: '+123' });
+      component = shallow(<PhoneNumberInput {...props} initialValue="+123" />);
 
       select = component.find(PREFIX_SELECT_SELECTOR);
       input = component.find(NUMBER_SELECTOR);
@@ -109,12 +91,8 @@ describe('Given a telephone number component', () => {
   });
 
   describe('when a valid model is supplied', () => {
-    beforeEach(() => {
-      component = shallow(<PhoneNumberInput {...props} value="+44123456789" />);
-    });
-
-    it('should  re-explode model', () => {
-      component.setProps({ value: '+393892713713' });
+    it('should explode model', () => {
+      component = shallow(<PhoneNumberInput {...props} initialValue="+393892713713" />);
       select = component.find(PREFIX_SELECT_SELECTOR);
       input = component.find(NUMBER_SELECTOR);
       expect(select.props().selected.value).toEqual('+39');
@@ -140,7 +118,12 @@ describe('Given a telephone number component', () => {
   describe('when supplied with a placeholder', () => {
     beforeEach(() => {
       component = shallow(
-        <PhoneNumberInput {...props} value="+12345678" locale="es-ES" placeholder="placeholder" />,
+        <PhoneNumberInput
+          {...props}
+          initialValue="+12345678"
+          locale="es-ES"
+          placeholder="placeholder"
+        />,
       );
       input = component.find(NUMBER_SELECTOR);
     });
@@ -155,7 +138,7 @@ describe('Given a telephone number component', () => {
       component = shallow(
         <PhoneNumberInput
           {...props}
-          value="+12345678"
+          initialValue="+12345678"
           locale="es-ES"
           searchPlaceholder="searchPlaceholder"
         />,
@@ -171,7 +154,9 @@ describe('Given a telephone number component', () => {
   describe('when supplied with a locale', () => {
     describe('and a value', () => {
       beforeEach(() => {
-        component = shallow(<PhoneNumberInput {...props} value="+12345678" locale="es-ES" />);
+        component = shallow(
+          <PhoneNumberInput {...props} initialValue="+12345678" locale="es-ES" />,
+        );
         select = component.find(PREFIX_SELECT_SELECTOR);
         input = component.find(NUMBER_SELECTOR);
       });
@@ -206,7 +191,7 @@ describe('Given a telephone number component', () => {
     });
   });
 
-  describe('when user insert valid date', () => {
+  describe('when user insert valid value', () => {
     beforeEach(() => {
       component = shallow(<PhoneNumberInput {...props} />);
       input = component.find(NUMBER_SELECTOR);
@@ -227,7 +212,7 @@ describe('Given a telephone number component', () => {
 
   describe('when user insert an invalid date', () => {
     it('should trigger onChange with null value', () => {
-      component = shallow(<PhoneNumberInput {...props} value="+12345678" />);
+      component = shallow(<PhoneNumberInput {...props} initialValue="+12345678" />);
       input = component.find(NUMBER_SELECTOR);
       select = component.find(PREFIX_SELECT_SELECTOR);
       input.simulate('change', { target: { value: '1' } });

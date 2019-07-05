@@ -373,7 +373,7 @@ export default class FormControl extends PureComponent {
             required={required}
             searchPlaceholder={searchPlaceholder}
             size={size}
-            value={value}
+            initialValue={value}
           />
         );
 
