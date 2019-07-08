@@ -1,3 +1,6 @@
+# v0.4.6
+## Update drawer content height
+
 # v0.4.5
 ## TransferWise fonts where missing
 
