@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "9.0.0",
+  "version": "9.1.0",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -82,10 +82,10 @@
   },
   "dependencies": {
     "@transferwise/formatting": "^1.4.3",
-    "@transferwise/icons": "^0.14.0",
-    "@transferwise/neptune-css": "^0.3.0",
+    "@transferwise/icons": "^1.0.0",
+    "@transferwise/neptune-css": "^0.4.7",
     "classnames": "^2.2.6",
-    "react-transition-group": "^2.3.1"
+    "react-transition-group": "^4.1.1"
   },
   "peerDependencies": {
     "bootstrap": "github:transferwise/bootstrap",

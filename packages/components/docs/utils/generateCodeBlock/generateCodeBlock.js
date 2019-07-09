@@ -10,7 +10,7 @@ const generateCodeBlock = (componentName, knobs, componentThis, extraPropsDocs =
 
   if (Object.values(extraPropsDocs).length) {
     const objectToArrayofStrings = Object.keys(extraPropsDocs).map(
-      key => `${key} = ${generateFormattedValue(extraPropsDocs[key])}`,
+      key => `${key}=${generateFormattedValue(extraPropsDocs[key])}`,
     );
     docs.push(objectToArrayofStrings.join('\n\r  '));
   }
@@ -35,7 +35,7 @@ const generateDocsWithUpdatedStateValue = (knob, componentState) => {
     }
   }
 
-  return `${knob.state} = ${generateFormattedValue(value)}`;
+  return `${knob.state}=${generateFormattedValue(value)}`;
 };
 
 const generateFormattedValue = value => {

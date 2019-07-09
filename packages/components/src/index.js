@@ -27,3 +27,6 @@ export { default as InputWithDisplayFormat } from './inputWithDisplayFormat';
 export { default as TextareaWithDisplayFormat } from './textareaWithDisplayFormat';
 export { default as Chevron } from './common/Chevron';
 export { default as Accordion } from './accordion';
+export { default as Dimmer } from './dimmer';
+export { default as SlidingPanel } from './slidingPanel';
+export { default as Drawer } from './drawer';

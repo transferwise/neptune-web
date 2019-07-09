@@ -44,6 +44,7 @@ describe('Server side rendering', () => {
       },
     ],
     displayPattern: '**-**',
+    position: 'left',
   };
 
   componentNames.forEach(componentName => {
