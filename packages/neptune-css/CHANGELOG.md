@@ -1,3 +1,6 @@
+# v0.4.7
+## Update name: slider -> slidingPanel
+
 # v0.4.6
 ## Update drawer content height
 
