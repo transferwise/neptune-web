@@ -23,7 +23,7 @@ const KNOBS = {
     {
       type: 'select',
       label: 'Preferred placement',
-      state: 'preferredPlacementKey',
+      state: 'preferredPlacement',
       options: PlacementValues.map(key => ({
         value: key,
         label: key,
@@ -51,7 +51,7 @@ export default class PopoverDocs extends Component {
   };
 
   render() {
-    const { title, content, preferredPlacementKey, rightTrigger } = this.state;
+    const { title, content, preferredPlacement, rightTrigger } = this.state;
 
     return (
       <div className="container">
@@ -67,7 +67,7 @@ export default class PopoverDocs extends Component {
                 <Popover
                   title={title}
                   content={content}
-                  preferredPlacement={preferredPlacementKey.value}
+                  preferredPlacement={preferredPlacement.value}
                 >
                   <button className="btn btn-default">Click me</button>
                 </Popover>
