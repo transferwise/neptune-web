@@ -1,3 +1,7 @@
+# v9.2.0
+## Remove padding top of modal body if title is not provided
+When we don't have a title provided; we remove the padding top from modal-body to make the modal look more appropriate.
+
 # v9.1.0
 ## Add Drawer and Sticky 
 

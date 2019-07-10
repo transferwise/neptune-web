@@ -82,11 +82,27 @@ describe('ModalDialog', () => {
       expect(component).toMatchSnapshot();
     });
 
+    it('without `modal-body--no-title` class if title is provided', () => {
+      component.setProps({ title: 'Some title' });
+      const modalBody = component.find('.modal-body');
+
+      expect(modalBody.hasClass('modal-body--no-title')).toBe(false);
+      expect(component).toMatchSnapshot();
+    });
+
     it('without header divider if title is not provided', () => {
       component.setProps({ title: null });
       const header = component.find('.modal-header');
 
       expect(header.hasClass('no-divider')).toBe(true);
+      expect(component).toMatchSnapshot();
+    });
+
+    it('with `modal-body--no-title` class if title is not provided', () => {
+      component.setProps({ title: null });
+      const modalBody = component.find('.modal-body');
+
+      expect(modalBody.hasClass('modal-body--no-title')).toBe(true);
       expect(component).toMatchSnapshot();
     });
   });

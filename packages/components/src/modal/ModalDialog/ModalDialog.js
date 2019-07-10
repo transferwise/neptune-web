@@ -56,7 +56,9 @@ export default class ModalDialog extends Component {
               </button>
               <h4 className="modal-title">{title}</h4>
             </div>
-            <div className="modal-body">{body}</div>
+            <div className={classNames('modal-body', { 'modal-body--no-title': !title })}>
+              {body}
+            </div>
             {footer && <div className="modal-footer">{footer}</div>}
           </div>
         </div>
