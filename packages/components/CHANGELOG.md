@@ -1,3 +1,7 @@
+# v10.0.2
+## Fix wrong button prop in docs
+Fix the name of the button's state prop in docs
+
 # v10.0.1
 ## Upgrade npm version.
 

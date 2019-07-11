@@ -24,7 +24,7 @@ const KNOBS = {
     {
       type: 'select',
       label: 'State',
-      state: 'stateSelection',
+      state: 'state',
       options: Object.values(ButtonState).map(value => ({
         value,
         label: value,
@@ -57,7 +57,7 @@ export default class ButtonDocs extends Component {
   };
 
   render() {
-    const { label, stateSelection, size, type, block } = this.state;
+    const { label, state, size, type, block } = this.state;
 
     return (
       <div className="container">
@@ -72,7 +72,7 @@ export default class ButtonDocs extends Component {
               <Button
                 label={label}
                 size={size.value}
-                state={stateSelection.value}
+                state={state.value}
                 type={type.value}
                 block={block}
                 /* eslint-disable no-alert */
