@@ -24,6 +24,10 @@ describe('Popover', () => {
     );
   });
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('has passed trigger as a child', () => {
     expect(trigger().exists()).toBe(true);
   });
@@ -61,12 +65,23 @@ describe('Popover', () => {
   });
 
   it('opens on click', () => {
+    component = mount(
+      <Popover content="Some content.">
+        <button id="trigger">Trigger</button>
+      </Popover>,
+    );
     expect(popoverIsOpen()).toBe(false);
     clickPopoverTrigger();
     expect(popoverIsOpen()).toBe(true);
   });
 
   it('opens when Enter is pressed while active', () => {
+    component = mount(
+      <Popover content="Some content.">
+        <button id="trigger">Trigger</button>
+      </Popover>,
+    );
+
     expect(popoverIsOpen()).toBe(false);
     trigger().simulate('keyUp', fakeKeyDownEventForKey(KEY_CODES.ENTER));
     expect(popoverIsOpen()).toBe(true);

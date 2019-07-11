@@ -1,3 +1,15 @@
+# v10.0.1
+## Upgrade npm version.
+
+# v10.0.0
+## Updated major repo dependencies.
+
+|         	| Old    	| New    	|
+|---------	|--------	|--------	|
+| React   	| 16.3.2 	| 16.8.6 	|
+| Babel   	| 6.26.0 	| 7.4.3  	|
+| Webpack 	| 1.14.0 	| 4.35.3 	|
+
 # v9.2.0
 ## Remove padding top of modal body if title is not provided
 When we don't have a title provided; we remove the padding top from modal-body to make the modal look more appropriate.

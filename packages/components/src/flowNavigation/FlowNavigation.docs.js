@@ -182,9 +182,7 @@ export default class FlowNavigationDocs extends Component {
                 }))}
                 onChange={value => this.goToStep(value)}
                 selected={{
-                  label: `${this.state.activeStep} - ${
-                    this.state.selectedPreset.steps[this.state.activeStep].label
-                  }`,
+                  label: `${this.state.activeStep} - ${this.state.selectedPreset.steps[this.state.activeStep].label}`,
                   value: this.state.activeStep,
                 }}
                 required

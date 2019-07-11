@@ -17,9 +17,7 @@ const testsGetDistanceToPreviousSymbol = [
 
 describe('getDistanceToNextSymbol', () => {
   testsGetDistanceToNextSymbol.forEach(test => {
-    it(`returns ${test.expectedValue} for current cursor ${test.selectionStart} if pattern is ${
-      test.pattern
-    } and direction ${test.direction}`, () => {
+    it(`returns ${test.expectedValue} for current cursor ${test.selectionStart} if pattern is ${test.pattern} and direction ${test.direction}`, () => {
       expect(getDistanceToNextSymbol(test.selectionStart, test.pattern)).toEqual(
         test.expectedValue,
       );
@@ -29,9 +27,7 @@ describe('getDistanceToNextSymbol', () => {
 
 describe('testsGetDistanceToPreviousSymbol', () => {
   testsGetDistanceToPreviousSymbol.forEach(test => {
-    it(`returns ${test.expectedValue} for current cursor ${test.selectionStart} if pattern is ${
-      test.pattern
-    } and direction ${test.direction}`, () => {
+    it(`returns ${test.expectedValue} for current cursor ${test.selectionStart} if pattern is ${test.pattern} and direction ${test.direction}`, () => {
       expect(
         getDistanceToPreviousSymbol(test.selectionStart, test.pattern, test.direction),
       ).toEqual(test.expectedValue);

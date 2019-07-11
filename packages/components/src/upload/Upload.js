@@ -253,19 +253,18 @@ class Upload extends PureComponent {
         onDrop={e => this.onDrop(e)}
         onDragOver={e => e.preventDefault()}
       >
-        {!isProcessing &&
-          !isComplete && (
-            <UploadImageStep
-              fileDropped={file => this.fileDropped(file)}
-              isComplete={isComplete}
-              usAccept={usAccept}
-              usButtonText={usButtonText}
-              usDisabled={usDisabled}
-              usHelpImage={usHelpImage}
-              usLabel={usLabel}
-              usPlaceholder={usPlaceholder}
-            />
-          )}
+        {!isProcessing && !isComplete && (
+          <UploadImageStep
+            fileDropped={file => this.fileDropped(file)}
+            isComplete={isComplete}
+            usAccept={usAccept}
+            usButtonText={usButtonText}
+            usDisabled={usDisabled}
+            usHelpImage={usHelpImage}
+            usLabel={usLabel}
+            usPlaceholder={usPlaceholder}
+          />
+        )}
 
         {isProcessing && (
           <ProcessingStep

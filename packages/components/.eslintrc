@@ -1,3 +1,6 @@
+// Check for eslint rules reasoning
+// https://transferwise.atlassian.net/browse/NP-101
+
 {
   "extends": ["airbnb", "prettier"],
   "parser": "babel-eslint",
@@ -5,12 +8,36 @@
     "react/jsx-filename-extension": 0,
     "no-mixed-operators": 0,
     "no-use-before-define": 0,
-    "jsx-a11y/label-has-for": [2, {
-      "required": {
-        "some": ["nesting", "id"]
+    "react/destructuring-assignment": [0, "never"],
+    "jsx-a11y/label-has-for": [
+      2,
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
       }
-    }],
-    "import/prefer-default-export": 0
+    ],
+    "import/prefer-default-export": 0,
+    // New Rules to remove in NP-101
+    "eol-last": "off",
+    "react/jsx-wrap-multilines": 0,
+    "lines-between-class-members": "off",
+    "import/no-useless-path-segments":0,
+    "react/button-has-type": 0,
+    "react/sort-comp": 0,
+    "react/no-unused-state": 0,
+    "no-else-return": 0,
+    "import/no-cycle": 0,
+    "import/order": 0,
+    "react/jsx-one-expression-per-line": [0, { "allow": "literal" }],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ]
   },
   "env": {
     "browser": true,

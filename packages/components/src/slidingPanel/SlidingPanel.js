@@ -25,6 +25,7 @@ const SlidingPanel = ({
       },
       'sliding-panel',
     )}
+    appear
     unmountOnExit
   >
     <div className="sliding-panel">{children}</div>

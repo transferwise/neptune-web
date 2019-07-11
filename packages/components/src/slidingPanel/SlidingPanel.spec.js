@@ -25,6 +25,7 @@ describe('SlidingPanel', () => {
 
     expect(cssTransition().props()).toEqual({
       in: true,
+      appear: true,
       timeout: {
         enter: 0,
         exit: EXIT_ANIMATION,

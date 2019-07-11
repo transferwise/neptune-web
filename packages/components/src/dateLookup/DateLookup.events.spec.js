@@ -84,6 +84,7 @@ describe('DateLookup (events)', () => {
     });
 
     it('closes', () => {
+      component = mount(<DateLookup {...props} />);
       component.instance().handleOutsideClick({ target: '' });
       expect(component.instance().state.open).toBe(false);
     });

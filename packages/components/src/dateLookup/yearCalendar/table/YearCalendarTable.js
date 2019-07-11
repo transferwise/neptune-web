@@ -9,7 +9,7 @@ const COLS = 4;
 const YEAR_ONLY_FORMAT = { year: 'numeric' };
 
 const YearCalendarTable = ({ selectedDate, min, max, viewYear, locale, placeholder, onSelect }) => {
-  const startYear = viewYear - viewYear % 20;
+  const startYear = viewYear - (viewYear % 20);
   const getLink = year => (
     <TableLink
       item={year}
