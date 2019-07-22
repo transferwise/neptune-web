@@ -31,3 +31,4 @@ export { default as Dimmer } from './dimmer';
 export { default as SlidingPanel } from './slidingPanel';
 export { default as Drawer } from './drawer';
 export { default as Sticky } from './sticky';
+export { default as Chip } from './chip';

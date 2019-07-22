@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "10.0.2",
+  "version": "10.1.0",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -101,7 +101,7 @@
   "dependencies": {
     "@transferwise/formatting": "^1.4.3",
     "@transferwise/icons": "^1.0.0",
-    "@transferwise/neptune-css": "^0.4.7",
+    "@transferwise/neptune-css": "^0.5.0",
     "classnames": "^2.2.6",
     "react-app-polyfill": "^1.0.1",
     "react-transition-group": "^4.2.1"
