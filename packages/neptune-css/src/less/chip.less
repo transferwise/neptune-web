@@ -1,0 +1,28 @@
+@import "./variables/_colors.less";
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  color: var(--brand-navy);
+  background: var(--brand-smoke-plus-10);
+  margin: var(--spacer) calc(var(--spacer) / 2) 0 0;
+  padding: 0 var(--spacer) 0 calc(var(--spacer) * 2);
+  min-height: calc(var(--spacer) * 4);
+  border-radius: 100px;
+
+  &:hover,
+  &.active {
+    background: var(--brand-smoke);
+  }
+
+  .chip-remove {
+    margin-left: calc(var(--spacer) * 2);
+    height: calc(var(--spacer) * 2);
+    margin-top: -2px;
+  }
+
+  &.has-error {
+    background: var(--brand-red);
+    color: var(--brand-white);
+  }
+}

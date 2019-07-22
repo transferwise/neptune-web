@@ -1,3 +1,6 @@
+# v0.5.0
+## Added chip component
+
 # v0.4.7
 ## Update name: slider -> slidingPanel
 
