@@ -5,7 +5,7 @@ import TopUpIcon from '@transferwise/icons/react/top-up';
 import { UploadImageStep, ProcessingStep, CompleteStep } from './steps';
 import { postData, asyncFileRead, isSizeValid, generateErrorMessage, isTypeValid } from './utils';
 import './Upload.less';
-import { processIndicatorStatuses } from '../processIndicator/ProcessIndicator';
+import ProcessIndicator from '../processIndicator';
 
 const PROCESS_STATE = ['error', 'success'];
 const ACCEPTED_FORMAT = ['*', 'image/*', 'application/*'];
@@ -70,7 +70,7 @@ class Upload extends PureComponent {
     const { response } = this.state;
     // Success.
     const { animationDelay } = this.props;
-    if (status === processIndicatorStatuses[2]) {
+    if (status === ProcessIndicator.Status.Succeeded) {
       const { onSuccess } = this.props;
       this.timeouts = setTimeout(() => {
         this.setState(
@@ -83,7 +83,7 @@ class Upload extends PureComponent {
       }, animationDelay);
     }
     // Failure.
-    if (status === processIndicatorStatuses[1]) {
+    if (status === ProcessIndicator.Status.Failed) {
       const { onFailure } = this.props;
       this.timeouts = setTimeout(() => {
         this.setState(

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button } from '..';
-import { ButtonSize, ButtonState, ButtonType } from './Button';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const KNOBS = {
@@ -15,31 +14,31 @@ const KNOBS = {
       type: 'select',
       label: 'Size',
       state: 'size',
-      options: Object.values(ButtonSize).map(value => ({
+      options: Object.values(Button.Size).map(value => ({
         value,
         label: value,
       })),
-      defaultState: { value: ButtonSize.Medium, label: ButtonSize.Medium },
+      defaultState: { value: Button.Size.Medium, label: Button.Size.Medium },
     },
     {
       type: 'select',
       label: 'State',
       state: 'state',
-      options: Object.values(ButtonState).map(value => ({
+      options: Object.values(Button.State).map(value => ({
         value,
         label: value,
       })),
-      defaultState: { value: ButtonState.Default, label: ButtonState.Default },
+      defaultState: { value: Button.State.Default, label: Button.State.Default },
     },
     {
       type: 'select',
       label: 'Type',
       state: 'type',
-      options: Object.values(ButtonType).map(value => ({
+      options: Object.values(Button.Type).map(value => ({
         value,
         label: value,
       })),
-      defaultState: { value: ButtonType.Pay, label: ButtonType.Pay },
+      defaultState: { value: Button.Type.Pay, label: Button.Type.Pay },
     },
     {
       type: 'checkbox',

@@ -1,3 +1,7 @@
+# v10.2.1
+## Propagating states for button and process indicator
+Can now set props by doing e.g. size={ProcessIndicator.Size.Small}.
+
 # v10.2.0
 ## Add month format option to DateInput
 Exposed a prop to allow DateInput to show shortened versions of months.

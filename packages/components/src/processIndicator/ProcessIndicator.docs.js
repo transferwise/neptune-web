@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ProcessIndicator } from '..';
-import { processIndicatorSizes, processIndicatorStatuses } from './ProcessIndicator';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const KNOBS = {
@@ -15,21 +14,27 @@ const KNOBS = {
       type: 'select',
       label: 'Status',
       state: 'status',
-      options: processIndicatorStatuses.map(value => ({
+      options: Object.values(ProcessIndicator.Status).map(value => ({
         value,
         label: value,
       })),
-      defaultState: { value: processIndicatorStatuses[0], label: processIndicatorStatuses[0] },
+      defaultState: {
+        value: ProcessIndicator.Status.Processing,
+        label: ProcessIndicator.Status.Processing,
+      },
     },
     {
       type: 'select',
       label: 'Size',
       state: 'size',
-      options: processIndicatorSizes.map(value => ({
+      options: Object.values(ProcessIndicator.Size).map(value => ({
         value,
         label: value,
       })),
-      defaultState: { value: processIndicatorSizes[2], label: processIndicatorSizes[2] },
+      defaultState: {
+        value: ProcessIndicator.Size.ExtraLarge,
+        label: ProcessIndicator.Size.ExtraLarge,
+      },
     },
   ],
 };

@@ -2,20 +2,31 @@ import React, { Component } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-export const processIndicatorSizes = ['xs', 'sm', 'xl'];
-export const processIndicatorStatuses = ['processing', 'failed', 'succeeded', 'hidden'];
+const Size = {
+  ExtraSmall: 'xs',
+  Small: 'sm',
+  ExtraLarge: 'xl',
+};
+
+const Status = {
+  Processing: 'processing',
+  Failed: 'failed',
+  Succeeded: 'succeeded',
+  Hidden: 'hidden',
+};
+
 const radius = { xs: 11, sm: 22, xl: 61 };
 const ANIMATION_DURATION_IN_MS = 1500;
 
 class ProcessIndicator extends Component {
   static propTypes = {
-    status: Types.oneOf(processIndicatorStatuses),
-    size: Types.oneOf(processIndicatorSizes).isRequired,
+    status: Types.oneOf(Object.values(Status)),
+    size: Types.oneOf(Object.values(Size)).isRequired,
     onAnimationCompleted: Types.func,
   };
 
   static defaultProps = {
-    status: 'processing',
+    status: Status.Processing,
     onAnimationCompleted: null,
   };
 
@@ -23,7 +34,7 @@ class ProcessIndicator extends Component {
     super(props);
     this.state = {
       status: props.status,
-      size: 'sm',
+      size: Size.Small,
     };
     this.interval = null;
     this.timeout = null;
@@ -105,5 +116,8 @@ class ProcessIndicator extends Component {
     );
   }
 }
+
+ProcessIndicator.Size = Size;
+ProcessIndicator.Status = Status;
 
 export default ProcessIndicator;

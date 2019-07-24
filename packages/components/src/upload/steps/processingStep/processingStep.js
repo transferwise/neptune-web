@@ -1,10 +1,6 @@
 import React from 'react';
 import Types from 'prop-types';
 import ProcessIndicator from '../../../processIndicator';
-import {
-  processIndicatorStatuses,
-  processIndicatorSizes,
-} from '../../../processIndicator/ProcessIndicator';
 
 const ProcessingStep = props => {
   const {
@@ -20,21 +16,20 @@ const ProcessingStep = props => {
     psSuccessText,
   } = props;
 
-  let statusIndex = 0;
-
+  let processStatus = ProcessIndicator.Status.Processing;
   if (isError) {
-    statusIndex = 1;
+    processStatus = ProcessIndicator.Status.Failed;
   }
   if (isSuccess) {
-    statusIndex = 2;
+    processStatus = ProcessIndicator.Status.Succeeded;
   }
 
   return (
     <div className="droppable-processing-card droppable-card" aria-hidden={isComplete}>
       <div className="droppable-card-content">
         <ProcessIndicator
-          size={processIndicatorSizes[1]}
-          status={processIndicatorStatuses[statusIndex]}
+          size={ProcessIndicator.Size.Small}
+          status={processStatus}
           onAnimationCompleted={status => onAnimationCompleted(status)}
         />
         <h4 className="m-t-3 m-b-3">
