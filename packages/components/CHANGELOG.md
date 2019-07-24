@@ -1,3 +1,7 @@
+# v10.2.0
+## Add month format option to DateInput
+Exposed a prop to allow DateInput to show shortened versions of months.
+
 # v10.1.0
 ## Add Chip
 

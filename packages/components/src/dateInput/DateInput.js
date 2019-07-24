@@ -7,6 +7,7 @@ import { explodeDate, convertToLocalMidnight } from './utils';
 import { getMonthNames, isDateValid } from '../common/dateUtils';
 
 const DEFAULT_LOCALE = 'en-GB';
+const DEFAULT_MONTH_FORMAT = 'long';
 
 const MonthBeforeDay = ['en-US', 'ja-JP'];
 const INITIAL_DEFAULT_STATE = { year: null, month: 0, day: null };
@@ -23,6 +24,7 @@ class DateInput extends PureComponent {
     dayLabel: Types.string,
     monthLabel: Types.string,
     yearLabel: Types.string,
+    monthFormat: Types.string,
   };
 
   static defaultProps = {
@@ -35,6 +37,7 @@ class DateInput extends PureComponent {
     dayLabel: 'Day',
     monthLabel: 'Month',
     yearLabel: 'Year',
+    monthFormat: DEFAULT_MONTH_FORMAT,
   };
 
   constructor(props) {
@@ -64,9 +67,9 @@ class DateInput extends PureComponent {
     );
 
   getSelectElement = () => {
-    const { disabled, size, locale, monthLabel } = this.props;
+    const { disabled, size, locale, monthLabel, monthFormat } = this.props;
     const { month } = this.state;
-    const months = getMonthNames(locale);
+    const months = getMonthNames(locale, monthFormat);
     return (
       <div>
         <label htmlFor="date-input-month" className="sr-only">
@@ -88,8 +91,8 @@ class DateInput extends PureComponent {
 
   getMonthsOptions = () => {
     const options = [];
-    const { locale } = this.props;
-    const months = getMonthNames(locale);
+    const { locale, monthFormat } = this.props;
+    const months = getMonthNames(locale, monthFormat);
 
     months.forEach((month, index) => {
       options.push({ value: index, label: month });
