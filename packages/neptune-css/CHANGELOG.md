@@ -1,3 +1,6 @@
+# v0.5.1
+## Fix aligment in chip component
+
 # v0.5.0
 ## Added chip component
 
