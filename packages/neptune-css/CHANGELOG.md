@@ -1,3 +1,6 @@
+# v0.5.2
+## Fix drawer min width
+
 # v0.5.1
 ## Fix aligment in chip component
 
