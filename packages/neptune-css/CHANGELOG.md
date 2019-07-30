@@ -1,3 +1,6 @@
+# v0.5.3
+## Fix chip design
+
 # v0.5.2
 ## Fix drawer min width
 

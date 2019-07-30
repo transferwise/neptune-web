@@ -1,29 +1,29 @@
-@import "./variables/_colors.less";
+@import "~bootstrap/less/variables.less";
 
 .chip {
   display: inline-flex;
   align-items: center;
-  color: var(--brand-navy);
-  background: var(--brand-smoke-plus-10);
-  line-break: 0;
-  margin: var(--spacer) calc(var(--spacer) / 2) 0 0;
-  padding: 1px var(--spacer) 0 calc(var(--spacer) * 2) 0;
-  min-height: calc(var(--spacer) * 4);
+  color: @brand-navy;
+  background: @brand-smoke-plus-10;
+  line-height: 0;
+  margin: @spacer (@spacer / 2) 0 0;
+  padding: 1px @spacer 0 (@spacer * 2);
+  min-height: (@spacer * 4);
   border-radius: 100px;
 
-  &:hover,
   &.active {
-    background: var(--brand-smoke);
+    background: @brand-smoke;
   }
 
   .chip-remove {
-    margin-left: calc(var(--spacer) * 2);
-    height: calc(var(--spacer) * 2);
+    opacity: 0.6;
+    margin-left: (@spacer * 2);
+    height: (@spacer * 2);
     margin-top: -3px;
   }
 
   &.has-error {
-    background: var(--brand-red);
-    color: var(--brand-white);
+    background: @brand-red;
+    color: @component-active-color;
   }
 }
