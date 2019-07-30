@@ -1,3 +1,6 @@
+# v10.2.2
+## Fixed constructor default size for process indicator
+
 # v10.2.1
 ## Propagating states for button and process indicator
 Can now set props by doing e.g. size={ProcessIndicator.Size.Small}.

@@ -21,12 +21,13 @@ const ANIMATION_DURATION_IN_MS = 1500;
 class ProcessIndicator extends Component {
   static propTypes = {
     status: Types.oneOf(Object.values(Status)),
-    size: Types.oneOf(Object.values(Size)).isRequired,
+    size: Types.oneOf(Object.values(Size)),
     onAnimationCompleted: Types.func,
   };
 
   static defaultProps = {
     status: Status.Processing,
+    size: Size.Small,
     onAnimationCompleted: null,
   };
 
@@ -34,7 +35,7 @@ class ProcessIndicator extends Component {
     super(props);
     this.state = {
       status: props.status,
-      size: Size.Small,
+      size: props.size,
     };
     this.interval = null;
     this.timeout = null;
