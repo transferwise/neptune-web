@@ -3,4 +3,5 @@ export const Sizes = {
   SMALL: 'sm',
   MEDIUM: 'md',
   LARGE: 'lg',
+  EXTRA_LARGE: 'xl',
 };

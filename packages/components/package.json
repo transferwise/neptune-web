@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "10.2.2",
+  "version": "10.3.0",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./build/main.js",
@@ -57,6 +57,7 @@
     "is-wsl": "^1.1.0",
     "jest": "24.7.1",
     "jest-cli": "^24.8.0",
+    "jest-emotion": "^10.0.14",
     "jest-environment-jsdom-fourteen": "0.1.0",
     "jest-fetch-mock": "^2.1.2",
     "jest-resolve": "24.7.1",
@@ -99,6 +100,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.14",
     "@transferwise/formatting": "^1.4.3",
     "@transferwise/icons": "^1.0.0",
     "@transferwise/neptune-css": "^0.5.0",
@@ -108,12 +110,13 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "node ./emotionFix.js && node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom --runInBand",
     "test:watch": "jest --watch --env=jsdom",
     "pretest": "npm run check-format && npm run check-release-format",
     "check-release-format": "node_modules/.bin/release-to-github-with-changelog-pre-release-checks",
     "check-format": "prettier-eslint 'src/**/*.js' --list-different",
+    "fix-format": "prettier-eslint '**/*.js' --write",
     "release-to-github": "release-to-github-with-changelog",
     "predeploy": "npm run build",
     "build-docs": "node scripts/build-docs.js",

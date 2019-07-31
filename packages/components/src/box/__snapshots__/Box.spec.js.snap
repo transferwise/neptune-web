@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Box renders correctly 1`] = `
+@media (min-width:0px) {
+  .emotion-0 {
+    -webkit-flex: 0 1 100%;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:576px) {
+  .emotion-0 {
+    -webkit-flex: 0 1 50%;
+    -ms-flex: 0 1 50%;
+    flex: 0 1 50%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:768px) {
+  .emotion-0 {
+    -webkit-flex: 0 0 30px;
+    -ms-flex: 0 0 30px;
+    flex: 0 0 30px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:992px) {
+  .emotion-0 {
+    -webkit-flex: 0 0 40px;
+    -ms-flex: 0 0 40px;
+    flex: 0 0 40px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:1200px) {
+  .emotion-0 {
+    -webkit-flex: 0;
+    -ms-flex: 0;
+    flex: 0;
+    display: none;
+  }
+}
+
+<section
+  className="flex__inner justify-content-center align-items-end m-x-1 p-x-3 m-y-2 p-y-4 anotherClass1 anotherClass2 emotion-0"
+>
+  <div>
+    This is a children.
+  </div>
+</section>
+`;
+
+exports[`Box renders correctly with custom media queries 1`] = `
+@media (min-width:0px) {
+  .emotion-0 {
+    -webkit-flex: 0 1 100%;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:10px) {
+  .emotion-0 {
+    -webkit-flex: 0 1 50%;
+    -ms-flex: 0 1 50%;
+    flex: 0 1 50%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:20px) {
+  .emotion-0 {
+    -webkit-flex: 0 0 30px;
+    -ms-flex: 0 0 30px;
+    flex: 0 0 30px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:30px) {
+  .emotion-0 {
+    -webkit-flex: 0 0 40px;
+    -ms-flex: 0 0 40px;
+    flex: 0 0 40px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:40px) {
+  .emotion-0 {
+    -webkit-flex: 0;
+    -ms-flex: 0;
+    flex: 0;
+    display: none;
+  }
+}
+
+<section
+  className="flex__inner justify-content-center align-items-end m-x-1 p-x-3 m-y-2 p-y-4 anotherClass1 anotherClass2 emotion-0"
+>
+  <div>
+    This is a children.
+  </div>
+</section>
+`;

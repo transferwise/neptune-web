@@ -172,7 +172,7 @@ export default class FormControl extends PureComponent {
         } else {
           ({ value } = event.target);
         }
-      } else if (event.value) {
+      } else if (event.value || event.value === 0) {
         // If we don't have a target but the emitted event
         // has a value it's coming from our Select or Radio
         // components

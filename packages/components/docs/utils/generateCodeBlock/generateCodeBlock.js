@@ -28,7 +28,7 @@ const generateDocsWithUpdatedStateValue = (knob, componentState) => {
   let value = '';
 
   if (componentState[knob.state] || componentState[knob.state] === false) {
-    if (componentState[knob.state].value) {
+    if (componentState[knob.state].value || componentState[knob.state].value === 0) {
       ({ value } = componentState[knob.state]);
     } else {
       value = componentState[knob.state];
@@ -53,7 +53,7 @@ const generateFormattedValue = value => {
         return `{"${value || ''}"}`;
       }
 
-      return JSON.stringify(value, null, '...');
+      return JSON.stringify(value, null, '    ');
 
     default:
       return `{"${value || ''}"}`;

@@ -24,7 +24,7 @@ const generateInput = (knobs, componentThis) => {
 
   let required = false;
   let selectedOptions = null;
-  if (type === FormControlType.SELECT && options) {
+  if ((type === FormControlType.SELECT || type === FormControlType.RADIO) && options) {
     required = true;
     if (componentThis.state[state] && componentThis.state[state].value) {
       selectedOptions = options.find(option => componentThis.state[state].value === option.value);

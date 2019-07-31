@@ -6,7 +6,9 @@ import { loadDocs } from './utils/loadDocs';
 const Docs = () => (
   <StrictMode>
     <Header />
-    {loadDocs().map(component => <component.default key={component.default.name} />)}
+    {loadDocs().map(component => (
+      <component.default key={component.default.name} />
+    ))}
   </StrictMode>
 );
 
