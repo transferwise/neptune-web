@@ -1,4 +1,7 @@
 # v0.5.3
+## Fix chip alignment in IE11
+
+# v0.5.3
 ## Fix chip design
 
 # v0.5.2
