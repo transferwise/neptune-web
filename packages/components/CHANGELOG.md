@@ -1,3 +1,6 @@
+# v10.4.0
+## Add Typeahead component
+
 # v10.3.0
 ## Add Flex and Box component.
 

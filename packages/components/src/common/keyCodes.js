@@ -7,4 +7,5 @@ export default {
   ESCAPE: 27,
   TAB: 9,
   SPACE: 32,
+  BACKSPACE: 8,
 };
