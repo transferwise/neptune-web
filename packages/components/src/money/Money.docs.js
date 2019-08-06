@@ -16,6 +16,12 @@ const KNOBS = {
       state: 'currency',
       defaultState: 'GBP',
     },
+    {
+      type: 'text',
+      label: 'Locale',
+      state: 'locale',
+      defaultState: 'en',
+    },
   ],
 };
 
@@ -25,7 +31,7 @@ class MoneyDocs extends Component {
   };
 
   render() {
-    const { amount, currency } = this.state;
+    const { amount, currency, locale } = this.state;
 
     return (
       <div className="container" id="money">
@@ -47,7 +53,7 @@ class MoneyDocs extends Component {
             </div>
             <div className="col-md-6">
               <div>
-                <Money amount={amount} currency={currency} />
+                <Money amount={amount} currency={currency} locale={locale} />
                 <div className="row m-t-5">
                   {KNOBS.knobs.map(knob => generateInput(knob, this))}
                 </div>

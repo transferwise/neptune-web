@@ -1,3 +1,6 @@
+# v10.6.0
+## Add locale support to Money component
+
 # v10.5.1
 ## FlowNavigation fix for IE 11 support
 
