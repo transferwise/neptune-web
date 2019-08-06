@@ -101,7 +101,7 @@ FlowNavigation.propTypes = {
   profileType: Types.oneOf(Object.keys(ProfileType)),
   onGoBack: Types.func,
   onClose: Types.func,
-  theme: Types.oneOf(Object.values(Theme)),
+  theme: Types.oneOf([Theme.LIGHT, Theme.DARK]),
 };
 
 export default FlowNavigation;

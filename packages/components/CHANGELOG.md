@@ -1,3 +1,6 @@
+# v10.5.1
+## FlowNavigation fix for IE 11 support
+
 # v10.5.0
 ## Add basic dark theme option to FlowNavigation
 Currently inverts logo and hides stepper
