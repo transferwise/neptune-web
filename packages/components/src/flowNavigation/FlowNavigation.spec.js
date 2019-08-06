@@ -5,6 +5,7 @@ import FlowNavigation from './';
 import Avatar from './avatar';
 import Stepper from '../stepper';
 import BackButton from './backButton';
+import { Theme } from '../common';
 
 describe('Flow navigation', () => {
   let component;
@@ -12,6 +13,10 @@ describe('Flow navigation', () => {
 
   function flagHidden() {
     return component.find('.flag').hasClass('flag--hidden');
+  }
+
+  function logoInversed() {
+    return component.find('.logo').hasClass('logo-inverse');
   }
 
   function stepper() {
@@ -122,5 +127,17 @@ describe('Flow navigation', () => {
   it('hides the close button if onClose is not defined', () => {
     component.setProps({ onClose: undefined });
     expect(closeButton().exists()).toBe(false);
+  });
+
+  it('inverts the logo if theme is dark', () => {
+    expect(logoInversed()).toBe(false);
+    component.setProps({ theme: Theme.DARK });
+    expect(logoInversed()).toBe(true);
+  });
+
+  it('hides the stepper if theme is dark', () => {
+    expect(stepper().length).toBe(1);
+    component.setProps({ theme: Theme.DARK });
+    expect(stepper().length).toBe(0);
   });
 });

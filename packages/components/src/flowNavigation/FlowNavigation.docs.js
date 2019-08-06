@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Select, FlowNavigation, Checkbox } from '..';
+import { Theme } from '../common';
 
 export default class FlowNavigationDocs extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ export default class FlowNavigationDocs extends Component {
       avatarUrl: 'https://github.com/transferwise.png',
       done: false,
       onClose: true,
+      theme: { value: Theme.LIGHT, label: Theme.LIGHT },
     };
   }
 
@@ -135,30 +137,34 @@ export default class FlowNavigationDocs extends Component {
             </div>
           </div>
         </div>
-        <FlowNavigation
-          steps={this.state.selectedPreset.steps}
-          activeStep={this.state.activeStep}
-          // eslint-disable-next-line no-alert
-          onClose={this.state.onClose ? () => alert('Close clicked') : undefined}
-          avatarUrl={this.state.avatarUrl}
-          done={this.state.done}
-          profileType={this.state.profileType ? this.state.profileType.value : undefined}
-          onGoBack={this.canGoBack() ? () => this.goBack() : undefined}
-          showCloseButton={this.state.showCloseButton}
-        />
+        <div className={this.state.theme.value === Theme.DARK ? 'bg-primary' : null}>
+          <FlowNavigation
+            steps={this.state.selectedPreset.steps}
+            activeStep={this.state.activeStep}
+            // eslint-disable-next-line no-alert
+            onClose={this.state.onClose ? () => alert('Close clicked') : null}
+            avatarUrl={this.state.avatarUrl}
+            done={this.state.done}
+            profileType={this.state.profileType ? this.state.profileType.value : null}
+            onGoBack={this.canGoBack() ? () => this.goBack() : null}
+            showCloseButton={this.state.showCloseButton}
+            theme={this.state.theme ? this.state.theme.value : null}
+          />
+        </div>
         <div className="container m-t-4">
           <div className="row">
             <div className="col-md-6">
               {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">
                 {`<FlowNavigation
-  onClose={${this.state.onClose ? '[a function]' : undefined}}
-  onGoBack={${this.state.canGoBack ? '[a function]' : undefined}}
-  profileType={${this.state.profileType ? `"${this.state.profileType.value}"` : undefined}}
+  onClose={${this.state.onClose ? '[a function]' : null}}
+  onGoBack={${this.state.canGoBack ? '[a function]' : null}}
+  profileType={${this.state.profileType ? `"${this.state.profileType.value}"` : null}}
   avatarUrl={"${this.state.avatarUrl}"}
   activeStep={${this.state.activeStep}}
   steps={${this.getStringifiedSteps()}}
   done={${this.state.done}}
+  theme={${this.state.theme ? `"${this.state.theme.value}"` : null}}
 />`}
               </pre>
               {/* eslint-enable react/jsx-indent */}
@@ -243,6 +249,17 @@ export default class FlowNavigationDocs extends Component {
                 label="Is onClose defined?"
                 onChange={this.createStateLink('onClose')}
                 checked={this.state.onClose}
+              />
+              <div className="m-t-3" />
+              <label htmlFor="flow-navigation-theme">Theme</label>
+              <Select
+                id="flow-navigation-theme"
+                options={Object.values(Theme).map(label => ({
+                  label,
+                  value: label,
+                }))}
+                onChange={theme => this.setState({ theme })}
+                selected={this.state.theme}
               />
             </div>
           </div>

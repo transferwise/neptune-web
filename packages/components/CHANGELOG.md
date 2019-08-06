@@ -1,3 +1,7 @@
+# v10.5.0
+## Add basic dark theme option to FlowNavigation
+Currently inverts logo and hides stepper
+
 # v10.4.0
 ## Add Typeahead component
 

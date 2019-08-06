@@ -3,3 +3,4 @@ export { Sizes } from './sizes';
 export { addModalOpenBodyClass, removeModalOpenBodyClass } from './DOMOperations';
 export { mediaQueries } from './mediaQueries';
 export { JustifyContent, AlignItems, flexDirection } from './flexProperties';
+export { Theme } from './theme';
