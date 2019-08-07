@@ -35,7 +35,7 @@ const Flex = props => {
     <div className="d-flex" css={style}>
       {React.Children.map(children, child => {
         if (child) {
-          const childrenProps = { ...childrenProps, marginX, paddingX, marginY, paddingY };
+          const childrenProps = { ...child.props, marginX, paddingX, marginY, paddingY };
           return React.cloneElement(child, childrenProps);
         }
         return child;

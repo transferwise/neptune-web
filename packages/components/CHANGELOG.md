@@ -1,3 +1,6 @@
+# v10.6.1
+## Bug fix: flex child props fix.
+
 # v10.6.0
 ## Add locale support to Money component
 
