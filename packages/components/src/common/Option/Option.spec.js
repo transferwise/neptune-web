@@ -6,7 +6,7 @@ import Option from '.';
 describe('Option', () => {
   let component;
   beforeEach(() => {
-    component = shallow(<Option title="" description="" media={<span />} button={<span />} />);
+    component = shallow(<Option title="" content="" media={<span />} button={<span />} />);
   });
 
   it('has complex class when the flag is passed', () => {
@@ -58,9 +58,9 @@ describe('Option', () => {
     expect(title()).toBe('A title');
   });
 
-  it('has passed description', () => {
-    component.setProps({ description: 'A description' });
-    expect(description()).toBe('A description');
+  it('has passed content', () => {
+    component.setProps({ content: <p>A content</p> });
+    expect(bodyHasElement(<p>A content</p>)).toBe(true);
   });
 
   const hasComplexClass = () => component.hasClass('decision-complex');
@@ -72,5 +72,5 @@ describe('Option', () => {
       .childAt(0)
       .matchesElement(element);
   const title = () => component.find('h5').text();
-  const description = () => component.find('p').text();
+  const bodyHasElement = element => component.find('.media-body').containsMatchingElement(element);
 });

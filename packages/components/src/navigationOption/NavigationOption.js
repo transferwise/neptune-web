@@ -4,8 +4,8 @@ import Types from 'prop-types';
 import Option from '../common/Option';
 import './NavigationOption.less';
 
-const NavigationOption = ({ media, title, description, onClick, complex, disabled }) => {
-  const sharedProps = { media, title, description, complex, disabled };
+const NavigationOption = ({ media, title, content, onClick, complex, disabled }) => {
+  const sharedProps = { media, title, content, complex, disabled };
 
   return (
     <Option
@@ -25,14 +25,14 @@ const NavigationOption = ({ media, title, description, onClick, complex, disable
 NavigationOption.propTypes = {
   media: Types.node.isRequired,
   title: Types.node.isRequired,
-  description: Types.node,
+  content: Types.node,
   onClick: Types.func.isRequired,
   complex: Types.bool,
   disabled: Types.bool,
 };
 
 NavigationOption.defaultProps = {
-  description: null,
+  content: null,
   complex: false,
   disabled: false,
 };

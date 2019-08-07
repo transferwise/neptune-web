@@ -8,7 +8,7 @@ describe('Navigation option', () => {
   let component;
   beforeEach(() => {
     component = shallow(
-      <NavigationOption media={<span />} title="" description="" onClick={jest.fn()} />,
+      <NavigationOption media={<span />} title="" content="" onClick={jest.fn()} />,
     );
   });
 
@@ -17,7 +17,7 @@ describe('Navigation option', () => {
     const sharedProps = {
       media: <Icon />,
       title: 'A title',
-      description: 'A description',
+      content: 'A content',
       complex: true,
       disabled: true,
     };

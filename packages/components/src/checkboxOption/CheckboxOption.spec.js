@@ -8,14 +8,7 @@ describe('Checkbox option', () => {
   let component;
   beforeEach(() => {
     component = shallow(
-      <CheckboxOption
-        media={<span />}
-        id=""
-        name=""
-        title=""
-        description=""
-        onChange={jest.fn()}
-      />,
+      <CheckboxOption media={<span />} id="" name="" title="" content="" onChange={jest.fn()} />,
     );
   });
 
@@ -24,7 +17,7 @@ describe('Checkbox option', () => {
     const sharedProps = {
       media: <Icon />,
       title: 'A title',
-      description: 'A description',
+      content: 'A content',
       name: 'a-name',
       complex: true,
       disabled: true,

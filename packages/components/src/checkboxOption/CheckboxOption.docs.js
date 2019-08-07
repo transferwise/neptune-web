@@ -24,7 +24,7 @@ class CheckboxOptionDocs extends Component {
         propName="checked"
         propValue={checked}
         title="Checkbox option"
-        description="Grandmaster checkmate"
+        content="Grandmaster checkmate"
       />
     );
   }

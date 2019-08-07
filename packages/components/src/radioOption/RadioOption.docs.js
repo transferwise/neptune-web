@@ -22,7 +22,7 @@ class RadioOptionDocs extends Component {
       name: 'radio-option',
       title: 'Radio option',
       onChange: 'this.handleChange',
-      description: getDescriptionForComplexState(complex),
+      content: getContentForComplexState(complex),
       media: '<FastFlagIcon />',
     };
 
@@ -40,7 +40,7 @@ class RadioOptionDocs extends Component {
               <RadioOption
                 media={<FastFlagIcon />}
                 title="Radio option"
-                description={getDescriptionForComplexState(complex)}
+                content={getContentForComplexState(complex)}
                 id="id"
                 name="radio-option"
                 checked={valueSelected === 'value'}
@@ -60,9 +60,9 @@ class RadioOptionDocs extends Component {
   }
 }
 
-function getDescriptionForComplexState(complex) {
+function getContentForComplexState(complex) {
   return complex
-    ? 'Complex items should be used for items with long descriptions. Their button and media will be aligned to the top.'
+    ? 'Complex items should be used for items with long content. Their button and media will be aligned to the top.'
     : 'Normally, the button and icon are vertically centered.';
 }
 

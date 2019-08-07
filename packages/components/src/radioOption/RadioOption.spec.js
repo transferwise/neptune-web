@@ -8,7 +8,7 @@ describe('Radio option', () => {
   let component;
   beforeEach(() => {
     component = shallow(
-      <RadioOption media={<span />} id="" name="" title="" description="" onChange={jest.fn()} />,
+      <RadioOption media={<span />} id="" name="" title="" content="" onChange={jest.fn()} />,
     );
   });
 
@@ -17,7 +17,7 @@ describe('Radio option', () => {
     const sharedProps = {
       media: <Icon />,
       title: 'A title',
-      description: 'A description',
+      content: 'A content',
       name: 'a-name',
       complex: true,
       disabled: true,

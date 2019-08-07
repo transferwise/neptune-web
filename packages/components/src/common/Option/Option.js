@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import './Option.less';
 
-const Option = ({ media, title, description, onClick, htmlFor, disabled, button, complex }) => (
+const Option = ({ media, title, content, onClick, htmlFor, disabled, button, complex }) => (
   <label
     className={classNames('media decision', { 'decision-complex': complex, disabled })}
     onClick={event => {
@@ -20,7 +20,7 @@ const Option = ({ media, title, description, onClick, htmlFor, disabled, button,
     </div>
     <div className="media-body">
       <h5>{title}</h5>
-      <p>{description}</p>
+      {content}
     </div>
     <div className="media-right">{button}</div>
   </label>
@@ -30,7 +30,7 @@ Option.propTypes = {
   media: Types.node.isRequired,
   htmlFor: Types.string,
   title: Types.node.isRequired,
-  description: Types.node,
+  content: Types.node,
   onClick: Types.func,
   disabled: Types.bool,
   button: Types.node.isRequired,
@@ -38,7 +38,7 @@ Option.propTypes = {
 };
 
 Option.defaultProps = {
-  description: null,
+  content: null,
   htmlFor: null,
   disabled: false,
   onClick: null,

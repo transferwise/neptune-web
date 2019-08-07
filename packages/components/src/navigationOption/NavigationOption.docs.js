@@ -14,7 +14,7 @@ const NavigationOptionDocs = () => (
     }}
     callbackString="this.handleClick"
     title="Navigation option"
-    description="Watch me as I navigate (hahahaha)!"
+    content="Watch me as I navigate (hahahaha)!"
   />
 );
 

@@ -7,7 +7,7 @@ import RadioButton from '../common/RadioButton';
 const RadioOption = ({
   media,
   title,
-  description,
+  content,
   id,
   name,
   checked,
@@ -16,7 +16,7 @@ const RadioOption = ({
   disabled,
   value,
 }) => {
-  const sharedProps = { media, title, description, name, complex, disabled };
+  const sharedProps = { media, title, content, name, complex, disabled };
   return (
     <Option
       {...sharedProps}
@@ -39,7 +39,7 @@ RadioOption.propTypes = {
   id: Types.string.isRequired,
   name: Types.string.isRequired,
   title: Types.node.isRequired,
-  description: Types.node,
+  content: Types.node,
   checked: Types.bool,
   onChange: Types.func.isRequired,
   complex: Types.bool,
@@ -48,7 +48,7 @@ RadioOption.propTypes = {
 };
 
 RadioOption.defaultProps = {
-  description: null,
+  content: null,
   checked: false,
   complex: false,
   disabled: false,

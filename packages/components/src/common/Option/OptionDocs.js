@@ -15,7 +15,7 @@ class OptionDocs extends Component {
     propName: Types.string,
     propValue: Types.bool,
     title: Types.string.isRequired,
-    description: Types.string.isRequired,
+    content: Types.string.isRequired,
   };
 
   static defaultProps = {
@@ -43,7 +43,7 @@ class OptionDocs extends Component {
       propName,
       propValue,
       title,
-      description,
+      content,
     } = this.props;
     const { complex, disabled } = this.state;
 
@@ -55,7 +55,7 @@ class OptionDocs extends Component {
   id="${type}-option"
   name="${type}-option"
   title="${title}"
-  description="${getDescriptionForComplexState(complex)}"${boolProp(propName, propValue)}${boolProp(
+  content="${getContentForComplexState(complex)}"${boolProp(propName, propValue)}${boolProp(
             'complex',
             complex,
           )}${boolProp('disabled', disabled)}
@@ -73,14 +73,14 @@ class OptionDocs extends Component {
           <div className="row">
             <div className="col-md-6">
               <h2>{title}</h2>
-              <p>{description}</p>
+              <p>{content}</p>
             </div>
             <div className="col-md-6">
               <Option
                 id={`${type}-option`}
                 name={`${type}-option`}
                 title={title}
-                description={getDescriptionForComplexState(complex)}
+                content={getContentForComplexState(complex)}
                 complex={complex}
                 disabled={disabled}
                 media={<FastFlagIcon />}
@@ -119,7 +119,7 @@ class OptionDocs extends Component {
   }
 }
 
-function getDescriptionForComplexState(complex) {
+function getContentForComplexState(complex) {
   return complex
     ? 'Complex items should be used for items with long descriptions. Their button and media will be aligned to the top.'
     : 'Normally, the button and icon are vertically centered.';
