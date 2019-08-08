@@ -95,6 +95,24 @@ export default class Select extends Component {
     dropdownUp: false,
   };
 
+  static getDerivedStateFromProps(props, state) {
+    const hasActiveOptions = !!props.options.length;
+
+    if (state.open && props.searchValue !== '') {
+      if (hasActiveOptions && state.keyboardFocusedOptionIndex === null) {
+        return {
+          keyboardFocusedOptionIndex: 0,
+        };
+      } else if (!hasActiveOptions && state.keyboardFocusedOptionIndex !== null) {
+        return {
+          keyboardFocusedOptionIndex: null,
+        };
+      }
+    }
+
+    return null;
+  }
+
   constructor(props) {
     super(props);
     this.state = { open: false, keyboardFocusedOptionIndex: null };
@@ -121,9 +139,6 @@ export default class Select extends Component {
 
   handleSearchChange = event => {
     this.props.onSearchChange(event.target.value);
-
-    const hasActiveOptions = !!this.props.options.length;
-    this.setState({ keyboardFocusedOptionIndex: hasActiveOptions ? 0 : null });
   };
 
   handleKeyDown = event => {

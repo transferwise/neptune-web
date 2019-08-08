@@ -287,21 +287,30 @@ describe('Select', () => {
   });
 
   it('has first search result in focus', () => {
-    openSearchableSelect();
+    openSelect();
+    component.setProps({
+      onSearchChange: e => {
+        component.setProps({ options: [{ value: 2, label: 'yo' }], searchValue: e });
+      },
+    });
 
-    component.setProps({ options: [{ value: 2, label: 'yo' }, { value: 3, label: 'dawg' }] });
-    callSearchChangeWith('hello');
+    callSearchChangeWith('yo');
 
     expect(focusedOptionIndex()).toBe(1); // ignore search bar
   });
 
-  it('has no focused element if no search result', () => {
-    openSearchableSelect();
-
-    component.setProps({ options: [] });
+  it('handles hitting enter after options are filtered', () => {
+    component.setState({ keyboardFocusedOptionIndex: 0 });
+    openSelect();
+    component.setProps({
+      onSearchChange: e => {
+        component.setProps({ options: [], searchValue: e });
+      },
+    });
     callSearchChangeWith('hello');
-
-    expect(focusedOptionIndex()).toBe(null);
+    expect(() =>
+      component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.ENTER)),
+    ).not.toThrow();
   });
 
   it('does not show placeholder option when search enabled', () => {

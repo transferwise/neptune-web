@@ -1,3 +1,6 @@
+# v11.0.1
+## Fix placeholder of undefined in Select
+
 # v11.0.0
 ## Make "body" of Option component more generic and flexible for use
 Just renamed `description` prop to `content` and remove `<p>` wrapping.
