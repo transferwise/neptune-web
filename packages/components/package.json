@@ -30,7 +30,7 @@
     "babel-plugin-dynamic-import-node": "^2.3.0",
     "babel-plugin-named-asset-import": "^0.3.2",
     "babel-preset-react-app": "^9.0.0",
-    "bootstrap": "github:transferwise/bootstrap",
+    "bootstrap": "github:transferwise/bootstrap#v5.18.15",
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "css-loader": "2.1.1",
@@ -92,7 +92,7 @@
     "workbox-webpack-plugin": "^4.3.1"
   },
   "peerDependencies": {
-    "bootstrap": "github:transferwise/bootstrap",
+    "bootstrap": "github:transferwise/bootstrap#v5.18.15",
     "currency-flags": "^1.2.1",
     "prop-types": "^15.6.1",
     "react": "16.8.6",
