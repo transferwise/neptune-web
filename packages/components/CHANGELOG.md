@@ -1,3 +1,6 @@
+# v11.0.2
+## Lock Bootstrap version so `npm ci` won't fail if bootstrap master is not passing
+
 # v11.0.1
 ## Fix placeholder of undefined in Select
 
