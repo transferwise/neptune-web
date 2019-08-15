@@ -1,3 +1,8 @@
+# v11.0.3
+## Import single function lodash packages instead of whole package
+Importing the whole `lodash` package had a side effect of attaching itself as `_` on global context (`window`).
+This clashed with `underscore` that uses the same variable, breaking clients due to their different interfaces.
+
 # v11.0.2
 ## Lock Bootstrap version so `npm ci` won't fail if bootstrap master is not passing
 

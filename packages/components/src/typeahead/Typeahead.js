@@ -4,7 +4,8 @@
 
 import React, { Component } from 'react';
 import Types from 'prop-types';
-import { debounce, clamp } from 'lodash';
+import debounce from 'lodash.debounce';
+import clamp from 'lodash.clamp';
 import classNames from 'classnames';
 
 import KeyCodes from '../common/keyCodes';
