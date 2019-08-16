@@ -82,7 +82,7 @@
     "release-to-github-with-changelog": "^1.2.2",
     "resolve": "1.10.0",
     "semver": "6.0.0",
-    "style-loader": "0.23.1",
+    "style-loader": "1.0.0",
     "terser-webpack-plugin": "1.2.3",
     "ts-pnp": "1.1.2",
     "url-loader": "1.1.2",
