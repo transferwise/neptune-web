@@ -10,7 +10,7 @@
     "url": "git+https://github.com/transferwise/components.git"
   },
   "devDependencies": {
-    "@babel/core": "7.4.3",
+    "@babel/core": "7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
