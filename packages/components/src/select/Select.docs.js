@@ -105,14 +105,15 @@ const OPTIONS = [
   { header: 'Basic' },
   { value: 0, label: 'A thing', note: 'with a note' },
   { value: 1, label: 'Another thing', secondary: 'with secondary text this time' },
+  { value: 2, label: 'A disabled thing', disabled: true },
   { header: 'Icons' },
-  { value: 2, label: 'Profile', icon: 'icon-profile' },
-  { value: 3, label: 'Globe', icon: 'icon-globe' },
+  { value: 3, label: 'Profile', icon: 'icon-profile' },
+  { value: 4, label: 'Globe', icon: 'icon-globe' },
   { header: 'Currencies' },
-  { value: 4, label: 'British Pound', currency: 'gbp' },
-  { value: 5, label: 'Euro', currency: 'eur' },
+  { value: 5, label: 'British Pound', currency: 'gbp' },
+  { value: 6, label: 'Euro', currency: 'eur' },
   { separator: true },
-  { value: 6, label: 'Something else' },
+  { value: 7, label: 'Something else' },
 ];
 
 export default class SelectDocs extends Component {

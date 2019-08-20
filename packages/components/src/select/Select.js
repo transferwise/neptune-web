@@ -18,7 +18,7 @@ function clamp(from, to, value) {
 }
 
 function actionableOption(option) {
-  return !option.header && !option.separator;
+  return !option.header && !option.separator && !option.disabled;
 }
 
 function stopPropagation(event) {
@@ -66,6 +66,7 @@ export default class Select extends Component {
         note: Types.node,
         secondary: Types.node,
         separator: Types.bool,
+        disabled: Types.bool,
       }),
     ).isRequired,
     onSearchChange: Types.func,
@@ -356,18 +357,19 @@ export default class Select extends Component {
       this.style('tw-dropdown-item--clickable'),
       {
         [this.style('active')]: isActive,
-        [this.style('tw-dropdown-item--focused')]: isFocusedWithKeyboard,
+        [this.style('tw-dropdown-item--focused')]: isFocusedWithKeyboard && !option.disabled,
+        [this.style('disabled')]: option.disabled,
       },
     );
     return (
       <li // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
         key={index}
-        onClick={this.createSelectHandlerForOption(option)}
-        onKeyPress={this.createSelectHandlerForOption(option)}
+        onClick={option.disabled ? stopPropagation : this.createSelectHandlerForOption(option)}
+        onKeyPress={option.disabled ? stopPropagation : this.createSelectHandlerForOption(option)}
         className={className}
       >
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a>
+        <a disabled={option.disabled}>
           <Option {...option} classNames={this.props.classNames} />
         </a>
       </li>

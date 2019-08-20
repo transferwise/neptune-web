@@ -1,3 +1,6 @@
+# v11.1.0
+## Add disabled property to options in Select component
+
 # v11.0.3
 ## Import single function lodash packages instead of whole package
 Importing the whole `lodash` package had a side effect of attaching itself as `_` on global context (`window`).

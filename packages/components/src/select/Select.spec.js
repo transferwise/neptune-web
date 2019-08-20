@@ -244,6 +244,46 @@ describe('Select', () => {
     expectDropdownToBe().open();
   });
 
+  describe('given a set of options where some are disabled', () => {
+    beforeEach(() => {
+      component.setProps({
+        options: [{ label: 'a thing' }, { label: 'a disabled thing', disabled: true }],
+      });
+    });
+
+    describe('when opened', () => {
+      beforeEach(() => {
+        openSelect();
+      });
+
+      it('should render a disabled link for any disabled options', () => {
+        expect(
+          component
+            .find('li.tw-dropdown-item')
+            .first()
+            .text(),
+        ).toEqual('a thing');
+      });
+
+      describe('when a disabled option is clicked', () => {
+        beforeEach(() => {
+          component
+            .find('li.tw-dropdown-item')
+            .at(1)
+            .simulate('click', fakeEvent());
+        });
+
+        it('should not close the dropdown', () => {
+          expectDropdownToBe().open();
+        });
+
+        it('should not call the onChange callback', () => {
+          expect(props.onChange).not.toBeCalled();
+        });
+      });
+    });
+  });
+
   it('can be disabled', () => {
     expect(!!component.find('button').prop('disabled')).toBe(false);
     component.setProps({ disabled: true });
@@ -353,7 +393,7 @@ describe('Select', () => {
     });
   });
 
-  it('allows you to move around items with arrow keys while ignoring headers and separators', () => {
+  it('allows you to move around items with arrow keys while ignoring headers, separators and disabled', () => {
     const keyboardFocusIsOnElementWithIndex = index =>
       findNthListElement(index).hasClass('tw-dropdown-item--focused');
     component.setProps({
@@ -366,7 +406,10 @@ describe('Select', () => {
         { value: 3, label: 'dawg' },
         { header: 'ignore me too' },
         { value: 4, label: 'dawg' },
-        { value: 5, label: 'dawg' },
+        { value: 5, label: 'yo' },
+        { value: 6, label: 'dawg' },
+        { value: 7, label: 'ignore me as well', disabled: true },
+        { value: 8, label: 'dawg' },
       ],
       required: true,
     });
@@ -378,12 +421,16 @@ describe('Select', () => {
 
     doTimes(4, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
     expect(keyboardFocusIsOnElementWithIndex(3)).toBe(false);
-    expect(keyboardFocusIsOnElementWithIndex(8)).toBe(true); // skips header and separator again!
+    expect(keyboardFocusIsOnElementWithIndex(9)).toBe(true); // skips header and separator again!
 
-    expect(keyboardFocusIsOnElementWithIndex(0)).toBe(false);
+    component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN));
+    expect(keyboardFocusIsOnElementWithIndex(9)).toBe(false);
+    expect(keyboardFocusIsOnElementWithIndex(11)).toBe(true); // skips disabled
+
+    expect(keyboardFocusIsOnElementWithIndex(3)).toBe(false);
     doTimes(5, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.UP)));
     expect(keyboardFocusIsOnElementWithIndex(8)).toBe(false);
-    expect(keyboardFocusIsOnElementWithIndex(0)).toBe(true);
+    expect(keyboardFocusIsOnElementWithIndex(3)).toBe(true);
   });
 
   it('binds keyboard movement to the current options', () => {
