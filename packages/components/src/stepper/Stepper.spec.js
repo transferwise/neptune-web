@@ -209,23 +209,29 @@ describe('Stepper', () => {
       expect(step(1).text()).toEqual('label 2');
     });
 
-    it('will be rendered as html when hoverHTML is truthy', () => {
+    it('renders jsx', () => {
       component.setProps({
         steps: [
-          { hoverLabel: 'hover <p>label</p>', hoverHTML: true, label: '1' },
-          { hoverLabel: 'hover <p>label</p>', label: '2' },
+          {
+            hoverLabel: (
+              <>
+                hover <p>label</p>
+              </>
+            ),
+            label: '1',
+          },
         ],
       });
+
       expect(
         step(0)
           .children()
           .prop('label'),
-      ).toEqual(<span dangerouslySetInnerHTML={{ __html: 'hover <p>label</p>' }} />); // eslint-disable-line react/no-danger
-      expect(
-        step(1)
-          .children()
-          .prop('label'),
-      ).toEqual('hover <p>label</p>');
+      ).toEqual(
+        <>
+          hover <p>label</p>
+        </>,
+      );
     });
 
     it('will not be rendered if the user is on a touch device', () => {

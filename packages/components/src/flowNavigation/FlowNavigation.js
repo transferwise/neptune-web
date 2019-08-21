@@ -91,8 +91,7 @@ FlowNavigation.propTypes = {
     Types.shape({
       label: Types.string.isRequired,
       onClick: Types.func,
-      hoverLabel: Types.string,
-      hoverHTML: Types.bool,
+      hoverLabel: Types.node,
     }),
   ).isRequired,
   activeStep: Types.number,

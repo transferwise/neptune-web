@@ -1,3 +1,8 @@
+# v12.0.0
+## flowNavigation hover label renders jsx not strings->HTML
+flowNavigation hover label no longer accepts rendering strings->HTML. hoverHTML-flag is removed.
+Any Types.node, e.g. string or element/jsx, are accepted instead.
+
 # v11.1.0
 ## Add disabled property to options in Select component
 

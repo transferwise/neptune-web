@@ -108,7 +108,7 @@ Tooltip.Position = Position;
 Tooltip.propTypes = {
   children: Types.oneOfType([Types.element, Types.arrayOf(Types.element), Types.string]).isRequired,
   position: Types.oneOf(Object.keys(Tooltip.Position).map(key => Tooltip.Position[key])),
-  label: Types.oneOfType([Types.element, Types.arrayOf(Types.element), Types.string]).isRequired,
+  label: Types.node.isRequired,
   offset: Types.number,
 };
 

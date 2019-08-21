@@ -33,13 +33,25 @@ export default class StepperDocs extends Component {
         steps: [
           {
             label: 'Amount',
-            hoverLabel: '<strong>100 GBP</strong> <br> 0.2351 ETH',
-            hoverHTML: true,
+            hoverLabel: (
+              <>
+                <div>
+                  <strong>100 GBP</strong>
+                </div>
+                0.2351 ETH
+              </>
+            ),
           },
           {
             label: 'My details',
-            hoverLabel: '<strong>Diana Jaramillo</strong> <br> dianajarm123@gmail.com',
-            hoverHTML: true,
+            hoverLabel: (
+              <>
+                <div>
+                  <strong>Diana Jaramillo</strong>
+                </div>
+                dianajarm123@gmail.com
+              </>
+            ),
           },
           { label: 'Recipient', hoverLabel: 'Some person/dog' },
           { label: 'Something', hoverLabel: 'Cool' },

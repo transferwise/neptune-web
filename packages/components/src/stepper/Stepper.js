@@ -20,13 +20,6 @@ const Stepper = ({ steps, activeStep }) => {
     const active = index === activeStepIndex;
     const clickable = step.onClick && !active;
 
-    const hoverLabel = step.hoverHTML ? (
-      <span
-        dangerouslySetInnerHTML={{ __html: step.hoverLabel }} // eslint-disable-line react/no-danger
-      />
-    ) : (
-      step.hoverLabel
-    );
     const labelButton = (
       <button
         className="btn-unstyled tw-stepper__step-label"
@@ -48,7 +41,7 @@ const Stepper = ({ steps, activeStep }) => {
         `}
       >
         {step.hoverLabel && !isTouchDevice() ? (
-          <Tooltip position={Tooltip.Position.BOTTOM} label={hoverLabel}>
+          <Tooltip position={Tooltip.Position.BOTTOM} label={step.hoverLabel}>
             {labelButton}
           </Tooltip>
         ) : (
@@ -74,8 +67,7 @@ Stepper.propTypes = {
     Types.shape({
       label: Types.string.isRequired,
       onClick: Types.func,
-      hoverLabel: Types.string,
-      hoverHTML: Types.bool,
+      hoverLabel: Types.node,
     }),
   ).isRequired,
   activeStep: Types.number,
