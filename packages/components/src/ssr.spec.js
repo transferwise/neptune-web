@@ -33,6 +33,9 @@ describe('Server side rendering', () => {
     onChange: jest.fn(),
     status: 'processing',
     size: 'sm',
+    body: 'body',
+    onClose: jest.fn(),
+    onRemove: jest.fn(),
     radios: [
       {
         id: 'id-test-0',
@@ -45,6 +48,7 @@ describe('Server side rendering', () => {
     ],
     displayPattern: '**-**',
     position: 'left',
+    open: true,
   };
 
   componentNames.forEach(componentName => {

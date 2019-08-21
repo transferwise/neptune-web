@@ -1,3 +1,6 @@
+# v12.1.0
+## Update Modal to use dimmer and be more consistent with drawer.
+
 # v12.0.0
 ## flowNavigation hover label renders jsx not strings->HTML
 flowNavigation hover label no longer accepts rendering strings->HTML. hoverHTML-flag is removed.

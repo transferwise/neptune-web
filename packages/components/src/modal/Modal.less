@@ -1,45 +1,166 @@
-.no-divider {
-  .modal& {
-    .modal-header {
-      border-bottom: none;
-    }
-    .modal-footer {
-      border-top: none;
+@import '~@transferwise/neptune-css/src/less/spacing.less';
+@import '~@transferwise/neptune-css/src/less/variables/_sizes.less';
+@import '~@transferwise/neptune-css/src/less/variables/_colors.less';
+
+.modal-np {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .modal-np-dialog {
+    display: flex;
+    max-height: 100%;
+    transition: transform 0.3s ease-out;
+    transform: translateY(-25%);
+    height: 100%;
+  }
+
+  &.in {
+    .modal-np-dialog {
+      transform: translate(0);
     }
   }
-  .modal-header& {
-    border-bottom: none;
-  }
-  .modal-footer& {
-    border-top: none;
+
+  .modal-np-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 100vh;
+    overflow: hidden;
+    background: var(--brand-white);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+    .modal-np-header,
+    .modal-np-footer {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .modal-np-body {
+      flex: 1;
+      overflow-y: scroll;
+    }
+
+    .modal-np-header {
+      min-height: calc(var(--spacer) * 7);
+      justify-content: space-between;
+      box-shadow: inset 0 -1px 0 0 rgb(226, 230, 232);
+      &.modal--withoutborder {
+        box-shadow: none;
+      }
+
+      .tw-icon {
+        fill: rgb(0, 185, 255);
+        cursor: pointer;
+        display: block;
+        margin-top: -2px;
+      }
+    }
+    .modal-np-header,
+    .modal-np-footer,
+    .modal-np-body {
+      .p-x-2;
+      .p-y-2;
+    }
+    .modal-np-footer {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      box-shadow: inset 0 1px 0 0 rgb(226, 230, 232);
+      &.modal--withoutborder {
+        box-shadow: none;
+      }
+    }
+    &.modal-np-no-title {
+      .modal-np-body {
+        padding-top: 0 !important;
+      }
+      .modal-np-header {
+        min-height: calc(var(--spacer) * 4);
+        padding-bottom: 4px !important;
+      }
+    }
   }
 }
 
-.modal-body--no-title {
-  .modal& {
-    .modal-body {
-      padding-top: 0;
+@media (min-width: @screen-sm) {
+  .modal-np {
+    .modal-np-dialog {
+      height: auto;
+    }
+
+    .modal-np-content {
+      .modal-np-header {
+        min-height: calc(var(--spacer) * 8);
+      }
+      .modal-np-header,
+      .modal-np-footer,
+      .modal-np-body {
+        .p-x-4;
+        .p-y-3;
+      }
+    }
+
+    .modal-np-compact {
+      .modal-np-header {
+        min-height: calc(var(--spacer) * 7);
+      }
+      .modal-np-header,
+      .modal-np-footer,
+      .modal-np-body {
+        .p-y-2;
+      }
     }
   }
-  .modal-body& {
-    padding-top: 0;
+}
+
+@media (min-width: @screen-xs) {
+  .modal-np-dialog {
+    &.modal-np-sm {
+      width: 300px;
+    }
   }
 }
 
-.modal.compact {
-  .modal-header {
-    padding: 24px 24px 16px 24px;
-  }
-  .modal-body {
-    padding: 24px;
-  }
-  .modal-footer {
-    padding: 16px 24px 24px 24px;
+@media (min-width: @screen-sm) {
+  .modal-np {
+    padding: calc(var(--spacer) * 5);
+
+    .modal-np-dialog {
+      .modal-np-content {
+        border-radius: 3px;
+      }
+      &.modal-np-md {
+        width: 540px;
+      }
+    }
   }
 }
 
-.modal.compact-header {
-  .modal-header {
-    padding-bottom: 8px;
+@media (min-width: @screen-md) {
+  .modal-np-dialog {
+    &.modal-np-lg {
+      width: 720px;
+    }
+  }
+}
+
+@media (min-width: @screen-lg) {
+  .modal-np-dialog {
+    &.modal-np-xl {
+      width: 1000px;
+    }
+  }
+}
+
+/* Internet explorer hack */
+// In internet explorer 11 modal sows up always collapsed.
+@media all and (-ms-high-contrast: none) {
+  _:-ms-fullscreen,
+  :root .modal-np {
+    .modal-np-dialog {
+      height: 100%; /* IE11 */
+    }
   }
 }
