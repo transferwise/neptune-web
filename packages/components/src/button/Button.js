@@ -24,8 +24,8 @@ const State = {
 };
 
 const Button = ({ label, state, size, type, block, onClick }) => {
-  const isDisabled = state === State.Disabled;
   const isLoading = state === State.Loading;
+  const isDisabled = state === State.Disabled || isLoading;
 
   const classes = classNames(`btn btn-${size}`, {
     'btn-loading': isLoading,
@@ -37,12 +37,7 @@ const Button = ({ label, state, size, type, block, onClick }) => {
   });
 
   return (
-    <button
-      type="button"
-      className={classes}
-      onClick={e => onClick(e)}
-      disabled={isDisabled || state === State.Loading}
-    >
+    <button type="button" className={classes} onClick={onClick} disabled={isDisabled}>
       {label}
       {isLoading && <span className={classNames('btn-loader', { 'm-l-2': !block })} />}
     </button>
