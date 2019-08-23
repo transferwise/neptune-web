@@ -1,3 +1,6 @@
+# v12.2.3
+## Update @transferwise/formatting version.
+
 # v12.2.2
 ## Remove export flex and box.
 
