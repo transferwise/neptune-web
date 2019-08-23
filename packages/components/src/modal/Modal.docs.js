@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { Component } from 'react';
 import { Modal } from '..';
 import Button from '../button';
@@ -103,7 +104,7 @@ export default class ModalDocs extends Component {
             size={size.value}
             title={title}
             className={className}
-            footer={<Button label="Action" block />}
+            footer={<Button label="Action" block onClick={() => alert('clicked')} />}
             closeOnClick
           />
         </section>

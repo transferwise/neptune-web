@@ -392,6 +392,7 @@ export default class Typeahead extends Component {
         <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
           {optionsToRender.map((option, idx) => (
             <TypeaheadOption
+              key={`${option.label}${idx.toString()}`}
               query={query}
               option={option}
               selected={keyboardFocusedOptionIndex === idx}

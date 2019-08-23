@@ -94,7 +94,13 @@ export default class StepperDocs extends Component {
             key,
             value: typeof step[key] === 'function' ? '[a function]' : step[key],
           }))
-          .reduce((accumulator, current) => ({ ...accumulator, [current.key]: current.value }), {}),
+          .reduce(
+            (accumulator, current) => ({
+              ...accumulator,
+              [current.key]: typeof current.value === 'string' ? current.value : 'node',
+            }),
+            {},
+          ),
       ),
       null,
       '  ',

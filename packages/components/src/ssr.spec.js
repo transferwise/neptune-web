@@ -51,9 +51,19 @@ describe('Server side rendering', () => {
     open: true,
   };
 
+  // Override props in case of name collision.
+  const overrideProps = {
+    Typeahead: { size: 'md' },
+    Sticky: { position: 'top' },
+  };
+
   componentNames.forEach(componentName => {
     it(`works for ${componentName} components`, () => {
       const Component = components[componentName];
+      if (overrideProps[componentName]) {
+        const propToOverrideKey = Object.keys(overrideProps[componentName])[0];
+        allProps[propToOverrideKey] = overrideProps[componentName][propToOverrideKey];
+      }
       const string = renderToString(<Component {...allProps} />);
       expect(string).toEqual(expect.any(String));
     });

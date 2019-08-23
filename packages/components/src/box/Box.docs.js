@@ -120,44 +120,42 @@ export default class BoxDocs extends Component {
                 interpreted as pixel values.
               </p>
               <p> Example {'width={xs:0, sm:1/2, md:1/4, lg:200, xl:300}'}</p>
-              <p>
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Flex</th>
-                      <th>Display</th>
-                      <th>Breakpoint</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>0</td>
-                      <td>none</td>
-                      <td>xs</td>
-                    </tr>
-                    <tr>
-                      <td>0 1 50%</td>
-                      <td>flex</td>
-                      <td>sm</td>
-                    </tr>
-                    <tr>
-                      <td>0 1 25%</td>
-                      <td>flex</td>
-                      <td>md</td>
-                    </tr>
-                    <tr>
-                      <td>0 0 200px</td>
-                      <td>flex</td>
-                      <td>lg</td>
-                    </tr>
-                    <tr>
-                      <td>0 0 300px</td>
-                      <td>flex</td>
-                      <td>xl</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </p>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Flex</th>
+                    <th>Display</th>
+                    <th>Breakpoint</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0</td>
+                    <td>none</td>
+                    <td>xs</td>
+                  </tr>
+                  <tr>
+                    <td>0 1 50%</td>
+                    <td>flex</td>
+                    <td>sm</td>
+                  </tr>
+                  <tr>
+                    <td>0 1 25%</td>
+                    <td>flex</td>
+                    <td>md</td>
+                  </tr>
+                  <tr>
+                    <td>0 0 200px</td>
+                    <td>flex</td>
+                    <td>lg</td>
+                  </tr>
+                  <tr>
+                    <td>0 0 300px</td>
+                    <td>flex</td>
+                    <td>xl</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div className="col-md-6 ">
               <div style={{ height: '200px', border: '1px solid #e2e6e8' }}>
