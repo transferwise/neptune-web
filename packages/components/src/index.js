@@ -33,5 +33,8 @@ export { default as Drawer } from './drawer';
 export { default as Sticky } from './sticky';
 export { default as Chip } from './chip';
 export { default as Typeahead } from './typeahead';
-export { default as Box } from './box';
-export { default as Flex } from './flex';
+
+// These should be used only internally as block of layout pages. Direct use is discouraged and will easily introduce
+// inconsistencies.
+// export { default as Box } from './box';
+// export { default as Flex } from './flex';

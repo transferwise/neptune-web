@@ -1,3 +1,6 @@
+# v12.2.2
+## Remove export flex and box.
+
 # v12.2.1
 ## Fixed modal scroll.
 
