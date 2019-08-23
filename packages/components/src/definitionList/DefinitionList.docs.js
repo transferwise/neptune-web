@@ -3,6 +3,7 @@ import { DefinitionList } from '..';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const LAYOUTS = ['vertical', 'horizontal', 'justified'];
+const LOCALES = ['en-GB', 'fr-FR', 'hu-HU', 'de-DE', 'ja-JP', 'pt-BR'];
 
 const KNOBS = {
   knobs: [
@@ -16,13 +17,22 @@ const KNOBS = {
       })),
       defaultState: { value: LAYOUTS[0], label: LAYOUTS[0] },
     },
+    {
+      type: 'select',
+      label: 'Locale',
+      state: 'locale',
+      options: LOCALES.map(value => ({
+        value,
+        label: value,
+      })),
+      defaultState: { value: LOCALES[0], label: LOCALES[0] },
+    },
   ],
 };
 
 const extraPropsDocs = {
   model: 'this.state.model',
   fields: 'this.state.fields',
-  locale: 'en-GB',
   title: 'This is an awesome component',
   narrow: 'false',
 };
@@ -168,7 +178,7 @@ export default class DefinitionListDocs extends Component {
               <DefinitionList
                 model={MODEL}
                 fields={FIELDS}
-                locale="en-GB"
+                locale={this.state.locale.value}
                 title="This is an awesome component"
                 narrow={false}
                 layout={this.state.layout.value}
