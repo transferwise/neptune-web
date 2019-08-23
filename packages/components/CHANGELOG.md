@@ -1,3 +1,6 @@
+# v12.2.1
+## Fixed modal scroll.
+
 # v12.2.0
 ## Exposed flex and box.
 
