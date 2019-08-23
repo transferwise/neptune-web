@@ -33,8 +33,8 @@ const HIDDENKNOBS = {
   knobs: [
     {
       type: 'select',
-      label: 'Width xs',
-      state: 'widthXS',
+      label: 'Size xs',
+      state: 'sizeXS',
       options: WIDTH.map(value => ({
         value: eval(value),
         label: value,
@@ -43,8 +43,8 @@ const HIDDENKNOBS = {
     },
     {
       type: 'select',
-      label: 'Width sm',
-      state: 'widthSM',
+      label: 'Size sm',
+      state: 'sizeSM',
       options: WIDTH.map(value => ({
         value: eval(value),
         label: value,
@@ -53,8 +53,8 @@ const HIDDENKNOBS = {
     },
     {
       type: 'select',
-      label: 'Width md',
-      state: 'widthMD',
+      label: 'Size md',
+      state: 'sizeMD',
       options: WIDTH.map(value => ({
         value: eval(value),
         label: value,
@@ -63,8 +63,8 @@ const HIDDENKNOBS = {
     },
     {
       type: 'select',
-      label: 'Width lg',
-      state: 'widthLG',
+      label: 'Size lg',
+      state: 'sizeLG',
       options: WIDTH.map(value => ({
         value: eval(value),
         label: value,
@@ -73,8 +73,8 @@ const HIDDENKNOBS = {
     },
     {
       type: 'select',
-      label: 'Width xl',
-      state: 'widthXL',
+      label: 'Size xl',
+      state: 'sizeXL',
       options: WIDTH.map(value => ({
         value: eval(value),
         label: value,
@@ -91,13 +91,13 @@ export default class BoxDocs extends Component {
   };
 
   render() {
-    const { widthXS, widthSM, widthMD, widthLG, widthXL, alignItems, justifyContent } = this.state;
+    const { sizeXS, sizeSM, sizeMD, sizeLG, sizeXL, alignItems, justifyContent } = this.state;
 
-    const xs = widthXS && widthXS.value;
-    const sm = widthSM && widthSM.value;
-    const md = widthMD && widthMD.value;
-    const lg = widthLG && widthLG.value;
-    const xl = widthXL && widthXL.value;
+    const xs = sizeXS && sizeXS.value;
+    const sm = sizeSM && sizeSM.value;
+    const md = sizeMD && sizeMD.value;
+    const lg = sizeLG && sizeLG.value;
+    const xl = sizeXL && sizeXL.value;
     return (
       <div className="container">
         <section className="section" id="Box">
@@ -106,20 +106,21 @@ export default class BoxDocs extends Component {
               <h2>Box</h2>
               <p>I&apos;m still, I&apos;m still Jenny from the Box!</p>
               {generateCodeBlock('Box', KNOBS, this, {
-                width: { xs, sm, md, lg, xl },
+                size: { xs, sm, md, lg, xl },
               })}
               <p>
                 Box component is a simple html container that{' '}
                 <strong>works inside display:flex parent</strong>
                 <br />
-                The most important functionality of Box is the ability of changing its width based
-                on breakpoint.
-                <br /> It is possible to pass any width desired between 0 and &#8734;.
+                The most important functionality of Box is the ability of changing its size based on
+                breakpoint.
+                <br /> It is possible to pass any size (width or height depending on the flow
+                direction) desired between 0 and &#8734;.
                 <br />
                 Values between 0 and 1 will be interpreted as percentages, values &gt; 1 will be
                 interpreted as pixel values.
               </p>
-              <p> Example {'width={xs:0, sm:1/2, md:1/4, lg:200, xl:300}'}</p>
+              <p> Example {'size={xs:0, sm:1/2, md:1/4, lg:200, xl:300}'}</p>
               <table className="table">
                 <thead>
                   <tr>
@@ -161,14 +162,14 @@ export default class BoxDocs extends Component {
               <div style={{ height: '200px', border: '1px solid #e2e6e8' }}>
                 <div style={{ height: '100%' }} className="d-flex">
                   <Box
-                    width={{ xs, sm, md, lg, xl }}
+                    size={{ xs, sm, md, lg, xl }}
                     justifyContent={justifyContent.value}
                     alignItems={alignItems.value}
                   >
                     <div className="demo" />
                   </Box>
                   <Box
-                    width={{ xs, sm, md, lg, xl }}
+                    size={{ xs, sm, md, lg, xl }}
                     justifyContent={justifyContent.value}
                     alignItems={alignItems.value}
                   >

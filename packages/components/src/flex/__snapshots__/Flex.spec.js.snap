@@ -2,7 +2,7 @@
 
 exports[`Box renders correctly 1`] = `
 @media (min-width:0px) {
-  .emotion-0 {
+  .emotion-1 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -10,7 +10,7 @@ exports[`Box renders correctly 1`] = `
 }
 
 @media (min-width:576px) {
-  .emotion-0 {
+  .emotion-1 {
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
@@ -18,7 +18,7 @@ exports[`Box renders correctly 1`] = `
 }
 
 @media (min-width:768px) {
-  .emotion-0 {
+  .emotion-1 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -26,7 +26,7 @@ exports[`Box renders correctly 1`] = `
 }
 
 @media (min-width:992px) {
-  .emotion-0 {
+  .emotion-1 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -34,21 +34,78 @@ exports[`Box renders correctly 1`] = `
 }
 
 @media (min-width:1200px) {
-  .emotion-0 {
+  .emotion-1 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
   }
 }
 
+@media (min-width:0px) {
+  .emotion-0 {
+    -webkit-flex: 0 1 12.5%;
+    -ms-flex: 0 1 12.5%;
+    flex: 0 1 12.5%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:576px) {
+  .emotion-0 {
+    -webkit-flex: 0 1 25%;
+    -ms-flex: 0 1 25%;
+    flex: 0 1 25%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:768px) {
+  .emotion-0 {
+    -webkit-flex: 0 1 50%;
+    -ms-flex: 0 1 50%;
+    flex: 0 1 50%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:992px) {
+  .emotion-0 {
+    -webkit-flex: 0 0 100px;
+    -ms-flex: 0 0 100px;
+    flex: 0 0 100px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:1200px) {
+  .emotion-0 {
+    -webkit-flex: 0 0 100px;
+    -ms-flex: 0 0 100px;
+    flex: 0 0 100px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
 <div
-  className="d-flex emotion-0"
+  className="d-flex emotion-1"
 >
   <div
-    marginX={0}
-    marginY={1}
-    paddingX={2}
-    paddingY={3}
+    className="flex__inner m-x-0 p-x-2 m-y-1 p-y-3 emotion-0"
   >
     This is a children.
   </div>
@@ -58,6 +115,66 @@ exports[`Box renders correctly 1`] = `
 exports[`Box renders correctly with custom media queries 1`] = `
 @media (min-width:0px) {
   .emotion-0 {
+    -webkit-flex: 0 1 12.5%;
+    -ms-flex: 0 1 12.5%;
+    flex: 0 1 12.5%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:576px) {
+  .emotion-0 {
+    -webkit-flex: 0 1 25%;
+    -ms-flex: 0 1 25%;
+    flex: 0 1 25%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:768px) {
+  .emotion-0 {
+    -webkit-flex: 0 1 50%;
+    -ms-flex: 0 1 50%;
+    flex: 0 1 50%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:992px) {
+  .emotion-0 {
+    -webkit-flex: 0 0 100px;
+    -ms-flex: 0 0 100px;
+    flex: 0 0 100px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:1200px) {
+  .emotion-0 {
+    -webkit-flex: 0 0 100px;
+    -ms-flex: 0 0 100px;
+    flex: 0 0 100px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width:0px) {
+  .emotion-1 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -65,7 +182,7 @@ exports[`Box renders correctly with custom media queries 1`] = `
 }
 
 @media (min-width:10px) {
-  .emotion-0 {
+  .emotion-1 {
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
@@ -73,7 +190,7 @@ exports[`Box renders correctly with custom media queries 1`] = `
 }
 
 @media (min-width:20px) {
-  .emotion-0 {
+  .emotion-1 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -81,7 +198,7 @@ exports[`Box renders correctly with custom media queries 1`] = `
 }
 
 @media (min-width:30px) {
-  .emotion-0 {
+  .emotion-1 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -89,7 +206,7 @@ exports[`Box renders correctly with custom media queries 1`] = `
 }
 
 @media (min-width:40px) {
-  .emotion-0 {
+  .emotion-1 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -97,13 +214,10 @@ exports[`Box renders correctly with custom media queries 1`] = `
 }
 
 <div
-  className="d-flex emotion-0"
+  className="d-flex emotion-1"
 >
   <div
-    marginX={0}
-    marginY={1}
-    paddingX={2}
-    paddingY={3}
+    className="flex__inner m-x-0 p-x-2 m-y-1 p-y-3 emotion-0"
   >
     This is a children.
   </div>

@@ -1,3 +1,6 @@
+# v12.2.0
+## Exposed flex and box.
+
 # v12.1.0
 ## Update Modal to use dimmer and be more consistent with drawer.
 

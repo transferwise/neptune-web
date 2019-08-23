@@ -7,7 +7,7 @@ import { Sizes, JustifyContent, AlignItems, mediaQueries } from '../common';
 
 const Box = props => {
   const {
-    width,
+    size,
     justifyContent,
     alignItems,
     children,
@@ -24,9 +24,9 @@ const Box = props => {
 
   const getFlex = breakpoint => {
     const style = { flex: 0, display: 'none' };
-    if (width && width[breakpoint]) {
+    if (size && size[breakpoint]) {
       style.flex =
-        width[breakpoint] <= 1 ? `0 1 ${width[breakpoint] * 100}%` : `0 0 ${width[breakpoint]}px`;
+        size[breakpoint] <= 1 ? `0 1 ${size[breakpoint] * 100}%` : `0 0 ${size[breakpoint]}px`;
       style.display = 'flex';
     }
     return style;
@@ -50,7 +50,7 @@ const Box = props => {
     },
   };
 
-  return width ? (
+  return size ? (
     <Tag
       className={classNames(
         'flex__inner',
@@ -81,7 +81,7 @@ Box.propTypes = {
   paddingX: Types.number,
   paddingY: Types.number,
   tagHtml: Types.string,
-  width: Types.shape({
+  size: Types.shape({
     lg: Types.number,
     md: Types.number,
     sm: Types.number,

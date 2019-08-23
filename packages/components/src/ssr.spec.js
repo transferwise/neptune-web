@@ -49,12 +49,27 @@ describe('Server side rendering', () => {
     displayPattern: '**-**',
     position: 'left',
     open: true,
+    direction: {
+      xs: 'column',
+      sm: 'row',
+      md: 'column',
+      lg: 'row',
+    },
   };
 
   // Override props in case of name collision.
   const overrideProps = {
     Typeahead: { size: 'md' },
     Sticky: { position: 'top' },
+    Box: {
+      size: {
+        xs: 1,
+        sm: 1,
+        md: 1,
+        lg: 1,
+        xl: 1,
+      },
+    },
   };
 
   componentNames.forEach(componentName => {
@@ -64,6 +79,7 @@ describe('Server side rendering', () => {
         const propToOverrideKey = Object.keys(overrideProps[componentName])[0];
         allProps[propToOverrideKey] = overrideProps[componentName][propToOverrideKey];
       }
+
       const string = renderToString(<Component {...allProps} />);
       expect(string).toEqual(expect.any(String));
     });

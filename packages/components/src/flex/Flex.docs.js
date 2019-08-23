@@ -43,7 +43,7 @@ const KNOBS = {
     },
   ],
 };
-const Width = {
+const Size = {
   xs: 1 / 8,
   sm: 1 / 4,
   md: 1 / 2,
@@ -61,9 +61,9 @@ export default class FlexDocs extends Component {
     const extraProps = {
       direction: Direction,
       children: `
-        <Box width={${JSON.stringify(Width)}} alignItems='center' justifyContent='center'/>
-        <Box width={${JSON.stringify(Width)}} alignItems='center' justifyContent='center'/>
-        <Box width={${JSON.stringify(Width)}} alignItems='center' justifyContent='center'/>`,
+        <Box size={${JSON.stringify(Size)}} alignItems='center' justifyContent='center'/>
+        <Box size={${JSON.stringify(Size)}} alignItems='center' justifyContent='center'/>
+        <Box size={${JSON.stringify(Size)}} alignItems='center' justifyContent='center'/>`,
     };
 
     return (
@@ -99,13 +99,13 @@ export default class FlexDocs extends Component {
                   paddingY={paddingY.value}
                   marginY={marginY.value}
                 >
-                  <Box width={Width} alignItems="center" justifyContent="center">
+                  <Box size={Size} alignItems="center" justifyContent="center">
                     <div className="demo" />
                   </Box>
-                  <Box width={Width} alignItems="center" justifyContent="center">
+                  <Box size={Size} alignItems="center" justifyContent="center">
                     <div className="demo" />
                   </Box>
-                  <Box width={Width} alignItems="center" justifyContent="center">
+                  <Box size={Size} alignItems="center" justifyContent="center">
                     <div className="demo" />
                   </Box>
                 </Flex>

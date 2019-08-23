@@ -5,7 +5,6 @@ import { jsx } from '@emotion/core';
 import renderer from 'react-test-renderer';
 
 import Box from './';
-import Flex from '../flex';
 
 const Width = { xs: 1, sm: 1 / 2, md: 30, lg: 40, xl: 0 };
 const customMediaQueries = [0, 10, 20, 30, 40].map(bp => `@media (min-width: ${bp}px)`);
@@ -14,7 +13,7 @@ expect.addSnapshotSerializer(serializer);
 
 const props = {
   tagHtml: 'section',
-  width: Width,
+  size: Width,
   marginX: 1,
   marginY: 2,
   paddingX: 3,
