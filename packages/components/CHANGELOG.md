@@ -1,3 +1,6 @@
+# v12.3.1
+## Remove autofocus on Typeahead in docs
+
 # v12.3.0
 ## Add new Loader component
 

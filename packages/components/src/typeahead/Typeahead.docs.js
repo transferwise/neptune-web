@@ -177,7 +177,6 @@ export default class TypeaheadDocs extends Component {
               <Typeahead
                 id="typeahead"
                 name="typeahead-input-name"
-                autoFocus
                 options={this.state.options}
                 size={size.value}
                 maxHeight={maxHeight || undefined}
