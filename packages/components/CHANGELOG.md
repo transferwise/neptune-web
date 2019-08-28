@@ -1,3 +1,6 @@
+# v12.3.0
+## Add new Loader component
+
 # v12.2.3
 ## Update @transferwise/formatting version.
 

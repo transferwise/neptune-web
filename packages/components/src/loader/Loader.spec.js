@@ -12,14 +12,12 @@ describe('Loader', () => {
     component = shallow(<Loader {...props} />);
   });
 
-  it('shows a big loader', () => {
-    expect(component.find('div.loader').length).toBe(1);
-    expect(component.find('span.btn-loader').length).toBe(0);
+  it('shows an extra large loader', () => {
+    expect(component.find('div.loader--xl').length).toBe(1);
   });
 
   it('shows a small loader if that property is set', () => {
     component.setProps({ small: true });
-    expect(component.find('div.loader').length).toBe(0);
-    expect(component.find('span.btn-loader').length).toBe(1);
+    expect(component.find('div.loader--xs').length).toBe(1);
   });
 });

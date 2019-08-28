@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Loader } from '..';
+import { Sizes } from '../common';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const KNOBS = {
@@ -9,6 +10,13 @@ const KNOBS = {
       label: 'Small?',
       state: 'small',
       defaultState: false,
+    },
+    {
+      type: 'select',
+      label: 'Size',
+      state: 'size',
+      options: Object.values(Sizes).map(value => ({ label: value, value })),
+      defaultState: { value: Sizes.EXTRA_LARGE, label: Sizes.EXTRA_LARGE },
     },
     {
       type: 'checkbox',
@@ -27,7 +35,7 @@ export default class LoaderDocs extends Component {
     if (this.state.hasClassNames) {
       extraPropsDocs.classNames = `
     loader: 'loader_33HEu6aS3s',
-    loader-spinner: 'loader-spinner_z0k4VBxn-L'`;
+    loader__stripe: 'loader__stripe_z0k4VBxn-L'`;
     }
 
     return (
@@ -41,7 +49,7 @@ export default class LoaderDocs extends Component {
             </div>
             <div className="col-md-6 ">
               <div className=" text-xs-center">
-                <Loader small={this.state.small} />
+                <Loader small={this.state.small} size={this.state.size.value} />
               </div>
               <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>
