@@ -1,3 +1,6 @@
+# v0.5.6
+## Level up Blocks component
+
 # v0.5.5
 ## Give support for IE11. Add postCSS plugins: Autoprefixer & custom properties
 ## Add custom media postCSS plugin in order to get rid of Bootstrap variables and use custom media 

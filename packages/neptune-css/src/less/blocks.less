@@ -1,24 +1,25 @@
-// TODO: remove bootstrap dependencies
+/* Level 4 */
 
-// variables
-@import (reference) "~bootstrap/less/variables.less";
+@import "./variables/_colors.less";
+@import "./variables/_sizes.less";
+@import "./variables/_custom-media.less";
 
 .block {
   display: block;
-  background: #fff;
-  box-shadow: 0 20px 66px 0 rgba(@brand-blue, .2);
+  background: var(--brand-white);
+  box-shadow: 0 20px 66px 0 rgba(var(--brand-blue--rbg), .2);
   padding: calc(var(--spacer) * 2);
   border-radius: 3px;
 
-  @media (min-width: @screen-sm-min) {
+  @media (--screen-sm) {
     padding: calc(var(--spacer) * 3) calc(var(--spacer) * 2);
   }
 
-  @media (min-width: @screen-md-min) {
+  @media (--screen-md) {
     padding: calc(var(--spacer) * 4) calc(var(--spacer) * 2);
   }
 
-  @media (min-width: @screen-lg-min) {
+  @media (--screen-lg) {
     padding: calc(var(--spacer) * 6) calc(var(--spacer) * 2);
   }
 }
@@ -29,7 +30,7 @@
 
   &:hover {
     text-decoration: none;
-    box-shadow: 0 20px 66px 0 rgba(@brand-blue, .3);
+    box-shadow: 0 20px 66px 0 rgba(var(--brand-blue--rbg), .3);
 
     .block-caretLink .glyphicon {
       transform: translateX(2px);
