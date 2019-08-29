@@ -44,7 +44,7 @@ const KNOBS = {
       type: 'text',
       label: 'Placeholder',
       state: 'placeholder',
-      defaultState: 'placeholder',
+      defaultState: '12345678901234',
     },
     {
       type: 'checkbox',

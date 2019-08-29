@@ -12,6 +12,8 @@ import {
 
 import countries from './data/countries';
 
+import './PhoneNumberInput.less';
+
 const ALLOWED_PHONE_CHARS = /^$|^[\d-\s]+$/;
 
 class PhoneNumberInput extends PureComponent {
@@ -71,8 +73,10 @@ class PhoneNumberInput extends PureComponent {
     const filteredOptions = this.state.searchQuery
       ? filterOptionsForQuery(countries, this.state.searchQuery)
       : countries;
+
     return filteredOptions.map(option => {
       const { phone, iso3, iso2 } = option;
+
       return { value: phone, label: phone, note: iso3 || iso2 };
     });
   };
@@ -127,36 +131,34 @@ class PhoneNumberInput extends PureComponent {
 
     return (
       <div className="tw-telephone">
-        <div className="row">
-          <div className="col-xs-5">
-            <Select
-              options={selectOptions}
-              selected={{ value: prefix, label: prefix }}
-              onChange={this.handleChangeSelect}
-              searchPlaceholder={searchPlaceholder}
-              onSearchChange={this.onChangeSearch}
-              searchValue={searchQuery}
-              required={required}
-              disabled={disabled}
-              size={size}
-            />
-          </div>
+        <div className="tw-telephone__country-select">
+          <Select
+            options={selectOptions}
+            selected={{ value: prefix, label: prefix }}
+            onChange={this.handleChangeSelect}
+            searchPlaceholder={searchPlaceholder}
+            onSearchChange={this.onChangeSearch}
+            searchValue={searchQuery}
+            required={required}
+            disabled={disabled}
+            size={size}
+          />
+        </div>
 
-          <div className="col-xs-7">
-            <div className={`input-group input-group-${size}`}>
-              <input
-                name="phoneNumber"
-                value={suffix}
-                type="text"
-                className="form-control"
-                disabled={disabled}
-                onChange={this.handleInputChange}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                required={required}
-                placeholder={placeholder}
-              />
-            </div>
+        <div className="tw-telephone__number-input m-l-3">
+          <div className={`input-group input-group-${size}`}>
+            <input
+              name="phoneNumber"
+              value={suffix}
+              type="text"
+              className="form-control"
+              disabled={disabled}
+              onChange={this.handleInputChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              required={required}
+              placeholder={placeholder}
+            />
           </div>
         </div>
       </div>
