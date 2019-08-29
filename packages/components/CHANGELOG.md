@@ -1,3 +1,8 @@
+# v12.3.2
+## Button label supports jsx
+Button label supports jsx, e.g. doing
+label={<Message>request-money.form.generate</Message>}
+
 # v12.3.1
 ## Remove autofocus on Typeahead in docs
 

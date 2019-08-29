@@ -54,7 +54,7 @@ Button.propTypes = {
   state: Types.oneOf(Object.values(State)),
   block: Types.bool,
   onClick: Types.func.isRequired,
-  label: Types.string.isRequired,
+  label: Types.node.isRequired,
 };
 
 Button.defaultProps = {
