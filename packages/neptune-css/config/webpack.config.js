@@ -36,7 +36,7 @@ module.exports = function(mode, entries) {
         },
         {
           test: /\.(css|less)$/,
-          use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"]
+          use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "less-loader"]
         },
         {
           test: /fonts.*\.(woff|woff2|svg|eot|ttf)/,

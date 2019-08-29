@@ -1,4 +1,8 @@
-# v0.5.3
+# v0.5.5
+## Give support for IE11. Add postCSS plugins: Autoprefixer & custom properties
+## Add custom media postCSS plugin in order to get rid of Bootstrap variables and use custom media 
+
+# v0.5.4
 ## Fix chip alignment in IE11
 
 # v0.5.3
