@@ -100,7 +100,7 @@ export default class BoxDocs extends Component {
     const xl = sizeXL && sizeXL.value;
     return (
       <div className="container">
-        <section className="section" id="Box">
+        <section className="section" id="box">
           <div className="row">
             <div className="col-md-6">
               <h2>Box</h2>
