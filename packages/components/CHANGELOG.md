@@ -1,3 +1,6 @@
+# v12.3.4
+## Adds max-width to modal's title container
+
 # v12.3.3
 ## Fix phone number country code width being larger than necessary
 
