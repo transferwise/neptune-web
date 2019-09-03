@@ -12,6 +12,11 @@ const DEFAULT_MONTH_FORMAT = 'long';
 const MonthBeforeDay = ['en-US', 'ja-JP'];
 const INITIAL_DEFAULT_STATE = { year: null, month: 0, day: null };
 
+const MODE = {
+  DAY_MONTH_YEAR: 'day-month-year',
+  MONTH_YEAR: 'month-year',
+};
+
 class DateInput extends PureComponent {
   static propTypes = {
     disabled: Types.bool,
@@ -25,6 +30,7 @@ class DateInput extends PureComponent {
     monthLabel: Types.string,
     yearLabel: Types.string,
     monthFormat: Types.string,
+    mode: Types.oneOf([MODE.DAY_MONTH_YEAR, MODE.MONTH_YEAR]),
   };
 
   static defaultProps = {
@@ -38,6 +44,7 @@ class DateInput extends PureComponent {
     monthLabel: 'Month',
     yearLabel: 'Year',
     monthFormat: DEFAULT_MONTH_FORMAT,
+    mode: MODE.DAY_MONTH_YEAR,
   };
 
   constructor(props) {
@@ -61,10 +68,20 @@ class DateInput extends PureComponent {
     };
   }
 
-  getDateAsString = date =>
-    [date.getFullYear(), `0${date.getMonth() + 1}`.slice(-2), `0${date.getDate()}`.slice(-2)].join(
-      '-',
-    );
+  getDateAsString = date => {
+    const { mode } = this.props;
+    switch (mode) {
+      case MODE.MONTH_YEAR:
+        return [date.getFullYear(), `0${date.getMonth() + 1}`.slice(-2)].join('-');
+      case MODE.DAY_MONTH_YEAR:
+      default:
+        return [
+          date.getFullYear(),
+          `0${date.getMonth() + 1}`.slice(-2),
+          `0${date.getDate()}`.slice(-2),
+        ].join('-');
+    }
+  };
 
   getSelectElement = () => {
     const { disabled, size, locale, monthLabel, monthFormat } = this.props;
@@ -185,35 +202,40 @@ class DateInput extends PureComponent {
   };
 
   render() {
-    const { disabled, size, dayLabel, yearLabel } = this.props;
+    const { disabled, size, dayLabel, yearLabel, mode } = this.props;
     const { day, year, monthBeforeDay } = this.state;
+
+    const monthYearOnly = mode === MODE.MONTH_YEAR;
+    const monthWidth = monthYearOnly ? 'col-sm-8' : 'col-sm-5';
 
     return (
       <div className="tw-date">
         <div className="row">
-          {monthBeforeDay && <div className="col-sm-5">{this.getSelectElement()}</div>}
+          {monthBeforeDay && <div className={monthWidth}>{this.getSelectElement()}</div>}
 
-          <div className="col-sm-3">
-            <div className={`input-group-${size}`}>
-              <label className="sr-only" htmlFor="date-input-day">
-                {dayLabel}
-              </label>
-              <input
-                id="date-input-day"
-                type="number"
-                name="day"
-                className="form-control"
-                value={day || ''}
-                onChange={event => this.handleDayChange(event)}
-                onFocus={this.props.onFocus}
-                onBlur={this.props.onBlur}
-                placeholder="DD"
-                disabled={disabled}
-              />
+          {!monthYearOnly && (
+            <div className="col-sm-3">
+              <div className={`input-group-${size}`}>
+                <label className="sr-only" htmlFor="date-input-day">
+                  {dayLabel}
+                </label>
+                <input
+                  id="date-input-day"
+                  type="number"
+                  name="day"
+                  className="form-control"
+                  value={day || ''}
+                  onChange={event => this.handleDayChange(event)}
+                  onFocus={this.props.onFocus}
+                  onBlur={this.props.onBlur}
+                  placeholder="DD"
+                  disabled={disabled}
+                />
+              </div>
             </div>
-          </div>
+          )}
 
-          {!monthBeforeDay && <div className="col-sm-5">{this.getSelectElement()}</div>}
+          {!monthBeforeDay && <div className={monthWidth}>{this.getSelectElement()}</div>}
 
           <div className="col-sm-4">
             <div className={`input-group-${size}`}>

@@ -5,6 +5,7 @@ import { generateCodeBlock, generateInput, generateState } from '../../docs/util
 const LOCALE_OPTIONS = ['en-GB', 'en-US', 'ja-JP', 'it-IT', 'fr-FR'];
 const SIZES = ['sm', 'md', 'lg'];
 const MONTH_FORMATS = ['long', 'short'];
+const MODES = ['day-month-year', 'month-year'];
 
 const KNOBS = {
   knobs: [
@@ -51,6 +52,16 @@ const KNOBS = {
       })),
       defaultState: { value: MONTH_FORMATS[0], label: MONTH_FORMATS[0] },
     },
+    {
+      type: 'select',
+      label: 'Mode',
+      state: 'mode',
+      options: MODES.map(value => ({
+        value,
+        label: value,
+      })),
+      defaultState: { value: MODES[0], label: MODES[0] },
+    },
   ],
 };
 
@@ -67,7 +78,7 @@ export default class DateInputDocs extends Component {
     this.setState({ value });
   };
   render() {
-    const { locale, disabled, size, value, monthFormat } = this.state;
+    const { locale, disabled, size, value, monthFormat, mode } = this.state;
 
     return (
       <div className="container">
@@ -90,6 +101,7 @@ export default class DateInputDocs extends Component {
                 value={value}
                 key={value}
                 monthFormat={monthFormat.value}
+                mode={mode.value}
               />
               <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>

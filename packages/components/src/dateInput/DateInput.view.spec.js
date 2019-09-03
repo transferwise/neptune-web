@@ -292,4 +292,26 @@ describe('Date Input Component', () => {
       expect(component.find(DAY_SELECTOR).prop('value')).toBe(1);
     });
   });
+
+  describe('when month and year only', () => {
+    beforeEach(() => {
+      const extraProps = {
+        mode: 'month-year',
+        value: '2001-01-01',
+      };
+      component = shallow(<DateInput {...{ ...props, ...extraProps }} />);
+    });
+
+    it('should only display month and year inputs', () => {
+      expect(component.exists(YEAR_SELECTOR)).toBe(true);
+      expect(component.exists(MONTH_SELECTOR)).toBe(true);
+      expect(component.exists(DAY_SELECTOR)).toBe(false);
+    });
+
+    it('should produce MM-YYYY date string', () => {
+      selectMonth = component.find(MONTH_SELECTOR);
+      selectMonth.simulate('change', { value: 2, label: 'March' });
+      expect(props.onChange).toHaveBeenCalledWith('2001-03');
+    });
+  });
 });

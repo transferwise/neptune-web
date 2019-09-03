@@ -1,3 +1,6 @@
+# v12.4.0
+## Add mode property in DateInput component
+
 # v12.3.4
 ## Adds max-width to modal's title container
 
