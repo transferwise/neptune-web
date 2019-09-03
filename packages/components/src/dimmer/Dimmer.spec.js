@@ -50,6 +50,7 @@ describe('Dimmer', () => {
     expect(JSON.stringify(cssTransition.props())).toEqual(
       JSON.stringify({
         in: true,
+        appear: true,
         timeout: {
           enter: 0,
           exit: EXIT_ANIMATION,

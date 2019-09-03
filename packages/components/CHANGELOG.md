@@ -1,3 +1,6 @@
+# v12.4.1
+## Add appear on dimmer to transition on the first mount set 
+
 # v12.4.0
 ## Add mode property in DateInput component
 

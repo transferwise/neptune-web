@@ -40,6 +40,7 @@ const Dimmer = ({ open, children, onClose, fadeContentOnExit, fadeContentOnEnter
   return (
     <CSSTransition
       in={open}
+      appear
       // Wait for animation to finish before unmount.
       timeout={{ enter: 0, exit: EXIT_ANIMATION }}
       onEnter={handleOnEnter}
