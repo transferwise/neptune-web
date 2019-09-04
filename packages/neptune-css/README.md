@@ -23,3 +23,9 @@ In the `dist/` directory you can find all the components' CSS. Use them as indiv
 ### How to contribute
 Do you want to contribute? Great! Please take a look at our `Contributing` guideline:
 [CONTRIBUTING.md](https://github.com/transferwise/neptune-css/blob/master/CONTRIBUTING.md)
+
+
+### Spin up dev environment
+- `npm run dev`
+
+This command will generate the intial build and add a watcher to the less files. The first iterations won't be cached and will be slower but after the firsts one only affected files and dependent will be updated. 

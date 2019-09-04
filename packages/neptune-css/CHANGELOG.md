@@ -1,3 +1,6 @@
+# v0.6.0
+## Changed build process.
+
 # v0.5.6
 ## Level up Blocks component
 
