@@ -3,6 +3,7 @@ import Types from 'prop-types';
 
 import Select from '../select';
 
+import { Sizes } from '../common';
 import { explodeDate, convertToLocalMidnight } from './utils';
 import { getMonthNames, isDateValid } from '../common/dateUtils';
 
@@ -20,7 +21,7 @@ const MODE = {
 class DateInput extends PureComponent {
   static propTypes = {
     disabled: Types.bool,
-    size: Types.oneOf(['sm', 'md', 'lg']),
+    size: Types.oneOf([Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE]),
     value: Types.oneOfType([Types.string, Types.instanceOf(Date)]),
     locale: Types.string,
     onChange: Types.func.isRequired, // eslint-disable-line
@@ -35,7 +36,7 @@ class DateInput extends PureComponent {
 
   static defaultProps = {
     disabled: false,
-    size: 'md',
+    size: Sizes.MEDIUM,
     value: null,
     locale: DEFAULT_LOCALE,
     onFocus: null,

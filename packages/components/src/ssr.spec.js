@@ -55,6 +55,11 @@ describe('Server side rendering', () => {
       md: 'column',
       lg: 'row',
     },
+    field: {
+      control: 'text',
+      type: 'string',
+      label: 'hello',
+    },
   };
 
   // Override props in case of name collision.

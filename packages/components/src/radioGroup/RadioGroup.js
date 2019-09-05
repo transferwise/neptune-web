@@ -7,14 +7,15 @@ class RadioGroup extends Component {
     radios: Types.arrayOf(
       Types.shape({
         id: Types.string,
-        value: Types.string,
+        value: Types.oneOfType([Types.number, Types.string]),
         secondary: Types.string,
         label: Types.string.isRequired,
         disabled: Types.bool,
+        readOnly: Types.bool,
       }),
     ).isRequired,
     onChange: Types.func.isRequired,
-    selectedValue: Types.string,
+    selectedValue: Types.oneOfType([Types.number, Types.string]),
     name: Types.string.isRequired,
   };
 
@@ -40,7 +41,7 @@ class RadioGroup extends Component {
     const { selectedValue } = this.state;
     return radios && radios.length > 1 ? (
       <Fragment>
-        {radios.map(({ id, value, label, disabled, secondary }, index) => (
+        {radios.map(({ id, value, label, disabled, secondary, readOnly }, index) => (
           <Radio
             id={id}
             value={value}
@@ -52,6 +53,7 @@ class RadioGroup extends Component {
             checked={selectedValue === value}
             secondary={secondary}
             onChange={val => this.handleOnChange(val)}
+            readOnly={readOnly}
           />
         ))}
       </Fragment>

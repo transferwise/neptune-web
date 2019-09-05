@@ -3,11 +3,11 @@ import Types from 'prop-types';
 
 import RadioButton from '../common/RadioButton';
 
-const Radio = ({ label, id, ...otherProps }) => (
-  <div className="radio">
+const Radio = ({ label, id, disabled, ...otherProps }) => (
+  <div className="radio" disabled={disabled}>
     <label htmlFor={id}>
       {/* eslint-enable jsx-a11y/label-has-for */}
-      <RadioButton id={id} {...otherProps} />
+      <RadioButton id={id} disabled={disabled} {...otherProps} />
       {label}
     </label>
   </div>
@@ -21,7 +21,7 @@ Radio.propTypes = {
   name: Types.string.isRequired,
   onChange: Types.func.isRequired,
   secondary: Types.string,
-  value: Types.string,
+  value: Types.oneOfType([Types.number, Types.string]),
 };
 
 Radio.defaultProps = {

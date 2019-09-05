@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 import { FormControlType } from './FormControlType';
 
@@ -8,7 +8,7 @@ import {
   DateLookup,
   InputWithDisplayFormat,
   PhoneNumberInput,
-  Radio,
+  RadioGroup,
   Select,
   TextareaWithDisplayFormat,
   Upload,
@@ -28,7 +28,6 @@ export default class FormControl extends PureComponent {
     placeholder: Types.string,
     step: Types.number,
     locale: Types.string,
-    helpImage: Types.string,
     options: Types.arrayOf(
       Types.shape({
         label: Types.string.isRequired,
@@ -106,10 +105,9 @@ export default class FormControl extends PureComponent {
     locale: null,
     options: [],
     step: 1,
-    helpImage: '',
     disabled: false,
     readOnly: false,
-    required: true,
+    required: false,
     autoComplete: true,
     onBlur: null,
     onFocus: null,
@@ -152,18 +150,11 @@ export default class FormControl extends PureComponent {
    */
   getAutocompleteStatus = () => (this.props.autoComplete ? 'on' : 'disabled');
 
-  setControlTouched = () => {
-    if (!this.state.touched) {
-      this.setState({ touched: true });
-    }
-  };
-
-  handleOnChange = event => {
+  getValue(event) {
     let value;
-    this.setControlTouched();
     const { type } = this.props;
 
-    if (typeof event === 'object') {
+    if (event && typeof event === 'object') {
       if (event.target) {
         // This is a SyntheticEvent coming from React
         // Input type number target value is a string and needs to be a number.
@@ -186,18 +177,18 @@ export default class FormControl extends PureComponent {
       // a boolean basically, so we must emit that value
       value = event;
     }
+    return value;
+  }
+
+  handleOnChange = event => {
+    const value = this.getValue(event);
 
     this.props.onChange(value);
   };
 
-  handleOnFocus = event => this.props.onFocus && this.props.onFocus(event);
+  handleOnFocus = event => this.props.onFocus && this.props.onFocus(this.getValue(event));
 
-  handleOnBlur = event => {
-    this.setControlTouched();
-    if (this.props.onBlur) {
-      this.props.onBlur(event);
-    }
-  };
+  handleOnBlur = event => this.props.onBlur && this.props.onBlur(this.getValue(event));
 
   render() {
     const {
@@ -228,29 +219,12 @@ export default class FormControl extends PureComponent {
     switch (type) {
       case FormControlType.RADIO:
         return (
-          <Fragment>
-            {options.map((option, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <Fragment key={index}>
-                <Radio
-                  label={option.label}
-                  id={`${id}-${index}`}
-                  name={name}
-                  secondary={option.secondary}
-                  onFocus={this.handleOnFocus}
-                  onChange={() => {
-                    this.setState({ selectedOption: option });
-                    this.handleOnChange(option);
-                  }}
-                  onBlur={this.handleOnBlur}
-                  checked={
-                    this.state.selectedOption && this.state.selectedOption.value === option.value
-                  }
-                  disabled={disabled}
-                />
-              </Fragment>
-            ))}
-          </Fragment>
+          <RadioGroup
+            radios={options.map(option => ({ ...option, disabled, readOnly }))}
+            onChange={this.handleOnChange}
+            name={name}
+            selectedValue={value}
+          />
         );
 
       case FormControlType.CHECKBOX:
@@ -263,6 +237,7 @@ export default class FormControl extends PureComponent {
             onChange={this.handleOnChange}
             onFocus={this.handleOnFocus}
             required={required}
+            readOnly={readOnly}
           />
         );
 
@@ -406,6 +381,7 @@ export default class FormControl extends PureComponent {
         return <textarea {...textareaProps} />;
       }
 
+      case FormControlType.FILE:
       case FormControlType.UPLOAD: {
         return (
           <Upload

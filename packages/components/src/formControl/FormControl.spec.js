@@ -10,6 +10,7 @@ import Upload from '../upload';
 import DateLookup from '../dateLookup';
 import InputWithDisplayFormat from '../inputWithDisplayFormat';
 import TextareaWithDisplayFormat from '../textareaWithDisplayFormat';
+import RadioGroup from '../radioGroup';
 
 describe('FormControl', () => {
   let props;
@@ -187,8 +188,7 @@ describe('FormControl', () => {
   });
 
   describe('type: radio', () => {
-    let radios;
-    let radio;
+    let radioGroup;
 
     beforeEach(() => {
       props = {
@@ -197,51 +197,25 @@ describe('FormControl', () => {
           { value: 1, label: 'One' },
           { value: 2, label: 'Two', secondary: 'Secondary label' },
         ],
-        required: true,
         onChange: jest.fn().mockImplementation(newValue => {
           currentValue = newValue;
         }),
       };
       component = shallow(<FormControl {...{ ...defaultProps, ...props }} />);
-      radios = component.find(Radio);
-      radio = radios.first();
+      radioGroup = component.find(RadioGroup);
     });
 
     afterEach(() => {
       component.unmount();
     });
 
-    it('should render two radio buttons', () => {
-      expect(radios).toHaveLength(2);
-    });
-
-    it('should use the options correctly for the label', () => {
-      expect(radios.get(0).props.label).toBe('One');
-      expect(radios.get(1).props.label).toBe('Two');
-    });
-
-    it('should use secondary label correctly', () => {
-      expect(radios.last().prop('secondary')).toBe('Secondary label');
-    });
-
-    testFocusHandler(() => {
-      radio.simulate('focus');
+    it('should render a radio group', () => {
+      expect(radioGroup.exists()).toBeTruthy();
     });
 
     testChangeHandler(() => {
-      radio.simulate('change');
+      radioGroup.simulate('change', 1);
     }, 1);
-
-    testBlurHandler(() => {
-      radio.simulate('blur');
-    });
-
-    // testRequiredValidation(
-    //   () => {
-    //     radio.simulate('change');
-    //   },
-    //   { value: 1, label: 'One' },
-    // );
   });
 
   //   xdescribe('type: file - validation', () => {
@@ -490,7 +464,10 @@ describe('FormControl', () => {
       default:
         customProps = defaultProps;
     }
-    customProps.type = controlType;
+    customProps = {
+      ...customProps,
+      type: controlType,
+    };
     return { ...defaultProps, ...customProps };
   }
 
@@ -653,10 +630,6 @@ describe('FormControl', () => {
   function testBlurHandler(performBlur) {
     describe('when blurred', () => {
       beforeEach(performBlur);
-
-      it('should set the control to touched', () => {
-        expect(component.state().touched).toBeTruthy();
-      });
 
       it('should call the blur handler', () => {
         expect(defaultProps.onBlur).toHaveBeenCalled();

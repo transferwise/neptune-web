@@ -2,7 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-const CheckboxButton = ({ checked, disabled, className, onClick, onFocus, onBlur }) => (
+const CheckboxButton = ({ checked, disabled, readOnly, className, onClick, onFocus, onBlur }) => (
   <button
     type="button"
     className={classNames('tw-checkbox-button', { checked }, className)}
@@ -10,7 +10,7 @@ const CheckboxButton = ({ checked, disabled, className, onClick, onFocus, onBlur
     onFocus={onFocus}
     onClick={onClick}
     onBlur={onBlur}
-    disabled={disabled}
+    disabled={disabled || readOnly}
   >
     <span className="tw-checkbox-check glyphicon glyphicon-ok" />
   </button>
@@ -22,12 +22,14 @@ CheckboxButton.propTypes = {
   onClick: Types.func,
   onBlur: Types.func,
   disabled: Types.bool,
+  readOnly: Types.bool,
   className: Types.string,
 };
 
 CheckboxButton.defaultProps = {
   checked: false,
   disabled: false,
+  readOnly: false,
   onFocus: null,
   onClick: null,
   onBlur: null,

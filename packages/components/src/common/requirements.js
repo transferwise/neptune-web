@@ -59,7 +59,6 @@ const prepField = (field, model, validationMessages) => {
   prepLegacyProps(preparedField);
   prepType(preparedField);
   prepPattern(preparedField);
-  prepValuesAsync(preparedField, model);
   prepValidationMessages(preparedField, validationMessages);
 
   return preparedField;
@@ -100,12 +99,12 @@ const flattenFieldWithGroup = (field, subFields) => {
   }
 
   // If there was a tooltip at fieldGroup level move it to first field.
-  if (field.tooltip && subFields.length && !subFields[0].helpText) {
-    subFields[0].helpText = field.tooltip;
+  if (field.tooltip && subFields.length && !subFields[0].help) {
+    subFields[0].help = { message: field.tooltip };
   }
 
-  if (field.info && subFields.length && !subFields[0].helpText) {
-    subFields[0].helpText = field.info;
+  if (field.info && subFields.length && !subFields[0].help) {
+    subFields[0].help = { message: field.info };
   }
 
   // If there are two parts of this group, render them side by side
@@ -268,8 +267,8 @@ const prepLegacyProps = field => {
     delete field.example;
   }
 
-  if (field.tooltip && !field.helpText) {
-    field.helpText = field.tooltip;
+  if (field.tooltip && !field.help) {
+    field.help = { message: field.tooltip };
     delete field.tooltip;
   }
 
@@ -341,47 +340,6 @@ const prepPattern = field => {
   }
 };
 
-const prepValuesAsync = (field, model) => {
-  if (!field.valuesAsync) {
-    return;
-  }
-
-  let postData = {};
-  if (field.valuesAsync.params && field.valuesAsync.params.length) {
-    postData = getParamValuesFromModel(model, field.valuesAsync.params);
-  }
-
-  fetchValuesAsync(field, postData).catch(() =>
-    // Retry once on failure
-    fetchValuesAsync(field, postData),
-  );
-};
-
-const fetchValuesAsync = (field, postData) => {
-  const { url } = field.valuesAsync;
-  const options = { method: field.valuesAsync.method || 'GET' };
-  if (postData) {
-    options.body = JSON.stringify(postData);
-  }
-  return fetch(url, options)
-    .then(response => response.json())
-    .then(response => {
-      field.values = prepLegacyValues(response.data);
-    });
-};
-
-const getParamValuesFromModel = (model, params) => {
-  const data = {};
-  params.forEach(param => {
-    if (model[param.key]) {
-      data[param.parameterName] = model[param.key];
-    } else if (param.required) {
-      // TODO Problem, parameter is required, but data is missing.
-    }
-  });
-  return data;
-};
-
 const prepValidationMessages = (field, validationMessages) => {
   field.validationMessages = field.validationMessages
     ? field.validationMessages
@@ -408,9 +366,6 @@ const getControlType = field => {
   }
   if (field.hidden) {
     return 'hidden';
-  }
-  if (field.valuesAsync) {
-    return 'select';
   }
   if (field.values && field.values.length) {
     return getSelectionType(field);
@@ -457,9 +412,8 @@ const getSelectionType = field => {
     return 'radio';
   }
 
-  const values = field.enum || field.values;
-  if (values) {
-    return values.length > 3 ? 'select' : 'radio';
+  if (field.values) {
+    return field.values.length > 3 ? 'select' : 'radio';
   }
   return 'select';
 };
@@ -480,4 +434,4 @@ const getNameFromType = tabType => {
   return '';
 };
 
-export { prepFields };
+export { prepFields, getControlType };

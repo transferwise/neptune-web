@@ -1,3 +1,7 @@
+# v12.5.0
+## Add Field component
+Controls labelling, validation and help text, alongside the rendering of form control
+
 # v12.4.3
 ## Tweak `label` prop of _Checkbox_ component to accept `Types.node`
 

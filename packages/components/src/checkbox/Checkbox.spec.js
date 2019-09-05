@@ -42,6 +42,15 @@ describe('Checkbox', () => {
     expect(onChange).not.toBeCalled();
   });
 
+  it('does not call change handler on checkbox button click when readOnly', () => {
+    const onChange = jest.fn();
+    component.setProps({ onChange, readOnly: true });
+
+    expect(onChange).not.toBeCalled();
+    clickCheckboxButton();
+    expect(onChange).not.toBeCalled();
+  });
+
   it('has disabled class when the flag is passed', () => {
     expect(isDisabled()).toBe(false);
 
@@ -49,15 +58,15 @@ describe('Checkbox', () => {
     expect(isDisabled()).toBe(true);
   });
 
-  it('has error class and passes it to checkbox button when required and not disabled', () => {
-    component.setProps({ disabled: true, required: true });
+  it('has error class and passes it to checkbox button when required and not disabled and readOnly', () => {
+    component.setProps({ disabled: true, readOnly: true, required: true });
     expect(hasErrorClass()).toBe(false);
     expect(checkboxButtonHasError()).toBe(false);
-    component.setProps({ disabled: false, required: true, checked: true });
+    component.setProps({ disabled: false, readOnly: false, required: true, checked: true });
     expect(hasErrorClass()).toBe(false);
     expect(checkboxButtonHasError()).toBe(false);
 
-    component.setProps({ disabled: false, required: true, checked: false });
+    component.setProps({ disabled: false, readOnly: false, required: true, checked: false });
     expect(hasErrorClass()).toBe(true);
     expect(checkboxButtonHasError()).toBe(true);
   });
@@ -79,7 +88,14 @@ describe('Checkbox', () => {
     expect(checkboxButton().prop('disabled')).toBe(true);
   });
 
+  it('passes readOnly to checkbox button', () => {
+    expect(checkboxButton().prop('readOnly')).toBe(false);
+    component.setProps({ readOnly: true });
+    expect(checkboxButton().prop('readOnly')).toBe(true);
+  });
+
   const isDisabled = () => component.hasClass('disabled');
+  const isReadOnly = () => component.prop('readOnly');
   const hasErrorClass = () => component.hasClass('has-error');
   const checkboxButton = () => component.find(CheckboxButton);
   const checkboxButtonHasError = () => checkboxButton().hasClass('has-error');

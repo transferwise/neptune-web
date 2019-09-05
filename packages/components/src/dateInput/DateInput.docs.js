@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { DateInput } from '..';
+import { Sizes } from '../common';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const LOCALE_OPTIONS = ['en-GB', 'en-US', 'ja-JP', 'it-IT', 'fr-FR'];
-const SIZES = ['sm', 'md', 'lg'];
 const MONTH_FORMATS = ['long', 'short'];
 const MODES = ['day-month-year', 'month-year'];
 
@@ -23,11 +23,11 @@ const KNOBS = {
       type: 'select',
       label: 'Size',
       state: 'size',
-      options: SIZES.map(value => ({
+      options: Object.values(Sizes).map(value => ({
         value,
         label: value,
       })),
-      defaultState: { value: SIZES[1], label: SIZES[1] },
+      defaultState: { value: Sizes.SMALL, label: Sizes.SMALL },
     },
     {
       type: 'checkbox',

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 
 import KeyCodes from '../common/keyCodes';
+import { Sizes } from '../common';
 import { isWithinRange, moveToWithinRange } from '../common/dateUtils';
 import { getStartOfDay } from './getStartOfDay';
 
@@ -21,7 +22,7 @@ class DateLookup extends PureComponent {
     value: Types.instanceOf(Date),
     min: Types.instanceOf(Date),
     max: Types.instanceOf(Date),
-    size: Types.oneOf(['sm', 'md', 'lg']),
+    size: Types.oneOf([Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE]),
     locale: Types.string,
     placeholder: Types.string,
     label: Types.string,
@@ -36,7 +37,7 @@ class DateLookup extends PureComponent {
     value: null,
     min: null,
     max: null,
-    size: 'md',
+    size: Sizes.MEDIUM,
     locale: 'en-GB',
     placeholder: '',
     label: '',

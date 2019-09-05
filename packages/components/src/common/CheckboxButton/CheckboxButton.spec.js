@@ -42,6 +42,11 @@ describe('Checkbox button', () => {
     expect(isDisabled()).toBe(true);
   });
 
+  it('is disabled when readOnly flag is passed', () => {
+    component.setProps({ readOnly: true });
+    expect(isDisabled()).toBe(true);
+  });
+
   it('calls click handler on click', () => {
     const onClick = jest.fn();
     component.setProps({ onClick });
@@ -54,4 +59,5 @@ describe('Checkbox button', () => {
   const hasCheckedClass = () => component.hasClass('checked');
   const hasAriaPressedAsTrue = () => component.prop('aria-pressed');
   const isDisabled = () => component.prop('disabled');
+  const isReadOnly = () => component.prop('readOnly');
 });

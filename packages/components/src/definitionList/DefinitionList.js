@@ -3,7 +3,7 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 
 import DefinitionListItem from './DefinitionListItem';
-import { prepFields } from './utils/requirements';
+import { prepFields } from '../common/requirements';
 
 const LAYOUTS = ['vertical', 'horizontal', 'justified'];
 

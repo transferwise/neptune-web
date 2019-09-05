@@ -2,11 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import { formatDate } from '@transferwise/formatting';
 
-const btnSize = {
-  sm: 'btn-sm',
-  md: 'btn-md',
-  lg: 'btn-lg',
-};
+import { Sizes } from '../../common';
 
 const OpenButton = ({
   selectedDate,
@@ -20,7 +16,7 @@ const OpenButton = ({
 }) => (
   <button
     onClick={onClick}
-    className={`btn ${btnSize[size]} btn-input dropdown-toggle`}
+    className={`btn btn-${size} btn-input dropdown-toggle`}
     disabled={disabled}
     type="button"
   >
@@ -47,7 +43,7 @@ const OpenButton = ({
 
 OpenButton.propTypes = {
   selectedDate: Types.instanceOf(Date),
-  size: Types.oneOf(['sm', 'md', 'lg']).isRequired,
+  size: Types.oneOf([Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE]),
   locale: Types.string.isRequired,
   placeholder: Types.string.isRequired,
   label: Types.string.isRequired,
@@ -58,6 +54,7 @@ OpenButton.propTypes = {
 
 OpenButton.defaultProps = {
   selectedDate: null,
+  size: Sizes.MEDIUM,
 };
 
 export default OpenButton;
