@@ -1,3 +1,6 @@
+# v12.4.3
+## Tweak `label` prop of _Checkbox_ component to accept `Types.node`
+
 # v12.4.2
 ##Fix warnings in tests in Typeahead component
 

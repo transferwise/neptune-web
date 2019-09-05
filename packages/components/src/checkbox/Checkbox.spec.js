@@ -10,14 +10,14 @@ describe('Checkbox', () => {
 
   beforeEach(() => {
     props = {
-      label: 'hello',
+      label: <b>hello</b>,
       onChange: jest.fn(),
     };
     component = shallow(<Checkbox {...props} />);
   });
 
   it('renders the given label', () => {
-    expect(component.text()).toContain(props.label);
+    expect(component.containsMatchingElement(<b>hello</b>)).toBe(true);
   });
 
   it('calls change handler with new checked value when not disabled and checkbox button is clicked', () => {
@@ -63,9 +63,8 @@ describe('Checkbox', () => {
   });
 
   it('has an asterisk after the label when required', () => {
-    expect(component.text()).not.toContain(`${props.label}*`);
     component.setProps({ required: true });
-    expect(component.text()).toContain(`${props.label}*`);
+    expect(component.text()).toContain('*');
   });
 
   it('passes checked to checkbox button', () => {

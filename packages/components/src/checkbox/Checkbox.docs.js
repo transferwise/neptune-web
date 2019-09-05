@@ -5,7 +5,7 @@ import { generateCodeBlock, generateInput, generateState } from '../../docs/util
 const KNOBS = {
   knobs: [
     {
-      type: 'text',
+      type: 'node',
       label: 'Label',
       state: 'label',
       defaultState: 'Send Money',

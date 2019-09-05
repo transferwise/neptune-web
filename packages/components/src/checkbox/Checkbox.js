@@ -9,7 +9,8 @@ const Checkbox = ({ checked, required, disabled, label, onChange, onFocus, onBlu
     <div className={`checkbox ${errorClass} ${disabled ? 'disabled' : ''}`}>
       {/* eslint-disable jsx-a11y/label-has-for */}
       <label>
-        {label + (required ? '*' : '')}
+        {label}
+        {required && '*'}
         <CheckboxButton
           checked={checked}
           className={errorClass}
@@ -27,7 +28,7 @@ Checkbox.propTypes = {
   checked: Types.bool,
   required: Types.bool,
   disabled: Types.bool,
-  label: Types.string.isRequired,
+  label: Types.node.isRequired,
   onFocus: Types.func,
   onChange: Types.func.isRequired,
   onBlur: Types.func,
