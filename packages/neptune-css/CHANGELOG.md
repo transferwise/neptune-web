@@ -1,3 +1,6 @@
+# v0.7.0
+## Added Decision and Accordion CSS.
+
 # v0.6.0
 ## Changed build process.
 
