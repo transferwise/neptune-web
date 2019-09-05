@@ -11,9 +11,14 @@ describe('Typeahead input', () => {
 
   beforeEach(() => {
     props = {
+      name: 'test',
       typeaheadId: 'test',
       multiple: false,
       value: '',
+      renderChip: jest.fn(),
+      onKeyDown: jest.fn(),
+      onFocus: jest.fn(),
+      onPaste: jest.fn(),
       onChange: jest.fn(),
     };
 
@@ -30,7 +35,7 @@ describe('Typeahead input', () => {
     component.setProps({
       multiple: true,
       selected,
-      renderChip: jest.fn(({ label }) => <span>{label}</span>),
+      renderChip: jest.fn(({ label }, idx) => <span key={idx}>{label}</span>),
     });
 
     expect(inputWrapper().find('span')).toHaveLength(selected.length);

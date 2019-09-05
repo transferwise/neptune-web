@@ -21,6 +21,7 @@ describe('Typeahead', () => {
     props = {
       id: 'test',
       onChange: () => {},
+      name: 'test',
       options: [
         {
           label: 'Test',

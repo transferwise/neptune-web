@@ -1,3 +1,6 @@
+# v12.4.2
+##Fix warnings in tests in Typeahead component
+
 # v12.4.1
 ## Add appear on dimmer to transition on the first mount set 
 
