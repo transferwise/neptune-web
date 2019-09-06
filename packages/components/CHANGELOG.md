@@ -1,3 +1,6 @@
+# v12.5.1
+## Fix modal onClose getting fired multiple times
+
 # v12.5.0
 ## Add Field component
 Controls labelling, validation and help text, alongside the rendering of form control

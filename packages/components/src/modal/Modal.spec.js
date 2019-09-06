@@ -1,16 +1,15 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import Modal from './Modal';
-import Dimmer from '../dimmer';
 import { fakeEvent } from '../common/fakeEvents';
 
-jest.mock('../dimmer', () => () => 'Dimmer');
+jest.useFakeTimers();
 
 describe('Modal', () => {
   let component;
   beforeEach(() => {
-    component = shallow(<Modal body="Some body" onClose={jest.fn()} open />);
+    component = mount(<Modal body="Some body" onClose={jest.fn()} open />);
   });
 
   it('has Dimmer with prop open set correctly', () => {
@@ -125,7 +124,7 @@ describe('Modal', () => {
 
       expect(onClose).not.toBeCalled();
       clickCloseButton();
-      expect(onClose).toBeCalled();
+      expect(onClose).toHaveBeenCalledTimes(1);
     });
 
     it('calls close handler if click outside the content and closeOnClick is set to true', () => {
@@ -135,7 +134,20 @@ describe('Modal', () => {
       expect(onClose).not.toBeCalled();
       component.setProps({ closeOnClick: true });
       clickOutsideDialog();
-      expect(onClose).toBeCalled();
+      expect(onClose).toHaveBeenCalledTimes(1);
+    });
+
+    it('only calls close handler once when setting open to false in onClose handler', () => {
+      const onClose = jest.fn(() => {
+        component.setProps({ open: false });
+      });
+
+      component.setProps({ onClose, closeOnClick: true });
+
+      expect(onClose).not.toHaveBeenCalled();
+      clickCloseButton();
+      jest.runAllTimers();
+      expect(onClose).toHaveBeenCalledTimes(1);
     });
 
     it('closes on `esc` keypress', () => {
@@ -143,7 +155,7 @@ describe('Modal', () => {
       component = mount(<Modal title="Some title" body="Some body" onClose={onClose} open />);
       expect(onClose).not.toBeCalled();
       pressEscapeOnComponent();
-      expect(onClose).toBeCalled();
+      expect(onClose).toHaveBeenCalledTimes(1);
     });
 
     it('closes on `esc` keypress on document', () => {
@@ -151,7 +163,7 @@ describe('Modal', () => {
       component = mount(<Modal title="Some title" body="Some body" onClose={onClose} open />);
       expect(onClose).not.toBeCalled();
       pressEscapeOnBody();
-      expect(onClose).toBeCalled();
+      expect(onClose).toHaveBeenCalledTimes(1);
     });
 
     const clickCloseButton = () => {

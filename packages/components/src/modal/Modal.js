@@ -81,7 +81,7 @@ class Modal extends Component {
     const noDivider = this.checkSpecialClasses('no-divider');
 
     return (
-      <Dimmer open={open} onClose={closeOnClick && onClose}>
+      <Dimmer open={open}>
         <CSSTransition
           appear
           in={open}
