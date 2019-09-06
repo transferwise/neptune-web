@@ -1,3 +1,6 @@
+# v0.8.0
+## Added Snackbar
+
 # v0.7.0
 ## Added Decision and Accordion CSS.
 
