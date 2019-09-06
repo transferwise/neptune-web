@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './Boxdocs.less';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 import Box from './Box';
+import '@transferwise/neptune-css/dist/css/flex.css';
 
 import { JustifyContent, AlignItems } from '../common';
 

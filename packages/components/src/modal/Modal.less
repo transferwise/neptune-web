@@ -1,5 +1,4 @@
-@import '~@transferwise/neptune-css/src/less/spacing.less';
-@import '~@transferwise/neptune-css/src/less/variables/_sizes.less';
+@import '~bootstrap/less/variables.less';
 @import '~@transferwise/neptune-css/src/less/variables/_colors.less';
 
 .modal-np {
@@ -61,8 +60,7 @@
     .modal-np-header,
     .modal-np-footer,
     .modal-np-body {
-      .p-x-2;
-      .p-y-2;
+      padding: calc(var(--spacer) * 2) calc(var(--spacer) * 2);
     }
     .modal-np-title {
       max-width: 85%;
@@ -100,8 +98,7 @@
       .modal-np-header,
       .modal-np-footer,
       .modal-np-body {
-        .p-x-4;
-        .p-y-3;
+        padding: calc(var(--spacer) * 4) calc(var(--spacer) * 3);
       }
     }
 
@@ -112,7 +109,8 @@
       .modal-np-header,
       .modal-np-footer,
       .modal-np-body {
-        .p-y-2;
+        padding-top: calc(var(--spacer) * 2);
+        padding-bottom: calc(var(--spacer) * 2);
       }
     }
   }

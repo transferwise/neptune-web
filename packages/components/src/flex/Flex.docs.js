@@ -68,7 +68,7 @@ export default class FlexDocs extends Component {
 
     return (
       <div className="container">
-        <section className="section" id="Flex">
+        <section className="section" id="flex">
           <div className="row">
             <div className="col-md-6">
               <h2>Flex</h2>
