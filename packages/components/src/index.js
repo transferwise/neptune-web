@@ -33,6 +33,12 @@ export { default as Drawer } from './drawer';
 export { default as Sticky } from './sticky';
 export { default as Chip } from './chip';
 export { default as Typeahead } from './typeahead';
+export {
+  default as SnackbarProvider,
+  SnackbarConsumer,
+  SnackbarContext,
+} from './snackbar/SnackbarProvider';
+export { default as useSnackbar } from './snackbar/useSnackbar';
 export { default as Field } from './field';
 
 // These should be used only internally as block of layout pages. Direct use is discouraged and will easily introduce

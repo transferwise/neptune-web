@@ -6,8 +6,14 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import * as components from '.';
 
+const excluded = ['useSnackbar'];
+
+function isNotExcluded(componentName) {
+  return !excluded.includes(componentName);
+}
+
 describe('Server side rendering', () => {
-  const componentNames = Object.keys(components);
+  const componentNames = Object.keys(components).filter(isNotExcluded);
 
   expect(componentNames.length).toBeGreaterThan(0);
 
@@ -74,6 +80,9 @@ describe('Server side rendering', () => {
         lg: 1,
         xl: 1,
       },
+    },
+    SnackbarConsumer: {
+      children: () => {},
     },
   };
 

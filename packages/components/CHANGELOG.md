@@ -1,3 +1,6 @@
+# v12.7.0
+## Added Snackbar
+
 # v12.6.0
 ## Refactor Avatar component to not use deprecated lifecycle methods
 
