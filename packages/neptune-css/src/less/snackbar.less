@@ -34,13 +34,12 @@
     }
 
     &__action {
-      --spacing-y: calc((var(--spacer) * 2 - 2px) * -1);
       appearance: none;
       flex-shrink: 0;
       line-height: 1;
       border: 0;
-      padding: --spacing-y calc(var(--spacer) * 2);
-      margin: --spacing-y calc(var(--spacer) * -2) --spacing-y 0;
+      padding: 14px 16px;
+      margin: -14px -16px -14px 0;
       background: none;
       outline: 0;
       font: inherit;
@@ -56,13 +55,13 @@
     }
 
     &-container-enter-active {
-      transform: translateY(calc(var(--spacer) * -2));
+      transform: translateY(-16px);
       transform: translateY(
-        calc(var(--spacer) * -2 - env(safe-area-inset-bottom))
+        calc(-16px - env(safe-area-inset-bottom))
       );
 
       @media (--screen-sm) {
-        transform: translateY(calc(var(--spacer) * -2.5));
+        transform: translateY(-24px);
       }
     }
   }
