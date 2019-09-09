@@ -6,29 +6,12 @@ import Avatar from './';
 describe('Avatar', () => {
   let component;
   let props;
-  let fakeImageInstance;
   let savedImage;
 
   beforeEach(() => {
     props = {
       url: '',
       profileType: 'BUSINESS',
-    };
-    savedImage = global.Image;
-    global.Image = class {
-      constructor() {
-        fakeImageInstance = this;
-        this.fakeListeners = [];
-        this.src = null;
-      }
-
-      set onload(func) {
-        this.fakeListeners.push(func);
-      }
-
-      triggerFakeOnloadListeners() {
-        this.fakeListeners.forEach(func => func.call(this));
-      }
     };
 
     component = shallow(<Avatar {...props} />);
@@ -52,15 +35,19 @@ describe('Avatar', () => {
     const url = 'https://example.com';
     component.setProps({ profileType: 'PERSONAL', url });
     expect(component.find('.icon').length).toBe(1);
+    expect(component.find('.circle').hasClass('tw-avatar--with-image')).toBe(true);
+    expect(component.find('img').length).toBe(1);
+  });
+
+  fit('hides the image element if it fails to load', () => {
+    const url = 'dud-url';
+    component.setProps({ profileType: 'PERSONAL', url });
+    const image = component.find('img');
+    image.props().onError();
+
+    expect(component.find('.icon').length).toBe(1);
     expect(component.find('.circle').hasClass('tw-avatar--with-image')).toBe(false);
     expect(component.find('img').length).toBe(0);
-
-    expect(fakeImageInstance.src).toEqual(url);
-    fakeImageInstance.triggerFakeOnloadListeners();
-    component.update();
-    expect(component.find('.icon').length).toBe(0);
-    expect(component.find('.circle').hasClass('tw-avatar--with-image')).toBe(true);
-    expect(component.find('img').prop('src')).toBe(url);
   });
 
   afterEach(() => {

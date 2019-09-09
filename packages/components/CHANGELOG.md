@@ -1,3 +1,6 @@
+# v12.6.0
+## Refactor Avatar component to not use deprecated lifecycle methods
+
 # v12.5.1
 ## Fix modal onClose getting fired multiple times
 
@@ -12,7 +15,7 @@ Controls labelling, validation and help text, alongside the rendering of form co
 ##Fix warnings in tests in Typeahead component
 
 # v12.4.1
-## Add appear on dimmer to transition on the first mount set 
+## Add appear on dimmer to transition on the first mount set
 
 # v12.4.0
 ## Add mode property in DateInput component
@@ -126,7 +129,7 @@ Fix the name of the button's state prop in docs
 When we don't have a title provided; we remove the padding top from modal-body to make the modal look more appropriate.
 
 # v9.1.0
-## Add Drawer and Sticky 
+## Add Drawer and Sticky
 
 # v9.0.0
 ## Update PhoneNumberInput
@@ -137,7 +140,7 @@ Remove state props mirroring for PhoneNumberInput
 Hiding all dividers was already possible by passing `.no-divider` as a className to the component, but this removes that necessity while maintaining the divider on the footer when there is one.
 
 # v8.0.0
-## Update DateInput 
+## Update DateInput
 Remove state props mirroring for DateInput
 
 # v7.4.1
@@ -148,7 +151,7 @@ Less was failing to process files that have custom properties inside calc() func
 ## Add Accordion component
 
 # v7.3.1
-## Update dependencies 
+## Update dependencies
 - @transferwise/icons
 - @transferwise/neptune-css
 
@@ -158,7 +161,7 @@ Add DateLookup to form control
 Bug fixes for wrong props types declarations and wrong prop values.
 
 # v7.2.0
-## Add Form control 
+## Add Form control
 Add form control used to generate forms dynamically starting from json object.
 
 # v7.1.2
