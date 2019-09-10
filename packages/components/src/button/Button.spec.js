@@ -10,6 +10,7 @@ describe('Button', () => {
     size: 'md',
     onClick: jest.fn(),
     label: 'Send money',
+    htmlType: 'submit',
   };
   let wrapper;
 
@@ -30,6 +31,13 @@ describe('Button', () => {
     expect(button.hasClass('btn')).toBe(true);
     expect(button.hasClass('btn-md')).toBe(true);
     expect(button.hasClass('btn-success')).toBe(true);
+  });
+
+  it('has the right type when rendered', () => {
+    expect(wrapper.find('[type="submit"]')).toHaveLength(1);
+    wrapper.setProps({ htmlType: 'reset' });
+    expect(wrapper.find('[type="submit"]')).toHaveLength(0);
+    expect(wrapper.find('[type="reset"]')).toHaveLength(1);
   });
 
   it(`is disabled if button's state prop is disabled`, () => {

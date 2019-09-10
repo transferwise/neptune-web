@@ -23,7 +23,7 @@ const State = {
   Disabled: 'disabled',
 };
 
-const Button = ({ label, state, size, type, block, onClick }) => {
+const Button = ({ label, state, size, type, block, onClick, htmlType }) => {
   const isLoading = state === State.Loading;
   const isDisabled = state === State.Disabled || isLoading;
 
@@ -37,7 +37,7 @@ const Button = ({ label, state, size, type, block, onClick }) => {
   });
 
   return (
-    <button type="button" className={classes} onClick={onClick} disabled={isDisabled}>
+    <button type={htmlType} className={classes} onClick={onClick} disabled={isDisabled}>
       {label}
       {isLoading && <span className={classNames('btn-loader', { 'm-l-2': !block })} />}
     </button>
@@ -55,6 +55,7 @@ Button.propTypes = {
   block: Types.bool,
   onClick: Types.func.isRequired,
   label: Types.node.isRequired,
+  htmlType: Types.oneOf(['submit', 'reset', 'button']),
 };
 
 Button.defaultProps = {
@@ -62,6 +63,7 @@ Button.defaultProps = {
   type: Button.Type.Primary,
   state: Button.State.Default,
   block: false,
+  htmlType: 'button',
 };
 
 export default Button;

@@ -1,3 +1,6 @@
+# v12.7.1
+## Add htmlType attribute to Button for changing the default behavior type
+
 # v12.7.0
 ## Added Snackbar
 
