@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 import { formatDate } from '@transferwise/formatting';
 
+import { MonthFormat } from '../../common/dateUtils';
 import Header from '../header';
 import DayCalendarTable from './table';
 
@@ -13,7 +14,7 @@ class DayCalendar extends PureComponent {
     viewMonth: Types.number.isRequired,
     viewYear: Types.number.isRequired,
     locale: Types.string.isRequired,
-    shortDate: Types.bool.isRequired,
+    monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]).isRequired,
     onSelect: Types.func.isRequired,
     onLabelClick: Types.func.isRequired,
     onViewDateUpdate: Types.func.isRequired,
@@ -49,7 +50,7 @@ class DayCalendar extends PureComponent {
       viewMonth,
       viewYear,
       locale,
-      shortDate,
+      monthFormat,
       onLabelClick,
       onSelect,
     } = this.props;
@@ -57,7 +58,7 @@ class DayCalendar extends PureComponent {
       <div>
         <Header
           label={formatDate(new Date(viewYear, viewMonth), locale, {
-            month: shortDate ? 'short' : 'long',
+            month: monthFormat,
             year: 'numeric',
           })}
           onLabelClick={onLabelClick}

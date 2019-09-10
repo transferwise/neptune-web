@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { DateLookup } from '..';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
-const SIZES = ['sm', 'md', 'lg'];
+import { Sizes } from '../common';
+import { MonthFormat } from '../common/dateUtils';
+
+const SIZES = [Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE];
+const MONTH_FORMATS = [MonthFormat.LONG, MonthFormat.SHORT];
 
 const KNOBS = {
   knobs: [
@@ -38,10 +42,14 @@ const KNOBS = {
       defaultState: false,
     },
     {
-      type: 'checkbox',
-      label: 'Short Date?',
-      state: 'shortDate',
-      defaultState: false,
+      type: 'select',
+      label: 'Month format',
+      state: 'monthFormat',
+      options: MONTH_FORMATS.map(value => ({
+        value,
+        label: value,
+      })),
+      defaultState: { value: MONTH_FORMATS[0], label: MONTH_FORMATS[0] },
     },
     {
       type: 'date-lookup',
@@ -115,7 +123,7 @@ export default class DateLookupDocs extends Component {
                 locale={this.state.locale}
                 placeholder={this.state.placeholder}
                 label={this.state.label}
-                shortDate={this.state.shortDate}
+                monthFormat={this.state.monthFormat.value}
                 disabled={this.state.disabled}
                 onChange={this.createStateLink('value')}
               />

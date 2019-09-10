@@ -1,3 +1,11 @@
+# v13.0.0
+## Standardised month format props in DateInput, DateLookup and FormControl
+Breaking changes:
+- `shortDate` deprecated in favour of `monthFormat` in `DateLookup`.
+- `shortDate` deprecated in favour of `monthFormat` in `FormControl`
+- `shortDate` deprecated in favour of `monthFormat` in `DayCalendar`
+- `shortDate` deprecated in favour of `monthFormat` in `OpenButton`
+
 # v12.7.2
 ## Prevent stepper from rendering a step when not provided with one
 

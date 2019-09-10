@@ -3,7 +3,7 @@ import Types from 'prop-types';
 
 import KeyCodes from '../common/keyCodes';
 import { Sizes } from '../common';
-import { isWithinRange, moveToWithinRange } from '../common/dateUtils';
+import { isWithinRange, moveToWithinRange, MonthFormat } from '../common/dateUtils';
 import { getStartOfDay } from './getStartOfDay';
 
 import OpenButton from './openButton';
@@ -26,7 +26,7 @@ class DateLookup extends PureComponent {
     locale: Types.string,
     placeholder: Types.string,
     label: Types.string,
-    shortDate: Types.bool,
+    monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]),
     disabled: Types.bool,
     onChange: Types.func.isRequired,
     onFocus: Types.func,
@@ -41,7 +41,7 @@ class DateLookup extends PureComponent {
     locale: 'en-GB',
     placeholder: '',
     label: '',
-    shortDate: false,
+    monthFormat: MonthFormat.LONG,
     disabled: false,
     onFocus: null,
     onBlur: null,
@@ -207,7 +207,7 @@ class DateLookup extends PureComponent {
 
   render() {
     const { selectedDate, min, max, viewMonth, viewYear, open, mode } = this.state;
-    const { size, locale, placeholder, label, shortDate, disabled } = this.props;
+    const { size, locale, placeholder, label, monthFormat, disabled } = this.props;
     return (
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
         ref={this.element}
@@ -215,14 +215,14 @@ class DateLookup extends PureComponent {
         onKeyDown={this.handleKeyDown}
       >
         <OpenButton
-          {...{ selectedDate, size, locale, placeholder, label, shortDate, disabled }}
+          {...{ selectedDate, size, locale, placeholder, label, monthFormat, disabled }}
           onClick={this.open}
         />
         {open && (
           <div className="dropdown-menu">
             {mode === MODE.DAY && (
               <DayCalendar
-                {...{ selectedDate, min, max, viewMonth, viewYear, locale, shortDate }}
+                {...{ selectedDate, min, max, viewMonth, viewYear, locale, monthFormat }}
                 onSelect={this.handleSelectedDateUpdate}
                 onLabelClick={this.switchToYears}
                 onViewDateUpdate={this.handleViewDateUpdate}

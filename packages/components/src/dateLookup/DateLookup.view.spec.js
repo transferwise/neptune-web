@@ -38,7 +38,7 @@ describe('DateLookup view', () => {
     expect(openButton().prop('locale')).toBe('xx');
     expect(openButton().prop('placeholder')).toBe('Asd..');
     expect(openButton().prop('label')).toBe('Date..');
-    expect(openButton().prop('shortDate')).toBe(false);
+    expect(openButton().prop('monthFormat')).toBe('long');
     expect(openButton().prop('disabled')).toBe(false);
     expect(openButton().prop('onClick')).toBe(component.instance().open);
   });
@@ -70,7 +70,7 @@ describe('DateLookup view', () => {
       expect(dayCalendar().prop('viewMonth')).toBe(11);
       expect(dayCalendar().prop('viewYear')).toBe(2018);
       expect(dayCalendar().prop('locale')).toBe('xx');
-      expect(dayCalendar().prop('shortDate')).toBe(false);
+      expect(dayCalendar().prop('monthFormat')).toBe('long');
     });
 
     it('passes event handlers forward to day calendar', () => {

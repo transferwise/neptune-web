@@ -25,7 +25,7 @@ describe('DayCalendar', () => {
       viewMonth: 10,
       viewYear: 2018,
       locale: 'xx',
-      shortDate: false,
+      monthFormat: 'long',
       onSelect: jest.fn(),
       onLabelClick: jest.fn(),
       onViewDateUpdate: jest.fn(),
@@ -46,7 +46,7 @@ describe('DayCalendar', () => {
   });
 
   it('shows formatted date as header label in short format', () => {
-    component.setProps({ shortDate: true });
+    component.setProps({ monthFormat: 'short' });
     expect(header().prop('label')).toBe('MonthName XXXX');
     expect(formatting.formatDate).toHaveBeenCalledWith(new Date(2018, 10), 'xx', {
       month: 'short',

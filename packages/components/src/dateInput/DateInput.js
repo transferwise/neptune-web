@@ -5,10 +5,9 @@ import Select from '../select';
 
 import { Sizes } from '../common';
 import { explodeDate, convertToLocalMidnight } from './utils';
-import { getMonthNames, isDateValid } from '../common/dateUtils';
+import { getMonthNames, isDateValid, MonthFormat } from '../common/dateUtils';
 
 const DEFAULT_LOCALE = 'en-GB';
-const DEFAULT_MONTH_FORMAT = 'long';
 
 const MonthBeforeDay = ['en-US', 'ja-JP'];
 const INITIAL_DEFAULT_STATE = { year: null, month: 0, day: null };
@@ -30,7 +29,7 @@ class DateInput extends PureComponent {
     dayLabel: Types.string,
     monthLabel: Types.string,
     yearLabel: Types.string,
-    monthFormat: Types.string,
+    monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]),
     mode: Types.oneOf([MODE.DAY_MONTH_YEAR, MODE.MONTH_YEAR]),
   };
 
@@ -44,7 +43,7 @@ class DateInput extends PureComponent {
     dayLabel: 'Day',
     monthLabel: 'Month',
     yearLabel: 'Year',
-    monthFormat: DEFAULT_MONTH_FORMAT,
+    monthFormat: MonthFormat.LONG,
     mode: MODE.DAY_MONTH_YEAR,
   };
 

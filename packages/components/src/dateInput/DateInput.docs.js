@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { DateInput } from '..';
 import { Sizes } from '../common';
+import { MonthFormat } from '../common/dateUtils';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const LOCALE_OPTIONS = ['en-GB', 'en-US', 'ja-JP', 'it-IT', 'fr-FR'];
-const MONTH_FORMATS = ['long', 'short'];
+const MONTH_FORMATS = [MonthFormat.LONG, MonthFormat.SHORT];
 const MODES = ['day-month-year', 'month-year'];
 
 const KNOBS = {

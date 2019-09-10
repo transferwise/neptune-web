@@ -3,6 +3,7 @@ import Types from 'prop-types';
 import { formatDate } from '@transferwise/formatting';
 
 import { Sizes } from '../../common';
+import { MonthFormat } from '../../common/dateUtils';
 
 const OpenButton = ({
   selectedDate,
@@ -10,7 +11,7 @@ const OpenButton = ({
   locale,
   placeholder,
   label,
-  shortDate,
+  monthFormat,
   disabled,
   onClick,
 }) => (
@@ -25,7 +26,7 @@ const OpenButton = ({
       <span>
         {formatDate(selectedDate, locale, {
           day: 'numeric',
-          month: shortDate ? 'short' : 'long',
+          month: monthFormat,
           year: 'numeric',
         })}
       </span>
@@ -47,7 +48,7 @@ OpenButton.propTypes = {
   locale: Types.string.isRequired,
   placeholder: Types.string.isRequired,
   label: Types.string.isRequired,
-  shortDate: Types.bool.isRequired,
+  monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]).isRequired,
   disabled: Types.bool.isRequired,
   onClick: Types.func.isRequired,
 };

@@ -15,6 +15,7 @@ import {
 } from '..';
 
 import { Sizes } from '../common';
+import { MonthFormat } from '../common/dateUtils';
 
 import './FormControl.less';
 
@@ -87,7 +88,7 @@ export default class FormControl extends PureComponent {
       usLabel: Types.string,
       usPlaceholder: Types.string,
     }),
-    shortDate: Types.bool,
+    monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]),
     selectedOption: Types.shape({
       value: Types.any.isRequired,
       label: Types.node,
@@ -123,7 +124,7 @@ export default class FormControl extends PureComponent {
     uploadProps: {},
     displayPattern: null,
     label: '',
-    shortDate: false,
+    monthFormat: MonthFormat.LONG,
     selectedOption: null,
   };
 
@@ -209,7 +210,7 @@ export default class FormControl extends PureComponent {
       size,
       uploadProps,
       label,
-      shortDate,
+      monthFormat,
       id,
       minDate,
       maxDate,
@@ -316,6 +317,7 @@ export default class FormControl extends PureComponent {
             onFocus={this.handleOnFocus}
             size={size}
             value={value}
+            monthFormat={monthFormat}
           />
         );
 
@@ -329,7 +331,7 @@ export default class FormControl extends PureComponent {
             placeholder={placeholder}
             label={label}
             onChange={this.handleOnChange}
-            shortDate={shortDate}
+            monthFormat={monthFormat}
             disabled={disabled}
             onBlur={this.handleOnBlur}
             onFocus={this.handleOnFocus}

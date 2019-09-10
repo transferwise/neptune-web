@@ -20,7 +20,7 @@ describe('OpenButton', () => {
       locale,
       placeholder: 'Enter date..',
       label: '',
-      shortDate: false,
+      monthFormat: 'long',
       disabled: false,
       onClick: jest.fn(),
     };
@@ -46,7 +46,7 @@ describe('OpenButton', () => {
     });
 
     it('shows selected date in short format', () => {
-      component.setProps({ shortDate: true });
+      component.setProps({ monthFormat: 'short' });
       expect(formatting.formatDate).toHaveBeenLastCalledWith(selectedDate, locale, {
         day: 'numeric',
         month: 'short',
