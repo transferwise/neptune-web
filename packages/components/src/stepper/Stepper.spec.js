@@ -36,6 +36,14 @@ describe('Stepper', () => {
       `${parseFloat(progressBarFillerWidth().slice(0, -1)) +
         parseFloat(progressBarEndingWidth().slice(0, -1))}%`;
 
+    describe('when no steps are passed in', () => {
+      it('renders nothing', () => {
+        component.setProps({ steps: [] });
+
+        expect(component.isEmptyRender()).toBe(true);
+      });
+    });
+
     it('renders an ending bit for the step from last to current step', () => {
       expect(progressBarEndingWidth()).toEqual('0%');
       activeStep(1);

@@ -1,3 +1,6 @@
+# v12.7.2
+## Prevent stepper from rendering a step when not provided with one
+
 # v12.7.1
 ## Add htmlType attribute to Button for changing the default behavior type
 

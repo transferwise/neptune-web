@@ -10,6 +10,10 @@ function clamp(from, to, value) {
 
 /* eslint-disable react/no-array-index-key */
 const Stepper = ({ steps, activeStep }) => {
+  if (steps.length === 0) {
+    return null;
+  }
+
   const activeStepIndex = clamp(0, steps.length - 1, activeStep);
   const stepPercentage = 1 / (steps.length - 1);
   const percentageCompleted = activeStepIndex / (steps.length - 1);
@@ -50,6 +54,7 @@ const Stepper = ({ steps, activeStep }) => {
       </li>
     );
   };
+
   return (
     <div className="tw-stepper">
       <div className="progress">
