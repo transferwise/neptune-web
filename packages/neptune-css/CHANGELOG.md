@@ -1,3 +1,6 @@
+# v0.8.2
+## Removed useless container lines that was creating horizontal scroll in mobile
+
 # v0.8.1
 ## Negative margin temprary fix
 

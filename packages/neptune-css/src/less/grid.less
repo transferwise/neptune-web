@@ -40,37 +40,6 @@
   }
 }
 
-.container {
-  width: 100%;
-  max-width: 1164px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: calc(var(--spacer) * 2);
-  padding-left: calc(var(--spacer) * 2);
-
-  @media all and (min-width: @screen-sm) {
-    padding-right: calc(var(--spacer) * 3);
-    padding-left: calc(var(--spacer) * 3);
-  }
-
-  @media all and (min-width: @screen-md) {
-    padding-right: calc(var(--spacer) * 4);
-    padding-left: calc(var(--spacer) * 4);
-  }
-
-  @media all and (min-width: @screen-lg) {
-    padding-right: calc(var(--spacer) * 6);
-    padding-left: calc(var(--spacer) * 6);
-  }
-
-  .container-fixed();
-  .clearfix ();
-
-  @media (min-width: @screen-xl-min) {
-    max-width: @container-xl;
-  }
-}
-
 .container--fullscreen {
   @media (min-width: @screen-xl-min) {
     max-width: 100%;
