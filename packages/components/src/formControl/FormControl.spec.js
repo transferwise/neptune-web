@@ -149,6 +149,15 @@ describe('FormControl', () => {
     testBlurHandler(() => {
       selectElem.simulate('blur');
     });
+
+    it('should allow search', () => {
+      const onSearchChange = jest.fn();
+      component.setProps({ onSearchChange });
+
+      component.find('button.dropdown-toggle').simulate('click');
+      component.find('input').simulate('change', { target: { value: 'test' } });
+      expect(onSearchChange).toBeCalledWith('test');
+    });
   });
 
   describe('type: checkbox', () => {

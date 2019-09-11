@@ -61,6 +61,7 @@ export default class FormControl extends PureComponent {
     // @TODO To be implemented in a second iteration.
     // validationAsync: Types.func
     searchPlaceholder: Types.string,
+    onSearchChange: Types.func,
     size: Types.oneOf(Object.values(Sizes)),
     uploadProps: Types.shape({
       animationDelay: Types.number,
@@ -120,6 +121,7 @@ export default class FormControl extends PureComponent {
     maxLength: null,
     value: null,
     searchPlaceholder: null,
+    onSearchChange: null,
     size: Sizes.MEDIUM,
     uploadProps: {},
     displayPattern: null,
@@ -207,6 +209,7 @@ export default class FormControl extends PureComponent {
       min,
       max,
       searchPlaceholder,
+      onSearchChange,
       size,
       uploadProps,
       label,
@@ -261,6 +264,7 @@ export default class FormControl extends PureComponent {
             disabled={disabled}
             placeholder={placeholder}
             searchPlaceholder={searchPlaceholder}
+            onSearchChange={onSearchChange}
           />
         );
 

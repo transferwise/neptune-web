@@ -1,3 +1,6 @@
+# v13.0.2
+## Make FormControl Select searchable
+
 # v13.0.1
 ## Make sure custom Select styles don't leak from Typeahead
 
