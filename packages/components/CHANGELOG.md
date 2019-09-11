@@ -1,3 +1,6 @@
+# v13.0.1
+## Make sure custom Select styles don't leak from Typeahead
+
 # v13.0.0
 ## Standardised month format props in DateInput, DateLookup and FormControl
 Breaking changes:

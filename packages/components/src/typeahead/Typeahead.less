@@ -141,42 +141,41 @@
       }
     }
   }
-}
 
-@keyframes slide {
-  from {
-    transform: translateX(-12px);
+  @keyframes slide {
+    from {
+      transform: translateX(-12px);
+    }
+
+    to {
+      transform: none;
+    }
   }
 
-  to {
-    transform: none;
-  }
-}
+  @keyframes slideFirst {
+    from {
+      transform: translateX(-4px);
+    }
 
-@keyframes slideFirst {
-  from {
-    transform: translateX(-4px);
+    to {
+      transform: none;
+    }
   }
 
-  to {
-    transform: none;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.6;
+    }
   }
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.6;
-  }
-}
-
-@media (max-width: @screen-xs-max) {
-  .dropdown.open .dropdown-menu {
-    position: absolute;
-    /* bottom: 48px; */
-    bottom: auto;
-    overflow: scroll;
+  @media (max-width: @screen-xs-max) {
+    .dropdown.open .dropdown-menu {
+      position: absolute;
+      bottom: auto;
+      overflow: scroll;
+    }
   }
 }
