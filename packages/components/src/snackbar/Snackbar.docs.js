@@ -39,7 +39,7 @@ import '@transferwise/neptune-css/dist/css/snackbar.css';
 
 <SnackbarProvider>
     <SnackbarConsumer>
-        {({ createSnackbar }) => <button onClick={() => createSnackbar('Did someone say snacks?')}></button>}
+        {({ createSnackbar }) => <button onClick={() => createSnackbar({ text: 'Did someone say snacks?' })}></button>}
     </SnackbarConsumer>
 </SnackbarProvider>
 `}
@@ -48,10 +48,13 @@ import '@transferwise/neptune-css/dist/css/snackbar.css';
                 <pre className="tw-docs-code ">
                   {`const App = () => {
   const createSnackbar = useSnackbar();
-  return <button onClick={() => createSnackbar('Did someone say snacks?')}></button>
+  return <button onClick={() => createSnackbar({ text: 'Did someone say snacks?' })}></button>
 };
 `}
                 </pre>
+                <p>
+                  <strong>{`<App />`}</strong> would still need to be a decendant of the provider!
+                </p>
               </div>
               <div className="col-md-6">
                 <div className="row m-t-5">
