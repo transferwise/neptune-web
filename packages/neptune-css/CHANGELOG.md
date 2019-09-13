@@ -1,3 +1,6 @@
+# v0.8.3
+## Change Close component ordering in the output to avoid cascade issues in navigation close button in mobile
+
 # v0.8.2
 ## Removed useless container lines that was creating horizontal scroll in mobile
 
