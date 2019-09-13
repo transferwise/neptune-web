@@ -1,19 +1,19 @@
-<!--- Mandatory field -->
-## Title
-<!--- Provide a general summary of your changes -->
+<!-- ☝️ make the title meaningful -->
 
-<!--- Mandatory field -->
-### Description
-[XX-XXX](https://transferwise.atlassian.net/browse/XX-XXX)
-<!--- Describe your changes in detail and add link to task if available-->
+## 📎 Jira ticket
 
-<!--- Mandatory field -->
-## Types of changes
-<!--- What types of changes does your code introduce? Put an `x` in all the boxes that apply: -->
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to change)
-- [ ] I have added tests to cover my changes.
 
-<!--- Optional field -->
-## Screenshots (if appropriate):
+## ❓ Context <!-- why this change is made --> 
+
+
+## 🚀 Changes <!-- what this PR does -->
+
+
+## 💬 Considerations <!-- additional info for reviewing, discussion topics -->
+
+
+## ✅ Checklist
+
+- [ ] All changes are covered by tests
+- [ ] The changes are covered in docs
+- [ ] The version is bumped according to semver
