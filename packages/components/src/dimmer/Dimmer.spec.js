@@ -97,6 +97,13 @@ describe('Dimmer', () => {
     });
   });
 
+  it('removes modal-open class upon removal', () => {
+    component = mount(<Dimmer {...props} />);
+    expect(removeModalOpenBodyClass).not.toHaveBeenCalled();
+    component.unmount();
+    expect(removeModalOpenBodyClass).toHaveBeenCalled();
+  });
+
   describe('behaviourally', () => {
     let originalAddEventListener;
     let documentEventCallbacks;

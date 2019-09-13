@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import CSSTransition from 'react-transition-group/CSSTransition';
@@ -11,6 +11,10 @@ import KEY_CODES from '../common/keyCodes';
 export const EXIT_ANIMATION = 350;
 
 const Dimmer = ({ open, children, onClose, fadeContentOnExit, fadeContentOnEnter }) => {
+  useEffect(() => {
+    return () => cleanup();
+  }, []);
+
   const handleOnKeyDown = event => {
     if (event && (event.keyCode === KEY_CODES.ESCAPE || event.key === 'Escape')) {
       handleOnClose(event);
@@ -30,11 +34,15 @@ const Dimmer = ({ open, children, onClose, fadeContentOnExit, fadeContentOnEnter
   };
 
   const handleOnClose = event => {
-    removeModalOpenBodyClass();
-    document.removeEventListener('keydown', handleOnKeyDown);
+    cleanup();
     if (onClose) {
       onClose(event);
     }
+  };
+
+  const cleanup = () => {
+    removeModalOpenBodyClass();
+    document.removeEventListener('keydown', handleOnKeyDown);
   };
 
   return (
