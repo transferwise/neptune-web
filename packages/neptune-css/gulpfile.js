@@ -4,7 +4,7 @@ var postcss = require("gulp-postcss");
 var plumber = require("gulp-plumber");
 var cached = require("gulp-cached");
 var dependents = require("gulp-dependents");
-var notify = require("gulp-notify");
+var print = require('gulp-print').default;
 
 // Less Compiler
 const lessCompiler = () => {
@@ -12,7 +12,7 @@ const lessCompiler = () => {
     .src(["src/less/*.less", "src/less/bundles/*.less"])
     .pipe(cached("less"))
     .pipe(dependents())
-    .pipe(notify("Modified file: <%= file.relative %>!"))
+      .pipe(print(filepath => `compiled: ${filepath}`))
     .pipe(plumber())
     .pipe(less())
     .pipe(postcss())
