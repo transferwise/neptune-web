@@ -1,3 +1,6 @@
+# v0.8.4
+## Change navs component ordering in the output to avoid cascade issues in navigation links padding in mobile
+
 # v0.8.3
 ## Change Close component ordering in the output to avoid cascade issues in navigation close button in mobile
 

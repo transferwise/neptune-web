@@ -20,6 +20,7 @@
 @import "bootstrap/less/dropdowns.less";
 @import "bootstrap/less/glyphicons.less";
 @import "bootstrap/less/logos.less";
+@import "bootstrap/less/navs.less";
 @import "bootstrap/less/navbar.less";
 @import "bootstrap/less/close.less";
 
@@ -106,64 +107,10 @@
   }
 }
 
-// Extracted from `navs.less`
-
-.nav {
-  margin-bottom: 0;
-  padding-left: 0; // Override default ul/ol
-  list-style: none;
-  &:extend(.clearfix all);
-
-  > li {
-    position: relative;
-    display: block;
-
-    > a {
-      position: relative;
-      display: block;
-      outline-offset: -1px;
-      padding: @nav-link-padding;
-      font-weight: @font-weight-normal;
-      font-size: @font-size-base;
-      color: @nav-link-color;
-
-      &:hover,
-      &:focus {
-        text-decoration: none;
-        color: @nav-link-hover-color;
-      }
-
-      &:active {
-        color: @nav-link-active-color;
-      }
-      &.navbar-title-link {
-
-        @media all and (min-width: @screen-md) {
-           padding: 13px 24px 7px 0;
-         }
-      }
-    }
-  }
-}
-
 .tw-public-navigation-item-content__text.text-ellipsis {
     display: inline-block;
 }
 
 .navbar-background--inverse {
   background-color: @brand-primary;
-}
-
-/* Fix until neptune-CSS specificity in navigation is solved */
-
-@media all and (min-width: @screen-md) {
-  .nav.navbar-nav > li > a {
-    padding-bottom: 6px;
-    font-size: 14px;
-  }
-
-  .nav.navbar-nav > li > a.navbar-title-link,
-  .nav.navbar-nav > li > button.navbar-title-link {
-    font-size: 22px;
-  }
 }
