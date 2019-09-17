@@ -1,0 +1,16 @@
+{
+  "command": {
+    "publish": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "verifyAccess": false
+    }
+  },
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent",
+  "ignoreChanges": ["**/*.md", "**/*.spec.js"]
+}
