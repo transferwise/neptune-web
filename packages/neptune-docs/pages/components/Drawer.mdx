@@ -1,0 +1,99 @@
+<!-- import { Button } from '@transferwise/components'; -->
+
+<p className="lead">Use Drawers to let users perform single step tasks which may include optional informational drill-down views.</p>
+
+![Sample Drawer](/static/assets/img/Drawer_sample.png)
+
+## Platforms
+
+- [Web](#Web) <span class="badge badge-danger">Ready for development</span>
+
+## Best practices
+
+<h3 class="text-success">Do</h3>
+
+- Use a drawer to let the user perform a single step task such as add or edit an entity. The task is performed in the context from where it is triggered
+- Use a drawer to show extended and multimedia information without taking the user away from the context where it is relevant
+- Use a [Default](#Default) drawer to display information which does not include user actions other than dismissing the drawer
+- Use a default drawer with inline actions when you want the user to scroll through the whole content before reaching the main action
+- Use a drawer with [fixed footer](#FixedFooter) when the user is not required to scroll through all the contents before accessing the main action
+- Use a drawer in [drill down](#DrillDown) view to provide extra information. The drill down view is triggered from any of the previous cases. The user can navigate back to parent.
+
+<h3 class="text-danger">Don't</h3>
+
+- Do not use a drawer if your task involves more than one step. Use a [Flow](Flow) instead
+- Do not use a drawer to ask for confirmation. Use a [Modal](Modal) confirmation dialog instead.
+
+## Types
+
+<h3><a id="Default"></a>Default</h3>
+![Default drawer](/static/assets/img/Type_Default.png)
+
+#### Header
+
+1. Close/Cancel button
+
+2. View title
+
+#### Content area
+
+- [Scrolls](#Scrolling) beneath header.
+
+- Respect the provided paddings 3-6.
+
+#### Background
+
+9. Dimmed background. Only available in desktop sizes. The drawer is full screen on mobile screens sizes.
+
+<h3><a id="FixedFooter"></a>Fixed footer</h3>
+![Default drawer](/static/assets/img/Type_Fixed_Footer.png)
+
+7. Fixed footer with primary action
+
+<h3><a id="DrillDown"></a>Drill down</h3>
+![Default drawer](/static/assets/img/Type_Drilldown.png)
+
+8. Back to parent view
+
+## Interactions
+
+<h3>Dismissal</h3>
+
+- The drawer is dismissed by clicking on the close button in the header, pressing the Esc key or clicking on the dimmed background
+- State of the drawer is maintained independently of its content. If the user retriggers the drawer, it should open in the last shown state, including user-entered information.
+- The state is kept only on the current page session, if you refresh or leave, state is reset.
+
+## Motion
+
+<h3>Open and close</h3>
+
+<video width="320" height="240" controls>
+	<source src="/static/assets/vid/Drawer_animation.mov" />
+	Your browser does not support the video tag.
+</video>
+
+<h3><a id="Scrolling"></a>Scrolling</h3>
+
+<video width="320" height="240" controls>
+	<source src="/static/assets/vid/Drawer_scrolling.mp4" type="video/mp4" />
+	Your browser does not support the video tag.
+</video>
+
+<h3>Drilldown</h3>
+
+<video width="320" height="240" controls>
+	<source src="/static/assets/vid/Drawer_drilldown.mov" />
+	Your browser does not support the video tag.
+</video>
+
+## Related components
+
+- To split a task in several steps, use the [Flow](Flow) component
+- For very simple tasks such as delete confirmations, use the [Modal](Modal) component
+
+export const meta = {
+	displayName: 'Drawer',
+	abstractURL: 'https://share.goabstract.com/523506be-a121-4456-ae0e-97c0770413af',
+	size: '',
+	slug: 'Drawer'
+};

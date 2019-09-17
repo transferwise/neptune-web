@@ -1,0 +1,42 @@
+import React from 'react';
+import { withRouter } from 'next/router';
+import PropTypes from 'prop-types';
+import getBasePath from './getBasePath';
+import getPages from './getPages';
+
+const getLink = (pathname, sectionSlug) => {
+  const pages = getPages().filter(page => page.dir === sectionSlug);
+
+  return pages.map(({ component }, index) => {
+    const path = `/${sectionSlug}/${component.meta.slug}`;
+    const isSelected = pathname === path;
+
+    return (
+      <li key={index.toString()}>
+        <a className={`Nav__Link ${isSelected ? 'active' : null}`} href={getBasePath(path)}>
+          {component.meta.displayName} {component.meta.isPlaceholder && '*'}
+          {component.meta.isBeta && <span className="badge badge-success">beta</span>}
+        </a>
+      </li>
+    );
+  });
+};
+
+const Sidebar = ({ router: { pathname }, title, slug }) => (
+  <div className="Sidebar__Fixed">
+    <div className="Sidebar__Header">
+      <h3 className="Sidebar__Title">{title}</h3>
+    </div>
+    <div className="Sidebar__Inner">
+      <ul className="Nav">{getLink(pathname, slug)}</ul>
+    </div>
+  </div>
+);
+
+Sidebar.propTypes = {
+  router: PropTypes.shape({ pathname: PropTypes.string.isRequired }).isRequired,
+  title: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+};
+
+export default withRouter(Sidebar);

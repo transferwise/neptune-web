@@ -1,0 +1,79 @@
+{
+  "name": "@transferwise/neptune-docs",
+  "version": "0.1.0",
+  "description": "TransferWise Design System",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build-docs": "npm run build && next export -o docs-build && touch docs-build/.nojekyll",
+    "deploy-docs-to-dir": "gh-pages --dotfiles -a -d docs-build",
+    "lint": "eslint doc-components/ pages/",
+    "format": "prettier --find-config-path --write {doc-components,pages}/**/*.{js,css,less,json}",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/transferwise/neptune-docs.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "TransferWise",
+    "url": "https://transferwise.com/"
+  },
+  "contributors": [
+    "Carlos Matallín Civera <carlos.matallin@transferwise.com>"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/transferwise/neptune-docs/issues"
+  },
+  "homepage": "https://github.com/transferwise/neptune-docs#readme",
+  "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@mapbox/rehype-prism": "^0.3.1",
+    "@mdx-js/loader": "^1.4.4",
+    "@next/mdx": "^9.0.5",
+    "@transferwise/components": "^12.4.1",
+    "@transferwise/eslint-config": "^2.1.0",
+    "@transferwise/neptune-css": "^0.6.0",
+    "@zeit/next-css": "^1.0.1",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-inline-react-svg": "^1.1.0",
+    "bootstrap": "transferwise/bootstrap",
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.14.3",
+    "gh-pages": "^2.1.1",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "next": "^9.0.5",
+    "next-fonts": "^0.18.0",
+    "next-images": "^1.1.2",
+    "next-page-map": "^1.0.1",
+    "prettier": "^1.18.2",
+    "prismjs": "^1.17.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "refractor": "^2.10.0",
+    "rehype": "^9.0.0",
+    "rehype-slug": "^2.0.3"
+  },
+  "prettier": "@transferwise/eslint-config/.prettierrc.js",
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
