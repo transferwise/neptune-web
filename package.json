@@ -1,0 +1,48 @@
+{
+  "name": "neptune",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/transferwise/neptune.git"
+  },
+  "author": {
+    "name": "TransferWise",
+    "url": "https://transferwise.com/"
+  },
+  "homepage": "https://transferwise.github.io/neptune",
+  "license": "MIT",
+  "version": "1.0.0",
+  "main": "packages/components/build/main.js",
+  "contributors": [
+    "Naiara Abaroa <naiara.abaroa@transferwise.com>",
+    "Andrea Piras <andrea.piras@transferwise.com>",
+    "Anton Dozortsev <anton.dozortsev@transferwise.com>",
+    "Domonkos Horvath <domonkos.horvath@transferwise.com>",
+    "Carlos Matallín Civera <carlos.matallin@transferwise.com>"
+  ],
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.16.1"
+  },
+  "scripts": {
+    "start": "yarn build && yarn dev",
+    "build": "lerna run build --stream",
+    "dev": "lerna run dev --parallel --stream",
+    "build-docs": "lerna run build-docs",
+    "deploy-docs": "lerna run deploy-docs",
+    "deploy-docs-for-branch": "lerna run deploy-docs-for-branch",
+    "test": "lerna run test --stream",
+    "test:watch": "lerna run test:watch --stream",
+    "pretest": "lerna run pretest --stream",
+    "check-format": "lerna run check-format --stream",
+    "fix-format": "lerna run fix-format --stream",
+    "pre-release-check": "lerna run release-to-github",
+    "release-to-github": "lerna run release-to-github",
+    "clean": " npm-run-all clean:*",
+    "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules",
+    "clean:lock": "find . -name '*.lock' -type f -delete"
+  },
+  "dependencies": {}
+}
