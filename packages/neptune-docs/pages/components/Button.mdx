@@ -1,0 +1,125 @@
+import { Button } from '@transferwise/components';
+
+Use buttons to let users take actions like starting a transfer or saving the progress and move to
+the next step.
+
+<Button
+  label="Get a free account"
+  size="lg"
+  type="primary"
+  state="default"
+  block={false}
+  onClick={() => null}
+/>
+
+## Platforms
+
+- [Android](#android)
+- [iOS](#ios)
+- [Web](#web)
+
+## Best practices
+
+### Do
+
+- Use buttons to start, save, discard or conclude a transaction flow.
+- Use sentence case in the button labels
+- Write the button label so that it describes the action as clearly but also as succinctly as possible. Use a verb that allows the user to understand what happens when she presses the button. E.g "Add a balance" or "Send money".
+- Use button groups to organize related functions
+- Use only one [Primary](#primary) or [Pay](#pay) button per view or functional area
+- Pair Primary or Pay buttons with [Secondary](#secondary) ones
+- Primary or Pay button is always the first in the group
+
+### Don't
+
+- Use buttons to link pages which are not part of your transaction flow
+- Use butons to link purely content pages
+- Use buttons link external websites
+- Pair Pay and Primary buttons unless extremely necessary
+- Group buttons of different sizes
+- Group circular and rectangular buttons
+
+## Button types
+
+#### Primary
+
+Main call to action. Try to limit it to one per view.
+
+<Button
+  label="Add balance"
+  size="md"
+  type="primary"
+  state="default"
+  block={false}
+  onClick={() => null}
+/>
+
+#### Pay
+
+Reserved to initiate or confirm a money transaction. Limit to one per view.
+
+<Button
+  label="Send money"
+  size="md"
+  type="pay"
+  state="default"
+  block={false}
+  onClick={() => null}
+/>
+
+#### Secondary
+
+Secondary actions or less important actions. Consider it the default when adding a new button.
+
+<Button
+  label="Manage my card"
+  size="md"
+  type="secondary"
+  state="default"
+  block={false}
+  onClick={() => null}
+/>
+
+#### Danger
+
+Actions that may result in loose of data and effort from the user and cannot be recovered. E.g Delete.
+
+<Button
+  label="Delete recipient"
+  size="md"
+  type="danger"
+  state="default"
+  block={false}
+  onClick={() => null}
+/>
+
+#### Dropdown <span className="badge badge-success">Web</span>
+
+It opens a dropdown menu with several options related to the button action. Use it when there's limited horizontal space and the user can anticipate the options in the menu. E.g Share with Facebook, Twitter, Whatsapp etc.
+
+#### Split <span className="badge badge-success">Web</span>
+
+It offers a direct main action and a dropwdown menu including more than two secondary actions. Use it when there's limited horizontal space. To certain extent, the user should be able to anticipate some of the secondary actions in the menu. E.g Primary action: Edit. Secondary actions: Delete, Copy, etc..
+
+#### Circular <span className="badge badge-success">Apps</span>
+
+Use circular buttons when you have a group of related actions and limited horizontal space.
+
+## Android
+
+Android specific stuff.
+
+## iOS
+
+iOS specific stuff.
+
+## Web
+
+Web specific stuff.
+
+export const meta = {
+  abstractURL: 'https://share.goabstract.com/fa817bb3-ef94-4317-8a8d-864a89df7de0',
+  displayName: 'Button',
+  size: '',
+  slug: 'Button',
+};
