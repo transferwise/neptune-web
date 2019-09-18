@@ -22,16 +22,6 @@ aliases:
         paths:
           - '*'
 
-  - &save-yarn-cache
-      key: yarn-cache-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
-      paths:
-        - ~/.cache/yarn
-
-  - &restore-yarn-cache
-      keys:
-        - yarn-cache-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
-        - yarn-cache-
-
   - &install
       name: Install dependencies
       command: yarn install --frozen-lockfile
@@ -56,13 +46,13 @@ aliases:
       name: Publish packages
       command: npx lerna publish -m "[skip ci] Release" --yes
 
-  - &lint
-      name: Lint packages
-      command: yarn lint
-
-  - &test
-      name: Test packages
-      command: yarn test
+#  - &lint
+#      name: Lint packages
+#      command: yarn lint
+#
+#  - &test
+#      name: Test packages
+#      command: yarn test
 
   - &add-npm-release-token
       name: Set NPM publish token
@@ -99,6 +89,7 @@ jobs:
     steps:
       - *attach-workspace
       - run: *build-docs
+      - run: *set-github-credentials
       - run: *deploy-docs-for-branch
       - *persist-workspace
 
@@ -130,16 +121,15 @@ workflows:
             branches:
               only: master
 
-#      - deploy-docs-for-branch:
-#          context: frontend-build
-#          requires:
-#            - build
-#            - deploy-docs-to-root
-#          filters:
-#            branches:
-#              ignore:
-#                - gh-pages
-#                - master
+      - deploy-docs-for-branch:
+          context: frontend-build
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - master
 
       - publish:
           context: frontend-deploy-library
