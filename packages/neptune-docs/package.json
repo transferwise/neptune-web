@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-docs",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "TransferWise Design System",
   "main": "index.js",
   "scripts": {
@@ -22,9 +22,6 @@
     "name": "TransferWise",
     "url": "https://transferwise.com/"
   },
-  "contributors": [
-    "Carlos Matallín Civera <carlos.matallin@transferwise.com>"
-  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/transferwise/neptune-docs/issues"

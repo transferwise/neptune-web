@@ -142,7 +142,7 @@ workflows:
 #                - master
 
       - publish:
-          context: frontend-build
+          context: frontend-deploy-library
           requires:
             - build
           filters:
