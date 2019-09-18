@@ -8,6 +8,10 @@
     "type": "git",
     "url": "git+https://github.com/transferwise/neptune-css.git"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "test": "echo 'No tests defined'",
     "build": "npm-run-all build:*",
