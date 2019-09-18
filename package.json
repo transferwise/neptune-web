@@ -27,7 +27,7 @@
     "lerna": "^3.16.1"
   },
   "scripts": {
-    "start": "yarn build && yarn dev",
+    "start": "yarn install && yarn build && yarn dev",
     "build": "lerna run build --stream",
     "dev": "lerna run dev --parallel --stream",
     "build-docs": "lerna run build-docs",

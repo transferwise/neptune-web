@@ -1,0 +1,154 @@
+# Confirm that the config file si valid:
+# https://circleci.com/docs/2.0/local-cli/
+
+version: 2
+
+aliases:
+  - &workspace-root
+      ~/neptune
+
+  - &container
+      working_directory: *workspace-root
+      docker:
+        - image: circleci/node:lts
+
+  - &attach-workspace
+      attach-workspace:
+        at: *workspace-root
+
+  - &persist-workspace
+      persist_to_workspace:
+        root: .
+        paths:
+          - '*'
+
+  - &save-yarn-cache
+      key: yarn-cache-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
+      paths:
+        - ~/.cache/yarn
+
+  - &restore-yarn-cache
+      keys:
+        - yarn-cache-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
+        - yarn-cache-
+
+  - &install
+      name: Install dependencies
+      command: yarn install --frozen-lockfile
+
+  - &build
+      name: Build packages
+      command: yarn build
+
+  - &build-docs
+      name: Build packages
+      command: yarn build-docs
+
+  - &deploy-docs
+      name: Deploy docs
+      command: yarn deploy-docs
+
+  - &deploy-docs-for-branch
+      name: Deploy docs
+      command: yarn deploy-docs-for-branch
+
+  - &lerna-publish
+      name: Publish packages
+      command: npx lerna publish -m "[skip ci] Release" --yes
+
+  - &lint
+      name: Lint packages
+      command: yarn lint
+
+  - &test
+      name: Test packages
+      command: yarn test
+
+  - &add-npm-token
+      name: Set NPM token for private repos
+      command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_READ" > ~/.npmrc
+
+  - &add-npm-release-token
+      name: Set NPM publish token
+      command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_PUBLISH" >> ~/.npmrc
+
+  - &set-github-credentials
+    name: Set github credentials
+    command: |
+      mkdir -p ~/.ssh
+      ssh-keyscan github.com >> ~/.ssh/known_hosts
+      git config --global user.email "circleci@transferwise.com"
+      git config --global user.name "CircleCI"
+
+jobs:
+  build:
+    <<: *container
+    steps:
+      - checkout
+      - run: *install
+      - run: *build
+      - *persist-workspace
+
+  deploy-docs-to-root:
+    <<: *container
+    steps:
+      - *attach-workspace
+      - run: *build-docs
+      - run: *set-github-credentials
+      - run: *deploy-docs
+      - *persist-workspace
+
+  deploy-docs-for-branch:
+    <<: *container
+    steps:
+      - *attach-workspace
+      - run: *build-docs
+      - run: *deploy-docs-for-branch
+      - *persist-workspace
+
+  publish:
+    <<: *container
+    steps:
+      - *attach-workspace
+      - run: *set-github-credentials
+      - run: *add-npm-release-token
+      - run: *lerna-publish
+      - *persist-workspace
+
+
+workflows:
+  version: 2
+  build-deploy-release:
+    jobs:
+      - build:
+          context: frontend-build
+          filters:
+            branches:
+              ignore: gh-pages
+
+      - deploy-docs-to-root:
+          context: frontend-build
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+
+#      - deploy-docs-for-branch:
+#          context: frontend-build
+#          requires:
+#            - build
+#            - deploy-docs-to-root
+#          filters:
+#            branches:
+#              ignore:
+#                - gh-pages
+#                - master
+
+      - publish:
+          context: frontend-build
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
