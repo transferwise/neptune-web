@@ -29,3 +29,8 @@ yarn-error.log*
 .next
 .vscode
 docs-build
+
+# CSS
+/dist
+yarn.lock
+yarn-error.log
