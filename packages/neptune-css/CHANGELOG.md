@@ -1,19 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 0.8.5 (2019-09-18)
-
-
-### Bug Fixes
-
-* move dependencies to devDependencies ([#51](https://github.com/transferwise/neptune-css/issues/51)) ([09496f2](https://github.com/transferwise/neptune-css/commit/09496f2))
-
-
-
-
-
 # v0.8.4
 ## Change navs component ordering in the output to avoid cascade issues in navigation links padding in mobile
 
@@ -92,4 +76,4 @@ Add chevron componentn styles
 
 # v0.1.0
 ## Hello Neptune CSS
-First release of Neptune CSS (CSS library for the Design System of Transferwise)
+First release of Neptune CSS (CSS library for the Design System of Transferwise) 

@@ -64,10 +64,6 @@ aliases:
       name: Test packages
       command: yarn test
 
-  - &add-npm-token
-      name: Set NPM token for private repos
-      command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_READ" > ~/.npmrc
-
   - &add-npm-release-token
       name: Set NPM publish token
       command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_PUBLISH" >> ~/.npmrc
