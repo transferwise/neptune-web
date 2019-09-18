@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-docs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "TransferWise Design System",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "@next/mdx": "^9.0.5",
     "@transferwise/components": "^12.4.1",
     "@transferwise/eslint-config": "^2.1.0",
-    "@transferwise/neptune-css": "^0.8.5",
+    "@transferwise/neptune-css": "^0.8.6",
     "@zeit/next-css": "^1.0.1",
     "babel-eslint": "^10.0.3",
     "babel-plugin-inline-react-svg": "^1.1.0",

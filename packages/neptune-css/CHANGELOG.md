@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.6 (2019-09-18)
+
+
+### Bug Fixes
+
+* move dependencies to devDependencies ([#51](https://github.com/transferwise/neptune-css/issues/51)) ([09496f2](https://github.com/transferwise/neptune-css/commit/09496f2))
+
+
+
+
+
 ## 0.8.5 (2019-09-18)
 
 
