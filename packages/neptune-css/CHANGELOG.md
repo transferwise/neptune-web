@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.9](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.8...@transferwise/neptune-css@0.8.9) (2019-09-19)
+
+**Note:** Version bump only for package @transferwise/neptune-css
+
+
+
+
+
 ## [0.8.8](https://github.com/transferwise/neptune-css/compare/@transferwise/neptune-css@0.8.7...@transferwise/neptune-css@0.8.8) (2019-09-18)
 
 **Note:** Version bump only for package @transferwise/neptune-css

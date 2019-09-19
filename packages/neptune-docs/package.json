@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-docs",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "TransferWise Design System",
   "main": "index.js",
   "scripts": {
@@ -32,7 +32,7 @@
     "@mdx-js/loader": "^1.4.4",
     "@next/mdx": "^9.0.5",
     "@transferwise/components": "^12.4.1",
-    "@transferwise/neptune-css": "^0.8.8",
+    "@transferwise/neptune-css": "^0.8.9",
     "@zeit/next-css": "^1.0.1",
     "bootstrap": "transferwise/bootstrap",
     "next": "^9.0.5",
