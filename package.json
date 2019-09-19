@@ -60,7 +60,8 @@
     "clean": " npm-run-all clean:*",
     "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules",
     "clean:lock": "find . -name '*.lock' -type f -delete",
-    "pre-commit": "lerna run prettier-format && lerna run lint"
+    "pre-commit": "lerna run prettier-format && yarn lint",
+    "lint": "lerna run lint"
   },
   "husky": {
     "hooks": {

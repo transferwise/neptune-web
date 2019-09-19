@@ -46,9 +46,9 @@ aliases:
       name: Publish packages
       command: npx lerna publish -m "[skip ci] Release" --yes
 
-#  - &lint
-#      name: Lint packages
-#      command: yarn lint
+  - &lint
+      name: Lint packages
+      command: yarn lint
 #
 #  - &test
 #      name: Test packages
@@ -73,6 +73,13 @@ jobs:
       - checkout
       - run: *install
       - run: *build
+      - *persist-workspace
+
+  test:
+    <<: *container
+    steps:
+      - *attach-workspace
+      - run: *lint
       - *persist-workspace
 
   deploy-docs-to-root:
@@ -113,10 +120,14 @@ workflows:
             branches:
               ignore: gh-pages
 
+      - test:
+          requires:
+            - build
+
       - deploy-docs-to-root:
           context: frontend-build
           requires:
-            - build
+            - test
           filters:
             branches:
               only: master
@@ -124,7 +135,7 @@ workflows:
       - deploy-docs-for-branch:
           context: frontend-build
           requires:
-            - build
+            - test
           filters:
             branches:
               ignore:

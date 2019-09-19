@@ -88,7 +88,7 @@ pre {
   padding: 20px 24px;
 }
 .Sidebar__Inner {
-  overflow-y: scroll;
+  overflow-y: auto;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -98,7 +98,7 @@ pre {
 }
 .Nav {
   font-size: 14px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 0px;
   list-style: none;
   border-top: 1px solid #e2e6e8;

@@ -83,10 +83,7 @@ const Layout = ({ children, router: { pathname } }) => {
       {page && (
         <div className="PageLayout__Inner">
           <div className="Sidebar">
-            <Sidebar
-              title={sections.find(section => section.dir === dir).title}
-              slug="components"
-            />
+            <Sidebar title={sections.find(section => section.dir === dir).title} slug={dir} />
           </div>
 
           <div className="Content">

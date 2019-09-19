@@ -1,0 +1,20 @@
+/* Level 4 */
+
+@import './variables/_colors.less';
+
+.bg {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+  background-position: bottom;
+
+  &--dark {
+    background-color: var(--brand-primary);
+    background-image: url(../img/bg-dark.svg);
+  }
+
+  &--light {
+    background-color: var(--gray-base);
+    background-image: url(../img/bg-light.svg);
+  }
+}

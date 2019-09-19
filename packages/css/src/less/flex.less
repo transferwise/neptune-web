@@ -1,0 +1,93 @@
+// TODO: remove bootstrap dependencies
+
+// variables
+@import (reference) 'bootstrap/less/variables.less';
+
+// mixins
+@import (reference) './mixins/_flex.less';
+
+.flex-properties(~'');
+
+@media (min-width: @screen-sm-min) {
+  .flex-properties(--sm);
+}
+
+@media (min-width: @screen-md-min) {
+  .flex-properties(--md);
+}
+
+@media (min-width: @screen-lg-min) {
+  .flex-properties(--lg);
+}
+
+@media (min-width: @screen-xl-min) {
+  .flex-properties(--xl);
+}
+
+/* Items */
+.flex__inner {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  margin-right: calc(-1 * calc(var(--spacer) * 2));
+  margin-left: calc(-1 * calc(var(--spacer) * 2));
+
+  @media all and (min-width: @screen-sm) {
+    margin-right: calc(-1 * calc(var(--spacer) * 3));
+    margin-left: calc(-1 * calc(var(--spacer) * 3));
+  }
+
+  @media all and (min-width: @screen-md) {
+    margin-right: calc(-1 * calc(var(--spacer) * 4));
+    margin-left: calc(-1 * calc(var(--spacer) * 4));
+  }
+
+  @media all and (min-width: @screen-lg) {
+    margin-right: calc(-1 * calc(var(--spacer) * 6));
+    margin-left: calc(-1 * calc(var(--spacer) * 6));
+  }
+}
+
+.flex__item {
+  padding-right: calc(var(--spacer) * 2);
+  padding-left: calc(var(--spacer) * 2);
+
+  @media all and (min-width: @screen-sm) {
+    padding-right: calc(var(--spacer) * 3);
+    padding-left: calc(var(--spacer) * 3);
+  }
+
+  @media all and (min-width: @screen-md) {
+    padding-right: calc(var(--spacer) * 4);
+    padding-left: calc(var(--spacer) * 4);
+  }
+
+  @media all and (min-width: @screen-lg) {
+    padding-right: calc(var(--spacer) * 6);
+    padding-left: calc(var(--spacer) * 6);
+  }
+}
+
+.flex__item--6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+
+  &--md {
+    @media all and (max-width: @screen-md) {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+}
+
+.flex__item--12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+
+  &--md {
+    @media all and (max-width: @screen-md) {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+}
