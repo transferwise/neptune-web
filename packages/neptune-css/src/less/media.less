@@ -1,21 +1,20 @@
 /* Level 3 */
 
-@import "./variables/_colors.less";
-@import "./variables/_custom-media.less";
-@import "./variables/_spacing.less";
-
+@import './variables/_colors.less';
+@import './variables/_custom-media.less';
+@import './variables/_spacing.less';
 
 .media {
   display: flex;
 }
 .media + .media {
-    margin-top: calc(var(--spacer) * 3);
+  margin-top: calc(var(--spacer) * 3);
 }
 .media-body {
   flex: 1;
 
   > *:last-child {
-      margin-bottom: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -67,6 +66,6 @@
 
 .dropdown-menu {
   .media-body {
-    overflow: hidden
+    overflow: hidden;
   }
 }

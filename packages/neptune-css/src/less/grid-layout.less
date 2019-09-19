@@ -6,7 +6,8 @@
 @import './grid-layout/_grid-layout-ie11.less';
 @import './grid-layout/_grid-layout-no-support.less';
 
-@supports (display: grid) and (grid-template-columns:repeat(3,1fr)) and (grid-row-gap:1%) and (grid-gap:1%) and (grid-column-gap:1%) {
+@supports (display: grid) and (grid-template-columns: repeat(3, 1fr)) and (grid-row-gap: 1%) and
+  (grid-gap: 1%) and (grid-column-gap: 1%) {
   .d-grid {
     display: grid;
 
@@ -196,10 +197,12 @@
 
 /* Gaps */
 
-[class^="grid--"], [class*=" grid--"] {
+[class^='grid--'],
+[class*=' grid--'] {
   grid-gap: calc(var(--spacer) * 4);
 
-  [class^="grid--"], [class*=" grid--"]  {
+  [class^='grid--'],
+  [class*=' grid--'] {
     grid-gap: calc(var(--spacer) * 2);
   }
 }
@@ -243,5 +246,5 @@
 }
 
 .grid__item--full {
-  grid-column: 1/ span 3;
+  grid-column: 1 / span 3;
 }

@@ -1,15 +1,14 @@
 // TODO: remove bootstrap dependencies
 
 // variables
-@import (reference) "bootstrap/less/variables.less";
+@import (reference) 'bootstrap/less/variables.less';
 
 // mixins
-@import "./mixins/_table-row.less";
+@import './mixins/_table-row.less';
 
 //
 // Tables
 // --------------------------------------------------
-
 
 table {
   background-color: @table-bg;
@@ -24,7 +23,6 @@ caption {
 th {
   text-align: left;
 }
-
 
 // Baseline styles
 
@@ -66,7 +64,7 @@ th {
       text-decoration: none;
     }
     .caret {
-        margin-top: -3px;
+      margin-top: -3px;
     }
   }
   // Remove top border from thead by default
@@ -75,7 +73,7 @@ th {
   > thead:first-child {
     > tr:first-child {
       > th,
-      > td{
+      > td {
         border-top: 0;
       }
     }
@@ -114,7 +112,6 @@ th {
   }
 }
 
-
 // Condensed table w/ half padding
 
 .table-condensed {
@@ -133,7 +130,6 @@ th {
     padding: @table-condensed-cell-padding;
   }
 }
-
 
 // Bordered version
 //
@@ -154,8 +150,6 @@ th {
   }
 }
 
-
-
 // Zebra-striping
 //
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
@@ -172,7 +166,6 @@ th {
   }
 }
 
-
 // Hover effect
 //
 // Placed here since it has to come after the potential zebra striping
@@ -188,12 +181,11 @@ th {
   }
 }
 
-
 // Table cell sizing
 //
 // Reset default table behavior
 
-table col[class*="col-"] {
+table col[class*='col-'] {
   position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
   float: none;
   display: table-column;
@@ -201,14 +193,13 @@ table col[class*="col-"] {
 table {
   td,
   th {
-    &[class*="col-"] {
+    &[class*='col-'] {
       position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
       float: none;
       display: table-cell;
     }
   }
 }
-
 
 // Table backgrounds
 //
@@ -223,7 +214,6 @@ table {
 .table-row-variant(warning; @state-warning-bg; @state-warning-text);
 .table-row-variant(danger; @state-danger-bg; @state-danger-text);
 .table-row-variant(default; @brand-smoke-plus-20; @table-border-color);
-
 
 // Responsive tables
 //
@@ -369,11 +359,11 @@ table {
 
       &.active {
         background-color: @brand-navy;
-        color: #FFF;
+        color: #fff;
       }
       &:not([disabled]):hover {
         background-color: @brand-light-blue;
-        color: #FFF;
+        color: #fff;
       }
     }
   }

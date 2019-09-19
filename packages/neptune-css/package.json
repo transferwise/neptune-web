@@ -1,13 +1,22 @@
 {
   "name": "@transferwise/neptune-css",
   "description": "Neptune CSS is TransferWise's Design System CSS library",
-  "version": "0.8.8",
+  "version": "0.8.7",
   "license": "MIT",
   "repository": {
-    "fullname": "transferwise/neptune-css",
     "type": "git",
-    "url": "git+https://github.com/transferwise/neptune-css.git"
+    "fullname": "transferwise/neptune",
+    "url": "git+https://github.com/transferwise/neptune.git"
   },
+  "keywords": [],
+  "author": {
+    "name": "TransferWise",
+    "url": "https://transferwise.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/transferwise/neptune/issues"
+  },
+  "homepage": "https://transferwise.github.io/neptune",
   "files": [
     "dist",
     "src"
@@ -22,6 +31,7 @@
     "dev:less-watcher": "gulp lessWatcher",
     "copy:images": "cpx 'src/img/**' dist/img",
     "copy:fonts": "cpx 'src/fonts/*' dist/fonts",
+    "prettier-format": "prettier --find-config-path --write src/less/*.less",
     "pre-release-check": "release-to-github-with-changelog-pre-release-checks",
     "release-to-github": "release-to-github-with-changelog"
   },
@@ -48,6 +58,7 @@
     "gulp-postcss": "^8.0.0",
     "gulp-print": "^5.0.2",
     "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
     "postcss-custom-media": "^7.0.8",
     "postcss-custom-properties": "^9.0.2",
     "postcss-import": "^12.0.1",

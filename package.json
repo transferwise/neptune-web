@@ -2,11 +2,16 @@
   "name": "neptune",
   "repository": {
     "type": "git",
+    "fullname": "transferwise/neptune",
     "url": "git+https://github.com/transferwise/neptune.git"
   },
+  "keywords": [],
   "author": {
     "name": "TransferWise",
     "url": "https://transferwise.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/transferwise/neptune/issues"
   },
   "homepage": "https://transferwise.github.io/neptune",
   "license": "MIT",
@@ -24,6 +29,18 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@transferwise/eslint-config": "^2.1.0",
+    "babel-eslint": "^10.0.3",
+    "deploy-directory-on-branch-to-gh-pages": "^0.2.5",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.14.3",
+    "gh-pages": "^2.1.1",
+    "husky": "^2.7.0",
     "lerna": "^3.16.1"
   },
   "scripts": {
@@ -42,7 +59,13 @@
     "release-to-github": "lerna run release-to-github",
     "clean": " npm-run-all clean:*",
     "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules",
-    "clean:lock": "find . -name '*.lock' -type f -delete"
+    "clean:lock": "find . -name '*.lock' -type f -delete",
+    "pre-commit": "lerna run prettier-format && lerna run lint"
   },
-  "dependencies": {}
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn pre-commit"
+    }
+  },
+  "prettier": "@transferwise/eslint-config/.prettierrc.js"
 }

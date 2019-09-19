@@ -1,8 +1,8 @@
 /* Level 4 */
 
-@import "./variables/_colors.less";
-@import "./variables/_transitions.less";
-@import "./variables/_zindex.less";
+@import './variables/_colors.less';
+@import './variables/_transitions.less';
+@import './variables/_zindex.less';
 
 .sliding-panel {
   transform: translateX(-100%);
@@ -10,19 +10,19 @@
   background: var(--brand-white);
   overflow-y: scroll;
   z-index: var(--zindex-navbar-fixed);
-  position:absolute;
+  position: absolute;
 
   &.sliding-panel--fixed {
-    position:fixed
+    position: fixed;
   }
 
   &.sliding-panel--open-right,
   &.sliding-panel--open-left {
-    top:0;
-    bottom:0;
+    top: 0;
+    bottom: 0;
   }
 
-  &.sliding-panel--open-right{
+  &.sliding-panel--open-right {
     transform: translateX(100%);
     right: 0;
   }
@@ -41,17 +41,17 @@
 
   &.sliding-panel--open-top,
   &.sliding-panel--open-bottom {
-    right:0;
-    left:0;
-    width:100%;
+    right: 0;
+    left: 0;
+    width: 100%;
   }
 
-  &.sliding-panel--open-top{
+  &.sliding-panel--open-top {
     transform: translateY(-100%);
     top: 0;
   }
 
-  &.sliding-panel--open-bottom{
+  &.sliding-panel--open-bottom {
     transform: translateY(100%);
     bottom: 0;
   }
@@ -76,6 +76,6 @@
   }
 
   &.sliding-panel--border-left {
-    box-shadow: inset  -1px 0 0 0 rgb(226, 230, 232);
+    box-shadow: inset -1px 0 0 0 rgb(226, 230, 232);
   }
 }

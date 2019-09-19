@@ -1,13 +1,13 @@
 /* Level 4 */
 
-@import "./variables/_colors.less";
-@import "./variables/_sizes.less";
-@import "./variables/_custom-media.less";
+@import './variables/_colors.less';
+@import './variables/_sizes.less';
+@import './variables/_custom-media.less';
 
 .block {
   display: block;
   background: var(--brand-white);
-  box-shadow: 0 20px 66px 0 rgba(var(--brand-blue--rbg), .2);
+  box-shadow: 0 20px 66px 0 rgba(var(--brand-blue--rbg), 0.2);
   padding: calc(var(--spacer) * 2);
   border-radius: 3px;
 
@@ -26,11 +26,11 @@
 
 .block--withLink {
   text-decoration: none;
-  transition: all .15s;
+  transition: all 0.15s;
 
   &:hover {
     text-decoration: none;
-    box-shadow: 0 20px 66px 0 rgba(var(--brand-blue--rbg), .3);
+    box-shadow: 0 20px 66px 0 rgba(var(--brand-blue--rbg), 0.3);
 
     .block-caretLink .glyphicon {
       transform: translateX(2px);
@@ -42,5 +42,5 @@
   position: relative;
   top: -1px;
   font-size: 8px;
-  transition: all .15s;
+  transition: all 0.15s;
 }
