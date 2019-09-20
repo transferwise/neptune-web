@@ -31,7 +31,7 @@
     "dev:less-watcher": "gulp lessWatcher",
     "copy:images": "cpx 'src/img/**' dist/img",
     "copy:fonts": "cpx 'src/fonts/*' dist/fonts",
-    "prettier-format": "prettier --find-config-path --write src/less/*.less",
+    "lint:prettier": "prettier --find-config-path --write src/less/*.less",
     "pre-release-check": "release-to-github-with-changelog-pre-release-checks",
     "release-to-github": "release-to-github-with-changelog"
   },

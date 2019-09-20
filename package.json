@@ -41,15 +41,20 @@
     "eslint-plugin-react": "^7.14.3",
     "gh-pages": "^2.1.1",
     "husky": "^2.7.0",
-    "lerna": "^3.16.1"
+    "lerna": "^3.16.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "prop-types": "^15.6.1",
+    "lint-staged": "^9.0.2"
   },
   "scripts": {
     "start": "yarn install && yarn build && yarn dev",
     "build": "lerna run build --stream",
     "dev": "lerna run dev --parallel --stream",
-    "build-docs": "lerna run build-docs",
-    "deploy-docs": "lerna run deploy-docs",
-    "deploy-docs-for-branch": "lerna run deploy-docs-for-branch",
+    "dev-new": "lerna run dev-new --parallel --stream",
+    "docs:build": "lerna run docs:build",
+    "docs:deploy": "lerna run docs:deploy",
+    "docs:deploy-for-branch": "lerna run docs:deploy-for-branch",
     "test": "lerna run test --stream",
     "test:watch": "lerna run test:watch --stream",
     "pretest": "lerna run pretest --stream",
@@ -59,14 +64,23 @@
     "release-to-github": "lerna run release-to-github",
     "clean": " npm-run-all clean:*",
     "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules",
-    "clean:lock": "find . -name '*.lock' -type f -delete",
-    "pre-commit": "lerna run prettier-format && yarn lint",
+    "clean:lock": "find . -name '*.lock' -or -name '*-lock.json' -type f -delete",
     "lint": "lerna run lint"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn pre-commit"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{less,yaml,yml,json}": [
+      "prettier --find-config-path --write",
+      "git add"
+    ]
   },
   "prettier": "@transferwise/eslint-config/.prettierrc.js"
 }

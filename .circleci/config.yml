@@ -4,59 +4,58 @@
 version: 2
 
 aliases:
-  - &workspace-root
-      ~/neptune
+  - &workspace-root ~/neptune
 
   - &container
-      working_directory: *workspace-root
-      docker:
-        - image: circleci/node:lts
+    working_directory: *workspace-root
+    docker:
+      - image: circleci/node:lts
 
   - &attach-workspace
-      attach-workspace:
-        at: *workspace-root
+    attach-workspace:
+      at: *workspace-root
 
   - &persist-workspace
-      persist_to_workspace:
-        root: .
-        paths:
-          - '*'
+    persist_to_workspace:
+      root: .
+      paths:
+        - '*'
 
   - &install
-      name: Install dependencies
-      command: yarn install --frozen-lockfile
+    name: Install dependencies
+    command: yarn install --frozen-lockfile
 
   - &build
-      name: Build packages
-      command: yarn build
+    name: Build packages
+    command: yarn build
 
   - &build-docs
-      name: Build packages
-      command: yarn build-docs
+    name: Build packages
+    command: yarn docs:build
 
   - &deploy-docs
-      name: Deploy docs
-      command: yarn deploy-docs
+    name: Deploy docs
+    command: yarn docs:deploy
 
   - &deploy-docs-for-branch
-      name: Deploy docs
-      command: yarn deploy-docs-for-branch
+    name: Deploy docs
+    command: yarn docs:deploy-for-branch
 
   - &lerna-publish
-      name: Publish packages
-      command: npx lerna publish -m "[skip ci] Release" --yes
+    name: Publish packages
+    command: npx lerna publish -m "[skip ci] Release" --yes
 
   - &lint
-      name: Lint packages
-      command: yarn lint
-#
-#  - &test
-#      name: Test packages
-#      command: yarn test
+    name: Lint packages
+    command: yarn lint
+  #
+  #  - &test
+  #      name: Test packages
+  #      command: yarn test
 
   - &add-npm-release-token
-      name: Set NPM publish token
-      command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_PUBLISH" >> ~/.npmrc
+    name: Set NPM publish token
+    command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_PUBLISH" >> ~/.npmrc
 
   - &set-github-credentials
     name: Set github credentials
@@ -109,7 +108,6 @@ jobs:
       - run: *lerna-publish
       - *persist-workspace
 
-
 workflows:
   version: 2
   build-deploy-release:
@@ -141,7 +139,6 @@ workflows:
               ignore:
                 - gh-pages
                 - master
-
 #      - publish:
 #          context: frontend-deploy-library
 #          requires:
