@@ -30,7 +30,7 @@ aliases:
     command: yarn build
 
   - &build-docs
-    name: Build packages
+    name: Build docs
     command: yarn docs:build
 
   - &deploy-docs
@@ -38,7 +38,7 @@ aliases:
     command: yarn docs:deploy
 
   - &deploy-docs-for-branch
-    name: Deploy docs
+    name: Deploy docs for branch
     command: yarn docs:deploy-for-branch
 
   - &lerna-publish
@@ -48,10 +48,10 @@ aliases:
   - &lint
     name: Lint packages
     command: yarn lint
-  #
-  #  - &test
-  #      name: Test packages
-  #      command: yarn test
+
+  - &test
+      name: Test packages
+      command: yarn test
 
   - &add-npm-release-token
     name: Set NPM publish token
