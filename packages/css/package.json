@@ -27,10 +27,11 @@
     "build:clean": "rm -rf dist",
     "build:copy-assets": "npm-run-all --parallel copy:*",
     "build:less-compiler": "gulp lessCompiler",
-    "dev": "yarn build && npm-run-all dev:*",
+    "dev": "npm-run-all dev:*",
     "dev:less-watcher": "gulp lessWatcher",
     "copy:images": "cpx 'src/img/**' dist/img",
     "copy:fonts": "cpx 'src/fonts/*' dist/fonts",
+    "lint": "npm-run-all lint:*",
     "lint:prettier": "prettier --find-config-path --write src/less/*.less",
     "pre-release-check": "release-to-github-with-changelog-pre-release-checks",
     "release-to-github": "release-to-github-with-changelog"
@@ -61,7 +62,6 @@
     "postcss-custom-media": "^7.0.8",
     "postcss-custom-properties": "^9.0.2",
     "postcss-import": "^12.0.1",
-    "prettier": "^1.18.2",
     "release-to-github-with-changelog": "^1.2.2"
   }
 }
