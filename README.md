@@ -12,11 +12,11 @@ To clone the repo please run
 
 In order to run the dev environment
 
-1) ####First time:
+1) #### First time:
     1) yarn start
 
    
-2) ####If packages have been built already:
+2) #### If packages have been built already:
     1) yarn dev
     
  

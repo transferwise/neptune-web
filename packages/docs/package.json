@@ -3,6 +3,7 @@
   "version": "0.1.6",
   "description": "TransferWise Design System",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
