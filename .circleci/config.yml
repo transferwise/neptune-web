@@ -47,11 +47,11 @@ aliases:
 
   - &lint
     name: Lint packages
-    command: yarn lint
+    command: yarn lint:check
 
   - &test
-      name: Test packages
-      command: yarn test
+    name: Test packages
+    command: yarn test
 
   - &add-npm-release-token
     name: Set NPM publish token

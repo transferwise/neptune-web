@@ -11,7 +11,8 @@
     "docs:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
     "docs-new:build": "//gh-pages --dotfiles -a -d docs-build",
     "docs-new:deploy": "//deploy-directory-on-branch-to-gh-pages -d docs-build",
-    "lint": "npm-run-all lint:*",
+    "lint": "yarn lint:eslint && lint:prettier",
+    "lint:check": "eslint doc-components/ pages/",
     "lint:eslint": "eslint --fix doc-components/ pages/",
     "lint:prettier": "prettier --find-config-path --write {doc-components,pages}/**/*.{js,css,less,json}",
     "test": "echo \"Error: no test specified\" && exit 0"
@@ -55,6 +56,8 @@
   },
   "peerDependencies": {
     "react": "16.8.6",
-    "react-dom": "16.8.6"
-  }
+    "react-dom": "16.8.6",
+    "@transferwise/eslint-config": "^2.1.0"
+  },
+  "prettier": "@transferwise/eslint-config/.prettierrc.js"
 }
