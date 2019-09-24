@@ -1,27 +1,38 @@
-var gulp = require("gulp");
-var less = require("gulp-less");
-var postcss = require("gulp-postcss");
-var plumber = require("gulp-plumber");
-var cached = require("gulp-cached");
-var dependents = require("gulp-dependents");
-var print = require('gulp-print').default;
+const gulp = require('gulp');
+const less = require('gulp-less');
+const postcss = require('gulp-postcss');
+const plumber = require('gulp-plumber');
+const cached = require('gulp-cached');
+const dependents = require('gulp-dependents');
+const print = require('gulp-print').default;
+const filter = require('gulp-filter');
+const { argv } = require('yargs');
+const rename = require('gulp-rename');
 
 // Less Compiler
 const lessCompiler = () => {
+  const excludeBundles = argv.dev ? ['**', '!src/less/*.bundle.less'] : ['**'];
   return gulp
-    .src(["src/less/*.less", "src/less/bundles/*.less"])
-    .pipe(cached("less"))
+    .src(['src/less/*.less'])
+    .pipe(cached('less'))
     .pipe(dependents())
-      .pipe(print(filepath => `compiled: ${filepath}`))
+    .pipe(filter(excludeBundles))
+    .pipe(print(filepath => `compiled: ${filepath}`))
     .pipe(plumber())
     .pipe(less())
     .pipe(postcss())
-    .pipe(gulp.dest("dist/css"));
+    .pipe(
+      rename(path => {
+        /* eslint-disable no-param-reassign */
+        path.basename = path.basename.replace('.bundle', '');
+      }),
+    )
+    .pipe(gulp.dest('dist/css'));
 };
 
 // Watch files
 const lessWatcher = () => {
-  gulp.watch(["src/**/*.less"], gulp.series(lessCompiler));
+  gulp.watch(['src/**/*.less'], gulp.series(lessCompiler));
 };
 
 exports.lessWatcher = lessWatcher;
