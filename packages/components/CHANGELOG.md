@@ -1,3 +1,6 @@
+# v13.0.5
+## Add searchValue prop to formControl
+
 # v13.0.4
 ## Set modal content width to 100%
 
