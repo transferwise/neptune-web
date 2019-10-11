@@ -136,7 +136,19 @@ export default class Select extends Component {
 
   handleOnFocus = event => this.props.onFocus && this.props.onFocus(event);
 
-  handleOnBlur = event => this.props.onBlur && this.props.onBlur(event);
+  handleOnBlur = event => {
+    const { onBlur } = this.props;
+    const { nativeEvent } = event;
+    if (nativeEvent) {
+      const elementReceivingFocus = nativeEvent.relatedTarget;
+      const select = event.currentTarget;
+      if (select && elementReceivingFocus && select.contains(elementReceivingFocus)) {
+        return;
+      }
+    }
+
+    if (onBlur) onBlur(event);
+  };
 
   handleSearchChange = event => {
     this.props.onSearchChange(event.target.value);

@@ -1,3 +1,6 @@
+# v13.0.6
+## Prevent onBlur triggering when openning searchable select
+
 # v13.0.5
 ## Add searchValue prop to formControl
 
