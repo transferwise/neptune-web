@@ -1,45 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
-import getConfig from 'next/config';
+
+import getBasePath from '../utils/getBasePath';
+import getPages from '../utils/getPages';
+import sections from '../utils/sections';
 
 import Sidebar from './Sidebar';
-import getBasePath from './getBasePath';
-import GitHubLink from './GitHubLink';
 import Logo from '../static/assets/img/logo_full_inverse.svg';
-import getPages from './getPages';
 
-const { pageMap } = getConfig().publicRuntimeConfig;
-
-const editBaseURL = `https://github.com/transferwise/neptune-docs/edit/master/pages`;
+const githubURL = `https://github.com/transferwise/neptune/edit/master/packages/docs/pages`;
 const pages = getPages();
 
 const Layout = ({ children, router: { pathname } }) => {
-  const filename = pageMap[pathname];
-
-  if (!filename) {
-    // eslint-disable-next-line no-console
-    console.warn(`pathname "${pathname}" doesn't exist in pageMap`);
-  }
-
   const isIndex = pathname === '/';
   const dir = pathname.split('/')[1];
   const slug = isIndex ? 'index' : pathname.split('/').pop();
-
-  const sections = [
-    { title: 'Getting started', dir: '' },
-    { title: 'Foundations', dir: 'foundations' },
-    { title: 'Components', dir: 'components' },
-    { title: 'Assets', dir: 'assets' },
-    { title: 'Brand', dir: 'brand' },
-    { title: 'Copy', dir: 'copy' },
-    { title: 'Layout', dir: 'layout' },
-    { title: 'Utilities', dir: 'utilities' },
-  ];
-
-  const page = pages.find(p => {
-    return p.dir === dir && p.slug === slug;
-  });
+  const page = pages.find(p => p.dir === dir && p.slug === slug);
+  const editPath = `${githubURL}${isIndex ? '' : `/${dir}`}/${slug}.mdx`;
 
   return (
     <div id="top" className="PageLayout">
@@ -70,34 +48,24 @@ const Layout = ({ children, router: { pathname } }) => {
         </div>
       </header>
 
-      {isIndex && (
-        <div className="PageLayout__Inner PageLayout__Inner--nosidebar">
-          <div className="Content">
-            <div className="Content__Inner">{children}</div>
-
-            {filename && <GitHubLink url={`${editBaseURL}${filename}`} />}
-          </div>
-        </div>
-      )}
-
-      {page && (
-        <div className="PageLayout__Inner">
+      <div className={`PageLayout__Inner ${isIndex && 'PageLayout__Inner--nosidebar'}`}>
+        {page && (
           <div className="Sidebar">
             <Sidebar title={sections.find(section => section.dir === dir).title} slug={dir} />
           </div>
+        )}
 
-          <div className="Content">
-            <h1 className="colored-dot">{page.component.meta.displayName}</h1>
+        <div className="Content">
+          {page && <h1 className="colored-dot">{page.component.meta.name}</h1>}
+          {page && page.component.meta.isBeta && <span className="badge">beta</span>}
 
-            {page.component.meta.isBeta && <span className="badge">beta</span>}
-            {page.component.meta.size && <p>{page.component.size} minified</p>}
+          {children}
 
-            {children}
-
-            {filename && <GitHubLink url={`${editBaseURL}${filename}`} />}
-          </div>
+          <a className="btn btn-default" href={editPath}>
+            Edit on GitHub
+          </a>
         </div>
-      )}
+      </div>
     </div>
   );
 };
@@ -106,4 +74,5 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
   router: PropTypes.shape({ pathname: PropTypes.string.isRequired }).isRequired,
 };
+
 export default withRouter(Layout);

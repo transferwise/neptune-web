@@ -1,20 +1,20 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import getBasePath from './getBasePath';
-import getPages from './getPages';
+import getBasePath from '../utils/getBasePath';
+import getPages from '../utils/getPages';
 
 const getLink = (pathname, sectionSlug) => {
   const pages = getPages().filter(page => page.dir === sectionSlug);
 
   return pages.map(({ component }, index) => {
-    const path = `/${sectionSlug}/${component.meta.slug}`;
+    const path = `/${sectionSlug}/${component.meta.name.replace(/[^A-Z0-9]+/gi, '')}`;
     const isSelected = pathname === path;
 
     return (
       <li key={index.toString()}>
         <a className={`Nav__Link ${isSelected ? 'active' : null}`} href={getBasePath(path)}>
-          {component.meta.displayName} {component.meta.isPlaceholder && '*'}
+          {component.meta.name} {component.meta.isPlaceholder && '*'}
           {component.meta.isBeta && <span className="badge badge-success">beta</span>}
         </a>
       </li>

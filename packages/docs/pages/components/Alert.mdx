@@ -1,17 +1,15 @@
-import { Alert } from "@transferwise/components";
+import { Alert } from '@transferwise/components';
 
 <p className="lead">
-  Use Alert for contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
+  Use Alert for contextual feedback messages for typical user actions with the handful of available
+  and flexible alert messages.
 </p>
 
 <div className="row">
   <div className="col-md-6">
-    <Alert
-      type={"warning"}
-      size={"sm"}
-      arrow={"up-left"}
-      dismissible={false}>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur aut facilis ipsam iusto nisi quae quis sunt voluptates. Cupiditate, veniam.
+    <Alert type={'warning'} size={'sm'} arrow={'up-left'} dismissible={false}>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur aut facilis ipsam iusto
+      nisi quae quis sunt voluptates. Cupiditate, veniam.
     </Alert>
   </div>
 </div>
@@ -38,7 +36,9 @@ import { Alert } from "@transferwise/components";
     <Alert type="warning">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
   </div>
   <div className="col-md-6">
-    <Alert size="sm" type="warning">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+    <Alert size="sm" type="warning">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    </Alert>
   </div>
 </div>
 
@@ -47,7 +47,9 @@ import { Alert } from "@transferwise/components";
     <Alert type="success">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
   </div>
   <div className="col-md-6">
-    <Alert size="sm" type="success">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+    <Alert size="sm" type="success">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    </Alert>
   </div>
 </div>
 
@@ -56,7 +58,9 @@ import { Alert } from "@transferwise/components";
     <Alert type="error">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
   </div>
   <div className="col-md-6">
-    <Alert size="sm" type="error">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+    <Alert size="sm" type="error">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    </Alert>
   </div>
 </div>
 
@@ -102,9 +106,7 @@ Up-Right and Down-Right
 
 <div className="row">
   <div className="col-md-8">
-    <Alert
-      dismissible={true}
-      type="success">
+    <Alert dismissible={true} type="success">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
     </Alert>
   </div>
@@ -112,7 +114,9 @@ Up-Right and Down-Right
 
 <div className="row">
   <div className="col-md-8">
-    <Alert size="sm" dismissible={true}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+    <Alert size="sm" dismissible={true}>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    </Alert>
   </div>
 </div>
 
@@ -125,7 +129,8 @@ Example of message with bold text and link:
 <div className="row">
   <div className="col-md-8">
     <Alert size="sm">
-      <b>Lorem</b> ipsum dolor sit amet, consectetur <a href="https://transferwise.com/help">adipisicing elit</a>.
+      <b>Lorem</b> ipsum dolor sit amet, consectetur{' '}
+      <a href="https://transferwise.com/help">adipisicing elit</a>.
     </Alert>
   </div>
 </div>
@@ -142,7 +147,6 @@ Example of message with list of items:
   </div>
 </div>
 
-
 ## <a id="Android"></a>Android
 
 Android specific stuff.
@@ -155,10 +159,8 @@ iOS specific stuff.
 
 Web specific stuff.
 
-
 export const meta = {
   abstractURL: 'https://share.goabstract.com/a371db59-a0d0-40d4-b233-5fae380f0071',
-  displayName: 'Alert',
+  name: 'Alert',
   size: '',
-  slug: 'Alert',
-}
+};
