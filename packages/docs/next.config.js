@@ -16,7 +16,7 @@ module.exports = withImages(
   withFonts(
     withCSS(
       withMDX({
-        assetPrefix: process.env.NODE_ENV === 'production' ? './' : '',
+        assetPrefix: process.env.NODE_ENV === 'production' ? '/neptune' : '',
         pageExtensions,
         publicRuntimeConfig: {
           pageExtensions,
