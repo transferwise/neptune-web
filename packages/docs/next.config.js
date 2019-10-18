@@ -1,6 +1,6 @@
+const getBranch = require('git-branch');
 const rehypePrism = require('@mapbox/rehype-prism');
 const rehypeSlug = require('rehype-slug');
-const getPageMap = require('next-page-map');
 const withCSS = require('@zeit/next-css');
 const withFonts = require('next-fonts');
 const withImages = require('next-images');
@@ -10,19 +10,25 @@ const withMDX = require('@next/mdx')({
   },
 });
 
-const pageExtensions = ['js', 'jsx', 'md', 'mdx'];
+const pageExtensions = ['js', 'mdx'];
 
-module.exports = withImages(
-  withFonts(
-    withCSS(
-      withMDX({
-        assetPrefix: process.env.NODE_ENV === 'production' ? '/neptune' : '',
-        pageExtensions,
-        publicRuntimeConfig: {
+const branch = getBranch.sync();
+const assetPrefix =
+  process.env.NODE_ENV === 'production'
+    ? `/neptune${branch !== 'master' ? `/branch/${branch}` : ''}`
+    : '';
+
+module.exports = () =>
+  withImages(
+    withFonts(
+      withCSS(
+        withMDX({
           pageExtensions,
-          pageMap: getPageMap({ pageExtensions }),
-        },
-      }),
+          assetPrefix,
+          env: {
+            ASSET_PREFIX: assetPrefix,
+          },
+        }),
+      ),
     ),
-  ),
-);
+  );

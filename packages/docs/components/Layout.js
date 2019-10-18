@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
+import Link from './Link';
 
-import getBasePath from '../utils/getBasePath';
 import getPages from '../utils/getPages';
 import sections from '../utils/sections';
 
@@ -23,24 +23,27 @@ const Layout = ({ children, router: { pathname } }) => {
     <div id="top" className="PageLayout">
       <header className="Header">
         <div className="Header__Fixed">
-          <a className="Logo" href={getBasePath('/')}>
-            <Logo />
-          </a>
+          <Link href="/">
+            <a className="Logo">
+              <Logo />
+            </a>
+          </Link>
 
           <div className="Header__Inner">
             <ul className="Nav Nav--dark">
               {sections.map(section => (
                 <li key={section.title}>
-                  <a
-                    className={`Nav__Link ${dir === section.dir ? 'active' : null}`}
-                    href={getBasePath(
+                  <Link
+                    href={
                       section.dir === ''
                         ? '/'
-                        : `/${section.dir}/${pages.find(p => p.dir === section.dir).slug}`,
-                    )}
+                        : `/${section.dir}/${pages.find(p => p.dir === section.dir).slug}`
+                    }
                   >
-                    {section.title}
-                  </a>
+                    <a className={`Nav__Link ${dir === section.dir ? 'active' : null}`}>
+                      {section.title}
+                    </a>
+                  </Link>
                 </li>
               ))}
             </ul>

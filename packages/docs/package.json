@@ -13,9 +13,9 @@
     "docs-new:build": "//gh-pages --dotfiles -a -d docs-build",
     "docs-new:deploy": "//deploy-directory-on-branch-to-gh-pages -d docs-build",
     "lint": "yarn lint:eslint && lint:prettier",
-    "lint:check": "eslint doc-components/ pages/",
-    "lint:eslint": "eslint --fix doc-components/ pages/",
-    "lint:prettier": "prettier --find-config-path --write {doc-components,pages}/**/*.{js,css,less,json}",
+    "lint:check": "eslint components/ pages/",
+    "lint:eslint": "eslint --fix components/ pages/",
+    "lint:prettier": "prettier --find-config-path --write {components,pages}/**/*.{js,css,less,json}",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
@@ -40,6 +40,7 @@
     "@transferwise/neptune-css": "^0.8.9",
     "@zeit/next-css": "^1.0.1",
     "bootstrap": "transferwise/bootstrap",
+    "git-branch": "^2.0.1",
     "next": "^9.0.5",
     "next-fonts": "^0.18.0",
     "next-images": "^1.1.2",
@@ -56,9 +57,9 @@
     "babel-plugin-inline-react-svg": "^1.1.0"
   },
   "peerDependencies": {
+    "@transferwise/eslint-config": "^2.1.0",
     "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "@transferwise/eslint-config": "^2.1.0"
+    "react-dom": "16.8.6"
   },
   "prettier": "@transferwise/eslint-config/.prettierrc.js"
 }

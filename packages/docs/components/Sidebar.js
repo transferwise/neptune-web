@@ -1,7 +1,8 @@
 import React from 'react';
-import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import getBasePath from '../utils/getBasePath';
+import { withRouter } from 'next/router';
+import Link from './Link';
+
 import getPages from '../utils/getPages';
 
 const getLink = (pathname, sectionSlug) => {
@@ -13,10 +14,12 @@ const getLink = (pathname, sectionSlug) => {
 
     return (
       <li key={index.toString()}>
-        <a className={`Nav__Link ${isSelected ? 'active' : null}`} href={getBasePath(path)}>
-          {component.meta.name} {component.meta.isPlaceholder && '*'}
-          {component.meta.isBeta && <span className="badge badge-success">beta</span>}
-        </a>
+        <Link href={path}>
+          <a className={`Nav__Link ${isSelected ? 'active' : null}`}>
+            {component.meta.name} {component.meta.isPlaceholder && '*'}
+            {component.meta.isBeta && <span className="badge badge-success">beta</span>}
+          </a>
+        </Link>
       </li>
     );
   });

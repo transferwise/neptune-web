@@ -1,7 +1,7 @@
 import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
-import Layout from '../doc-components/Layout';
+import Layout from '../components/Layout';
 
 import '@transferwise/neptune-css/dist/css/neptune.css';
 import '../static/assets/main.css';
