@@ -1,4 +1,4 @@
-import { getPlacement, getPopoverPosition } from './positioning';
+import { getPlacement, getPositionRelativeToParent } from './positioning';
 import Placement from './Placement';
 
 describe('Popover positioning', () => {
@@ -10,21 +10,30 @@ describe('Popover positioning', () => {
     describe('is corrected to bottom if overflows left and right', () => {
       it('corrects to bottom center if it doesnt overflow in this position', () => {
         documentWidth(360);
-        const popover = new Popover({ width: 360 }).trigger({ left: 130, width: 100 });
+        const popover = new Popover({ width: 360 }).triggerRelativeToDocument({
+          left: 130,
+          width: 100,
+        });
 
         expect(getPlacement(popover, Placement.LEFT)).toBe(Placement.BOTTOM);
       });
 
       it('corrects to bottom right if it overflows left when positioned bottom', () => {
         documentWidth(360);
-        const popover = new Popover({ width: 360 }).trigger({ left: 129, width: 100 });
+        const popover = new Popover({ width: 360 }).triggerRelativeToDocument({
+          left: 129,
+          width: 100,
+        });
 
         expect(getPlacement(popover, Placement.LEFT)).toBe(Placement.BOTTOM_RIGHT);
       });
 
       it('corrects to bottom left if it overflows right when positioned bottom', () => {
         documentWidth(360);
-        const popover = new Popover({ width: 360 }).trigger({ left: 131, width: 100 });
+        const popover = new Popover({ width: 360 }).triggerRelativeToDocument({
+          left: 131,
+          width: 100,
+        });
 
         expect(getPlacement(popover, Placement.LEFT)).toBe(Placement.BOTTOM_LEFT);
       });
@@ -32,7 +41,7 @@ describe('Popover positioning', () => {
 
     it('is corrected to left if right and overflows right', () => {
       documentWidth(320);
-      const popover = new Popover({ width: 50 }).trigger({
+      const popover = new Popover({ width: 50 }).triggerRelativeToDocument({
         left: 100,
         width: 200,
       });
@@ -42,7 +51,7 @@ describe('Popover positioning', () => {
 
     it('is corrected to top left if top right and overflows right', () => {
       documentWidth(320);
-      const popover = new Popover({ width: 50 }).trigger({
+      const popover = new Popover({ width: 50 }).triggerRelativeToDocument({
         left: 100,
         width: 200,
       });
@@ -52,7 +61,7 @@ describe('Popover positioning', () => {
 
     it('is corrected to right if left and overflows left', () => {
       documentWidth(320);
-      const popover = new Popover({ width: 100 }).trigger({
+      const popover = new Popover({ width: 100 }).triggerRelativeToDocument({
         left: 50,
         width: 100,
       });
@@ -62,7 +71,7 @@ describe('Popover positioning', () => {
 
     it('is corrected to top right if top left and overflows left', () => {
       documentWidth(320);
-      const popover = new Popover({ width: 100 }).trigger({
+      const popover = new Popover({ width: 100 }).triggerRelativeToDocument({
         left: 50,
         width: 100,
       });
@@ -72,7 +81,7 @@ describe('Popover positioning', () => {
 
     it('remains the same if does not overflow', () => {
       documentWidth(320);
-      const popover = new Popover({ width: 100 }).trigger({
+      const popover = new Popover({ width: 100 }).triggerRelativeToDocument({
         left: 150,
         width: 100,
       });
@@ -83,17 +92,17 @@ describe('Popover positioning', () => {
 
   describe('position', () => {
     it('is empty if no popover', () => {
-      expect(getPopoverPosition(undefined, Placement.LEFT)).toEqual({});
+      expect(getPositionRelativeToParent(undefined, Placement.LEFT)).toEqual({});
     });
 
     it('is correct for top placement', () => {
-      const popover = new Popover({ width: 100, height: 50 }).trigger({
+      const popover = new Popover({ width: 100, height: 50 }).triggerRelativeToParent({
         top: 300,
         left: 300,
         width: 200,
       });
 
-      expect(getPopoverPosition(popover, Placement.TOP)).toEqual({
+      expect(getPositionRelativeToParent(popover, Placement.TOP)).toEqual({
         top: 250,
         right: 450,
         left: 350,
@@ -101,14 +110,14 @@ describe('Popover positioning', () => {
     });
 
     it('is correct for right placement', () => {
-      const popover = new Popover({ width: 100, height: 50 }).trigger({
+      const popover = new Popover({ width: 100, height: 50 }).triggerRelativeToParent({
         top: 300,
         left: 300,
         width: 200,
         height: 200,
       });
 
-      expect(getPopoverPosition(popover, Placement.RIGHT)).toEqual({
+      expect(getPositionRelativeToParent(popover, Placement.RIGHT)).toEqual({
         top: 375,
         right: 600,
         left: 500,
@@ -116,14 +125,14 @@ describe('Popover positioning', () => {
     });
 
     it('is correct for bottom placement', () => {
-      const popover = new Popover({ width: 100 }).trigger({
+      const popover = new Popover({ width: 100 }).triggerRelativeToParent({
         top: 300,
         left: 300,
         width: 200,
         height: 200,
       });
 
-      expect(getPopoverPosition(popover, Placement.BOTTOM)).toEqual({
+      expect(getPositionRelativeToParent(popover, Placement.BOTTOM)).toEqual({
         top: 500,
         right: 450,
         left: 350,
@@ -132,7 +141,7 @@ describe('Popover positioning', () => {
 
     it('is correct for bottom left placement', () => {
       const popover = new Popover({ width: 100 })
-        .trigger({
+        .triggerRelativeToParent({
           top: 300,
           left: 300,
           width: 200,
@@ -140,7 +149,7 @@ describe('Popover positioning', () => {
         })
         .arrow({ width: 14, right: 29, marginLeft: -7 });
 
-      expect(getPopoverPosition(popover, Placement.BOTTOM_LEFT)).toEqual({
+      expect(getPositionRelativeToParent(popover, Placement.BOTTOM_LEFT)).toEqual({
         top: 500,
         right: 429,
         left: 329,
@@ -149,7 +158,7 @@ describe('Popover positioning', () => {
 
     it('is correct for bottom right placement', () => {
       const popover = new Popover({ width: 100 })
-        .trigger({
+        .triggerRelativeToParent({
           top: 300,
           left: 300,
           width: 200,
@@ -157,7 +166,7 @@ describe('Popover positioning', () => {
         })
         .arrow({ width: 14, left: 29, marginLeft: -7 });
 
-      expect(getPopoverPosition(popover, Placement.BOTTOM_RIGHT)).toEqual({
+      expect(getPositionRelativeToParent(popover, Placement.BOTTOM_RIGHT)).toEqual({
         top: 500,
         right: 471,
         left: 371,
@@ -165,13 +174,13 @@ describe('Popover positioning', () => {
     });
 
     it('is correct for left placement', () => {
-      const popover = new Popover({ width: 100, height: 50 }).trigger({
+      const popover = new Popover({ width: 100, height: 50 }).triggerRelativeToParent({
         top: 300,
         left: 300,
         height: 200,
       });
 
-      expect(getPopoverPosition(popover, Placement.LEFT)).toEqual({
+      expect(getPositionRelativeToParent(popover, Placement.LEFT)).toEqual({
         top: 375,
         right: 300,
         left: 200,
@@ -180,10 +189,10 @@ describe('Popover positioning', () => {
 
     it('is correct for top right placement', () => {
       const popover = new Popover({ width: 100 })
-        .trigger({ top: 300, left: 300, width: 200, height: 200 })
+        .triggerRelativeToParent({ top: 300, left: 300, width: 200, height: 200 })
         .arrow({ top: 20, height: 10, marginTop: 8 });
 
-      expect(getPopoverPosition(popover, Placement.RIGHT_TOP)).toEqual({
+      expect(getPositionRelativeToParent(popover, Placement.RIGHT_TOP)).toEqual({
         top: 367,
         right: 600,
         left: 500,
@@ -192,10 +201,10 @@ describe('Popover positioning', () => {
 
     it('is correct for top left placement', () => {
       const popover = new Popover({ width: 100 })
-        .trigger({ top: 300, left: 300, height: 200 })
+        .triggerRelativeToParent({ top: 300, left: 300, height: 200 })
         .arrow({ top: 20, height: 10, marginTop: 8 });
 
-      expect(getPopoverPosition(popover, Placement.LEFT_TOP)).toEqual({
+      expect(getPositionRelativeToParent(popover, Placement.LEFT_TOP)).toEqual({
         top: 367,
         right: 300,
         left: 200,
@@ -223,11 +232,20 @@ class Popover {
     });
   }
 
-  trigger = ({ top, left, width, height }) => {
+  triggerRelativeToParent = ({ top, left, width, height }) => {
     this.previousElementSibling = {
       offsetTop: top,
       offsetLeft: left,
-      getBoundingClientRect: () => ({ left }),
+      offsetWidth: width,
+      offsetHeight: height,
+    };
+
+    return this;
+  };
+
+  triggerRelativeToDocument = ({ top, left, width, height }) => {
+    this.previousElementSibling = {
+      getBoundingClientRect: () => ({ top, left, width, height }),
       offsetWidth: width,
       offsetHeight: height,
     };

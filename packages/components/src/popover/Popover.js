@@ -3,7 +3,7 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 
 import Placement, { PlacementValues } from './Placement';
-import { getPlacement, getPopoverPosition } from './positioning';
+import { getPlacement, getPositionRelativeToParent } from './positioning';
 import { wrapInDOMElementIfNecessary } from './DOMWrapping';
 import KeyCodes from '../common/keyCodes';
 import {
@@ -95,7 +95,7 @@ export default class Popover extends Component {
       this.style(placement),
     );
 
-    const { top, left } = getPopoverPosition(this.popoverElement, placement);
+    const { top, left } = getPositionRelativeToParent(this.popoverElement, placement);
 
     return (
       <Fragment>

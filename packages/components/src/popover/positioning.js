@@ -53,29 +53,41 @@ function determineBestBottomPlacement(popover, documentBounds) {
 }
 
 function calculateOverflows(popover, placement, documentBounds) {
-  const pos = getPopoverPosition(popover, placement);
+  const pos = getPositionRelativeToViewport(popover, placement);
   return {
     overflowsRight: pos.right > documentBounds.right,
     overflowsLeft: pos.left < documentBounds.left,
   };
 }
 
-export function getPopoverPosition(popover, placement) {
+export function getPositionRelativeToParent(popover, placement) {
   if (!popover) {
     return {};
   }
+  const trigger = popover.previousElementSibling;
+  const triggerPos = {
+    top: trigger.offsetTop,
+    left: trigger.offsetLeft,
+    width: trigger.offsetWidth,
+    height: trigger.offsetHeight,
+  };
+  return getPopoverPosition(popover, placement, triggerPos);
+}
 
-  const {
-    previousElementSibling: trigger,
-    offsetWidth: popoverWidth,
-    offsetHeight: popoverHeight,
-  } = popover;
-  const {
-    offsetTop: triggerTop,
-    offsetLeft: triggerLeft,
-    offsetWidth: triggerWidth,
-    offsetHeight: triggerHeight,
-  } = trigger;
+function getPositionRelativeToViewport(popover, placement) {
+  if (!popover) {
+    return {};
+  }
+  return getPopoverPosition(
+    popover,
+    placement,
+    popover.previousElementSibling.getBoundingClientRect(),
+  );
+}
+
+function getPopoverPosition(popover, placement, trigger) {
+  const { offsetWidth: popoverWidth, offsetHeight: popoverHeight } = popover;
+
   const arrowStyles = getComputedStyle(popover, ':before');
   const arrowTop = toInt(arrowStyles.top);
   const arrowHeight = toInt(arrowStyles.height);
@@ -89,42 +101,42 @@ export function getPopoverPosition(popover, placement) {
     case TOP:
       return enrichWithRightPosition(
         {
-          top: triggerTop - popoverHeight,
-          left: triggerLeft + triggerWidth / 2 - popoverWidth / 2,
+          top: trigger.top - popoverHeight,
+          left: trigger.left + trigger.width / 2 - popoverWidth / 2,
         },
         popoverWidth,
       );
     case RIGHT:
       return enrichWithRightPosition(
         {
-          top: triggerTop + triggerHeight / 2 - popoverHeight / 2,
-          left: triggerLeft + triggerWidth,
+          top: trigger.top + trigger.height / 2 - popoverHeight / 2,
+          left: trigger.left + trigger.width,
         },
         popoverWidth,
       );
     case BOTTOM:
       return enrichWithRightPosition(
         {
-          top: triggerTop + triggerHeight,
-          left: triggerLeft + triggerWidth / 2 - popoverWidth / 2,
+          top: trigger.top + trigger.height,
+          left: trigger.left + trigger.width / 2 - popoverWidth / 2,
         },
         popoverWidth,
       );
     case BOTTOM_RIGHT:
       return enrichWithRightPosition(
         {
-          top: triggerTop + triggerHeight,
-          left: triggerLeft + triggerWidth / 2 - (arrowLeft + arrowMarginLeft + arrowWidth / 2),
+          top: trigger.top + trigger.height,
+          left: trigger.left + trigger.width / 2 - (arrowLeft + arrowMarginLeft + arrowWidth / 2),
         },
         popoverWidth,
       );
     case BOTTOM_LEFT:
       return enrichWithRightPosition(
         {
-          top: triggerTop + triggerHeight,
+          top: trigger.top + trigger.height,
           left:
-            triggerLeft +
-            triggerWidth / 2 -
+            trigger.left +
+            trigger.width / 2 -
             (popoverWidth - arrowRight + arrowMarginLeft + arrowWidth / 2),
         },
         popoverWidth,
@@ -132,24 +144,24 @@ export function getPopoverPosition(popover, placement) {
     case LEFT:
       return enrichWithRightPosition(
         {
-          top: triggerTop + triggerHeight / 2 - popoverHeight / 2,
-          left: triggerLeft - popoverWidth,
+          top: trigger.top + trigger.height / 2 - popoverHeight / 2,
+          left: trigger.left - popoverWidth,
         },
         popoverWidth,
       );
     case RIGHT_TOP:
       return enrichWithRightPosition(
         {
-          top: triggerTop + triggerHeight / 2 - (arrowTop + arrowMarginTop + arrowHeight / 2),
-          left: triggerLeft + triggerWidth,
+          top: trigger.top + trigger.height / 2 - (arrowTop + arrowMarginTop + arrowHeight / 2),
+          left: trigger.left + trigger.width,
         },
         popoverWidth,
       );
     case LEFT_TOP:
       return enrichWithRightPosition(
         {
-          top: triggerTop + triggerHeight / 2 - (arrowTop + arrowMarginTop + arrowHeight / 2),
-          left: triggerLeft - popoverWidth,
+          top: trigger.top + trigger.height / 2 - (arrowTop + arrowMarginTop + arrowHeight / 2),
+          left: trigger.left - popoverWidth,
         },
         popoverWidth,
       );

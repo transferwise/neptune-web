@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import Popover from '.';
-import { getPlacement, getPopoverPosition } from './positioning';
+import { getPlacement, getPositionRelativeToParent } from './positioning';
 import { wrapInDOMElementIfNecessary } from './DOMWrapping';
 import { fakeKeyDownEventForKey } from '../common/fakeEvents';
 import KEY_CODES from '../common/keyCodes';
@@ -14,7 +14,7 @@ describe('Popover', () => {
   let component;
   beforeEach(() => {
     getPlacement.mockReturnValue('');
-    getPopoverPosition.mockReturnValue({});
+    getPositionRelativeToParent.mockReturnValue({});
     wrapInDOMElementIfNecessary.mockImplementation(node => node);
 
     component = shallow(
@@ -161,11 +161,14 @@ describe('Popover', () => {
     );
     component.setProps({ preferredPlacement: Popover.Placement.LEFT_TOP });
 
-    expect(getPopoverPosition).toBeCalledWith(popover().getDOMNode(), Popover.Placement.RIGHT_TOP);
+    expect(getPositionRelativeToParent).toBeCalledWith(
+      popover().getDOMNode(),
+      Popover.Placement.RIGHT_TOP,
+    );
   });
 
   it('has position', () => {
-    getPopoverPosition.mockReturnValue({ top: 50, left: 100 });
+    getPositionRelativeToParent.mockReturnValue({ top: 50, left: 100 });
     component.rerender();
     expect(popover().prop('style')).toEqual({ top: 50, left: 100 });
   });
