@@ -12,7 +12,7 @@ import {
 
 import countries from './data/countries';
 
-import './PhoneNumberInput.less';
+import './PhoneNumberInput.css';
 
 const ALLOWED_PHONE_CHARS = /^$|^[\d-\s]+$/;
 

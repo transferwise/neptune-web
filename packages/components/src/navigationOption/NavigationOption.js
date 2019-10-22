@@ -2,7 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 
 import Option from '../common/Option';
-import './NavigationOption.less';
+import './NavigationOption.css';
 
 const NavigationOption = ({ media, title, content, onClick, complex, disabled }) => {
   const sharedProps = { media, title, content, complex, disabled };

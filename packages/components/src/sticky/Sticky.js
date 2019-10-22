@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 
-import { SlidingPanel } from '..';
+import SlidingPanel from '../slidingPanel';
 
 const Sticky = ({ open, position, children }) => (
   <SlidingPanel open={open} position={position} slidingPanelPositionFixed showSlidingPanelBorder>

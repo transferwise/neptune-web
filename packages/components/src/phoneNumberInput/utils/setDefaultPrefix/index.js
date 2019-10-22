@@ -1,5 +1,5 @@
 import localeService from '../../../common/localeService';
-import { findCountryByCode } from '../';
+import { findCountryByCode } from '../findCountryByCode';
 
 /**
  * Given a valid locale it returns the correspondent prefix if found or +44 otherwise.

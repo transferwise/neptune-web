@@ -1,4 +1,4 @@
-import { getSymbolsInPatternWithPosition } from '../';
+import getSymbolsInPatternWithPosition from '../getSymbolsInPatternWithPosition';
 
 const formatWithPattern = (value, pattern) => {
   if (!value || value === '') {

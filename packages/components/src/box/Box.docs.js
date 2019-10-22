@@ -1,6 +1,6 @@
 /* eslint-disable no-eval */
 import React, { Component } from 'react';
-import './Boxdocs.less';
+import './Boxdocs.css';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 import Box from './Box';
 import '@transferwise/neptune-css/dist/css/flex.css';

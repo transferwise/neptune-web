@@ -1,5 +1,5 @@
 import countries from '../../data/countries';
-import { longestMatchingPrefix } from '../';
+import { longestMatchingPrefix } from '../longestMatchingPrefix';
 
 export const findCountryByCode = code => {
   let matchingCodes;

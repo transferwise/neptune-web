@@ -3,7 +3,7 @@ import Types from 'prop-types';
 
 import AccordionItem from './AccordionItem';
 
-import './Accordion.less';
+import './Accordion.css';
 
 /* eslint-disable react/no-array-index-key */
 const Accordion = ({ items }) =>

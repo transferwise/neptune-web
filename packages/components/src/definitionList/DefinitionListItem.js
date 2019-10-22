@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { formatDate, formatNumber } from '@transferwise/formatting';
 import { formatUsingPattern } from './utils/text-format';
 
-import './DefinitionListItem.less';
+import './DefinitionListItem.css';
 
 /**
  *

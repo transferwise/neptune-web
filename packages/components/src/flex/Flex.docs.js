@@ -4,7 +4,7 @@ import { generateCodeBlock, generateInput, generateState } from '../../docs/util
 import Flex from './Flex';
 import Box from '../box';
 
-import '../box/Boxdocs.less';
+import '../box/Boxdocs.css';
 
 const OPTIONS = [...Array(6)].map((value, index) => ({
   value: index,

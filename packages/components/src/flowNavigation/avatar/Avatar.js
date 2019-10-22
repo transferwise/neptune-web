@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 import classnames from 'classnames';
 
-import './Avatar.less';
+import './Avatar.css';
 
 const ProfileType = {
   BUSINESS: 'BUSINESS',

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Types from 'prop-types';
 
-import './Tooltip.less';
+import './Tooltip.css';
 
 const Position = {
   TOP: 'top',

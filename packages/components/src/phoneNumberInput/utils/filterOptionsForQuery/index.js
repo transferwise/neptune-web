@@ -1,4 +1,4 @@
-import { isOptionAndFitsQuery } from '../';
+import { isOptionAndFitsQuery } from '../isOptionAndFitsQuery';
 
 /**
  * Filters a set of options based on search string

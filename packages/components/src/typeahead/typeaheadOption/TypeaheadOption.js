@@ -4,7 +4,7 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 
 import hightlight from '../util/highlight';
-import './TypeaheadOption.less';
+import './TypeaheadOption.css';
 
 const Option = props => {
   const { option, selected, onClick, query } = props;

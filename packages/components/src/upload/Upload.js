@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import TopUpIcon from '@transferwise/icons/react/top-up';
 import { UploadImageStep, ProcessingStep, CompleteStep } from './steps';
 import { postData, asyncFileRead, isSizeValid, generateErrorMessage, isTypeValid } from './utils';
-import './Upload.less';
+import './Upload.css';
 import ProcessIndicator from '../processIndicator';
 
 const PROCESS_STATE = ['error', 'success'];

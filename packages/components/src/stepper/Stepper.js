@@ -1,6 +1,6 @@
 import React from 'react';
 import Types from 'prop-types';
-import './Stepper.less';
+import './Stepper.css';
 import Tooltip from '../tooltip';
 import { isTouchDevice } from './deviceDetection';
 

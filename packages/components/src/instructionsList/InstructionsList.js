@@ -3,7 +3,7 @@ import Types from 'prop-types';
 import CloseIcon from '@transferwise/icons/react/close-circle';
 import TickCircleIcon from '@transferwise/icons/react/tick-circle';
 
-import './InstructionsList.less';
+import './InstructionsList.css';
 
 const InstructionsList = ({ dos, donts }) => (
   <div className="instructions">

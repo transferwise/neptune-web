@@ -7,10 +7,16 @@
         "corejs": "3.0.0",
         "targets": {
           "browsers": ["last 2 versions", "safari >= 9", "ie >= 11"]
-        }
+        },
+        "modules": false
       }
     ]
   ],
+  "env": {
+    "test": {
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
+    }
+  },
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-proposal-class-properties",

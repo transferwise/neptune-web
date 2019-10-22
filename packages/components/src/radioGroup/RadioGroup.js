@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Types from 'prop-types';
-import { Radio } from '..';
+import Radio from '../radio';
 
 class RadioGroup extends Component {
   static propTypes = {

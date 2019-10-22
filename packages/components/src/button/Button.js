@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import './Button.less';
+import './Button.css';
 
 const Type = {
   Primary: 'primary',

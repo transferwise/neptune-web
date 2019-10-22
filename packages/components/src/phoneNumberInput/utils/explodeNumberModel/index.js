@@ -1,4 +1,4 @@
-import { findCountryByPrefix } from '../';
+import { findCountryByPrefix } from '../findCountryByPrefix';
 
 /**
  * Given a sting in a valid format ex:'+447573135343' it returns an object of shape

@@ -1,4 +1,4 @@
-import { isWithinRange } from '..';
+import { isWithinRange } from '../isWithinRange';
 
 // Makes sure that date is between min and max dates, returns a cloned min or max
 export function moveToWithinRange(date, min, max) {

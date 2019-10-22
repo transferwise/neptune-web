@@ -3,7 +3,7 @@ import Types from 'prop-types';
 import classnames from 'classnames';
 import { Sizes } from '../common';
 
-import './Loader.less';
+import './Loader.css';
 
 const Loader = ({ small, size, classNames }) => {
   const style = className => classNames[className] || className;

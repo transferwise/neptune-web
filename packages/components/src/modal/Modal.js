@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import Close from '@transferwise/icons/react/close';
 import KEY_CODES from '../common/keyCodes';
-import './Modal.less';
+import './Modal.css';
 
 import { Sizes } from '../common';
 import Dimmer from '../dimmer';

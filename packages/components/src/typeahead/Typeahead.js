@@ -11,7 +11,8 @@ import classNames from 'classnames';
 import KeyCodes from '../common/keyCodes';
 import TypeaheadInput from './typeaheadInput/TypeaheadInput';
 import TypeaheadOption from './typeaheadOption/TypeaheadOption';
-import { Alert, Chip } from '../';
+import Alert from '../alert';
+import Chip from '../chip';
 import {
   addClickClassToDocumentOnIos,
   removeClickClassFromDocumentOnIos,
@@ -19,7 +20,7 @@ import {
 
 import { AlertType } from '../alert/Alert';
 
-import './Typeahead.less';
+import './Typeahead.css';
 import { Sizes } from '../common';
 
 const DEFAULT_MIN_QUERY_LENGTH = 3;

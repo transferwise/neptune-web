@@ -11,7 +11,7 @@ import {
 } from '../common/domHelpers';
 import { addClassAndTriggerReflow, removeClass } from './domHelpers';
 
-import './Select.less';
+import './Select.css';
 
 function clamp(from, to, value) {
   return Math.max(Math.min(to, value), from);

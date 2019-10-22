@@ -11,7 +11,7 @@ import {
   removeClickClassFromDocumentOnIos,
 } from '../common/domHelpers';
 
-import './Popover.less';
+import './Popover.css';
 
 export default class Popover extends Component {
   static Placement = Placement;

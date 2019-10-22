@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import Select from '../select';
-import './MoneyInput.less';
+import './MoneyInput.css';
 
 import { formatAmount, parseAmount } from './currencyFormatting';
 

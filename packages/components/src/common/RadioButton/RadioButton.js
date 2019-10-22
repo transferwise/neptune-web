@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import './RadioButton.less';
+import './RadioButton.css';
 
 const RadioButton = ({ id, value, name, checked, onChange, disabled, readOnly }) => (
   <Fragment>

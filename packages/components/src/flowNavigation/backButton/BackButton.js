@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Types from 'prop-types';
 import CSSTransition from 'react-transition-group/CSSTransition';
 
-import './BackButton.less';
+import './BackButton.css';
 
 const BackArrow = () => (
   <svg

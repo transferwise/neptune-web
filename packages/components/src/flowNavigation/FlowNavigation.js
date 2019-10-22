@@ -2,7 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import './FlowNavigation.less';
+import './FlowNavigation.css';
 import BackButton from './backButton';
 import Stepper from '../stepper';
 import Avatar from './avatar';

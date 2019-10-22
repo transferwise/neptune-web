@@ -2,7 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import './Option.less';
+import './Option.css';
 
 const Option = ({ media, title, content, onClick, htmlFor, disabled, button, complex }) => (
   <label

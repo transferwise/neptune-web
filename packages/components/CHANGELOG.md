@@ -1,3 +1,6 @@
+# v14.0.0
+## Add tree-shakeable es6 version and individual css
+
 # v13.0.7
 ## Fix popover positioning within tables
 When the popover is placed within a table, the preferredPosition prop will be respected in more cases rather than being incorrectly overridden. 

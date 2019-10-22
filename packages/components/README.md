@@ -27,3 +27,30 @@ Work that still needs doing:
 Add components in feature branches, before creating a pull request **update changelog and semantic version** so the branch will be deployed and can be shared.
 
 Docs will be automatically deployed when merging to master, and a new npm release (with corresponding github release) will be created as well. Be sure to increment the version in `package.json` according to semver.
+
+
+## Usage
+The library is distributed in two versions:UMD and ES6
+
+### ES6 Tree shakeable
+JS
+```import { ComponentName } from "@transferwise/components```
+CSS
+No need to import any css as every component only import its own style.
+
+For NextJs user please add to config:
+
+ transpileModules: ['@transferwise/components']
+
+
+#### UMD
+
+In order to consume the umd bundle (non tree shakeable) please use 
+
+JS
+
+```import { ComponentName } from "@transferwise/components/build/main.js```
+
+CSS
+
+```import "@transferwise/components/build/main.css```
