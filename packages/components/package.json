@@ -106,7 +106,7 @@
     "rollup-plugin-commonjs": "^10.0.2",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-postcss": "^2.0.3",
-    "semver": "6.0.0",
+    "semver": "6.3.0",
     "style-loader": "1.0.0",
     "terser-webpack-plugin": "1.2.3",
     "ts-pnp": "1.1.2",
