@@ -40,7 +40,7 @@
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "cpx": "^1.5.0",
-    "css-loader": "2.1.1",
+    "css-loader": "3.2.0",
     "cssnano": "^4.1.10",
     "currency-flags": "^1.2.1",
     "deploy-directory-on-branch-to-gh-pages": "^0.2.5",
