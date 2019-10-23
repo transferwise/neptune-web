@@ -19,7 +19,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.1.4](https://github.com/transferwise/neptune-docs/compare/@transferwise/neptune-docs@0.1.3...@transferwise/neptune-docs@0.1.4) (2019-09-18)
+## [0.1.4](https://github.com/transferwise/neptune/compare/@transferwise/neptune-docs@0.1.3...@transferwise/neptune-docs@0.1.4) (2019-09-18)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
 
@@ -27,7 +27,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.1.3](https://github.com/transferwise/neptune-docs/compare/@transferwise/neptune-docs@0.1.2...@transferwise/neptune-docs@0.1.3) (2019-09-18)
+## [0.1.3](https://github.com/transferwise/neptune/compare/@transferwise/neptune-docs@0.1.2...@transferwise/neptune-docs@0.1.3) (2019-09-18)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
 

@@ -11,7 +11,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.8.8](https://github.com/transferwise/neptune-css/compare/@transferwise/neptune-css@0.8.7...@transferwise/neptune-css@0.8.8) (2019-09-18)
+## [0.8.8](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.7...@transferwise/neptune-css@0.8.8) (2019-09-18)
 
 **Note:** Version bump only for package @transferwise/neptune-css
 
@@ -19,7 +19,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.8.7](https://github.com/transferwise/neptune-css/compare/@transferwise/neptune-css@0.8.6...@transferwise/neptune-css@0.8.7) (2019-09-18)
+## [0.8.7](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.6...@transferwise/neptune-css@0.8.7) (2019-09-18)
 
 **Note:** Version bump only for package @transferwise/neptune-css
 
