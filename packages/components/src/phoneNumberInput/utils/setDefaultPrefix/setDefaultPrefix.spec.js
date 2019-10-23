@@ -1,4 +1,4 @@
-import { isValidPhoneNumber, setDefaultPrefix } from '../';
+import { setDefaultPrefix } from '../';
 
 describe('setDefaultPrefix', () => {
   it('should return right prefix when valid locale is passed', () => {
@@ -8,16 +8,12 @@ describe('setDefaultPrefix', () => {
   it('should return default prefix when invalid locale is passed', () => {
     expect(setDefaultPrefix('en-Wrong')).toBe('+44');
   });
-});
 
-describe('isValidPhoneNumber', () => {
-  it('should return true for valid string numbers', () => {
-    expect(isValidPhoneNumber('+393892712')).toBe(true);
+  it('should override prefix from locale if correct country ISO2 code provided', () => {
+    expect(setDefaultPrefix('it-IT', 'US')).toBe('+1');
   });
 
-  it('should return false for invalid numbers', () => {
-    expect(isValidPhoneNumber('+441')).toBe(false);
-    expect(isValidPhoneNumber(44)).toBe(false);
-    expect(isValidPhoneNumber('44123')).toBe(false);
+  it('should return prefix based on locale if country code is invalid', () => {
+    expect(setDefaultPrefix('it-IT', 'WRONG')).toBe('+39');
   });
 });

@@ -141,6 +141,7 @@ export default class Field extends Component {
     }).isRequired,
 
     locale: Types.string,
+    countryCode: Types.string,
     onChange: Types.func.isRequired,
     onFocus: Types.func,
     onBlur: Types.func,
@@ -151,6 +152,7 @@ export default class Field extends Component {
 
   static defaultProps = {
     locale: 'en-GB',
+    countryCode: null,
     value: null,
     errorMessage: null,
     warningMessage: null,

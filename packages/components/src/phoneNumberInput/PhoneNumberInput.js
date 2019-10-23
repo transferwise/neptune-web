@@ -24,6 +24,7 @@ class PhoneNumberInput extends PureComponent {
     onChange: Types.func.isRequired,
     onFocus: Types.func,
     onBlur: Types.func,
+    countryCode: Types.string,
     locale: Types.string,
     searchPlaceholder: Types.string,
     size: Types.oneOf(['sm', 'md', 'lg']),
@@ -36,6 +37,7 @@ class PhoneNumberInput extends PureComponent {
     initialValue: null,
     onFocus() {},
     onBlur() {},
+    countryCode: null,
     locale: 'en-GB',
     searchPlaceholder: 'Prefix',
     size: 'md',
@@ -60,8 +62,8 @@ class PhoneNumberInput extends PureComponent {
     this.setState({ searchQuery });
   };
 
-  getSuffixPrefix = (value, locale) => {
-    let prefix = setDefaultPrefix(locale);
+  getSuffixPrefix = (value, locale, countryCode) => {
+    let prefix = setDefaultPrefix(locale, countryCode);
     let suffix = '';
     if (value) {
       ({ prefix, suffix } = explodeNumberModel(value));
@@ -123,11 +125,12 @@ class PhoneNumberInput extends PureComponent {
       onFocus,
       onBlur,
       locale,
+      countryCode,
     } = this.props;
     const { internalValue, searchQuery } = this.state;
     const selectOptions = this.getSelectOptions();
 
-    const { prefix, suffix } = this.getSuffixPrefix(internalValue, locale);
+    const { prefix, suffix } = this.getSuffixPrefix(internalValue, locale, countryCode);
 
     return (
       <div className="tw-telephone">

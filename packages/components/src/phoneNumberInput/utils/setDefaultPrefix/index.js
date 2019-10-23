@@ -6,9 +6,9 @@ import { findCountryByCode } from '../findCountryByCode';
  * @param {string} locale - a string that represent the locale ex:'es-ES'
  * @returns {string}
  */
-export const setDefaultPrefix = locale => {
+export const setDefaultPrefix = (locale, countryCode) => {
   const localeCountry = localeService.getCountryFromLocale(locale);
-  const country = findCountryByCode(localeCountry);
+  const country = findCountryByCode(countryCode) || findCountryByCode(localeCountry);
   let prefix = '+44';
   if (country) {
     prefix = country.phone;

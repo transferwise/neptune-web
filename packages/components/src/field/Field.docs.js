@@ -222,6 +222,7 @@ const TELEPHONE_INPUT_COMPONENT = {
       format: FieldFormats.PHONE,
       type: FieldTypes.STRING,
       label: 'Telephone',
+      countryCode: 'US',
     },
   },
 };

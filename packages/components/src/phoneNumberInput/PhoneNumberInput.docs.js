@@ -58,6 +58,12 @@ const KNOBS = {
       state: 'disabled',
       defaultState: false,
     },
+    {
+      type: 'text',
+      label: 'Country Code',
+      state: 'countryCode',
+      defaultState: '',
+    },
   ],
 };
 
@@ -106,6 +112,7 @@ export default class PhoneNumberInputDocs extends Component {
                 onChange={value => this.handleOnChange(value)}
                 initialValue={this.state.initialValue}
                 locale={this.state.locale.value}
+                countryCode={this.state.countryCode}
                 disabled={this.state.disabled}
                 required={this.state.required}
                 size={this.state.size.value}

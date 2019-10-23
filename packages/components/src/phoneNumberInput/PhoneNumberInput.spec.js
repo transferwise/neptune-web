@@ -167,26 +167,54 @@ describe('Given a telephone number component', () => {
     });
 
     describe('and no value', () => {
-      beforeEach(() => {
-        component = shallow(<PhoneNumberInput {...props} locale="es-ES" />);
-        select = component.find(PREFIX_SELECT_SELECTOR);
-        input = component.find(NUMBER_SELECTOR);
+      describe('and no country code', () => {
+        beforeEach(() => {
+          component = shallow(<PhoneNumberInput {...props} locale="es-ES" />);
+          select = component.find(PREFIX_SELECT_SELECTOR);
+          input = component.find(NUMBER_SELECTOR);
+        });
+
+        it('should default the prefix to the local country', () => {
+          expect(select.props().selected.value).toBe('+34');
+        });
       });
 
-      it('should default the prefix to the local country', () => {
-        expect(select.props().selected.value).toBe('+34');
+      describe('and country code', () => {
+        beforeEach(() => {
+          component = shallow(<PhoneNumberInput {...props} locale="es-ES" countryCode="US" />);
+          select = component.find(PREFIX_SELECT_SELECTOR);
+          input = component.find(NUMBER_SELECTOR);
+        });
+
+        it('should override locale prefix with country specific prefix', () => {
+          expect(select.props().selected.value).toBe('+1');
+        });
       });
     });
 
     describe('that is incorrect and no value', () => {
-      beforeEach(() => {
-        component = shallow(<PhoneNumberInput {...props} locale="xx-XX" />);
-        select = component.find(PREFIX_SELECT_SELECTOR);
-        input = component.find(NUMBER_SELECTOR);
+      describe('and no country code', () => {
+        beforeEach(() => {
+          component = shallow(<PhoneNumberInput {...props} locale="xx-XX" />);
+          select = component.find(PREFIX_SELECT_SELECTOR);
+          input = component.find(NUMBER_SELECTOR);
+        });
+
+        it('should default to +44 (UK)', () => {
+          expect(select.props().selected.value).toBe('+44');
+        });
       });
 
-      it('should default to +44 (UK)', () => {
-        expect(select.props().selected.value).toBe('+44');
+      describe('and country code', () => {
+        beforeEach(() => {
+          component = shallow(<PhoneNumberInput {...props} locale="xx-XX" countryCode="US" />);
+          select = component.find(PREFIX_SELECT_SELECTOR);
+          input = component.find(NUMBER_SELECTOR);
+        });
+
+        it('should override locale prefix with country specific prefix', () => {
+          expect(select.props().selected.value).toBe('+1');
+        });
       });
     });
   });
