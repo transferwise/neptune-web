@@ -1,3 +1,6 @@
+# v15.1.0
+## Add search by phone value PhoneNumberInput and added country grouping
+
 # v15.0.0
 ## Rework Button
 
@@ -12,7 +15,7 @@
 When the popover is placed within a table, the preferredPosition prop will be respected in more cases rather than being incorrectly overridden.
 
 # v13.0.6
-## Prevent onBlur triggering when openning searchable select
+## Prevent onBlur triggering when opening searchable select
 
 # v13.0.5
 ## Add searchValue prop to formControl

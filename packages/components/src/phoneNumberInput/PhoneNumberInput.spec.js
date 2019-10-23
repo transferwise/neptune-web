@@ -1,7 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import PhoneNumberInput from './';
+import { fakeEvent, fakeKeyDownEventForKey } from '../common/fakeEvents';
 
 describe('Given a telephone number component', () => {
   let select;
@@ -266,6 +267,17 @@ describe('Given a telephone number component', () => {
       input.simulate('change', { target: { value: '123--' } });
       select.simulate('change', { value: '+39', label: '+39' });
       expect(props.onChange).toHaveBeenCalledWith('+39123');
+    });
+  });
+
+  describe('when user search by number options are sorted by phone values ', () => {
+    it('should return sorted by value options', () => {
+      component = mount(<PhoneNumberInput {...props} value="+12345678" />);
+      const element = selector => component.find(selector);
+      component.find('button.dropdown-toggle').simulate('click', fakeEvent());
+      component.find('.tw-select-filter').simulate('change', { target: { value: '+124' } });
+      select = component.find(PREFIX_SELECT_SELECTOR);
+      expect(+select.prop('options')[0].value).toBeLessThan(+select.prop('options')[1].value);
     });
   });
 });

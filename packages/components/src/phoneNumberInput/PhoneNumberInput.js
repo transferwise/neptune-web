@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import Types from 'prop-types';
+import { isArray } from '../common/validation/type-validators';
 
 import Select from '../select';
 import {
@@ -8,6 +9,9 @@ import {
   isValidPhoneNumber,
   cleanNumber,
   setDefaultPrefix,
+  isStringNumeric,
+  sortArrayByProperty,
+  groupCountriesByPrefix,
 } from './utils';
 
 import countries from './data/countries';
@@ -56,6 +60,9 @@ class PhoneNumberInput extends PureComponent {
       broadcastValue: derivedInitialValueFromProp,
       searchQuery: '',
     };
+
+    this.listSortedByISO3 = groupCountriesByPrefix(sortArrayByProperty(countries, 'iso3'));
+    this.listSortedByPhone = groupCountriesByPrefix(sortArrayByProperty(countries, 'phone'));
   }
 
   onChangeSearch = searchQuery => {
@@ -72,14 +79,23 @@ class PhoneNumberInput extends PureComponent {
   };
 
   getSelectOptions = () => {
-    const filteredOptions = this.state.searchQuery
-      ? filterOptionsForQuery(countries, this.state.searchQuery)
-      : countries;
+    const { searchQuery } = this.state;
+    const filteredOptions = filterOptionsForQuery(
+      isStringNumeric(searchQuery) ? this.listSortedByPhone : this.listSortedByISO3,
+      searchQuery,
+    );
 
     return filteredOptions.map(option => {
       const { phone, iso3, iso2 } = option;
+      let note = '';
 
-      return { value: phone, label: phone, note: iso3 || iso2 };
+      if (iso3) {
+        note = isArray(iso3) ? iso3.join(', ') : iso3;
+      } else if (iso2) {
+        note = isArray(iso2) ? iso2.join(', ') : iso2;
+      }
+
+      return { value: phone, label: phone, note };
     });
   };
 

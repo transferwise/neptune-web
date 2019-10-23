@@ -94,7 +94,7 @@ export default class PhoneNumberInputDocs extends Component {
             <div className="col-md-6">
               <h2>PhoneNumberInput</h2>
               <p>It allows to insert a phone number</p>
-              {generateCodeBlock('Button', KNOBS, this, extraProps)}
+              {generateCodeBlock('PhoneNumberInput', KNOBS, this, extraProps)}
               <p>
                 A control for inputting telephone numbers. While the control allows common special
                 characters (spaces, periods, hyphens), these are stripped from the resulting model,

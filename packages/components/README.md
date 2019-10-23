@@ -34,13 +34,16 @@ The library is distributed in two versions:UMD and ES6
 
 ### ES6 Tree shakeable
 JS
-```import { ComponentName } from "@transferwise/components```
+
+    import { ComponentName } from "@transferwise/components
+
 CSS
+
 No need to import any css as every component only import its own style.
 
 For NextJs user please add to config:
 
- transpileModules: ['@transferwise/components']
+    transpileModules: ['@transferwise/components']
 
 
 #### UMD
@@ -49,8 +52,8 @@ In order to consume the umd bundle (non tree shakeable) please use
 
 JS
 
-```import { ComponentName } from "@transferwise/components/build/main.js```
+    import { ComponentName } from "@transferwise/components/build/main.js
 
 CSS
 
-```import "@transferwise/components/build/main.css```
+    import "@transferwise/components/build/main.css

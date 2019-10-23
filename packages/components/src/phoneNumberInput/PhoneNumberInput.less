@@ -4,6 +4,13 @@
 
 .tw-telephone {
   display: flex;
+  @media (min-width: @screen-sm) {
+    .btn-group {
+      .dropdown-menu {
+        min-width: 250px;
+      }
+    }
+  }
 }
 
 .tw-telephone__country-select {

@@ -1,0 +1,1 @@
+export { isStringNumeric } from './isStringNumeric';
