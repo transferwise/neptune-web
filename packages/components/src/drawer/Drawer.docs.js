@@ -33,7 +33,9 @@ export default class DrawerDocs extends Component {
                   position="right"
                   onClose={() => this.setState({ open: false })}
                   footerContent={
-                    <Button onClick={() => alert('Action clicked')} label="Action" block />
+                    <Button onClick={() => alert('Action clicked')} block>
+                      Action
+                    </Button>
                   }
                   headerTitle="A title"
                 >

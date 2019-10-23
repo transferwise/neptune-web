@@ -76,8 +76,9 @@ import '@transferwise/neptune-css/dist/css/snackbar.css';
                                 : null,
                             })
                           }
-                          label="Show"
-                        />
+                        >
+                          Show
+                        </Button>
                       )}
                     </SnackbarConsumer>
                   </div>

@@ -9,7 +9,7 @@ describe('Button', () => {
     type: 'pay',
     size: 'md',
     onClick: jest.fn(),
-    label: 'Send money',
+    children: 'Send money',
     htmlType: 'submit',
   };
   let wrapper;
@@ -23,7 +23,7 @@ describe('Button', () => {
   });
 
   it('renders the given string provided as the label prop', () => {
-    expect(wrapper.text()).toContain(props.label);
+    expect(wrapper.text()).toContain(props.children);
   });
 
   it('has the right classes when rendered', () => {
@@ -42,13 +42,13 @@ describe('Button', () => {
 
   it(`is disabled if button's state prop is disabled`, () => {
     expect(wrapper.find('[disabled=true]')).toHaveLength(0);
-    wrapper.setProps({ state: 'disabled' });
+    wrapper.setProps({ disabled: true });
     expect(wrapper.find('[disabled=true]')).toHaveLength(1);
   });
 
   it(`has loading indicator when button's state prop is loading`, () => {
     expect(wrapper.find('.btn-loader')).toHaveLength(0);
-    wrapper.setProps({ state: 'loading' });
+    wrapper.setProps({ loading: true });
     expect(wrapper.find('.btn-loader')).toHaveLength(1);
   });
 

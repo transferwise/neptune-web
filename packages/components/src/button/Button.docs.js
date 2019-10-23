@@ -6,8 +6,8 @@ const KNOBS = {
   knobs: [
     {
       type: 'text',
-      label: 'Label',
-      state: 'label',
+      label: 'Children',
+      state: 'children',
       defaultState: 'Send Money',
     },
     {
@@ -22,16 +22,6 @@ const KNOBS = {
     },
     {
       type: 'select',
-      label: 'State',
-      state: 'state',
-      options: Object.values(Button.State).map(value => ({
-        value,
-        label: value,
-      })),
-      defaultState: { value: Button.State.Default, label: Button.State.Default },
-    },
-    {
-      type: 'select',
       label: 'Type',
       state: 'type',
       options: Object.values(Button.Type).map(value => ({
@@ -39,6 +29,28 @@ const KNOBS = {
         label: value,
       })),
       defaultState: { value: Button.Type.Pay, label: Button.Type.Pay },
+    },
+    {
+      type: 'select',
+      label: 'htmlType',
+      state: 'htmlType',
+      options: ['button', 'submit', 'reset'].map(value => ({
+        value,
+        label: value,
+      })),
+      defaultState: { value: 'button', label: 'button' },
+    },
+    {
+      type: 'checkbox',
+      label: 'Loading',
+      state: 'loading',
+      defaultState: false,
+    },
+    {
+      type: 'checkbox',
+      label: 'Disabled',
+      state: 'disabled',
+      defaultState: false,
     },
     {
       type: 'checkbox',
@@ -56,7 +68,7 @@ export default class ButtonDocs extends Component {
   };
 
   render() {
-    const { label, state, size, type, block } = this.state;
+    const { children, size, type, block, disabled, loading, htmlType } = this.state;
 
     return (
       <div className="container">
@@ -69,14 +81,17 @@ export default class ButtonDocs extends Component {
             </div>
             <div className="col-md-6 m-t-2">
               <Button
-                label={label}
                 size={size.value}
-                state={state.value}
                 type={type.value}
+                disabled={disabled}
+                loading={loading}
                 block={block}
+                htmlType={htmlType.value}
                 /* eslint-disable no-alert */
                 onClick={() => alert('Clicked button')}
-              />
+              >
+                {children}
+              </Button>
               <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>
           </div>

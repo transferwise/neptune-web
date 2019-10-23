@@ -104,7 +104,11 @@ export default class ModalDocs extends Component {
             size={size.value}
             title={title}
             className={className}
-            footer={<Button label="Action" block onClick={() => alert('clicked')} />}
+            footer={
+              <Button block onClick={() => alert('clicked')}>
+                Action
+              </Button>
+            }
             closeOnClick
           />
         </section>

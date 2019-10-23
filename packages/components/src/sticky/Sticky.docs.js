@@ -66,7 +66,9 @@ export default class StickyDocs extends Component {
                   )}
                   style={{ padding: '20px', ...styleContent }}
                 >
-                  <Button label="Give Access" onClick={() => alert('clicked')} block />
+                  <Button onClick={() => alert('clicked')} block>
+                    Give Access
+                  </Button>
                   <a href="/" onClick={() => alert('clicked')} className="m-t-3">
                     Switch account
                   </a>

@@ -52,7 +52,7 @@ export default class DimmerDocs extends Component {
                     className={classNames('d-flex', 'justify-content-center', 'align-items-center')}
                     style={{ height: '100%' }}
                   >
-                    <Button onClick={() => this.setState({ open: false })} label="Close" />
+                    <Button onClick={() => this.setState({ open: false })}>Close</Button>
                   </div>
                 </Dimmer>
                 <div className="row">

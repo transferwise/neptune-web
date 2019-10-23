@@ -17,18 +17,9 @@ const Size = {
   Large: 'lg',
 };
 
-const State = {
-  Default: 'default',
-  Loading: 'loading',
-  Disabled: 'disabled',
-};
-
-const Button = ({ label, state, size, type, block, onClick, htmlType }) => {
-  const isLoading = state === State.Loading;
-  const isDisabled = state === State.Disabled || isLoading;
-
+const Button = ({ block, children, disabled, htmlType, loading, size, type, ...rest }) => {
   const classes = classNames(`btn btn-${size}`, {
-    'btn-loading': isLoading,
+    'btn-loading': loading,
     'btn-primary': type === Type.Primary,
     'btn-success': type === Type.Pay,
     'btn-default': type === Type.Secondary,
@@ -37,32 +28,33 @@ const Button = ({ label, state, size, type, block, onClick, htmlType }) => {
   });
 
   return (
-    <button type={htmlType} className={classes} onClick={onClick} disabled={isDisabled}>
-      {label}
-      {isLoading && <span className={classNames('btn-loader', { 'm-l-2': !block })} />}
+    <button type={htmlType} className={classes} disabled={disabled || loading} {...rest}>
+      {children}
+      {loading && <span className={classNames('btn-loader', { 'm-l-2': !block })} />}
     </button>
   );
 };
 
 Button.Type = Type;
 Button.Size = Size;
-Button.State = State;
 
 Button.propTypes = {
   type: Types.oneOf(Object.values(Type)),
   size: Types.oneOf(Object.values(Size)),
-  state: Types.oneOf(Object.values(State)),
+  disabled: Types.bool,
   block: Types.bool,
+  loading: Types.bool,
   onClick: Types.func.isRequired,
-  label: Types.node.isRequired,
+  children: Types.node.isRequired,
   htmlType: Types.oneOf(['submit', 'reset', 'button']),
 };
 
 Button.defaultProps = {
   size: Button.Size.Medium,
   type: Button.Type.Primary,
-  state: Button.State.Default,
+  disabled: false,
   block: false,
+  loading: false,
   htmlType: 'button',
 };
 

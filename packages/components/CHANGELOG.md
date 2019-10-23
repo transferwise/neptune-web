@@ -1,3 +1,6 @@
+# v15.0.0
+## Rework Button
+
 # v14.1.0
 ## Add countryCode property to phonNumberInput
 
@@ -6,7 +9,7 @@
 
 # v13.0.7
 ## Fix popover positioning within tables
-When the popover is placed within a table, the preferredPosition prop will be respected in more cases rather than being incorrectly overridden. 
+When the popover is placed within a table, the preferredPosition prop will be respected in more cases rather than being incorrectly overridden.
 
 # v13.0.6
 ## Prevent onBlur triggering when openning searchable select
