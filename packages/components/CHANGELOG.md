@@ -1,3 +1,6 @@
+# v15.2.0
+## Add swipeable Tabs component
+
 # v15.1.2
 ## Update Snackbar to accept elements as text
 

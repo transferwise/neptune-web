@@ -1,0 +1,78 @@
+@import '~bootstrap/less/variables.less';
+@import '~@transferwise/neptune-css/src/less/variables/_colors.less';
+@import '~@transferwise/neptune-css/src/less/variables/_typography.less';
+@import '~@transferwise/neptune-css/src/less/variables/_transitions.less';
+
+@transition-timing-function: ease-in-out;
+@transition-duration: 0.3s;
+@short-transition-duration: 0.15s;
+@line-thickness: 3px;
+
+.tabs {
+  &__tab {
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    padding: @spacer;
+    margin-bottom: -@line-thickness;
+    color: @brand-navy-minus-10;
+    font-weight: @font-weight-semi-bold;
+    transition: color @short-transition-duration @transition-timing-function;
+
+    &--selected {
+      color: @brand-light-blue;
+    }
+
+    &--disabled {
+      color: @brand-smoke-minus-10 !important;
+      cursor: not-allowed;
+    }
+
+    &:hover,
+    &:focus {
+      color: @brand-light-blue;
+    }
+  }
+
+  &__tab-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid @brand-smoke;
+  }
+
+  &__line {
+    height: @line-thickness;
+    background-color: @brand-light-blue;
+    transition: var(--transition-transform);
+  }
+
+  &__panel-container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__slider {
+    display: flex;
+  }
+
+  &__panel {
+    &--selected {
+      padding: @spacer;
+      border: 1px solid @brand-navy;
+    }
+
+    &.enter {
+      opacity: 0;
+    }
+
+    &.enter-active {
+      opacity: 1;
+    }
+
+    &.exit {
+      opacity: 0;
+    }
+  }
+}

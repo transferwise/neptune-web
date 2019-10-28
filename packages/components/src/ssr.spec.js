@@ -55,6 +55,7 @@ describe('Server side rendering', () => {
     displayPattern: '**-**',
     position: 'left',
     open: true,
+    tabs: [],
     direction: {
       xs: 'column',
       sm: 'row',

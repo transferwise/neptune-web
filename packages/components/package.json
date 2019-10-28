@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "15.1.2",
+  "version": "15.2.0",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -159,6 +159,7 @@
     "lodash.clamp": "^4.0.3",
     "lodash.debounce": "^4.0.8",
     "react-app-polyfill": "^1.0.1",
+    "react-spring": "^8.0.27",
     "react-transition-group": "^4.2.1"
   },
   "browserslist": {
@@ -184,7 +185,6 @@
     "testPathIgnorePatterns": [
       "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
     ],
-    "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
