@@ -1,3 +1,2 @@
-import ProcessIndicator from './ProcessIndicator';
-
-export default ProcessIndicator;
+export { default } from './ProcessIndicator';
+export * from './ProcessIndicator';

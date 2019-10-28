@@ -1,18 +1,7 @@
-import React from 'react';
 import { postData } from './';
-import fetch from 'jest-fetch-mock';
 
 const HTTPOPTIONS = { url: 'a-url' };
 const DATA = 'some-data';
-
-function mockFetch(data) {
-  return jest.fn().mockImplementation(() =>
-    Promise.resolve({
-      ok: true,
-      json: () => data,
-    }),
-  );
-}
 
 describe('postData', () => {
   afterEach(() => {

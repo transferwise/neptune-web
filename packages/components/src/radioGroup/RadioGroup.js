@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Types from 'prop-types';
 import Radio from '../radio';
 
@@ -40,7 +40,7 @@ class RadioGroup extends Component {
 
     const { selectedValue } = this.state;
     return radios && radios.length > 1 ? (
-      <Fragment>
+      <>
         {radios.map(({ id, value, label, disabled, secondary, readOnly }, index) => (
           <Radio
             id={id}
@@ -56,7 +56,7 @@ class RadioGroup extends Component {
             readOnly={readOnly}
           />
         ))}
-      </Fragment>
+      </>
     ) : null;
   }
 }

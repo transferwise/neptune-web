@@ -1,7 +1,6 @@
 import React from 'react';
-import SlidingPanel from '../slidingPanel';
 import { shallow, mount } from 'enzyme';
-import Sticky, { EXIT_ANIMATION } from './Sticky';
+import Sticky from './Sticky';
 
 describe('Sticky', () => {
   let component;

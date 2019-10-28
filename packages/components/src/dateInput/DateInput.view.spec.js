@@ -3,8 +3,6 @@ import { shallow } from 'enzyme';
 
 import DateInput from './';
 
-import { isIntlSupportedForLocale } from './utils';
-
 import { LOCALES, MONTHS_EN } from './data/testFixtures';
 
 const JANUARY_OPTION = { value: 0, label: MONTHS_EN[0] };
@@ -16,7 +14,7 @@ const MONTH_SELECTOR = 'Select';
 const YEAR_SELECTOR = 'input[name="year"]';
 
 jest.mock('@transferwise/formatting', () => {
-  const { MONTHS_FR, LOCALES, MONTHS_EN } = require('./data/testFixtures');
+  const { MONTHS_FR, LOCALES, MONTHS_EN } = require('./data/testFixtures'); // eslint-disable-line
   return {
     formatDate: (month, locale) =>
       locale === LOCALES.fr ? MONTHS_FR[month.getMonth()] : MONTHS_EN[month.getMonth()],
@@ -236,27 +234,27 @@ describe('Date Input Component', () => {
     });
 
     it('corrects days too high in February', () => {
-      const component = shallow(<DateInput {...props} />);
+      const comp = shallow(<DateInput {...props} />);
 
-      inputDay = component.find(DAY_SELECTOR);
-      selectMonth = component.find(MONTH_SELECTOR);
-      inputYear = component.find(YEAR_SELECTOR);
+      inputDay = comp.find(DAY_SELECTOR);
+      selectMonth = comp.find(MONTH_SELECTOR);
+      inputYear = comp.find(YEAR_SELECTOR);
 
       inputDay.simulate('change', { target: { value: 29 } });
       selectMonth.simulate('change', FEBRUARY_OPTION);
       inputYear.simulate('change', { target: { value: '1991' } });
 
-      expect(component.find(DAY_SELECTOR).prop('value')).toBe(28);
+      expect(comp.find(DAY_SELECTOR).prop('value')).toBe(28);
     });
 
     it("doesn't correct days in lap years February", () => {
-      const component = shallow(<DateInput {...props} value="2000-03-29" />);
+      const comp = shallow(<DateInput {...props} value="2000-03-29" />);
 
-      selectMonth = component.find(MONTH_SELECTOR);
+      selectMonth = comp.find(MONTH_SELECTOR);
 
       selectMonth.simulate('change', FEBRUARY_OPTION);
 
-      expect(component.find(DAY_SELECTOR).prop('value')).toBe(29);
+      expect(comp.find(DAY_SELECTOR).prop('value')).toBe(29);
     });
 
     it('corrects days too high for selected months', () => {
@@ -273,23 +271,23 @@ describe('Date Input Component', () => {
     });
 
     it('lowers days if value entered too high', () => {
-      const component = shallow(<DateInput {...props} />);
+      const comp = shallow(<DateInput {...props} />);
 
-      inputDay = component.find(DAY_SELECTOR);
+      inputDay = comp.find(DAY_SELECTOR);
 
       inputDay.simulate('change', { target: { value: 32 } });
 
-      expect(component.find(DAY_SELECTOR).prop('value')).toBe(31);
+      expect(comp.find(DAY_SELECTOR).prop('value')).toBe(31);
     });
 
     it('highers days if value entered too low', () => {
-      const component = shallow(<DateInput {...props} />);
+      const comp = shallow(<DateInput {...props} />);
 
-      inputDay = component.find(DAY_SELECTOR);
+      inputDay = comp.find(DAY_SELECTOR);
 
       inputDay.simulate('change', { target: { value: -1 } });
 
-      expect(component.find(DAY_SELECTOR).prop('value')).toBe(1);
+      expect(comp.find(DAY_SELECTOR).prop('value')).toBe(1);
     });
   });
 

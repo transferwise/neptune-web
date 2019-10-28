@@ -32,7 +32,7 @@ class SnackbarDocs extends Component {
             <div className="row">
               <div className="col-md-6">
                 <h2>Snackbar</h2>
-                <p>You lookin{`'`} like a snacc</p>
+                <p>You lookin&apos; like a snacc</p>
                 <pre className="tw-docs-code ">
                   {`import { SnackbarProvider, SnackbarConsumer } from '@transferwise/components';
 import '@transferwise/neptune-css/dist/css/snackbar.css';

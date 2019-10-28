@@ -32,7 +32,7 @@ describe('SlidingPanel', () => {
       },
       classNames: 'sliding-panel--open-left sliding-panel',
       unmountOnExit: true,
-      children: <div className="sliding-panel" children={null} />,
+      children: <div className="sliding-panel" children={null} />, // eslint-disable-line react/no-children-prop
     });
   });
 

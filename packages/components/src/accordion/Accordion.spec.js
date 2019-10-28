@@ -28,7 +28,7 @@ describe('Accordion', () => {
           },
           {
             title: 'c',
-            content: <h1>I'm a h1 element</h1>,
+            content: <h1>I&apos;m a h1 element</h1>,
           },
         ],
       };
@@ -46,5 +46,5 @@ describe('Accordion', () => {
     });
   });
 
-  const createComponent = props => shallow(<Accordion {...props} />);
+  const createComponent = p => shallow(<Accordion {...p} />);
 });

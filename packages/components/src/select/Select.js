@@ -147,7 +147,9 @@ export default class Select extends Component {
       }
     }
 
-    if (onBlur) onBlur(event);
+    if (onBlur) {
+      onBlur(event);
+    }
   };
 
   handleSearchChange = event => {

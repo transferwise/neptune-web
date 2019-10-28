@@ -95,7 +95,6 @@ describe('Checkbox', () => {
   });
 
   const isDisabled = () => component.hasClass('disabled');
-  const isReadOnly = () => component.prop('readOnly');
   const hasErrorClass = () => component.hasClass('has-error');
   const checkboxButton = () => component.find(CheckboxButton);
   const checkboxButtonHasError = () => checkboxButton().hasClass('has-error');

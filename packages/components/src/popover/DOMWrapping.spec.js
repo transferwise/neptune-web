@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { wrapInDOMElementIfNecessary as wrap } from './DOMWrapping';
 
-const Message = ({ children }) => <Fragment>{children}</Fragment>; // eslint-disable-line react/prop-types
+const Message = ({ children }) => <>{children}</>; // eslint-disable-line react/prop-types
 
 describe('DOM wrapping', () => {
   it('wraps string in span', () => {
@@ -12,17 +12,17 @@ describe('DOM wrapping', () => {
   it('wraps fragment in span', () => {
     expect(
       wrap(
-        <Fragment>
+        <>
           Some content
           <strong>Some strong content</strong>
-        </Fragment>,
+        </>,
       ),
     ).toEqual(
       <span>
-        <Fragment>
+        <>
           Some content
           <strong>Some strong content</strong>
-        </Fragment>
+        </>
       </span>,
     );
   });

@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
@@ -36,7 +36,7 @@ class DefinitionList extends PureComponent {
     const { model, locale, title, narrow, layout } = this.props;
     const { fields } = this.state;
     return (
-      <Fragment>
+      <>
         {title && (
           <div className="m-t-1">
             <h4 className="page-header p-t-3">{title}</h4>
@@ -89,7 +89,7 @@ class DefinitionList extends PureComponent {
             );
           })}
         </div>
-      </Fragment>
+      </>
     );
   }
 }

@@ -6,12 +6,12 @@ import DateLookup from '.';
 // Tests for getDerivedStateFromProps results
 describe('DateLookup state', () => {
   let component;
-  let props;
+  let defaultProps;
   const defaultState = { selectedDate: null, min: null, max: null };
 
   beforeEach(() => {
-    props = { onChange: jest.fn() };
-    component = shallow(<DateLookup {...props} />);
+    defaultProps = { onChange: jest.fn() };
+    component = shallow(<DateLookup {...defaultProps} />);
   });
 
   it('sets correct defaults', () => {
@@ -51,14 +51,14 @@ describe('DateLookup state', () => {
   it('calls onChange with min when it is < min', () => {
     const onChange = jest.fn();
     const props = { value: new Date(2018, 11, 27), min: new Date(2018, 11, 28), onChange };
-    const newState = DateLookup.getDerivedStateFromProps(props, defaultState);
+    DateLookup.getDerivedStateFromProps(props, defaultState);
     expect(onChange).toHaveBeenCalledWith(new Date(2018, 11, 28));
   });
 
   it('calls onChange with max when it is > min', () => {
     const onChange = jest.fn();
     const props = { value: new Date(2018, 11, 27), max: new Date(2018, 10, 1), onChange };
-    const newState = DateLookup.getDerivedStateFromProps(props, defaultState);
+    DateLookup.getDerivedStateFromProps(props, defaultState);
     expect(onChange).toHaveBeenCalledWith(new Date(2018, 10, 1));
   });
 });

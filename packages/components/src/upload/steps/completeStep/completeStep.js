@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Types from 'prop-types';
 import AlertCircleIcon from '@transferwise/icons/react/alert-circle';
 import DocumentIcon from '@transferwise/icons/react/document';
@@ -20,12 +20,12 @@ const CompleteStep = props => {
       <div className="droppable-card-content ">
         <div>
           {isError ? (
-            <Fragment>
+            <>
               <AlertCircleIcon size="xxl" className="text-danger" />
               {csFailureText && <p className="m-t-2">{csFailureText}</p>}
-            </Fragment>
+            </>
           ) : (
-            <Fragment>
+            <>
               {isImage && uploadedImage ? (
                 <img src={uploadedImage} alt="OK" className="thumbnail " />
               ) : (
@@ -42,7 +42,7 @@ const CompleteStep = props => {
                   <h4>{csSuccessText}</h4>
                 </div>
               )}
-            </Fragment>
+            </>
           )}
         </div>
         {csButtonText && (

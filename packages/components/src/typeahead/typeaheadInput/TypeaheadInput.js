@@ -110,31 +110,31 @@ export default class TypeaheadInput extends Component {
   render() {
     const { multiple, selected, value, maxHeight, renderChip } = this.props;
 
-    if (multiple) {
-      return (
-        <div
-          className="form-control typeahead__input-container"
-          onClick={() => {
-            this.inputRef.focus();
-          }}
-          style={maxHeight && { maxHeight }}
-        >
-          <div className="typeahead__input-wrapper">
-            {selected && selected.map((chip, idx) => renderChip(chip, idx))}
+    return multiple ? (
+      <div
+        className="form-control typeahead__input-container"
+        onClick={() => {
+          this.inputRef.focus();
+        }}
+        style={maxHeight && { maxHeight }}
+      >
+        <div className="typeahead__input-wrapper">
+          {selected && selected.map((chip, idx) => renderChip(chip, idx))}
 
-            {this.renderInput()}
-            <div className="typeahead__input-aligner" />
-          </div>
-          <div
-            ref={ref => {
-              this.sizerRef = ref;
-            }}
-            className="sizer form-control typeahead__input"
-          >
-            {value}
-          </div>
+          {this.renderInput()}
+          <div className="typeahead__input-aligner" />
         </div>
-      );
-    } else return this.renderInput();
+        <div
+          ref={ref => {
+            this.sizerRef = ref;
+          }}
+          className="sizer form-control typeahead__input"
+        >
+          {value}
+        </div>
+      </div>
+    ) : (
+      this.renderInput()
+    );
   }
 }

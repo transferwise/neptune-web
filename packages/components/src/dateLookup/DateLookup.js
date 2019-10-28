@@ -110,9 +110,13 @@ class DateLookup extends PureComponent {
   };
 
   handleOutsideClick = event => {
-    if (!this.state.open) return;
+    if (!this.state.open) {
+      return;
+    }
     const dropdown = this.element.current.querySelector('.dropdown-menu');
-    if (dropdown && !dropdown.contains(event.target)) this.close();
+    if (dropdown && !dropdown.contains(event.target)) {
+      this.close();
+    }
   };
 
   handleKeyDown = event => {
@@ -172,13 +176,18 @@ class DateLookup extends PureComponent {
       date = getStartOfDay(new Date());
     }
     date = moveToWithinRange(date, min, max);
-    if (+date !== +selectedDate) this.props.onChange(date);
+    if (+date !== +selectedDate) {
+      this.props.onChange(date);
+    }
   };
 
   focusOn = (preferredElement, fallbackElement) => {
     const el = this.element.current.querySelector(preferredElement);
-    if (el) el.focus();
-    else if (fallbackElement) this.focusOn(fallbackElement);
+    if (el) {
+      el.focus();
+    } else if (fallbackElement) {
+      this.focusOn(fallbackElement);
+    }
   };
 
   switchMode = mode => {

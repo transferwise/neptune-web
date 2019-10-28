@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
 import './RadioButton.css';
 
 const RadioButton = ({ id, value, name, checked, onChange, disabled, readOnly }) => (
-  <Fragment>
+  <>
     <input
       type="radio"
       className="sr-only"
@@ -26,7 +26,7 @@ const RadioButton = ({ id, value, name, checked, onChange, disabled, readOnly })
     >
       <span className="tw-radio-check" />
     </button>
-  </Fragment>
+  </>
 );
 
 RadioButton.propTypes = {

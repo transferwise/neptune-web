@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { isTypeValid } from './';
 
 const pdfFile = {

@@ -1,10 +1,8 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import CSSTransition from 'react-transition-group/CSSTransition';
 import { shallow, mount } from 'enzyme';
 import DimmerAppendingToBody, { Dimmer, EXIT_ANIMATION } from './Dimmer';
 import { addModalOpenBodyClass, removeModalOpenBodyClass } from '../common';
-import classNames from 'classnames';
 
 const handleOnEnter = () => jest.fn();
 const handleOnClose = () => jest.fn();
@@ -70,7 +68,7 @@ describe('Dimmer', () => {
             className="dimmer"
             onClick={handleOnClick}
             onKeyDown={handleOnKeyDown}
-            children={null}
+            children={null} // eslint-disable-line react/no-children-prop
           />
         ),
       }),

@@ -1,3 +1,7 @@
+# v15.1.1
+## Use @transferwise/eslint-config
+The version is changed as the bundle will change due to complying with the new rules.
+
 # v15.1.0
 ## Add search by phone value PhoneNumberInput and added country grouping
 

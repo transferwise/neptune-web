@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import Select from '../select';
@@ -180,7 +180,7 @@ export default class MoneyInput extends Component {
             )}
           >
             {size === 'lg' && (
-              <Fragment>
+              <>
                 <i className={classNames(this.style('tw-money-input__keyline'))} />
                 <i
                   className={classNames(
@@ -190,7 +190,7 @@ export default class MoneyInput extends Component {
                     this.style('m-r-2'),
                   )}
                 />
-              </Fragment>
+              </>
             )}
             <span className={size === 'lg' ? this.style('m-r-1') : ''}>
               {selectedCurrency.currency.toUpperCase()}

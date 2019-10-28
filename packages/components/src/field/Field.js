@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
@@ -234,17 +234,17 @@ export default class Field extends Component {
     } else if (error && errorMessage) {
       return {
         type: AlertType.Error,
-        content: <Fragment>{errorMessage}</Fragment>,
+        content: <>{errorMessage}</>,
       };
     } else if (warningMessage) {
       return {
         type: AlertType.Warning,
-        content: <Fragment>{warningMessage}</Fragment>,
+        content: <>{warningMessage}</>,
       };
     } else if (focused && field.help && field.help.message) {
       return {
         type: AlertType.Info,
-        content: <Fragment>{field.help.message}</Fragment>,
+        content: <>{field.help.message}</>,
       };
     } else if (focused && field.help && field.help.list && field.help.list.length > 0) {
       return {

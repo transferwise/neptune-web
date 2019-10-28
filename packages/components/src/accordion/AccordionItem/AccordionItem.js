@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 import Chevron, { Orientation, Size } from '../../common/Chevron';
 
@@ -21,7 +21,7 @@ class AccordionItem extends PureComponent {
     const { title, content } = this.props;
     const { isOpen } = this.state;
     return (
-      <Fragment>
+      <>
         {/* eslint-disable-next-line jsx-a11y/label-has-for */}
         <label onClick={this.toggle} className="accordion-item decision p-a-0">
           <div className="media p-y-3">
@@ -32,7 +32,7 @@ class AccordionItem extends PureComponent {
           </div>
           {isOpen && <div className="p-b-3">{content}</div>}
         </label>
-      </Fragment>
+      </>
     );
   }
 }

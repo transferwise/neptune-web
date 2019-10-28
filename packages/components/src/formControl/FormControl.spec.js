@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import FormControl from './';
-import Radio from '../radio';
 import Select from '../select';
 import Checkbox from '../checkbox/Checkbox';
 import DateInput from '../dateInput/DateInput';
@@ -353,37 +352,37 @@ describe('FormControl', () => {
     });
   });
 
-  function testAutoComplete(controlType, controlSelector) {
-    let control;
+  // function testAutoComplete(controlType, controlSelector) {
+  //   let control;
 
-    describe(`when autoComplete is enabled for a ${controlType} control`, () => {
-      beforeEach(() => {
-        props = {
-          type: controlType,
-          autoComplete: true,
-        };
-        control = shallow(<FormControl {...{ ...defaultProps, ...props }} />).find(controlSelector);
-      });
+  //   describe(`when autoComplete is enabled for a ${controlType} control`, () => {
+  //     beforeEach(() => {
+  //       props = {
+  //         type: controlType,
+  //         autoComplete: true,
+  //       };
+  //       control = shallow(<FormControl {...{ ...defaultProps, ...props }} />).find(controlSelector);
+  //     });
 
-      it('should disable autocomplete', () => {
-        expect(control.prop('autoComplete')).toBe('on');
-      });
-    });
+  //     it('should disable autocomplete', () => {
+  //       expect(control.prop('autoComplete')).toBe('on');
+  //     });
+  //   });
 
-    describe(`when autoComplete is not enabled for a ${controlType} control`, () => {
-      beforeEach(() => {
-        props = {
-          type: controlType,
-          autoComplete: false,
-        };
-        control = shallow(<FormControl {...{ ...defaultProps, ...props }} />).find(controlSelector);
-      });
+  //   describe(`when autoComplete is not enabled for a ${controlType} control`, () => {
+  //     beforeEach(() => {
+  //       props = {
+  //         type: controlType,
+  //         autoComplete: false,
+  //       };
+  //       control = shallow(<FormControl {...{ ...defaultProps, ...props }} />).find(controlSelector);
+  //     });
 
-      it('should enable autocomplete', () => {
-        expect(control.prop('autoComplete')).toBe('disabled');
-      });
-    });
-  }
+  //     it('should enable autocomplete', () => {
+  //       expect(control.prop('autoComplete')).toBe('disabled');
+  //     });
+  //   });
+  // }
 
   function testSimpleControl(controlType, selector, valueToSet, placeholder) {
     let input;

@@ -113,9 +113,9 @@ describe('DateLookup (events)', () => {
 
   it('updates selected date and closes', () => {
     component.setState({ open: true });
-    const date = new Date(2018, 11, 28);
-    component.instance().handleSelectedDateUpdate(date);
-    expect(props.onChange).toHaveBeenCalledWith(date);
+    const d = new Date(2018, 11, 28);
+    component.instance().handleSelectedDateUpdate(d);
+    expect(props.onChange).toHaveBeenCalledWith(d);
     expect(component.instance().state.open).toBe(false);
     expect(document.activeElement.className).toContain('btn');
   });

@@ -62,6 +62,10 @@ DefinitionListItem.propTypes = {
     title: Types.string.isRequired,
     type: Types.string.isRequired,
     width: Types.string,
+    tagClassName: {
+      h3: Types.bool,
+    },
+    values: Types.arrayOf(Types.shape({ value: Types.any })),
   }).isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   value: Types.any.isRequired,

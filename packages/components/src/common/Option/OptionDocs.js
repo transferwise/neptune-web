@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Types from 'prop-types';
 import FastFlagIcon from '@transferwise/icons/react/fast-flag'; // eslint-disable-line import/no-extraneous-dependencies
 
@@ -48,7 +48,7 @@ class OptionDocs extends Component {
     const { complex, disabled } = this.state;
 
     const Code = () => (
-      <Fragment>
+      <>
         {/* eslint-disable react/jsx-indent */}
         <pre className="tw-docs-code">
           {`<${name}
@@ -64,7 +64,7 @@ class OptionDocs extends Component {
 />`}
         </pre>
         {/* eslint-enable react/jsx-indent */}
-      </Fragment>
+      </>
     );
 
     return (

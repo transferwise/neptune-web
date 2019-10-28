@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import Alert, { AlertType, AlertSize, AlertArrowPosition } from './Alert';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
@@ -12,11 +12,11 @@ const CONTENT_EXAMPLES = [
   {
     label: 'List of Message',
     value: (
-      <Fragment>
+      <>
         <div>item 1</div>
         <div>item 2</div>
         <div>item 3</div>
-      </Fragment>
+      </>
     ),
   },
 ];

@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 
 class TableLink extends PureComponent {
@@ -28,7 +28,7 @@ class TableLink extends PureComponent {
   render() {
     const { item, type, title, longTitle, active, disabled, today } = this.props;
     return (
-      <Fragment>
+      <>
         {/* eslint-disable jsx-a11y/anchor-is-valid */}
         <a
           href=""
@@ -43,7 +43,7 @@ class TableLink extends PureComponent {
           {title || item}
         </a>
         {/* eslint-enable jsx-a11y/anchor-is-valid */}
-      </Fragment>
+      </>
     );
   }
 }

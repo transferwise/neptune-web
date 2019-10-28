@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { isSizeValid } from './';
 
 const MAXSIZE = 5000;

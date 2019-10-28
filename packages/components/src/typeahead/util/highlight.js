@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 export default function hightlight(value, query) {
   if (value && query) {
@@ -6,11 +6,11 @@ export default function hightlight(value, query) {
     const highlightEnd = highlightStart + query.trim().length;
     if (highlightStart !== -1) {
       return (
-        <Fragment>
+        <>
           {value.substring(0, highlightStart)}
           <strong>{value.substring(highlightStart, highlightEnd)}</strong>
           {value.substring(highlightEnd)}
-        </Fragment>
+        </>
       );
     }
   }

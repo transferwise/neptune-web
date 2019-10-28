@@ -3,6 +3,8 @@
 // in Singapore it is 1 Jan 1995.
 // You might want to use/implement `getUTCStartOfDay` if you want it to be 1995 in any timezone
 export function getStartOfDay(date) {
-  if (!date) return null;
+  if (!date) {
+    return null;
+  }
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }

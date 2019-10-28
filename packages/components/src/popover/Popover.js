@@ -1,4 +1,4 @@
-import React, { Component, Fragment, cloneElement } from 'react';
+import React, { Component, cloneElement } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
@@ -98,7 +98,7 @@ export default class Popover extends Component {
     const { top, left } = getPositionRelativeToParent(this.popoverElement, placement);
 
     return (
-      <Fragment>
+      <>
         {trigger}
         <div
           className={popoverClassName}
@@ -112,7 +112,7 @@ export default class Popover extends Component {
             {content}
           </p>
         </div>
-      </Fragment>
+      </>
     );
   }
 }

@@ -16,7 +16,7 @@ const Status = {
 };
 
 const radius = { xs: 11, sm: 22, xl: 61 };
-const ANIMATION_DURATION_IN_MS = 1500;
+export const ANIMATION_DURATION_IN_MS = 1500;
 
 class ProcessIndicator extends Component {
   static propTypes = {

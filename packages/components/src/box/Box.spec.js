@@ -1,8 +1,7 @@
-import React from 'react';
 import serializer from 'jest-emotion';
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer'; // eslint-disable-line import/no-extraneous-dependencies
 
 import Box from './';
 
