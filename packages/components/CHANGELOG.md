@@ -1,3 +1,6 @@
+# v15.1.2
+## Update Snackbar to accept elements as text
+
 # v15.1.1
 ## Use @transferwise/eslint-config
 The version is changed as the bundle will change due to complying with the new rules.

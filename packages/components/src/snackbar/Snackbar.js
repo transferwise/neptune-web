@@ -101,7 +101,7 @@ Snackbar.propTypes = {
     label: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
   }),
-  text: PropTypes.string.isRequired,
+  text: PropTypes.node.isRequired,
   timeout: PropTypes.number.isRequired,
   timestamp: PropTypes.number.isRequired,
 };

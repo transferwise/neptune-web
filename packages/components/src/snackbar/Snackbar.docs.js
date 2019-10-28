@@ -39,7 +39,7 @@ import '@transferwise/neptune-css/dist/css/snackbar.css';
 
 <SnackbarProvider>
     <SnackbarConsumer>
-        {({ createSnackbar }) => <button onClick={() => createSnackbar({ text: 'Did someone say snacks?' })}></button>}
+        {({ createSnackbar }) => <button onClick={() => createSnackbar({ text: <span>Did someone say snacks?</span> })}></button>}
     </SnackbarConsumer>
 </SnackbarProvider>
 `}
@@ -48,7 +48,7 @@ import '@transferwise/neptune-css/dist/css/snackbar.css';
                 <pre className="tw-docs-code ">
                   {`const App = () => {
   const createSnackbar = useSnackbar();
-  return <button onClick={() => createSnackbar({ text: 'Did someone say snacks?' })}></button>
+  return <button onClick={() => createSnackbar({ text: <span>Did someone say snacks?</span> })}></button>
 };
 `}
                 </pre>
@@ -66,7 +66,7 @@ import '@transferwise/neptune-css/dist/css/snackbar.css';
                           block
                           onClick={() =>
                             createSnackbar({
-                              text,
+                              text: <span>{text}</span>,
                               action: withAction
                                 ? {
                                     label: 'Bite me',

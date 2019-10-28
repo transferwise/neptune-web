@@ -20,7 +20,7 @@ Work that still needs doing:
 
 1. Clone the repo
 2. Run `npm install` to install dependencies. 
-3. Then run `npm start` to get a live-reloading dev environment
+3. Then run `npm run dev` to get a live-reloading dev environment
 4. **For tests** run `npm run test:watch` to run livereloading tests.
 
 

@@ -46,6 +46,26 @@ describe('Snackbar', () => {
     expect(createPortal).toBeCalledWith(<Snackbar {...props} />, document.body);
   });
 
+  it('accepts element as text', async () => {
+    const componentWithNode = mount(
+      <SnackbarProvider timeout={1000}>
+        <SnackbarConsumer>
+          {({ createSnackbar }) => (
+            <button
+              className="button-trigger"
+              onClick={() => createSnackbar({ text: <span>test</span> })}
+            >
+              Trigger
+            </button>
+          )}
+        </SnackbarConsumer>
+      </SnackbarProvider>,
+    );
+    const snackbarWithNode = () => componentWithNode.find(Snackbar);
+    componentWithNode.find('.button-trigger').simulate('click');
+    expect(snackbarWithNode().text()).toContain('test');
+  });
+
   it('displays a single snack for the given duration with the given text', async () => {
     expect(snackbar().text()).not.toContain(props.text);
     buttonTrigger().simulate('click');
