@@ -9,6 +9,7 @@ const withMDX = require('@next/mdx')({
     rehypePlugins: [rehypeSlug, rehypePrism],
   },
 });
+const withTM = require('next-transpile-modules');
 
 const pageExtensions = ['js', 'mdx'];
 
@@ -19,16 +20,19 @@ const assetPrefix =
     : '';
 
 module.exports = () =>
-  withImages(
-    withFonts(
-      withCSS(
-        withMDX({
-          pageExtensions,
-          assetPrefix,
-          env: {
-            ASSET_PREFIX: assetPrefix,
-          },
-        }),
+  withTM(
+    withImages(
+      withFonts(
+        withCSS(
+          withMDX({
+            transpileModules: ['@transferwise/components'],
+            pageExtensions,
+            assetPrefix,
+            env: {
+              ASSET_PREFIX: assetPrefix,
+            },
+          }),
+        ),
       ),
     ),
   );

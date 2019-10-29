@@ -5,13 +5,11 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev-new": "next dev",
     "build": "next build",
-    "docs:build": "next export -o docs-build && touch docs-build/.nojekyll",
-    "docs:deploy": "gh-pages --dotfiles -a -d docs-build",
-    "docs:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
-    "docs-new:build": "//gh-pages --dotfiles -a -d docs-build",
-    "docs-new:deploy": "//deploy-directory-on-branch-to-gh-pages -d docs-build",
+    "docs-new:build": "gh-pages --dotfiles -a -d docs-build",
+    "docs-new:deploy": "deploy-directory-on-branch-to-gh-pages -d docs-build",
+    "docs-new:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
     "lint": "yarn lint:eslint && lint:prettier",
     "lint:check": "eslint components/ pages/",
     "lint:eslint": "eslint --fix components/ pages/",
@@ -36,7 +34,7 @@
     "@mapbox/rehype-prism": "^0.3.1",
     "@mdx-js/loader": "^1.4.4",
     "@next/mdx": "^9.0.5",
-    "@transferwise/components": "^12.4.1",
+    "@transferwise/components": "^15.2.2",
     "@transferwise/neptune-css": "^0.8.9",
     "@zeit/next-css": "^1.0.1",
     "bootstrap": "transferwise/bootstrap",
@@ -49,7 +47,8 @@
     "prop-types": "^15.7.2",
     "refractor": "^2.10.0",
     "rehype": "^9.0.0",
-    "rehype-slug": "^2.0.3"
+    "rehype-slug": "^2.0.3",
+    "next-transpile-modules": "^2.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

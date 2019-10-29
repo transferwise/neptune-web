@@ -17,7 +17,7 @@ import {
   getVelocity,
 } from './utils';
 
-import './Tabs.less';
+import './Tabs.css';
 
 const MIN_INDEX = 0;
 

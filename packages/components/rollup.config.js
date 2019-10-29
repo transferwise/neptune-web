@@ -14,7 +14,7 @@ const external = ['react', 'react-dom', 'prop-types'];
 // https://github.com/rollup/rollup/issues/2671
 // https://github.com/rollup/rollup-plugin-commonjs
 const namedExports = {
-  'node_modules/@transferwise/formatting/dist/formatting.js': [
+  '../../node_modules/@transferwise/formatting/dist/formatting.js': [
     'formatAmount',
     'formatMoney',
     'formatDate',
@@ -30,15 +30,9 @@ const globals = {
 
 // Babel
 const babelrc = false;
-const babelPlugins = [
-  '@babel/plugin-proposal-class-properties'
-];
-const exclude = 'node_modules/**';
-const presets = [
-  "@babel/env",
-  "@babel/preset-react"
-];
-
+const babelPlugins = ['@babel/plugin-proposal-class-properties'];
+const exclude = ['node_modules/**', '../../node_modules/**'];
+const presets = ['@babel/env', '@babel/preset-react'];
 
 const DEFAULT_BABEL_CONFIG = { babelrc, presets, plugins: babelPlugins, exclude };
 
@@ -61,9 +55,7 @@ const plugins = [
 export default [
   {
     input,
-    output: [
-      { file: './build/main.js', name: pkg.name, format: 'umd', globals },
-    ],
+    output: [{ file: './build/main.js', name: pkg.name, format: 'umd', globals }],
     external,
     plugins,
   },
