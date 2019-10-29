@@ -1,3 +1,9 @@
+# v15.2.1
+## Define CSS files as `sideEffects`
+We were experiencing issues with `es` modules and `next`: CSS from components was not included in the extracted CSS chunk. Initially I thought this is an issue in `next-css` or `next-transpile-modules` but the output was fixed by changing the `sideEffects` flag. 
+
+https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free
+
 # v15.2.0
 ## Add swipeable Tabs component
 

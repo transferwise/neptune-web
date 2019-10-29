@@ -1,12 +1,12 @@
 {
   "name": "@transferwise/components",
-  "version": "15.2.0",
+  "version": "15.2.1",
   "description": "TransferWise styleguide components in react",
   "license": "MIT",
   "main": "./lib/index.js",
   "module": "./lib/index.js",
   "style": "./build/main.css",
-  "sideEffects": false,
+  "sideEffects": ["*.css"],
   "repository": {
     "fullname": "transferwise/components",
     "type": "git",
