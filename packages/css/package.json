@@ -45,7 +45,8 @@
   "dependencies": {
     "@transferwise/icons": "^0.14.0",
     "bootstrap": "github:transferwise/bootstrap#v5.18.15",
-    "transferwise-iconfont": "transferwise/iconfont"
+    "transferwise-iconfont": "transferwise/iconfont",
+    "svgo": "1.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.1",
@@ -71,5 +72,8 @@
   "peerDependencies": {
     "@transferwise/eslint-config": "^2.1.0"
   },
-  "prettier": "@transferwise/eslint-config/.prettierrc.js"
+  "prettier": "@transferwise/eslint-config/.prettierrc.js",
+  "resolutions": {
+    "svgo": "1.3.0"
+  }
 }

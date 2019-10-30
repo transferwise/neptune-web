@@ -1,6 +1,6 @@
 # Neptune CSS 🔱
 
-The CSS library of Transferwise's Design System: Neptune
+The CSS library of TransferWise's Design System: Neptune
 
 To document the components please use the [Neptune Docs](https://github.com/transferwise/neptune/tree/master/packages/docs).
 
