@@ -5,6 +5,7 @@ import { FormControlType } from './FormControlType';
 import { Sizes } from '../../src/common';
 
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
+import { DateMode, MonthFormat } from '../common/dateUtils';
 
 const TYPES = [
   { value: FormControlType.CHECKBOX, label: 'Checkbox' },
@@ -58,6 +59,28 @@ const KNOBS = {
       label: 'Value',
       state: 'value',
       defaultState: false,
+    },
+  ],
+  dateKnob: [
+    {
+      type: 'select',
+      label: 'Mode',
+      state: 'mode',
+      options: Object.values(DateMode).map(value => ({
+        label: value,
+        value,
+      })),
+      defaultState: { value: DateMode.DAY_MONTH_YEAR, label: DateMode.DAY_MONTH_YEAR },
+    },
+    {
+      type: 'select',
+      label: 'MonthFormat',
+      state: 'monthFormat',
+      options: Object.values(MonthFormat).map(value => ({
+        label: value,
+        value,
+      })),
+      defaultState: { value: MonthFormat.LONG, label: MonthFormat.LONG },
     },
   ],
 };
@@ -117,6 +140,8 @@ export default class FormControlDocs extends Component {
       value,
       searchPlaceholder,
       label,
+      mode,
+      monthFormat,
     } = this.state;
 
     const extraProps = {
@@ -159,6 +184,8 @@ export default class FormControlDocs extends Component {
                 max={max}
                 minDate={null}
                 maxDate={null}
+                mode={mode.value}
+                monthFormat={monthFormat.value}
                 value={value}
                 searchPlaceholder={searchPlaceholder}
                 size={Sizes.MEDIUM}
@@ -186,6 +213,8 @@ export default class FormControlDocs extends Component {
                   KNOBS.numberKnob.map(knob => generateInput(knob, this))}
                 {type.value === FormControlType.TEXT &&
                   KNOBS.textKnob.map(knob => generateInput(knob, this))}
+                {type.value === FormControlType.DATE &&
+                  KNOBS.dateKnob.map(knob => generateInput(knob, this))}
               </div>
             </div>
           </div>

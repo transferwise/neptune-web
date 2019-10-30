@@ -12,7 +12,7 @@ import TextareaWithDisplayFormat from '../textareaWithDisplayFormat';
 import Upload from '../upload';
 
 import { Sizes } from '../common';
-import { MonthFormat } from '../common/dateUtils';
+import { MonthFormat, DateMode } from '../common/dateUtils';
 
 import './FormControl.css';
 
@@ -54,6 +54,7 @@ export default class FormControl extends PureComponent {
     max: Types.number,
     minDate: Types.instanceOf(Date),
     maxDate: Types.instanceOf(Date),
+    mode: Types.oneOf([DateMode.DAY_MONTH_YEAR, DateMode.MONTH_YEAR]),
     displayPattern: Types.string,
     value: Types.oneOfType([Types.string, Types.number, Types.bool, Types.object]),
     // @TODO To be implemented in a second iteration.
@@ -128,6 +129,7 @@ export default class FormControl extends PureComponent {
     displayPattern: null,
     label: '',
     monthFormat: MonthFormat.LONG,
+    mode: DateMode.DAY_MONTH_YEAR,
     selectedOption: null,
   };
 
@@ -221,6 +223,7 @@ export default class FormControl extends PureComponent {
       minDate,
       maxDate,
       value,
+      mode,
     } = this.props;
 
     switch (type) {
@@ -325,6 +328,7 @@ export default class FormControl extends PureComponent {
             onFocus={this.handleOnFocus}
             size={size}
             value={value}
+            mode={mode}
             monthFormat={monthFormat}
           />
         );

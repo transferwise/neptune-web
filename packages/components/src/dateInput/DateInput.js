@@ -5,17 +5,12 @@ import Select from '../select';
 
 import { Sizes } from '../common';
 import { explodeDate, convertToLocalMidnight } from './utils';
-import { getMonthNames, isDateValid, MonthFormat } from '../common/dateUtils';
+import { getMonthNames, isDateValid, MonthFormat, DateMode } from '../common/dateUtils';
 
 const DEFAULT_LOCALE = 'en-GB';
 
 const MonthBeforeDay = ['en-US', 'ja-JP'];
 const INITIAL_DEFAULT_STATE = { year: null, month: 0, day: null };
-
-const MODE = {
-  DAY_MONTH_YEAR: 'day-month-year',
-  MONTH_YEAR: 'month-year',
-};
 
 class DateInput extends PureComponent {
   static propTypes = {
@@ -30,7 +25,7 @@ class DateInput extends PureComponent {
     monthLabel: Types.string,
     yearLabel: Types.string,
     monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]),
-    mode: Types.oneOf([MODE.DAY_MONTH_YEAR, MODE.MONTH_YEAR]),
+    mode: Types.oneOf([DateMode.DAY_MONTH_YEAR, DateMode.MONTH_YEAR]),
   };
 
   static defaultProps = {
@@ -44,7 +39,7 @@ class DateInput extends PureComponent {
     monthLabel: 'Month',
     yearLabel: 'Year',
     monthFormat: MonthFormat.LONG,
-    mode: MODE.DAY_MONTH_YEAR,
+    mode: DateMode.DAY_MONTH_YEAR,
   };
 
   constructor(props) {
@@ -71,9 +66,9 @@ class DateInput extends PureComponent {
   getDateAsString = date => {
     const { mode } = this.props;
     switch (mode) {
-      case MODE.MONTH_YEAR:
+      case DateMode.MONTH_YEAR:
         return [date.getFullYear(), `0${date.getMonth() + 1}`.slice(-2)].join('-');
-      case MODE.DAY_MONTH_YEAR:
+      case DateMode.DAY_MONTH_YEAR:
       default:
         return [
           date.getFullYear(),
@@ -205,7 +200,7 @@ class DateInput extends PureComponent {
     const { disabled, size, dayLabel, yearLabel, mode } = this.props;
     const { day, year, monthBeforeDay } = this.state;
 
-    const monthYearOnly = mode === MODE.MONTH_YEAR;
+    const monthYearOnly = mode === DateMode.MONTH_YEAR;
     const monthWidth = monthYearOnly ? 'col-sm-8' : 'col-sm-5';
 
     return (

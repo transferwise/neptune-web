@@ -176,10 +176,11 @@ workflows:
             branches:
               ignore:
                 - gh-pages
-#      - publish:
-#          context: frontend-deploy-library
-#          requires:
-#            - build
-#          filters:
-#            branches:
-#              only: master
+
+      - publish:
+          context: frontend-deploy-library
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
