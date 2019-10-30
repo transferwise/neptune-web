@@ -30,6 +30,8 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
     "@transferwise/eslint-config": "^2.1.0",
     "babel-eslint": "^10.0.3",
     "deploy-directory-on-branch-to-gh-pages": "^0.2.5",
@@ -85,5 +87,10 @@
       "git add"
     ]
   },
-  "prettier": "@transferwise/eslint-config/.prettierrc.js"
+  "prettier": "@transferwise/eslint-config/.prettierrc.js",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
 }

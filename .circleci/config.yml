@@ -49,6 +49,14 @@ aliases:
     name: Lint packages
     command: yarn lint:check
 
+  - &conventional-commit-lint
+    name: Conventional Commits check
+    command: npx commitlint -f $(git rev-parse master) -V
+
+  - &get-first-commit-hash
+    name: Conventional Commits check
+    command: |
+
   - &test
     name: Test packages
     command: yarn test
@@ -66,11 +74,17 @@ aliases:
       git config --global user.name "CircleCI"
 
 jobs:
-  build:
+  install:
     <<: *container
     steps:
       - checkout
       - run: *install
+      - *persist-workspace
+
+  build:
+    <<: *container
+    steps:
+      - *attach-workspace
       - run: *build
       - *persist-workspace
 
@@ -99,6 +113,12 @@ jobs:
       - run: *deploy-docs-for-branch
       - *persist-workspace
 
+  conventional-commit-lint:
+    <<: *container
+    steps:
+      - *attach-workspace
+      - run: *conventional-commit-lint
+
   publish:
     <<: *container
     steps:
@@ -112,11 +132,19 @@ workflows:
   version: 2
   build-deploy-release:
     jobs:
+      - install:
+          context: frontend-build
+          filters:
+            branches:
+              ignore: gh-pages
+
       - build:
           context: frontend-build
           filters:
             branches:
               ignore: gh-pages
+          requires:
+            - install
 
       - test:
           requires:
@@ -139,6 +167,15 @@ workflows:
               ignore:
                 - gh-pages
                 - master
+
+      - conventional-commit-lint:
+          context: frontend-build
+          requires:
+            - install
+          filters:
+            branches:
+              ignore:
+                - gh-pages
 #      - publish:
 #          context: frontend-deploy-library
 #          requires:
