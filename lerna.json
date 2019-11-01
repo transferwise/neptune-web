@@ -3,14 +3,12 @@
     "publish": {
       "allowBranch": "master",
       "conventionalCommits": true,
-      "verifyAccess": false
+      "verifyAccess": false,
+      "ignoreChanges": ["*.md", "*.spec.js", "*.yml"]
     }
   },
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": [
-    "packages/*"
-  ],
-  "version": "independent",
-  "ignoreChanges": ["**/*.md", "**/*.spec.js"]
+  "packages": ["packages/*"],
+  "version": "independent"
 }
