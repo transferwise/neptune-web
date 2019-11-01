@@ -156,7 +156,7 @@
     "@emotion/core": "^10.0.14",
     "@transferwise/formatting": "^2.1.0",
     "@transferwise/icons": "^1.0.0",
-    "@transferwise/neptune-css": "^0.8.1",
+    "@transferwise/neptune-css": "^0.8.11",
     "classnames": "^2.2.6",
     "lodash.clamp": "^4.0.3",
     "lodash.debounce": "^4.0.8",

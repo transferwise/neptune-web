@@ -35,7 +35,7 @@
     "@mdx-js/loader": "^1.4.4",
     "@next/mdx": "^9.0.5",
     "@transferwise/components": "^15.2.2",
-    "@transferwise/neptune-css": "^0.8.9",
+    "@transferwise/neptune-css": "^0.8.11",
     "@zeit/next-css": "^1.0.1",
     "bootstrap": "transferwise/bootstrap",
     "git-branch": "^2.0.1",
