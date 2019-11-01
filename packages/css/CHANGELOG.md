@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.12](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.9...@transferwise/neptune-css@0.8.12) (2019-11-01)
+
+
+### Bug Fixes
+
+* update svgo version ([#45](https://github.com/transferwise/neptune/issues/45)) ([2dcf22b](https://github.com/transferwise/neptune/commit/2dcf22b5f2f5a2e4c575fa9b6c9caa439b32068d))
+
+
+
+
+
 ## [0.8.9](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.8...@transferwise/neptune-css@0.8.9) (2019-09-19)
 
 **Note:** Version bump only for package @transferwise/neptune-css

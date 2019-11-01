@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-docs",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "TransferWise Design System",
   "main": "index.js",
   "private": true,
@@ -34,8 +34,8 @@
     "@mapbox/rehype-prism": "^0.3.1",
     "@mdx-js/loader": "^1.4.4",
     "@next/mdx": "^9.0.5",
-    "@transferwise/components": "^15.2.2",
-    "@transferwise/neptune-css": "^0.8.11",
+    "@transferwise/components": "^15.3.0",
+    "@transferwise/neptune-css": "^0.8.12",
     "@zeit/next-css": "^1.0.1",
     "bootstrap": "transferwise/bootstrap",
     "git-branch": "^2.0.1",
@@ -43,12 +43,12 @@
     "next-fonts": "^0.18.0",
     "next-images": "^1.1.2",
     "next-page-map": "^1.0.1",
+    "next-transpile-modules": "^2.3.1",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
     "refractor": "^2.10.0",
     "rehype": "^9.0.0",
-    "rehype-slug": "^2.0.3",
-    "next-transpile-modules": "^2.3.1"
+    "rehype-slug": "^2.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

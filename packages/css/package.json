@@ -1,7 +1,7 @@
 {
   "name": "@transferwise/neptune-css",
   "description": "Neptune CSS is TransferWise's Design System CSS library",
-  "version": "0.8.11",
+  "version": "0.8.12",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -45,8 +45,8 @@
   "dependencies": {
     "@transferwise/icons": "^0.14.0",
     "bootstrap": "github:transferwise/bootstrap#v5.18.15",
-    "transferwise-iconfont": "transferwise/iconfont",
-    "svgo": "1.3.0"
+    "svgo": "1.3.0",
+    "transferwise-iconfont": "transferwise/iconfont"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.1",
