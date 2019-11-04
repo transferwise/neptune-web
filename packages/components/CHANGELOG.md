@@ -4,27 +4,8 @@ All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 # 15.3.0 (2019-11-01)
-
-
-### Bug Fixes
-
-* adds max-width to modal title ([#240](https://github.com/transferwise/components/issues/240)) ([e3ab8c4](https://github.com/transferwise/components/commit/e3ab8c40bc39df13c0317414091c2e787400b61a))
-* fix button docs ([#181](https://github.com/transferwise/components/issues/181)) ([ea80b11](https://github.com/transferwise/components/commit/ea80b11ccd54c9fefa76f0d5a2a881108a50b8ec))
-* searchValue prop propagation in field and formControl ([#300](https://github.com/transferwise/components/issues/300)) ([1c63db0](https://github.com/transferwise/components/commit/1c63db0b825973f9442df4c375a32e1bd37d5727))
-
-
-### Features
-
-* can now disable options in Select component ([#218](https://github.com/transferwise/components/issues/218)) ([ae06bb8](https://github.com/transferwise/components/commit/ae06bb8fe48f738589812d38f21d3b6fd2df6023))
-* Can show months in short format in DateInput ([#186](https://github.com/transferwise/components/issues/186)) ([72d7318](https://github.com/transferwise/components/commit/72d7318ac64cf42a8cdaa1bf9d85589a075a2738))
-* enable sideEffects ([#328](https://github.com/transferwise/components/issues/328)) ([847075d](https://github.com/transferwise/components/commit/847075decd191568b39086f424be43936a4997d2))
-* implement InstructionsList component ([#104](https://github.com/transferwise/components/issues/104)) ([287d166](https://github.com/transferwise/components/commit/287d166914fcbba424e1c1f786230d3f5fb71cd8))
 * mode prop for DateInput ([#236](https://github.com/transferwise/components/issues/236)) ([c0f30fd](https://github.com/transferwise/components/commit/c0f30fd8e755c4035d9e7a73f97dd237dd01eea9))
 * propagate mode field to DateInput from FormControl ([#47](https://github.com/transferwise/components/issues/47)) ([0fdb7b0](https://github.com/transferwise/components/commit/0fdb7b01ee20ee9adf325bc313295aaef0aa8a42))
-
-
-
-
 
 # v15.2.2
 ## Fix wrong less import
