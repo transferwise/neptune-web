@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.4.0](https://github.com/transferwise/components/compare/@transferwise/components@15.3.0...@transferwise/components@15.4.0) (2019-11-04)
+
+
+### Features
+
+* expose snackbar ([#54](https://github.com/transferwise/components/issues/54)) ([0e5cc7d](https://github.com/transferwise/components/commit/0e5cc7dc9bbb8a87f42060956c4bcc722a2e06ef))
+
+
+
+
+
 # 15.3.0 (2019-11-01)
 * mode prop for DateInput ([#236](https://github.com/transferwise/components/issues/236)) ([c0f30fd](https://github.com/transferwise/components/commit/c0f30fd8e755c4035d9e7a73f97dd237dd01eea9))
 * propagate mode field to DateInput from FormControl ([#47](https://github.com/transferwise/components/issues/47)) ([0fdb7b0](https://github.com/transferwise/components/commit/0fdb7b01ee20ee9adf325bc313295aaef0aa8a42))
