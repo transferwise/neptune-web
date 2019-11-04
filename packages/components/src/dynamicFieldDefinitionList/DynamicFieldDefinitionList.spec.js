@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import DefinitionList from './DefinitionList';
+import DynamicFieldDefinitionList from './DynamicFieldDefinitionList';
 
-import DefinitionListItem from './DefinitionListItem';
+import DynamicFieldDefinitionListItem from './DynamicFieldDefinitionListItem';
 
-describe('DefinitionList', () => {
+describe('DynamicFieldDefinitionList', () => {
   let props;
   let component;
 
@@ -22,7 +22,7 @@ describe('DefinitionList', () => {
           },
         },
       };
-      component = shallow(<DefinitionList {...props} />);
+      component = shallow(<DynamicFieldDefinitionList {...props} />);
     });
 
     it('should have an element with col-sm-6 class', () => {
@@ -52,7 +52,7 @@ describe('DefinitionList', () => {
           },
         },
       };
-      component = shallow(<DefinitionList {...props} />);
+      component = shallow(<DynamicFieldDefinitionList {...props} />);
     });
 
     it('should not have an element with col-sm-6 class', () => {
@@ -82,7 +82,7 @@ describe('DefinitionList', () => {
           },
         },
       };
-      component = shallow(<DefinitionList {...props} />);
+      component = shallow(<DynamicFieldDefinitionList {...props} />);
     });
 
     it('should not have an element with col-sm-6 class', () => {
@@ -100,7 +100,7 @@ describe('DefinitionList', () => {
     });
   });
 
-  it('passes data to DefinitionListItem', () => {
+  it('passes data to DynamicFieldDefinitionListItem', () => {
     props = {
       model: { key: '2000-01-01T00:00:00Z' },
       fields: {
@@ -110,15 +110,17 @@ describe('DefinitionList', () => {
         },
       },
     };
-    component = shallow(<DefinitionList {...props} />);
+    component = shallow(<DynamicFieldDefinitionList {...props} />);
 
-    expect(component.find(DefinitionListItem).prop('field')).toEqual({
+    expect(component.find(DynamicFieldDefinitionListItem).prop('field')).toEqual({
       control: 'date',
       format: 'date',
       title: 'Date label',
       type: 'string',
     });
-    expect(component.find(DefinitionListItem).prop('value')).toEqual('2000-01-01T00:00:00Z');
-    expect(component.find(DefinitionListItem).prop('locale')).toEqual('en-GB');
+    expect(component.find(DynamicFieldDefinitionListItem).prop('value')).toEqual(
+      '2000-01-01T00:00:00Z',
+    );
+    expect(component.find(DynamicFieldDefinitionListItem).prop('locale')).toEqual('en-GB');
   });
 });

@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import DefinitionListItem from './DefinitionListItem';
+import DynamicFieldDefinitionListItem from './DynamicFieldDefinitionListItem';
 import { prepFields } from '../common/requirements';
 
 const LAYOUTS = ['vertical', 'horizontal', 'justified'];
 
-class DefinitionList extends PureComponent {
+class DynamicFieldDefinitionList extends PureComponent {
   static propTypes = {
     model: Types.shape({}).isRequired,
     fields: Types.shape({}).isRequired,
@@ -64,7 +64,11 @@ class DefinitionList extends PureComponent {
                         'text-word-break text-sm-right': layout === LAYOUTS[2],
                       })}
                     >
-                      <DefinitionListItem field={field} value={model[key]} locale={locale} />
+                      <DynamicFieldDefinitionListItem
+                        field={field}
+                        value={model[key]}
+                        locale={locale}
+                      />
                     </dd>
                   </dl>
                 )}
@@ -74,7 +78,7 @@ class DefinitionList extends PureComponent {
                     <dt>{field.title}</dt>
                     <dd className="text-word-break">
                       {field.group.map((fieldSection, fieldSectionIndex) => (
-                        <DefinitionListItem
+                        <DynamicFieldDefinitionListItem
                           // eslint-disable-next-line react/no-array-index-key
                           key={fieldSectionIndex}
                           field={fieldSection}
@@ -94,4 +98,4 @@ class DefinitionList extends PureComponent {
   }
 }
 
-export default DefinitionList;
+export default DynamicFieldDefinitionList;

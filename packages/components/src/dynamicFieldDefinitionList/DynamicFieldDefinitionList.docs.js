@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DefinitionList } from '..';
+import { DynamicFieldDefinitionList } from '..';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const LAYOUTS = ['vertical', 'horizontal', 'justified'];
@@ -37,7 +37,7 @@ const extraPropsDocs = {
   narrow: 'false',
 };
 
-export default class DefinitionListDocs extends Component {
+export default class DynamicFieldDefinitionListDocs extends Component {
   state = {
     ...generateState(KNOBS),
   };
@@ -156,9 +156,9 @@ export default class DefinitionListDocs extends Component {
         <section className="section">
           <div className="row">
             <div className="col-md-6 m-t-3">
-              <h2>Definition list</h2>
+              <h2>Dynamic field definition list</h2>
               <p>
-                <code>DefinitionList</code> is a companion to
+                <code>DynamicFieldDefinitionList</code> is a companion to
                 <code>
                   <a href="#fieldset">FieldSet</a>
                 </code>
@@ -172,10 +172,10 @@ export default class DefinitionListDocs extends Component {
               <p>
                 You can also specify the layout, which defaults to <code>vertical</code>.
               </p>
-              {generateCodeBlock('DefinitionList', KNOBS, this, extraPropsDocs)}
+              {generateCodeBlock('DynamicFieldDefinitionList', KNOBS, this, extraPropsDocs)}
             </div>
             <div className="col-md-6">
-              <DefinitionList
+              <DynamicFieldDefinitionList
                 model={MODEL}
                 fields={FIELDS}
                 locale={this.state.locale.value}

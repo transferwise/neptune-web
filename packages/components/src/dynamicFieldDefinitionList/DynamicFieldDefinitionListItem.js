@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { formatDate, formatNumber } from '@transferwise/formatting';
 import { formatUsingPattern } from './utils/text-format';
 
-import './DefinitionListItem.css';
+import './DynamicFieldDefinitionListItem.css';
 
 /**
  *
@@ -22,11 +22,11 @@ const getValueLabel = (options, value) => {
  */
 const mask = value => new Array(value.length + 1).join('*');
 
-const DefinitionListItem = ({ field, value, locale }) => {
+const DynamicFieldDefinitionListItem = ({ field, value, locale }) => {
   const style = [];
   if (field.tagClassName && field.tagClassName.h3) {
     style.push('h3');
-    style.push('definition-list-item__h3-custom-alignment');
+    style.push('dynamic-field-definition-list-item__h3-custom-alignment');
   }
 
   switch (field.control) {
@@ -54,7 +54,7 @@ const DefinitionListItem = ({ field, value, locale }) => {
   }
 };
 
-DefinitionListItem.propTypes = {
+DynamicFieldDefinitionListItem.propTypes = {
   field: Types.shape({
     control: Types.string.isRequired,
     displayFormat: Types.string,
@@ -72,8 +72,8 @@ DefinitionListItem.propTypes = {
   locale: Types.string,
 };
 
-DefinitionListItem.defaultProps = {
+DynamicFieldDefinitionListItem.defaultProps = {
   locale: 'en-GB',
 };
 
-export default DefinitionListItem;
+export default DynamicFieldDefinitionListItem;

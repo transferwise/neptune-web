@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { formatNumber } from '@transferwise/formatting';
-import DefinitionListItem from './DefinitionListItem';
+import DynamicFieldDefinitionListItem from './DynamicFieldDefinitionListItem';
 
-describe('DefinitionListItem', () => {
+describe('DynamicFieldDefinitionListItem', () => {
   let props;
   let locale;
   let value;
   let component;
-  let definitionListItem;
+  let item;
 
   describe('when given a text field', () => {
     beforeEach(() => {
@@ -26,16 +26,16 @@ describe('DefinitionListItem', () => {
           },
         },
       };
-      component = shallow(<DefinitionListItem {...props} />);
-      definitionListItem = component.find('span');
+      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      item = component.find('span');
     });
 
     it('should display the formatted text value', () => {
-      expect(definitionListItem.text()).toBe('AB - CD');
+      expect(item.text()).toBe('AB - CD');
     });
 
     it('has h3 styling added when provided', () => {
-      expect(definitionListItem.find('.h3').length).toBe(1);
+      expect(item.find('.h3').length).toBe(1);
     });
   });
 
@@ -53,12 +53,12 @@ describe('DefinitionListItem', () => {
           control: 'number',
         },
       };
-      component = shallow(<DefinitionListItem {...props} />);
-      definitionListItem = component.find('span');
+      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      item = component.find('span');
     });
 
     it('should display the formatted number value', () => {
-      expect(definitionListItem.text()).toBe(formatNumber(value));
+      expect(item.text()).toBe(formatNumber(value));
     });
   });
 
@@ -72,12 +72,12 @@ describe('DefinitionListItem', () => {
           control: 'date',
         },
       };
-      component = shallow(<DefinitionListItem {...props} />);
-      definitionListItem = component.find('span');
+      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      item = component.find('span');
     });
 
     it('should display the formatted date value', () => {
-      expect(definitionListItem.text()).toBe('20/12/2000');
+      expect(item.text()).toBe('20/12/2000');
     });
   });
 
@@ -101,12 +101,12 @@ describe('DefinitionListItem', () => {
           ],
         },
       };
-      component = shallow(<DefinitionListItem {...props} />);
-      definitionListItem = component.find('span');
+      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      item = component.find('span');
     });
 
     it('should display the selected option value', () => {
-      expect(definitionListItem.text()).toBe('Two');
+      expect(item.text()).toBe('Two');
     });
   });
 
@@ -130,12 +130,12 @@ describe('DefinitionListItem', () => {
           ],
         },
       };
-      component = shallow(<DefinitionListItem {...props} />);
-      definitionListItem = component.find('span');
+      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      item = component.find('span');
     });
 
     it('should display the selected radio value', () => {
-      expect(definitionListItem.text()).toBe('Two');
+      expect(item.text()).toBe('Two');
     });
   });
 
@@ -149,12 +149,12 @@ describe('DefinitionListItem', () => {
           control: 'checkbox',
         },
       };
-      component = shallow(<DefinitionListItem {...props} />);
-      definitionListItem = component.find('span');
+      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      item = component.find('span');
     });
 
     it('should display the boolean', () => {
-      expect(definitionListItem.text()).toBe('true');
+      expect(item.text()).toBe('true');
     });
   });
 
@@ -168,12 +168,12 @@ describe('DefinitionListItem', () => {
           control: 'password',
         },
       };
-      component = shallow(<DefinitionListItem {...props} />);
-      definitionListItem = component.find('span');
+      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      item = component.find('span');
     });
 
     it('should display the password masked', () => {
-      expect(definitionListItem.text()).toBe('******');
+      expect(item.text()).toBe('******');
     });
   });
 
@@ -187,12 +187,12 @@ describe('DefinitionListItem', () => {
           control: 'file',
         },
       };
-      component = shallow(<DefinitionListItem {...props} />);
-      definitionListItem = component.find('img');
+      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      item = component.find('img');
     });
 
     it('should display the value as source', () => {
-      expect(definitionListItem.prop('src')).toBe('qwe123');
+      expect(item.prop('src')).toBe('qwe123');
     });
   });
 });
