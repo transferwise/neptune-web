@@ -180,7 +180,7 @@ workflows:
       - publish:
           context: frontend-deploy-library
           requires:
-            - build
+            - test
           filters:
             branches:
               only: master
