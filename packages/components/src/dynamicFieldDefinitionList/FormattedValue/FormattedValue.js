@@ -2,9 +2,9 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import { formatDate, formatNumber } from '@transferwise/formatting';
-import { formatUsingPattern } from './utils/text-format';
+import { formatUsingPattern } from '../utils/text-format';
 
-import './DynamicFieldDefinitionListItem.css';
+import './FormattedValue.css';
 
 /**
  *
@@ -22,11 +22,11 @@ const getValueLabel = (options, value) => {
  */
 const mask = value => new Array(value.length + 1).join('*');
 
-const DynamicFieldDefinitionListItem = ({ field, value, locale }) => {
+const FormattedValue = ({ field, value, locale }) => {
   const style = [];
   if (field.tagClassName && field.tagClassName.h3) {
     style.push('h3');
-    style.push('dynamic-field-definition-list-item__h3-custom-alignment');
+    style.push('formatted-value__h3-custom-alignment');
   }
 
   switch (field.control) {
@@ -54,7 +54,7 @@ const DynamicFieldDefinitionListItem = ({ field, value, locale }) => {
   }
 };
 
-DynamicFieldDefinitionListItem.propTypes = {
+FormattedValue.propTypes = {
   field: Types.shape({
     control: Types.string.isRequired,
     displayFormat: Types.string,
@@ -72,8 +72,8 @@ DynamicFieldDefinitionListItem.propTypes = {
   locale: Types.string,
 };
 
-DynamicFieldDefinitionListItem.defaultProps = {
+FormattedValue.defaultProps = {
   locale: 'en-GB',
 };
 
-export default DynamicFieldDefinitionListItem;
+export default FormattedValue;

@@ -1,7 +1,7 @@
 import React from 'react';
 import toPairs from 'lodash.topairs';
 
-import FormattedValue from '../DynamicFieldDefinitionListItem';
+import FormattedValue from '../FormattedValue';
 
 export default function createDefinitions(fields, model, locale) {
   return toPairs(fields)

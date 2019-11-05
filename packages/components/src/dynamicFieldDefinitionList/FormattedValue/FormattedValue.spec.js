@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { formatNumber } from '@transferwise/formatting';
-import DynamicFieldDefinitionListItem from './DynamicFieldDefinitionListItem';
+import FormattedValue from './FormattedValue';
 
-describe('DynamicFieldDefinitionListItem', () => {
+describe('FormattedValue', () => {
   let props;
   let locale;
   let value;
@@ -26,7 +26,7 @@ describe('DynamicFieldDefinitionListItem', () => {
           },
         },
       };
-      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -53,7 +53,7 @@ describe('DynamicFieldDefinitionListItem', () => {
           control: 'number',
         },
       };
-      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -72,7 +72,7 @@ describe('DynamicFieldDefinitionListItem', () => {
           control: 'date',
         },
       };
-      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -101,7 +101,7 @@ describe('DynamicFieldDefinitionListItem', () => {
           ],
         },
       };
-      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -130,7 +130,7 @@ describe('DynamicFieldDefinitionListItem', () => {
           ],
         },
       };
-      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -149,7 +149,7 @@ describe('DynamicFieldDefinitionListItem', () => {
           control: 'checkbox',
         },
       };
-      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -168,7 +168,7 @@ describe('DynamicFieldDefinitionListItem', () => {
           control: 'password',
         },
       };
-      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -187,7 +187,7 @@ describe('DynamicFieldDefinitionListItem', () => {
           control: 'file',
         },
       };
-      component = shallow(<DynamicFieldDefinitionListItem {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('img');
     });
 
