@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "15.4.0",
+  "version": "15.4.1",
   "description": "TransferWise styleguide components in react",
   "license": "Apache-2.0",
   "main": "./lib/index.js",
@@ -93,6 +93,7 @@
     "gulp-postcss": "^8.0.0",
     "gulp-print": "^5.0.2",
     "html-webpack-plugin": "4.0.0-beta.8",
+    "husky": "^2.7.0",
     "identity-obj-proxy": "3.0.0",
     "is-wsl": "^2.1.1",
     "jest": "24.7.1",
@@ -139,8 +140,7 @@
     "webpack": "^4.35.3",
     "webpack-dev-server": "^3.7.2",
     "webpack-manifest-plugin": "^2.0.4",
-    "workbox-webpack-plugin": "^4.3.1",
-    "husky": "^2.7.0"
+    "workbox-webpack-plugin": "^4.3.1"
   },
   "peerDependencies": {
     "bootstrap": "github:transferwise/bootstrap#v5.18.15",

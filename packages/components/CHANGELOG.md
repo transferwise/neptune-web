@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.4.1](https://github.com/transferwise/neptune/compare/@transferwise/components@15.4.0...@transferwise/components@15.4.1) (2019-11-05)
+
+
+### Bug Fixes
+
+* ci worflow and test ([#61](https://github.com/transferwise/neptune/issues/61)) ([994c73f](https://github.com/transferwise/neptune/commit/994c73fb0fe272dfa97b335c166a0890cf31bb46))
+
+
+
+
+
 # [15.4.0](https://github.com/transferwise/components/compare/@transferwise/components@15.3.0...@transferwise/components@15.4.0) (2019-11-04)
 
 

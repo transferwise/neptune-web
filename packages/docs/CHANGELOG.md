@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.9](https://github.com/transferwise/neptune/compare/@transferwise/neptune-docs@0.1.8...@transferwise/neptune-docs@0.1.9) (2019-11-05)
+
+
+### Bug Fixes
+
+* ci worflow and test ([#61](https://github.com/transferwise/neptune/issues/61)) ([994c73f](https://github.com/transferwise/neptune/commit/994c73fb0fe272dfa97b335c166a0890cf31bb46))
+
+
+
+
+
 ## [0.1.8](https://github.com/transferwise/neptune/compare/@transferwise/neptune-docs@0.1.7...@transferwise/neptune-docs@0.1.8) (2019-11-04)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
