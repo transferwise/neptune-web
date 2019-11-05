@@ -2,7 +2,7 @@
   "name": "@transferwise/components",
   "version": "15.4.0",
   "description": "TransferWise styleguide components in react",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "main": "./lib/index.js",
   "module": "./lib/index.js",
   "style": "./build/main.css",
@@ -10,9 +10,9 @@
     "*.css"
   ],
   "repository": {
-    "fullname": "transferwise/components",
     "type": "git",
-    "url": "git+https://github.com/transferwise/components.git"
+    "fullname": "transferwise/neptune",
+    "url": "git+https://github.com/transferwise/neptune.git"
   },
   "scripts": {
     "dev": "npm-run-all --parallel dev:webpack:deprecated dev:watch-less  ",
@@ -24,19 +24,16 @@
     "build:clean": "rm -rf lib build",
     "build:emotion-fix": "node ./emotionFix.js",
     "build:compile-css": "gulp lessCompiler",
-    "build:umd": "rollup -c",
+    "build-failing-on-circle-ci-to-reintroduce:umd": "rollup -c",
     "build:es2015": "babel src -d lib --ignore '**/*.spec.js','**/*.docs.js'",
     "build:copy-files": "cpx 'src/**/!(db)/*.{css,json,svg}' lib",
     "test": "gulp lessCompiler && node scripts/test.js --env=jsdom --runInBand",
     "test:watch": "jest --watch --env=jsdom",
-    "lint": "npm-run-all lint:*",
-    "lint:eslint": "prettier-eslint 'src/**/*.js' --list-different",
-    "lint-to-add:prettier": "prettier-eslint '**/*.js' --write",
+    "lint": "eslint 'src/**/*.js'",
+    "lint:fix": "npm run lint -- --fix",
     "docs:build": "gulp lessCompiler && node scripts/build-docs.js",
     "docs:deploy": "gh-pages -a -d docs-build",
     "docs:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
-    "pretest": "npm run lint:eslint",
-    "fix-format": "npm run lint:eslint -- --fix",
     "predeploy": "npm run build"
   },
   "devDependencies": {
@@ -126,7 +123,7 @@
     "react": "16.8.6",
     "react-dev-utils": "^9.0.1",
     "react-dom": "16.8.6",
-    "release-to-github-with-changelog": "^1.2.2",
+    "react-test-renderer": "16.8.6",
     "resolve": "1.12.0",
     "rollup": "^1.20.3",
     "rollup-plugin-babel": "^4.3.3",
@@ -142,7 +139,8 @@
     "webpack": "^4.35.3",
     "webpack-dev-server": "^3.7.2",
     "webpack-manifest-plugin": "^2.0.4",
-    "workbox-webpack-plugin": "^4.3.1"
+    "workbox-webpack-plugin": "^4.3.1",
+    "husky": "^2.7.0"
   },
   "peerDependencies": {
     "bootstrap": "github:transferwise/bootstrap#v5.18.15",
@@ -185,11 +183,11 @@
       "<rootDir>/config/jest/setupTests.js"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
+      "<rootDir>[/\\\\](build|build-docs|docs|node_modules|scripts)[/\\\\]"
     ],
     "testURL": "http://localhost",
     "transform": {
-      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.(js|jsx)$": "../../node_modules/babel-jest",
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },

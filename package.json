@@ -68,8 +68,7 @@
     "clean": " npm-run-all clean:*",
     "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules",
     "clean:lock": "find . -name '*.lock' -or -name '*-lock.json' -type f -delete",
-    "lint:fix": "lerna run lint",
-    "lint:check": "lerna run lint:check",
+    "lint": "lerna run lint",
     "preinstall": "node enforce-yarn.js"
   },
   "husky": {

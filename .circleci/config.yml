@@ -47,15 +47,11 @@ aliases:
 
   - &lint
     name: Lint packages
-    command: yarn lint:check
+    command: yarn lint
 
   - &conventional-commit-lint
     name: Conventional Commits check
     command: npx commitlint -f $(git rev-parse master) -V
-
-  - &get-first-commit-hash
-    name: Conventional Commits check
-    command: |
 
   - &test
     name: Test packages
@@ -92,6 +88,13 @@ jobs:
     <<: *container
     steps:
       - *attach-workspace
+      - run: *test
+      - *persist-workspace
+
+  lint:
+    <<: *container
+    steps:
+      - *attach-workspace
       - run: *lint
       - *persist-workspace
 
@@ -102,7 +105,6 @@ jobs:
       - run: *build-docs
       - run: *set-github-credentials
       - run: *deploy-docs
-      - *persist-workspace
 
   deploy-docs-for-branch:
     <<: *container
@@ -111,7 +113,6 @@ jobs:
       - run: *build-docs
       - run: *set-github-credentials
       - run: *deploy-docs-for-branch
-      - *persist-workspace
 
   conventional-commit-lint:
     <<: *container
@@ -126,7 +127,6 @@ jobs:
       - run: *set-github-credentials
       - run: *add-npm-release-token
       - run: *lerna-publish
-      - *persist-workspace
 
 workflows:
   version: 2
@@ -138,6 +138,7 @@ workflows:
             branches:
               ignore: gh-pages
 
+      # Build has to run before test as yarn workspace symlink the dependencies.
       - build:
           context: frontend-build
           filters:
@@ -146,14 +147,49 @@ workflows:
           requires:
             - install
 
-      - test:
+      - lint:
+          context: frontend-build
           requires:
             - build
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+
+      # On Master the flow should be blocked if there is an error in commit message
+      - test:
+          context: frontend-build
+          requires:
+            - build
+            - conventional-commit-lint
+          filters:
+            branches:
+              only: master
+
+      # On current branch the flow should NOT be blocked if there is an error in commit message
+      - test:
+          context: frontend-build
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - master
+
+      - conventional-commit-lint:
+          context: frontend-build
+          requires:
+            - install
+          filters:
+            branches:
+              ignore: gh-pages
 
       - deploy-docs-to-root:
           context: frontend-build
           requires:
             - test
+            - lint
           filters:
             branches:
               only: master
@@ -168,19 +204,11 @@ workflows:
                 - gh-pages
                 - master
 
-      - conventional-commit-lint:
-          context: frontend-build
-          requires:
-            - install
-          filters:
-            branches:
-              ignore:
-                - gh-pages
-
       - publish:
           context: frontend-deploy-library
           requires:
             - test
+            - lint
           filters:
             branches:
               only: master

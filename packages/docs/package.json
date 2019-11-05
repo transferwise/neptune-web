@@ -10,10 +10,8 @@
     "docs-new:build": "gh-pages --dotfiles -a -d docs-build",
     "docs-new:deploy": "deploy-directory-on-branch-to-gh-pages -d docs-build",
     "docs-new:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
-    "lint": "yarn lint:eslint && lint:prettier",
-    "lint:check": "eslint components/ pages/",
-    "lint:eslint": "eslint --fix components/ pages/",
-    "lint:prettier": "prettier --find-config-path --write {components,pages}/**/*.{js,css,less,json}",
+    "lint": "eslint components/ pages/",
+    "lint:fix": "npm run lint -- --fix",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
@@ -59,6 +57,17 @@
     "@transferwise/eslint-config": "^2.1.0",
     "react": "16.8.6",
     "react-dom": "16.8.6"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "prettier": "@transferwise/eslint-config/.prettierrc.js"
 }
