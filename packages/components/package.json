@@ -158,6 +158,7 @@
     "classnames": "^2.2.6",
     "lodash.clamp": "^4.0.3",
     "lodash.debounce": "^4.0.8",
+    "lodash.topairs": "^4.3.0",
     "react-app-polyfill": "^1.0.1",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.2.1"
