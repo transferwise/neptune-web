@@ -206,7 +206,6 @@ workflows:
           context: frontend-build
           requires:
             - test-master
-            - lint
           filters:
             branches:
               only: master
@@ -215,7 +214,6 @@ workflows:
           context: frontend-deploy-library
           requires:
             - test-master
-            - lint
           filters:
             branches:
               only: master
