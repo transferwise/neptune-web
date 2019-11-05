@@ -91,6 +91,13 @@ jobs:
       - run: *test
       - *persist-workspace
 
+  test-master:
+    <<: *container
+    steps:
+      - *attach-workspace
+      - run: *test
+      - *persist-workspace
+
   lint:
     <<: *container
     steps:
@@ -138,6 +145,14 @@ workflows:
             branches:
               ignore: gh-pages
 
+      - conventional-commit-lint:
+          context: frontend-build
+          requires:
+            - install
+          filters:
+            branches:
+              ignore: gh-pages
+
       # Build has to run before test as yarn workspace symlink the dependencies.
       - build:
           context: frontend-build
@@ -146,25 +161,6 @@ workflows:
               ignore: gh-pages
           requires:
             - install
-
-      - lint:
-          context: frontend-build
-          requires:
-            - build
-          filters:
-            branches:
-              ignore:
-                - gh-pages
-
-      # On Master the flow should be blocked if there is an error in commit message
-      - test:
-          context: frontend-build
-          requires:
-            - build
-            - conventional-commit-lint
-          filters:
-            branches:
-              only: master
 
       # On current branch the flow should NOT be blocked if there is an error in commit message
       - test:
@@ -177,22 +173,24 @@ workflows:
                 - gh-pages
                 - master
 
-      - conventional-commit-lint:
+      # On Master the flow should be blocked if there is an error in commit message
+      - test-master:
           context: frontend-build
           requires:
-            - install
-          filters:
-            branches:
-              ignore: gh-pages
-
-      - deploy-docs-to-root:
-          context: frontend-build
-          requires:
-            - test
-            - lint
+            - build
+            - conventional-commit-lint
           filters:
             branches:
               only: master
+
+      - lint:
+          context: frontend-build
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - gh-pages
 
       - deploy-docs-for-branch:
           context: frontend-build
@@ -204,10 +202,19 @@ workflows:
                 - gh-pages
                 - master
 
+      - deploy-docs-to-root:
+          context: frontend-build
+          requires:
+            - test-master
+            - lint
+          filters:
+            branches:
+              only: master
+
       - publish:
           context: frontend-deploy-library
           requires:
-            - test
+            - test-master
             - lint
           filters:
             branches:
