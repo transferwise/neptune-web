@@ -5,7 +5,8 @@ import DefinitionList from '../definitionList';
 import { prepFields } from '../common/requirements';
 import createDefinitions from './utils/createDefinitions';
 
-const LAYOUTS = ['vertical', 'horizontal', 'justified'];
+const { Layout } = DefinitionList;
+const LayoutValues = Object.keys(Layout).map(key => Layout[key]);
 
 class DynamicFieldDefinitionList extends PureComponent {
   static propTypes = {
@@ -13,23 +14,23 @@ class DynamicFieldDefinitionList extends PureComponent {
     fields: Types.shape({}).isRequired,
     locale: Types.string,
     title: Types.string,
-    narrow: Types.bool,
-    layout: Types.string,
+    layout: Types.oneOf(LayoutValues),
   };
 
   static defaultProps = {
     locale: 'en-GB',
     title: null,
-    narrow: false,
-    layout: LAYOUTS[0],
+    layout: Layout.VERTICAL_TWO_COLUMN,
   };
+
+  static Layout = Layout;
 
   state = {
     fields: prepFields(this.props.fields),
   };
 
   render() {
-    const { model, locale, title, narrow, layout } = this.props;
+    const { model, locale, title, layout } = this.props;
     const { fields } = this.state;
 
     return (
@@ -40,27 +41,9 @@ class DynamicFieldDefinitionList extends PureComponent {
           </div>
         )}
 
-        <DefinitionList
-          layout={getDefinitionListLayout(layout, narrow)}
-          definitions={createDefinitions(fields, model, locale)}
-        />
+        <DefinitionList layout={layout} definitions={createDefinitions(fields, model, locale)} />
       </>
     );
-  }
-}
-
-function getDefinitionListLayout(layout, narrow) {
-  const { Layout } = DefinitionList;
-
-  switch (layout) {
-    case 'vertical':
-      return narrow ? Layout.VERTICAL_ONE_COLUMN : Layout.VERTICAL_TWO_COLUMN;
-    case 'horizontal':
-      return Layout.HORIZONTAL_UNJUSTIFIED;
-    case 'justified':
-      return Layout.HORIZONTAL_JUSTIFIED;
-    default:
-      return undefined;
   }
 }
 

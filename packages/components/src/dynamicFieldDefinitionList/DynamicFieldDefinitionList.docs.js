@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { DynamicFieldDefinitionList } from '..';
+import { DynamicFieldDefinitionList, DefinitionList } from '..';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
-const LAYOUTS = ['vertical', 'horizontal', 'justified'];
+const { Layout } = DefinitionList;
+const LayoutValues = Object.keys(Layout).map(key => Layout[key]);
+
 const LOCALES = ['en-GB', 'fr-FR', 'hu-HU', 'de-DE', 'ja-JP', 'pt-BR'];
 
 const KNOBS = {
@@ -11,11 +13,11 @@ const KNOBS = {
       type: 'select',
       label: 'Layout',
       state: 'layout',
-      options: LAYOUTS.map(value => ({
+      options: LayoutValues.map(value => ({
         value,
         label: value,
       })),
-      defaultState: { value: LAYOUTS[0], label: LAYOUTS[0] },
+      defaultState: { value: Layout.VERTICAL_TWO_COLUMN, label: Layout.VERTICAL_TWO_COLUMN },
     },
     {
       type: 'select',
@@ -34,7 +36,6 @@ const extraPropsDocs = {
   model: 'this.state.model',
   fields: 'this.state.fields',
   title: 'This is an awesome component',
-  narrow: 'false',
 };
 
 export default class DynamicFieldDefinitionListDocs extends Component {
@@ -157,6 +158,7 @@ export default class DynamicFieldDefinitionListDocs extends Component {
           <div className="row">
             <div className="col-md-6 m-t-3">
               <h2>Dynamic field definition list</h2>
+
               <p>
                 <code>DynamicFieldDefinitionList</code> is a companion to
                 <code>
@@ -165,22 +167,21 @@ export default class DynamicFieldDefinitionListDocs extends Component {
                 , it shares the same interface, and same dynamic requirements format, allowing us to
                 display the data model we generated using a fieldset.
               </p>
+
               <p>
-                <code>narrow</code> is used for <code>vertical</code> layout if the goal is to
-                display the items stacked
+                <code>DefinitionList</code> is used underneath, and the same layout prop is
+                accepted.
               </p>
-              <p>
-                You can also specify the layout, which defaults to <code>vertical</code>.
-              </p>
+
               {generateCodeBlock('DynamicFieldDefinitionList', KNOBS, this, extraPropsDocs)}
             </div>
+
             <div className="col-md-6">
               <DynamicFieldDefinitionList
                 model={MODEL}
                 fields={FIELDS}
                 locale={this.state.locale.value}
                 title="This is an awesome component"
-                narrow={false}
                 layout={this.state.layout.value}
               />
               <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
