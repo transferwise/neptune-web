@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0](https://github.com/transferwise/neptune/compare/@transferwise/components@15.4.1...@transferwise/components@16.0.0) (2019-11-07)
+
+
+* refactor!: change DynamicFieldDefinitionList layout, remove narrow prop ([afcaf93](https://github.com/transferwise/neptune/commit/afcaf9357d7935fca4a5a92ad095aa618e42b0ce))
+* refactor!: rename DefinitionList to DynamicFieldDefinitionList ([b382038](https://github.com/transferwise/neptune/commit/b382038e6079efea6f742944b023b2243692157c))
+
+
+### Features
+
+* add DefinitionList component ([903c387](https://github.com/transferwise/neptune/commit/903c387abaf48b56940bebaa34856867201ab10d))
+
+
+### BREAKING CHANGES
+
+* `layout` prop values have changes
+* DefinitionList is not exported any more, use DynamicFieldDefinitionList
+
+
+
+
+
 ## [15.4.1](https://github.com/transferwise/neptune/compare/@transferwise/components@15.4.0...@transferwise/components@15.4.1) (2019-11-05)
 
 
