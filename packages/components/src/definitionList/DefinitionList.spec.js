@@ -58,11 +58,24 @@ describe('DefinitionList', () => {
     expect(hasRightAlign(HORIZONTAL_LEFT_ALIGNED)).toBe(false);
   });
 
+  it('has muted text class on title and value when muted flag is passed', () => {
+    const component = shallow(<DefinitionList muted definitions={someDefinitions()} />);
+
+    expect(hasMutedTitle(component)).toBe(true);
+    expect(hasMutedValue(component)).toBe(true);
+  });
+
+  it('does not have muted text class on title and value when muted flag is not passed', () => {
+    const component = shallow(<DefinitionList definitions={someDefinitions()} />);
+
+    expect(hasMutedTitle(component)).toBe(false);
+    expect(hasMutedValue(component)).toBe(false);
+  });
+
+  const someDefinitions = () => [{ title: 'First', value: 'first value', key: 'first' }];
   const withLayout = layout =>
-    shallow(
-      <DefinitionList
-        layout={layout}
-        definitions={[{ title: 'First', value: 'first value', key: 'first' }]}
-      />,
-    );
+    shallow(<DefinitionList layout={layout} definitions={someDefinitions()} />);
+  const isMuted = node => node.hasClass('text-muted');
+  const hasMutedTitle = component => isMuted(component.find('dt'));
+  const hasMutedValue = component => isMuted(component.find('dd'));
 });

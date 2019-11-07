@@ -35,6 +35,12 @@ const KNOBS = {
       })),
       defaultState: { value: Layout.VERTICAL_TWO_COLUMN, label: Layout.VERTICAL_TWO_COLUMN },
     },
+    {
+      type: 'checkbox',
+      label: 'Muted',
+      state: 'muted',
+      defaultState: false,
+    },
   ],
 };
 
@@ -44,6 +50,7 @@ export default class DynamicFieldDefinitionListDocs extends Component {
   render() {
     const {
       layout: { value: layout },
+      muted,
     } = this.state;
 
     return (
@@ -64,7 +71,7 @@ export default class DynamicFieldDefinitionListDocs extends Component {
             </div>
 
             <div className="col-md-6">
-              <DefinitionList definitions={DEFINITIONS} layout={layout} />
+              <DefinitionList definitions={DEFINITIONS} layout={layout} muted={muted} />
 
               <div className="row m-t-5">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>
