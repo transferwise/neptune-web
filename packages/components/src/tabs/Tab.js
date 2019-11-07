@@ -51,11 +51,7 @@ Tab.propTypes = {
   panelId: PropTypes.string.isRequired,
   onKeyDown: PropTypes.func.isRequired,
   onClick: PropTypes.func,
-  style: PropTypes.objectOf(
-    PropTypes.shape({
-      width: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  style: PropTypes.shape({ width: PropTypes.string.isRequired }).isRequired,
 };
 
 export default Tab;

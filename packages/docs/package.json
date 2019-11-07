@@ -11,8 +11,7 @@
     "docs-new:deploy": "deploy-directory-on-branch-to-gh-pages -d docs-build",
     "docs-new:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
     "lint": "eslint components/ pages/",
-    "lint:fix": "npm run lint -- --fix",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "lint:fix": "npm run lint -- --fix"
   },
   "repository": {
     "type": "git",

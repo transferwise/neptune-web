@@ -47,10 +47,10 @@ describe('Modal', () => {
     });
 
     it('with some random other props', () => {
-      component.setProps({ someRandomProp: 'thing', someOtherRandomProp: 'other thing' });
+      component.setProps({ somerandomprop: 'thing', someotherrandomprop: 'other thing' });
 
-      expect(modal().prop('someRandomProp')).toBe('thing');
-      expect(modal().prop('someOtherRandomProp')).toBe('other thing');
+      expect(modal().prop('somerandomprop')).toBe('thing');
+      expect(modal().prop('someotherrandomprop')).toBe('other thing');
     });
 
     it('with body content', () => {

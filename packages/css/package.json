@@ -22,7 +22,6 @@
     "src"
   ],
   "scripts": {
-    "test": "echo 'No tests defined'",
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf dist",
     "build:copy-assets": "npm-run-all --parallel copy:*",

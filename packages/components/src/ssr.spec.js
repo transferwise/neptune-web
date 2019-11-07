@@ -19,7 +19,6 @@ describe('Server side rendering', () => {
 
   // stick all possible properties we might need to render all components in here
   const allProps = {
-    selectedCurrency: { currency: 'EUR' },
     currencies: [],
     steps: [],
     items: [],
@@ -52,7 +51,6 @@ describe('Server side rendering', () => {
         label: 'Radio1',
       },
     ],
-    displayPattern: '**-**',
     position: 'left',
     open: true,
     tabs: [],
@@ -72,7 +70,11 @@ describe('Server side rendering', () => {
   // Override props in case of name collision.
   const overrideProps = {
     Typeahead: { size: 'md' },
+    InputWithDisplayFormat: { displayPattern: '**-**' },
+    TextareaWithDisplayFormat: { displayPattern: '**-**' },
     Sticky: { position: 'top' },
+    MoneyInput: { selectedCurrency: { currency: 'EUR' } },
+    Tabs: { selected: 1, onTabSelect: jest.fn() },
     Box: {
       size: {
         xs: 1,
@@ -83,19 +85,24 @@ describe('Server side rendering', () => {
       },
     },
     SnackbarConsumer: {
-      children: () => {},
+      children: jest.fn(),
+    },
+    SnackbarContext: {
+      children: jest.fn(),
     },
   };
 
   componentNames.forEach(componentName => {
     it(`works for ${componentName} components`, () => {
       const Component = components[componentName];
+      const newProps = { ...allProps };
       if (overrideProps[componentName]) {
-        const propToOverrideKey = Object.keys(overrideProps[componentName])[0];
-        allProps[propToOverrideKey] = overrideProps[componentName][propToOverrideKey];
+        Object.keys(overrideProps[componentName]).forEach(propToOverrideKey => {
+          newProps[propToOverrideKey] = overrideProps[componentName][propToOverrideKey];
+        });
       }
 
-      const string = renderToString(<Component {...allProps} />);
+      const string = renderToString(<Component {...newProps} />);
       expect(string).toEqual(expect.any(String));
     });
   });

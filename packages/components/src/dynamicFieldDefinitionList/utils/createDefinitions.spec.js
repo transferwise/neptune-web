@@ -1,8 +1,13 @@
 import createDefinitions from './createDefinitions';
 
+const FIELD = { title: 'First', control: 'control', type: 'type' };
+
 describe('createDefinitions', () => {
   it('creates definitions with titles', () => {
-    const fields = { first: { title: 'First' }, second: { title: 'Second' } };
+    const fields = {
+      first: { ...FIELD, title: 'First' },
+      second: { ...FIELD, title: 'Second' },
+    };
     const model = { first: 'first value', second: 'second value' };
 
     const definitions = createDefinitions(fields, model);
@@ -12,10 +17,14 @@ describe('createDefinitions', () => {
   });
 
   it('creates definitions with non-group and group values', () => {
+    const FIRST_SOLO = { ...FIELD, title: 'Solo title' };
+    const FIRST_GROUP = { ...FIELD, title: 'First group title' };
+    const SECOND_GROUP = { ...FIELD, title: 'Second group title' };
+
     const fields = {
-      first: { title: 'Solo title' },
+      first: FIRST_SOLO,
       second: {
-        group: [{ title: 'First group title' }, { title: 'Second group title' }],
+        group: [FIRST_GROUP, SECOND_GROUP],
       },
     };
 
@@ -32,18 +41,21 @@ describe('createDefinitions', () => {
 
     const [first, [groupFirst, groupSecond]] = values;
 
-    expect(first.props.field).toStrictEqual({ title: 'Solo title' });
+    expect(first.props.field).toStrictEqual(FIRST_SOLO);
     expect(first.props.value).toBe('first value');
 
-    expect(groupFirst.props.field).toStrictEqual({ title: 'First group title' });
+    expect(groupFirst.props.field).toStrictEqual(FIRST_GROUP);
     expect(groupFirst.props.value).toBe('second value');
 
-    expect(groupSecond.props.field).toStrictEqual({ title: 'Second group title' });
+    expect(groupSecond.props.field).toStrictEqual(SECOND_GROUP);
     expect(groupSecond.props.value).toBe('second value');
   });
 
   it('creates definitions with keys from names', () => {
-    const fields = { first: { title: 'First' }, second: { title: 'Second' } };
+    const fields = {
+      first: { ...FIELD, title: 'First' },
+      second: { ...FIELD, title: 'Second' },
+    };
     const model = { first: 'first value', second: 'second value' };
 
     const definitions = createDefinitions(fields, model);
@@ -54,9 +66,9 @@ describe('createDefinitions', () => {
 
   it('creates definitions without fields hidden or missing from model', () => {
     const fields = {
-      hidden: { title: 'Hidden', hidden: true },
-      present: { title: 'Present' },
-      missing: { title: 'Missing' },
+      hidden: { ...FIELD, title: 'Hidden', hidden: true },
+      present: { ...FIELD, title: 'Present' },
+      missing: { ...FIELD, title: 'Missing' },
     };
     const model = {
       hidden: 'hidden value',

@@ -19,6 +19,7 @@ describe('Field', () => {
         label: 'Control label',
         field: {
           type: FieldTypes.STRING,
+          label: 'label',
         },
       };
       component = shallow(<Field {...{ ...defaultProps, ...props }} />);
@@ -220,6 +221,7 @@ describe('Field', () => {
       beforeEach(() => {
         props = {
           field: {
+            label: '',
             type: FieldTypes.NUMBER,
             values: [{ value: 1, label: 'One' }, { value: 2, label: 'Two' }],
           },
@@ -242,6 +244,7 @@ describe('Field', () => {
       beforeEach(() => {
         props = {
           field: {
+            label: '',
             type: FieldTypes.NUMBER,
             values: [
               { value: 1, label: 'One' },
@@ -269,6 +272,7 @@ describe('Field', () => {
       beforeEach(() => {
         props = {
           field: {
+            label: '',
             type: FieldTypes.NUMBER,
             control: FormControlType.SELECT,
             values: [{ value: 1, label: 'One' }, { value: 2, label: 'Two' }],
@@ -293,6 +297,7 @@ describe('Field', () => {
     beforeEach(() => {
       props = {
         field: {
+          label: '',
           type: FieldTypes.STRING,
         },
         value: 'supplied value',
@@ -316,6 +321,7 @@ describe('Field', () => {
     beforeEach(() => {
       props = {
         field: {
+          label: '',
           type: FieldTypes.STRING,
         },
         errorMessage: 'Custom error',
@@ -454,6 +460,7 @@ describe('Field', () => {
     beforeEach(() => {
       props = {
         field: {
+          label: '',
           type: FieldTypes.STRING,
         },
         warningMessage: 'Warning message',
@@ -482,6 +489,7 @@ describe('Field', () => {
     beforeEach(() => {
       props = {
         field: {
+          label: '',
           type: FieldTypes.STRING,
           hidden: true,
         },

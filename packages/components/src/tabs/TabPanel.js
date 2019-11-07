@@ -13,11 +13,9 @@ TabPanel.propTypes = {
   children: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,
   tabId: PropTypes.string.isRequired,
-  style: PropTypes.objectOf(
-    PropTypes.shape({
-      width: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  style: PropTypes.shape({
+    width: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default TabPanel;

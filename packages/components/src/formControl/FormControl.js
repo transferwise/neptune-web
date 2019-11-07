@@ -122,7 +122,7 @@ export default class FormControl extends PureComponent {
     maxLength: null,
     value: null,
     searchPlaceholder: null,
-    searchValue: null,
+    searchValue: '',
     onSearchChange: null,
     size: Sizes.MEDIUM,
     uploadProps: {},
