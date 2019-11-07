@@ -27,7 +27,7 @@
     "build-failing-on-circle-ci-to-reintroduce:umd": "rollup -c",
     "build:es2015": "babel src -d lib --ignore '**/*.spec.js','**/*.docs.js'",
     "build:copy-files": "cpx 'src/**/!(db)/*.{css,json,svg}' lib",
-    "test": "gulp lessCompiler && node scripts/test.js --env=jsdom --runInBand",
+    "test": "gulp lessCompiler && jest --env=jsdom --runInBand",
     "test:watch": "jest --watch --env=jsdom",
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "npm run lint -- --fix",
