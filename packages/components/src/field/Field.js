@@ -9,7 +9,7 @@ import { FormControlType } from '../formControl/FormControlType';
 import InstructionsList from '../instructionsList';
 
 import { getControlType } from '../common/requirements';
-import { getValidationFailures } from '../common/validation/validation-failures';
+import { getValidationFailures } from '../jsonSchemaForm/validation/validation-failures';
 
 export const FieldTypes = {
   STRING: 'string',

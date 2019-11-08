@@ -11,10 +11,13 @@ function isBoolean(value) {
   return typeof value === 'boolean';
 }
 function isObject(value) {
-  return value.constructor === Object;
+  return !isNull(value) && typeof value !== 'undefined' && value.constructor === Object;
 }
 function isArray(value) {
   return Array.isArray(value);
 }
+function isNull(value) {
+  return value === null;
+}
 
-export { isString, isNumber, isInteger, isBoolean, isObject, isArray };
+export { isString, isNumber, isInteger, isBoolean, isObject, isArray, isNull };

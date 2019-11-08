@@ -1,4 +1,12 @@
-import { isObject, isArray, isString, isNumber, isInteger, isBoolean } from '../type-validators';
+import {
+  isObject,
+  isArray,
+  isString,
+  isNumber,
+  isInteger,
+  isBoolean,
+  isNull,
+} from '../type-validators';
 
 import {
   isValidRequired,
@@ -11,16 +19,20 @@ import {
   isValidMaxItems,
 } from '../rule-validators';
 
-function getValidationFailures(value, schema) {
+function getValidationFailures(value, schema, isRequired) {
+  if (isNull(value)) {
+    return isRequired ? ['required'] : [];
+  }
+
   switch (schema.type) {
     case 'string':
-      return getStringValidationFailures(value, schema);
+      return getStringValidationFailures(value, schema, isRequired);
     case 'number':
-      return getNumberValidationFailures(value, schema);
+      return getNumberValidationFailures(value, schema, isRequired);
     case 'integer':
-      return getIntegerValidationFailures(value, schema);
+      return getIntegerValidationFailures(value, schema, isRequired);
     case 'boolean':
-      return getBooleanValidationFailures(value, schema);
+      return getBooleanValidationFailures(value, schema, isRequired);
     case 'array':
       return getArrayValidationFailures(value, schema);
     case 'object':
@@ -30,13 +42,17 @@ function getValidationFailures(value, schema) {
   }
 }
 
-function getStringValidationFailures(value, schema) {
-  if (!isString(value)) {
+function getStringValidationFailures(value, schema, isRequired) {
+  if (!isString(value) && !isNull(value)) {
     return ['type'];
   }
 
+  if (value === '' && isRequired) {
+    return ['required'];
+  }
+
   const failures = [];
-  if (!isValidRequired(value)) {
+  if (!isValidRequired(value, isRequired)) {
     failures.push('required');
   }
   if (!isValidMinLength(value, schema.minLength)) {
@@ -57,13 +73,13 @@ function getStringValidationFailures(value, schema) {
   return failures;
 }
 
-function getNumberValidationFailures(value, schema) {
-  if (!isNumber(value)) {
+function getNumberValidationFailures(value, schema, isRequired) {
+  if (!isNumber(value) && !isNull(value)) {
     return ['type'];
   }
 
   const failures = [];
-  if (!isValidRequired(value)) {
+  if (!isValidRequired(value, isRequired)) {
     failures.push('required');
   }
   if (!isValidMin(value, schema.min)) {
@@ -75,27 +91,27 @@ function getNumberValidationFailures(value, schema) {
   return failures;
 }
 
-function getIntegerValidationFailures(value, schema) {
+function getIntegerValidationFailures(value, schema, isRequired) {
   if (!isInteger(value)) {
     return ['type'];
   }
-  return getNumberValidationFailures(value, schema);
+  return getNumberValidationFailures(value, schema, isRequired);
 }
 
-function getBooleanValidationFailures(value) {
-  if (!isBoolean(value)) {
+function getBooleanValidationFailures(value, schema, isRequired) {
+  if (!isBoolean(value) && !isNull(value)) {
     return ['type'];
   }
 
   const failures = [];
-  if (!isValidRequired(value)) {
+  if (!isValidRequired(value, isRequired)) {
     failures.push('required');
   }
   return failures;
 }
 
 function getArrayValidationFailures(value, schema) {
-  if (!isArray(value)) {
+  if (!isArray(value) && !isNull(value)) {
     return ['type'];
   }
 
@@ -114,7 +130,7 @@ function getArrayValidationFailures(value, schema) {
  * has the required properties, we do not check if the properties are valid.
  */
 function getObjectValidationFailures(value, schema) {
-  if (!isObject(value)) {
+  if (!isObject(value) && !isNull(value)) {
     return ['type'];
   }
 
@@ -133,6 +149,7 @@ export {
   getValidationFailures,
   getStringValidationFailures,
   getNumberValidationFailures,
+  getIntegerValidationFailures,
   getBooleanValidationFailures,
   getArrayValidationFailures,
   getObjectValidationFailures,
