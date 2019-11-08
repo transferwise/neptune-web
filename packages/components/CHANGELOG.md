@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.3.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.2.1...@transferwise/components@16.3.0) (2019-11-08)
+
+
+### Features
+
+* add wrapper for FormCOntrol with JSON schema interface, add schema validation ([3566c7e](https://github.com/transferwise/neptune/commit/3566c7eb6223c8ae20325eb05d4e5648be2c45e7))
+
+
+
+
+
 ## [16.2.1](https://github.com/transferwise/neptune/compare/@transferwise/components@16.2.0...@transferwise/components@16.2.1) (2019-11-08)
 
 
