@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.2.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.1.0...@transferwise/components@16.2.0) (2019-11-08)
+
+
+### Features
+
+* expose onBlur and onFocus props for input component ([a5bd359](https://github.com/transferwise/neptune/commit/a5bd3597ac07923c4660347e17d6bc97a1fe39fe))
+
+
+
+
+
 # [16.1.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.0.0...@transferwise/components@16.1.0) (2019-11-08)
 
 
