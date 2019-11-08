@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.1.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.0.0...@transferwise/components@16.1.0) (2019-11-08)
+
+
+### Features
+
+* add muted prop to DefinitionList ([e125b64](https://github.com/transferwise/neptune/commit/e125b64bc498078c75c3ad94c74ce720e3c5d43f))
+
+
+
+
+
 # [16.0.0](https://github.com/transferwise/neptune/compare/@transferwise/components@15.4.1...@transferwise/components@16.0.0) (2019-11-07)
 
 
