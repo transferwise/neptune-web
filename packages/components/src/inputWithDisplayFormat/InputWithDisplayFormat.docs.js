@@ -72,6 +72,10 @@ export default class InputWithTextFormatDocs extends Component {
                   displayPattern={displayPattern && displayPattern.value}
                   className="form-control"
                   onChange={value => this.handleOnChange(value)}
+                  // eslint-disable-next-line
+                  onBlur={value => console.log('onBlur event', value)}
+                  // eslint-disable-next-line
+                  onFocus={value => console.log('onFocus event', value)}
                 />
               </div>
               <div className="row">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>

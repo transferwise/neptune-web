@@ -25,6 +25,8 @@ class WithDisplayFormat extends React.Component {
     maxLength: Types.number,
     minLength: Types.number,
     name: Types.string,
+    onFocus: Types.func,
+    onBlur: Types.func,
     onChange: Types.func.isRequired,
     placeholder: Types.string,
     readOnly: Types.bool,
@@ -49,6 +51,8 @@ class WithDisplayFormat extends React.Component {
     displayPattern: '',
     type: 'text',
     value: '',
+    onFocus: null,
+    onBlur: null,
   };
 
   constructor(props) {
@@ -260,6 +264,8 @@ class WithDisplayFormat extends React.Component {
       maxLength,
       disabled,
       autoComplete,
+      onFocus,
+      onBlur,
     } = this.props;
     const { value } = this.state;
     const renderProps = {
@@ -275,6 +281,8 @@ class WithDisplayFormat extends React.Component {
       disabled,
       autoComplete,
       value,
+      onFocus,
+      onBlur,
       onPaste: this.handleOnPaste,
       onKeyDown: this.handleOnKeyDown,
       onChange: this.handleOnChange,
