@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.3.2](https://github.com/transferwise/neptune/compare/@transferwise/components@16.3.1...@transferwise/components@16.3.2) (2019-11-11)
+
+
+### Bug Fixes
+
+* flow navigation close button position ([#80](https://github.com/transferwise/neptune/issues/80)) ([c0362af](https://github.com/transferwise/neptune/commit/c0362af7165b0f43aff819c5d0003564e815e6bc))
+
+
+
+
+
 ## [16.3.1](https://github.com/transferwise/neptune/compare/@transferwise/components@16.3.0...@transferwise/components@16.3.1) (2019-11-11)
 
 
