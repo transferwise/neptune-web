@@ -18,7 +18,11 @@ describe('Select', () => {
   beforeEach(() => {
     props = {
       onChange: jest.fn(),
-      options: [{ value: 0, label: 'yo' }, { value: 1, label: 'dawg' }, { value: 2, label: 'boi' }],
+      options: [
+        { value: 0, label: 'yo' },
+        { value: 1, label: 'dawg' },
+        { value: 2, label: 'boi' },
+      ],
     };
     Transition.mockImplementation(properties => {
       const ActualTransition = jest.requireActual('react-transition-group/Transition').default;

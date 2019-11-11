@@ -57,7 +57,10 @@ describe('Flow navigation', () => {
   });
 
   it('passes steps and active step to stepper', () => {
-    props.steps = [{ label: '1', something: true }, { label: '2', another: 'yes' }];
+    props.steps = [
+      { label: '1', something: true },
+      { label: '2', another: 'yes' },
+    ];
     props.activeStep = 1337;
     component.setProps(props);
     expect(stepper().length).toBe(1);

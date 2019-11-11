@@ -172,7 +172,10 @@ describe('Money Input', () => {
     });
 
     it('searches by label', () => {
-      const currencies = [{ value: 'GBP', label: 'Pound' }, { value: 'EUR', label: 'Euro' }];
+      const currencies = [
+        { value: 'GBP', label: 'Pound' },
+        { value: 'EUR', label: 'Euro' },
+      ];
       component.setProps({ currencies });
       expect(displayedCurrencies()).toEqual(currencies);
 

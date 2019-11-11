@@ -7,7 +7,10 @@ import Sticky from './Sticky';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 import { Button } from '../index';
 
-const OPENDIRECTION = [{ label: 'Top', value: 'top' }, { label: 'Bottom', value: 'bottom' }];
+const OPENDIRECTION = [
+  { label: 'Top', value: 'top' },
+  { label: 'Bottom', value: 'bottom' },
+];
 
 const KNOBS = {
   knobs: [

@@ -135,7 +135,10 @@ describe('Given a component for rendering a form control based on a schema', () 
     beforeEach(() => {
       component.setProps({
         schema: {
-          values: [{ value: 'one', label: 'One' }, { value: 'two', label: 'Two' }],
+          values: [
+            { value: 'one', label: 'One' },
+            { value: 'two', label: 'Two' },
+          ],
           enum: ['one', 'two'],
         },
       });

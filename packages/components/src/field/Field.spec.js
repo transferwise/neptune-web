@@ -223,7 +223,10 @@ describe('Field', () => {
           field: {
             label: '',
             type: FieldTypes.NUMBER,
-            values: [{ value: 1, label: 'One' }, { value: 2, label: 'Two' }],
+            values: [
+              { value: 1, label: 'One' },
+              { value: 2, label: 'Two' },
+            ],
           },
         };
         component = shallow(<Field {...{ ...defaultProps, ...props }} />);
@@ -275,7 +278,10 @@ describe('Field', () => {
             label: '',
             type: FieldTypes.NUMBER,
             control: FormControlType.SELECT,
-            values: [{ value: 1, label: 'One' }, { value: 2, label: 'Two' }],
+            values: [
+              { value: 1, label: 'One' },
+              { value: 2, label: 'Two' },
+            ],
           },
         };
         component = shallow(<Field {...{ ...defaultProps, ...props }} />);
