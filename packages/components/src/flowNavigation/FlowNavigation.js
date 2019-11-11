@@ -50,8 +50,9 @@ const FlowNavigation = ({
           {onClose && (
             <button
               className={classNames(
-                'btn-unstyled',
                 'tw-flow-navigation__close-button',
+                'btn-link',
+                'text-no-decoration',
                 'icon',
                 'icon-close',
                 'icon-lg',
