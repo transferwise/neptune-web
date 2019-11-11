@@ -16,4 +16,4 @@
 
 - [ ] All changes are covered by tests
 - [ ] The changes are covered in docs
-- [ ] The version is bumped according to semver
+- [ ] The commits follow conventional commits standards
