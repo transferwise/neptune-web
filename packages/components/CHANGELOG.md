@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.3.1](https://github.com/transferwise/neptune/compare/@transferwise/components@16.3.0...@transferwise/components@16.3.1) (2019-11-11)
+
+
+### Bug Fixes
+
+* linted files ([2bfb0f0](https://github.com/transferwise/neptune/commit/2bfb0f0f87db405c67f660bbf3f607a6355e569e))
+
+
+
+
+
 # [16.3.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.2.1...@transferwise/components@16.3.0) (2019-11-08)
 
 
