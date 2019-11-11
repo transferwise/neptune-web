@@ -60,15 +60,11 @@
     "docs:deploy-for-branch": "lerna run docs:deploy-for-branch",
     "test": "lerna run test --stream",
     "test:watch": "lerna run test:watch --stream",
-    "pretest": "lerna run pretest --stream",
-    "check-format": "lerna run check-format --stream",
-    "fix-format": "lerna run fix-format --stream",
-    "pre-release-check": "lerna run release-to-github",
-    "release-to-github": "lerna run release-to-github",
     "clean": " npm-run-all clean:*",
     "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules",
     "clean:lock": "find . -name '*.lock' -or -name '*-lock.json' -type f -delete",
     "lint": "lerna run lint",
+    "lint:fix": "lerna run lint:fix --stream",
     "preinstall": "node enforce-yarn.js"
   },
   "husky": {
