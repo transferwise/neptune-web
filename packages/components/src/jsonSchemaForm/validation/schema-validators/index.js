@@ -52,7 +52,6 @@ function isValidArraySchema(value, schema) {
   if (getArrayValidationFailures(value, schema).length) {
     return false;
   }
-
   return value.map(item => isValidSchema(item, schema.items)).every(valid => valid);
 }
 

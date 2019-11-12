@@ -6,8 +6,12 @@ import { isNull } from '../validation/type-validators';
 import { getValidModelParts } from '../validation/valid-model';
 
 const SchemaFormControl = props => {
+  const isUndefined = value => typeof value === 'undefined';
+
+  const isNativeInput = schemaType => schemaType === 'string' || schemaType === 'number';
+
   const getSanitisedValue = value =>
-    (props.schema.type === 'string' || props.schema.type === 'number') && isNull(value) ? '' : null;
+    isNativeInput(props.schema.type) && (isNull(value) || isUndefined(value)) ? '' : value;
 
   const onChange = model => {
     // If the model does not satisfy the schema propogate null
@@ -65,19 +69,19 @@ const SchemaFormControl = props => {
 
 SchemaFormControl.propTypes = {
   id: Types.string.isRequired,
-  value: Types.any, // eslint-disable-line
+  value: Types.oneOfType([Types.string, Types.number, Types.bool]),
   schema: Types.shape({
     type: Types.oneOf(['string', 'number', 'integer', 'boolean']),
     format: Types.string,
-    values: Types.arrayOf(Types.object), // eslint-disable-line
+    values: Types.arrayOf(Types.shape({})),
     title: Types.string,
     placeholder: Types.string,
-    help: Types.object, // eslint-disable-line
+    help: Types.shape({}),
   }).isRequired,
   onChange: Types.func.isRequired,
   onFocus: Types.func.isRequired,
   onBlur: Types.func.isRequired,
-  translations: Types.object, // eslint-disable-line
+  translations: Types.shape({}),
   locale: Types.string,
 };
 
