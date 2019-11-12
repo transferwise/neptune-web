@@ -16,16 +16,19 @@ class OptionDocs extends Component {
     propValue: Types.bool,
     title: Types.string.isRequired,
     content: Types.string.isRequired,
+    extra: Types.string,
   };
 
   static defaultProps = {
     propName: null,
     propValue: false,
+    extra: '',
   };
 
   state = {
     complex: false,
     disabled: false,
+    hasMedia: true,
   };
 
   createStateLink(name) {
@@ -44,8 +47,9 @@ class OptionDocs extends Component {
       propValue,
       title,
       content,
+      extra,
     } = this.props;
-    const { complex, disabled } = this.state;
+    const { complex, disabled, hasMedia } = this.state;
 
     const Code = () => (
       <>
@@ -59,8 +63,7 @@ class OptionDocs extends Component {
             'complex',
             complex,
           )}${boolProp('disabled', disabled)}
-  ${callbackName}={${callbackString}}
-  media={<FastFlagIcon />}
+  ${callbackName}={${callbackString}}${hasMedia ? '\n  media={<FastFlagIcon />}' : ''}
 />`}
         </pre>
         {/* eslint-enable react/jsx-indent */}
@@ -83,7 +86,7 @@ class OptionDocs extends Component {
                 content={getContentForComplexState(complex)}
                 complex={complex}
                 disabled={disabled}
-                media={<FastFlagIcon />}
+                media={hasMedia ? <FastFlagIcon /> : undefined}
                 {...{ [propName]: propValue, [callbackName]: callback }}
               />
             </div>
@@ -91,6 +94,7 @@ class OptionDocs extends Component {
           <div className="row m-t-5">
             <div className="col-md-6">
               <Code />
+              {extra}
             </div>
             <div className="col-md-6">
               <div className="row">
@@ -102,12 +106,22 @@ class OptionDocs extends Component {
                     onChange={this.createStateLink('complex')}
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 m-b-0">
                   <Checkbox
                     id={`${type}-option-disabled`}
                     label="Disabled"
                     checked={disabled}
                     onChange={this.createStateLink('disabled')}
+                  />
+                </div>
+              </div>
+              <div className="row m-t-2">
+                <div className="col-md-6">
+                  <Checkbox
+                    id={`${type}-option-media`}
+                    label="Has media"
+                    checked={hasMedia}
+                    onChange={this.createStateLink('hasMedia')}
                   />
                 </div>
               </div>

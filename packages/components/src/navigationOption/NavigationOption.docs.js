@@ -14,7 +14,8 @@ const NavigationOptionDocs = () => (
     }}
     callbackString="this.handleClick"
     title="Navigation option"
-    content="Watch me as I navigate (hahahaha)!"
+    content="I've a feeling we're not in Kansas anymore"
+    extra="You can also pass a href prop if you want it to behave as an anchor"
   />
 );
 

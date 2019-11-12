@@ -8,6 +8,13 @@ const KNOBS = {
   knobs: [
     { type: 'checkbox', label: 'Complex', state: 'complex', defaultState: false },
     { type: 'checkbox', label: 'Disabled', state: 'disabled', defaultState: false },
+    {
+      type: 'checkbox',
+      label: 'Has media',
+      state: 'hasMedia',
+      defaultState: true,
+      hiddenInDocs: true,
+    },
   ],
 };
 
@@ -15,7 +22,7 @@ class RadioOptionDocs extends Component {
   state = { ...generateState(KNOBS) };
 
   render() {
-    const { complex, disabled } = this.state;
+    const { hasMedia, complex, disabled } = this.state;
 
     const extraPropsDocs = {
       id: 'radio-option',
@@ -23,8 +30,11 @@ class RadioOptionDocs extends Component {
       title: 'Radio option',
       onChange: 'this.handleChange',
       content: getContentForComplexState(complex),
-      media: '<FastFlagIcon />',
     };
+
+    if (hasMedia) {
+      extraPropsDocs.media = '<FastFlagIcon />';
+    }
 
     const { valueSelected } = this.state;
     return (
@@ -34,11 +44,16 @@ class RadioOptionDocs extends Component {
             <div className="col-md-6">
               <h2>Radio option</h2>
               <p>Video killed the radio option ♫</p>
-              {generateCodeBlock('RadioOption', KNOBS, this, extraPropsDocs)}
+              {generateCodeBlock(
+                'RadioOption',
+                { knobs: KNOBS.knobs.filter(knob => !knob.hiddenInDocs) },
+                this,
+                extraPropsDocs,
+              )}
             </div>
             <div className="col-md-6">
               <RadioOption
-                media={<FastFlagIcon />}
+                media={hasMedia ? <FastFlagIcon /> : undefined}
                 title="Radio option"
                 content={getContentForComplexState(complex)}
                 id="id"
