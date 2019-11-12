@@ -1,6 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
+import requiredIf from 'react-required-if';
 
 import './Option.css';
 
@@ -46,7 +47,7 @@ Option.propTypes = {
   title: Types.node.isRequired,
   content: Types.node,
   onClick: Types.func,
-  href: Types.string,
+  href: requiredIf(Types.string, props => props.as === 'a'),
   as: Types.elementType,
   disabled: Types.bool,
   button: Types.node.isRequired,

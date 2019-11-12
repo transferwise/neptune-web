@@ -160,6 +160,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.topairs": "^4.3.0",
     "react-app-polyfill": "^1.0.1",
+    "react-required-if": "^1.0.3",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.2.1"
   },
