@@ -17,14 +17,6 @@
   "license": "MIT",
   "version": "1.0.0",
   "main": "packages/components/build/main.js",
-  "contributors": [
-    "Naiara Abaroa <naiara.abaroa@transferwise.com>",
-    "Andrea Piras <andrea.piras@transferwise.com>",
-    "Anton Dozortsev <anton.dozortsev@transferwise.com>",
-    "Domonkos Horvath <domonkos.horvath@transferwise.com>",
-    "Carlos Matallín Civera <carlos.matallin@transferwise.com>",
-    "Henrique Gusso <henrique.gusso@transferwise.com>"
-  ],
   "private": true,
   "workspaces": [
     "packages/*"
@@ -59,7 +51,7 @@
     "docs:deploy": "lerna run docs:deploy",
     "docs:deploy-for-branch": "lerna run docs:deploy-for-branch",
     "test": "lerna run test --stream",
-    "test:watch": "lerna run test:watch --stream",
+    "test:watch": "cd packages/components && yarn test:watch",
     "clean": " npm-run-all clean:*",
     "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules",
     "clean:lock": "find . -name '*.lock' -or -name '*-lock.json' -type f -delete",
