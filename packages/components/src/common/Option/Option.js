@@ -4,9 +4,21 @@ import classNames from 'classnames';
 
 import './Option.css';
 
-const Option = ({ media, title, content, onClick, htmlFor, disabled, button, complex }) => (
-  <label
+const Option = ({
+  as: Element,
+  href,
+  media,
+  title,
+  content,
+  onClick,
+  htmlFor,
+  disabled,
+  button,
+  complex,
+}) => (
+  <Element
     className={classNames('media decision', { 'decision-complex': complex, disabled })}
+    href={href || undefined}
     onClick={event => {
       if (onClick) {
         event.preventDefault();
@@ -15,33 +27,40 @@ const Option = ({ media, title, content, onClick, htmlFor, disabled, button, com
     }}
     htmlFor={htmlFor}
   >
-    <div className="media-left">
-      <div className="circle circle-sm circle-inverse text-primary">{media}</div>
-    </div>
+    {media && (
+      <div className="media-left">
+        <div className="circle circle-sm circle-inverse text-primary">{media}</div>
+      </div>
+    )}
     <div className="media-body">
       <h5>{title}</h5>
       {content}
     </div>
     <div className="media-right">{button}</div>
-  </label>
+  </Element>
 );
 
 Option.propTypes = {
-  media: Types.node.isRequired,
+  media: Types.node,
   htmlFor: Types.string,
   title: Types.node.isRequired,
   content: Types.node,
   onClick: Types.func,
+  href: Types.string,
+  as: Types.elementType,
   disabled: Types.bool,
   button: Types.node.isRequired,
   complex: Types.bool,
 };
 
 Option.defaultProps = {
+  as: 'label',
+  media: '',
   content: null,
   htmlFor: null,
   disabled: false,
   onClick: null,
+  href: '',
   complex: false,
 };
 

@@ -63,14 +63,37 @@ describe('Option', () => {
     expect(bodyHasElement(<p>A content</p>)).toBe(true);
   });
 
+  it('renders as a label by default', () => {
+    expect(mainComponentTag()).toBe('label');
+  });
+
+  it('renders as the tag that you pass it', () => {
+    component.setProps({ as: 'a' });
+    expect(mainComponentTag()).toBe('a');
+  });
+
+  it('does not render the circle if media not passed', () => {
+    expect(circle().exists()).toBe(true);
+    component.setProps({ media: null });
+    expect(circle().exists()).toBe(false);
+  });
+
+  it('passes href to the underlying component if passed', () => {
+    expect(component.prop('href')).toBeFalsy();
+    component.setProps({ href: 'https://example.com' });
+    expect(component.prop('href')).toBe('https://example.com');
+  });
+
   const hasComplexClass = () => component.hasClass('decision-complex');
   const hasDisabledClass = () => component.hasClass('disabled');
   const htmlFor = () => component.prop('htmlFor');
+  const circle = () => component.find('.media-left');
   const circleContentIsElement = element =>
     component
       .find('.media-left .circle')
       .childAt(0)
       .matchesElement(element);
   const title = () => component.find('h5').text();
+  const mainComponentTag = () => component.name();
   const bodyHasElement = element => component.find('.media-body').containsMatchingElement(element);
 });
