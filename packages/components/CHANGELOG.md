@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.4.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.3.2...@transferwise/components@16.4.0) (2019-11-12)
+
+
+### Features
+
+* add a form component for rendering basic type JSON schemas ([31e4f8f](https://github.com/transferwise/neptune/commit/31e4f8fe5c4cf87121a17cff6bbef6de6730cd12))
+
+
+
+
+
 ## [16.3.2](https://github.com/transferwise/neptune/compare/@transferwise/components@16.3.1...@transferwise/components@16.3.2) (2019-11-11)
 
 
