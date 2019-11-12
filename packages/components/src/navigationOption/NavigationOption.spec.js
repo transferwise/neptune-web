@@ -7,9 +7,7 @@ import Option from '../common/Option';
 describe('Navigation option', () => {
   let component;
   beforeEach(() => {
-    component = shallow(
-      <NavigationOption media={<span />} title="" content="" onClick={jest.fn()} />,
-    );
+    component = shallow(<NavigationOption title="" onClick={jest.fn()} />);
   });
 
   it('passes shared props to option', () => {
@@ -20,6 +18,7 @@ describe('Navigation option', () => {
       content: 'A content',
       complex: true,
       disabled: true,
+      href: 'https://example.com',
     };
     component.setProps(sharedProps);
 
@@ -33,6 +32,12 @@ describe('Navigation option', () => {
     expect(onClick).not.toBeCalled();
     option().simulate('click');
     expect(onClick).toBeCalled();
+  });
+
+  it('tells option to render as an anchor when a href is passed', () => {
+    expect(option().prop('as')).not.toBe('a');
+    component.setProps({ href: 'https://example.com' });
+    expect(option().prop('as')).toBe('a');
   });
 
   it('does not call click handler when disabled', () => {

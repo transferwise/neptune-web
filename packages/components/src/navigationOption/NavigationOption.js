@@ -5,17 +5,25 @@ import Types from 'prop-types';
 import Option from '../common/Option';
 import './NavigationOption.css';
 
-const NavigationOption = ({ media, title, content, onClick, complex, disabled }) => {
-  const sharedProps = { media, title, content, complex, disabled };
+const NavigationOption = ({ media, href, title, content, onClick, complex, disabled }) => {
+  const sharedProps = { media, href, title, content, complex, disabled };
+
+  if (href) {
+    sharedProps.as = 'a';
+  }
 
   return (
     <Option
       {...sharedProps}
-      onClick={() => {
-        if (!disabled) {
-          onClick();
-        }
-      }}
+      onClick={
+        onClick
+          ? () => {
+              if (!disabled) {
+                onClick();
+              }
+            }
+          : undefined
+      }
       button={
         <button className="tw-navigation-option__chevron caret rotate270" disabled={disabled} />
       }
@@ -24,17 +32,21 @@ const NavigationOption = ({ media, title, content, onClick, complex, disabled })
 };
 
 NavigationOption.propTypes = {
-  media: Types.node.isRequired,
+  media: Types.node,
   title: Types.node.isRequired,
   content: Types.node,
-  onClick: Types.func.isRequired,
+  onClick: Types.func,
+  href: Types.string,
   complex: Types.bool,
   disabled: Types.bool,
 };
 
 NavigationOption.defaultProps = {
+  media: null,
   content: null,
   complex: false,
+  onClick: null,
+  href: undefined,
   disabled: false,
 };
 
