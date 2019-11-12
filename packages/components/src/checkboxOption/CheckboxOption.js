@@ -21,7 +21,7 @@ const CheckboxOption = ({ media, title, content, name, checked, onChange, comple
 };
 
 CheckboxOption.propTypes = {
-  media: Types.node.isRequired,
+  media: Types.node,
   id: Types.string.isRequired,
   name: Types.string.isRequired,
   title: Types.node.isRequired,
@@ -33,6 +33,7 @@ CheckboxOption.propTypes = {
 };
 
 CheckboxOption.defaultProps = {
+  media: null,
   content: null,
   checked: false,
   complex: false,

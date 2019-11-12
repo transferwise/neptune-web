@@ -35,7 +35,7 @@ const RadioOption = ({
 };
 
 RadioOption.propTypes = {
-  media: Types.node.isRequired,
+  media: Types.node,
   id: Types.string.isRequired,
   name: Types.string.isRequired,
   title: Types.node.isRequired,
@@ -48,6 +48,7 @@ RadioOption.propTypes = {
 };
 
 RadioOption.defaultProps = {
+  media: null,
   content: null,
   checked: false,
   complex: false,
