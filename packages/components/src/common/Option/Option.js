@@ -20,7 +20,7 @@ const Option = ({
 }) => (
   <Element
     className={classNames(className, 'media decision', { 'decision-complex': complex, disabled })}
-    href={href || undefined}
+    href={href}
     onClick={event => {
       if (onClick) {
         event.preventDefault();
