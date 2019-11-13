@@ -21,6 +21,12 @@ describe('Option', () => {
     expect(hasDisabledClass()).toBe(true);
   });
 
+  it('passes the className it is given to the element it renders', () => {
+    expect(component.hasClass('some-class')).toBe(false);
+    component.setProps({ className: 'some-class' });
+    expect(component.hasClass('some-class')).toBe(true);
+  });
+
   it('calls click handler on click and prevents default when click handler is passed', () => {
     const onClick = jest.fn();
     const preventDefault = jest.fn();

@@ -16,9 +16,10 @@ const Option = ({
   disabled,
   button,
   complex,
+  className,
 }) => (
   <Element
-    className={classNames('media decision', { 'decision-complex': complex, disabled })}
+    className={classNames(className, 'media decision', { 'decision-complex': complex, disabled })}
     href={href || undefined}
     onClick={event => {
       if (onClick) {
@@ -52,6 +53,7 @@ Option.propTypes = {
   disabled: Types.bool,
   button: Types.node.isRequired,
   complex: Types.bool,
+  className: Types.string,
 };
 
 Option.defaultProps = {
@@ -61,8 +63,9 @@ Option.defaultProps = {
   htmlFor: null,
   disabled: false,
   onClick: null,
-  href: '',
+  href: null,
   complex: false,
+  className: null,
 };
 
 export default Option;

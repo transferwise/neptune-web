@@ -14,6 +14,7 @@ const NavigationOption = ({ media, href, title, content, onClick, complex, disab
 
   return (
     <Option
+      className="tw-navigation-option"
       {...sharedProps}
       onClick={
         onClick

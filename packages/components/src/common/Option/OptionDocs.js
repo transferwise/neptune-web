@@ -83,6 +83,7 @@ class OptionDocs extends Component {
                 id={`${type}-option`}
                 name={`${type}-option`}
                 title={title}
+                href="https://example.com"
                 content={getContentForComplexState(complex)}
                 complex={complex}
                 disabled={disabled}
