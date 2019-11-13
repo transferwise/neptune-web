@@ -78,7 +78,7 @@ class Upload extends PureComponent {
             isProcessing: false,
             isComplete: true,
           },
-          onSuccess && onSuccess(response),
+          () => (onSuccess ? onSuccess(response) : {}),
         );
       }, animationDelay);
     }
@@ -92,16 +92,20 @@ class Upload extends PureComponent {
             isProcessing: false,
             isComplete: true,
           },
-          onFailure && onFailure(response),
+          () => (onFailure ? onFailure(response) : {}),
         );
       }, animationDelay);
     }
   };
 
   asyncPost = file => {
+    const { httpOptions } = this.props;
+    const { fileInputName = file.name, data = {} } = httpOptions || {};
+
     const formData = new FormData();
-    formData.append(file.name, file);
-    return postData(this.prepareHttpOptions(this.props.httpOptions), formData);
+    formData.append(fileInputName, file);
+    Object.keys(data).forEach(key => formData.append(key, data[key]));
+    return postData(this.prepareHttpOptions(httpOptions), formData);
   };
 
   asyncResponse = (response, type) => {

@@ -8,20 +8,49 @@ describe('postData', () => {
     global.fetch.mockClear();
   });
 
-  it('works with resolves', async () => {
+  it('should work with resolve', async () => {
     const RESOLVE_RESPONSE = { ok: true, someOtherStuff: 'someOtherStuff' };
-    global.fetch = jest.fn(() => new Promise(resolve => resolve(RESOLVE_RESPONSE)));
+    global.fetch = jest.fn(() => Promise.resolve(RESOLVE_RESPONSE));
 
     expect.assertions(1);
 
     await expect(postData(HTTPOPTIONS, DATA)).resolves.toEqual(RESOLVE_RESPONSE);
   });
 
-  it('works with rejects', async () => {
+  it('should work with reject', async () => {
     const REJECT_RESPONSE = { status: '500', statusText: 'Rejected' };
-    global.fetch = jest.fn(() => new Promise(rejects => rejects(REJECT_RESPONSE)));
+    global.fetch = jest.fn(() => Promise.reject(REJECT_RESPONSE));
 
     expect.assertions(1);
     await expect(postData(HTTPOPTIONS, DATA)).rejects.toEqual(REJECT_RESPONSE);
+  });
+
+  it('should pass additional form data to request body', () => {
+    const data = { file: 'file', profileId: '1' };
+    const mockFetch = jest.fn(() => Promise.resolve({ ok: true }));
+    global.fetch = mockFetch;
+
+    postData(HTTPOPTIONS, data);
+
+    expect(mockFetch.mock.calls[0][1].body).toEqual(data);
+  });
+
+  it('should override Content-type and add any custom headers to the request', () => {
+    const CUSTOM_CONTENT_TYPE = 'foo';
+    const CUSTOM_LANGUAGE = 'hu';
+
+    const mockFetch = jest.fn(() => Promise.resolve({ ok: true }));
+    global.fetch = mockFetch;
+
+    postData(
+      {
+        ...HTTPOPTIONS,
+        headers: { 'Content-type': CUSTOM_CONTENT_TYPE, 'Accept-language': CUSTOM_LANGUAGE },
+      },
+      DATA,
+    );
+
+    expect(mockFetch.mock.calls[0][1].headers['Content-type']).toEqual(CUSTOM_CONTENT_TYPE);
+    expect(mockFetch.mock.calls[0][1].headers['Accept-language']).toEqual(CUSTOM_LANGUAGE);
   });
 });

@@ -60,7 +60,12 @@ const KNOBS = {
     },
 
     { type: 'text', label: 'Label', state: 'usLabel', defaultState: '' },
-    { type: 'text', label: 'Button text', state: 'usButtonText', defaultState: 'Or Select File' },
+    {
+      type: 'text',
+      label: 'Button text',
+      state: 'usButtonText',
+      defaultState: 'Or Select File',
+    },
     {
       type: 'select',
       label: 'Help Image',
@@ -68,8 +73,18 @@ const KNOBS = {
       options: IMAGES,
       defaultState: '',
     },
-    { type: 'checkbox', label: 'Disabled', state: 'usDisabled', defaultState: false },
-    { type: 'checkbox', label: 'Dropping', state: 'isDropping', defaultState: false },
+    {
+      type: 'checkbox',
+      label: 'Disabled',
+      state: 'usDisabled',
+      defaultState: false,
+    },
+    {
+      type: 'checkbox',
+      label: 'Dropping',
+      state: 'isDropping',
+      defaultState: false,
+    },
     {
       type: 'select',
       label: 'Accepted format',
@@ -91,7 +106,12 @@ const KNOBS = {
       state: 'psProcessingText',
       defaultState: 'Uploading...',
     },
-    { type: 'text', label: 'Button Text', state: 'psButtonText', defaultState: 'Cancel' },
+    {
+      type: 'text',
+      label: 'Button Text',
+      state: 'psButtonText',
+      defaultState: 'Cancel',
+    },
     {
       type: 'text',
       label: 'Failure text',
@@ -152,9 +172,25 @@ const KNOBS = {
     },
   ],
   sharedProps: [
-    { type: 'number', label: 'Max Size', state: 'maxSize', defaultState: 5000000 },
-    { type: 'number', label: 'Animation Delay', state: 'animationDelay', defaultState: 700 },
-    { type: 'select', label: 'Size', state: 'size', options: SIZES, defaultState: SIZES[1] },
+    {
+      type: 'number',
+      label: 'Max Size',
+      state: 'maxSize',
+      defaultState: 5000000,
+    },
+    {
+      type: 'number',
+      label: 'Animation Delay',
+      state: 'animationDelay',
+      defaultState: 700,
+    },
+    {
+      type: 'select',
+      label: 'Size',
+      state: 'size',
+      options: SIZES,
+      defaultState: SIZES[1],
+    },
     {
       type: 'checkbox',
       label: 'Provide httpOptions ?',
@@ -174,7 +210,11 @@ const extraPropsDocs = {
 export default class UploadDocs extends Component {
   constructor() {
     super();
-    this.state = { ...generateState(KNOBS), processingState: null, completedState: null };
+    this.state = {
+      ...generateState(KNOBS),
+      processingState: null,
+      completedState: null,
+    };
   }
 
   render() {
@@ -290,6 +330,22 @@ const getExtraDocs = () => (
     <p>
       The component also contains an HTML file input which can be submitted in a standard
       multipart/form-data form (which requires a name).
+    </p>
+
+    <p>
+      Use the `httpOptions` prop to define the URL where the form is submitted, potentially override
+      the request method and provide additional form data.
+      <pre className="tw-docs-code">
+        {`
+httpOptions: {
+  url: 'https://transferwise.com/formHandler', // Required. The form will be POST-ed to this endpoint
+  fileInputName: '', // Optional. Defaults to the name of the file being uploaded
+  data: { ... }, // Optional. Additional key/value pairs to be included in the form submission
+  method: '', // Optional. Defaults to 'POST'
+  headers: {},  // Optional. Additional headers for fetch. 'Content-type' defaults to: 'multipart/form-data'
+}
+`}
+      </pre>
     </p>
     <p>
       A number of event handlers are available during the component lifecycle:
