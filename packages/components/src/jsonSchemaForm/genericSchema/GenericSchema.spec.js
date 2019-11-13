@@ -3,7 +3,8 @@ import { shallow } from 'enzyme';
 
 import GenericSchema from '.';
 
-import BasicTypeSchema from '../basicTypeSchema/BasicTypeSchema';
+import BasicTypeSchema from '../basicTypeSchema';
+import ObjectSchema from '../objectSchema';
 
 describe('Given a component for rendering any generic schema', () => {
   let component;
@@ -136,6 +137,50 @@ describe('Given a component for rendering any generic schema', () => {
 
       it('should trigger the components onChange with the model', () => {
         expect(onChange).toHaveBeenCalledWith(false, schema);
+      });
+    });
+  });
+
+  describe('when an object schema is supplied ', () => {
+    let objectSchemaComponent;
+
+    beforeEach(() => {
+      model = { foo: 'bar' };
+      schema = {
+        type: 'object',
+        properties: {
+          foo: {
+            type: 'string',
+          },
+        },
+      };
+      errors = { foo: 'barbar' };
+
+      props = { ...sharedProps, model, schema, errors };
+
+      component = shallow(<GenericSchema {...props} />);
+      objectSchemaComponent = component.find(ObjectSchema);
+    });
+
+    it('should render a ObjectSchema', () => {
+      expect(objectSchemaComponent.length).toBe(1);
+    });
+
+    it('should pass through the supplied data to the ObjectSchema', () => {
+      expect(objectSchemaComponent.prop('schema')).toEqual(schema);
+      expect(objectSchemaComponent.prop('model')).toEqual(model);
+      expect(objectSchemaComponent.prop('errors')).toEqual(errors);
+      expect(objectSchemaComponent.prop('locale')).toEqual(locale);
+      expect(objectSchemaComponent.prop('translations')).toEqual(translations);
+    });
+
+    describe('when the child component triggers onChange', () => {
+      beforeEach(() => {
+        objectSchemaComponent.simulate('change', { foo: 'barbar' }, schema.properties.foo);
+      });
+
+      it('should trigger the components onChange with the model', () => {
+        expect(onChange).toHaveBeenCalledWith({ foo: 'barbar' }, schema.properties.foo);
       });
     });
   });

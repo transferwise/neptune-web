@@ -2,6 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 
 import BasicTypeSchema from '../basicTypeSchema/';
+import ObjectSchema from '../objectSchema/';
 
 const GenericSchemaForm = props => (
   <>
@@ -10,6 +11,7 @@ const GenericSchemaForm = props => (
     {props.schema.type === 'number' && <BasicTypeSchema {...props} />}
     {props.schema.type === 'integer' && <BasicTypeSchema {...props} />}
     {props.schema.type === 'boolean' && <BasicTypeSchema {...props} />}
+    {props.schema.type === 'object' && <ObjectSchema {...props} />}
   </>
 );
 
