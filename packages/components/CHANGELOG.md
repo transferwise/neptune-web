@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.6.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.5.0...@transferwise/components@16.6.0) (2019-11-13)
+
+
+### Features
+
+* make internal Option take a tagname, href and make media optional ([085ed5f](https://github.com/transferwise/neptune/commit/085ed5f912efed2bf9e76bbc1a23897d11a0ee09))
+* make NavigationOption pass href and render as an anchor if so ([65ee20b](https://github.com/transferwise/neptune/commit/65ee20b9bb8f261d7641d32f7551b419f1fd0b9a))
+* make Radio/Checkbox options have media as optional ([c7f1323](https://github.com/transferwise/neptune/commit/c7f1323db18253641161cbf27217edcada70356b))
+* override default anchor styles on navigation option ([c06ba34](https://github.com/transferwise/neptune/commit/c06ba3477535e8baa8c61eda19a73684476bed0f))
+
+
+
+
+
 # [16.5.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.4.0...@transferwise/components@16.5.0) (2019-11-13)
 
 
