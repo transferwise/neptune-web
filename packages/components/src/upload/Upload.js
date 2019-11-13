@@ -8,7 +8,7 @@ import './Upload.css';
 import ProcessIndicator from '../processIndicator';
 
 const PROCESS_STATE = ['error', 'success'];
-const ACCEPTED_FORMAT = ['*', 'image/*', 'application/*'];
+const ACCEPTED_FORMAT = ['*', 'image/*', 'application/*', 'text/csv'];
 
 /*
  * This delay is required for the isError/isSuccess to be fired after isProcessing so the processIndicator, will be
