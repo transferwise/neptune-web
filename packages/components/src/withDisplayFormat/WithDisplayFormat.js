@@ -39,13 +39,13 @@ class WithDisplayFormat extends React.Component {
 
   static defaultProps = {
     autoComplete: 'off',
-    className: '',
+    className: null,
     disabled: false,
     id: null,
     maxLength: null,
     minLength: null,
-    name: '',
-    placeholder: '',
+    name: null,
+    placeholder: null,
     readOnly: false,
     required: false,
     displayPattern: '',
