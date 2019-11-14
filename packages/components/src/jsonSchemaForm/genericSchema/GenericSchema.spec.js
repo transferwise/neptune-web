@@ -5,6 +5,7 @@ import GenericSchema from '.';
 
 import BasicTypeSchema from '../basicTypeSchema';
 import ObjectSchema from '../objectSchema';
+import OneOfSchema from '../oneOfSchema';
 
 describe('Given a component for rendering any generic schema', () => {
   let component;
@@ -181,6 +182,49 @@ describe('Given a component for rendering any generic schema', () => {
 
       it('should trigger the components onChange with the model', () => {
         expect(onChange).toHaveBeenCalledWith({ foo: 'barbar' }, schema.properties.foo);
+      });
+    });
+  });
+
+  describe('when a oneOf schema is supplied ', () => {
+    let oneOfComponent;
+
+    beforeEach(() => {
+      model = 'a';
+      schema = {
+        oneOf: [
+          {
+            type: 'string',
+          },
+        ],
+      };
+      errors = 'foo';
+
+      props = { ...sharedProps, model, schema, errors };
+
+      component = shallow(<GenericSchema {...props} />);
+      oneOfComponent = component.find(OneOfSchema);
+    });
+
+    it('should render a oneOfSchema', () => {
+      expect(oneOfComponent.length).toBe(1);
+    });
+
+    it('should pass through the supplied data to the oneOfSchema', () => {
+      expect(oneOfComponent.prop('schema')).toEqual(schema);
+      expect(oneOfComponent.prop('model')).toEqual(model);
+      expect(oneOfComponent.prop('errors')).toEqual(errors);
+      expect(oneOfComponent.prop('locale')).toEqual(locale);
+      expect(oneOfComponent.prop('translations')).toEqual(translations);
+    });
+
+    describe('when the child component triggers onChange', () => {
+      beforeEach(() => {
+        oneOfComponent.simulate('change', 'b', schema.oneOf[0]);
+      });
+
+      it('should trigger the components onChange with the model', () => {
+        expect(onChange).toHaveBeenCalledWith('b', schema.oneOf[0]);
       });
     });
   });
