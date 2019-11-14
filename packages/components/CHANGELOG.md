@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.10.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.9.2...@transferwise/components@16.10.0) (2019-11-14)
+
+
+### Features
+
+* make NavigationOption pass the click event to to the onClick listener ([#88](https://github.com/transferwise/neptune/issues/88)) ([c3af13e](https://github.com/transferwise/neptune/commit/c3af13e2b4ddb62e47d13e744cf021f381db0c0e))
+
+
+
+
+
 ## [16.9.2](https://github.com/transferwise/neptune/compare/@transferwise/components@16.9.1...@transferwise/components@16.9.2) (2019-11-14)
 
 
