@@ -1,6 +1,8 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
+import requiredIf from 'react-required-if';
+
 import './Button.css';
 
 const Type = {
@@ -44,7 +46,8 @@ Button.propTypes = {
   disabled: Types.bool,
   block: Types.bool,
   loading: Types.bool,
-  onClick: Types.func.isRequired,
+  // eslint-disable-next-line
+  onClick: requiredIf(Types.func, props => props.htmlType !== 'submit'),
   children: Types.node.isRequired,
   htmlType: Types.oneOf(['submit', 'reset', 'button']),
 };
