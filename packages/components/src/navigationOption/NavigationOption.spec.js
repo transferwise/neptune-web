@@ -30,8 +30,8 @@ describe('Navigation option', () => {
     component.setProps({ onClick });
 
     expect(onClick).not.toBeCalled();
-    option().simulate('click');
-    expect(onClick).toBeCalled();
+    option().simulate('click', { event: true });
+    expect(onClick).toBeCalledWith({ event: true });
   });
 
   it('tells option to render as an anchor when a href is passed', () => {

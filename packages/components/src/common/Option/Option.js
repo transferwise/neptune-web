@@ -24,7 +24,7 @@ const Option = ({
     onClick={event => {
       if (onClick) {
         event.preventDefault();
-        onClick();
+        onClick(event);
       }
     }}
     htmlFor={htmlFor}

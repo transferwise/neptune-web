@@ -30,12 +30,13 @@ describe('Option', () => {
   it('calls click handler on click and prevents default when click handler is passed', () => {
     const onClick = jest.fn();
     const preventDefault = jest.fn();
+    const event = { preventDefault };
     component.setProps({ onClick });
 
     expect(onClick).not.toBeCalled();
     expect(preventDefault).not.toBeCalled();
-    component.simulate('click', { preventDefault });
-    expect(onClick).toBeCalled();
+    component.simulate('click', event);
+    expect(onClick).toBeCalledWith(event);
     expect(preventDefault).toBeCalled();
   });
 

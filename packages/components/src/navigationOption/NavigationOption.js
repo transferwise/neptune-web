@@ -18,9 +18,9 @@ const NavigationOption = ({ media, href, title, content, onClick, complex, disab
       {...sharedProps}
       onClick={
         onClick
-          ? () => {
+          ? event => {
               if (!disabled) {
-                onClick();
+                onClick(event);
               }
             }
           : undefined
