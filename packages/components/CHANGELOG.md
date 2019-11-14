@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.9.1](https://github.com/transferwise/neptune/compare/@transferwise/components@16.9.0...@transferwise/components@16.9.1) (2019-11-14)
+
+
+### Bug Fixes
+
+* **button:** don't require `onClick` when `htmlType` is not `submit` ([#87](https://github.com/transferwise/neptune/issues/87)) ([c622f7e](https://github.com/transferwise/neptune/commit/c622f7e3800aedd389020882b60574d35729151a))
+
+
+
+
+
 # [16.9.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.8.0...@transferwise/components@16.9.0) (2019-11-14)
 
 
