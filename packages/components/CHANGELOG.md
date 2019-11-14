@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.9.2](https://github.com/transferwise/neptune/compare/@transferwise/components@16.9.1...@transferwise/components@16.9.2) (2019-11-14)
+
+
+### Bug Fixes
+
+* avoid generating redundant markup for input component ([#89](https://github.com/transferwise/neptune/issues/89)) ([365fc04](https://github.com/transferwise/neptune/commit/365fc047fd8a4402900ae0caefce93612c444604))
+
+
+
+
+
 ## [16.9.1](https://github.com/transferwise/neptune/compare/@transferwise/components@16.9.0...@transferwise/components@16.9.1) (2019-11-14)
 
 
