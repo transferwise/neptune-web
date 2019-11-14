@@ -178,6 +178,7 @@ describe('Given a oneOfSchema component', () => {
     it('should not render a radio group to choose between schemas', () => {
       expect(component.find(RadioGroup)).toHaveLength(0);
     });
+
     it('should render the schema using a GenericSchema', () => {
       expect(component.find(GenericSchema)).toHaveLength(1);
     });
