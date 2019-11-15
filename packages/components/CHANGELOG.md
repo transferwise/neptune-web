@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.0.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.0.0...@transferwise/components@17.0.1) (2019-11-15)
+
+
+### Bug Fixes
+
+* add umd and fix treeshake ([#85](https://github.com/transferwise/neptune/issues/85)) ([545c990](https://github.com/transferwise/neptune/commit/545c990e5ac6203511588747a94e50494a5deff8))
+
+
+
+
+
 # [17.0.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.10.0...@transferwise/components@17.0.0) (2019-11-15)
 
 
