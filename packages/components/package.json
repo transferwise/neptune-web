@@ -3,7 +3,7 @@
   "version": "17.0.0",
   "description": "TransferWise styleguide components in react",
   "license": "Apache-2.0",
-  "main": "./lib/index.js",
+  "main": "./build/main.js",
   "module": "./lib/index.js",
   "style": "./build/main.css",
   "sideEffects": [
@@ -24,7 +24,7 @@
     "build:clean": "rm -rf lib build",
     "build:emotion-fix": "node ./emotionFix.js",
     "build:compile-css": "gulp lessCompiler",
-    "build-failing-on-circle-ci-to-reintroduce:umd": "rollup -c",
+    "build:umd": "rollup -c",
     "build:es2015": "babel src -d lib --ignore '**/*.spec.js','**/*.docs.js'",
     "build:copy-files": "cpx 'src/**/!(db)/*.{css,json,svg}' lib",
     "test": "gulp lessCompiler && jest --env=jsdom --runInBand",
