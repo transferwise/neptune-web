@@ -28,24 +28,33 @@ describe('Checkbox option', () => {
   });
 
   it('calls change handler with new checked value on option click when not disabled', () => {
+    const event = { preventDefault: jest.fn() };
     const onChange = jest.fn();
     component.setProps({ onChange });
 
     expect(onChange).not.toBeCalled();
-    option().simulate('click');
+    option().simulate('click', event);
     expect(onChange).toBeCalledWith(true);
 
     component.setProps({ checked: true });
-    option().simulate('click');
+    option().simulate('click', event);
     expect(onChange).toBeCalledWith(false);
   });
 
+  it('prevents default on the click event', () => {
+    const event = { preventDefault: jest.fn() };
+    expect(event.preventDefault).not.toHaveBeenCalled();
+    option().simulate('click', event);
+    expect(event.preventDefault).toHaveBeenCalled();
+  });
+
   it('does not call change handler when disabled', () => {
+    const event = { preventDefault: jest.fn() };
     const onChange = jest.fn();
     component.setProps({ onChange, disabled: true });
 
     expect(onChange).not.toBeCalled();
-    option().simulate('click');
+    option().simulate('click', event);
     expect(onChange).not.toBeCalled();
   });
 

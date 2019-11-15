@@ -10,7 +10,8 @@ const CheckboxOption = ({ media, title, content, name, checked, onChange, comple
   return (
     <Option
       {...sharedProps}
-      onClick={() => {
+      onClick={event => {
+        event.preventDefault();
         if (!disabled) {
           onChange(!checked);
         }
