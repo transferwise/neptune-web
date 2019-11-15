@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.0.2](https://github.com/transferwise/neptune/compare/@transferwise/components@17.0.1...@transferwise/components@17.0.2) (2019-11-15)
+
+
+### Bug Fixes
+
+* add input mode of decimal to money input ([#92](https://github.com/transferwise/neptune/issues/92)) ([8703e4a](https://github.com/transferwise/neptune/commit/8703e4a72c3cfd7533e98df2dee2d29f0396c50c))
+
+
+
+
+
 ## [17.0.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.0.0...@transferwise/components@17.0.1) (2019-11-15)
 
 
