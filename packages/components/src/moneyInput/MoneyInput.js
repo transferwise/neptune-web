@@ -152,6 +152,7 @@ export default class MoneyInput extends Component {
           id={this.props.id}
           value={this.state.formattedAmount}
           type="text"
+          inputMode="decimal"
           className={classNames(this.style('form-control'))}
           onChange={this.onAmountChange}
           onFocus={this.onAmountFocus}
