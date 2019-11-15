@@ -135,12 +135,13 @@ export default class MoneyInputDocs extends Component {
 
   render() {
     const extraProps = {
-      onAmountChange: !this.state.amountChangeEnabled ? '[a function]' : null,
-      onCurrencyChange: this.state.fixedCurrency ? null : '[a function]',
-      addon: this.state.addonEnabled ? `<i className="icon icon-unlock" />` : null,
-      selectedCurrency: this.state.selectedCurrency ? this.state.selectedCurrency : null,
-      onCustomAction: this.state.customActionEnabled ? '[a function]' : null,
-      customActionLabel: this.state.customActionEnabled ? '"Custom action label"' : null,
+      amount: this.state.amount,
+      onAmountChange: !this.state.amountChangeEnabled ? '(amount) => {}' : null,
+      onCurrencyChange: this.state.fixedCurrency ? undefined : '(currency) => {}',
+      addon: this.state.addonEnabled ? `<i className="icon icon-unlock" />` : undefined,
+      selectedCurrency: this.state.selectedCurrency,
+      onCustomAction: this.state.customActionEnabled ? '() => {}' : undefined,
+      customActionLabel: this.state.customActionEnabled ? 'Custom action label' : undefined,
       currencies: this.getCurrencies(),
     };
     return (

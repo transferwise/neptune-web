@@ -9,9 +9,9 @@ const generateCodeBlock = (componentName, knobs, componentThis, extraPropsDocs =
   );
 
   if (Object.values(extraPropsDocs).length) {
-    const objectToArrayofStrings = Object.keys(extraPropsDocs).map(
-      key => `${key}=${generateFormattedValue(extraPropsDocs[key])}`,
-    );
+    const objectToArrayofStrings = Object.keys(extraPropsDocs)
+      .filter(key => extraPropsDocs[key] !== undefined)
+      .map(key => `${key}=${generateFormattedValue(extraPropsDocs[key])}`);
     docs.push(objectToArrayofStrings.join('\n\r  '));
   }
 
@@ -39,10 +39,19 @@ const generateDocsWithUpdatedStateValue = (knob, componentState) => {
 };
 
 const generateFormattedValue = value => {
+  if (value === null) {
+    return '{null}';
+  }
   switch (typeof value) {
     case 'boolean':
     case 'number':
       return `{${value}}`;
+
+    case 'string':
+      if (value.indexOf('=>') >= 0) {
+        return `{${value}}`;
+      }
+      return `"${value}"`;
 
     case 'object':
       if (React.isValidElement(value)) {
@@ -53,10 +62,13 @@ const generateFormattedValue = value => {
         return `{"${value || ''}"}`;
       }
 
-      return JSON.stringify(value, null, '    ');
+      return `{${JSON.stringify(value, null, '    ')}}`;
+
+    case 'function':
+      return `{${value.toString()}}`;
 
     default:
-      return `{"${value || ''}"}`;
+      return `"${value || ''}"`;
   }
 };
 

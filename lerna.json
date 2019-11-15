@@ -4,7 +4,13 @@
       "allowBranch": "master",
       "conventionalCommits": true,
       "verifyAccess": false,
-      "ignoreChanges": ["*.md", "*.spec.js", "*.yml", "*.docs"]
+      "ignoreChanges": [
+        "**/*.md",
+        "**/*.spec.js",
+        "**/*.yml",
+        "**/*.docs.js",
+        "**/components/docs/**"
+      ]
     }
   },
   "npmClient": "yarn",
