@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.0.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.10.0...@transferwise/components@17.0.0) (2019-11-15)
+
+
+### Bug Fixes
+
+* make checkbox option prevent default on its own ([6948aa0](https://github.com/transferwise/neptune/commit/6948aa0bd398c1d58c9b39a1a3d4292d55838118))
+
+
+### Features
+
+* do not prevent default on option click ([69c8ee3](https://github.com/transferwise/neptune/commit/69c8ee342c944dce0dfd9d5eceb5fd383ac4cb5a))
+
+
+### BREAKING CHANGES
+
+* does not prevent default after clicking on an option
+
+
+
+
+
 # [16.10.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.9.2...@transferwise/components@16.10.0) (2019-11-14)
 
 
