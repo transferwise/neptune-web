@@ -21,12 +21,7 @@ const Option = ({
   <Element
     className={classNames(className, 'media decision', { 'decision-complex': complex, disabled })}
     href={href}
-    onClick={event => {
-      if (onClick) {
-        event.preventDefault();
-        onClick(event);
-      }
-    }}
+    onClick={onClick}
     htmlFor={htmlFor}
   >
     {media && (

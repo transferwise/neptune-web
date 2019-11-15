@@ -16,15 +16,11 @@ const NavigationOption = ({ media, href, title, content, onClick, complex, disab
     <Option
       className="tw-navigation-option"
       {...sharedProps}
-      onClick={
-        onClick
-          ? event => {
-              if (!disabled) {
-                onClick(event);
-              }
-            }
-          : undefined
-      }
+      onClick={event => {
+        if (!disabled) {
+          onClick(event);
+        }
+      }}
       button={
         <button className="tw-navigation-option__chevron caret rotate270" disabled={disabled} />
       }
