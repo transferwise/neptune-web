@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.1.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.0.2...@transferwise/components@17.1.0) (2019-11-18)
+
+
+### Features
+
+* Add a component for rendering JSON schema dynamic forms ([18e9fac](https://github.com/transferwise/neptune/commit/18e9fac03aaef64a2c476a7ba23ddd7ac52a3d0d))
+
+
+
+
+
 ## [17.0.2](https://github.com/transferwise/neptune/compare/@transferwise/components@17.0.1...@transferwise/components@17.0.2) (2019-11-15)
 
 
