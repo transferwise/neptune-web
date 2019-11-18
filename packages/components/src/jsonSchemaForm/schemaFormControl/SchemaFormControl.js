@@ -13,9 +13,9 @@ const SchemaFormControl = props => {
   const getSanitisedValue = value =>
     isNativeInput(props.schema.type) && (isNull(value) || isUndefined(value)) ? '' : value;
 
-  const onChange = model => {
+  const onChange = value => {
     // If the model does not satisfy the schema propogate null
-    props.onChange(getValidModelParts(model, props.schema));
+    props.onChange(getValidModelParts(value, props.schema));
   };
 
   const getControlType = schema => {

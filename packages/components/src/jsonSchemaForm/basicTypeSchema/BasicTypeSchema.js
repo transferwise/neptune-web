@@ -21,7 +21,14 @@ const BasicTypeSchema = props => {
     setModel(newModel);
     const validationKeys = getValidationKeys(newModel);
     setValidations(validationKeys);
-    props.onChange(validationKeys.length ? null : newModel, props.schema);
+
+    const broadcastModel = validationKeys.length ? null : newModel;
+
+    setLastModel(broadcastModel);
+
+    if (broadcastModel !== lastModel) {
+      props.onChange(broadcastModel, props.schema);
+    }
   };
 
   const sanitiseModel = newModel => getValidModelParts(newModel, props.schema);
@@ -36,6 +43,7 @@ const BasicTypeSchema = props => {
 
   const [id] = useState(generateId());
   const [model, setModel] = useState(props.model);
+  const [lastModel, setLastModel] = useState(props.model);
   const [changed, setChanged] = useState(false);
   const [focused, setFocused] = useState(false);
   const [blurred, setBlurred] = useState(false);
