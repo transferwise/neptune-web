@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.2.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.1.0...@transferwise/components@17.2.0) (2019-11-20)
+
+
+### Features
+
+* expose Alert enums ([#96](https://github.com/transferwise/neptune/issues/96)) ([0a5a650](https://github.com/transferwise/neptune/commit/0a5a650f49f4bc01f4a7ab807a3fc93908e85700))
+
+
+
+
+
 # [17.1.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.0.2...@transferwise/components@17.1.0) (2019-11-18)
 
 
