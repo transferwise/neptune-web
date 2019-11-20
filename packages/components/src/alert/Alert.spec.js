@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Alert, { AlertType, AlertSize, AlertArrowPosition } from './Alert';
+import Alert from './Alert';
 
 describe('Alert', () => {
   const props = {
@@ -45,7 +45,7 @@ describe('Alert', () => {
 
   describe('types of message', () => {
     it('checks warning type', () => {
-      component.setProps({ type: AlertType.Warning });
+      component.setProps({ type: Alert.Type.WARNING });
 
       expect(component.hasClass('alert')).toBe(true);
       expect(component.hasClass('alert-detach')).toBe(true);
@@ -53,7 +53,7 @@ describe('Alert', () => {
     });
 
     it('checks danger type', () => {
-      component.setProps({ type: AlertType.Error });
+      component.setProps({ type: Alert.Type.ERROR });
 
       expect(component.hasClass('alert')).toBe(true);
       expect(component.hasClass('alert-detach')).toBe(true);
@@ -61,7 +61,7 @@ describe('Alert', () => {
     });
 
     it('checks success type', () => {
-      component.setProps({ type: AlertType.Success });
+      component.setProps({ type: Alert.Type.SUCCESS });
 
       expect(component.hasClass('alert')).toBe(true);
       expect(component.hasClass('alert-detach')).toBe(true);
@@ -77,7 +77,7 @@ describe('Alert', () => {
     });
 
     it('checks for necessary CSS classes when it should be small', () => {
-      component.setProps({ size: AlertSize.Small });
+      component.setProps({ size: Alert.Size.SMALL });
 
       expect(component.hasClass('small')).toBe(true);
       expect(component.hasClass('p-x-2')).toBe(true);
@@ -87,28 +87,28 @@ describe('Alert', () => {
 
   describe('check arrow positioning', () => {
     it('checks left top arrow', () => {
-      component.setProps({ arrow: AlertArrowPosition.UpLeft });
+      component.setProps({ arrow: Alert.ArrowPosition.TOP_LEFT });
 
       expect(component.hasClass('arrow')).toBe(true);
       expect(component.hasClass('arrow-left')).toBe(false);
     });
 
     it('checks center top arrow', () => {
-      component.setProps({ arrow: AlertArrowPosition.UpCenter });
+      component.setProps({ arrow: Alert.ArrowPosition.TOP });
 
       expect(component.hasClass('arrow')).toBe(true);
       expect(component.hasClass('arrow-center')).toBe(true);
     });
 
     it('checks right top arrow', () => {
-      component.setProps({ arrow: AlertArrowPosition.UpRight });
+      component.setProps({ arrow: Alert.ArrowPosition.TOP_RIGHT });
 
       expect(component.hasClass('arrow')).toBe(true);
       expect(component.hasClass('arrow-right')).toBe(true);
     });
 
     it('checks left bottom arrow', () => {
-      component.setProps({ arrow: AlertArrowPosition.DownLeft });
+      component.setProps({ arrow: Alert.ArrowPosition.BOTTOM_LEFT });
 
       expect(component.hasClass('arrow')).toBe(true);
       expect(component.hasClass('arrow-left')).toBe(true);
@@ -116,7 +116,7 @@ describe('Alert', () => {
     });
 
     it('checks center bottom arrow', () => {
-      component.setProps({ arrow: AlertArrowPosition.DownCenter });
+      component.setProps({ arrow: Alert.ArrowPosition.BOTTOM });
 
       expect(component.hasClass('arrow')).toBe(true);
       expect(component.hasClass('arrow-center')).toBe(true);
@@ -124,7 +124,7 @@ describe('Alert', () => {
     });
 
     it('checks right bottom arrow', () => {
-      component.setProps({ arrow: AlertArrowPosition.DownRight });
+      component.setProps({ arrow: Alert.ArrowPosition.BOTTOM_RIGHT });
 
       expect(component.hasClass('arrow')).toBe(true);
       expect(component.hasClass('arrow-right')).toBe(true);

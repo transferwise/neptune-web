@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import Alert, { AlertSize, AlertArrowPosition, AlertType } from '../alert/Alert';
+import Alert from '../alert/Alert';
 import FormControl from '../formControl';
 import { Sizes } from '../common';
 import { FormControlType } from '../formControl/FormControlType';
@@ -226,29 +226,29 @@ export default class Field extends Component {
 
     if (this.objectSizeOf(validationFailures) > 0) {
       return {
-        type: AlertType.Error,
+        type: Alert.Type.ERROR,
         content: Object.keys(validationFailures).map(key => (
           <div key={key}>{validationFailures[key]}</div>
         )),
       };
     } else if (error && errorMessage) {
       return {
-        type: AlertType.Error,
+        type: Alert.Type.ERROR,
         content: <>{errorMessage}</>,
       };
     } else if (warningMessage) {
       return {
-        type: AlertType.Warning,
+        type: Alert.Type.WARNING,
         content: <>{warningMessage}</>,
       };
     } else if (focused && field.help && field.help.message) {
       return {
-        type: AlertType.Info,
+        type: Alert.Type.INFO,
         content: <>{field.help.message}</>,
       };
     } else if (focused && field.help && field.help.list && field.help.list.length > 0) {
       return {
-        type: AlertType.Info,
+        type: Alert.Type.INFO,
         // eslint-disable-next-line react/no-array-index-key
         content: field.help.list.map((item, index) => <div key={index}>{item}</div>),
       };
@@ -261,7 +261,7 @@ export default class Field extends Component {
       field.help.dont.length > 0
     ) {
       return {
-        type: AlertType.Info,
+        type: Alert.Type.INFO,
         content: (
           <div className="m-b-1">
             <InstructionsList dos={field.help.do} donts={field.help.dont} />
@@ -270,7 +270,7 @@ export default class Field extends Component {
       };
     } else if (focused && control !== FormControlType.FILE && field.help && field.help.image) {
       return {
-        type: AlertType.Info,
+        type: Alert.Type.INFO,
         content: <img className="thumbnail m-y-2" src={`${field.help.image}`} alt={field.label} />,
       };
     }
@@ -295,9 +295,9 @@ export default class Field extends Component {
     return (
       <div
         className={classNames('form-group', `tw-field-${name}`, {
-          'has-info': alert.type === AlertType.Info && showAlert,
-          'has-error': alert.type === AlertType.Error && showAlert,
-          'has-warning': alert.type === AlertType.Warning && showAlert,
+          'has-info': alert.type === Alert.Type.INFO && showAlert,
+          'has-error': alert.type === Alert.Type.ERROR && showAlert,
+          'has-warning': alert.type === Alert.Type.WARNING && showAlert,
           hidden: field.hidden,
         })}
       >
@@ -316,7 +316,7 @@ export default class Field extends Component {
           onBlur={event => this.onBlur(event)}
         />
         {showAlert && (
-          <Alert type={alert.type} size={AlertSize.Small} arrow={AlertArrowPosition.UpLeft}>
+          <Alert type={alert.type} size={Alert.Size.SMALL} arrow={Alert.ArrowPosition.TOP_LEFT}>
             {alert.content}
           </Alert>
         )}

@@ -18,8 +18,6 @@ import {
   removeClickClassFromDocumentOnIos,
 } from '../common/domHelpers';
 
-import { AlertType } from '../alert/Alert';
-
 import './Typeahead.css';
 import { Sizes } from '../common';
 
@@ -62,7 +60,7 @@ export default class Typeahead extends Component {
     placeholder: Types.string,
     alert: Types.shape({
       message: Types.string.isRequired,
-      type: Types.oneOf([AlertType.Error, AlertType.Warning]).isRequired,
+      type: Types.oneOf([Alert.Type.ERROR, Alert.Type.WARNING]).isRequired,
     }),
     footer: Types.node,
     validateChip: Types.func,
@@ -442,9 +440,9 @@ export default class Typeahead extends Component {
       allowNew,
     });
 
-    const hasError = errorState || (alert && alert.type === AlertType.Error);
-    const displayAlert = (!errorState && alert) || (alert && alert.type === AlertType.Error);
-    const hasWarning = displayAlert && alert.type === AlertType.Warning;
+    const hasError = errorState || (alert && alert.type === Alert.Type.ERROR);
+    const displayAlert = (!errorState && alert) || (alert && alert.type === Alert.Type.ERROR);
+    const hasWarning = displayAlert && alert.type === Alert.Type.WARNING;
     return (
       <div
         id={id}

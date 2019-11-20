@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import Field, { FieldTypes, FieldFormats } from '../field/Field';
 import FormControl from '../formControl/FormControl';
 import { FormControlType } from '../formControl/FormControlType';
-import Alert, { AlertArrowPosition, AlertSize, AlertType } from '../alert/Alert';
+import Alert from '../alert/Alert';
 
 describe('Field', () => {
   let component;
@@ -346,9 +346,9 @@ describe('Field', () => {
 
       const alertProps = alert.first().props();
       expect(alertProps.children.props.children).toBe('Custom error');
-      expect(alertProps.type).toBe(AlertType.Error);
-      expect(alertProps.size).toBe(AlertSize.Small);
-      expect(alertProps.arrow).toBe(AlertArrowPosition.UpLeft);
+      expect(alertProps.type).toBe(Alert.Type.ERROR);
+      expect(alertProps.size).toBe(Alert.Size.SMALL);
+      expect(alertProps.arrow).toBe(Alert.ArrowPosition.TOP_LEFT);
     });
 
     describe('when the value changes', () => {
@@ -379,9 +379,9 @@ describe('Field', () => {
 
         const alertProps = alert.first().props();
         expect(alertProps.children.props.children).toBe('New custom error');
-        expect(alertProps.type).toBe(AlertType.Error);
-        expect(alertProps.size).toBe(AlertSize.Small);
-        expect(alertProps.arrow).toBe(AlertArrowPosition.UpLeft);
+        expect(alertProps.type).toBe(Alert.Type.ERROR);
+        expect(alertProps.size).toBe(Alert.Size.SMALL);
+        expect(alertProps.arrow).toBe(Alert.ArrowPosition.TOP_LEFT);
       });
     });
   });
@@ -423,9 +423,9 @@ describe('Field', () => {
 
         const alertProps = alert.first().props();
         expect(alertProps.children.props.children).toBe('Some useful hint');
-        expect(alertProps.type).toBe(AlertType.Info);
-        expect(alertProps.size).toBe(AlertSize.Small);
-        expect(alertProps.arrow).toBe(AlertArrowPosition.UpLeft);
+        expect(alertProps.type).toBe(Alert.Type.INFO);
+        expect(alertProps.size).toBe(Alert.Size.SMALL);
+        expect(alertProps.arrow).toBe(Alert.ArrowPosition.TOP_LEFT);
       });
     });
 
@@ -485,9 +485,9 @@ describe('Field', () => {
 
       const alertProps = alert.first().props();
       expect(alertProps.children.props.children).toBe('Warning message');
-      expect(alertProps.type).toBe(AlertType.Warning);
-      expect(alertProps.size).toBe(AlertSize.Small);
-      expect(alertProps.arrow).toBe(AlertArrowPosition.UpLeft);
+      expect(alertProps.type).toBe(Alert.Type.WARNING);
+      expect(alertProps.size).toBe(Alert.Size.SMALL);
+      expect(alertProps.arrow).toBe(Alert.ArrowPosition.TOP_LEFT);
     });
   });
 

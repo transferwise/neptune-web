@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Alert, { AlertType, AlertSize, AlertArrowPosition } from './Alert';
+import Alert from '.';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const CONTENT_EXAMPLES = [
@@ -34,25 +34,28 @@ const KNOBS = {
       type: 'select',
       label: 'Type',
       state: 'type',
-      options: Object.values(AlertType).map(value => ({
-        label: value,
-        value,
+      options: Object.keys(Alert.Type).map(key => ({
+        label: key,
+        value: Alert.Type[key],
       })),
-      defaultState: { value: AlertType.Warning, label: AlertType.Warning },
+      defaultState: { value: Alert.Type.WARNING, label: Alert.Type.WARNING },
     },
     {
       type: 'select',
       label: 'Arrow',
       state: 'arrow',
-      options: Object.values(AlertArrowPosition).map(value => ({ label: `${value}`, value })),
-      defaultState: { value: AlertArrowPosition.UpLeft, label: AlertArrowPosition.UpLeft },
+      options: Object.keys(Alert.ArrowPosition).map(key => ({
+        label: key,
+        value: Alert.ArrowPosition[key],
+      })),
+      defaultState: { value: Alert.ArrowPosition.TOP_LEFT, label: Alert.ArrowPosition.TOP_LEFT },
     },
     {
       type: 'select',
       label: 'Size',
       state: 'size',
-      options: Object.values(AlertSize).map(value => ({ label: value, value })),
-      defaultState: { value: AlertSize.Small, label: AlertSize.Small },
+      options: Object.keys(Alert.Size).map(key => ({ label: key, value: Alert.Size[key] })),
+      defaultState: { value: Alert.Size.SMALL, label: Alert.Size.SMALL },
     },
     {
       type: 'checkbox',
@@ -80,6 +83,10 @@ export default class AlertDocs extends Component {
               <p>
                 Provide contextual feedback messages for typical user actions with the handful of
                 available and flexible alert messages.
+              </p>
+              <p>
+                <code>Type</code>, <code>Size</code>, and <code>ArrowPosition</code> are exposed as
+                properties of <code>Alert</code>.
               </p>
 
               {generateCodeBlock('Alert', KNOBS, this, [])}

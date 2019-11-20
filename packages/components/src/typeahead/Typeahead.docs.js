@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Typeahead } from '..';
 import { generateCodeBlock, generateState, generateInput } from '../../docs/utils';
 import { Sizes } from '../common';
-import { AlertType } from '../alert/Alert';
+import Alert from '../alert';
 
 const SIZES = [Sizes.MEDIUM, Sizes.LARGE];
 const options = [
@@ -101,11 +101,11 @@ const KNOBS = {
       type: 'select',
       label: 'alert Type',
       state: 'alertType',
-      options: [AlertType.Error, AlertType.Warning].map(value => ({
+      options: [Alert.Type.ERROR, Alert.Type.WARNING].map(value => ({
         value,
         label: value,
       })),
-      defaultState: { value: AlertType.Error, label: AlertType.Error },
+      defaultState: { value: Alert.Type.ERROR, label: Alert.Type.ERROR },
     },
   ],
 };
