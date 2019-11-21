@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.3.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.2.0...@transferwise/components@17.3.0) (2019-11-21)
+
+
+### Features
+
+* support control type in JSON schema form control ([6ea0f9d](https://github.com/transferwise/neptune/commit/6ea0f9d036f9cb55f7250253ecfc731ed9ded338))
+
+
+
+
+
 # [17.2.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.1.0...@transferwise/components@17.2.0) (2019-11-20)
 
 
