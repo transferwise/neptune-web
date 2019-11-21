@@ -41,7 +41,7 @@ const BasicTypeSchema = props => {
 
   const generateId = () => String(Math.floor(100000000 * Math.random()));
 
-  const [id] = useState(generateId());
+  const [id, setId] = useState('');
   const [model, setModel] = useState(props.model);
   const [lastModel, setLastModel] = useState(props.model);
   const [changed, setChanged] = useState(false);
@@ -49,16 +49,21 @@ const BasicTypeSchema = props => {
   const [blurred, setBlurred] = useState(false);
   const [validations, setValidations] = useState([]);
 
-  useEffect(() => {
+  const onSchemaChange = () => {
     // If no model, change to the default, only run this when the schema changes
     if (!model && props.schema.default) {
       setModelAndBroadcast(props.schema.default);
     }
-  }, props.schema);
 
-  useEffect(() => {
+    setId(generateId());
+  };
+
+  const onModelChange = () => {
     setValidations(getValidationKeys(model));
-  }, [props.model]);
+  };
+
+  useEffect(onSchemaChange, [props.schema]);
+  useEffect(onModelChange, [props.model]);
 
   const formGroupClasses = {
     'form-group': true,

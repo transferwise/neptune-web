@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
 import JsonSchemaForm from '.';
-import Button from '../button';
-import schema from './schema.json';
+import simpleSchema from './schemas/simple.json';
+import allOfSchema from './schemas/allOf.json';
+import oneOfSchema from './schemas/oneOf.json';
+import configSchema from './schemas/config.json';
 
 export default class JsonSchemaFormDocs extends Component {
   constructor(props) {
     super(props);
 
+    this.schemas = [simpleSchema, allOfSchema, oneOfSchema];
+
     this.state = {
-      schema,
       model: {
         number: 3,
         string: 'hi',
       },
       errors: {
-        phone: 'Manual error',
+        string: 'Manual error',
       },
-      submitted: false,
-      locale: 'en-GB',
+      config: {
+        schemaIndex: 0,
+        locale: 'en-GB',
+        submitted: false,
+      },
     };
   }
 
@@ -25,17 +31,24 @@ export default class JsonSchemaFormDocs extends Component {
     console.log('model', model); // eslint-disable-line
   };
 
+  onConfigChange = config => {
+    this.setState({ config });
+  };
+
   onSubmit = () => {
     this.setState({ submitted: true });
   };
 
   render() {
+    const { config } = this.state;
+    const schema = this.schemas[config.schemaIndex];
+
     const docsCode = `<JsonSchemaForm
-  model={${JSON.stringify(this.state.model)}}
-  errors={${JSON.stringify(this.state.errors)}}
-  locale={"${this.state.locale}""}
-  submitted={${this.state.submitted}}
-  schema={${JSON.stringify(this.state.schema)}}
+  model=${JSON.stringify(this.state.model)}
+  errors=${JSON.stringify(this.state.errors)}
+  locale={"${config.locale}"}
+  submitted={${config.submitted}}
+  schema=${JSON.stringify(schema)}
 />`;
 
     return (
@@ -49,21 +62,25 @@ export default class JsonSchemaFormDocs extends Component {
                 form based on a schema. It builds a JSON structure to the specification of that
                 schema based on user input, broadcasting that updated model as it changes.
               </p>
+              <JsonSchemaForm
+                schema={configSchema}
+                model={this.state.config}
+                onChange={this.onConfigChange}
+                submitted={false}
+              />
               {/* eslint-disable react/jsx-indent */}
               <pre className="tw-docs-code">{docsCode}</pre>
               {/* eslint-enable react/jsx-indent */}
             </div>
             <div className="col-md-6 p-b-2">
               <JsonSchemaForm
-                schema={this.state.schema}
+                schema={schema}
                 model={this.state.model}
                 errors={this.state.errors}
                 onChange={this.onChange}
-                submitted={this.state.submitted}
+                submitted={config.submitted}
+                locale={config.locale}
               />
-              <Button onClick={this.onSubmit} block>
-                Simulate Submit
-              </Button>
             </div>
           </div>
         </section>

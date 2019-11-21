@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import GenericSchema from '../genericSchema';
+import { getValidModelParts } from '../validation/valid-model';
 
 const ObjectSchema = props => {
   const [model, setModel] = useState({ ...(props.model || {}) });
@@ -26,6 +27,11 @@ const ObjectSchema = props => {
 
   const isRequired = propertyName =>
     props.schema.required && props.schema.required.indexOf(propertyName) >= 0;
+
+  useEffect(() => {
+    // When the schema changes, only retain valid parts of the model
+    setModel(getValidModelParts(model, props.schema));
+  }, [props.schema]);
 
   return (
     <fieldset>

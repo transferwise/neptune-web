@@ -196,6 +196,17 @@ export default class FormControl extends PureComponent {
 
   handleOnBlur = event => this.props.onBlur && this.props.onBlur(this.getValue(event));
 
+  getSelectedOption = options => {
+    let selectedOption;
+    if (this.state.selectedOption !== null && typeof this.state.selectedOption !== 'undefined') {
+      selectedOption = options.find(option => this.state.selectedOption.value === option.value);
+    }
+    if (this.props.value !== null && typeof this.props.value !== 'undefined') {
+      selectedOption = options.find(option => this.props.value === option.value);
+    }
+    return selectedOption;
+  };
+
   render() {
     const {
       name,
@@ -255,10 +266,7 @@ export default class FormControl extends PureComponent {
         return (
           <Select
             id={id}
-            selected={
-              this.state.selectedOption &&
-              options.find(option => this.state.selectedOption.value === option.value)
-            }
+            selected={this.getSelectedOption(options)}
             options={options}
             onChange={newValue => {
               this.setState({ selectedOption: newValue });

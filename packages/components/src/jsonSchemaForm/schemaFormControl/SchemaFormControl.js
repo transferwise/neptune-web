@@ -19,6 +19,10 @@ const SchemaFormControl = props => {
   };
 
   const getControlType = schema => {
+    if (schema.control) {
+      return schema.control;
+    }
+
     if (schema.type === 'string') {
       switch (schema.format) {
         case 'date':

@@ -61,7 +61,7 @@ describe('Given a component for rendering a form control based on a schema', () 
   //   expect(formControlComponent.prop('translations')).toBe(translations);
   // });
 
-  describe('when a string schema is supplied ', () => {
+  describe('when a string schema is supplied', () => {
     beforeEach(() => {
       component.setProps({ schema: { type: 'string' } });
     });
@@ -71,7 +71,7 @@ describe('Given a component for rendering a form control based on a schema', () 
     });
   });
 
-  describe('when a string schema with date format is supplied ', () => {
+  describe('when a string schema with date format is supplied', () => {
     beforeEach(() => {
       component.setProps({ schema: { type: 'string', format: 'date' } });
     });
@@ -81,7 +81,7 @@ describe('Given a component for rendering a form control based on a schema', () 
     });
   });
 
-  describe('when a string schema with phone format is supplied ', () => {
+  describe('when a string schema with phone format is supplied', () => {
     beforeEach(() => {
       component.setProps({ schema: { type: 'string', format: 'phone' } });
     });
@@ -91,7 +91,7 @@ describe('Given a component for rendering a form control based on a schema', () 
     });
   });
 
-  describe('when a string schema with base64url format is supplied ', () => {
+  describe('when a string schema with base64url format is supplied', () => {
     beforeEach(() => {
       component.setProps({ schema: { type: 'string', format: 'base64url' } });
     });
@@ -101,7 +101,7 @@ describe('Given a component for rendering a form control based on a schema', () 
     });
   });
 
-  describe('when a number schema is supplied ', () => {
+  describe('when a number schema is supplied', () => {
     beforeEach(() => {
       component.setProps({ schema: { type: 'number' } });
     });
@@ -111,7 +111,7 @@ describe('Given a component for rendering a form control based on a schema', () 
     });
   });
 
-  describe('when an integer schema is supplied ', () => {
+  describe('when an integer schema is supplied', () => {
     beforeEach(() => {
       component.setProps({ schema: { type: 'integer' } });
     });
@@ -121,7 +121,7 @@ describe('Given a component for rendering a form control based on a schema', () 
     });
   });
 
-  describe('when a boolean schema is supplied ', () => {
+  describe('when a boolean schema is supplied', () => {
     beforeEach(() => {
       component.setProps({ schema: { type: 'boolean' } });
     });
@@ -164,6 +164,25 @@ describe('Given a component for rendering a form control based on a schema', () 
     });
 
     it('should ask the FormControl for a select control', () => {
+      expect(component.find(FormControl).prop('type')).toEqual('select');
+    });
+  });
+
+  describe('when a schema has a control value', () => {
+    beforeEach(() => {
+      component.setProps({
+        schema: {
+          control: 'select',
+          values: [
+            { value: 'one', label: 'One' },
+            { value: 'two', label: 'Two' },
+          ],
+          enum: ['one', 'two'],
+        },
+      });
+    });
+
+    it('should override the default and ask for the specified control', () => {
       expect(component.find(FormControl).prop('type')).toEqual('select');
     });
   });
