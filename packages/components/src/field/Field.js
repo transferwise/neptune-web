@@ -195,7 +195,7 @@ export default class Field extends Component {
 
   onChange(value) {
     this.props.onChange(value);
-    this.setState({ changed: true, focused: true, error: null });
+    this.setState({ changed: true, focused: true });
   }
 
   validateValue(newValue) {

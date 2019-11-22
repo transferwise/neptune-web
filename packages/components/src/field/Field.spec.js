@@ -356,14 +356,14 @@ describe('Field', () => {
         component.find(FormControl).simulate('change');
       });
 
-      it('it should remove the error message', () => {
+      it('it should not remove the error message', () => {
         const alert = component.find(Alert);
-        expect(alert).toHaveLength(0);
+        expect(alert).toHaveLength(1);
       });
 
-      it('should remove custom error state', () => {
+      it('should not remove custom error state', () => {
         const errorClass = component.find('.has-error');
-        expect(errorClass).toHaveLength(0);
+        expect(errorClass).toHaveLength(1);
       });
     });
 
@@ -371,7 +371,6 @@ describe('Field', () => {
       it('it should show the new error message', () => {
         component.find(FormControl).simulate('change');
         let alert = component.find(Alert);
-        expect(alert).toHaveLength(0);
 
         component.setProps({ ...defaultProps, ...props, errorMessage: 'New custom error' });
         alert = component.find(Alert);
