@@ -19,9 +19,7 @@
           }
         }
       },
-      "required": [
-        "number"
-      ]
+      "required": ["number"]
     },
     {
       "title": "String schemas",
@@ -35,10 +33,7 @@
           "pattern": "^[a-z]+$",
           "default": "abc",
           "help": {
-            "list": [
-              "Keep it secret",
-              "Keep it safe"
-            ]
+            "list": ["Keep it secret", "Keep it safe"]
           }
         },
         "date": {
@@ -65,9 +60,7 @@
           "title": "File input"
         }
       },
-      "required": [
-        "string"
-      ]
+      "required": ["string"]
     },
     {
       "title": "Boolean schemas",
@@ -101,11 +94,7 @@
               "label": "Three"
             }
           ],
-          "enum": [
-            "one",
-            "two",
-            "three"
-          ]
+          "enum": ["one", "two", "three"]
         },
         "radio": {
           "title": "Radio",
@@ -120,16 +109,10 @@
               "label": "Two"
             }
           ],
-          "enum": [
-            "one",
-            "two"
-          ]
+          "enum": ["one", "two"]
         }
       },
-      "required": [
-        "select",
-        "radio"
-      ]
+      "required": ["select", "radio"]
     }
   ]
 }

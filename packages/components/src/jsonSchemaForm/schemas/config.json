@@ -38,11 +38,7 @@
           "label": "en-US"
         }
       ],
-      "enum": [
-        "en-GB",
-        "es-ES",
-        "en-US"
-      ],
+      "enum": ["en-GB", "es-ES", "en-US"],
       "control": "select"
     },
     "submitted": {

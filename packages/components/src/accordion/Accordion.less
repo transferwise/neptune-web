@@ -6,4 +6,13 @@
   .chevron {
     vertical-align: middle;
   }
+
+  &.closed {
+    .accordion-content {
+      height: 0;
+      max-height: 0;
+      overflow: hidden;
+      padding-bottom: 0 !important;
+    }
+  }
 }

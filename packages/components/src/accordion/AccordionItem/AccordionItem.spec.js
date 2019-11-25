@@ -2,47 +2,71 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import AccordionItem from '.';
-import Chevron from '../../common/Chevron';
+import Chevron, { Orientation } from '../../common/Chevron';
 
 describe('AccordionItem', () => {
   let component;
-  let props;
+  const props = {
+    title: 'Hello',
+    content: 'world!',
+    isOpen: false,
+    index: 1,
+    onClick: jest.fn(),
+  };
 
-  beforeEach(() => {
-    props = { title: 'Hello', content: 'world!' };
-    component = shallow(<AccordionItem {...props} />);
+  describe('when closed', () => {
+    beforeEach(() => {
+      component = shallow(<AccordionItem {...props} />);
+    });
+
+    it('displays the title', () => {
+      expect(getTitle().text()).toBe(props.title);
+    });
+
+    it(`does have class closed`, () => {
+      expect(contentClosed()).toHaveLength(1);
+    });
+
+    it('chevron points down', () => {
+      expect(getChevron().prop('orientation')).toEqual(Orientation.BOTTOM);
+    });
+
+    it('still has hidden content', () => {
+      const htmlElement = <h4>whoop</h4>;
+      component.setProps({ content: htmlElement });
+    });
+
+    it('removes close class on click', () => {
+      clickLabel();
+      expect(props.onClick).toHaveBeenCalledWith(1);
+    });
   });
 
-  it('displays the title', () => {
-    expect(getTitle().text()).toBe(props.title);
-  });
+  describe('when open', () => {
+    beforeEach(() => {
+      component = shallow(<AccordionItem {...props} isOpen />);
+    });
 
-  it('has content hidden by default and togglable on label click', () => {
-    expect(contentShown()).toBe(false);
-    clickLabel();
-    expect(contentShown()).toBe(true);
-    clickLabel();
-    expect(contentShown()).toBe(false);
-  });
+    it('displays the title', () => {
+      expect(getTitle().text()).toBe(props.title);
+    });
 
-  it('flips the chevron when toggled', () => {
-    expect(getChevron().prop('flip')).toBe(false);
-    clickLabel();
-    expect(getChevron().prop('flip')).toBe(true);
-    clickLabel();
-    expect(getChevron().prop('flip')).toBe(false);
-  });
+    it(`doesn't have class closed`, () => {
+      expect(contentClosed()).toHaveLength(0);
+    });
 
-  it('displays the content when its an HTML element', () => {
-    const htmlElement = <h4>whoop</h4>;
-    component.setProps({ content: htmlElement });
-    clickLabel();
-    expect(getContent().contains(htmlElement)).toBe(true);
+    it('chevron points up', () => {
+      expect(getChevron().prop('flip')).toBe(true);
+    });
+
+    it('displays the content when its an HTML element', () => {
+      const htmlElement = <h4>whoop</h4>;
+      component.setProps({ content: htmlElement });
+    });
   });
 
   const getTitle = () => component.find('h5');
-  const getContent = () => component.find('label div').last();
   const getChevron = () => component.find(Chevron);
-  const contentShown = () => getContent().contains(props.content);
+  const contentClosed = () => component.find('.closed');
   const clickLabel = () => component.find('label').simulate('click');
 });

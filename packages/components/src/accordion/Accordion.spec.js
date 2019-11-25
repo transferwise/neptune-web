@@ -41,8 +41,67 @@ describe('Accordion', () => {
 
     it('passes title and content forward to AccordionItem', () => {
       const firstItem = component.find(AccordionItem).first();
+      const secondItem = component.find(AccordionItem).at(1);
       expect(firstItem.prop('title')).toBe(props.items[0].title);
       expect(firstItem.prop('content')).toBe(props.items[0].content);
+      expect(secondItem.prop('title')).toBe(props.items[1].title);
+      expect(secondItem.prop('content')).toBe(props.items[1].content);
+    });
+  });
+
+  describe('when it defaults closed', () => {
+    beforeEach(() => {
+      props = {
+        items: [
+          {
+            title: 'a',
+            content: 'b',
+          },
+          {
+            title: 'c',
+            content: <h1>I&apos;m a h1 element</h1>,
+          },
+        ],
+      };
+      component = createComponent(props);
+    });
+
+    it('opens no item', () => {
+      const firstItem = component.find(AccordionItem).first();
+      const secondItem = component.find(AccordionItem).at(1);
+      // eslint-disable-next-line eqeqeq
+      expect(firstItem.prop('isOpen')).toEqual(false);
+      expect(secondItem.prop('isOpen')).toEqual(false);
+    });
+  });
+
+  describe('when it opens based on the index provided', () => {
+    beforeEach(() => {
+      props = {
+        items: [
+          {
+            title: 'a',
+            content: 'b',
+          },
+          {
+            title: 'c',
+            content: <h1>I&apos;m a h1 element</h1>,
+          },
+          {
+            title: 'd',
+            content: 'third item',
+          },
+        ],
+        indexOpen: 2,
+      };
+      component = createComponent(props);
+    });
+
+    it('opens the selected accordion item', () => {
+      const firstItem = component.find(AccordionItem).first();
+      const thirdItem = component.find(AccordionItem).at(2);
+      expect(firstItem.prop('isOpen')).toEqual(false);
+      expect(thirdItem.prop('isOpen')).toEqual(true);
     });
   });
 
