@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.4.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.3.1...@transferwise/components@17.4.0) (2019-11-25)
+
+
+### Features
+
+* set accordion to be hidden but in the dom to be seo friendly ([#78](https://github.com/transferwise/neptune/issues/78)) ([1d56679](https://github.com/transferwise/neptune/commit/1d566798d3c7871561c24eb3c64b14722ba16eb1))
+
+
+
+
+
 ## [17.3.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.3.0...@transferwise/components@17.3.1) (2019-11-22)
 
 
