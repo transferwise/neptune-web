@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.4.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.4.0...@transferwise/components@17.4.1) (2019-11-26)
+
+
+### Bug Fixes
+
+* **InputWithDisplayFormat:** propagate unformatted value for onBlur & onFocus event handlers ([d304f10](https://github.com/transferwise/neptune/commit/d304f10bc1d22561e256358180c3556530943891))
+
+
+
+
+
 # [17.4.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.3.1...@transferwise/components@17.4.0) (2019-11-25)
 
 
