@@ -101,8 +101,8 @@ class PhoneNumberInput extends PureComponent {
 
   handleChangeSelect = event => {
     const { internalValue } = this.state;
-    const { locale } = this.props;
-    const { suffix } = this.getSuffixPrefix(internalValue, locale);
+    const { locale, countryCode } = this.props;
+    const { suffix } = this.getSuffixPrefix(internalValue, locale, countryCode);
     const prefix = event.value;
 
     this.setState({ searchQuery: '', internalValue: prefix + suffix }, () => {
@@ -115,8 +115,8 @@ class PhoneNumberInput extends PureComponent {
 
     if (ALLOWED_PHONE_CHARS.test(suffix)) {
       const { internalValue } = this.state;
-      const { locale } = this.props;
-      const { prefix } = this.getSuffixPrefix(internalValue, locale);
+      const { locale, countryCode } = this.props;
+      const { prefix } = this.getSuffixPrefix(internalValue, locale, countryCode);
       this.setState({ internalValue: prefix + suffix }, () => {
         this.returnValue(this.state.internalValue);
       });
