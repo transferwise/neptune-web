@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.5.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.5.0...@transferwise/components@17.5.1) (2019-11-26)
+
+
+### Bug Fixes
+
+* **phone number input:** fix value building when countryCode is provided ([#102](https://github.com/transferwise/neptune/issues/102)) ([347c56f](https://github.com/transferwise/neptune/commit/347c56f58e8f7080d7543ea06e2548c2bc7e3c43))
+
+
+
+
+
 # [17.5.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.4.1...@transferwise/components@17.5.0) (2019-11-26)
 
 
