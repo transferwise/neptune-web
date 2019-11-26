@@ -1,13 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import DateInput from './';
 
-import { LOCALES, MONTHS_EN } from './data/testFixtures';
+import { LOCALES, MONTHS_EN, MONTHS_FR } from './data/testFixtures';
+import { fakeEvent } from '../common/fakeEvents';
 
-const JANUARY_OPTION = { value: 0, label: MONTHS_EN[0] };
 const FEBRUARY_OPTION = { value: 1, label: MONTHS_EN[1] };
-const APRIL_OPTION = { value: 3, label: MONTHS_EN[3] };
 
 const DAY_SELECTOR = 'input[name="day"]';
 const MONTH_SELECTOR = 'Select';
@@ -55,25 +54,19 @@ describe('Date Input Component', () => {
     it('sets year field to empty', () => {
       expect(inputYear.prop('value')).toBe('');
     });
-
-    it('should set months to default english months', () => {
-      const defaultEnMonths = component.instance().getMonthsOptions();
-
-      expect(selectMonth.props().options).toEqual(defaultEnMonths);
-    });
   });
 
   describe('when initialised with a model', () => {
     describe('as a valid Date instance', () => {
       it(`sets values correctly`, () => {
-        component = shallow(<DateInput {...props} value="1971-01-01" />);
+        component = shallow(<DateInput {...props} value="1971-02-01" />);
 
         selectMonth = component.find(MONTH_SELECTOR);
         inputDay = component.find(DAY_SELECTOR);
         inputYear = component.find(YEAR_SELECTOR);
 
         expect(inputDay.prop('value')).toBe(1);
-        expect(selectMonth.prop('selected')).toEqual(JANUARY_OPTION);
+        expect(selectMonth.prop('selected')).toEqual(FEBRUARY_OPTION);
         expect(inputYear.prop('value')).toBe(1971);
       });
     });
@@ -92,10 +85,23 @@ describe('Date Input Component', () => {
       });
     });
 
+    describe('as a valid short ISO8601 string with year and month only', () => {
+      it('sets values correctly', () => {
+        component = shallow(<DateInput {...props} value="1990-08" />);
+
+        selectMonth = component.find(MONTH_SELECTOR);
+        inputDay = component.find(DAY_SELECTOR);
+        inputYear = component.find(YEAR_SELECTOR);
+
+        expect(inputDay.prop('value')).toBe('');
+        expect(selectMonth.prop('selected')).toEqual({ label: MONTHS_EN[7], value: 7 });
+        expect(inputYear.prop('value')).toBe(1990);
+      });
+    });
+
     describe('as a valid long ISO8601 string', () => {
       it('sets values correctly', () => {
-        const dateString = '1990-02-28T00:00:00.000Z';
-        component = shallow(<DateInput {...props} value={dateString} />);
+        component = shallow(<DateInput {...props} value="1990-02-28T00:00:00.000Z" />);
 
         selectMonth = component.find(MONTH_SELECTOR);
         inputDay = component.find(DAY_SELECTOR);
@@ -140,9 +146,8 @@ describe('Date Input Component', () => {
     it('updates selectMonth based on locale', () => {
       component = shallow(<DateInput {...props} locale={LOCALES.fr} />);
       selectMonth = component.find(MONTH_SELECTOR);
-      const frMonths = component.instance().getMonthsOptions();
 
-      expect(selectMonth.props().options).toEqual(frMonths);
+      expect(selectMonth.props().options[0].label).toEqual(MONTHS_FR[0]);
     });
 
     it('shows day before month if locale not US', () => {
@@ -169,19 +174,17 @@ describe('Date Input Component', () => {
   describe('when user interacts', () => {
     describe('with day input', () => {
       it('returns correct value for correct input', () => {
-        const date = '2001-01-11';
-        component = shallow(<DateInput {...props} value={date} />);
+        component = mount(<DateInput {...props} value="2001-02-11" />);
 
         inputDay = component.find(DAY_SELECTOR);
 
         inputDay.simulate('change', { target: { value: '12' } });
 
-        expect(props.onChange).toHaveBeenCalledWith('2001-01-12');
+        expect(props.onChange).toHaveBeenCalledWith('2001-02-12');
       });
 
       it('returns null for invalid input', () => {
-        const date = '2001-01-01';
-        component = shallow(<DateInput {...props} value={date} />);
+        component = mount(<DateInput {...props} value="2001-01-01" />);
 
         inputDay = component.find(DAY_SELECTOR);
 
@@ -193,9 +196,7 @@ describe('Date Input Component', () => {
 
     describe('with year input', () => {
       it('returns correct value for correct input', () => {
-        const date = '2001-01-01';
-        component = shallow(<DateInput {...props} value={date} />);
-
+        component = mount(<DateInput {...props} value="2001-01-01" />);
         inputYear = component.find(YEAR_SELECTOR);
 
         inputYear.simulate('change', { target: { value: '1990' } });
@@ -206,12 +207,10 @@ describe('Date Input Component', () => {
 
     describe('with month select', () => {
       it('returns correct value for correct input', () => {
-        const date = '2001-01-01';
-        component = shallow(<DateInput {...props} value={date} />);
+        component = mount(<DateInput {...props} value="2001-01-01" />);
 
-        selectMonth = component.find(MONTH_SELECTOR);
-
-        selectMonth.simulate('change', { value: 2, label: 'March' });
+        // Selects March
+        simulateSelectChange(3);
 
         expect(props.onChange).toHaveBeenCalledWith('2001-03-01');
       });
@@ -220,52 +219,44 @@ describe('Date Input Component', () => {
 
   describe('when user selects invalid dates', () => {
     it('corrects days in lap years February', () => {
-      component = shallow(<DateInput {...props} />);
+      component = mount(<DateInput {...props} value="2000-02-29" />);
+
+      expect(component.find(DAY_SELECTOR).prop('value')).toBe(29);
+
+      inputYear = component.find(YEAR_SELECTOR);
+      inputYear.simulate('change', { target: { value: 1999 } });
+
+      expect(component.find(DAY_SELECTOR).prop('value')).toBe(28);
+    });
+
+    it('corrects days too high in February', () => {
+      component = mount(<DateInput {...props} />);
 
       inputDay = component.find(DAY_SELECTOR);
-      selectMonth = component.find(MONTH_SELECTOR);
       inputYear = component.find(YEAR_SELECTOR);
 
       inputDay.simulate('change', { target: { value: 29 } });
-      selectMonth.simulate('change', FEBRUARY_OPTION);
-      inputYear.simulate('change', { target: { value: 1990 } });
+      // Selects February
+      simulateSelectChange(2);
+      inputYear.simulate('change', { target: { value: 2001 } });
+
+      expect(component.find(DAY_SELECTOR).prop('value')).toBe(28);
+    });
+
+    it("doesn't correct days in lap years February", () => {
+      component = mount(<DateInput {...props} value="2000-03-29" />);
+
+      // Selects February
+      simulateSelectChange(2);
 
       expect(component.find(DAY_SELECTOR).prop('value')).toBe(29);
     });
 
-    it('corrects days too high in February', () => {
-      const comp = shallow(<DateInput {...props} />);
-
-      inputDay = comp.find(DAY_SELECTOR);
-      selectMonth = comp.find(MONTH_SELECTOR);
-      inputYear = comp.find(YEAR_SELECTOR);
-
-      inputDay.simulate('change', { target: { value: 29 } });
-      selectMonth.simulate('change', FEBRUARY_OPTION);
-      inputYear.simulate('change', { target: { value: '1991' } });
-
-      expect(comp.find(DAY_SELECTOR).prop('value')).toBe(28);
-    });
-
-    it("doesn't correct days in lap years February", () => {
-      const comp = shallow(<DateInput {...props} value="2000-03-29" />);
-
-      selectMonth = comp.find(MONTH_SELECTOR);
-
-      selectMonth.simulate('change', FEBRUARY_OPTION);
-
-      expect(comp.find(DAY_SELECTOR).prop('value')).toBe(29);
-    });
-
     it('corrects days too high for selected months', () => {
-      component = shallow(<DateInput {...props} value="2001-01-31" />);
+      component = mount(<DateInput {...props} value="2001-01-31" />);
 
-      inputDay = component.find(DAY_SELECTOR);
-      selectMonth = component.find(MONTH_SELECTOR);
-
-      expect(component.find(DAY_SELECTOR).prop('value')).toBe(31);
-
-      selectMonth.simulate('change', APRIL_OPTION);
+      // Selects April
+      simulateSelectChange(4);
 
       expect(component.find(DAY_SELECTOR).prop('value')).toBe(30);
     });
@@ -291,13 +282,13 @@ describe('Date Input Component', () => {
     });
   });
 
-  describe('when month and year only', () => {
+  describe('when in mode month and year only', () => {
     beforeEach(() => {
       const extraProps = {
         mode: 'month-year',
         value: '2001-01-01',
       };
-      component = shallow(<DateInput {...{ ...props, ...extraProps }} />);
+      component = mount(<DateInput {...{ ...props, ...extraProps }} />);
     });
 
     it('should only display month and year inputs', () => {
@@ -307,9 +298,17 @@ describe('Date Input Component', () => {
     });
 
     it('should produce MM-YYYY date string', () => {
-      selectMonth = component.find(MONTH_SELECTOR);
-      selectMonth.simulate('change', { value: 2, label: 'March' });
+      // Selects March
+      simulateSelectChange(3);
       expect(props.onChange).toHaveBeenCalledWith('2001-03');
     });
   });
+
+  const simulateSelectChange = n => {
+    component.find('button.dropdown-toggle').simulate('click', fakeEvent());
+    component
+      .find('li')
+      .at(n)
+      .simulate('click', fakeEvent());
+  };
 });

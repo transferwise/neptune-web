@@ -1,1 +1,1 @@
-export { default } from './generatInput';
+export { default } from './generateInput';

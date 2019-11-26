@@ -1,70 +1,64 @@
-import React, { PureComponent } from 'react';
+import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 
 import Select from '../select';
 
 import { Sizes } from '../common';
 import { explodeDate, convertToLocalMidnight } from './utils';
-import { getMonthNames, isDateValid, MonthFormat, DateMode } from '../common/dateUtils';
+import {
+  getMonthNames,
+  isDateValid,
+  MonthFormat,
+  DateMode,
+  isMonthAndYearFormat,
+} from '../common/dateUtils';
 
 const DEFAULT_LOCALE = 'en-GB';
 
 const MonthBeforeDay = ['en-US', 'ja-JP'];
 const INITIAL_DEFAULT_STATE = { year: null, month: 0, day: null };
 
-class DateInput extends PureComponent {
-  static propTypes = {
-    disabled: Types.bool,
-    size: Types.oneOf([Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE]),
-    value: Types.oneOfType([Types.string, Types.instanceOf(Date)]),
-    locale: Types.string,
-    onChange: Types.func.isRequired, // eslint-disable-line
-    onFocus: Types.func,
-    onBlur: Types.func,
-    dayLabel: Types.string,
-    monthLabel: Types.string,
-    yearLabel: Types.string,
-    monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]),
-    mode: Types.oneOf([DateMode.DAY_MONTH_YEAR, DateMode.MONTH_YEAR]),
-  };
+const DateInput = props => {
+  const {
+    disabled,
+    size,
+    value,
+    locale,
+    dayLabel,
+    monthLabel,
+    yearLabel,
+    monthFormat,
+    mode,
+    onChange,
+    onFocus,
+    onBlur,
+  } = props;
 
-  static defaultProps = {
-    disabled: false,
-    size: Sizes.MEDIUM,
-    value: null,
-    locale: DEFAULT_LOCALE,
-    onFocus: null,
-    onBlur: null,
-    dayLabel: 'Day',
-    monthLabel: 'Month',
-    yearLabel: 'Year',
-    monthFormat: MonthFormat.LONG,
-    mode: DateMode.DAY_MONTH_YEAR,
-  };
+  const initialState = () => {
+    const intialValue = {
+      explodedDate: INITIAL_DEFAULT_STATE,
+      dateObject: value,
+    };
 
-  constructor(props) {
-    super(props);
-    const { value, locale } = props;
-    let explodedDate = INITIAL_DEFAULT_STATE;
-    let dateObject = value;
-
-    if (isDateValid(value)) {
+    if (value && isDateValid(value)) {
       if (typeof value === 'string') {
-        dateObject = convertToLocalMidnight(value);
+        intialValue.dateObject = convertToLocalMidnight(value);
       }
 
-      explodedDate = explodeDate(dateObject);
+      intialValue.explodedDate = explodeDate(intialValue.dateObject);
+      if (isMonthAndYearFormat(value)) {
+        intialValue.explodedDate.day = null;
+      }
     }
+    return intialValue;
+  };
 
-    this.state = {
-      ...explodedDate,
-      value: dateObject,
-      monthBeforeDay: MonthBeforeDay.indexOf(locale) > -1,
-    };
-  }
+  const [day, setDay] = useState(() => initialState().explodedDate.day);
+  const [month, setMonth] = useState(() => initialState().explodedDate.month);
+  const [year, setYear] = useState(() => initialState().explodedDate.year);
+  const [internalValue, setInternalValue] = useState(() => initialState().dateObject);
 
-  getDateAsString = date => {
-    const { mode } = this.props;
+  const getDateAsString = date => {
     switch (mode) {
       case DateMode.MONTH_YEAR:
         return [date.getFullYear(), `0${date.getMonth() + 1}`.slice(-2)].join('-');
@@ -78,9 +72,7 @@ class DateInput extends PureComponent {
     }
   };
 
-  getSelectElement = () => {
-    const { disabled, size, locale, monthLabel, monthFormat } = this.props;
-    const { month } = this.state;
+  const getSelectElement = () => {
     const months = getMonthNames(locale, monthFormat);
     return (
       <div>
@@ -92,169 +84,200 @@ class DateInput extends PureComponent {
           name="month"
           className="form-control"
           selected={{ value: month, label: months[month] }}
-          onChange={selectedValue => this.handleMonthChange(selectedValue)}
+          onChange={selectedValue => handleMonthChange(selectedValue)}
           disabled={disabled}
-          options={this.getMonthsOptions()}
+          options={getMonthsOptions()}
           size={size}
+          onFocus={onFocus}
+          onBlur={onBlur}
         />
       </div>
     );
   };
 
-  getMonthsOptions = () => {
+  const getMonthsOptions = () => {
     const options = [];
-    const { locale, monthFormat } = this.props;
     const months = getMonthNames(locale, monthFormat);
 
-    months.forEach((month, index) => {
-      options.push({ value: index, label: month });
+    months.forEach((label, index) => {
+      options.push({ value: index, label });
     });
     return options;
   };
 
-  returnValue = value => {
-    let returnValue = null;
-    if (+value !== +this.state.value) {
-      if (isDateValid(value)) {
-        returnValue = this.getDateAsString(value);
+  const handleInternalValue = (newDay = day, newMonth = month, newYear = year) => {
+    let newValue = new Date(newYear, newMonth, newDay);
+    newValue = isDateValid(newValue) ? newValue : null;
+    // Don't broadcast already broadcasted value.
+    /* eslint-disable no-lonely-if */
+    if (newValue !== internalValue) {
+      if (!newValue) {
+        setInternalValue(INITIAL_DEFAULT_STATE);
       }
-      this.props.onChange(returnValue);
+
+      if (mode === DateMode.MONTH_YEAR) {
+        if (newMonth >= 0 && newYear && (newMonth !== month || newYear !== year)) {
+          setInternalValue(newValue);
+        }
+      } else {
+        if (
+          newDay &&
+          newMonth >= 0 &&
+          newYear &&
+          (newDay !== day || newMonth !== month || newYear !== year)
+        ) {
+          setInternalValue(newValue);
+        }
+      }
     }
   };
 
-  handleDayChange = event => {
-    const { month, year } = this.state;
-    const day = event.target.value;
-    const { checkedDay } = this.checkDate(day, month, year);
-
-    let value = new Date(year, month, checkedDay);
-    value = isDateValid(value) ? value : null;
-
-    this.setState({ day: checkedDay }, () => {
-      this.returnValue(value);
-      // Prevents returning already returned values
-      this.setState({ value });
-    });
+  const handleDayChange = event => {
+    const { checkedDay } = checkDate(event.target.value, month, year);
+    setDay(checkedDay);
+    handleInternalValue(checkedDay, month, year);
   };
 
-  handleMonthChange = selectedValue => {
-    const { day, year } = this.state;
-    const month = selectedValue ? selectedValue.value : 0;
-
-    const { checkedDay } = this.checkDate(day, month, year);
-
-    let value = new Date(year, month, checkedDay);
-    value = isDateValid(value) ? value : null;
-
-    this.setState({ month, day: checkedDay }, () => {
-      this.returnValue(value);
-      // Prevents returning already returned values
-      this.setState({ value });
-    });
+  const handleMonthChange = selectedValue => {
+    const selectedMonth = selectedValue ? selectedValue.value : 0;
+    const { checkedDay } = checkDate(day, selectedMonth, year);
+    setMonth(selectedMonth);
+    if (day) {
+      if (checkedDay !== day) {
+        setDay(checkedDay);
+      }
+    }
+    handleInternalValue(checkedDay, selectedMonth, year);
   };
 
-  handleYearChange = event => {
-    const { value } = event.target;
-    const slicedYear = value.length > 4 ? value.slice(0, 4) : value;
-    const { month, day } = this.state;
+  const handleYearChange = event => {
+    const newValue = event.target.value;
+    const slicedYear = newValue.length > 4 ? newValue.slice(0, 4) : newValue;
 
-    if (slicedYear.length === 4) {
+    if (slicedYear.toString().length === 4) {
       // Correct day based on year and month.
-      const { checkedDay, checkedYear } = this.checkDate(day, month, event.target.value);
-      let date = new Date(slicedYear, month, day);
+      const { checkedDay } = checkDate(day, month, newValue);
 
-      date = isDateValid(date) ? date : null;
-
-      this.setState({ day: checkedDay, year: checkedYear }, () => {
-        this.returnValue(date);
-        // Prevents returning already returned values
-        this.setState({ value: date });
-      });
+      if (day) {
+        if (checkedDay !== day) {
+          setDay(checkedDay);
+        }
+      }
+      setYear(slicedYear);
+      handleInternalValue(checkedDay, month, slicedYear);
     } else {
-      this.setState({ year: slicedYear }, () => {
-        let date = new Date(slicedYear, month, day);
-        date = isDateValid(date) ? date : null;
-        this.setState({ value: date });
-      });
+      setYear(slicedYear);
     }
   };
 
-  checkDate = (day = null, month = 0, year = null) => {
-    let checkedDay = day;
+  useEffect(() => {
+    const broadcastValue = internalValue ? getDateAsString(internalValue) : null;
+    onChange(broadcastValue);
+  }, [internalValue]);
 
-    if (day && month) {
-      const maxDay = new Date(year || 2000, month + 1, 0).getDate();
-      checkedDay = day > maxDay ? maxDay : day;
+  const checkDate = (newDay = null, newMonth = 0, newYear = null) => {
+    let checkedDay = newDay;
+    const maxDay = new Date(newYear || 2000, newMonth + 1, 0).getDate();
+
+    if (!newDay) {
+      checkedDay = null;
     }
-    if (day < 0) {
+
+    if (newDay && newDay <= 0) {
       checkedDay = 1;
     }
-    if (day > 31) {
-      checkedDay = 31;
+
+    if ((newDay && newMonth) || newDay > 31) {
+      checkedDay = newDay > maxDay ? maxDay : newDay;
     }
 
-    return { checkedDay, checkedMonth: month, checkedYear: year };
+    return { checkedDay, checkedMonth: newMonth, checkedYear: newYear };
   };
 
-  render() {
-    const { disabled, size, dayLabel, yearLabel, mode } = this.props;
-    const { day, year, monthBeforeDay } = this.state;
+  const monthYearOnly = mode === DateMode.MONTH_YEAR;
+  const monthWidth = monthYearOnly ? 'col-sm-8' : 'col-sm-5';
+  const monthBeforeDay = MonthBeforeDay.indexOf(locale) > -1;
 
-    const monthYearOnly = mode === DateMode.MONTH_YEAR;
-    const monthWidth = monthYearOnly ? 'col-sm-8' : 'col-sm-5';
+  return (
+    <div className="tw-date">
+      <div className="row">
+        {monthBeforeDay && <div className={monthWidth}>{getSelectElement()}</div>}
 
-    return (
-      <div className="tw-date">
-        <div className="row">
-          {monthBeforeDay && <div className={monthWidth}>{this.getSelectElement()}</div>}
-
-          {!monthYearOnly && (
-            <div className="col-sm-3">
-              <div className={`input-group-${size}`}>
-                <label className="sr-only" htmlFor="date-input-day">
-                  {dayLabel}
-                </label>
-                <input
-                  id="date-input-day"
-                  type="number"
-                  name="day"
-                  className="form-control"
-                  value={day || ''}
-                  onChange={event => this.handleDayChange(event)}
-                  onFocus={this.props.onFocus}
-                  onBlur={this.props.onBlur}
-                  placeholder="DD"
-                  disabled={disabled}
-                />
-              </div>
-            </div>
-          )}
-
-          {!monthBeforeDay && <div className={monthWidth}>{this.getSelectElement()}</div>}
-
-          <div className="col-sm-4">
+        {!monthYearOnly && (
+          <div className="col-sm-3">
             <div className={`input-group-${size}`}>
-              <label className="sr-only" htmlFor="date-input-year">
-                {yearLabel}
+              <label className="sr-only" htmlFor="date-input-day">
+                {dayLabel}
               </label>
               <input
-                id="date-input-year"
-                type="text"
-                name="year"
+                id="date-input-day"
+                type="number"
+                name="day"
                 className="form-control"
-                placeholder="YYYY"
-                value={year || ''}
-                onChange={event => this.handleYearChange(event)}
-                onFocus={this.props.onFocus}
-                onBlur={this.props.onBlur}
+                value={day || ''}
+                onChange={event => handleDayChange(event)}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                placeholder="DD"
                 disabled={disabled}
               />
             </div>
           </div>
+        )}
+
+        {!monthBeforeDay && <div className={monthWidth}>{getSelectElement()}</div>}
+
+        <div className="col-sm-4">
+          <div className={`input-group-${size}`}>
+            <label className="sr-only" htmlFor="date-input-year">
+              {yearLabel}
+            </label>
+            <input
+              id="date-input-year"
+              type="number"
+              name="year"
+              className="form-control"
+              placeholder="YYYY"
+              value={year || ''}
+              onChange={event => handleYearChange(event)}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              disabled={disabled}
+            />
+          </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+DateInput.propTypes = {
+  disabled: Types.bool,
+  size: Types.oneOf([Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE]),
+  value: Types.oneOfType([Types.string, Types.instanceOf(Date)]),
+  locale: Types.string,
+  onChange: Types.func.isRequired, // eslint-disable-line
+  onFocus: Types.func,
+  onBlur: Types.func,
+  dayLabel: Types.string,
+  monthLabel: Types.string,
+  yearLabel: Types.string,
+  monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]),
+  mode: Types.oneOf([DateMode.DAY_MONTH_YEAR, DateMode.MONTH_YEAR]),
+};
+
+DateInput.defaultProps = {
+  disabled: false,
+  size: Sizes.MEDIUM,
+  value: null,
+  locale: DEFAULT_LOCALE,
+  onFocus: null,
+  onBlur: null,
+  dayLabel: 'Day',
+  monthLabel: 'Month',
+  yearLabel: 'Year',
+  monthFormat: MonthFormat.LONG,
+  mode: DateMode.DAY_MONTH_YEAR,
+};
 
 export default DateInput;

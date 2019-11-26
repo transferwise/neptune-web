@@ -24,10 +24,12 @@ const KNOBS = {
       type: 'select',
       label: 'Size',
       state: 'size',
-      options: Object.values(Sizes).map(value => ({
-        value,
-        label: value,
-      })),
+      options: Object.values(Sizes)
+        .filter(value => ['xl', 'xs'].indexOf(value) === -1)
+        .map(value => ({
+          value,
+          label: value,
+        })),
       defaultState: { value: Sizes.SMALL, label: Sizes.SMALL },
     },
     {
@@ -38,10 +40,10 @@ const KNOBS = {
     },
 
     {
-      type: 'text',
+      type: 'date-lookup',
       label: 'Model date',
       state: 'value',
-      defaultState: '1995-12-01',
+      defaultState: '2001-01-01',
     },
     {
       type: 'select',
