@@ -211,6 +211,20 @@ class WithDisplayFormat extends React.Component {
     this.setState({ value: newFormattedValue }, this.resetEvent(), onChange(broadcastValue));
   };
 
+  handleOnBlur = event => {
+    const { displayPattern, onBlur } = this.props;
+    if (onBlur) {
+      onBlur(unformatWithPattern(event.target.value, displayPattern));
+    }
+  };
+
+  handleOnFocus = event => {
+    const { displayPattern, onFocus } = this.props;
+    if (onFocus) {
+      onFocus(unformatWithPattern(event.target.value, displayPattern));
+    }
+  };
+
   handleDelete = (unformattedValue, action) => {
     const { displayPattern } = this.props;
     const { selectionStart, selectionEnd } = this.state;
@@ -264,8 +278,6 @@ class WithDisplayFormat extends React.Component {
       maxLength,
       disabled,
       autoComplete,
-      onFocus,
-      onBlur,
     } = this.props;
     const { value } = this.state;
     const renderProps = {
@@ -281,8 +293,8 @@ class WithDisplayFormat extends React.Component {
       disabled,
       autoComplete,
       value,
-      onFocus,
-      onBlur,
+      onFocus: this.handleOnFocus,
+      onBlur: this.handleOnBlur,
       onPaste: this.handleOnPaste,
       onKeyDown: this.handleOnKeyDown,
       onChange: this.handleOnChange,

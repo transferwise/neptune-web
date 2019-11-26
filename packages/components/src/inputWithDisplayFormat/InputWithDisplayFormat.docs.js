@@ -40,11 +40,6 @@ export default class InputWithTextFormatDocs extends Component {
     this.state = { ...generateState(KNOBS) };
   }
 
-  handleOnChange = value => {
-    // eslint-disable-next-line
-    console.log('value', value);
-  };
-
   render() {
     const { displayPattern } = this.state;
     return (
@@ -71,7 +66,8 @@ export default class InputWithTextFormatDocs extends Component {
                   placeholder={displayPattern && PLACEHOLDERS[displayPattern.value]}
                   displayPattern={displayPattern && displayPattern.value}
                   className="form-control"
-                  onChange={value => this.handleOnChange(value)}
+                  // eslint-disable-next-line
+                  onChange={value => console.log('onChange event', value)}
                   // eslint-disable-next-line
                   onBlur={value => console.log('onBlur event', value)}
                   // eslint-disable-next-line

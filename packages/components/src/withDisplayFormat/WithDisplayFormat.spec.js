@@ -24,6 +24,8 @@ describe('InputWithTextFormat', () => {
     displayPattern: '**-**',
     className: 'form-control',
     onChange: jest.fn(),
+    onFocus: jest.fn(),
+    onBlur: jest.fn(),
   };
 
   beforeEach(() => {
@@ -45,6 +47,14 @@ describe('InputWithTextFormat', () => {
       componentInput().simulate('change', { target: { value } });
       expect(componentInput().props().value).toEqual(expectedValue);
       expect(props.onChange).toHaveBeenCalledWith(value);
+
+      componentInput().simulate('focus', { target: { value } });
+      expect(componentInput().props().value).toEqual(expectedValue);
+      expect(props.onFocus).toHaveBeenCalledWith(value);
+
+      componentInput().simulate('blur', { target: { value } });
+      expect(componentInput().props().value).toEqual(expectedValue);
+      expect(props.onBlur).toHaveBeenCalledWith(value);
     });
   });
 
