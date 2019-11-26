@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.5.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.4.1...@transferwise/components@17.5.0) (2019-11-26)
+
+
+### Features
+
+* **dateInput:** refactored from class to functional and add month year mode ([#49](https://github.com/transferwise/neptune/issues/49)) ([d27e191](https://github.com/transferwise/neptune/commit/d27e191be35d964e2b385f2c4edce254bfa5727b))
+
+
+
+
+
 ## [17.4.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.4.0...@transferwise/components@17.4.1) (2019-11-26)
 
 
