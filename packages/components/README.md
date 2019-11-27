@@ -1,7 +1,7 @@
 components 🎉
 ============
 
-[![CircleCI](https://circle.tw.ee/gh/transferwise/neptune.svg?style=svg&circle-token=383e8aec9763c6050c614094056a831a565c9f50)](https://circle.tw.ee/gh/transferwise/neptune)
+[![CircleCI](https://circleci.com/gh/transferwise/neptune.svg?style=shield)](https://circleci.com/gh/transferwise/neptune)
 [![NPM](https://badge.fury.io/js/%40transferwise%2Fcomponents.svg)](https://www.npmjs.com/package/@transferwise/components)
 
 `yarn add @transferwise/components`

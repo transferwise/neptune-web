@@ -8,7 +8,7 @@ Check out the [components page](https://transferwise.github.io/neptune) to learn
 
 ## ⚛️ Components
 
-[![CircleCI](https://circle.tw.ee/gh/transferwise/neptune.svg?style=svg&circle-token=383e8aec9763c6050c614094056a831a565c9f50)](https://circle.tw.ee/gh/transferwise/neptune) [![NPM](https://badge.fury.io/js/%40transferwise%2Fcomponents.svg)](https://www.npmjs.com/package/@transferwise/components)
+[![CircleCI](https://circleci.com/gh/transferwise/neptune.svg?style=shield)](https://circleci.com/gh/transferwise/neptune) [![NPM](https://badge.fury.io/js/%40transferwise%2Fcomponents.svg)](https://www.npmjs.com/package/@transferwise/components)
 
 The React components are tree-shakable, ensuring your app is only bundling the components you imported. Styles for the component are automatically imported to your page when you use it.
 
@@ -44,7 +44,7 @@ import '@transferwise/components/build/main.css';
 
 ## 🎨 CSS
 
-[![CircleCI](https://circle.tw.ee/gh/transferwise/neptune.svg?style=svg&circle-token=383e8aec9763c6050c614094056a831a565c9f50)](https://circle.tw.ee/gh/transferwise/neptune) [![NPM](https://badge.fury.io/js/%40transferwise%2Fneptune-css.svg)](https://www.npmjs.com/package/@transferwise/neptune-css)
+[![CircleCI](https://circleci.com/gh/transferwise/neptune.svg?style=shield)](https://circleci.com/gh/transferwise/neptune) [![NPM](https://badge.fury.io/js/%40transferwise%2Fneptune-css.svg)](https://www.npmjs.com/package/@transferwise/neptune-css)
 
 The CSS library is used throughout a lot of our products in several different stacks, so we serve them as plain CSS files.
 

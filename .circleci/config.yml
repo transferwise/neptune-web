@@ -211,7 +211,7 @@ workflows:
               only: master
 
       - publish:
-          context: frontend-deploy-library
+          context: frontend-publish
           requires:
             - test-master
           filters:
