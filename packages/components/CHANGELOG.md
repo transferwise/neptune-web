@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.6.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.5.1...@transferwise/components@17.6.0) (2019-11-28)
+
+
+### Features
+
+* **upload:** accept CSV format ([2225971](https://github.com/transferwise/neptune/commit/2225971c0a41a2afacaac406565d18f72264ef8c))
+* **upload:** accept file input field name and additional FormData ([10163ce](https://github.com/transferwise/neptune/commit/10163ce50891a43177b48368d0543b452baa83ff))
+
+
+
+
+
 ## [17.5.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.5.0...@transferwise/components@17.5.1) (2019-11-26)
 
 
