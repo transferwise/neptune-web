@@ -35,6 +35,7 @@ class Tabs extends React.Component {
     isScrolling: false,
     lastSwipeVelocity: 0,
   };
+  container = null;
   containerWidth = 0;
 
   get filteredTabsLength() {
@@ -51,6 +52,7 @@ class Tabs extends React.Component {
     this.switchTab(clamp(selected, MIN_INDEX, this.MAX_INDEX));
     document.body.addEventListener('touchmove', this.disableScroll, { passive: false });
     document.body.addEventListener('touchforcechange', this.disableScroll, { passive: false });
+    window.addEventListener('resize', this.handleResize);
   }
 
   componentDidUpdate(prevProps) {
@@ -75,9 +77,27 @@ class Tabs extends React.Component {
   componentWillUnmount() {
     document.body.removeEventListener('touchmove', this.disableScroll);
     document.body.removeEventListener('touchforcechange', this.disableScroll);
+    window.removeEventListener('resize', this.handleResize);
   }
 
-  getContainerWidthFromRef = node => {
+  handleResize = () => {
+    this.setContainerWidth(this.container);
+
+    this.setState(({ selectedTabIndex }) => ({
+      translateTo: `${-(this.containerWidth * selectedTabIndex)}px`,
+    }));
+  };
+
+  setContainerRefAndWidth = node => {
+    this.container = node;
+    this.setContainerWidth(node);
+  };
+
+  setContainerWidth = node => {
+    if (!node) {
+      return;
+    }
+
     const { width } = node.getBoundingClientRect();
 
     this.containerWidth = width;
@@ -160,6 +180,7 @@ class Tabs extends React.Component {
     const translateTo = `${-(this.containerWidth * index)}px`;
 
     this.setState({
+      selectedTabIndex: index,
       isAnimating: translateFrom !== translateTo,
       translateFrom,
       translateTo,
@@ -339,7 +360,7 @@ class Tabs extends React.Component {
             }}
           />
         </TabList>
-        <div className="tabs__panel-container" ref={this.getContainerWidthFromRef}>
+        <div className="tabs__panel-container" ref={this.setContainerRefAndWidth}>
           <Spring
             from={{
               transform: `translateX(${translateFrom})`,

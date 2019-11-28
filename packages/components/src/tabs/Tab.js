@@ -4,8 +4,14 @@ import classNames from 'classnames';
 
 const Tab = ({ children, id, disabled, panelId, selected, onKeyDown, onClick, style }) => {
   const node = useRef(null);
+  const firstUpdate = useRef(true);
 
   const checkFocus = () => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+
     if (selected && node) {
       node.current.focus();
     }
