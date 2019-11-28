@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.7.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.6.0...@transferwise/components@17.7.0) (2019-11-28)
+
+
+### Features
+
+* **tabs:** handle resizing ([#100](https://github.com/transferwise/neptune/issues/100)) ([a1235fc](https://github.com/transferwise/neptune/commit/a1235fc334d9595a99b7eb3e0eeb092d46dd0b07))
+
+
+
+
+
 # [17.6.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.5.1...@transferwise/components@17.6.0) (2019-11-28)
 
 

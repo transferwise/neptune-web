@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.38](https://github.com/transferwise/neptune/compare/@transferwise/neptune-docs@0.1.37...@transferwise/neptune-docs@0.1.38) (2019-11-28)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
 ## [0.1.37](https://github.com/transferwise/neptune/compare/@transferwise/neptune-docs@0.1.36...@transferwise/neptune-docs@0.1.37) (2019-11-28)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
