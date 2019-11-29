@@ -30,10 +30,15 @@ const lessCompiler = () => {
     .pipe(gulp.dest('dist/css'));
 };
 
+const customProperties = () => {
+  return gulp.src(['src/less/variables/*.less']).pipe(gulp.dest('dist/css/variables'));
+};
+
 // Watch files
 const lessWatcher = () => {
-  gulp.watch(['src/**/*.less'], gulp.series(lessCompiler));
+  gulp.watch(['src/**/*.less'], gulp.series(lessCompiler, customProperties));
 };
 
 exports.lessWatcher = lessWatcher;
 exports.lessCompiler = lessCompiler;
+exports.customProperties = customProperties;
