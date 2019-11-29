@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.8.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.7.1...@transferwise/components@17.8.0) (2019-11-29)
+
+
+### Features
+
+* **MoneyInput:** add a placeholder and amount is no longer required ([#94](https://github.com/transferwise/neptune/issues/94)) ([f1208f2](https://github.com/transferwise/neptune/commit/f1208f2941cf9efbd7fbe2d7c2c66edbc7957878))
+
+
+
+
+
 ## [17.7.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.7.0...@transferwise/components@17.7.1) (2019-11-29)
 
 **Note:** Version bump only for package @transferwise/components
