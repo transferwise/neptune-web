@@ -16,13 +16,18 @@ const Currency = Types.shape({
 });
 const CUSTOM_ACTION = 'CUSTOM_ACTION';
 
+const formatAmountIfSet = (amount, currency, locale) => {
+  return amount ? formatAmount(amount, currency, locale) : '';
+};
+
 export default class MoneyInput extends Component {
   static propTypes = {
     id: Types.string,
     currencies: Types.arrayOf(Currency).isRequired,
     selectedCurrency: Currency.isRequired,
     onCurrencyChange: Types.func,
-    amount: Types.number.isRequired,
+    placeholder: Types.number,
+    amount: Types.number,
     size: Types.oneOf(['sm', 'md', 'lg']),
     onAmountChange: Types.func,
     locale: Types.string,
@@ -40,6 +45,8 @@ export default class MoneyInput extends Component {
     addon: null,
     searchPlaceholder: '',
     onCurrencyChange: null,
+    placeholder: null,
+    amount: null,
     onAmountChange: null,
     customActionLabel: '',
     onCustomAction: null,
@@ -48,7 +55,7 @@ export default class MoneyInput extends Component {
 
   state = {
     searchQuery: '',
-    formattedAmount: formatAmount(
+    formattedAmount: formatAmountIfSet(
       this.props.amount,
       this.props.selectedCurrency.currency,
       this.props.locale,
@@ -58,7 +65,7 @@ export default class MoneyInput extends Component {
   componentWillReceiveProps(nextProps) {
     if (!this.amountFocused) {
       this.setState({
-        formattedAmount: formatAmount(
+        formattedAmount: formatAmountIfSet(
           nextProps.amount,
           nextProps.selectedCurrency.currency,
           nextProps.locale,
@@ -80,7 +87,7 @@ export default class MoneyInput extends Component {
 
   onAmountBlur = () => {
     this.amountFocused = false;
-    this.formatAmount();
+    this.setAmount();
   };
 
   onAmountFocus = () => {
@@ -97,7 +104,7 @@ export default class MoneyInput extends Component {
     return selectOptions;
   }
 
-  formatAmount() {
+  setAmount() {
     this.setState(previousState => {
       const parsed = parseAmount(
         previousState.formattedAmount,
@@ -110,7 +117,7 @@ export default class MoneyInput extends Component {
         };
       }
       return {
-        formattedAmount: formatAmount(
+        formattedAmount: formatAmountIfSet(
           parsed,
           this.props.selectedCurrency.currency,
           this.props.locale,
@@ -158,6 +165,11 @@ export default class MoneyInput extends Component {
           onFocus={this.onAmountFocus}
           onBlur={this.onAmountBlur}
           disabled={disabled}
+          placeholder={formatAmountIfSet(
+            this.props.placeholder,
+            this.props.selectedCurrency.currency,
+            this.props.locale,
+          )}
           autoComplete="off"
         />
         {addon && (

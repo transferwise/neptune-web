@@ -122,9 +122,12 @@ export default class MoneyInputDocs extends Component {
     this.state = {
       selectedCurrency: currencies[2],
       amount: 1000,
+      // Not called `placeholder`, as `generateInput` uses this as a special field
+      placeholderValue: null,
       form: {
         locale: 'en-GB',
         amount: '1000',
+        placeholderValue: '',
       },
       ...generateState(KNOBS),
       ...generateState(DOCSKNOBS),
@@ -133,8 +136,42 @@ export default class MoneyInputDocs extends Component {
 
   getCurrencies = () => (this.state.fixedCurrency ? [this.state.selectedCurrency] : currencies);
 
+  handleNumberChange(fieldName, event) {
+    const {
+      target: { value },
+    } = event;
+    this.setState(
+      ({ form }) => ({
+        form: { ...form, [fieldName]: value },
+      }),
+      () => {
+        const parsed = parseFloat(value);
+        if (!Number.isNaN(parsed)) {
+          this.setState({ [fieldName]: parsed });
+        } else {
+          this.setState({ [fieldName]: null });
+        }
+      },
+    );
+  }
+
+  handleLocaleChange(event) {
+    const {
+      target: { value: locale },
+    } = event;
+    this.setState(
+      ({ form }) => ({
+        form: { ...form, locale },
+      }),
+      () => {
+        this.setState({ locale });
+      },
+    );
+  }
+
   render() {
     const extraProps = {
+      placeholder: this.state.placeholderValue,
       amount: this.state.amount,
       onAmountChange: !this.state.amountChangeEnabled ? '(amount) => {}' : null,
       onCurrencyChange: this.state.fixedCurrency ? undefined : '(currency) => {}',
@@ -161,6 +198,7 @@ export default class MoneyInputDocs extends Component {
                 <MoneyInput
                   id="money-input"
                   currencies={this.getCurrencies()}
+                  placeholder={this.state.placeholderValue}
                   amount={this.state.amount}
                   locale={this.state.locale}
                   size={this.state.size.value}
@@ -197,23 +235,20 @@ export default class MoneyInputDocs extends Component {
                     id="money-input-amount-selector"
                     type="number"
                     className="form-control"
-                    value={this.state.form.amount}
-                    onChange={event => {
-                      const {
-                        target: { value: amount },
-                      } = event;
-                      this.setState(
-                        ({ form }) => ({
-                          form: { ...form, amount },
-                        }),
-                        () => {
-                          const parsed = parseFloat(amount);
-                          if (!Number.isNaN(parsed)) {
-                            this.setState({ amount: parsed });
-                          }
-                        },
-                      );
-                    }}
+                    value={`${this.state.form.amount}`}
+                    onChange={event => this.handleNumberChange('amount', event)}
+                  />
+                </div>
+                <div className="col-md-6 m-b-2">
+                  <label htmlFor="money-input-placeholder-selector" className="control-label">
+                    Placeholder
+                  </label>
+                  <input
+                    id="money-input-placeholder-selector"
+                    type="number"
+                    className="form-control"
+                    value={`${this.state.form.placeholderValue}`}
+                    onChange={event => this.handleNumberChange('placeholderValue', event)}
                   />
                 </div>
                 <div className="col-md-6 m-b-2">
@@ -228,19 +263,7 @@ export default class MoneyInputDocs extends Component {
                     type="text"
                     className="form-control"
                     value={this.state.form.locale}
-                    onChange={event => {
-                      const {
-                        target: { value: locale },
-                      } = event;
-                      this.setState(
-                        ({ form }) => ({
-                          form: { ...form, locale },
-                        }),
-                        () => {
-                          this.setState({ locale });
-                        },
-                      );
-                    }}
+                    onChange={event => this.handleLocaleChange(event)}
                   />
                 </div>
                 {KNOBS.knobs.map(knob => generateInput(knob, this))}

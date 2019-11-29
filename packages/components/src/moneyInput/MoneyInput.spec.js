@@ -445,4 +445,13 @@ describe('Money Input', () => {
     expect(component.find('.tw-money-input').exists()).toBe(false);
     expect(component.find('.tw-money-input_TWISAWESOME125').exists()).toBe(true);
   });
+
+  it('shows a formatted placeholder when provided', () => {
+    numberFormatting.formatAmount = jest.fn(
+      (num, currency, locale) => `formatted ${num}, ${locale}, ${currency}`,
+    );
+    component.setProps({ locale: 'en-US', numberFormatPrecision: 3 });
+    component.setProps({ placeholder: 12345.67 });
+    expect(amountInput().prop('placeholder')).toBe('formatted 12345.67, en-US, eur');
+  });
 });
