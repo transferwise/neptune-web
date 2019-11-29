@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.13...@transferwise/neptune-css@0.9.0) (2019-11-29)
+
+
+### Features
+
+* distributes custom properties to dist folder ([#105](https://github.com/transferwise/neptune/issues/105)) ([daf8a10](https://github.com/transferwise/neptune/commit/daf8a10323644fa79c1037df64bbd1f8535a5924))
+
+
+
+
+
 ## [0.8.13](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.12...@transferwise/neptune-css@0.8.13) (2019-11-08)
 
 **Note:** Version bump only for package @transferwise/neptune-css
