@@ -1,7 +1,18 @@
-TODO
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { DateLookup } from '@transferwise/components';
+import code from '../../liveEditorCode/dateLookup.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ DateLookup }} />
+  <GeneratePropsTable componentName="DateLookup" />
+</>
+#ios
+</RenderTabs>
 
 export const meta = {
-  abstractURL: '',
+  abstractURL: 'https://share.goabstract.com/02c8b885-c8eb-4a50-9a0b-c0afb530a48d',
   name: 'Date Lookup',
   size: '',
   isPlaceholder: true,

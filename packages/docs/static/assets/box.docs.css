@@ -1,0 +1,25 @@
+#box .live-preview > div {
+  height: 100%;
+}
+#box .d-flex {
+  height: 100%;
+}
+#box .d-flex > :nth-child(2n),
+#flex .d-flex > :nth-child(2n) {
+  background-color: #a7e2f9;
+}
+#box .d-flex > :nth-child(odd),
+#flex .d-flex > :nth-child(odd) {
+  background-color: #dbf0fd;
+}
+#box .demo,
+#flex .demo {
+  background-color: #37517e;
+  width: 50%;
+  min-height: 50px;
+}
+
+#box .live-preview {
+  height: 200px;
+  border: 1px solid #f2f5f7;
+}

@@ -1,0 +1,19 @@
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Chevron, Checkbox } from '@transferwise/components';
+import code from '../../liveEditorCode/chevron.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Chevron, Checkbox }} />
+  <GeneratePropsTable componentName="Chevron" />
+</>
+#ios
+</RenderTabs>
+
+export const meta = {
+  abstractURL: '',
+  name: 'Chevron',
+  size: '',
+  isPlaceholder: true,
+};

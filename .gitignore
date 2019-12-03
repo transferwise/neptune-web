@@ -42,7 +42,7 @@ yarn-error.log
 lib
 build
 docs-build
-*.css
+
 
 # editors
 
@@ -50,3 +50,7 @@ docs-build
 *.iws
 *.iml
 .vscode
+
+
+DOCGEN_OUTPUT.js
+temp-docgen-output.js

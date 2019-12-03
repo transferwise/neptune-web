@@ -1,0 +1,20 @@
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { SnackbarProvider, SnackbarConsumer, useSnackbar,Button } from '@transferwise/components';
+import '@transferwise/neptune-css/dist/css/snackbar.css';
+import code from '../../liveEditorCode/snackbar.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Button, SnackbarConsumer, SnackbarProvider }} />
+  <GeneratePropsTable componentName="Snackbar" />
+</>
+#ios
+</RenderTabs>
+
+export const meta = {
+  abstractURL: '',
+  name: 'Snackbar',
+  size: '',
+  isPlaceholder: true,
+};

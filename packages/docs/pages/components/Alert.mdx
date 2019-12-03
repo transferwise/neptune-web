@@ -1,163 +1,253 @@
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { Alert } from '@transferwise/components';
+import code from '../../liveEditorCode/alert.code';
 
-<p className="lead">
-  Use Alert for contextual feedback messages for typical user actions with the handful of available
-  and flexible alert messages.
-</p>
+Use Alert for contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 
-<div className="row">
-  <div className="col-md-6">
-    <Alert type={'warning'} size={'sm'} arrow={'up-left'} dismissible={false}>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur aut facilis ipsam iusto
-      nisi quae quis sunt voluptates. Cupiditate, veniam.
-    </Alert>
-  </div>
-</div>
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Alert }} />
+  <GeneratePropsTable componentName="Alert" />
+</>
+#ios
+</RenderTabs>
 
-## Platforms
+## Size and type options
 
-- [Android](#Android)
-- [iOS](#iOS)
-- [Web](#Web)
+<table className="table table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Large</th>
+      <th>Small</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Default</th>
+      <td>
+        <Alert>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+      </td>
+      <td>
+        <Alert size="sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Warning</th>
+      <td>
+        <Alert type="warning">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+      </td>
+      <td>
+        <Alert type="warning" size="sm">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Success</th>
+      <td>
+        <Alert type="success">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+      </td>
+      <td>
+        <Alert type="success" size="sm">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Error</th>
+      <td>
+        <Alert type="error">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+      </td>
+      <td>
+        <Alert type="error" size="sm">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-## Large and Small types of Alerts
+## Dismissible options
 
-<div className="row">
-  <div className="col-md-6">
-    <Alert>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
-  </div>
-  <div className="col-md-6">
-    <Alert size="sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
-  </div>
-</div>
+<table className="table table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Large</th>
+      <th>Small</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Default</th>
+      <td>
+        <Alert>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+      </td>
+      <td>
+        <Alert size="sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Warning</th>
+      <td>
+        <Alert type="warning">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+      </td>
+      <td>
+        <Alert type="warning" size="sm">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Success</th>
+      <td>
+        <Alert type="success">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+      </td>
+      <td>
+        <Alert type="success" size="sm">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Error</th>
+      <td>
+        <Alert type="error">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+      </td>
+      <td>
+        <Alert type="error" size="sm">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-<div className="row">
-  <div className="col-md-6">
-    <Alert type="warning">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
-  </div>
-  <div className="col-md-6">
-    <Alert size="sm" type="warning">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    </Alert>
-  </div>
-</div>
+## Arrow options
 
-<div className="row">
-  <div className="col-md-6">
-    <Alert type="success">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
-  </div>
-  <div className="col-md-6">
-    <Alert size="sm" type="success">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    </Alert>
-  </div>
-</div>
+<table className="table table-condensed">
+  <thead>
+    <tr>
+      <th>Up-Left</th>
+      <th>Up-Right</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <Alert type="success" size="sm" arrow="up-left">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+      <td>
+        <Alert type="success" size="sm" arrow="up-right">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+    </tr>
+  </tbody>
+  <thead>
+    <tr>
+      <th>Down-Left</th>
+      <th>Down-Right</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <Alert type="success" size="sm" arrow="down-left">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+      <td>
+        <Alert type="success" size="sm" arrow="down-right">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+    </tr>
+  </tbody>
+  <thead>
+    <tr>
+      <th>Up-Center</th>
+      <th>Down-Center</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <Alert type="success" size="sm" arrow="up-center">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+      <td>
+        <Alert type="success" size="sm" arrow="down-center">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-<div className="row">
-  <div className="col-md-6">
-    <Alert type="error">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
-  </div>
-  <div className="col-md-6">
-    <Alert size="sm" type="error">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    </Alert>
-  </div>
-</div>
+## Arrow options
 
-### Alert with arrow (Connecting alert)
+<table className="table table-condensed">
+  <thead>
+    <tr>
+      <th>Large</th>
+      <th>Small</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <Alert dismissible={true} type="error">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+      <td>
+        <Alert dismissible={true} type="error" size="sm">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Alert>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-Up-Left and Down-Left
-
-<div className="row">
-  <div className="col-md-6">
-    <Alert size="sm" arrow={"up-left"} type={"warning"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
-  </div>
-
-  <div className="col-md-6">
-    <Alert size="sm" arrow={"down-left"} type={"warning"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
-  </div>
-</div>
-
-Up-Center and Down-Center
-
-<div className="row">
-  <div className="col-md-6">
-    <Alert size="sm" arrow={"up-center"} type={"error"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
-  </div>
-
-  <div className="col-md-6">
-    <Alert size="sm" arrow={"down-center"} type={"error"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
-  </div>
-</div>
-
-Up-Right and Down-Right
-
-<div className="row">
-  <div className="col-md-6">
-    <Alert size="sm" arrow={"up-right"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
-  </div>
-
-  <div className="col-md-6">
-    <Alert size="sm" arrow={"down-right"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
-  </div>
-</div>
-
-### Large and small Dismissible alerts
-
-<div className="row">
-  <div className="col-md-8">
-    <Alert dismissible={true} type="success">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    </Alert>
-  </div>
-</div>
-
-<div className="row">
-  <div className="col-md-8">
-    <Alert size="sm" dismissible={true}>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    </Alert>
-  </div>
-</div>
-
-### Examples of content inside component
+## Content options
 
 `<Alert />` component accepts anything that can be rendered: numbers, strings, elements or an array (or [fragment](https://reactjs.org/docs/fragments.html)) containing these types.
 
-Example of message with bold text and link:
-
-<div className="row">
-  <div className="col-md-8">
-    <Alert size="sm">
-      <b>Lorem</b> ipsum dolor sit amet, consectetur{' '}
-      <a href="https://transferwise.com/help">adipisicing elit</a>.
-    </Alert>
-  </div>
-</div>
-
-Example of message with list of items:
-
-<div className="row">
-  <div className="col-md-8">
-    <Alert size="sm" type="error" arrow="up-center">
-      <div>Number is required</div>
-      <div>Must be 10 or greater</div>
-      <div>Must be 99 or less</div>
-    </Alert>
-  </div>
-</div>
-
-## <a id="Android"></a>Android
-
-Android specific stuff.
-
-## <a id="iOS"></a>iOS
-
-iOS specific stuff.
-
-## <a id="Web"></a>Web
-
-Web specific stuff.
+<table className="table table-condensed">
+  <thead>
+    <tr>
+      <th>Large</th>
+      <th>Small</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Example of message with bold text and link</td>
+      <td>
+        <Alert size="sm" type="error" arrow="up-center">
+          <div>Number is required</div>
+          <div>Must be 10 or greater</div>
+          <div>Must be 99 or less</div>
+        </Alert>
+      </td>
+    </tr>
+    <tr>
+      <td>Example of message with list of items</td>
+      <td>
+        <Alert size="sm">
+          <b>Lorem</b> ipsum dolor sit amet, consectetur{' '}
+          <a href="https://transferwise.com/help">adipisicing elit</a>.
+        </Alert>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 export const meta = {
   abstractURL: 'https://share.goabstract.com/a371db59-a0d0-40d4-b233-5fae380f0071',

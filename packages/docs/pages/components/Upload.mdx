@@ -1,4 +1,100 @@
-TODO
+import { Upload, Button } from '@transferwise/components';
+import { CompleteStep, ProcessingStep } from '@transferwise/components/src/upload/steps';
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import  code, { IMAGES } from '../../liveEditorCode/upload.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Upload,Button,IMAGES }} />
+  <GeneratePropsTable componentName="Upload" />
+</>
+#ios
+</RenderTabs>
+
+
+
+## Upload states
+
+<table className="table-condensed">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Case</th>
+      <th>Preview</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>First Step Props (Upload)</td>
+      <td>
+        <div>
+          <Upload
+            usAccept="image/*"
+            usButtonText="Or Select File"
+            usDisabled={false}
+            usDropMessage="Drop file to start upload"
+            usLabel=""
+            usPlaceholder="Drag and drop a file less than 5MB"
+            httpOptions={{
+              url: 'https://httpbin.org/post',
+              method: 'POST',
+            }}
+            onStart={file => console.log('onStart', file)}
+            onSuccess={httpResponse => console.log('onSuccess', httpResponse)}
+            onFailure={httpResponse => console.log('onFailure', httpResponse)}
+            onCancel={() => console.log('onCancel')}
+            size="md"
+          />
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Second Step Props (Processing)</td>
+      <td>
+        <div className="droppable droppable-md droppable-processing">
+          <ProcessingStep
+            isError={false}
+            isComplete={false}
+            isProcessing
+            isSuccess={false}
+            onClear={() => {}}
+            onAnimationCompleted={status => {
+              console.log(status);
+            }}
+            psButtonText="Cancel"
+            psFailureText="Upload failed.Please, try again"
+            psProcessingText="Uploading..."
+            psSuccessText="Upload complete!"
+          />
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Third Step Props (Completed)</td>
+      <td>
+        <div className="droppable droppable-md droppable-complete">
+          <CompleteStep
+            isComplete
+            isImage
+            fileName="image-name.jpg"
+            uploadedImage={IMAGES[1].value}
+            onClear={() => {}}
+            isError={false}
+            csButtonText="Select other file?"
+            csFailureText="Upload failed.Please, try again"
+            csSuccessText="Upload complete!"
+            csTooLargeMessage="Please provide a file smaller than 5MB"
+            csWrongTypeMessage="Please provide a supported format"
+          />
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 export const meta = {
   abstractURL: '',

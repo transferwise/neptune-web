@@ -1,0 +1,19 @@
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Accordion } from '@transferwise/components';
+import code from '../../liveEditorCode/accordion.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Accordion }} />
+  <GeneratePropsTable componentName="Accordion" />
+</>
+#ios
+</RenderTabs>
+
+export const meta = {
+  abstractURL: '',
+  name: 'Accordion',
+  size: '',
+  isPlaceholder: true,
+};

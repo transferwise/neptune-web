@@ -1,10 +1,17 @@
-<!-- import { Button } from '@transferwise/components'; -->
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Drawer,Button } from '@transferwise/components';
+import code from '../../liveEditorCode/drawer.code';
 
-<p className="lead">Use Drawers to let users perform single step tasks which may include optional informational drill-down views.</p>
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Drawer,Button }} />
+  <GeneratePropsTable componentName="Drawer" />
+</>
+#ios
+</RenderTabs>
 
 ![Sample Drawer](/static/assets/img/Drawer_sample.png)
-
-## Platforms
 
 - [Web](#Web) <span class="badge badge-danger">Ready for development</span>
 
@@ -26,7 +33,9 @@
 
 ## Types
 
-<h3><a id="Default"></a>Default</h3>
+<h3>
+  <a id="Default"></a>Default
+</h3>
 ![Default drawer](/static/assets/img/Type_Default.png)
 
 #### Header
@@ -45,12 +54,16 @@
 
 9. Dimmed background. Only available in desktop sizes. The drawer is full screen on mobile screens sizes.
 
-<h3><a id="FixedFooter"></a>Fixed footer</h3>
+<h3>
+  <a id="FixedFooter"></a>Fixed footer
+</h3>
 ![Default drawer](/static/assets/img/Type_Fixed_Footer.png)
 
 7. Fixed footer with primary action
 
-<h3><a id="DrillDown"></a>Drill down</h3>
+<h3>
+  <a id="DrillDown"></a>Drill down
+</h3>
 ![Default drawer](/static/assets/img/Type_Drilldown.png)
 
 8. Back to parent view
@@ -66,21 +79,18 @@
 ## Motion
 
 <h3>Open and close</h3>
-
 <video width="320" height="240" controls>
   <source src="/static/assets/vid/Drawer_animation.mov" />
   Your browser does not support the video tag.
 </video>
-
-<h3><a id="Scrolling"></a>Scrolling</h3>
-
+<h3>
+  <a id="Scrolling"></a>Scrolling
+</h3>
 <video width="320" height="240" controls>
   <source src="/static/assets/vid/Drawer_scrolling.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
-
 <h3>Drilldown</h3>
-
 <video width="320" height="240" controls>
   <source src="/static/assets/vid/Drawer_drilldown.mov" />
   Your browser does not support the video tag.

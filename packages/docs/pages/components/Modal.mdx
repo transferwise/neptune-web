@@ -1,4 +1,15 @@
-TODO
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Modal,Button } from '@transferwise/components';
+import code from '../../liveEditorCode/modal.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Modal, Button }} />
+  <GeneratePropsTable componentName="Modal" />
+</>
+#ios
+</RenderTabs>
 
 export const meta = {
   abstractURL: '',
@@ -6,3 +17,5 @@ export const meta = {
   size: '',
   isPlaceholder: true,
 };
+
+;

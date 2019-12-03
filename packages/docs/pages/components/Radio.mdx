@@ -1,4 +1,15 @@
-TODO
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Radio } from '@transferwise/components';
+import code from '../../liveEditorCode/radio.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Radio }} />
+  <GeneratePropsTable componentName="Radio" />
+</>
+#ios
+</RenderTabs>
 
 export const meta = {
   abstractURL: '',

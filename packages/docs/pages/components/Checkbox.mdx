@@ -1,7 +1,18 @@
-TODO
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Checkbox } from '@transferwise/components';
+import code from '../../liveEditorCode/checkbox.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Checkbox }} />
+  <GeneratePropsTable componentName="Checkbox" />
+</>
+#ios
+</RenderTabs>
 
 export const meta = {
-  abstractURL: 'https://share.goabstract.com/c8e95476-d7f0-449f-9f0d-f8b3b703800e',
+  abstractURL: '',
   name: 'Checkbox',
   size: '',
   isPlaceholder: true,

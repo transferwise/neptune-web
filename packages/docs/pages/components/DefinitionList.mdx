@@ -1,7 +1,18 @@
-TODO
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { DefinitionList } from '@transferwise/components';
+import code from '../../liveEditorCode/definitionList.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ DefinitionList }} />
+  <GeneratePropsTable componentName="DefinitionList" />
+</>
+#ios
+</RenderTabs>
 
 export const meta = {
-  abstractURL: '',
+  abstractURL: 'https://share.goabstract.com/02c8b885-c8eb-4a50-9a0b-c0afb530a48d',
   name: 'Definition List',
   size: '',
   isPlaceholder: true,

@@ -1,0 +1,19 @@
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Tabs,Alert } from '@transferwise/components';
+import code from '../../liveEditorCode/tabs.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Tabs,Alert }} />
+  <GeneratePropsTable componentName="Tabs" />
+</>
+#ios
+</RenderTabs>
+
+export const meta = {
+  abstractURL: '',
+  name: 'Tabs',
+  size: '',
+  isPlaceholder: true,
+};

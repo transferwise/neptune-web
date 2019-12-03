@@ -1,4 +1,15 @@
-TODO
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Loader } from '@transferwise/components';
+import code from '../../liveEditorCode/loader.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Loader }} />
+  <GeneratePropsTable componentName="Loader" />
+</>
+#ios
+</RenderTabs>
 
 export const meta = {
   abstractURL: '',
@@ -6,3 +17,5 @@ export const meta = {
   size: '',
   isPlaceholder: true,
 };
+
+;

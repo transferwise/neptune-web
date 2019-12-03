@@ -14,6 +14,7 @@ svg {
 pre {
   margin-top: 24px;
 }
+
 .doc-bg {
   background: #f2f5f7;
 }
@@ -139,4 +140,49 @@ pre {
   padding: 24px 32px;
   max-width: 1012px;
   background: #fff;
+}
+
+/*Live Editor*/
+.live-provider {
+  margin: calc(var(--spacer) * 3) 0 0;
+}
+
+.live-editor {
+  background: #fff;
+  border: 1px solid #f2f5f7;
+}
+
+.live-editor {
+  background: #fff;
+  border: 1px solid #f2f5f7;
+}
+
+.live-editor textarea {
+  outline: none;
+}
+/* Tabs */
+.tabs__panel {
+  padding: var(--spacer);
+}
+/*Temp css to remove */
+/* Typography temp */
+.Content h2,
+h3,
+h4 {
+}
+
+.Content h2[id],
+h3[id],
+h4[id],
+.panel-title {
+  margin-top: calc(var(--spacer) * 4);
+  margin-bottom: calc(var(--spacer) * 3);
+}
+/* Props table */
+.table-condensed li {
+  list-style-type: none;
+}
+.table-condensed ul {
+  padding: 0;
+  margin-bottom: var(--spacer);
 }

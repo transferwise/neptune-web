@@ -1,4 +1,15 @@
-TODO
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Stepper } from '@transferwise/components';
+import code from '../../liveEditorCode/stepper.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Stepper }} />
+  <GeneratePropsTable componentName="Stepper" />
+</>
+#ios
+</RenderTabs>
 
 export const meta = {
   abstractURL: '',

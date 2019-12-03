@@ -1,0 +1,19 @@
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { InputWithDisplayFormat } from '@transferwise/components';
+import code from '../../liveEditorCode/inputWithDisplayFormat.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ InputWithDisplayFormat }} />
+  <GeneratePropsTable componentName="InputWithDisplayFormat" />
+</>
+#ios
+</RenderTabs>
+
+export const meta = {
+  abstractURL: '',
+  name: 'Input With Display Format',
+  size: '',
+  isPlaceholder: true,
+};

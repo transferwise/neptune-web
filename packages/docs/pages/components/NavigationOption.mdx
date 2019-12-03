@@ -1,4 +1,16 @@
-TODO
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { NavigationOption } from '@transferwise/components';
+import FastFlagIcon from '@transferwise/icons/react/fast-flag';
+import code from '../../liveEditorCode/navigationOption.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ NavigationOption,FastFlagIcon }} />
+  <GeneratePropsTable componentName="NavigationOption" />
+</>
+#ios
+</RenderTabs>
 
 export const meta = {
   abstractURL: '',

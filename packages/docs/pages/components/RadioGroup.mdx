@@ -1,0 +1,19 @@
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { RadioGroup } from '@transferwise/components';
+import code from '../../liveEditorCode/radioGroup.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ RadioGroup }} />
+  <GeneratePropsTable componentName="RadioGroup" />
+</>
+#ios
+</RenderTabs>
+
+export const meta = {
+  abstractURL: '',
+  name: 'Radio Group',
+  size: '',
+  isPlaceholder: true,
+};

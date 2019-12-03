@@ -1,4 +1,15 @@
-TODO
+import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Tooltip,Button } from '@transferwise/components';
+import code from '../../liveEditorCode/tooltip.code';
+
+<RenderTabs>
+#web
+<>
+  <LiveEditorBlock code={code} scope={{ Tooltip,Button }} />
+  <GeneratePropsTable componentName="Tooltip" />
+</>
+#ios
+</RenderTabs>
 
 export const meta = {
   abstractURL: '',
