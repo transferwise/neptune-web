@@ -1,8 +1,7 @@
 import React, { Component, cloneElement } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-
-import Placement, { PlacementValues } from './Placement';
+import { Placement } from '../common';
 import { getPlacement, getPositionRelativeToParent } from './positioning';
 import { wrapInDOMElementIfNecessary } from './DOMWrapping';
 import KeyCodes from '../common/keyCodes';
@@ -12,6 +11,8 @@ import {
 } from '../common/domHelpers';
 
 import './Popover.css';
+
+const PlacementValues = Object.keys(Placement).map(key => Placement[key]);
 
 export default class Popover extends Component {
   static Placement = Placement;

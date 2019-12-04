@@ -1,4 +1,4 @@
-import Placement from './Placement';
+import { Placement } from '../common';
 
 const { TOP, RIGHT, BOTTOM, BOTTOM_RIGHT, BOTTOM_LEFT, LEFT, RIGHT_TOP, LEFT_TOP } = Placement;
 

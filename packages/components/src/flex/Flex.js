@@ -2,13 +2,15 @@
 import React from 'react';
 import { jsx } from '@emotion/core';
 import Types from 'prop-types';
-import { Sizes, flexDirection, mediaQueries } from '../common';
+import { Sizes, FlexDirection, Breakpoints } from '../common';
+
+const mediaQueries = Breakpoints.map(bp => `@media (min-width: ${bp}px)`);
 
 const Flex = props => {
   const { direction, children, marginX, paddingX, marginY, paddingY, customMediaQueries } = props;
 
   const getFlexDirection = breakpoint => {
-    return direction && direction[breakpoint] && flexDirection.indexOf(direction[breakpoint]) > -1
+    return direction && direction[breakpoint] && FlexDirection.indexOf(direction[breakpoint]) > -1
       ? direction[breakpoint]
       : 'row';
   };
@@ -46,11 +48,11 @@ const Flex = props => {
 
 Flex.propTypes = {
   direction: Types.shape({
-    xs: Types.oneOf(flexDirection),
-    sm: Types.oneOf(flexDirection),
-    md: Types.oneOf(flexDirection),
-    lg: Types.oneOf(flexDirection),
-    xl: Types.oneOf(flexDirection),
+    xs: Types.oneOf(FlexDirection),
+    sm: Types.oneOf(FlexDirection),
+    md: Types.oneOf(FlexDirection),
+    lg: Types.oneOf(FlexDirection),
+    xl: Types.oneOf(FlexDirection),
   }).isRequired,
   children: Types.oneOfType([Types.arrayOf(Types.node), Types.node]),
   marginX: Types.number,

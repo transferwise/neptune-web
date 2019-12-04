@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import Chevron, { Orientation, Size } from '../../common/Chevron';
+import Chevron from '../../chevron';
 
 const AccordionItem = ({ title, content, onClick, isOpen, index }) => (
   <label
@@ -12,7 +12,12 @@ const AccordionItem = ({ title, content, onClick, isOpen, index }) => (
     <div className="media p-y-3" id="accordion-chevron">
       <div className="media-body">{typeof title === 'string' ? <h5>{title}</h5> : title}</div>
       <div className="media-right media-middle">
-        <Chevron size={Size.SMALL} orientation={Orientation.BOTTOM} flip={isOpen} animate />
+        <Chevron
+          size={Chevron.Size.SMALL}
+          orientation={Chevron.Orientation.BOTTOM}
+          flip={isOpen}
+          animate
+        />
       </div>
     </div>
     <div className="p-b-3 accordion-content">{content}</div>

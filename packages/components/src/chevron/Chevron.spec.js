@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Chevron from '.';
-import { Orientation, Size } from './Chevron';
+
+const { Orientation, Size } = Chevron;
 
 describe('Option', () => {
   const props = {

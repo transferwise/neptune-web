@@ -3,14 +3,14 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-export const Orientation = {
+const Orientation = {
   TOP: 'top',
   RIGHT: 'right',
   BOTTOM: 'bottom',
   LEFT: 'left',
 };
 
-export const Size = {
+const Size = {
   SMALL: 'sm',
   MEDIUM: 'md',
   LARGE: 'lg',
@@ -47,11 +47,14 @@ const Chevron = ({ orientation, flip, size, animate }) => {
   );
 };
 
+Chevron.Orientation = Orientation;
+Chevron.Size = Size;
+
 Chevron.propTypes = {
-  orientation: Types.oneOf(Object.values(Orientation)),
+  orientation: Types.oneOf(Object.values(Chevron.Orientation)),
   animate: Types.bool,
   flip: Types.bool,
-  size: Types.oneOf(Object.values(Size)),
+  size: Types.oneOf(Object.values(Chevron.Size)),
 };
 
 Chevron.defaultProps = {

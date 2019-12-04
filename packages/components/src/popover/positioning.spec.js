@@ -1,5 +1,5 @@
 import { getPlacement, getPositionRelativeToParent } from './positioning';
-import Placement from './Placement';
+import { Placement } from '../common';
 
 describe('Popover positioning', () => {
   describe('placement', () => {

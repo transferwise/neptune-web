@@ -2,7 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import AccordionItem from '.';
-import Chevron, { Orientation } from '../../common/Chevron';
+import Chevron from '../../chevron';
+
+const { Orientation } = Chevron;
 
 describe('AccordionItem', () => {
   let component;

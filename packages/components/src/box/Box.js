@@ -3,7 +3,9 @@ import { jsx } from '@emotion/core';
 import classNames from 'classnames';
 import Types from 'prop-types';
 
-import { Sizes, JustifyContent, AlignItems, mediaQueries } from '../common';
+import { Sizes, JustifyContent, AlignItems, Breakpoints } from '../common';
+
+const mediaQueries = Breakpoints.map(bp => `@media (min-width: ${bp}px)`);
 
 const Box = props => {
   const {

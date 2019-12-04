@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Chevron } from '../..';
-import { generateInput, generateCodeBlock, generateState } from '../../../docs/utils';
-import { Orientation, Size } from './Chevron';
+import { generateInput, generateCodeBlock, generateState } from '../../docs/utils';
+import Chevron from './Chevron';
+
+const { Orientation, Size } = Chevron;
 
 const KNOBS = {
   knobs: [
