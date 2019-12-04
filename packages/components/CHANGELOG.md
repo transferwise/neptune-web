@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.8.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.8.0...@transferwise/components@17.8.1) (2019-12-04)
+
+
+### Bug Fixes
+
+* docgen issues ([#109](https://github.com/transferwise/neptune/issues/109)) ([4b59d2b](https://github.com/transferwise/neptune/commit/4b59d2bdbdffea9d886c9e2694313b31a6ef6750))
+
+
+
+
+
 # [17.8.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.7.1...@transferwise/components@17.8.0) (2019-11-29)
 
 
