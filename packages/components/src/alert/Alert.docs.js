@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Alert from '.';
+import Button from '../button';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const CONTENT_EXAMPLES = [
@@ -69,10 +70,17 @@ const KNOBS = {
 export default class AlertDocs extends Component {
   state = {
     ...generateState(KNOBS),
+    dismissed: false,
+  };
+
+  handleDismiss = () => {
+    this.setState(({ dismissed }) => ({
+      dismissed: !dismissed,
+    }));
   };
 
   render() {
-    const { type, arrow, size, dismissible, content } = this.state;
+    const { type, arrow, size, dismissible, dismissed, content } = this.state;
 
     return (
       <div className="container">
@@ -90,17 +98,20 @@ export default class AlertDocs extends Component {
               </p>
 
               {generateCodeBlock('Alert', KNOBS, this, [])}
+              {dismissed && <Button onClick={this.handleDismiss}>Show Alert again</Button>}
             </div>
-
             <div className="col-md-6 m-t-2">
-              <Alert
-                dismissible={dismissible}
-                size={size.value}
-                arrow={arrow.value}
-                type={type.value}
-              >
-                {content.value}
-              </Alert>
+              {!dismissed && (
+                <Alert
+                  dismissible={dismissible}
+                  onDismiss={this.handleDismiss}
+                  size={size.value}
+                  arrow={arrow.value}
+                  type={type.value}
+                >
+                  {content.value}
+                </Alert>
+              )}
               <div className="row">{KNOBS.knobs.map(knob => generateInput(knob, this))}</div>
             </div>
           </div>

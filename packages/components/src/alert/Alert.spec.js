@@ -6,6 +6,7 @@ import Alert from './Alert';
 describe('Alert', () => {
   const props = {
     children: 'Lorem ipsum dolor sit amet.',
+    dismissed: false,
   };
   let component;
 
@@ -71,7 +72,7 @@ describe('Alert', () => {
 
   describe('other UI configs like dismissible, small etc.', () => {
     it('checks dismiss button presents', () => {
-      component.setProps({ dismissible: true });
+      component.setProps({ dismissible: true, onDismiss: jest.fn() });
 
       expect(component.find('button')).toHaveLength(1);
     });
@@ -132,15 +133,17 @@ describe('Alert', () => {
     });
   });
 
-  describe('check dismiss feature', () => {
+  describe('check onDismiss callback', () => {
+    let onDismiss;
     beforeEach(() => {
-      component.setProps({ dismissible: true });
+      onDismiss = jest.fn();
+      component.setProps({ dismissible: true, onDismiss });
     });
 
     it('confirms that component is empty once user click dismiss button', () => {
       component.find('button').simulate('click');
 
-      expect(component.html()).toBe(null);
+      expect(onDismiss).toHaveBeenCalledTimes(1);
     });
   });
 });

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Types from 'prop-types';
 
 import classNames from 'classnames';
+import requiredIf from 'react-required-if';
 
 const Type = {
   INFO: 'info',
@@ -35,6 +36,8 @@ export default class Alert extends Component {
     children: Types.node.isRequired,
     size: Types.oneOf(Object.values(Size)),
     dismissible: Types.bool,
+    // eslint-disable-next-line
+    onDismiss: requiredIf(Types.func, ({ dismissible }) => dismissible),
     arrow: Types.oneOf(Object.values(ArrowPosition)),
   };
 
@@ -45,32 +48,20 @@ export default class Alert extends Component {
     arrow: null,
   };
 
-  state = {
-    dismissed: false,
-  };
-
-  dismiss() {
-    this.setState({ dismissed: true });
-  }
-
   render() {
-    const { dismissed } = this.state;
+    const { type, arrow, size, children, dismissible, onDismiss } = this.props;
 
-    const { type, arrow, size, children, dismissible } = this.props;
+    const alertConfigClasses = {
+      'alert-success': type === 'success',
+      'alert-info': type === 'info',
+      'alert-warning': type === 'warning',
+      'alert-danger': type === 'error',
+      small: size === Size.SMALL,
+      'p-x-2': size === Size.SMALL,
+      'p-y-1': size === Size.SMALL,
+    };
 
-    const alertConfigClasses = dismissed
-      ? null
-      : {
-          'alert-success': type === 'success',
-          'alert-info': type === 'info',
-          'alert-warning': type === 'warning',
-          'alert-danger': type === 'error',
-          small: size === Size.SMALL,
-          'p-x-2': size === Size.SMALL,
-          'p-y-1': size === Size.SMALL,
-        };
-
-    return dismissed ? null : (
+    return (
       <div
         role="alert"
         className={classNames('alert', 'alert-detach', alertConfigClasses, arrowClasses(arrow))}
@@ -80,7 +71,7 @@ export default class Alert extends Component {
             type="button"
             className="close"
             data-dismiss="alert"
-            onClick={() => this.dismiss()}
+            onClick={onDismiss}
             aria-label="Close"
           >
             <span aria-hidden="true">×</span>
