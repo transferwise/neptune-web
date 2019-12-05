@@ -27,6 +27,7 @@ const FlowNavigation = ({
   <div
     className={classNames('tw-flow-navigation', {
       'tw-flow-navigation--done': done,
+      'tw-flow-navigation--inverse': theme === Theme.DARK,
     })}
   >
     <div className="container">
