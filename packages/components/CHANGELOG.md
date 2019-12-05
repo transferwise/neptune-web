@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [18.0.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.8.4...@transferwise/components@18.0.0) (2019-12-05)
+
+
+### Code Refactoring
+
+* change dismiss handling in Alert component ([#111](https://github.com/transferwise/neptune/issues/111)) ([0b32225](https://github.com/transferwise/neptune/commit/0b322259577c4d29302db25750516af556af3b53))
+
+
+### BREAKING CHANGES
+
+* you required to pass `onDismiss` if your alert is dismissible (`dismissible={true}`)
+
+
+
+
+
 ## [17.8.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.8.0...@transferwise/components@17.8.1) (2019-12-04)
 
 
