@@ -16,7 +16,7 @@ const Size = {
   LARGE: 'lg',
 };
 
-// TODO: align values with keys with a breaking change
+// TODO: Align values with keys with a breaking change
 const ArrowPosition = {
   TOP_LEFT: 'up-left',
   TOP: 'up-center',
