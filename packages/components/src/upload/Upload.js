@@ -67,10 +67,10 @@ class Upload extends PureComponent {
   }
 
   onAnimationCompleted = async status => {
-    const { response } = this.state;
+    const { response, isProcessing } = this.state;
     // Success.
     const { animationDelay } = this.props;
-    if (status === ProcessIndicator.Status.Succeeded) {
+    if (isProcessing && status === ProcessIndicator.Status.Succeeded) {
       const { onSuccess } = this.props;
       this.timeouts = setTimeout(() => {
         this.setState(
@@ -83,7 +83,7 @@ class Upload extends PureComponent {
       }, animationDelay);
     }
     // Failure.
-    if (status === ProcessIndicator.Status.Failed) {
+    if (isProcessing && status === ProcessIndicator.Status.Failed) {
       const { onFailure } = this.props;
       this.timeouts = setTimeout(() => {
         this.setState(
