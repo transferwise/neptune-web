@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.9.0...@transferwise/neptune-css@0.9.1) (2019-12-06)
+
+
+### Bug Fixes
+
+* remove the extra border in select components ([#114](https://github.com/transferwise/neptune/issues/114)) ([6db4f02](https://github.com/transferwise/neptune/commit/6db4f026d2652f6c71769df86ad6deb19f7bc250))
+
+
+
+
+
 # [0.9.0](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.13...@transferwise/neptune-css@0.9.0) (2019-11-29)
 
 
