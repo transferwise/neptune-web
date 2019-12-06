@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { DateInput } from '..';
-import { Sizes } from '../common';
-import { MonthFormat } from '../common/dateUtils';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const LOCALE_OPTIONS = ['en-GB', 'en-US', 'ja-JP', 'it-IT', 'fr-FR'];
-const MONTH_FORMATS = [MonthFormat.LONG, MonthFormat.SHORT];
-const MODES = ['day-month-year', 'month-year'];
+const MONTH_FORMATS = Object.values(DateInput.MonthFormat);
+const MODES = Object.values(DateInput.DateMode);
 
 const KNOBS = {
   knobs: [
@@ -24,13 +22,13 @@ const KNOBS = {
       type: 'select',
       label: 'Size',
       state: 'size',
-      options: Object.values(Sizes)
+      options: Object.values(DateInput.Sizes)
         .filter(value => ['xl', 'xs'].indexOf(value) === -1)
         .map(value => ({
           value,
           label: value,
         })),
-      defaultState: { value: Sizes.SMALL, label: Sizes.SMALL },
+      defaultState: { value: DateInput.Sizes.SMALL, label: DateInput.Sizes.SMALL },
     },
     {
       type: 'checkbox',

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 import { formatDate } from '@transferwise/formatting';
 
-import { MonthFormat } from '../../common/dateUtils';
+import { MonthFormat } from '../../common';
 import Header from '../header';
 import DayCalendarTable from './table';
 

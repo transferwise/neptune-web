@@ -2,8 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import { formatDate } from '@transferwise/formatting';
 
-import { Sizes } from '../../common';
-import { MonthFormat } from '../../common/dateUtils';
+import { SizesSML, MonthFormat } from '../../common';
 
 const OpenButton = ({
   selectedDate,
@@ -44,18 +43,18 @@ const OpenButton = ({
 
 OpenButton.propTypes = {
   selectedDate: Types.instanceOf(Date),
-  size: Types.oneOf([Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE]),
+  size: Types.oneOf(Object.values(SizesSML)),
   locale: Types.string.isRequired,
   placeholder: Types.string.isRequired,
   label: Types.string.isRequired,
-  monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]).isRequired,
+  monthFormat: Types.oneOf(Object.values(MonthFormat)).isRequired,
   disabled: Types.bool.isRequired,
   onClick: Types.func.isRequired,
 };
 
 OpenButton.defaultProps = {
   selectedDate: null,
-  size: Sizes.MEDIUM,
+  size: SizesSML.MEDIUM,
 };
 
 export default OpenButton;

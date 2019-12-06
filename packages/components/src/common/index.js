@@ -1,5 +1,7 @@
 export { default as HistoryNavigator } from './historyNavigator';
-export { Sizes } from './sizes';
+export { Sizes, SizesSML, SizesSL } from './propsValues/sizes';
+export { DateMode } from './propsValues/dateMode';
+export { MonthFormat } from './propsValues/monthFormat';
 export { Breakpoints } from './breakpoints';
 export { Placement } from './placement';
 export { addModalOpenBodyClass, removeModalOpenBodyClass } from './DOMOperations';

@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { DateLookup } from '..';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
-import { Sizes } from '../common';
-import { MonthFormat } from '../common/dateUtils';
+import { SizesSML, MonthFormat } from '../common';
 
-const SIZES = [Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE];
-const MONTH_FORMATS = [MonthFormat.LONG, MonthFormat.SHORT];
+const SIZES = Object.values(SizesSML);
+const MONTH_FORMATS = Object.values(MonthFormat);
 
 const KNOBS = {
   knobs: [

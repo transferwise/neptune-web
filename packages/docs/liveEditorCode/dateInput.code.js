@@ -2,11 +2,11 @@ const code = `<DateInput
   onChange={(value)=> console.log(value)}
   locale={'en-GB'}
   disabled={false}
-  size={'sm'}
+  size={DateInput.Sizes.SMALL}
   value={'1995-12-01'}
   key={1}
-  monthFormat={'long'}
-  mode={'day-month-year'}
+  monthFormat={DateInput.MonthFormat.LONG}
+  mode={DateInput.DateMode.DAY_MONTH_YEAR}
 />`;
 
 export default code;

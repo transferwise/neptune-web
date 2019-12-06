@@ -3,15 +3,10 @@ import Types from 'prop-types';
 
 import Select from '../select';
 
-import { Sizes } from '../common';
+import { SizesSML, DateMode, MonthFormat } from '../common';
+
 import { explodeDate, convertToLocalMidnight } from './utils';
-import {
-  getMonthNames,
-  isDateValid,
-  MonthFormat,
-  DateMode,
-  isMonthAndYearFormat,
-} from '../common/dateUtils';
+import { getMonthNames, isDateValid, isMonthAndYearFormat } from '../common/dateUtils';
 
 const DEFAULT_LOCALE = 'en-GB';
 
@@ -251,9 +246,13 @@ const DateInput = props => {
   );
 };
 
+DateInput.Sizes = SizesSML;
+DateInput.DateMode = DateMode;
+DateInput.MonthFormat = MonthFormat;
+
 DateInput.propTypes = {
   disabled: Types.bool,
-  size: Types.oneOf([Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE]),
+  size: Types.oneOf([DateInput.Sizes.SMALL, DateInput.Sizes.MEDIUM, DateInput.Sizes.LARGE]),
   value: Types.oneOfType([Types.string, Types.instanceOf(Date)]),
   locale: Types.string,
   onChange: Types.func.isRequired, // eslint-disable-line
@@ -262,13 +261,13 @@ DateInput.propTypes = {
   dayLabel: Types.string,
   monthLabel: Types.string,
   yearLabel: Types.string,
-  monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]),
-  mode: Types.oneOf([DateMode.DAY_MONTH_YEAR, DateMode.MONTH_YEAR]),
+  monthFormat: Types.oneOf([DateInput.MonthFormat.LONG, DateInput.MonthFormat.SHORT]),
+  mode: Types.oneOf([DateInput.DateMode.DAY_MONTH_YEAR, DateInput.DateMode.MONTH_YEAR]),
 };
 
 DateInput.defaultProps = {
   disabled: false,
-  size: Sizes.MEDIUM,
+  size: DateInput.Sizes.MEDIUM,
   value: null,
   locale: DEFAULT_LOCALE,
   onFocus: null,
@@ -276,8 +275,8 @@ DateInput.defaultProps = {
   dayLabel: 'Day',
   monthLabel: 'Month',
   yearLabel: 'Year',
-  monthFormat: MonthFormat.LONG,
-  mode: DateMode.DAY_MONTH_YEAR,
+  monthFormat: DateInput.MonthFormat.LONG,
+  mode: DateInput.DateMode.DAY_MONTH_YEAR,
 };
 
 export default DateInput;

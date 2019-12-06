@@ -2,10 +2,9 @@
 import React, { Component } from 'react';
 import { FormControl, Select } from '..';
 import { FormControlType } from './FormControlType';
-import { Sizes } from '../../src/common';
+import { Sizes, DateMode, MonthFormat } from '../../src/common';
 
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
-import { DateMode, MonthFormat } from '../common/dateUtils';
 
 const TYPES = [
   { value: FormControlType.CHECKBOX, label: 'Checkbox' },

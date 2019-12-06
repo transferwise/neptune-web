@@ -11,8 +11,7 @@ import Select from '../select';
 import TextareaWithDisplayFormat from '../textareaWithDisplayFormat';
 import Upload from '../upload';
 
-import { Sizes } from '../common';
-import { MonthFormat, DateMode } from '../common/dateUtils';
+import { Sizes, MonthFormat, DateMode } from '../common';
 
 import './FormControl.css';
 
