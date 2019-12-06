@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.0.1](https://github.com/transferwise/neptune/compare/@transferwise/components@18.0.0...@transferwise/components@18.0.1) (2019-12-06)
+
+
+### Bug Fixes
+
+* centralised props definitions ([#120](https://github.com/transferwise/neptune/issues/120)) ([035e6e6](https://github.com/transferwise/neptune/commit/035e6e6f1a0477758c86ab64356eadd9458ef6ad))
+
+
+
+
+
 # [18.0.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.8.4...@transferwise/components@18.0.0) (2019-12-05)
 
 
