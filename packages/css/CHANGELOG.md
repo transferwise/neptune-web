@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.10.0...@transferwise/neptune-css@0.10.1) (2019-12-09)
+
+
+### Bug Fixes
+
+* add CSS from transferwise.less ([#124](https://github.com/transferwise/neptune/issues/124)) ([fc9243a](https://github.com/transferwise/neptune/commit/fc9243a0358de291c327b6b8e95432067f8e9c41))
+
+
+
+
+
 # [0.10.0](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.9.1...@transferwise/neptune-css@0.10.0) (2019-12-09)
 
 
