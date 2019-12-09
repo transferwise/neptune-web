@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.0.3](https://github.com/transferwise/neptune/compare/@transferwise/components@18.0.2...@transferwise/components@18.0.3) (2019-12-09)
+
+
+### Bug Fixes
+
+* **flownavigation:** add --inverse class modifier when using DARK theme ([d7c07a4](https://github.com/transferwise/neptune/commit/d7c07a431ab39258ea7ff081ff5ef00047123de0))
+* **upload:** don't queue callbacks when upload is cancelled ([7269f47](https://github.com/transferwise/neptune/commit/7269f47d5f5e0dec870fd0653a3306f7126ade47))
+* **upload:** set method to POST and return error response ([13da862](https://github.com/transferwise/neptune/commit/13da8625290f7d1f13b1ae608259851bbc599523))
+
+
+
+
+
 ## [18.0.2](https://github.com/transferwise/neptune/compare/@transferwise/components@18.0.1...@transferwise/components@18.0.2) (2019-12-06)
 
 **Note:** Version bump only for package @transferwise/components
