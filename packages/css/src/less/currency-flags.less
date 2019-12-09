@@ -1,6 +1,36 @@
-// TODO: remove bootstrap dependencies
+@import './variables/_spacing.less';
 
-// variables
-@import (reference) 'bootstrap/less/variables.less';
+.currency-flag {
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.6);
 
-@import 'bootstrap/less/currency-flags.less';
+  .btn &,
+  .dropdown-menu li & {
+    margin-top: 3px;
+    vertical-align: -3px;
+    line-height: 16px;
+  }
+  .btn-sm &,
+  .form-group-sm .btn &,
+  .input-group-sm .btn & {
+    vertical-align: -4px;
+  }
+  .btn-lg &,
+  .form-group-lg .btn &,
+  .input-group-lg .btn & {
+    margin-top: 6px;
+    vertical-align: -1px;
+  }
+}
+
+li,
+li > a {
+  > .currency-flag:first-child {
+    margin-right: var(--spacer);
+  }
+}
+
+.btn {
+  .currency-flag:first-child {
+    margin-right: var(--spacer);
+  }
+}

@@ -2,8 +2,24 @@
 
 // variables
 @import (reference) 'bootstrap/less/variables.less';
+@import './variables/_spacing.less';
 
 // mixins
 @import (reference) 'bootstrap/less/mixins/circle.less';
 
 @import 'bootstrap/less/circle.less';
+
+// From transferwise.less
+
+li,
+li > a {
+  > .circle:first-child {
+    margin-right: var(--spacer);
+  }
+}
+
+.btn {
+  .circle:first-child {
+    margin-right: var(--spacer);
+  }
+}
