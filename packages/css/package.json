@@ -25,7 +25,7 @@
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf dist",
     "build:copy-assets": "npm-run-all --parallel copy:*",
-    "build:less-compiler": "gulp lessCompiler --prod",
+    "build:less-compiler": "gulp lessCompiler --prod & gulp customProperties --prod",
     "dev": "npm-run-all dev:*",
     "dev:less-watcher": "gulp lessWatcher",
     "copy:images": "cpx 'src/img/**' dist/img",
