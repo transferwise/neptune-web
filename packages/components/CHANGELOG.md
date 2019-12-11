@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.0.7](https://github.com/transferwise/neptune/compare/@transferwise/components@18.0.6...@transferwise/components@18.0.7) (2019-12-11)
+
+
+### Bug Fixes
+
+* **select:** fixed an ios visual bug ([b1122c8](https://github.com/transferwise/neptune/commit/b1122c819304f8864d7fbc529829400d284661d1))
+
+
+
+
+
 ## [18.0.6](https://github.com/transferwise/neptune/compare/@transferwise/components@18.0.5...@transferwise/components@18.0.6) (2019-12-11)
 
 **Note:** Version bump only for package @transferwise/components
