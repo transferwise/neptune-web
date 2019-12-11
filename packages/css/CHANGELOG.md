@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.2](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.10.1...@transferwise/neptune-css@0.10.2) (2019-12-11)
+
+
+### Bug Fixes
+
+* add custom property distribution to the build process ([#125](https://github.com/transferwise/neptune/issues/125)) ([f995f34](https://github.com/transferwise/neptune/commit/f995f34339e5e01fca0255999e638a047d7a7756))
+
+
+
+
+
 ## [0.10.1](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.10.0...@transferwise/neptune-css@0.10.1) (2019-12-09)
 
 
