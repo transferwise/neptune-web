@@ -3,7 +3,7 @@ import Types from 'prop-types';
 
 import Select from '../select';
 
-import { SizesSML, DateMode, MonthFormat } from '../common';
+import { Size, DateMode, MonthFormat } from '../common';
 
 import { explodeDate, convertToLocalMidnight } from './utils';
 import { getMonthNames, isDateValid, isMonthAndYearFormat } from '../common/dateUtils';
@@ -246,13 +246,13 @@ const DateInput = props => {
   );
 };
 
-DateInput.Sizes = SizesSML;
+DateInput.Size = Size;
 DateInput.DateMode = DateMode;
 DateInput.MonthFormat = MonthFormat;
 
 DateInput.propTypes = {
   disabled: Types.bool,
-  size: Types.oneOf([DateInput.Sizes.SMALL, DateInput.Sizes.MEDIUM, DateInput.Sizes.LARGE]),
+  size: Types.oneOf([DateInput.Size.SMALL, DateInput.Size.MEDIUM, DateInput.Size.LARGE]),
   value: Types.oneOfType([Types.string, Types.instanceOf(Date)]),
   locale: Types.string,
   onChange: Types.func.isRequired, // eslint-disable-line
@@ -267,7 +267,7 @@ DateInput.propTypes = {
 
 DateInput.defaultProps = {
   disabled: false,
-  size: DateInput.Sizes.MEDIUM,
+  size: DateInput.Size.MEDIUM,
   value: null,
   locale: DEFAULT_LOCALE,
   onFocus: null,

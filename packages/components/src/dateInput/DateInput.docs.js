@@ -22,13 +22,13 @@ const KNOBS = {
       type: 'select',
       label: 'Size',
       state: 'size',
-      options: Object.values(DateInput.Sizes)
+      options: Object.values(DateInput.Size)
         .filter(value => ['xl', 'xs'].indexOf(value) === -1)
         .map(value => ({
           value,
           label: value,
         })),
-      defaultState: { value: DateInput.Sizes.SMALL, label: DateInput.Sizes.SMALL },
+      defaultState: { value: DateInput.Size.SMALL, label: DateInput.Size.SMALL },
     },
     {
       type: 'checkbox',
