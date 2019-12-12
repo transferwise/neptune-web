@@ -5,27 +5,15 @@ import requiredIf from 'react-required-if';
 
 import './Button.css';
 
-const Type = {
-  Primary: 'primary',
-  Pay: 'pay',
-  Secondary: 'secondary',
-  Danger: 'danger',
-};
-
-const Size = {
-  ExtraSmall: 'xs',
-  Small: 'sm',
-  Medium: 'md',
-  Large: 'lg',
-};
+import { Size, Type } from '../common';
 
 const Button = ({ block, children, disabled, htmlType, loading, size, type, ...rest }) => {
   const classes = classNames(`btn btn-${size}`, {
     'btn-loading': loading,
-    'btn-primary': type === Type.Primary,
-    'btn-success': type === Type.Pay,
-    'btn-default': type === Type.Secondary,
-    'btn-danger': type === Type.Danger,
+    'btn-primary': type === Type.PRIMARY,
+    'btn-success': type === Type.PAY,
+    'btn-default': type === Type.SECONDARY,
+    'btn-danger': type === Type.DANGER,
     'btn-block': block,
   });
 
@@ -41,8 +29,18 @@ Button.Type = Type;
 Button.Size = Size;
 
 Button.propTypes = {
-  type: Types.oneOf(Object.values(Type)),
-  size: Types.oneOf(Object.values(Size)),
+  type: Types.oneOf([
+    Button.Type.PRIMARY,
+    Button.Type.PAY,
+    Button.Type.SECONDARY,
+    Button.Type.DANGER,
+  ]),
+  size: Types.oneOf([
+    Button.Size.EXTRA_SMALL,
+    Button.Size.SMALL,
+    Button.Size.MEDIUM,
+    Button.Size.LARGE,
+  ]),
   disabled: Types.bool,
   block: Types.bool,
   loading: Types.bool,
@@ -53,8 +51,8 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  size: Button.Size.Medium,
-  type: Button.Type.Primary,
+  size: Button.Size.MEDIUM,
+  type: Button.Type.PRIMARY,
   disabled: false,
   block: false,
   loading: false,

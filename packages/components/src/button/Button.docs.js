@@ -18,7 +18,7 @@ const KNOBS = {
         value,
         label: value,
       })),
-      defaultState: { value: Button.Size.Medium, label: Button.Size.Medium },
+      defaultState: { value: Button.Size.MEDIUM, label: Button.Size.MEDIUM },
     },
     {
       type: 'select',
@@ -28,7 +28,7 @@ const KNOBS = {
         value,
         label: value,
       })),
-      defaultState: { value: Button.Type.Pay, label: Button.Type.Pay },
+      defaultState: { value: Button.Type.PAY, label: Button.Type.PAY },
     },
     {
       type: 'select',
