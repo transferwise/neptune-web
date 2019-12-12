@@ -12,7 +12,7 @@
   "repository": {
     "type": "git",
     "fullname": "transferwise/neptune",
-    "url": "git+https://github.com/transferwise/neptune.git"
+    "url": "git+https://github.com/transferwise/neptune-web.git"
   },
   "scripts": {
     "dev": "npm-run-all --parallel dev:webpack:deprecated dev:watch-less  ",

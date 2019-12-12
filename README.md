@@ -66,7 +66,7 @@ import '@transferwise/neptune-css/dist/css/buttons.css';
 import '@transferwise/neptune-css/dist/css/neptune.css';
 ```
 
-## 🛠 Contributing to [components](https://github.com/transferwise/neptune/tree/master/packages/components)
+## 🛠 Contributing to [components](https://github.com/transferwise/neptune-web/tree/master/packages/components)
 
 ### Pull requests
 
@@ -77,7 +77,7 @@ We use [Conventional Commits](https://www.conventionalcommits.org) on the master
 1. Create a feature branch from master.
 2. ️⚠️ Make sure each commit only affects files from a single package (`components` or `css`).
 3. Open a PR and ensure that all commits adhere to conventional commits. You may need a rebase in order to reorganize your existing code.
-4. Before asking for a review, the title of your PR should have the final commit message that you want to be used in the [changelog](https://github.com/transferwise/neptune/blob/master/packages/components/CHANGELOG.md).
+4. Before asking for a review, the title of your PR should have the final commit message that you want to be used in the [changelog](https://github.com/transferwise/neptune-web/blob/master/packages/components/CHANGELOG.md).
 5. Ask for a review and, once approved, ask for a member of the [design system team](https://github.com/orgs/transferwise/teams/design-system) to squash and merge your branch using a valid conventional commit message.
 
 ### Component styles
@@ -87,7 +87,7 @@ CSS files should live inside the component source folder, next to your JavaScrip
 ### Install
 
 ```
-git clone git@github.com:transferwise/neptune.git
+git clone git@github.com:transferwise/neptune-web.git
 cd neptune
 yarn start
 ```

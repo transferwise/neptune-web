@@ -3,62 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.10.2](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.10.1...@transferwise/neptune-css@0.10.2) (2019-12-11)
+## [0.10.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.10.1...@transferwise/neptune-css@0.10.2) (2019-12-11)
 
 
 ### Bug Fixes
 
-* add custom property distribution to the build process ([#125](https://github.com/transferwise/neptune/issues/125)) ([f995f34](https://github.com/transferwise/neptune/commit/f995f34339e5e01fca0255999e638a047d7a7756))
+* add custom property distribution to the build process ([#125](https://github.com/transferwise/neptune-web/issues/125)) ([f995f34](https://github.com/transferwise/neptune-web/commit/f995f34339e5e01fca0255999e638a047d7a7756))
 
 
 
 
 
-## [0.10.1](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.10.0...@transferwise/neptune-css@0.10.1) (2019-12-09)
+## [0.10.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.10.0...@transferwise/neptune-css@0.10.1) (2019-12-09)
 
 
 ### Bug Fixes
 
-* add CSS from transferwise.less ([#124](https://github.com/transferwise/neptune/issues/124)) ([fc9243a](https://github.com/transferwise/neptune/commit/fc9243a0358de291c327b6b8e95432067f8e9c41))
+* add CSS from transferwise.less ([#124](https://github.com/transferwise/neptune-web/issues/124)) ([fc9243a](https://github.com/transferwise/neptune-web/commit/fc9243a0358de291c327b6b8e95432067f8e9c41))
 
 
 
 
 
-# [0.10.0](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.9.1...@transferwise/neptune-css@0.10.0) (2019-12-09)
+# [0.10.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.9.1...@transferwise/neptune-css@0.10.0) (2019-12-09)
 
 
 ### Features
 
-* add modal, popover, droppable & tooltip  CSS ([#113](https://github.com/transferwise/neptune/issues/113)) ([e11e9f8](https://github.com/transferwise/neptune/commit/e11e9f8bd3195e86422241a3ab71267c5cf0517f))
+* add modal, popover, droppable & tooltip  CSS ([#113](https://github.com/transferwise/neptune-web/issues/113)) ([e11e9f8](https://github.com/transferwise/neptune-web/commit/e11e9f8bd3195e86422241a3ab71267c5cf0517f))
 
 
 
 
 
-## [0.9.1](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.9.0...@transferwise/neptune-css@0.9.1) (2019-12-06)
+## [0.9.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.9.0...@transferwise/neptune-css@0.9.1) (2019-12-06)
 
 
 ### Bug Fixes
 
-* remove the extra border in select components ([#114](https://github.com/transferwise/neptune/issues/114)) ([6db4f02](https://github.com/transferwise/neptune/commit/6db4f026d2652f6c71769df86ad6deb19f7bc250))
+* remove the extra border in select components ([#114](https://github.com/transferwise/neptune-web/issues/114)) ([6db4f02](https://github.com/transferwise/neptune-web/commit/6db4f026d2652f6c71769df86ad6deb19f7bc250))
 
 
 
 
 
-# [0.9.0](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.13...@transferwise/neptune-css@0.9.0) (2019-11-29)
+# [0.9.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.8.13...@transferwise/neptune-css@0.9.0) (2019-11-29)
 
 
 ### Features
 
-* distributes custom properties to dist folder ([#105](https://github.com/transferwise/neptune/issues/105)) ([daf8a10](https://github.com/transferwise/neptune/commit/daf8a10323644fa79c1037df64bbd1f8535a5924))
+* distributes custom properties to dist folder ([#105](https://github.com/transferwise/neptune-web/issues/105)) ([daf8a10](https://github.com/transferwise/neptune-web/commit/daf8a10323644fa79c1037df64bbd1f8535a5924))
 
 
 
 
 
-## [0.8.13](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.12...@transferwise/neptune-css@0.8.13) (2019-11-08)
+## [0.8.13](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.8.12...@transferwise/neptune-css@0.8.13) (2019-11-08)
 
 **Note:** Version bump only for package @transferwise/neptune-css
 
@@ -66,26 +66,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.8.12](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.9...@transferwise/neptune-css@0.8.12) (2019-11-01)
+## [0.8.12](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.8.9...@transferwise/neptune-css@0.8.12) (2019-11-01)
 
 
 ### Bug Fixes
 
-* update svgo version ([#45](https://github.com/transferwise/neptune/issues/45)) ([2dcf22b](https://github.com/transferwise/neptune/commit/2dcf22b5f2f5a2e4c575fa9b6c9caa439b32068d))
+* update svgo version ([#45](https://github.com/transferwise/neptune-web/issues/45)) ([2dcf22b](https://github.com/transferwise/neptune-web/commit/2dcf22b5f2f5a2e4c575fa9b6c9caa439b32068d))
 
 
 
 
 
-## [0.8.9](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.8...@transferwise/neptune-css@0.8.9) (2019-09-19)
-
-**Note:** Version bump only for package @transferwise/neptune-css
-
-
-
-
-
-## [0.8.8](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.7...@transferwise/neptune-css@0.8.8) (2019-09-18)
+## [0.8.9](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.8.8...@transferwise/neptune-css@0.8.9) (2019-09-19)
 
 **Note:** Version bump only for package @transferwise/neptune-css
 
@@ -93,7 +85,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.8.7](https://github.com/transferwise/neptune/compare/@transferwise/neptune-css@0.8.6...@transferwise/neptune-css@0.8.7) (2019-09-18)
+## [0.8.8](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.8.7...@transferwise/neptune-css@0.8.8) (2019-09-18)
+
+**Note:** Version bump only for package @transferwise/neptune-css
+
+
+
+
+
+## [0.8.7](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.8.6...@transferwise/neptune-css@0.8.7) (2019-09-18)
 
 **Note:** Version bump only for package @transferwise/neptune-css
 

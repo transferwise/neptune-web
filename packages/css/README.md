@@ -2,7 +2,7 @@
 
 The CSS library of TransferWise's Design System: Neptune
 
-To document the components please use the [Neptune Docs](https://github.com/transferwise/neptune/tree/master/packages/docs).
+To document the components please use the [Neptune Docs](https://github.com/transferwise/neptune-web/tree/master/packages/docs).
 
 ### How to consume the CSS
 

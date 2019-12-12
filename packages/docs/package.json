@@ -16,7 +16,7 @@
   "repository": {
     "type": "git",
     "fullname": "transferwise/neptune",
-    "url": "git+https://github.com/transferwise/neptune.git"
+    "url": "git+https://github.com/transferwise/neptune-web.git"
   },
   "keywords": [],
   "author": {
@@ -24,7 +24,7 @@
     "url": "https://transferwise.com/"
   },
   "bugs": {
-    "url": "https://github.com/transferwise/neptune/issues"
+    "url": "https://github.com/transferwise/neptune-web/issues"
   },
   "homepage": "https://transferwise.github.io/neptune",
   "dependencies": {

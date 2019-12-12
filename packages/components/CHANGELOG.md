@@ -3,26 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [18.0.7](https://github.com/transferwise/neptune/compare/@transferwise/components@18.0.6...@transferwise/components@18.0.7) (2019-12-11)
+## [18.0.7](https://github.com/transferwise/neptune-web/compare/@transferwise/components@18.0.6...@transferwise/components@18.0.7) (2019-12-11)
 
 
 ### Bug Fixes
 
-* **select:** fixed an ios visual bug ([b1122c8](https://github.com/transferwise/neptune/commit/b1122c819304f8864d7fbc529829400d284661d1))
+* **select:** fixed an ios visual bug ([b1122c8](https://github.com/transferwise/neptune-web/commit/b1122c819304f8864d7fbc529829400d284661d1))
 
 
 
 
 
-## [18.0.6](https://github.com/transferwise/neptune/compare/@transferwise/components@18.0.5...@transferwise/components@18.0.6) (2019-12-11)
-
-**Note:** Version bump only for package @transferwise/components
-
-
-
-
-
-## [18.0.5](https://github.com/transferwise/neptune/compare/@transferwise/components@18.0.4...@transferwise/components@18.0.5) (2019-12-09)
+## [18.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/components@18.0.5...@transferwise/components@18.0.6) (2019-12-11)
 
 **Note:** Version bump only for package @transferwise/components
 
@@ -30,7 +22,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [18.0.4](https://github.com/transferwise/neptune/compare/@transferwise/components@18.0.3...@transferwise/components@18.0.4) (2019-12-09)
+## [18.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@18.0.4...@transferwise/components@18.0.5) (2019-12-09)
 
 **Note:** Version bump only for package @transferwise/components
 
@@ -38,20 +30,28 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [18.0.3](https://github.com/transferwise/neptune/compare/@transferwise/components@18.0.2...@transferwise/components@18.0.3) (2019-12-09)
+## [18.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@18.0.3...@transferwise/components@18.0.4) (2019-12-09)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [18.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@18.0.2...@transferwise/components@18.0.3) (2019-12-09)
 
 
 ### Bug Fixes
 
-* **flownavigation:** add --inverse class modifier when using DARK theme ([d7c07a4](https://github.com/transferwise/neptune/commit/d7c07a431ab39258ea7ff081ff5ef00047123de0))
-* **upload:** don't queue callbacks when upload is cancelled ([7269f47](https://github.com/transferwise/neptune/commit/7269f47d5f5e0dec870fd0653a3306f7126ade47))
-* **upload:** set method to POST and return error response ([13da862](https://github.com/transferwise/neptune/commit/13da8625290f7d1f13b1ae608259851bbc599523))
+* **flownavigation:** add --inverse class modifier when using DARK theme ([d7c07a4](https://github.com/transferwise/neptune-web/commit/d7c07a431ab39258ea7ff081ff5ef00047123de0))
+* **upload:** don't queue callbacks when upload is cancelled ([7269f47](https://github.com/transferwise/neptune-web/commit/7269f47d5f5e0dec870fd0653a3306f7126ade47))
+* **upload:** set method to POST and return error response ([13da862](https://github.com/transferwise/neptune-web/commit/13da8625290f7d1f13b1ae608259851bbc599523))
 
 
 
 
 
-## [18.0.2](https://github.com/transferwise/neptune/compare/@transferwise/components@18.0.1...@transferwise/components@18.0.2) (2019-12-06)
+## [18.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@18.0.1...@transferwise/components@18.0.2) (2019-12-06)
 
 **Note:** Version bump only for package @transferwise/components
 
@@ -59,23 +59,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [18.0.1](https://github.com/transferwise/neptune/compare/@transferwise/components@18.0.0...@transferwise/components@18.0.1) (2019-12-06)
+## [18.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@18.0.0...@transferwise/components@18.0.1) (2019-12-06)
 
 
 ### Bug Fixes
 
-* centralised props definitions ([#120](https://github.com/transferwise/neptune/issues/120)) ([035e6e6](https://github.com/transferwise/neptune/commit/035e6e6f1a0477758c86ab64356eadd9458ef6ad))
+* centralised props definitions ([#120](https://github.com/transferwise/neptune-web/issues/120)) ([035e6e6](https://github.com/transferwise/neptune-web/commit/035e6e6f1a0477758c86ab64356eadd9458ef6ad))
 
 
 
 
 
-# [18.0.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.8.4...@transferwise/components@18.0.0) (2019-12-05)
+# [18.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.8.4...@transferwise/components@18.0.0) (2019-12-05)
 
 
 ### Code Refactoring
 
-* change dismiss handling in Alert component ([#111](https://github.com/transferwise/neptune/issues/111)) ([0b32225](https://github.com/transferwise/neptune/commit/0b322259577c4d29302db25750516af556af3b53))
+* change dismiss handling in Alert component ([#111](https://github.com/transferwise/neptune-web/issues/111)) ([0b32225](https://github.com/transferwise/neptune-web/commit/0b322259577c4d29302db25750516af556af3b53))
 
 
 ### BREAKING CHANGES
@@ -86,29 +86,29 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [17.8.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.8.0...@transferwise/components@17.8.1) (2019-12-04)
+## [17.8.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.8.0...@transferwise/components@17.8.1) (2019-12-04)
 
 
 ### Bug Fixes
 
-* docgen issues ([#109](https://github.com/transferwise/neptune/issues/109)) ([4b59d2b](https://github.com/transferwise/neptune/commit/4b59d2bdbdffea9d886c9e2694313b31a6ef6750))
+* docgen issues ([#109](https://github.com/transferwise/neptune-web/issues/109)) ([4b59d2b](https://github.com/transferwise/neptune-web/commit/4b59d2bdbdffea9d886c9e2694313b31a6ef6750))
 
 
 
 
 
-# [17.8.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.7.1...@transferwise/components@17.8.0) (2019-11-29)
+# [17.8.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.7.1...@transferwise/components@17.8.0) (2019-11-29)
 
 
 ### Features
 
-* **MoneyInput:** add a placeholder and amount is no longer required ([#94](https://github.com/transferwise/neptune/issues/94)) ([f1208f2](https://github.com/transferwise/neptune/commit/f1208f2941cf9efbd7fbe2d7c2c66edbc7957878))
+* **MoneyInput:** add a placeholder and amount is no longer required ([#94](https://github.com/transferwise/neptune-web/issues/94)) ([f1208f2](https://github.com/transferwise/neptune-web/commit/f1208f2941cf9efbd7fbe2d7c2c66edbc7957878))
 
 
 
 
 
-## [17.7.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.7.0...@transferwise/components@17.7.1) (2019-11-29)
+## [17.7.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.7.0...@transferwise/components@17.7.1) (2019-11-29)
 
 **Note:** Version bump only for package @transferwise/components
 
@@ -116,150 +116,150 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [17.7.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.6.0...@transferwise/components@17.7.0) (2019-11-28)
+# [17.7.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.6.0...@transferwise/components@17.7.0) (2019-11-28)
 
 
 ### Features
 
-* **tabs:** handle resizing ([#100](https://github.com/transferwise/neptune/issues/100)) ([a1235fc](https://github.com/transferwise/neptune/commit/a1235fc334d9595a99b7eb3e0eeb092d46dd0b07))
+* **tabs:** handle resizing ([#100](https://github.com/transferwise/neptune-web/issues/100)) ([a1235fc](https://github.com/transferwise/neptune-web/commit/a1235fc334d9595a99b7eb3e0eeb092d46dd0b07))
 
 
 
 
 
-# [17.6.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.5.1...@transferwise/components@17.6.0) (2019-11-28)
+# [17.6.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.5.1...@transferwise/components@17.6.0) (2019-11-28)
 
 
 ### Features
 
-* **upload:** accept CSV format ([2225971](https://github.com/transferwise/neptune/commit/2225971c0a41a2afacaac406565d18f72264ef8c))
-* **upload:** accept file input field name and additional FormData ([10163ce](https://github.com/transferwise/neptune/commit/10163ce50891a43177b48368d0543b452baa83ff))
+* **upload:** accept CSV format ([2225971](https://github.com/transferwise/neptune-web/commit/2225971c0a41a2afacaac406565d18f72264ef8c))
+* **upload:** accept file input field name and additional FormData ([10163ce](https://github.com/transferwise/neptune-web/commit/10163ce50891a43177b48368d0543b452baa83ff))
 
 
 
 
 
-## [17.5.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.5.0...@transferwise/components@17.5.1) (2019-11-26)
+## [17.5.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.5.0...@transferwise/components@17.5.1) (2019-11-26)
 
 
 ### Bug Fixes
 
-* **phone number input:** fix value building when countryCode is provided ([#102](https://github.com/transferwise/neptune/issues/102)) ([347c56f](https://github.com/transferwise/neptune/commit/347c56f58e8f7080d7543ea06e2548c2bc7e3c43))
+* **phone number input:** fix value building when countryCode is provided ([#102](https://github.com/transferwise/neptune-web/issues/102)) ([347c56f](https://github.com/transferwise/neptune-web/commit/347c56f58e8f7080d7543ea06e2548c2bc7e3c43))
 
 
 
 
 
-# [17.5.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.4.1...@transferwise/components@17.5.0) (2019-11-26)
+# [17.5.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.4.1...@transferwise/components@17.5.0) (2019-11-26)
 
 
 ### Features
 
-* **dateInput:** refactored from class to functional and add month year mode ([#49](https://github.com/transferwise/neptune/issues/49)) ([d27e191](https://github.com/transferwise/neptune/commit/d27e191be35d964e2b385f2c4edce254bfa5727b))
+* **dateInput:** refactored from class to functional and add month year mode ([#49](https://github.com/transferwise/neptune-web/issues/49)) ([d27e191](https://github.com/transferwise/neptune-web/commit/d27e191be35d964e2b385f2c4edce254bfa5727b))
 
 
 
 
 
-## [17.4.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.4.0...@transferwise/components@17.4.1) (2019-11-26)
+## [17.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.4.0...@transferwise/components@17.4.1) (2019-11-26)
 
 
 ### Bug Fixes
 
-* **InputWithDisplayFormat:** propagate unformatted value for onBlur & onFocus event handlers ([d304f10](https://github.com/transferwise/neptune/commit/d304f10bc1d22561e256358180c3556530943891))
+* **InputWithDisplayFormat:** propagate unformatted value for onBlur & onFocus event handlers ([d304f10](https://github.com/transferwise/neptune-web/commit/d304f10bc1d22561e256358180c3556530943891))
 
 
 
 
 
-# [17.4.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.3.1...@transferwise/components@17.4.0) (2019-11-25)
+# [17.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.3.1...@transferwise/components@17.4.0) (2019-11-25)
 
 
 ### Features
 
-* set accordion to be hidden but in the dom to be seo friendly ([#78](https://github.com/transferwise/neptune/issues/78)) ([1d56679](https://github.com/transferwise/neptune/commit/1d566798d3c7871561c24eb3c64b14722ba16eb1))
+* set accordion to be hidden but in the dom to be seo friendly ([#78](https://github.com/transferwise/neptune-web/issues/78)) ([1d56679](https://github.com/transferwise/neptune-web/commit/1d566798d3c7871561c24eb3c64b14722ba16eb1))
 
 
 
 
 
-## [17.3.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.3.0...@transferwise/components@17.3.1) (2019-11-22)
+## [17.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.3.0...@transferwise/components@17.3.1) (2019-11-22)
 
 
 ### Bug Fixes
 
-* **Field:** show error message when value changes ([#98](https://github.com/transferwise/neptune/issues/98)) ([ef37981](https://github.com/transferwise/neptune/commit/ef37981dd64a448002f4ff8c7356986d04deae90))
+* **Field:** show error message when value changes ([#98](https://github.com/transferwise/neptune-web/issues/98)) ([ef37981](https://github.com/transferwise/neptune-web/commit/ef37981dd64a448002f4ff8c7356986d04deae90))
 
 
 
 
 
-# [17.3.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.2.0...@transferwise/components@17.3.0) (2019-11-21)
-
-
-### Features
-
-* support control type in JSON schema form control ([6ea0f9d](https://github.com/transferwise/neptune/commit/6ea0f9d036f9cb55f7250253ecfc731ed9ded338))
-
-
-
-
-
-# [17.2.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.1.0...@transferwise/components@17.2.0) (2019-11-20)
+# [17.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.2.0...@transferwise/components@17.3.0) (2019-11-21)
 
 
 ### Features
 
-* expose Alert enums ([#96](https://github.com/transferwise/neptune/issues/96)) ([0a5a650](https://github.com/transferwise/neptune/commit/0a5a650f49f4bc01f4a7ab807a3fc93908e85700))
+* support control type in JSON schema form control ([6ea0f9d](https://github.com/transferwise/neptune-web/commit/6ea0f9d036f9cb55f7250253ecfc731ed9ded338))
 
 
 
 
 
-# [17.1.0](https://github.com/transferwise/neptune/compare/@transferwise/components@17.0.2...@transferwise/components@17.1.0) (2019-11-18)
+# [17.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.1.0...@transferwise/components@17.2.0) (2019-11-20)
 
 
 ### Features
 
-* Add a component for rendering JSON schema dynamic forms ([18e9fac](https://github.com/transferwise/neptune/commit/18e9fac03aaef64a2c476a7ba23ddd7ac52a3d0d))
+* expose Alert enums ([#96](https://github.com/transferwise/neptune-web/issues/96)) ([0a5a650](https://github.com/transferwise/neptune-web/commit/0a5a650f49f4bc01f4a7ab807a3fc93908e85700))
 
 
 
 
 
-## [17.0.2](https://github.com/transferwise/neptune/compare/@transferwise/components@17.0.1...@transferwise/components@17.0.2) (2019-11-15)
+# [17.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.0.2...@transferwise/components@17.1.0) (2019-11-18)
+
+
+### Features
+
+* Add a component for rendering JSON schema dynamic forms ([18e9fac](https://github.com/transferwise/neptune-web/commit/18e9fac03aaef64a2c476a7ba23ddd7ac52a3d0d))
+
+
+
+
+
+## [17.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.0.1...@transferwise/components@17.0.2) (2019-11-15)
 
 
 ### Bug Fixes
 
-* add input mode of decimal to money input ([#92](https://github.com/transferwise/neptune/issues/92)) ([8703e4a](https://github.com/transferwise/neptune/commit/8703e4a72c3cfd7533e98df2dee2d29f0396c50c))
+* add input mode of decimal to money input ([#92](https://github.com/transferwise/neptune-web/issues/92)) ([8703e4a](https://github.com/transferwise/neptune-web/commit/8703e4a72c3cfd7533e98df2dee2d29f0396c50c))
 
 
 
 
 
-## [17.0.1](https://github.com/transferwise/neptune/compare/@transferwise/components@17.0.0...@transferwise/components@17.0.1) (2019-11-15)
-
-
-### Bug Fixes
-
-* add umd and fix treeshake ([#85](https://github.com/transferwise/neptune/issues/85)) ([545c990](https://github.com/transferwise/neptune/commit/545c990e5ac6203511588747a94e50494a5deff8))
-
-
-
-
-
-# [17.0.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.10.0...@transferwise/components@17.0.0) (2019-11-15)
+## [17.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@17.0.0...@transferwise/components@17.0.1) (2019-11-15)
 
 
 ### Bug Fixes
 
-* make checkbox option prevent default on its own ([6948aa0](https://github.com/transferwise/neptune/commit/6948aa0bd398c1d58c9b39a1a3d4292d55838118))
+* add umd and fix treeshake ([#85](https://github.com/transferwise/neptune-web/issues/85)) ([545c990](https://github.com/transferwise/neptune-web/commit/545c990e5ac6203511588747a94e50494a5deff8))
+
+
+
+
+
+# [17.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.10.0...@transferwise/components@17.0.0) (2019-11-15)
+
+
+### Bug Fixes
+
+* make checkbox option prevent default on its own ([6948aa0](https://github.com/transferwise/neptune-web/commit/6948aa0bd398c1d58c9b39a1a3d4292d55838118))
 
 
 ### Features
 
-* do not prevent default on option click ([69c8ee3](https://github.com/transferwise/neptune/commit/69c8ee342c944dce0dfd9d5eceb5fd383ac4cb5a))
+* do not prevent default on option click ([69c8ee3](https://github.com/transferwise/neptune-web/commit/69c8ee342c944dce0dfd9d5eceb5fd383ac4cb5a))
 
 
 ### BREAKING CHANGES
@@ -270,184 +270,184 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [16.10.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.9.2...@transferwise/components@16.10.0) (2019-11-14)
+# [16.10.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.9.2...@transferwise/components@16.10.0) (2019-11-14)
 
 
 ### Features
 
-* make NavigationOption pass the click event to to the onClick listener ([#88](https://github.com/transferwise/neptune/issues/88)) ([c3af13e](https://github.com/transferwise/neptune/commit/c3af13e2b4ddb62e47d13e744cf021f381db0c0e))
+* make NavigationOption pass the click event to to the onClick listener ([#88](https://github.com/transferwise/neptune-web/issues/88)) ([c3af13e](https://github.com/transferwise/neptune-web/commit/c3af13e2b4ddb62e47d13e744cf021f381db0c0e))
 
 
 
 
 
-## [16.9.2](https://github.com/transferwise/neptune/compare/@transferwise/components@16.9.1...@transferwise/components@16.9.2) (2019-11-14)
+## [16.9.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.9.1...@transferwise/components@16.9.2) (2019-11-14)
 
 
 ### Bug Fixes
 
-* avoid generating redundant markup for input component ([#89](https://github.com/transferwise/neptune/issues/89)) ([365fc04](https://github.com/transferwise/neptune/commit/365fc047fd8a4402900ae0caefce93612c444604))
+* avoid generating redundant markup for input component ([#89](https://github.com/transferwise/neptune-web/issues/89)) ([365fc04](https://github.com/transferwise/neptune-web/commit/365fc047fd8a4402900ae0caefce93612c444604))
 
 
 
 
 
-## [16.9.1](https://github.com/transferwise/neptune/compare/@transferwise/components@16.9.0...@transferwise/components@16.9.1) (2019-11-14)
-
-
-### Bug Fixes
-
-* **button:** don't require `onClick` when `htmlType` is not `submit` ([#87](https://github.com/transferwise/neptune/issues/87)) ([c622f7e](https://github.com/transferwise/neptune/commit/c622f7e3800aedd389020882b60574d35729151a))
-
-
-
-
-
-# [16.9.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.8.0...@transferwise/components@16.9.0) (2019-11-14)
-
-
-### Features
-
-* add a component for rendering an allOf JSON schema ([3545021](https://github.com/transferwise/neptune/commit/3545021432d607a146ef5a1d23b71be292b01cb6))
-
-
-
-
-
-# [16.8.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.7.0...@transferwise/components@16.8.0) (2019-11-14)
-
-
-### Features
-
-* add a component for rendering oneOf JSON schemas ([bef1a83](https://github.com/transferwise/neptune/commit/bef1a83ca452d5eef564df3e796bce9cb02462f0))
-
-
-
-
-
-# [16.7.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.6.0...@transferwise/components@16.7.0) (2019-11-13)
-
-
-### Features
-
-* add a component for rendering object JSON schemas  ([649d4e9](https://github.com/transferwise/neptune/commit/649d4e962dd95ae9157bc4cf829485ab1f2b7fcd))
-
-
-
-
-
-# [16.6.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.5.0...@transferwise/components@16.6.0) (2019-11-13)
-
-
-### Features
-
-* make internal Option take a tagname, href and make media optional ([085ed5f](https://github.com/transferwise/neptune/commit/085ed5f912efed2bf9e76bbc1a23897d11a0ee09))
-* make NavigationOption pass href and render as an anchor if so ([65ee20b](https://github.com/transferwise/neptune/commit/65ee20b9bb8f261d7641d32f7551b419f1fd0b9a))
-* make Radio/Checkbox options have media as optional ([c7f1323](https://github.com/transferwise/neptune/commit/c7f1323db18253641161cbf27217edcada70356b))
-* override default anchor styles on navigation option ([c06ba34](https://github.com/transferwise/neptune/commit/c06ba3477535e8baa8c61eda19a73684476bed0f))
-
-
-
-
-
-# [16.5.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.4.0...@transferwise/components@16.5.0) (2019-11-13)
-
-
-### Features
-
-* add a component for rendering any JSON schema ([67e5592](https://github.com/transferwise/neptune/commit/67e5592f469a9dc2a5f6026921beba3913a1417e))
-
-
-
-
-
-# [16.4.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.3.2...@transferwise/components@16.4.0) (2019-11-12)
-
-
-### Features
-
-* add a form component for rendering basic type JSON schemas ([31e4f8f](https://github.com/transferwise/neptune/commit/31e4f8fe5c4cf87121a17cff6bbef6de6730cd12))
-
-
-
-
-
-## [16.3.2](https://github.com/transferwise/neptune/compare/@transferwise/components@16.3.1...@transferwise/components@16.3.2) (2019-11-11)
+## [16.9.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.9.0...@transferwise/components@16.9.1) (2019-11-14)
 
 
 ### Bug Fixes
 
-* flow navigation close button position ([#80](https://github.com/transferwise/neptune/issues/80)) ([c0362af](https://github.com/transferwise/neptune/commit/c0362af7165b0f43aff819c5d0003564e815e6bc))
+* **button:** don't require `onClick` when `htmlType` is not `submit` ([#87](https://github.com/transferwise/neptune-web/issues/87)) ([c622f7e](https://github.com/transferwise/neptune-web/commit/c622f7e3800aedd389020882b60574d35729151a))
 
 
 
 
 
-## [16.3.1](https://github.com/transferwise/neptune/compare/@transferwise/components@16.3.0...@transferwise/components@16.3.1) (2019-11-11)
+# [16.9.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.8.0...@transferwise/components@16.9.0) (2019-11-14)
+
+
+### Features
+
+* add a component for rendering an allOf JSON schema ([3545021](https://github.com/transferwise/neptune-web/commit/3545021432d607a146ef5a1d23b71be292b01cb6))
+
+
+
+
+
+# [16.8.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.7.0...@transferwise/components@16.8.0) (2019-11-14)
+
+
+### Features
+
+* add a component for rendering oneOf JSON schemas ([bef1a83](https://github.com/transferwise/neptune-web/commit/bef1a83ca452d5eef564df3e796bce9cb02462f0))
+
+
+
+
+
+# [16.7.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.6.0...@transferwise/components@16.7.0) (2019-11-13)
+
+
+### Features
+
+* add a component for rendering object JSON schemas  ([649d4e9](https://github.com/transferwise/neptune-web/commit/649d4e962dd95ae9157bc4cf829485ab1f2b7fcd))
+
+
+
+
+
+# [16.6.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.5.0...@transferwise/components@16.6.0) (2019-11-13)
+
+
+### Features
+
+* make internal Option take a tagname, href and make media optional ([085ed5f](https://github.com/transferwise/neptune-web/commit/085ed5f912efed2bf9e76bbc1a23897d11a0ee09))
+* make NavigationOption pass href and render as an anchor if so ([65ee20b](https://github.com/transferwise/neptune-web/commit/65ee20b9bb8f261d7641d32f7551b419f1fd0b9a))
+* make Radio/Checkbox options have media as optional ([c7f1323](https://github.com/transferwise/neptune-web/commit/c7f1323db18253641161cbf27217edcada70356b))
+* override default anchor styles on navigation option ([c06ba34](https://github.com/transferwise/neptune-web/commit/c06ba3477535e8baa8c61eda19a73684476bed0f))
+
+
+
+
+
+# [16.5.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.4.0...@transferwise/components@16.5.0) (2019-11-13)
+
+
+### Features
+
+* add a component for rendering any JSON schema ([67e5592](https://github.com/transferwise/neptune-web/commit/67e5592f469a9dc2a5f6026921beba3913a1417e))
+
+
+
+
+
+# [16.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.3.2...@transferwise/components@16.4.0) (2019-11-12)
+
+
+### Features
+
+* add a form component for rendering basic type JSON schemas ([31e4f8f](https://github.com/transferwise/neptune-web/commit/31e4f8fe5c4cf87121a17cff6bbef6de6730cd12))
+
+
+
+
+
+## [16.3.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.3.1...@transferwise/components@16.3.2) (2019-11-11)
 
 
 ### Bug Fixes
 
-* linted files ([2bfb0f0](https://github.com/transferwise/neptune/commit/2bfb0f0f87db405c67f660bbf3f607a6355e569e))
+* flow navigation close button position ([#80](https://github.com/transferwise/neptune-web/issues/80)) ([c0362af](https://github.com/transferwise/neptune-web/commit/c0362af7165b0f43aff819c5d0003564e815e6bc))
 
 
 
 
 
-# [16.3.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.2.1...@transferwise/components@16.3.0) (2019-11-08)
-
-
-### Features
-
-* add wrapper for FormCOntrol with JSON schema interface, add schema validation ([3566c7e](https://github.com/transferwise/neptune/commit/3566c7eb6223c8ae20325eb05d4e5648be2c45e7))
-
-
-
-
-
-## [16.2.1](https://github.com/transferwise/neptune/compare/@transferwise/components@16.2.0...@transferwise/components@16.2.1) (2019-11-08)
+## [16.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.3.0...@transferwise/components@16.3.1) (2019-11-11)
 
 
 ### Bug Fixes
 
-* running jest explicitily ([5ad3061](https://github.com/transferwise/neptune/commit/5ad3061c5f401e4caa071fa4e660371edacbd0d6))
+* linted files ([2bfb0f0](https://github.com/transferwise/neptune-web/commit/2bfb0f0f87db405c67f660bbf3f607a6355e569e))
 
 
 
 
 
-# [16.2.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.1.0...@transferwise/components@16.2.0) (2019-11-08)
-
-
-### Features
-
-* expose onBlur and onFocus props for input component ([a5bd359](https://github.com/transferwise/neptune/commit/a5bd3597ac07923c4660347e17d6bc97a1fe39fe))
-
-
-
-
-
-# [16.1.0](https://github.com/transferwise/neptune/compare/@transferwise/components@16.0.0...@transferwise/components@16.1.0) (2019-11-08)
+# [16.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.2.1...@transferwise/components@16.3.0) (2019-11-08)
 
 
 ### Features
 
-* add muted prop to DefinitionList ([e125b64](https://github.com/transferwise/neptune/commit/e125b64bc498078c75c3ad94c74ce720e3c5d43f))
+* add wrapper for FormCOntrol with JSON schema interface, add schema validation ([3566c7e](https://github.com/transferwise/neptune-web/commit/3566c7eb6223c8ae20325eb05d4e5648be2c45e7))
 
 
 
 
 
-# [16.0.0](https://github.com/transferwise/neptune/compare/@transferwise/components@15.4.1...@transferwise/components@16.0.0) (2019-11-07)
+## [16.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.2.0...@transferwise/components@16.2.1) (2019-11-08)
 
 
-* refactor!: change DynamicFieldDefinitionList layout, remove narrow prop ([afcaf93](https://github.com/transferwise/neptune/commit/afcaf9357d7935fca4a5a92ad095aa618e42b0ce))
-* refactor!: rename DefinitionList to DynamicFieldDefinitionList ([b382038](https://github.com/transferwise/neptune/commit/b382038e6079efea6f742944b023b2243692157c))
+### Bug Fixes
+
+* running jest explicitily ([5ad3061](https://github.com/transferwise/neptune-web/commit/5ad3061c5f401e4caa071fa4e660371edacbd0d6))
+
+
+
+
+
+# [16.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.1.0...@transferwise/components@16.2.0) (2019-11-08)
 
 
 ### Features
 
-* add DefinitionList component ([903c387](https://github.com/transferwise/neptune/commit/903c387abaf48b56940bebaa34856867201ab10d))
+* expose onBlur and onFocus props for input component ([a5bd359](https://github.com/transferwise/neptune-web/commit/a5bd3597ac07923c4660347e17d6bc97a1fe39fe))
+
+
+
+
+
+# [16.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@16.0.0...@transferwise/components@16.1.0) (2019-11-08)
+
+
+### Features
+
+* add muted prop to DefinitionList ([e125b64](https://github.com/transferwise/neptune-web/commit/e125b64bc498078c75c3ad94c74ce720e3c5d43f))
+
+
+
+
+
+# [16.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@15.4.1...@transferwise/components@16.0.0) (2019-11-07)
+
+
+* refactor!: change DynamicFieldDefinitionList layout, remove narrow prop ([afcaf93](https://github.com/transferwise/neptune-web/commit/afcaf9357d7935fca4a5a92ad095aa618e42b0ce))
+* refactor!: rename DefinitionList to DynamicFieldDefinitionList ([b382038](https://github.com/transferwise/neptune-web/commit/b382038e6079efea6f742944b023b2243692157c))
+
+
+### Features
+
+* add DefinitionList component ([903c387](https://github.com/transferwise/neptune-web/commit/903c387abaf48b56940bebaa34856867201ab10d))
 
 
 ### BREAKING CHANGES
@@ -459,12 +459,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [15.4.1](https://github.com/transferwise/neptune/compare/@transferwise/components@15.4.0...@transferwise/components@15.4.1) (2019-11-05)
+## [15.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@15.4.0...@transferwise/components@15.4.1) (2019-11-05)
 
 
 ### Bug Fixes
 
-* ci worflow and test ([#61](https://github.com/transferwise/neptune/issues/61)) ([994c73f](https://github.com/transferwise/neptune/commit/994c73fb0fe272dfa97b335c166a0890cf31bb46))
+* ci worflow and test ([#61](https://github.com/transferwise/neptune-web/issues/61)) ([994c73f](https://github.com/transferwise/neptune-web/commit/994c73fb0fe272dfa97b335c166a0890cf31bb46))
 
 
 

@@ -9,7 +9,7 @@ import sections from '../utils/sections';
 import Sidebar from './Sidebar';
 import Logo from '../static/assets/img/logo_full_inverse.svg';
 
-const githubURL = `https://github.com/transferwise/neptune/edit/master/packages/docs/pages`;
+const githubURL = `https://github.com/transferwise/neptune-web/edit/master/packages/docs/pages`;
 const pages = getPages();
 
 const Layout = ({ children, router: { pathname } }) => {

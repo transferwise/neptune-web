@@ -4,7 +4,7 @@
 version: 2
 
 aliases:
-  - &workspace-root ~/neptune
+  - &workspace-root ~/neptune-web
 
   - &container
     working_directory: *workspace-root
