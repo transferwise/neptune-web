@@ -19,17 +19,14 @@ import {
 } from '../common/domHelpers';
 
 import './Typeahead.css';
-import { Sizes } from '../common';
+import { Size, MessageType } from '../common';
 
 const DEFAULT_MIN_QUERY_LENGTH = 3;
 const SEARCH_DELAY = 200;
 
-export const ALERT_TYPES = {
-  WARNING: 'warning',
-  ERROR: 'error',
-};
-
 export default class Typeahead extends Component {
+  static Size = Size;
+  static Type = MessageType;
   static propTypes = {
     id: Types.string.isRequired,
     name: Types.string.isRequired,
@@ -60,7 +57,7 @@ export default class Typeahead extends Component {
     placeholder: Types.string,
     alert: Types.shape({
       message: Types.string.isRequired,
-      type: Types.oneOf([Alert.Type.ERROR, Alert.Type.WARNING]).isRequired,
+      type: Types.oneOf([Typeahead.Type.ERROR, Typeahead.Type.WARNING]).isRequired,
     }),
     footer: Types.node,
     validateChip: Types.func,
@@ -68,9 +65,8 @@ export default class Typeahead extends Component {
     onBlur: Types.func,
     onInputChange: Types.func,
     onFocus: Types.func,
-
     chipSeparators: Types.arrayOf(Types.string),
-    size: Types.oneOf([Sizes.MEDIUM, Sizes.LARGE]),
+    size: Types.oneOf([Typeahead.Size.MEDIUM, Typeahead.Size.LARGE]),
   };
 
   static defaultProps = {
@@ -86,10 +82,9 @@ export default class Typeahead extends Component {
     placeholder: null,
     alert: null,
     footer: null,
-    size: Sizes.MEDIUM,
+    size: Typeahead.Size.MEDIUM,
     chipSeparators: [],
     initialValue: [],
-
     onSearch: null,
     onBlur: null,
     onInputChange: null,

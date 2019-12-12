@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Field, Select } from '..';
-import { FormControlType } from '../formControl/FormControlType';
 
-import { Sizes } from '../common';
+import { Size, FormControlType } from '../common';
 import { FieldFormats, FieldTypes } from './Field';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
@@ -197,7 +196,7 @@ const DATE_INPUT_COMPONENT = {
       type: FieldTypes.STRING,
       format: FieldFormats.DATE,
       label: 'Date Input',
-      size: Sizes.MEDIUM,
+      size: Size.MEDIUM,
       control: FormControlType.DATE,
     },
   },

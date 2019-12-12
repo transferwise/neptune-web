@@ -6,17 +6,23 @@ import Close from '@transferwise/icons/react/close';
 import KEY_CODES from '../common/keyCodes';
 import './Modal.css';
 
-import { Sizes } from '../common';
+import { Size } from '../common';
 import Dimmer from '../dimmer';
 
 const TRANSITION_DURATION_IN_MILLISECONDS = 150;
 
 class Modal extends Component {
+  static Size = Size;
   static propTypes = {
     title: Types.node,
     body: Types.node.isRequired,
     footer: Types.node,
-    size: Types.oneOf(Object.values(Sizes)),
+    size: Types.oneOf([
+      Modal.Size.SMALL,
+      Modal.Size.MEDIUM,
+      Modal.Size.LARGE,
+      Modal.Size.EXTRA_LARGE,
+    ]),
     onClose: Types.func.isRequired,
     className: Types.string,
     open: Types.bool.isRequired,
@@ -26,7 +32,7 @@ class Modal extends Component {
   static defaultProps = {
     title: null,
     footer: null,
-    size: 'md',
+    size: Modal.Size.MEDIUM,
     className: '',
     closeOnClick: true,
   };

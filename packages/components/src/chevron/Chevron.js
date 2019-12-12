@@ -2,19 +2,7 @@ import '@transferwise/neptune-css/dist/css/chevron.css';
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-
-const Orientation = {
-  TOP: 'top',
-  RIGHT: 'right',
-  BOTTOM: 'bottom',
-  LEFT: 'left',
-};
-
-const Size = {
-  SMALL: 'sm',
-  MEDIUM: 'md',
-  LARGE: 'lg',
-};
+import { Size, Position } from '../common';
 
 const CONTAINER_SIZE = {
   [Size.SMALL]: 16,
@@ -47,21 +35,26 @@ const Chevron = ({ orientation, flip, size, animate }) => {
   );
 };
 
-Chevron.Orientation = Orientation;
+Chevron.Orientation = Position;
 Chevron.Size = Size;
 
 Chevron.propTypes = {
-  orientation: Types.oneOf(Object.values(Chevron.Orientation)),
+  orientation: Types.oneOf([
+    Chevron.Orientation.TOP,
+    Chevron.Orientation.BOTTOM,
+    Chevron.Orientation.LEFT,
+    Chevron.Orientation.RIGHT,
+  ]),
   animate: Types.bool,
   flip: Types.bool,
-  size: Types.oneOf(Object.values(Chevron.Size)),
+  size: Types.oneOf([Chevron.Size.SMALL, Chevron.Size.MEDIUM, Chevron.Size.LARGE]),
 };
 
 Chevron.defaultProps = {
-  orientation: Orientation.Bottom,
+  orientation: Chevron.Orientation.BOTTOM,
   animate: false,
   flip: false,
-  size: Size.SMALL,
+  size: Chevron.Size.SMALL,
 };
 
 export default Chevron;

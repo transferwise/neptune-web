@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import Types from 'prop-types';
-import { FormControlType } from './FormControlType';
 import Checkbox from '../checkbox';
 import DateInput from '../dateInput';
 import DateLookup from '../dateLookup';
@@ -11,15 +10,34 @@ import Select from '../select';
 import TextareaWithDisplayFormat from '../textareaWithDisplayFormat';
 import Upload from '../upload';
 
-import { Sizes, MonthFormat, DateMode } from '../common';
+import { Size, MonthFormat, DateMode, FormControlType } from '../common';
 
 import './FormControl.css';
 
 const ACCEPTED_FORMAT = ['*', 'image/*', 'application/*'];
 
 export default class FormControl extends PureComponent {
+  static Type = FormControlType;
+  static Size = Size;
+  static MonthFormat = MonthFormat;
+  static DateMode = DateMode;
   static propTypes = {
-    type: Types.oneOf(Object.values(FormControlType)),
+    type: Types.oneOf([
+      FormControl.Type.RADIO,
+      FormControl.Type.CHECKBOX,
+      FormControl.Type.SELECT,
+      FormControl.Type.FILE,
+      FormControl.Type.DATE,
+      FormControl.Type.DATETIME,
+      FormControl.Type.DATELOOKUP,
+      FormControl.Type.TEL,
+      FormControl.Type.NUMBER,
+      FormControl.Type.HIDDEN,
+      FormControl.Type.PASSWORD,
+      FormControl.Type.TEXT,
+      FormControl.Type.TEXTAREA,
+      FormControl.Type.UPLOAD,
+    ]),
     name: Types.string.isRequired,
     id: Types.string,
     placeholder: Types.string,
@@ -53,7 +71,7 @@ export default class FormControl extends PureComponent {
     max: Types.number,
     minDate: Types.instanceOf(Date),
     maxDate: Types.instanceOf(Date),
-    mode: Types.oneOf([DateMode.DAY_MONTH_YEAR, DateMode.MONTH_YEAR]),
+    mode: Types.oneOf([FormControl.DateMode.DAY_MONTH_YEAR, FormControl.DateMode.MONTH_YEAR]),
     displayPattern: Types.string,
     value: Types.oneOfType([Types.string, Types.number, Types.bool, Types.object]),
     // @TODO To be implemented in a second iteration.
@@ -61,7 +79,13 @@ export default class FormControl extends PureComponent {
     searchPlaceholder: Types.string,
     searchValue: Types.string,
     onSearchChange: Types.func,
-    size: Types.oneOf(Object.values(Sizes)),
+    size: Types.oneOf([
+      FormControl.Size.EXTRA_SMALL,
+      FormControl.Size.SMALL,
+      FormControl.Size.MEDIUM,
+      FormControl.Size.LARGE,
+      FormControl.Size.EXTRA_LARGE,
+    ]),
     uploadProps: Types.shape({
       animationDelay: Types.number,
       csButtonText: Types.string,
@@ -88,7 +112,7 @@ export default class FormControl extends PureComponent {
       usLabel: Types.string,
       usPlaceholder: Types.string,
     }),
-    monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]),
+    monthFormat: Types.oneOf([FormControl.MonthFormat.LONG, FormControl.MonthFormat.SHORT]),
     selectedOption: Types.shape({
       value: Types.any.isRequired,
       label: Types.node,
@@ -100,7 +124,7 @@ export default class FormControl extends PureComponent {
   };
 
   static defaultProps = {
-    type: FormControlType.TEXT,
+    type: FormControl.Type.TEXT,
     id: null,
     placeholder: null,
     locale: null,
@@ -123,12 +147,12 @@ export default class FormControl extends PureComponent {
     searchPlaceholder: null,
     searchValue: '',
     onSearchChange: null,
-    size: Sizes.MEDIUM,
+    size: FormControl.Size.MEDIUM,
     uploadProps: {},
     displayPattern: null,
     label: '',
-    monthFormat: MonthFormat.LONG,
-    mode: DateMode.DAY_MONTH_YEAR,
+    monthFormat: FormControl.MonthFormat.LONG,
+    mode: FormControl.DateMode.DAY_MONTH_YEAR,
     selectedOption: null,
   };
 

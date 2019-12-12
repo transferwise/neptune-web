@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import doTimes from 'lodash.times';
 
 import { fakeEvent, fakeKeyDownEventForKey } from '../common/fakeEvents';
-import Typeahead, { ALERT_TYPES } from './Typeahead';
+import Typeahead from './Typeahead';
 import KeyCodes from '../common/keyCodes';
 import { Alert } from '..';
 
@@ -242,7 +242,7 @@ describe('Typeahead', () => {
       allowNew: true,
       alert: {
         message: 'test',
-        type: ALERT_TYPES.ERROR,
+        type: Typeahead.Type.ERROR,
       },
     });
 
@@ -257,7 +257,7 @@ describe('Typeahead', () => {
     component.setProps({
       alert: {
         message: 'test',
-        type: ALERT_TYPES.WARNING,
+        type: Typeahead.Type.WARNING,
       },
     });
 

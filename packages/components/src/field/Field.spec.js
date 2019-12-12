@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Field, { FieldTypes, FieldFormats } from '../field/Field';
 import FormControl from '../formControl/FormControl';
-import { FormControlType } from '../formControl/FormControlType';
+import { FormControlType } from '../common';
 import Alert from '../alert/Alert';
 
 describe('Field', () => {

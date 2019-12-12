@@ -1,6 +1,6 @@
-import { Placement } from '../common';
+import { Position } from '../common';
 
-const { TOP, RIGHT, BOTTOM, BOTTOM_RIGHT, BOTTOM_LEFT, LEFT, RIGHT_TOP, LEFT_TOP } = Placement;
+const { TOP, RIGHT, BOTTOM, BOTTOM_RIGHT, BOTTOM_LEFT, LEFT, RIGHT_TOP, LEFT_TOP } = Position;
 
 export function getPlacement(popover, preferredPlacement) {
   if (!popover) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormControl } from '../../../src';
-import { FormControlType } from '../../../src/formControl/FormControlType';
+import { FormControlType } from '../../../src/common';
 
 const generateInput = (knobs, componentThis) => {
   const { type, label, state, options } = knobs;

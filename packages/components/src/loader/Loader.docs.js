@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Loader } from '..';
-import { Sizes } from '../common';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
 const KNOBS = {
@@ -15,8 +14,8 @@ const KNOBS = {
       type: 'select',
       label: 'Size',
       state: 'size',
-      options: Object.values(Sizes).map(value => ({ label: value, value })),
-      defaultState: { value: Sizes.EXTRA_LARGE, label: Sizes.EXTRA_LARGE },
+      options: Object.values(Loader.Size).map(value => ({ label: value, value })),
+      defaultState: { value: Loader.Size.EXTRA_LARGE, label: Loader.Size.EXTRA_LARGE },
     },
     {
       type: 'checkbox',

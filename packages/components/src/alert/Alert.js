@@ -3,47 +3,33 @@ import Types from 'prop-types';
 
 import classNames from 'classnames';
 import requiredIf from 'react-required-if';
-
-const Type = {
-  INFO: 'info',
-  WARNING: 'warning',
-  ERROR: 'error',
-  SUCCESS: 'success',
-};
-
-const Size = {
-  SMALL: 'sm',
-  LARGE: 'lg',
-};
-
-// TODO: align values with keys with a breaking change
-const ArrowPosition = {
-  TOP_LEFT: 'up-left',
-  TOP: 'up-center',
-  TOP_RIGHT: 'up-right',
-  BOTTOM_LEFT: 'down-left',
-  BOTTOM: 'down-center',
-  BOTTOM_RIGHT: 'down-right',
-};
+import { Size, MessageType, ArrowPosition } from '../common';
 
 export default class Alert extends Component {
   static Size = Size;
-  static Type = Type;
+  static Type = MessageType;
   static ArrowPosition = ArrowPosition;
 
   static propTypes = {
-    type: Types.string,
+    type: Types.oneOf([Alert.Type.INFO, Alert.Type.WARNING, Alert.Type.ERROR, Alert.Type.SUCCESS]),
     children: Types.node.isRequired,
-    size: Types.oneOf(Object.values(Size)),
+    size: Types.oneOf([Alert.Size.SMALL, Alert.Size.LARGE]),
     dismissible: Types.bool,
     // eslint-disable-next-line
     onDismiss: requiredIf(Types.func, ({ dismissible }) => dismissible),
-    arrow: Types.oneOf(Object.values(ArrowPosition)),
+    arrow: Types.oneOf([
+      Alert.ArrowPosition.TOP_LEFT,
+      Alert.ArrowPosition.TOP,
+      Alert.ArrowPosition.TOP_RIGHT,
+      Alert.ArrowPosition.BOTTOM_LEFT,
+      Alert.ArrowPosition.BOTTOM,
+      Alert.ArrowPosition.BOTTOM_RIGHT,
+    ]),
   };
 
   static defaultProps = {
-    type: Type.INFO,
-    size: Size.LARGE,
+    type: Alert.Type.INFO,
+    size: Alert.Size.LARGE,
     dismissible: false,
     arrow: null,
   };
@@ -52,13 +38,13 @@ export default class Alert extends Component {
     const { type, arrow, size, children, dismissible, onDismiss } = this.props;
 
     const alertConfigClasses = {
-      'alert-success': type === 'success',
-      'alert-info': type === 'info',
-      'alert-warning': type === 'warning',
-      'alert-danger': type === 'error',
-      small: size === Size.SMALL,
-      'p-x-2': size === Size.SMALL,
-      'p-y-1': size === Size.SMALL,
+      'alert-success': type === Alert.Type.SUCCESS,
+      'alert-info': type === Alert.Type.INFO,
+      'alert-warning': type === Alert.Type.WARNING,
+      'alert-danger': type === Alert.Type.ERROR,
+      small: size === Alert.Size.SMALL,
+      'p-x-2': size === Alert.Size.SMALL,
+      'p-y-1': size === Alert.Size.SMALL,
     };
 
     return (
@@ -86,7 +72,7 @@ export default class Alert extends Component {
 function arrowClasses(arrow) {
   if (arrow) {
     const classes = ['arrow'];
-    const { BOTTOM, BOTTOM_LEFT, BOTTOM_RIGHT, TOP, TOP_RIGHT, TOP_LEFT } = ArrowPosition;
+    const { BOTTOM, BOTTOM_LEFT, BOTTOM_RIGHT, TOP, TOP_RIGHT, TOP_LEFT } = Alert.ArrowPosition;
 
     switch (arrow) {
       case BOTTOM:

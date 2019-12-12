@@ -3,9 +3,9 @@ import { jsx } from '@emotion/core';
 import classNames from 'classnames';
 import Types from 'prop-types';
 
-import { Sizes, JustifyContent, AlignItems, Breakpoints } from '../common';
+import { Size, JustifyContent, AlignItems, Breakpoint } from '../common';
 
-const mediaQueries = Breakpoints.map(bp => `@media (min-width: ${bp}px)`);
+const mediaQueries = Object.values(Breakpoint).map(bp => `@media (min-width: ${bp}px)`);
 
 const Box = props => {
   const {
@@ -36,19 +36,19 @@ const Box = props => {
 
   const style = {
     [customMediaQueries[0]]: {
-      ...getFlex(Sizes.EXTRA_SMALL),
+      ...getFlex(Size.EXTRA_SMALL),
     },
     [customMediaQueries[1]]: {
-      ...getFlex(Sizes.SMALL),
+      ...getFlex(Size.SMALL),
     },
     [customMediaQueries[2]]: {
-      ...getFlex(Sizes.MEDIUM),
+      ...getFlex(Size.MEDIUM),
     },
     [customMediaQueries[3]]: {
-      ...getFlex(Sizes.LARGE),
+      ...getFlex(Size.LARGE),
     },
     [customMediaQueries[4]]: {
-      ...getFlex(Sizes.EXTRA_LARGE),
+      ...getFlex(Size.EXTRA_LARGE),
     },
   };
 

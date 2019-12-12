@@ -4,8 +4,7 @@ import classNames from 'classnames';
 
 import Alert from '../alert/Alert';
 import FormControl from '../formControl';
-import { Sizes } from '../common';
-import { FormControlType } from '../formControl/FormControlType';
+import { FormControlType, Size } from '../common';
 import InstructionsList from '../instructionsList';
 
 import { getControlType } from '../common/requirements';
@@ -128,7 +127,7 @@ export default class Field extends Component {
           disabled: Types.bool,
         }),
       ),
-      size: Types.oneOf(Object.values(Sizes)),
+      size: Types.oneOf(Object.values(Size)),
 
       validationMessages: Types.shape({
         required: Types.string,

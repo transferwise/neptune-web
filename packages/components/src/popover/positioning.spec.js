@@ -1,10 +1,12 @@
 import { getPlacement, getPositionRelativeToParent } from './positioning';
-import { Placement } from '../common';
+import { Position } from '../common';
+
+const { TOP, RIGHT, BOTTOM, BOTTOM_RIGHT, BOTTOM_LEFT, LEFT, RIGHT_TOP, LEFT_TOP } = Position;
 
 describe('Popover positioning', () => {
   describe('placement', () => {
     it('is empty if no popover', () => {
-      expect(getPlacement(undefined, Placement.LEFT)).toBe('');
+      expect(getPlacement(undefined, LEFT)).toBe('');
     });
 
     describe('is corrected to bottom if overflows left and right', () => {
@@ -15,7 +17,7 @@ describe('Popover positioning', () => {
           width: 100,
         });
 
-        expect(getPlacement(popover, Placement.LEFT)).toBe(Placement.BOTTOM);
+        expect(getPlacement(popover, LEFT)).toBe(BOTTOM);
       });
 
       it('corrects to bottom right if it overflows left when positioned bottom', () => {
@@ -25,7 +27,7 @@ describe('Popover positioning', () => {
           width: 100,
         });
 
-        expect(getPlacement(popover, Placement.LEFT)).toBe(Placement.BOTTOM_RIGHT);
+        expect(getPlacement(popover, LEFT)).toBe(BOTTOM_RIGHT);
       });
 
       it('corrects to bottom left if it overflows right when positioned bottom', () => {
@@ -35,7 +37,7 @@ describe('Popover positioning', () => {
           width: 100,
         });
 
-        expect(getPlacement(popover, Placement.LEFT)).toBe(Placement.BOTTOM_LEFT);
+        expect(getPlacement(popover, LEFT)).toBe(BOTTOM_LEFT);
       });
     });
 
@@ -46,7 +48,7 @@ describe('Popover positioning', () => {
         width: 200,
       });
 
-      expect(getPlacement(popover, Placement.RIGHT)).toBe(Placement.LEFT);
+      expect(getPlacement(popover, RIGHT)).toBe(LEFT);
     });
 
     it('is corrected to top left if top right and overflows right', () => {
@@ -56,7 +58,7 @@ describe('Popover positioning', () => {
         width: 200,
       });
 
-      expect(getPlacement(popover, Placement.RIGHT_TOP)).toBe(Placement.LEFT_TOP);
+      expect(getPlacement(popover, RIGHT_TOP)).toBe(LEFT_TOP);
     });
 
     it('is corrected to right if left and overflows left', () => {
@@ -66,7 +68,7 @@ describe('Popover positioning', () => {
         width: 100,
       });
 
-      expect(getPlacement(popover, Placement.LEFT)).toBe(Placement.RIGHT);
+      expect(getPlacement(popover, LEFT)).toBe(RIGHT);
     });
 
     it('is corrected to top right if top left and overflows left', () => {
@@ -76,7 +78,7 @@ describe('Popover positioning', () => {
         width: 100,
       });
 
-      expect(getPlacement(popover, Placement.LEFT_TOP)).toBe(Placement.RIGHT_TOP);
+      expect(getPlacement(popover, LEFT_TOP)).toBe(RIGHT_TOP);
     });
 
     it('remains the same if does not overflow', () => {
@@ -86,13 +88,13 @@ describe('Popover positioning', () => {
         width: 100,
       });
 
-      expect(getPlacement(popover, Placement.LEFT)).toBe(Placement.LEFT);
+      expect(getPlacement(popover, LEFT)).toBe(LEFT);
     });
   });
 
   describe('position', () => {
     it('is empty if no popover', () => {
-      expect(getPositionRelativeToParent(undefined, Placement.LEFT)).toEqual({});
+      expect(getPositionRelativeToParent(undefined, LEFT)).toEqual({});
     });
 
     it('is correct for top placement', () => {
@@ -102,7 +104,7 @@ describe('Popover positioning', () => {
         width: 200,
       });
 
-      expect(getPositionRelativeToParent(popover, Placement.TOP)).toEqual({
+      expect(getPositionRelativeToParent(popover, TOP)).toEqual({
         top: 250,
         right: 450,
         left: 350,
@@ -117,7 +119,7 @@ describe('Popover positioning', () => {
         height: 200,
       });
 
-      expect(getPositionRelativeToParent(popover, Placement.RIGHT)).toEqual({
+      expect(getPositionRelativeToParent(popover, RIGHT)).toEqual({
         top: 375,
         right: 600,
         left: 500,
@@ -132,7 +134,7 @@ describe('Popover positioning', () => {
         height: 200,
       });
 
-      expect(getPositionRelativeToParent(popover, Placement.BOTTOM)).toEqual({
+      expect(getPositionRelativeToParent(popover, BOTTOM)).toEqual({
         top: 500,
         right: 450,
         left: 350,
@@ -149,7 +151,7 @@ describe('Popover positioning', () => {
         })
         .arrow({ width: 14, right: 29, marginLeft: -7 });
 
-      expect(getPositionRelativeToParent(popover, Placement.BOTTOM_LEFT)).toEqual({
+      expect(getPositionRelativeToParent(popover, BOTTOM_LEFT)).toEqual({
         top: 500,
         right: 430,
         left: 330,
@@ -166,7 +168,7 @@ describe('Popover positioning', () => {
         })
         .arrow({ width: 14, left: 29, marginLeft: -7 });
 
-      expect(getPositionRelativeToParent(popover, Placement.BOTTOM_RIGHT)).toEqual({
+      expect(getPositionRelativeToParent(popover, BOTTOM_RIGHT)).toEqual({
         top: 500,
         right: 470,
         left: 370,
@@ -180,7 +182,7 @@ describe('Popover positioning', () => {
         height: 200,
       });
 
-      expect(getPositionRelativeToParent(popover, Placement.LEFT)).toEqual({
+      expect(getPositionRelativeToParent(popover, LEFT)).toEqual({
         top: 375,
         right: 300,
         left: 200,
@@ -192,7 +194,7 @@ describe('Popover positioning', () => {
         .triggerRelativeToParent({ top: 300, left: 300, width: 200, height: 200 })
         .arrow({ top: 20, height: 10, marginTop: 8 });
 
-      expect(getPositionRelativeToParent(popover, Placement.RIGHT_TOP)).toEqual({
+      expect(getPositionRelativeToParent(popover, RIGHT_TOP)).toEqual({
         top: 370,
         right: 600,
         left: 500,
@@ -204,7 +206,7 @@ describe('Popover positioning', () => {
         .triggerRelativeToParent({ top: 300, left: 300, height: 200 })
         .arrow({ top: 20, height: 10, marginTop: 8 });
 
-      expect(getPositionRelativeToParent(popover, Placement.LEFT_TOP)).toEqual({
+      expect(getPositionRelativeToParent(popover, LEFT_TOP)).toEqual({
         top: 370,
         right: 300,
         left: 200,

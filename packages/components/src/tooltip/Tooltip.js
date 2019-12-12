@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import Types from 'prop-types';
+import { Position } from '../common';
 
 import './Tooltip.css';
-
-const Position = {
-  TOP: 'top',
-  LEFT: 'left',
-  RIGHT: 'right',
-  BOTTOM: 'bottom',
-};
 
 function getTooltipStyle(parent, tooltip, position, offset) {
   switch (position) {
@@ -107,7 +101,12 @@ Tooltip.Position = Position;
 
 Tooltip.propTypes = {
   children: Types.oneOfType([Types.element, Types.arrayOf(Types.element), Types.string]).isRequired,
-  position: Types.oneOf(Object.keys(Tooltip.Position).map(key => Tooltip.Position[key])),
+  position: Types.oneOf([
+    Tooltip.Position.TOP,
+    Tooltip.Position.BOTTOM,
+    Tooltip.Position.LEFT,
+    Tooltip.Position.RIGHT,
+  ]),
   label: Types.node.isRequired,
   offset: Types.number,
 };

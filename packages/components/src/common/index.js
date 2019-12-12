@@ -1,9 +1,17 @@
 export { default as HistoryNavigator } from './historyNavigator';
-export { Sizes, SizesSML, SizesSL } from './propsValues/sizes';
+export { addModalOpenBodyClass, removeModalOpenBodyClass } from './DOMOperations';
+export { Theme } from './theme';
+// Props
+export { Breakpoint } from './propsValues/breakpoint';
+export { Size } from './propsValues/size';
+export { Type } from './propsValues/type';
 export { DateMode } from './propsValues/dateMode';
 export { MonthFormat } from './propsValues/monthFormat';
-export { Breakpoints } from './breakpoints';
-export { Placement } from './placement';
-export { addModalOpenBodyClass, removeModalOpenBodyClass } from './DOMOperations';
-export { JustifyContent, AlignItems, FlexDirection } from './flexProperties';
-export { Theme } from './theme';
+// Position and Placement are duplicated and needs to be aligned with a breaking change
+// https://transferwise.atlassian.net/browse/DS-249
+export { Position, ArrowPosition } from './propsValues/position';
+export { Layout } from './propsValues/layouts';
+export { FormControlType } from './propsValues/formControlType';
+export { Status } from './propsValues/status';
+export { MessageType } from './propsValues/messageType';
+export { JustifyContent, AlignItems, FlexDirection } from './propsValues/flexProperties';

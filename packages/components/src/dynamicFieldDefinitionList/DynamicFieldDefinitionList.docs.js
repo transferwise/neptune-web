@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { DynamicFieldDefinitionList, DefinitionList } from '..';
+import { DynamicFieldDefinitionList } from '..';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
+import { Layout } from '../common';
 
-const { Layout } = DefinitionList;
 const LayoutValues = Object.keys(Layout).map(key => Layout[key]);
 
 const LOCALES = ['en-GB', 'fr-FR', 'hu-HU', 'de-DE', 'ja-JP', 'pt-BR'];

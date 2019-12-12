@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Typeahead } from '..';
 import { generateCodeBlock, generateState, generateInput } from '../../docs/utils';
-import { Sizes } from '../common';
 import Alert from '../alert';
 
-const SIZES = [Sizes.MEDIUM, Sizes.LARGE];
+const SIZES = [Typeahead.Size.MEDIUM, Typeahead.Size.LARGE];
 const options = [
   {
     label: 'A thing',

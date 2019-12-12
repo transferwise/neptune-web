@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
 import React, { Component } from 'react';
 import { FormControl, Select } from '..';
-import { FormControlType } from './FormControlType';
-import { Sizes, DateMode, MonthFormat } from '../../src/common';
+import { Size, DateMode, MonthFormat, FormControlType } from '../../src/common';
 
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
@@ -187,8 +186,8 @@ export default class FormControlDocs extends Component {
                 monthFormat={monthFormat.value}
                 value={value}
                 searchPlaceholder={searchPlaceholder}
-                size={Sizes.MEDIUM}
-                uploadProps={{ usDisabled: disabled, size: Sizes.MEDIUM }}
+                size={Size.MEDIUM}
+                uploadProps={{ usDisabled: disabled, size: Size.MEDIUM }}
               />
               <div className="m-t-2">
                 {this.state.value && <pre>{JSON.stringify(this.state.value)}</pre>}

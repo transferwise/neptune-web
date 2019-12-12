@@ -2,12 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-const Layout = {
-  VERTICAL_TWO_COLUMN: 'VERTICAL_TWO_COLUMN',
-  VERTICAL_ONE_COLUMN: 'VERTICAL_ONE_COLUMN',
-  HORIZONTAL_JUSTIFIED: 'HORIZONTAL_JUSTIFIED',
-  HORIZONTAL_LEFT_ALIGNED: 'HORIZONTAL_LEFT_ALIGNED',
-};
+import { Layout } from '../common';
 
 const DefinitionList = ({ definitions, layout, muted }) => (
   <div className={classNames({ row: layout === Layout.VERTICAL_TWO_COLUMN })}>
@@ -34,7 +29,7 @@ const DefinitionList = ({ definitions, layout, muted }) => (
   </div>
 );
 
-const LayoutValues = Object.keys(Layout).map(key => Layout[key]);
+DefinitionList.Layout = Layout;
 
 DefinitionList.propTypes = {
   definitions: Types.arrayOf(
@@ -44,13 +39,18 @@ DefinitionList.propTypes = {
       key: Types.string.isRequired,
     }),
   ),
-  layout: Types.oneOf(LayoutValues),
+  layout: Types.oneOf([
+    DefinitionList.Layout.VERTICAL_TWO_COLUMN,
+    DefinitionList.Layout.VERTICAL_ONE_COLUMN,
+    DefinitionList.Layout.HORIZONTAL_JUSTIFIED,
+    DefinitionList.Layout.HORIZONTAL_LEFT_ALIGNED,
+  ]),
   muted: Types.bool,
 };
 
 DefinitionList.defaultProps = {
   definitions: [],
-  layout: Layout.VERTICAL_TWO_COLUMN,
+  layout: DefinitionList.Layout.VERTICAL_TWO_COLUMN,
   muted: false,
 };
 

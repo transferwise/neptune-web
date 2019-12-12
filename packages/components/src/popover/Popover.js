@@ -1,7 +1,7 @@
 import React, { Component, cloneElement } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import { Placement } from '../common';
+import { Position } from '../common';
 import { getPlacement, getPositionRelativeToParent } from './positioning';
 import { wrapInDOMElementIfNecessary } from './DOMWrapping';
 import KeyCodes from '../common/keyCodes';
@@ -12,22 +12,29 @@ import {
 
 import './Popover.css';
 
-const PlacementValues = Object.keys(Placement).map(key => Placement[key]);
-
 export default class Popover extends Component {
-  static Placement = Placement;
+  static Placement = Position;
 
   static propTypes = {
     children: Types.oneOfType([Types.element, Types.string]).isRequired,
     title: Types.oneOfType([Types.element, Types.string]),
     content: Types.oneOfType([Types.element, Types.string]).isRequired,
-    preferredPlacement: Types.oneOf(PlacementValues),
+    preferredPlacement: Types.oneOf([
+      Popover.Placement.TOP,
+      Popover.Placement.RIGHT,
+      Popover.Placement.BOTTOM,
+      Popover.Placement.LEFT,
+      Popover.Placement.LEFT_TOP,
+      Popover.Placement.RIGHT_TOP,
+      Popover.Placement.BOTTOM_RIGHT,
+      Popover.Placement.BOTTOM_LEFT,
+    ]),
     classNames: Types.objectOf(Types.string),
   };
 
   static defaultProps = {
     title: null,
-    preferredPlacement: Placement.RIGHT,
+    preferredPlacement: Popover.Placement.RIGHT,
     classNames: {},
   };
 
