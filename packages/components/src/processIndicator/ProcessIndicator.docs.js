@@ -32,8 +32,8 @@ const KNOBS = {
         label: value,
       })),
       defaultState: {
-        value: ProcessIndicator.Size.ExtraLarge,
-        label: ProcessIndicator.Size.ExtraLarge,
+        value: ProcessIndicator.Size.EXTRA_LARGE,
+        label: ProcessIndicator.Size.EXTRA_LARGE,
       },
     },
   ],

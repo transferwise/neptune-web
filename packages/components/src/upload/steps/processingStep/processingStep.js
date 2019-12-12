@@ -16,12 +16,12 @@ const ProcessingStep = props => {
     psSuccessText,
   } = props;
 
-  let processStatus = ProcessIndicator.Status.Processing;
+  let processStatus = ProcessIndicator.Status.PROCESSING;
   if (isError) {
-    processStatus = ProcessIndicator.Status.Failed;
+    processStatus = ProcessIndicator.Status.FAILED;
   }
   if (isSuccess) {
-    processStatus = ProcessIndicator.Status.Succeeded;
+    processStatus = ProcessIndicator.Status.SUCCEEDED;
   }
 
   return (

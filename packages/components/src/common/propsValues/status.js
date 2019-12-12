@@ -1,6 +1,6 @@
 export const Status = {
-  Processing: 'processing',
-  Failed: 'failed',
-  Succeeded: 'succeeded',
-  Hidden: 'hidden',
+  PROCESSING: 'processing',
+  FAILED: 'failed',
+  SUCCEEDED: 'succeeded',
+  HIDDEN: 'hidden',
 };

@@ -70,7 +70,7 @@ class Upload extends PureComponent {
     const { response, isProcessing } = this.state;
     // Success.
     const { animationDelay } = this.props;
-    if (isProcessing && status === ProcessIndicator.Status.Succeeded) {
+    if (isProcessing && status === ProcessIndicator.Status.SUCCEEDED) {
       const { onSuccess } = this.props;
       this.timeouts = setTimeout(() => {
         this.setState(
@@ -83,7 +83,7 @@ class Upload extends PureComponent {
       }, animationDelay);
     }
     // Failure.
-    if (isProcessing && status === ProcessIndicator.Status.Failed) {
+    if (isProcessing && status === ProcessIndicator.Status.FAILED) {
       const { onFailure } = this.props;
       this.timeouts = setTimeout(() => {
         this.setState(

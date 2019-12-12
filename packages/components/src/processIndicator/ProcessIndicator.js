@@ -2,32 +2,32 @@ import React, { Component } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-const Size = {
-  ExtraSmall: 'xs',
-  Small: 'sm',
-  ExtraLarge: 'xl',
-};
-
-const Status = {
-  Processing: 'processing',
-  Failed: 'failed',
-  Succeeded: 'succeeded',
-  Hidden: 'hidden',
-};
+import { Status, Size } from '../common';
 
 const radius = { xs: 11, sm: 22, xl: 61 };
 export const ANIMATION_DURATION_IN_MS = 1500;
 
 class ProcessIndicator extends Component {
+  static Status = Status;
+  static Size = Size;
   static propTypes = {
-    status: Types.oneOf(Object.values(Status)),
-    size: Types.oneOf(Object.values(Size)),
+    status: Types.oneOf([
+      ProcessIndicator.Status.PROCESSING,
+      ProcessIndicator.Status.FAILED,
+      ProcessIndicator.Status.SUCCEEDED,
+      ProcessIndicator.Status.HIDDEN,
+    ]),
+    size: Types.oneOf([
+      ProcessIndicator.Size.EXTRA_SMALL,
+      ProcessIndicator.Size.SMALL,
+      ProcessIndicator.Size.EXTRA_LARGE,
+    ]),
     onAnimationCompleted: Types.func,
   };
 
   static defaultProps = {
-    status: Status.Processing,
-    size: Size.Small,
+    status: ProcessIndicator.Status.PROCESSING,
+    size: ProcessIndicator.Size.SMALL,
     onAnimationCompleted: null,
   };
 
@@ -93,9 +93,9 @@ class ProcessIndicator extends Component {
   render() {
     const { size, status } = this.state;
     const classes = classNames(`process process-${size}`, {
-      [`process-danger`]: status === 'failed',
-      [`process-stopped`]: status === 'hidden',
-      [`process-success`]: status === 'succeeded',
+      [`process-danger`]: status === ProcessIndicator.Status.FAILED,
+      [`process-stopped`]: status === ProcessIndicator.Status.HIDDEN,
+      [`process-success`]: status === ProcessIndicator.Status.SUCCEEDED,
     });
 
     return (
@@ -117,8 +117,5 @@ class ProcessIndicator extends Component {
     );
   }
 }
-
-ProcessIndicator.Size = Size;
-ProcessIndicator.Status = Status;
 
 export default ProcessIndicator;
