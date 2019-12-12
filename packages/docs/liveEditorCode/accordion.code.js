@@ -1,4 +1,4 @@
-const code = `<Accordion
+<Accordion
   indexOpen={1}
   items={[
     {
@@ -25,6 +25,4 @@ const code = `<Accordion
       ),
     },
   ]}
-/>`;
-
-export default code;
+/>;

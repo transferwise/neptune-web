@@ -1,9 +1,7 @@
-const code = `<Checkbox
-    label={'Edit me!'}
-    onChange={() => alert('unchecked')}
-    checked={true}
-    required={true}
-    disabled={false}
-/>`;
-
-export default code;
+<Checkbox
+  label="Edit me!"
+  onChange={() => alert("I've been unchecked")}
+  checked
+  required
+  disabled={false}
+/>;

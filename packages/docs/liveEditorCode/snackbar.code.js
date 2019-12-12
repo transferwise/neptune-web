@@ -1,4 +1,3 @@
-const code = `
 <SnackbarProvider>
   <SnackbarConsumer>
     {({ createSnackbar }) => (
@@ -7,8 +6,7 @@ const code = `
         onClick={() =>
           createSnackbar({
             text: <span>Some text</span>,
-            action: 
-            {
+            action: {
               label: 'Bite me',
               onClick: () => alert("I can't believe you've done this."),
             },
@@ -19,7 +17,4 @@ const code = `
       </Button>
     )}
   </SnackbarConsumer>
-</SnackbarProvider>
-`;
-
-export default code;
+</SnackbarProvider>;

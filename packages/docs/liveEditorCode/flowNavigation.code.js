@@ -1,13 +1,13 @@
-const code = `<FlowNavigation
-activeStep={0}
-onClose={() => alert('Close clicked')}
-avatarUrl={'https://github.com/transferwise.png'}
-done={false}
-profileType={{ value: 'PERSONAL', label: 'Personal' }}
-onGoBack={() => alert('go back')}
-showCloseButton={true}
-theme={'light'}
-steps={[
+<FlowNavigation
+  activeStep={0}
+  onClose={() => alert('Close clicked')}
+  avatarUrl="https://github.com/transferwise.png"
+  done={false}
+  profileType={{ value: 'PERSONAL', label: 'Personal' }}
+  onGoBack={() => alert('go back')}
+  showCloseButton
+  theme="light"
+  steps={[
     {
       label: 'Amount',
       hoverLabel: (
@@ -32,8 +32,5 @@ steps={[
     },
     { label: 'Recipient', hoverLabel: 'Some person/dog' },
     { label: 'Something', hoverLabel: 'Cool' },
-  ]
-}
-/>`;
-
-export default code;
+  ]}
+/>;

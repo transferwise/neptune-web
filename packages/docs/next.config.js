@@ -31,6 +31,14 @@ module.exports = () =>
             env: {
               ASSET_PREFIX: assetPrefix,
             },
+            webpack: config => {
+              config.module.rules.push({
+                test: /\.code.js$/,
+                use: 'raw-loader',
+              });
+
+              return config;
+            },
           }),
         ),
       ),

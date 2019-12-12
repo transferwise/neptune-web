@@ -1,3 +1,1 @@
-const code = `<Loader small={false} size={'xs'} />`;
-
-export default code;
+<Loader small={false} size={Loader.Sizes.EXTRA_SMALL} />;

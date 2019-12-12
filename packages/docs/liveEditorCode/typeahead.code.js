@@ -1,20 +1,20 @@
-const code = `<Typeahead
+<Typeahead
   id="typeahead"
   name="typeahead-input-name"
-  size='md'
+  size="md"
   maxHeight={100}
   footer={<div>Want a footer? Style it!</div>}
-  multiple={true}
-  clearable={true}
-  allowNew={true}
-  showSuggestions={true}
-  placeholder='placeholder'
+  multiple
+  clearable
+  allowNew
+  showSuggestions
+  placeholder="placeholder"
   chipSeparators={[',', ' ']}
   validateChip={null}
-  alert={{ message: 'alert message', type:'success' }}
+  alert={{ message: 'alert message', type: 'success' }}
   onSearch={() => {}}
   onChange={() => {}}
-  addon={<i className="input-group-text icon icon-search"/>}
+  addon={<i className="input-group-text icon icon-search" />}
   onBlur={() => {}}
   options={[
     {
@@ -41,6 +41,4 @@ const code = `<Typeahead
       label: 'Something else',
     },
   ]}
-/>`;
-
-export default code;
+/>;

@@ -1,7 +1,5 @@
-const code = `<Chip
-  label="A chip"
+<Chip
+  label="I'm a beautiful chip"
   hasError={false}
-  onRemove={function(){}}
-/>`;
-
-export default code;
+  onRemove={() => alert('I have been removed!!!')}
+/>;

@@ -1,11 +1,8 @@
-const code = `<Button
-    size="md"
-    type="primary"
-    state="default"
-    block={false}
-    onClick={() => alert('clicked')}
+<Button
+  size={Button.Size.MEDIUM}
+  type={Button.Type.PRIMARY}
+  block={false}
+  onClick={() => alert('clicked')}
 >
-    Edit me!
-</Button>`;
-
-export default code;
+  Edit me!
+</Button>;
