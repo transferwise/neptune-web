@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 
 import KeyCodes from '../common/keyCodes';
-import { SizesSML, MonthFormat } from '../common';
+import { Size, MonthFormat } from '../common';
 import { isWithinRange, moveToWithinRange } from '../common/dateUtils';
 import { getStartOfDay } from './getStartOfDay';
 
@@ -18,13 +18,13 @@ const MODE = {
 };
 
 class DateLookup extends PureComponent {
-  static Sizes = SizesSML;
+  static Size = Size;
   static MonthFormat = MonthFormat;
   static propTypes = {
     value: Types.instanceOf(Date),
     min: Types.instanceOf(Date),
     max: Types.instanceOf(Date),
-    size: Types.oneOf([DateLookup.Sizes.SMALL, DateLookup.Sizes.MEDIUM, DateLookup.Sizes.LARGE]),
+    size: Types.oneOf([DateLookup.Size.SMALL, DateLookup.Size.MEDIUM, DateLookup.Size.LARGE]),
     locale: Types.string,
     placeholder: Types.string,
     label: Types.string,
@@ -39,11 +39,11 @@ class DateLookup extends PureComponent {
     value: null,
     min: null,
     max: null,
-    size: DateLookup.Sizes.MEDIUM,
+    size: DateLookup.Size.MEDIUM,
     locale: 'en-GB',
     placeholder: '',
     label: '',
-    monthFormat: MonthFormat.LONG,
+    monthFormat: DateLookup.MonthFormat.LONG,
     disabled: false,
     onFocus: null,
     onBlur: null,

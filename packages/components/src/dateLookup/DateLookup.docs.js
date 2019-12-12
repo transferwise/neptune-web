@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { DateLookup } from '..';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 
-import { SizesSML, MonthFormat } from '../common';
+import { Size, MonthFormat } from '../common';
 
-const SIZES = Object.values(SizesSML);
+const SIZES = Object.values(Size);
 const MONTH_FORMATS = Object.values(MonthFormat);
 
 const KNOBS = {
