@@ -1,48 +1,44 @@
 const colors = {
-  punctuation: '#008ec0',
-  tag: '#2f4366',
-  propName: '#008ec0',
+  punctuation: '#829CA9',
+  tag: '#253655',
+  propName: '#00A4DF',
   propValue: '#28B862',
-  propEqualSign: '#008ec0',
-  propParenthesis: '#008ec0',
+  propParenthesis: '#253655',
 };
 const theme = {
   plain: {
-    backgroundColor: '#fff',
     color: '#829ca9',
-    fontSize: '13px',
+    fontSize: '14px',
   },
   styles: [
-    {
-      types: ['script-punctuation'],
-      style: {
-        color: colors.punctuation,
-      },
-    },
     {
       types: ['tag'],
       style: {
         color: colors.tag,
       },
     },
+
     {
       types: ['attr-name'],
       style: {
         color: colors.propName,
       },
     },
+
     {
-      types: ['script-punctuation'],
+      types: ['punctuation'],
       style: {
-        color: colors.propEqualSign,
+        color: colors.punctuation,
       },
     },
+
     {
       types: ['language-javascript'],
       style: {
         color: colors.propParenthesis,
       },
     },
+
     {
       types: ['script', 'boolean', 'string', 'number'],
       style: {

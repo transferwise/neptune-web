@@ -1,19 +1,10 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { DynamicFieldDefinitionList } from '@transferwise/components';
 import code from '../../liveEditorCode/dynamicFieldDefinitionList.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ DynamicFieldDefinitionList }} />
-  <GeneratePropsTable componentName="DynamicFieldDefinitionList" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ DynamicFieldDefinitionList }} />
+<GeneratePropsTable componentName="DynamicFieldDefinitionList" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Dynamic Field Definition List',
-  size: '',
-  isPlaceholder: true,
 };

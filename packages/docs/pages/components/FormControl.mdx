@@ -1,19 +1,12 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { FormControl } from '@transferwise/components';
 import code from '../../liveEditorCode/formcontrol.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ FormControl }} />
-  <GeneratePropsTable componentName="FormControl" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ FormControl }} />
+<GeneratePropsTable componentName="FormControl" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Form Control',
-  size: '',
-  isPlaceholder: true,
 };
+
+;

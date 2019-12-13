@@ -2566,7 +2566,7 @@
   resolved "https://registry.yarnpkg.com/@transferwise/icons/-/icons-0.14.0.tgz#fa589cdef84bdb170e856e204e9773248a2d1a43"
   integrity sha512-4179z6wX9MISkHYJVvCjZYUBQCani8lOGxHGDrM/caylHE7JhPJaIMrAl9/4CnHqWxTvKPstNK+wIfZ4PWNj1Q==
 
-"@transferwise/icons@^1.0.0":
+"@transferwise/icons@^1.0.0", "@transferwise/icons@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@transferwise/icons/-/icons-1.5.0.tgz#4b0f6e71862e4e331b0a45f6bd77bae8eba0021d"
   integrity sha512-qHdaX+0YdTGwSoZqNH7FB+Gp1ytgk60xybkEtx+D9PT494B6Ddv94O2qZ5OR/K6vv+d9wd7brep6tMloBu6EBQ==
@@ -5743,6 +5743,11 @@ currency-flags@^1.2.1:
   resolved "https://registry.yarnpkg.com/currency-flags/-/currency-flags-1.10.0.tgz#d54fed9e17d439c1a7988d9252374a83dfb3e8a7"
   integrity sha512-PYWLQUEaC+kPBptxjoRs0+LTCTRUlN6zcmx5zvWYL8e7H+8qqh9/IInpVOCDubkw/tzhw0Lek9kFMYOunaL4Eg==
 
+currency-flags@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/currency-flags/-/currency-flags-2.1.1.tgz#3f6ac283fb8db34dd1d17eb3705e2634f4d5e047"
+  integrity sha512-BR6wcXBpl3a8gH5AjgtvAHNkAAXlGErocnoc5LE6E3GPA+qHFas4/CCe4KNnSfgWubHIciKveSeLFnHtdsM/pA==
+
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
@@ -6277,6 +6282,11 @@ dotenv@6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
   integrity sha512-HygQCKUBSFl8wKQZBSemMywRWcEDNidvNbjGVyZu3nbZ8qq9ubiPoGLMdRDpfSrpkkm9BXYFkpKxxFX38o/76w==
+
+dotenv@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
 duplexer2@0.0.2:
   version "0.0.2"
@@ -11740,7 +11750,7 @@ node-fetch@2.1.2:
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.1.2.tgz#ab884e8e7e57e38a944753cec706f788d1768bb5"
   integrity sha1-q4hOjn5X44qUR1POxwb3iNF2i7U=
 
-node-fetch@2.6.0, node-fetch@^2.1.1, node-fetch@^2.3.0, node-fetch@^2.5.0:
+node-fetch@2.6.0, node-fetch@^2.1.1, node-fetch@^2.3.0, node-fetch@^2.5.0, node-fetch@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==

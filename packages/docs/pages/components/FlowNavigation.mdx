@@ -1,19 +1,10 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { FlowNavigation } from '@transferwise/components';
 import code from '../../liveEditorCode/flowNavigation.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ FlowNavigation }} display='vertical'/>
-  <GeneratePropsTable componentName="FlowNavigation" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ FlowNavigation }} display="vertical" />
+<GeneratePropsTable componentName="FlowNavigation" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Flow Navigation',
-  size: '',
-  isPlaceholder: true,
 };

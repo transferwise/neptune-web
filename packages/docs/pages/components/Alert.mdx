@@ -1,17 +1,11 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { Alert } from '@transferwise/components';
 import code from '../../liveEditorCode/alert.code';
 
 Use Alert for contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ Alert }} />
-  <GeneratePropsTable componentName="Alert" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ Alert }} />
+<GeneratePropsTable componentName="Alert" />
 
 ## Size and type options
 
@@ -250,7 +244,5 @@ Use Alert for contextual feedback messages for typical user actions with the han
 </table>
 
 export const meta = {
-  abstractURL: 'https://share.goabstract.com/a371db59-a0d0-40d4-b233-5fae380f0071',
   name: 'Alert',
-  size: '',
 };

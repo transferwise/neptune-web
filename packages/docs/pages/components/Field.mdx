@@ -1,19 +1,10 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
-import { Field,Button } from '@transferwise/components';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Field, Button } from '@transferwise/components';
 import code from '../../liveEditorCode/field.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ Field }} />
-  <GeneratePropsTable componentName="Field" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ Field }} />
+<GeneratePropsTable componentName="Field" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Field',
-  size: '',
-  isPlaceholder: true,
 };

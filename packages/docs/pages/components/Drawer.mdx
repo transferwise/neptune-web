@@ -1,15 +1,9 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
-import { Drawer,Button } from '@transferwise/components';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Drawer, Button } from '@transferwise/components';
 import code from '../../liveEditorCode/drawer.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ Drawer,Button }} />
-  <GeneratePropsTable componentName="Drawer" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ Drawer, Button }} />
+<GeneratePropsTable componentName="Drawer" />
 
 ![Sample Drawer](/static/assets/img/Drawer_sample.png)
 
@@ -103,6 +97,4 @@ import code from '../../liveEditorCode/drawer.code';
 
 export const meta = {
   name: 'Drawer',
-  abstractURL: 'https://share.goabstract.com/523506be-a121-4456-ae0e-97c0770413af',
-  size: '',
 };

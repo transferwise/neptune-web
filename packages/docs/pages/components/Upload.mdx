@@ -1,8 +1,8 @@
 import { Upload, Button } from '@transferwise/components';
 import { CompleteStep, ProcessingStep } from '@transferwise/components/src/upload/steps';
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
-import  code from '../../liveEditorCode/upload.code';
-export const IMAGES = [
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import code from '../../liveEditorCode/upload.code';
+const IMAGES = [
   {
     label: 'image1',
     value:
@@ -15,16 +15,8 @@ export const IMAGES = [
   },
 ];
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ Upload,Button,IMAGES }} />
-  <GeneratePropsTable componentName="Upload" />
-</>
-#ios
-</RenderTabs>
-
-
+<LiveEditorBlock code={code} scope={{ Upload, Button, IMAGES }} />
+<GeneratePropsTable componentName="Upload" />
 
 ## Upload states
 
@@ -109,8 +101,5 @@ export const IMAGES = [
 </table>
 
 export const meta = {
-  abstractURL: '',
   name: 'Upload',
-  size: '',
-  isPlaceholder: true,
 };

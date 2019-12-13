@@ -1,19 +1,12 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { Typeahead } from '@transferwise/components';
 import code from '../../liveEditorCode/typeahead.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ Typeahead }} />
-  <GeneratePropsTable componentName="Typeahead" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ Typeahead }} />
+<GeneratePropsTable componentName="Typeahead" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Typeahead',
-  size: '',
-  isPlaceholder: true,
 };
+
+;

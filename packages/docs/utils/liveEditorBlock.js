@@ -21,7 +21,7 @@ const LiveEditorBlock = ({ code, scope, display }) => (
           <div className="col-xs-6 live-editor">
             <LiveEditor theme={theme} />
           </div>
-          <div className="col-xs-6 live-preview">
+          <div className="col-xs-6 p-l-4 live-preview">
             <LivePreview />
           </div>
         </>
@@ -38,6 +38,7 @@ LiveEditorBlock.propTypes = {
   scope: Types.objectOf(Types.func).isRequired,
   display: Types.string,
 };
+
 LiveEditorBlock.defaultProps = {
   display: 'horizontal',
 };

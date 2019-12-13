@@ -1,19 +1,10 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { ProcessIndicator } from '@transferwise/components';
 import code from '../../liveEditorCode/processIndicator.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ ProcessIndicator }} />
-  <GeneratePropsTable componentName="ProcessIndicator" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ ProcessIndicator }} />
+<GeneratePropsTable componentName="ProcessIndicator" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Process Indicator',
-  size: '',
-  isPlaceholder: true,
 };

@@ -1,19 +1,10 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import JsonSchemaForm from '@transferwise/components/src/jsonSchemaForm';
 import code from '../../liveEditorCode/jsonSchemaForm.code';
 
-<RenderTabs>
-  #web
-  <div id="box">
-    <LiveEditorBlock code={code} scope={{ JsonSchemaForm }} />
-    <GeneratePropsTable componentName="JsonSchemaForm" />
-  </div>
-  #ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ JsonSchemaForm }} />
+<GeneratePropsTable componentName="JsonSchemaForm" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Json Schema Form',
-  size: '',
-  isPlaceholder: true,
 };

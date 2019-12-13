@@ -22,13 +22,13 @@ const parsePropsForTable = ({ type, required, defaultValue }) => {
         if (isArray(propType.value)) {
           return propType.value.map(({ value }) => cleanValue(value));
         }
-        return cleanValue(propType.value) || '-';
+        return cleanValue(propType.value) || '–';
 
       case 'union':
         if (isArray(propType.value)) {
           return propType.value.map(({ name }) => name);
         }
-        return cleanValue(propType.value) || '-';
+        return cleanValue(propType.value) || '–';
 
       case 'shape':
         if (isObject(propType.value)) {
@@ -38,18 +38,18 @@ const parsePropsForTable = ({ type, required, defaultValue }) => {
             })),
           );
         }
-        return cleanValue(propType.value) || '-';
+        return cleanValue(propType.value) || '–';
 
       default:
-        return cleanValue(propType.value) || '-';
+        return cleanValue(propType.value) || '–';
     }
   };
 
   return {
-    type: type.name || '-',
+    type: type.name || '–',
     allowedValues: getAllowedValues(type),
     required,
-    defaultValue: (defaultValue && cleanValue(defaultValue.value)) || '-',
+    defaultValue: (defaultValue && cleanValue(defaultValue.value)) || '–',
   };
 };
 

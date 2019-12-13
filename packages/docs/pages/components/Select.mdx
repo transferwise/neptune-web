@@ -1,19 +1,12 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { Select } from '@transferwise/components';
 import code from '../../liveEditorCode/select.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ Select }} />
-  <GeneratePropsTable componentName="Select" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ Select }} />
+<GeneratePropsTable componentName="Select" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Select',
-  size: '',
-  isPlaceholder: true,
 };
+
+;

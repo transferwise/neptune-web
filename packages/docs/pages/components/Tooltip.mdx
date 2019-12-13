@@ -1,19 +1,12 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
-import { Tooltip,Button } from '@transferwise/components';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Tooltip, Button } from '@transferwise/components';
 import code from '../../liveEditorCode/tooltip.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ Tooltip,Button }} />
-  <GeneratePropsTable componentName="Tooltip" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ Tooltip, Button }} />
+<GeneratePropsTable componentName="Tooltip" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Tooltip',
-  size: '',
-  isPlaceholder: true,
 };
+
+;

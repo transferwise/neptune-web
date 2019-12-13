@@ -1,18 +1,14 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import Flex from '@transferwise/components/src/flex';
 import Box from '@transferwise/components/src/box';
 import '../../static/assets/box.docs.css';
 import '@transferwise/neptune-css/dist/css/flex.css';
 import code from '../../liveEditorCode/flexbox.code';
 
-<RenderTabs>
-  #web
-  <div id="box">
-    <LiveEditorBlock code={code} scope={{ Flex, Box }} />
-    <GeneratePropsTable componentName="Flex" />
-  </div>
-  #ios
-</RenderTabs>
+<div id="box">
+  <LiveEditorBlock code={code} scope={{ Flex, Box }} />
+  <GeneratePropsTable componentName="Flex" />
+</div>
 
 ### Flex
 
@@ -70,8 +66,5 @@ Example `{'size={xs:0, sm:1/2, md:1/4, lg:200, xl:300}'}`
 </table>
 
 export const meta = {
-  abstractURL: '',
   name: 'Flex & Box',
-  size: '',
-  isPlaceholder: true,
 };

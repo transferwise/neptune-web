@@ -1,18 +1,10 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
-import { Dimmer,Button } from '@transferwise/components';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Dimmer, Button } from '@transferwise/components';
 import code from '../../liveEditorCode/dimmer.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ Dimmer,Button }} />
-  <GeneratePropsTable componentName="Dimmer" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ Dimmer, Button }} />
+<GeneratePropsTable componentName="Dimmer" />
 
 export const meta = {
   name: 'Dimmer',
-  abstractURL: 'https://share.goabstract.com/523506be-a121-4456-ae0e-97c0770413af',
-  size: '',
 };

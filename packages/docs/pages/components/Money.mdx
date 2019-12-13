@@ -1,19 +1,10 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { Money } from '@transferwise/components';
 import code from '../../liveEditorCode/money.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ Money }} />
-  <GeneratePropsTable componentName="Money" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ Money }} />
+<GeneratePropsTable componentName="Money" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Money',
-  size: '',
-  isPlaceholder: true,
 };

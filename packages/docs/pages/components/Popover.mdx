@@ -1,18 +1,10 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
-import  {Button,Popover}  from '@transferwise/components';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Button, Popover } from '@transferwise/components';
 import code from '../../liveEditorCode/popover.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ Popover,Button }} />
-  <GeneratePropsTable componentName="Popover" />
-</>
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ Popover, Button }} />
+<GeneratePropsTable componentName="Popover" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Popover',
-  size: '',
-  isPlaceholder: true,
 };

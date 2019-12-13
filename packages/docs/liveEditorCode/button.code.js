@@ -4,5 +4,5 @@
   block={false}
   onClick={() => alert('clicked')}
 >
-  Edit me!
+  Continue
 </Button>;

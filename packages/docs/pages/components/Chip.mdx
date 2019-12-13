@@ -1,19 +1,10 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { Chip } from '@transferwise/components';
 import code from '../../liveEditorCode/chip.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ Chip }} />
-  <GeneratePropsTable componentName="Chip" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ Chip }} />
+<GeneratePropsTable componentName="Chip" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Chip',
-  size: '',
-  isPlaceholder: true,
 };

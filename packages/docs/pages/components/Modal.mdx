@@ -1,21 +1,12 @@
-import { RenderTabs, LiveEditorBlock, GeneratePropsTable } from '../../utils';
-import { Modal,Button } from '@transferwise/components';
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Modal, Button } from '@transferwise/components';
 import code from '../../liveEditorCode/modal.code';
 
-<RenderTabs>
-#web
-<>
-  <LiveEditorBlock code={code} scope={{ Modal, Button }} />
-  <GeneratePropsTable componentName="Modal" />
-</>
-#ios
-</RenderTabs>
+<LiveEditorBlock code={code} scope={{ Modal, Button }} />
+<GeneratePropsTable componentName="Modal" />
 
 export const meta = {
-  abstractURL: '',
   name: 'Modal',
-  size: '',
-  isPlaceholder: true,
 };
 
 ;
