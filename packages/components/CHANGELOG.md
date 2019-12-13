@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [18.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@18.0.8...@transferwise/components@18.1.0) (2019-12-13)
+
+
+### Features
+
+* popover fixes ([#122](https://github.com/transferwise/neptune-web/issues/122)) ([dba90ff](https://github.com/transferwise/neptune-web/commit/dba90ffd4f5b3773e0c1c4fd0ba0bd1b54fb2108))
+
+
+
+
+
 ## [18.0.8](https://github.com/transferwise/neptune-web/compare/@transferwise/components@18.0.7...@transferwise/components@18.0.8) (2019-12-12)
 
 **Note:** Version bump only for package @transferwise/components
