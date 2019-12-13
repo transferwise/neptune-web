@@ -151,8 +151,8 @@ describe('Popover positioning', () => {
 
       expect(getPositionRelativeToParent(popover, Placement.BOTTOM_LEFT)).toEqual({
         top: 500,
-        right: 429,
-        left: 329,
+        right: 430,
+        left: 330,
       });
     });
 
@@ -168,8 +168,8 @@ describe('Popover positioning', () => {
 
       expect(getPositionRelativeToParent(popover, Placement.BOTTOM_RIGHT)).toEqual({
         top: 500,
-        right: 471,
-        left: 371,
+        right: 470,
+        left: 370,
       });
     });
 
@@ -193,7 +193,7 @@ describe('Popover positioning', () => {
         .arrow({ top: 20, height: 10, marginTop: 8 });
 
       expect(getPositionRelativeToParent(popover, Placement.RIGHT_TOP)).toEqual({
-        top: 367,
+        top: 370,
         right: 600,
         left: 500,
       });
@@ -205,7 +205,7 @@ describe('Popover positioning', () => {
         .arrow({ top: 20, height: 10, marginTop: 8 });
 
       expect(getPositionRelativeToParent(popover, Placement.LEFT_TOP)).toEqual({
-        top: 367,
+        top: 370,
         right: 300,
         left: 200,
       });

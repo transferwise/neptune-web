@@ -24,17 +24,27 @@ function overridePlacementGivenDocumentBounds(preferredPlacement, popover, docum
   if (rightPlacementOverflows.overflowsRight && leftPlacementOverflows.overflowsLeft) {
     return determineBestBottomPlacement(popover, documentBounds);
   }
-  if (rightPlacementOverflows.overflowsRight && preferredPlacement === RIGHT) {
-    return LEFT;
+  if (rightPlacementOverflows.overflowsRight) {
+    if (preferredPlacement === RIGHT) {
+      return LEFT;
+    }
+    if (preferredPlacement === RIGHT_TOP) {
+      return LEFT_TOP;
+    }
+    if (preferredPlacement === BOTTOM || preferredPlacement === BOTTOM_RIGHT) {
+      return BOTTOM_LEFT;
+    }
   }
-  if (rightPlacementOverflows.overflowsRight && preferredPlacement === RIGHT_TOP) {
-    return LEFT_TOP;
-  }
-  if (leftPlacementOverflows.overflowsLeft && preferredPlacement === LEFT) {
-    return RIGHT;
-  }
-  if (leftPlacementOverflows.overflowsLeft && preferredPlacement === LEFT_TOP) {
-    return RIGHT_TOP;
+  if (leftPlacementOverflows.overflowsLeft) {
+    if (preferredPlacement === LEFT) {
+      return RIGHT;
+    }
+    if (preferredPlacement === LEFT_TOP) {
+      return RIGHT_TOP;
+    }
+    if (preferredPlacement === BOTTOM || preferredPlacement === BOTTOM_LEFT) {
+      return BOTTOM_RIGHT;
+    }
   }
   return preferredPlacement;
 }
@@ -85,17 +95,10 @@ function getPositionRelativeToViewport(popover, placement) {
   );
 }
 
+const ARROW_OFFSET = 30;
+
 function getPopoverPosition(popover, placement, trigger) {
   const { offsetWidth: popoverWidth, offsetHeight: popoverHeight } = popover;
-
-  const arrowStyles = getComputedStyle(popover, ':before');
-  const arrowTop = toInt(arrowStyles.top);
-  const arrowHeight = toInt(arrowStyles.height);
-  const arrowWidth = toInt(arrowStyles.width);
-  const arrowLeft = toInt(arrowStyles.left);
-  const arrowRight = toInt(arrowStyles.right);
-  const arrowMarginTop = toInt(arrowStyles['margin-top']);
-  const arrowMarginLeft = toInt(arrowStyles['margin-left']);
 
   switch (placement) {
     case TOP:
@@ -126,7 +129,7 @@ function getPopoverPosition(popover, placement, trigger) {
       return enrichWithRightPosition(
         {
           top: trigger.top + trigger.height,
-          left: trigger.left + trigger.width / 2 - (arrowLeft + arrowMarginLeft + arrowWidth / 2),
+          left: trigger.left + trigger.width / 2 - ARROW_OFFSET,
         },
         popoverWidth,
       );
@@ -134,10 +137,7 @@ function getPopoverPosition(popover, placement, trigger) {
       return enrichWithRightPosition(
         {
           top: trigger.top + trigger.height,
-          left:
-            trigger.left +
-            trigger.width / 2 -
-            (popoverWidth - arrowRight + arrowMarginLeft + arrowWidth / 2),
+          left: trigger.left + trigger.width / 2 - popoverWidth + ARROW_OFFSET,
         },
         popoverWidth,
       );
@@ -152,7 +152,7 @@ function getPopoverPosition(popover, placement, trigger) {
     case RIGHT_TOP:
       return enrichWithRightPosition(
         {
-          top: trigger.top + trigger.height / 2 - (arrowTop + arrowMarginTop + arrowHeight / 2),
+          top: trigger.top + trigger.height / 2 - ARROW_OFFSET,
           left: trigger.left + trigger.width,
         },
         popoverWidth,
@@ -160,7 +160,7 @@ function getPopoverPosition(popover, placement, trigger) {
     case LEFT_TOP:
       return enrichWithRightPosition(
         {
-          top: trigger.top + trigger.height / 2 - (arrowTop + arrowMarginTop + arrowHeight / 2),
+          top: trigger.top + trigger.height / 2 - ARROW_OFFSET,
           left: trigger.left - popoverWidth,
         },
         popoverWidth,
@@ -168,10 +168,6 @@ function getPopoverPosition(popover, placement, trigger) {
     default:
       return {};
   }
-}
-
-function toInt(str) {
-  return parseInt(str, 10);
 }
 
 function enrichWithRightPosition(pos, popoverWidth) {
