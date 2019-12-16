@@ -1,0 +1,101 @@
+@import './variables/_colors.less';
+@import './variables/_typography.less';
+
+.progress {
+  --progress-height: 2px;
+  --progress-height-lg: 32px;
+  --progress-bg: var(--brand-smoke-plus-10);
+  --progress-bar-color: var(--brand-white);
+  --progress-bar-bg: var(--brand-light-blue);
+  --progress-bar-primary-bg: var(--brand-navy);
+  --progress-bar-success-bg: var(--brand-green);
+  --progress-bar-warning-bg: var(--brand-orange);
+  --progress-bar-danger-bg: var(--brand-red);
+  --progress-bar-info-bg: var(--brand-light-blue);
+  --progress-pip-size: 8px;
+
+  height: var(--progress-height);
+  margin-top: calc((var(--line-height-computed) - var(--progress-height)) / 2);
+  margin-bottom: calc((var(--line-height-computed) - var(--progress-height)) / 2);
+  background-color: var(--progress-bg);
+  border-radius: calc(var(--progress-height) / 2);
+}
+
+.progress-bar {
+  float: left;
+  width: 0%;
+  height: 100%;
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  color: var(--progress-bar-color);
+  text-align: right;
+  background-color: var(--progress-bar-bg);
+  transition: width 0.6s ease;
+
+  &:after {
+    content: '';
+    float: right;
+    margin-top: calc(var(--progress-pip-size / 2) + 1);
+    margin-right: calc(var(--progress-pip-size / 2));
+    width: var(--progress-pip-size);
+    height: var(--progress-pip-size);
+    background-color: inherit;
+    border-radius: (var(--progress-pip-size / 2));
+  }
+
+  &:first-child {
+    border-top-left-radius: calc(var(--progress-height / 2));
+    border-bottom-left-radius: calc(var(--progress-height / 2));
+  }
+
+  &:last-child {
+    border-top-right-radius: calc(var(--progress-height / 2));
+    border-bottom-right-radius: calc(var(--progress-height / 2));
+  }
+}
+
+.progress-lg {
+  height: var(--progress-height-lg);
+  border-radius: calc(var(--progress-height-lg) / 2);
+  margin-bottom: var(--line-height-computed);
+
+  .progress-bar {
+    line-height: var(--progress-height-lg);
+    min-width: var(--progress-height-lg);
+    padding-right: 8px;
+    padding-left: 5px;
+
+    &:after {
+      content: none;
+    }
+  }
+
+  .progress-bar:first-child {
+    border-top-left-radius: calc(var(--progress-height-lg) / 2);
+    border-bottom-left-radius: calc(var(--progress-height-lg) / 2);
+  }
+  .progress-bar:last-child {
+    border-top-right-radius: calc(var(--progress-height-lg) / 2);
+    border-bottom-right-radius: calc(var(--progress-height-lg) / 2);
+  }
+}
+
+.progress-bar-primary {
+  background-color: var(--progress-bar-primary-bg);
+}
+
+.progress-bar-success {
+  background-color: var(--progress-bar-success-bg);
+}
+
+.progress-bar-info {
+  background-color: var(--progress-bar-info-bg);
+}
+
+.progress-bar-warning {
+  background-color: var(--progress-bar-warning-bg);
+}
+
+.progress-bar-danger {
+  background-color: var(--progress-bar-danger-bg);
+}
