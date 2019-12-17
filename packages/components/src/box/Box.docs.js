@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import './Boxdocs.css';
 import { generateCodeBlock, generateInput, generateState } from '../../docs/utils';
 import Box from './Box';
-import '@transferwise/neptune-css/dist/css/flex.css';
 
 import { JustifyContent, AlignItems } from '../common';
 
@@ -161,7 +160,7 @@ export default class BoxDocs extends Component {
             </div>
             <div className="col-md-6 ">
               <div style={{ height: '200px', border: '1px solid #e2e6e8' }}>
-                <div style={{ height: '100%' }} className="d-flex">
+                <div style={{ height: '100%', display: 'flex' }} className="demo-container">
                   <Box
                     size={{ xs, sm, md, lg, xl }}
                     justifyContent={justifyContent.value}

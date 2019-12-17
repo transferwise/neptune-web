@@ -7,7 +7,17 @@ import { Size, FlexDirection, Breakpoint } from '../common';
 const mediaQueries = Object.values(Breakpoint).map(bp => `@media (min-width: ${bp}px)`);
 
 const Flex = props => {
-  const { direction, children, marginX, paddingX, marginY, paddingY, customMediaQueries } = props;
+  const {
+    as: Element,
+    direction,
+    children,
+    marginX,
+    paddingX,
+    marginY,
+    paddingY,
+    customMediaQueries,
+    className,
+  } = props;
 
   const getFlexDirection = breakpoint => {
     return direction && direction[breakpoint] && FlexDirection.indexOf(direction[breakpoint]) > -1
@@ -33,8 +43,10 @@ const Flex = props => {
     },
   };
 
+  style.display = 'flex';
+
   return (
-    <div className="d-flex" css={style}>
+    <Element className={className} css={style}>
       {React.Children.map(children, child => {
         if (child && child.type && child.type.name === 'Box') {
           const childrenProps = { ...child.props, marginX, paddingX, marginY, paddingY };
@@ -42,7 +54,7 @@ const Flex = props => {
         }
         return child;
       })}
-    </div>
+    </Element>
   );
 };
 
@@ -60,15 +72,19 @@ Flex.propTypes = {
   marginY: Types.number,
   paddingY: Types.number,
   customMediaQueries: Types.arrayOf(Types.string),
+  as: Types.elementType,
+  className: Types.string,
 };
 
 Flex.defaultProps = {
+  as: 'div',
   children: null,
   marginX: 0,
   paddingX: 0,
   marginY: 0,
   paddingY: 0,
   customMediaQueries: mediaQueries,
+  className: '',
 };
 
 export default Flex;

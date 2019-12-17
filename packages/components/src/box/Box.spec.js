@@ -11,7 +11,7 @@ const customMediaQueries = [0, 10, 20, 30, 40].map(bp => `@media (min-width: ${b
 expect.addSnapshotSerializer(serializer);
 
 const props = {
-  tagHtml: 'section',
+  as: 'section',
   size: Width,
   marginX: 1,
   marginY: 2,
@@ -19,7 +19,7 @@ const props = {
   paddingY: 4,
   justifyContent: 'center',
   alignItems: 'end',
-  extraClassNames: ['anotherClass1', 'anotherClass2'],
+  className: 'anotherClass1 anotherClass2',
 };
 
 describe('Box', () => {

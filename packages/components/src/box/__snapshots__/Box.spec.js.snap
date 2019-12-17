@@ -59,7 +59,7 @@ exports[`Box renders correctly 1`] = `
 }
 
 <section
-  className="flex__inner justify-content-center align-items-end m-x-1 p-x-3 m-y-2 p-y-4 anotherClass1 anotherClass2 emotion-0"
+  className="justify-content-center align-items-end m-x-1 p-x-3 m-y-2 p-y-4 anotherClass1 anotherClass2 emotion-0"
 >
   <div>
     This is a children.
@@ -126,7 +126,7 @@ exports[`Box renders correctly with custom media queries 1`] = `
 }
 
 <section
-  className="flex__inner justify-content-center align-items-end m-x-1 p-x-3 m-y-2 p-y-4 anotherClass1 anotherClass2 emotion-0"
+  className="justify-content-center align-items-end m-x-1 p-x-3 m-y-2 p-y-4 anotherClass1 anotherClass2 emotion-0"
 >
   <div>
     This is a children.

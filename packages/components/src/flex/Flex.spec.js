@@ -20,6 +20,8 @@ const props = {
   marginY: 1,
   paddingX: 2,
   paddingY: 3,
+  className: 'anotherClass1 anotherClass2',
+  as: 'section',
 };
 
 describe('Box', () => {

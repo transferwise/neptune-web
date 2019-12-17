@@ -9,20 +9,18 @@ const mediaQueries = Object.values(Breakpoint).map(bp => `@media (min-width: ${b
 
 const Box = props => {
   const {
+    as: Element,
     size,
     justifyContent,
     alignItems,
     children,
-    extraClassNames,
+    className,
     marginX,
     paddingX,
     marginY,
     paddingY,
-    tagHtml,
     customMediaQueries,
   } = props;
-
-  const Tag = tagHtml;
 
   const getFlex = breakpoint => {
     const style = { flex: 0, display: 'none' };
@@ -53,9 +51,8 @@ const Box = props => {
   };
 
   return size ? (
-    <Tag
+    <Element
       className={classNames(
-        'flex__inner',
         {
           [`justify-content-${justifyContent}`]: justifyContent,
           [`align-items-${alignItems}`]: alignItems,
@@ -64,25 +61,25 @@ const Box = props => {
           [`m-y-${marginY}`]: marginY !== null,
           [`p-y-${paddingY}`]: paddingY !== null,
         },
-        ...extraClassNames,
+        className,
       )}
       css={style}
     >
       {children}
-    </Tag>
+    </Element>
   ) : null;
 };
 
 Box.propTypes = {
   alignItems: Types.oneOf([...Object.values(AlignItems)]),
   children: Types.oneOfType([Types.arrayOf(Types.node), Types.node]),
-  extraClassNames: Types.arrayOf(Types.string),
+  className: Types.string,
   justifyContent: Types.oneOf([...Object.values(JustifyContent)]),
   marginX: Types.number,
   marginY: Types.number,
   paddingX: Types.number,
   paddingY: Types.number,
-  tagHtml: Types.string,
+  as: Types.elementType,
   size: Types.shape({
     lg: Types.number,
     md: Types.number,
@@ -97,12 +94,12 @@ Box.defaultProps = {
   justifyContent: null,
   alignItems: null,
   children: null,
-  extraClassNames: [],
+  className: '',
   paddingX: 0,
   marginX: 0,
   paddingY: 0,
   marginY: 0,
-  tagHtml: 'div',
+  as: 'div',
   customMediaQueries: mediaQueries,
 };
 
