@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@19.0.0...@transferwise/components@19.0.1) (2019-12-17)
+
+
+### Bug Fixes
+
+* remove old css reference ([#130](https://github.com/transferwise/neptune-web/issues/130)) ([4d33786](https://github.com/transferwise/neptune-web/commit/4d33786b216b9b69ec995c46ad0380e8775240e4))
+
+
+
+
+
 # [19.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@18.1.1...@transferwise/components@19.0.0) (2019-12-17)
 
 
