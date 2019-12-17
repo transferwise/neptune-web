@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@18.1.1...@transferwise/components@19.0.0) (2019-12-17)
+
+
+### Features
+
+* updated Button Size and Type case ([e100468](https://github.com/transferwise/neptune-web/commit/e100468889eea67f32ac7869e718ab53333b90ed))
+* updated DateInput Size singular case ([61fa72b](https://github.com/transferwise/neptune-web/commit/61fa72bead9941ecad19d4176c8a417c32b187b6))
+* updated DateLookup Size singular case ([12e690a](https://github.com/transferwise/neptune-web/commit/12e690a381a0a7d3d29b1c558717bb50b998567b))
+* updated ProcessorIndicator Size and Status case ([0e1cb73](https://github.com/transferwise/neptune-web/commit/0e1cb73a3e18bf5bbfb3d85641a103107a407fd5))
+
+
+### BREAKING CHANGES
+
+* Changed case in Button propType definition
+* Singularised DateInput Size propType
+* Singularised DateLookup Size propType
+* Changed case in ProcessorIndicator propType definition
+
+
+
+
+
 ## [18.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@18.1.0...@transferwise/components@18.1.1) (2019-12-16)
 
 **Note:** Version bump only for package @transferwise/components
