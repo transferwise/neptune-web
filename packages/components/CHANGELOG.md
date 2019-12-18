@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@19.0.1...@transferwise/components@19.0.2) (2019-12-18)
+
+
+### Bug Fixes
+
+* expose flex and box ([#131](https://github.com/transferwise/neptune-web/issues/131)) ([00e8cb6](https://github.com/transferwise/neptune-web/commit/00e8cb624ccbf6dc8cb7e5176673b37e2c2ac6d3))
+
+
+
+
+
 ## [19.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@19.0.0...@transferwise/components@19.0.1) (2019-12-17)
 
 
