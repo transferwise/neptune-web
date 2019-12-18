@@ -1,36 +1,77 @@
-# Neptune CSS 🔱
+# CSS
 
-The CSS library of TransferWise's Design System: Neptune
+[![CircleCI](https://circleci.com/gh/transferwise/neptune-web.svg?style=shield)](https://circleci.com/gh/transferwise/neptune-web) [![NPM](https://badge.fury.io/js/%40transferwise%2Fneptune-css.svg)](https://www.npmjs.com/package/@transferwise/neptune-css)
 
-To document the components please use the [Neptune Docs](https://github.com/transferwise/neptune-web/tree/master/packages/docs).
+The CSS library provides css styles for common components and utilities reused across the web platform.
 
-### How to consume the CSS
-
-Install the NPM package as a dependency to your project
+### Install
 
 ```
-npm install @transferwise/neptune-css
+yarn add @transferwise/css
 ```
 
-Import the styles for your components in your app. E.g.
+### Use
+
+In the `dist` directory you can find individual files for components, variables, and other common utilities. They can be used individually or as the whole `neptune.css` bundle.
+
+```jsx
+// Individual
+import '@transferwise/neptune-css/dist/css/buttons.css';
+
+// Full bundle
+import '@transferwise/neptune-css/dist/css/neptune.css';
+```
+
+## Contributing
+
+### Pull requests
+
+To introduce or update a component, create a branch and submit a pull request. The [docs page](https://transferwise.github.io/neptune-web) and the new npm release will be automatically deployed when merging changes to master.
+
+We use [Conventional Commits](https://www.conventionalcommits.org) on the master branch, so all the commits in a PR should follow the specification before merging, there's a CI job that monitors this. This gives us automatic changelogs and version bumps on all packages. All commits are rebased into master, so make them meaningful or squash them before requesting review.
+
+1. Create a feature branch from master.
+2. ️⚠️ Make sure each commit only affects files from a single package (`components` or `css`).
+3. Open a PR and ensure that all commits adhere to conventional commits. You may need a rebase in order to reorganize your existing code.
+4. Before asking for a review, the title of your PR should have the final commit message that you want to be used in the [changelog](https://github.com/transferwise/neptune-web/blob/master/packages/components/CHANGELOG.md).
+5. Ask for a review and, once approved, ask for a member of the [design system team](https://github.com/orgs/transferwise/teams/design-system) to squash and merge your branch using a valid conventional commit message.
+
+### Install
 
 ```
-import '@transferwise/neptune-css/dist/css/chevron.css'
+git clone git@github.com:transferwise/neptune-web.git
+cd neptune
+yarn start
 ```
 
-In the `dist/` directory you can find all the components' CSS. Use them as individual components (e.g. alerts.css) or call the whole library (neptune.css).
+- Clones repository.
+- Installs dependencies.
+- Creates initial builds of all packages.
+- Starts live-reloading dev environment.
 
-### Build the project
+### Develop
 
-- `npm run build`
+```
+yarn dev
+```
 
-### How to contribute
+- Starts the live-reloading dev environment.
 
-Do you want to contribute? Great! Please take a look at our `Contributing` guideline:
-[CONTRIBUTING.md](https://github.com/transferwise/neptune-css/blob/master/CONTRIBUTING.md)
+### Docs
 
-### Spin up dev environment
+```
+yarn docs
+```
 
-- `npm run dev`
+- Starts the live-reloading docs environment.
 
-This command will generate the intial build and add a watcher to the less files. The first iterations won't be cached and will be slower but after the firsts one only affected files and dependent will be updated.
+### Create a new style
+
+1. Create a new file for it in `./src/less/my-component.less`
+2. Decide about the component style's level (1,2,3 or 4)
+
+### Naming convention
+
+File naming should follow `kebab-case`.
+
+E.g. `link-callout.(css|less)`

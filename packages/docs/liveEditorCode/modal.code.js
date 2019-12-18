@@ -8,7 +8,7 @@
         footer={<Button label="Action" block />}
         open={open}
         onClose={() => setOpen(false)}
-        size="md"
+        size={Modal.Size.MEDIUM}
         title="title"
         className=""
         footer={

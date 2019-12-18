@@ -16,7 +16,7 @@
   usDisabled={false}
   usDropMessage="Drop file to start upload"
   usLabel=""
-  usPlaceholder="Drag and drop a file less than 5MB"
+  usPlaceholder="Drag and drop file less than 5MB"
   usAccept="image/*"
   usHelpImage={IMAGES[0].value}
   httpOptions={{

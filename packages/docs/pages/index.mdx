@@ -1,26 +1,49 @@
-# Neptune Design System
+import componentPackage from '@transferwise/components/package.json';
+import cssPackage from '@transferwise/neptune-css/package.json';
+import Version from '../utils/version';
 
-Design guidelines for building interfaces with TransferWise's Design System
+# Neptune Design System – Web
 
-**⚠️ This site is a work in progress!**
+Documentation for building interfaces on web using Neptune components and other resources. Built by TransferWise.
 
-## Getting started
+## React components <Version version={componentPackage.version} />
 
-Explore the site or start by the libraries .
+For every Neptune component, we have a page for it with an interactive block where you can edit the code and see a preview of the component live. You can copy this code directly to your project. To learn how to contribute, [go here](https://github.com/transferwise/neptune-web/tree/master/packages/components).
 
-- **[Neptune Components](https://github.com/transferwise/components)** React.js component library for Neptune
-- **[Neptune CSS](https://github.com/transferwise/neptune-css)** CSS library for Neptune
+#### Install
 
-## Installation
-
-```shell
-npm i -S @transferwise/components
-npm i -S transferwise/neptune-css
+```
+yarn add @transferwise/components
 ```
 
-## Usage
+#### Use
 
 ```js
-import '@transferwise/components';
-import '~neptune-css/build/css/neptune.css';
+import { Button } from '@transferwise/components';
 ```
+
+## CSS <Version version={cssPackage.version} />
+
+We will have extra documentation on the CSS library soon, in the meantime, here's how you can use it on your project. For more details, [here's the source](https://github.com/transferwise/neptune-web/tree/master/packages/css).
+
+#### Install
+
+```
+yarn add @transferwise/css
+```
+
+#### Use
+
+In the `dist` directory you can find bundles for the individual components, variables, and other common utilities. Use them as individual components or import the whole library.
+
+```js
+// Individual
+import '@transferwise/neptune-css/dist/css/buttons.css';
+
+// Full bundle
+import '@transferwise/neptune-css/dist/css/neptune.css';
+```
+
+## Usage guidelines
+
+Guidelines on when to use components are shared across all platforms and documented on a [common repository](https://github.com/transferwise/neptune). Please report cross-platform problems and ask questions by creating an [issue](https://github.com/transferwise/neptune/issues).

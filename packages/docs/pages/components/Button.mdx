@@ -9,58 +9,50 @@ Simple wrapper component for all button types and their states.
 
 ## Types
 
-<table className="table table-condensed">
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Large</th>
-      <th>Small</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Primary</th>
-      <td>Main call to action. Limit to one per view.</td>
-      <td>
-        <Button size="md" type="primary" state="default" block={true}>
-          Continue
-        </Button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Pay</th>
-      <td>Reserved to initiate or confirm a money transaction. Limit to one per view.</td>
-      <td>
-        <Button size="md" type="pay" state="default" block={true}>
-          Send money
-        </Button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Secondary</th>
-      <td>
-        Secondary actions or less important actions. Consider it the default when adding a new
-        button.
-      </td>
-      <td>
-        <Button size="md" type="secondary" state="default" block={true}>
-          Manage my card
-        </Button>
-      </td>
-    </tr>{' '}
-    <tr>
-      <th scope="row">Danger</th>
-      <td>
-        Actions that may result in loss of data and effort from the user and cannot be recovered.
-      </td>
-      <td>
-        <Button size="md" type="danger" state="default" block={true}>
-          Delete recipient
-        </Button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div className="scroll-table">
+  <table className="docs-table table ">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Preview</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Primary</th>
+        <td>
+          <Button size="md" type="primary" state="default" block={true}>
+            Continue
+          </Button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Pay</th>
+        <td>
+          <Button size="md" type="pay" state="default" block={true}>
+            Send money
+          </Button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Secondary</th>
+        <td>
+          <Button size="md" type="secondary" state="default" block={true}>
+            Manage my card
+          </Button>
+        </td>
+      </tr>{' '}
+      <tr>
+        <th scope="row">Danger</th>
+        <td>
+          <Button size="md" type="danger" state="default" block={true}>
+            Delete recipient
+          </Button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 export const meta = {
   name: 'Button',

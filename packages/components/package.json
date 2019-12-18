@@ -31,9 +31,9 @@
     "test:watch": "jest --watch --env=jsdom",
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "npm run lint -- --fix",
-    "docs:build": "gulp lessCompiler && node scripts/build-docs.js",
-    "docs:deploy": "gh-pages -a -d docs-build",
-    "docs:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
+    "docs-old:build": "gulp lessCompiler && node scripts/build-docs.js",
+    "docs-old:deploy": "gh-pages -a -d docs-build",
+    "docs-old:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
     "predeploy": "npm run build"
   },
   "devDependencies": {

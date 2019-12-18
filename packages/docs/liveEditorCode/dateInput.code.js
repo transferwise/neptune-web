@@ -2,7 +2,7 @@
   onChange={value => console.log(value)}
   locale="en-GB"
   disabled={false}
-  size={DateInput.Sizes.SMALL}
+  size={DateInput.Size.MEDIUM}
   value="1995-12-01"
   key={1}
   monthFormat={DateInput.MonthFormat.LONG}

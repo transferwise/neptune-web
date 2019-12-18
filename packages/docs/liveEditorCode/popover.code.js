@@ -1,7 +1,7 @@
 <Popover
   title="I am the Popover title"
   content="Lorem ipsum dolor sit amet"
-  preferredPlacement="bottom"
+  preferredPlacement={Popover.Placement.BOTTOM}
 >
   <Button
     onClick={() => console.log('clicked')}

@@ -6,12 +6,12 @@
   placeholder="Search placeholder"
   displayPattern={null}
   label="label"
-  type={FormControl.Types.TEXT}
+  type={FormControl.Type.TEXT}
   step={1}
   options={[
     { value: '1', label: 'One' },
     { value: '2', label: 'Two' },
-    { value: '3', label: 'Three', secondary: 'This is a secondary text' },
+    { value: '3', label: 'Three', secondary: 'secondary text' },
   ]}
   disabled={false}
   readOnly={false}
@@ -29,6 +29,6 @@
   monthFormat={FormControl.MonthFormat.LONG}
   value="a value"
   searchPlaceholder="placeholder"
-  size={FormControl.Sizes.MEDIUM}
+  size={FormControl.Size.MEDIUM}
   uploadProps={{ usDisabled: false, size: 'md' }}
 />;

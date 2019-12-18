@@ -12,10 +12,9 @@ const GeneratePropsTable = ({ componentName }) => {
   const schema = propsData[componentName];
 
   return (
-    <>
+    <div className="scroll-table">
       <h2>Props</h2>
-
-      <table className="table table-condensed">
+      <table className="table table-condensed docs-table">
         <thead>
           <tr>
             <th>Name</th>
@@ -48,7 +47,7 @@ const GeneratePropsTable = ({ componentName }) => {
           })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 

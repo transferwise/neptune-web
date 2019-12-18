@@ -1,5 +1,5 @@
 <DefinitionList
-  layout="VERTICAL_TWO_COLUMN"
+  layout={DefinitionList.Layout.VERTICAL_TWO_COLUMN}
   muted={false}
   definitions={[
     {

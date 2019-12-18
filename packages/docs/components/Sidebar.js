@@ -28,7 +28,7 @@ const getLink = (pathname, sectionSlug) => {
 const Sidebar = ({ router: { pathname }, title, slug }) => (
   <div className="Sidebar__Fixed">
     <div className="Sidebar__Header">
-      <h3 className="Sidebar__Title">{title}</h3>
+      <h5 className="Sidebar__Title">{title}</h5>
     </div>
     <div className="Sidebar__Inner">
       <ul className="Nav">{getLink(pathname, slug)}</ul>

@@ -5,17 +5,17 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev-new": "node ./docgen.js && next dev",
+    "docs": "node ./docgen.js && next dev",
     "build": "node ./docgen.js && next build",
-    "docs-new:build": "next export -o docs-build && touch docs-build/.nojekyll",
-    "docs-new:deploy": "gh-pages --dotfiles -a -d docs-build",
-    "docs-new:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
+    "docs:build": "next export -o docs-build && touch docs-build/.nojekyll",
+    "docs:deploy": "gh-pages --dotfiles -a -d docs-build",
+    "docs:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
     "lint": "eslint components/ pages/",
     "lint:fix": "npm run lint -- --fix"
   },
   "repository": {
     "type": "git",
-    "fullname": "transferwise/neptune",
+    "fullname": "transferwise/neptune-web",
     "url": "git+https://github.com/transferwise/neptune-web.git"
   },
   "keywords": [],
@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://github.com/transferwise/neptune-web/issues"
   },
-  "homepage": "https://transferwise.github.io/neptune",
+  "homepage": "https://transferwise.github.io/neptune-web",
   "dependencies": {
     "@mapbox/rehype-prism": "^0.3.1",
     "@mdx-js/loader": "^1.4.4",

@@ -10,6 +10,7 @@
     lg: 'row',
     xl: 'row',
   }}
+  className="flex-docs"
 >
   <Box
     justifyContent="center"
@@ -21,6 +22,7 @@
       lg: 0.5,
       xl: 1,
     }}
+    className="BoxDoc"
   >
     <div className="demo" />
   </Box>
@@ -34,6 +36,7 @@
       lg: 0.5,
       xl: 1,
     }}
+    className="BoxDoc"
   >
     <div className="demo" />
   </Box>

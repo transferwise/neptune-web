@@ -16,7 +16,7 @@ const pageExtensions = ['js', 'mdx'];
 const branch = getBranch.sync();
 const assetPrefix =
   process.env.NODE_ENV === 'production'
-    ? `/neptune${branch !== 'master' ? `/branch/${branch}` : ''}`
+    ? `/neptune-web${branch !== 'master' ? `/branch/${branch}` : ''}`
     : '';
 
 module.exports = () =>

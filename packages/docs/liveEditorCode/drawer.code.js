@@ -2,7 +2,14 @@
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open drawer</Button>
+      <Button
+        onClick={() => setDimmerState(true)}
+        disabled={false}
+        block={false}
+        onClick={() => setOpen(true)}
+      >
+        Open drawer
+      </Button>
       <Drawer
         open={open}
         position="right"
