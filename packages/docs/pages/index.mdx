@@ -1,12 +1,12 @@
 import componentPackage from '@transferwise/components/package.json';
 import cssPackage from '@transferwise/neptune-css/package.json';
-import Version from '../utils/version';
+import { PackageVersion } from '../utils';
 
 # Neptune Design System – Web
 
 Documentation for building interfaces on web using Neptune components and other resources. Built by TransferWise.
 
-## React components <Version version={componentPackage.version} />
+## React components <PackageVersion version={componentPackage.version} />
 
 For every Neptune component, we have a page for it with an interactive block where you can edit the code and see a preview of the component live. You can copy this code directly to your project. To learn how to contribute, [go here](https://github.com/transferwise/neptune-web/tree/master/packages/components).
 
@@ -22,7 +22,7 @@ yarn add @transferwise/components
 import { Button } from '@transferwise/components';
 ```
 
-## CSS <Version version={cssPackage.version} />
+## CSS <PackageVersion version={cssPackage.version} />
 
 We will have extra documentation on the CSS library soon, in the meantime, here's how you can use it on your project. For more details, [here's the source](https://github.com/transferwise/neptune-web/tree/master/packages/css).
 

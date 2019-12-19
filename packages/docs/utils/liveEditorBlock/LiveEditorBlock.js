@@ -2,7 +2,7 @@ import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import Types from 'prop-types';
 
-import theme from './prismTheme';
+import theme from '../prismTheme';
 
 const LiveEditorBlock = ({ code, scope, display }) => (
   <div className="row live-provider">

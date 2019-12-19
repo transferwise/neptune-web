@@ -103,6 +103,7 @@ const Layout = ({ children, router: { pathname } }) => {
           }}
           justifyContent="start"
           alignItems="start"
+          className="Box__Container"
         >
           <div className="Content">
             {page && <h1 className="colored-dot">{page.component.meta.name}</h1>}

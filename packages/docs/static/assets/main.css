@@ -132,9 +132,9 @@ img {
   max-width: 100%;
 }
 
-.Flex__Container {
+.Flex__Container,
+.Box__Container {
   width: 100%;
-  overflow: hidden;
 }
 
 /* Live editor */

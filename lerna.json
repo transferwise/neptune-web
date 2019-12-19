@@ -9,7 +9,8 @@
         "**/*.spec.js",
         "**/*.yml",
         "**/*.docs.js",
-        "**/components/docs/**"
+        "**/components/docs/**",
+        "packages/docs"
       ]
     }
   },
