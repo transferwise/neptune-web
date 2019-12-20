@@ -48,6 +48,11 @@ exports[`Box renders correctly 1`] = `
   }
 }
 
+.emotion-0 {
+  margin: 8px 0px;
+  padding: 24px 16px;
+}
+
 @media (min-width:0px) {
   .emotion-0 {
     -webkit-flex: 0 1 12.5%;
@@ -112,7 +117,7 @@ exports[`Box renders correctly 1`] = `
   className="anotherClass1 anotherClass2 emotion-1"
 >
   <div
-    className="m-x-0 p-x-2 m-y-1 p-y-3 emotion-0"
+    className=" emotion-0"
   >
     This is a children.
   </div>
@@ -120,6 +125,11 @@ exports[`Box renders correctly 1`] = `
 `;
 
 exports[`Box renders correctly with custom media queries 1`] = `
+.emotion-0 {
+  margin: 8px 0px;
+  padding: 24px 16px;
+}
+
 @media (min-width:0px) {
   .emotion-0 {
     -webkit-flex: 0 1 12.5%;
@@ -231,7 +241,7 @@ exports[`Box renders correctly with custom media queries 1`] = `
   className="anotherClass1 anotherClass2 emotion-1"
 >
   <div
-    className="m-x-0 p-x-2 m-y-1 p-y-3 emotion-0"
+    className=" emotion-0"
   >
     This is a children.
   </div>

@@ -1,6 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Box renders correctly 1`] = `
+.emotion-0 {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end;
+  margin: 16px 8px;
+  padding: 32px 24px;
+}
+
 @media (min-width:0px) {
   .emotion-0 {
     -webkit-flex: 0 1 100%;
@@ -59,7 +72,7 @@ exports[`Box renders correctly 1`] = `
 }
 
 <section
-  className="justify-content-center align-items-end m-x-1 p-x-3 m-y-2 p-y-4 anotherClass1 anotherClass2 emotion-0"
+  className="anotherClass1 anotherClass2 emotion-0"
 >
   <div>
     This is a children.
@@ -68,6 +81,19 @@ exports[`Box renders correctly 1`] = `
 `;
 
 exports[`Box renders correctly with custom media queries 1`] = `
+.emotion-0 {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end;
+  margin: 16px 8px;
+  padding: 32px 24px;
+}
+
 @media (min-width:0px) {
   .emotion-0 {
     -webkit-flex: 0 1 100%;
@@ -126,7 +152,7 @@ exports[`Box renders correctly with custom media queries 1`] = `
 }
 
 <section
-  className="justify-content-center align-items-end m-x-1 p-x-3 m-y-2 p-y-4 anotherClass1 anotherClass2 emotion-0"
+  className="anotherClass1 anotherClass2 emotion-0"
 >
   <div>
     This is a children.

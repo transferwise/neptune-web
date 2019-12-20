@@ -1,9 +1,9 @@
 /** @jsx jsx */
+/* eslint-disable */
 import { jsx } from '@emotion/core';
-import classNames from 'classnames';
 import Types from 'prop-types';
 
-import { Size, JustifyContent, AlignItems, Breakpoint } from '../common';
+import { Size, JustifyContent, AlignItems, Breakpoint, Spacer } from '../common';
 
 const mediaQueries = Object.values(Breakpoint).map(bp => `@media (min-width: ${bp}px)`);
 
@@ -50,21 +50,18 @@ const Box = props => {
     },
   };
 
+  if (justifyContent) {
+    style.justifyContent = justifyContent;
+  }
+  if (alignItems) {
+    style.alignItems = alignItems;
+  }
+
+  style.margin = `${Spacer * marginY}px  ${Spacer * marginX}px`;
+  style.padding = `${Spacer * paddingY}px  ${Spacer * paddingX}px`;
+
   return size ? (
-    <Element
-      className={classNames(
-        {
-          [`justify-content-${justifyContent}`]: justifyContent,
-          [`align-items-${alignItems}`]: alignItems,
-          [`m-x-${marginX}`]: marginX !== null,
-          [`p-x-${paddingX}`]: paddingX !== null,
-          [`m-y-${marginY}`]: marginY !== null,
-          [`p-y-${paddingY}`]: paddingY !== null,
-        },
-        className,
-      )}
-      css={style}
-    >
+    <Element className={className} css={style}>
       {children}
     </Element>
   ) : null;
