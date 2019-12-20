@@ -39,8 +39,8 @@ const Layout = ({ children, router: { pathname } }) => {
           lg: 200,
           xl: 200,
         }}
-        justifyContent="start"
-        alignItems="start"
+        justifyContent="flex-start"
+        alignItems="flex-start"
         tagHtml="header"
         className="Header"
       >
@@ -78,8 +78,8 @@ const Layout = ({ children, router: { pathname } }) => {
             lg: 200,
             xl: 200,
           }}
-          justifyContent="start"
-          alignItems="start"
+          justifyContent="flex-start"
+          alignItems="flex-start"
           className="Sidebar"
         >
           <Sidebar title={sections.find(section => section.dir === dir).title} slug={dir} />
@@ -101,8 +101,8 @@ const Layout = ({ children, router: { pathname } }) => {
             lg: 1,
             xl: 1,
           }}
-          justifyContent="start"
-          alignItems="start"
+          justifyContent="flex-start"
+          alignItems="flex-start"
           className="Box__Container"
         >
           <div className="Content">
