@@ -135,6 +135,7 @@ img {
 .Flex__Container,
 .Box__Container {
   width: 100%;
+  overflow: hidden;
 }
 
 /* Live editor */
