@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@19.0.3...@transferwise/components@20.0.0) (2019-12-20)
+
+
+### Features
+
+* removed traditonal css dependencies ([3a4e42e](https://github.com/transferwise/neptune-web/commit/3a4e42e7cf983b2d67f66bf703ed7fdb117ff49d))
+
+
+### BREAKING CHANGES
+
+* Renamed flex properties
+
+
+
+
+
 ## [19.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@19.0.2...@transferwise/components@19.0.3) (2019-12-18)
 
 **Note:** Version bump only for package @transferwise/components
