@@ -342,7 +342,7 @@ httpOptions: {
   fileInputName: '', // Optional. Defaults to the name of the file being uploaded
   data: { ... }, // Optional. Additional key/value pairs to be included in the form submission
   method: '', // Optional. Defaults to 'POST'
-  headers: {},  // Optional. Additional headers for fetch. 'Content-type' defaults to: 'multipart/form-data'
+  headers: {},  // Optional. Additional headers for fetch. Eg. define custom 'Content-type': 'multipart/form-data' or add access tokens
 }
 `}
       </pre>

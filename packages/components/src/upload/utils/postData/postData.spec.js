@@ -76,12 +76,21 @@ describe('postData', () => {
     expect(mockFetch.mock.calls[0][1].headers['Accept-language']).toEqual(CUSTOM_LANGUAGE);
   });
 
-  it('should set method to `POST`', () => {
+  it('should set method to `POST` by default', () => {
     const mockFetch = jest.fn(() => Promise.resolve({ ok: true }));
     global.fetch = mockFetch;
 
     postData(HTTPOPTIONS, DATA);
 
     expect(mockFetch.mock.calls[0][1].method).toEqual('POST');
+  });
+
+  it('should not set `Content-type` by default', () => {
+    const mockFetch = jest.fn(() => Promise.resolve({ ok: true }));
+    global.fetch = mockFetch;
+
+    postData(HTTPOPTIONS, DATA);
+
+    expect(mockFetch.mock.calls[0][1]['Content-type']).toBeUndefined();
   });
 });
