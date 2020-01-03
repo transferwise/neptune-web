@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.0.0...@transferwise/components@20.0.1) (2020-01-03)
+
+
+### Bug Fixes
+
+* **upload:** don't specify default Content-type ([1715e4d](https://github.com/transferwise/neptune-web/commit/1715e4de83f99c6f5673b4d701e6666845620d58))
+
+
+
+
+
 # [20.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@19.0.3...@transferwise/components@20.0.0) (2019-12-20)
 
 
