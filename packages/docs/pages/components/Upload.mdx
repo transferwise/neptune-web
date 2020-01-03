@@ -30,8 +30,7 @@ import code from '../../liveEditorCode/upload.code';
               usLabel=""
               usPlaceholder="Drag and drop a file less than 5MB"
               httpOptions={{
-                url: 'https://httpbin.org/post',
-                method: 'POST',
+                url: 'https://httpbin.org/post'
               }}
               onStart={file => console.log('onStart', file)}
               onSuccess={httpResponse => console.log('onSuccess', httpResponse)}

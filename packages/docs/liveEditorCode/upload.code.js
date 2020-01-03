@@ -21,7 +21,6 @@
   usHelpImage={IMAGES[0].value}
   httpOptions={{
     url: 'https://httpbin.org/post',
-    method: 'POST',
   }}
   onStart={file => console.log('onStart', file)}
   onSuccess={httpResponse => console.log('onSuccess', httpResponse)}
