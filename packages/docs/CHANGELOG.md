@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.66](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@0.1.65...@transferwise/neptune-docs@0.1.66) (2020-01-06)
+
+
+### Bug Fixes
+
+* **button:** explicitly expose className prop ([20b5611](https://github.com/transferwise/neptune-web/commit/20b56110e678ef630c75de9d6cd8983756150566))
+
+
+
+
+
 ## [0.1.65](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@0.1.64...@transferwise/neptune-docs@0.1.65) (2020-01-03)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

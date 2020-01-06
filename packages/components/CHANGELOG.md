@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.0.1...@transferwise/components@20.0.2) (2020-01-06)
+
+
+### Bug Fixes
+
+* **button:** explicitly expose className prop ([20b5611](https://github.com/transferwise/neptune-web/commit/20b56110e678ef630c75de9d6cd8983756150566))
+
+
+
+
+
 ## [20.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.0.0...@transferwise/components@20.0.1) (2020-01-03)
 
 
