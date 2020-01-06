@@ -7,15 +7,29 @@ import './Button.css';
 
 import { Size, Type } from '../common';
 
-const Button = ({ block, children, disabled, htmlType, loading, size, type, ...rest }) => {
-  const classes = classNames(`btn btn-${size}`, {
-    'btn-loading': loading,
-    'btn-primary': type === Type.PRIMARY,
-    'btn-success': type === Type.PAY,
-    'btn-default': type === Type.SECONDARY,
-    'btn-danger': type === Type.DANGER,
-    'btn-block': block,
-  });
+const Button = ({
+  className,
+  block,
+  children,
+  disabled,
+  htmlType,
+  loading,
+  size,
+  type,
+  ...rest
+}) => {
+  const classes = classNames(
+    `btn btn-${size}`,
+    {
+      'btn-loading': loading,
+      'btn-primary': type === Type.PRIMARY,
+      'btn-success': type === Type.PAY,
+      'btn-default': type === Type.SECONDARY,
+      'btn-danger': type === Type.DANGER,
+      'btn-block': block,
+    },
+    className,
+  );
 
   return (
     <button type={htmlType} className={classes} disabled={disabled || loading} {...rest}>
@@ -29,6 +43,7 @@ Button.Type = Type;
 Button.Size = Size;
 
 Button.propTypes = {
+  className: Types.string,
   type: Types.oneOf([
     Button.Type.PRIMARY,
     Button.Type.PAY,
@@ -51,6 +66,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  className: null,
   size: Button.Size.MEDIUM,
   type: Button.Type.PRIMARY,
   disabled: false,

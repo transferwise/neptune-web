@@ -63,4 +63,11 @@ describe('Button', () => {
     wrapper.simulate('click');
     expect(props.onClick).toBeCalled();
   });
+
+  it('adds passed class name to existing class names', () => {
+    wrapper.setProps({ className: 'm-t-2' });
+    expect(wrapper.find('button').hasClass('btn')).toBe(true);
+    expect(wrapper.find('button').hasClass('btn-md')).toBe(true);
+    expect(wrapper.find('button').hasClass('m-t-2')).toBe(true);
+  });
 });
