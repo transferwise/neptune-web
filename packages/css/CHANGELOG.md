@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.11.0...@transferwise/neptune-css@0.12.0) (2020-01-07)
+
+
+### Features
+
+* add column-layout and process CSS components ([#139](https://github.com/transferwise/neptune-web/issues/139)) ([38e4ba6](https://github.com/transferwise/neptune-web/commit/38e4ba614492e80fbcceb370c9af2340b7e37973))
+
+
+
+
+
 # [0.11.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.10.3...@transferwise/neptune-css@0.11.0) (2019-12-16)
 
 
