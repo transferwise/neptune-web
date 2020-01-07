@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.67](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@0.1.66...@transferwise/neptune-docs@0.1.67) (2020-01-07)
+
+
+### Bug Fixes
+
+* correct CSS install command ([#138](https://github.com/transferwise/neptune-web/issues/138)) ([c660bdd](https://github.com/transferwise/neptune-web/commit/c660bdd344fcbda8a7900aa64c874447f27ab7d5))
+
+
+
+
+
 ## [0.1.66](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@0.1.65...@transferwise/neptune-docs@0.1.66) (2020-01-06)
 
 
