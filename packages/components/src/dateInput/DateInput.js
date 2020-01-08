@@ -41,6 +41,7 @@ const DateInput = props => {
       }
 
       intialValue.explodedDate = explodeDate(intialValue.dateObject);
+
       if (isMonthAndYearFormat(value)) {
         intialValue.explodedDate.day = null;
       }

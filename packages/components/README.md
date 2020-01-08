@@ -58,13 +58,14 @@ CSS files should live inside the component source folder, next to your JavaScrip
 ```
 git clone git@github.com:transferwise/neptune-web.git
 cd neptune
-yarn start
+yarn setup
 ```
 
 - Clones repository.
 - Installs dependencies.
 - Creates initial builds of all packages.
-- Starts live-reloading dev environment.
+
+To start the live-reloading environment for:
 
 ### Develop
 
@@ -72,7 +73,7 @@ yarn start
 yarn dev
 ```
 
-- Starts the live-reloading dev environment.
+- Starts the storybook dev environment.
 
 ### Docs
 

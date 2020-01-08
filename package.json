@@ -43,7 +43,7 @@
     "lint-staged": "^9.0.2"
   },
   "scripts": {
-    "start": "yarn install && yarn build && yarn dev",
+    "setup": "yarn install && yarn build",
     "build": "lerna run build --stream",
     "dev": "lerna run dev --parallel --stream",
     "docs": "lerna run docs --parallel --stream",

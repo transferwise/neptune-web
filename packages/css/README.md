@@ -41,29 +41,20 @@ We use [Conventional Commits](https://www.conventionalcommits.org) on the master
 ```
 git clone git@github.com:transferwise/neptune-web.git
 cd neptune
-yarn start
+yarn setup
 ```
 
 - Clones repository.
 - Installs dependencies.
 - Creates initial builds of all packages.
-- Starts live-reloading dev environment.
 
 ### Develop
-
-```
-yarn dev
-```
-
-- Starts the live-reloading dev environment.
-
-### Docs
 
 ```
 yarn docs
 ```
 
-- Starts the live-reloading docs environment.
+- Starts the live-reloading dev environment.
 
 ### Create a new style
 
