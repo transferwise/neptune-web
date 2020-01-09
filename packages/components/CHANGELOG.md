@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.0.5...@transferwise/components@20.0.6) (2020-01-09)
+
+
+### Bug Fixes
+
+* dev script with npm-run-all ([#141](https://github.com/transferwise/neptune-web/issues/141)) ([3c82f2c](https://github.com/transferwise/neptune-web/commit/3c82f2cb52ad84fa6f9ef47d554ea7a95c3b11a3))
+
+
+
+
+
 ## [20.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.0.4...@transferwise/components@20.0.5) (2020-01-08)
 
 **Note:** Version bump only for package @transferwise/components
