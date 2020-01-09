@@ -15,10 +15,11 @@
     "url": "git+https://github.com/transferwise/neptune-web.git"
   },
   "scripts": {
-    "dev": "start-storybook -p 3001 && gulp lessWatcher",
-    "docs": "npm-run-all  docs:*",
+    "dev": "npm-run-all --parallel storybook docs:watch-less",
+    "docs": "npm-run-all docs:*",
     "docs:babel": "babel src -d lib --ignore '**/*.spec.js','**/*.docs.js' -w",
     "docs:watch-less": "gulp lessWatcher",
+    "storybook": "start-storybook -p 3001",
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf lib build",
     "build:emotion-fix": "node ./emotionFix.js",
