@@ -7,7 +7,7 @@ function isValidMinLength(value, minLength) {
 }
 
 function isValidMaxLength(value, maxLength) {
-  return typeof maxLength === 'undefined' || (!!value && value.length <= maxLength);
+  return typeof maxLength === 'undefined' || value === '' || (!!value && value.length <= maxLength);
 }
 
 function isValidPattern(value, pattern) {

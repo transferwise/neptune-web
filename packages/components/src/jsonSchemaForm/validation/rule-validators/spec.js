@@ -41,6 +41,7 @@ describe('Given a library for validating json schema rules', () => {
 
   describe('when establishing if a value passes maxLength validation', () => {
     it('should return true if maxLength exists and value matches or exceeds it', () => {
+      expect(isValidMaxLength('', 2)).toBe(true);
       expect(isValidMaxLength('a', 2)).toBe(true);
       expect(isValidMaxLength('ab', 2)).toBe(true);
     });
