@@ -54,6 +54,20 @@ describe('Date Input Component', () => {
     it('sets year field to empty', () => {
       expect(inputYear.prop('value')).toBe('');
     });
+
+    it('allows 0 prefixed day values', () => {
+      inputDay.simulate('change', { target: { value: '0' } });
+      setTimeout(() => {
+        expect(inputDay.prop('value')).toBe('0');
+      });
+    });
+
+    it('does not allow 00 as a day value', () => {
+      inputDay.simulate('change', { target: { value: '00' } });
+      setTimeout(() => {
+        expect(inputDay.prop('value')).toBe('1');
+      });
+    });
   });
 
   describe('when initialised with a model', () => {

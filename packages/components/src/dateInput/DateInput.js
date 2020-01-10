@@ -179,7 +179,7 @@ const DateInput = props => {
       checkedDay = null;
     }
 
-    if (newDay && newDay <= 0) {
+    if ((newDay && newDay < 0) || newDay === '00') {
       checkedDay = 1;
     }
 
