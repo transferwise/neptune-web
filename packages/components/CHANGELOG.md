@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.0.7](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.0.6...@transferwise/components@20.0.7) (2020-01-10)
+
+
+### Bug Fixes
+
+* validate max length for empty string correctly ([#144](https://github.com/transferwise/neptune-web/issues/144)) ([5609c21](https://github.com/transferwise/neptune-web/commit/5609c211bf7c1a124f963bdd077b51008a7e3ac8))
+
+
+
+
+
 ## [20.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.0.5...@transferwise/components@20.0.6) (2020-01-09)
 
 
