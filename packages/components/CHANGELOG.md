@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.0.7...@transferwise/components@20.1.0) (2020-01-10)
+
+
+### Features
+
+* **date-input:** allow zero as prefix in day([#143](https://github.com/transferwise/neptune-web/issues/143)) ([2c9ae67](https://github.com/transferwise/neptune-web/commit/2c9ae67974ce927331b54d0252491bf5ce306bea))
+
+
+
+
+
 ## [20.0.7](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.0.6...@transferwise/components@20.0.7) (2020-01-10)
 
 
