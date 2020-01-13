@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.12.2...@transferwise/neptune-css@0.12.3) (2020-01-13)
+
+
+### Bug Fixes
+
+* add thumbnails CSS ([#145](https://github.com/transferwise/neptune-web/issues/145)) ([30f4583](https://github.com/transferwise/neptune-web/commit/30f458397dccc60fbbd470ea5dfaff28d8132b69))
+
+
+
+
+
 ## [0.12.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.12.1...@transferwise/neptune-css@0.12.2) (2020-01-08)
 
 **Note:** Version bump only for package @transferwise/neptune-css
