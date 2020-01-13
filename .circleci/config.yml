@@ -51,7 +51,7 @@ aliases:
 
   - &conventional-commit-lint
     name: Conventional Commits check
-    command: npx commitlint -f $(git rev-parse master) -V
+    command: npx commitlint -f $(git log --author=CircleCI -1 --format=format:"%H") -V
 
   - &test
     name: Test packages
