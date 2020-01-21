@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.76](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@0.1.75...@transferwise/neptune-docs@0.1.76) (2020-01-21)
+
+
+### Bug Fixes
+
+* update docs for typeahed, dateInput , dateLookup ([#150](https://github.com/transferwise/neptune-web/issues/150)) ([c36a6a0](https://github.com/transferwise/neptune-web/commit/c36a6a09537df128a1934aad8f5434224f9b74d4))
+
+
+
+
+
 ## [0.1.75](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@0.1.74...@transferwise/neptune-docs@0.1.75) (2020-01-21)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
