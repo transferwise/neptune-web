@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.1.1...@transferwise/components@20.2.0) (2020-01-21)
+
+
+### Features
+
+* **typeahead:** add option to hide new entry ([#151](https://github.com/transferwise/neptune-web/issues/151)) ([ca70ea2](https://github.com/transferwise/neptune-web/commit/ca70ea25b38dfc07f96a10582b84ac46b3ee1cb1))
+
+
+
+
+
 ## [20.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.1.0...@transferwise/components@20.1.1) (2020-01-13)
 
 **Note:** Version bump only for package @transferwise/components
