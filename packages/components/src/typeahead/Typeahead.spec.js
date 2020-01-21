@@ -286,6 +286,28 @@ describe('Typeahead', () => {
       expect(options.every((label, i) => label === props.options[i].label));
     });
 
+    it('does not render new option if showNewEntry is false', () => {
+      component.setProps({
+        allowNew: true,
+        showNewEntry: false,
+      });
+      input().simulate('change', { target: { value: 'check' } });
+
+      const options = option().map(optNode => optNode.text());
+      expect(options).toHaveLength(props.options.length);
+    });
+
+    it('renders new option if showNewEntry is true', () => {
+      component.setProps({
+        allowNew: true,
+        showNewEntry: true,
+      });
+      input().simulate('change', { target: { value: 'check' } });
+
+      const options = option().map(optNode => optNode.text());
+      expect(options).toHaveLength(props.options.length + 1);
+    });
+
     it('does not show options if query is too short', () => {
       expect(menu().is('.open')).toBe(false);
       input().simulate('change', { target: { value: 'test' } });

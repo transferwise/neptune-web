@@ -46,6 +46,8 @@ export const basic = () => {
   const clearable = boolean('clearable', false);
   const allowNew = boolean('allowNew', false);
   const showSuggestions = boolean('showSuggestions', true);
+  const showNewEntry = boolean('showNewEntry', true);
+
   return (
     <Typeahead
       id="typeahead"
@@ -57,6 +59,7 @@ export const basic = () => {
       clearable={clearable}
       allowNew={allowNew}
       showSuggestions={showSuggestions}
+      showNewEntry={showNewEntry}
       placeholder="placeholder"
       chipSeparators={[',', ' ']}
       validateChip={validateChip}

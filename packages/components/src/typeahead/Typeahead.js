@@ -50,6 +50,7 @@ export default class Typeahead extends Component {
     clearable: Types.bool,
     multiple: Types.bool,
     showSuggestions: Types.bool,
+    showNewEntry: Types.bool,
     searchDelay: Types.number,
     maxHeight: Types.number,
     minQueryLength: Types.number,
@@ -76,6 +77,7 @@ export default class Typeahead extends Component {
     multiple: false,
     maxHeight: null,
     showSuggestions: true,
+    showNewEntry: true,
     searchDelay: SEARCH_DELAY,
     minQueryLength: DEFAULT_MIN_QUERY_LENGTH,
     addon: null,
@@ -366,13 +368,15 @@ export default class Typeahead extends Component {
     query,
     minQueryLength,
     allowNew,
+    showNewEntry,
   }) => {
     const dropdownOpen = optionsShown && showSuggestions && query.length >= minQueryLength;
     const optionsToRender = [...options];
     if (
       allowNew &&
       query.trim() &&
-      options.every(option => option.label.trim().toUpperCase() !== query.trim().toUpperCase())
+      options.every(option => option.label.trim().toUpperCase() !== query.trim().toUpperCase()) &&
+      showNewEntry
     ) {
       optionsToRender.push({
         label: query,
@@ -413,6 +417,7 @@ export default class Typeahead extends Component {
       allowNew,
       footer,
       showSuggestions,
+      showNewEntry,
       options,
       minQueryLength,
       autoFocus,
@@ -433,6 +438,7 @@ export default class Typeahead extends Component {
       query,
       minQueryLength,
       allowNew,
+      showNewEntry,
     });
 
     const hasError = errorState || (alert && alert.type === Alert.Type.ERROR);
