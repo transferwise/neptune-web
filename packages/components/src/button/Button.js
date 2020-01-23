@@ -26,6 +26,7 @@ const Button = ({
       'btn-success': type === Type.PAY,
       'btn-default': type === Type.SECONDARY,
       'btn-danger': type === Type.DANGER,
+      'btn-link': type === Type.LINK,
       'btn-block': block,
     },
     className,
@@ -49,6 +50,7 @@ Button.propTypes = {
     Button.Type.PAY,
     Button.Type.SECONDARY,
     Button.Type.DANGER,
+    Button.Type.LINK,
   ]),
   size: Types.oneOf([
     Button.Size.EXTRA_SMALL,

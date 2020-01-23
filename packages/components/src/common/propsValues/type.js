@@ -3,4 +3,5 @@ export const Type = {
   PAY: 'pay',
   SECONDARY: 'secondary',
   DANGER: 'danger',
+  LINK: 'link',
 };
