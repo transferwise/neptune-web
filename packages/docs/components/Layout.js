@@ -13,7 +13,7 @@ import Logo from '../static/assets/img/logo_full_inverse.svg';
 const githubURL = `https://github.com/transferwise/neptune-web/edit/master/packages/docs/pages`;
 const pages = getPages();
 
-const Direction = { xs: 'row', sm: 'row', md: 'row', lg: 'row' };
+const Direction = { default: 'row', xs: 'row', sm: 'row', md: 'row', lg: 'row' };
 
 const Layout = ({ children, router: { pathname } }) => {
   const isIndex = pathname === '/';
@@ -33,6 +33,7 @@ const Layout = ({ children, router: { pathname } }) => {
     >
       <Box
         size={{
+          default: 0,
           xs: 0,
           sm: 0,
           md: 0,
@@ -72,6 +73,7 @@ const Layout = ({ children, router: { pathname } }) => {
       {page && (
         <Box
           size={{
+            default: 0,
             xs: 0,
             sm: 200,
             md: 200,
@@ -95,6 +97,7 @@ const Layout = ({ children, router: { pathname } }) => {
       >
         <Box
           size={{
+            default: 1,
             xs: 1,
             sm: 1,
             md: 1,

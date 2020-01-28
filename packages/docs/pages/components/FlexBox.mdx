@@ -14,7 +14,7 @@ import code from '../../liveEditorCode/flexbox.code';
 
 Flex offers a display flex container for Box. It also offers the possibility to switch direction based on breakpoints.
 Here an example of swithcing direction:
-`direction={xs:'row',sm:'row-reverse',md:'column',lg:'column-reverse','xl:'column'}`.
+`direction={default:'row-reverse', 'xs:'row',sm:'row-reverse',md:'column',lg:'column-reverse','xl:'column'}`.
 
 Flex also offers the possibility to manage the margin and the paddings of its boxes.
 Flex and box shouldn't be used to directly to create page structures but they should be use to create layout components that will be used to create pages structures. In this way it will be easier to lock down all the different designs that we use.
@@ -26,7 +26,7 @@ The most important functionality of Box is the ability of changing its size base
 It is possible to pass any size (width or height depending on the flow direction) desired between 0 and ∞.
 Values between 0 and 1 will be interpreted as percentages, values > 1 will be interpreted as pixel values.
 
-Example `{'size={xs:0, sm:1/2, md:1/4, lg:200, xl:300}'}`
+Example `{'size={default:0, xs:1, sm:1/2, md:1/4, lg:200, xl:300}'}`
 
 <table className="table">
   <thead>
@@ -40,6 +40,11 @@ Example `{'size={xs:0, sm:1/2, md:1/4, lg:200, xl:300}'}`
     <tr>
       <td>0</td>
       <td>none</td>
+      <td>default (0)</td>
+    </tr>
+    <tr>
+      <td>0 1 100%</td>
+      <td>flex</td>
       <td>xs</td>
     </tr>
     <tr>

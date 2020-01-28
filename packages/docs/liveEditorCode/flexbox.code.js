@@ -4,6 +4,7 @@
   marginY={1}
   paddingY={1}
   direction={{
+    default: 'row-reverse',
     xs: 'column',
     sm: 'row',
     md: 'column',
@@ -16,6 +17,7 @@
     justifyContent="center"
     alignItems="center"
     size={{
+      default: 1,
       xs: 0.25,
       sm: 0.25,
       md: 0.3333333333333333,
@@ -30,6 +32,7 @@
     justifyContent="center"
     alignItems="center"
     size={{
+      default: 1,
       xs: 0.25,
       sm: 0.25,
       md: 0.3333333333333333,
