@@ -26,20 +26,22 @@ const Flex = props => {
   };
 
   const style = {
+    flexDirection: getFlexDirection(Flex.Size.SMALLEST),
+
     [customMediaQueries[0]]: {
-      flexDirection: getFlexDirection(Size.EXTRA_SMALL),
+      flexDirection: getFlexDirection(Flex.Size.EXTRA_SMALL),
     },
     [customMediaQueries[1]]: {
-      flexDirection: getFlexDirection(Size.SMALL),
+      flexDirection: getFlexDirection(Flex.Size.SMALL),
     },
     [customMediaQueries[2]]: {
-      flexDirection: getFlexDirection(Size.MEDIUM),
+      flexDirection: getFlexDirection(Flex.Size.MEDIUM),
     },
     [customMediaQueries[3]]: {
-      flexDirection: getFlexDirection(Size.LARGE),
+      flexDirection: getFlexDirection(Flex.Size.LARGE),
     },
     [customMediaQueries[4]]: {
-      flexDirection: getFlexDirection(Size.EXTRA_LARGE),
+      flexDirection: getFlexDirection(Flex.Size.EXTRA_LARGE),
     },
   };
 
@@ -58,13 +60,16 @@ const Flex = props => {
   );
 };
 
+Flex.Size = { ...Size, SMALLEST: 'default' };
+
 Flex.propTypes = {
   direction: Types.shape({
-    xs: Types.oneOf(FlexDirection),
-    sm: Types.oneOf(FlexDirection),
-    md: Types.oneOf(FlexDirection),
-    lg: Types.oneOf(FlexDirection),
-    xl: Types.oneOf(FlexDirection),
+    [Flex.Size.SMALLEST]: Types.oneOf(FlexDirection),
+    [Flex.Size.EXTRA_SMALL]: Types.oneOf(FlexDirection),
+    [Flex.Size.SMALL]: Types.oneOf(FlexDirection),
+    [Flex.Size.MEDIUM]: Types.oneOf(FlexDirection),
+    [Flex.Size.LARGE]: Types.oneOf(FlexDirection),
+    [Flex.Size.EXTRA_LARGE]: Types.oneOf(FlexDirection),
   }).isRequired,
   children: Types.oneOfType([Types.arrayOf(Types.node), Types.node]),
   marginX: Types.number,

@@ -2,21 +2,16 @@
 
 exports[`Box renders correctly 1`] = `
 .emotion-1 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-@media (min-width:0px) {
-  .emotion-1 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media (min-width:576px) {
+@media (min-width:480px) {
   .emotion-1 {
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
@@ -24,7 +19,7 @@ exports[`Box renders correctly 1`] = `
   }
 }
 
-@media (min-width:768px) {
+@media (min-width:576px) {
   .emotion-1 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
@@ -32,7 +27,7 @@ exports[`Box renders correctly 1`] = `
   }
 }
 
-@media (min-width:992px) {
+@media (min-width:768px) {
   .emotion-1 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
@@ -40,7 +35,7 @@ exports[`Box renders correctly 1`] = `
   }
 }
 
-@media (min-width:1200px) {
+@media (min-width:992px) {
   .emotion-1 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
@@ -48,12 +43,24 @@ exports[`Box renders correctly 1`] = `
   }
 }
 
+@media (min-width:1200px) {
+  .emotion-1 {
+    -webkit-flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+  }
+}
+
 .emotion-0 {
+  -webkit-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+  display: none;
   margin: 8px 0px;
   padding: 24px 16px;
 }
 
-@media (min-width:0px) {
+@media (min-width:480px) {
   .emotion-0 {
     -webkit-flex: 0 1 12.5%;
     -ms-flex: 0 1 12.5%;
@@ -126,11 +133,15 @@ exports[`Box renders correctly 1`] = `
 
 exports[`Box renders correctly with custom media queries 1`] = `
 .emotion-0 {
+  -webkit-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+  display: none;
   margin: 8px 0px;
   padding: 24px 16px;
 }
 
-@media (min-width:0px) {
+@media (min-width:480px) {
   .emotion-0 {
     -webkit-flex: 0 1 12.5%;
     -ms-flex: 0 1 12.5%;
@@ -191,18 +202,13 @@ exports[`Box renders correctly with custom media queries 1`] = `
 }
 
 .emotion-1 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-@media (min-width:0px) {
-  .emotion-1 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
 }
 
 @media (min-width:10px) {
@@ -234,6 +240,14 @@ exports[`Box renders correctly with custom media queries 1`] = `
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
+  }
+}
+
+@media (min-width:50px) {
+  .emotion-1 {
+    -webkit-flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
   }
 }
 

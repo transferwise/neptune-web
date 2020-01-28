@@ -28,10 +28,11 @@ export const basic = () => {
   const direction = object(
     'direction',
     {
+      default: 'column',
       lg: 'row',
-      md: 'row',
+      md: 'column',
       sm: 'row',
-      xl: 'row',
+      xl: 'column',
       xs: 'row',
     },
     'Flex Knobs',

@@ -6,11 +6,18 @@ import renderer from 'react-test-renderer'; // eslint-disable-line import/no-ext
 import Flex from './';
 import Box from '../box';
 
-const Direction = { xs: 'row', sm: 'row-reverse', md: 'column', lg: 'column-reverse', xl: 'row' };
+const Direction = {
+  default: 'row',
+  xs: 'row-reverse',
+  sm: 'column',
+  md: 'column-reverse',
+  lg: 'row',
+  xl: 'row-reverse',
+};
 
-const Size = { xs: 1 / 8, sm: 1 / 4, md: 1 / 2, lg: 100, xl: 100 };
+const Size = { default: 0, xs: 1 / 8, sm: 1 / 4, md: 1 / 2, lg: 100, xl: 100 };
 
-const customMediaQueries = [0, 10, 20, 30, 40].map(bp => `@media (min-width: ${bp}px)`);
+const customMediaQueries = [10, 20, 30, 40, 50].map(bp => `@media (min-width: ${bp}px)`);
 
 expect.addSnapshotSerializer(serializer);
 
