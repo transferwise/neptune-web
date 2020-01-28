@@ -5,8 +5,8 @@ import renderer from 'react-test-renderer'; // eslint-disable-line import/no-ext
 
 import Box from './';
 
-const Width = { xs: 1, sm: 1 / 2, md: 30, lg: 40, xl: 0 };
-const customMediaQueries = [0, 10, 20, 30, 40].map(bp => `@media (min-width: ${bp}px)`);
+const Width = { default: 1 / 2, xs: 1, sm: 1 / 2, md: 30, lg: 40, xl: 0 };
+const customMediaQueries = [10, 20, 30, 40, 50].map(bp => `@media (min-width: ${bp}px)`);
 
 expect.addSnapshotSerializer(serializer);
 
@@ -18,7 +18,7 @@ const props = {
   paddingX: 3,
   paddingY: 4,
   justifyContent: 'center',
-  alignItems: 'end',
+  alignItems: 'flex-end',
   className: 'anotherClass1 anotherClass2',
 };
 

@@ -2,19 +2,26 @@
 
 exports[`Box renders correctly 1`] = `
 .emotion-0 {
+  -webkit-flex: 0 1 50%;
+  -ms-flex: 0 1 50%;
+  flex: 0 1 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-items: end;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: end;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
   margin: 16px 8px;
   padding: 32px 24px;
 }
 
-@media (min-width:0px) {
+@media (min-width:480px) {
   .emotion-0 {
     -webkit-flex: 0 1 100%;
     -ms-flex: 0 1 100%;
@@ -82,19 +89,26 @@ exports[`Box renders correctly 1`] = `
 
 exports[`Box renders correctly with custom media queries 1`] = `
 .emotion-0 {
+  -webkit-flex: 0 1 50%;
+  -ms-flex: 0 1 50%;
+  flex: 0 1 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-items: end;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: end;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
   margin: 16px 8px;
   padding: 32px 24px;
 }
 
-@media (min-width:0px) {
+@media (min-width:10px) {
   .emotion-0 {
     -webkit-flex: 0 1 100%;
     -ms-flex: 0 1 100%;
@@ -106,7 +120,7 @@ exports[`Box renders correctly with custom media queries 1`] = `
   }
 }
 
-@media (min-width:10px) {
+@media (min-width:20px) {
   .emotion-0 {
     -webkit-flex: 0 1 50%;
     -ms-flex: 0 1 50%;
@@ -118,7 +132,7 @@ exports[`Box renders correctly with custom media queries 1`] = `
   }
 }
 
-@media (min-width:20px) {
+@media (min-width:30px) {
   .emotion-0 {
     -webkit-flex: 0 0 30px;
     -ms-flex: 0 0 30px;
@@ -130,7 +144,7 @@ exports[`Box renders correctly with custom media queries 1`] = `
   }
 }
 
-@media (min-width:30px) {
+@media (min-width:40px) {
   .emotion-0 {
     -webkit-flex: 0 0 40px;
     -ms-flex: 0 0 40px;
@@ -142,7 +156,7 @@ exports[`Box renders correctly with custom media queries 1`] = `
   }
 }
 
-@media (min-width:40px) {
+@media (min-width:50px) {
   .emotion-0 {
     -webkit-flex: 0;
     -ms-flex: 0;

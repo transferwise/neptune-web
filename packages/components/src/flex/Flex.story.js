@@ -16,8 +16,9 @@ export const basic = () => {
   const marginY = select('marginY', [0, 1, 2, 3, 4], 1, 'Flex Knobs');
   const paddingY = select('paddingY', [0, 1, 2, 3, 4], 1, 'Flex Knobs');
   const paddingX = select('paddingX', [0, 1, 2, 3, 4], 1, 'Flex Knobs');
+
   const customMediaQueries = array('customMediaQueries', [
-    '@media (min-width: 0px)',
+    '@media (min-width: 480px)',
     '@media (min-width: 576px)',
     '@media (min-width: 768px)',
     '@media (min-width: 992px)',
@@ -41,10 +42,11 @@ export const basic = () => {
   const size = object(
     'size',
     {
-      xs: 0.25,
-      sm: 0.25,
-      md: 0.3333333333333333,
-      lg: 0.5,
+      default: 1 / 6,
+      xs: 1 / 5,
+      sm: 1 / 4,
+      md: 1 / 3,
+      lg: 1 / 2,
       xl: 1,
     },
     'Box Knobs',

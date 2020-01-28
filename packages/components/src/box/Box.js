@@ -33,20 +33,22 @@ const Box = props => {
   };
 
   const style = {
+    ...getFlex(Box.Size.SMALLEST),
+
     [customMediaQueries[0]]: {
-      ...getFlex(Size.EXTRA_SMALL),
+      ...getFlex(Box.Size.EXTRA_SMALL),
     },
     [customMediaQueries[1]]: {
-      ...getFlex(Size.SMALL),
+      ...getFlex(Box.Size.SMALL),
     },
     [customMediaQueries[2]]: {
-      ...getFlex(Size.MEDIUM),
+      ...getFlex(Box.Size.MEDIUM),
     },
     [customMediaQueries[3]]: {
-      ...getFlex(Size.LARGE),
+      ...getFlex(Box.Size.LARGE),
     },
     [customMediaQueries[4]]: {
-      ...getFlex(Size.EXTRA_LARGE),
+      ...getFlex(Box.Size.EXTRA_LARGE),
     },
   };
 
@@ -67,6 +69,8 @@ const Box = props => {
   ) : null;
 };
 
+Box.Size = { ...Size, SMALLEST: 'default' };
+
 Box.propTypes = {
   alignItems: Types.oneOf([...Object.values(AlignItems)]),
   children: Types.oneOfType([Types.arrayOf(Types.node), Types.node]),
@@ -78,11 +82,12 @@ Box.propTypes = {
   paddingY: Types.number,
   as: Types.elementType,
   size: Types.shape({
-    lg: Types.number,
-    md: Types.number,
-    sm: Types.number,
-    xl: Types.number,
-    xs: Types.number,
+    [Box.Size.EXTRA_LARGE]: Types.number,
+    [Box.Size.LARGE]: Types.number,
+    [Box.Size.MEDIUM]: Types.number,
+    [Box.Size.SMALL]: Types.number,
+    [Box.Size.EXTRA_SMALL]: Types.number,
+    [Box.Size.SMALLEST]: Types.number,
   }).isRequired,
   customMediaQueries: Types.arrayOf(Types.string),
 };
