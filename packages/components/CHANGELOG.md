@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.0.0...@transferwise/components@21.1.0) (2020-01-29)
+
+
+### Features
+
+* move mobile select menu into a portal ([#153](https://github.com/transferwise/neptune-web/issues/153)) ([298aee6](https://github.com/transferwise/neptune-web/commit/298aee65a7c0f86966033b7b0b0b6d1542bdcd64))
+
+
+
+
+
 # [21.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.3.0...@transferwise/components@21.0.0) (2020-01-29)
 
 
