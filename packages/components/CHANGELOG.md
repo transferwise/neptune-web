@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.3.0...@transferwise/components@21.0.0) (2020-01-29)
+
+
+* refactor!: add new breakpoint ([193cbcd](https://github.com/transferwise/neptune-web/commit/193cbcd34126fe735f2c82fe4e3e296e20da43cb))
+* refactor!: add new breakpoint ([e0836bb](https://github.com/transferwise/neptune-web/commit/e0836bba07dfb99552e739610be883bc271757f7))
+
+
+### Features
+
+* add new breakpoint ([9eaa9c2](https://github.com/transferwise/neptune-web/commit/9eaa9c29e2d57158af37cd86e6134c949ca1cfc2))
+
+
+### BREAKING CHANGES
+
+* add new breakpoint to default values
+* add new breakpoint to default values
+
+
+
+
+
 # [20.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@20.2.1...@transferwise/components@20.3.0) (2020-01-23)
 
 
