@@ -1,10 +1,12 @@
 import React, { Component, createRef } from 'react';
+import { createPortal } from 'react-dom';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
 
 import Option from './option';
 import KeyCodes from '../common/keyCodes';
+import { Breakpoint } from '../common';
 import {
   addClickClassToDocumentOnIos,
   removeClickClassFromDocumentOnIos,
@@ -28,6 +30,14 @@ function stopPropagation(event) {
     event.nativeEvent.stopImmediatePropagation();
   }
   // document listener does not use SyntheticEvents
+}
+
+function getShouldRenderWithPortal() {
+  return (
+    typeof document !== 'undefined' &&
+    typeof window !== 'undefined' &&
+    window.innerWidth < Breakpoint.SMALL
+  );
 }
 
 const BOOTSTRAP_DROPDOWN_ANIMATION_TIME = 200;
@@ -116,14 +126,31 @@ export default class Select extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { open: false, keyboardFocusedOptionIndex: null };
+    this.state = {
+      open: false,
+      keyboardFocusedOptionIndex: null,
+    };
     this.searchBoxRef = createRef();
     this.dropdownMenuRef = createRef();
   }
 
+  componentDidMount() {
+    this.setState({
+      shouldRenderWithPortal: getShouldRenderWithPortal(),
+    });
+    window.addEventListener('resize', this.handleResize);
+  }
+
   componentWillUnmount() {
     this.close();
+    window.removeEventListener('resize', this.handleResize);
   }
+
+  handleResize = () => {
+    this.setState({
+      shouldRenderWithPortal: getShouldRenderWithPortal(),
+    });
+  };
 
   getIndexWithoutHeadersForIndexWithHeaders(index) {
     return this.props.options.reduce((sum, option, currentIndex) => {
@@ -296,6 +323,34 @@ export default class Select extends Component {
 
   style = className => this.props.classNames[className] || className;
 
+  renderOptionsList() {
+    const { dropdownRight, dropdownWidth, onSearchChange, required } = this.props;
+    const { open, shouldRenderWithPortal } = this.state;
+    const s = this.style;
+
+    const canSearch = !!onSearchChange;
+
+    const dropdownClass = classNames(s('dropdown-menu'), {
+      [s(`dropdown-menu-${dropdownRight}-right`)]: dropdownRight,
+      [s(`dropdown-menu-${dropdownWidth}`)]: dropdownWidth,
+      [s(`dropdown-menu--open`)]: open,
+    });
+
+    const list = (
+      <ul className={dropdownClass} role="menu">
+        {!required && !canSearch ? this.renderPlaceHolderOption() : ''}
+        {canSearch ? this.renderSearchBox() : ''}
+        {this.renderOptions()}
+      </ul>
+    );
+
+    if (shouldRenderWithPortal) {
+      return createPortal(list, document.body);
+    }
+
+    return list;
+  }
+
   renderOptions() {
     return this.props.options.map(this.renderOption);
   }
@@ -399,19 +454,7 @@ export default class Select extends Component {
   }
 
   render() {
-    const {
-      disabled,
-      required,
-      onSearchChange,
-      size,
-      block,
-      id,
-      dropdownUp,
-      inverse,
-      dropdownWidth,
-      dropdownRight,
-    } = this.props;
-    const canSearch = !!onSearchChange;
+    const { disabled, size, block, id, dropdownUp, inverse } = this.props;
     const { open } = this.state;
     const s = this.style;
 
@@ -433,11 +476,6 @@ export default class Select extends Component {
       },
       s('dropdown-toggle'),
     );
-
-    const dropdownClass = classNames(s('dropdown-menu'), {
-      [s(`dropdown-menu-${dropdownRight}-right`)]: dropdownRight,
-      [s(`dropdown-menu-${dropdownWidth}`)]: dropdownWidth,
-    });
 
     const openClass = s('open');
     return (
@@ -476,15 +514,7 @@ export default class Select extends Component {
               {this.renderButtonInternals()}
               <span className={this.style('caret')} />
             </button>
-            {animationState !== 'exited' ? (
-              <ul className={dropdownClass} role="menu">
-                {!required && !canSearch ? this.renderPlaceHolderOption() : ''}
-                {canSearch ? this.renderSearchBox() : ''}
-                {this.renderOptions()}
-              </ul>
-            ) : (
-              ''
-            )}
+            {animationState !== 'exited' ? this.renderOptionsList() : ''}
           </div>
         )}
       </Transition>

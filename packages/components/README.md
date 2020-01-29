@@ -47,7 +47,7 @@ We use [Conventional Commits](https://www.conventionalcommits.org) on the master
 2. ️⚠️ Make sure each commit only affects files from a single package (`components` or `css`).
 3. Open a PR and ensure that all commits adhere to conventional commits. You may need a rebase in order to reorganize your existing code.
 4. Before asking for a review, the title of your PR should have the final commit message that you want to be used in the [changelog](https://github.com/transferwise/neptune-web/blob/master/packages/components/CHANGELOG.md).
-5. Ask for a review and, once approved, ask for a member of the [design system team](https://github.com/orgs/transferwise/teams/design-system) to squash and merge your branch using a valid conventional commit message.
+5. Ask for a review (post to #neptune-dev channel) and, once approved, ask for a member of the [design system team](https://github.com/orgs/transferwise/teams/design-system) to squash and merge your branch using a valid conventional commit message.
 
 ### Component styles
 

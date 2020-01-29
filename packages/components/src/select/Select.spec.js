@@ -1,13 +1,16 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { mount } from 'enzyme';
 import doTimes from 'lodash.times';
 import Transition from 'react-transition-group/Transition';
 import Select from './';
 import Option from './option';
 import KEY_CODES from '../common/keyCodes';
+import { Breakpoint } from '../common';
 import { fakeEvent, fakeKeyDownEventForKey } from '../common/fakeEvents';
 import { addClassAndTriggerReflow, removeClass } from './domHelpers';
 
+jest.mock('react-dom');
 jest.mock('react-transition-group/Transition', () => jest.fn('placeholder'));
 jest.mock('./domHelpers');
 
@@ -16,6 +19,8 @@ describe('Select', () => {
   let props;
 
   beforeEach(() => {
+    // Need to reset innerWidth for portal tests
+    window.innerWidth = 1024;
     props = {
       onChange: jest.fn(),
       options: [
@@ -29,6 +34,7 @@ describe('Select', () => {
       return <ActualTransition {...properties} timeout={0} />;
     });
     component = mount(<Select {...props} />);
+    jest.clearAllMocks();
   });
 
   const bustStackAndUpdate = async () => {
@@ -105,6 +111,18 @@ describe('Select', () => {
     openSelect();
     expectDropdownToBe().open();
     expectOpenClassToHaveBeenAdded();
+  });
+
+  it('does not create a portal when rendering', () => {
+    expect(createPortal).not.toHaveBeenCalled();
+    openSelect();
+    expect(createPortal).not.toHaveBeenCalled();
+  });
+
+  it('sets the open class on the menu', () => {
+    expect(element('.dropdown-menu--open').exists()).toBe(false);
+    openSelect();
+    expect(element('.dropdown-menu--open').exists()).toBe(true);
   });
 
   it('opens upward when dropdownUp prop is passed', () => {
@@ -532,4 +550,31 @@ describe('Select', () => {
     expect(component.find('.dropdown-toggle').exists()).toBe(false);
     expect(component.find('.dropdown-toggle_TWISAWESOME125').exists()).toBe(true);
   });
+
+  it('updates if we should create the list in a portal resize', () => {
+    expect(component.state('shouldRenderWithPortal')).toBe(false);
+
+    resizeWindow(Breakpoint.SMALL - 1);
+
+    expect(component.state('shouldRenderWithPortal')).toBe(true);
+  });
+
+  it('creates a portal when rendering on mobile', () => {
+    expect(createPortal).not.toHaveBeenCalled();
+    expect(component.state('shouldRenderWithPortal')).toBe(false);
+
+    openSelect();
+    expect(createPortal).not.toHaveBeenCalled();
+    expect(element('.dropdown-menu--open').exists()).toBe(true);
+
+    component.setState({ shouldRenderWithPortal: true });
+    openSelect();
+    expect(createPortal).toHaveBeenCalledWith(expect.anything(), document.body);
+    expect(element('.dropdown-menu--open').exists()).toBe(false);
+  });
 });
+
+function resizeWindow(width) {
+  window.innerWidth = width;
+  window.dispatchEvent(new Event('resize'));
+}
