@@ -9,6 +9,8 @@
 @line-thickness: 3px;
 
 .tabs {
+  position: relative;
+
   &__tab {
     display: inline-block;
     cursor: pointer;
@@ -29,9 +31,22 @@
       cursor: not-allowed;
     }
 
-    &:hover,
     &:focus {
       color: @brand-light-blue;
+    }
+
+    // Show hover style for all large screens (to account for the fact that IE does not support the below property)
+    @media (min-width: @screen-lg) {
+      &:hover {
+        color: @brand-light-blue;
+      }
+    }
+
+    // Otherwise, if this query is supported, show hover style for any client that supports :hover
+    @media (hover: hover) {
+      &:hover {
+        color: @brand-light-blue;
+      }
     }
   }
 
@@ -50,7 +65,6 @@
 
   &__panel-container {
     width: 100%;
-    overflow: hidden;
   }
 
   &__slider {

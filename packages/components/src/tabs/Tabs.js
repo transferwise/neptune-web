@@ -325,6 +325,8 @@ class Tabs extends React.Component {
       (Number.isNaN(remainingContainerToTravel) ? 0 : remainingContainerToTravel) *
       Math.min(10 * Math.E, lastSwipeVelocity * 10 * Math.E);
 
+    const hidePanelOverflow = isAnimating || isSwiping;
+
     return (
       <div
         onTouchStart={changeTabOnSwipe && this.handleTouchStart}
@@ -360,7 +362,13 @@ class Tabs extends React.Component {
             }}
           />
         </TabList>
-        <div className="tabs__panel-container" ref={this.setContainerRefAndWidth}>
+        <div
+          className="tabs__panel-container"
+          ref={this.setContainerRefAndWidth}
+          style={{
+            overflow: hidePanelOverflow ? 'hidden' : 'visible',
+          }}
+        >
           <Spring
             from={{
               transform: `translateX(${translateFrom})`,
@@ -386,8 +394,8 @@ class Tabs extends React.Component {
               <div
                 className="tabs__slider"
                 style={{
-                  width: `${this.filteredTabsLength * 100}%`,
-                  transform: props.transform,
+                  width: hidePanelOverflow ? `${this.filteredTabsLength * 100}%` : '100%',
+                  transform: hidePanelOverflow ? props.transform : 'translateX(0px)',
                 }}
               >
                 {tabs.map(({ content, disabled }, index) => (
@@ -396,7 +404,8 @@ class Tabs extends React.Component {
                     tabId={`${name}-tab-${index}`}
                     id={`${name}-panel-${index}`}
                     style={{
-                      width: `${(1 / this.filteredTabsLength) * 100}%`,
+                      width: hidePanelOverflow ? `${(1 / this.filteredTabsLength) * 100}%` : '100%',
+                      display: hidePanelOverflow || index === selected ? 'block' : 'none',
                     }}
                   >
                     {disabled ? null : content}

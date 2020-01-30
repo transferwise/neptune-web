@@ -19,7 +19,7 @@ const Tab = ({ children, id, disabled, panelId, selected, onKeyDown, onClick, st
 
   useEffect(() => {
     checkFocus();
-  });
+  }, [selected]);
 
   return (
     <li

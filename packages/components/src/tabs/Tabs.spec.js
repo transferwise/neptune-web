@@ -13,6 +13,9 @@ jest.mock('react-spring/renderprops.cjs', () => ({
   Spring: jest.fn(props => {
     const { children, to, onRest, config } = props;
 
+    // Queue this behind a timer so we can control when it runs
+    setTimeout(onRest, 0);
+
     return children({
       config,
       onRest,
@@ -20,8 +23,6 @@ jest.mock('react-spring/renderprops.cjs', () => ({
     });
   }),
 }));
-
-jest.useFakeTimers();
 
 describe('Tabs', () => {
   let component;
@@ -149,37 +150,94 @@ describe('Tabs', () => {
     expect(component.find(Tab).length).toBe(props.tabs.length);
   });
 
-  it('updates transforms properly when changing tabs', () => {
-    const getLineStyles = () => getComputedStyle(component.find('.tabs__line').getDOMNode());
-    const getSliderStyles = () => getComputedStyle(component.find('.tabs__slider').getDOMNode());
-    props = {
-      ...props,
-      tabs: generateTabs([false, true, false, false, false]),
-    };
-    component = mount(<Tabs {...props} />);
+  describe('updating the translate values', () => {
+    beforeEach(() => {
+      props = {
+        ...props,
+        tabs: generateTabs([false, true, false, false, false]),
+      };
+      component = mount(<Tabs {...props} />);
+    });
 
-    expect(getLineStyles().getPropertyValue('transform')).toBe('translateX(0)');
-    expect(getSliderStyles().getPropertyValue('transform')).toBe('translateX(0px)');
+    test.each([
+      [1, '200%', `-300px`],
+      [99, '400%', '-900px'],
+      [2, '300%', '-600px'],
+      [3, '400%', '-900px'],
+      [4, '400%', '-900px'],
+    ])('when selecting tab number %p', (selected, lineTranslateX, sliderTranslateX) => {
+      const getLineStyles = () => getComputedStyle(component.find('.tabs__line').getDOMNode());
+      const getSliderStyles = () => getComputedStyle(component.find('.tabs__slider').getDOMNode());
 
-    component.setProps({ selected: 1 });
-    expect(getLineStyles().getPropertyValue('transform')).toBe('translateX(200%)');
-    expect(getSliderStyles().getPropertyValue('transform')).toBe('translateX(-300px)');
+      component.setProps({ selected });
 
-    component.setProps({ selected: 99 });
-    expect(getLineStyles().getPropertyValue('transform')).toBe('translateX(400%)');
-    expect(getSliderStyles().getPropertyValue('transform')).toBe('translateX(-900px)');
+      expect(component.state('isAnimating')).toBe(true);
+      expect(getLineStyles().getPropertyValue('transform')).toBe(`translateX(${lineTranslateX})`);
+      expect(getSliderStyles().getPropertyValue('transform')).toBe(
+        `translateX(${sliderTranslateX})`,
+      );
 
-    component.setProps({ selected: 2 });
-    expect(getLineStyles().getPropertyValue('transform')).toBe('translateX(300%)');
-    expect(getSliderStyles().getPropertyValue('transform')).toBe('translateX(-600px)');
+      triggerSpringOnRest();
 
-    component.setProps({ selected: 3 });
-    expect(getLineStyles().getPropertyValue('transform')).toBe('translateX(400%)');
-    expect(getSliderStyles().getPropertyValue('transform')).toBe('translateX(-900px)');
+      expect(component.state('isAnimating')).toBe(false);
+      expect(getLineStyles().getPropertyValue('transform')).toBe(`translateX(${lineTranslateX})`);
+      expect(getSliderStyles().getPropertyValue('transform')).toBe('translateX(0px)');
+    });
+  });
 
-    component.setProps({ selected: 4 });
-    expect(getLineStyles().getPropertyValue('transform')).toBe('translateX(400%)');
-    expect(getSliderStyles().getPropertyValue('transform')).toBe('translateX(-900px)');
+  describe('handling overflow', () => {
+    it('only displays the selected tab when not animating or swiping', () => {
+      const selected = component.prop('selected');
+
+      expect(component.state('isAnimating')).toBe(false);
+      expect(component.state('isSwiping')).toBe(false);
+
+      component.find(TabPanel).forEach((tab, index) => {
+        if (selected === index) {
+          expect(tab.prop('style').display).toBe('block');
+        } else {
+          expect(tab.prop('style').display).toBe('none');
+        }
+      });
+    });
+
+    it('displays all tabs when animating', () => {
+      component.setState({ isAnimating: true });
+
+      component.find(TabPanel).forEach(tab => {
+        expect(tab.prop('style').display).toBe('block');
+      });
+    });
+
+    it('displays all tabs when swiping', () => {
+      component.setState({ isSwiping: true });
+
+      component.find(TabPanel).forEach(tab => {
+        expect(tab.prop('style').display).toBe('block');
+      });
+    });
+
+    it('has `overflow: hidden` on the parent when animating/swiping', () => {
+      component.setState({ isSwiping: false, isAnimating: false });
+      expect(getPanelContainerOverflow(component)).toBe('visible');
+
+      component.setState({ isSwiping: true });
+      expect(getPanelContainerOverflow(component)).toBe('hidden');
+
+      component.setState({ isSwiping: false, isAnimating: true });
+      expect(getPanelContainerOverflow(component)).toBe('hidden');
+    });
+
+    it('sets the panel width according to if animating/swiping', () => {
+      component.setState({ isSwiping: false, isAnimating: false });
+      expect(getPanelWidth(component)).toBe('100%');
+
+      component.setState({ isSwiping: true });
+      expect(getPanelWidth(component)).toBe('50%');
+
+      component.setState({ isSwiping: false, isAnimating: true });
+      expect(getPanelWidth(component)).toBe('50%');
+    });
   });
 });
 
@@ -195,6 +253,21 @@ function generateTabs(disableds = defaultDisableds) {
 
 function createClientXY(x, y) {
   return { clientX: x, clientY: y };
+}
+
+function triggerSpringOnRest() {
+  jest.runAllTimers();
+}
+
+function getPanelContainerOverflow(component) {
+  return component.find('.tabs__panel-container').prop('style').overflow;
+}
+
+function getPanelWidth(component) {
+  return component
+    .find(TabPanel)
+    .at(0)
+    .prop('style').width;
 }
 
 export function createStartTouchEventObject({ x = 0, y = 0 }) {

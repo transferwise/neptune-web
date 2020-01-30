@@ -8,7 +8,7 @@ export default {
 };
 
 export const basic = () => {
-  const [open, setOpen] = React.useState(false);
+  const [selected, setSelected] = React.useState(0);
   return (
     <Tabs
       className="tabs-custom-class"
@@ -44,8 +44,8 @@ export const basic = () => {
           ),
         },
       ]}
-      selected={open}
-      onTabSelect={index => setOpen(index)}
+      selected={selected}
+      onTabSelect={index => setSelected(index)}
     />
   );
 };
