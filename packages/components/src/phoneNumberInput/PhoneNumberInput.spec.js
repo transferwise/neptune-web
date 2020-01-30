@@ -222,7 +222,7 @@ describe('Given a telephone number component', () => {
 
   describe('when user insert valid value', () => {
     beforeEach(() => {
-      component = shallow(<PhoneNumberInput {...props} />);
+      component = mount(<PhoneNumberInput {...props} />);
       input = component.find(NUMBER_SELECTOR);
       select = component.find(PREFIX_SELECT_SELECTOR);
     });
@@ -233,15 +233,15 @@ describe('Given a telephone number component', () => {
     });
 
     it('should trigger onChange handler and set previousReturned value', () => {
+      changeSelectValue('+39');
       input.simulate('change', { target: { value: '123' } });
-      select.simulate('change', { value: '+39', label: '+39' });
       expect(props.onChange).toHaveBeenCalledWith('+39123');
     });
   });
 
-  describe('when user insert an invalid date', () => {
+  describe('when user insert an invalid number', () => {
     it('should trigger onChange with null value', () => {
-      component = shallow(<PhoneNumberInput {...props} initialValue="+12345678" />);
+      component = mount(<PhoneNumberInput {...props} initialValue="+12345678" />);
       input = component.find(NUMBER_SELECTOR);
       select = component.find(PREFIX_SELECT_SELECTOR);
       input.simulate('change', { target: { value: '1' } });
@@ -261,11 +261,11 @@ describe('Given a telephone number component', () => {
 
   describe('when user insert invalid character ', () => {
     it('should strip them', () => {
-      component = shallow(<PhoneNumberInput {...props} value="+12345678" />);
+      component = mount(<PhoneNumberInput {...props} value="+12345678" />);
       input = component.find(NUMBER_SELECTOR);
       select = component.find(PREFIX_SELECT_SELECTOR);
       input.simulate('change', { target: { value: '123--' } });
-      select.simulate('change', { value: '+39', label: '+39' });
+      changeSelectValue('+39');
       expect(props.onChange).toHaveBeenCalledWith('+39123');
     });
   });
@@ -280,4 +280,10 @@ describe('Given a telephone number component', () => {
       expect(+select.prop('options')[0].value).toBeLessThan(+select.prop('options')[1].value);
     });
   });
+
+  const changeSelectValue = value => {
+    component.find('button.dropdown-toggle').simulate('click', fakeEvent());
+    component.find('.tw-select-filter').simulate('change', { target: { value } });
+    component.find('.tw-dropdown-item--clickable').simulate('click', fakeEvent());
+  };
 });

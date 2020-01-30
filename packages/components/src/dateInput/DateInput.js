@@ -48,11 +48,12 @@ const DateInput = props => {
     }
     return intialValue;
   };
+  const { explodedDate, dateObject } = initialState();
 
-  const [day, setDay] = useState(() => initialState().explodedDate.day);
-  const [month, setMonth] = useState(() => initialState().explodedDate.month);
-  const [year, setYear] = useState(() => initialState().explodedDate.year);
-  const [internalValue, setInternalValue] = useState(() => initialState().dateObject);
+  const [day, setDay] = useState(explodedDate.day);
+  const [month, setMonth] = useState(explodedDate.month);
+  const [year, setYear] = useState(explodedDate.year);
+  const [internalValue, setInternalValue] = useState(dateObject);
 
   const getDateAsString = date => {
     switch (mode) {

@@ -1,6 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 import { isArray } from '../common/validation/type-validators';
+import { Size } from '../common';
 
 import Select from '../select';
 import {
@@ -20,56 +21,34 @@ import './PhoneNumberInput.css';
 
 const ALLOWED_PHONE_CHARS = /^$|^[\d-\s]+$/;
 
-class PhoneNumberInput extends PureComponent {
-  static propTypes = {
-    required: Types.bool,
-    disabled: Types.bool,
-    initialValue: Types.string,
-    onChange: Types.func.isRequired,
-    onFocus: Types.func,
-    onBlur: Types.func,
-    countryCode: Types.string,
-    locale: Types.string,
-    searchPlaceholder: Types.string,
-    size: Types.oneOf(['sm', 'md', 'lg']),
-    placeholder: Types.string,
-  };
+const PhoneNumberInput = props => {
+  const {
+    onChange,
+    searchPlaceholder,
+    disabled,
+    required,
+    size,
+    placeholder,
+    onFocus,
+    onBlur,
+    locale,
+    countryCode,
+  } = props;
 
-  static defaultProps = {
-    required: false,
-    disabled: false,
-    initialValue: null,
-    onFocus() {},
-    onBlur() {},
-    countryCode: null,
-    locale: 'en-GB',
-    searchPlaceholder: 'Prefix',
-    size: 'md',
-    placeholder: '',
-  };
-
-  constructor(props) {
-    super(props);
-    const { initialValue } = this.props;
+  const getInitialValue = () => {
+    const { initialValue } = props;
     const cleanValue = initialValue ? cleanNumber(initialValue) : null;
-    const derivedInitialValueFromProp =
-      cleanValue && isValidPhoneNumber(cleanValue) ? cleanValue : null;
-
-    this.state = {
-      internalValue: derivedInitialValueFromProp,
-      broadcastValue: derivedInitialValueFromProp,
-      searchQuery: '',
-    };
-
-    this.listSortedByISO3 = groupCountriesByPrefix(sortArrayByProperty(countries, 'iso3'));
-    this.listSortedByPhone = groupCountriesByPrefix(sortArrayByProperty(countries, 'phone'));
-  }
-
-  onChangeSearch = searchQuery => {
-    this.setState({ searchQuery });
+    return cleanValue && isValidPhoneNumber(cleanValue) ? cleanValue : null;
   };
 
-  getSuffixPrefix = (value, locale, countryCode) => {
+  const [internalValue, setInternalValue] = useState(getInitialValue());
+  const [broadcastValue, setBroadcastValue] = useState(getInitialValue());
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const listSortedByISO3 = groupCountriesByPrefix(sortArrayByProperty(countries, 'iso3'));
+  const listSortedByPhone = groupCountriesByPrefix(sortArrayByProperty(countries, 'phone'));
+
+  const getSuffixPrefix = value => {
     let prefix = setDefaultPrefix(locale, countryCode);
     let suffix = '';
     if (value) {
@@ -78,10 +57,9 @@ class PhoneNumberInput extends PureComponent {
     return { prefix, suffix };
   };
 
-  getSelectOptions = () => {
-    const { searchQuery } = this.state;
+  const getSelectOptions = () => {
     const filteredOptions = filterOptionsForQuery(
-      isStringNumeric(searchQuery) ? this.listSortedByPhone : this.listSortedByISO3,
+      isStringNumeric(searchQuery) ? listSortedByPhone : listSortedByISO3,
       searchQuery,
     );
 
@@ -99,90 +77,99 @@ class PhoneNumberInput extends PureComponent {
     });
   };
 
-  handleChangeSelect = event => {
-    const { internalValue } = this.state;
-    const { locale, countryCode } = this.props;
-    const { suffix } = this.getSuffixPrefix(internalValue, locale, countryCode);
+  const handleChangeSelect = event => {
+    const { suffix } = getSuffixPrefix(internalValue);
     const prefix = event.value;
 
-    this.setState({ searchQuery: '', internalValue: prefix + suffix }, () => {
-      this.returnValue(this.state.internalValue);
-    });
+    setSearchQuery('');
+    setInternalValue(prefix + suffix);
   };
 
-  handleInputChange = event => {
+  const handleInputChange = event => {
     const suffix = event.target.value;
 
     if (ALLOWED_PHONE_CHARS.test(suffix)) {
-      const { internalValue } = this.state;
-      const { locale, countryCode } = this.props;
-      const { prefix } = this.getSuffixPrefix(internalValue, locale, countryCode);
-      this.setState({ internalValue: prefix + suffix }, () => {
-        this.returnValue(this.state.internalValue);
-      });
+      const { prefix } = getSuffixPrefix(internalValue);
+      setInternalValue(prefix + suffix);
     }
   };
 
-  returnValue = value => {
-    const broadcastValue = isValidPhoneNumber(value) ? cleanNumber(value) : null;
-    if (broadcastValue !== this.state.broadcastValue) {
-      this.props.onChange(broadcastValue);
-      this.setState({ broadcastValue });
+  useEffect(() => {
+    const newbroadcastValue = isValidPhoneNumber(internalValue) ? cleanNumber(internalValue) : null;
+    if (newbroadcastValue !== broadcastValue) {
+      onChange(newbroadcastValue);
+      setBroadcastValue({ newbroadcastValue });
     }
-  };
+  }, [internalValue]);
 
-  render() {
-    const {
-      searchPlaceholder,
-      disabled,
-      required,
-      size,
-      placeholder,
-      onFocus,
-      onBlur,
-      locale,
-      countryCode,
-    } = this.props;
-    const { internalValue, searchQuery } = this.state;
-    const selectOptions = this.getSelectOptions();
+  const { prefix, suffix } = getSuffixPrefix(internalValue);
 
-    const { prefix, suffix } = this.getSuffixPrefix(internalValue, locale, countryCode);
+  return (
+    <div className="tw-telephone">
+      <div className="tw-telephone__country-select">
+        <Select
+          options={getSelectOptions()}
+          selected={{ value: prefix, label: prefix }}
+          onChange={handleChangeSelect}
+          searchPlaceholder={searchPlaceholder}
+          onSearchChange={newSearch => setSearchQuery(newSearch)}
+          searchValue={searchQuery}
+          required={required}
+          disabled={disabled}
+          size={size}
+        />
+      </div>
 
-    return (
-      <div className="tw-telephone">
-        <div className="tw-telephone__country-select">
-          <Select
-            options={selectOptions}
-            selected={{ value: prefix, label: prefix }}
-            onChange={this.handleChangeSelect}
-            searchPlaceholder={searchPlaceholder}
-            onSearchChange={this.onChangeSearch}
-            searchValue={searchQuery}
-            required={required}
+      <div className="tw-telephone__number-input">
+        <div className={`input-group input-group-${size}`}>
+          <input
+            name="phoneNumber"
+            value={suffix}
+            type="text"
+            className="form-control"
             disabled={disabled}
-            size={size}
+            onChange={handleInputChange}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            required={required}
+            placeholder={placeholder}
           />
         </div>
-
-        <div className="tw-telephone__number-input m-l-3">
-          <div className={`input-group input-group-${size}`}>
-            <input
-              name="phoneNumber"
-              value={suffix}
-              type="text"
-              className="form-control"
-              disabled={disabled}
-              onChange={this.handleInputChange}
-              onFocus={onFocus}
-              onBlur={onBlur}
-              required={required}
-              placeholder={placeholder}
-            />
-          </div>
-        </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+PhoneNumberInput.Size = Size;
+
+PhoneNumberInput.propTypes = {
+  required: Types.bool,
+  disabled: Types.bool,
+  initialValue: Types.string,
+  onChange: Types.func.isRequired,
+  onFocus: Types.func,
+  onBlur: Types.func,
+  countryCode: Types.string,
+  locale: Types.string,
+  searchPlaceholder: Types.string,
+  size: Types.oneOf([
+    PhoneNumberInput.Size.SMALL,
+    PhoneNumberInput.Size.MEDIUM,
+    PhoneNumberInput.Size.LARGE,
+  ]),
+  placeholder: Types.string,
+};
+
+PhoneNumberInput.defaultProps = {
+  required: false,
+  disabled: false,
+  initialValue: null,
+  onFocus() {},
+  onBlur() {},
+  countryCode: null,
+  locale: 'en-GB',
+  searchPlaceholder: 'Prefix',
+  size: PhoneNumberInput.Size.MEDIUM,
+  placeholder: '',
+};
 
 export default PhoneNumberInput;

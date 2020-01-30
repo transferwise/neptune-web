@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import { configure, addDecorator, addParameters } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
@@ -18,6 +18,14 @@ const style = {
   width: '100vw',
 };
 
+const StrictModeDecorator = storyFn => <StrictMode>{storyFn()}</StrictMode>;
+
+const CenterDecorator = storyFn => (
+  <div style={style}>
+    <div style={{ width: '100%' }}>{storyFn()}</div>
+  </div>
+);
+
 addDecorator(withA11y);
 addDecorator(withKnobs);
 addDecorator(
@@ -26,12 +34,8 @@ addDecorator(
     inline: true,
   }),
 );
-addDecorator(storyFn => (
-  <div style={style}>
-    <div style={{ width: '100%' }}>{storyFn()}</div>
-  </div>
-));
-
+addDecorator(CenterDecorator);
+addDecorator(StrictModeDecorator);
 addParameters({
   options: {
     theme,
