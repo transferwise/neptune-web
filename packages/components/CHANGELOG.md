@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.1...@transferwise/components@21.1.2) (2020-01-30)
+
+
+### Bug Fixes
+
+* fix tabs overflow issues and focus issues ([#149](https://github.com/transferwise/neptune-web/issues/149)) ([022a11f](https://github.com/transferwise/neptune-web/commit/022a11f0fc63601492b4d9e56fe638217adc0c0d))
+
+
+
+
+
 ## [21.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.0...@transferwise/components@21.1.1) (2020-01-30)
 
 
