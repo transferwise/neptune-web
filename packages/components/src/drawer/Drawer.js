@@ -71,7 +71,7 @@ Drawer.propTypes = {
 Drawer.defaultProps = {
   open: false,
   children: null,
-  position: false,
+  position: 'right',
   onClose: null,
   headerTitle: null,
   footerContent: null,
