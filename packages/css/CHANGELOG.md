@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.12.3...@transferwise/neptune-css@0.12.4) (2020-01-30)
+
+
+### Bug Fixes
+
+* add overflow-y:auto ([13830b2](https://github.com/transferwise/neptune-web/commit/13830b28bf0c4e9c89919404739706d543ba8044))
+
+
+
+
+
 ## [0.12.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.12.2...@transferwise/neptune-css@0.12.3) (2020-01-13)
 
 

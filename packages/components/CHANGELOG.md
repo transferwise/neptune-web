@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.0...@transferwise/components@21.1.1) (2020-01-30)
+
+
+### Bug Fixes
+
+* set Drawer position prop default to 'right' ([379a779](https://github.com/transferwise/neptune-web/commit/379a7795a1437c35c15a28c90cc4fec125c9c295))
+
+
+
+
+
 # [21.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.0.0...@transferwise/components@21.1.0) (2020-01-29)
 
 
