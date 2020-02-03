@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.1.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.3...@transferwise/components@21.1.4) (2020-02-03)
+
+
+### Bug Fixes
+
+* set padding to 0 to fix browser defaults ([#161](https://github.com/transferwise/neptune-web/issues/161)) ([b731ed6](https://github.com/transferwise/neptune-web/commit/b731ed646a6a53ac091cab3432b5aab0d8e8f882))
+
+
+
+
+
 ## [21.1.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.2...@transferwise/components@21.1.3) (2020-01-30)
 
 **Note:** Version bump only for package @transferwise/components
