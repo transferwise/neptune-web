@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.1.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.4...@transferwise/components@21.1.5) (2020-02-04)
+
+
+### Bug Fixes
+
+* **select:** rm focus after open for touch devices ([#163](https://github.com/transferwise/neptune-web/issues/163)) ([9615b6b](https://github.com/transferwise/neptune-web/commit/9615b6bc32a681e61615f4263834cdb047ff44fd))
+
+
+
+
+
 ## [21.1.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.3...@transferwise/components@21.1.4) (2020-02-03)
 
 
