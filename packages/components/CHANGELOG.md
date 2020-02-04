@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.1.6](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.5...@transferwise/components@21.1.6) (2020-02-04)
+
+
+### Bug Fixes
+
+* **select:** revert focus changes ([#164](https://github.com/transferwise/neptune-web/issues/164)) ([45b137e](https://github.com/transferwise/neptune-web/commit/45b137e5c8fddb7f342e64aef709308058c772a4))
+
+
+
+
+
 ## [21.1.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.4...@transferwise/components@21.1.5) (2020-02-04)
 
 
