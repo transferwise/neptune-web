@@ -268,14 +268,9 @@ export default class Select extends Component {
   open() {
     // TODO: should also add breakpoint-specific overflow:hidden class to body
     this.setState({ open: true }, () => {
-      const isTouchDevice =
-        typeof window !== 'undefined' &&
-        window.matchMedia &&
-        !!window.matchMedia('(pointer: coarse)').matches;
       const searchable = !!this.props.onSearchChange;
-
       defer(() => {
-        if (!isTouchDevice && searchable && this.searchBoxRef.current) {
+        if (searchable && this.searchBoxRef.current) {
           this.searchBoxRef.current.focus();
         }
       });

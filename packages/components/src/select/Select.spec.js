@@ -21,9 +21,6 @@ describe('Select', () => {
   beforeEach(() => {
     // Need to reset innerWidth for portal tests
     window.innerWidth = 1024;
-    window.matchMedia = () => {
-      return { matches: false };
-    };
     props = {
       onChange: jest.fn(),
       options: [
@@ -361,8 +358,6 @@ describe('Select', () => {
 
     callSearchChangeWith('yo');
 
-    //
-
     expect(focusedOptionIndex()).toBe(1); // ignore search bar
   });
 
@@ -540,28 +535,11 @@ describe('Select', () => {
     expect(findNthListElement(1).children().length).toBe(0);
   });
 
-  describe('touch device', () => {
-    beforeEach(() => {
-      window.matchMedia = () => {
-        return { matches: true };
-      };
-    });
-
-    it("doesn't focus on the search box once opened", async () => {
-      component.setProps({ onSearchChange: jest.fn() });
-      component.find('button.dropdown-toggle').simulate('click', fakeEvent());
-      await bustStackAndUpdate();
-      expect(component.find('input').prop('className')).not.toBe(document.activeElement.className);
-    });
-  });
-
-  describe('not a touch device', () => {
-    it('focuses on the search box once opened', async () => {
-      component.setProps({ onSearchChange: jest.fn() });
-      component.find('button.dropdown-toggle').simulate('click', fakeEvent());
-      await bustStackAndUpdate();
-      expect(component.find('input').prop('className')).toBe(document.activeElement.className);
-    });
+  it('focuses on the search box once opened', async () => {
+    component.setProps({ onSearchChange: jest.fn() });
+    component.find('button.dropdown-toggle').simulate('click', fakeEvent());
+    await bustStackAndUpdate();
+    expect(component.find('input').prop('className')).toBe(document.activeElement.className);
   });
 
   it('ensures namespaced classNames can be provided and used ', () => {
