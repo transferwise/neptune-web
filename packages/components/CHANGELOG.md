@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.1.7](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.6...@transferwise/components@21.1.7) (2020-02-06)
+
+
+### Bug Fixes
+
+* **select:** increase styles specificity ([#170](https://github.com/transferwise/neptune-web/issues/170)) ([9e61a44](https://github.com/transferwise/neptune-web/commit/9e61a449aba4c2d1d57ba66624e871f25759e161))
+
+
+
+
+
 ## [21.1.6](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.5...@transferwise/components@21.1.6) (2020-02-04)
 
 
