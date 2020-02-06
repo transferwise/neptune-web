@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.1.8](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.7...@transferwise/components@21.1.8) (2020-02-06)
+
+
+### Bug Fixes
+
+* **select:** tab will select item under focus in select ([#168](https://github.com/transferwise/neptune-web/issues/168)) ([fd6cc13](https://github.com/transferwise/neptune-web/commit/fd6cc13f56681457499349dc7632da60a971e174))
+
+
+
+
+
 ## [21.1.7](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.6...@transferwise/components@21.1.7) (2020-02-06)
 
 
