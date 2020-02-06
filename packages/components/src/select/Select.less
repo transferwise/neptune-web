@@ -41,28 +41,26 @@ html.ios-click {
       bottom: 0;
       right: 0;
       left: 0;
-      display: block;
+      display: block !important;
       background: rgba(0, 0, 0, 0.3);
       z-index: 999;
       animation: fadeIn 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
     }
   }
 
-  .dropdown-menu {
-    &--open {
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      top: auto;
-      max-width: 100%;
-      width: 100% !important;
-      max-height: 50vh;
-      animation: fadeUp 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
-      visibility: visible;
-      opacity: 1;
-      overflow: auto;
-    }
+  .dropdown-menu.dropdown-menu--open {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: auto;
+    max-width: 100%;
+    width: 100% !important;
+    max-height: 50vh;
+    animation: fadeUp 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
+    visibility: visible;
+    opacity: 1;
+    overflow: auto;
   }
 }
 
