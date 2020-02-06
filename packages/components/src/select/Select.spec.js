@@ -490,6 +490,20 @@ describe('Select', () => {
     expect(onChange).toHaveBeenLastCalledWith(props.options[0]);
   });
 
+  it('allows you to select the item currently focused with your keyboard by pressing TAB', () => {
+    component.setProps({ required: true });
+    const { onChange } = component.instance().props;
+
+    // Hitting it once will only make the selector appear, so we hit it twice to go down once
+    doTimes(2, () => component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN)));
+    expect(onChange).not.toHaveBeenCalled();
+
+    // Select an option with TAB
+    component.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.TAB));
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenLastCalledWith(props.options[0]);
+  });
+
   it('allows you to select the item currently focused with your keyboard by pressing SPACE', () => {
     component.setProps({ required: true });
     const { onChange } = component.instance().props;

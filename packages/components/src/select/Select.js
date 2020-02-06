@@ -226,7 +226,7 @@ export default class Select extends Component {
         break;
       case KeyCodes.TAB:
         if (open) {
-          event.preventDefault();
+          this.selectKeyboardFocusedOption();
         }
         break;
       default:
