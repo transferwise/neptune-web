@@ -13,11 +13,11 @@ describe('Loader', () => {
   });
 
   it('shows an extra large loader', () => {
-    expect(component.find('div.loader--xl').length).toBe(1);
+    expect(component.find('div.tw-loader--xl').length).toBe(1);
   });
 
   it('shows a small loader if that property is set', () => {
     component.setProps({ small: true });
-    expect(component.find('div.loader--xs').length).toBe(1);
+    expect(component.find('div.tw-loader--xs').length).toBe(1);
   });
 });

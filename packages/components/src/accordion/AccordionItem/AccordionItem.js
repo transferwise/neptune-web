@@ -6,7 +6,7 @@ import Chevron from '../../chevron';
 const AccordionItem = ({ title, content, onClick, isOpen, index }) => (
   <label
     onClick={() => onClick(index)}
-    className={classNames('accordion-item decision p-a-0', { closed: !isOpen })}
+    className={classNames('tw-accordion-item decision p-a-0', { closed: !isOpen })}
     htmlFor="accordion-chevron"
   >
     <div className="media p-y-3" id="accordion-chevron">

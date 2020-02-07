@@ -400,7 +400,7 @@ export default class FormControl extends PureComponent {
 
       case FormControlType.TEXTAREA: {
         const textareaProps = {
-          className: 'form-control',
+          className: 'form-control tw-form-control',
           id,
           name,
           placeholder,

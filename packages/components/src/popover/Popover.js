@@ -96,6 +96,7 @@ export default class Popover extends Component {
 
     const placement = getPlacement(this.popoverElement, preferredPlacement);
     const popoverClassName = classNames(
+      'tw-popover',
       this.style('popover'),
       this.style('animate'),
       this.style('in'),

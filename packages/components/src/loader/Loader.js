@@ -2,8 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import classnames from 'classnames';
 import { Size } from '../common';
-
-import './Loader.css';
+import '@transferwise/neptune-css/dist/css/loader-borderless.css';
 
 const Loader = ({ small, size, classNames }) => {
   const style = className => classNames[className] || className;
@@ -11,12 +10,12 @@ const Loader = ({ small, size, classNames }) => {
   const legacySize = small ? Loader.Size.EXTRA_SMALL : size;
 
   return (
-    <div className={classnames(style('loader'), style(`loader--${legacySize}`))}>
+    <div className={classnames(style('tw-loader'), style(`tw-loader--${legacySize}`))}>
       {Array(5)
         .fill()
         .map((item, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <div className={style('loader__stripe')} key={index} />
+          <div className={style('tw-loader__stripe')} key={index} />
         ))}
     </div>
   );

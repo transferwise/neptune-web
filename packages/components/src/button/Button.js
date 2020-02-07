@@ -20,6 +20,7 @@ const Button = ({
 }) => {
   const classes = classNames(
     `btn btn-${size}`,
+    `tw-btn tw-btn-${size}`,
     {
       'btn-loading': loading,
       'btn-primary': type === Type.PRIMARY,

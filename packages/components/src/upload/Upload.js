@@ -245,9 +245,9 @@ class Upload extends PureComponent {
       <div
         className={classNames({
           droppable: true,
-          'droppable-sm': size === 'sm',
-          'droppable-md': size === 'md' || !size,
-          'droppable-lg': size === 'lg',
+          'tw-droppable-sm droppable-sm': size === 'sm',
+          'tw-droppable-md droppable-md': size === 'md' || !size,
+          'tw-droppable-lg droppable-lg': size === 'lg',
           'droppable-dropping': isDroppable,
           'droppable-processing': isProcessing,
           'droppable-complete': isComplete,

@@ -1,18 +1,15 @@
 @import 'bootstrap/less/variables';
 
-.btn {
+.tw-btn {
   position: relative;
-}
-
-.btn.btn-block > span.btn-loader {
-  position: absolute;
-  left: @spacer * 3;
-}
-
-.btn.btn-xs > span.btn-loader {
-  background-size: 16px 16px;
-}
-
-.btn.btn-xs.btn-block > span.btn-loader {
-  top: 0px;
+  &.tw-btn-block > span.btn-loader {
+    position: absolute;
+    left: @spacer * 3;
+  }
+  &.tw-btn-xs.btn-block > span.btn-loader {
+    top: 0px;
+  }
+  &.tw-btn-xs > span.btn-loader {
+    background-size: 16px 16px;
+  }
 }

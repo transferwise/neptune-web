@@ -6,7 +6,7 @@ import TickCircleIcon from '@transferwise/icons/react/tick-circle';
 import './InstructionsList.css';
 
 const InstructionsList = ({ dos, donts }) => (
-  <div className="instructions">
+  <div className="tw-instructions">
     {dos.map((doThis, index) => (
       // eslint-disable-next-line react/no-array-index-key
       <div className="instruction m-t-1" key={index}>

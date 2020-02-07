@@ -9,9 +9,9 @@ export default {
 };
 
 export const basic = () => {
-  const size = select('size', Object.values(Button.Size), Button.Size.MEDIUM);
+  const size = select('size', Object.values(Button.Size), Button.Size.SMALL);
   const type = select('type', Object.values(Button.Type), Button.Type.PRIMARY);
-  const htmlType = select('size', ['button', 'submit', 'reset'], 'button');
+  const htmlType = select('htmlType', ['button', 'submit', 'reset'], 'button');
   const disabled = boolean('disabled', false);
   const loading = boolean('loading', false);
   const block = boolean('block', false);

@@ -26,11 +26,11 @@ describe('Modal', () => {
 
     it('with right size when passed down the props', () => {
       component.setProps({ size: 'sm' });
-      expect(modalDialog().hasClass('modal-np-sm')).toBe(true);
+      expect(modalDialog().hasClass('tw-modal-sm')).toBe(true);
       component.setProps({ size: 'md' });
-      expect(modalDialog().hasClass('modal-np-md')).toBe(true);
+      expect(modalDialog().hasClass('tw-modal-md')).toBe(true);
       component.setProps({ size: 'lg' });
-      expect(modalDialog().hasClass('modal-np-lg')).toBe(true);
+      expect(modalDialog().hasClass('tw-modal-lg')).toBe(true);
     });
 
     it('with title when title is provided', () => {
@@ -88,16 +88,16 @@ describe('Modal', () => {
     describe('content', () => {
       it('with compact class if compact class is provided', () => {
         component.setProps({ className: '' });
-        expect(modalContent().hasClass('modal-np-compact')).toBe(false);
+        expect(modalContent().hasClass('tw-modal-compact')).toBe(false);
         component.setProps({ className: 'compact' });
-        expect(modalContent().hasClass('modal-np-compact')).toBe(true);
+        expect(modalContent().hasClass('tw-modal-compact')).toBe(true);
       });
 
       it('with no title class if title is not provided', () => {
         component.setProps({ title: 'a title' });
-        expect(modalContent().hasClass('modal-np-no-title')).toBe(false);
+        expect(modalContent().hasClass('tw-modal-no-title')).toBe(false);
         component.setProps({ title: '' });
-        expect(modalContent().hasClass('modal-np-no-title')).toBe(true);
+        expect(modalContent().hasClass('tw-modal-no-title')).toBe(true);
       });
     });
   });
@@ -184,13 +184,13 @@ describe('Modal', () => {
     };
   });
 
-  const modal = () => component.find('.modal-np');
-  const modalDialog = () => component.find('.modal-np-dialog');
-  const modalHeader = () => component.find('.modal-np-header');
-  const modalTitle = () => component.find('.modal-np-title');
-  const modalContent = () => component.find('.modal-np-content');
-  const modalBody = () => component.find('.modal-np-body');
-  const modalFooter = () => component.find('.modal-np-footer');
+  const modal = () => component.find('.tw-modal');
+  const modalDialog = () => component.find('.tw-modal-dialog');
+  const modalHeader = () => component.find('.tw-modal-header');
+  const modalTitle = () => component.find('.tw-modal-title');
+  const modalContent = () => component.find('.tw-modal-content');
+  const modalBody = () => component.find('.tw-modal-body');
+  const modalFooter = () => component.find('.tw-modal-footer');
 
   // For some reason Dimmer gets rendered as Component so this is the best way I found to access it.
   const dimmer = () => component.at(0);

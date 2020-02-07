@@ -75,7 +75,7 @@ class Tooltip extends Component {
           this.elementReference = elementReference;
         }}
         aria-describedby={tooltipId}
-        className="tooltip-container"
+        className="tw-tooltip-container"
       >
         <div
           onMouseOver={this.ensureHidden}

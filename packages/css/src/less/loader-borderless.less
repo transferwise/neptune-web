@@ -92,7 +92,7 @@
   }
 }
 
-.loader {
+.tw-loader {
   overflow: hidden;
   border-radius: 50%;
   -webkit-backface-visibility: hidden;
@@ -104,7 +104,7 @@
     @size-name: extract(@size-names, @c);
     @size: extract(@sizes, @c);
 
-    &--@{size-name} {
+    &.tw-loader--@{size-name} {
       width: @size;
       height: @size;
     }

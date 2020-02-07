@@ -1,13 +1,13 @@
 @import 'bootstrap/less/variables.less';
 @import '@transferwise/neptune-css/src/less/variables/_colors.less';
 
-.modal-np {
+.tw-modal {
   height: 100%;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  .modal-np-dialog {
+  .tw-modal-dialog {
     display: flex;
     max-height: 100%;
     transition: transform 0.3s ease-out;
@@ -16,12 +16,12 @@
   }
 
   &.in {
-    .modal-np-dialog {
+    .tw-modal-dialog {
       transform: translate(0);
     }
   }
 
-  .modal-np-content {
+  .tw-modal-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -31,19 +31,19 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     width: 100%;
 
-    .modal-np-header,
-    .modal-np-footer {
+    .tw-modal-header,
+    .tw-modal-footer {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
     }
 
-    .modal-np-body {
+    .tw-modal-body {
       flex: 1;
       overflow-y: auto;
     }
 
-    .modal-np-header {
+    .tw-modal-header {
       min-height: calc(var(--spacer) * 7);
       justify-content: space-between;
       box-shadow: inset 0 -1px 0 0 rgb(226, 230, 232);
@@ -58,15 +58,15 @@
         margin-top: -2px;
       }
     }
-    .modal-np-header,
-    .modal-np-footer,
-    .modal-np-body {
+    .tw-modal-header,
+    .tw-modal-footer,
+    .tw-modal-body {
       padding: calc(var(--spacer) * 2) calc(var(--spacer) * 2);
     }
-    .modal-np-title {
+    .tw-modal-title {
       max-width: 85%;
     }
-    .modal-np-footer {
+    .tw-modal-footer {
       padding-top: 12px;
       padding-bottom: 12px;
       box-shadow: inset 0 1px 0 0 rgb(226, 230, 232);
@@ -74,11 +74,11 @@
         box-shadow: none;
       }
     }
-    &.modal-np-no-title {
-      .modal-np-body {
+    &.tw-modal-no-title {
+      .tw-modal-body {
         padding-top: 0 !important;
       }
-      .modal-np-header {
+      .tw-modal-header {
         min-height: calc(var(--spacer) * 4);
         padding-bottom: 4px !important;
       }
@@ -87,29 +87,29 @@
 }
 
 @media (min-width: @screen-sm) {
-  .modal-np {
-    .modal-np-dialog {
+  .tw-modal {
+    .tw-modal-dialog {
       height: auto;
     }
 
-    .modal-np-content {
-      .modal-np-header {
+    .tw-modal-content {
+      .tw-modal-header {
         min-height: calc(var(--spacer) * 8);
       }
-      .modal-np-header,
-      .modal-np-footer,
-      .modal-np-body {
+      .tw-modal-header,
+      .tw-modal-footer,
+      .tw-modal-body {
         padding: calc(var(--spacer) * 4) calc(var(--spacer) * 3);
       }
     }
 
-    .modal-np-compact {
-      .modal-np-header {
+    .tw-modal-compact {
+      .tw-modal-header {
         min-height: calc(var(--spacer) * 7);
       }
-      .modal-np-header,
-      .modal-np-footer,
-      .modal-np-body {
+      .tw-modal-header,
+      .tw-modal-footer,
+      .tw-modal-body {
         padding-top: calc(var(--spacer) * 2);
         padding-bottom: calc(var(--spacer) * 2);
       }
@@ -118,22 +118,22 @@
 }
 
 @media (min-width: @screen-xs) {
-  .modal-np-dialog {
-    &.modal-np-sm {
+  .tw-modal-dialog {
+    &.tw-modal-sm {
       width: 300px;
     }
   }
 }
 
 @media (min-width: @screen-sm) {
-  .modal-np {
+  .tw-modal {
     padding: calc(var(--spacer) * 5);
 
-    .modal-np-dialog {
-      .modal-np-content {
+    .tw-modal-dialog {
+      .tw-modal-content {
         border-radius: 3px;
       }
-      &.modal-np-md {
+      &.tw-modal-md {
         width: 540px;
       }
     }
@@ -141,16 +141,16 @@
 }
 
 @media (min-width: @screen-md) {
-  .modal-np-dialog {
-    &.modal-np-lg {
+  .tw-modal-dialog {
+    &.tw-modal-lg {
       width: 720px;
     }
   }
 }
 
 @media (min-width: @screen-lg) {
-  .modal-np-dialog {
-    &.modal-np-xl {
+  .tw-modal-dialog {
+    &.tw-modal-xl {
       width: 1000px;
     }
   }
@@ -160,8 +160,8 @@
 // In internet explorer 11 modal sows up always collapsed.
 @media all and (-ms-high-contrast: none) {
   _:-ms-fullscreen,
-  :root .modal-np {
-    .modal-np-dialog {
+  :root .tw-modal {
+    .tw-modal-dialog {
       height: 100%; /* IE11 */
     }
   }

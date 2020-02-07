@@ -96,7 +96,7 @@ class Modal extends Component {
           unmountOnExit
         >
           <div
-            className={`modal-np fade ${className}`}
+            className={`tw-modal fade ${className}`}
             tabIndex="-1"
             role="button"
             ref={dialog => {
@@ -107,32 +107,32 @@ class Modal extends Component {
             {...otherProps}
           >
             <div
-              className={classNames('modal-np-dialog', {
-                [`modal-np-${this.props.size}`]: this.props.size,
+              className={classNames('tw-modal-dialog', {
+                [`tw-modal-${this.props.size}`]: this.props.size,
               })}
               aria-modal
               role="dialog"
             >
               <div
-                className={classNames('modal-np-content', {
-                  'modal-np-compact': isCompact,
-                  'modal-np-no-title': !title,
+                className={classNames('tw-modal-content', {
+                  'tw-modal-compact': isCompact,
+                  'tw-modal-no-title': !title,
                 })}
               >
                 <div
-                  className={classNames('modal-np-header', {
+                  className={classNames('tw-modal-header', {
                     'modal--withoutborder': !title || noDivider,
                   })}
                 >
-                  <h4 className="modal-np-title">{title}</h4>
+                  <h4 className="tw-modal-title">{title}</h4>
                   <button type="button" onClick={onClose} className="close" aria-label="close">
                     <Close />
                   </button>
                 </div>
-                <div className="modal-np-body">{body}</div>
+                <div className="tw-modal-body">{body}</div>
                 {footer && (
                   <div
-                    className={classNames('modal-np-footer', {
+                    className={classNames('tw-modal-footer', {
                       'modal--withoutborder': noDivider,
                     })}
                   >
