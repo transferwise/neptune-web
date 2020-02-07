@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.12.5...@transferwise/neptune-css@0.12.6) (2020-02-07)
+
+
+### Bug Fixes
+
+* increase react classnames specificity ([#165](https://github.com/transferwise/neptune-web/issues/165)) ([c7ca670](https://github.com/transferwise/neptune-web/commit/c7ca67084910c7fdc513d343d98a0ed2609a4804))
+
+
+
+
+
 ## [0.12.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.12.4...@transferwise/neptune-css@0.12.5) (2020-02-07)
 
 

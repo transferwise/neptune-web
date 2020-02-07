@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.2.1...@transferwise/components@21.2.2) (2020-02-07)
+
+
+### Bug Fixes
+
+* increase react classnames specificity ([#165](https://github.com/transferwise/neptune-web/issues/165)) ([c7ca670](https://github.com/transferwise/neptune-web/commit/c7ca67084910c7fdc513d343d98a0ed2609a4804))
+
+
+
+
+
 ## [21.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.2.0...@transferwise/components@21.2.1) (2020-02-07)
 
 **Note:** Version bump only for package @transferwise/components

@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "21.2.1",
+  "version": "21.2.2",
   "description": "TransferWise styleguide components in react",
   "license": "Apache-2.0",
   "main": "./build/main.js",
@@ -135,7 +135,7 @@
     "@emotion/core": "^10.0.14",
     "@transferwise/formatting": "^2.1.0",
     "@transferwise/icons": "^1.0.0",
-    "@transferwise/neptune-css": "^0.12.5",
+    "@transferwise/neptune-css": "^0.12.6",
     "classnames": "^2.2.6",
     "lodash.clamp": "^4.0.3",
     "lodash.debounce": "^4.0.8",
