@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@0.2.12...@transferwise/neptune-docs@0.3.0) (2020-02-07)
+
+
+### Features
+
+* expose filename in Upload component ([#172](https://github.com/transferwise/neptune-web/issues/172)) ([8996046](https://github.com/transferwise/neptune-web/commit/899604673253923f2ce0ed20225a0baefdb40047))
+
+
+
+
+
 ## [0.2.12](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@0.2.11...@transferwise/neptune-docs@0.2.12) (2020-02-07)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

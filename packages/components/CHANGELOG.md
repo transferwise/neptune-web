@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.9...@transferwise/components@21.2.0) (2020-02-07)
+
+
+### Features
+
+* expose filename in Upload component ([#172](https://github.com/transferwise/neptune-web/issues/172)) ([8996046](https://github.com/transferwise/neptune-web/commit/899604673253923f2ce0ed20225a0baefdb40047))
+
+
+
+
+
 ## [21.1.9](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.1.8...@transferwise/components@21.1.9) (2020-02-07)
 
 **Note:** Version bump only for package @transferwise/components
