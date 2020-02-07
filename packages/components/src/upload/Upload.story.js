@@ -60,7 +60,7 @@ export const basic = () => {
         method: 'POST',
       }}
       onStart={file => action('onStart', file)}
-      onSuccess={httpResponse => action('onSuccess', httpResponse)}
+      onSuccess={(httpResponse, fileName) => action('onSuccess', httpResponse, fileName)}
       onFailure={httpResponse => action('onFailure', httpResponse)}
       onCancel={() => action('onCancel')}
     />

@@ -242,7 +242,7 @@ describe('Upload', () => {
         .fileDropped(TEST_FILE)
         .then(() => {
           jest.runTimersToTime(props.animationDelay + ANIMATION_DELAY);
-          expect(props.onSuccess).toHaveBeenCalledWith('ServerResponse');
+          expect(props.onSuccess).toHaveBeenCalledWith('ServerResponse', TEST_FILE.name);
           done();
         });
     });

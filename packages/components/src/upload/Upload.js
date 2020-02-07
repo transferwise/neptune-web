@@ -67,7 +67,7 @@ class Upload extends PureComponent {
   }
 
   onAnimationCompleted = async status => {
-    const { response, isProcessing } = this.state;
+    const { response, isProcessing, fileName } = this.state;
     // Success.
     const { animationDelay } = this.props;
     if (isProcessing && status === ProcessIndicator.Status.SUCCEEDED) {
@@ -78,7 +78,7 @@ class Upload extends PureComponent {
             isProcessing: false,
             isComplete: true,
           },
-          () => (onSuccess ? onSuccess(response) : {}),
+          () => (onSuccess ? onSuccess(response, fileName) : {}),
         );
       }, animationDelay);
     }

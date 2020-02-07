@@ -23,7 +23,7 @@
     url: 'https://httpbin.org/post',
   }}
   onStart={file => console.log('onStart', file)}
-  onSuccess={httpResponse => console.log('onSuccess', httpResponse)}
+  onSuccess={(httpResponse, fileName) => console.log('onSuccess', httpResponse, fileName)}
   onFailure={httpResponse => console.log('onFailure', httpResponse)}
   onCancel={() => console.log('onCancel')}
   size="md"
