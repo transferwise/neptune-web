@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.2.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.2.3...@transferwise/components@21.2.4) (2020-02-10)
+
+
+### Bug Fixes
+
+* **stepper:** update changed tooltip class inside stepper ([#177](https://github.com/transferwise/neptune-web/issues/177)) ([89b1fb5](https://github.com/transferwise/neptune-web/commit/89b1fb5313c5ba356d3a718c41270a4cc3586e9d))
+
+
+
+
+
 ## [21.2.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.2.2...@transferwise/components@21.2.3) (2020-02-10)
 
 
