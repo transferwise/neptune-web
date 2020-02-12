@@ -32,20 +32,16 @@ html.ios-click {
     }
   }
 
-  .dropup.open,
-  .dropdown.open {
-    &:before {
-      content: '';
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      display: block !important;
-      background: rgba(0, 0, 0, 0.3);
-      z-index: 999;
-      animation: fadeIn 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
-    }
+  .select-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: block !important;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    animation: fadeIn 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
   }
 
   .dropdown-menu.dropdown-menu--open {

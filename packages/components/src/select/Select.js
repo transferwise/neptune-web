@@ -36,7 +36,8 @@ function getShouldRenderWithPortal() {
   return (
     typeof document !== 'undefined' &&
     typeof window !== 'undefined' &&
-    window.innerWidth < Breakpoint.SMALL
+    window.matchMedia &&
+    window.matchMedia(`(max-width: ${Breakpoint.SMALL}px)`).matches
   );
 }
 
@@ -458,6 +459,16 @@ export default class Select extends Component {
     return <span className={this.style('form-control-placeholder')}>{placeholder}</span>;
   }
 
+  renderOverlay() {
+    const { open, shouldRenderWithPortal } = this.state;
+
+    if (open && shouldRenderWithPortal) {
+      return createPortal(<div className="select-overlay" />, document.body);
+    }
+
+    return null;
+  }
+
   render() {
     const { disabled, size, block, id, dropdownUp, inverse } = this.props;
     const { open } = this.state;
@@ -519,7 +530,8 @@ export default class Select extends Component {
               {this.renderButtonInternals()}
               <span className={this.style('caret')} />
             </button>
-            {animationState !== 'exited' ? this.renderOptionsList() : ''}
+            {animationState !== 'exited' && this.renderOptionsList()}
+            {animationState !== 'exited' && this.renderOverlay()}
           </div>
         )}
       </Transition>

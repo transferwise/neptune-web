@@ -6,7 +6,6 @@ import Transition from 'react-transition-group/Transition';
 import Select from './';
 import Option from './option';
 import KEY_CODES from '../common/keyCodes';
-import { Breakpoint } from '../common';
 import { fakeEvent, fakeKeyDownEventForKey } from '../common/fakeEvents';
 import { addClassAndTriggerReflow, removeClass } from './domHelpers';
 
@@ -590,27 +589,27 @@ describe('Select', () => {
   it('updates if we should create the list in a portal resize', () => {
     expect(component.state('shouldRenderWithPortal')).toBe(false);
 
-    resizeWindow(Breakpoint.SMALL - 1);
+    window.matchMedia = () => {
+      return { matches: true };
+    };
+    window.dispatchEvent(new Event('resize'));
 
     expect(component.state('shouldRenderWithPortal')).toBe(true);
   });
 
-  it('creates a portal when rendering on mobile', () => {
+  it('creates a portal for options list and overlay when rendering on mobile', () => {
     expect(createPortal).not.toHaveBeenCalled();
     expect(component.state('shouldRenderWithPortal')).toBe(false);
 
     openSelect();
     expect(createPortal).not.toHaveBeenCalled();
     expect(element('.dropdown-menu--open').exists()).toBe(true);
+    expect(document.querySelector('.select-overlay')).toBeFalsy();
 
     component.setState({ shouldRenderWithPortal: true });
+    expect(createPortal).toHaveBeenCalledTimes(2);
     openSelect();
     expect(createPortal).toHaveBeenCalledWith(expect.anything(), document.body);
     expect(element('.dropdown-menu--open').exists()).toBe(false);
   });
 });
-
-function resizeWindow(width) {
-  window.innerWidth = width;
-  window.dispatchEvent(new Event('resize'));
-}
