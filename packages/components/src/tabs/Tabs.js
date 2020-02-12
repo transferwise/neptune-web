@@ -50,6 +50,7 @@ class Tabs extends React.Component {
     const { selected } = this.props;
 
     this.switchTab(clamp(selected, MIN_INDEX, this.MAX_INDEX));
+    this.animateToTab(clamp(selected, MIN_INDEX, this.MAX_INDEX));
     document.body.addEventListener('touchmove', this.disableScroll, { passive: false });
     document.body.addEventListener('touchforcechange', this.disableScroll, { passive: false });
     window.addEventListener('resize', this.handleResize);
