@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.2.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.2.4...@transferwise/components@21.2.5) (2020-02-12)
+
+
+### Bug Fixes
+
+* **tabs:** animate to tab on mount ([#179](https://github.com/transferwise/neptune-web/issues/179)) ([38ec9ff](https://github.com/transferwise/neptune-web/commit/38ec9ff28494a1b6bc6975613d310d8178388a27))
+
+
+
+
+
 ## [21.2.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.2.3...@transferwise/components@21.2.4) (2020-02-10)
 
 
