@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.2.6](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.2.5...@transferwise/components@21.2.6) (2020-02-12)
+
+
+### Bug Fixes
+
+* **select:** put the overlay in a portal ([#180](https://github.com/transferwise/neptune-web/issues/180)) ([d3f070d](https://github.com/transferwise/neptune-web/commit/d3f070dc02c35fb65ca440b1962d5d7fcc8f990e))
+
+
+
+
+
 ## [21.2.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.2.4...@transferwise/components@21.2.5) (2020-02-12)
 
 
