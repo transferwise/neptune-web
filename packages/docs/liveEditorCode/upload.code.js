@@ -15,7 +15,7 @@
   usButtonText="Or Select File"
   usDisabled={false}
   usDropMessage="Drop file to start upload"
-  usLabel=""
+  usLabel="Front of your ID document"
   usPlaceholder="Drag and drop file less than 5MB"
   usAccept="image/*"
   usHelpImage={IMAGES[0].value}
