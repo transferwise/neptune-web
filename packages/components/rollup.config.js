@@ -1,13 +1,16 @@
-import resolve from 'rollup-plugin-node-resolve';
+import resolve from '@rollup/plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
-import minify from 'rollup-plugin-babel-minify';
+import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
+import { uglify } from 'rollup-plugin-uglify';
 
 import pkg from './package.json';
 
 // Rollup
 const input = 'src/index.js';
+const file =
+  process.env.NODE_ENV === 'umd-nopolyfill' ? './build/umd/no-polyfill/main.js' : pkg.main;
+
 const external = ['react', 'react-dom', 'prop-types'];
 
 // Rollup can resolve only explicit exports.
@@ -28,34 +31,28 @@ const globals = {
   'prop-types': 'PropTypes',
 };
 
-// Babel
-const babelrc = false;
-const babelPlugins = ['@babel/plugin-proposal-class-properties'];
-const exclude = ['node_modules/**', '../../node_modules/**'];
-const presets = ['@babel/env', '@babel/preset-react'];
-
-const DEFAULT_BABEL_CONFIG = { babelrc, presets, plugins: babelPlugins, exclude };
-
 // Plugins
 const plugins = [
-  resolve({ browser: true }),
+  // Resolves modules from node_modules
+  resolve(),
   babel({
     runtimeHelpers: true,
-    ...DEFAULT_BABEL_CONFIG,
+    exclude: ['node_modules/**', '../../node_modules/**'],
   }),
+  // Convert CJ into ES6
   commonjs({ sourcemap: false, namedExports }),
   postcss({
     config: true,
-    extract: true,
+    extract: pkg.style,
     extensions: ['.css'],
   }),
-  minify(),
+  uglify(),
 ];
 
 export default [
   {
     input,
-    output: [{ file: './build/main.js', name: pkg.name, format: 'umd', globals }],
+    output: [{ file, name: pkg.name, format: 'umd', globals }],
     external,
     plugins,
   },

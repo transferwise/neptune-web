@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
-import { Flex, Box } from '@transferwise/components/lib';
+import { Flex, Box } from '@transferwise/components';
 import Link from './Link';
 
 import getPages from '../utils/getPages';

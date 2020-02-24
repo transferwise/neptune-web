@@ -54,4 +54,5 @@ docs-build
 
 DOCGEN_OUTPUT.js
 temp-docgen-output.js
+temp-bundle-sizes.js
 

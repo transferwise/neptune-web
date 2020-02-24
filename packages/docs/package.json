@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "docs": "node ./docgen.js && next dev",
-    "build": "node ./docgen.js && next build",
+    "build": "node ./docgen.js && node ./utils/bundleSize/getBundleSize.js && next build",
     "docs:build": "next export -o docs-build && touch docs-build/.nojekyll",
     "docs:deploy": "gh-pages --dotfiles -a -d docs-build",
     "docs:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",

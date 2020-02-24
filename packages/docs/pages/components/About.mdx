@@ -1,0 +1,193 @@
+import bundleSizes from '../../temp-bundle-sizes.js';
+import PrintBundleSize from '../../utils/bundleSize/printBundleSize';
+
+The current component library has been updated to provide different bundles. By default the files provided will be the **polyfilled** ones.
+
+In order to get the unpolyfilled bundle components can be imported as it follows
+
+**UMD No Polyfilled version**
+
+```
+import { Button, Upload } from "@transferwise/components/build/umd/no-polyfill/main.js";
+```
+
+**ES No Polyfilled version**
+
+```
+import { Button, Upload } from "@transferwise/components/build/es/no-polyfill";
+```
+
+By default when importing this
+
+```
+import { Button, Upload } from "@transferwise/components";
+```
+
+you will get :
+
+**Polyfilled UMD if your bundler doesn't support tree-shaking**
+
+or
+
+**Polyfilled ES if your bundler supports tree-shaking**
+
+
+To give a quick overview of the current build folder please check the following graph:
+
+```html
+components
+└── build/
+      ├── umd/
+      │   └── polyfill
+      │   │     └── main.js
+      │   └── no-polyfill
+      │         └── main.js
+      │
+      └── es/
+          └── polyfill
+          │     ├── Accordion
+          │     ├── Button
+          │     ├── ...
+          │     └── index.js
+          └── no-polyfill
+                ├── Accordion
+                ├── Button
+                ├── ...
+                └── index.js
+
+```
+
+Basically for every bundle type we decided to provide both a **polyfilled** and **not polyfilled** version
+
+The reason behind this choice is to provide users different options based on their current setup. If the library needs to be used in an app that is already providing its own it will makes sense to use a non polyfilled version in order to not bloat the final bundle.
+By default when importing a component you will import the **polyfilled version**
+
+<table className="docs-table table table-condensed">
+  <thead>
+    <tr>
+      <th>Bundle</th>
+      <th>Polyfill</th>
+      <th>Size</th>
+      <th>Tree-Shake</th>
+      <th>Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">UMD (default)</th>
+      <td>
+       <span class="tw-checkbox-check glyphicon glyphicon-ok"></span>
+      </td>
+      <td>
+        <PrintBundleSize bundleSize={bundleSizes.umd.polyfill[0]} /> (gzip:~<PrintBundleSize bundleSize={bundleSizes.umd.polyfill[1]} />)
+      </td>
+      <td>
+       <span class="tw-checkbox-check glyphicon glyphicon-remove"></span>
+      </td>
+       <td>
+       Apps don't need to provide polyfills.
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">UMD</th>
+      <td>
+       <span class="tw-checkbox-check glyphicon glyphicon-remove"></span>
+      </td>
+      <td>
+        <PrintBundleSize bundleSize={bundleSizes.umd['no-polyfill'][0]} /> (gzip:~<PrintBundleSize bundleSize={bundleSizes.umd['no-polyfill'][1]} />)
+      </td>
+      <td>
+       <span class="tw-checkbox-check glyphicon glyphicon-remove"></span>
+      </td>
+      <td>
+       Apps need to provide polyfills.
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">ES (default)</th>
+      <td>
+       <span class="tw-checkbox-check glyphicon glyphicon-ok"></span>
+      </td>
+      
+      <td>
+        <PrintBundleSize bundleSize={bundleSizes.es.polyfill} /> 
+      </td>
+      <td>
+       <span class="tw-checkbox-check glyphicon glyphicon-ok"></span>
+      </td>
+      <td>
+       Apps don't need to provide polyfills.
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">ES</th>
+      <td>
+       <span class="tw-checkbox-check glyphicon glyphicon-remove"></span>
+      </td>
+      <td>
+        <PrintBundleSize bundleSize={bundleSizes.es['no-polyfill']} /> 
+      </td>
+      <td>
+       <span class="tw-checkbox-check glyphicon glyphicon-ok"></span>
+      </td>
+      <td>
+       Apps need to provide polyfills.
+      </td>
+    </tr> 
+  </tbody>
+</table>
+
+Here there is a an example of how a ES file will look like with and without polyfills
+
+**Original file:**
+
+```
+class Checkbox {
+  a = new Promise();
+}
+
+export default Checkbox;
+```
+
+
+**Without Polyfill:**
+
+```
+import _classCallCheck from "@babel/runtime/helpers/classCallCheck";
+import _defineProperty from "@babel/runtime/helpers/defineProperty";
+
+var Checkbox = function Checkbox() {
+  _classCallCheck(this, Checkbox);
+
+  _defineProperty(this, "a", new Promise());
+};
+
+export default Checkbox;
+```
+
+**With Polyfill:**
+
+```
+import "core-js/modules/es.object.to-string";
+import "core-js/modules/es.promise";
+import _classCallCheck from "@babel/runtime/helpers/classCallCheck";
+import _defineProperty from "@babel/runtime/helpers/defineProperty";
+
+var Checkbox = function Checkbox() {
+  _classCallCheck(this, Checkbox);
+
+  _defineProperty(this, "a", new Promise());
+};
+
+export default Checkbox;
+```
+As per babel [documentation](https://babeljs.io/docs/en/babel-preset-env) .
+`We take advantage of the fact that a bundler will load the same polyfill only once.`
+
+If you use the not polyfilled version you have to include all polyfills manually to make sure your components behave as expected in the browser you are supporting.
+
+The polyfills are injected automatically by babel-plugin-transform-runtime based on .browserslistrc's query 'Chrome >=71, Firefox >=71, iOS >=11, Safari >=11.1, IE 11, Opera >=65, Edge >=18'. This query will cover this [browsers](https://browserl.ist/?q=Chrome+%3E%3D71%2C+Firefox+%3E%3D71%2C+iOS+%3E%3D11%2C+Safari+%3E%3D11.1%2C+IE+11%2C+Opera+%3E%3D65%2C+Edge+%3E%3D18)
+
+export const meta = {
+  name: 'About',
+};
