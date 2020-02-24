@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.2.6...@transferwise/components@22.0.0) (2020-02-24)
+
+
+* refactor!: re-organized build folder ([57763e7](https://github.com/transferwise/neptune-web/commit/57763e7acb47f34b7df2c3c0156e4ea2a41d9434))
+
+
+### BREAKING CHANGES
+
+* Build folder has changed to group the new bundles. If you import directly any bundle from build folder please double check the new path
+
+
+
+
+
 ## [21.2.6](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.2.5...@transferwise/components@21.2.6) (2020-02-12)
 
 
