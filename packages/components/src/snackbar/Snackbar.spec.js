@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import SnackbarAppendingToBody, { Snackbar, CSS_TRANSITION_DURATION } from '../snackbar/Snackbar';
 import SnackbarProvider, { SnackbarConsumer } from '../snackbar/SnackbarProvider';
 
@@ -38,12 +38,17 @@ describe('Snackbar', () => {
     buttonTrigger = () => component.find('.button-trigger');
   });
 
-  it('is appended to body', () => {
+  it('is appended to body', async () => {
     const createPortal = jest.spyOn(ReactDOM, 'createPortal');
-
     expect(createPortal).not.toHaveBeenCalled();
-    shallow(<SnackbarAppendingToBody {...props} />);
-    expect(createPortal).toBeCalledWith(<Snackbar {...props} />, document.body);
+    mount(<SnackbarAppendingToBody {...props} />);
+
+    expect(createPortal).toBeCalledTimes(1);
+    /** Using toBeCalledWith was not matching properly */
+    const [comp, body] = ReactDOM.createPortal.mock.calls[0];
+    expect(comp).toMatchObject(snackbar());
+    expect(body).toMatchObject(document.body);
+    jest.clearAllMocks();
   });
 
   it('accepts element as text', async () => {

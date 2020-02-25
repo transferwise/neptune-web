@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { createPortal } from 'react-dom';
 import CSSTransition from 'react-transition-group/CSSTransition';
+import withNextPortal from '../withNextPortal/withNextPortal';
 
 export const CSS_TRANSITION_DURATION = 400;
 
@@ -109,5 +109,4 @@ Snackbar.defaultProps = {
   action: null,
 };
 
-export default props =>
-  typeof document !== 'undefined' ? createPortal(<Snackbar {...props} />, document.body) : null;
+export default withNextPortal(Snackbar);

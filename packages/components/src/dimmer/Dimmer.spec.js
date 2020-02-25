@@ -1,5 +1,5 @@
 import React from 'react';
-import { createPortal } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
 import DimmerAppendingToBody, { Dimmer, EXIT_ANIMATION } from './Dimmer';
 import { addModalOpenBodyClass, removeModalOpenBodyClass } from '../common';
@@ -22,17 +22,25 @@ describe('Dimmer', () => {
   };
 
   beforeEach(() => {
+    ReactDOM.createPortal = jest.fn();
+    ReactDOM.createPortal.mockReturnValue(<Dimmer {...props} />);
     component = shallow(<Dimmer {...props} />);
   });
 
   afterEach(() => {
+    ReactDOM.createPortal.mockClear();
     jest.clearAllMocks();
   });
 
   it('is appended to body', () => {
-    expect(createPortal).not.toBeCalled();
-    shallow(<DimmerAppendingToBody {...props} />);
-    expect(createPortal).toBeCalledWith(<Dimmer {...props} />, document.body);
+    expect(ReactDOM.createPortal).not.toBeCalled();
+    mount(<DimmerAppendingToBody {...props} />);
+
+    expect(ReactDOM.createPortal).toBeCalledTimes(1);
+    /** Using toBeCalledWith was not matching properly */
+    const [comp, body] = ReactDOM.createPortal.mock.calls[0];
+    expect(comp).toMatchObject(component);
+    expect(body).toMatchObject(document.body);
   });
 
   it('renders with right props', () => {

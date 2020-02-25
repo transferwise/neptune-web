@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import ReactDOM from 'react-dom';
 
 import Modal from './Modal';
 import { fakeEvent } from '../common/fakeEvents';
@@ -141,9 +142,7 @@ describe('Modal', () => {
       const onClose = jest.fn(() => {
         component.setProps({ open: false });
       });
-
       component.setProps({ onClose, closeOnClick: true });
-
       expect(onClose).not.toHaveBeenCalled();
       clickCloseButton();
       jest.runAllTimers();
@@ -151,19 +150,26 @@ describe('Modal', () => {
     });
 
     it('closes on `esc` keypress', () => {
+      ReactDOM.createPortal = jest.fn();
+      ReactDOM.createPortal.mockImplementation(attr => attr.props.children.props.children);
       const onClose = jest.fn();
       component = mount(<Modal title="Some title" body="Some body" onClose={onClose} open />);
+
       expect(onClose).not.toBeCalled();
       pressEscapeOnComponent();
       expect(onClose).toHaveBeenCalledTimes(1);
+      ReactDOM.createPortal.mockClear();
     });
 
     it('closes on `esc` keypress on document', () => {
+      ReactDOM.createPortal = jest.fn();
+      ReactDOM.createPortal.mockReturnValue(() => null);
       const onClose = jest.fn();
       component = mount(<Modal title="Some title" body="Some body" onClose={onClose} open />);
       expect(onClose).not.toBeCalled();
       pressEscapeOnBody();
       expect(onClose).toHaveBeenCalledTimes(1);
+      ReactDOM.createPortal.mockClear();
     });
 
     const clickCloseButton = () => {

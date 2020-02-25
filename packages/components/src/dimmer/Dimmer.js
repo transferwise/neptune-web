@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import { createPortal } from 'react-dom';
 import '@transferwise/neptune-css/dist/css/dimmer.css';
 import { addModalOpenBodyClass, removeModalOpenBodyClass } from '../common';
+import withNextPortal from '../withNextPortal/withNextPortal';
 
 import KEY_CODES from '../common/keyCodes';
 
@@ -85,5 +85,4 @@ Dimmer.defaultProps = {
 
 export { Dimmer };
 
-export default props =>
-  typeof document !== 'undefined' ? createPortal(<Dimmer {...props} />, document.body) : '';
+export default withNextPortal(Dimmer);
