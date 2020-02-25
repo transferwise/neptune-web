@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.0.0...@transferwise/components@22.1.0) (2020-02-25)
+
+
+### Features
+
+* add simple search param on search ([#182](https://github.com/transferwise/neptune-web/issues/182)) ([46a9b1d](https://github.com/transferwise/neptune-web/commit/46a9b1d32479bf96d3a4fa84343173b400eefa02))
+
+
+
+
+
 # [22.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@21.2.6...@transferwise/components@22.0.0) (2020-02-24)
 
 
