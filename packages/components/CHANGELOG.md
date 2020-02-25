@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.1.1...@transferwise/components@22.1.2) (2020-02-25)
+
+
+### Bug Fixes
+
+* **button:** add missing tw- prefix on btn-block class ([#186](https://github.com/transferwise/neptune-web/issues/186)) ([1a5efe3](https://github.com/transferwise/neptune-web/commit/1a5efe3e9dd5f0974af793b18cd8e2bbab6a985f))
+
+
+
+
+
 ## [22.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.1.0...@transferwise/components@22.1.1) (2020-02-25)
 
 
