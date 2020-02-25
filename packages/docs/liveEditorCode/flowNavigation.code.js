@@ -3,10 +3,10 @@
   onClose={() => alert('Close clicked')}
   avatarUrl="https://github.com/transferwise.png"
   done={false}
-  profileType={{ value: 'PERSONAL', label: 'Personal' }}
+  profileType={FlowNavigation.ProfileType.BUSINESS}
+  theme={FlowNavigation.Theme.LIGHT}
   onGoBack={() => alert('go back')}
   showCloseButton
-  theme="light"
   steps={[
     {
       label: 'Amount',

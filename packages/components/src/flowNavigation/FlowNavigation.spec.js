@@ -1,11 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import FlowNavigation from './';
-import Avatar from './avatar';
-import Stepper from '../stepper';
 import BackButton from './backButton';
-import { Theme } from '../common';
+import Logo from './logo';
 
 describe('Flow navigation', () => {
   let component;
@@ -15,16 +13,16 @@ describe('Flow navigation', () => {
     return component.find('.flag').hasClass('flag--hidden');
   }
 
-  function logoInversed() {
-    return component.find('.logo').hasClass('logo-inverse');
+  function logo() {
+    return component.find(Logo);
   }
 
   function stepper() {
-    return component.find(Stepper);
+    return component.find('Stepper');
   }
 
   function avatar() {
-    return component.find(Avatar);
+    return component.find('Avatar');
   }
 
   function closeButton() {
@@ -40,7 +38,7 @@ describe('Flow navigation', () => {
   }
 
   function bottomBorderHidden() {
-    return component.hasClass('tw-flow-navigation--done');
+    return component.find('div.tw-flow-navigation');
   }
 
   beforeEach(() => {
@@ -53,7 +51,7 @@ describe('Flow navigation', () => {
       onGoBack: jest.fn(),
     };
 
-    component = shallow(<FlowNavigation {...props} />);
+    component = mount(<FlowNavigation {...props} />);
   });
 
   it('passes steps and active step to stepper', () => {
@@ -124,7 +122,7 @@ describe('Flow navigation', () => {
 
   it('hides the bottom border if done is true', () => {
     component.setProps({ done: true });
-    expect(bottomBorderHidden()).toBe(true);
+    expect(bottomBorderHidden()).toHaveLength(1);
   });
 
   it('hides the close button if onClose is not defined', () => {
@@ -133,14 +131,14 @@ describe('Flow navigation', () => {
   });
 
   it('inverts the logo if theme is dark', () => {
-    expect(logoInversed()).toBe(false);
-    component.setProps({ theme: Theme.DARK });
-    expect(logoInversed()).toBe(true);
+    expect(logo().prop('theme')).toBe(FlowNavigation.Theme.LIGHT);
+    component.setProps({ theme: FlowNavigation.Theme.DARK });
+    expect(logo().prop('theme')).toBe(FlowNavigation.Theme.DARK);
   });
 
   it('hides the stepper if theme is dark', () => {
     expect(stepper().length).toBe(1);
-    component.setProps({ theme: Theme.DARK });
+    component.setProps({ theme: FlowNavigation.Theme.DARK });
     expect(stepper().length).toBe(0);
   });
 });

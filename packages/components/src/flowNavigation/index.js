@@ -1,3 +1,1 @@
-import FlowNavigation from './FlowNavigation';
-
-export default FlowNavigation;
+export { default } from './FlowNavigation';

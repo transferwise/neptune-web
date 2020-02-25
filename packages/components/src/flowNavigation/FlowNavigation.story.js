@@ -11,8 +11,12 @@ export default {
 export const basic = () => {
   const activeStep = select('activeStep', [0, 1, 2, 3]);
   const done = boolean('done', false);
-  const showCloseButton = boolean('showCloseButton', true);
-  const theme = select('theme', ['light', 'dark'], 'light');
+  const theme = select('theme', Object.values(FlowNavigation.Theme), FlowNavigation.Theme.LIGHT);
+  const profileType = select(
+    'profileType',
+    Object.values(FlowNavigation.ProfileType),
+    FlowNavigation.ProfileType.BUSINESS,
+  );
 
   return (
     <FlowNavigation
@@ -20,9 +24,8 @@ export const basic = () => {
       onClose={action('Close clicked')}
       avatarUrl="https://github.com/transferwise.png"
       done={done}
-      profileType={{ value: 'PERSONAL', label: 'Personal' }}
+      profileType={profileType}
       onGoBack={action('go back')}
-      showCloseButton={showCloseButton}
       theme={theme}
       steps={[
         {

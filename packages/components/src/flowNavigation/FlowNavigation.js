@@ -1,18 +1,28 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-
-import './FlowNavigation.css';
 import BackButton from './backButton';
-import Stepper from '../stepper';
 import Avatar from './avatar';
-import { Theme } from '../common';
+import Logo from './logo';
+import Stepper from '../stepper';
+import Header from '../header';
+import { Theme, ProfileType } from '../common';
 
-const ProfileType = {
-  BUSINESS: 'BUSINESS',
-  PERSONAL: 'PERSONAL',
-};
+import '@transferwise/neptune-css/dist/css/flowNavigation.css';
+
+/**
+ * FlowNavigation is a header component that provides a logo, avatar and close button, for use in overlay screens.
+ *
+ * @param {array} [steps] - The step to be displayed in the stepper and used by the backButton.
+ * @param {number} [activeStep] - current selected step.
+ * @param {string} [avatarUrl] - URL of the avatar. If not present, a placeholder will be used instead.
+ * @param {boolean} [done] - state of the flow. If truthy stepper and avatar gets hidden. Border bottom also gets removed when done = true
+ * @param {string} [profileType=FlowNavigation.ProfileType.PERSONAL] - ProfileType to use.
+ * @param {function} [onClose] - Callback for the close button. If not present, no close button will be rendered.
+ * @param {function} [onGoBack] - Callback for the BackButton. If not provided BackButton won't be displayed and Logo compact will display instead from mobile views.
+ * @param {string} [theme=FlowNavigation.Theme.LIGHT] - Theme to use
+ * @usage `<FlowNavigation activeStep={activeStep} onClose={callback} avatarUrl={someUrl} done={done} profileType={OverlayHeader.ProfyleType.BUSINESS} onGoBack={callback} theme={OverlayHeader.Theme.LIGHT} steps={steps} />`
+ * */
 
 const FlowNavigation = ({
   steps,
@@ -23,67 +33,63 @@ const FlowNavigation = ({
   onClose,
   onGoBack,
   theme,
-}) => (
-  <div
-    className={classNames('tw-flow-navigation', {
-      'tw-flow-navigation--done': done,
-      'tw-flow-navigation--inverse': theme === Theme.DARK,
-    })}
-  >
-    <div className="container">
-      <div className="row p-t-3 tw-flow-navigation__wrapper">
-        <div className="col-lg-2 col-xs-6 m-lg-t-1">
-          <div
-            className={classNames('logo', 'logo-3', 'hidden-xs', {
-              'logo-primary': theme === Theme.LIGHT,
-              'logo-inverse': theme === Theme.DARK,
-            })}
-          />
+}) => {
+  const avatar = done ? null : <Avatar url={avatarUrl} profileType={profileType} />;
+  const closeButton = onClose && (
+    <button
+      className={classNames(
+        'tw-flow-navigation__close-button',
+        'btn-link',
+        'text-no-decoration',
+        'icon',
+        'icon-close',
+        'icon-lg',
+        'm-l-3',
+        {
+          'close-button-with-avatar': !done,
+        },
+      )}
+      onClick={onClose}
+      aria-label="close button"
+    />
+  );
+  return (
+    <Header
+      leftContent={
+        <div className="m-lg-t-1">
+          <Logo theme={theme} onGoBack={onGoBack} />
           <BackButton steps={steps} activeStep={activeStep} onGoBack={onGoBack} />
-          <div
-            className={classNames('flag', 'flag-info', 'logo-3', 'visible-xs', {
-              'flag--hidden': onGoBack,
-            })}
-          />
         </div>
-        <div className="col-lg-2 col-xs-6 col-lg-push-8 text-xs-right m-lg-t-1">
-          {done ? '' : <Avatar url={avatarUrl} profileType={profileType} />}
-          {onClose && (
-            <button
-              className={classNames(
-                'tw-flow-navigation__close-button',
-                'btn-link',
-                'text-no-decoration',
-                'icon',
-                'icon-close',
-                'icon-lg',
-                'm-l-3',
-                {
-                  'close-button-with-avatar': !done,
-                },
-              )}
-              onClick={onClose}
-            />
-          )}
+      }
+      rightContent={
+        <div className="m-lg-t-1">
+          {avatar}
+          {closeButton}
         </div>
-        {/* TODO: Remove this hide stepper condition based on the theme to avoid theme dictating functionality */}
-        {done || theme === Theme.DARK ? (
-          ''
-        ) : (
-          <div className="col-xs-12 col-lg-6 col-lg-pull-2 col-lg-offset-1 tw-flow-navigation__stepper">
+      }
+      bottomContent={
+        done || theme === Theme.DARK ? null : (
+          <div className="tw-flow-navigation__stepper m-lg-t-1">
             <Stepper activeStep={activeStep} steps={steps} />
           </div>
-        )}
-      </div>
-    </div>
-  </div>
-);
+        )
+      }
+      className={classNames('tw-flow-navigation', 'tw-flow-navigation__wrapper', {
+        'tw-flow-navigation--done': done,
+        'tw-flow-navigation--inverse': theme === FlowNavigation.Theme.DARK,
+      })}
+    />
+  );
+};
+
+FlowNavigation.ProfileType = ProfileType;
+FlowNavigation.Theme = Theme;
 
 FlowNavigation.defaultProps = {
   activeStep: 0,
   avatarUrl: '',
   done: false,
-  profileType: ProfileType.PERSONAL,
+  profileType: FlowNavigation.ProfileType.PERSONAL,
   onGoBack: null,
   onClose: null,
   theme: Theme.LIGHT,
@@ -100,10 +106,13 @@ FlowNavigation.propTypes = {
   activeStep: Types.number,
   avatarUrl: Types.string,
   done: Types.bool,
-  profileType: Types.oneOf(Object.keys(ProfileType)),
+  profileType: Types.oneOf([
+    FlowNavigation.ProfileType.PERSONAL,
+    FlowNavigation.ProfileType.BUSINESS,
+  ]),
   onGoBack: Types.func,
   onClose: Types.func,
-  theme: Types.oneOf([Theme.LIGHT, Theme.DARK]),
+  theme: Types.oneOf([FlowNavigation.Theme.LIGHT, FlowNavigation.Theme.DARK]),
 };
 
 export default FlowNavigation;
