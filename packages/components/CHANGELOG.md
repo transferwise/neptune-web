@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.1.0...@transferwise/components@22.1.1) (2020-02-25)
+
+
+### Bug Fixes
+
+* add withNextPortal HOC and use it with Dimmer and Snackbar ([#184](https://github.com/transferwise/neptune-web/issues/184)) ([c2d1495](https://github.com/transferwise/neptune-web/commit/c2d1495cb95d70d1184b5fd8e0290b307f34e157))
+
+
+
+
+
 # [22.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.0.0...@transferwise/components@22.1.0) (2020-02-25)
 
 
