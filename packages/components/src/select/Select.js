@@ -23,6 +23,9 @@ function actionableOption(option) {
   return !option.header && !option.separator && !option.disabled;
 }
 
+const isFunction = functionToCheck =>
+  functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+
 function stopPropagation(event) {
   event.stopPropagation();
   event.preventDefault();
@@ -45,6 +48,12 @@ const BOOTSTRAP_DROPDOWN_ANIMATION_TIME = 200;
 
 const defer = fn => setTimeout(fn, 0);
 
+const includesString = (str1, str2) => str1.toLowerCase().indexOf(str2.toLowerCase()) > -1;
+
+const defaultFilterFunction = (option, keyword) =>
+  (option.label && includesString(option.label, keyword)) ||
+  (option.currency && includesString(option.currency, keyword));
+
 export default class Select extends Component {
   static propTypes = {
     placeholder: Types.string,
@@ -64,6 +73,12 @@ export default class Select extends Component {
       note: Types.node,
       secondary: Types.node,
     }),
+    /**
+     * Search toggle
+     * if `true` default search functionality being enabled (not case sensitive search in option labels & currency props)
+     * if `function` you can define your own search function to implement custom search experience. This search function used while filtering the options array. The custom search function takes two parameters. First is the option the second is the keyword.
+     */
+    search: Types.oneOfType([Types.bool, Types.func]),
     onChange: Types.func.isRequired,
     onFocus: Types.func,
     onBlur: Types.func,
@@ -80,6 +95,10 @@ export default class Select extends Component {
         disabled: Types.bool,
       }),
     ).isRequired,
+    /**
+     * To have full controll of your search value and response use `onSearchChange` function combined with `searchValue` and custom filtering on the options array.
+     * DO NOT USE TOGETHER WITH `search` PROPERTY
+     */
     onSearchChange: Types.func,
     searchValue: Types.string,
     searchPlaceholder: Types.string,
@@ -101,6 +120,7 @@ export default class Select extends Component {
     onFocus: null,
     onBlur: null,
     onSearchChange: undefined,
+    search: false,
     searchValue: '',
     searchPlaceholder: 'Search...',
     classNames: {},
@@ -110,7 +130,7 @@ export default class Select extends Component {
   static getDerivedStateFromProps(props, state) {
     const hasActiveOptions = !!props.options.length;
 
-    if (state.open && props.searchValue !== '') {
+    if (state.open && (props.searchValue !== '' || state.searchValue !== '')) {
       if (hasActiveOptions && state.keyboardFocusedOptionIndex === null) {
         return {
           keyboardFocusedOptionIndex: 0,
@@ -129,6 +149,7 @@ export default class Select extends Component {
     super(props);
     this.state = {
       open: false,
+      searchValue: '',
       keyboardFocusedOptionIndex: null,
     };
     this.searchBoxRef = createRef();
@@ -154,7 +175,7 @@ export default class Select extends Component {
   };
 
   getIndexWithoutHeadersForIndexWithHeaders(index) {
-    return this.props.options.reduce((sum, option, currentIndex) => {
+    return this.getOptions().reduce((sum, option, currentIndex) => {
       if (currentIndex < index && actionableOption(option)) {
         return sum + 1;
       }
@@ -180,8 +201,26 @@ export default class Select extends Component {
     }
   };
 
+  getOptions = (options = this.props.options) => {
+    const { search } = this.props;
+
+    if (!search || !this.state.searchValue) {
+      return options;
+    }
+
+    const filterFunction = isFunction(search) ? search : defaultFilterFunction;
+
+    return options.filter(option => filterFunction(option, this.state.searchValue));
+  };
+
   handleSearchChange = event => {
-    this.props.onSearchChange(event.target.value);
+    if (this.props.onSearchChange) {
+      this.props.onSearchChange(event.target.value);
+    } else {
+      this.setState({
+        searchValue: event.target.value,
+      });
+    }
   };
 
   handleKeyDown = event => {
@@ -238,13 +277,13 @@ export default class Select extends Component {
   selectKeyboardFocusedOption() {
     if (this.state.keyboardFocusedOptionIndex !== null) {
       const index = this.state.keyboardFocusedOptionIndex;
-      this.selectOption(this.props.options.filter(actionableOption)[index]);
+      this.selectOption(this.getOptions().filter(actionableOption)[index]);
     }
   }
 
   moveFocusWithDifference(difference) {
     this.setState((previousState, previousProps) => {
-      const optionsWithoutHeaders = previousProps.options.filter(actionableOption);
+      const optionsWithoutHeaders = this.getOptions(previousProps.options).filter(actionableOption);
       const selectedOptionIndex = optionsWithoutHeaders.reduce((optionIndex, current, index) => {
         if (optionIndex !== null) {
           return optionIndex;
@@ -273,7 +312,7 @@ export default class Select extends Component {
         typeof window !== 'undefined' &&
         window.matchMedia &&
         !!window.matchMedia('(pointer: coarse)').matches;
-      const searchable = !!this.props.onSearchChange;
+      const searchable = !!this.props.onSearchChange || !!this.props.search;
 
       defer(() => {
         if (!isTouchDevice && searchable && this.searchBoxRef.current) {
@@ -330,11 +369,11 @@ export default class Select extends Component {
   style = className => this.props.classNames[className] || className;
 
   renderOptionsList() {
-    const { dropdownRight, dropdownWidth, onSearchChange, required } = this.props;
+    const { dropdownRight, dropdownWidth, onSearchChange, required, search } = this.props;
     const { open, shouldRenderWithPortal } = this.state;
     const s = this.style;
 
-    const canSearch = !!onSearchChange;
+    const canSearch = !!onSearchChange || !!search;
 
     const dropdownClass = classNames(s('dropdown-menu'), {
       [s(`dropdown-menu-${dropdownRight}-right`)]: dropdownRight,
@@ -358,7 +397,7 @@ export default class Select extends Component {
   }
 
   renderOptions() {
-    return this.props.options.map(this.renderOption);
+    return this.getOptions().map(this.renderOption);
   }
 
   renderSearchBox() {
@@ -377,7 +416,7 @@ export default class Select extends Component {
               placeholder={searchPlaceholder}
               onChange={this.handleSearchChange}
               onClick={stopPropagation}
-              value={searchValue}
+              value={searchValue || this.state.searchValue}
               ref={this.searchBoxRef}
             />
           </div>

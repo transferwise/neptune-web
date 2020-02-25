@@ -1,11 +1,10 @@
 () => {
-  const [check, setCheck] = React.useState(false);
-  const [searchValue, setSearchValue] = React.useState('');
   const [selected, setSelected] = React.useState({
     value: 0,
     label: 'A thing',
     note: 'with a note',
   });
+
   return (
     <Select
       size="md"
@@ -18,10 +17,21 @@
       disabled={false}
       onChange={v => setSelected(v)}
       required={false}
-      searchValue={searchValue}
       searchPlaceholder="searchplaceholder"
-      onSearchChange={v => setSearchValue(v)}
       dropdownUp={false}
+      /**
+       * Search Parameter:
+       *
+       * if `true` default search functionality being enabled
+       * (not case sensitive search in option labels & currency props)
+       *
+       * if `function` you can define your own search function
+       * to implement custom search experience.
+       * This search function used while filtering the options array.
+       * The custom search function takes two parameters.
+       * First is the option the second is the keyword.
+       */
+      search={true}
       options={[
         { header: 'Basic' },
         { value: 0, label: 'A thing', note: 'with a note' },
@@ -35,7 +45,7 @@
         { value: 6, label: 'Euro', currency: 'eur' },
         { separator: true },
         { value: 7, label: 'Something else' },
-      ].filter(option => option.label && option.label.toLowerCase().indexOf(searchValue) !== -1)}
+      ]}
     />
   );
 };

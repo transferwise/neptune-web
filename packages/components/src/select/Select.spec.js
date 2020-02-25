@@ -553,6 +553,93 @@ describe('Select', () => {
     expect(findNthListElement(1).children().length).toBe(0);
   });
 
+  describe('search property', () => {
+    it('should focus input when dropdown is open', async () => {
+      component.setProps({ search: true });
+
+      openSelect();
+
+      await bustStackAndUpdate();
+
+      expect(component.find('input').prop('className')).toBe(document.activeElement.className);
+      document.activeElement.blur();
+    });
+
+    it('should filter the options with the default filter function', async () => {
+      component.setProps({ search: true });
+      openSelect();
+
+      await bustStackAndUpdate();
+
+      component.find('input').simulate('change', { target: { value: 'yo' } });
+
+      expect(component.find('.tw-dropdown-item.tw-dropdown-item--focused').length).toBe(
+        component.find('.tw-dropdown-item').length,
+      );
+
+      expect(component.find('.tw-dropdown-item.tw-dropdown-item--focused').text()).toBe('yo');
+
+      document.activeElement.blur();
+    });
+
+    it('should filter the options with the default filter function in their currency attributum', async () => {
+      component.setProps({
+        options: [
+          { value: 0, label: 'Hungarian Forint', currency: 'HUF' },
+          { value: 1, label: 'British Pounds', currency: 'GBP' },
+        ],
+        search: true,
+      });
+      openSelect();
+
+      await bustStackAndUpdate();
+
+      component.find('input').simulate('change', { target: { value: 'HUF' } });
+
+      expect(component.find('.tw-dropdown-item.tw-dropdown-item--focused').length).toBe(
+        component.find('.tw-dropdown-item').length,
+      );
+
+      expect(component.find('.tw-dropdown-item.tw-dropdown-item--focused').text()).toBe(
+        'Hungarian Forint',
+      );
+
+      document.activeElement.blur();
+    });
+
+    it('should filter the options with a custom search function', async () => {
+      const searchFunction = jest.fn();
+      component.setProps({ search: searchFunction });
+      openSelect();
+
+      await bustStackAndUpdate();
+
+      component.find('input').simulate('change', { target: { value: 'o' } });
+
+      expect(searchFunction).toHaveBeenCalledTimes(3);
+
+      document.activeElement.blur();
+    });
+
+    it('should filter the options with a custom search function', async () => {
+      const searchFunction = jest.fn();
+      searchFunction
+        .mockReturnValueOnce(true)
+        .mockReturnValueOnce(false)
+        .mockReturnValueOnce(true);
+      component.setProps({ search: searchFunction });
+      openSelect();
+
+      await bustStackAndUpdate();
+
+      component.find('input').simulate('change', { target: { value: 'o' } });
+
+      expect(component.find('.tw-dropdown-item').length).toBe(2);
+
+      document.activeElement.blur();
+    });
+  });
+
   describe('touch device', () => {
     beforeEach(() => {
       window.matchMedia = () => {
