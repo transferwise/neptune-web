@@ -28,7 +28,7 @@ const Button = ({
       'btn-default': type === Type.SECONDARY,
       'btn-danger': type === Type.DANGER,
       'btn-link': type === Type.LINK,
-      'btn-block': block,
+      'btn-block tw-btn-block': block,
     },
     className,
   );
