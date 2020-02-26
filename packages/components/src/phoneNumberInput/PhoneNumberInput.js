@@ -77,6 +77,8 @@ const PhoneNumberInput = props => {
     });
   };
 
+  const options = getSelectOptions();
+
   const handleChangeSelect = event => {
     const { suffix } = getSuffixPrefix(internalValue);
     const prefix = event.value;
@@ -94,6 +96,20 @@ const PhoneNumberInput = props => {
     }
   };
 
+  const handlePaste = e => {
+    if (!e.nativeEvent.clipboardData) {
+      return;
+    }
+    const pasteValue = (e.nativeEvent.clipboardData.getData('text/plain') || '').replace(
+      /(\s|-)+/g,
+      '',
+    );
+    const selected = options.find(({ value }) => new RegExp(`^\\${value}`).test(pasteValue));
+    if (selected && ALLOWED_PHONE_CHARS.test(pasteValue.replace(selected.value, ''))) {
+      setInternalValue(pasteValue);
+    }
+  };
+
   useEffect(() => {
     const newbroadcastValue = isValidPhoneNumber(internalValue) ? cleanNumber(internalValue) : null;
     if (newbroadcastValue !== broadcastValue) {
@@ -108,7 +124,7 @@ const PhoneNumberInput = props => {
     <div className="tw-telephone">
       <div className="tw-telephone__country-select">
         <Select
-          options={getSelectOptions()}
+          options={options}
           selected={{ value: prefix, label: prefix }}
           onChange={handleChangeSelect}
           searchPlaceholder={searchPlaceholder}
@@ -129,6 +145,7 @@ const PhoneNumberInput = props => {
             className="form-control"
             disabled={disabled}
             onChange={handleInputChange}
+            onPaste={handlePaste}
             onFocus={onFocus}
             onBlur={onBlur}
             required={required}

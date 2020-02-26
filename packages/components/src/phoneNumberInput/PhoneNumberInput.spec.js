@@ -4,6 +4,9 @@ import { shallow, mount } from 'enzyme';
 import PhoneNumberInput from './';
 import { fakeEvent } from '../common/fakeEvents';
 
+const simulatePaste = (el, value) =>
+  el.simulate('paste', { nativeEvent: { clipboardData: { getData: () => value } } });
+
 describe('Given a telephone number component', () => {
   let select;
   let input;
@@ -47,6 +50,61 @@ describe('Given a telephone number component', () => {
     it('should set control values correctly', () => {
       expect(select.props().selected.value).toEqual('+39');
       expect(input.prop('value')).toBe('123456789');
+    });
+  });
+
+  describe('when pasting', () => {
+    beforeEach(() => {
+      component = mount(<PhoneNumberInput {...props} initialValue="+39123456789" />);
+      select = () => component.find(PREFIX_SELECT_SELECTOR);
+      input = () => component.find(NUMBER_SELECTOR);
+    });
+
+    [
+      { number: '+36303932551', countryCode: '+36', localNumber: '303932551' },
+      { number: '+39123456781', countryCode: '+39', localNumber: '123456781' },
+      { number: '+44 7700 900415', countryCode: '+44', localNumber: '7700900415' },
+      { number: '+2975557308515', countryCode: '+297', localNumber: '5557308515' },
+      { number: '+297-555-7217-360', countryCode: '+297', localNumber: '5557217360' },
+      { number: '+213-555-5160-67', countryCode: '+213', localNumber: '555516067' },
+      { number: '+246-387-5553', countryCode: '+246', localNumber: '3875553' },
+      { number: '+852-940-5558--6', countryCode: '+852', localNumber: '94055586' },
+      { number: '+228 253 5558     4', countryCode: '+228', localNumber: '25355584' },
+    ].forEach(({ number, countryCode, localNumber }) => {
+      it(`${number} code should update the value properly`, () => {
+        simulatePaste(component.find('input'), number);
+        expect(select().props().selected.value).toEqual(countryCode);
+        expect(input().prop('value')).toBe(localNumber);
+        expect(props.onChange).toHaveBeenCalledWith(number.replace(/(\s|-)+/g, ''));
+      });
+    });
+
+    it('should not paste invalid characters', () => {
+      simulatePaste(component.find('input'), '+36asdasdasd');
+      expect(select().props().selected.value).toEqual('+39');
+      expect(input().prop('value')).toBe('123456789');
+      expect(props.onChange).not.toBeCalled();
+    });
+
+    it('should not paste countries which are not in the select', () => {
+      simulatePaste(component.find('input'), '+9992342343423');
+      expect(select().props().selected.value).toEqual('+39');
+      expect(input().prop('value')).toBe('123456789');
+      expect(props.onChange).not.toBeCalled();
+    });
+
+    it("should not paste numbers which doesn't start with the country code", () => {
+      simulatePaste(component.find('input'), '0+36303932551');
+      expect(select().props().selected.value).toEqual('+39');
+      expect(input().prop('value')).toBe('123456789');
+      expect(props.onChange).not.toBeCalled();
+    });
+
+    it("should not paste numbers which doesn't contain a country code", () => {
+      simulatePaste(component.find('input'), '06303932551');
+      expect(select().props().selected.value).toEqual('+39');
+      expect(input().prop('value')).toBe('123456789');
+      expect(props.onChange).not.toBeCalled();
     });
   });
 
