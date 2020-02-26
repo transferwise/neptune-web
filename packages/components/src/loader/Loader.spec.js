@@ -1,23 +1,25 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, cleanup } from '@testing-library/react';
 
 import Loader from './';
 
 describe('Loader', () => {
-  let component;
-  let props;
+  afterEach(cleanup);
 
-  beforeEach(() => {
-    props = {};
-    component = shallow(<Loader {...props} />);
+  it('tests default state', () => {
+    const { container } = render(<Loader />);
+    expect(container.querySelectorAll('div.tw-loader--xl')).toHaveLength(1);
+    expect(container.querySelector('div[data-testid]')).toBe(null);
   });
 
-  it('shows an extra large loader', () => {
-    expect(component.find('div.tw-loader--xl').length).toBe(1);
+  it('has data-testid prop', () => {
+    const dataTestId = 'test-loader';
+    const { getByTestId } = render(<Loader data-testid={dataTestId} />);
+    expect(getByTestId(dataTestId)).not.toBe(null);
   });
 
   it('shows a small loader if that property is set', () => {
-    component.setProps({ small: true });
-    expect(component.find('div.tw-loader--xs').length).toBe(1);
+    const { container } = render(<Loader {...{ small: true }} />);
+    expect(container.querySelectorAll('div.tw-loader--xs')).toHaveLength(1);
   });
 });

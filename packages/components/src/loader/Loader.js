@@ -4,13 +4,17 @@ import classnames from 'classnames';
 import { Size } from '../common';
 import '@transferwise/neptune-css/dist/css/loader-borderless.css';
 
-const Loader = ({ small, size, classNames }) => {
+const Loader = props => {
+  const { small, size, classNames } = props;
   const style = className => classNames[className] || className;
 
   const legacySize = small ? Loader.Size.EXTRA_SMALL : size;
 
   return (
-    <div className={classnames(style('tw-loader'), style(`tw-loader--${legacySize}`))}>
+    <div
+      className={classnames(style('tw-loader'), style(`tw-loader--${legacySize}`))}
+      data-testid={props['data-testid']}
+    >
       {Array(5)
         .fill()
         .map((item, index) => (
@@ -32,7 +36,13 @@ Loader.propTypes = {
     Loader.Size.EXTRA_LARGE,
   ]),
   classNames: Types.objectOf(Types.string),
+  'data-testid': Types.string,
 };
-Loader.defaultProps = { small: false, size: Loader.Size.EXTRA_LARGE, classNames: {} };
+Loader.defaultProps = {
+  small: false,
+  size: Loader.Size.EXTRA_LARGE,
+  classNames: {},
+  'data-testid': null,
+};
 
 export default Loader;
