@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.1.2...@transferwise/components@22.2.0) (2020-02-26)
+
+
+### Features
+
+* parse clipboard data when pasting to phone number input ([#188](https://github.com/transferwise/neptune-web/issues/188)) ([7d6df87](https://github.com/transferwise/neptune-web/commit/7d6df873ed26d9b1d2b2f81c85e8c6526bf968fe))
+
+
+
+
+
 ## [22.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.1.1...@transferwise/components@22.1.2) (2020-02-25)
 
 
