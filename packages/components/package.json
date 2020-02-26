@@ -98,6 +98,8 @@
     "jest-fetch-mock": "^2.1.2",
     "jest-resolve": "24.7.1",
     "jest-watch-typeahead": "0.4.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.3",
     "less": "^3.10.3",
     "lint-staged": "^9.4.2",
     "lodash.times": "^4.3.2",
