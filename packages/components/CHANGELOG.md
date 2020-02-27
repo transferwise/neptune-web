@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.2.0...@transferwise/components@22.3.0) (2020-02-27)
+
+
+### Features
+
+* add `data-testid` prop for `Loader` component ([481ea68](https://github.com/transferwise/neptune-web/commit/481ea6850b0cb28362ea9d1951c7b2a79ddbde30))
+* add react-testing-library ([bee382e](https://github.com/transferwise/neptune-web/commit/bee382e19398e0ec4b23646c4f5cfe7efc667341))
+
+
+
+
+
 # [22.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.1.2...@transferwise/components@22.2.0) (2020-02-26)
 
 
