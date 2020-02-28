@@ -69,24 +69,29 @@ To start the live-reloading environment for:
 
 ### Develop
 
+Start the storybook dev environment:
+
 ```
 yarn dev
 ```
 
-- Starts the storybook dev environment.
-
 ### Docs
+
+Start the live-reloading docs environment:
 
 ```
 yarn docs
 ```
 
-- Starts the live-reloading docs environment.
-
 ### Test
+
+Run testing suite:
 
 ```
 yarn test
 ```
 
-- Runs testing suite.
+Please use [react-testing-library](https://github.com/testing-library/react-testing-library) for testing components.
+
+Historically we've used Enzyme so most of tests built using it's API but we encourage you to use react-testing-library when creating a new component
+also, feel free to update tests of existing components (e.g when you do some changes) and flag about this during code review.
