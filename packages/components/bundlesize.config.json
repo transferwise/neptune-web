@@ -1,0 +1,12 @@
+{
+  "files": [
+    {
+      "path": "./build/umd/polyfill/main.js",
+      "maxSize": "100kB"
+    },
+    {
+      "path": "./build/umd/no-polyfill/main.js",
+      "maxSize": "100kB"
+    }
+  ]
+}

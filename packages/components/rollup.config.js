@@ -11,8 +11,6 @@ const input = 'src/index.js';
 const file =
   process.env.NODE_ENV === 'umd-nopolyfill' ? './build/umd/no-polyfill/main.js' : pkg.main;
 
-const external = ['react', 'react-dom', 'prop-types'];
-
 // Rollup can resolve only explicit exports.
 // https://github.com/rollup/rollup/issues/2671
 // https://github.com/rollup/rollup-plugin-commonjs
@@ -53,7 +51,10 @@ export default [
   {
     input,
     output: [{ file, name: pkg.name, format: 'umd', globals }],
-    external,
+    external: [
+      ...Object.keys(pkg.devDependencies || {}),
+      ...Object.keys(pkg.peerDependencies || {}),
+    ],
     plugins,
   },
 ];
