@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.3.1...@transferwise/components@23.0.0) (2020-03-02)
+
+
+* refactor!: moved class out of the internal implementation ([a6eaf08](https://github.com/transferwise/neptune-web/commit/a6eaf085e84111d6b67b199f2e0212817cc96496))
+
+
+### BREAKING CHANGES
+
+* Moved flow navigation classes out of header, slightly markup change
+
+
+
+
+
 ## [22.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.3.0...@transferwise/components@22.3.1) (2020-03-02)
 
 
