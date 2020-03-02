@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.3.0...@transferwise/components@22.3.1) (2020-03-02)
+
+
+### Bug Fixes
+
+* add core-js dep, update rollup to exclude all peer dev ([#191](https://github.com/transferwise/neptune-web/issues/191)) ([eb4c75c](https://github.com/transferwise/neptune-web/commit/eb4c75ce3f788ddb66df50a746f77f00ac73cd7d))
+
+
+
+
+
 # [22.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.2.0...@transferwise/components@22.3.0) (2020-02-27)
 
 
