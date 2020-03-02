@@ -1,7 +1,6 @@
 <OverlayHeader
   onClose={() => alert('Close clicked')}
-  avatarUrl="https://github.com/transferwise.png"
-  profileType={OverlayHeader.ProfileType.BUSINESS}
+  avatar={{ url: 'https://github.com/transferwise.png' }}
+  profileType={OverlayHeader.ProfileType.PERSONAL}
   theme={OverlayHeader.Theme.LIGHT}
-  showAvatar
 />;
