@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
-import { Flex, Box } from '@transferwise/components';
+// This is import is temporary and be replace by a Layout component.
+import Flex from '@transferwise/components/src/flex';
+import Box from '@transferwise/components/src/box';
 import Link from './Link';
 
 import getPages from '../utils/getPages';
