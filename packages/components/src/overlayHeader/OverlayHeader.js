@@ -52,6 +52,7 @@ const OverlayHeader = ({ avatar, profileType, onClose, theme }) => {
       }
       className={classNames('tw-flow-navigation', 'tw-flow-navigation__wrapper', {
         'tw-flow-navigation--inverse': theme === OverlayHeader.Theme.DARK,
+        'tw-flow-navigation--done': !avatar,
       })}
     />
   );

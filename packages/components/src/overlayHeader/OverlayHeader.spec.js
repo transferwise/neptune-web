@@ -24,6 +24,10 @@ describe('Flow navigation', () => {
     return closeButton().hasClass('close-button-with-avatar');
   }
 
+  function bottomBorderHidden() {
+    return component.find('div.tw-flow-navigation--done');
+  }
+
   beforeEach(() => {
     props = {
       avatar: { url: 'https://github.com/transferwise.png' },
@@ -64,5 +68,11 @@ describe('Flow navigation', () => {
     expect(logo().prop('theme')).toBe(OverlayHeader.Theme.LIGHT);
     component.setProps({ theme: OverlayHeader.Theme.DARK });
     expect(logo().prop('theme')).toBe(OverlayHeader.Theme.DARK);
+  });
+
+  it('removes the border if no avatar is provided', () => {
+    expect(bottomBorderHidden()).toHaveLength(0);
+    component.setProps({ avatar: null });
+    expect(bottomBorderHidden()).toHaveLength(1);
   });
 });
