@@ -6,18 +6,20 @@ import ObjectSchema from '../objectSchema/';
 import OneOfSchema from '../oneOfSchema/';
 import AllOfSchema from '../allOfSchema/';
 
-const GenericSchemaForm = props => (
-  <>
-    {props.schema.enum && <BasicTypeSchema {...props} />}
-    {props.schema.type === 'string' && <BasicTypeSchema {...props} />}
-    {props.schema.type === 'number' && <BasicTypeSchema {...props} />}
-    {props.schema.type === 'integer' && <BasicTypeSchema {...props} />}
-    {props.schema.type === 'boolean' && <BasicTypeSchema {...props} />}
-    {props.schema.type === 'object' && <ObjectSchema {...props} />}
-    {props.schema.oneOf && <OneOfSchema {...props} />}
-    {props.schema.allOf && <AllOfSchema {...props} />}
-  </>
-);
+const GenericSchemaForm = props => {
+  const isBasicType = schema => {
+    return schema.enum || ['string', 'number', 'integer', 'boolean'].includes(schema.type);
+  };
+
+  return (
+    <>
+      {isBasicType(props.schema) && <BasicTypeSchema {...props} />}
+      {props.schema.type === 'object' && <ObjectSchema {...props} />}
+      {props.schema.oneOf && <OneOfSchema {...props} />}
+      {props.schema.allOf && <AllOfSchema {...props} />}
+    </>
+  );
+};
 
 GenericSchemaForm.propTypes = {
   schema: Types.shape({

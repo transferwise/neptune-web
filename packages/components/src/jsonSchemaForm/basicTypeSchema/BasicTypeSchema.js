@@ -9,15 +9,15 @@ import { getValidationFailures } from '../validation/validation-failures';
 import { getValidModelParts } from '../validation/valid-model';
 
 const BasicTypeSchema = props => {
-  const onChange = newModel => {
+  const onChange = (newModel, option) => {
     setChanged(true);
-    setModelAndBroadcast(sanitiseModel(newModel));
+    setModelAndBroadcast(sanitiseModel(newModel), option);
   };
 
   const getValidationKeys = newModel =>
     getValidationFailures(newModel, props.schema, props.required);
 
-  const setModelAndBroadcast = newModel => {
+  const setModelAndBroadcast = (newModel, option) => {
     setModel(newModel);
     const validationKeys = getValidationKeys(newModel);
     setValidations(validationKeys);
@@ -27,7 +27,7 @@ const BasicTypeSchema = props => {
     setLastModel(broadcastModel);
 
     if (broadcastModel !== lastModel) {
-      props.onChange(broadcastModel, props.schema);
+      props.onChange(broadcastModel, props.schema, option);
     }
   };
 
@@ -59,6 +59,7 @@ const BasicTypeSchema = props => {
   };
 
   const onModelChange = () => {
+    setModel(props.model);
     setValidations(getValidationKeys(model));
   };
 

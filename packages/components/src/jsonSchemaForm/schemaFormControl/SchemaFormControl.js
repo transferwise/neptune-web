@@ -13,9 +13,9 @@ const SchemaFormControl = props => {
   const getSanitisedValue = value =>
     isNativeInput(props.schema.type) && (isNull(value) || isUndefined(value)) ? '' : value;
 
-  const onChange = value => {
+  const onChange = (value, option) => {
     // If the model does not satisfy the schema propogate null
-    props.onChange(getValidModelParts(value, props.schema));
+    props.onChange(getValidModelParts(value, props.schema), option);
   };
 
   const getControlType = schema => {
@@ -23,6 +23,9 @@ const SchemaFormControl = props => {
       return schema.control;
     }
 
+    if (schema.enum) {
+      return schema.enum.length >= 3 ? 'select' : 'radio';
+    }
     if (schema.type === 'string') {
       switch (schema.format) {
         case 'date':
@@ -37,9 +40,6 @@ const SchemaFormControl = props => {
     }
     if (schema.type === 'boolean') {
       return 'checkbox';
-    }
-    if (schema.enum) {
-      return schema.enum.length >= 3 ? 'select' : 'radio';
     }
     if (schema.type === 'integer') {
       return 'number';
