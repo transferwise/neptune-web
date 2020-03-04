@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@23.0.0...@transferwise/components@23.0.1) (2020-03-04)
+
+
+### Bug Fixes
+
+* remove border bottom if avatar is not provided ([#194](https://github.com/transferwise/neptune-web/issues/194)) ([38ac432](https://github.com/transferwise/neptune-web/commit/38ac432e7f6d0e37bf3cea169c93091172e7041f))
+
+
+
+
+
 # [23.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@22.3.1...@transferwise/components@23.0.0) (2020-03-02)
 
 

@@ -38,7 +38,7 @@ describe('Flow navigation', () => {
   }
 
   function bottomBorderHidden() {
-    return component.find('div.tw-flow-navigation');
+    return component.find('div.tw-flow-navigation--done');
   }
 
   beforeEach(() => {
@@ -121,6 +121,7 @@ describe('Flow navigation', () => {
   });
 
   it('hides the bottom border if done is true', () => {
+    expect(bottomBorderHidden()).toHaveLength(0);
     component.setProps({ done: true });
     expect(bottomBorderHidden()).toHaveLength(1);
   });
