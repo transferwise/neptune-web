@@ -292,7 +292,7 @@ export default class FormControl extends PureComponent {
             options={options}
             onChange={option => {
               this.setState({ selectedOption: option });
-              this.handleOnChange(option.value, option);
+              this.handleOnChange((option && option.value) || null, option);
             }}
             onFocus={this.handleOnFocus}
             onBlur={this.handleOnBlur}
