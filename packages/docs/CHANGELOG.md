@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@2.0.3...@transferwise/neptune-docs@3.0.0) (2020-03-05)
+
+
+* refactor!: deprecated direct use of flex and box ([3dde708](https://github.com/transferwise/neptune-web/commit/3dde708d187ab724f92d5d7c9910bb1050b19248))
+
+
+### BREAKING CHANGES
+
+* removed export of flex and box
+
+
+
+
+
 ## [2.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@2.0.2...@transferwise/neptune-docs@2.0.3) (2020-03-04)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
