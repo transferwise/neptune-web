@@ -4,6 +4,7 @@
     "bankName": {
       "title": "Branch",
       "type": "string",
+      "placeholder": "Select your branch...",
       "values": [
         {
           "value": "12345",
