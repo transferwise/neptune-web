@@ -1,16 +1,37 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+
+import { render, cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 
 import InputWithDisplayFormat from './';
 
 describe('InputWithDisplayFormat', () => {
-  const props = { displayPattern: '**-**', onChange: jest.fn() };
+  function renderInput(props) {
+    return render(<InputWithDisplayFormat displayPattern="*" onChange={jest.fn()} {...props} />);
+  }
 
-  it('should render input with value prop', () => {
-    const component = shallow(<InputWithDisplayFormat {...props} />)
-      .find('WithDisplayFormat')
-      .renderProp('render')({ value: 'test' });
+  afterEach(() => {
+    cleanup();
+  });
 
-    expect(component.find('input').props('value')).toEqual({ value: 'test' });
+  describe('default state', () => {
+    it('should render input with value prop', () => {
+      const value = 'test';
+      const { container } = renderInput({ value });
+      const input = container.querySelector('input');
+
+      expect(input).not.toBe(null);
+      expect(input.value).toBe(value);
+    });
+
+    it('has inputMode prop when specified', () => {
+      const inputMode = 'numeric';
+      const { container } = renderInput({ inputMode });
+      const input = container.querySelector('input');
+
+      expect(input).not.toBe(null);
+      expect(input).toHaveAttribute('inputmode');
+      expect(input.inputMode).toBe(inputMode);
+    });
   });
 });

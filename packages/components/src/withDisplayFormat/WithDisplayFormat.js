@@ -34,6 +34,7 @@ class WithDisplayFormat extends React.Component {
     required: Types.bool,
     displayPattern: Types.string,
     type: Types.string,
+    inputMode: Types.string,
     value: Types.string,
   };
 
@@ -50,6 +51,7 @@ class WithDisplayFormat extends React.Component {
     required: false,
     displayPattern: '',
     type: 'text',
+    inputMode: null,
     value: '',
     onFocus: null,
     onBlur: null,
@@ -268,6 +270,7 @@ class WithDisplayFormat extends React.Component {
   render() {
     const {
       type,
+      inputMode,
       className,
       id,
       name,
@@ -282,6 +285,7 @@ class WithDisplayFormat extends React.Component {
     const { value } = this.state;
     const renderProps = {
       type,
+      inputMode,
       className,
       id,
       name,
