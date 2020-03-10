@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@24.0.0...@transferwise/components@24.1.0) (2020-03-10)
+
+
+### Features
+
+* expose inputmode prop for InputWithDisplayFormat ([#198](https://github.com/transferwise/neptune-web/issues/198)) ([00d2871](https://github.com/transferwise/neptune-web/commit/00d2871001b71f3ec166853471b5ace51574ef48))
+
+
+
+
+
 # [24.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@23.0.2...@transferwise/components@24.0.0) (2020-03-05)
 
 
