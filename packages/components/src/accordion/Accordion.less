@@ -1,5 +1,6 @@
 .tw-accordion-item {
   display: block;
+  cursor: pointer;
   &:hover {
     background-color: #fff !important; // overrides bootstrap rule for .decision
   }
@@ -14,5 +15,9 @@
       overflow: hidden;
       padding-bottom: 0 !important;
     }
+  }
+
+  .accordion-content {
+    cursor: default;
   }
 }
