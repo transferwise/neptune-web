@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@24.1.0...@transferwise/components@24.1.1) (2020-03-13)
+
+
+### Bug Fixes
+
+* register expand/collapse only on Accordion's title ([01a5d1f](https://github.com/transferwise/neptune-web/commit/01a5d1fbb5d73a0eab32968031b4925b3a4c9ea1))
+
+
+
+
+
 # [24.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@24.0.0...@transferwise/components@24.1.0) (2020-03-10)
 
 
