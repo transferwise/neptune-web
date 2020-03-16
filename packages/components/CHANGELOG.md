@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@24.1.1...@transferwise/components@24.2.0) (2020-03-16)
+
+
+### Features
+
+* add id prop to Checkbox ([#204](https://github.com/transferwise/neptune-web/issues/204)) ([88bb84e](https://github.com/transferwise/neptune-web/commit/88bb84e809e3aa3e2f563d7e495a7a85259b0a6c))
+
+
+
+
+
 ## [24.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@24.1.0...@transferwise/components@24.1.1) (2020-03-13)
 
 
