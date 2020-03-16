@@ -2,11 +2,21 @@ import React from 'react';
 import Types from 'prop-types';
 import CheckboxButton from '../common/CheckboxButton';
 
-const Checkbox = ({ checked, required, disabled, readOnly, label, onChange, onFocus, onBlur }) => {
+const Checkbox = ({
+  id,
+  checked,
+  required,
+  disabled,
+  readOnly,
+  label,
+  onChange,
+  onFocus,
+  onBlur,
+}) => {
   const handleClick = () => (!disabled && !readOnly ? onChange(!checked) : null);
   const errorClass = required && !disabled && !readOnly && !checked ? 'has-error' : '';
   return (
-    <div className={`checkbox ${errorClass} ${disabled ? 'disabled' : ''}`}>
+    <div id={id} className={`checkbox ${errorClass} ${disabled ? 'disabled' : ''}`}>
       {/* eslint-disable jsx-a11y/label-has-for */}
       <label>
         {label}
@@ -26,6 +36,7 @@ const Checkbox = ({ checked, required, disabled, readOnly, label, onChange, onFo
 };
 
 Checkbox.propTypes = {
+  id: Types.string,
   checked: Types.bool,
   required: Types.bool,
   disabled: Types.bool,
@@ -37,6 +48,7 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
+  id: null,
   checked: false,
   required: false,
   disabled: false,
