@@ -24,37 +24,7 @@ import '@transferwise/neptune-css/dist/css/neptune.css';
 
 ## Contributing
 
-### Pull requests
-
-To introduce or update a component, create a branch and submit a pull request. The [docs page](https://transferwise.github.io/neptune-web) and the new npm release will be automatically deployed when merging changes to master.
-
-We use [Conventional Commits](https://www.conventionalcommits.org) on the master branch, so all the commits in a PR should follow the specification before merging, there's a CI job that monitors this. This gives us automatic changelogs and version bumps on all packages. All commits are rebased into master, so make them meaningful or squash them before requesting review.
-
-1. Create a feature branch from master.
-2. ️⚠️ Make sure each commit only affects files from a single package (`components` or `css`).
-3. Open a PR and ensure that all commits adhere to conventional commits. You may need a rebase in order to reorganize your existing code.
-4. Before asking for a review, the title of your PR should have the final commit message that you want to be used in the [changelog](https://github.com/transferwise/neptune-web/blob/master/packages/components/CHANGELOG.md).
-5. Ask for a review and, once approved, ask for a member of the [design system team](https://github.com/orgs/transferwise/teams/design-system) to squash and merge your branch using a valid conventional commit message.
-
-### Install
-
-```
-git clone git@github.com:transferwise/neptune-web.git
-cd neptune
-yarn setup
-```
-
-- Clones repository.
-- Installs dependencies.
-- Creates initial builds of all packages.
-
-### Develop
-
-```
-yarn docs
-```
-
-- Starts the live-reloading dev environment.
+Please refer to this [file](https://github.com/transferwise/neptune-web/blob/master/README.md) for contribution's guideline.
 
 ### Create a new style
 
@@ -66,3 +36,7 @@ yarn docs
 File naming should follow `kebab-case`.
 
 E.g. `link-callout.(css|less)`
+
+### Dev
+
+To find instructions on how to spin up the dev environment please refer to this [file](https://github.com/transferwise/neptune-web/blob/master/README.md)

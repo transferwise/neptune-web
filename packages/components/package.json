@@ -15,7 +15,9 @@
     "url": "git+https://github.com/transferwise/neptune-web.git"
   },
   "scripts": {
-    "dev": "npm-run-all --parallel storybook docs:watch-less",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:watch-less": "gulp lessWatcher",
+    "dev:storybook": "start-storybook -p 3001",
     "docs": "npm-run-all --parallel docs:*",
     "docs:babel": "NODE_ENV=es babel src -d build/es/polyfill --ignore '**/*.spec.js','**/*.story.js,' -w",
     "docs:watch-less": "gulp lessWatcher",
