@@ -29,7 +29,7 @@ class Tabs extends React.Component {
     translateX: 0,
     translateFrom: '0px',
     translateTo: '0px',
-    translateLineX: 0,
+    translateLineX: null,
     isAnimating: false,
     isSwiping: false,
     isScrolling: false,
@@ -43,14 +43,14 @@ class Tabs extends React.Component {
   }
 
   get MAX_INDEX() {
-    return this.filteredTabsLength - 1;
+    return this.props.tabs.length - 1;
   }
 
   componentDidMount() {
     const { selected } = this.props;
 
     this.switchTab(clamp(selected, MIN_INDEX, this.MAX_INDEX));
-    this.animateToTab(clamp(selected, MIN_INDEX, this.MAX_INDEX));
+    this.animateToTab(clamp(selected, MIN_INDEX, this.MAX_INDEX), true);
     document.body.addEventListener('touchmove', this.disableScroll, { passive: false });
     document.body.addEventListener('touchforcechange', this.disableScroll, { passive: false });
     window.addEventListener('resize', this.handleResize);
@@ -60,18 +60,21 @@ class Tabs extends React.Component {
     const currentSelected = this.props.selected;
     const prevSelected = prevProps.selected;
     const currentSelectedTab = this.props.tabs[currentSelected];
+    const currentSelectedTabIsDisabled = currentSelectedTab && currentSelectedTab.disabled;
     const prevSelectedTab = prevProps.tabs[prevSelected];
+    const prevSelectedTabIsDisabled = prevSelectedTab && prevSelectedTab.disabled;
     const currentDisabledTabsLength = this.props.tabs.filter(enabledTabsFilter).length;
     const prevDisabledTabsLength = prevProps.tabs.filter(enabledTabsFilter).length;
 
     if (
       currentSelected !== prevSelected ||
       currentDisabledTabsLength !== prevDisabledTabsLength ||
-      (currentSelectedTab && prevSelectedTab
-        ? currentSelectedTab.disabled !== prevSelectedTab.disabled
-        : false)
+      currentSelectedTabIsDisabled !== prevSelectedTabIsDisabled
     ) {
-      this.animateToTab(clamp(currentSelected, MIN_INDEX, this.MAX_INDEX));
+      this.animateToTab(
+        clamp(currentSelected, MIN_INDEX, this.MAX_INDEX),
+        currentSelected === prevSelected,
+      );
     }
   }
 
@@ -105,18 +108,30 @@ class Tabs extends React.Component {
   };
 
   isTabDisabled = index => {
-    const { tabs: allTabs } = this.props;
+    const { tabs } = this.props;
 
-    return allTabs[index] && allTabs[index].disabled;
+    return tabs[index] && tabs[index].disabled;
   };
 
+  /*
+   * Gets the next tab that should be selected based on the swipe direction
+   * and the current selected tab (is called recursively to account for disabled tabs).
+   */
   getTabToSelect = (selected, start, end) => {
     let nextSelected = selected;
 
     if (swipedLeftToRight(start, end)) {
       nextSelected -= 1;
+
+      if (nextSelected > MIN_INDEX && this.isTabDisabled(nextSelected)) {
+        return this.getTabToSelect(nextSelected, start, end);
+      }
     } else if (swipedRightToLeft(start, end)) {
       nextSelected += 1;
+
+      if (nextSelected < this.MAX_INDEX && this.isTabDisabled(nextSelected)) {
+        return this.getTabToSelect(nextSelected, start, end);
+      }
     }
 
     nextSelected = clamp(
@@ -156,25 +171,22 @@ class Tabs extends React.Component {
     onTabSelect(index);
   };
 
-  animateToTab = index => {
+  getTabIndexWithoutDisabledTabs(index) {
+    return index - this.props.tabs.slice(0, index).filter(tab => !enabledTabsFilter(tab)).length;
+  }
+
+  animateToTab = (index, instant) => {
     this.animateLine(index);
-    this.animatePanel(index);
+
+    this.animatePanel(this.getTabIndexWithoutDisabledTabs(index), instant);
   };
 
   animateLine = index => {
-    const { tabs: allTabs } = this.props;
-    let nextIndex = index;
-
-    const disabledIndexes = allTabs.slice(0, index).filter(tab => tab.disabled).length;
-
-    while (this.isTabDisabled(nextIndex)) {
-      nextIndex += 1;
-    }
-
-    this.setState({ translateLineX: `${(nextIndex + disabledIndexes) * 100}%` });
+    this.setState({ translateLineX: `${index * 100}%` });
   };
 
-  animatePanel = index => {
+  // Pass `instant` to set the `translateX` to the new panel with no transition
+  animatePanel = (index, instant = false) => {
     const { translateTo: currentTranslateTo } = this.state;
 
     const translateFrom = currentTranslateTo;
@@ -182,7 +194,7 @@ class Tabs extends React.Component {
 
     this.setState({
       selectedTabIndex: index,
-      isAnimating: translateFrom !== translateTo,
+      isAnimating: !instant && translateFrom !== translateTo,
       translateFrom,
       translateTo,
     });
@@ -222,7 +234,8 @@ class Tabs extends React.Component {
 
   handleTouchMove = event => {
     const { start } = this.state;
-    const { selected } = this.props;
+    const { selected: currentSelectedFromProps } = this.props;
+    const selected = this.getTabIndexWithoutDisabledTabs(currentSelectedFromProps);
     const end = {
       x: event.nativeEvent.changedTouches[0].clientX,
       y: event.nativeEvent.changedTouches[0].clientY,
@@ -245,7 +258,7 @@ class Tabs extends React.Component {
     this.setState({ isScrolling, isSwiping });
 
     if (isSwiping) {
-      let nextSelected = selected;
+      let nextSelected = currentSelectedFromProps;
 
       if (this.swipedOverHalfOfContainer(difference)) {
         nextSelected = this.getTabToSelect(nextSelected, start, end);
@@ -305,7 +318,7 @@ class Tabs extends React.Component {
   };
 
   render() {
-    const { tabs: allTabs, changeTabOnSwipe, name, selected, className } = this.props;
+    const { tabs, changeTabOnSwipe, name, selected, className } = this.props;
     const {
       isSwiping,
       translateLineX,
@@ -314,7 +327,6 @@ class Tabs extends React.Component {
       translateTo,
       lastSwipeVelocity,
     } = this.state;
-    const tabs = allTabs.filter(tab => !tab.disabled);
 
     const distanceSwiped = Math.abs(-parseInt(translateFrom, 10) - this.containerWidth * selected);
 
@@ -336,32 +348,33 @@ class Tabs extends React.Component {
         className={classNames('tabs', className)}
       >
         <TabList>
-          {allTabs.map(({ title, disabled }, index) => {
-            const selectIndex = tabs.findIndex(tab => tab.title === title);
+          {tabs.map(({ title, disabled }, index) => {
             return (
               <Tab
                 key={title}
                 id={`${name}-tab-${index}`}
                 panelId={`${name}-panel-${index}`}
-                selected={selected === selectIndex}
+                selected={selected === index}
                 disabled={disabled}
-                onClick={disabled ? null : this.handleTabClick(selectIndex)}
-                onKeyDown={this.onKeyDown(selectIndex)}
+                onClick={disabled ? null : this.handleTabClick(index)}
+                onKeyDown={this.onKeyDown(index)}
                 style={{
-                  width: `${(1 / allTabs.length) * 100}%`,
+                  width: `${(1 / tabs.length) * 100}%`,
                 }}
               >
                 {title}
               </Tab>
             );
           })}
-          <div
-            className={classNames('tabs__line')}
-            style={{
-              width: `${(1 / allTabs.length) * 100}%`,
-              transform: `translateX(${translateLineX})`,
-            }}
-          />
+          {translateLineX ? (
+            <div
+              className={classNames('tabs__line')}
+              style={{
+                width: `${(1 / tabs.length) * 100}%`,
+                transform: `translateX(${translateLineX})`,
+              }}
+            />
+          ) : null}
         </TabList>
         <div
           className="tabs__panel-container"
@@ -399,19 +412,23 @@ class Tabs extends React.Component {
                   transform: hidePanelOverflow ? props.transform : 'translateX(0px)',
                 }}
               >
-                {tabs.map(({ content, disabled }, index) => (
-                  <TabPanel
-                    key={tabs[index].title}
-                    tabId={`${name}-tab-${index}`}
-                    id={`${name}-panel-${index}`}
-                    style={{
-                      width: hidePanelOverflow ? `${(1 / this.filteredTabsLength) * 100}%` : '100%',
-                      display: hidePanelOverflow || index === selected ? 'block' : 'none',
-                    }}
-                  >
-                    {disabled ? null : content}
-                  </TabPanel>
-                ))}
+                {tabs.map(({ content, disabled }, index) =>
+                  !disabled ? (
+                    <TabPanel
+                      key={tabs[index].title}
+                      tabId={`${name}-tab-${index}`}
+                      id={`${name}-panel-${index}`}
+                      style={{
+                        width: hidePanelOverflow
+                          ? `${(1 / this.filteredTabsLength) * 100}%`
+                          : '100%',
+                        display: hidePanelOverflow || index === selected ? 'block' : 'none',
+                      }}
+                    >
+                      {content}
+                    </TabPanel>
+                  ) : null,
+                )}
               </div>
             )}
           </Spring>

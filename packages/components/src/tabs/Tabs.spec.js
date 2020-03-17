@@ -150,6 +150,17 @@ describe('Tabs', () => {
     expect(component.find(Tab).length).toBe(props.tabs.length);
   });
 
+  it('does not animate when a tab before the selected tab goes from disabled to enabled', () => {
+    component.setProps({ selected: 2 });
+    expect(component.state('isAnimating')).toBe(true);
+
+    triggerSpringOnRest();
+    expect(component.state('isAnimating')).toBe(false);
+
+    component.setProps({ tabs: generateTabs([false, false, false]) });
+    expect(component.state('isAnimating')).toBe(false);
+  });
+
   describe('updating the translate values', () => {
     beforeEach(() => {
       props = {
@@ -160,11 +171,11 @@ describe('Tabs', () => {
     });
 
     test.each([
-      [1, '200%', `-300px`],
+      [1, '100%', `-300px`],
       [99, '400%', '-900px'],
-      [2, '300%', '-600px'],
-      [3, '400%', '-900px'],
+      [3, '300%', '-600px'],
       [4, '400%', '-900px'],
+      [5, '400%', '-900px'],
     ])('when selecting tab number %p', (selected, lineTranslateX, sliderTranslateX) => {
       const getLineStyles = () => getComputedStyle(component.find('.tabs__line').getDOMNode());
       const getSliderStyles = () => getComputedStyle(component.find('.tabs__slider').getDOMNode());
