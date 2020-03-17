@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [25.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@24.2.1...@transferwise/components@25.0.0) (2020-03-17)
+
+
+* refactor!: update Tabs (#203) ([fd7b7f2](https://github.com/transferwise/neptune-web/commit/fd7b7f216140d160ad7f2a602e323dfb86cacda8)), closes [#203](https://github.com/transferwise/neptune-web/issues/203)
+
+
+### BREAKING CHANGES
+
+* consumers won't need to filter disabled tabs and improved handling of initial indexes
+
+* refactor!: update tabs to not change index based on whats disabled
+
+* fix: add instant transition when another tab becomes enabled SEND-695
+
+* fix: update touchMove handler to account for tabs being shifted
+
+* fix: recursively call getTabToSelect to account for disabled tabs
+
+* chore: rename allTabs
+
+* fix: don't display tabs__line until we have a translate value for it
+
+* chore: fix tabs tests and add a test for instant animation
+
+* chore: fix typo
+
+* chore: add comments to address PR feedback
+
+Co-authored-by: Sergo Vainumäe <sergonius@users.noreply.github.com>
+
+
+
+
+
 ## [24.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@24.2.0...@transferwise/components@24.2.1) (2020-03-16)
 
 **Note:** Version bump only for package @transferwise/components
