@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import clamp from 'lodash.clamp';
@@ -16,6 +16,7 @@ import {
   swipeShouldChangeTab,
   getVelocity,
 } from './utils';
+import { Size } from '../common';
 
 import './Tabs.css';
 
@@ -23,12 +24,14 @@ const MIN_INDEX = 0;
 
 const enabledTabsFilter = tab => !tab.disabled;
 
+const SpacerWidth = { default: 0, xs: 8, sm: 16, md: 24, lg: 32 };
+
 class Tabs extends React.Component {
   state = {
     start: null,
     translateX: 0,
-    translateFrom: '0px',
-    translateTo: '0px',
+    translateFrom: 0,
+    translateTo: 0,
     translateLineX: null,
     isAnimating: false,
     isSwiping: false,
@@ -88,7 +91,7 @@ class Tabs extends React.Component {
     this.setContainerWidth(this.container);
 
     this.setState(({ selectedTabIndex }) => ({
-      translateTo: `${-(this.containerWidth * selectedTabIndex)}px`,
+      translateTo: -(this.containerWidth * selectedTabIndex),
     }));
   };
 
@@ -140,23 +143,27 @@ class Tabs extends React.Component {
       Math.min(selected + 1, this.MAX_INDEX),
     );
 
+    if (this.isTabDisabled(nextSelected)) {
+      return selected;
+    }
+
     return nextSelected;
   };
 
   swipedOverHalfOfContainer = difference => difference / this.containerWidth >= 0.5;
 
-  calculateApplicableDragDifference = (currentSelected, start, end) => {
+  calculateApplicableDragDifference = ({ currentSelected, nextSelected, start, end }) => {
     const difference = getSwipeDifference(start, end);
     const elasticDrag = getElasticDragDifference(difference);
 
     if (swipedLeftToRight(start, end)) {
-      if (currentSelected > MIN_INDEX) {
+      if (currentSelected > MIN_INDEX && currentSelected !== nextSelected) {
         return Math.min(difference, this.containerWidth);
       } else {
         return elasticDrag;
       }
     } else if (swipedRightToLeft(start, end)) {
-      if (currentSelected < this.MAX_INDEX) {
+      if (currentSelected < this.MAX_INDEX && currentSelected !== nextSelected) {
         return -Math.min(difference, this.containerWidth);
       } else {
         return -elasticDrag;
@@ -190,7 +197,7 @@ class Tabs extends React.Component {
     const { translateTo: currentTranslateTo } = this.state;
 
     const translateFrom = currentTranslateTo;
-    const translateTo = `${-(this.containerWidth * index)}px`;
+    const translateTo = -(this.containerWidth * index);
 
     this.setState({
       selectedTabIndex: index,
@@ -258,17 +265,21 @@ class Tabs extends React.Component {
     this.setState({ isScrolling, isSwiping });
 
     if (isSwiping) {
-      let nextSelected = currentSelectedFromProps;
+      const nextSelected = this.getTabToSelect(currentSelectedFromProps, start, end);
 
-      if (this.swipedOverHalfOfContainer(difference)) {
-        nextSelected = this.getTabToSelect(nextSelected, start, end);
-      }
+      this.animateLine(
+        this.swipedOverHalfOfContainer(difference) ? nextSelected : currentSelectedFromProps,
+      );
 
-      this.animateLine(nextSelected);
+      const dragDifference = this.calculateApplicableDragDifference({
+        currentSelected: currentSelectedFromProps,
+        nextSelected,
+        start,
+        end,
+      });
 
-      const dragDifference = this.calculateApplicableDragDifference(selected, start, end);
       const translateX = dragDifference
-        ? `${-(this.containerWidth * selected) + dragDifference}px`
+        ? -(this.containerWidth * selected) + dragDifference
         : false;
 
       this.setState(state => ({
@@ -318,7 +329,7 @@ class Tabs extends React.Component {
   };
 
   render() {
-    const { tabs, changeTabOnSwipe, name, selected, className } = this.props;
+    const { tabs, changeTabOnSwipe, name, selected, className, transitionSpacing } = this.props;
     const {
       isSwiping,
       translateLineX,
@@ -328,7 +339,11 @@ class Tabs extends React.Component {
       lastSwipeVelocity,
     } = this.state;
 
-    const distanceSwiped = Math.abs(-parseInt(translateFrom, 10) - this.containerWidth * selected);
+    const spacer = SpacerWidth[transitionSpacing];
+
+    const tabsLength = this.filteredTabsLength;
+
+    const distanceSwiped = Math.abs(-translateFrom - this.containerWidth * selected);
 
     const remainingContainerToTravel = isSwiping
       ? 1 - distanceSwiped / this.containerWidth
@@ -339,6 +354,20 @@ class Tabs extends React.Component {
       Math.min(10 * Math.E, lastSwipeVelocity * 10 * Math.E);
 
     const hidePanelOverflow = isAnimating || isSwiping;
+
+    const sliderWidth = tabsLength * this.containerWidth + spacer * 2;
+
+    // Uses `props.panelTransitionSpacing` to add a spacer in-between the `TabPanel` you're transitioning to/from
+    const Spacer = ({ id }) =>
+      spacer > 0 && (
+        <div
+          key={id}
+          style={{
+            width: spacer,
+            display: hidePanelOverflow ? 'block' : 'none',
+          }}
+        />
+      );
 
     return (
       <div
@@ -385,10 +414,10 @@ class Tabs extends React.Component {
         >
           <Spring
             from={{
-              transform: `translateX(${translateFrom})`,
+              transform: `translateX(${translateFrom - spacer}px)`,
             }}
             to={{
-              transform: `translateX(${translateTo})`,
+              transform: `translateX(${translateTo - spacer}px)`,
             }}
             config={{
               precision: isSwiping ? 1 : 0.01,
@@ -408,25 +437,27 @@ class Tabs extends React.Component {
               <div
                 className="tabs__slider"
                 style={{
-                  width: hidePanelOverflow ? `${this.filteredTabsLength * 100}%` : '100%',
+                  width: hidePanelOverflow ? `${sliderWidth}px` : '100%',
                   transform: hidePanelOverflow ? props.transform : 'translateX(0px)',
                 }}
               >
                 {tabs.map(({ content, disabled }, index) =>
                   !disabled ? (
-                    <TabPanel
-                      key={tabs[index].title}
-                      tabId={`${name}-tab-${index}`}
-                      id={`${name}-panel-${index}`}
-                      style={{
-                        width: hidePanelOverflow
-                          ? `${(1 / this.filteredTabsLength) * 100}%`
-                          : '100%',
-                        display: hidePanelOverflow || index === selected ? 'block' : 'none',
-                      }}
-                    >
-                      {content}
-                    </TabPanel>
+                    <Fragment key={`${tabs[index].title}-fragment`}>
+                      {index === selected && <Spacer id="left-spacer" />}
+                      <TabPanel
+                        key={tabs[index].title}
+                        tabId={`${name}-tab-${index}`}
+                        id={`${name}-panel-${index}`}
+                        style={{
+                          width: hidePanelOverflow ? `${this.containerWidth}px` : '100%',
+                          display: hidePanelOverflow || index === selected ? 'block' : 'none',
+                        }}
+                      >
+                        {content}
+                      </TabPanel>
+                      {index === selected && <Spacer id="right-spacer" />}
+                    </Fragment>
                   ) : null,
                 )}
               </div>
@@ -437,6 +468,8 @@ class Tabs extends React.Component {
     );
   }
 }
+
+Tabs.SpacerSizes = { ...Size, NONE: 'default' };
 
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(
@@ -451,11 +484,19 @@ Tabs.propTypes = {
   name: PropTypes.string.isRequired,
   changeTabOnSwipe: PropTypes.bool,
   className: PropTypes.string,
+  transitionSpacing: PropTypes.oneOf([
+    Tabs.SpacerSizes.NONE,
+    Tabs.SpacerSizes.EXTRA_SMALL,
+    Tabs.SpacerSizes.SMALL,
+    Tabs.SpacerSizes.MEDIUM,
+    Tabs.SpacerSizes.LARGE,
+  ]),
 };
 
 Tabs.defaultProps = {
   changeTabOnSwipe: true,
   className: '',
+  transitionSpacing: Tabs.SpacerSizes.NONE,
 };
 
 export default Tabs;

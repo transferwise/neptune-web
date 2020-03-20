@@ -13,6 +13,7 @@ export const basic = () => {
     <Tabs
       className="tabs-custom-class"
       name="tabs-docs"
+      transitionSpacing={Tabs.SpacerSizes.MEDIUM}
       tabs={[
         {
           title: 'Title 1',

@@ -34,6 +34,7 @@ describe('Tabs', () => {
       changeTabOnSwipe: true,
       name: 'test',
       selected: 0,
+      transitionSpacing: 'default',
       onTabSelect: jest.fn(),
       className: 'custom-class-name',
     };
@@ -111,6 +112,19 @@ describe('Tabs', () => {
     );
   });
 
+  it('applies resistence when transitioning toward disabled tabs when the selected tab is the last enabled one', () => {
+    component = mount(<Tabs {...props} tabs={generateTabs([true, false, false])} selected={1} />);
+
+    component.simulate('touchstart', createStartTouchEventObject({ x: 0, y: 0 }));
+    component.simulate('touchmove', createMoveTouchEventObject({ x: 10, y: 0 }));
+
+    expect(component.find(Spring).props()).toEqual(
+      expect.objectContaining({
+        to: { transform: `translateX(${getElasticDragDifference(10)}px)` },
+      }),
+    );
+  });
+
   it('disables vertical movement after swiping', () => {
     expect(component.state().isSwiping).toBe(false);
     component.simulate('touchstart', createStartTouchEventObject({ x: 0, y: 0 }));
@@ -161,6 +175,53 @@ describe('Tabs', () => {
     expect(component.state('isAnimating')).toBe(false);
   });
 
+  describe('spacing between panels when animating', () => {
+    it('doesnt render a spacer when no transitionSpacing is provided', () => {
+      component.setState({ isAnimating: true });
+      expect(leftSpacer(component).children()).toHaveLength(0);
+      expect(leftSpacer(component).children()).toHaveLength(0);
+
+      component.setProps({ transitionSpacing: Tabs.SpacerSizes.LARGE });
+
+      expect(leftSpacer(component).children()).toHaveLength(1);
+      expect(rightSpacer(component).children()).toHaveLength(1);
+    });
+
+    it('adds the spacers on either side of the selected panel', () => {
+      expect(
+        component
+          .find('.tabs__slider')
+          .childAt(0)
+          .is('[id="left-spacer"]'),
+      ).toBe(true);
+
+      expect(
+        component
+          .find('.tabs__slider')
+          .childAt(2)
+          .is('[id="right-spacer"]'),
+      ).toBe(true);
+    });
+
+    it('sets the width of the spacer based on the transitionSpacing provided', () => {
+      const spacerWidth = () => getComputedStyle(leftSpacer(component).getDOMNode()).width;
+
+      component.setState({ isAnimating: true });
+
+      component.setProps({ transitionSpacing: Tabs.SpacerSizes.EXTRA_SMALL });
+      expect(spacerWidth()).toBe('8px');
+
+      component.setProps({ transitionSpacing: Tabs.SpacerSizes.SMALL });
+      expect(spacerWidth()).toBe('16px');
+
+      component.setProps({ transitionSpacing: Tabs.SpacerSizes.MEDIUM });
+      expect(spacerWidth()).toBe('24px');
+
+      component.setProps({ transitionSpacing: Tabs.SpacerSizes.LARGE });
+      expect(spacerWidth()).toBe('32px');
+    });
+  });
+
   describe('updating the translate values', () => {
     beforeEach(() => {
       props = {
@@ -193,6 +254,19 @@ describe('Tabs', () => {
       expect(component.state('isAnimating')).toBe(false);
       expect(getLineStyles().getPropertyValue('transform')).toBe(`translateX(${lineTranslateX})`);
       expect(getSliderStyles().getPropertyValue('transform')).toBe('translateX(0px)');
+    });
+
+    it('starts the transition offset by the spacer when one is provided', () => {
+      const getSliderStyles = () => getComputedStyle(component.find('.tabs__slider').getDOMNode());
+
+      component.setProps({ transitionSpacing: Tabs.SpacerSizes.NONE, selected: 3 });
+      component.setState({ isAnimating: true });
+
+      expect(getSliderStyles().getPropertyValue('transform')).toBe('translateX(-600px)');
+
+      component.setProps({ transitionSpacing: Tabs.SpacerSizes.LARGE });
+
+      expect(getSliderStyles().getPropertyValue('transform')).toBe('translateX(-632px)');
     });
   });
 
@@ -244,10 +318,10 @@ describe('Tabs', () => {
       expect(getPanelWidth(component)).toBe('100%');
 
       component.setState({ isSwiping: true });
-      expect(getPanelWidth(component)).toBe('50%');
+      expect(getPanelWidth(component)).toBe('300px');
 
       component.setState({ isSwiping: false, isAnimating: true });
-      expect(getPanelWidth(component)).toBe('50%');
+      expect(getPanelWidth(component)).toBe('300px');
     });
   });
 });
@@ -279,6 +353,14 @@ function getPanelWidth(component) {
     .find(TabPanel)
     .at(0)
     .prop('style').width;
+}
+
+function leftSpacer(component) {
+  return component.find('[id="left-spacer"]');
+}
+
+function rightSpacer(component) {
+  return component.find('[id="right-spacer"]');
 }
 
 export function createStartTouchEventObject({ x = 0, y = 0 }) {
