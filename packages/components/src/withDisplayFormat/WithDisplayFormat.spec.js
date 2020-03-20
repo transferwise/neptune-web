@@ -81,6 +81,22 @@ describe('InputWithTextFormat', () => {
     });
   });
 
+  describe('on "autofill"', () => {
+    beforeEach(() => {
+      component = mount(
+        <WithDisplayFormat {...props} render={renderProps => <input {...renderProps} />} />,
+      );
+    });
+
+    it('tests case with 5 random digits', () => {
+      componentInput().simulate('change', { target: { value: '12345' } });
+
+      jest.runAllTimers();
+
+      expect(componentInput().props().value).toBe('12-345');
+    });
+  });
+
   describe('when backspace is pressed', () => {
     beforeEach(() => {
       component = mount(

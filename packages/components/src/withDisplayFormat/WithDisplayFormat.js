@@ -90,14 +90,6 @@ class WithDisplayFormat extends React.Component {
     return null;
   }
 
-  setCursorPosition = select => {
-    const { triggerEvent } = this.state;
-    setTimeout(() => {
-      triggerEvent.target.setSelectionRange(select, select);
-      this.setState({ selectionStart: select, selectionEnd: select });
-    }, 0);
-  };
-
   getUserAction = unformattedValue => {
     const { triggerEvent, triggerType, value } = this.state;
     const { displayPattern } = this.props;
@@ -179,8 +171,7 @@ class WithDisplayFormat extends React.Component {
     this.setState({ triggerType: 'Cut' });
   };
 
-  isKeyAllowed = unformattedValue => {
-    const action = this.getUserAction(unformattedValue);
+  isKeyAllowed = action => {
     const { displayPattern } = this.props;
     const symbolsInPattern = displayPattern.split('').filter(character => character !== '*');
 
@@ -188,16 +179,18 @@ class WithDisplayFormat extends React.Component {
   };
 
   handleOnChange = event => {
-    const { historyNavigator, triggerType } = this.state;
+    const { historyNavigator, triggerEvent, triggerType } = this.state;
     const { displayPattern, onChange } = this.props;
     const { value } = event.target;
-
     let unformattedValue = unformatWithPattern(value, displayPattern);
-    if (!this.isKeyAllowed(unformattedValue) || triggerType === 'Undo' || triggerType === 'Redo') {
+    const action =
+      triggerEvent === null
+        ? // triggerEvent can be null only in case of "autofilling" (via password manager extension or browser build-in one) events
+          'Paste'
+        : this.getUserAction(unformattedValue);
+    if (!this.isKeyAllowed(action) || triggerType === 'Undo' || triggerType === 'Redo') {
       return;
     }
-
-    const action = this.getUserAction(unformattedValue);
 
     if (action === 'Backspace' || action === 'Delete') {
       unformattedValue = this.handleDelete(unformattedValue, action);
@@ -254,7 +247,7 @@ class WithDisplayFormat extends React.Component {
 
   handleCursorPositioning = action => {
     const { displayPattern } = this.props;
-    const { selectionStart, selectionEnd, pastedLength } = this.state;
+    const { triggerEvent, selectionStart, selectionEnd, pastedLength } = this.state;
 
     const cursorPosition = getCursorPositionAfterKeystroke(
       action,
@@ -264,7 +257,12 @@ class WithDisplayFormat extends React.Component {
       pastedLength,
     );
 
-    this.setCursorPosition(cursorPosition);
+    setTimeout(() => {
+      if (triggerEvent) {
+        triggerEvent.target.setSelectionRange(cursorPosition, cursorPosition);
+      }
+      this.setState({ selectionStart: cursorPosition, selectionEnd: cursorPosition });
+    }, 0);
   };
 
   render() {
