@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@25.1.0...@transferwise/components@25.1.1) (2020-03-20)
+
+
+### Bug Fixes
+
+* autofilling for WithDisplayFormat ([#209](https://github.com/transferwise/neptune-web/issues/209)) ([3d0a11b](https://github.com/transferwise/neptune-web/commit/3d0a11b0c926f7038f703a7377118140da284c18))
+
+
+
+
+
 # [25.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@25.0.1...@transferwise/components@25.1.0) (2020-03-20)
 
 
