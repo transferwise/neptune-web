@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [25.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@25.0.1...@transferwise/components@25.1.0) (2020-03-20)
+
+
+### Features
+
+* **tabs:** separate tab content during transition ([#207](https://github.com/transferwise/neptune-web/issues/207)) ([eab99ba](https://github.com/transferwise/neptune-web/commit/eab99ba5064f3654668cc2e3f9331def892c2e33))
+
+
+
+
+
 ## [25.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@25.0.0...@transferwise/components@25.0.1) (2020-03-20)
 
 
