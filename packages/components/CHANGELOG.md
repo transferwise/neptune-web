@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@25.0.0...@transferwise/components@25.0.1) (2020-03-20)
+
+
+### Bug Fixes
+
+* **tabs:** add inverse styles ([#208](https://github.com/transferwise/neptune-web/issues/208)) ([387b61d](https://github.com/transferwise/neptune-web/commit/387b61d972cd0394e2a1b7c50e868488346be579))
+
+
+
+
+
 # [25.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@24.2.1...@transferwise/components@25.0.0) (2020-03-17)
 
 
