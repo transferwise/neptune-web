@@ -98,7 +98,7 @@ FlowNavigation.defaultProps = {
 FlowNavigation.propTypes = {
   steps: Types.arrayOf(
     Types.shape({
-      label: Types.string.isRequired,
+      label: Types.node.isRequired,
       onClick: Types.func,
       hoverLabel: Types.node,
     }),
