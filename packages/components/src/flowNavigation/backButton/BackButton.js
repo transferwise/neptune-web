@@ -17,6 +17,7 @@ const BackArrow = () => (
   </svg>
 );
 
+/* eslint-disable react/no-array-index-key */
 class BackButton extends Component {
   state = {
     activeStep: this.props.activeStep,
@@ -44,7 +45,7 @@ class BackButton extends Component {
 
         {steps.map(({ label }, index) => (
           <CSSTransition
-            key={label}
+            key={index}
             in={index === activeStep - 1}
             timeout={450}
             classNames="tw-flow-navigation__back-text"
@@ -64,11 +65,12 @@ class BackButton extends Component {
     );
   }
 }
+/* eslint-enable react/no-array-index-key */
 
 BackButton.propTypes = {
   steps: Types.arrayOf(
     Types.shape({
-      label: Types.string.isRequired,
+      label: Types.node.isRequired,
     }),
   ).isRequired,
   activeStep: Types.number.isRequired,
