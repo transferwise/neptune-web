@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [25.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@25.2.0...@transferwise/components@25.3.0) (2020-03-26)
+
+
+### Features
+
+* **backbutton:** accept node label ([#234](https://github.com/transferwise/neptune-web/issues/234)) ([2a6a40a](https://github.com/transferwise/neptune-web/commit/2a6a40a3ee962999fc5038a6bfb87310bbb66389))
+
+
+
+
+
 # [25.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@25.1.1...@transferwise/components@25.2.0) (2020-03-25)
 
 
