@@ -375,7 +375,7 @@ export default class Select extends Component {
 
     const canSearch = !!onSearchChange || !!search;
 
-    const dropdownClass = classNames(s('dropdown-menu'), {
+    const dropdownClass = classNames(s('tw-select'), s('dropdown-menu'), {
       [s(`dropdown-menu-${dropdownRight}-right`)]: dropdownRight,
       [s(`dropdown-menu-${dropdownWidth}`)]: dropdownWidth,
       [s(`dropdown-menu--open`)]: open,
@@ -502,7 +502,7 @@ export default class Select extends Component {
     const { open, shouldRenderWithPortal } = this.state;
 
     if (open && shouldRenderWithPortal) {
-      return createPortal(<div className="select-overlay" />, document.body);
+      return createPortal(<div className="tw-select select-overlay" />, document.body);
     }
 
     return null;
@@ -513,7 +513,7 @@ export default class Select extends Component {
     const { open } = this.state;
     const s = this.style;
 
-    const groupClass = classNames(s('btn-group'), {
+    const groupClass = classNames(s('tw-select'), s('btn-group'), {
       [s('btn-block')]: block,
       [s('dropup')]: dropdownUp,
       [s('dropdown')]: !dropdownUp,

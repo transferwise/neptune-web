@@ -4,7 +4,7 @@ html.ios-click {
   cursor: pointer;
 }
 
-.tw-dropdown-item {
+.tw-select.tw-dropdown-item {
   &--clickable {
     cursor: pointer;
   }
@@ -27,12 +27,12 @@ html.ios-click {
 @media (max-width: @screen-xs-max) {
   .dropup,
   .dropdown {
-    > .dropdown-menu {
+    > .tw-select.dropdown-menu {
       transition: none !important;
     }
   }
 
-  .select-overlay {
+  .tw-select.select-overlay {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -41,10 +41,10 @@ html.ios-click {
     display: block !important;
     background: rgba(0, 0, 0, 0.3);
     z-index: 999;
-    animation: fadeIn 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
+    animation: twSelectFadeIn 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
   }
 
-  .dropdown-menu.dropdown-menu--open {
+  .tw-select.dropdown-menu.dropdown-menu--open {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -53,14 +53,14 @@ html.ios-click {
     max-width: 100%;
     width: 100% !important;
     max-height: 50vh;
-    animation: fadeUp 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
+    animation: twSelectFadeUp 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
     visibility: visible;
     opacity: 1;
     overflow: auto;
   }
 }
 
-@keyframes fadeIn {
+@keyframes twSelectFadeIn {
   from {
     opacity: 0;
   }
@@ -69,7 +69,7 @@ html.ios-click {
   }
 }
 
-@keyframes fadeUp {
+@keyframes twSelectFadeUp {
   from {
     opacity: 0;
     transform: translateY(100%);
