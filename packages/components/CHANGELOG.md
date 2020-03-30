@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.0.0...@transferwise/components@26.0.1) (2020-03-30)
+
+
+### Bug Fixes
+
+* including missing spacer variable in modal ([#250](https://github.com/transferwise/neptune-web/issues/250)) ([66f127f](https://github.com/transferwise/neptune-web/commit/66f127f4d70d2c473fabdfad8073e60fed4ffc36))
+
+
+
+
+
 # [26.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@25.3.0...@transferwise/components@26.0.0) (2020-03-30)
 
 
