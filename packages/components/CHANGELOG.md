@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [26.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@25.3.0...@transferwise/components@26.0.0) (2020-03-30)
+
+
+* refactor!: name space Select styles to prevent leaks (#235) ([96a6b4e](https://github.com/transferwise/neptune-web/commit/96a6b4e2fd19d927716b53a171a786d32631709b)), closes [#235](https://github.com/transferwise/neptune-web/issues/235)
+
+
+### BREAKING CHANGES
+
+* Prevent Select component styling from leaking into the global scope
+
+
+
+
+
 # [25.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@25.2.0...@transferwise/components@25.3.0) (2020-03-26)
 
 
