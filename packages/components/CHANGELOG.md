@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.0.1...@transferwise/components@26.0.2) (2020-03-31)
+
+
+### Bug Fixes
+
+* adjust nested selectors ([#253](https://github.com/transferwise/neptune-web/issues/253)) ([a10bbec](https://github.com/transferwise/neptune-web/commit/a10bbec6e5d69a4c1f4f3fa87acc90a192705026))
+
+
+
+
+
 ## [26.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.0.0...@transferwise/components@26.0.1) (2020-03-30)
 
 
