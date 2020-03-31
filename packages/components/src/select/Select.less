@@ -4,23 +4,28 @@ html.ios-click {
   cursor: pointer;
 }
 
-.tw-select.tw-dropdown-item {
-  &--clickable {
-    cursor: pointer;
-  }
+.tw-select {
+  .tw-dropdown-item {
+    &--clickable {
+      cursor: pointer;
+      .icon {
+        margin-right: @spacer;
+      }
+    }
 
-  &--divider {
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: @brand-smoke-plus-20;
-  }
+    &--divider {
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-bottom-color: @brand-smoke-plus-20;
+    }
 
-  &--focused {
-    background-color: @brand-smoke-plus-20;
-  }
+    &--focused {
+      background-color: @brand-smoke-plus-20;
+    }
 
-  .currency-flag {
-    margin-right: 8px;
+    .currency-flag {
+      margin-right: @spacer;
+    }
   }
 }
 
