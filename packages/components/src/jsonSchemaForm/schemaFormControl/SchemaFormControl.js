@@ -2,6 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 
 import FormControl from '../../formControl';
+import SchemaTypeahead from '../schemaTypeahead';
 import { isNull } from '../validation/type-validators';
 import { getValidModelParts } from '../validation/valid-model';
 
@@ -23,9 +24,14 @@ const SchemaFormControl = props => {
       return schema.control;
     }
 
-    if (schema.enum) {
+    if (schema.valuesAsync) {
+      return 'typeahead';
+    }
+
+    if (schema.enum || schema.values) {
       return schema.enum.length >= 3 ? 'select' : 'radio';
     }
+
     if (schema.type === 'string') {
       switch (schema.format) {
         case 'date':
@@ -38,9 +44,11 @@ const SchemaFormControl = props => {
           return 'text';
       }
     }
+
     if (schema.type === 'boolean') {
       return 'checkbox';
     }
+
     if (schema.type === 'integer') {
       return 'number';
     }
@@ -68,7 +76,18 @@ const SchemaFormControl = props => {
     autoComplete: !props.schema.help,
   };
 
-  return <FormControl type={controlType} value={safeValue} {...events} {...controlProps} />;
+  const isTypeahead = controlType === 'typeahead';
+
+  return (
+    <div>
+      {isTypeahead && (
+        <SchemaTypeahead value={safeValue} schema={props.schema} id={props.id} {...events} />
+      )}
+      {!isTypeahead && (
+        <FormControl type={controlType} value={safeValue} {...events} {...controlProps} />
+      )}
+    </div>
+  );
 };
 
 SchemaFormControl.propTypes = {
@@ -78,9 +97,15 @@ SchemaFormControl.propTypes = {
     type: Types.oneOf(['string', 'number', 'integer', 'boolean']),
     format: Types.string,
     values: Types.arrayOf(Types.shape({})),
+    valuesAsync: Types.shape({
+      method: Types.string,
+      url: Types.string,
+      param: Types.string,
+    }),
     title: Types.string,
     placeholder: Types.string,
     help: Types.shape({}),
+    warning: Types.string,
   }).isRequired,
   onChange: Types.func.isRequired,
   onFocus: Types.func.isRequired,

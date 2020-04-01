@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import SchemaFormControl from '.';
 
 import FormControl from '../../formControl';
+import SchemaTypeahead from '../schemaTypeahead';
 
 describe('Given a component for rendering a form control based on a schema', () => {
   let component;
@@ -184,6 +185,25 @@ describe('Given a component for rendering a form control based on a schema', () 
 
     it('should override the default and ask for the specified control', () => {
       expect(component.find(FormControl).prop('type')).toEqual('select');
+    });
+  });
+
+  describe('when a schema with valueAsync is supplied', () => {
+    beforeEach(() => {
+      component.setProps({
+        schema: {
+          valuesAsync: {
+            method: 'POST',
+            url: '',
+            param: 'search',
+          },
+        },
+      });
+    });
+
+    it('should ask the FormControl for a radio control', () => {
+      const typeahead = component.find(SchemaTypeahead);
+      expect(typeahead).toBeTruthy();
     });
   });
 

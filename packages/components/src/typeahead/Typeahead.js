@@ -458,8 +458,6 @@ export default class Typeahead extends Component {
           className={classNames('form-group', { 'has-error': hasError, 'has-warning': hasWarning })}
         >
           <div className={`input-group input-group-${size}`}>
-            {addon && <span className="input-group-addon">{addon}</span>}
-
             <TypeaheadInput
               {...{
                 autoFocus,
@@ -479,6 +477,7 @@ export default class Typeahead extends Component {
               onPaste={this.handleOnPaste}
             />
 
+            {addon && !clearButton && <span className="input-group-addon">{addon}</span>}
             {clearButton && (
               <div className="input-group-addon">
                 <button className="btn-unstyled" onClick={this.clear}>

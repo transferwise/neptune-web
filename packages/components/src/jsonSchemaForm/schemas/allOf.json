@@ -65,11 +65,11 @@
     {
       "title": "Boolean schemas",
       "type": "object",
+      "warning": "Boolean schemas can only be true or false",
       "properties": {
         "boolean": {
           "type": "boolean",
-          "title": "Boolean input",
-          "width": "md"
+          "title": "Boolean input"
         }
       }
     },

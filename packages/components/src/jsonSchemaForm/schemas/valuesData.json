@@ -34,8 +34,22 @@
       ],
       "enum": ["12345", "123456", "12347"]
     },
-    "streetAddress": {
-      "title": "Street Address",
+    "postcode": {
+      "title": "Post code",
+      "type": "string",
+      "valuesAsync": {
+        "method": "POST",
+        "url": "/",
+        "param": "search"
+      }
+    },
+    "address1": {
+      "title": "Address 1",
+      "type": "string",
+      "disabled": true
+    },
+    "address2": {
+      "title": "Address 2",
       "type": "string",
       "disabled": true
     },
