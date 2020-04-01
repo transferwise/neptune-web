@@ -8,6 +8,36 @@ export default {
   title: 'Typeahead',
 };
 
+export const createable = () => {
+  const validateChip = option =>
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      option.label,
+    );
+
+  return (
+    <Typeahead
+      id="typeahead"
+      name="typeahead-input-name"
+      size="md"
+      maxHeight={100}
+      footer={<div>Want a footer? Style it!</div>}
+      multiple
+      clearable
+      allowNew
+      showSuggestions={false}
+      showNewEntry={false}
+      placeholder="placeholder"
+      chipSeparators={[',', ' ']}
+      validateChip={validateChip}
+      alert={{ message: 'alert message', type: 'success' }}
+      onChange={() => {}}
+      addon={<i className="input-group-text icon icon-search" />}
+      onBlur={() => {}}
+      options={[]}
+    />
+  );
+};
+
 export const basic = () => {
   const [options, setOptions] = React.useState([
     {

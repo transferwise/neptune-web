@@ -189,7 +189,11 @@ export default class Typeahead extends Component {
     const { keyboardFocusedOptionIndex, query, selected } = this.state;
     const chipsMode = !showSuggestions && allowNew && multiple;
 
-    if (chipsMode && ['Enter', ...chipSeparators].indexOf(event.key) !== -1 && query.trim()) {
+    if (
+      chipsMode &&
+      ['Enter', 'Tab', ...chipSeparators].indexOf(event.key) !== -1 &&
+      query.trim()
+    ) {
       event.preventDefault();
       this.selectItem({ label: query });
     } else {

@@ -149,6 +149,48 @@ describe('Typeahead', () => {
     expect(event.preventDefault).toBeCalled();
   });
 
+  it('adds new value as selected and clears the input when Enter is pressed', () => {
+    const event = {
+      key: 'Enter',
+      preventDefault: jest.fn(),
+    };
+    const text = 'test';
+
+    component.setProps({
+      multiple: true,
+      allowNew: true,
+      showSuggestions: false,
+      chipSeparators: [','],
+    });
+
+    input().simulate('change', { target: { value: text } });
+    input().simulate('keyDown', event);
+
+    expect(chip().text()).toEqual(text);
+    expect(event.preventDefault).toBeCalled();
+  });
+
+  it('adds new value as selected and clears the input when Tab is pressed', () => {
+    const event = {
+      key: 'Tab',
+      preventDefault: jest.fn(),
+    };
+    const text = 'test';
+
+    component.setProps({
+      multiple: true,
+      allowNew: true,
+      showSuggestions: false,
+      chipSeparators: [','],
+    });
+
+    input().simulate('change', { target: { value: text } });
+    input().simulate('keyDown', event);
+
+    expect(chip().text()).toEqual(text);
+    expect(event.preventDefault).toBeCalled();
+  });
+
   it('clears typeahead when clear button is clicked', () => {
     const event = {
       key: ',',
