@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import GenericSchema from '../genericSchema';
+import Alert from '../../alert';
 import { getValidModelParts } from '../validation/valid-model';
 
 const ObjectSchema = props => {
@@ -45,6 +46,11 @@ const ObjectSchema = props => {
     <fieldset>
       {props.schema.title && !props.hideTitle && <legend> {props.schema.title} </legend>}
       {props.schema.description && <p> {props.schema.description} </p>}
+      {props.schema.warning && (
+        <Alert size="lg" type="warning">
+          {props.schema.warning}
+        </Alert>
+      )}
       <div className="row">
         {Object.keys(props.schema.properties).map(propertyName => (
           <div
@@ -80,6 +86,7 @@ ObjectSchema.propTypes = {
     title: Types.string,
     description: Types.string,
     width: Types.oneOf(['sm', 'md', 'lg']),
+    warning: Types.string,
   }).isRequired,
   model: Types.shape({}),
   errors: Types.shape({}),
