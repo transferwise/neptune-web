@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.0.2...@transferwise/components@26.0.3) (2020-04-01)
+
+
+### Bug Fixes
+
+* chipsMode Tab press create chip ([#254](https://github.com/transferwise/neptune-web/issues/254)) ([f1fc7e8](https://github.com/transferwise/neptune-web/commit/f1fc7e8dac67ce29cc64596d4b9501c396a2a1a8))
+
+
+
+
+
 ## [26.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.0.1...@transferwise/components@26.0.2) (2020-03-31)
 
 
