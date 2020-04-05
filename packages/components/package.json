@@ -151,6 +151,9 @@
     "react-transition-group": "^4.2.1"
   },
   "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
     "testPathIgnorePatterns": [
       "<rootDir>[/\\\\](build|build-docs|docs|node_modules|scripts)[/\\\\]"
     ],
