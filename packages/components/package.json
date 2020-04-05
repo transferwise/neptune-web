@@ -150,15 +150,6 @@
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.2.1"
   },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "<rootDir>[/\\\\](build|build-docs|docs|node_modules|scripts)[/\\\\]"
-    ],
-    "testURL": "http://localhost",
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ]
-  },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
