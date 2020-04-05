@@ -151,23 +151,13 @@
     "react-transition-group": "^4.2.1"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
     "testPathIgnorePatterns": [
       "<rootDir>[/\\\\](build|build-docs|docs|node_modules|scripts)[/\\\\]"
     ],
     "testURL": "http://localhost",
-    "transform": {
-      "^.+\\.(js|jsx)$": "../../node_modules/babel-jest",
-      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web"
-    }
+    ]
   },
   "lint-staged": {
     "*.js": [
