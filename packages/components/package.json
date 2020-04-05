@@ -151,20 +151,12 @@
     "react-transition-group": "^4.2.1"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
-    "setupFiles": [
-      "raf/polyfill",
-      "<rootDir>/config/jest/setupTests.js"
-    ],
     "testPathIgnorePatterns": [
       "<rootDir>[/\\\\](build|build-docs|docs|node_modules|scripts)[/\\\\]"
     ],
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx)$": "../../node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
     "transformIgnorePatterns": [
