@@ -1,0 +1,44 @@
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Image } from '@transferwise/components';
+import code from '../../liveEditorCode/image.code';
+
+Image component renders an img tag with some optional lazy load feature. "alt" and "src" props are required to enforce accessibility good practices.
+Lazy loading functionality is currently not supported on IE11. If you are need this kind of functionality to be supported you'll need to add a polyfill for Observer window object.
+
+<LiveEditorBlock code={code} scope={{ Image }} />
+<GeneratePropsTable componentName="Image" />
+<>
+<Image
+  alt="test"
+  id="id1"
+  className={'m-t-5'}
+  src="//i.picsum.photos/id/1025/300/200.jpg"
+  loading="lazy"
+  onLoad={() => console.log('image loaded 1')}
+  onError={errorEvent => console.log(errorEvent)}
+/>
+
+<Image
+  alt="test"
+  id="id1"
+  className={'m-t-5'}
+  src="//i.picsum.photos/id/1025/300/200.jpg"
+  loading="lazy"
+  onLoad={() => console.log('image loaded 2')}
+  onError={errorEvent => console.log(errorEvent)}
+/>
+
+<Image
+  alt="test"
+  id="id1"
+  className={'m-t-5'}
+  src="//i.picsum.photos/id/1025/300/200.jpg"
+  loading="lazy"
+  onLoad={() => console.log('image loaded 3')}
+  onError={errorEvent => console.log(errorEvent)}
+/>
+</>
+
+export const meta = {
+  name: 'Image',
+};

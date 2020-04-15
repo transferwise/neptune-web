@@ -65,7 +65,7 @@ describe('Option', () => {
   });
 
   it('renders as the tag that you pass it', () => {
-    component.setProps({ as: 'a' });
+    component.setProps({ as: 'a', href: 'https://example.com' });
     expect(mainComponentTag()).toBe('a');
   });
 
