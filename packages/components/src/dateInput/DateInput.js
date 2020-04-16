@@ -29,31 +29,31 @@ const DateInput = props => {
     onBlur,
   } = props;
 
-  const initialState = () => {
-    const intialValue = {
-      explodedDate: INITIAL_DEFAULT_STATE,
-      dateObject: value,
-    };
+  const getDateObject = () => {
+    if (value && isDateValid(value)) {
+      return typeof value === 'string' ? convertToLocalMidnight(value) : value;
+    }
+    return null;
+  };
+
+  const getExplodedDate = unit => {
+    let explodedDate = INITIAL_DEFAULT_STATE;
 
     if (value && isDateValid(value)) {
-      if (typeof value === 'string') {
-        intialValue.dateObject = convertToLocalMidnight(value);
-      }
-
-      intialValue.explodedDate = explodeDate(intialValue.dateObject);
+      const dateObject = getDateObject();
+      explodedDate = explodeDate(dateObject);
 
       if (isMonthAndYearFormat(value)) {
-        intialValue.explodedDate.day = null;
+        explodedDate.day = null;
       }
     }
-    return intialValue;
+    return explodedDate[unit];
   };
-  const { explodedDate, dateObject } = initialState();
 
-  const [day, setDay] = useState(explodedDate.day);
-  const [month, setMonth] = useState(explodedDate.month);
-  const [year, setYear] = useState(explodedDate.year);
-  const [internalValue, setInternalValue] = useState(dateObject);
+  const [day, setDay] = useState(() => getExplodedDate('day'));
+  const [month, setMonth] = useState(() => getExplodedDate('month'));
+  const [year, setYear] = useState(() => getExplodedDate('year'));
+  const [internalValue, setInternalValue] = useState(getDateObject);
 
   const getDateAsString = date => {
     switch (mode) {
