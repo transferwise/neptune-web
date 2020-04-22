@@ -62,7 +62,8 @@ export default class MoneyInput extends Component {
     ),
   };
 
-  componentWillReceiveProps(nextProps) {
+  // eslint-disable-next-line
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.amountFocused) {
       this.setState({
         formattedAmount: formatAmountIfSet(

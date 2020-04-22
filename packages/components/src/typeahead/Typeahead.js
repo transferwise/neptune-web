@@ -107,7 +107,8 @@ export default class Typeahead extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  // eslint-disable-next-line
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.multiple !== this.props.multiple) {
       this.setState(prevState => {
         const { selected } = prevState;

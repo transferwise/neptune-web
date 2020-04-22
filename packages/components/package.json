@@ -130,9 +130,9 @@
     "bootstrap": "github:transferwise/bootstrap#v5.18.15",
     "currency-flags": "^1.2.1",
     "prop-types": "^15.6.1",
-    "react": "16.8.6",
+    "react": "16.13.1",
     "react-dev-utils": "^9.0.1",
-    "react-dom": "16.8.6"
+    "react-dom": "16.13.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.9.2",

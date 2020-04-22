@@ -169,7 +169,8 @@ export default class Field extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  // eslint-disable-next-line
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errorMessage !== this.props.errorMessage) {
       this.setState({ error: nextProps.errorMessage });
     }
