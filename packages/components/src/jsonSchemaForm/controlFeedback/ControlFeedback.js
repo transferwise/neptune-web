@@ -3,7 +3,7 @@ import Types from 'prop-types';
 
 import Alert from '../../alert';
 
-const ControlFeedback = props => {
+const ControlFeedback = (props) => {
   // Use validation messages from the schema if possible.
   const validationMessages = {
     ...props.validationMessages,
@@ -24,7 +24,7 @@ const ControlFeedback = props => {
       )}
       {isValidationVisible && (
         <Alert type="error" size="sm">
-          {props.validations.map(validation => (
+          {props.validations.map((validation) => (
             <div key={validation}>{validationMessages[validation]}</div>
           ))}
         </Alert>
@@ -34,7 +34,7 @@ const ControlFeedback = props => {
           {props.schema.help.message && <div>{props.schema.help.message}</div>}
           {props.schema.help.list && (
             <ul className="list-unstyled">
-              {props.schema.help.list.map(item => (
+              {props.schema.help.list.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>

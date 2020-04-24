@@ -16,7 +16,7 @@ const NavigationOption = ({ media, href, title, content, onClick, complex, disab
     <Option
       className="tw-navigation-option"
       {...sharedProps}
-      onClick={event => {
+      onClick={(event) => {
         if (!disabled) {
           onClick(event);
         }

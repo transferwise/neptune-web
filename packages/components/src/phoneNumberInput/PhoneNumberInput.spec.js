@@ -339,7 +339,7 @@ describe('Given a telephone number component', () => {
     });
   });
 
-  const changeSelectValue = value => {
+  const changeSelectValue = (value) => {
     component.find('button.dropdown-toggle').simulate('click', fakeEvent());
     component.find('.tw-select-filter').simulate('change', { target: { value } });
     component.find('.tw-dropdown-item--clickable').simulate('click', fakeEvent());

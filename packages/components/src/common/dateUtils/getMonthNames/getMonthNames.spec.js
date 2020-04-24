@@ -1,7 +1,7 @@
 import { getMonthNames } from '..';
 
 jest.mock('@transferwise/formatting', () => ({
-  formatDate: month => month.getMonth(),
+  formatDate: (month) => month.getMonth(),
 }));
 
 describe('getMonthNames', () => {

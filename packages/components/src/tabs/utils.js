@@ -1,9 +1,9 @@
 const MIN_SWIPE_DISTANCE = 50;
 const MIN_SWIPE_VELOCITY = 0.1;
 
-const swipedSignificantDistance = difference => Math.abs(difference) > MIN_SWIPE_DISTANCE;
+const swipedSignificantDistance = (difference) => Math.abs(difference) > MIN_SWIPE_DISTANCE;
 
-const swipedWithSignificantVelocity = velocity => velocity > MIN_SWIPE_VELOCITY;
+const swipedWithSignificantVelocity = (velocity) => velocity > MIN_SWIPE_VELOCITY;
 
 export const getSwipeVelocity = (start, end) => {
   const timePassed = end.time - start.time;
@@ -43,5 +43,5 @@ export function getVelocity(coords) {
   `1 - Math.E ** (-0.005 * difference)` provides a % value of how far we want to translate (0.005 being the rate)
   `Math.min(150, window.innerWidth / 3)` provides the maximum translate value
 */
-export const getElasticDragDifference = difference =>
+export const getElasticDragDifference = (difference) =>
   Math.min(150, window.innerWidth / 3) * (1 - Math.E ** (-0.005 * difference));

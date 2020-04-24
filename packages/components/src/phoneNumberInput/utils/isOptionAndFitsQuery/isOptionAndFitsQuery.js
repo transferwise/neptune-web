@@ -14,7 +14,7 @@ export const isOptionAndFitsQuery = (option, query) =>
 export const startsWith = (property, query) => {
   if (isArray(property)) {
     return (
-      property.filter(proper => normalizeValue(proper).indexOf(normalizeValue(query)) === 0)
+      property.filter((proper) => normalizeValue(proper).indexOf(normalizeValue(query)) === 0)
         .length > 0
     );
   } else {
@@ -22,4 +22,4 @@ export const startsWith = (property, query) => {
   }
 };
 
-const normalizeValue = value => value.toLowerCase().replace('+', '');
+const normalizeValue = (value) => value.toLowerCase().replace('+', '');

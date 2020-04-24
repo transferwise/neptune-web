@@ -145,11 +145,11 @@ describe('DateLookup (keyboard events)', () => {
     });
   });
 
-  const pressKey = key => {
+  const pressKey = (key) => {
     component.simulate('keyDown', fakeKeyDownEventForKey(key));
   };
 
-  const onChangeCalledWith = d => {
+  const onChangeCalledWith = (d) => {
     expect(props.onChange).toHaveBeenLastCalledWith(d);
   };
 });

@@ -20,7 +20,7 @@ describe('unformatWithPattern', () => {
     expect(unformatWithPattern(value, pattern)).toEqual(expectedValue);
   });
 
-  tests.forEach(test => {
+  tests.forEach((test) => {
     it(`unformat string '${test.value}' according to patter ${test.pattern}`, () => {
       expect(unformatWithPattern(test.value, test.pattern)).toBe(test.expectedValue);
     });

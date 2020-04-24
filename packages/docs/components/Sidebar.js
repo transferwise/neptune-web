@@ -6,7 +6,7 @@ import Link from './Link';
 import getPages from '../utils/getPages';
 
 const getLink = (pathname, sectionSlug) => {
-  const pages = getPages().filter(page => page.dir === sectionSlug);
+  const pages = getPages().filter((page) => page.dir === sectionSlug);
 
   return pages.map(({ component }, index) => {
     const path = `/${sectionSlug}/${component.meta.name.replace(/[^A-Z0-9]+/gi, '')}`;

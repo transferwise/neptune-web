@@ -3,8 +3,8 @@ import { mount } from 'enzyme';
 import highlight from './highlight';
 
 describe('Typeahead input', () => {
-  const highlighted = node => node.find('strong');
-  const getTextFromNodes = nodes => nodes.reduce((value, node) => value + node.text(), '');
+  const highlighted = (node) => node.find('strong');
+  const getTextFromNodes = (nodes) => nodes.reduce((value, node) => value + node.text(), '');
 
   it('highlights part of label that matches the query', () => {
     const query = 'test';

@@ -19,7 +19,7 @@ describe('Device detection', () => {
       // iPad (iOS)
       'Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
     ];
-    touchUserAgents.forEach(userAgent => {
+    touchUserAgents.forEach((userAgent) => {
       fakeUserAgent(userAgent);
       expect(isIosDevice()).toBe(true);
     });
@@ -38,7 +38,7 @@ describe('Device detection', () => {
       // safari mac
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7',
     ];
-    nonTouchUserAgents.forEach(userAgent => {
+    nonTouchUserAgents.forEach((userAgent) => {
       fakeUserAgent(userAgent);
       expect(isIosDevice()).toBe(false);
     });

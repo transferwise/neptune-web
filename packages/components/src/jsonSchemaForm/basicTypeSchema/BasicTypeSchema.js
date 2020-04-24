@@ -8,16 +8,16 @@ import ControlFeedback from '../controlFeedback';
 import { getValidationFailures } from '../validation/validation-failures';
 import { getValidModelParts } from '../validation/valid-model';
 
-const BasicTypeSchema = props => {
-  const onChange = newModel => {
+const BasicTypeSchema = (props) => {
+  const onChange = (newModel) => {
     setChanged(true);
     setModelAndBroadcast(sanitiseModel(newModel));
   };
 
-  const getValidationKeys = newModel =>
+  const getValidationKeys = (newModel) =>
     getValidationFailures(newModel, props.schema, props.required);
 
-  const setModelAndBroadcast = newModel => {
+  const setModelAndBroadcast = (newModel) => {
     setModel(newModel);
     const validationKeys = getValidationKeys(newModel);
     setValidations(validationKeys);
@@ -31,7 +31,7 @@ const BasicTypeSchema = props => {
     }
   };
 
-  const sanitiseModel = newModel => getValidModelParts(newModel, props.schema);
+  const sanitiseModel = (newModel) => getValidModelParts(newModel, props.schema);
 
   const onFocus = () => setFocused(true);
   const onBlur = () => {

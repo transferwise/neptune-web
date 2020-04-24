@@ -37,7 +37,7 @@ describe('formatWithPattern', () => {
     expect(formatWithPattern('', '**')).toBe('');
   });
 
-  tests.forEach(test => {
+  tests.forEach((test) => {
     it(`format string ${test.value} to ${test.expectedValue} according to pattern ${test.pattern}`, () => {
       expect(formatWithPattern(test.value, test.pattern)).toEqual(test.expectedValue);
     });

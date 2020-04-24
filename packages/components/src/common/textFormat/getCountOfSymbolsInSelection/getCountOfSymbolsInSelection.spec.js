@@ -40,7 +40,7 @@ const tests = [
 ];
 
 describe('getCountOfSymbolsInSelection', () => {
-  tests.forEach(test => {
+  tests.forEach((test) => {
     const { selectionStart, selectionEnd, pattern, expectedValue } = test;
     it(`returns ${expectedValue} symbols between ${selectionStart} and ${selectionEnd} for pattern ${pattern} `, () => {
       expect(getCountOfSymbolsInSelection(selectionStart, selectionEnd, pattern)).toEqual(

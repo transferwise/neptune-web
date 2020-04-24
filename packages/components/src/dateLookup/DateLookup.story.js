@@ -31,7 +31,7 @@ export const basic = () => {
       label={label}
       monthFormat={monthFormat}
       disabled={disabled}
-      onChange={v => action(v)}
+      onChange={(v) => action(v)}
     />
   );
 };

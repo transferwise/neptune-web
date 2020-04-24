@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Close from '@transferwise/icons/react/close';
 import '@transferwise/neptune-css/dist/css/chip.css';
 
-const Chip = props => {
+const Chip = (props) => {
   const { className, hasError, label, onRemove } = props;
   return (
     <div className={classNames('chip', { 'has-error': hasError }, className)}>

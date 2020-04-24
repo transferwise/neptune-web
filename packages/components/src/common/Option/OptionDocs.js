@@ -32,7 +32,7 @@ class OptionDocs extends Component {
   };
 
   createStateLink(name) {
-    return value => this.setState({ [name]: value });
+    return (value) => this.setState({ [name]: value });
   }
 
   render() {

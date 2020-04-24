@@ -85,12 +85,10 @@ describe('Option', () => {
   const hasDisabledClass = () => component.hasClass('disabled');
   const htmlFor = () => component.prop('htmlFor');
   const circle = () => component.find('.media-left');
-  const circleContentIsElement = element =>
-    component
-      .find('.media-left .circle')
-      .childAt(0)
-      .matchesElement(element);
+  const circleContentIsElement = (element) =>
+    component.find('.media-left .circle').childAt(0).matchesElement(element);
   const title = () => component.find('h5').text();
   const mainComponentTag = () => component.name();
-  const bodyHasElement = element => component.find('.media-body').containsMatchingElement(element);
+  const bodyHasElement = (element) =>
+    component.find('.media-body').containsMatchingElement(element);
 });

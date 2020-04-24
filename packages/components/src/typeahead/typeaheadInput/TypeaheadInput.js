@@ -84,7 +84,7 @@ export default class TypeaheadInput extends Component {
           'form-control': !multiple,
         })}
         type="text"
-        ref={ref => {
+        ref={(ref) => {
           this.inputRef = ref;
         }}
         name={name}
@@ -125,7 +125,7 @@ export default class TypeaheadInput extends Component {
           <div className="typeahead__input-aligner" />
         </div>
         <div
-          ref={ref => {
+          ref={(ref) => {
             this.sizerRef = ref;
           }}
           className="sizer form-control typeahead__input"

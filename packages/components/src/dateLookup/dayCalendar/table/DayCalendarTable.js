@@ -65,18 +65,18 @@ class DayCalendarTable extends PureComponent {
 
   daysShort = getDayNames(this.props.locale, 'narrow');
 
-  selectDay = day => {
+  selectDay = (day) => {
     const { viewMonth, viewYear, onSelect } = this.props;
     onSelect(new Date(viewYear, viewMonth, day));
   };
 
-  isDisabled = day => {
+  isDisabled = (day) => {
     const { min, max, viewMonth, viewYear } = this.props;
     const date = new Date(viewYear, viewMonth, day);
     return !isWithinRange(date, min, max);
   };
 
-  isActive = day => {
+  isActive = (day) => {
     const { selectedDate, viewMonth, viewYear } = this.props;
     return !!(selectedDate && +new Date(viewYear, viewMonth, day) === +selectedDate);
   };

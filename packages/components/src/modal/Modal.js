@@ -37,7 +37,7 @@ class Modal extends Component {
     closeOnClick: true,
   };
 
-  onEscape = event => {
+  onEscape = (event) => {
     const { onClose } = this.props;
     if (event && (event.keyCode === KEY_CODES.ESCAPE || event.key === 'Escape') && onClose) {
       onClose(event);
@@ -55,7 +55,7 @@ class Modal extends Component {
     document.removeEventListener('keydown', this.onEscape);
   }
 
-  handleOnClick = event => {
+  handleOnClick = (event) => {
     const { onClose, closeOnClick } = this.props;
     // Prevents the onclick to be fired by children.
     if (event.target === event.currentTarget && onClose && closeOnClick) {
@@ -63,7 +63,7 @@ class Modal extends Component {
     }
   };
 
-  checkSpecialClasses = classToCheck => {
+  checkSpecialClasses = (classToCheck) => {
     const { className } = this.props;
     const classNameArray = className.split(' ');
     return classNameArray.indexOf(classToCheck) !== -1;
@@ -99,7 +99,7 @@ class Modal extends Component {
             className={`tw-modal fade ${className}`}
             tabIndex="-1"
             role="button"
-            ref={dialog => {
+            ref={(dialog) => {
               this.modalDialog = dialog;
             }}
             onKeyDown={this.onEscape}

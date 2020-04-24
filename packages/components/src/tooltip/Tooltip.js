@@ -37,9 +37,7 @@ class Tooltip extends Component {
   componentDidMount() {
     // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({
-      tooltipId: Math.random()
-        .toString(36)
-        .substring(7),
+      tooltipId: Math.random().toString(36).substring(7),
     });
   }
 
@@ -51,7 +49,7 @@ class Tooltip extends Component {
     this.setState(() => ({ show: false }));
   }
 
-  ensureHidden = event => {
+  ensureHidden = (event) => {
     if (!this.state.show) {
       event.stopPropagation();
       this.hide();
@@ -71,7 +69,7 @@ class Tooltip extends Component {
         onFocus={() => this.show()}
         onMouseOut={() => this.hide()}
         onBlur={() => this.hide()}
-        ref={elementReference => {
+        ref={(elementReference) => {
           this.elementReference = elementReference;
         }}
         aria-describedby={tooltipId}
@@ -83,7 +81,7 @@ class Tooltip extends Component {
           className={`tooltip fade ${position} ${this.state.show ? 'in' : ''}`}
           role="tooltip"
           style={tooltipStyle}
-          ref={tooltipReference => {
+          ref={(tooltipReference) => {
             this.tooltipReference = tooltipReference;
           }}
           id={tooltipId}

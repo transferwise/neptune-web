@@ -13,7 +13,7 @@ export const basic = () => {
     <RadioGroup
       selectedValue="radio-2"
       name="radio-group"
-      onChange={v => action(v)}
+      onChange={(v) => action(v)}
       radios={[
         {
           value: 'radio-1',

@@ -38,10 +38,7 @@ describe('Back button', () => {
   });
 
   it('shows the step label for the previous step', () => {
-    const isLabelShownForStep = step =>
-      transitionWrappers()
-        .at(step)
-        .prop('in');
+    const isLabelShownForStep = (step) => transitionWrappers().at(step).prop('in');
 
     expect(isLabelShownForStep(0)).toBe(false);
     expect(isLabelShownForStep(1)).toBe(true);
@@ -49,10 +46,7 @@ describe('Back button', () => {
   });
 
   it('hides all step labels other than the previous step from screenreaders', () => {
-    const isStepHidden = step =>
-      labels()
-        .at(step)
-        .prop('aria-hidden');
+    const isStepHidden = (step) => labels().at(step).prop('aria-hidden');
 
     expect(isStepHidden(0)).toBe(true);
     expect(isStepHidden(1)).toBe(false);

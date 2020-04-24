@@ -72,7 +72,7 @@ describe('Typeahead', () => {
     });
 
     input().simulate('paste', event);
-    const renderedChips = chip().map(chipNode => chipNode.text());
+    const renderedChips = chip().map((chipNode) => chipNode.text());
 
     expect(renderedChips.every((label, idx) => chips[idx] === label)).toBe(true);
     expect(renderedChips).toHaveLength(chips.length);
@@ -92,9 +92,7 @@ describe('Typeahead', () => {
     expect(chip()).toHaveLength(0);
 
     input().simulate('change', { target: { value: 'test' } });
-    option()
-      .at(0)
-      .simulate('click', fakeEvent());
+    option().at(0).simulate('click', fakeEvent());
 
     expect(chip()).toHaveLength(1);
 
@@ -116,9 +114,7 @@ describe('Typeahead', () => {
     expect(chip()).toHaveLength(0);
 
     input().simulate('change', { target: { value: 'test' } });
-    option()
-      .at(0)
-      .simulate('click', fakeEvent());
+    option().at(0).simulate('click', fakeEvent());
 
     expect(chip()).toHaveLength(1);
 
@@ -222,28 +218,13 @@ describe('Typeahead', () => {
   it('moves selected items when down and up keys pressed', () => {
     doTimes(3, () => input().simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.DOWN)));
 
-    expect(
-      option()
-        .at(2)
-        .parent()
-        .is('.tw-dropdown-item--focused'),
-    ).toBe(true);
+    expect(option().at(2).parent().is('.tw-dropdown-item--focused')).toBe(true);
 
     input().simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.UP));
-    expect(
-      option()
-        .at(1)
-        .parent()
-        .is('.tw-dropdown-item--focused'),
-    ).toBe(true);
+    expect(option().at(1).parent().is('.tw-dropdown-item--focused')).toBe(true);
 
     doTimes(5, () => input().simulate('keyDown', fakeKeyDownEventForKey(KeyCodes.DOWN)));
-    expect(
-      option()
-        .last()
-        .parent()
-        .is('.tw-dropdown-item--focused'),
-    ).toBe(true);
+    expect(option().last().parent().is('.tw-dropdown-item--focused')).toBe(true);
   });
 
   it('adds new value as selected and clears the input when no option is highlighted and enter is pressed', () => {
@@ -323,7 +304,7 @@ describe('Typeahead', () => {
     });
 
     it('renders all options', () => {
-      const options = option().map(optNode => optNode.text());
+      const options = option().map((optNode) => optNode.text());
       expect(options).toHaveLength(props.options.length);
       expect(options.every((label, i) => label === props.options[i].label));
     });
@@ -335,7 +316,7 @@ describe('Typeahead', () => {
       });
       input().simulate('change', { target: { value: 'check' } });
 
-      const options = option().map(optNode => optNode.text());
+      const options = option().map((optNode) => optNode.text());
       expect(options).toHaveLength(props.options.length);
     });
 
@@ -346,7 +327,7 @@ describe('Typeahead', () => {
       });
       input().simulate('change', { target: { value: 'check' } });
 
-      const options = option().map(optNode => optNode.text());
+      const options = option().map((optNode) => optNode.text());
       expect(options).toHaveLength(props.options.length + 1);
     });
 

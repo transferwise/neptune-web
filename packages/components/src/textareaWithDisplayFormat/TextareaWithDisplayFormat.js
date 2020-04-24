@@ -2,8 +2,8 @@ import React from 'react';
 import Types from 'prop-types';
 import WithDisplayFormat from '../withDisplayFormat';
 
-const TextareaWithDisplayFormat = props => (
-  <WithDisplayFormat {...props} render={renderProps => <textarea {...renderProps} />} />
+const TextareaWithDisplayFormat = (props) => (
+  <WithDisplayFormat {...props} render={(renderProps) => <textarea {...renderProps} />} />
 );
 
 TextareaWithDisplayFormat.propTypes = {

@@ -10,7 +10,7 @@ import './Drawer.css';
 import KEY_CODES from '../common/keyCodes';
 
 const Drawer = ({ open, position, onClose, children, headerTitle, footerContent }) => {
-  const handleOnKeyDown = event => {
+  const handleOnKeyDown = (event) => {
     if (
       event.keyCode === KEY_CODES.ESCAPE ||
       event.key === 'Escape' ||

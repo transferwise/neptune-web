@@ -6,7 +6,7 @@ import FormattedValue from '../FormattedValue';
 export default function createDefinitions(fields, model, locale) {
   return toPairs(fields)
     .map(([name, field]) => createDefinition(name, field, model, locale))
-    .filter(definition => !!definition);
+    .filter((definition) => !!definition);
 }
 
 function createDefinition(name, field, model, locale) {

@@ -1,7 +1,7 @@
 import { getDayNames } from '..';
 
 jest.mock('@transferwise/formatting', () => ({
-  formatDate: day => day.getDay(),
+  formatDate: (day) => day.getDay(),
 }));
 
 describe('getDayNames', () => {

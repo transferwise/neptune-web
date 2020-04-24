@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import hightlight from '../util/highlight';
 import './TypeaheadOption.css';
 
-const Option = props => {
+const Option = (props) => {
   const { option, selected, onClick, query } = props;
   const { label, note, secondary } = option;
 

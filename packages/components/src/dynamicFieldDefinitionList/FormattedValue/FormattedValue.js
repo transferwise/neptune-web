@@ -12,7 +12,7 @@ import './FormattedValue.css';
  * @param {string|number} value
  */
 const getValueLabel = (options, value) => {
-  const option = options.find(currentOption => currentOption.value === value);
+  const option = options.find((currentOption) => currentOption.value === value);
   return option && option.label ? option.label : value;
 };
 
@@ -20,7 +20,7 @@ const getValueLabel = (options, value) => {
  *
  * @param {string} value
  */
-const mask = value => new Array(value.length + 1).join('*');
+const mask = (value) => new Array(value.length + 1).join('*');
 
 const FormattedValue = ({ field, value, locale }) => {
   const style = [];

@@ -39,7 +39,7 @@ describe('useHasIntersected', () => {
         expect(result.current).toEqual([true]);
       });
       it('returns false if ref is valid', () => {
-        window.IntersectionObserver = jest.fn(callback => {
+        window.IntersectionObserver = jest.fn((callback) => {
           callback([{ isIntersecting: false }], { unobserve });
           return {
             observe,
@@ -54,7 +54,7 @@ describe('useHasIntersected', () => {
 
     describe('when element is visible', () => {
       it('returns true if ref is valid and IntersectionObserver is supported', () => {
-        window.IntersectionObserver = jest.fn(callback => {
+        window.IntersectionObserver = jest.fn((callback) => {
           callback([{ isIntersecting: true }], { unobserve });
           return {
             observe,
@@ -82,7 +82,7 @@ describe('useHasIntersected', () => {
 
     describe('calls unobserve', () => {
       it('when element is intersecting ', () => {
-        window.IntersectionObserver = jest.fn(callback => {
+        window.IntersectionObserver = jest.fn((callback) => {
           callback([{ isIntersecting: true }], { unobserve });
           return {
             observe,

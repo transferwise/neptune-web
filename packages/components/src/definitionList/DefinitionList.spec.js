@@ -14,12 +14,8 @@ const {
 
 describe('DefinitionList', () => {
   it('has grid classes only for vertical two-column layout', () => {
-    const hasRow = layout => withLayout(layout).hasClass('row');
-    const hasColumn = layout =>
-      withLayout(layout)
-        .children()
-        .find('div')
-        .hasClass('col-sm-6');
+    const hasRow = (layout) => withLayout(layout).hasClass('row');
+    const hasColumn = (layout) => withLayout(layout).children().find('div').hasClass('col-sm-6');
 
     expect(hasRow(VERTICAL_TWO_COLUMN)).toBe(true);
     expect(hasColumn(VERTICAL_TWO_COLUMN)).toBe(true);
@@ -33,10 +29,7 @@ describe('DefinitionList', () => {
   });
 
   it('has horizontal dl class only for horizontal layouts', () => {
-    const hasHorizontalDl = layout =>
-      withLayout(layout)
-        .find('dl')
-        .hasClass('dl-horizontal');
+    const hasHorizontalDl = (layout) => withLayout(layout).find('dl').hasClass('dl-horizontal');
 
     expect(hasHorizontalDl(HORIZONTAL_LEFT_ALIGNED)).toBe(true);
     expect(hasHorizontalDl(HORIZONTAL_JUSTIFIED)).toBe(true);
@@ -46,10 +39,7 @@ describe('DefinitionList', () => {
   });
 
   it('has right-align text class only for horizontal justified layout', () => {
-    const hasRightAlign = layout =>
-      withLayout(layout)
-        .find('dd')
-        .hasClass('text-sm-right');
+    const hasRightAlign = (layout) => withLayout(layout).find('dd').hasClass('text-sm-right');
 
     expect(hasRightAlign(HORIZONTAL_JUSTIFIED)).toBe(true);
 
@@ -73,9 +63,9 @@ describe('DefinitionList', () => {
   });
 
   const someDefinitions = () => [{ title: 'First', value: 'first value', key: 'first' }];
-  const withLayout = layout =>
+  const withLayout = (layout) =>
     shallow(<DefinitionList layout={layout} definitions={someDefinitions()} />);
-  const isMuted = node => node.hasClass('text-muted');
-  const hasMutedTitle = component => isMuted(component.find('dt'));
-  const hasMutedValue = component => isMuted(component.find('dd'));
+  const isMuted = (node) => node.hasClass('text-muted');
+  const hasMutedTitle = (component) => isMuted(component.find('dt'));
+  const hasMutedValue = (component) => isMuted(component.find('dd'));
 });

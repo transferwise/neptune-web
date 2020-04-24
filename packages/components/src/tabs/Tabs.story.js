@@ -46,7 +46,7 @@ export const basic = () => {
         },
       ]}
       selected={selected}
-      onTabSelect={index => setSelected(index)}
+      onTabSelect={(index) => setSelected(index)}
     />
   );
 };

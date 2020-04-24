@@ -15,7 +15,7 @@ describe('Popover', () => {
   beforeEach(() => {
     getPlacement.mockReturnValue('');
     getPositionRelativeToParent.mockReturnValue({});
-    wrapInDOMElementIfNecessary.mockImplementation(node => node);
+    wrapInDOMElementIfNecessary.mockImplementation((node) => node);
 
     component = shallow(
       <Popover content="Some content.">
@@ -39,7 +39,9 @@ describe('Popover', () => {
   });
 
   it('wraps passed child in dom element if necessary', () => {
-    wrapInDOMElementIfNecessary.mockImplementation(node => <span className="wrapped">{node}</span>);
+    wrapInDOMElementIfNecessary.mockImplementation((node) => (
+      <span className="wrapped">{node}</span>
+    ));
 
     component = shallow(<Popover content="Some content.">Just a string</Popover>);
 

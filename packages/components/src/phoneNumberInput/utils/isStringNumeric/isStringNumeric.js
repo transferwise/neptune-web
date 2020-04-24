@@ -1,1 +1,1 @@
-export const isStringNumeric = value => /^\+?[\d-\s]+$/.test(value);
+export const isStringNumeric = (value) => /^\+?[\d-\s]+$/.test(value);

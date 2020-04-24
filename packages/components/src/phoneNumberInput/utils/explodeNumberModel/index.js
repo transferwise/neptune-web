@@ -7,7 +7,7 @@ import { findCountryByPrefix } from '../findCountryByPrefix';
  * @param {string} locale - a sting that defines the current locale ex:es-ES.
  * @returns {{prefix: (string|*), suffix: string, format: string}}
  */
-export const explodeNumberModel = number => {
+export const explodeNumberModel = (number) => {
   let prefix = '';
   let suffix = '';
   let format = '';

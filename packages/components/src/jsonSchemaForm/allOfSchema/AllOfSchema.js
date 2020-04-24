@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import GenericSchema from '../genericSchema';
 import { getValidModelParts } from '../validation/valid-model';
 
-const AllOfSchema = props => {
+const AllOfSchema = (props) => {
   const onChange = (index, model, schema) => {
     models[index] = getValidModelParts(model, schema);
     setModels(models);
@@ -14,16 +14,16 @@ const AllOfSchema = props => {
 
   const splitModel = (model, schemas) => {
     // If we receive a model, break it down to parts valid for each schema
-    return schemas.map(schema => getValidModelParts(model, schema) || {});
+    return schemas.map((schema) => getValidModelParts(model, schema) || {});
   };
 
-  const combineModels = models => {
+  const combineModels = (models) => {
     return models.reduce((current, combined) => {
       return { ...combined, ...current };
     }, {});
   };
 
-  const getSchemaColumnClasses = width => {
+  const getSchemaColumnClasses = (width) => {
     return {
       'col-xs-12': true,
       'col-sm-6': width === 'md',
@@ -49,7 +49,7 @@ const AllOfSchema = props => {
               errors={props.errors}
               locale={props.locale}
               translations={props.translations}
-              onChange={model => onChange(index, model, schema)}
+              onChange={(model) => onChange(index, model, schema)}
               submitted={props.submitted}
             />
           </div>

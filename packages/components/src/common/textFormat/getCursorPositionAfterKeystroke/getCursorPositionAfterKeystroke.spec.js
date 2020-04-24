@@ -113,9 +113,9 @@ const tests = [
 
 describe('pushValueToStack', () => {
   tests
-    .filter(test => !test.only)
+    .filter((test) => !test.only)
 
-    .forEach(test => {
+    .forEach((test) => {
       const {
         key,
         selectionStart,

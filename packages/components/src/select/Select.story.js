@@ -38,7 +38,7 @@ export const basic = () => {
       selected={selected}
       disabled={disabled}
       search={search}
-      onChange={v => setSelected(v)}
+      onChange={(v) => setSelected(v)}
       required={required}
       searchPlaceholder="searchplaceholder"
       dropdownUp={dropdownUp}
@@ -95,7 +95,7 @@ export const customSearchFunction = () => {
               option.countries && option.countries.toLowerCase().includes(keyword.toLowerCase())
           : false
       }
-      onChange={v => setSelected(v)}
+      onChange={(v) => setSelected(v)}
       required={required}
       searchPlaceholder="searchplaceholder"
       dropdownUp={dropdownUp}
@@ -201,11 +201,11 @@ export const advancedSearch = () => {
       block={block}
       selected={selected}
       disabled={disabled}
-      onChange={v => setSelected(v)}
+      onChange={(v) => setSelected(v)}
       required={required}
       searchValue={searchValue}
       searchPlaceholder="searchplaceholder"
-      onSearchChange={v => setSearchValue(v)}
+      onSearchChange={(v) => setSearchValue(v)}
       dropdownUp={dropdownUp}
       options={[
         { header: 'Basic' },
@@ -220,7 +220,7 @@ export const advancedSearch = () => {
         { value: 6, label: 'Euro', currency: 'eur' },
         { separator: true },
         { value: 7, label: 'Something else' },
-      ].filter(option => option.label && option.label.toLowerCase().indexOf(searchValue) !== -1)}
+      ].filter((option) => option.label && option.label.toLowerCase().indexOf(searchValue) !== -1)}
     />
   );
 };

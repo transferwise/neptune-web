@@ -114,5 +114,5 @@ describe('Tabs Utility', () => {
   });
 });
 
-const getApproximateElasticDragDifference = difference =>
+const getApproximateElasticDragDifference = (difference) =>
   Math.round(getElasticDragDifference(difference));

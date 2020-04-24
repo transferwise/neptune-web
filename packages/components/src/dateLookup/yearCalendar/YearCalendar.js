@@ -22,7 +22,7 @@ class YearCalendar extends PureComponent {
     max: null,
   };
 
-  onYearSelect = year => {
+  onYearSelect = (year) => {
     this.props.onViewDateUpdate({ year });
     this.props.onSelect();
   };

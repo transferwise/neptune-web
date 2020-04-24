@@ -9,7 +9,7 @@ const TESTS = [
   { input: '+23456--  777 77+89 -- =80', output: '+23456777778980' },
 ];
 describe('cleanNumber', () => {
-  TESTS.forEach(test => {
+  TESTS.forEach((test) => {
     it('strips the incorrect chars', () => {
       expect(cleanNumber(test.input)).toBe(test.output);
     });

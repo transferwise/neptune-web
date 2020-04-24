@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 
-const prepRequirements = alternatives => {
+const prepRequirements = (alternatives) => {
   if (!alternatives || !alternatives.length) {
     return [];
   }
 
   const preppedAlternatives = copyOf(alternatives);
 
-  preppedAlternatives.forEach(alternative => {
+  preppedAlternatives.forEach((alternative) => {
     if (alternative.prepared) {
       return;
     }
@@ -46,7 +46,7 @@ const prepFields = (fields, model, validationMessages) => {
   preparedFields = transformFieldArrayToMap(preparedFields);
   preparedFields = transformNestedKeysToNestedSpecs(preparedFields);
 
-  Object.keys(preparedFields).forEach(key => {
+  Object.keys(preparedFields).forEach((key) => {
     preparedFields[key] = prepField(preparedFields[key], model, validationMessages);
   });
 
@@ -69,10 +69,10 @@ const prepField = (field, model, validationMessages) => {
  * So the inner arrays of fields within the different field groups are flattened
  * to a single array, which is returned.
  */
-const flattenFieldsWithGroups = fields => {
+const flattenFieldsWithGroups = (fields) => {
   if (fields instanceof Array) {
     let flattenedFields = [];
-    fields.forEach(field => {
+    fields.forEach((field) => {
       // If we've been given a group with nested fields, break them out.
       if (field.fields) {
         flattenedFields = flattenedFields.concat(flattenFieldWithGroup(field, field.fields));
@@ -109,7 +109,7 @@ const flattenFieldWithGroup = (field, subFields) => {
 
   // If there are two parts of this group, render them side by side
   if (subFields.length === 2) {
-    subFields.forEach(nestedField => {
+    subFields.forEach((nestedField) => {
       nestedField.width = 'md';
     });
   }
@@ -127,10 +127,10 @@ const flattenFieldWithGroup = (field, subFields) => {
  * Some older requirements return an array of fields, where it should be a map
  * from the property name to the spec.  This converts arrays to maps.
  */
-const transformFieldArrayToMap = fields => {
+const transformFieldArrayToMap = (fields) => {
   if (fields instanceof Array) {
     const fieldMap = {};
-    fields.forEach(field => {
+    fields.forEach((field) => {
       const key = field.key || field.name;
       delete field.key;
 
@@ -147,13 +147,13 @@ const transformFieldArrayToMap = fields => {
  * type 'object', and nests such fields inside of it.  When we render we pass
  * this object spec to a nested fieldset.
  */
-const transformNestedKeysToNestedSpecs = fieldMap => {
+const transformNestedKeysToNestedSpecs = (fieldMap) => {
   if (fieldMap instanceof Array) {
     throw new Error('Expecting a map of fields, not an array');
   }
 
   const nestedFields = {};
-  Object.keys(fieldMap).forEach(key => {
+  Object.keys(fieldMap).forEach((key) => {
     if (key.indexOf('.') > 0) {
       // If the key contains a period we need to nest the fields in another object
       const pathSections = key.split('.');
@@ -174,7 +174,7 @@ const transformNestedKeysToNestedSpecs = fieldMap => {
   return nestedFields;
 };
 
-const prepType = field => {
+const prepType = (field) => {
   const type = field.type && field.type.toLowerCase && field.type.toLowerCase();
 
   switch (type) {
@@ -222,7 +222,7 @@ const prepType = field => {
   }
 };
 
-const prepLegacyAlternatives = alternative => {
+const prepLegacyAlternatives = (alternative) => {
   if (!alternative.title && alternative.label) {
     alternative.title = alternative.label;
   }
@@ -241,7 +241,7 @@ const prepLegacyAlternatives = alternative => {
   }
 };
 
-const prepLegacyProps = field => {
+const prepLegacyProps = (field) => {
   if (field.name && !field.title) {
     field.title = field.name;
     delete field.name;
@@ -302,9 +302,9 @@ const prepLegacyProps = field => {
   }
 };
 
-const prepLegacyValues = values => values.map(prepLegacyValue);
+const prepLegacyValues = (values) => values.map(prepLegacyValue);
 
-const prepLegacyValue = value => {
+const prepLegacyValue = (value) => {
   if (!value.label && value.title) {
     value.label = value.title;
     delete value.title;
@@ -326,7 +326,7 @@ const prepLegacyValue = value => {
   return value;
 };
 
-const prepPattern = field => {
+const prepPattern = (field) => {
   if (field.pattern) {
     try {
       RegExp(field.pattern);
@@ -360,7 +360,7 @@ const prepValidationMessages = (field, validationMessages) => {
   }
 };
 
-const getControlType = field => {
+const getControlType = (field) => {
   if (field.control) {
     return field.control.toLowerCase();
   }
@@ -384,7 +384,7 @@ const getControlType = field => {
   }
 };
 
-const getControlForStringFormat = format => {
+const getControlForStringFormat = (format) => {
   switch (format) {
     case 'date':
       return 'date';
@@ -403,7 +403,7 @@ const getControlForStringFormat = format => {
   }
 };
 
-const getSelectionType = field => {
+const getSelectionType = (field) => {
   if (field.control) {
     return field.control;
   } else if (field.type === 'select') {
@@ -418,17 +418,14 @@ const getSelectionType = field => {
   return 'select';
 };
 
-const copyOf = obj => JSON.parse(JSON.stringify(obj));
+const copyOf = (obj) => JSON.parse(JSON.stringify(obj));
 
 /**
  * Some older requirments formats do not include a label for alternatives
  */
-const getNameFromType = tabType => {
+const getNameFromType = (tabType) => {
   if (tabType && tabType.length > 0) {
-    const tabNameWithSpaces = tabType
-      .toLowerCase()
-      .split('_')
-      .join(' '); // String.replace method only replaces first instance
+    const tabNameWithSpaces = tabType.toLowerCase().split('_').join(' '); // String.replace method only replaces first instance
     return tabNameWithSpaces.charAt(0).toUpperCase() + tabNameWithSpaces.slice(1);
   }
   return '';

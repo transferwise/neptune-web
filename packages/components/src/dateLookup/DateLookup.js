@@ -111,7 +111,7 @@ class DateLookup extends PureComponent {
     document.removeEventListener('click', this.handleOutsideClick, true);
   };
 
-  handleOutsideClick = event => {
+  handleOutsideClick = (event) => {
     if (!this.state.open) {
       return;
     }
@@ -121,7 +121,7 @@ class DateLookup extends PureComponent {
     }
   };
 
-  handleKeyDown = event => {
+  handleKeyDown = (event) => {
     const { open } = this.state;
     switch (event.keyCode) {
       case KeyCodes.LEFT:
@@ -192,7 +192,7 @@ class DateLookup extends PureComponent {
     }
   };
 
-  switchMode = mode => {
+  switchMode = (mode) => {
     this.setState({ mode }, () => {
       this.focusOn('.active', '.today');
     });
@@ -204,7 +204,7 @@ class DateLookup extends PureComponent {
 
   switchToYears = () => this.switchMode(MODE.YEAR);
 
-  handleSelectedDateUpdate = selectedDate => {
+  handleSelectedDateUpdate = (selectedDate) => {
     this.setState({ selectedDate }, () => {
       this.props.onChange(selectedDate);
       this.close();

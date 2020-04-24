@@ -4,7 +4,7 @@ export const fakeEvent = () => ({
   preventDefault() {},
 });
 
-export const fakeKeyDownEventForKey = keyCode => ({
+export const fakeKeyDownEventForKey = (keyCode) => ({
   ...fakeEvent(),
   keyCode,
 });

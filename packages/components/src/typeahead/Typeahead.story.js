@@ -9,7 +9,7 @@ export default {
 };
 
 export const createable = () => {
-  const validateChip = option =>
+  const validateChip = (option) =>
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
       option.label,
     );
@@ -66,7 +66,7 @@ export const basic = () => {
   ]);
   const validateChip =
     multiple && allowNew
-      ? option =>
+      ? (option) =>
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
             option.label,
           )

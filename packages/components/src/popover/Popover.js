@@ -46,7 +46,7 @@ export default class Popover extends Component {
     this.close();
   }
 
-  closePopoverOnOutsideClick = event => {
+  closePopoverOnOutsideClick = (event) => {
     const popoverClicked = this.popoverElement.contains(event.target);
 
     if (!popoverClicked) {
@@ -86,7 +86,7 @@ export default class Popover extends Component {
     });
   };
 
-  style = className => this.props.classNames[className] || className;
+  style = (className) => this.props.classNames[className] || className;
 
   render() {
     const { title, content, preferredPlacement } = this.props;
@@ -111,7 +111,7 @@ export default class Popover extends Component {
         {trigger}
         <div
           className={popoverClassName}
-          ref={element => {
+          ref={(element) => {
             this.popoverElement = element;
           }}
           style={{ top, left }}

@@ -5,20 +5,20 @@ import FormControl from '../../formControl';
 import { isNull } from '../validation/type-validators';
 import { getValidModelParts } from '../validation/valid-model';
 
-const SchemaFormControl = props => {
-  const isUndefined = value => typeof value === 'undefined';
+const SchemaFormControl = (props) => {
+  const isUndefined = (value) => typeof value === 'undefined';
 
-  const isNativeInput = schemaType => schemaType === 'string' || schemaType === 'number';
+  const isNativeInput = (schemaType) => schemaType === 'string' || schemaType === 'number';
 
-  const getSanitisedValue = value =>
+  const getSanitisedValue = (value) =>
     isNativeInput(props.schema.type) && (isNull(value) || isUndefined(value)) ? '' : value;
 
-  const onChange = value => {
+  const onChange = (value) => {
     // If the model does not satisfy the schema propogate null
     props.onChange(getValidModelParts(value, props.schema));
   };
 
-  const getControlType = schema => {
+  const getControlType = (schema) => {
     if (schema.control) {
       return schema.control;
     }

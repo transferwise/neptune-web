@@ -17,7 +17,7 @@ const MonthCalendarTable = ({
   placeholder,
   onSelect,
 }) => {
-  const getLink = month => (
+  const getLink = (month) => (
     <TableLink
       item={month}
       type="month"
@@ -28,7 +28,7 @@ const MonthCalendarTable = ({
       onClick={onSelect}
     />
   );
-  const isDisabled = month => {
+  const isDisabled = (month) => {
     const date = new Date(viewYear, month);
     return !!(
       (min && date < new Date(min.getFullYear(), min.getMonth())) ||

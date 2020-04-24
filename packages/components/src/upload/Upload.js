@@ -43,7 +43,7 @@ class Upload extends PureComponent {
 
   onDragLeave(e) {
     e.preventDefault();
-    this.dragCounter = this.dragCounter - 1;
+    this.dragCounter -= 1;
     if (this.dragCounter === 0) {
       this.setState({ isDroppable: false });
     }
@@ -51,7 +51,7 @@ class Upload extends PureComponent {
 
   onDragEnter(e) {
     e.preventDefault();
-    this.dragCounter = this.dragCounter + 1;
+    this.dragCounter += 1;
     const { usDisabled } = this.props;
     if (this.dragCounter === 1 && !usDisabled) {
       this.setState({ isDroppable: true });
@@ -66,7 +66,7 @@ class Upload extends PureComponent {
     }
   }
 
-  onAnimationCompleted = async status => {
+  onAnimationCompleted = async (status) => {
     const { response, isProcessing, fileName } = this.state;
     // Success.
     const { animationDelay } = this.props;
@@ -98,13 +98,13 @@ class Upload extends PureComponent {
     }
   };
 
-  asyncPost = file => {
+  asyncPost = (file) => {
     const { httpOptions } = this.props;
     const { fileInputName = file.name, data = {} } = httpOptions || {};
 
     const formData = new FormData();
     formData.append(fileInputName, file);
-    Object.keys(data).forEach(key => formData.append(key, data[key]));
+    Object.keys(data).forEach((key) => formData.append(key, data[key]));
     return postData(this.prepareHttpOptions(httpOptions), formData);
   };
 
@@ -119,14 +119,14 @@ class Upload extends PureComponent {
     }, ANIMATION_FIX);
   };
 
-  prepareHttpOptions = httpOptions => {
+  prepareHttpOptions = (httpOptions) => {
     if (!httpOptions.url) {
       throw new Error('You must supply a URL to post image data asynchronously');
     }
     return httpOptions;
   };
 
-  handleOnClear = e => {
+  handleOnClear = (e) => {
     e.preventDefault();
     const { onCancel } = this.props;
     if (onCancel) {
@@ -147,7 +147,7 @@ class Upload extends PureComponent {
     });
   };
 
-  showDataImage = dataUrl => {
+  showDataImage = (dataUrl) => {
     const { isImage } = this.state;
     if (isImage) {
       this.setState({
@@ -156,7 +156,7 @@ class Upload extends PureComponent {
     }
   };
 
-  fileDropped = file => {
+  fileDropped = (file) => {
     const { httpOptions, maxSize, onStart, usDisabled, usAccept } = this.props;
 
     if (usDisabled) {
@@ -197,18 +197,18 @@ class Upload extends PureComponent {
     if (httpOptions) {
       // Post the file to provided endpoint
       return this.asyncPost(file)
-        .then(response => this.asyncResponse(response, 'success'))
+        .then((response) => this.asyncResponse(response, 'success'))
         .then(() => asyncFileRead(file))
-        .then(response => this.showDataImage(response))
-        .catch(error => this.asyncResponse(error, PROCESS_STATE[0]));
+        .then((response) => this.showDataImage(response))
+        .catch((error) => this.asyncResponse(error, PROCESS_STATE[0]));
     }
     // Post on form submit. And return the encoded image.
     return asyncFileRead(file)
-      .then(response => {
+      .then((response) => {
         this.showDataImage(response);
         this.asyncResponse(response, 'success');
       })
-      .catch(error => this.asyncResponse(error, PROCESS_STATE[0]));
+      .catch((error) => this.asyncResponse(error, PROCESS_STATE[0]));
   };
 
   render() {
@@ -252,14 +252,14 @@ class Upload extends PureComponent {
           'droppable-processing': isProcessing,
           'droppable-complete': isComplete,
         })}
-        onDragEnter={e => this.onDragEnter(e)}
-        onDragLeave={e => this.onDragLeave(e)}
-        onDrop={e => this.onDrop(e)}
-        onDragOver={e => e.preventDefault()}
+        onDragEnter={(e) => this.onDragEnter(e)}
+        onDragLeave={(e) => this.onDragLeave(e)}
+        onDrop={(e) => this.onDrop(e)}
+        onDragOver={(e) => e.preventDefault()}
       >
         {!isProcessing && !isComplete && (
           <UploadImageStep
-            fileDropped={file => this.fileDropped(file)}
+            fileDropped={(file) => this.fileDropped(file)}
             isComplete={isComplete}
             usAccept={usAccept}
             usButtonText={usButtonText}
@@ -276,8 +276,8 @@ class Upload extends PureComponent {
             isError={isError}
             isProcessing={isProcessing}
             isSuccess={isSuccess}
-            onAnimationCompleted={status => this.onAnimationCompleted(status)}
-            onClear={e => this.handleOnClear(e)}
+            onAnimationCompleted={(status) => this.onAnimationCompleted(status)}
+            onClear={(e) => this.handleOnClear(e)}
             psButtonText={psButtonText}
             psFailureText={psFailureText}
             psProcessingText={psProcessingText}
@@ -292,7 +292,7 @@ class Upload extends PureComponent {
             isComplete={isComplete}
             isError={isError}
             isImage={isImage}
-            onClear={e => this.handleOnClear(e)}
+            onClear={(e) => this.handleOnClear(e)}
             csButtonText={csButtonText}
             csFailureText={errorMessage}
             csSuccessText={csSuccessText}

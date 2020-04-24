@@ -17,7 +17,7 @@ jest.mock('../../../common/dateUtils', () => ({
 }));
 
 jest.mock('../../getStartOfDay', () => ({
-  getStartOfDay: date => new Date(date.getFullYear(), date.getMonth(), date.getDate()),
+  getStartOfDay: (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate()),
 }));
 
 describe('DayCalendarTable', () => {
@@ -80,12 +80,7 @@ describe('DayCalendarTable', () => {
 
   it('show selectedDate as active', () => {
     component.setProps({ selectedDate: new Date(2018, 11, 27) });
-    expect(
-      component
-        .find(TableLink)
-        .find({ active: true })
-        .prop('item'),
-    ).toBe(27);
+    expect(component.find(TableLink).find({ active: true }).prop('item')).toBe(27);
   });
 
   it('sets property "disabled" for table links (calls isWithinRange)', () => {
@@ -104,12 +99,7 @@ describe('DayCalendarTable', () => {
       viewMonth: today.getMonth(),
       viewYear: today.getFullYear(),
     });
-    expect(
-      component
-        .find(TableLink)
-        .find({ today: true })
-        .prop('item'),
-    ).toBe(today.getDate());
+    expect(component.find(TableLink).find({ today: true }).prop('item')).toBe(today.getDate());
   });
 
   it('passes selectDay to TableLink', () => {
@@ -121,6 +111,6 @@ describe('DayCalendarTable', () => {
     expect(props.onSelect).toBeCalledWith(new Date(2018, 11, 1));
   });
 
-  const getTableLinkAt = i => component.find(TableLink).at(i);
-  const getTableDataAt = i => component.find('tbody td').at(i);
+  const getTableLinkAt = (i) => component.find(TableLink).at(i);
+  const getTableDataAt = (i) => component.find('tbody td').at(i);
 });

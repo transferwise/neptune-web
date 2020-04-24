@@ -255,12 +255,12 @@ class Popover {
     return this;
   };
 
-  left = left => {
+  left = (left) => {
     this.getBoundingClientRect = () => ({ left });
     return this;
   };
 
-  arrow = styles => {
+  arrow = (styles) => {
     window.getComputedStyle = jest.fn().mockReturnValue({
       top: styles.top ? styles.top.toString() : '',
       right: styles.right ? styles.right.toString() : '',

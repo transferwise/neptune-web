@@ -165,23 +165,13 @@ describe('Date Input Component', () => {
     });
 
     it('shows day before month if locale not US', () => {
-      expect(
-        component
-          .find('.form-control')
-          .at(0)
-          .type(),
-      ).toBe('input');
+      expect(component.find('.form-control').at(0).type()).toBe('input');
     });
 
     it('shows day before month if locale is JP', () => {
       component = shallow(<DateInput {...props} locale={LOCALES.jp} />);
 
-      expect(
-        component
-          .find('.form-control')
-          .at(0)
-          .type(),
-      ).toBeInstanceOf(Function);
+      expect(component.find('.form-control').at(0).type()).toBeInstanceOf(Function);
     });
   });
 
@@ -318,11 +308,8 @@ describe('Date Input Component', () => {
     });
   });
 
-  const simulateSelectChange = n => {
+  const simulateSelectChange = (n) => {
     component.find('button.dropdown-toggle').simulate('click', fakeEvent());
-    component
-      .find('li')
-      .at(n)
-      .simulate('click', fakeEvent());
+    component.find('li').at(n).simulate('click', fakeEvent());
   };
 });

@@ -18,7 +18,7 @@ class TableLink extends PureComponent {
     longTitle: null,
   };
 
-  onClick = event => {
+  onClick = (event) => {
     event.preventDefault();
     if (!this.props.disabled) {
       this.props.onClick(this.props.item);

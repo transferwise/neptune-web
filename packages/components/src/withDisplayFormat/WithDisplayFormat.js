@@ -90,7 +90,7 @@ class WithDisplayFormat extends React.Component {
     return null;
   }
 
-  getUserAction = unformattedValue => {
+  getUserAction = (unformattedValue) => {
     const { triggerEvent, triggerType, value } = this.state;
     const { displayPattern } = this.props;
 
@@ -126,7 +126,7 @@ class WithDisplayFormat extends React.Component {
     });
   };
 
-  detectUndoRedo = event => {
+  detectUndoRedo = (event) => {
     const charCode = String.fromCharCode(event.which).toLowerCase();
     if ((event.ctrlKey || event.metaKey) && charCode === 'z') {
       return event.shiftKey ? 'Redo' : 'Undo';
@@ -134,7 +134,7 @@ class WithDisplayFormat extends React.Component {
     return null;
   };
 
-  handleOnKeyDown = event => {
+  handleOnKeyDown = (event) => {
     event.persist();
     const { selectionStart, selectionEnd } = event.target;
     const { historyNavigator } = this.state;
@@ -159,7 +159,7 @@ class WithDisplayFormat extends React.Component {
     }
   };
 
-  handleOnPaste = event => {
+  handleOnPaste = (event) => {
     const { displayPattern } = this.props;
     const pastedLength = unformatWithPattern(event.clipboardData.getData('Text'), displayPattern)
       .length;
@@ -171,14 +171,14 @@ class WithDisplayFormat extends React.Component {
     this.setState({ triggerType: 'Cut' });
   };
 
-  isKeyAllowed = action => {
+  isKeyAllowed = (action) => {
     const { displayPattern } = this.props;
-    const symbolsInPattern = displayPattern.split('').filter(character => character !== '*');
+    const symbolsInPattern = displayPattern.split('').filter((character) => character !== '*');
 
     return symbolsInPattern.indexOf(action) === -1;
   };
 
-  handleOnChange = event => {
+  handleOnChange = (event) => {
     const { historyNavigator, triggerEvent, triggerType } = this.state;
     const { displayPattern, onChange } = this.props;
     const { value } = event.target;
@@ -206,14 +206,14 @@ class WithDisplayFormat extends React.Component {
     this.setState({ value: newFormattedValue }, this.resetEvent(), onChange(broadcastValue));
   };
 
-  handleOnBlur = event => {
+  handleOnBlur = (event) => {
     const { displayPattern, onBlur } = this.props;
     if (onBlur) {
       onBlur(unformatWithPattern(event.target.value, displayPattern));
     }
   };
 
-  handleOnFocus = event => {
+  handleOnFocus = (event) => {
     const { displayPattern, onFocus } = this.props;
     if (onFocus) {
       onFocus(unformatWithPattern(event.target.value, displayPattern));
@@ -245,7 +245,7 @@ class WithDisplayFormat extends React.Component {
     return newStack.join('');
   };
 
-  handleCursorPositioning = action => {
+  handleCursorPositioning = (action) => {
     const { displayPattern } = this.props;
     const { triggerEvent, selectionStart, selectionEnd, pastedLength } = this.state;
 

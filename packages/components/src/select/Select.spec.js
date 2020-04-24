@@ -31,7 +31,7 @@ describe('Select', () => {
         { value: 2, label: 'boi' },
       ],
     };
-    Transition.mockImplementation(properties => {
+    Transition.mockImplementation((properties) => {
       const ActualTransition = jest.requireActual('react-transition-group/Transition').default;
       return <ActualTransition {...properties} timeout={0} />;
     });
@@ -40,17 +40,17 @@ describe('Select', () => {
   });
 
   const bustStackAndUpdate = async () => {
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise((resolve) => setTimeout(resolve, 0));
     component.update();
   };
 
-  const element = selector => component.find(selector);
+  const element = (selector) => component.find(selector);
   const clickOnDocument = async () => {
     document.dispatchEvent(new Event('click'));
     return bustStackAndUpdate();
   };
-  const findNthListElement = n => element('li').at(n);
-  const findNthOption = n => element(Option).at(n);
+  const findNthListElement = (n) => element('li').at(n);
+  const findNthOption = (n) => element(Option).at(n);
   const container = () => element('.btn-group');
   const dropdownMenu = () => element('ul.dropdown-menu');
   const openerButton = () => element('button.dropdown-toggle');
@@ -61,7 +61,7 @@ describe('Select', () => {
     openSelect();
     component.setProps({ onSearchChange: jest.fn() });
   };
-  const callSearchChangeWith = str =>
+  const callSearchChangeWith = (str) =>
     component.find('input').simulate('change', { target: { value: str } });
 
   const activeOptionIndex = () => {
@@ -236,10 +236,7 @@ describe('Select', () => {
       selected: true,
     };
     component.setProps({ selected });
-    const buttonChild = component
-      .find('button')
-      .children()
-      .first();
+    const buttonChild = component.find('button').children().first();
     expect(buttonChild.type()).toEqual(Option);
     expect(buttonChild.props()).toEqual(selected);
   });
@@ -248,22 +245,9 @@ describe('Select', () => {
     openSelect();
     component.setProps({ options: [{ header: 'hello' }, { header: 'good morning' }] });
 
-    expect(
-      component
-        .find('li.dropdown-header')
-        .first()
-        .text(),
-    ).toEqual('hello');
-    expect(
-      component
-        .find('li.dropdown-header')
-        .at(1)
-        .text(),
-    ).toEqual('good morning');
-    component
-      .find('li.dropdown-header')
-      .first()
-      .simulate('click', fakeEvent());
+    expect(component.find('li.dropdown-header').first().text()).toEqual('hello');
+    expect(component.find('li.dropdown-header').at(1).text()).toEqual('good morning');
+    component.find('li.dropdown-header').first().simulate('click', fakeEvent());
     expect(props.onChange).not.toBeCalled();
     expectDropdownToBe().open();
   });
@@ -281,20 +265,12 @@ describe('Select', () => {
       });
 
       it('should render a disabled link for any disabled options', () => {
-        expect(
-          component
-            .find('li.tw-dropdown-item')
-            .first()
-            .text(),
-        ).toEqual('a thing');
+        expect(component.find('li.tw-dropdown-item').first().text()).toEqual('a thing');
       });
 
       describe('when a disabled option is clicked', () => {
         beforeEach(() => {
-          component
-            .find('li.tw-dropdown-item')
-            .at(1)
-            .simulate('click', fakeEvent());
+          component.find('li.tw-dropdown-item').at(1).simulate('click', fakeEvent());
         });
 
         it('should not close the dropdown', () => {
@@ -353,7 +329,7 @@ describe('Select', () => {
   it('has first search result in focus', () => {
     openSelect();
     component.setProps({
-      onSearchChange: e => {
+      onSearchChange: (e) => {
         component.setProps({ options: [{ value: 2, label: 'yo' }], searchValue: e });
       },
     });
@@ -369,7 +345,7 @@ describe('Select', () => {
     component.setState({ keyboardFocusedOptionIndex: 0 });
     openSelect();
     component.setProps({
-      onSearchChange: e => {
+      onSearchChange: (e) => {
         component.setProps({ options: [], searchValue: e });
       },
     });
@@ -395,7 +371,7 @@ describe('Select', () => {
 
   it('can be given a dropdown width', () => {
     openSelect();
-    ['sm', 'md', 'lg'].forEach(dropdownWidth => {
+    ['sm', 'md', 'lg'].forEach((dropdownWidth) => {
       expect(component.find('.dropdown-menu').hasClass(`dropdown-menu-${dropdownWidth}`)).toBe(
         false,
       );
@@ -408,7 +384,7 @@ describe('Select', () => {
 
   it('can be given a breakpoint to make the dropdown open from the right', () => {
     openSelect();
-    ['xs', 'sm', 'md', 'lg', 'xl'].forEach(dropdownRight => {
+    ['xs', 'sm', 'md', 'lg', 'xl'].forEach((dropdownRight) => {
       expect(
         component.find('.dropdown-menu').hasClass(`dropdown-menu-${dropdownRight}-right`),
       ).toBe(false);
@@ -420,7 +396,7 @@ describe('Select', () => {
   });
 
   it('allows you to move around items with arrow keys while ignoring headers, separators and disabled', () => {
-    const keyboardFocusIsOnElementWithIndex = index =>
+    const keyboardFocusIsOnElementWithIndex = (index) =>
       findNthListElement(index).hasClass('tw-dropdown-item--focused');
     component.setProps({
       options: [
@@ -524,7 +500,7 @@ describe('Select', () => {
 
   it('can have different sizes', () => {
     expect(openerButton().hasClass('btn-md')).toBe(true);
-    ['sm', 'md', 'lg'].forEach(size => {
+    ['sm', 'md', 'lg'].forEach((size) => {
       component.setProps({ size });
       expect(openerButton().hasClass(`btn-${size}`)).toBe(true);
     });
@@ -623,10 +599,7 @@ describe('Select', () => {
 
     it('should filter the options with a custom search function', async () => {
       const searchFunction = jest.fn();
-      searchFunction
-        .mockReturnValueOnce(true)
-        .mockReturnValueOnce(false)
-        .mockReturnValueOnce(true);
+      searchFunction.mockReturnValueOnce(true).mockReturnValueOnce(false).mockReturnValueOnce(true);
       component.setProps({ search: searchFunction });
       openSelect();
 

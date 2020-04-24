@@ -1,6 +1,6 @@
 import { isArray } from '../../../common/validation/type-validators';
 
-export const groupCountriesByPrefix = countries => {
+export const groupCountriesByPrefix = (countries) => {
   const groupedArray = countries.reduce((acc, country) => {
     const { name, iso2, iso3, phone } = country;
     if (acc[phone]) {

@@ -3,7 +3,7 @@ import Types from 'prop-types';
 import AlertCircleIcon from '@transferwise/icons/react/alert-circle';
 import DocumentIcon from '@transferwise/icons/react/document';
 
-const CompleteStep = props => {
+const CompleteStep = (props) => {
   const {
     csButtonText,
     csFailureText,
@@ -46,7 +46,7 @@ const CompleteStep = props => {
           )}
         </div>
         {csButtonText && (
-          <button className="btn btn-default btn-sm m-t-3" onClick={e => onClear(e)}>
+          <button className="btn btn-default btn-sm m-t-3" onClick={(e) => onClear(e)}>
             {csButtonText}
           </button>
         )}

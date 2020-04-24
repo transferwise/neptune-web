@@ -130,7 +130,7 @@ describe('Money Input', () => {
   it('can be different sizes and defaults to lg', () => {
     expect(component.find('.input-group').hasClass('input-group-lg')).toBe(true);
     expect(currencySelect().prop('size')).toBe('lg');
-    ['sm', 'md', 'lg'].forEach(size => {
+    ['sm', 'md', 'lg'].forEach((size) => {
       component.setProps({ size });
       expect(currencySelect().prop('size')).toBe(size);
       expect(component.find('.input-group').hasClass(`input-group-${size}`)).toBe(true);
@@ -322,10 +322,7 @@ describe('Money Input', () => {
     component.setProps({ addon: addonElement });
     expect(addon().length).toEqual(1);
 
-    const passedInAddon = () =>
-      addon()
-        .children()
-        .first();
+    const passedInAddon = () => addon().children().first();
     expect(passedInAddon().prop('id')).toBe('test-addon');
     expect(passedInAddon().type()).toBe('span');
   });
@@ -358,7 +355,7 @@ describe('Money Input', () => {
       size: 'md',
     });
 
-    ['md', 'sm'].forEach(size => {
+    ['md', 'sm'].forEach((size) => {
       component.setProps({ size });
       expect(component.find('.tw-money-input__keyline').length).toBe(0);
       expect(component.find('.currency-flag').length).toBe(0);

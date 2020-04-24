@@ -25,7 +25,7 @@ class RadioGroup extends Component {
 
   state = { selectedValue: this.props.selectedValue };
 
-  handleOnChange = selectedValue => {
+  handleOnChange = (selectedValue) => {
     const { onChange } = this.props;
     this.setState({ selectedValue }, onChange && onChange(selectedValue));
   };
@@ -52,7 +52,7 @@ class RadioGroup extends Component {
             disabled={disabled}
             checked={selectedValue === value}
             secondary={secondary}
-            onChange={val => this.handleOnChange(val)}
+            onChange={(val) => this.handleOnChange(val)}
             readOnly={readOnly}
           />
         ))}

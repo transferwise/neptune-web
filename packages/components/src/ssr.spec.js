@@ -94,12 +94,12 @@ describe('Server side rendering', () => {
     },
   };
 
-  componentNames.forEach(componentName => {
+  componentNames.forEach((componentName) => {
     it(`works for ${componentName} components`, () => {
       const Component = components[componentName];
       const newProps = { ...allProps };
       if (overrideProps[componentName]) {
-        Object.keys(overrideProps[componentName]).forEach(propToOverrideKey => {
+        Object.keys(overrideProps[componentName]).forEach((propToOverrideKey) => {
           newProps[propToOverrideKey] = overrideProps[componentName][propToOverrideKey];
         });
       }

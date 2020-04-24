@@ -2,13 +2,15 @@ import getSymbolsInPatternWithPosition from '../getSymbolsInPatternWithPosition'
 
 export const getDistanceToNextSymbol = (selectionStart, pattern) => {
   const patternArray = getSymbolsInPatternWithPosition(pattern);
-  const applicablePattern = patternArray.filter(symbol => symbol.index >= selectionStart);
+  const applicablePattern = patternArray.filter((symbol) => symbol.index >= selectionStart);
   return countConsecutiveSymbols(selectionStart, applicablePattern, 'left');
 };
 
 export const getDistanceToPreviousSymbol = (selectionStart, pattern) => {
   const patternArray = getSymbolsInPatternWithPosition(pattern);
-  const applicablePattern = patternArray.filter(symbol => symbol.index < selectionStart).reverse();
+  const applicablePattern = patternArray
+    .filter((symbol) => symbol.index < selectionStart)
+    .reverse();
   return countConsecutiveSymbols(selectionStart, applicablePattern, 'right');
 };
 

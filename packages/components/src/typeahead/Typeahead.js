@@ -110,7 +110,7 @@ export default class Typeahead extends Component {
   // eslint-disable-next-line
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.multiple !== this.props.multiple) {
-      this.setState(prevState => {
+      this.setState((prevState) => {
         const { selected } = prevState;
         if (!nextProps.multiple && selected.length > 0) {
           return {
@@ -144,7 +144,7 @@ export default class Typeahead extends Component {
     this.selectItem(item);
   };
 
-  handleOnChange = event => {
+  handleOnChange = (event) => {
     const { optionsShown, selected } = this.state;
     const { multiple, onInputChange } = this.props;
 
@@ -166,7 +166,7 @@ export default class Typeahead extends Component {
     });
   };
 
-  handleOnPaste = event => {
+  handleOnPaste = (event) => {
     const { allowNew, multiple, chipSeparators } = this.props;
     const { selected } = this.state;
 
@@ -177,15 +177,15 @@ export default class Typeahead extends Component {
         const regex = new RegExp(chipSeparators.join('|'));
         const pastedChips = value
           .split(regex)
-          .map(label => ({ label: label.trim() }))
-          .filter(chip => chip.label);
+          .map((label) => ({ label: label.trim() }))
+          .filter((chip) => chip.label);
 
         this.updateSelectedValue([...selected, ...pastedChips]);
       }
     }
   };
 
-  handleOnKeyDown = event => {
+  handleOnKeyDown = (event) => {
     const { showSuggestions, allowNew, multiple, chipSeparators, options } = this.props;
     const { keyboardFocusedOptionIndex, query, selected } = this.state;
     const chipsMode = !showSuggestions && allowNew && multiple;
@@ -227,7 +227,7 @@ export default class Typeahead extends Component {
   };
 
   moveFocusedOption(offset) {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const { keyboardFocusedOptionIndex } = prevState;
       const { options } = this.props;
       let index = 0;
@@ -240,7 +240,7 @@ export default class Typeahead extends Component {
     });
   }
 
-  selectItem = item => {
+  selectItem = (item) => {
     const { multiple } = this.props;
     let selected = [...this.state.selected];
     let query;
@@ -259,7 +259,7 @@ export default class Typeahead extends Component {
     });
   };
 
-  stopPropagation = event => {
+  stopPropagation = (event) => {
     event.stopPropagation();
     event.preventDefault();
     if (event.nativeEvent && event.nativeEvent.stopImmediatePropagation) {
@@ -267,13 +267,13 @@ export default class Typeahead extends Component {
     }
   };
 
-  handleSearch = query => {
+  handleSearch = (query) => {
     const { onSearch } = this.props;
     if (onSearch) {
       onSearch(query);
     }
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       keyboardFocusedOptionIndex: prevState.keyboardFocusedOptionIndex === null ? null : 0,
     }));
   };
@@ -322,16 +322,16 @@ export default class Typeahead extends Component {
     );
   };
 
-  updateSelectedValue = selected => {
+  updateSelectedValue = (selected) => {
     const { onChange, validateChip } = this.props;
 
-    const errorState = selected.some(chip => !validateChip(chip));
+    const errorState = selected.some((chip) => !validateChip(chip));
     this.setState({ selected, errorState }, () => {
       onChange(selected);
     });
   };
 
-  clear = event => {
+  clear = (event) => {
     event.preventDefault();
     if (this.state.selected.length > 0) {
       this.updateSelectedValue([]);
@@ -342,11 +342,11 @@ export default class Typeahead extends Component {
     });
   };
 
-  removeChip = option => {
+  removeChip = (option) => {
     const { selected } = this.state;
 
     if (selected.length > 0) {
-      this.updateSelectedValue([...selected.filter(selectedOption => selectedOption !== option)]);
+      this.updateSelectedValue([...selected.filter((selectedOption) => selectedOption !== option)]);
     }
   };
 
@@ -380,7 +380,7 @@ export default class Typeahead extends Component {
     if (
       allowNew &&
       query.trim() &&
-      options.every(option => option.label.trim().toUpperCase() !== query.trim().toUpperCase()) &&
+      options.every((option) => option.label.trim().toUpperCase() !== query.trim().toUpperCase()) &&
       showNewEntry
     ) {
       optionsToRender.push({
@@ -399,7 +399,7 @@ export default class Typeahead extends Component {
               query={query}
               option={option}
               selected={keyboardFocusedOptionIndex === idx}
-              onClick={event => {
+              onClick={(event) => {
                 this.onOptionSelected(event, option);
               }}
             />

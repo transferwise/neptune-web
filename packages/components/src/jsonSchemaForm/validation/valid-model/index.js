@@ -34,7 +34,7 @@ function getValidModelParts(model, schema) {
 
 function cleanModelWithObjectSchema(model, schema) {
   const cleanedModel = {};
-  Object.keys(schema.properties).forEach(property => {
+  Object.keys(schema.properties).forEach((property) => {
     // If the property exists in the model, clean it, and add it
     if (model && typeof model[property] !== 'undefined') {
       const newValue = getValidModelParts(model[property], schema.properties[property]);
@@ -48,7 +48,7 @@ function cleanModelWithObjectSchema(model, schema) {
 
 function cleanModelWithArraySchema(model, schema) {
   if (Array.isArray(model)) {
-    return model.map(childModel => getValidModelParts(childModel, schema));
+    return model.map((childModel) => getValidModelParts(childModel, schema));
   }
   return null;
 }
@@ -79,7 +79,7 @@ function cleanModelWithAllOfSchema(model, schema) {
   let cleanedModel = {};
   let validSubsetOfModel;
 
-  schema.allOf.forEach(nestedSchema => {
+  schema.allOf.forEach((nestedSchema) => {
     validSubsetOfModel = getValidModelParts(model, nestedSchema);
 
     if (typeof validSubsetOfModel === 'object') {
@@ -92,7 +92,7 @@ function cleanModelWithAllOfSchema(model, schema) {
 
 function cleanModelWithOneOfSchema(model, schema) {
   return schema.oneOf
-    .map(nestedSchema => getValidModelParts(model, nestedSchema))
+    .map((nestedSchema) => getValidModelParts(model, nestedSchema))
     .reduce((combined, current) => {
       return { ...combined, ...current };
     }, {});

@@ -120,7 +120,7 @@ describe('FormControl', () => {
             label: 'two',
           },
         ],
-        onChange: jest.fn().mockImplementation(event => {
+        onChange: jest.fn().mockImplementation((event) => {
           currentValue = event;
         }),
       };
@@ -139,10 +139,7 @@ describe('FormControl', () => {
 
     testChangeHandler(() => {
       component.find('button.dropdown-toggle').simulate('click');
-      component
-        .find('li.tw-dropdown-item')
-        .last()
-        .simulate('click');
+      component.find('li.tw-dropdown-item').last().simulate('click');
     }, '2');
 
     testBlurHandler(() => {
@@ -205,7 +202,7 @@ describe('FormControl', () => {
           { value: 1, label: 'One' },
           { value: 2, label: 'Two', secondary: 'Secondary label' },
         ],
-        onChange: jest.fn().mockImplementation(newValue => {
+        onChange: jest.fn().mockImplementation((newValue) => {
           currentValue = newValue;
         }),
       };
@@ -390,7 +387,7 @@ describe('FormControl', () => {
       beforeEach(() => {
         props = {
           type: controlType,
-          onChange: jest.fn().mockImplementation(newValue => {
+          onChange: jest.fn().mockImplementation((newValue) => {
             currentValue = newValue;
           }),
           placeholder,
@@ -482,7 +479,7 @@ describe('FormControl', () => {
   function getPropsToPassDown(controlType, customComponent) {
     const PROPS = Object.keys(getPropsForControlType(controlType));
 
-    return Object.keys(customComponent.propTypes).filter(key => PROPS.includes(key));
+    return Object.keys(customComponent.propTypes).filter((key) => PROPS.includes(key));
   }
 
   function testCustomControl(controlType, customComponent) {
@@ -515,7 +512,7 @@ describe('FormControl', () => {
         custom = child.length > 1 ? child.first() : child;
       });
 
-      PASSED_DOWN_PROPS.forEach(key => {
+      PASSED_DOWN_PROPS.forEach((key) => {
         it(`should pass the ${key} prop to the child component`, () => {
           expect(custom.prop(key)).toBe(props[key]);
         });
@@ -525,15 +522,12 @@ describe('FormControl', () => {
           const TEST_FILE = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' });
           component = mount(<FormControl {...{ ...defaultProps, ...props }} />);
 
-          component
-            .find(customComponent)
-            .instance()
-            .fileDropped(TEST_FILE);
+          component.find(customComponent).instance().fileDropped(TEST_FILE);
 
           expect(props.onChange).toHaveBeenCalled();
         });
       } else {
-        CALLBACK_PROPS.forEach(key => {
+        CALLBACK_PROPS.forEach((key) => {
           it(`should call the ${key} handler when a ${EVENT[key]} event triggered`, () => {
             component.simulate(EVENT[key]);
             expect(props[key]).toHaveBeenCalled();

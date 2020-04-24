@@ -21,7 +21,7 @@ import './PhoneNumberInput.css';
 
 const ALLOWED_PHONE_CHARS = /^$|^[\d-\s]+$/;
 
-const PhoneNumberInput = props => {
+const PhoneNumberInput = (props) => {
   const {
     onChange,
     searchPlaceholder,
@@ -48,7 +48,7 @@ const PhoneNumberInput = props => {
   const listSortedByISO3 = groupCountriesByPrefix(sortArrayByProperty(countries, 'iso3'));
   const listSortedByPhone = groupCountriesByPrefix(sortArrayByProperty(countries, 'phone'));
 
-  const getSuffixPrefix = value => {
+  const getSuffixPrefix = (value) => {
     let prefix = setDefaultPrefix(locale, countryCode);
     let suffix = '';
     if (value) {
@@ -63,7 +63,7 @@ const PhoneNumberInput = props => {
       searchQuery,
     );
 
-    return filteredOptions.map(option => {
+    return filteredOptions.map((option) => {
       const { phone, iso3, iso2 } = option;
       let note = '';
 
@@ -79,7 +79,7 @@ const PhoneNumberInput = props => {
 
   const options = getSelectOptions();
 
-  const handleChangeSelect = event => {
+  const handleChangeSelect = (event) => {
     const { suffix } = getSuffixPrefix(internalValue);
     const prefix = event.value;
 
@@ -87,7 +87,7 @@ const PhoneNumberInput = props => {
     setInternalValue(prefix + suffix);
   };
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     const suffix = event.target.value;
 
     if (ALLOWED_PHONE_CHARS.test(suffix)) {
@@ -96,7 +96,7 @@ const PhoneNumberInput = props => {
     }
   };
 
-  const handlePaste = e => {
+  const handlePaste = (e) => {
     if (!e.nativeEvent.clipboardData) {
       return;
     }
@@ -128,7 +128,7 @@ const PhoneNumberInput = props => {
           selected={{ value: prefix, label: prefix }}
           onChange={handleChangeSelect}
           searchPlaceholder={searchPlaceholder}
-          onSearchChange={newSearch => setSearchQuery(newSearch)}
+          onSearchChange={(newSearch) => setSearchQuery(newSearch)}
           searchValue={searchQuery}
           required={required}
           disabled={disabled}

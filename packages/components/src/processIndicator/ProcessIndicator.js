@@ -81,7 +81,7 @@ class ProcessIndicator extends Component {
     clearTimeout(this.timeout);
   }
 
-  runCallBack = statusFromProps => {
+  runCallBack = (statusFromProps) => {
     const { onAnimationCompleted } = this.props;
     if (onAnimationCompleted) {
       this.timeouts = setTimeout(() => {

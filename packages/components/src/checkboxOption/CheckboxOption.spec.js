@@ -71,5 +71,5 @@ describe('Checkbox option', () => {
   });
 
   const option = () => component.find(Option);
-  const buttonProp = name => option().prop('button').props[name];
+  const buttonProp = (name) => option().prop('button').props[name];
 });

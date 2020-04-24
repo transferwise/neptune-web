@@ -18,13 +18,13 @@ describe('Stepper', () => {
     fakeDeviceDetection = require('./deviceDetection');
     props = {
       activeStep: 0,
-      steps: ['one', 'two', 'three'].map(label => ({ label })),
+      steps: ['one', 'two', 'three'].map((label) => ({ label })),
     };
     component = shallow(<Stepper {...props} />);
   });
 
-  const activeStep = step => component.setProps({ activeStep: step });
-  const steps = howMany =>
+  const activeStep = (step) => component.setProps({ activeStep: step });
+  const steps = (howMany) =>
     component.setProps({
       steps: Array(...Array(howMany)).map((_, index) => ({ label: index.toString() })),
     });
@@ -33,8 +33,10 @@ describe('Stepper', () => {
     const progressBarFillerWidth = () => component.find('.progress-bar-filler').prop('style').width;
     const progressBarEndingWidth = () => component.find('.progress-bar-ending').prop('style').width;
     const totalWidth = () =>
-      `${parseFloat(progressBarFillerWidth().slice(0, -1)) +
-        parseFloat(progressBarEndingWidth().slice(0, -1))}%`;
+      `${
+        parseFloat(progressBarFillerWidth().slice(0, -1)) +
+        parseFloat(progressBarEndingWidth().slice(0, -1))
+      }%`;
 
     describe('when no steps are passed in', () => {
       it('renders nothing', () => {
@@ -81,21 +83,13 @@ describe('Stepper', () => {
     it('have rendered labels', () => {
       steps(5);
       [0, 1, 2, 3, 4].forEach((label, index) => {
-        expect(
-          component
-            .find('.tw-stepper__step')
-            .at(index)
-            .text(),
-        ).toEqual(`${label}`);
+        expect(component.find('.tw-stepper__step').at(index).text()).toEqual(`${label}`);
       });
     });
 
     it('are active when clickable and completed', () => {
-      const stepActive = index =>
-        component
-          .find('.tw-stepper__step')
-          .at(index)
-          .hasClass('tw-stepper__step--clickable');
+      const stepActive = (index) =>
+        component.find('.tw-stepper__step').at(index).hasClass('tw-stepper__step--clickable');
 
       component.setProps({
         steps: [
@@ -117,16 +111,10 @@ describe('Stepper', () => {
     });
 
     it('are not clickable when active', () => {
-      const clickOnStep = index =>
-        component
-          .find('.tw-stepper__step button')
-          .at(index)
-          .simulate('click');
-      const buttonDisabled = index =>
-        component
-          .find('.tw-stepper__step button')
-          .at(index)
-          .prop('disabled');
+      const clickOnStep = (index) =>
+        component.find('.tw-stepper__step button').at(index).simulate('click');
+      const buttonDisabled = (index) =>
+        component.find('.tw-stepper__step button').at(index).prop('disabled');
       const clickedOnFirstStep = jest.fn();
       const clickedOnSecondStep = jest.fn();
       component.setProps({
@@ -148,11 +136,8 @@ describe('Stepper', () => {
     });
 
     it('are active when they are the currently active step', () => {
-      const stepActive = index =>
-        component
-          .find('.tw-stepper__step')
-          .at(index)
-          .hasClass('tw-stepper__step--active');
+      const stepActive = (index) =>
+        component.find('.tw-stepper__step').at(index).hasClass('tw-stepper__step--active');
       steps(4);
       activeStep(1);
       expect(stepActive(0)).toBe(false);
@@ -167,13 +152,13 @@ describe('Stepper', () => {
     });
 
     it('are marked as visited when active index is less than or equals to current index', () => {
-      const step = index => {
+      const step = (index) => {
         const btnStates = ['tw-stepper__step--active', 'tw-stepper__step--clickable'];
         const stepEl = component.find('.tw-stepper__step').at(index);
         return {
           active: stepEl.hasClass(btnStates[0]),
           clickable: stepEl.hasClass(btnStates[1]),
-          clickableAndActive: btnStates.every(c => stepEl.hasClass(c)),
+          clickableAndActive: btnStates.every((c) => stepEl.hasClass(c)),
           disabled: stepEl.find('button').prop('disabled'),
         };
       };
@@ -201,19 +186,14 @@ describe('Stepper', () => {
   });
 
   describe('hover labels', () => {
-    const step = index => component.find('.tw-stepper__step').at(index);
+    const step = (index) => component.find('.tw-stepper__step').at(index);
     it('will be rendered when provided', () => {
       component.setProps({
         steps: [{ hoverLabel: 'hover', label: 'label' }, { label: 'label 2' }],
       });
       const firstStepHoverLabel = step(0).children();
       expect(firstStepHoverLabel.type()).toBe(Tooltip);
-      expect(
-        firstStepHoverLabel
-          .children()
-          .render()
-          .text(),
-      ).toEqual('label');
+      expect(firstStepHoverLabel.children().render().text()).toEqual('label');
       expect(step(1).text()).toEqual('label 2');
     });
 
@@ -231,11 +211,7 @@ describe('Stepper', () => {
         ],
       });
 
-      expect(
-        step(0)
-          .children()
-          .prop('label'),
-      ).toEqual(
+      expect(step(0).children().prop('label')).toEqual(
         <>
           hover <p>label</p>
         </>,

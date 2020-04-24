@@ -25,7 +25,7 @@ export const useHasIntersected = ({ elRef, loading }) => {
   const [hasIntersected, setHasIntersected] = useState(false);
 
   const handleOnIntersect = (entries, observer) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         setHasIntersected(true);
         observer.unobserve(elRef.current);

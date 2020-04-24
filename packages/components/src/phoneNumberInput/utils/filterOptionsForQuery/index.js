@@ -7,4 +7,4 @@ import { isOptionAndFitsQuery } from '../isOptionAndFitsQuery';
  * @returns {*}
  */
 export const filterOptionsForQuery = (options, query) =>
-  options.filter(option => isOptionAndFitsQuery(option, query));
+  options.filter((option) => isOptionAndFitsQuery(option, query));

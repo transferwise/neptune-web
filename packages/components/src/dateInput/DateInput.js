@@ -13,7 +13,7 @@ const DEFAULT_LOCALE = 'en-GB';
 const MonthBeforeDay = ['en-US', 'ja-JP'];
 const INITIAL_DEFAULT_STATE = { year: null, month: 0, day: null };
 
-const DateInput = props => {
+const DateInput = (props) => {
   const {
     disabled,
     size,
@@ -36,7 +36,7 @@ const DateInput = props => {
     return null;
   };
 
-  const getExplodedDate = unit => {
+  const getExplodedDate = (unit) => {
     let explodedDate = INITIAL_DEFAULT_STATE;
 
     if (value && isDateValid(value)) {
@@ -55,7 +55,7 @@ const DateInput = props => {
   const [year, setYear] = useState(() => getExplodedDate('year'));
   const [internalValue, setInternalValue] = useState(getDateObject);
 
-  const getDateAsString = date => {
+  const getDateAsString = (date) => {
     switch (mode) {
       case DateMode.MONTH_YEAR:
         return [date.getFullYear(), `0${date.getMonth() + 1}`.slice(-2)].join('-');
@@ -81,7 +81,7 @@ const DateInput = props => {
           name="month"
           className="form-control"
           selected={{ value: month, label: months[month] }}
-          onChange={selectedValue => handleMonthChange(selectedValue)}
+          onChange={(selectedValue) => handleMonthChange(selectedValue)}
           disabled={disabled}
           options={getMonthsOptions()}
           size={size}
@@ -129,13 +129,13 @@ const DateInput = props => {
     }
   };
 
-  const handleDayChange = event => {
+  const handleDayChange = (event) => {
     const { checkedDay } = checkDate(event.target.value, month, year);
     setDay(checkedDay);
     handleInternalValue(checkedDay, month, year);
   };
 
-  const handleMonthChange = selectedValue => {
+  const handleMonthChange = (selectedValue) => {
     const selectedMonth = selectedValue ? selectedValue.value : 0;
     const { checkedDay } = checkDate(day, selectedMonth, year);
     setMonth(selectedMonth);
@@ -147,7 +147,7 @@ const DateInput = props => {
     handleInternalValue(checkedDay, selectedMonth, year);
   };
 
-  const handleYearChange = event => {
+  const handleYearChange = (event) => {
     const newValue = event.target.value;
     const slicedYear = newValue.length > 4 ? newValue.slice(0, 4) : newValue;
 
@@ -212,7 +212,7 @@ const DateInput = props => {
                 name="day"
                 className="form-control"
                 value={day || ''}
-                onChange={event => handleDayChange(event)}
+                onChange={(event) => handleDayChange(event)}
                 onFocus={onFocus}
                 onBlur={onBlur}
                 placeholder="DD"
@@ -236,7 +236,7 @@ const DateInput = props => {
               className="form-control"
               placeholder="YYYY"
               value={year || ''}
-              onChange={event => handleYearChange(event)}
+              onChange={(event) => handleYearChange(event)}
               onFocus={onFocus}
               onBlur={onBlur}
               disabled={disabled}

@@ -15,7 +15,7 @@ const Dimmer = ({ open, children, onClose, fadeContentOnExit, fadeContentOnEnter
     return () => cleanup();
   }, []);
 
-  const handleOnKeyDown = event => {
+  const handleOnKeyDown = (event) => {
     if (event && (event.keyCode === KEY_CODES.ESCAPE || event.key === 'Escape')) {
       handleOnClose(event);
     }
@@ -26,14 +26,14 @@ const Dimmer = ({ open, children, onClose, fadeContentOnExit, fadeContentOnEnter
     document.addEventListener('keydown', handleOnKeyDown);
   };
 
-  const handleOnClick = event => {
+  const handleOnClick = (event) => {
     // Prevents the onclick to be fired by children.
     if (event.target === event.currentTarget) {
       handleOnClose(event);
     }
   };
 
-  const handleOnClose = event => {
+  const handleOnClose = (event) => {
     cleanup();
     if (onClose) {
       onClose(event);

@@ -1,4 +1,4 @@
-const getSymbolsInPatternWithPosition = pattern => {
+const getSymbolsInPatternWithPosition = (pattern) => {
   const patternWithSymbolsPosition = [];
   const patternArray = pattern.split('');
   patternArray.forEach((symbol, index) => {

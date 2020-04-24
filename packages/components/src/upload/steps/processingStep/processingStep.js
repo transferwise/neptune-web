@@ -2,7 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import ProcessIndicator from '../../../processIndicator';
 
-const ProcessingStep = props => {
+const ProcessingStep = (props) => {
   const {
     isComplete,
     isError,
@@ -30,7 +30,7 @@ const ProcessingStep = props => {
         <ProcessIndicator
           size={ProcessIndicator.Size.Small}
           status={processStatus}
-          onAnimationCompleted={status => onAnimationCompleted(status)}
+          onAnimationCompleted={(status) => onAnimationCompleted(status)}
         />
         <h4 className="m-t-3 m-b-3">
           {!isSuccess && !isError && isProcessing && psProcessingText}
@@ -38,7 +38,7 @@ const ProcessingStep = props => {
           {isError && psFailureText}
         </h4>
         {psButtonText && (
-          <button className="btn btn-default btn-sm" onClick={e => onClear(e)}>
+          <button className="btn btn-default btn-sm" onClick={(e) => onClear(e)}>
             {psButtonText}
           </button>
         )}

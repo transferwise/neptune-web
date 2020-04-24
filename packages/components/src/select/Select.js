@@ -23,7 +23,7 @@ function actionableOption(option) {
   return !option.header && !option.separator && !option.disabled;
 }
 
-const isFunction = functionToCheck =>
+const isFunction = (functionToCheck) =>
   functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 
 function stopPropagation(event) {
@@ -46,7 +46,7 @@ function getShouldRenderWithPortal() {
 
 const BOOTSTRAP_DROPDOWN_ANIMATION_TIME = 200;
 
-const defer = fn => setTimeout(fn, 0);
+const defer = (fn) => setTimeout(fn, 0);
 
 const includesString = (str1, str2) => str1.toLowerCase().indexOf(str2.toLowerCase()) > -1;
 
@@ -183,9 +183,9 @@ export default class Select extends Component {
     }, 0);
   }
 
-  handleOnFocus = event => this.props.onFocus && this.props.onFocus(event);
+  handleOnFocus = (event) => this.props.onFocus && this.props.onFocus(event);
 
-  handleOnBlur = event => {
+  handleOnBlur = (event) => {
     const { onBlur } = this.props;
     const { nativeEvent } = event;
     if (nativeEvent) {
@@ -210,10 +210,10 @@ export default class Select extends Component {
 
     const filterFunction = isFunction(search) ? search : defaultFilterFunction;
 
-    return options.filter(option => filterFunction(option, this.state.searchValue));
+    return options.filter((option) => filterFunction(option, this.state.searchValue));
   };
 
-  handleSearchChange = event => {
+  handleSearchChange = (event) => {
     if (this.props.onSearchChange) {
       this.props.onSearchChange(event.target.value);
     } else {
@@ -223,7 +223,7 @@ export default class Select extends Component {
     }
   };
 
-  handleKeyDown = event => {
+  handleKeyDown = (event) => {
     const { open } = this.state;
     switch (event.keyCode) {
       case KeyCodes.UP:
@@ -344,14 +344,14 @@ export default class Select extends Component {
     }
   };
 
-  handleTouchStart = event => {
+  handleTouchStart = (event) => {
     if (event.currentTarget === event.target && this.state.open) {
       this.close();
     }
   };
 
   createSelectHandlerForOption(option) {
-    return event => {
+    return (event) => {
       stopPropagation(event);
       this.selectOption(option);
     };
@@ -366,7 +366,7 @@ export default class Select extends Component {
     this.close();
   }
 
-  style = className => this.props.classNames[className] || className;
+  style = (className) => this.props.classNames[className] || className;
 
   renderOptionsList() {
     const { dropdownRight, dropdownWidth, onSearchChange, required, search } = this.props;
@@ -549,7 +549,7 @@ export default class Select extends Component {
           }
         }}
       >
-        {animationState => (
+        {(animationState) => (
           <div // eslint-disable-line jsx-a11y/no-static-element-interactions
             className={groupClass}
             ref={this.dropdownMenuRef}

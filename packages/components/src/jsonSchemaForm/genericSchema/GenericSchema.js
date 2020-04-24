@@ -6,7 +6,7 @@ import ObjectSchema from '../objectSchema/';
 import OneOfSchema from '../oneOfSchema/';
 import AllOfSchema from '../allOfSchema/';
 
-const GenericSchemaForm = props => (
+const GenericSchemaForm = (props) => (
   <>
     {props.schema.enum && <BasicTypeSchema {...props} />}
     {props.schema.type === 'string' && <BasicTypeSchema {...props} />}

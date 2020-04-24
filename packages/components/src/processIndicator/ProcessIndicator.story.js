@@ -20,5 +20,5 @@ export const basic = () => {
     ProcessIndicator.Status.PROCESSING,
   );
 
-  return <ProcessIndicator status={status} size={size} onAnimationCompleted={s => action(s)} />;
+  return <ProcessIndicator status={status} size={size} onAnimationCompleted={(s) => action(s)} />;
 };

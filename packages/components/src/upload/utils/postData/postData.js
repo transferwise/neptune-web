@@ -4,7 +4,7 @@ export const postData = (httpOptions, data = {}) =>
     body: data,
     ...httpOptions,
   })
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
         const error = new Error(response.statusText);
         error.status = response.status;
@@ -13,6 +13,6 @@ export const postData = (httpOptions, data = {}) =>
       }
       return response;
     })
-    .catch(e => {
+    .catch((e) => {
       throw e;
     });

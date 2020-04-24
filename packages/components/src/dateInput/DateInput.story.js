@@ -22,7 +22,7 @@ export const basic = () => {
 
   return (
     <DateInput
-      onChange={val => action(val)}
+      onChange={(val) => action(val)}
       locale={locale}
       disabled={disabled}
       size={size}

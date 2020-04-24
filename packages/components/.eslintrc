@@ -25,6 +25,7 @@
     "no-else-return": 0,
     "import/no-cycle": 0,
     "import/order": 0,
+    "fp/no-mutation": 0,
     "react/jsx-one-expression-per-line": [0, { "allow": "literal" }],
     "jsx-a11y/label-has-associated-control": [
       2,

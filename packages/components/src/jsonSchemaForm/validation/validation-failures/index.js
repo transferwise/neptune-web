@@ -139,7 +139,7 @@ function getObjectValidationFailures(value, schema) {
   }
 
   const allPresent = schema.required
-    .map(prop => typeof value[prop] !== 'undefined')
+    .map((prop) => typeof value[prop] !== 'undefined')
     .reduce((propInModel, validSoFar) => propInModel && validSoFar, true);
 
   return allPresent ? [] : ['required'];

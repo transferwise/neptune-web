@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import GenericSchema from '../genericSchema';
 import { getValidModelParts } from '../validation/valid-model';
 
-const ObjectSchema = props => {
+const ObjectSchema = (props) => {
   const [model, setModel] = useState({ ...(props.model || {}) });
 
   const onChange = (propertyName, propertyModel, schema) => {
@@ -17,7 +17,7 @@ const ObjectSchema = props => {
     props.onChange(model, schema);
   };
 
-  const getSchemaColumnClasses = width => {
+  const getSchemaColumnClasses = (width) => {
     return {
       'col-xs-12': true,
       'col-sm-6': width === 'md',
@@ -25,7 +25,7 @@ const ObjectSchema = props => {
     };
   };
 
-  const isRequired = propertyName =>
+  const isRequired = (propertyName) =>
     props.schema.required && props.schema.required.indexOf(propertyName) >= 0;
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const ObjectSchema = props => {
       {props.schema.title && !props.hideTitle && <legend> {props.schema.title} </legend>}
       {props.schema.description && <p> {props.schema.description} </p>}
       <div className="row">
-        {Object.keys(props.schema.properties).map(propertyName => (
+        {Object.keys(props.schema.properties).map((propertyName) => (
           <div
             key={propertyName}
             className={classNames(

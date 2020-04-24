@@ -46,12 +46,7 @@ describe('Field', () => {
       it('should render a text input', () => {
         expect(component.find('label')).toHaveLength(1);
         expect(component.find(FormControl)).toHaveLength(1);
-        expect(
-          component
-            .find(FormControl)
-            .first()
-            .props().type,
-        ).toBe(FormControlType.TEXT);
+        expect(component.find(FormControl).first().props().type).toBe(FormControlType.TEXT);
       });
     });
 
@@ -69,12 +64,7 @@ describe('Field', () => {
 
       it('should render a date control', () => {
         expect(component.find(FormControl)).toHaveLength(1);
-        expect(
-          component
-            .find(FormControl)
-            .first()
-            .props().type,
-        ).toBe(FormControlType.DATE);
+        expect(component.find(FormControl).first().props().type).toBe(FormControlType.DATE);
       });
 
       it('should render a visible label', () => {
@@ -96,12 +86,7 @@ describe('Field', () => {
 
       it('should render a upload control', () => {
         expect(component.find(FormControl)).toHaveLength(1);
-        expect(
-          component
-            .find(FormControl)
-            .first()
-            .props().type,
-        ).toBe(FormControlType.FILE);
+        expect(component.find(FormControl).first().props().type).toBe(FormControlType.FILE);
       });
 
       it('should not render a visible label', () => {
@@ -123,12 +108,7 @@ describe('Field', () => {
 
       it('should render a password control', () => {
         expect(component.find(FormControl)).toHaveLength(1);
-        expect(
-          component
-            .find(FormControl)
-            .first()
-            .props().type,
-        ).toBe(FormControlType.PASSWORD);
+        expect(component.find(FormControl).first().props().type).toBe(FormControlType.PASSWORD);
       });
 
       it('should render a visible label', () => {
@@ -150,12 +130,7 @@ describe('Field', () => {
 
       it('should render a telephone control', () => {
         expect(component.find(FormControl)).toHaveLength(1);
-        expect(
-          component
-            .find(FormControl)
-            .first()
-            .props().type,
-        ).toBe(FormControlType.TEL);
+        expect(component.find(FormControl).first().props().type).toBe(FormControlType.TEL);
       });
 
       it('should render a visible label', () => {
@@ -177,12 +152,7 @@ describe('Field', () => {
 
     it('should render a number input', () => {
       expect(component.find(FormControl)).toHaveLength(1);
-      expect(
-        component
-          .find(FormControl)
-          .first()
-          .props().type,
-      ).toBe(FormControlType.NUMBER);
+      expect(component.find(FormControl).first().props().type).toBe(FormControlType.NUMBER);
     });
 
     it('should render a visible label', () => {
@@ -203,12 +173,7 @@ describe('Field', () => {
 
     it('should render a checkbox', () => {
       expect(component.find(FormControl)).toHaveLength(1);
-      expect(
-        component
-          .find(FormControl)
-          .first()
-          .props().type,
-      ).toBe(FormControlType.CHECKBOX);
+      expect(component.find(FormControl).first().props().type).toBe(FormControlType.CHECKBOX);
     });
 
     it('should hide control label', () => {
@@ -234,12 +199,7 @@ describe('Field', () => {
 
       it('should render radio buttons', () => {
         expect(component.find(FormControl)).toHaveLength(1);
-        expect(
-          component
-            .find(FormControl)
-            .first()
-            .props().type,
-        ).toBe(FormControlType.RADIO);
+        expect(component.find(FormControl).first().props().type).toBe(FormControlType.RADIO);
       });
     });
 
@@ -262,12 +222,7 @@ describe('Field', () => {
 
       it('should render a select', () => {
         expect(component.find(FormControl)).toHaveLength(1);
-        expect(
-          component
-            .find(FormControl)
-            .first()
-            .props().type,
-        ).toBe(FormControlType.SELECT);
+        expect(component.find(FormControl).first().props().type).toBe(FormControlType.SELECT);
       });
     });
 
@@ -289,12 +244,7 @@ describe('Field', () => {
 
       it('should render select regardless of number of values', () => {
         expect(component.find(FormControl)).toHaveLength(1);
-        expect(
-          component
-            .find(FormControl)
-            .first()
-            .props().type,
-        ).toBe(FormControlType.SELECT);
+        expect(component.find(FormControl).first().props().type).toBe(FormControlType.SELECT);
       });
     });
   });
@@ -313,10 +263,7 @@ describe('Field', () => {
 
     it('should render the model value in the control', () => {
       expect(component.find(FormControl)).toHaveLength(1);
-      const formControlProps = component
-        .find(FormControl)
-        .first()
-        .props();
+      const formControlProps = component.find(FormControl).first().props();
 
       expect(formControlProps.type).toBe(FormControlType.TEXT);
       expect(formControlProps.value).toBe('supplied value');

@@ -30,7 +30,7 @@ describe('InputWithTextFormat', () => {
 
   beforeEach(() => {
     component = mount(
-      <WithDisplayFormat {...props} render={renderProps => <input {...renderProps} />} />,
+      <WithDisplayFormat {...props} render={(renderProps) => <input {...renderProps} />} />,
     );
   });
 
@@ -38,7 +38,7 @@ describe('InputWithTextFormat', () => {
     jest.clearAllTimers();
   });
 
-  TESTS.forEach(test => {
+  TESTS.forEach((test) => {
     const { value, expectedValue, displayPattern } = test;
     it(`returns ${expectedValue} for ${value} if displayPattern is ${displayPattern} `, () => {
       component.setProps({ displayPattern });
@@ -84,7 +84,7 @@ describe('InputWithTextFormat', () => {
   describe('on "autofill"', () => {
     beforeEach(() => {
       component = mount(
-        <WithDisplayFormat {...props} render={renderProps => <input {...renderProps} />} />,
+        <WithDisplayFormat {...props} render={(renderProps) => <input {...renderProps} />} />,
       );
     });
 
@@ -100,7 +100,7 @@ describe('InputWithTextFormat', () => {
   describe('when backspace is pressed', () => {
     beforeEach(() => {
       component = mount(
-        <WithDisplayFormat {...props} render={renderProps => <input {...renderProps} />} />,
+        <WithDisplayFormat {...props} render={(renderProps) => <input {...renderProps} />} />,
       );
       component.setState({
         triggerEvent: { ...triggerEvent, key: 'Backspace' },

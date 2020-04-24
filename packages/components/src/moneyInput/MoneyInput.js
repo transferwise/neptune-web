@@ -75,7 +75,7 @@ export default class MoneyInput extends Component {
     }
   }
 
-  onAmountChange = event => {
+  onAmountChange = (event) => {
     const { value } = event.target;
     this.setState({
       formattedAmount: value,
@@ -106,7 +106,7 @@ export default class MoneyInput extends Component {
   }
 
   setAmount() {
-    this.setState(previousState => {
+    this.setState((previousState) => {
       const parsed = parseAmount(
         previousState.formattedAmount,
         this.props.selectedCurrency.currency,
@@ -127,7 +127,7 @@ export default class MoneyInput extends Component {
     });
   }
 
-  handleSelectChange = value => {
+  handleSelectChange = (value) => {
     this.setState({ searchQuery: '' });
 
     if (this.props.onCustomAction && value.value === CUSTOM_ACTION) {
@@ -137,7 +137,7 @@ export default class MoneyInput extends Component {
     }
   };
 
-  style = className => this.props.classNames[className] || className;
+  style = (className) => this.props.classNames[className] || className;
 
   render() {
     const { selectedCurrency, onCurrencyChange, size, addon } = this.props;
@@ -223,7 +223,7 @@ export default class MoneyInput extends Component {
               selected={{ ...selectedCurrency, note: null }}
               onChange={this.handleSelectChange}
               searchPlaceholder={this.props.searchPlaceholder}
-              onSearchChange={searchQuery => this.setState({ searchQuery })}
+              onSearchChange={(searchQuery) => this.setState({ searchQuery })}
               searchValue={this.state.searchQuery}
               size={size}
               required
@@ -243,7 +243,7 @@ function filterOptionsForQuery(options, query) {
     return options;
   }
 
-  const filteredOptions = removeDuplicateValueOptions(options).filter(option =>
+  const filteredOptions = removeDuplicateValueOptions(options).filter((option) =>
     isCurrencyOptionAndFitsQuery(option, query),
   );
 
@@ -254,7 +254,7 @@ function removeDuplicateValueOptions(options) {
   const result = [];
   const resultValues = [];
 
-  options.forEach(option => {
+  options.forEach((option) => {
     if (option.value && resultValues.indexOf(option.value) === -1) {
       result.push(option);
       resultValues.push(option.value);

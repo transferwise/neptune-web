@@ -11,7 +11,7 @@ class HistoryNavigator {
     this.historyLimit = historyLimit;
   };
 
-  add = element => {
+  add = (element) => {
     if (!this.historyLimit || this.history.length <= this.historyLimit) {
       this.history.push(element);
       // Always keep the current Index to the latest change

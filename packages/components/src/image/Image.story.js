@@ -27,7 +27,7 @@ export const basic = () => {
         src={src}
         id="id1"
         onLoad={action('load 1')}
-        onError={e => action(e)}
+        onError={(e) => action(e)}
         loading={loading}
         className="m-t-5"
       />
@@ -36,7 +36,7 @@ export const basic = () => {
         src={src}
         id="id2"
         onLoad={action('load 2')}
-        onError={e => action(e)}
+        onError={(e) => action(e)}
         loading={loading}
         className="m-t-5"
       />
@@ -45,7 +45,7 @@ export const basic = () => {
         src={src}
         id="id3"
         onLoad={action('load 3')}
-        onError={e => action(e)}
+        onError={(e) => action(e)}
         loading={loading}
         className="m-t-5"
       />

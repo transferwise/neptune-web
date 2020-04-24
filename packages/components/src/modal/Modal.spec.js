@@ -151,7 +151,7 @@ describe('Modal', () => {
 
     it('closes on `esc` keypress', () => {
       ReactDOM.createPortal = jest.fn();
-      ReactDOM.createPortal.mockImplementation(attr => attr.props.children.props.children);
+      ReactDOM.createPortal.mockImplementation((attr) => attr.props.children.props.children);
       const onClose = jest.fn();
       component = mount(<Modal title="Some title" body="Some body" onClose={onClose} open />);
 

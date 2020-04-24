@@ -202,7 +202,7 @@ export default class Field extends Component {
     const validationFailures = {};
     const { field } = this.props;
     const validationFailuresKeys = getValidationFailures(newValue, field);
-    validationFailuresKeys.forEach(failure => {
+    validationFailuresKeys.forEach((failure) => {
       const messageKey = failure.toLowerCase();
 
       const message =
@@ -216,7 +216,7 @@ export default class Field extends Component {
     return validationFailures;
   }
 
-  objectSizeOf = obj => (obj ? Object.keys(obj).length : 0);
+  objectSizeOf = (obj) => (obj ? Object.keys(obj).length : 0);
 
   updateAlert(control) {
     const { value, field, errorMessage, warningMessage } = this.props;
@@ -227,7 +227,7 @@ export default class Field extends Component {
     if (this.objectSizeOf(validationFailures) > 0) {
       return {
         type: Alert.Type.ERROR,
-        content: Object.keys(validationFailures).map(key => (
+        content: Object.keys(validationFailures).map((key) => (
           <div key={key}>{validationFailures[key]}</div>
         )),
       };
@@ -311,9 +311,9 @@ export default class Field extends Component {
           name={name}
           locale={locale}
           value={value}
-          onChange={event => this.onChange(event)}
-          onFocus={event => this.onFocus(event)}
-          onBlur={event => this.onBlur(event)}
+          onChange={(event) => this.onChange(event)}
+          onFocus={(event) => this.onFocus(event)}
+          onBlur={(event) => this.onBlur(event)}
         />
         {showAlert && (
           <Alert type={alert.type} size={Alert.Size.SMALL} arrow={Alert.ArrowPosition.TOP_LEFT}>

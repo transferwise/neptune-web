@@ -24,7 +24,7 @@ class MonthCalendar extends PureComponent {
     max: null,
   };
 
-  onMonthSelect = month => {
+  onMonthSelect = (month) => {
     this.props.onViewDateUpdate({ month });
     this.props.onSelect();
   };

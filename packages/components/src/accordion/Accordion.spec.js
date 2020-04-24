@@ -105,5 +105,5 @@ describe('Accordion', () => {
     });
   });
 
-  const createComponent = p => shallow(<Accordion {...p} />);
+  const createComponent = (p) => shallow(<Accordion {...p} />);
 });

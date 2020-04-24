@@ -53,14 +53,7 @@ describe('RadioGroup', () => {
   it('returns radio options', () => {
     const component = shallow(<RadioGroup radios={RADIOS} {...props} />);
     expect(component.find(Radio).length).toBe(RADIOS.length);
-    expect(
-      JSON.stringify(
-        component
-          .find(Radio)
-          .at(0)
-          .props(),
-      ),
-    ).toEqual(
+    expect(JSON.stringify(component.find(Radio).at(0).props())).toEqual(
       JSON.stringify({
         id: 'id-test-0',
         value: 'value-test0',
@@ -79,27 +72,14 @@ describe('RadioGroup', () => {
       <RadioGroup radios={RADIOS} selectedValue="value-test2" {...props} />,
     );
     expect(component.find(Radio).length).toBe(RADIOS.length);
-    expect(
-      component
-        .find(Radio)
-        .at(2)
-        .props().checked,
-    ).toBeTruthy();
+    expect(component.find(Radio).at(2).props().checked).toBeTruthy();
 
-    expect(
-      component
-        .find(Radio)
-        .at(0)
-        .props().checked,
-    ).toBeFalsy();
+    expect(component.find(Radio).at(0).props().checked).toBeFalsy();
   });
 
   it('calls onChange with selected value', () => {
     const component = shallow(<RadioGroup radios={RADIOS} {...props} />);
-    component
-      .find(Radio)
-      .at(2)
-      .simulate('change', 'value-test2');
+    component.find(Radio).at(2).simulate('change', 'value-test2');
 
     expect(props.onChange).toHaveBeenCalledWith('value-test2');
   });

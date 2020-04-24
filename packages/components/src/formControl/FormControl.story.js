@@ -41,9 +41,9 @@ export const basic = () => {
       disabled={false}
       readOnly={false}
       required={false}
-      onChange={val => action(val)}
-      onBlur={val => action(val)}
-      onFocus={val => action(val)}
+      onChange={(val) => action(val)}
+      onBlur={(val) => action(val)}
+      onFocus={(val) => action(val)}
       minLength={null}
       maxLength={null}
       min={null}

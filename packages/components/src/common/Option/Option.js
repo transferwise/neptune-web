@@ -43,7 +43,7 @@ Option.propTypes = {
   title: Types.node.isRequired,
   content: Types.node,
   onClick: Types.func,
-  href: requiredIf(Types.string, props => props.as === 'a'),
+  href: requiredIf(Types.string, (props) => props.as === 'a'),
   as: Types.elementType,
   disabled: Types.bool,
   button: Types.node.isRequired,

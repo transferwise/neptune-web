@@ -1,11 +1,11 @@
-export const asyncFileRead = file =>
+export const asyncFileRead = (file) =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = event => {
+    reader.onload = (event) => {
       resolve(event.target.result);
     };
-    reader.onerror = event => {
+    reader.onerror = (event) => {
       reject(event);
     };
   });

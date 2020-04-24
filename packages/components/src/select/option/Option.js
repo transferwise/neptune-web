@@ -2,7 +2,8 @@ import React from 'react';
 import Types from 'prop-types';
 
 const Option = ({ currency, label, note, secondary, icon, classNames, selected }) => {
-  const style = classes => classes.map(className => classNames[className] || className).join(' ');
+  const style = (classes) =>
+    classes.map((className) => classNames[className] || className).join(' ');
   const iconClass = currency
     ? `${style([
         'currency-flag',

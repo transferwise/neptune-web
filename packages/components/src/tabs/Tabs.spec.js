@@ -10,7 +10,7 @@ import TabPanel from './TabPanel';
 jest.useFakeTimers();
 
 jest.mock('react-spring/renderprops.cjs', () => ({
-  Spring: jest.fn(props => {
+  Spring: jest.fn((props) => {
     const { children, to, onRest, config } = props;
 
     // Queue this behind a timer so we can control when it runs
@@ -144,10 +144,7 @@ describe('Tabs', () => {
   });
 
   it('calls onTabSelect when switching tabs', () => {
-    component
-      .find(Tab)
-      .at(2)
-      .simulate('click');
+    component.find(Tab).at(2).simulate('click');
     expect(props.onTabSelect).toHaveBeenCalledTimes(1);
 
     component.simulate('touchstart', createStartTouchEventObject({ x: 0, y: 0 }));
@@ -188,19 +185,9 @@ describe('Tabs', () => {
     });
 
     it('adds the spacers on either side of the selected panel', () => {
-      expect(
-        component
-          .find('.tabs__slider')
-          .childAt(0)
-          .is('[id="left-spacer"]'),
-      ).toBe(true);
+      expect(component.find('.tabs__slider').childAt(0).is('[id="left-spacer"]')).toBe(true);
 
-      expect(
-        component
-          .find('.tabs__slider')
-          .childAt(2)
-          .is('[id="right-spacer"]'),
-      ).toBe(true);
+      expect(component.find('.tabs__slider').childAt(2).is('[id="right-spacer"]')).toBe(true);
     });
 
     it('sets the width of the spacer based on the transitionSpacing provided', () => {
@@ -289,7 +276,7 @@ describe('Tabs', () => {
     it('displays all tabs when animating', () => {
       component.setState({ isAnimating: true });
 
-      component.find(TabPanel).forEach(tab => {
+      component.find(TabPanel).forEach((tab) => {
         expect(tab.prop('style').display).toBe('block');
       });
     });
@@ -297,7 +284,7 @@ describe('Tabs', () => {
     it('displays all tabs when swiping', () => {
       component.setState({ isSwiping: true });
 
-      component.find(TabPanel).forEach(tab => {
+      component.find(TabPanel).forEach((tab) => {
         expect(tab.prop('style').display).toBe('block');
       });
     });
@@ -349,10 +336,7 @@ function getPanelContainerOverflow(component) {
 }
 
 function getPanelWidth(component) {
-  return component
-    .find(TabPanel)
-    .at(0)
-    .prop('style').width;
+  return component.find(TabPanel).at(0).prop('style').width;
 }
 
 function leftSpacer(component) {

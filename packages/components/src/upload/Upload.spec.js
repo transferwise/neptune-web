@@ -6,7 +6,7 @@ import { ANIMATION_DURATION_IN_MS } from '../processIndicator';
 
 jest.useFakeTimers();
 jest.mock('./utils/postData', () => ({
-  postData: () => new Promise(resolve => resolve('ServerResponse')),
+  postData: () => new Promise((resolve) => resolve('ServerResponse')),
 }));
 
 jest.mock('./utils/asyncFileRead');
@@ -77,7 +77,7 @@ describe('Upload', () => {
   let component;
   beforeEach(() => {
     component = shallow(<Upload {...props} />);
-    asyncFileRead.mockImplementation(() => new Promise(resolve => resolve('a value')));
+    asyncFileRead.mockImplementation(() => new Promise((resolve) => resolve('a value')));
   });
 
   afterEach(() => {
@@ -130,7 +130,7 @@ describe('Upload', () => {
         });
     });
 
-    it('step changes from UploadImageStep to ProcessingStep', done => {
+    it('step changes from UploadImageStep to ProcessingStep', (done) => {
       expect(component.find(UploadImageStep)).toHaveLength(1);
       expect(component.find(ProcessingStep)).toHaveLength(0);
       expect(component.find(CompleteStep)).toHaveLength(0);
@@ -147,7 +147,7 @@ describe('Upload', () => {
         });
     });
 
-    it('step changes from UploadImageStep to ProcessingStep with right props', done => {
+    it('step changes from UploadImageStep to ProcessingStep with right props', (done) => {
       component
         .instance()
         .fileDropped(TEST_FILE)
@@ -160,7 +160,7 @@ describe('Upload', () => {
   });
 
   describe('when file is being processed', () => {
-    it('step ProcessingStep is called with success props', done => {
+    it('step ProcessingStep is called with success props', (done) => {
       component
         .instance()
         .fileDropped(TEST_FILE)
@@ -175,7 +175,7 @@ describe('Upload', () => {
         });
     });
 
-    it('step ProcessingStep is called with error props', done => {
+    it('step ProcessingStep is called with error props', (done) => {
       asyncFileRead.mockImplementation(() => new Promise((resolve, reject) => reject('An error')));
 
       component
@@ -194,7 +194,7 @@ describe('Upload', () => {
   });
 
   describe('when file is processed', () => {
-    it('step changes from UploadImageStep to CompleteStep', done => {
+    it('step changes from UploadImageStep to CompleteStep', (done) => {
       component = mount(<Upload {...props} />);
       expect(component.find(UploadImageStep)).toHaveLength(1);
       expect(component.find(ProcessingStep)).toHaveLength(0);
@@ -214,7 +214,7 @@ describe('Upload', () => {
         });
     });
 
-    it('step CompleteStep is called with error props', done => {
+    it('step CompleteStep is called with error props', (done) => {
       component = mount(<Upload {...props} />);
       asyncFileRead.mockImplementation(() => new Promise((resolve, reject) => reject('An error')));
 
@@ -234,7 +234,7 @@ describe('Upload', () => {
         });
     });
 
-    it('onSuccess is called with response when httpOptions are provided', done => {
+    it('onSuccess is called with response when httpOptions are provided', (done) => {
       component = mount(<Upload {...props} httpOptions={{ url: 'a-url' }} />);
 
       component

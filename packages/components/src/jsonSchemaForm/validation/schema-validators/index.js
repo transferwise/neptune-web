@@ -27,14 +27,14 @@ function isValidObjectSchema(value, schema) {
   }
 
   return Object.keys(schema.properties)
-    .map(propertyName =>
+    .map((propertyName) =>
       isObjectPropertyValid(
         value[propertyName],
         schema.properties[propertyName],
         schema.required && schema.required.indexOf(propertyName) >= 0,
       ),
     )
-    .every(property => property);
+    .every((property) => property);
 }
 
 function isObjectPropertyValid(propertyValue, propertySchema, isRequired) {
@@ -52,21 +52,23 @@ function isValidArraySchema(value, schema) {
   if (getArrayValidationFailures(value, schema).length) {
     return false;
   }
-  return value.map(item => isValidSchema(item, schema.items)).every(valid => valid);
+  return value.map((item) => isValidSchema(item, schema.items)).every((valid) => valid);
 }
 
 function isValidOneOfSchema(value, schema) {
   if (!isArray(schema.oneOf)) {
     return false;
   }
-  return schema.oneOf.some(childSchema => isValidSchema(value, childSchema));
+  return schema.oneOf.some((childSchema) => isValidSchema(value, childSchema));
 }
 
 function isValidAllOfSchema(value, schema) {
   if (!isArray(schema.allOf)) {
     return false;
   }
-  return schema.allOf.map(childSchema => isValidSchema(value, childSchema)).every(valid => valid);
+  return schema.allOf
+    .map((childSchema) => isValidSchema(value, childSchema))
+    .every((valid) => valid);
 }
 
 /**

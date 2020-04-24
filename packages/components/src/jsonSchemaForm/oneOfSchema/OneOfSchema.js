@@ -7,13 +7,13 @@ import RadioGroup from '../../radioGroup';
 import { getValidModelParts } from '../validation/valid-model';
 import { isValidSchema } from '../validation/schema-validators';
 
-const OneOfSchema = props => {
+const OneOfSchema = (props) => {
   const getModelPartsForSchemas = (model, schemas) =>
-    schemas.map(schema => getValidModelParts(model, schema));
+    schemas.map((schema) => getValidModelParts(model, schema));
 
   // Determine which schema to show intitially based on validity of model, default to 0
   const getActiveSchemaIndex = (schema, model) => {
-    const index = schema.oneOf.findIndex(childSchema => isValidSchema(model, childSchema));
+    const index = schema.oneOf.findIndex((childSchema) => isValidSchema(model, childSchema));
     return index >= 0 ? index : 0;
   };
 
@@ -23,12 +23,12 @@ const OneOfSchema = props => {
     props.onChange(model, props.schema.oneOf[index]);
   };
 
-  const onSchemaChange = index => {
+  const onSchemaChange = (index) => {
     setSchemaIndex(index);
     props.onChange(models[index], props.schema.oneOf[index]);
   };
 
-  const getRadioOptions = schemas =>
+  const getRadioOptions = (schemas) =>
     schemas.map((schema, value) => {
       return { value, label: schema.title };
     });
@@ -60,7 +60,7 @@ const OneOfSchema = props => {
         errors={props.errors}
         locale={props.locale}
         translations={props.translations}
-        onChange={model => onChange(model, schemaIndex)}
+        onChange={(model) => onChange(model, schemaIndex)}
         submitted={props.submitted}
         hide-title
       />

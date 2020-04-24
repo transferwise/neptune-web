@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-const withNextPortalWrapper = Component => props => {
+const withNextPortalWrapper = (Component) => (props) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

@@ -24,8 +24,8 @@ class Accordion extends PureComponent {
     indexOpen: this.props.indexOpen,
   };
 
-  handleOnClick = index => {
-    this.setState(prevState => {
+  handleOnClick = (index) => {
+    this.setState((prevState) => {
       return { indexOpen: prevState.indexOpen === index ? -1 : index };
     });
   };

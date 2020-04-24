@@ -22,7 +22,7 @@ import './Tabs.css';
 
 const MIN_INDEX = 0;
 
-const enabledTabsFilter = tab => !tab.disabled;
+const enabledTabsFilter = (tab) => !tab.disabled;
 
 const SpacerWidth = { default: 0, xs: 8, sm: 16, md: 24, lg: 32 };
 
@@ -95,12 +95,12 @@ class Tabs extends React.Component {
     }));
   };
 
-  setContainerRefAndWidth = node => {
+  setContainerRefAndWidth = (node) => {
     this.container = node;
     this.setContainerWidth(node);
   };
 
-  setContainerWidth = node => {
+  setContainerWidth = (node) => {
     if (!node) {
       return;
     }
@@ -110,7 +110,7 @@ class Tabs extends React.Component {
     this.containerWidth = width;
   };
 
-  isTabDisabled = index => {
+  isTabDisabled = (index) => {
     const { tabs } = this.props;
 
     return tabs[index] && tabs[index].disabled;
@@ -150,7 +150,7 @@ class Tabs extends React.Component {
     return nextSelected;
   };
 
-  swipedOverHalfOfContainer = difference => difference / this.containerWidth >= 0.5;
+  swipedOverHalfOfContainer = (difference) => difference / this.containerWidth >= 0.5;
 
   calculateApplicableDragDifference = ({ currentSelected, nextSelected, start, end }) => {
     const difference = getSwipeDifference(start, end);
@@ -173,13 +173,13 @@ class Tabs extends React.Component {
     return false;
   };
 
-  switchTab = index => {
+  switchTab = (index) => {
     const { onTabSelect } = this.props;
     onTabSelect(index);
   };
 
   getTabIndexWithoutDisabledTabs(index) {
-    return index - this.props.tabs.slice(0, index).filter(tab => !enabledTabsFilter(tab)).length;
+    return index - this.props.tabs.slice(0, index).filter((tab) => !enabledTabsFilter(tab)).length;
   }
 
   animateToTab = (index, instant) => {
@@ -188,7 +188,7 @@ class Tabs extends React.Component {
     this.animatePanel(this.getTabIndexWithoutDisabledTabs(index), instant);
   };
 
-  animateLine = index => {
+  animateLine = (index) => {
     this.setState({ translateLineX: `${index * 100}%` });
   };
 
@@ -207,7 +207,7 @@ class Tabs extends React.Component {
     });
   };
 
-  disableScroll = e => {
+  disableScroll = (e) => {
     const { isSwiping } = this.state;
 
     if (isSwiping) {
@@ -215,17 +215,17 @@ class Tabs extends React.Component {
     }
   };
 
-  handleTabClick = index => () => {
+  handleTabClick = (index) => () => {
     this.switchTab(index);
   };
 
-  onKeyDown = index => event => {
+  onKeyDown = (index) => (event) => {
     if (event && event.keyCode === KeyCodes.ENTER) {
       this.switchTab(index);
     }
   };
 
-  handleTouchStart = event => {
+  handleTouchStart = (event) => {
     const start = {
       x: event.nativeEvent.touches[0].clientX,
       y: event.nativeEvent.touches[0].clientY,
@@ -239,7 +239,7 @@ class Tabs extends React.Component {
     event.persist();
   };
 
-  handleTouchMove = event => {
+  handleTouchMove = (event) => {
     const { start } = this.state;
     const { selected: currentSelectedFromProps } = this.props;
     const selected = this.getTabIndexWithoutDisabledTabs(currentSelectedFromProps);
@@ -282,7 +282,7 @@ class Tabs extends React.Component {
         ? -(this.containerWidth * selected) + dragDifference
         : false;
 
-      this.setState(state => ({
+      this.setState((state) => ({
         currentSwipe: [...state.currentSwipe, end],
         translateFrom: translateX || state.translateFrom,
         translateTo: translateX || state.translateTo,
@@ -290,7 +290,7 @@ class Tabs extends React.Component {
     }
   };
 
-  handleTouchEnd = event => {
+  handleTouchEnd = (event) => {
     const { start, isSwiping } = this.state;
     const { selected } = this.props;
     const end = {
@@ -433,7 +433,7 @@ class Tabs extends React.Component {
               }
             }}
           >
-            {props => (
+            {(props) => (
               <div
                 className="tabs__slider"
                 style={{

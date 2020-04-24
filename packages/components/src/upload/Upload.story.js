@@ -59,9 +59,9 @@ export const basic = () => {
         url: 'https://httpbin.org/post',
         method: 'POST',
       }}
-      onStart={file => action('onStart', file)}
+      onStart={(file) => action('onStart', file)}
       onSuccess={(httpResponse, fileName) => action('onSuccess', httpResponse, fileName)}
-      onFailure={httpResponse => action('onFailure', httpResponse)}
+      onFailure={(httpResponse) => action('onFailure', httpResponse)}
       onCancel={() => action('onCancel')}
     />
   );

@@ -63,7 +63,7 @@ export const basic = () => {
           maximum: 'Must be 99 or less',
         },
       }}
-      onChange={val => action(val)}
+      onChange={(val) => action(val)}
     />
   );
 };

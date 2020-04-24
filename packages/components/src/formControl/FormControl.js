@@ -209,23 +209,23 @@ export default class FormControl extends PureComponent {
     return value;
   }
 
-  handleOnChange = event => {
+  handleOnChange = (event) => {
     const value = this.getValue(event);
 
     this.props.onChange(value);
   };
 
-  handleOnFocus = event => this.props.onFocus && this.props.onFocus(this.getValue(event));
+  handleOnFocus = (event) => this.props.onFocus && this.props.onFocus(this.getValue(event));
 
-  handleOnBlur = event => this.props.onBlur && this.props.onBlur(this.getValue(event));
+  handleOnBlur = (event) => this.props.onBlur && this.props.onBlur(this.getValue(event));
 
-  getSelectedOption = options => {
+  getSelectedOption = (options) => {
     let selectedOption;
     if (this.state.selectedOption !== null && typeof this.state.selectedOption !== 'undefined') {
-      selectedOption = options.find(option => this.state.selectedOption.value === option.value);
+      selectedOption = options.find((option) => this.state.selectedOption.value === option.value);
     }
     if (this.props.value !== null && typeof this.props.value !== 'undefined') {
-      selectedOption = options.find(option => this.props.value === option.value);
+      selectedOption = options.find((option) => this.props.value === option.value);
     }
     return selectedOption;
   };
@@ -264,7 +264,7 @@ export default class FormControl extends PureComponent {
       case FormControlType.RADIO:
         return (
           <RadioGroup
-            radios={options.map(option => ({ ...option, disabled, readOnly }))}
+            radios={options.map((option) => ({ ...option, disabled, readOnly }))}
             onChange={this.handleOnChange}
             name={name}
             selectedValue={value}
@@ -291,7 +291,7 @@ export default class FormControl extends PureComponent {
             id={id}
             selected={this.getSelectedOption(options)}
             options={options}
-            onChange={newValue => {
+            onChange={(newValue) => {
               this.setState({ selectedOption: newValue });
               this.handleOnChange(newValue);
             }}

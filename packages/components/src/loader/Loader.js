@@ -4,9 +4,9 @@ import classnames from 'classnames';
 import { Size } from '../common';
 import '@transferwise/neptune-css/dist/css/loader-borderless.css';
 
-const Loader = props => {
+const Loader = (props) => {
   const { small, size, classNames } = props;
-  const style = className => classNames[className] || className;
+  const style = (className) => classNames[className] || className;
 
   const legacySize = small ? Loader.Size.EXTRA_SMALL : size;
 

@@ -71,12 +71,7 @@ describe('MonthCalendarTable', () => {
       selectedDate: today,
       viewYear: today.getFullYear(),
     });
-    expect(
-      component
-        .find(TableLink)
-        .find({ today: true })
-        .prop('item'),
-    ).toBe(today.getMonth());
+    expect(component.find(TableLink).find({ today: true }).prop('item')).toBe(today.getMonth());
   });
 
   it('passes onSelect to TableLink', () => {
@@ -87,5 +82,5 @@ describe('MonthCalendarTable', () => {
     expect(component.find('.sr-only').text()).toBe('Enter date..');
   });
 
-  const getTableLinkAt = i => component.find(TableLink).at(i);
+  const getTableLinkAt = (i) => component.find(TableLink).at(i);
 });

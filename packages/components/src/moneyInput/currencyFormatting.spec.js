@@ -1,7 +1,7 @@
 import { formatAmount, parseAmount } from './currencyFormatting';
 
 jest.mock('@transferwise/formatting', () => ({
-  formatAmount: number => `formatted ${number}`,
+  formatAmount: (number) => `formatted ${number}`,
 }));
 
 describe('Number formatting', () => {
