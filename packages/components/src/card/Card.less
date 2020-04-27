@@ -1,0 +1,37 @@
+@import '@transferwise/neptune-css/src/less/variables/_colors.less';
+
+.tw-card {
+  border-top: solid 1px var(--brand-smoke-plus-10);
+
+  &.list-group-item {
+    margin-top: 0;
+    border-left: 0;
+    background-color: transparent;
+  }
+
+  &.active {
+    margin-top: 1px;
+    border-top: 0;
+    background-color: var(--brand-white);
+  }
+
+  &:hover {
+    background-color: var(--brand-white);
+
+    .tw-card__panel .circle {
+      background-color: var(--brand-smoke-plus-20);
+    }
+  }
+
+  &__panel {
+    .media {
+      cursor: pointer;
+    }
+
+    &--inactive {
+      .media {
+        cursor: default;
+      }
+    }
+  }
+}

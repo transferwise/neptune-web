@@ -67,6 +67,9 @@ describe('Server side rendering', () => {
     },
     alt: '',
     src: '',
+    isExpanded: true,
+    details: 'yo',
+    icon: <svg />,
   };
 
   // Override props in case of name collision.
