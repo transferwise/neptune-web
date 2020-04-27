@@ -14,5 +14,4 @@ export { Layout } from './propsValues/layouts';
 export { FormControlType } from './propsValues/formControlType';
 export { Status } from './propsValues/status';
 export { MessageType } from './propsValues/messageType';
-export { JustifyContent, AlignItems, FlexDirection, Spacer } from './propsValues/flexProperties';
 export { ProfileType } from './propsValues/profileType';

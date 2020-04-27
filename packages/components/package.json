@@ -24,7 +24,6 @@
     "storybook": "start-storybook -p 3001",
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf lib build",
-    "build:emotion-fix": "node ./emotionFix.js",
     "build:compile-css": "gulp lessCompiler",
     "build:umd": "NODE_ENV=umd rollup -c",
     "build:umd-nopolyfill": "NODE_ENV=umd-nopolyfill rollup -c",
@@ -100,7 +99,6 @@
     "husky": "^4.2.3",
     "jest": "24.8.0",
     "jest-cli": "24.8.0",
-    "jest-emotion": "^10.0.14",
     "jest-environment-jsdom-fourteen": "0.1.0",
     "jest-fetch-mock": "^3.0.3",
     "jest-resolve": "25.3.0",
@@ -138,7 +136,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.9.2",
-    "@emotion/core": "^10.0.28",
     "@transferwise/formatting": "^2.1.0",
     "@transferwise/icons": "^1.0.0",
     "@transferwise/neptune-css": "^0.13.1",
