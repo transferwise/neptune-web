@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.13.1...@transferwise/neptune-css@0.13.2) (2020-04-27)
+
+
+### Bug Fixes
+
+* remove unnecessary public navigation styles on css package ([#296](https://github.com/transferwise/neptune-web/issues/296)) ([f8194a5](https://github.com/transferwise/neptune-web/commit/f8194a54e097f0f48fd529701eff6f880881a583))
+
+
+
+
+
 ## [0.13.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.13.0...@transferwise/neptune-css@0.13.1) (2020-04-09)
 
 **Note:** Version bump only for package @transferwise/neptune-css

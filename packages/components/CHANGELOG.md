@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [26.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.0.5...@transferwise/components@26.1.0) (2020-04-27)
+
+
+### Bug Fixes
+
+* preventing initial state fn from running on every render ([#295](https://github.com/transferwise/neptune-web/issues/295)) ([113d454](https://github.com/transferwise/neptune-web/commit/113d454421ff232d19f0fcc02f91715cbceeb5ef))
+
+
+### Features
+
+* add Image component ([#212](https://github.com/transferwise/neptune-web/issues/212)) ([9224629](https://github.com/transferwise/neptune-web/commit/92246298d704cb6c47c5ae87253c3c3b7b075586))
+* markdown component ([#298](https://github.com/transferwise/neptune-web/issues/298)) ([6d3ff9e](https://github.com/transferwise/neptune-web/commit/6d3ff9e83f457427e68dc80b56003907baa35bb1))
+
+
+
+
+
 ## [26.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.0.4...@transferwise/components@26.0.5) (2020-04-09)
 
 **Note:** Version bump only for package @transferwise/components

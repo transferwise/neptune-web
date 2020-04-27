@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@3.0.16...@transferwise/neptune-docs@3.1.0) (2020-04-27)
+
+
+### Features
+
+* add Image component ([#212](https://github.com/transferwise/neptune-web/issues/212)) ([9224629](https://github.com/transferwise/neptune-web/commit/92246298d704cb6c47c5ae87253c3c3b7b075586))
+* markdown component ([#298](https://github.com/transferwise/neptune-web/issues/298)) ([6d3ff9e](https://github.com/transferwise/neptune-web/commit/6d3ff9e83f457427e68dc80b56003907baa35bb1))
+
+
+
+
+
 ## [3.0.16](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@3.0.15...@transferwise/neptune-docs@3.0.16) (2020-04-09)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
