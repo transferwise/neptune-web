@@ -88,6 +88,9 @@
         0,
         "always",
         140
+      ],
+      "subject-case": [
+        0
       ]
     }
   }
