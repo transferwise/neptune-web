@@ -9,6 +9,7 @@ Currently the library gets bundled in two different formats: UMD and ES.
 This choice has been made keeping in mind the different scenarios where the library is used
 and trying to maximize the compatibility with all the possible consumers' setup.
 
+
 #### UMD - Universal Module Definition
 This style is a combination of CommonJS and AMD and it's meant to be compatible with both browsers and server environments (Node).
 
@@ -16,6 +17,8 @@ This bundle gets generated using rollup.
 
 Its size can be checked in the table below or via CI jobs details.
 Here's an [example](https://bundlesize-store.now.sh/build?info=%7B%22files%22%3A%5B%7B%22maxSize%22%3A102400%2C%22path%22%3A%22.%2Fbuild%2Fumd%2Fpolyfill%2Fmain.js%22%2C%22size%22%3A82447%2C%22compression%22%3A%22gzip%22%7D%2C%7B%22maxSize%22%3A102400%2C%22path%22%3A%22.%2Fbuild%2Fumd%2Fno-polyfill%2Fmain.js%22%2C%22size%22%3A65367%2C%22compression%22%3A%22gzip%22%7D%5D%2C%22repo%22%3A%22transferwise%2Fneptune-web%22%2C%22branch%22%3A%22master%22%2C%22commit_message%22%3A%22%22%2C%22sha%22%3A%2200d2871001b71f3ec166853471b5ace51574ef48%22%7D)
+
+Also when `yarn build` runs a stats.html gets generated automatically in component's folder root and can be inspected to gather more info about the bundle.
 
 #### ES 
 It uses the standardized ES module format for code.
@@ -266,5 +269,5 @@ Whenever a component is built or a change is introduced it would be good to trac
 
 
 export const meta = {
-  name: 'Usage',
+  name: 'About Bundle',
 };

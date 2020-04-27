@@ -77,15 +77,7 @@ describe('Server side rendering', () => {
     Sticky: { position: 'top' },
     MoneyInput: { selectedCurrency: { currency: 'EUR' } },
     Tabs: { selected: 1, onTabSelect: jest.fn() },
-    Box: {
-      size: {
-        xs: 1,
-        sm: 1,
-        md: 1,
-        lg: 1,
-        xl: 1,
-      },
-    },
+    Markdown: { children: '# Markdown string' },
     SnackbarConsumer: {
       children: jest.fn(),
     },
