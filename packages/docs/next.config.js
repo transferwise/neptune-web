@@ -25,13 +25,13 @@ module.exports = () =>
       withFonts(
         withCSS(
           withMDX({
-            transpileModules: ['@transferwise/components'],
+            transpileModules: ['@transferwise/dynamic-flows'],
             pageExtensions,
             assetPrefix,
             env: {
               ASSET_PREFIX: assetPrefix,
             },
-            webpack: config => {
+            webpack: (config) => {
               config.module.rules.push({
                 test: /\.code.js$/,
                 use: 'raw-loader',

@@ -1,0 +1,16 @@
+config
+docs
+node_modules
+README.md
+CHANGELOG.md
+yarn.lock
+yarn-error.log
+package-lock.json
+circle.yml
+.gitignore
+.npmignore
+src
+public
+docs-build
+scripts
+.babelrc

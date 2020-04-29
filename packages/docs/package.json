@@ -33,6 +33,7 @@
     "@mdx-js/loader": "^1.5.8",
     "@next/mdx": "^9.0.5",
     "@transferwise/components": "^26.2.0",
+    "@transferwise/dynamic-flows": "^1.0.0",
     "@transferwise/icons": "^1.5.0",
     "@transferwise/neptune-css": "^0.13.2",
     "@zeit/next-css": "^1.0.1",
