@@ -65,7 +65,7 @@
     "babel-plugin-dynamic-import-node": "^2.3.0",
     "babel-plugin-named-asset-import": "^0.3.6",
     "babel-preset-minify": "^0.5.1",
-    "bootstrap": "github:transferwise/bootstrap#^v5.20.0",
+    "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
     "bundlesize": "^0.18.0",
     "camelcase": "^5.2.0",
     "cpx": "^1.5.0",
@@ -113,7 +113,7 @@
     "rollup-plugin-visualizer": "^4.0.4"
   },
   "peerDependencies": {
-    "bootstrap": "github:transferwise/bootstrap#^v5.20.0",
+    "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
     "currency-flags": "^2.1.1",
     "prop-types": "^15.7.2",
     "react": "16.13.1",

@@ -36,7 +36,7 @@
     "@transferwise/icons": "^1.5.0",
     "@transferwise/neptune-css": "^0.13.2",
     "@zeit/next-css": "^1.0.1",
-    "bootstrap": "github:transferwise/bootstrap#^v5.20.0",
+    "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
     "currency-flags": "^2.1.1",
     "git-branch": "^2.0.1",
     "glob": "^7.1.6",
