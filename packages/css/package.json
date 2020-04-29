@@ -42,7 +42,7 @@
   ],
   "dependencies": {
     "@transferwise/icons": "^0.14.0",
-    "bootstrap": "github:transferwise/bootstrap#v5.20.0",
+    "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
     "svgo": "1.3.2",
     "transferwise-iconfont": "transferwise/iconfont"
   },
