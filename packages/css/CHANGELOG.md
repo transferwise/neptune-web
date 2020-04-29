@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.13.2...@transferwise/neptune-css@0.13.3) (2020-04-29)
+
+
+### Bug Fixes
+
+* changing semvar syntax to support npm ([#313](https://github.com/transferwise/neptune-web/issues/313)) ([8502de1](https://github.com/transferwise/neptune-web/commit/8502de12407a2e59e50ce7cd180d2583d35b8082))
+
+
+
+
+
 ## [0.13.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.13.1...@transferwise/neptune-css@0.13.2) (2020-04-27)
 
 
