@@ -1,25 +1,24 @@
-/* Level 3 */
+// LESS variables for mixin purposes.
+
+@space-4: 4px;
+@space-8: 8px;
+@space-12: 12px;
+@space-16: 16px;
+@space-24: 24px;
+@space-32: 32px;
+@space-40: 40px;
+@space-48: 48px;
 
 :root {
-  --spacer: 8px;
+  --space-4: @space-4;
+  --space-8: @space-8;
+  --space-12: @space-12;
+  --space-16: @space-16;
+  --space-24: @space-24;
+  --space-32: @space-32;
+  --space-40: @space-40;
+  --space-48: @space-48;
 
-  --spacing-1-mobile: 16px;
-  --spacing-1-tablet: 24px;
-  --spacing-1-desktop: 32px;
-
-  --spacing-2-mobile: 32px;
-  --spacing-2-tablet: 48px;
-  --spacing-2-desktop: 64px;
-
-  --spacing-3-mobile: 48px;
-  --spacing-3-tablet: 72px;
-  --spacing-3-desktop: 96px;
-
-  --spacing-5-mobile: 80px;
-  --spacing-5-tablet: 120px;
-  --spacing-5-desktop: 160px;
-
-  --spacing-7-mobile: 112px;
-  --spacing-7-tablet: 168px;
-  --spacing-7-desktop: 224px;
+  // Deprecated
+  --spacer: @space-8;
 }

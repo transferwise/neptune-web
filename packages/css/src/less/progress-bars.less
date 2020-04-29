@@ -9,14 +9,14 @@
   --progress-bar-bg: var(--brand-light-blue);
   --progress-bar-primary-bg: var(--brand-navy);
   --progress-bar-success-bg: var(--brand-green);
-  --progress-bar-warning-bg: var(--brand-orange);
-  --progress-bar-danger-bg: var(--brand-red);
+  --progress-bar-warning-bg: var(--color-warning);
+  --progress-bar-danger-bg: var(--color-negative);
   --progress-bar-info-bg: var(--brand-light-blue);
   --progress-pip-size: 8px;
 
   height: var(--progress-height);
-  margin-top: calc((var(--line-height-computed) - var(--progress-height)) / 2);
-  margin-bottom: calc((var(--line-height-computed) - var(--progress-height)) / 2);
+  margin-top: calc((var(--space-24) - var(--progress-height)) / 2);
+  margin-bottom: calc((var(--space-24) - var(--progress-height)) / 2);
   background-color: var(--progress-bg);
   border-radius: calc(var(--progress-height) / 2);
 }
@@ -25,7 +25,7 @@
   float: left;
   width: 0%;
   height: 100%;
-  font-size: var(--font-size-base);
+  font-size: var(--font-size);
   font-weight: bold;
   color: var(--progress-bar-color);
   text-align: right;
@@ -57,7 +57,7 @@
 .progress-lg {
   height: var(--progress-height-lg);
   border-radius: calc(var(--progress-height-lg) / 2);
-  margin-bottom: var(--line-height-computed);
+  margin-bottom: var(--space-24);
 
   .progress-bar {
     line-height: var(--progress-height-lg);

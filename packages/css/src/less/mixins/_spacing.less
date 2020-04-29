@@ -13,6 +13,7 @@
     padding: @spacer !important;
   }
 }
+
 .spacing-vertical(@postfix, @spacer) {
   .m-t-@{postfix} {
     margin-top: @spacer !important;
@@ -78,22 +79,22 @@
 .responsive-spacing-global(@postfix, @spacing-mobile, @spacing-tablet, @spacing-desktop) {
   .spacing-global(@postfix, @spacing-mobile);
 
-  @media (min-width: @screen-sm-min) {
+  @media (--screen-sm) {
     .spacing-global(@postfix, @spacing-tablet);
   }
 
-  @media (min-width: @screen-lg-min) {
+  @media (--screen-lg) {
     .spacing-global(@postfix, @spacing-desktop);
   }
 }
 .responsive-spacing-vertical(@postfix, @spacing-mobile, @spacing-tablet, @spacing-desktop) {
   .spacing-vertical(@postfix, @spacing-mobile);
 
-  @media (min-width: @screen-sm-min) {
+  @media (--screen-sm) {
     .spacing-vertical(@postfix, @spacing-tablet);
   }
 
-  @media (min-width: @screen-lg-min) {
+  @media (--screen-lg) {
     .spacing-vertical(@postfix, @spacing-desktop);
   }
 }
@@ -101,11 +102,11 @@
 .responsive-spacing-horizontal(@postfix, @spacing-mobile, @spacing-tablet, @spacing-desktop) {
   .spacing-horizontal(@postfix, @spacing-mobile);
 
-  @media (min-width: @screen-sm-min) {
+  @media (--screen-sm) {
     .spacing-horizontal(@postfix, @spacing-tablet);
   }
 
-  @media (min-width: @screen-lg-min) {
+  @media (--screen-lg) {
     .spacing-horizontal(@postfix, @spacing-desktop);
   }
 }

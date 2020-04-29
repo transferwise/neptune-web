@@ -7,7 +7,8 @@
 .footer {
   background-color: var(--gray-base);
   font-size: var(--font-size-small);
-  line-height: var(--line-height-computed);
+  line-height: var(--line-height-base);
+  padding-top: var(--space-16);
 
   .footer-link,
   .link-icon {
@@ -24,10 +25,10 @@
 
   .footer-title {
     font-size: var(--font-size-small);
-    color: var(--headings-color);
+    color: var(--color-text-primary);
 
     .footer-link {
-      color: var(--headings-color);
+      color: var(--color-text-primary);
       font-weight: bold;
 
       &:hover,
@@ -99,5 +100,13 @@
 
   @media (--screen-xs-max) {
     position: relative;
+  }
+
+  @media (--screen-sm) {
+    padding-top: var(--space-24);
+  }
+
+  @media (--screen-lg) {
+    padding-top: var(--space-32);
   }
 }

@@ -1,7 +1,8 @@
 /* Level 4 */
 
 @import './variables/_sizes.less';
-@import './spacing.less';
+@import './variables/_spacing.less';
+@import './addons/_spacing-utilities.less';
 
 .drawer {
   display: flex;
@@ -54,7 +55,7 @@
   }
 }
 
-@media (min-width: @screen-sm-max) {
+@media (--screen-md) {
   .drawer {
     .drawer-header {
       height: calc(var(--spacer) * 8);

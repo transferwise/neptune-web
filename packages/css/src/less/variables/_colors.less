@@ -1,97 +1,104 @@
-/* Level 4 */
-/* TODO: add new branding color */
+// LESS variables for base colours.
+@color-base-blue-light: #00b9ff;
+@color-base-blue-mid: #00a4df;
+@color-base-blue-dark: #008ec0;
+@color-base-blue-fade: #d8f1fa;
+@color-base-green-light: #2ed06e;
+@color-base-green-mid: #28b862;
+@color-base-green-dark: #1d8547;
+@color-base-green-fade: #d6f5e2;
+@color-base-red-light: #f53636;
+@color-base-red-mid: #cf3131;
+@color-base-red-dark: #b62a18;
+@color-base-red-fade: #ffdfdf;
+@color-base-orange-light: #ffa600;
+@color-base-orange-mid: #df8700;
+@color-base-orange-dark: #c07500;
+@color-base-orange-fade: #fff4dd;
+@color-base-smoke-light: #e2e6e8;
+@color-base-smoke-mid: #d3d5d8;
+@color-base-smoke-dark: #a8aaac;
+@color-base-smoke-fade: #f2f5f7;
+@color-base-navy-light: #37517e;
+@color-base-navy-mid: #2e4369;
+@color-base-navy-dark: #253655;
+@color-base-navy-fade: #a8afbb;
+@color-base-grey-light: #829ca9;
+@color-base-grey-mid: #6f8691;
+@color-base-grey-dark: #5d7079;
+@color-base-white: #ffffff;
+
+// Semantic colours
+:root {
+  --color-primary: @color-base-navy-light;
+  --color-secondary: @color-base-grey-mid;
+  --color-accent: @color-base-blue-light;
+  --color-positive: @color-base-green-light;
+  --color-negative: @color-base-red-light;
+  --color-warning: @color-base-orange-light;
+  --color-text-primary: var(--color-primary);
+  --color-text-secondary: var(--color-secondary);
+  --color-text-inactive: @color-base-smoke-dark;
+  --color-text-important: var(--color-primary);
+  --color-text-link: var(--color-accent);
+  --color-text-link-hover: @color-base-blue-mid;
+  --color-text-link-active: @color-base-blue-dark;
+  --color-text-positive: var(--color-positive);
+  --color-text-negative: var(--color-negative);
+  --color-text-warning: var(--color-warning);
+  --color-control-accent: var(--color-accent);
+  --color-control-positive: var(--color-positive);
+  --color-control-negative: var(--color-negative);
+  --color-control-warning: var(--color-warning);
+  --color-border-neutral: @color-base-smoke-light;
+  --color-border-focus: var(--color-accent);
+  --color-background-screen: @color-base-white;
+  --color-background-elevated: @color-base-white;
+  --color-background-neutral: @color-base-smoke-fade;
+  --color-background-accent: @color-base-blue-fade;
+  --color-background-positive: @color-base-green-fade;
+  --color-background-negative: @color-base-red-fade;
+  --color-background-warning: @color-base-orange-fade;
+}
 
 :root {
-  --brand-white: #fff;
+  --brand-white: @color-base-white;
+  --link-color: var(--color-text-link);
 
- /* Text colors */
-  --text-color: #5d7079;
-  --link-color: #00b9ff;
-
- /* Blues */
-  --brand-pale-blue-minus-20: #77d9f7;
-  --brand-pale-blue-minus-10: #a7e2f9;
+  /* Blues */
   --brand-pale-blue: #dbf0fd;
-
-  --brand-navy-minus-20: #253655;
-  --brand-navy-minus-10: #2e4369;
-  --brand-navy: #37517e;
-
+  --brand-navy-minus-20: @color-base-navy-dark;
+  --brand-navy-minus-10: @color-base-navy-mid;
+  --brand-navy: @color-base-navy-light;
   --brand-blue-minus-20: #111824;
   --brand-blue-minus-10: #192439;
   --brand-blue: #223049;
-  --brand-blue-plus-10: #283957;
-  --brand-blue-plus-20: #2f4366;
 
-  --brand-blue--rbg: 34, 48, 73;
+  /* Light Blues */
+  --brand-light-blue-minus-10: @color-base-blue-mid;
+  --brand-light-blue: @color-base-blue-light;
 
- /* Light Blues */
-  --brand-light-blue-minus-20: #008ec0;
-  --brand-light-blue-minus-10: #00a4df;
-  --brand-light-blue: #00b9ff;
-  --brand-light-blue-wash: #D8F1fA;
+  /* Dark Grays */
+  --brand-grey-plus-10: @color-base-grey-mid;
 
- /* Dark Grays */
-  --brand-grey-minus-20: #384347;
-  --brand-grey-minus-10: #4a5860;
-  --brand-grey: #5d7079;
-  --brand-grey-plus-10: #6f8691;
-  --brand-grey-plus-20: #829ca9;
+  /* Light Grays */
+  --brand-smoke-minus-10: @color-base-smoke-dark;
+  --brand-smoke: @color-base-smoke-mid;
+  --brand-smoke-plus-10: @color-base-smoke-light;
+  --brand-smoke-plus-20: @color-base-smoke-fade;
 
- /* Light Grays */
-  --brand-smoke-minus-20: #7e7f81;
-  --brand-smoke-minus-10: #a8aaac;
-  --brand-smoke: #d3d5d8;
-  --brand-smoke-plus-10: #e2e6e8;
-  --brand-smoke-plus-20: #f2f5f7;
+  /* Greens */
+  --brand-green-minus-10: @color-base-green-mid;
+  --brand-green: @color-base-green-light;
 
- /* Reds */
-  --brand-red-minus-20: #B62A18;
-  --brand-red-minus-10: #C22E2E;
-  --brand-red: #F53636;
-
-  --brand-red-wash: #FFDFDF;
-  --brand-red-alert: #C22E2E;
-
- /* Greens */
-  --brand-green-minus-20: #1B7940;
-  --brand-green-minus-10: #28B862;
-  --brand-green: #2ED06E;
-
-  --brand-green-wash: #D6F5E2;
-  --brand-green-alert: #1B7940;
-
- /* Oranges */
-  --brand-orange-minus-20: #9E5F00;
-  --brand-orange-minus-10: #DF8700;
-  --brand-orange: #FFA600;
-
-  --brand-orange-wash: #FFF3DD;
-  --brand-orange-alert: #9E5F00;
-
- /* Yellows */
-  --brand-yellow-minus-20: #c0ae10;
-  --brand-yellow-minus-10: #dfc912;
-  --brand-yellow: #ffe714;
-
- /* Color Mapping */
- /* Gray and brand colors for use across the Design System. */
-
+  /* Color Mapping */
+  /* Gray and brand colors for use across the Design System. */
   --gray-base: var(--brand-smoke-plus-20);
-  --gray-darker: var(--brand-grey-minus-20);
-  --gray-dark: var(--brand-grey-minus-10);
-  --gray: var(--brand-grey);
-  --gray-light: var(--brand-grey-plus-20);
-  --gray-lighter: var(--brand-smoke);
+  --gray-darker: #384347;
+  --gray-light: @color-base-grey-light;
 
   --brand-primary: var(--brand-navy);
-  --brand-success: var(--brand-green);
-  --brand-info: var(--brand-light-blue);
-  --brand-warning: var(--brand-orange);
-  --brand-danger: var(--brand-red);
 
   --body-bg: var(--brand-white);
-  --text-color: var(--brand-grey);
   --text-bold-color: var(--brand-navy-minus-10);
-  --text-secondary-color: var(--brand-grey);
 }
