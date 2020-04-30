@@ -19,7 +19,7 @@ describe('Number formatting', () => {
   });
 
   it('parses numbers with invalid locale', () => {
-    expect(parseAmount('123.45', 'gbp', 'de_DE12345')).toBe(123.45);
+    expect(parseAmount('123.45', 'gbp', '12345de_DE')).toBe(123.45);
   });
 
   it('parses negative numbers into positive ones', () => {
