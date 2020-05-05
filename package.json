@@ -76,6 +76,15 @@
       "git add"
     ]
   },
+  "browserslist": [
+    "Chrome >=71",
+    "Firefox >=71",
+    "iOS >=11",
+    "Safari >=11.1",
+    "IE 11",
+    "Opera >=65",
+    "Edge >=18"
+  ],
   "prettier": "@transferwise/eslint-config/.prettierrc.js",
   "commitlint": {
     "extends": [
