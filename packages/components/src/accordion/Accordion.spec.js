@@ -49,6 +49,28 @@ describe('Accordion', () => {
     });
   });
 
+  describe('when an item is clicked', () => {
+    const onClickMock = jest.fn();
+
+    beforeEach(() => {
+      props = {
+        items: [
+          {
+            title: 'a',
+            content: 'b',
+          },
+        ],
+        onClick: onClickMock,
+      };
+      component = createComponent(props);
+    });
+
+    it('onOpen event fires then onClose event fires', () => {
+      component.find(AccordionItem).simulate('click', 0);
+      expect(onClickMock).toHaveBeenCalledWith(0);
+    });
+  });
+
   describe('when it defaults closed', () => {
     beforeEach(() => {
       props = {
