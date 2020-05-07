@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.2.0...@transferwise/components@26.2.1) (2020-04-29)
+
+
+### Bug Fixes
+
+* changing semvar syntax to support npm ([#313](https://github.com/transferwise/neptune-web/issues/313)) ([8502de1](https://github.com/transferwise/neptune-web/commit/8502de12407a2e59e50ce7cd180d2583d35b8082))
+
+
+
+
+
 # [26.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.1.0...@transferwise/components@26.2.0) (2020-04-27)
 
 
