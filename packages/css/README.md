@@ -1,42 +1,42 @@
-# CSS
-
 [![CircleCI](https://circleci.com/gh/transferwise/neptune-web.svg?style=shield)](https://circleci.com/gh/transferwise/neptune-web) [![NPM](https://badge.fury.io/js/%40transferwise%2Fneptune-css.svg)](https://www.npmjs.com/package/@transferwise/neptune-css)
 
-The CSS library provides css styles for common components and utilities reused across the web platform.
+# Neptune Web CSS
 
-### Install
+Neptune is the Design System built by and used at TransferWise. Neptune Web is the Neptune framework for Web. Neptune Web provides a way to build high quality, consistent user experiences on the web with ease.
+
+This is the Neptune Web CSS library. It works well with [Neptune React Components](https://github.com/transferwise/neptune-web/tree/master/packages/components).
+
+## Usage
+
+Neptune CSS is published to npm as [@transferwise/css](https://www.npmjs.com/package/@transferwise/css).
+
+Install `@transferwise/css`:
 
 ```
+# yarn
 yarn add @transferwise/css
+
+# npm
+npm install @transferwise/css
 ```
 
-### Use
+There are three bundles to choose from, depending on your needs:
 
-In the `dist` directory you can find individual files for components, variables, and other common utilities. They can be used individually or as the whole `neptune.css` bundle.
+```js
+// Tokens
+import '@transferwise/neptune-css/dist/css/neptune-tokens.css';
 
-```jsx
-// Individual
-import '@transferwise/neptune-css/dist/css/buttons.css';
+// Core (Includes Tokens)
+import '@transferwise/neptune-css/dist/css/neptune-core.css';
 
-// Full bundle
-import '@transferwise/neptune-css/dist/css/neptune.css';
+// Addons
+import '@transferwise/neptune-css/dist/css/neptune-addons.css';
 ```
+
+## Documentation
+
+Visit the [docs](https://transferwise.github.io/neptune-web) for information on getting started and documentation on what is included in each bundle.
 
 ## Contributing
 
-Please refer to this [file](https://github.com/transferwise/neptune-web/blob/master/README.md) for contribution's guideline.
-
-### Create a new style
-
-1. Create a new file for it in `./src/less/my-component.less`
-2. Decide about the component style's level (1,2,3 or 4)
-
-### Naming convention
-
-File naming should follow `kebab-case`.
-
-E.g. `link-callout.(css|less)`
-
-### Dev
-
-To find instructions on how to spin up the dev environment please refer to this [file](https://github.com/transferwise/neptune-web/blob/master/README.md)
+We love contribution! 🙏 Read [the guide](https://github.com/transferwise/neptune-web/blob/master/packages/css/CONTRIBUTING.md) to get started.

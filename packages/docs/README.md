@@ -1,11 +1,11 @@
-# Docs
+[![CircleCI](https://circleci.com/gh/transferwise/neptune-web.svg?style=shield)](https://circleci.com/gh/transferwise/neptune-web)
 
-Neptune Docs is TransferWise's design system documentation website. Here you can find and/or document all the changes relative to both css and react components.
+# Neptune Web Docs
 
-### Contribution
+Neptune is the Design System built by and used at TransferWise. Neptune Web is the Neptune framework for Web. Neptune Web provides a way to build high quality, consistent user experiences on the web with ease.
 
-To introduce or update a component, create a branch and submit a pull request. The [documentation](https://transferwise.github.io/neptune-web) and the new npm release will be automatically deployed when merging changes to master.
+This is the Neptune Web Documentation website. See the [live site](https://transferwise.github.io/neptune-web)
 
-### Dev
+## Contributing
 
-To find instructions on how to spin up the dev environment please refer to this [file](https://github.com/transferwise/neptune-web/blob/master/README.md)
+We love contribution! 🙏 Read [the guide](https://github.com/transferwise/neptune-web/blob/master/CONTRIBUTING.md) to get started.

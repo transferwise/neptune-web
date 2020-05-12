@@ -1,37 +1,44 @@
-# React Components
-
 [![CircleCI](https://circleci.com/gh/transferwise/neptune-web.svg?style=shield)](https://circleci.com/gh/transferwise/neptune-web) [![NPM](https://badge.fury.io/js/%40transferwise%2Fcomponents.svg)](https://www.npmjs.com/package/@transferwise/components)
 
-Neptune React components provides a library with common used components across the web platform.
-The library is tree-shakable, ensuring your app is only bundling the components you imported. Styles for the component are automatically imported to your page when you use it.
+# Neptune Web React Components
 
-### Install
+Neptune is the Design System built by and used at TransferWise. Neptune Web is the Neptune framework for Web. Neptune Web provides a way to build high quality, consistent user experiences on the web with ease.
+
+This is the Neptune Web React component library. It works well with [Neptune CSS](https://github.com/transferwise/neptune-web/tree/master/packages/css).
+
+## Usage
+
+Neptune Components are published to npm as [@transferwise/components](https://www.npmjs.com/package/@transferwise/components).
+
+Install `@transferwise/components` and its peer dependencies. **Note:** currency-flags is only required if you're using the [Money Input](https://transferwise.github.io/neptune-web/components/MoneyInput) or if you're using flags on the [Select](https://transferwise.github.io/neptune-web/components/Select).
 
 ```
-yarn add @transferwise/components
-```
+# yarn
+yarn add @transferwise/components react react-dom prop-types transferwise/bootstrap currency-flags
 
-### Use
+# npm
+npm install @transferwise/components react react-dom prop-types transferwise/bootstrap currency-flags
+```
 
 ```js
+// This line only needs to be imported once in your application
+import 'bootstrap/dist/css/bootstrap.css';
+
 import { Button } from '@transferwise/components';
+
+export default function Hello() {
+  return (
+    <Button size={Button.Size.SMALL} block={true}>
+      Hello Neptune
+    </Button>
+  );
+}
 ```
+
+## Documentation
+
+Visit the [docs](https://transferwise.github.io/neptune-web) for information on getting started, usage information and examples for each component.
 
 ## Contributing
 
-Please refer to this [file](https://github.com/transferwise/neptune-web/blob/master/README.md) for contribution's guideline.
-
-### Component styles
-
-CSS files should live inside the component source folder, next to your JavaScript, and imported on your component file. This goes against the previous recommendation of the Neptune team, we will give further guidance on the CSS library soon.
-
-### Test
-
-Please use [react-testing-library](https://github.com/testing-library/react-testing-library) for testing components.
-
-Historically we've used Enzyme so most of tests built using it's API but we encourage you to use react-testing-library when creating a new component
-also, feel free to update tests of existing components (e.g when you do some changes) and flag about this during code review.
-
-### Dev
-
-To find instructions on how to spin up the dev environment please refer to this [file](https://github.com/transferwise/neptune-web/blob/master/README.md)
+We love contribution! 🙏 Read [the guide](https://github.com/transferwise/neptune-web/blob/master/packages/components/CONTRIBUTING.md) to get started.

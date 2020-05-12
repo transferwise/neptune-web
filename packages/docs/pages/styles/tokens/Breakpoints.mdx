@@ -1,0 +1,31 @@
+Custom media values to ensure consistent breakpoints for responsive behaviour on different screen sizes. **Note:** To use these properties in your application, you need `neptune-tokens.css` or `neptune-core.css` on your page. Tokens are exposed on `:root`. Refer to [Installing CSS](/about/Setup#installing-css) on the Setup page to get started.
+
+## Breakpoint values
+
+```
+@custom-media --screen-xs (min-width: 480px);
+@custom-media --screen-xs-max (max-width: 575px); /* --screen-sm - 1 */
+
+@custom-media --screen-sm (min-width: 576px);
+@custom-media --screen-sm-max (max-width: 767px); /* --screen-md - 1 */
+
+@custom-media --screen-md (min-width: 768px);
+@custom-media --screen-md-max (max-width: 991px); /* --screen-lg - 1 */
+
+@custom-media --screen-lg (min-width: 992px);
+@custom-media --screen-lg-max (max-width: 1199px); /* --screen-xl - 1 */
+
+@custom-media --screen-xl (min-width: 1200px);
+```
+
+## Use in code
+
+```
+@media (--screen-md) {
+    ...
+}
+```
+
+export const meta = {
+  name: 'Breakpoints',
+};

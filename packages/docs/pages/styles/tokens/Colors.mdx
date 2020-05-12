@@ -1,0 +1,76 @@
+export function ColorToken(props) {
+  return (
+    <div className="d-flex align-items-center m-b-2">
+      <div
+        style={{
+          backgroundColor: `var(${props.token})`,
+          border: 'solid 1px rgba(0, 0, 0, 0.1)',
+          borderRadius: '100%',
+          width: '48px',
+          height: '48px',
+        }}
+      />
+      <div className="m-l-2">{props.token}</div>
+    </div>
+  );
+}
+
+**Note:** To use these properties in your application, you need `neptune-tokens.css` or `neptune-core.css` on your page. Tokens are exposed on `:root`. Refer to [Installing CSS](/about/Setup#installing-css) on the Setup page to get started.
+
+## Semantic colors
+
+Neptune uses semantic colors, and distributes them as custom properties.
+
+<div className="m-b-4">
+  <ColorToken token="--color-primary" textColor="#fff" />
+  <ColorToken token="--color-secondary" textColor="#fff" />
+</div>
+
+<div className="m-b-4">
+  <ColorToken token="--color-accent" textColor="#fff" />
+  <ColorToken token="--color-positive" textColor="#fff" />
+  <ColorToken token="--color-negative" textColor="#fff" />
+  <ColorToken token="--color-warning" textColor="#fff" />
+</div>
+
+<div className="m-b-4">
+  <ColorToken token="--color-text-primary" textColor="#fff" />
+  <ColorToken token="--color-text-secondary" textColor="#fff" />
+  <ColorToken token="--color-text-inactive" textColor="#fff" />
+  <ColorToken token="--color-text-important" textColor="#fff" />
+  <ColorToken token="--color-text-link" textColor="#fff" />
+  <ColorToken token="--color-text-link-hover" textColor="#fff" />
+  <ColorToken token="--color-text-link-active" textColor="#fff" />
+  <ColorToken token="--color-text-positive" textColor="#fff" />
+  <ColorToken token="--color-text-negative" textColor="#fff" />
+  <ColorToken token="--color-text-warning" textColor="#fff" />
+</div>
+
+<div className="m-b-4">
+  <ColorToken token="--color-control-accent" textColor="#fff" />
+  <ColorToken token="--color-control-positive" textColor="#fff" />
+  <ColorToken token="--color-control-negative" textColor="#fff" />
+  <ColorToken token="--color-control-warning" textColor="#fff" />
+</div>
+
+<div className="m-b-4">
+  <ColorToken token="--color-border-neutral" />
+  <ColorToken token="--color-border-focus" textColor="#fff" />
+</div>
+
+<div className="m-b-4">
+  <ColorToken token="--color-background-screen" />
+  <ColorToken token="--color-background-elevated" />
+  <ColorToken token="--color-background-accent" />
+  <ColorToken token="--color-background-positive" />
+  <ColorToken token="--color-background-negative" />
+  <ColorToken token="--color-background-warning" />
+</div>
+
+## Brand colors
+
+Brand colors are available as `LESS` variables from `variables/_colors.less`.
+
+export const meta = {
+  name: 'Colors',
+};

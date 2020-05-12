@@ -13,7 +13,7 @@ const GeneratePropsTable = ({ componentName }) => {
 
   return (
     <div className="scroll-table">
-      <h2>Props</h2>
+      <h2 className="docs-heading">Props</h2>
       <table className="table table-condensed docs-table">
         <thead>
           <tr>

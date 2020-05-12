@@ -2,14 +2,22 @@
 import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
+import Router from 'next/router';
 import Layout from '../components/Layout';
-import 'bootstrap/dist/css/bootstrap.css';
+import '@transferwise/neptune-css/dist/css/neptune.css';
 import 'currency-flags/dist/currency-flags.min.css';
 import '@transferwise/icons/dist/icons.min.css';
 
 import '../static/assets/main.css';
 
 class MyApp extends App {
+  componentDidMount() {
+    const { pathname } = Router;
+    if (pathname === '/') {
+      Router.push('/about/Home');
+    }
+  }
+
   render() {
     const { Component, pageProps } = this.props;
 

@@ -1,0 +1,33 @@
+import componentPackage from '@transferwise/components/package.json';
+import cssPackage from '@transferwise/neptune-css/package.json';
+import { PackageVersion } from '../../utils';
+
+The current version of Components is <PackageVersion version={componentPackage.version} />. CSS is at <PackageVersion version={cssPackage.version} />.
+
+Our goal is to ensure all our consumers understand when and how new features are added, and to be well-prepared when we remove features or make breaking changes.
+
+**We understand you need stability from Neptune Web, and are working towards less and less frequent breaking changes.** We appreciate your patience while we get there.
+
+## Semantic Versioning
+
+We follow [SemVer](https://semver.org). Please note that we do not bump versions for changes to the internal implementation of components.
+
+## Release Schedule
+
+For the rest of 2020, you can expect at most one major release per month. We hope to reduce the frequency of major releases further next year, once the library has stabilised.
+
+The core team will generally release a minor release once per fortnight, with patch releases when required.
+
+Because we accept contributions at all times, extra minor releases may happen when new features are contributed.
+
+## The relationship between Components and CSS
+
+Because Components depends on CSS, when we release a new CSS build, we will update the dependency and release a new Components build. We do not do the reverse.
+
+## Support policy
+
+We only support the latest version of Neptune Web, and do not backport any changes to older versions.
+
+export const meta = {
+  name: 'Versioning Policy',
+};

@@ -17,13 +17,13 @@ const lessCompiler = () => {
     .pipe(cached('less'))
     .pipe(dependents())
     .pipe(filter(excludeBundles))
-    .pipe(print(filepath => `compiled: ${filepath}`))
+    .pipe(print((filepath) => `compiled: ${filepath}`))
     .pipe(plumber())
     .pipe(less())
     .pipe(postcss())
     .pipe(
-      rename(path => {
-        /* eslint-disable no-param-reassign */
+      rename((path) => {
+        /* eslint-disable-next-line */
         path.basename = path.basename.replace('.bundle', '');
       }),
     )

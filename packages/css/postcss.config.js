@@ -1,8 +1,10 @@
-const postcssImport = require("postcss-import");
-const autoprefixer = require("autoprefixer");
-const postcssCustomProperties = require("postcss-custom-properties");
-const postcssCustomMedia = require("postcss-custom-media");
-const cssnano = require("cssnano");
+/* eslint-disable import/no-extraneous-dependencies */
+const postcssImport = require('postcss-import');
+const autoprefixer = require('autoprefixer');
+const postcssCustomProperties = require('postcss-custom-properties');
+const postcssCustomMedia = require('postcss-custom-media');
+const cssnano = require('cssnano');
+
 module.exports = {
   plugins: [
     postcssImport(),
@@ -10,8 +12,8 @@ module.exports = {
     postcssCustomProperties(),
     postcssCustomMedia(),
     cssnano({
-      preset: "default"
-    })
+      preset: 'default',
+    }),
   ],
-  map: false
+  map: false,
 };
