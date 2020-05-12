@@ -13,10 +13,12 @@ class Accordion extends PureComponent {
         content: Types.node.isRequired,
       }),
     ).isRequired,
+    onClick: Types.func,
     indexOpen: Types.number,
   };
 
   static defaultProps = {
+    onClick: null,
     indexOpen: -1,
   };
 
@@ -28,6 +30,9 @@ class Accordion extends PureComponent {
     this.setState((prevState) => {
       return { indexOpen: prevState.indexOpen === index ? -1 : index };
     });
+    if (this.props.onClick) {
+      this.props.onClick(index);
+    }
   };
 
   render() {

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [26.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.2.1...@transferwise/components@26.3.0) (2020-05-07)
+
+
+### Features
+
+* **accordion:** add onClick property ([#341](https://github.com/transferwise/neptune-web/issues/341)) ([7ea9af3](https://github.com/transferwise/neptune-web/commit/7ea9af3638efc06e2e0e881c8fd34eff8a8ed3c3))
+
+
+
+
+
 ## [26.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.2.0...@transferwise/components@26.2.1) (2020-04-29)
 
 
