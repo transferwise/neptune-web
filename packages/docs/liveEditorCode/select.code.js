@@ -45,6 +45,15 @@
         { value: 6, label: 'Euro', currency: 'eur' },
         { separator: true },
         { value: 7, label: 'Something else' },
+        { header: 'Options with searchable alternatives' },
+        {
+          value: 8,
+          label: 'A thing with searchable alternatives',
+          /**
+           * searchStrings is an array of strings that maps additional searchable terms to a given option.
+           */
+          searchStrings: ['abbreviation', 'acronym', 'nickname'],
+        },
       ]}
     />
   );

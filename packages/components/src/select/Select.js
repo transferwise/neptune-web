@@ -50,9 +50,13 @@ const defer = (fn) => setTimeout(fn, 0);
 
 const includesString = (str1, str2) => str1.toLowerCase().indexOf(str2.toLowerCase()) > -1;
 
+const arrayIncludesString = (arrayToSearch, keyword) =>
+  arrayToSearch.some((str) => includesString(str, keyword));
+
 const defaultFilterFunction = (option, keyword) =>
   (option.label && includesString(option.label, keyword)) ||
-  (option.currency && includesString(option.currency, keyword));
+  (option.currency && includesString(option.currency, keyword)) ||
+  (option.searchStrings && arrayIncludesString(option.searchStrings, keyword));
 
 export default class Select extends Component {
   static propTypes = {
@@ -93,6 +97,7 @@ export default class Select extends Component {
         secondary: Types.node,
         separator: Types.bool,
         disabled: Types.bool,
+        searchStrings: Types.arrayOf(Types.string),
       }),
     ).isRequired,
     /**

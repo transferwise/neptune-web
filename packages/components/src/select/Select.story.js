@@ -55,6 +55,12 @@ export const basic = () => {
         { value: 6, label: 'Euro', currency: 'eur' },
         { separator: true },
         { value: 7, label: 'Something else' },
+        { header: 'Options with searchable alternatives' },
+        {
+          value: 8,
+          label: 'A thing with searchable alternatives',
+          searchStrings: ['abbreviation', 'acronym', 'nickname'],
+        },
       ]}
     />
   );
