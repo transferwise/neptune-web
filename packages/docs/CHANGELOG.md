@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@3.2.2...@transferwise/neptune-docs@3.3.0) (2020-05-12)
+
+
+### Features
+
+* allows searchable alternatives to be given to select options ([#337](https://github.com/transferwise/neptune-web/issues/337)) ([9d5113f](https://github.com/transferwise/neptune-web/commit/9d5113ffb0891a7f0dc027cc92186f1effea716c))
+
+
+
+
+
 ## [3.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@3.2.1...@transferwise/neptune-docs@3.2.2) (2020-05-07)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
