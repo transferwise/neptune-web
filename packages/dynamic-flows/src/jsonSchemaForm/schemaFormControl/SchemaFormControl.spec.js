@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import SchemaFormControl from '.';
 
-import { FormControl } from '@transferwise/components';
+import FormControl from '../../formControl';
 
 describe('Given a component for rendering a form control based on a schema', () => {
   let component;

@@ -6,7 +6,6 @@
   "main": "./build/es/polyfill/index.js",
   "module": "./build/es/polyfill/index.js",
   "style": "./build/main.css",
-  "private": true,
   "sideEffects": [
     "*.css"
   ],

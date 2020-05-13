@@ -60,11 +60,6 @@ describe('Server side rendering', () => {
       md: 'column',
       lg: 'row',
     },
-    field: {
-      control: 'text',
-      type: 'string',
-      label: 'hello',
-    },
     alt: '',
     src: '',
     isExpanded: true,

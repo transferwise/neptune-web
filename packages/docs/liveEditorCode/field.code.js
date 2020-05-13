@@ -10,14 +10,13 @@
       field={{
         control: 'text',
         type: 'string',
-        format: '',
         displayPattern: '',
         help: {
           message: '',
           image: '',
           list: [],
           do: ['good', 'much better'],
-          dont: ['uhm not so good', 'erm no!'],
+          dont: ['not so good', 'erm no!'],
         },
         options: [
           { label: 'Mars', value: 'mars' },
@@ -41,7 +40,7 @@
           maximum: 'Must be 99 or less',
         },
       }}
-      onChange={value => setValue(value)}
+      onChange={(value) => setValue(value)}
     />
   );
 };

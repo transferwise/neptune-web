@@ -1,15 +1,17 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import FormControl from './';
-import Select from '../select';
-import Checkbox from '../checkbox/Checkbox';
-import DateInput from '../dateInput/DateInput';
-import PhoneNumberInput from '../phoneNumberInput/PhoneNumberInput';
-import Upload from '../upload';
-import DateLookup from '../dateLookup';
-import InputWithDisplayFormat from '../inputWithDisplayFormat';
-import TextareaWithDisplayFormat from '../textareaWithDisplayFormat';
-import RadioGroup from '../radioGroup';
+import {
+  Checkbox,
+  DateInput,
+  DateLookup,
+  InputWithDisplayFormat,
+  PhoneNumberInput,
+  RadioGroup,
+  Select,
+  TextareaWithDisplayFormat,
+  Upload,
+} from '@transferwise/components';
 
 describe('FormControl', () => {
   let props;

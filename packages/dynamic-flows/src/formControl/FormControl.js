@@ -1,14 +1,16 @@
 import React, { PureComponent } from 'react';
 import Types from 'prop-types';
-import Checkbox from '../checkbox';
-import DateInput from '../dateInput';
-import DateLookup from '../dateLookup';
-import InputWithDisplayFormat from '../inputWithDisplayFormat';
-import PhoneNumberInput from '../phoneNumberInput';
-import RadioGroup from '../radioGroup';
-import Select from '../select';
-import TextareaWithDisplayFormat from '../textareaWithDisplayFormat';
-import Upload from '../upload';
+import {
+  Checkbox,
+  DateInput,
+  DateLookup,
+  InputWithDisplayFormat,
+  PhoneNumberInput,
+  RadioGroup,
+  Select,
+  TextareaWithDisplayFormat,
+  Upload,
+} from '@transferwise/components';
 
 import { Size, MonthFormat, DateMode, FormControlType } from '../common';
 

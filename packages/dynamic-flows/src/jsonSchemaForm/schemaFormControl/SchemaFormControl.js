@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 
-import { FormControl } from '@transferwise/components';
+import FormControl from '../../formControl';
 import { isNull } from '../validation/type-validators';
 import { getValidModelParts } from '../validation/valid-model';
 

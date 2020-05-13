@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import Field, { FieldTypes, FieldFormats } from '../field/Field';
 import FormControl from '../formControl/FormControl';
 import { FormControlType } from '../common';
-import Alert from '../alert/Alert';
+import { Alert } from '@transferwise/components';
 
 describe('Field', () => {
   let component;

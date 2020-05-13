@@ -98,6 +98,7 @@
     "@transferwise/formatting": "^2.1.0",
     "@transferwise/icons": "^1.0.0",
     "@transferwise/neptune-css": "^0.13.3",
+    "@transferwise/dynamic-flows": "^1.0.0",
     "classnames": "^2.2.6",
     "commonmark": "^0.29.1",
     "core-js": "^3.6.5",

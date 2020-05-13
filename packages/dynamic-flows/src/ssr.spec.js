@@ -22,6 +22,12 @@ describe('Server side rendering', () => {
     schema: {},
     onChange: jest.fn(),
     submitted: false,
+    name: 'name',
+    field: {
+      control: 'text',
+      type: 'string',
+      label: 'hello',
+    },
   };
   const overrideProps = {};
 

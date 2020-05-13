@@ -21,7 +21,6 @@ export { default as Upload } from './upload';
 export { default as DefinitionList } from './definitionList';
 export { default as DynamicFieldDefinitionList } from './dynamicFieldDefinitionList';
 export { default as Button } from './button';
-export { default as FormControl } from './formControl';
 export { default as RadioGroup } from './radioGroup';
 export { default as Alert } from './alert';
 export { default as InputWithDisplayFormat } from './inputWithDisplayFormat';
@@ -41,7 +40,6 @@ export {
   SnackbarContext,
 } from './snackbar/SnackbarProvider';
 export { default as useSnackbar } from './snackbar/useSnackbar';
-export { default as Field } from './field';
 export { default as Tabs } from './tabs';
 export { default as OverlayHeader } from './overlayHeader';
 export { default as Image } from './image';

@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import Alert from '../alert/Alert';
+import { Alert, InstructionsList } from '@transferwise/components';
 import FormControl from '../formControl';
 import { FormControlType, Size } from '../common';
-import InstructionsList from '../instructionsList';
 
 import { getControlType } from '../common/requirements';
 import { getValidationFailures } from './validation/validation-failures';
