@@ -583,6 +583,29 @@ describe('Select', () => {
       document.activeElement.blur();
     });
 
+    it('should include searchable strings in option search if present', async () => {
+      component.setProps({
+        options: [
+          { value: 0, label: 'Estonia', searchStrings: ['EE', 'Tallinn'] },
+          { value: 1, label: 'United States of America', searchStrings: ['US', 'USA', 'DC'] },
+        ],
+        search: true,
+      });
+      openSelect();
+
+      await bustStackAndUpdate();
+
+      component.find('input').simulate('change', { target: { value: 'Tallinn' } });
+
+      expect(component.find('.tw-dropdown-item.tw-dropdown-item--focused').length).toBe(
+        component.find('.tw-dropdown-item').length,
+      );
+
+      expect(component.find('.tw-dropdown-item.tw-dropdown-item--focused').text()).toBe('Estonia');
+
+      document.activeElement.blur();
+    });
+
     it('should filter the options with a custom search function', async () => {
       const searchFunction = jest.fn();
       component.setProps({ search: searchFunction });
