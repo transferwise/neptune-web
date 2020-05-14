@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.0.0...@transferwise/components@27.0.1) (2020-05-14)
+
+
+### Bug Fixes
+
+* change modal role to presentation ([#345](https://github.com/transferwise/neptune-web/issues/345)) ([750b942](https://github.com/transferwise/neptune-web/commit/750b94213c2dd8f529262e0ffc62a6877f0c3032))
+
+
+
+
+
 # [27.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.4.0...@transferwise/components@27.0.0) (2020-05-14)
 
 
