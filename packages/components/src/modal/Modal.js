@@ -98,7 +98,7 @@ class Modal extends Component {
           <div
             className={`tw-modal fade ${className}`}
             tabIndex="-1"
-            role="button"
+            role="presentation"
             ref={(dialog) => {
               this.modalDialog = dialog;
             }}
