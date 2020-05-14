@@ -1,3 +1,5 @@
+import { isObject, isUndefined, isNull } from '../type-validators';
+
 function getValidModelParts(model, schema) {
   if (schema.allOf) {
     return cleanModelWithAllOfSchema(model, schema);
@@ -5,6 +7,14 @@ function getValidModelParts(model, schema) {
 
   if (schema.oneOf) {
     return cleanModelWithOneOfSchema(model, schema);
+  }
+
+  if (schema.enum && schema.enum.indexOf(model) >= 0) {
+    return model;
+  }
+
+  if (!isUndefined(schema.const) && model === schema.const) {
+    return model;
   }
 
   if (schema.type) {
@@ -25,9 +35,6 @@ function getValidModelParts(model, schema) {
     }
   }
 
-  if (schema.enum && schema.enum.indexOf(model) >= 0) {
-    return model;
-  }
   // Unrecognised schema
   return null;
 }
@@ -94,8 +101,23 @@ function cleanModelWithOneOfSchema(model, schema) {
   return schema.oneOf
     .map((nestedSchema) => getValidModelParts(model, nestedSchema))
     .reduce((combined, current) => {
-      return { ...combined, ...current };
-    }, {});
+      // If we didn't find anything valid yet, and current is good, return it
+      if (isNull(combined)) {
+        return current;
+      }
+
+      // If we're dealing with two objects, combine them into one
+      if (isObject(combined) && isObject(current)) {
+        return { ...combined, ...current };
+      }
+
+      // If the current one is null, return what we already had
+      if (isNull(current)) {
+        return combined;
+      }
+
+      return current;
+    }, null);
 }
 
 export { getValidModelParts }; // eslint-disable-line

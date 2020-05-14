@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import OneOfSchema from '.';
 
 import GenericSchema from '../genericSchema/';
-import { RadioGroup } from '@transferwise/components';
+import SchemaFormControl from '../schemaFormControl/';
 
 describe('Given a oneOfSchema component', () => {
   let component;
@@ -74,8 +74,8 @@ describe('Given a oneOfSchema component', () => {
       expect(component.find('.control-label').text()).toContain(schema.title);
     });
 
-    it('should render a radio group to choose between schemas', () => {
-      expect(component.find(RadioGroup)).toHaveLength(1);
+    it('should use a SchemaFormControl to choose between schemas', () => {
+      expect(component.find(SchemaFormControl)).toHaveLength(1);
     });
 
     it('should render one generic schema component', () => {
@@ -104,8 +104,8 @@ describe('Given a oneOfSchema component', () => {
 
     describe('when another schema is selected', () => {
       beforeEach(() => {
-        component.find(RadioGroup).simulate('change', 2);
-        // As a changing the state cause a render, need to refetch child component
+        component.find(SchemaFormControl).simulate('change', 2);
+        // As changing the state causes a rerender, need to refetch child component
         genericSchema = component.find(GenericSchema);
       });
 
@@ -141,8 +141,8 @@ describe('Given a oneOfSchema component', () => {
 
       describe('when the user toggles to another schema, and back again', () => {
         beforeEach(() => {
-          component.find(RadioGroup).simulate('change', 2);
-          component.find(RadioGroup).simulate('change', 1);
+          component.find(SchemaFormControl).simulate('change', 2);
+          component.find(SchemaFormControl).simulate('change', 1);
           genericSchema = component.find(GenericSchema);
         });
 
@@ -175,8 +175,8 @@ describe('Given a oneOfSchema component', () => {
       component = shallow(<OneOfSchema {...props} />);
     });
 
-    it('should not render a radio group to choose between schemas', () => {
-      expect(component.find(RadioGroup)).toHaveLength(0);
+    it('should not render a SchemaFormControl to choose between schemas', () => {
+      expect(component.find(SchemaFormControl)).toHaveLength(0);
     });
 
     it('should render the schema using a GenericSchema', () => {

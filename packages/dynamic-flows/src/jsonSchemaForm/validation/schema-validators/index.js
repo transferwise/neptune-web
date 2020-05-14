@@ -5,20 +5,33 @@ import {
   getNumberValidationFailures,
   getIntegerValidationFailures,
   getBooleanValidationFailures,
+  getEnumValidationFailures,
+  getConstValidationFailures,
   getArrayValidationFailures,
 } from '../validation-failures';
 
 function isValidStringSchema(value, schema) {
   return !getStringValidationFailures(value, schema).length;
 }
+
 function isValidNumberSchema(value, schema) {
   return !getNumberValidationFailures(value, schema).length;
 }
+
 function isValidIntegerSchema(value, schema) {
   return !getIntegerValidationFailures(value, schema).length;
 }
+
 function isValidBooleanSchema(value, schema) {
   return !getBooleanValidationFailures(value, schema).length;
+}
+
+function isValidEnumSchema(value, schema) {
+  return !getEnumValidationFailures(value, schema).length;
+}
+
+function isValidConstSchema(value, schema) {
+  return !getConstValidationFailures(value, schema).length;
 }
 
 function isValidObjectSchema(value, schema) {
@@ -81,6 +94,14 @@ export function isValidSchema(value, schema) {
 
   if (schema.allOf) {
     return isValidAllOfSchema(value, schema);
+  }
+
+  if (schema.enum) {
+    return isValidEnumSchema(value, schema);
+  }
+
+  if (schema.const) {
+    return isValidConstSchema(value, schema);
   }
 
   switch (schema.type) {

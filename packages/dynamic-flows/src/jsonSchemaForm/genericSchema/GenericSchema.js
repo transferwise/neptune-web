@@ -6,23 +6,31 @@ import ObjectSchema from '../objectSchema/';
 import OneOfSchema from '../oneOfSchema/';
 import AllOfSchema from '../allOfSchema/';
 
-const GenericSchemaForm = (props) => (
-  <>
-    {props.schema.enum && <BasicTypeSchema {...props} />}
-    {props.schema.type === 'string' && <BasicTypeSchema {...props} />}
-    {props.schema.type === 'number' && <BasicTypeSchema {...props} />}
-    {props.schema.type === 'integer' && <BasicTypeSchema {...props} />}
-    {props.schema.type === 'boolean' && <BasicTypeSchema {...props} />}
-    {props.schema.type === 'object' && <ObjectSchema {...props} />}
-    {props.schema.oneOf && <OneOfSchema {...props} />}
-    {props.schema.allOf && <AllOfSchema {...props} />}
-  </>
-);
+const basicTypes = ['string', 'number', 'integer', 'boolean'];
+
+const GenericSchemaForm = (props) => {
+  const { schema } = props;
+
+  const isObject = schema.type === 'object';
+  const isOneOf = !!schema.oneOf;
+  const isAllOf = !!schema.allOf;
+  const isBasicType = basicTypes.indexOf(schema.type) >= 0 || !!schema.enum || !!schema.const;
+
+  return (
+    <>
+      {isBasicType && !isOneOf && <BasicTypeSchema {...props} />}
+      {isObject && <ObjectSchema {...props} />}
+      {isOneOf && <OneOfSchema {...props} />}
+      {isAllOf && <AllOfSchema {...props} />}
+    </>
+  );
+};
 
 GenericSchemaForm.propTypes = {
   schema: Types.shape({
     type: Types.oneOf(['string', 'number', 'integer', 'boolean', 'object', 'array']),
     enum: Types.arrayOf(Types.oneOfType([Types.string, Types.number])),
+    const: Types.oneOfType([Types.string, Types.number, Types.bool]),
     oneOf: Types.arrayOf(Types.shape({})),
     allOf: Types.arrayOf(Types.shape({})),
   }).isRequired,

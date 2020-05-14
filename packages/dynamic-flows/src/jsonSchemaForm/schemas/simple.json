@@ -9,6 +9,31 @@
     "string": {
       "type": "string",
       "title": "Text input"
+    },
+    "select": {
+      "type": "integer",
+      "title": "Select",
+      "control": "radio",
+      "placeholder": "Favourite number?",
+      "oneOf": [
+        {
+          "title": "One",
+          "const": 1,
+          "description": "The first number"
+        },
+        {
+          "title": "Two",
+          "const": 2,
+          "description": "The second number"
+        },
+        {
+          "title": "Three",
+          "const": 3,
+          "description": "The third number",
+          "disabled": true
+        }
+      ]
     }
-  }
+  },
+  "required": ["number", "string", "select"]
 }

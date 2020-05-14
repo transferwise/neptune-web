@@ -232,6 +232,14 @@ export default class FormControl extends PureComponent {
     return selectedOption;
   };
 
+  mapOption = (option) => {
+    return {
+      ...option,
+      disabled: option.disabled || this.props.disabled,
+      readOnly: this.props.readOnly,
+    };
+  };
+
   render() {
     const {
       name,
@@ -266,7 +274,7 @@ export default class FormControl extends PureComponent {
       case FormControlType.RADIO:
         return (
           <RadioGroup
-            radios={options.map((option) => ({ ...option, disabled, readOnly }))}
+            radios={options.map(this.mapOption)}
             onChange={this.handleOnChange}
             name={name}
             selectedValue={value}

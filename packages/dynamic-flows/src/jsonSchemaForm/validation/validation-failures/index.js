@@ -24,6 +24,14 @@ function getValidationFailures(value, schema, isRequired) {
     return isRequired ? ['required'] : [];
   }
 
+  if (schema.enum) {
+    return getEnumValidationFailures(value, schema, isRequired);
+  }
+
+  if (schema.const) {
+    return getConstValidationFailures(value, schema, isRequired);
+  }
+
   switch (schema.type) {
     case 'string':
       return getStringValidationFailures(value, schema, isRequired);
@@ -110,6 +118,28 @@ function getBooleanValidationFailures(value, schema, isRequired) {
   return failures;
 }
 
+function getEnumValidationFailures(value, schema, isRequired) {
+  if (!isValidRequired(value, isRequired)) {
+    return ['required'];
+  }
+
+  if (!isNull(value) && schema.enum.indexOf(value) === -1) {
+    return ['enum'];
+  }
+  return [];
+}
+
+function getConstValidationFailures(value, schema, isRequired) {
+  if (!isValidRequired(value, isRequired)) {
+    return ['required'];
+  }
+
+  if (!isNull(value) && value !== schema.const) {
+    return ['enum'];
+  }
+  return [];
+}
+
 function getArrayValidationFailures(value, schema) {
   if (!isArray(value) && !isNull(value)) {
     return ['type'];
@@ -151,6 +181,8 @@ export {
   getNumberValidationFailures,
   getIntegerValidationFailures,
   getBooleanValidationFailures,
+  getEnumValidationFailures,
+  getConstValidationFailures,
   getArrayValidationFailures,
   getObjectValidationFailures,
 };

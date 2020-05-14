@@ -131,15 +131,15 @@ describe('Given a component for rendering a form control based on a schema', () 
     });
   });
 
-  describe('when a schema with two values is supplied', () => {
+  describe('when a schema with two enums is supplied', () => {
     beforeEach(() => {
       component.setProps({
         schema: {
           values: [
-            { value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },
+            { value: 1, label: 'One' },
+            { value: 2, label: 'Two' },
           ],
-          enum: ['one', 'two'],
+          enum: [1, 2],
         },
       });
     });
@@ -147,17 +147,19 @@ describe('Given a component for rendering a form control based on a schema', () 
     it('should ask the FormControl for a radio control', () => {
       expect(component.find(FormControl).prop('type')).toEqual('radio');
     });
+
+    it('should pass the FormControl options in the correct format', () => {
+      expect(component.find(FormControl).prop('options')).toEqual([
+        { value: 1, label: 'One' },
+        { value: 2, label: 'Two' },
+      ]);
+    });
   });
 
-  describe('when a schema with three values is supplied', () => {
+  describe('when a schema with three enums is supplied', () => {
     beforeEach(() => {
       component.setProps({
         schema: {
-          values: [
-            { value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },
-            { value: 'three', label: 'Three' },
-          ],
           enum: ['one', 'two', 'three'],
         },
       });
@@ -166,6 +168,40 @@ describe('Given a component for rendering a form control based on a schema', () 
     it('should ask the FormControl for a select control', () => {
       expect(component.find(FormControl).prop('type')).toEqual('select');
     });
+
+    it('should pass the FormControl options in the correct format', () => {
+      expect(component.find(FormControl).prop('options')).toEqual([
+        { value: 'one', label: 'one' },
+        { value: 'two', label: 'two' },
+        { value: 'three', label: 'three' },
+      ]);
+    });
+  });
+
+  describe('when a schema with oneOf three consts is supplied', () => {
+    beforeEach(() => {
+      component.setProps({
+        schema: {
+          oneOf: [
+            { const: 1, title: 'One' },
+            { const: 2, title: 'Two' },
+            { const: 3, title: 'Three' },
+          ],
+        },
+      });
+    });
+
+    it('should ask the FormControl for a select control', () => {
+      expect(component.find(FormControl).prop('type')).toEqual('select');
+    });
+
+    it('should pass the FormControl options in the correct format', () => {
+      expect(component.find(FormControl).prop('options')).toEqual([
+        { value: 1, label: 'One' },
+        { value: 2, label: 'Two' },
+        { value: 3, label: 'Three' },
+      ]);
+    });
   });
 
   describe('when a schema has a control value', () => {
@@ -173,11 +209,10 @@ describe('Given a component for rendering a form control based on a schema', () 
       component.setProps({
         schema: {
           control: 'select',
-          values: [
-            { value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },
+          oneOf: [
+            { const: 1, title: 'One' },
+            { const: 2, title: 'Two' },
           ],
-          enum: ['one', 'two'],
         },
       });
     });

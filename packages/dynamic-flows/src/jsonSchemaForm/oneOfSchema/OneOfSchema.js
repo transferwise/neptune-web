@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 
 import GenericSchema from '../genericSchema';
-import { RadioGroup } from '@transferwise/components';
+import SchemaFormControl from '../schemaFormControl';
 
 import { getValidModelParts } from '../validation/valid-model';
 import { isValidSchema } from '../validation/schema-validators';
@@ -23,47 +23,80 @@ const OneOfSchema = (props) => {
     props.onChange(model, props.schema.oneOf[index]);
   };
 
-  const onSchemaChange = (index) => {
+  const onChooseNewSchema = (index) => {
     setSchemaIndex(index);
-    props.onChange(models[index], props.schema.oneOf[index]);
+
+    const newSchema = props.schema.oneOf[index];
+
+    // const schemas broadcast a change automatically
+    if (!isConstSchema(newSchema)) {
+      props.onChange(models[index], newSchema);
+    }
   };
 
-  const getRadioOptions = (schemas) =>
-    schemas.map((schema, value) => {
-      return { value, label: schema.title };
-    });
+  const isConstSchema = (schema) => {
+    return schema.const || (schema.enum && schema.enum.length === 1);
+  };
 
+  const [id, setId] = useState('');
   const [schemaIndex, setSchemaIndex] = useState(getActiveSchemaIndex(props.schema, props.model));
-
   const [models, setModels] = useState(getModelPartsForSchemas(props.model, props.schema.oneOf));
 
-  const options = getRadioOptions(props.schema.oneOf);
+  const generateId = () => String(Math.floor(100000000 * Math.random()));
+
+  // When the schema we receive from parent changes
+  useEffect(() => {
+    setId(generateId());
+  }, [props.schema]);
+
+  // We want our model to be the index, so alter the oneOf schemas to be a const
+  const mapOneOfToConst = (schema, index) => {
+    return {
+      title: schema.title,
+      description: schema.description,
+      const: index,
+      disabled: schema.disabled,
+    };
+  };
+
+  const mapSchemas = (schema) => {
+    return { ...schema, oneOf: schema.oneOf.map(mapOneOfToConst) };
+  };
+
+  const schemaForSelect = mapSchemas(props.schema);
 
   return (
     <div>
-      {props.schema.title && <small className="control-label"> {props.schema.title} </small>}
-
       {props.schema.oneOf.length > 1 && (
         <div className="m-b-3">
-          <RadioGroup
-            selectedValue={schemaIndex}
-            radios={options}
-            name="radio-group"
-            onChange={onSchemaChange}
+          {props.schema.title && (
+            <label className="control-label" htmlFor={id}>
+              {props.schema.title}
+            </label>
+          )}
+          <SchemaFormControl
+            id={id}
+            schema={schemaForSelect}
+            onChange={onChooseNewSchema}
+            value={schemaIndex}
+            translations={props.translations}
+            locale={props.locale}
           />
         </div>
       )}
 
-      <GenericSchema
-        schema={props.schema.oneOf[schemaIndex]}
-        model={models[schemaIndex]}
-        errors={props.errors}
-        locale={props.locale}
-        translations={props.translations}
-        onChange={(model) => onChange(model, schemaIndex)}
-        submitted={props.submitted}
-        hide-title
-      />
+      {props.schema.oneOf[schemaIndex] && (
+        <GenericSchema
+          schema={props.schema.oneOf[schemaIndex]}
+          model={models[schemaIndex]}
+          errors={props.errors}
+          locale={props.locale}
+          translations={props.translations}
+          onChange={(model) => onChange(model, schemaIndex)}
+          submitted={props.submitted}
+          hideTitle
+        />
+      )}
     </div>
   );
 };
@@ -71,6 +104,7 @@ const OneOfSchema = (props) => {
 OneOfSchema.propTypes = {
   schema: Types.shape({
     title: Types.string,
+    control: Types.string,
     oneOf: Types.arrayOf(Types.object).isRequired,
   }).isRequired,
   model: Types.oneOfType([Types.string, Types.number, Types.bool, Types.array, Types.shape({})]),

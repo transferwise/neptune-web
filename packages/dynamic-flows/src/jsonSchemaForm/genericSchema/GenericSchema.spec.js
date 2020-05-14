@@ -230,6 +230,37 @@ describe('Given a component for rendering any generic schema', () => {
     });
   });
 
+  describe('when a oneOf schema also has a type ', () => {
+    let oneOfComponent;
+    let basicTypeSchemaComponent;
+
+    beforeEach(() => {
+      model = 'a';
+      schema = {
+        type: 'string',
+        oneOf: [
+          {
+            const: 'a',
+          },
+        ],
+      };
+      errors = 'foo';
+
+      props = { ...sharedProps, model, schema, errors };
+
+      component = shallow(<GenericSchema {...props} />);
+      oneOfComponent = component.find(OneOfSchema);
+      basicTypeSchemaComponent = component.find(BasicTypeSchema);
+    });
+
+    it('should render a oneOfSchema', () => {
+      expect(oneOfComponent.length).toBe(1);
+    });
+    it('should not render a basicTypeSchema', () => {
+      expect(basicTypeSchemaComponent.length).toBe(0);
+    });
+  });
+
   describe('when an allOf schema is supplied ', () => {
     let allOfComponent;
 

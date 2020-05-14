@@ -22,7 +22,7 @@ describe('Given a library for returning the valid parts of a model based on a sc
       beforeEach(() => {
         result = getValidModelParts({ a: 1 }, schema);
       });
-      it('should return undefined', () => {
+      it('should return null', () => {
         expect(result).toBeNull();
       });
     });
@@ -72,6 +72,63 @@ describe('Given a library for returning the valid parts of a model based on a sc
       });
       it('should return undefined', () => {
         expect(result).toBeNull();
+      });
+    });
+  });
+
+  describe('when cleaning a enum schema', () => {
+    beforeEach(() => {
+      schema = { enum: [1, 2] };
+    });
+
+    describe('if the model is part of the enum', () => {
+      beforeEach(() => {
+        result = getValidModelParts(1, schema);
+      });
+      it('should return the original model', () => {
+        expect(result).toBe(1);
+      });
+    });
+
+    describe('if the model is not part of the enum', () => {
+      beforeEach(() => {
+        result = getValidModelParts(3, schema);
+      });
+      it('should return null', () => {
+        expect(result).toBeNull();
+      });
+    });
+  });
+
+  describe('when cleaning a const schema', () => {
+    beforeEach(() => {
+      schema = { const: 1 };
+    });
+
+    describe('if the model matches the const', () => {
+      beforeEach(() => {
+        result = getValidModelParts(1, schema);
+      });
+      it('should return the original model', () => {
+        expect(result).toBe(1);
+      });
+    });
+
+    describe('if the model does not match the const', () => {
+      beforeEach(() => {
+        result = getValidModelParts(2, schema);
+      });
+      it('should return null', () => {
+        expect(result).toBeNull();
+      });
+    });
+
+    describe('if the const evaluates to false', () => {
+      beforeEach(() => {
+        result = getValidModelParts(0, { const: 0 });
+      });
+      it('should still return matches', () => {
+        expect(result).toBe(0);
       });
     });
   });
@@ -155,7 +212,7 @@ describe('Given a library for returning the valid parts of a model based on a sc
     });
   });
 
-  describe('when cleaning an allOf schema', () => {
+  describe('when cleaning a oneOf schema', () => {
     beforeEach(() => {
       schema = {
         oneOf: [
@@ -181,7 +238,7 @@ describe('Given a library for returning the valid parts of a model based on a sc
 
     describe('if all of the properties are valid', () => {
       beforeEach(() => {
-        result = getValidModelParts({ a: 1, b: 2, c: 3 }, schema);
+        result = getValidModelParts({ a: 1, b: 2 }, schema);
       });
       it('should return them', () => {
         expect(result).toEqual({ a: 1, b: 2 });
@@ -194,6 +251,91 @@ describe('Given a library for returning the valid parts of a model based on a sc
       });
       it('should remove them', () => {
         expect(result).toEqual({ a: 1 });
+      });
+    });
+
+    describe('if the model contains undocumented properties', () => {
+      beforeEach(() => {
+        result = getValidModelParts({ a: 1, b: 2, c: 3 }, schema);
+      });
+      it('should remove them', () => {
+        expect(result).toEqual({ a: 1, b: 2 });
+      });
+    });
+  });
+
+  describe('when cleaning a oneOf schema of const', () => {
+    beforeEach(() => {
+      schema = {
+        oneOf: [{ const: 0 }, { const: 1 }, { const: 2 }],
+      };
+    });
+
+    describe('when the value is in the const collection', () => {
+      it('should return the value', () => {
+        expect(getValidModelParts(0, schema)).toEqual(0);
+        expect(getValidModelParts(1, schema)).toEqual(1);
+        expect(getValidModelParts(2, schema)).toEqual(2);
+      });
+    });
+
+    describe('when the value is not in the const collection', () => {
+      it('should return null', () => {
+        expect(getValidModelParts(3, schema)).toEqual(null);
+        expect(getValidModelParts({}, schema)).toEqual(null);
+        expect(getValidModelParts(null, schema)).toEqual(null);
+      });
+    });
+  });
+
+  describe('when cleaning an allOf schema', () => {
+    beforeEach(() => {
+      schema = {
+        allOf: [
+          {
+            type: 'object',
+            properties: {
+              a: {
+                type: 'number',
+              },
+            },
+          },
+          {
+            type: 'object',
+            properties: {
+              b: {
+                type: 'number',
+              },
+            },
+          },
+        ],
+      };
+    });
+
+    describe('if all of the properties are valid', () => {
+      beforeEach(() => {
+        result = getValidModelParts({ a: 1, b: 2 }, schema);
+      });
+      it('should return them', () => {
+        expect(result).toEqual({ a: 1, b: 2 });
+      });
+    });
+
+    describe('if the model contains invalid properties', () => {
+      beforeEach(() => {
+        result = getValidModelParts({ a: 1, b: '2' }, schema);
+      });
+      it('should remove them', () => {
+        expect(result).toEqual({ a: 1 });
+      });
+    });
+
+    describe('if the model contains undocumented properties', () => {
+      beforeEach(() => {
+        result = getValidModelParts({ a: 1, b: 2, c: 3 }, schema);
+      });
+      it('should remove them', () => {
+        expect(result).toEqual({ a: 1, b: 2 });
       });
     });
   });

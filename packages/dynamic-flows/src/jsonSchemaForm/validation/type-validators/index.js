@@ -7,6 +7,7 @@ import {
   isArray,
   isObject,
   isNull,
+  isUndefined,
 } from '../../../common/validation/type-validators';
 
-export { isString, isNumber, isInteger, isBoolean, isObject, isArray, isNull };
+export { isString, isNumber, isInteger, isBoolean, isObject, isArray, isNull, isUndefined };

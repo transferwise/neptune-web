@@ -102,9 +102,7 @@ describe('Given a library for identifying validation failures', () => {
 
   describe('when validating an integer schema', () => {
     beforeEach(() => {
-      schema = {
-        type: 'integer',
-      };
+      schema = { type: 'integer' };
     });
 
     it('should return an empty array for valid integer', () => {
@@ -117,9 +115,7 @@ describe('Given a library for identifying validation failures', () => {
 
   describe('when validating a boolean schema', () => {
     beforeEach(() => {
-      schema = {
-        type: 'boolean',
-      };
+      schema = { type: 'boolean' };
     });
 
     it('should return an empty array for valid boolean', () => {
@@ -128,6 +124,32 @@ describe('Given a library for identifying validation failures', () => {
     });
     it('should return [type] when incorrect data type', () => {
       expect(getValidationFailures(1, schema)).toEqual(['type']);
+    });
+  });
+
+  describe('when validating a const schema', () => {
+    beforeEach(() => {
+      schema = { const: 'abcd' };
+    });
+
+    it('should return an empty array when the const matches', () => {
+      expect(getValidationFailures('abcd', schema)).toEqual([]);
+    });
+    it('should return [enum] when not const', () => {
+      expect(getValidationFailures('1234', schema)).toEqual(['enum']);
+    });
+  });
+
+  describe('when validating an enum schema', () => {
+    beforeEach(() => {
+      schema = { enum: ['a', 'b', 'c'] };
+    });
+
+    it('should return an empty array when value is one of the enums', () => {
+      expect(getValidationFailures('b', schema)).toEqual([]);
+    });
+    it('should return [enum] when not allowed', () => {
+      expect(getValidationFailures('d', schema)).toEqual(['enum']);
     });
   });
 

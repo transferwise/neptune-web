@@ -16,8 +16,11 @@ describe('Given a library for validating json schema models', () => {
             type: 'string',
             minLength: 3,
           },
+          c: {
+            const: true,
+          },
         },
-        required: ['a'],
+        required: ['a', 'c'],
       };
     });
 
@@ -28,17 +31,17 @@ describe('Given a library for validating json schema models', () => {
       expect(isValidSchema({}, schema)).toBe(false);
     });
     it('should return false is a required property does not validate', () => {
-      expect(isValidSchema({ a: 1 }, schema)).toBe(false);
+      expect(isValidSchema({ a: 1, c: true }, schema)).toBe(false);
     });
     it('should return false if an optional property is invalid', () => {
-      expect(isValidSchema({ a: 2, b: 'c' }, schema)).toBe(false);
+      expect(isValidSchema({ a: 2, b: 'c', c: true }, schema)).toBe(false);
     });
 
     it('should return true if required properties validate and non-required fields are missing', () => {
-      expect(isValidSchema({ a: 2 }, schema)).toBe(true);
+      expect(isValidSchema({ a: 2, c: true }, schema)).toBe(true);
     });
     it('should return true if all properties validate', () => {
-      expect(isValidSchema({ a: 2, b: 'cde' }, schema)).toBe(true);
+      expect(isValidSchema({ a: 2, b: 'cde', c: true }, schema)).toBe(true);
     });
   });
 

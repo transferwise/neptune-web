@@ -36,7 +36,8 @@ const ObjectSchema = (props) => {
   return (
     <fieldset>
       {props.schema.title && !props.hideTitle && <legend> {props.schema.title} </legend>}
-      {props.schema.description && <p> {props.schema.description} </p>}
+      {props.schema.description && !props.hideTitle && <p> {props.schema.description} </p>}
+
       <div className="row">
         {Object.keys(props.schema.properties).map((propertyName) => (
           <div

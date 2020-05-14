@@ -2,12 +2,10 @@ import React from 'react';
 import Types from 'prop-types';
 
 import FormControl from '../../formControl';
-import { isNull } from '../validation/type-validators';
+import { isNull, isUndefined } from '../validation/type-validators';
 import { getValidModelParts } from '../validation/valid-model';
 
 const SchemaFormControl = (props) => {
-  const isUndefined = (value) => typeof value === 'undefined';
-
   const isNativeInput = (schemaType) => schemaType === 'string' || schemaType === 'number';
 
   const getSanitisedValue = (value) =>
@@ -21,6 +19,14 @@ const SchemaFormControl = (props) => {
   const getControlType = (schema) => {
     if (schema.control) {
       return schema.control;
+    }
+
+    if (schema.enum) {
+      return schema.enum.length >= 3 ? 'select' : 'radio';
+    }
+
+    if (schema.oneOf) {
+      return schema.oneOf.length >= 3 ? 'select' : 'radio';
     }
 
     if (schema.type === 'string') {
@@ -38,9 +44,6 @@ const SchemaFormControl = (props) => {
     if (schema.type === 'boolean') {
       return 'checkbox';
     }
-    if (schema.enum) {
-      return schema.enum.length >= 3 ? 'select' : 'radio';
-    }
     if (schema.type === 'integer') {
       return 'number';
     }
@@ -48,7 +51,33 @@ const SchemaFormControl = (props) => {
     return schema.type;
   };
 
+  const getOptions = (schema) => {
+    // DEPRECATED: values is a legacy approach, use oneOf.
+    if (schema.values) {
+      return schema.values;
+    }
+    if (schema.enum) {
+      return schema.enum.map((value) => {
+        return { value, label: value };
+      });
+    }
+    if (schema.oneOf) {
+      return schema.oneOf.map(mapConstSchemaToOption);
+    }
+    return null;
+  };
+
+  const mapConstSchemaToOption = (schema) => {
+    return {
+      value: !isUndefined(schema.const) ? schema.const : schema.enum[0],
+      label: schema.title,
+      secondary: schema.description,
+      disabled: schema.disabled,
+    };
+  };
+
   const controlType = getControlType(props.schema);
+  const options = getOptions(props.schema);
 
   const events = {
     onFocus: props.onFocus,
@@ -63,7 +92,7 @@ const SchemaFormControl = (props) => {
     name: props.id,
     locale: props.locale,
     label: props.schema.title,
-    options: props.schema.values,
+    options,
     placeholder: props.schema.placeholder,
     autoComplete: !props.schema.help,
   };
@@ -83,8 +112,8 @@ SchemaFormControl.propTypes = {
     help: Types.shape({}),
   }).isRequired,
   onChange: Types.func.isRequired,
-  onFocus: Types.func.isRequired,
-  onBlur: Types.func.isRequired,
+  onFocus: Types.func,
+  onBlur: Types.func,
   translations: Types.shape({}),
   locale: Types.string,
 };
@@ -93,6 +122,8 @@ SchemaFormControl.defaultProps = {
   value: 'one',
   translations: {},
   locale: 'en-GB',
+  onFocus: null,
+  onBlur: null,
 };
 
 export default SchemaFormControl;

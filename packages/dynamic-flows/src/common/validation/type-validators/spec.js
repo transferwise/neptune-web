@@ -1,4 +1,13 @@
-import { isString, isNumber, isInteger, isBoolean, isArray, isObject } from '.';
+import {
+  isString,
+  isNumber,
+  isInteger,
+  isBoolean,
+  isArray,
+  isObject,
+  isNull,
+  isUndefined,
+} from '.';
 
 describe('Given a library for validating data types', () => {
   describe('when validating a string', () => {
@@ -92,6 +101,32 @@ describe('Given a library for validating data types', () => {
       expect(isObject([])).toBe(false);
       expect(isObject(undefined)).toBe(false);
       expect(isObject(null)).toBe(false);
+    });
+  });
+
+  describe('when validating a null', () => {
+    it('should return true when the value is null', () => {
+      expect(isNull(null)).toBe(true);
+    });
+    it('should return false when the value is not null', () => {
+      expect(isNull(0)).toBe(false);
+      expect(isNull(false)).toBe(false);
+      expect(isNull([])).toBe(false);
+      expect(isNull({})).toBe(false);
+      expect(isNull(undefined)).toBe(false);
+    });
+  });
+
+  describe('when validating an undefined', () => {
+    it('should return true when the value is undefined', () => {
+      expect(isUndefined(undefined)).toBe(true);
+    });
+    it('should return false when the value is not undefined', () => {
+      expect(isUndefined(0)).toBe(false);
+      expect(isUndefined(false)).toBe(false);
+      expect(isUndefined([])).toBe(false);
+      expect(isUndefined({})).toBe(false);
+      expect(isUndefined(null)).toBe(false);
     });
   });
 });

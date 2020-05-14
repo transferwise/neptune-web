@@ -55,12 +55,23 @@ const BasicTypeSchema = (props) => {
       setModelAndBroadcast(props.schema.default);
     }
 
+    if (props.schema.const) {
+      setModelAndBroadcast(props.schema.const);
+    }
+
+    if (props.schema.enum && props.schema.enum.length === 1) {
+      setModelAndBroadcast(props.schema.enum[0]);
+    }
+
     setId(generateId());
   };
 
   const onModelChange = () => {
     setValidations(getValidationKeys(model));
   };
+
+  const isConst = props.schema.const || (props.schema.enum && props.schema.enum.length === 1);
+  const isHidden = props.schema.hidden || isConst;
 
   useEffect(onSchemaChange, [props.schema]);
   useEffect(onModelChange, [props.model]);
@@ -76,31 +87,33 @@ const BasicTypeSchema = (props) => {
   const showLabel = props.schema.format !== 'file' && props.schema.type !== 'boolean';
 
   return (
-    <div className={classNames(formGroupClasses)}>
-      {showLabel && (
-        <label className="control-label" htmlFor={id}>
-          {props.schema.title}
-        </label>
-      )}
-      <SchemaFormControl
-        id={id}
-        schema={props.schema}
-        value={model}
-        locale={props.locale}
-        onChange={onChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
-      />
-      <ControlFeedback
-        changed={changed}
-        focused={focused}
-        blurred={blurred}
-        submitted={props.submitted}
-        errors={props.errors}
-        schema={props.schema}
-        validations={validations}
-      />
-    </div>
+    !isHidden && (
+      <div className={classNames(formGroupClasses)}>
+        {showLabel && (
+          <label className="control-label" htmlFor={id}>
+            {props.schema.title}
+          </label>
+        )}
+        <SchemaFormControl
+          id={id}
+          schema={props.schema}
+          value={model}
+          locale={props.locale}
+          onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
+        />
+        <ControlFeedback
+          changed={changed}
+          focused={focused}
+          blurred={blurred}
+          submitted={props.submitted}
+          errors={props.errors}
+          schema={props.schema}
+          validations={validations}
+        />
+      </div>
+    )
   );
 };
 
@@ -108,11 +121,13 @@ BasicTypeSchema.propTypes = {
   schema: Types.shape({
     type: Types.oneOf(['string', 'number', 'integer', 'boolean']),
     enum: Types.arrayOf(Types.oneOfType([Types.string, Types.number, Types.bool])),
+    const: Types.oneOfType([Types.string, Types.number, Types.bool]),
     format: Types.string,
     title: Types.string,
     values: Types.arrayOf(Types.shape({})),
     default: Types.oneOfType([Types.string, Types.number, Types.bool]),
     disabled: Types.bool,
+    hidden: Types.bool,
     help: Types.shape({}),
   }).isRequired,
   model: Types.oneOfType([Types.string, Types.number, Types.bool]),
