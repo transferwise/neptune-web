@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.13.3...@transferwise/neptune-css@1.0.0) (2020-05-14)
+
+
+* refactor!: refactoring neptune core css  (#316) ([3cef1b7](https://github.com/transferwise/neptune-web/commit/3cef1b73411d0cbb2d6f9900d63b493850da5adb)), closes [#316](https://github.com/transferwise/neptune-web/issues/316)
+
+
+### Bug Fixes
+
+* fix custom media max values ([#315](https://github.com/transferwise/neptune-web/issues/315)) ([e2d4c0d](https://github.com/transferwise/neptune-web/commit/e2d4c0d52742a413c95fa2b79f3d250387da2b2b))
+
+
+### BREAKING CHANGES
+
+* refactoring Neptune Core styles to produce neptune.core.css
+* This fix changes the custom media max values. When bumping the Neptune-css version in your repo would be nice to double check the custom media max filters you are using to verify everything is working nice. Posibly if you had "@media (--screen-sm-max)" now you'd need to update to "@media (--screen-md-max)"
+
+
+
+
+
 ## [0.13.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.13.2...@transferwise/neptune-css@0.13.3) (2020-04-29)
 
 

@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [27.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.4.0...@transferwise/components@27.0.0) (2020-05-14)
+
+
+* refactor!: move formControl and Field to dynamic-flows (#338) ([5ae2078](https://github.com/transferwise/neptune-web/commit/5ae20788d3ad8c40282674964dbb40098dc08c14)), closes [#338](https://github.com/transferwise/neptune-web/issues/338)
+
+
+### Bug Fixes
+
+* locale was no longer considered invalid - change to a truly invalid locale ([#318](https://github.com/transferwise/neptune-web/issues/318)) ([fa8698e](https://github.com/transferwise/neptune-web/commit/fa8698ef83de50523ecf0b694c0b494ace51093d))
+
+
+### BREAKING CHANGES
+
+* FormControl is no longer available inside @transferwise/components please do import from @transferwise/dynamic-flows
+
+* chore: adjust paths to formControl
+
+* feat: add field to dynamic-flows
+
+* refactor!: moved field inside @transferwise/dynamic-flows
+* Field is no longer available inside @transferwise/components please do import from @transferwise/dynamic-flows
+
+* docs: update docs
+
+* chore: yarn.lock update
+
+* chore: removed field reference
+
+* chore: removed private true
+
+* docs: removed old import
+
+* chore: add deprecation note and removed old dep
+
+
+
+
+
 # [26.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@26.3.0...@transferwise/components@26.4.0) (2020-05-12)
 
 
