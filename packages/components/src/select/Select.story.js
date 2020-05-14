@@ -19,13 +19,13 @@ export const basic = () => {
   const dropdownRight = select('dropdownRight', ['xs', 'sm', 'md', 'lg', 'xl'], 'md');
   const dropdownWidth = select('dropdownWidth', ['sm', 'md', 'lg'], 'md');
 
-  const placeholder = text('placeholder', 'placeholder');
+  const placeholder = text('placeholder', 'Placeholder text');
   const inverse = boolean('inverse', false);
   const block = boolean('block', true);
   const required = boolean('required', false);
   const dropdownUp = boolean('dropdownUp', false);
   const disabled = boolean('disabled', false);
-  const search = boolean('search', true);
+  const search = boolean('search', false);
 
   return (
     <Select
@@ -40,7 +40,7 @@ export const basic = () => {
       search={search}
       onChange={(v) => setSelected(v)}
       required={required}
-      searchPlaceholder="searchplaceholder"
+      searchPlaceholder="Search placeholder"
       dropdownUp={dropdownUp}
       options={[
         { header: 'Basic' },
@@ -103,7 +103,7 @@ export const customSearchFunction = () => {
       }
       onChange={(v) => setSelected(v)}
       required={required}
-      searchPlaceholder="searchplaceholder"
+      searchPlaceholder="Search placeholder"
       dropdownUp={dropdownUp}
       options={[
         { header: 'Popular currencies' },

@@ -127,6 +127,7 @@ const PhoneNumberInput = (props) => {
           options={options}
           selected={{ value: prefix, label: prefix }}
           onChange={handleChangeSelect}
+          placeholder="Select an option..."
           searchPlaceholder={searchPlaceholder}
           onSearchChange={(newSearch) => setSearchQuery(newSearch)}
           searchValue={searchQuery}

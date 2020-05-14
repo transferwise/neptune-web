@@ -222,6 +222,7 @@ export default class MoneyInput extends Component {
               options={selectOptions}
               selected={{ ...selectedCurrency, note: null }}
               onChange={this.handleSelectChange}
+              placeholder="Select an option..."
               searchPlaceholder={this.props.searchPlaceholder}
               onSearchChange={(searchQuery) => this.setState({ searchQuery })}
               searchValue={this.state.searchQuery}

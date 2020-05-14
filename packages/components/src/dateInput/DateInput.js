@@ -83,6 +83,7 @@ const DateInput = (props) => {
           selected={{ value: month, label: months[month] }}
           onChange={(selectedValue) => handleMonthChange(selectedValue)}
           disabled={disabled}
+          placeholder="Select an option..."
           options={getMonthsOptions()}
           size={size}
           onFocus={onFocus}

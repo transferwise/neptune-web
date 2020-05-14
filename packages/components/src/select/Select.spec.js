@@ -166,37 +166,64 @@ describe('Select', () => {
     expectDropdownToBe().closed();
   });
 
-  it('has a default placeholder', () => {
-    expect(component.find('button').text()).not.toEqual('');
-  });
+  describe('placeholders', () => {
+    it('will not render a placeholder if none is provided', () => {
+      expect(component.find('button').text()).toEqual('');
+    });
 
-  it('can be given a placeholder', () => {
-    component.setProps({ placeholder: 'hello world' });
-    expect(component.find('button').text()).toEqual('hello world');
-  });
+    it('can be given a placeholder', () => {
+      component.setProps({ placeholder: 'hello world' });
+      expect(component.find('button').text()).toEqual('hello world');
+    });
 
-  it('renders basic options and placeholder when open and not required', () => {
-    openSelect();
-    component.setProps({ placeholder: 'ayy lmao' });
+    it('renders basic options and placeholder when open and not required', () => {
+      openSelect();
+      component.setProps({ placeholder: 'ayy lmao' });
 
-    expect(component.find('li').length).toBe(props.options.length + 1);
-    expect(findNthListElement(0).text()).toEqual('ayy lmao');
-    expect(findNthOption(0).prop('label')).toEqual('yo');
-    expect(findNthOption(1).prop('label')).toEqual('dawg');
-  });
+      expect(component.find('li').length).toBe(props.options.length + 1);
+      expect(findNthListElement(0).text()).toEqual('ayy lmao');
+      expect(findNthOption(0).prop('label')).toEqual('yo');
+      expect(findNthOption(1).prop('label')).toEqual('dawg');
+    });
 
-  it('does not render placeholder in list when open and required', () => {
-    openSelect();
-    component.setProps({ placeholder: 'this will not be shown', required: true });
+    it('does not render placeholder in list when open and required', () => {
+      openSelect();
+      component.setProps({ placeholder: 'this will not be shown', required: true });
 
-    expect(component.find('li').length).toBe(props.options.length);
-    expect(findNthListElement(0).text()).not.toEqual('this will not be shown');
+      expect(component.find('li').length).toBe(props.options.length);
+      expect(findNthListElement(0).text()).not.toEqual('this will not be shown');
+    });
+
+    it('calls onChange with nothing when selecting the placeholder', () => {
+      component.setProps({ placeholder: 'this is not a real option' });
+      openSelect();
+      findNthListElement(0).simulate('click', fakeEvent());
+      expect(props.onChange).toBeCalledWith(null);
+    });
+
+    it('renders the selected option if given instead of the placeholder', () => {
+      const selected = {
+        value: 0,
+        label: 'ayy',
+        note: 'yo',
+        icon: 'red thing',
+        currency: '',
+        secondary: '',
+        classNames: {},
+
+        selected: true,
+      };
+      component.setProps({ selected });
+      const buttonChild = component.find('button').children().first();
+      expect(buttonChild.type()).toEqual(Option);
+      expect(buttonChild.props()).toEqual(selected);
+    });
   });
 
   it('can select an option and closes itself', async () => {
     openSelect();
     expect(props.onChange).not.toBeCalled();
-    findNthListElement(1).simulate('click', fakeEvent());
+    findNthListElement(0).simulate('click', fakeEvent());
     await bustStackAndUpdate();
     expect(props.onChange).toBeCalledWith(props.options[0]);
     expectDropdownToBe().closed();
@@ -215,30 +242,6 @@ describe('Select', () => {
     expect(activeOptionIndex()).toBe(null);
     component.setProps({ selected: props.options[0] });
     expect(activeOptionIndex()).toBe(0);
-  });
-
-  it('calls onChange with nothing when selecting the placeholder', () => {
-    openSelect();
-    findNthListElement(0).simulate('click', fakeEvent());
-    expect(props.onChange).toBeCalledWith(null);
-  });
-
-  it('renders the selected option if given instead of the placeholder', () => {
-    const selected = {
-      value: 0,
-      label: 'ayy',
-      note: 'yo',
-      icon: 'red thing',
-      currency: '',
-      secondary: '',
-      classNames: {},
-
-      selected: true,
-    };
-    component.setProps({ selected });
-    const buttonChild = component.find('button').children().first();
-    expect(buttonChild.type()).toEqual(Option);
-    expect(buttonChild.props()).toEqual(selected);
   });
 
   it('renders non-clickable headers', () => {
@@ -522,6 +525,7 @@ describe('Select', () => {
 
   it('renders separators', () => {
     component.setProps({
+      placeholder: 'this is not a real option',
       options: [{ separator: true }],
     });
     openSelect();

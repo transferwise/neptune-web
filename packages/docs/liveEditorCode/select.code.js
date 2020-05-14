@@ -8,16 +8,16 @@
   return (
     <Select
       size="md"
-      placeholder="placeholder"
+      placeholder="Placeholder"
       dropdownRight="xs"
       dropdownWidth="lg"
       inverse={false}
       block
       selected={selected}
       disabled={false}
-      onChange={v => setSelected(v)}
+      onChange={(v) => setSelected(v)}
       required={false}
-      searchPlaceholder="searchplaceholder"
+      searchPlaceholder="Search placeholder"
       dropdownUp={false}
       /**
        * Search Parameter:
@@ -31,7 +31,7 @@
        * The custom search function takes two parameters.
        * First is the option the second is the keyword.
        */
-      search={true}
+      search
       options={[
         { header: 'Basic' },
         { value: 0, label: 'A thing', note: 'with a note' },

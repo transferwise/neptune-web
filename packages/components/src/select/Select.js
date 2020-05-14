@@ -113,7 +113,7 @@ export default class Select extends Component {
 
   static defaultProps = {
     id: undefined,
-    placeholder: 'Select an option...',
+    placeholder: undefined,
     size: 'md',
     dropdownRight: null,
     dropdownWidth: null,
@@ -374,7 +374,14 @@ export default class Select extends Component {
   style = (className) => this.props.classNames[className] || className;
 
   renderOptionsList() {
-    const { dropdownRight, dropdownWidth, onSearchChange, required, search } = this.props;
+    const {
+      dropdownRight,
+      dropdownWidth,
+      onSearchChange,
+      placeholder,
+      required,
+      search,
+    } = this.props;
     const { open, shouldRenderWithPortal } = this.state;
     const s = this.style;
 
@@ -388,7 +395,7 @@ export default class Select extends Component {
 
     const list = (
       <ul className={dropdownClass} role="menu">
-        {!required && !canSearch ? this.renderPlaceHolderOption() : ''}
+        {!required && !canSearch && placeholder ? this.renderPlaceHolderOption() : ''}
         {canSearch ? this.renderSearchBox() : ''}
         {this.renderOptions()}
       </ul>
