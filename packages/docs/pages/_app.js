@@ -14,7 +14,7 @@ class MyApp extends App {
   componentDidMount() {
     const { pathname } = Router;
     if (pathname === '/') {
-      Router.push('/about/Home');
+      Router.push(`${process.env.NODE_ENV === 'production' ? '/neptune-web/' : '/'}about/Home`);
     }
   }
 
