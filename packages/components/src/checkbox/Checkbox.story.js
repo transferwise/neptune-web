@@ -13,6 +13,8 @@ export const basic = () => {
   const required = boolean('required', false);
   const disabled = boolean('disabled', false);
   const label = text('label', 'Checkbox');
+  const secondary = text('secondary', '');
+
   return (
     <Checkbox
       label={label}
@@ -20,6 +22,7 @@ export const basic = () => {
       checked={checked}
       required={required}
       disabled={disabled}
+      secondary={secondary}
     />
   );
 };

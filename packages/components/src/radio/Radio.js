@@ -3,12 +3,13 @@ import Types from 'prop-types';
 
 import RadioButton from '../common/RadioButton';
 
-const Radio = ({ label, id, disabled, ...otherProps }) => (
-  <div className="radio" disabled={disabled}>
+const Radio = ({ label, id, disabled, secondary, ...otherProps }) => (
+  <div className={`radio ${secondary ? 'radio-lg' : ''}`} disabled={disabled}>
     <label htmlFor={id}>
       {/* eslint-enable jsx-a11y/label-has-for */}
       <RadioButton id={id} disabled={disabled} {...otherProps} />
       {label}
+      {secondary && <small>{secondary}</small>}
     </label>
   </div>
 );
