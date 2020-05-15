@@ -13,6 +13,7 @@ export const basic = () => {
   const checked = boolean('checked', false);
   const disabled = boolean('disabled', false);
   const label = text('label', 'label');
+  const secondary = text('secondary', '');
 
   return (
     <Radio
@@ -21,6 +22,7 @@ export const basic = () => {
       id="id"
       checked={checked}
       disabled={disabled}
+      secondary={secondary}
       onChange={action('checked')}
     />
   );

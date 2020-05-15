@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.0.3...@transferwise/neptune-docs@4.0.4) (2020-05-15)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.0.2...@transferwise/neptune-docs@4.0.3) (2020-05-15)
+
+
+### Bug Fixes
+
+* update alert.mdx ([4b15260](https://github.com/transferwise/neptune-web/commit/4b15260978bab60ac8f4893336a16f8b684ff5e7))
+
+
+
+
+
 ## [4.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.0.1...@transferwise/neptune-docs@4.0.2) (2020-05-14)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

@@ -12,12 +12,17 @@ describe('Checkbox', () => {
     props = {
       label: <b>hello</b>,
       onChange: jest.fn(),
+      secondary: '',
     };
     component = shallow(<Checkbox {...props} />);
   });
 
   it('renders the given label', () => {
     expect(component.containsMatchingElement(<b>hello</b>)).toBe(true);
+  });
+
+  it('does not render secondary text', () => {
+    expect(component.find('small')).toHaveLength(0);
   });
 
   it('calls change handler with new checked value when not disabled and checkbox button is clicked', () => {
@@ -92,6 +97,12 @@ describe('Checkbox', () => {
     expect(checkboxButton().prop('readOnly')).toBe(false);
     component.setProps({ readOnly: true });
     expect(checkboxButton().prop('readOnly')).toBe(true);
+  });
+
+  it('displays secondary text when supplied', () => {
+    component.setProps({ secondary: 'additional info' });
+    expect(component.find('small').text()).toContain('additional info');
+    expect(component.find('.checkbox').hasClass('checkbox-lg')).toBe(true);
   });
 
   const isDisabled = () => component.hasClass('disabled');

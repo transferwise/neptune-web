@@ -15,12 +15,17 @@ describe('Radio', () => {
       onChange: jest.fn(),
       checked: false,
       disabled: false,
+      secondary: '',
     };
     component = shallow(<Radio {...props} />);
   });
 
   it('displays the given label', () => {
     expect(component.text()).toContain(props.label);
+  });
+
+  it('does not render secondary text', () => {
+    expect(component.find('small')).toHaveLength(0);
   });
 
   it('has id as label for prop', () => {
@@ -54,6 +59,12 @@ describe('Radio', () => {
     expect(radioButton().prop('disabled')).toBe(false);
     component.setProps({ disabled: true });
     expect(radioButton().prop('disabled')).toBe(true);
+  });
+
+  it('displays secondary text when supplied', () => {
+    component.setProps({ secondary: 'additional info' });
+    expect(component.find('small').text()).toContain('additional info');
+    expect(component.find('.radio').hasClass('radio-lg')).toBe(true);
   });
 
   function radioButton() {

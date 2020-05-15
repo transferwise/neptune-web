@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [27.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.0.1...@transferwise/components@27.1.0) (2020-05-15)
+
+
+### Features
+
+* implement secondary text on radio & checkbox ([#360](https://github.com/transferwise/neptune-web/issues/360)) ([ea56c16](https://github.com/transferwise/neptune-web/commit/ea56c16af4f584aa1843a7d7a1f2ac11855f31e4))
+
+
+
+
+
 ## [27.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.0.0...@transferwise/components@27.0.1) (2020-05-14)
 
 
