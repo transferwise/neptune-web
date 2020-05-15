@@ -1,6 +1,5 @@
 - Start Date: 2019-10-30
-- RFC PR:
-- Issue:
+- Status: Agreed
 
 # Summary
 
@@ -12,8 +11,9 @@ Enforcing that would be a responsibility of a test suite that will fail when any
 `className` is the prop used in React to specify a DOM element class.
 
 Two legitimate use cases we have for classes are:
-* utility (`m-t-2` and the like)
-* analytics (e.g., for GTM tracking)
+
+- utility (`m-t-2` and the like)
+- analytics (e.g., for GTM tracking)
 
 When the component does _not_ pass `className`, developers resort to otherwise redundant wrapping DOM elements,
 shown in the example below.
@@ -28,6 +28,7 @@ As of now, some components pass `className` (e.g., [`Chip`](https://github.com/t
 
 As a current example, to add a top margin using an utility class to a component _not_ passing `className`,
 developers have to wrap the component in a redundant DOM element:
+
 ```jsx
 <div className="m-t-2">
   <Alert content="Something went wrong." />
@@ -36,6 +37,7 @@ developers have to wrap the component in a redundant DOM element:
 
 After adding `className` passing, developers could omit this element,
 as `className` would be passed to the outermost element inside the component:
+
 ```jsx
 <Alert content="Something went wrong." className="m-t-2" />
 ```
@@ -52,14 +54,18 @@ We propose passing the `className` prop to the outermost element in the componen
 for _all_ components.
 
 For a simplified version of [`Alert`](https://github.com/transferwise/components/blob/028a4df58c407493943b84f45d90e026429de126/src/alert/Alert.js#L27):
+
 ```jsx
 const Alert = ({ children }) => <div className="alert">{children}</div>;
 ```
 
 We would accept a `className` prop and pass it to the `div`,
 optionally using the [`classnames`](http://npmjs.com/package/classnames) package:
+
 ```jsx
-const Alert = ({ className, children }) => <div className={classNames('alert', className)}>{children}</div>;
+const Alert = ({ className, children }) => (
+  <div className={classNames('alert', className)}>{children}</div>
+);
 ```
 
 In some edge cases, the outermost element does not translate to a DOM element, for example `Fragment` or `CSSTransition`.
@@ -77,11 +83,12 @@ and fail if a component does not comply.
 - adding support requires development effort
 - overriding styles will be easier
 - some components using `Fragment` will need to use `span` or `div` internally,
-potentially changing behaviour and affecting performance
+  potentially changing behaviour and affecting performance
 
 # Alternatives
 
 The alternatives are:
+
 - _not_ passing `className`, which we're currently doing for most of the components
 - using another prop name/type
 
