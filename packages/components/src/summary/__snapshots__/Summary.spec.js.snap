@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Summary renders full component 1`] = `
+<DocumentFragment>
+  <div
+    class="summary outrageous"
+  >
+    <div
+      class="summary__main"
+    >
+      <div
+        class="summary__icon m-r-2"
+      >
+        <strong>
+          icon
+        </strong>
+      </div>
+      <div
+        class="summary__body"
+      >
+        <div
+          class="summary__title"
+        >
+          <strong>
+            Hello world
+          </strong>
+          <div
+            class="summary__help m-l-2"
+          >
+            <span
+              data-toggle="popover"
+              role="button"
+              tabindex="0"
+            >
+              <span
+                aria-hidden="true"
+                class="tw-icon tw-icon-sm "
+                role="presentation"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 23a11 11 0 1 1 11-11 11 11 0 0 1-11 11zm0-21a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"
+                  />
+                  <path
+                    d="M11.24 13.9a1.69 1.69 0 0 1 .14-.68 2.83 2.83 0 0 1 .36-.59 3.85 3.85 0 0 1 .51-.58c.19-.19.39-.4.59-.63l.5-.55a3.71 3.71 0 0 0 .44-.54 3.54 3.54 0 0 0 .3-.62A2.4 2.4 0 0 0 14 8.05a1.78 1.78 0 0 0-.49-.66A2.07 2.07 0 0 0 12.8 7a2.91 2.91 0 0 0-2.2.17 2.7 2.7 0 0 0-1.06.9l-.7-.56a3.64 3.64 0 0 1 1.36-1.13A4.12 4.12 0 0 1 12 6a3.88 3.88 0 0 1 1.24.2 3.19 3.19 0 0 1 1 .58 2.8 2.8 0 0 1 .68.93 2.84 2.84 0 0 1 .26 1.22 3.37 3.37 0 0 1-.13.93 3.18 3.18 0 0 1-.35.77 4 4 0 0 1-.5.67 8.21 8.21 0 0 1-.58.6c-.18.19-.36.36-.54.53a3.89 3.89 0 0 0-.48.52 2.87 2.87 0 0 0-.36.57 1.44 1.44 0 0 0-.14.65v.61h-.8zm.46 4.1a.78.78 0 0 1-.54-.2.65.65 0 0 1-.22-.51.63.63 0 0 1 .22-.5.75.75 0 0 1 .54-.21.77.77 0 0 1 .55.21.67.67 0 0 1 .22.5.69.69 0 0 1-.22.51.81.81 0 0 1-.55.2z"
+                  />
+                </svg>
+              </span>
+            </span>
+            <div
+              class="tw-popover popover animate in scale-down"
+            >
+              <h3
+                class="popover-title"
+              >
+                Need help?
+              </h3>
+              <p
+                class="popover-content m-b-0"
+              >
+                This is some help content
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="summary__content"
+        >
+          <p>
+            This is some content
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Summary renders minimal component 1`] = `
+<DocumentFragment>
+  <div
+    class="summary"
+  >
+    <div
+      class="summary__main"
+    >
+      <div
+        class="summary__icon m-r-2"
+      >
+        <strong>
+          icon
+        </strong>
+      </div>
+      <div
+        class="summary__body"
+      >
+        <div
+          class="summary__title"
+        >
+          <strong>
+            Hello world
+          </strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
