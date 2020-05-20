@@ -5217,7 +5217,7 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-"bootstrap@github:transferwise/bootstrap#^v5.20.0", "bootstrap@github:transferwise/bootstrap#semver:^5.20.0":
+"bootstrap@github:transferwise/bootstrap#semver:^5.20.0":
   version "5.20.0"
   resolved "https://codeload.github.com/transferwise/bootstrap/tar.gz/1328e4e8cad4e200b887b67854d8fd9e8083f6a3"
 
@@ -6206,7 +6206,7 @@ compare-func@^1.3.1:
     array-ify "^1.0.0"
     dot-prop "^3.0.0"
 
-compare-versions@^3.5.1, compare-versions@^3.6.0:
+compare-versions@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/compare-versions/-/compare-versions-3.6.0.tgz#1a5689913685e5a87637b8d3ffca75514ec41d62"
   integrity sha512-W6Af2Iw1z4CB7q4uU4hv646dW9GQuBM+YpC0UvUCWSD8w90SJjp+ujJuXaEMtAXBtSqGfMPuFOVn4/+FlaqfBA==
@@ -7554,6 +7554,16 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+duplexify@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/duplexify/-/duplexify-4.1.1.tgz#7027dc374f157b122a8ae08c2d3ea4d2d953aa61"
+  integrity sha512-DY3xVEmVHTv1wSzKNbwoU6nVjzI369Y6sPoqfYr0/xlx3IdX2n94xIszTcjPO8W8ZIv0Wb0PXNcjuZyT4wiICA==
+  dependencies:
+    end-of-stream "^1.4.1"
+    inherits "^2.0.3"
+    readable-stream "^3.1.1"
+    stream-shift "^1.0.0"
+
 each-props@^1.3.0:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/each-props/-/each-props-1.3.2.tgz#ea45a414d16dd5cfa419b1a81720d5ca06892333"
@@ -8887,6 +8897,11 @@ forever-agent@~0.6.1:
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
   integrity sha1-+8cfDEGt6zf5bFd60e1C2P2sypE=
 
+fork-stream@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/fork-stream/-/fork-stream-0.0.4.tgz#db849fce77f6708a5f8f386ae533a0907b54ae70"
+  integrity sha1-24Sfznf2cIpfjzhq5TOgkHtUrnA=
+
 fork-ts-checker-webpack-plugin@1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-1.5.0.tgz#ce1d77190b44d81a761b10b6284a373795e41f0c"
@@ -9583,6 +9598,15 @@ gulp-filter@^6.0.0:
     plugin-error "^1.0.1"
     streamfilter "^3.0.0"
 
+gulp-if@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-if/-/gulp-if-3.0.0.tgz#6c3e7edc8bafadc34f2ebecb314bf43324ba1e40"
+  integrity sha512-fCUEngzNiEZEK2YuPm+sdMpO6ukb8+/qzbGfJBXyNOXz85bCG7yBI+pPSl+N90d7gnLvMsarthsAImx0qy7BAw==
+  dependencies:
+    gulp-match "^1.1.0"
+    ternary-stream "^3.0.0"
+    through2 "^3.0.1"
+
 gulp-less@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/gulp-less/-/gulp-less-4.0.1.tgz#348c33a5dde7a207c5771b1d8261d1ac1021ceed"
@@ -9595,6 +9619,13 @@ gulp-less@^4.0.1:
     replace-ext "^1.0.0"
     through2 "^2.0.0"
     vinyl-sourcemaps-apply "^0.2.0"
+
+gulp-match@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/gulp-match/-/gulp-match-1.1.0.tgz#552b7080fc006ee752c90563f9fec9d61aafdf4f"
+  integrity sha512-DlyVxa1Gj24DitY2OjEsS+X6tDpretuxD6wTfhXE/Rw2hweqc1f6D/XtsJmoiCwLWfXgR87W9ozEityPCVzGtQ==
+  dependencies:
+    minimatch "^3.0.3"
 
 gulp-plumber@^1.2.1:
   version "1.2.1"
@@ -10100,22 +10131,6 @@ humanize-url@^1.0.0:
   dependencies:
     normalize-url "^1.0.0"
     strip-url-auth "^1.0.0"
-
-husky@^4.2.3:
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-4.2.3.tgz#3b18d2ee5febe99e27f2983500202daffbc3151e"
-  integrity sha512-VxTsSTRwYveKXN4SaH1/FefRJYCtx+wx04sSVcOpD7N2zjoHxa+cEJ07Qg5NmV3HAK+IRKOyNVpi2YBIVccIfQ==
-  dependencies:
-    chalk "^3.0.0"
-    ci-info "^2.0.0"
-    compare-versions "^3.5.1"
-    cosmiconfig "^6.0.0"
-    find-versions "^3.2.0"
-    opencollective-postinstall "^2.0.2"
-    pkg-dir "^4.2.0"
-    please-upgrade-node "^3.2.0"
-    slash "^3.0.0"
-    which-pm-runs "^1.0.0"
 
 husky@^4.2.5:
   version "4.2.5"
@@ -12865,7 +12880,7 @@ minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
   integrity sha1-9sAMHAsIIkblxNmd+4x8CDsrWCo=
 
-minimatch@3.0.4, minimatch@^3.0.2, minimatch@^3.0.4:
+minimatch@3.0.4, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   integrity sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==
@@ -17779,6 +17794,16 @@ term-size@^2.1.0:
   resolved "https://registry.yarnpkg.com/term-size/-/term-size-2.2.0.tgz#1f16adedfe9bdc18800e1776821734086fcc6753"
   integrity sha512-a6sumDlzyHVJWb8+YofY4TW112G6p2FCPEAFk+59gIYHv3XHRhm9ltVQ9kli4hNWeQBwSpe8cRN25x0ROunMOw==
 
+ternary-stream@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ternary-stream/-/ternary-stream-3.0.0.tgz#7951930ea9e823924d956f03d516151a2d516253"
+  integrity sha512-oIzdi+UL/JdktkT+7KU5tSIQjj8pbShj3OASuvDEhm0NT5lppsm7aXWAmAq4/QMaBIyfuEcNLbAQA+HpaISobQ==
+  dependencies:
+    duplexify "^4.1.1"
+    fork-stream "^0.0.4"
+    merge-stream "^2.0.0"
+    through2 "^3.0.1"
+
 terser-webpack-plugin@^1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-1.4.3.tgz#5ecaf2dbdc5fb99745fd06791f46fc9ddb1c9a7c"
@@ -17905,7 +17930,7 @@ through2@^2.0.0, through2@^2.0.1, through2@^2.0.2, through2@^2.0.3, through2@~2.
     readable-stream "~2.3.6"
     xtend "~4.0.1"
 
-through2@^3.0.0:
+through2@^3.0.0, through2@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/through2/-/through2-3.0.1.tgz#39276e713c3302edf9e388dd9c812dd3b825bd5a"
   integrity sha512-M96dvTalPT3YbYLaKaCuwu+j06D/8Jfib0o/PxbVt6Amhv3dUAtW6rTV1jPgJSBG83I/e04Y6xkVdVhSRhi0ww==
