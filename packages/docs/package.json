@@ -11,7 +11,7 @@
     "docs:deploy": "gh-pages --dotfiles -a -d docs-build",
     "docs:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
     "lint": "eslint components/ pages/",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "yarn lint --fix"
   },
   "repository": {
     "type": "git",
