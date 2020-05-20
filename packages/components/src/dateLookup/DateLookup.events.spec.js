@@ -46,10 +46,6 @@ describe('DateLookup (events)', () => {
       expect(component.instance().state.mode).toBe('day');
     });
 
-    it('sets focus to header label', () => {
-      expect(document.activeElement.className).toContain('tw-date-lookup-header-current');
-    });
-
     it('adds outside click event handler', () => {
       expect(global.document.addEventListener).toHaveBeenCalledWith(
         'click',
@@ -88,36 +84,6 @@ describe('DateLookup (events)', () => {
       component.instance().handleOutsideClick({ target: '' });
       expect(component.instance().state.open).toBe(false);
     });
-  });
-
-  it('switches to days', () => {
-    component.setState({ mode: 'year', open: true });
-    component.instance().switchToDays();
-    expect(component.instance().state.mode).toBe('day');
-    expect(document.activeElement.className).toContain('active');
-  });
-
-  it('switches to months', () => {
-    component.setState({ open: true });
-    component.instance().switchToMonths();
-    expect(component.instance().state.mode).toBe('month');
-    expect(document.activeElement.className).toContain('active');
-  });
-
-  it('switches to years', () => {
-    component.setState({ open: true });
-    component.instance().switchToYears();
-    expect(component.instance().state.mode).toBe('year');
-    expect(document.activeElement.className).toContain('active');
-  });
-
-  it('updates selected date and closes', () => {
-    component.setState({ open: true });
-    const d = new Date(2018, 11, 28);
-    component.instance().handleSelectedDateUpdate(d);
-    expect(props.onChange).toHaveBeenCalledWith(d);
-    expect(component.instance().state.open).toBe(false);
-    expect(document.activeElement.className).toContain('btn');
   });
 
   it('updates view month and year', () => {
