@@ -10,6 +10,7 @@
  * */
 
 module.exports = {
+  rootDir: process.env.PWD,
   setupFiles: [require.resolve('./config/setupTests.js')],
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
