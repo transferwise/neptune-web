@@ -1,4 +1,4 @@
-// LESS variables for base colours.
+// LESS variables for base colours
 @color-base-blue-light: #00b9ff;
 @color-base-blue-mid: #00a4df;
 @color-base-blue-dark: #008ec0;
@@ -28,8 +28,8 @@
 @color-base-grey-dark: #5d7079;
 @color-base-white: #ffffff;
 
-// Semantic colours
 :root {
+  // Semantic colours
   --color-primary: @color-base-navy-light;
   --color-secondary: @color-base-grey-mid;
   --color-accent: @color-base-blue-light;
@@ -40,6 +40,7 @@
   --color-text-secondary: var(--color-secondary);
   --color-text-inactive: @color-base-smoke-dark;
   --color-text-important: var(--color-primary);
+  --color-text-control: @color-base-white;
   --color-text-link: var(--color-accent);
   --color-text-link-hover: @color-base-blue-mid;
   --color-text-link-active: @color-base-blue-dark;
@@ -59,13 +60,12 @@
   --color-background-positive: @color-base-green-fade;
   --color-background-negative: @color-base-red-fade;
   --color-background-warning: @color-base-orange-fade;
-}
 
-:root {
+  // Deprecated
   --brand-white: @color-base-white;
   --link-color: var(--color-text-link);
 
-  /* Blues */
+  /* Deprecated - Blues */
   --brand-pale-blue: #dbf0fd;
   --brand-navy-minus-20: @color-base-navy-dark;
   --brand-navy-minus-10: @color-base-navy-mid;
@@ -74,31 +74,28 @@
   --brand-blue-minus-10: #192439;
   --brand-blue: #223049;
 
-  /* Light Blues */
+  /* Deprecated - Light Blues */
   --brand-light-blue-minus-10: @color-base-blue-mid;
   --brand-light-blue: @color-base-blue-light;
 
-  /* Dark Grays */
+  /* Deprecated - Dark Grays */
   --brand-grey-plus-10: @color-base-grey-mid;
 
-  /* Light Grays */
+  /* Deprecated - Light Grays */
   --brand-smoke-minus-10: @color-base-smoke-dark;
   --brand-smoke: @color-base-smoke-mid;
   --brand-smoke-plus-10: @color-base-smoke-light;
   --brand-smoke-plus-20: @color-base-smoke-fade;
 
-  /* Greens */
+  /* Deprecated - Greens */
   --brand-green-minus-10: @color-base-green-mid;
   --brand-green: @color-base-green-light;
 
-  /* Color Mapping */
-  /* Gray and brand colors for use across the Design System. */
+  /* Deprecated - Color Mapping */
   --gray-base: var(--brand-smoke-plus-20);
   --gray-darker: #384347;
   --gray-light: @color-base-grey-light;
-
   --brand-primary: var(--brand-navy);
-
   --body-bg: var(--brand-white);
   --text-bold-color: var(--brand-navy-minus-10);
 }
