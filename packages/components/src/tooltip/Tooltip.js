@@ -23,7 +23,7 @@ function getTooltipStyle(parent, tooltip, position, offset) {
       };
     case Position.BOTTOM:
       return {
-        top: `${parent.offsetTop + tooltip.offsetHeight + offset}px`,
+        top: `${parent.offsetTop + parent.offsetHeight + offset}px`,
         left: `${parent.offsetLeft + parent.offsetWidth / 2 - tooltip.offsetWidth / 2}px`,
       };
     default:
