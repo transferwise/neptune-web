@@ -4,7 +4,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import { uglify } from 'rollup-plugin-uglify';
 import json from '@rollup/plugin-json';
-import visualizer from 'rollup-plugin-visualizer';
 
 import pkg from './package.json';
 
@@ -48,7 +47,6 @@ const plugins = [
   }),
   json(),
   uglify(),
-  visualizer(),
 ];
 
 export default [
