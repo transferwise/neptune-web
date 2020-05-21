@@ -10,9 +10,6 @@ describe('DateLookup (events)', () => {
   const min = new Date(2018, 11, 26);
   const max = new Date(2018, 11, 28);
 
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-
   let props;
   let container;
 
@@ -22,8 +19,8 @@ describe('DateLookup (events)', () => {
   };
 
   const clickDateButton = () => {
-    const dateButton = screen.getByText(`${month}/${year}`);
-    user.click(dateButton);
+    const button = container.querySelector('button.tw-date-lookup-header-current');
+    user.click(button);
   };
 
   // Close dateLookup and removes events attached to documents.
