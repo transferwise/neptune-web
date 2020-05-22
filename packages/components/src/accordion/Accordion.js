@@ -9,6 +9,7 @@ class Accordion extends PureComponent {
   static propTypes = {
     items: Types.arrayOf(
       Types.shape({
+        id: Types.string,
         title: Types.node.isRequired,
         content: Types.node.isRequired,
       }),
@@ -38,7 +39,8 @@ class Accordion extends PureComponent {
   render() {
     return this.props.items.map((item, index) => (
       <AccordionItem
-        key={index}
+        id={item.id}
+        key={item.id || index}
         index={index}
         isOpen={index === this.state.indexOpen}
         onClick={this.handleOnClick}
