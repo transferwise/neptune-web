@@ -24,6 +24,8 @@ git clone git@github.com:transferwise/neptune-web.git && cd neptune && yarn setu
 
 ## Develop
 
+Please familiarise yourself with our [code conventions](CODESTYLE.md).
+
 Run the React development environment (Storybook):
 
 ```

@@ -10,10 +10,11 @@
  * */
 
 module.exports = {
-  setupFiles: ['<rootDir>/config/jest/setupTests.js'],
+  rootDir: process.env.PWD,
+  setupFiles: [require.resolve('./config/setupTests.js')],
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
-    '\\.css$': require.resolve('./config/jest/style-mock.js'),
+    '\\.css$': require.resolve('./config/style-mock.js'),
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   transformIgnorePatterns: ['^((?!src).)*$'],
