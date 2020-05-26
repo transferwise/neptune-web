@@ -6,13 +6,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 # [27.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.3.0...@transferwise/components@27.4.0) (2020-05-26)
 
 
-### Features
+### Bug Fixes
 
-* neptune sprint 21 ([a9da4cd](https://github.com/transferwise/neptune-web/commit/a9da4cd0bba2535bc7bb8222ddb1cde9a27e6cba))
+* chore(deps): bump @mdx-js/loader from 1.5.8 to 1.6.1 ([#342](https://github.com/transferwise/neptune-web/pull/342))
 
+* chore: better storybook theming ([#366](https://github.com/transferwise/neptune-web/pull/366))
 
+* chore: centralize shared dev dependencies ([#317](https://github.com/transferwise/neptune-web/pull/317))
 
+* chore: jest update and failing tests refactor ([#354](https://github.com/transferwise/neptune-web/pull/354))
 
+* fix: tooltip position when using bottom position ([#369](https://github.com/transferwise/neptune-web/pull/369))
+
+* chore(deps): updating lint-staged and rollup ([#370](https://github.com/transferwise/neptune-web/pull/370))
+
+* test: refactored dateLookup tests ([50a860b](https://github.com/transferwise/neptune-web/pull/376/commits/50a860bfded5fef9077969f1a06e5334b6e7d517))
 
 # [27.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.2.1...@transferwise/components@27.3.0) (2020-05-22)
 

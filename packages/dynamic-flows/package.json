@@ -48,8 +48,8 @@
     "@storybook/addon-info": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/react": "^5.3.18",
-    "@transferwise/less-config": "^1.1.0",
-    "@transferwise/test-config": "^1.1.0",
+    "@transferwise/less-config": "^1.0.0",
+    "@transferwise/test-config": "^1.0.0",
     "babel-loader": "^8.1.0",
     "babel-preset-minify": "^0.5.1"
   },
