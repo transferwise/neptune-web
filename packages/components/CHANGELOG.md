@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [27.5.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.4.1...@transferwise/components@27.5.0) (2020-05-27)
+
+
+### Features
+
+* Allow accordion open item to react to parent state change ([#375](https://github.com/transferwise/neptune-web/issues/375)) ([6ce8603](https://github.com/transferwise/neptune-web/commit/6ce86036f246c8f26f51571e4afc7f538c81a5ae))
+
+
+
+
+
 ## [27.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.4.0...@transferwise/components@27.4.1) (2020-05-26)
 
 
