@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.5.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.5.0...@transferwise/components@27.5.1) (2020-05-28)
+
+
+### Bug Fixes
+
+*  babel minify renaming error ([#378](https://github.com/transferwise/neptune-web/issues/378)) ([cfaa8db](https://github.com/transferwise/neptune-web/commit/cfaa8db00b1283f330cf68a4606a4c0d31f8afc5))
+
+
+
+
+
 # [27.5.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.4.1...@transferwise/components@27.5.0) (2020-05-27)
 
 
