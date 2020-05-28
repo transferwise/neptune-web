@@ -23,7 +23,7 @@
     "dev:storybook": "start-storybook",
     "docs": "npm-run-all --parallel docs:*",
     "docs:babel": "NODE_ENV=es babel src -d build/es/polyfill --ignore '**/*.spec.js','**/*.story.js' -w",
-    "docs:watch-less": "gulp lessWatcher --dest=src",
+    "docs:watch-less": "gulp lessWatcher --gulpfile=../../node_modules/@transferwise/less-config --dest=src",
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf lib build",
     "build:compile-css": "gulp lessCompiler --gulpfile=../../node_modules/@transferwise/less-config --dest=src",
