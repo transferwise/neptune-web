@@ -8,16 +8,16 @@ This is the Neptune Web CSS library. It works well with [Neptune React Component
 
 ## Usage
 
-Neptune CSS is published to npm as [@transferwise/css](https://www.npmjs.com/package/@transferwise/css).
+Neptune CSS is published to npm as [@transferwise/neptune-css](https://www.npmjs.com/package/@transferwise/neptune-css).
 
-Install `@transferwise/css`:
+Install `@transferwise/neptune-css`:
 
 ```
 # yarn
-yarn add @transferwise/css
+yarn add @transferwise/neptune-css
 
 # npm
-npm install @transferwise/css
+npm install @transferwise/neptune-css
 ```
 
 There are three bundles to choose from, depending on your needs:
