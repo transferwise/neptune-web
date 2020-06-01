@@ -1,13 +1,15 @@
+import { isString, isNumber, isArray, isUndefined } from '../type-validators';
+
 function isValidRequired(value, isRequired) {
-  return !isRequired || typeof value !== 'undefined';
+  return !isRequired || !isUndefined(value);
 }
 
 function isValidMinLength(value, minLength) {
-  return typeof minLength === 'undefined' || (!!value && value.length >= minLength);
+  return !isNumber(minLength) || (isString(value) && value.length >= minLength);
 }
 
 function isValidMaxLength(value, maxLength) {
-  return typeof maxLength === 'undefined' || value === '' || (!!value && value.length <= maxLength);
+  return !isNumber(maxLength) || (isString(value) && value.length <= maxLength);
 }
 
 function isValidPattern(value, pattern) {
@@ -19,20 +21,26 @@ function isValidPattern(value, pattern) {
   }
 }
 
-function isValidMax(value, max) {
-  return typeof max === 'undefined' || (typeof value !== 'undefined' && value <= max);
+function isValidMaximum(value, maximum) {
+  return (
+    (!isNumber(maximum) && !isString(maximum)) ||
+    ((isNumber(value) || isString(value)) && value <= maximum)
+  );
 }
 
-function isValidMin(value, min) {
-  return typeof min === 'undefined' || (typeof value !== 'undefined' && value >= min);
+function isValidMinimum(value, minimum) {
+  return (
+    (!isNumber(minimum) && !isString(minimum)) ||
+    ((isNumber(value) || isString(value)) && value >= minimum)
+  );
 }
 
 function isValidMinItems(value, minItems) {
-  return !minItems || (!!value && value.length >= minItems);
+  return !isNumber(minItems) || (isArray(value) && value.length >= minItems);
 }
 
 function isValidMaxItems(value, maxItems) {
-  return !maxItems || (!!value && value.length <= maxItems);
+  return !isNumber(maxItems) || (isArray(value) && value.length <= maxItems);
 }
 
 export {
@@ -40,8 +48,8 @@ export {
   isValidMinLength,
   isValidMaxLength,
   isValidPattern,
-  isValidMax,
-  isValidMin,
+  isValidMaximum,
+  isValidMinimum,
   isValidMinItems,
   isValidMaxItems,
 };

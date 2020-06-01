@@ -52,8 +52,8 @@ describe('Given a library for identifying validation failures', () => {
     beforeEach(() => {
       schema = {
         type: 'string',
-        min: '2000-01-01T00:00:00Z',
-        max: '2010-01-01T00:00:00Z',
+        minimum: '2000-01-01T00:00:00Z',
+        maximum: '2010-01-01T00:00:00Z',
       };
     });
 
@@ -61,10 +61,10 @@ describe('Given a library for identifying validation failures', () => {
       expect(getValidationFailures('2005-01-01T00:00:00Z', schema)).toEqual([]);
     });
     it('should return [min] when date is too early', () => {
-      expect(getValidationFailures('1999-01-01T00:00:00Z', schema)).toEqual(['min']);
+      expect(getValidationFailures('1999-01-01T00:00:00Z', schema)).toEqual(['minimum']);
     });
     it('should return [max] when date is too late', () => {
-      expect(getValidationFailures('2011-01-01T00:00:00Z', schema)).toEqual(['max']);
+      expect(getValidationFailures('2011-01-01T00:00:00Z', schema)).toEqual(['maximum']);
     });
   });
 
@@ -72,8 +72,8 @@ describe('Given a library for identifying validation failures', () => {
     beforeEach(() => {
       schema = {
         type: 'number',
-        min: 0,
-        max: 20,
+        minimum: 0,
+        maximum: 20,
       };
     });
 
@@ -90,10 +90,10 @@ describe('Given a library for identifying validation failures', () => {
       expect(getValidationFailures(20, schema)).toEqual([]);
     });
     it('should return [min] when number is too low', () => {
-      expect(getValidationFailures(-1, schema)).toEqual(['min']);
+      expect(getValidationFailures(-1, schema)).toEqual(['minimum']);
     });
     it('should return [max] when number is too high', () => {
-      expect(getValidationFailures(21, schema)).toEqual(['max']);
+      expect(getValidationFailures(21, schema)).toEqual(['maximum']);
     });
     it('should return [type] when incorrect data type', () => {
       expect(getValidationFailures('string', schema)).toEqual(['type']);

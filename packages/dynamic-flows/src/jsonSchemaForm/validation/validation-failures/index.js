@@ -13,8 +13,8 @@ import {
   isValidMinLength,
   isValidMaxLength,
   isValidPattern,
-  isValidMax,
-  isValidMin,
+  isValidMaximum,
+  isValidMinimum,
   isValidMinItems,
   isValidMaxItems,
 } from '../rule-validators';
@@ -72,11 +72,11 @@ function getStringValidationFailures(value, schema, isRequired) {
   if (!isValidPattern(value, schema.pattern)) {
     failures.push('pattern');
   }
-  if (!isValidMin(value, schema.min)) {
-    failures.push('min');
+  if (!isValidMinimum(value, schema.minimum)) {
+    failures.push('minimum');
   }
-  if (!isValidMax(value, schema.max)) {
-    failures.push('max');
+  if (!isValidMaximum(value, schema.maximum)) {
+    failures.push('maximum');
   }
   return failures;
 }
@@ -90,11 +90,11 @@ function getNumberValidationFailures(value, schema, isRequired) {
   if (!isValidRequired(value, isRequired)) {
     failures.push('required');
   }
-  if (!isValidMin(value, schema.min)) {
-    failures.push('min');
+  if (!isValidMinimum(value, schema.minimum)) {
+    failures.push('minimum');
   }
-  if (!isValidMax(value, schema.max)) {
-    failures.push('max');
+  if (!isValidMaximum(value, schema.maximum)) {
+    failures.push('maximum');
   }
   return failures;
 }

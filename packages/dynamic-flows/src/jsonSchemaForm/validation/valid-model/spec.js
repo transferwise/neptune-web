@@ -46,7 +46,31 @@ describe('Given a library for returning the valid parts of a model based on a sc
       beforeEach(() => {
         result = getValidModelParts('string', schema);
       });
-      it('should return undefined', () => {
+      it('should return null', () => {
+        expect(result).toBeNull();
+      });
+    });
+  });
+
+  describe('when cleaning an integer schema', () => {
+    beforeEach(() => {
+      schema = { type: 'integer' };
+    });
+
+    describe('with an integer model', () => {
+      beforeEach(() => {
+        result = getValidModelParts(12345, schema);
+      });
+      it('should return the original integer', () => {
+        expect(result).toBe(12345);
+      });
+    });
+
+    describe('with any non integer model', () => {
+      beforeEach(() => {
+        result = getValidModelParts(12.34, schema);
+      });
+      it('should return null', () => {
         expect(result).toBeNull();
       });
     });
@@ -70,7 +94,7 @@ describe('Given a library for returning the valid parts of a model based on a sc
       beforeEach(() => {
         result = getValidModelParts('string', schema);
       });
-      it('should return undefined', () => {
+      it('should return null', () => {
         expect(result).toBeNull();
       });
     });
@@ -337,6 +361,48 @@ describe('Given a library for returning the valid parts of a model based on a sc
       it('should remove them', () => {
         expect(result).toEqual({ a: 1, b: 2 });
       });
+    });
+  });
+
+  describe('when schemas both contain the same nested object', () => {
+    let model;
+    beforeEach(() => {
+      model = {
+        nested: { a: '1', b: '2' },
+      };
+
+      schema = {
+        oneOf: [
+          {
+            type: 'object',
+            properties: {
+              nested: {
+                type: 'object',
+                properties: {
+                  a: { type: 'string' },
+                },
+              },
+            },
+          },
+          {
+            type: 'object',
+            properties: {
+              nested: {
+                type: 'object',
+                properties: {
+                  b: { type: 'string' },
+                },
+              },
+            },
+          },
+        ],
+      };
+
+      result = getValidModelParts(model, schema);
+    });
+
+    it('should deep merge the content of the nested objects', () => {
+      expect(result).toEqual(model);
     });
   });
 });

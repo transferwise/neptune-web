@@ -87,7 +87,7 @@ function isValidAllOfSchema(value, schema) {
 /**
  * Validate any value against a given schema
  */
-export function isValidSchema(value, schema) {
+function isValidSchema(value, schema) {
   if (schema.oneOf) {
     return isValidOneOfSchema(value, schema);
   }
@@ -121,3 +121,5 @@ export function isValidSchema(value, schema) {
       return false;
   }
 }
+
+export { isValidSchema };

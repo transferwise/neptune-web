@@ -2,8 +2,8 @@ import {
   isValidRequired,
   isValidMinLength,
   isValidMaxLength,
-  isValidMin,
-  isValidMax,
+  isValidMinimum,
+  isValidMaximum,
   isValidPattern,
   isValidMinItems,
   isValidMaxItems,
@@ -40,7 +40,7 @@ describe('Given a library for validating json schema rules', () => {
   });
 
   describe('when establishing if a value passes maxLength validation', () => {
-    it('should return true if maxLength exists and value matches or exceeds it', () => {
+    it('should return true if maxLength exists and value matches or shorter than it', () => {
       expect(isValidMaxLength('', 2)).toBe(true);
       expect(isValidMaxLength('a', 2)).toBe(true);
       expect(isValidMaxLength('ab', 2)).toBe(true);
@@ -52,7 +52,7 @@ describe('Given a library for validating json schema rules', () => {
       expect(isValidMaxLength('abc', 2)).toBe(false);
     });
     it('should return true if maxLength not defined', () => {
-      expect(isValidMinLength('a', undefined)).toBe(true);
+      expect(isValidMaxLength('a', undefined)).toBe(true);
     });
   });
 
@@ -71,41 +71,46 @@ describe('Given a library for validating json schema rules', () => {
     });
   });
 
-  describe('when establishing if a value passes min validation', () => {
+  describe('when establishing if a value passes minimum validation', () => {
     it('should return true if min exists and value matches or exceeds it', () => {
-      expect(isValidMin(1, 1)).toBe(true);
-      expect(isValidMin(0, 0)).toBe(true);
+      expect(isValidMinimum(1, 1)).toBe(true);
+      expect(isValidMinimum(0, 0)).toBe(true);
+      expect(isValidMinimum('2', '1')).toBe(true);
+      expect(isValidMinimum('1', '1')).toBe(true);
+      expect(isValidMinimum('0', '0')).toBe(true);
     });
     it('should return false if min exists and value undefined', () => {
-      expect(isValidMin(undefined, 1)).toBe(false);
+      expect(isValidMinimum(undefined, 1)).toBe(false);
     });
     it('should return false if min exists and value too low', () => {
-      expect(isValidMin(1, 2)).toBe(false);
-      expect(isValidMin(-1, 0)).toBe(false);
+      expect(isValidMinimum(1, 2)).toBe(false);
+      expect(isValidMinimum(-1, 0)).toBe(false);
     });
     it('should return true if min not defined', () => {
-      expect(isValidMin(1, undefined)).toBe(true);
+      expect(isValidMinimum(1, undefined)).toBe(true);
     });
   });
 
-  describe('when establishing if a value passes max validation', () => {
-    it('should return true if max exists and value matches or exceeds it', () => {
-      expect(isValidMax(2, 2)).toBe(true);
-      expect(isValidMax(-1, 0)).toBe(true);
+  describe('when establishing if a value passes maximum validation', () => {
+    it('should return true if max exists and value matches or is lower than it', () => {
+      expect(isValidMaximum(2, 2)).toBe(true);
+      expect(isValidMaximum(-1, 0)).toBe(true);
+      expect(isValidMaximum('2', '2')).toBe(true);
+      expect(isValidMaximum('0', '2')).toBe(true);
     });
     it('should return false if max exists and value undefined', () => {
-      expect(isValidMax(undefined, 2)).toBe(false);
+      expect(isValidMaximum(undefined, 2)).toBe(false);
     });
     it('should return false if max exists and value too high', () => {
-      expect(isValidMax(3, 2)).toBe(false);
+      expect(isValidMaximum(3, 2)).toBe(false);
     });
     it('should return true if max not defined', () => {
-      expect(isValidMax(2, undefined)).toBe(true);
+      expect(isValidMaximum(2, undefined)).toBe(true);
     });
   });
 
   describe('when establishing if an array passes minItems validation', () => {
-    it('should return true if minItems exists and value matches or exceeds it', () => {
+    it('should return true if minItems exists and value length matches or exceeds it', () => {
       expect(isValidMinItems([1], 1)).toBe(true);
       expect(isValidMinItems([], 0)).toBe(true);
     });
@@ -122,7 +127,7 @@ describe('Given a library for validating json schema rules', () => {
   });
 
   describe('when establishing if an array passes maxItems validation', () => {
-    it('should return true if maxItems exists and value matches or exceeds it', () => {
+    it('should return true if maxItems exists and value length matches or is less than it', () => {
       expect(isValidMaxItems([1], 1)).toBe(true);
       expect(isValidMaxItems([], 0)).toBe(true);
     });

@@ -10,7 +10,7 @@ describe('Given a library for validating json schema models', () => {
         properties: {
           a: {
             type: 'number',
-            min: 2,
+            minimum: 2,
           },
           b: {
             type: 'string',
@@ -85,7 +85,7 @@ describe('Given a library for validating json schema models', () => {
           },
           {
             type: 'number',
-            min: 2,
+            minimum: 2,
           },
         ],
       };
@@ -121,7 +121,7 @@ describe('Given a library for validating json schema models', () => {
             properties: {
               b: {
                 type: 'number',
-                min: 2,
+                minimum: 2,
               },
             },
             required: ['b'],

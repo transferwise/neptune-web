@@ -22,6 +22,7 @@ describe('Given a library for validating data types', () => {
       expect(isString({})).toBe(false);
       expect(isString(undefined)).toBe(false);
       expect(isString(null)).toBe(false);
+      expect(isString(NaN)).toBe(false);
     });
   });
 
@@ -39,6 +40,7 @@ describe('Given a library for validating data types', () => {
       expect(isNumber({})).toBe(false);
       expect(isNumber(undefined)).toBe(false);
       expect(isNumber(null)).toBe(false);
+      expect(isNumber(NaN)).toBe(false);
     });
   });
 
@@ -56,6 +58,7 @@ describe('Given a library for validating data types', () => {
       expect(isInteger({})).toBe(false);
       expect(isInteger(undefined)).toBe(false);
       expect(isInteger(null)).toBe(false);
+      expect(isInteger(NaN)).toBe(false);
     });
   });
 
@@ -71,6 +74,7 @@ describe('Given a library for validating data types', () => {
       expect(isBoolean({})).toBe(false);
       expect(isBoolean(undefined)).toBe(false);
       expect(isBoolean(null)).toBe(false);
+      expect(isBoolean(NaN)).toBe(false);
     });
   });
 
@@ -86,6 +90,7 @@ describe('Given a library for validating data types', () => {
       expect(isArray({})).toBe(false);
       expect(isArray(undefined)).toBe(false);
       expect(isArray(null)).toBe(false);
+      expect(isArray(NaN)).toBe(false);
     });
   });
 
@@ -101,6 +106,7 @@ describe('Given a library for validating data types', () => {
       expect(isObject([])).toBe(false);
       expect(isObject(undefined)).toBe(false);
       expect(isObject(null)).toBe(false);
+      expect(isObject(NaN)).toBe(false);
     });
   });
 
@@ -114,6 +120,7 @@ describe('Given a library for validating data types', () => {
       expect(isNull([])).toBe(false);
       expect(isNull({})).toBe(false);
       expect(isNull(undefined)).toBe(false);
+      expect(isNull(NaN)).toBe(false);
     });
   });
 
@@ -127,6 +134,7 @@ describe('Given a library for validating data types', () => {
       expect(isUndefined([])).toBe(false);
       expect(isUndefined({})).toBe(false);
       expect(isUndefined(null)).toBe(false);
+      expect(isUndefined(NaN)).toBe(false);
     });
   });
 });
