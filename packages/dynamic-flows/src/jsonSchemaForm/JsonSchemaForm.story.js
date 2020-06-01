@@ -6,6 +6,7 @@ import { boolean, select } from '@storybook/addon-knobs';
 import simpleSchema from './schemas/simple.json';
 import oneOfSchema from './schemas/oneOf.json';
 import allOfSchema from './schemas/allOf.json';
+import audRecipientSchema from './schemas/audRecipient.json';
 
 export default {
   component: JsonSchemaForm,
@@ -17,6 +18,7 @@ export const basic = () => {
     simple: simpleSchema,
     oneOf: oneOfSchema,
     allOf: allOfSchema,
+    'AUD Recipient': audRecipientSchema,
   };
 
   const schema = select('schema', schemas, simpleSchema);
