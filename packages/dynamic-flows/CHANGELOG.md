@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.5](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.4...@transferwise/dynamic-flows@2.2.5) (2020-06-01)
+
+
+### Bug Fixes
+
+* improve schema validation utils ([#383](https://github.com/transferwise/neptune-web/issues/383)) ([e9fbbc3](https://github.com/transferwise/neptune-web/commit/e9fbbc3fac6b64205bc60ff1ab7a873b9631316d))
+
+
+
+
+
 ## [2.2.4](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.3...@transferwise/dynamic-flows@2.2.4) (2020-06-01)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
