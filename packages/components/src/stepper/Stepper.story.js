@@ -2,6 +2,7 @@ import React from 'react';
 import Stepper from './Stepper';
 
 import { select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 export default {
   component: Stepper,
@@ -17,7 +18,7 @@ export const basic = () => {
         {
           label: 'One',
           onClick() {
-            alert('You clicked on step 1, which triggered this function, which alerted you.');
+            action('You clicked on step 1, which triggered this function, which alerted you.');
           },
         },
         {

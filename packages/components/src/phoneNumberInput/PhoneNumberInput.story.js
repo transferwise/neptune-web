@@ -1,6 +1,7 @@
 import React from 'react';
 import PhoneNumberInput from './PhoneNumberInput';
 import { select, boolean } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 export default {
   component: PhoneNumberInput,
@@ -15,7 +16,7 @@ export const basic = () => {
 
   return (
     <PhoneNumberInput
-      onChange={(v) => console.log(v)}
+      onChange={(v) => action(v)}
       initialValue="+447573135343"
       locale={locale}
       countryCode=""

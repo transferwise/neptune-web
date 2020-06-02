@@ -40,12 +40,13 @@
     "prop-types": "^15.6.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "lint-staged":  "^10.2.2",
+    "lint-staged": "^10.2.2",
     "npm-run-all": "^4.1.5",
     "cpx": "^1.5.0",
     "husky": "^4.2.5",
     "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
-    "currency-flags": "^1.2.1"
+    "currency-flags": "^1.2.1",
+    "react-axe": "^3.4.1"
   },
   "scripts": {
     "setup": "yarn install && yarn build",
