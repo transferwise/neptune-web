@@ -47,24 +47,14 @@ const esConfig = {
         modules: false,
       },
     ],
-    [
-      'minify',
-      {
-        builtIns: false,
-      },
-    ],
+    ['minify', { builtIns: false, mangle: { exclude: { separators: true } } }],
   ],
 };
 
 const esConfigNoPolyfill = {
   presets: [
     ['@babel/preset-env', { useBuiltIns: false, modules: false }],
-    [
-      'minify',
-      {
-        builtIns: false,
-      },
-    ],
+    ['minify', { builtIns: false, mangle: { exclude: { separators: true } } }],
   ],
 };
 

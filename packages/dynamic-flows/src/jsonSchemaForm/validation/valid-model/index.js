@@ -1,4 +1,13 @@
-import { isObject, isUndefined, isNull } from '../type-validators';
+import {
+  isString,
+  isNumber,
+  isInteger,
+  isBoolean,
+  isObject,
+  isArray,
+  isUndefined,
+  isNull,
+} from '../type-validators';
 
 function getValidModelParts(model, schema) {
   if (schema.allOf) {
@@ -26,8 +35,9 @@ function getValidModelParts(model, schema) {
       case 'string':
         return cleanModelWithStringSchema(model);
       case 'number':
-      case 'integer':
         return cleanModelWithNumberSchema(model);
+      case 'integer':
+        return cleanModelWithIntegerSchema(model);
       case 'boolean':
         return cleanModelWithBooleanSchema(model);
       default:
@@ -43,9 +53,9 @@ function cleanModelWithObjectSchema(model, schema) {
   const cleanedModel = {};
   Object.keys(schema.properties).forEach((property) => {
     // If the property exists in the model, clean it, and add it
-    if (model && typeof model[property] !== 'undefined') {
+    if (model && !isUndefined(model[property])) {
       const newValue = getValidModelParts(model[property], schema.properties[property]);
-      if (newValue !== null) {
+      if (!isNull(newValue)) {
         cleanedModel[property] = newValue;
       }
     }
@@ -54,29 +64,35 @@ function cleanModelWithObjectSchema(model, schema) {
 }
 
 function cleanModelWithArraySchema(model, schema) {
-  if (Array.isArray(model)) {
+  if (isArray(model)) {
     return model.map((childModel) => getValidModelParts(childModel, schema));
   }
   return null;
 }
 
 function cleanModelWithStringSchema(model) {
-  if (typeof model === 'string') {
+  if (isString(model)) {
     return model;
   }
   return null;
 }
 
 function cleanModelWithNumberSchema(model) {
-  // eslint-disable-next-line
-  if (typeof model === 'number' && !isNaN(model)) {
+  if (isNumber(model)) {
+    return model;
+  }
+  return null;
+}
+
+function cleanModelWithIntegerSchema(model) {
+  if (isInteger(model)) {
     return model;
   }
   return null;
 }
 
 function cleanModelWithBooleanSchema(model) {
-  if (typeof model === 'boolean') {
+  if (isBoolean(model)) {
     return model;
   }
   return null;
@@ -106,9 +122,9 @@ function cleanModelWithOneOfSchema(model, schema) {
         return current;
       }
 
-      // If we're dealing with two objects, combine them into one
+      // If we're dealing with two objects, deep merge them into one
       if (isObject(combined) && isObject(current)) {
-        return { ...combined, ...current };
+        return deepMergeObject(combined, current);
       }
 
       // If the current one is null, return what we already had
@@ -118,6 +134,18 @@ function cleanModelWithOneOfSchema(model, schema) {
 
       return current;
     }, null);
+}
+
+function deepMergeObject(object1, object2) {
+  const combined = { ...object1 };
+  Object.keys(object2).forEach((property) => {
+    if (isObject(object1[property]) && isObject(object2[property])) {
+      combined[property] = deepMergeObject(object1[property], object2[property]);
+    } else {
+      combined[property] = object2[property];
+    }
+  });
+  return combined;
 }
 
 export { getValidModelParts }; // eslint-disable-line

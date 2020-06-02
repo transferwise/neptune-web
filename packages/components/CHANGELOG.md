@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.5.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.5.0...@transferwise/components@27.5.1) (2020-05-28)
+
+
+### Bug Fixes
+
+*  babel minify renaming error ([#378](https://github.com/transferwise/neptune-web/issues/378)) ([cfaa8db](https://github.com/transferwise/neptune-web/commit/cfaa8db00b1283f330cf68a4606a4c0d31f8afc5))
+
+
+
+
+
+# [27.5.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.4.1...@transferwise/components@27.5.0) (2020-05-27)
+
+
+### Features
+
+* Allow accordion open item to react to parent state change ([#375](https://github.com/transferwise/neptune-web/issues/375)) ([6ce8603](https://github.com/transferwise/neptune-web/commit/6ce86036f246c8f26f51571e4afc7f538c81a5ae))
+
+
+
+
+
+## [27.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.4.0...@transferwise/components@27.4.1) (2020-05-26)
+
+
+### Bug Fixes
+
+* fixed changelogs and versions ([#377](https://github.com/transferwise/neptune-web/issues/377)) ([ba23ef2](https://github.com/transferwise/neptune-web/commit/ba23ef263f993b5f1f31227ab3b49570abb82aaa))
+
+
+
+
+
+# [27.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.3.0...@transferwise/components@27.4.0) (2020-05-26)
+
+
+### Bug Fixes
+
+* chore(deps): bump @mdx-js/loader from 1.5.8 to 1.6.1 ([#342](https://github.com/transferwise/neptune-web/pull/342))
+
+* chore: better storybook theming ([#366](https://github.com/transferwise/neptune-web/pull/366))
+
+* chore: centralize shared dev dependencies ([#317](https://github.com/transferwise/neptune-web/pull/317))
+
+* chore: jest update and failing tests refactor ([#354](https://github.com/transferwise/neptune-web/pull/354))
+
+* fix: tooltip position when using bottom position ([#369](https://github.com/transferwise/neptune-web/pull/369))
+
+* chore(deps): updating lint-staged and rollup ([#370](https://github.com/transferwise/neptune-web/pull/370))
+
+* test: refactored dateLookup tests ([50a860b](https://github.com/transferwise/neptune-web/pull/376/commits/50a860bfded5fef9077969f1a06e5334b6e7d517))
+
 # [27.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.2.1...@transferwise/components@27.3.0) (2020-05-22)
 
 

@@ -125,6 +125,21 @@ describe('Accordion', () => {
       expect(firstItem.prop('isOpen')).toEqual(false);
       expect(thirdItem.prop('isOpen')).toEqual(true);
     });
+
+    it('opens the selected accordion item when prop changes too', () => {
+      const firstItem = component.find(AccordionItem).first();
+      const thirdItem = component.find(AccordionItem).at(2);
+      expect(firstItem.prop('isOpen')).toEqual(false);
+      expect(thirdItem.prop('isOpen')).toEqual(true);
+
+      props.indexOpen = 0;
+      component.setProps(props, () => {
+        const updatedFirstItem = component.find(AccordionItem).first();
+        const updatedThirdItem = component.find(AccordionItem).at(2);
+        expect(updatedFirstItem.prop('isOpen')).toEqual(true);
+        expect(updatedThirdItem.prop('isOpen')).toEqual(false);
+      });
+    });
   });
 
   const createComponent = (p) => shallow(<Accordion {...p} />);

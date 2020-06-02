@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.1.0...@transferwise/neptune-css@1.1.1) (2020-05-26)
+
+
+### Bug Fixes
+
+* fixed changelogs and versions ([#377](https://github.com/transferwise/neptune-web/issues/377)) ([ba23ef2](https://github.com/transferwise/neptune-web/commit/ba23ef263f993b5f1f31227ab3b49570abb82aaa))
+
+
+
+
+
+# [1.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.0.0...@transferwise/neptune-css@1.1.0) (2020-05-26)
+
+
+### Features
+
+* feat: add text-control semantic colour ([#368](https://github.com/transferwise/neptune-web/pull/368)) ([c5801a3](https://github.com/transferwise/neptune-web/commit/c5801a3ab6c6734b6bc9be3a3a7265a85fe77bc3))
+
+### Bug Fixes
+
+* fix: display heading font-sizes on mobile ([#376](https://github.com/transferwise/neptune-web/pull/376)) ([e8b53fc](https://github.com/transferwise/neptune-web/commit/e8b53fc73abe9669b1323c6349f0df4ca59b49f0))
+
+
 # [1.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@0.13.3...@transferwise/neptune-css@1.0.0) (2020-05-14)
 
 

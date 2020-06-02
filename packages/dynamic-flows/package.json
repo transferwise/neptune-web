@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/dynamic-flows",
-  "version": "2.1.4",
+  "version": "2.2.5",
   "description": "Transferwise dynamic flows and forms",
   "license": "Apache-2.0",
   "main": "./build/es/polyfill/index.js",
@@ -38,8 +38,6 @@
     "lint:fix": "yarn lint --fix"
   },
   "devDependencies": {
-    "@transferwise/test-config": "^1.0.0",
-    "@transferwise/less-config": "^1.0.0",
     "@babel/cli": "^7.6.0",
     "@babel/core": "7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
@@ -51,6 +49,8 @@
     "@storybook/addon-info": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/react": "^5.3.18",
+    "@transferwise/less-config": "^1.0.1",
+    "@transferwise/test-config": "^1.0.1",
     "babel-loader": "^8.1.0",
     "babel-preset-minify": "^0.5.1"
   },
@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.9.2",
-    "@transferwise/components": "^27.3.0",
+    "@transferwise/components": "^27.5.1",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5"
   },

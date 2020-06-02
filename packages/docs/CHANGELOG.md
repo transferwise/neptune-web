@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.5...@transferwise/neptune-docs@4.2.6) (2020-06-01)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.2.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.4...@transferwise/neptune-docs@4.2.5) (2020-06-01)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.2.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.3...@transferwise/neptune-docs@4.2.4) (2020-05-28)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.2.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.2...@transferwise/neptune-docs@4.2.3) (2020-05-28)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.1...@transferwise/neptune-docs@4.2.2) (2020-05-27)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.0...@transferwise/neptune-docs@4.2.1) (2020-05-26)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [4.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.1.2...@transferwise/neptune-docs@4.2.0) (2020-05-26)
+
+
+### Features
+
+* neptune sprint 21 ([a9da4cd](https://github.com/transferwise/neptune-web/commit/a9da4cd0bba2535bc7bb8222ddb1cde9a27e6cba))
+
+
+
+
+
 ## [4.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.1.1...@transferwise/neptune-docs@4.1.2) (2020-05-22)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

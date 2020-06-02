@@ -1,3 +1,4 @@
+import { DocLink } from '../../utils/pageUtils';
 import bundleSizes from '../../temp-bundle-sizes.js';
 import PrintBundleSize from '../../utils/bundleSize/printBundleSize';
 import CloseIcon from '@transferwise/icons/react/close';
@@ -21,7 +22,7 @@ yarn add @transferwise/components
 npm install @transferwise/components
 ```
 
-If not already installed, install the required peer depedencies. **Note:** `currency-flags` is only required if you're using the [Money Input](/components/MoneyInput) or if you're using flags on the [Select](/components/Select).
+If not already installed, install the required peer depedencies. **Note:** `currency-flags` is only required if you're using the <DocLink href="/components/MoneyInput">Money Input</DocLink> or if you're using flags on the <DocLink href="/components/Select">Select</DocLink>.
 
 ```
 # yarn
@@ -54,7 +55,7 @@ export default function Hello() {
 }
 ```
 
-Browse our [components](/components/Accordion) for usage documentation, live previews and code snippets for each component.
+Browse our <DocLink href="/components">components</DocLink> for usage documentation, live previews and code snippets for each component.
 
 ### Installing CSS
 
@@ -70,11 +71,13 @@ npm install @transferwise/neptune-css
 
 We expose three bundles for use: Tokens, Core and Addons. These can be used together or individually. Core includes Tokens, so if you include Core, you don't need Tokens.
 
-[Tokens](/styles/tokens/Colors) exposes a number of useful CSS properties on `:root`. If you're not familiar with using custom properties, have a read of the documentation on [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/--*).
+<DocLink href="/components/tokens">Tokens</DocLink> exposes a number of useful CSS properties on `:root`.
+If you're not familiar with using custom properties, have a read of the documentation on [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/--*).
 
-[Core](/styles/core/Typography) includes the tokens, as well as typography styles.
+<DocLink href="/styles/core">Core</DocLink> includes the tokens, as well as typography styles.
 
-[Addons](/styles/addons/BackgroundUtilities) provide a number of utility classes for display, spacing and more.
+<DocLink href="/styles/addons">Addons</DocLink> provide a number of utility classes for display, spacing
+and more.
 
 Follow the links for full documentation on what is available in each bundle.
 
@@ -136,7 +139,7 @@ Because we declare standard `main` and `module` properties in our `package.json`
 "module": "./build/es/polyfill/index.js",
 ```
 
-We expose polyfilled versions by default, to ensure we meet our [Browser Support](/about/BrowserSupport) policy. If your application already includes polyfills, you can optimise your bundle by including non-polyfilled versions of the components.
+We expose polyfilled versions by default, to ensure we meet our <DocLink href="/about/BrowserSupport">Browser Support</DocLink> policy. If your application already includes polyfills, you can optimise your bundle by including non-polyfilled versions of the components.
 
 Below is a comparison of the different bundle options, along with where you can access them.
 
