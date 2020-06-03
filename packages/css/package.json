@@ -34,6 +34,7 @@
     "prettier": "prettier --write src/less/*.less"
   },
   "dependencies": {
+    "@transferwise/neptune-tokens": "^0.0.2",
     "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
     "svgo": "1.3.2"
   },
