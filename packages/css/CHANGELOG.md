@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.0...@transferwise/neptune-css@1.2.1) (2020-06-03)
+
+
+### Bug Fixes
+
+* readd removed colours ([979a4bb](https://github.com/transferwise/neptune-web/commit/979a4bbcf81a3ad05e9b3dc224044d40754c8200))
+
+
+
+
+
 # [1.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.1.1...@transferwise/neptune-css@1.2.0) (2020-06-03)
 
 
