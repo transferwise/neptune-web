@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [27.6.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.5.3...@transferwise/components@27.6.0) (2020-06-04)
+
+
+### Features
+
+* upload component helper image ([#407](https://github.com/transferwise/neptune-web/issues/407)) ([dd0bb5d](https://github.com/transferwise/neptune-web/commit/dd0bb5d1e3e1e70dec5c445901eb59db3276ca44))
+
+
+
+
+
 ## [27.5.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.5.2...@transferwise/components@27.5.3) (2020-06-03)
 
 **Note:** Version bump only for package @transferwise/components
