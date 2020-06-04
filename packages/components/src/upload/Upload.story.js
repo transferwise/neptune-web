@@ -66,3 +66,38 @@ export const basic = () => {
     />
   );
 };
+
+export const withCustomImage = () => {
+  const size = select('size', ['sm', 'md', 'lg'], 'md');
+  return (
+    <Upload
+      animationDelay={700}
+      csUploadText="Select other file?"
+      csFailureText="Upload failed.Please, try again"
+      csSuccessText="Upload complete!"
+      csTooLargeMessage="Please provide a file smaller than 5MB"
+      csWrongTypeMessage="Please provide a supported format"
+      maxSize={5000000}
+      psUploadText="Cancel"
+      psFailureText="Upload failed.Please, try again"
+      psProcessingText="Uploading..."
+      psSuccessText="Upload complete!"
+      size={size}
+      usAccept="image/*"
+      usUploadText="Or Select File"
+      usDisabled={false}
+      usDropMessage="Drop file to start upload"
+      usLabel=""
+      usPlaceholder="Drag and drop file less than 5MB"
+      usHelpImage={<img src={IMAGES[0].value} alt="test" />}
+      httpOptions={{
+        url: 'https://httpbin.org/post',
+        method: 'POST',
+      }}
+      onStart={(file) => action('onStart', file)}
+      onSuccess={(httpResponse, fileName) => action('onSuccess', httpResponse, fileName)}
+      onFailure={(httpResponse) => action('onFailure', httpResponse)}
+      onCancel={() => action('onCancel')}
+    />
+  );
+};

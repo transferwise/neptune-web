@@ -342,7 +342,7 @@ Upload.propTypes = {
   usButtonText: Types.string,
   usDisabled: Types.bool,
   usDropMessage: Types.string,
-  usHelpImage: Types.string,
+  usHelpImage: Types.node,
   usLabel: Types.string,
   usPlaceholder: Types.string,
 };
