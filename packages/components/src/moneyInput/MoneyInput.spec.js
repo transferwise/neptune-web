@@ -262,25 +262,32 @@ describe('Money Input', () => {
     });
   });
 
-  it('formats the amount passed in', () => {
-    numberFormatting.formatAmount = jest.fn(
-      (num, currency, locale) => `formatted ${num}, ${locale}, ${currency}`,
-    );
-    component.setProps({ amount: 123, locale: 'et-EE', numberFormatPrecision: 3 });
-    expect(amountInput().prop('value')).toBe('formatted 123, et-EE, eur');
-  });
+  describe('amount formatting', () => {
+    beforeEach(() => {
+      numberFormatting.formatAmount = jest.fn(
+        (num, currency, locale) => `formatted ${num}, ${locale}, ${currency}`,
+      );
+    });
 
-  it('formats the number you input after you blur it', () => {
-    numberFormatting.formatAmount = jest.fn(
-      (num, currency, locale) => `formatted ${num}, ${locale}, ${currency}`,
-    );
-    component.setProps({ locale: 'en-US', numberFormatPrecision: 3 });
-    numberFormatting.parseAmount = jest.fn(parseFloat);
-    enterAmount('123.45');
-    expect(amountInput().prop('value')).toBe('123.45');
+    it('formats the amount passed in', () => {
+      component.setProps({ amount: 123, locale: 'et-EE', numberFormatPrecision: 3 });
+      expect(amountInput().prop('value')).toBe('formatted 123, et-EE, eur');
+    });
 
-    blurAmount();
-    expect(amountInput().prop('value')).toBe('formatted 123.45, en-US, eur');
+    it('formats the number you input after you blur it', () => {
+      component.setProps({ locale: 'en-US', numberFormatPrecision: 3 });
+      numberFormatting.parseAmount = jest.fn(parseFloat);
+      enterAmount('123.45');
+      expect(amountInput().prop('value')).toBe('123.45');
+
+      blurAmount();
+      expect(amountInput().prop('value')).toBe('formatted 123.45, en-US, eur');
+    });
+
+    it('formats a value of 0', () => {
+      component.setProps({ amount: 0, locale: 'et-EE', numberFormatPrecision: 3 });
+      expect(amountInput().prop('value')).toBe('formatted 0, et-EE, eur');
+    });
   });
 
   it('parses the number you input and calls onAmountChange with it', () => {
@@ -443,12 +450,21 @@ describe('Money Input', () => {
     expect(component.find('.tw-money-input_TWISAWESOME125').exists()).toBe(true);
   });
 
-  it('shows a formatted placeholder when provided', () => {
-    numberFormatting.formatAmount = jest.fn(
-      (num, currency, locale) => `formatted ${num}, ${locale}, ${currency}`,
-    );
-    component.setProps({ locale: 'en-US', numberFormatPrecision: 3 });
-    component.setProps({ placeholder: 12345.67 });
-    expect(amountInput().prop('placeholder')).toBe('formatted 12345.67, en-US, eur');
+  describe('placeholder', () => {
+    beforeEach(() => {
+      numberFormatting.formatAmount = jest.fn(
+        (num, currency, locale) => `formatted ${num}, ${locale}, ${currency}`,
+      );
+    });
+
+    it('shows a formatted placeholder when provided', () => {
+      component.setProps({ placeholder: 12345.67, locale: 'en-US', numberFormatPrecision: 3 });
+      expect(amountInput().prop('placeholder')).toBe('formatted 12345.67, en-US, eur');
+    });
+
+    it('allows a placeholder of 0', () => {
+      component.setProps({ placeholder: 0, locale: 'en-US', numberFormatPrecision: 3 });
+      expect(amountInput().prop('placeholder')).toBe('formatted 0, en-US, eur');
+    });
   });
 });

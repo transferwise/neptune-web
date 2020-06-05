@@ -12,6 +12,7 @@ export const basic = () => {
   const size = select('size', ['sm', 'md', 'lg'], 'md');
   const locale = select('locale', ['en-GB', 'jp-JP'], 'en-GB');
   const amount = number('amount', 1000);
+  const placeholder = number('placeholder', null);
 
   return (
     <MoneyInput
@@ -22,6 +23,7 @@ export const basic = () => {
       onAmountChange={action('amount changed')}
       onCurrencyChange={action('currency changed')}
       addon={null}
+      placeholder={placeholder}
       searchPlaceholder="Type a currency or country"
       onCustomAction={action('Custom action')}
       customActionLabel="Custom action label"
