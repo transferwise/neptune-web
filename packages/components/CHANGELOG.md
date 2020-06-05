@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.6.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.6.0...@transferwise/components@27.6.1) (2020-06-05)
+
+
+### Bug Fixes
+
+* allow MoneyInput to display amounts and placeholders of 0 ([#404](https://github.com/transferwise/neptune-web/issues/404)) ([90c92f2](https://github.com/transferwise/neptune-web/commit/90c92f2b412d93b5b29658beed856cd7618bf511))
+
+
+
+
+
 # [27.6.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.5.3...@transferwise/components@27.6.0) (2020-06-04)
 
 
