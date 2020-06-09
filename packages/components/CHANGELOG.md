@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [27.7.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.6.1...@transferwise/components@27.7.0) (2020-06-09)
+
+
+### Features
+
+* change popover interface to allow close action from inside content ([#382](https://github.com/transferwise/neptune-web/issues/382)) ([e0787fe](https://github.com/transferwise/neptune-web/commit/e0787fe3ed0dc1af48a3296129cda4f479219da6))
+
+
+
+
+
 ## [27.6.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.6.0...@transferwise/components@27.6.1) (2020-06-05)
 
 

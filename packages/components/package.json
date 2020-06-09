@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "27.6.1",
+  "version": "27.7.0",
   "description": "TransferWise styleguide components in react",
   "license": "Apache-2.0",
   "main": "./build/umd/polyfill/main.js",
