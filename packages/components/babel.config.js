@@ -79,6 +79,7 @@ module.exports = {
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-transform-react-jsx',
     '@babel/plugin-transform-runtime',
+    'transform-react-remove-prop-types',
   ],
   env: {
     test: testConfig,

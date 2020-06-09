@@ -51,6 +51,7 @@
     "@transferwise/less-config": "^1.0.1",
     "@transferwise/test-config": "^1.0.1",
     "babel-loader": "^8.1.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-preset-minify": "^0.5.1"
   },
   "peerDependencies": {
