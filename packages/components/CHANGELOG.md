@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [27.7.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.6.1...@transferwise/components@27.7.0) (2020-06-09)
+
+
+### Features
+
+* change popover interface to allow close action from inside content ([#382](https://github.com/transferwise/neptune-web/issues/382)) ([e0787fe](https://github.com/transferwise/neptune-web/commit/e0787fe3ed0dc1af48a3296129cda4f479219da6))
+
+
+
+
+
+## [27.6.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.6.0...@transferwise/components@27.6.1) (2020-06-05)
+
+
+### Bug Fixes
+
+* allow MoneyInput to display amounts and placeholders of 0 ([#404](https://github.com/transferwise/neptune-web/issues/404)) ([90c92f2](https://github.com/transferwise/neptune-web/commit/90c92f2b412d93b5b29658beed856cd7618bf511))
+
+
+
+
+
+# [27.6.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.5.3...@transferwise/components@27.6.0) (2020-06-04)
+
+
+### Features
+
+* upload component helper image ([#407](https://github.com/transferwise/neptune-web/issues/407)) ([dd0bb5d](https://github.com/transferwise/neptune-web/commit/dd0bb5d1e3e1e70dec5c445901eb59db3276ca44))
+
+
+
+
+
+## [27.5.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.5.2...@transferwise/components@27.5.3) (2020-06-03)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [27.5.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.5.1...@transferwise/components@27.5.2) (2020-06-03)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
 ## [27.5.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.5.0...@transferwise/components@27.5.1) (2020-05-28)
 
 

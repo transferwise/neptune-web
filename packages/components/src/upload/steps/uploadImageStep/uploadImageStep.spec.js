@@ -52,4 +52,15 @@ describe('uploadImageStep', () => {
   it('renders input file', () => {
     expect(component.find('input[type="file"]')).toHaveLength(1);
   });
+
+  it('renders a custom usHelpImage file', () => {
+    component = shallow(
+      <UploadImageStep
+        {...UPLOADIMAGE_STEP_PROPS}
+        usHelpImage={<img src="https://test.com" alt="test" className="test-image" />}
+      />,
+    );
+
+    expect(component.find('.test-image')).toHaveLength(1);
+  });
 });

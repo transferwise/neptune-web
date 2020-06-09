@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.10](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.9...@transferwise/dynamic-flows@2.2.10) (2020-06-09)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [2.2.9](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.8...@transferwise/dynamic-flows@2.2.9) (2020-06-05)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [2.2.8](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.7...@transferwise/dynamic-flows@2.2.8) (2020-06-04)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [2.2.7](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.6...@transferwise/dynamic-flows@2.2.7) (2020-06-03)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [2.2.6](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.5...@transferwise/dynamic-flows@2.2.6) (2020-06-03)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
 ## [2.2.5](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.4...@transferwise/dynamic-flows@2.2.5) (2020-06-01)
 
 

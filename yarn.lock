@@ -3520,6 +3520,11 @@
   resolved "https://registry.yarnpkg.com/@transferwise/icons/-/icons-1.5.0.tgz#4b0f6e71862e4e331b0a45f6bd77bae8eba0021d"
   integrity sha512-qHdaX+0YdTGwSoZqNH7FB+Gp1ytgk60xybkEtx+D9PT494B6Ddv94O2qZ5OR/K6vv+d9wd7brep6tMloBu6EBQ==
 
+"@transferwise/neptune-tokens@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@transferwise/neptune-tokens/-/neptune-tokens-0.0.2.tgz#3cd4c057050b6f76366224d14a64e5292ae61ef8"
+  integrity sha512-MdhmK0is4v+AFf+9g6tboC3mCJOGjI2wqaaDYAx1pgNCak9blq24ORy2THvPJyfPDOJgAl1QBXXejfsUr6NCpA==
+
 "@types/babel__core@^7.1.7":
   version "7.1.7"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.7.tgz#1dacad8840364a57c98d0dd4855c6dd3752c6b89"

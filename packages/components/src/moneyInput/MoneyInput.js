@@ -17,7 +17,7 @@ const Currency = Types.shape({
 const CUSTOM_ACTION = 'CUSTOM_ACTION';
 
 const formatAmountIfSet = (amount, currency, locale) => {
-  return amount ? formatAmount(amount, currency, locale) : '';
+  return typeof amount === 'number' ? formatAmount(amount, currency, locale) : '';
 };
 
 export default class MoneyInput extends Component {

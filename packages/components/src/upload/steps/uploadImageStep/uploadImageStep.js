@@ -9,7 +9,7 @@ class UploadImageStep extends PureComponent {
     usAccept: Types.string.isRequired,
     usButtonText: Types.string.isRequired,
     usDisabled: Types.bool.isRequired,
-    usHelpImage: Types.string.isRequired,
+    usHelpImage: Types.node.isRequired,
     usLabel: Types.string.isRequired,
     usPlaceholder: Types.string.isRequired,
   };
@@ -27,31 +27,32 @@ class UploadImageStep extends PureComponent {
     }
   };
 
+  getImage = () => {
+    const { usHelpImage, usLabel } = this.props;
+
+    if (!usHelpImage) {
+      return (
+        <div className="circle circle-sm circle-inverse p-t-1">
+          <Upload size="md" />
+        </div>
+      );
+    }
+
+    if (typeof usHelpImage === 'string') {
+      return <img src={usHelpImage} alt={usLabel} className="thumbnail text-xs-center" />;
+    }
+
+    return usHelpImage;
+  };
+
   render() {
-    const {
-      isComplete,
-      usAccept,
-      usButtonText,
-      usDisabled,
-      usHelpImage,
-      usLabel,
-      usPlaceholder,
-    } = this.props;
+    const { isComplete, usAccept, usButtonText, usDisabled, usLabel, usPlaceholder } = this.props;
 
     return (
       <div>
         <div className="droppable-default-card" aria-hidden={isComplete}>
           <div className="droppable-card-content">
-            <div className="m-b-3">
-              {usHelpImage && (
-                <img src={usHelpImage} alt={usLabel} className="thumbnail text-xs-center" />
-              )}
-              {!usHelpImage && (
-                <div className="circle circle-sm circle-inverse p-t-1">
-                  <Upload size="md" />
-                </div>
-              )}
-            </div>
+            <div className="m-b-3">{this.getImage()}</div>
             {usLabel && <h4 className="m-b-1">{usLabel}</h4>}
             {usPlaceholder && <p className="m-b-3">{`${usPlaceholder}`}</p>}
             <label className={`btn btn-primary btn-sm ${usDisabled ? 'disabled' : ''}`}>
