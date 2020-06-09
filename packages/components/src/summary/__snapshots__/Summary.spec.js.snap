@@ -28,6 +28,7 @@ exports[`Summary renders full component 1`] = `
             class="summary__help m-l-2"
           >
             <span
+              aria-expanded="false"
               data-toggle="popover"
               role="button"
               tabindex="0"

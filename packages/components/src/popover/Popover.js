@@ -18,7 +18,8 @@ export default class Popover extends Component {
   static propTypes = {
     children: Types.oneOfType([Types.element, Types.string]).isRequired,
     title: Types.oneOfType([Types.element, Types.string]),
-    content: Types.oneOfType([Types.element, Types.string]).isRequired,
+    content: Types.oneOfType([Types.element, Types.string, Types.func]).isRequired,
+    containsFocusableElement: Types.bool,
     preferredPlacement: Types.oneOf([
       Popover.Placement.TOP,
       Popover.Placement.RIGHT,
@@ -34,6 +35,7 @@ export default class Popover extends Component {
 
   static defaultProps = {
     title: null,
+    containsFocusableElement: false,
     preferredPlacement: Popover.Placement.RIGHT,
     classNames: {},
   };
@@ -48,15 +50,16 @@ export default class Popover extends Component {
 
   closePopoverOnOutsideClick = (event) => {
     const popoverClicked = this.popoverElement.contains(event.target);
+    const triggerClicked = this.triggerElement.contains(event.target);
 
-    if (!popoverClicked) {
+    if (!popoverClicked && !triggerClicked) {
       this.close();
     }
   };
 
-  handleKeyUp = ({ keyCode }) => {
-    if (keyCode === KeyCodes.ENTER) {
-      this.open();
+  handleKeyUp = (event) => {
+    if (event.target.nodeName !== 'BUTTON' && event.keyCode === KeyCodes.ENTER) {
+      this.toggle();
     }
   };
 
@@ -73,16 +76,28 @@ export default class Popover extends Component {
     removeClickClassFromDocumentOnIos();
     document.removeEventListener('click', this.closePopoverOnOutsideClick, true);
   };
+
+  toggle = () => (this.state.isOpen ? this.close() : this.open());
+
   createTrigger = () => {
-    const { children: child } = this.props;
+    const { children: child, containsFocusableElement } = this.props;
+    const { isOpen } = this.state;
     const wrappedChild = wrapInDOMElementIfNecessary(child);
 
-    return cloneElement(wrappedChild, {
-      'data-toggle': 'popover',
-      role: 'button',
+    const focusableProps = !containsFocusableElement && {
       tabIndex: 0,
-      onClick: this.open,
+      role: 'button',
+      'aria-expanded': isOpen,
+    };
+
+    return cloneElement(wrappedChild, {
+      ...focusableProps,
+      'data-toggle': 'popover',
+      onClick: this.toggle,
       onKeyUp: this.handleKeyUp,
+      ref: (element) => {
+        this.triggerElement = element;
+      },
     });
   };
 
@@ -118,7 +133,9 @@ export default class Popover extends Component {
         >
           {title && <h3 className={classNames(this.style('popover-title'))}>{title}</h3>}
           <p className={classNames(this.style('popover-content'), this.style('m-b-0'))}>
-            {content}
+            {typeof content === 'function'
+              ? content({ isOpen, close: this.close.bind(this) })
+              : content}
           </p>
         </div>
       </>

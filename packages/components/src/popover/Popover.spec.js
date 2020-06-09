@@ -36,6 +36,15 @@ describe('Popover', () => {
     expect(trigger().prop('data-toggle')).toBe('popover');
     expect(trigger().prop('role')).toBe('button');
     expect(trigger().prop('tabIndex')).toBe(0);
+    expect(trigger().prop('aria-expanded')).toBe(false);
+  });
+
+  it('decorates passed trigger with custom tabIndex if passed', () => {
+    component.setProps({ containsFocusableElement: true });
+
+    expect(trigger().prop('role')).toBeUndefined();
+    expect(trigger().prop('tabIndex')).toBeUndefined();
+    expect(trigger().prop('aria-expanded')).toBeUndefined();
   });
 
   it('wraps passed child in dom element if necessary', () => {
@@ -53,6 +62,24 @@ describe('Popover', () => {
     expect(content().text()).toBe('A content.');
   });
 
+  it('calls content with close and isOpen props if it is a function', () => {
+    const contentMock = jest.fn();
+
+    component.setProps({ content: contentMock });
+    expect(contentMock).toHaveBeenCalledWith({ close: expect.any(Function), isOpen: false });
+  });
+
+  it('closes when close is called from content', () => {
+    const contentMock = jest.fn();
+
+    component.setProps({ content: contentMock });
+    expect(popoverIsOpen()).toBe(false);
+    clickPopoverTrigger();
+    expect(popoverIsOpen()).toBe(true);
+    contentMock.mock.calls[0][0].close();
+    expect(popoverIsOpen()).toBe(false);
+  });
+
   it('has title if passed', () => {
     expect(title().exists()).toBe(false);
 
@@ -66,7 +93,7 @@ describe('Popover', () => {
     expect(popoverIsOpen()).toBe(false);
   });
 
-  it('opens on click', () => {
+  it('toggles on click', () => {
     component = mount(
       <Popover content="Some content.">
         <button id="trigger">Trigger</button>
@@ -75,9 +102,23 @@ describe('Popover', () => {
     expect(popoverIsOpen()).toBe(false);
     clickPopoverTrigger();
     expect(popoverIsOpen()).toBe(true);
+    clickPopoverTrigger();
+    expect(popoverIsOpen()).toBe(false);
   });
 
-  it('opens when Enter is pressed while active', () => {
+  it('opens when Enter is pressed while active on a non-button', () => {
+    component = mount(
+      <Popover content="Some content.">
+        <span id="trigger">Trigger</span>
+      </Popover>,
+    );
+
+    expect(popoverIsOpen()).toBe(false);
+    trigger().simulate('keyUp', fakeKeyDownEventForKey(KEY_CODES.ENTER));
+    expect(popoverIsOpen()).toBe(true);
+  });
+
+  it('ignores keyUp event on a button', () => {
     component = mount(
       <Popover content="Some content.">
         <button id="trigger">Trigger</button>
@@ -86,7 +127,7 @@ describe('Popover', () => {
 
     expect(popoverIsOpen()).toBe(false);
     trigger().simulate('keyUp', fakeKeyDownEventForKey(KEY_CODES.ENTER));
-    expect(popoverIsOpen()).toBe(true);
+    expect(popoverIsOpen()).toBe(false);
   });
 
   it('closes on outside click when open', () => {
