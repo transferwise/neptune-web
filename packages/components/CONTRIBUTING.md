@@ -4,13 +4,7 @@ Please start by reading the [general contribution guide](<(https://github.com/tr
 
 # Development environments
 
-There are two ways to load your React components locally while you're working on them: by running `dev` or `docs`.
-
-`dev` will launch the development tool we use called [Storybook](https://storybook.js.org/). This is what we recommend you use while developing
-
-`docs` is our nextJS based documentation website. Use this when you want to update the documentation.
-
-**Note:** both of these tasks should be run with `yarn` from the top level of the repository (two levels up from here).
+Test your React components locally using `dev`. This will launch the development tool we use called [Storybook](https://storybook.js.org/).
 
 # Testing
 
