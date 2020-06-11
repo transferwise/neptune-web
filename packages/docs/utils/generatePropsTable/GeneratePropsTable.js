@@ -25,7 +25,7 @@ const GeneratePropsTable = ({ componentName }) => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(schema.props).map(propName => {
+          {Object.keys(schema.props).map((propName) => {
             const prop = schema.props[propName];
             const { type, allowedValues, required, defaultValue } = parsePropsForTable(prop);
 
@@ -38,7 +38,7 @@ const GeneratePropsTable = ({ componentName }) => {
                 <td>
                   <ul>
                     {isArray(allowedValues)
-                      ? allowedValues.map(value => <li key={value}>{value}</li>)
+                      ? allowedValues.map((value) => <li key={value}>{value}</li>)
                       : allowedValues}
                   </ul>
                 </td>

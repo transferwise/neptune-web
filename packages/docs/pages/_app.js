@@ -1,4 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable import/no-extraneous-dependencies */
+
 import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
@@ -13,8 +15,8 @@ import { addBasePath } from '../utils/pageUtils';
 import '../static/assets/main.css';
 
 if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
-  const ReactDOM = require('react-dom');
-  const axe = require('react-axe');
+  const ReactDOM = require('react-dom'); // eslint-disable-line global-require
+  const axe = require('react-axe'); // eslint-disable-line global-require
   axe(React, ReactDOM, 1000);
 }
 

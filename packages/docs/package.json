@@ -10,8 +10,9 @@
     "docs:build": "next export -o docs-build && touch docs-build/.nojekyll",
     "docs:deploy": "gh-pages --dotfiles -a -d docs-build",
     "docs:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
-    "lint": "eslint components/ pages/",
-    "lint:fix": "yarn lint --fix"
+    "lint": "eslint components/ pages/ utils/",
+    "lint:fix": "yarn lint --fix",
+    "test": "jest --config ../../node_modules/@transferwise/test-config/test/jest.lint.js"
   },
   "repository": {
     "type": "git",
@@ -53,7 +54,8 @@
     "react-docgen": "5.3.0",
     "react-docgen-external-proptypes-handler": "^2.0.0",
     "react-live": "^2.2.2",
-    "rehype-slug": "^3.0.0"
+    "rehype-slug": "^3.0.0",
+    "@transferwise/test-config": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

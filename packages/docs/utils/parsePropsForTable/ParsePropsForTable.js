@@ -1,6 +1,6 @@
 import { isObject, isArray } from 'util';
 
-const cleanValue = value => {
+const cleanValue = (value) => {
   let newValue = value;
   if (typeof value === 'object') {
     /* eslint-disable-next-line */
@@ -10,7 +10,7 @@ const cleanValue = value => {
 };
 
 const parsePropsForTable = ({ type, required, defaultValue }) => {
-  const getAllowedValues = propType => {
+  const getAllowedValues = (propType) => {
     switch (propType.name) {
       case 'arrayOf':
         if (propType.value.value) {
@@ -33,7 +33,7 @@ const parsePropsForTable = ({ type, required, defaultValue }) => {
       case 'shape':
         if (isObject(propType.value)) {
           return JSON.stringify(
-            Object.keys(propType.value).map(key => ({
+            Object.keys(propType.value).map((key) => ({
               [key]: cleanValue(propType.value[key].name),
             })),
           );
