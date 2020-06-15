@@ -52,7 +52,7 @@
     "setup": "yarn install && yarn build",
     "build": "lerna run build --stream",
     "dev": "lerna run dev --parallel --stream",
-    "docs": "lerna run docs --parallel --stream",
+    "docs": "lerna run docs --stream",
     "docs:build": "lerna run docs:build",
     "docs:deploy": "lerna run docs:deploy",
     "docs:deploy-for-branch": "lerna run docs:deploy-for-branch",
