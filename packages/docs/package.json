@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "docs": "node ./docgen.js && next dev",
-    "build": "node ./docgen.js && node ./utils/bundleSize/getBundleSize.js && next build",
+    "build": "node ./docgen.js && node ./utils/bundleSize/getBundleSize.js && next build && yarn build:compile-css",
+    "build:compile-css": "gulp compileLess --src='static/assets' --dest='static/assets'",
     "docs:build": "next export -o docs-build && touch docs-build/.nojekyll",
     "docs:deploy": "gh-pages --dotfiles -a -d docs-build",
     "docs:deploy-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build",
@@ -59,6 +60,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@transferwise/less-config": "^1.0.1",
     "babel-plugin-inline-react-svg": "^1.1.1"
   },
   "peerDependencies": {
