@@ -36,11 +36,15 @@ const GeneratePropsTable = ({ componentName }) => {
                 <td>{required ? 'true' : 'false'}</td>
                 <td>{defaultValue}</td>
                 <td>
-                  <ul>
-                    {isArray(allowedValues)
-                      ? allowedValues.map((value) => <li key={value}>{value}</li>)
-                      : allowedValues}
-                  </ul>
+                  {isArray(allowedValues) ? (
+                    <ul>
+                      {allowedValues.map((value) => (
+                        <li key={value}>{value}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    allowedValues
+                  )}
                 </td>
               </tr>
             );
