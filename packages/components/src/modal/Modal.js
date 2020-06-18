@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import Close from '@transferwise/icons/react/close';
+import { Cross as CrossIcon } from '@transferwise/icons';
 import KEY_CODES from '../common/keyCodes';
 import './Modal.css';
 
@@ -126,7 +126,7 @@ class Modal extends Component {
                 >
                   <h4 className="tw-modal-title">{title}</h4>
                   <button type="button" onClick={onClose} className="close" aria-label="close">
-                    <Close />
+                    <CrossIcon size={24} />
                   </button>
                 </div>
                 <div className="tw-modal-body">{body}</div>

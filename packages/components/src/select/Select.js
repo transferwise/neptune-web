@@ -4,7 +4,9 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
 
+import { Search as SearchIcon } from '@transferwise/icons';
 import Option from './option';
+import Chevron from '../chevron';
 import KeyCodes from '../common/keyCodes';
 import { Breakpoint } from '../common';
 import {
@@ -72,7 +74,7 @@ export default class Select extends Component {
     selected: Types.shape({
       value: Types.any.isRequired,
       label: Types.node,
-      icon: Types.string,
+      icon: Types.node,
       currency: Types.string,
       note: Types.node,
       secondary: Types.node,
@@ -91,7 +93,7 @@ export default class Select extends Component {
         value: Types.any,
         label: Types.node,
         header: Types.node,
-        icon: Types.string,
+        icon: Types.node,
         currency: Types.string,
         note: Types.node,
         secondary: Types.node,
@@ -420,7 +422,7 @@ export default class Select extends Component {
         <a className={`${this.style('tw-select-filter-link')} ${this.style('p-a-0')}`}>
           <div className={this.style('input-group')}>
             <span className={this.style('input-group-addon')}>
-              <i className={`${this.style('icon')} ${this.style('icon-search')}`} />
+              <SearchIcon />
             </span>
             <input
               type="text"
@@ -496,7 +498,7 @@ export default class Select extends Component {
       >
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a disabled={option.disabled}>
-          <Option {...option} classNames={this.props.classNames} />
+          <Option {...option} />
         </a>
       </li>
     );
@@ -505,7 +507,7 @@ export default class Select extends Component {
   renderButtonInternals() {
     const { selected, placeholder } = this.props;
     if (selected) {
-      return <Option {...selected} classNames={this.props.classNames} selected />;
+      return <Option {...selected} selected />;
     }
     return <span className={this.style('form-control-placeholder')}>{placeholder}</span>;
   }
@@ -579,7 +581,7 @@ export default class Select extends Component {
               onClick={this.handleButtonClick}
             >
               {this.renderButtonInternals()}
-              <span className={this.style('caret')} />
+              <Chevron disabled={disabled} />
             </button>
             {animationState !== 'exited' && this.renderOptionsList()}
             {animationState !== 'exited' && this.renderOverlay()}

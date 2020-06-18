@@ -1,6 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
+import CloseButton from '../common/CloseButton';
 import BackButton from './backButton';
 import Avatar from './avatar';
 import Logo from './logo';
@@ -23,7 +24,6 @@ import '@transferwise/neptune-css/dist/css/flowNavigation.css';
  * @param {string} [theme=FlowNavigation.Theme.LIGHT] - Theme to use
  * @usage `<FlowNavigation activeStep={activeStep} onClose={callback} avatarUrl={someUrl} done={done} profileType={OverlayHeader.ProfyleType.BUSINESS} onGoBack={callback} theme={OverlayHeader.Theme.LIGHT} steps={steps} />`
  * */
-
 const FlowNavigation = ({
   steps,
   activeStep,
@@ -36,21 +36,11 @@ const FlowNavigation = ({
 }) => {
   const avatar = done ? null : <Avatar url={avatarUrl} profileType={profileType} />;
   const closeButton = onClose && (
-    <button
-      className={classNames(
-        'tw-flow-navigation__close-button',
-        'btn-link',
-        'text-no-decoration',
-        'icon',
-        'icon-close',
-        'icon-lg',
-        'm-l-3',
-        {
-          'close-button-with-avatar': !done,
-        },
-      )}
+    <CloseButton
       onClick={onClose}
-      aria-label="close button"
+      className={classNames('m-l-3', {
+        'close-button-with-avatar': !done,
+      })}
     />
   );
   return (
@@ -62,7 +52,7 @@ const FlowNavigation = ({
         </div>
       }
       rightContent={
-        <div className="m-lg-t-1">
+        <div className="m-lg-t-1 tw-flow-navigation__right-content">
           {avatar}
           {closeButton}
         </div>

@@ -5,9 +5,9 @@ import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';
 
 import theme from './common/theme';
-import 'bootstrap/dist/css/bootstrap.css';
+import '@transferwise/neptune-css/dist/css/neptune.css';
+import '@transferwise/icons/lib/styles/main.min.css';
 import 'currency-flags/dist/currency-flags.min.css';
-import '@transferwise/icons/dist/icons.min.css';
 
 const style = {
   display: 'flex',

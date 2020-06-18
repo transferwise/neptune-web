@@ -71,18 +71,18 @@ describe('Drawer', () => {
   });
 
   it('renders close button', () => {
-    expect(component.find(`.drawer-header--close`)).toHaveLength(1);
+    expect(component.find(`.drawer-header .close`)).toHaveLength(1);
   });
 
   it('calls onClose when user clicks close button', () => {
     expect(props.onClose).not.toBeCalled();
-    component.find(`.drawer-header--close`).simulate('click');
+    component.find(`.drawer-header .close`).simulate('click');
     expect(props.onClose).toBeCalled();
   });
 
   it('calls onClose when user press right key on close button', () => {
     expect(props.onClose).not.toBeCalled();
-    const closeButton = component.find(`.drawer-header--close`);
+    const closeButton = component.find(`.drawer-header .close`);
     closeButton.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN));
     expect(props.onClose).not.toBeCalled();
     closeButton.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.ESCAPE));

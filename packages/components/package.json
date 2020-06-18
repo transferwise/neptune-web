@@ -75,7 +75,7 @@
   "dependencies": {
     "@babel/runtime": "^7.9.2",
     "@transferwise/formatting": "^2.1.0",
-    "@transferwise/icons": "^1.0.0",
+    "@transferwise/icons": "^2.0.0",
     "@transferwise/neptune-css": "^1.2.1",
     "classnames": "^2.2.6",
     "commonmark": "^0.29.1",

@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import Types from 'prop-types';
+import Chevron from '../chevron';
 
 import Option from '../common/Option';
 import './NavigationOption.css';
@@ -21,9 +22,7 @@ const NavigationOption = ({ media, href, title, content, onClick, complex, disab
           onClick(event);
         }
       }}
-      button={
-        <button className="tw-navigation-option__chevron caret rotate270" disabled={disabled} />
-      }
+      button={<Chevron orientation={Chevron.Orientation.RIGHT} disabled={disabled} />}
     />
   );
 };

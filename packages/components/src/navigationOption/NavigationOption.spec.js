@@ -49,12 +49,5 @@ describe('Navigation option', () => {
     expect(onClick).not.toBeCalled();
   });
 
-  it('passes disabled to chevron button', () => {
-    expect(buttonProp('disabled')).toBe(false);
-    component.setProps({ disabled: true });
-    expect(buttonProp('disabled')).toBe(true);
-  });
-
   const option = () => component.find(Option);
-  const buttonProp = (name) => option().prop('button').props[name];
 });

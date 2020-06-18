@@ -8,7 +8,8 @@ html.ios-click {
   .tw-dropdown-item {
     &--clickable {
       cursor: pointer;
-      .icon {
+      .tw-icon {
+        display: inline-block;
         margin-right: @spacer;
       }
     }
@@ -25,6 +26,13 @@ html.ios-click {
 
     .currency-flag {
       margin-right: @spacer;
+    }
+  }
+  .dropdown-toggle {
+    .tw-icon {
+      position: absolute;
+      top: @spacer * 2;
+      right: @spacer * 2;
     }
   }
 }

@@ -4,6 +4,7 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 import requiredIf from 'react-required-if';
 import { Size, MessageType, ArrowPosition } from '../common';
+import { Cross as CrossIcon } from '@transferwise/icons';
 
 export default class Alert extends Component {
   static Size = Size;
@@ -55,12 +56,12 @@ export default class Alert extends Component {
         {dismissible && (
           <button
             type="button"
-            className="close"
+            className="close m-l-2"
             data-dismiss="alert"
             onClick={onDismiss}
             aria-label="Close"
           >
-            <span aria-hidden="true">×</span>
+            <CrossIcon />
           </button>
         )}
         {children}

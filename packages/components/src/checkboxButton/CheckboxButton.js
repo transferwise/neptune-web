@@ -2,6 +2,8 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
+import './Tick.css';
+
 const CheckboxButton = ({ checked, disabled, readOnly, className, onClick, onFocus, onBlur }) => (
   <button
     type="button"
@@ -12,7 +14,7 @@ const CheckboxButton = ({ checked, disabled, readOnly, className, onClick, onFoc
     onBlur={onBlur}
     disabled={disabled || readOnly}
   >
-    <span className="tw-checkbox-check glyphicon glyphicon-ok" />
+    <span className="tw-checkbox-check" />
   </button>
 );
 

@@ -4,7 +4,7 @@ import Logo from '../flowNavigation/logo';
 
 import OverlayHeader from '.';
 
-describe('Flow navigation', () => {
+describe('Overlay header', () => {
   let component;
   let props;
 
@@ -17,7 +17,7 @@ describe('Flow navigation', () => {
   }
 
   function closeButton() {
-    return component.find('.icon-close');
+    return component.find('.tw-close-button');
   }
 
   function closeButtonWithAvatar() {

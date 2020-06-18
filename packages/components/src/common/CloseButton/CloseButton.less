@@ -1,0 +1,19 @@
+@import 'bootstrap/less/variables';
+
+.tw-close-button {
+  transition: color 0.15s ease-in-out;
+  color: @brand-light-blue;
+  outline: 0;
+  padding: 0 0 0 20px;
+  margin-left: 20px;
+  border-left: 1px solid @brand-smoke-plus-10;
+
+  &:hover {
+    color: @brand-light-blue-minus-10;
+  }
+
+  & > .tw-icon {
+    width: 24px;
+    height: 24px;
+  }
+}

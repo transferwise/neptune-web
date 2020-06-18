@@ -1,4 +1,7 @@
+import '@transferwise/icons/lib/styles/main.min.css';
+
 export { default as Checkbox } from './checkbox';
+export { default as CheckboxButton } from './checkboxButton';
 export { default as Loader } from './loader';
 export { default as Radio } from './radio';
 export { default as Select } from './select';

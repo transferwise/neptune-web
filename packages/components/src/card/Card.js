@@ -43,12 +43,7 @@ const Card = ({
           decision={false}
           button={
             children && (
-              <Chevron
-                size={Chevron.Size.SMALL}
-                orientation={Chevron.Orientation.BOTTOM}
-                flip={isOpen}
-                animate
-              />
+              <Chevron orientation={isOpen ? Chevron.Orientation.TOP : Chevron.Orientation.DOWN} />
             )
           }
           inverseMediaCircle={isOpen}

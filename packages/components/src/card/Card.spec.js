@@ -17,8 +17,6 @@ describe('Card', () => {
     return render(<Card {...defaultProps} {...props} />);
   };
 
-  afterEach(cleanup);
-
   it('renders as a div by default', () => {
     const { getByTestId } = renderCard({ 'data-testid': dataTestId });
     expect(getByTestId(dataTestId).tagName).toBe('DIV');
@@ -163,11 +161,11 @@ describe('Card', () => {
   };
   const chevron = (renderProps) => {
     const { container } = renderCard(renderProps);
-    return container.querySelector('.chevron');
+    return container.querySelector('.tw-icon-chevron-up.bottom');
   };
   const flippedChevron = (renderProps) => {
     const { container } = renderCard(renderProps);
-    return container.querySelector('.chevron-container.flip');
+    return container.querySelector('.tw-icon-chevron-up.top');
   };
   const contentPanel = (renderProps) => {
     const { container } = renderCard(renderProps);

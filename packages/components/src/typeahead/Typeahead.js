@@ -8,6 +8,8 @@ import debounce from 'lodash.debounce';
 import clamp from 'lodash.clamp';
 import classNames from 'classnames';
 
+import { Cross as CrossIcon } from '@transferwise/icons';
+
 import KeyCodes from '../common/keyCodes';
 import TypeaheadInput from './typeaheadInput/TypeaheadInput';
 import TypeaheadOption from './typeaheadOption/TypeaheadOption';
@@ -487,7 +489,7 @@ export default class Typeahead extends Component {
             {clearButton && (
               <div className="input-group-addon">
                 <button className="btn-unstyled" onClick={this.clear}>
-                  <i className=" input-group-text icon icon-close" />
+                  <CrossIcon />
                 </button>
               </div>
             )}

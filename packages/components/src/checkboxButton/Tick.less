@@ -1,0 +1,27 @@
+@import '@transferwise/neptune-css/src/less/variables/_colors.less';
+
+.tw-checkbox-check {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 8px;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    transform: translateX(0.5px) rotate(-45deg);
+    transform-origin: left bottom;
+    left: 8px;
+  }
+  &::before {
+    top: 9px;
+    height: 6px;
+    width: 2px;
+  }
+  &::after {
+    bottom: 5px;
+    height: 2px;
+    width: 11px;
+  }
+}

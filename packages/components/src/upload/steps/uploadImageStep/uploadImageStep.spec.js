@@ -1,7 +1,7 @@
 import React from 'react';
 import UploadImageStep from './';
 import { shallow } from 'enzyme';
-import Upload from '@transferwise/icons/react/upload';
+import { Upload as UploadIcon } from '@transferwise/icons';
 
 describe('uploadImageStep', () => {
   const UPLOADIMAGE_STEP_PROPS = {
@@ -24,7 +24,7 @@ describe('uploadImageStep', () => {
   });
 
   it('renders helpImage or Upload icon', () => {
-    expect(component.find(Upload)).toHaveLength(1);
+    expect(component.find(UploadIcon)).toHaveLength(2);
     component.setProps({ usHelpImage: 'usHelpImage' });
     expect(component.find('img.thumbnail')).toHaveLength(1);
   });
@@ -43,10 +43,10 @@ describe('uploadImageStep', () => {
 
   it('renders buttonText or Icon', () => {
     expect(component.find('.btn-primary')).toHaveLength(1);
-    expect(component.find('.btn-primary span.icon')).toHaveLength(1);
+    expect(component.find(UploadIcon)).toHaveLength(2);
     component.setProps({ usButtonText: 'usButtonText' });
     expect(component.find('.btn-primary span').text()).toBe('usButtonText');
-    expect(component.find('.btn-primary span.icon')).toHaveLength(0);
+    expect(component.find(UploadIcon)).toHaveLength(1);
   });
 
   it('renders input file', () => {
