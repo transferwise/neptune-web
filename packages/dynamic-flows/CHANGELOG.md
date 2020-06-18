@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.11](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.10...@transferwise/dynamic-flows@2.2.11) (2020-06-18)
+
+
+### Performance Improvements
+
+* remove propTypes from components and dynamic-flows build ([#416](https://github.com/transferwise/neptune-web/issues/416)) ([8dadc0d](https://github.com/transferwise/neptune-web/commit/8dadc0d5a1c14173f1d0a0146fc6505a749c71c8))
+
+
+
+
+
 ## [2.2.10](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.9...@transferwise/dynamic-flows@2.2.10) (2020-06-09)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows

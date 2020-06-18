@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.7.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.7.0...@transferwise/components@27.7.1) (2020-06-18)
+
+
+### Bug Fixes
+
+* handle errors in getVelocity ([#430](https://github.com/transferwise/neptune-web/issues/430)) ([31c05ea](https://github.com/transferwise/neptune-web/commit/31c05ea8e14b085b1c8886d5fc1394fc4ebb119b))
+
+
+### Performance Improvements
+
+* remove propTypes from components and dynamic-flows build ([#416](https://github.com/transferwise/neptune-web/issues/416)) ([8dadc0d](https://github.com/transferwise/neptune-web/commit/8dadc0d5a1c14173f1d0a0146fc6505a749c71c8))
+
+
+
+
+
 # [27.7.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.6.1...@transferwise/components@27.7.0) (2020-06-09)
 
 
