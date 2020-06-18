@@ -31,11 +31,15 @@ export const swipeShouldChangeTab = (start, end) => {
 };
 
 export function getVelocity(coords) {
-  const relevant = coords.slice(Math.max(coords.length - 5, 1));
-  const first = relevant[0];
-  const last = relevant[relevant.length - 1];
+  try {
+    const relevant = coords.slice(Math.max(coords.length - 5, 1));
+    const first = relevant[0];
+    const last = relevant[relevant.length - 1];
 
-  return Math.abs(first.x - last.x) / (last.time - first.time);
+    return Math.abs(first.x - last.x) / (last.time - first.time);
+  } catch (e) {
+    return 0;
+  }
 }
 
 /*
