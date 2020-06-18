@@ -4,5 +4,5 @@
   title="Checkbox option"
   content="Normally, the button and icon are vertically centered."
   onChange={() => alert('value changed')}
-  media={<FastFlagIcon />}
+  media={<FastFlagIcon size={24} />}
 />;
