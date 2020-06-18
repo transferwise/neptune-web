@@ -45,6 +45,10 @@ aliases:
     name: Publish packages
     command: npx lerna publish -m "[skip ci] Release" --yes
 
+  - &lerna-publish-beta
+    name: Publish packages
+    command: npx lerna publish --canary --preid beta --dist-tag beta -m "[skip ci] Release" --yes
+
   - &conventional-commit-lint
     name: Conventional Commits check
     command: npx commitlint -f $(git log --author=CircleCI -1 --format=format:"%H") -V
@@ -124,6 +128,14 @@ jobs:
       - run: *add-npm-release-token
       - run: *lerna-publish
 
+  publish-prerelease:
+    <<: *container
+    steps:
+      - *attach-workspace
+      - run: *set-github-credentials
+      - run: *add-npm-release-token
+      - run: *lerna-publish-beta
+
 workflows:
   version: 2
   build-deploy-release:
@@ -197,3 +209,12 @@ workflows:
           filters:
             branches:
               only: master
+
+      - publish-prerelease:
+          context: frontend-publish
+          requires:
+            - test
+            - build
+          filters:
+            branches:
+              only: beta
