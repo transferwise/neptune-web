@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.7.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.7.1...@transferwise/components@27.7.2) (2020-06-21)
+
+
+### Bug Fixes
+
+* neptune sprint 23 ([#439](https://github.com/transferwise/neptune-web/issues/439)) ([ae41da6](https://github.com/transferwise/neptune-web/commit/ae41da6fccb1ff91de0c8447d36ed0c875e1be4c))
+
+
+
+
+
 ## [27.7.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.7.0...@transferwise/components@27.7.1) (2020-06-18)
 
 

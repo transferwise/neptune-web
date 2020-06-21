@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.1...@transferwise/neptune-css@1.2.2) (2020-06-21)
+
+
+### Bug Fixes
+
+* neptune sprint 23 ([#439](https://github.com/transferwise/neptune-web/issues/439)) ([ae41da6](https://github.com/transferwise/neptune-web/commit/ae41da6fccb1ff91de0c8447d36ed0c875e1be4c))
+
+
+
+
+
 ## [1.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.0...@transferwise/neptune-css@1.2.1) (2020-06-03)
 
 

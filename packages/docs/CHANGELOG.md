@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.13](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.12...@transferwise/neptune-docs@4.2.13) (2020-06-21)
+
+
+### Bug Fixes
+
+* neptune sprint 23 ([#439](https://github.com/transferwise/neptune-web/issues/439)) ([ae41da6](https://github.com/transferwise/neptune-web/commit/ae41da6fccb1ff91de0c8447d36ed0c875e1be4c))
+
+
+
+
+
 ## [4.2.12](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.11...@transferwise/neptune-docs@4.2.12) (2020-06-18)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
