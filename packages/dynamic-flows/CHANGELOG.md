@@ -5,14 +5,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.2.12](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.11...@transferwise/dynamic-flows@2.2.12) (2020-06-21)
 
-
 ### Bug Fixes
 
-* neptune sprint 23 ([#439](https://github.com/transferwise/neptune-web/issues/439)) ([ae41da6](https://github.com/transferwise/neptune-web/commit/ae41da6fccb1ff91de0c8447d36ed0c875e1be4c))
+* Fixing docs css reload ([#409](https://github.com/transferwise/neptune-web/pull/439/commits/04b1424cf694c6e047086b9d83ea0e3ecb4280e5))
 
+### Misc
 
+* Setup a11y tools ([#380](https://github.com/transferwise/neptune-web/pull/439/commits/1324d6f66191b1fdcfdd64932189c2610f156f75))
 
+* Improving docs and tools ([#424](https://github.com/transferwise/neptune-web/pull/439/commits/a9ab3ed8ebedc5baa908e79ea078a578be68693a))
 
+* Fix lint-stage ([#436](https://github.com/transferwise/neptune-web/pull/439/commits/d2b77895e1caab66bdabc8a2b1dee220d2218cd4))
 
 ## [2.2.11](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.10...@transferwise/dynamic-flows@2.2.11) (2020-06-18)
 

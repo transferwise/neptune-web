@@ -5,14 +5,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [27.7.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.7.1...@transferwise/components@27.7.2) (2020-06-21)
 
-
 ### Bug Fixes
 
-* neptune sprint 23 ([#439](https://github.com/transferwise/neptune-web/issues/439)) ([ae41da6](https://github.com/transferwise/neptune-web/commit/ae41da6fccb1ff91de0c8447d36ed0c875e1be4c))
+* Fixing docs css reload ([#409](https://github.com/transferwise/neptune-web/pull/439/commits/04b1424cf694c6e047086b9d83ea0e3ecb4280e5))
 
+* Change dates in the date lookup to use buttons ([#431](https://github.com/transferwise/neptune-web/pull/439/commits/3fb6e10c8ffef4f19c6bb3c0f66db8aee59bb0d4))
 
+### Misc
 
+* Setup a11y tools ([#380](https://github.com/transferwise/neptune-web/pull/439/commits/1324d6f66191b1fdcfdd64932189c2610f156f75))
 
+* Improving docs and tools ([#424](https://github.com/transferwise/neptune-web/pull/439/commits/a9ab3ed8ebedc5baa908e79ea078a578be68693a))
+
+* Fix lint-stage ([#436](https://github.com/transferwise/neptune-web/pull/439/commits/d2b77895e1caab66bdabc8a2b1dee220d2218cd4))
 
 ## [27.7.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.7.0...@transferwise/components@27.7.1) (2020-06-18)
 
