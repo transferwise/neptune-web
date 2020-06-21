@@ -19,20 +19,19 @@
   },
   "scripts": {
     "dev": "npm-run-all --parallel dev:*",
-    "dev:watch-less": "gulp --gulpfile=../../node_modules/@transferwise/less-config lessWatcher  --dest=src",
+    "dev:watch-less": "gulp watchLess --dest=src",
     "dev:storybook": "start-storybook",
-    "docs": "npm-run-all --parallel docs:*",
-    "docs:babel": "NODE_ENV=es babel src -d build/es/polyfill --ignore '**/*.spec.js','**/*.story.js' -w",
-    "docs:watch-less": "gulp lessWatcher --gulpfile=../../node_modules/@transferwise/less-config --dest=src",
+    "docs": "yarn build",
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf lib build",
-    "build:compile-css": "gulp lessCompiler --gulpfile=../../node_modules/@transferwise/less-config --dest=src",
+    "build:compile-less": "gulp compileLess --dest=src",
     "build:es": "NODE_ENV=es babel src -d build/es/polyfill --ignore '**/*.spec.js','**/*.story.js'",
     "build:es-nopolyfill": "NODE_ENV=es-nopolyfill babel src -d build/es/no-polyfill --ignore '**/*.spec.js','**/*.story.js'",
     "build:copy-files": "cpx 'src/**/!(db)/*.{css,json,svg}' build/es/polyfill",
     "build:copy-files2": "cpx 'src/**/!(db)/*.{css,json,svg}' build/es/no-polyfill",
-    "test": "jest --env=jsdom --runInBand --config=../../node_modules/@transferwise/test-config/jest.config.js",
+    "test": "jest --env=jsdom --runInBand --config=../../node_modules/@transferwise/test-config/jest.config.js && yarn test:lint",
     "test:watch": "jest --watch --env=jsdom --config=../../node_modules/@transferwise/test-config/jest.config.js",
+    "test:lint": "jest --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "yarn lint --fix"
   },
@@ -64,16 +63,5 @@
     "@transferwise/components": "^27.7.1",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

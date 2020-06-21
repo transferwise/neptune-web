@@ -41,5 +41,39 @@ export default [
       },
     ],
   },
-  { title: 'Components', dir: 'components' },
+  {
+    title: 'Components',
+    dir: 'components',
+    children: [
+      {
+        title: 'Inputs',
+        dir: 'components/inputs',
+      },
+      {
+        title: 'Content',
+        dir: 'components/content',
+      },
+      {
+        title: 'Alerts / Info',
+        dir: 'components/alerts',
+      },
+      {
+        title: 'Navigation',
+        dir: 'components/navigation',
+      },
+      {
+        title: 'Progress',
+        dir: 'components/progress',
+      },
+      {
+        title: 'Overlays',
+        dir: 'components/overlays',
+      },
+      {
+        title: 'Dynamic Forms',
+        dir: 'components/dynamicForms',
+      },
+    ],
+    searchable: true,
+  },
 ];

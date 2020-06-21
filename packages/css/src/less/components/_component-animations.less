@@ -1,7 +1,8 @@
 // Component animations
 .fade {
+  transition: opacity 0.15s linear;
+
   opacity: 0;
-  .transition(opacity 0.15s linear);
   &.in {
     opacity: 1;
   }
@@ -23,11 +24,14 @@
 
 .collapsing {
   position: relative;
-  height: 0;
+
   overflow: hidden;
-  .transition-property(~'height, visibility');
-  .transition-duration(0.35s);
-  .transition-timing-function(ease);
+
+  height: 0;
+
+  transition-timing-function: ease;
+  transition-duration: 0.35s;
+  transition-property: height, visibility;
 }
 
 [data-toggle='collapse'] {
@@ -38,8 +42,9 @@
     text-decoration: none;
   }
   .caret {
-    transition: transform 0.15s linear;
     margin-top: -3px;
+
+    transition: transform 0.15s linear;
   }
   &[aria-expanded='false'] .caret,
   &.collapsed .caret {

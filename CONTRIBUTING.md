@@ -2,75 +2,80 @@
 
 Follow the instructions below to get started. Branch from `master`, and submit a pull request when you're ready.
 
-Once you've set up your development environment, see below for specific information on working with the [Components](#working-with-components) and the [CSS](#working-with-css).
-
 ## Things to know
 
-- We use [Conventional Commits](https://www.conventionalcommits.org) on our `master` branch. We ask that you do the same on your branches. While we most often squash and merge into `master`, we may decide we'd like the history, and this is only an option if all commits on the branch follow the specification.
-- ️⚠️ Please don't make commits that affect files from more than one package at a time (e.g. `components` and `css`). It can affect how the package versions are bumped.
+- All commit messages must follow the conventional commit format. [Read below](#versioning-and-commit-lint) if you are unfamiliar with the standard or the available types.
+- You must restrict your commits to one package at a time: e.g. don't make one commit that changes files inside `components` and `css` - it impacts how versions are bumped.
 - We use `yarn`: these instructions presume you have this installed.
 
 ## Get started
 
-These instructions will set up the monorepo and will prepare you to work across any or all of the packages.
-
-Clone the repository and run `yarn setup` to install dependencies and build all packages:
+1. Clone the repository and run `yarn setup` to install dependencies and build all packages:
 
 ```
-git clone git@github.com:transferwise/neptune-web.git && cd neptune && yarn setup
+git clone git@github.com:transferwise/neptune-web.git && cd neptune-web && yarn setup
 ```
 
-**Note:** Run all following of these commands at the root of the repository.
+2. Familiarise yourself with our [code conventions](CODESTYLE.md) and [accessibility guidelines](ACCESSIBILITY.md).
 
-## Develop
+3. Refer to `CONTRIBUTING.md` inside each package for more information on working within that package.
 
-Please familiarise yourself with our [code conventions](CODESTYLE.md).
+## Where should I run commands from?
 
-Run the React development environment (Storybook):
+Almost always from within the package you're working in. For example, if you're making changes to `components`, run your yarn commands from that package:
 
 ```
+cd packages/components
 yarn dev
 ```
 
-Storybook is a quick place to test changes to React components and their styles.
-
-### Docs
-
-Start a local nextjs documentation environment:
+The two exceptions to this rule are the initial setup, and running the docs (which require all packages to be built). These should be done here, at the root of the monorepo.
 
 ```
+yarn setup
 yarn docs
 ```
 
-Remember to add documentation when adding or changes components or CSS.
+### Top level commands
 
-### Test
+The full list of commands available to run from the root directory are:
 
-Run React tests:
+- `setup` - installs dependencies and runs build in all packages
+- `build` - builds all packages
+- `clean` - removes `node_modules` and cached builds from all packages
+- `docs` - builds all packages and starts the Neptune Web docs
+- `lint` - lints all packages
+- `test` - runs tests in all packages (includes a lint)
+
+As said above, we recommend running most commands from within the package you're working in.
+
+## Versioning and commit lint
+
+We follow [Semantic Versioning](https://semver.org). We require that commit messages follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/#summary) standard. In this way, we can automatically bump the version of our packages when necessary.
+
+The rules are simple:
+
+- All your commit messages must follow the format `<type>(scope?): subject`
+- The type must be one of the following: [`fix`, `feat`, `refactor`, `build`, `chore`, `docs`, `perf`, `test`]
+- If you are fixing something, use `fix`. This will bump the patch version.
+- If you are adding a new feature, use `feat`. This will bump the minor version.
+- If you are committing a breaking change, add a ! after the type: `feat!: this is a breaking change`
+
+Using anything other than `fix` or `feat` without a `!` will not trigger a version bump. This is useful for changes to CI config, documentation or tests. Feel free to choose the type that best reflects the work you're doing.
+
+You can optionally use a scope to describe where in the code you're working: e.g. `feat(accordion): adding new functionality to the accordion`.
+
+Some examples:
 
 ```
-yarn test
+fix: fixing a minor bug in some widget
+feat: adding a new feature to a component
+feat!: refactoring the API of some component
+docs: updating the docs
+refactor(button): refactoring the button implementation
+chore: updating the ci build config
 ```
 
-## Submit a pull request
+## Releasing
 
-Before you submit a pull request, please make sure:
-
-- All your changes are covered by tests
-- All your changes have been crossbrowser checked, especially IE11
-- You've updated the documentation if necessary
-- Your commits adhere to conventional commits
-
-Keep in mind that the title of your PR will appear as a line item in the changelog, and **must also conform to the conventional commit specification**.
-
-### Releasing
-
-The [documentation](https://transferwise.github.io/neptune-web) and the new npm release will be automatically deployed when merging changes to master. Because we use [Conventional Commits](https://www.conventionalcommits.org), we can bump package versions automatically based on the changes made. It also allows us to generate Changelogs.
-
-## Working with Components
-
-Please read [the guide](https://github.com/transferwise/neptune-web/blob/master/packages/components/CONTRIBUTING.md) for more information on working within the Components package.
-
-## Working with CSS
-
-Please read [the guide](https://github.com/transferwise/neptune-web/blob/master/packages/css/CONTRIBUTING.md) for more information on working within the CSS package.
+The [documentation](https://transferwise.github.io/neptune-web) and the new npm release will be automatically deployed when merging changes to master. Our use of conventional commits means we can bump package versions automatically based on the changes made. It also allows us to generate Changelogs.

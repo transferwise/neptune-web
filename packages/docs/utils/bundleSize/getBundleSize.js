@@ -7,7 +7,7 @@ const getAllFiles = (dirPath, arrayOfFiles = []) => {
   const resolvedPath = path.resolve(dirPath);
   const files = fs.readdirSync(resolvedPath);
   let returnArray = arrayOfFiles;
-  files.forEach(file => {
+  files.forEach((file) => {
     if (fs.statSync(`${resolvedPath}/${file}`).isDirectory()) {
       returnArray = getAllFiles(`${resolvedPath}/${file}`, returnArray);
     } else {
@@ -24,11 +24,11 @@ async function getGzip(filePath) {
   return stdout / 1000;
 }
 
-const getTotalSize = async directoryPath => {
+const getTotalSize = async (directoryPath) => {
   const arrayOfFiles = getAllFiles(directoryPath);
   let totalSize = 0;
 
-  arrayOfFiles.forEach(filePath => {
+  arrayOfFiles.forEach((filePath) => {
     totalSize += fs.statSync(filePath).size;
   });
 

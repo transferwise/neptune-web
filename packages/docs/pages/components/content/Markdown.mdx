@@ -1,0 +1,12 @@
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import { Markdown } from '@transferwise/components';
+import code from '../../../liveEditorCode/markdown.code';
+
+Accepts markdown strings and returns html markup. The markdown parser used is [commonmark](https://www.npmjs.com/package/commonmark)
+
+<LiveEditorBlock code={code} scope={{ Markdown }} />
+<GeneratePropsTable componentName="Markdown" />
+
+export const meta = {
+  name: 'Markdown',
+};

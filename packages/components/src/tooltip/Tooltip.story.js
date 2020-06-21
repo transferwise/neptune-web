@@ -15,7 +15,7 @@ export const basic = () => {
   const position = select('position', Object.values(Tooltip.Position), Tooltip.Position.BOTTOM);
   return (
     <Tooltip label={label} position={position} offset={offset}>
-      <Button>Hover me</Button>
+      <Button onClick={() => {}}>Hover me</Button>
     </Tooltip>
   );
 };

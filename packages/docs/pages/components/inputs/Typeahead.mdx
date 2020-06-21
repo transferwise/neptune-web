@@ -1,0 +1,10 @@
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import { Typeahead } from '@transferwise/components';
+import code from '../../../liveEditorCode/typeahead.code';
+
+<LiveEditorBlock code={code} scope={{ Typeahead }} display="vertical" />
+<GeneratePropsTable componentName="Typeahead" />
+
+export const meta = {
+  name: 'Typeahead',
+};

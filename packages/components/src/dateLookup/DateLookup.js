@@ -11,6 +11,8 @@ import DayCalendar from './dayCalendar';
 import MonthCalendar from './monthCalendar';
 import YearCalendar from './yearCalendar';
 
+import './DateLookup.css';
+
 const MODE = {
   DAY: 'day',
   MONTH: 'month',

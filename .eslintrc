@@ -4,18 +4,12 @@
   "extends": "@transferwise",
   "rules": {
     "no-mixed-operators": 0,
-    "react/destructuring-assignment": [
-      0,
-      "never"
-    ],
+    "react/destructuring-assignment": [0, "never"],
     "jsx-a11y/label-has-for": [
       2,
       {
         "required": {
-          "some": [
-            "nesting",
-            "id"
-          ]
+          "some": ["nesting", "id"]
         }
       }
     ],
@@ -41,10 +35,7 @@
       2,
       {
         "required": {
-          "some": [
-            "nesting",
-            "id"
-          ]
+          "some": ["nesting", "id"]
         }
       }
     ],
@@ -54,18 +45,13 @@
     "import/no-unresolved": [
       2,
       {
-        "ignore": [
-          ".css$"
-        ]
+        "ignore": [".css$"]
       }
     ],
     "import/no-extraneous-dependencies": [
       0,
       {
-        "devDependencies": [
-          "src/**/*.story.js",
-          ".storybook/*.js"
-        ]
+        "devDependencies": ["src/**/*.story.js", ".storybook/*.js"]
       }
     ]
   }

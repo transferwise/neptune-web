@@ -18,9 +18,18 @@ const style = {
   width: '100vw',
 };
 
-const StrictModeDecorator = storyFn => <StrictMode>{storyFn()}</StrictMode>;
+if (process.env.NODE_ENV !== 'production') {
+  const ReactDOM = require('react-dom');
+  const axe = require('react-axe');
+  const context = {
+    include: [['#story-root']],
+  };
+  axe(React, ReactDOM, 1000, undefined, context);
+}
 
-const CenterDecorator = storyFn => (
+const StrictModeDecorator = (storyFn) => <StrictMode>{storyFn()}</StrictMode>;
+
+const CenterDecorator = (storyFn) => (
   <div style={style}>
     <div style={{ width: '100%' }}>{storyFn()}</div>
   </div>

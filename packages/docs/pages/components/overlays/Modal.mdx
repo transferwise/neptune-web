@@ -1,0 +1,10 @@
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import { Modal, Button } from '@transferwise/components';
+import code from '../../../liveEditorCode/modal.code';
+
+<LiveEditorBlock code={code} scope={{ Modal, Button }} />
+<GeneratePropsTable componentName="Modal" />
+
+export const meta = {
+  name: 'Modal',
+};

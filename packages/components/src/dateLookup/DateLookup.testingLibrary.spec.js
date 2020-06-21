@@ -28,12 +28,14 @@ describe('DateLookup (events)', () => {
     user.click(container);
   };
 
-  const getActiveYearButton = () => container.querySelector('a.tw-date-lookup-year-option.active');
+  const getActiveYearButton = () =>
+    container.querySelector('button.tw-date-lookup-year-option.active');
 
   const getActiveMonthButton = () =>
-    container.querySelector('a.tw-date-lookup-month-option.active');
+    container.querySelector('button.tw-date-lookup-month-option.active');
 
-  const getActiveDayButton = () => container.querySelector('a.tw-date-lookup-day-option.active');
+  const getActiveDayButton = () =>
+    container.querySelector('button.tw-date-lookup-day-option.active');
 
   beforeEach(() => {
     props = {

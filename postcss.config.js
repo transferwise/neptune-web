@@ -1,18 +1,17 @@
-const postcssImport = require('postcss-import');
-const autoprefixer = require('autoprefixer');
-const postcssCustomProperties = require('postcss-custom-properties');
-const postcssCustomMedia = require('postcss-custom-media');
-const cssnano = require('cssnano');
+require('postcss-import');
+require('autoprefixer');
+require('postcss-custom-properties');
+require('postcss-custom-media');
+require('cssnano');
 
 module.exports = {
-  plugins: [
-    postcssImport(),
-    autoprefixer(),
-    postcssCustomProperties(),
-    postcssCustomMedia(),
-    cssnano({
+  plugins: {
+    'postcss-import': {},
+    autoprefixer: {},
+    'postcss-custom-properties': {},
+    'postcss-custom-media': {},
+    cssnano: {
       preset: 'default',
-    }),
-  ],
-  map: false,
+    },
+  },
 };

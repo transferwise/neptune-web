@@ -27,12 +27,14 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log
 
-# docs
-.next
-
 # CSS
 dist
 *.css
+packages/css/pages/styles
+
+# docs
+.next
+!packages/css/pages/app.css
 
 # lock
 package-lock.json

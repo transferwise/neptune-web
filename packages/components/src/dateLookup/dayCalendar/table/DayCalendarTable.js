@@ -85,7 +85,7 @@ class DayCalendarTable extends PureComponent {
     const { viewMonth, viewYear, locale } = this.props;
     const weeks = this.getTableStructure();
     return (
-      <table className="table table-condensed table-bordered table-calendar m-b-0">
+      <table className="table table-condensed table-bordered tw-date-lookup-calendar m-b-0">
         <thead>
           <tr>
             {this.days.map((day, index) => (

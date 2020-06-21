@@ -40,28 +40,27 @@
     "prop-types": "^15.6.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "lint-staged":  "^10.2.2",
+    "lint-staged": "^10.2.2",
     "npm-run-all": "^4.1.5",
     "cpx": "^1.5.0",
     "husky": "^4.2.5",
     "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
-    "currency-flags": "^1.2.1"
+    "currency-flags": "^1.2.1",
+    "react-axe": "^3.4.1"
   },
   "scripts": {
     "setup": "yarn install && yarn build",
     "build": "lerna run build --stream",
     "dev": "lerna run dev --parallel --stream",
-    "docs": "lerna run docs --parallel --stream",
+    "docs": "lerna run docs --stream",
     "docs:build": "lerna run docs:build",
     "docs:deploy": "lerna run docs:deploy",
     "docs:deploy-for-branch": "lerna run docs:deploy-for-branch",
     "test": "lerna run test --stream",
-    "test:watch": "cd packages/components && yarn test:watch",
     "clean": " npm-run-all clean:*",
     "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules  && rm -rf .next",
     "clean:lock": "find . -name '*.lock' -or -name '*-lock.json' -type f -delete",
     "lint": "lerna run lint",
-    "lint:fix": "lerna run lint:fix --stream",
     "preinstall": "node enforce-yarn.js"
   },
   "husky": {
@@ -71,13 +70,11 @@
     }
   },
   "lint-staged": {
-    "^(?!.*code).*js$": [
-      "eslint --fix",
-      "git add"
+    "**/!(*.code).js": [
+      "eslint --fix"
     ],
     "*.{less,yaml,yml,json}": [
-      "prettier --find-config-path --write",
-      "git add"
+      "prettier --find-config-path --write"
     ]
   },
   "browserslist": [
@@ -91,16 +88,60 @@
   ],
   "prettier": "@transferwise/eslint-config/.prettierrc.js",
   "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
     "rules": {
+      "body-leading-blank": [
+        0
+      ],
+      "footer-leading-blank": [
+        0
+      ],
+      "header-case": [
+        0
+      ],
+      "header-full-stop": [
+        0
+      ],
       "header-max-length": [
-        0,
-        "always",
-        140
+        0
+      ],
+      "scope-case": [
+        0
+      ],
+      "scope-enum": [
+        0
       ],
       "subject-case": [
+        0
+      ],
+      "subject-empty": [
+        2,
+        "never"
+      ],
+      "type-case": [
+        0
+      ],
+      "type-empty": [
+        2,
+        "never"
+      ],
+      "type-enum": [
+        2,
+        "always",
+        [
+          "build",
+          "chore",
+          "ci",
+          "docs",
+          "feat",
+          "fix",
+          "perf",
+          "refactor",
+          "revert",
+          "style",
+          "test"
+        ]
+      ],
+      "signed-off-by": [
         0
       ]
     }

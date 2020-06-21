@@ -45,10 +45,6 @@ aliases:
     name: Publish packages
     command: npx lerna publish -m "[skip ci] Release" --yes
 
-  - &lint
-    name: Lint packages
-    command: yarn lint
-
   - &conventional-commit-lint
     name: Conventional Commits check
     command: npx commitlint -f $(git log --author=CircleCI -1 --format=format:"%H") -V
@@ -96,13 +92,6 @@ jobs:
     steps:
       - *attach-workspace
       - run: *test
-      - *persist-workspace
-
-  lint:
-    <<: *container
-    steps:
-      - *attach-workspace
-      - run: *lint
       - *persist-workspace
 
   deploy-docs-to-root:
@@ -182,15 +171,6 @@ workflows:
           filters:
             branches:
               only: master
-
-      - lint:
-          context: frontend-build
-          requires:
-            - build
-          filters:
-            branches:
-              ignore:
-                - gh-pages
 
       - deploy-docs-for-branch:
           context: frontend-build

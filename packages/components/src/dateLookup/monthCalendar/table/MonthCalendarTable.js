@@ -36,7 +36,7 @@ const MonthCalendarTable = ({
     );
   };
   return (
-    <table className="table table-condensed table-bordered table-calendar m-b-0">
+    <table className="table table-condensed table-bordered tw-date-lookup-calendar m-b-0">
       <thead className="sr-only">
         <tr>
           <th colSpan="3">{placeholder}</th>
