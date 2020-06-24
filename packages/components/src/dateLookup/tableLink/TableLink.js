@@ -29,20 +29,16 @@ class TableLink extends PureComponent {
     const { item, type, title, longTitle, active, disabled, today } = this.props;
     return (
       <>
-        {/* eslint-disable jsx-a11y/anchor-is-valid */}
-        <a
-          href=""
+        <button
           onClick={this.onClick}
-          title={longTitle}
           className={`tw-date-lookup-${type}-option ${active ? 'active' : ''} ${
             today ? 'today' : ''
           }`}
           disabled={disabled}
-          tabIndex="0"
+          aria-label={longTitle}
         >
           {title || item}
-        </a>
-        {/* eslint-enable jsx-a11y/anchor-is-valid */}
+        </button>
       </>
     );
   }

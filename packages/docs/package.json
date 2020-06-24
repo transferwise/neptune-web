@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-docs",
-  "version": "4.2.11",
+  "version": "4.2.13",
   "description": "TransferWise Design System",
   "main": "index.js",
   "private": true,
@@ -34,10 +34,11 @@
     "@mapbox/rehype-prism": "^0.4.0",
     "@mdx-js/loader": "^1.5.8",
     "@next/mdx": "^9.0.5",
-    "@transferwise/components": "^27.7.0",
-    "@transferwise/dynamic-flows": "^2.2.10",
+    "@transferwise/components": "^27.7.2",
+    "@transferwise/dynamic-flows": "^2.2.12",
     "@transferwise/icons": "^2.0.0",
-    "@transferwise/neptune-css": "^1.2.1",
+    "@transferwise/neptune-css": "^1.2.2",
+    "@transferwise/test-config": "^1.0.2",
     "@zeit/next-css": "^1.0.1",
     "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
     "currency-flags": "^2.1.1",
@@ -60,22 +61,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
-    "@transferwise/less-config": "^1.0.1",
+    "@transferwise/less-config": "^1.0.2",
     "babel-plugin-inline-react-svg": "^1.1.1"
   },
   "peerDependencies": {
     "react": "16.13.1",
     "react-dom": "16.13.1"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

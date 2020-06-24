@@ -1,0 +1,11 @@
+import { Upload, Button } from '@transferwise/components';
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import { IMAGES } from '../../../static/assets/img/data64';
+import code from '../../../liveEditorCode/upload.code';
+
+<LiveEditorBlock code={code} scope={{ Upload, Button, IMAGES }} display="vertical" />
+<GeneratePropsTable componentName="Upload" />
+
+export const meta = {
+  name: 'Upload',
+};

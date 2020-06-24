@@ -16,9 +16,9 @@ export const basic = () => {
   const label = text('label', 'label');
   const monthFormat = select('monthFormat', ['long', 'short']);
 
-  const value = date('value', new Date('2020-02-01'));
-  const minvalue = date('minvalue', new Date('2020-01-01'));
-  const maxvalue = date('maxvalue', new Date('2020-03-01'));
+  const value = date('value', new Date());
+  const minvalue = date('minvalue', new Date('2000-01-01'));
+  const maxvalue = date('maxvalue', new Date('2040-03-01'));
 
   return (
     <DateLookup

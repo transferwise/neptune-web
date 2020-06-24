@@ -20,44 +20,38 @@ describe('TableLink', () => {
   });
 
   it('shows item value', () => {
-    expect(link().text()).toBe('5');
+    expect(button().text()).toBe('5');
   });
 
   it('shows title when provided (instead of item value)', () => {
     component.setProps({ title: 'five' });
-    expect(link().text()).toBe('five');
-  });
-
-  it('sets longTitle as link title attribute', () => {
-    expect(link().prop('title')).toBeNull();
-    component.setProps({ longTitle: '27/12/1990' });
-    expect(link().prop('title')).toBe('27/12/1990');
+    expect(button().text()).toBe('five');
   });
 
   it('disables the link', () => {
     component.setProps({ disabled: true });
-    expect(link().prop('disabled')).toBe(true);
+    expect(button().prop('disabled')).toBe(true);
     expect(props.onClick).not.toBeCalled();
-    link().simulate('click', { preventDefault: () => {} });
+    button().simulate('click', { preventDefault: () => {} });
     expect(props.onClick).not.toBeCalled();
   });
 
   it('highlights active link', () => {
-    expect(link().hasClass('active')).toBe(false);
+    expect(button().hasClass('active')).toBe(false);
     component.setProps({ active: true });
-    expect(link().hasClass('active')).toBe(true);
+    expect(button().hasClass('active')).toBe(true);
   });
 
   it('highlights today', () => {
-    expect(link().hasClass('today')).toBe(false);
+    expect(button().hasClass('today')).toBe(false);
     component.setProps({ today: true });
-    expect(link().hasClass('today')).toBe(true);
+    expect(button().hasClass('today')).toBe(true);
   });
 
   it('calls click handler on click', () => {
-    link().simulate('click', { preventDefault: () => {} });
+    button().simulate('click', { preventDefault: () => {} });
     expect(props.onClick).toBeCalledWith(5);
   });
 
-  const link = () => component.find('a');
+  const button = () => component.find('button');
 });

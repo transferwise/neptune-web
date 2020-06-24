@@ -21,19 +21,22 @@ p + h2[id] {
 }
 
 .Header {
-  background: var(--color-primary);
   min-height: 100vh;
+
+  background: var(--color-primary);
 }
 
 .Header__Fixed {
+  position: fixed;
+
   width: 200px;
   height: 100vh;
-  position: fixed;
 }
 
 .Logo {
-  height: 64px;
   display: flex;
+
+  height: 64px;
 }
 
 .Logo svg {
@@ -41,12 +44,15 @@ p + h2[id] {
 }
 
 .Sidebar__Fixed {
+  position: fixed;
+
   display: flex;
   flex-direction: column;
-  border-right: 1px solid var(--color-border-neutral);
+
   width: 200px;
   height: 100vh;
-  position: fixed;
+
+  border-right: 1px solid var(--color-border-neutral);
   background-color: var(--color-background-neutral);
 }
 
@@ -55,29 +61,46 @@ p + h2[id] {
 }
 
 .Sidebar__Inner {
-  overflow-y: auto;
-  flex-grow: 1;
   display: flex;
+  overflow-y: auto;
   flex-direction: column;
+  flex-grow: 1;
+}
+
+.Sidebar__Search {
+  padding: var(--space-8) var(--space-16);
+
+  color: #37517e;
+  border: none;
+  border-top: 1px solid #e2e6e8;
+
+  font-size: var(--font-size-small);
 }
 
 .Nav {
-  font-size: var(--font-size-small);
   overflow-y: auto;
-  padding: 0;
-  list-style: none;
+
   margin-bottom: 0;
+  padding: 0;
+
+  list-style: none;
+
   border-top: 1px solid #e2e6e8;
+
+  font-size: var(--font-size-small);
 }
 
 .Nav__Link {
   display: block;
-  padding: var(--space-16);
-  color: #37517e;
-  text-decoration: none;
+
+  padding: var(--space-8) var(--space-16);
+
   transition: color 0.15s;
+  text-decoration: none;
+
+  color: #37517e;
   outline: 0 !important;
-  border-bottom: 1px solid #e2e6e8;
+
   font-weight: var(--font-weight);
 }
 
@@ -87,9 +110,10 @@ p + h2[id] {
 }
 
 .Nav__Link.active {
-  font-weight: var(--font-weight-bold);
   color: var(--color-text-link-active);
   background: var(--color-background-screen);
+
+  font-weight: var(--font-weight-bold);
 }
 
 .Nav--dark {
@@ -98,9 +122,13 @@ p + h2[id] {
 
 .Nav__Group {
   padding: var(--space-16) var(--space-16) var(--space-8);
-  font-size: var(--font-size-x-small);
+
   text-transform: uppercase;
+
   color: var(--gray-light);
+
+  font-size: var(--font-size-x-small);
+  font-weight: 600;
 }
 
 .Sidebar .Nav__Group {
@@ -112,9 +140,10 @@ p + h2[id] {
 }
 
 .Nav--dark .Nav__Link {
-  font-weight: var(--font-weight-bold);
-  border-bottom: 0;
   color: #fff;
+  border-bottom: 0;
+
+  font-weight: var(--font-weight-bold);
 }
 
 .Nav--dark .Nav__Link.active {
@@ -122,17 +151,19 @@ p + h2[id] {
 }
 
 .Content {
+  position: relative;
+
+  width: 100%;
   min-height: 100vh;
   padding: var(--space-32);
-  position: relative;
-  width: 100%;
+
   background: #fff;
 }
 
 @media (min-width: 767px) {
   .Content {
-    padding: var(--space-32) var(--space-40);
     max-width: 1012px;
+    padding: var(--space-32) var(--space-40);
   }
 }
 
@@ -142,8 +173,9 @@ img {
 
 .Flex__Container,
 .Box__Container {
-  width: 100%;
   overflow: hidden;
+
+  width: 100%;
 }
 
 /* Live editor */
@@ -152,9 +184,9 @@ img {
 }
 
 .live-editor {
-  background: var(--brand-smoke-plus-20);
   border: 1px solid var(--brand-smoke);
   border-radius: 3px;
+  background: var(--brand-smoke-plus-20);
 }
 
 @media (min-width: 1200px) {
@@ -169,14 +201,16 @@ img {
 
 /* docs-table */
 .scroll-table {
-  width: 100%;
   overflow-x: auto;
+
+  width: 100%;
 }
 
 .docs-table {
-  border-radius: 3px 3px 0 0;
   overflow: hidden;
+
   border: 1px solid var(--brand-smoke-plus-20);
+  border-radius: 3px 3px 0 0;
 }
 
 .docs-table > thead > tr > td,
@@ -201,12 +235,13 @@ img {
 
 .docs-table > tbody > tr > th {
   padding-left: 5px;
+
   color: var(--brand-navy);
 }
 
 .docs-table ul {
-  padding: 0;
   margin-bottom: var(--spacer);
+  padding: 0;
 }
 
 .docs-table li {

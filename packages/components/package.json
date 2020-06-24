@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "27.7.0",
+  "version": "27.7.2",
   "description": "TransferWise styleguide components in react",
   "license": "Apache-2.0",
   "main": "./build/umd/polyfill/main.js",
@@ -53,8 +53,8 @@
     "@storybook/addon-info": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/react": "^5.3.18",
-    "@transferwise/less-config": "^1.0.1",
-    "@transferwise/test-config": "^1.0.1",
+    "@transferwise/less-config": "^1.0.2",
+    "@transferwise/test-config": "^1.0.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-preset-minify": "^0.5.1",
@@ -76,7 +76,7 @@
     "@babel/runtime": "^7.9.2",
     "@transferwise/formatting": "^2.1.0",
     "@transferwise/icons": "^2.0.0",
-    "@transferwise/neptune-css": "^1.2.1",
+    "@transferwise/neptune-css": "^1.2.2",
     "classnames": "^2.2.6",
     "commonmark": "^0.29.1",
     "core-js": "^3.6.5",
@@ -86,16 +86,5 @@
     "react-required-if": "^1.0.3",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.2.1"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

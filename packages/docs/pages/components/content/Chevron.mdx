@@ -1,0 +1,10 @@
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import { Chevron, Checkbox } from '@transferwise/components';
+import code from '../../../liveEditorCode/chevron.code';
+
+<LiveEditorBlock code={code} scope={{ Chevron, Checkbox }} />
+<GeneratePropsTable componentName="Chevron" />
+
+export const meta = {
+  name: 'Chevron',
+};

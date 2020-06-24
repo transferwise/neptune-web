@@ -36,7 +36,6 @@ export const basic = () => {
           content: 'When your card is ready we’ll post it to your home address.',
         }}
       />
-      <Summary icon={null} title="An item without an icon" />
       <Summary
         icon={<HomeIcon size={24} />}
         title="An item with some content and a longer title"

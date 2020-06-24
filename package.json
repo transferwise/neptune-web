@@ -70,13 +70,11 @@
     }
   },
   "lint-staged": {
-    "^(?!.*code).*js$": [
-      "eslint --fix",
-      "git add"
+    "**/!(*.code).js": [
+      "eslint --fix"
     ],
     "*.{less,yaml,yml,json}": [
-      "prettier --find-config-path --write",
-      "git add"
+      "prettier --find-config-path --write"
     ]
   },
   "browserslist": [

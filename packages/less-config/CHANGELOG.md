@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/less-config@1.0.1...@transferwise/less-config@1.0.2) (2020-06-21)
+
+### Bug Fixes
+
+* Fixing docs css reload ([#409](https://github.com/transferwise/neptune-web/pull/439/commits/04b1424cf694c6e047086b9d83ea0e3ecb4280e5))
+
+* Fix lint-stage ([#436](https://github.com/transferwise/neptune-web/pull/439/commits/d2b77895e1caab66bdabc8a2b1dee220d2218cd4))
+
+
 ## [1.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/less-config@1.1.0...@transferwise/less-config@1.0.1) (2020-05-26)
 
 

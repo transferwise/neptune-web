@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/less-config",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Neptune Web shared gulp css config files and dependencies",
   "license": "Apache-2.0",
   "main": "./gulpfile.js",
@@ -30,16 +30,5 @@
     "postcss-custom-media": "^7.0.8",
     "postcss-custom-properties": "^9.0.2",
     "postcss-import": "^12.0.1"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

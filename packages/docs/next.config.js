@@ -25,7 +25,13 @@ module.exports = () =>
       withFonts(
         withCSS(
           withMDX({
-            transpileModules: ['@transferwise/dynamic-flows'],
+            transpileModules: [
+              '@transferwise/dynamic-flows',
+              'buble',
+              'regexpu-core',
+              'unicode-match-property-ecmascript',
+              'unicode-match-property-value-ecmascript',
+            ],
             pageExtensions,
             assetPrefix,
             env: {

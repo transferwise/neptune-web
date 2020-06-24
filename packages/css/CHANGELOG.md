@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.1...@transferwise/neptune-css@1.2.2) (2020-06-21)
+
+### Bug Fixes
+
+* Fixing docs css reload ([#409](https://github.com/transferwise/neptune-web/pull/439/commits/04b1424cf694c6e047086b9d83ea0e3ecb4280e5))
+
+* WCAG AA compliant color for grey backgrounds ([#426](https://github.com/transferwise/neptune-web/pull/439/commits/64f265dc352f5c3770f2d61f3cf8664055e979af))
+
+* Support for custom media in drawer component ([#427](https://github.com/transferwise/neptune-web/pull/439/commits/1d0cba5dde570056878f8d430628bf36532e78dc))
+
+* Change dates in the date lookup to use buttons ([#431](https://github.com/transferwise/neptune-web/pull/439/commits/3fb6e10c8ffef4f19c6bb3c0f66db8aee59bb0d4))
+
+### Misc
+
+* Improving docs and tools ([#424](https://github.com/transferwise/neptune-web/pull/439/commits/a9ab3ed8ebedc5baa908e79ea078a578be68693a))
+
+* Doc improvements for components ([#373](https://github.com/transferwise/neptune-web/pull/439/commits/d3696abb3c4485be02738ff7a6a3a55bc8214cf9))
+
 ## [1.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.0...@transferwise/neptune-css@1.2.1) (2020-06-03)
 
 

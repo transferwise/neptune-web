@@ -87,6 +87,11 @@ describe('Tabs Utility', () => {
       coords.unshift({ x: 10000, time: 1569538800000 }, { x: 100000, time: 1569538800000 });
       expect(getVelocity(coords)).toBe(0.004);
     });
+
+    it('returns a default 0 if there are any issues with the touches passed in', () => {
+      expect(getVelocity([])).toBe(0);
+      expect(getVelocity([null, null, null])).toBe(0);
+    });
   });
 
   describe('applying elasticity to a drag event', () => {
