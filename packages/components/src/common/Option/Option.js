@@ -38,7 +38,7 @@ const Option = ({
       </div>
     )}
     <div className="media-body">
-      <h5>{title}</h5>
+      <div className="h5">{title}</div>
       {content}
     </div>
     <div className="media-right">{button}</div>

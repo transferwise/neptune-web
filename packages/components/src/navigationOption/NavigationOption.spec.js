@@ -40,6 +40,12 @@ describe('Navigation option', () => {
     expect(option().prop('as')).toBe('a');
   });
 
+  it('tells option to render as the `as` prop when it is passed', () => {
+    expect(option().prop('as')).not.toBe('label');
+    component.setProps({ as: 'label' });
+    expect(option().prop('as')).toBe('label');
+  });
+
   it('does not call click handler when disabled', () => {
     const onClick = jest.fn();
     component.setProps({ onClick, disabled: true });
@@ -49,12 +55,5 @@ describe('Navigation option', () => {
     expect(onClick).not.toBeCalled();
   });
 
-  it('passes disabled to chevron button', () => {
-    expect(buttonProp('disabled')).toBe(false);
-    component.setProps({ disabled: true });
-    expect(buttonProp('disabled')).toBe(true);
-  });
-
   const option = () => component.find(Option);
-  const buttonProp = (name) => option().prop('button').props[name];
 });
