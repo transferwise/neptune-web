@@ -41,6 +41,7 @@ describe('Server side rendering', () => {
     body: 'body',
     onClose: jest.fn(),
     onRemove: jest.fn(),
+    checked: false,
     radios: [
       {
         id: 'id-test-0',

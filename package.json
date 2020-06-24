@@ -58,7 +58,8 @@
     "docs:deploy-for-branch": "lerna run docs:deploy-for-branch",
     "test": "lerna run test --stream",
     "clean": " npm-run-all clean:*",
-    "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules  && rm -rf .next",
+    "clean:modules": "find . -name node_modules  -type d -prune -exec rm -rf {} \\;",
+    "clean:next-build": "find . -name .next  -type d -prune -exec rm -rf {} \\;",
     "clean:lock": "find . -name '*.lock' -or -name '*-lock.json' -type f -delete",
     "lint": "lerna run lint",
     "preinstall": "node enforce-yarn.js"
