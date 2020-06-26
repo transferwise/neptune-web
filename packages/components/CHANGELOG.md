@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [27.9.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.8.0...@transferwise/components@27.9.0) (2020-06-26)
+
+
+### Features
+
+* add NavigationOptionsList component ([#444](https://github.com/transferwise/neptune-web/issues/444)) ([427a51b](https://github.com/transferwise/neptune-web/commit/427a51b9872978a3b2fe4f3fe0a383f2aacb469b))
+
+
+
+
+
 # [27.8.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.7.3...@transferwise/components@27.8.0) (2020-06-24)
 
 
