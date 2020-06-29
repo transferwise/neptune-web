@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [27.10.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.9.0...@transferwise/components@27.10.0) (2020-06-29)
+
+
+### Features
+
+* avatar component ([#417](https://github.com/transferwise/neptune-web/issues/417)) ([5f629d4](https://github.com/transferwise/neptune-web/commit/5f629d413a8455f0863800f1e8ee614774b925de))
+
+
+
+
+
 # [27.9.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.8.0...@transferwise/components@27.9.0) (2020-06-26)
 
 
