@@ -22,7 +22,7 @@ describe('Flow navigation', () => {
   }
 
   function avatar() {
-    return component.find('Avatar');
+    return component.find('AvatarWrapper');
   }
 
   function closeButton() {

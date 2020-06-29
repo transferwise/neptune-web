@@ -20,6 +20,7 @@ export { default as ProcessIndicator } from './processIndicator';
 export { default as Upload } from './upload';
 export { default as DefinitionList } from './definitionList';
 export { default as DynamicFieldDefinitionList } from './dynamicFieldDefinitionList';
+export { default as Avatar } from './avatar';
 export { default as Button } from './button';
 export { default as RadioGroup } from './radioGroup';
 export { default as Alert } from './alert';

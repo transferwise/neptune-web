@@ -12,10 +12,11 @@ const files = glob.sync(`../components/src/**/*.{js,jsx}`, {
     '../components/src/**/index.js',
     '../components/src/common/**/*.{js,jsx}',
     '../components/src/dateInput/utils/**/*.{js,jsx}',
+    '../components/src/flowNavigation/avatar/*.js',
   ],
 });
 const metadata = {};
-files.sort().map(path => {
+files.sort().map((path) => {
   /* append display name handler to handlers list */
   const handlers = docgen.defaultHandlers.concat(externalProptypesHandler(path));
 

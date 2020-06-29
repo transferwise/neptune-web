@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FlowNavigationAvatar renders as BUSINESS profile type 1`] = `
+<div
+  class="tw-avatar-wrapper"
+>
+  <div
+    class="avatar avatar--md avatar--icon"
+  >
+    <div
+      class="avatar__content"
+    >
+      <div
+        class="icon icon-bank"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FlowNavigationAvatar renders as PERSONAL profile type 1`] = `
+<div
+  class="tw-avatar-wrapper"
+>
+  <div
+    class="avatar avatar--md avatar--thumbnail"
+  >
+    <div
+      class="avatar__content"
+    >
+      <img
+        alt="avatar"
+        src="https://transferwise.com"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FlowNavigationAvatar renders as PERSONAL profile type with an icon 1`] = `
+<div
+  class="tw-avatar-wrapper"
+>
+  <div
+    class="avatar avatar--md avatar--icon"
+  >
+    <div
+      class="avatar__content"
+    >
+      <div
+        class="icon icon-profile"
+      />
+    </div>
+  </div>
+  
+</div>
+`;
