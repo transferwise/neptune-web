@@ -12,6 +12,7 @@ export { default as Modal } from './modal';
 export { default as RadioOption } from './radioOption';
 export { default as CheckboxOption } from './checkboxOption';
 export { default as NavigationOption } from './navigationOption';
+export { default as NavigationOptionsList } from './navigationOptionsList';
 export { default as DateLookup } from './dateLookup';
 export { default as PhoneNumberInput } from './phoneNumberInput';
 export { default as DateInput } from './dateInput';
