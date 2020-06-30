@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.11.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.0...@transferwise/components@27.11.1) (2020-06-30)
+
+
+### Bug Fixes
+
+* add missing NavigationOptionsList export ([#453](https://github.com/transferwise/neptune-web/issues/453)) ([ac232d2](https://github.com/transferwise/neptune-web/commit/ac232d21a992c766b1df55f0fd1e2d1d073f70a7))
+
+
+
+
+
 # [27.11.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.10.0...@transferwise/components@27.11.0) (2020-06-30)
 
 
