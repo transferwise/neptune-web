@@ -6,8 +6,29 @@ import requiredIf from 'react-required-if';
 import Option from '../common/Option';
 import './NavigationOption.css';
 
-const NavigationOption = ({ as, media, href, title, content, onClick, complex, disabled }) => {
-  const sharedProps = { as, media, href, title, content, complex, disabled };
+const NavigationOption = ({
+  as,
+  media,
+  href,
+  title,
+  content,
+  onClick,
+  complex,
+  disabled,
+  showMediaAtAllSizes,
+  showMediaCircle,
+}) => {
+  const sharedProps = {
+    as,
+    media,
+    href,
+    title,
+    content,
+    complex,
+    disabled,
+    showMediaAtAllSizes,
+    showMediaCircle,
+  };
 
   if (href) {
     sharedProps.as = 'a';
@@ -38,6 +59,8 @@ NavigationOption.propTypes = {
   href: requiredIf(Types.string, (props) => props.as === 'a'),
   complex: Types.bool,
   disabled: Types.bool,
+  showMediaAtAllSizes: Types.bool,
+  showMediaCircle: Types.bool,
 };
 
 NavigationOption.defaultProps = {
@@ -48,6 +71,8 @@ NavigationOption.defaultProps = {
   onClick: null,
   href: undefined,
   disabled: false,
+  showMediaAtAllSizes: false,
+  showMediaCircle: true,
 };
 
 export default NavigationOption;

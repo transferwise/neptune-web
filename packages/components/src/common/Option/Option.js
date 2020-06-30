@@ -19,22 +19,33 @@ const Option = ({
   complex,
   className,
   inverseMediaCircle,
+  showMediaAtAllSizes,
+  showMediaCircle,
 }) => (
   <Element
-    className={classNames(className, 'media', { 'decision-complex': complex, decision, disabled })}
+    className={classNames(className, 'media', {
+      'decision-complex': complex,
+      decision,
+      disabled,
+      'tw-option__sm-media': showMediaAtAllSizes,
+    })}
     href={href}
     onClick={onClick}
     htmlFor={htmlFor}
   >
     {media && (
       <div className="media-left">
-        <div
-          className={classNames('circle circle-sm text-primary', {
-            'circle-inverse': inverseMediaCircle,
-          })}
-        >
-          {media}
-        </div>
+        {showMediaCircle ? (
+          <div
+            className={classNames('circle circle-sm text-primary', {
+              'circle-inverse': inverseMediaCircle,
+            })}
+          >
+            {media}
+          </div>
+        ) : (
+          <div className="tw-option__no-media-circle">{media}</div>
+        )}
       </div>
     )}
     <div className="media-body">
@@ -59,6 +70,8 @@ Option.propTypes = {
   complex: Types.bool,
   inverseMediaCircle: Types.bool,
   className: Types.string,
+  showMediaAtAllSizes: Types.bool,
+  showMediaCircle: Types.bool,
 };
 
 Option.defaultProps = {
@@ -74,6 +87,8 @@ Option.defaultProps = {
   complex: false,
   inverseMediaCircle: true,
   className: null,
+  showMediaAtAllSizes: false,
+  showMediaCircle: true,
 };
 
 export default Option;

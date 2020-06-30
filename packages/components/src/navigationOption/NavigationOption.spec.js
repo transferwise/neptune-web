@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import NavigationOption from '.';
 import Option from '../common/Option';
@@ -22,7 +23,7 @@ describe('Navigation option', () => {
     };
     component.setProps(sharedProps);
 
-    expect(option().props()).toEqual(expect.objectContaining(sharedProps));
+    expect(option().props()).toMatchObject(sharedProps);
   });
 
   it('calls click handler on option click when not disabled', () => {
@@ -53,6 +54,16 @@ describe('Navigation option', () => {
     expect(onClick).not.toBeCalled();
     option().simulate('click');
     expect(onClick).not.toBeCalled();
+  });
+
+  it('renders the circle when enabled', () => {
+    const { container, rerender } = render(<NavigationOption title="" />);
+
+    expect(container.querySelector('.circle')).toBeDefined();
+
+    rerender(<NavigationOption title="" showMediaCircle={false} />);
+
+    expect(container.querySelector('.circle')).toBeNull();
   });
 
   const option = () => component.find(Option);
