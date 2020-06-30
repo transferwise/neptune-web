@@ -363,7 +363,7 @@ export default class Select extends Component {
   }
 
   selectOption(option) {
-    if (!option.placeholder) {
+    if (option && !option.placeholder) {
       this.props.onChange(option);
     } else {
       this.props.onChange(null);
