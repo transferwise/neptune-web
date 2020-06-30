@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [27.11.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.10.0...@transferwise/components@27.11.0) (2020-06-30)
+
+
+### Features
+
+* allow NavigationOption to render illustrations ([#443](https://github.com/transferwise/neptune-web/issues/443)) ([7c855f3](https://github.com/transferwise/neptune-web/commit/7c855f36653d10e1e73573112f1a5f80abc5bdf9))
+
+
+
+
+
 # [27.10.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.9.0...@transferwise/components@27.10.0) (2020-06-29)
 
 
