@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.11.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.1...@transferwise/components@27.11.2) (2020-06-30)
+
+
+### Bug Fixes
+
+* add null check for select box ([#454](https://github.com/transferwise/neptune-web/issues/454)) ([5cefc2c](https://github.com/transferwise/neptune-web/commit/5cefc2cbf3ee51a14ab84b2a3e2d05a0a82cc459))
+
+
+
+
+
 ## [27.11.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.0...@transferwise/components@27.11.1) (2020-06-30)
 
 
