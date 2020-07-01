@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.3...@transferwise/neptune-css@1.2.4) (2020-07-01)
+
+
+### Bug Fixes
+
+* reduce margin for horizontal definition lists ([#435](https://github.com/transferwise/neptune-web/issues/435)) ([70b3966](https://github.com/transferwise/neptune-web/commit/70b396652a252067c37bf3cb86c5d8123f0da8b8))
+
+
+
+
+
 ## [1.2.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.2...@transferwise/neptune-css@1.2.3) (2020-06-24)
 
 **Note:** Version bump only for package @transferwise/neptune-css
