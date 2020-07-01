@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.11.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.2...@transferwise/components@27.11.3) (2020-07-01)
+
+
+### Bug Fixes
+
+* added className support to markdown ([#456](https://github.com/transferwise/neptune-web/issues/456)) ([69fc5e7](https://github.com/transferwise/neptune-web/commit/69fc5e726d0e61c2a408240cf2a29eef6b6902d2))
+
+
+
+
+
 ## [27.11.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.1...@transferwise/components@27.11.2) (2020-06-30)
 
 
