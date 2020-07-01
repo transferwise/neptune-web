@@ -39,7 +39,7 @@ module.exports = () =>
             },
             webpack: (config) => {
               config.module.rules.push({
-                test: /\.code.js$/,
+                test: [/\.code.js$/, /\.txt$/],
                 use: 'raw-loader',
               });
 
