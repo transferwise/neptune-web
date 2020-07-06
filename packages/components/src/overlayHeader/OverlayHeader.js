@@ -45,7 +45,7 @@ const OverlayHeader = ({ avatar, profileType, onClose, theme }) => {
         </div>
       }
       rightContent={
-        <div className="m-lg-t-1 d-flex flex-wrap justify-content-right align-items-center">
+        <div className="m-lg-t-1 tw-flow-navigation__avatar-with-close-button">
           {avatar && <AvatarWrapper url={avatar.url} profileType={profileType} />}
           {closeButton}
         </div>

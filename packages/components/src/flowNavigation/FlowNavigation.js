@@ -62,7 +62,7 @@ const FlowNavigation = ({
         </div>
       }
       rightContent={
-        <div className="d-flex flex-wrap justify-content-end align-items-center m-lg-t-1">
+        <div className="tw-flow-navigation__avatar-with-close-button m-lg-t-1">
           {avatar}
           {closeButton}
         </div>
