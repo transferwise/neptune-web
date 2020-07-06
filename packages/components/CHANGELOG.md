@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.11.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.4...@transferwise/components@27.11.5) (2020-07-06)
+
+
+### Bug Fixes
+
+* move class styling to less ([#458](https://github.com/transferwise/neptune-web/issues/458)) ([8b17a8b](https://github.com/transferwise/neptune-web/commit/8b17a8b8bf5cc36851dbc37d4c4f9929ce2b137e))
+
+
+
+
+
 ## [27.11.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.3...@transferwise/components@27.11.4) (2020-07-01)
 
 **Note:** Version bump only for package @transferwise/components
