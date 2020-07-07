@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.4.5...@transferwise/neptune-docs@4.5.0) (2020-07-07)
+
+
+### Features
+
+* add responsive features to image ([#429](https://github.com/transferwise/neptune-web/issues/429)) ([323e8f2](https://github.com/transferwise/neptune-web/commit/323e8f29b01bf709eba514e10c0e080948bcc621))
+
+
+
+
+
 ## [4.4.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.4.4...@transferwise/neptune-docs@4.4.5) (2020-07-06)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
