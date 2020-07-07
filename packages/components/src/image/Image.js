@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import Types from 'prop-types';
+import classnames from 'classnames';
 import { useHasIntersected } from '../common/hooks';
+import './Image.css';
 
 /**
  * Image component provides a wrapper for image tag. Optional lazy loading functionalities can also be enabled passing prop loading = "lazy.
@@ -19,7 +21,7 @@ import { useHasIntersected } from '../common/hooks';
 export const EmptyTransparentImage =
   'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 
-const Image = ({ id, src, alt, onLoad, onError, className, loading }) => {
+const Image = ({ id, src, alt, onLoad, onError, className, loading, stretch, shrink }) => {
   const elRef = useRef();
   const [hasIntersected] = useHasIntersected({ elRef, loading });
   let imageSrc = src;
@@ -35,7 +37,14 @@ const Image = ({ id, src, alt, onLoad, onError, className, loading }) => {
       id={id}
       alt={alt}
       src={imageSrc}
-      className={className}
+      className={classnames([
+        'tw-image',
+        {
+          'tw-image__stretch': stretch,
+          'tw-image__shrink': shrink,
+        },
+        className,
+      ])}
       ref={elRef}
       onLoad={imageOnLoad}
       onError={onError}
@@ -51,6 +60,8 @@ Image.propTypes = {
   onError: Types.func,
   className: Types.string,
   loading: Types.oneOf(['lazy', 'eager']),
+  stretch: Types.bool,
+  shrink: Types.bool,
 };
 
 Image.defaultProps = {
@@ -59,6 +70,8 @@ Image.defaultProps = {
   onLoad: () => {},
   onError: () => {},
   loading: 'eager',
+  stretch: true,
+  shrink: true,
 };
 
 export default Image;
