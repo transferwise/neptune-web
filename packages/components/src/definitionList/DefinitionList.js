@@ -4,29 +4,35 @@ import classNames from 'classnames';
 
 import { Layout } from '../common';
 
+import './DefinitionList.css';
+
+const isLayoutHorizontal = (layout) =>
+  [
+    Layout.HORIZONTAL_LEFT_ALIGNED,
+    Layout.HORIZONTAL_RIGHT_ALIGNED,
+    Layout.HORIZONTAL_JUSTIFIED,
+  ].indexOf(layout) >= 0;
+
+const alignmentClassMap = {
+  [Layout.HORIZONTAL_RIGHT_ALIGNED]: 'text-sm-right',
+  [Layout.HORIZONTAL_JUSTIFIED]: 'text-sm-justify',
+};
+
 const DefinitionList = ({ definitions, layout, muted }) => (
-  <div className={classNames({ row: layout === Layout.VERTICAL_TWO_COLUMN })}>
+  <dl
+    className={classNames('tw-definition-list', {
+      'text-muted': muted,
+      'tw-definition-list--columns': layout === Layout.VERTICAL_TWO_COLUMN,
+      'tw-definition-list--horizontal': isLayoutHorizontal(layout),
+    })}
+  >
     {definitions.map(({ title, value, key }) => (
-      <div className={classNames({ 'col-sm-6': layout === Layout.VERTICAL_TWO_COLUMN })} key={key}>
-        <dl
-          className={classNames({
-            'dl-horizontal':
-              layout === Layout.HORIZONTAL_JUSTIFIED || layout === Layout.HORIZONTAL_LEFT_ALIGNED,
-          })}
-        >
-          <dt className={classNames({ 'text-muted': muted })}>{title}</dt>
-          <dd
-            className={classNames('text-word-break', {
-              'text-muted': muted,
-              'text-sm-right': layout === Layout.HORIZONTAL_JUSTIFIED,
-            })}
-          >
-            {value}
-          </dd>
-        </dl>
+      <div className="tw-definition-list__item" key={key}>
+        <dt>{title}</dt>
+        <dd className={alignmentClassMap[layout] || ''}>{value}</dd>
       </div>
     ))}
-  </div>
+  </dl>
 );
 
 DefinitionList.Layout = Layout;
@@ -39,12 +45,7 @@ DefinitionList.propTypes = {
       key: Types.string.isRequired,
     }),
   ),
-  layout: Types.oneOf([
-    DefinitionList.Layout.VERTICAL_TWO_COLUMN,
-    DefinitionList.Layout.VERTICAL_ONE_COLUMN,
-    DefinitionList.Layout.HORIZONTAL_JUSTIFIED,
-    DefinitionList.Layout.HORIZONTAL_LEFT_ALIGNED,
-  ]),
+  layout: Types.oneOf(Object.values(DefinitionList.Layout)),
   muted: Types.bool,
 };
 

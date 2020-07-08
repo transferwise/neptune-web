@@ -9,7 +9,9 @@ module.exports = {
     'postcss-import': {},
     autoprefixer: {},
     'postcss-custom-properties': {},
-    'postcss-custom-media': {},
+    'postcss-custom-media': {
+      stage: 1,
+    },
     cssnano: {
       preset: 'default',
     },

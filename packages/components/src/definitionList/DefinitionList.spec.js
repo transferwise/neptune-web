@@ -8,64 +8,56 @@ const {
     VERTICAL_TWO_COLUMN,
     VERTICAL_ONE_COLUMN,
     HORIZONTAL_LEFT_ALIGNED,
+    HORIZONTAL_RIGHT_ALIGNED,
     HORIZONTAL_JUSTIFIED,
   },
 } = DefinitionList;
 
 describe('DefinitionList', () => {
-  it('has grid classes only for vertical two-column layout', () => {
-    const hasRow = (layout) => withLayout(layout).hasClass('row');
-    const hasColumn = (layout) => withLayout(layout).children().find('div').hasClass('col-sm-6');
+  const someDefinitions = () => [{ title: 'First', value: 'first value', key: 'first' }];
 
-    expect(hasRow(VERTICAL_TWO_COLUMN)).toBe(true);
-    expect(hasColumn(VERTICAL_TWO_COLUMN)).toBe(true);
+  const withLayout = (layout) =>
+    shallow(<DefinitionList layout={layout} definitions={someDefinitions()} />);
 
-    expect(hasRow(VERTICAL_ONE_COLUMN)).toBe(false);
-    expect(hasColumn(VERTICAL_ONE_COLUMN)).toBe(false);
-    expect(hasRow(HORIZONTAL_LEFT_ALIGNED)).toBe(false);
-    expect(hasColumn(HORIZONTAL_LEFT_ALIGNED)).toBe(false);
-    expect(hasRow(HORIZONTAL_JUSTIFIED)).toBe(false);
-    expect(hasColumn(HORIZONTAL_JUSTIFIED)).toBe(false);
+  const listHasClass = (layout, className) =>
+    withLayout(layout).find('dl.tw-definition-list').hasClass(className);
+
+  const valueHasClass = (layout, className) =>
+    withLayout(layout).find('dl.tw-definition-list dd').hasClass(className);
+
+  it('has applies correct class for vertical two-column layout', () => {
+    const colClass = 'tw-definition-list--columns';
+
+    expect(listHasClass(VERTICAL_TWO_COLUMN, colClass)).toBe(true);
+    expect(listHasClass(VERTICAL_ONE_COLUMN, colClass)).toBe(false);
+    expect(listHasClass(HORIZONTAL_LEFT_ALIGNED, colClass)).toBe(false);
+    expect(listHasClass(HORIZONTAL_RIGHT_ALIGNED, colClass)).toBe(false);
+    expect(listHasClass(HORIZONTAL_JUSTIFIED, colClass)).toBe(false);
   });
 
-  it('has horizontal dl class only for horizontal layouts', () => {
-    const hasHorizontalDl = (layout) => withLayout(layout).find('dl').hasClass('dl-horizontal');
+  it('has applies correct class for horiztonal layouts', () => {
+    const rowClass = 'tw-definition-list--horizontal';
 
-    expect(hasHorizontalDl(HORIZONTAL_LEFT_ALIGNED)).toBe(true);
-    expect(hasHorizontalDl(HORIZONTAL_JUSTIFIED)).toBe(true);
-
-    expect(hasHorizontalDl(VERTICAL_TWO_COLUMN)).toBe(false);
-    expect(hasHorizontalDl(VERTICAL_ONE_COLUMN)).toBe(false);
+    expect(listHasClass(VERTICAL_TWO_COLUMN, rowClass)).toBe(false);
+    expect(listHasClass(VERTICAL_ONE_COLUMN, rowClass)).toBe(false);
+    expect(listHasClass(HORIZONTAL_LEFT_ALIGNED, rowClass)).toBe(true);
+    expect(listHasClass(HORIZONTAL_RIGHT_ALIGNED, rowClass)).toBe(true);
+    expect(listHasClass(HORIZONTAL_JUSTIFIED, rowClass)).toBe(true);
   });
 
-  it('has right-align text class only for horizontal justified layout', () => {
-    const hasRightAlign = (layout) => withLayout(layout).find('dd').hasClass('text-sm-right');
-
-    expect(hasRightAlign(HORIZONTAL_JUSTIFIED)).toBe(true);
-
-    expect(hasRightAlign(VERTICAL_TWO_COLUMN)).toBe(false);
-    expect(hasRightAlign(VERTICAL_ONE_COLUMN)).toBe(false);
-    expect(hasRightAlign(HORIZONTAL_LEFT_ALIGNED)).toBe(false);
+  it('has applies correct class for alignment', () => {
+    expect(valueHasClass(VERTICAL_TWO_COLUMN, '')).toBe(true);
+    expect(valueHasClass(VERTICAL_ONE_COLUMN, '')).toBe(true);
+    expect(valueHasClass(HORIZONTAL_LEFT_ALIGNED, '')).toBe(true);
+    expect(valueHasClass(HORIZONTAL_RIGHT_ALIGNED, 'text-sm-right')).toBe(true);
+    expect(valueHasClass(HORIZONTAL_JUSTIFIED, 'text-sm-justify')).toBe(true);
   });
 
   it('has muted text class on title and value when muted flag is passed', () => {
-    const component = shallow(<DefinitionList muted definitions={someDefinitions()} />);
+    const muted = shallow(<DefinitionList muted definitions={someDefinitions()} />);
+    const notMuted = shallow(<DefinitionList definitions={someDefinitions()} />);
 
-    expect(hasMutedTitle(component)).toBe(true);
-    expect(hasMutedValue(component)).toBe(true);
+    expect(muted.find('dl.tw-definition-list').hasClass('text-muted')).toBe(true);
+    expect(notMuted.find('dl.tw-definition-list').hasClass('text-muted')).toBe(false);
   });
-
-  it('does not have muted text class on title and value when muted flag is not passed', () => {
-    const component = shallow(<DefinitionList definitions={someDefinitions()} />);
-
-    expect(hasMutedTitle(component)).toBe(false);
-    expect(hasMutedValue(component)).toBe(false);
-  });
-
-  const someDefinitions = () => [{ title: 'First', value: 'first value', key: 'first' }];
-  const withLayout = (layout) =>
-    shallow(<DefinitionList layout={layout} definitions={someDefinitions()} />);
-  const isMuted = (node) => node.hasClass('text-muted');
-  const hasMutedTitle = (component) => isMuted(component.find('dt'));
-  const hasMutedValue = (component) => isMuted(component.find('dd'));
 });
