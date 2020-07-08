@@ -2,7 +2,6 @@
 
 // variables
 @import (reference) "bootstrap/less/variables.less";
-
 @import './_grid-layout-ie11.less';
 @import './_grid-layout-no-support.less';
 
@@ -196,10 +195,12 @@
 
 /* Gaps */
 
-[class^="grid--"], [class*=" grid--"] {
+[class^="grid--"],
+[class*=" grid--"] {
   grid-gap: calc(var(--spacer) * 4);
 
-  [class^="grid--"], [class*=" grid--"]  {
+  [class^="grid--"],
+  [class*=" grid--"] {
     grid-gap: calc(var(--spacer) * 2);
   }
 }

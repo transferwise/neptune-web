@@ -35,7 +35,9 @@
     "docs": "yarn build",
     "copy:images": "cpx 'src/img/**' dist/img",
     "copy:fonts": "cpx 'src/fonts/*' dist/fonts",
-    "prettier": "prettier --write src/less/*.less"
+    "prettier": "prettier --write src/less/*.less",
+    "lintless": "stylelint ./src/less",
+    "lintless:fix": "yarn lintless --fix"
   },
   "dependencies": {
     "@transferwise/neptune-tokens": "^0.0.2",
@@ -54,5 +56,20 @@
   },
   "resolutions": {
     "svgo": "1.3.2"
+  },
+  "stylelint": {
+    "extends": [
+      "../../stylelint.config.js"
+    ],
+    "rules": {
+      "csstools/value-no-unknown-custom-properties": [
+        true,
+        {
+          "importFrom": [
+            "../../node_modules/@transferwise/neptune-css/dist/css/neptune-tokens.css"
+          ]
+        }
+      ]
+    }
   }
 }

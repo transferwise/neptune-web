@@ -49,6 +49,31 @@ The full list of commands available to run from the root directory are:
 
 As said above, we recommend running most commands from within the package you're working in.
 
+## Fix / format on save
+
+We use a combination of ESLint, Prettier and Stylelint to check our code for bugs. These tools have the option to run on save, which we recommend.
+
+### VSCode
+
+In `settings.json` (use the command `Open Settings (JSON)` to get there):
+
+```json
+{
+  "css.validate": false,
+  "less.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  }
+}
+```
+
 ## Versioning and commit lint
 
 We follow [Semantic Versioning](https://semver.org). We require that commit messages follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/#summary) standard. In this way, we can automatically bump the version of our packages when necessary.

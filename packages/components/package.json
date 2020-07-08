@@ -36,7 +36,9 @@
     "test:lint": "jest --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
     "test:bundleSize": "bundlesize",
     "lint": "eslint 'src/**/*.js'",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "lintless": "stylelint ./src/**/*.less",
+    "lintless:fix": "yarn lintless --fix"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
@@ -85,5 +87,20 @@
     "react-required-if": "^1.0.3",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.2.1"
+  },
+  "stylelint": {
+    "extends": [
+      "../../stylelint.config.js"
+    ],
+    "rules": {
+      "csstools/value-no-unknown-custom-properties": [
+        true,
+        {
+          "importFrom": [
+            "../../node_modules/@transferwise/neptune-css/dist/css/neptune-tokens.css"
+          ]
+        }
+      ]
+    }
   }
 }

@@ -33,7 +33,9 @@
     "test:watch": "jest --watch --env=jsdom --config=../../node_modules/@transferwise/test-config/jest.config.js",
     "test:lint": "jest --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
     "lint": "eslint 'src/**/*.js'",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "lintless": "stylelint ./src/**/*.less",
+    "lintless:fix": "yarn lintless --fix"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
@@ -63,5 +65,20 @@
     "@transferwise/components": "^27.11.5",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5"
+  },
+  "stylelint": {
+    "extends": [
+      "../../stylelint.config.js"
+    ],
+    "rules": {
+      "csstools/value-no-unknown-custom-properties": [
+        true,
+        {
+          "importFrom": [
+            "../../node_modules/@transferwise/neptune-css/dist/css/neptune-tokens.css"
+          ]
+        }
+      ]
+    }
   }
 }
