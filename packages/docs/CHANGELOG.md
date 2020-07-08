@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.6.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.5.1...@transferwise/neptune-docs@4.6.0) (2020-07-08)
+
+
+### Features
+
+* fix avatar sizes, add inverse and backgroundColor props ([#464](https://github.com/transferwise/neptune-web/issues/464)) ([77a8f2b](https://github.com/transferwise/neptune-web/commit/77a8f2b3b7bea1598bb008ee5027e847e7698a7f))
+
+
+
+
+
 ## [4.5.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.5.0...@transferwise/neptune-docs@4.5.1) (2020-07-08)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
