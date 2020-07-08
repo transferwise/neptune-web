@@ -1,4 +1,3 @@
-const getBranch = require('git-branch');
 const rehypePrism = require('@mapbox/rehype-prism');
 const rehypeSlug = require('rehype-slug');
 const withCSS = require('@zeit/next-css');
@@ -13,7 +12,7 @@ const withTM = require('next-transpile-modules');
 
 const pageExtensions = ['js', 'mdx'];
 
-const branch = getBranch.sync();
+const branch = process.env.CIRCLE_BRANCH;
 const assetPrefix =
   process.env.NODE_ENV === 'production'
     ? `/neptune-web${branch !== 'master' ? `/branch/${branch}` : ''}`

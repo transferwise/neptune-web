@@ -50,12 +50,10 @@
   },
   "scripts": {
     "setup": "yarn install && yarn build",
+    "start": "echo 'Run yarn setup to install dependencies and build all packages.'",
     "build": "lerna run build --stream",
-    "dev": "lerna run dev --parallel --stream",
     "docs": "lerna run docs --stream",
-    "docs:build": "lerna run docs:build",
     "docs:deploy": "lerna run docs:deploy",
-    "docs:deploy-for-branch": "lerna run docs:deploy-for-branch",
     "test": "lerna run test --stream",
     "clean": " npm-run-all clean:*",
     "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules  && rm -rf .next",

@@ -7646,10 +7646,10 @@ depd@~1.1.2:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
-deploy-directory-on-branch-to-gh-pages@^0.2.5:
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/deploy-directory-on-branch-to-gh-pages/-/deploy-directory-on-branch-to-gh-pages-0.2.8.tgz#670719bfcf639f5d2a25efe162b9bf3fd21d9b3c"
-  integrity sha512-0nOJZZgR+PPBGxoWq31J9tvvfX+brrF4SGzvsuQGLxf9cpF8llt2TNEt3oNsfyxjbAu75SmUSdKFSzVtvwZtLA==
+deploy-to-github-pages@1.0.0-beta.5:
+  version "1.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/deploy-to-github-pages/-/deploy-to-github-pages-1.0.0-beta.5.tgz#e7acd50bee1a4b6308620227ff72e106c0a04657"
+  integrity sha512-5Q9XjSXm3PS22LHSTCASL+dYPQOXlJl0tIaxCt7LWpCj+YnDcdTGONXB/yBcCAx5AsPQEzJ47qTPa/w2CJPlNA==
   dependencies:
     "@octokit/rest" "^15.15.1"
     commander "^2.19.0"
@@ -9699,13 +9699,6 @@ gh-pages@^2.0.1:
     filenamify-url "^1.0.0"
     fs-extra "^8.1.0"
     globby "^6.1.0"
-
-git-branch@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/git-branch/-/git-branch-2.0.1.tgz#442724a97574c66ede4290ded75b7430785da08f"
-  integrity sha512-jMCT1kjXvsUdZKQd2p8E1uZhKsIuR1pnHgcDYQpQiXBtzE9cmYGvOcCSGqqi58x0B9CPS0lUSu/yti866est8g==
-  dependencies:
-    findup-sync "^2.0.0"
 
 git-raw-commits@2.0.0:
   version "2.0.0"
