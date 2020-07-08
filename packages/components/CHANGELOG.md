@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.12.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.12.0...@transferwise/components@27.12.1) (2020-07-08)
+
+
+### Bug Fixes
+
+* disable spellcheck in the select search ([#466](https://github.com/transferwise/neptune-web/issues/466)) ([966b608](https://github.com/transferwise/neptune-web/commit/966b60876540282c04583d8ffbec606ebae38e83))
+
+
+
+
+
 # [27.12.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.5...@transferwise/components@27.12.0) (2020-07-07)
 
 
