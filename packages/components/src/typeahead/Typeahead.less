@@ -3,8 +3,10 @@
 @animation-duration: 0.03s;
 
 .typeahead {
-  .input-group {
-    z-index: @zindex-popover;
+  &.open {
+    .input-group {
+      z-index: @zindex-popover;
+    }
   }
 
   .dropdown.btn-block {
