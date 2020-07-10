@@ -48,6 +48,10 @@
     "currency-flags": "^1.2.1",
     "react-axe": "^3.4.1"
   },
+  "resolutions": {
+    "lerna/**/kind-of": "^6.0.3",
+    "lint-staged/**/kind-of": "^6.0.3"
+  },
   "scripts": {
     "setup": "yarn install && yarn build",
     "build": "lerna run build --stream",

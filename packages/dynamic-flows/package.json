@@ -63,5 +63,8 @@
     "@transferwise/components": "^27.13.1",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5"
+  },
+  "resolutions": {
+    "@storybook/**/kind-of": "^6.0.3"
   }
 }

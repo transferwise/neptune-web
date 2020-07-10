@@ -65,5 +65,9 @@
   "peerDependencies": {
     "react": "16.13.1",
     "react-dom": "16.13.1"
+  },
+  "resolutions": {
+    "lint-staged/**/kind-of": "^6.0.3",
+    "next/**/kind-of": "^6.0.3"
   }
 }
