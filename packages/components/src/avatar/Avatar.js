@@ -2,21 +2,25 @@ import React from 'react';
 import Types from 'prop-types';
 import classnames from 'classnames';
 
+import { Size, Theme } from '../common';
+
 import './Avatar.css';
 
-import { Size } from '../common';
-
-const Avatar = ({ size, type, children, outlined, className }) => (
+const Avatar = ({ size, type, children, outlined, theme, backgroundColor, className }) => (
   <div
     className={classnames('avatar', className, `avatar--${size}`, `avatar--${type}`, {
       'avatar--outlined': outlined,
+      'avatar--dark': theme === Theme.DARK,
     })}
   >
-    <div className="avatar__content">{children}</div>
+    <div className="avatar__content" style={{ backgroundColor: backgroundColor || undefined }}>
+      {children}
+    </div>
   </div>
 );
 
 Avatar.Size = Size;
+Avatar.Theme = Theme;
 
 Avatar.Type = {
   THUMBNAIL: 'thumbnail',
@@ -35,6 +39,8 @@ Avatar.propTypes = {
   ]),
   children: Types.node,
   outlined: Types.bool,
+  theme: Types.oneOf([Theme.LIGHT, Theme.DARK]),
+  backgroundColor: Types.string,
   className: Types.string,
 };
 
@@ -42,6 +48,8 @@ Avatar.defaultProps = {
   type: Avatar.Type.THUMBNAIL,
   size: Avatar.Size.MEDIUM,
   outlined: false,
+  theme: Theme.LIGHT,
+  backgroundColor: null,
   className: null,
   children: null,
 };

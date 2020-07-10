@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.13.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.13.0...@transferwise/components@27.13.1) (2020-07-09)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+# [27.13.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.12.1...@transferwise/components@27.13.0) (2020-07-08)
+
+
+### Features
+
+* fix avatar sizes, add inverse and backgroundColor props ([#464](https://github.com/transferwise/neptune-web/issues/464)) ([77a8f2b](https://github.com/transferwise/neptune-web/commit/77a8f2b3b7bea1598bb008ee5027e847e7698a7f))
+
+
+
+
+
+## [27.12.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.12.0...@transferwise/components@27.12.1) (2020-07-08)
+
+
+### Bug Fixes
+
+* disable spellcheck in the select search ([#466](https://github.com/transferwise/neptune-web/issues/466)) ([966b608](https://github.com/transferwise/neptune-web/commit/966b60876540282c04583d8ffbec606ebae38e83))
+
+
+
+
+
+# [27.12.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.5...@transferwise/components@27.12.0) (2020-07-07)
+
+
+### Features
+
+* add responsive features to image ([#429](https://github.com/transferwise/neptune-web/issues/429)) ([323e8f2](https://github.com/transferwise/neptune-web/commit/323e8f29b01bf709eba514e10c0e080948bcc621))
+
+
+
+
+
 ## [27.11.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.4...@transferwise/components@27.11.5) (2020-07-06)
 
 

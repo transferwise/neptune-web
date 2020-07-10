@@ -7,7 +7,6 @@ import { getFirstPageInSection, getPageFromPath } from '../utils/pageUtils';
 import sections from '../utils/sections';
 
 import Sidebar from './Sidebar';
-import Logo from '../static/assets/img/logo_full_inverse.svg';
 import ThreeColumnLayout from './layout/threeColumnLayout';
 
 const githubURL = `https://github.com/transferwise/neptune-web/edit/master/packages/docs/pages`;
@@ -22,7 +21,10 @@ const Layout = ({ children, router: { pathname } }) => {
     <div className="Header__Fixed" role="navigation" aria-label="Primary navigation">
       <Link href="/">
         <a className="Logo">
-          <Logo />
+          <img
+            src={`${process.env.ASSET_PREFIX}/static/assets/img/logo_full_inverse.svg`}
+            alt="TransferWise Logo"
+          />
           <span className="sr-only">TransferWise</span>
         </a>
       </Link>

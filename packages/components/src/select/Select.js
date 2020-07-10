@@ -430,6 +430,7 @@ export default class Select extends Component {
               onClick={stopPropagation}
               value={searchValue || this.state.searchValue}
               ref={this.searchBoxRef}
+              spellCheck="false"
             />
           </div>
         </a>

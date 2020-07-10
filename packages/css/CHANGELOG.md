@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.6...@transferwise/neptune-css@1.3.0) (2020-07-09)
+
+
+### Features
+
+* expose legacy variables ([#469](https://github.com/transferwise/neptune-web/issues/469)) ([3bda7df](https://github.com/transferwise/neptune-web/commit/3bda7df031963683ad22189a9e5a372c2005dd59))
+
+
+
+
+
+## [1.2.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.5...@transferwise/neptune-css@1.2.6) (2020-07-07)
+
+
+### Bug Fixes
+
+* adding missing HR border style ([#463](https://github.com/transferwise/neptune-web/issues/463)) ([0aeebe0](https://github.com/transferwise/neptune-web/commit/0aeebe0869d5de8ea041150cd266da2f4e1c2e73))
+
+
+
+
+
 ## [1.2.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.4...@transferwise/neptune-css@1.2.5) (2020-07-06)
 
 

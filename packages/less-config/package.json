@@ -33,6 +33,10 @@
     "postcss-import": "^12.0.1",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
-    "stylelint-value-no-unknown-custom-properties": "^3.0.0"
+    "stylelint-value-no-unknown-custom-properties": "^3.0.0",
+    "postcss-custom-properties": "^9.0.2"
+  },
+  "resolutions": {
+    "gulp/**/kind-of": "^6.0.3"
   }
 }
