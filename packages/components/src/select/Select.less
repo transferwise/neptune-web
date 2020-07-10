@@ -1,4 +1,5 @@
-@import 'bootstrap/less/variables';
+@import '@transferwise/neptune-tokens/colors-base.less';
+@import '@transferwise/neptune-css/src/less/variables/_custom-media.less';
 
 html.ios-click {
   cursor: pointer;
@@ -10,27 +11,27 @@ html.ios-click {
       cursor: pointer;
 
       .icon {
-        margin-right: @spacer;
+        margin-right: var(--space-8);
       }
     }
 
     &--divider {
       border-bottom-style: solid;
       border-bottom-width: 1px;
-      border-bottom-color: @brand-smoke-plus-20;
+      border-bottom-color: @color-base-smoke-fade;
     }
 
     &--focused {
-      background-color: @brand-smoke-plus-20;
+      background-color: var(--color-background-neutral);
     }
 
     .currency-flag {
-      margin-right: @spacer;
+      margin-right: var(space--8);
     }
   }
 }
 
-@media (max-width: @screen-xs-max) {
+@media (--screen-xs-max) {
   .dropup,
   .dropdown {
     > .tw-select.dropdown-menu {

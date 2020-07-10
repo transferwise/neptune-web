@@ -1,5 +1,4 @@
-@import '@transferwise/neptune-css/src/less/variables/_colors.less';
-@import '@transferwise/neptune-css/src/less/variables/_spacing.less';
+@import '@transferwise/neptune-tokens/colors-base.less';
 
 .tw-date-lookup-calendar {
   min-width: 300px;
@@ -7,11 +6,11 @@
 
   // SIIIIIIIGGGGHHHHH - blame Bootstrap
   > tbody > tr > td {
-    padding: @space-4;
+    padding: var(--space-4);
 
     button {
       width: 100%;
-      padding: @space-4 0;
+      padding: var(--space-4) 0;
       color: @color-base-blue-light;
       border: transparent;
       border-radius: 3px;
@@ -19,13 +18,13 @@
       font-weight: 600;
 
       &.active {
-        color: @color-base-white;
+        color: var(--color-text-control);
         background-color: @color-base-navy-light;
       }
 
       &:not([disabled]):hover {
-        color: @color-base-white;
-        background-color: @color-base-blue-light;
+        color: var(--color-text-control);
+        background-color: var(--color-control-accent);
       }
 
       &:disabled {

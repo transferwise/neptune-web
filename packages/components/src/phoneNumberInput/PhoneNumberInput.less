@@ -1,11 +1,11 @@
-@import 'bootstrap/less/variables';
+@import '@transferwise/neptune-css/src/less/variables/_custom-media.less';
 
 @four-digit-country-code-width: 120px;
 
 .tw-telephone {
   display: flex;
 
-  @media (min-width: @screen-sm) {
+  @media (--screen-sm) {
     .btn-group {
       .dropdown-menu {
         min-width: 250px;
