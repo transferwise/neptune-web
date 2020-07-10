@@ -13,6 +13,8 @@ const props = {
   loading: 'lazy',
   onLoad: jest.fn(),
   onError: jest.fn(),
+  shrink: false,
+  stretch: false,
 };
 
 describe('Image', () => {
@@ -39,7 +41,6 @@ describe('Image', () => {
 
       expect(image.src).toEqual(EmptyTransparentImage);
     });
-
     it('renders the image with EmptyTransparentImage if element is not visible', () => {
       const { getByRole } = render(<Image {...props} />);
       const image = getByRole('img');
@@ -55,7 +56,6 @@ describe('Image', () => {
       expect(images.length).toBe(1);
       expect(image.src).toEqual(props.src);
     });
-
     it(`calls onload only if image has intersected`, () => {
       jest.spyOn(useHasIntersectedUtils, 'useHasIntersected').mockReturnValue([false]);
       const { getByRole, rerender } = render(<Image {...props} />);
@@ -68,5 +68,19 @@ describe('Image', () => {
       fireEvent.load(image);
       expect(props.onLoad).toHaveBeenCalled();
     });
+  });
+  it(`when shrink is true it has shrink class `, () => {
+    const { getByRole, rerender } = render(<Image {...props} />);
+    const image = getByRole('img');
+    expect(image.className).not.toContain('tw-image__shrink');
+    rerender(<Image {...props} shrink />);
+    expect(image.className).toContain('tw-image__shrink');
+  });
+  it(`when stretch is true it has stretch class `, () => {
+    const { getByRole, rerender } = render(<Image {...props} />);
+    const image = getByRole('img');
+    expect(image.className).not.toContain('tw-image__stretch');
+    rerender(<Image {...props} stretch />);
+    expect(image.className).toContain('tw-image__stretch');
   });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import Option from '.';
 
@@ -62,9 +63,12 @@ describe('Option', () => {
     expect(circleContentHasInverseClass()).toBe(false);
   });
 
-  it('has passed title', () => {
-    component.setProps({ title: 'A title' });
-    expect(title()).toBe('A title');
+  it('renders the title', () => {
+    const { getByText } = render(
+      <Option title="Option title" content="" media={<span />} button={<span />} />,
+    );
+
+    expect(() => getByText('Option title')).not.toThrow();
   });
 
   it('has passed content', () => {
@@ -101,7 +105,6 @@ describe('Option', () => {
   const circleContent = () => component.find('.media-left .circle');
   const circleContentHasInverseClass = () => circleContent().hasClass('circle-inverse');
   const circleContentIsElement = (element) => circleContent().childAt(0).matchesElement(element);
-  const title = () => component.find('h5').text();
   const mainComponentTag = () => component.name();
   const bodyHasElement = (element) =>
     component.find('.media-body').containsMatchingElement(element);

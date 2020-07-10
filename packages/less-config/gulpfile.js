@@ -9,6 +9,7 @@ const print = require('gulp-print').default;
 const { argv } = require('yargs');
 const rename = require('gulp-rename');
 const filter = require('gulp-filter');
+const cssimport = require('gulp-cssimport');
 
 const addPwd = (path) => `${process.env.PWD}/${path}`;
 
@@ -19,6 +20,7 @@ const dest = addPwd(argv.dest || 'dist/css');
 const copyCustomProps = () => {
   return gulp
     .src([`${src}/variables/*.less`])
+    .pipe(cssimport({ includePaths: ['../../node_modules'] }))
     .pipe(changed('props')) // Only copy over files that aren't already in the destination
     .pipe(gulp.dest(`${dest}/variables`));
 };

@@ -73,10 +73,13 @@ const Sidebar = ({ router: { pathname }, section }) => {
   }, [section]);
 
   const handleKeyDown = (event) => {
-    if (event.code === 'Slash' || event.keyCode === 191) {
-      event.preventDefault();
-      if (searchEl && searchEl.current) {
-        searchEl.current.focus();
+    // Allow user to type slash into liveEditor.
+    if (event.target.className !== 'npm__react-simple-code-editor__textarea') {
+      if (event.code === 'Slash' || event.keyCode === 191) {
+        event.preventDefault();
+        if (searchEl && searchEl.current) {
+          searchEl.current.focus();
+        }
       }
     }
   };

@@ -139,13 +139,21 @@ describe('Card', () => {
     });
 
     it('renders children when expanded', () => {
-      const expandedProps = { children, isExpanded: true };
-      const { container } = renderCard(expandedProps);
-      const childrenWrapper = container.querySelector('.media-body div');
-      const { container: renderedChildrenContainer } = render(children);
+      const { getByText, rerender } = render(
+        <Card {...defaultProps} isExpanded={false}>
+          Children
+        </Card>,
+      );
 
-      expect(childrenWrapper.innerHTML).not.toBe(null);
-      expect(childrenWrapper.innerHTML).toEqual(renderedChildrenContainer.innerHTML);
+      expect(() => getByText('Children')).toThrow();
+
+      rerender(
+        <Card {...defaultProps} isExpanded>
+          Children
+        </Card>,
+      );
+
+      expect(() => getByText('Children')).not.toThrow();
     });
   });
 

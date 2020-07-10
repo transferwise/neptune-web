@@ -14,7 +14,7 @@ const writer = new commonmark.HtmlRenderer({ safe: true });
  * @usage `<Markdown>'# Some valid markdown'</Markdown>`
  * */
 
-const Markdown = ({ as: Element, children }) => {
+const Markdown = ({ as: Element, children, className }) => {
   if (!children) {
     return null;
   }
@@ -25,16 +25,18 @@ const Markdown = ({ as: Element, children }) => {
     return writer.render(parsed);
   };
 
-  return <Element dangerouslySetInnerHTML={{ __html: createMarkup() }} />;
+  return <Element className={className} dangerouslySetInnerHTML={{ __html: createMarkup() }} />;
 };
 
 Markdown.propTypes = {
   children: Types.string.isRequired,
   as: Types.elementType,
+  className: Types.string,
 };
 
 Markdown.defaultProps = {
   as: 'div',
+  className: '',
 };
 
 export default Markdown;

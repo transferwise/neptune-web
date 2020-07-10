@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.6...@transferwise/neptune-css@1.3.0) (2020-07-09)
+
+
+### Features
+
+* expose legacy variables ([#469](https://github.com/transferwise/neptune-web/issues/469)) ([3bda7df](https://github.com/transferwise/neptune-web/commit/3bda7df031963683ad22189a9e5a372c2005dd59))
+
+
+
+
+
+## [1.2.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.5...@transferwise/neptune-css@1.2.6) (2020-07-07)
+
+
+### Bug Fixes
+
+* adding missing HR border style ([#463](https://github.com/transferwise/neptune-web/issues/463)) ([0aeebe0](https://github.com/transferwise/neptune-web/commit/0aeebe0869d5de8ea041150cd266da2f4e1c2e73))
+
+
+
+
+
+## [1.2.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.4...@transferwise/neptune-css@1.2.5) (2020-07-06)
+
+
+### Bug Fixes
+
+* move class styling to less ([#458](https://github.com/transferwise/neptune-web/issues/458)) ([8b17a8b](https://github.com/transferwise/neptune-web/commit/8b17a8b8bf5cc36851dbc37d4c4f9929ce2b137e))
+
+
+
+
+
+## [1.2.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.3...@transferwise/neptune-css@1.2.4) (2020-07-01)
+
+
+### Bug Fixes
+
+* reduce margin for horizontal definition lists ([#435](https://github.com/transferwise/neptune-web/issues/435)) ([70b3966](https://github.com/transferwise/neptune-web/commit/70b396652a252067c37bf3cb86c5d8123f0da8b8))
+
+
+
+
+
+## [1.2.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.2...@transferwise/neptune-css@1.2.3) (2020-06-24)
+
+**Note:** Version bump only for package @transferwise/neptune-css
+
+
+
+
+
 ## [1.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.1...@transferwise/neptune-css@1.2.2) (2020-06-21)
 
 ### Bug Fixes

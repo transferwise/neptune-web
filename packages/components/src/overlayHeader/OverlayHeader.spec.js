@@ -13,7 +13,7 @@ describe('Overlay header', () => {
   }
 
   function avatar() {
-    return component.find('Avatar');
+    return component.find('AvatarWrapper');
   }
 
   function closeButton() {

@@ -2,7 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 // Avatar and Logo to be refactored and exposed DS-274 DS-275
-import Avatar from '../flowNavigation/avatar';
+import AvatarWrapper from '../flowNavigation/avatarWrapper';
 import Logo from '../flowNavigation/logo';
 import Header from '../header';
 import CloseButton from '../common/CloseButton';
@@ -33,8 +33,8 @@ const OverlayHeader = ({ avatar, profileType, onClose, theme }) => {
         </div>
       }
       rightContent={
-        <div className="m-lg-t-1 tw-flow-navigation__right-content">
-          {avatar && <Avatar url={avatar.url} profileType={profileType} />}
+        <div className="m-lg-t-1 tw-flow-navigation__avatar-with-close-button">
+          {avatar && <AvatarWrapper url={avatar.url} profileType={profileType} />}
           {closeButton}
         </div>
       }

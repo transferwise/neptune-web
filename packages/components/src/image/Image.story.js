@@ -2,7 +2,7 @@ import React from 'react';
 import Image from './Image';
 import { action } from '@storybook/addon-actions';
 
-import { text, select } from '@storybook/addon-knobs';
+import { text, select, boolean } from '@storybook/addon-knobs';
 
 export default {
   component: Image,
@@ -10,9 +10,12 @@ export default {
 };
 
 export const basic = () => {
-  const src = text('src', 'https://i.picsum.photos/id/1025/600/200.jpg');
+  const src = text('src', 'https://placeholder.pics/svg/300');
+  const shrink = boolean('shrink', true);
+  const stretch = boolean('stretch', true);
   const loading = select(
     'loading',
+
     {
       lazy: 'lazy',
       eager: 'eager',
@@ -30,6 +33,8 @@ export const basic = () => {
         onError={(e) => action(e)}
         loading={loading}
         className="m-t-5"
+        shrink={shrink}
+        stretch={stretch}
       />
       <Image
         alt="test"
@@ -39,6 +44,8 @@ export const basic = () => {
         onError={(e) => action(e)}
         loading={loading}
         className="m-t-5"
+        shrink={shrink}
+        stretch={stretch}
       />
       <Image
         alt="test"
@@ -48,6 +55,8 @@ export const basic = () => {
         onError={(e) => action(e)}
         loading={loading}
         className="m-t-5"
+        shrink={shrink}
+        stretch={stretch}
       />
     </>
   );
