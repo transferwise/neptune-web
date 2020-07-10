@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-docs",
-  "version": "4.6.2",
+  "version": "4.6.3",
   "description": "TransferWise Design System",
   "main": "index.js",
   "private": true,
@@ -34,11 +34,11 @@
     "@mapbox/rehype-prism": "^0.4.0",
     "@mdx-js/loader": "^1.5.8",
     "@next/mdx": "^9.0.5",
-    "@transferwise/components": "^27.13.1",
-    "@transferwise/dynamic-flows": "^2.2.26",
+    "@transferwise/components": "^27.13.2",
+    "@transferwise/dynamic-flows": "^2.2.27",
     "@transferwise/icons": "^1.5.0",
-    "@transferwise/neptune-css": "^1.3.0",
-    "@transferwise/test-config": "^1.0.2",
+    "@transferwise/neptune-css": "^1.3.1",
+    "@transferwise/test-config": "^1.0.3",
     "@zeit/next-css": "^1.0.1",
     "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
     "currency-flags": "^2.1.1",
@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
-    "@transferwise/less-config": "^1.0.3"
+    "@transferwise/less-config": "^1.0.4"
   },
   "peerDependencies": {
     "react": "16.13.1",

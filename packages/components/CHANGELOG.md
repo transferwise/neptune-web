@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.13.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.13.1...@transferwise/components@27.13.2) (2020-07-10)
+
+
+### Bug Fixes
+
+* force resolution of kind-of to 6.0.3 to prevent security vulnerability ([#472](https://github.com/transferwise/neptune-web/issues/472)) ([18316d0](https://github.com/transferwise/neptune-web/commit/18316d05279547a64f7c3d46e8b636b9f05f7db4))
+
+
+
+
+
 ## [27.13.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.13.0...@transferwise/components@27.13.1) (2020-07-09)
 
 **Note:** Version bump only for package @transferwise/components
