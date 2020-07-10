@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/test-config@1.0.2...@transferwise/test-config@1.0.3) (2020-07-10)
+
+
+### Bug Fixes
+
+* force resolution of kind-of to 6.0.3 to prevent security vulnerability ([#472](https://github.com/transferwise/neptune-web/issues/472)) ([18316d0](https://github.com/transferwise/neptune-web/commit/18316d05279547a64f7c3d46e8b636b9f05f7db4))
+
+
+
+
+
 ## [1.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/test-config@1.0.1...@transferwise/test-config@1.0.2) (2020-06-21)
 
 ### Bug Fixes
