@@ -35,6 +35,12 @@ html.ios-click {
       right: @spacer * 2;
     }
   }
+  // fix selected item's icon alignment (icons v2)
+  .dropdown-toggle > span > .tw-icon {
+    position: static;
+    display: inline-block;
+    margin-right: @spacer;
+  }
 }
 
 @media (max-width: @screen-xs-max) {
