@@ -2,6 +2,7 @@
 import React from 'react';
 import Types from 'prop-types';
 import requiredIf from 'react-required-if';
+import classNames from 'classnames';
 
 import Option from '../common/Option';
 import './NavigationOption.css';
@@ -17,6 +18,7 @@ const NavigationOption = ({
   disabled,
   showMediaAtAllSizes,
   showMediaCircle,
+  className,
 }) => {
   const sharedProps = {
     as,
@@ -28,6 +30,7 @@ const NavigationOption = ({
     disabled,
     showMediaAtAllSizes,
     showMediaCircle,
+    className: classNames('tw-navigation-option', className),
   };
 
   if (href) {
@@ -36,7 +39,6 @@ const NavigationOption = ({
 
   return (
     <Option
-      className="tw-navigation-option"
       {...sharedProps}
       onClick={(event) => {
         if (!disabled) {
@@ -61,6 +63,7 @@ NavigationOption.propTypes = {
   disabled: Types.bool,
   showMediaAtAllSizes: Types.bool,
   showMediaCircle: Types.bool,
+  className: Types.string,
 };
 
 NavigationOption.defaultProps = {
@@ -73,6 +76,7 @@ NavigationOption.defaultProps = {
   disabled: false,
   showMediaAtAllSizes: false,
   showMediaCircle: true,
+  className: null,
 };
 
 export default NavigationOption;

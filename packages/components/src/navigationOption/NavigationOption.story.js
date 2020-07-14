@@ -16,6 +16,7 @@ export const basic = () => {
   const complex = boolean('complex', false);
   const showMediaAtAllSizes = boolean('showMediaAtAllSizes', false);
   const showMediaCircle = boolean('showMediaCircle', true);
+  const className = text('className');
 
   return (
     <NavigationOption
@@ -29,6 +30,7 @@ export const basic = () => {
       media={<FastFlagIcon />}
       showMediaAtAllSizes={showMediaAtAllSizes}
       showMediaCircle={showMediaCircle}
+      className={className}
     />
   );
 };
@@ -40,6 +42,7 @@ export const illustration = () => {
   const complex = boolean('complex', false);
   const showMediaAtAllSizes = boolean('showMediaAtAllSizes', true);
   const showMediaCircle = boolean('showMediaCircle', false);
+  const className = text('className');
 
   return (
     <NavigationOption
@@ -50,6 +53,7 @@ export const illustration = () => {
       title={title}
       content={content}
       onClick={action('clicked')}
+      className={className}
       media={<ExampleIllustration />}
       showMediaAtAllSizes={showMediaAtAllSizes}
       showMediaCircle={showMediaCircle}

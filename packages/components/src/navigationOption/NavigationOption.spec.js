@@ -66,5 +66,12 @@ describe('Navigation option', () => {
     expect(container.querySelector('.circle')).toBeNull();
   });
 
+  it('should pass correct class names to Option', () => {
+    expect(option().props().className).toBe('tw-navigation-option');
+    component.setProps({ className: 'test-class-name' });
+
+    expect(option().props().className).toBe('tw-navigation-option test-class-name');
+  });
+
   const option = () => component.find(Option);
 });
