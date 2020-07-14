@@ -3718,10 +3718,10 @@
   resolved "https://registry.yarnpkg.com/@transferwise/icons/-/icons-1.5.0.tgz#4b0f6e71862e4e331b0a45f6bd77bae8eba0021d"
   integrity sha512-qHdaX+0YdTGwSoZqNH7FB+Gp1ytgk60xybkEtx+D9PT494B6Ddv94O2qZ5OR/K6vv+d9wd7brep6tMloBu6EBQ==
 
-"@transferwise/neptune-tokens@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@transferwise/neptune-tokens/-/neptune-tokens-0.0.2.tgz#3cd4c057050b6f76366224d14a64e5292ae61ef8"
-  integrity sha512-MdhmK0is4v+AFf+9g6tboC3mCJOGjI2wqaaDYAx1pgNCak9blq24ORy2THvPJyfPDOJgAl1QBXXejfsUr6NCpA==
+"@transferwise/neptune-tokens@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@transferwise/neptune-tokens/-/neptune-tokens-0.1.0.tgz#0d5080c00a0dc2c4034b97da40a08655368391a9"
+  integrity sha512-XbLXGGO53p/ISPWQC92Jju80MrMH9LhNs1Fuz1u52Dgzsi67EsFJGDVTgIc24poVpmxsvYyV1kOOM1jDJgeDIw==
 
 "@types/babel__core@^7.1.7":
   version "7.1.7"

@@ -4,45 +4,29 @@ import PrintBundleSize from '../../utils/bundleSize/printBundleSize';
 import CloseIcon from '@transferwise/icons/react/close';
 import TickIcon from '@transferwise/icons/react/tick';
 
-## Installing Neptune Web
+## Installation
 
 Neptune Web is published to npm as two packages: [@transferwise/components](https://www.npmjs.com/package/@transferwise/components) and [@transferwise/neptune-css](https://www.npmjs.com/package/@transferwise/neptune-css).
 
-Because our components still require [Transferwise Bootstrap](https://github.com/transferwise/bootstrap), for most users we currently recommend installing components and using them with Bootstrap, as outlined below.
+**If you want to use the components, you need Neptune CSS.**
 
-We are working on removing this dependency, which would allow us to offer a full solution with just Neptune Components and Neptune CSS. This is our eventual goal.
-
-### Installing Components
-
-```
+```bash
 # yarn
-yarn add @transferwise/components
+yarn add @transferwise/components @transferwise/neptune-css
+yarn add react react-dom prop-types currency-flags # peer dependencies
 
 # npm
-npm install @transferwise/components
+npm install @transferwise/components @transferwise/neptune-css
+npm install react react-dom prop-types currency-flags # peer dependencies
 ```
 
-If not already installed, install the required peer depedencies. **Note:** `currency-flags` is only required if you're using the <DocLink href="/components/MoneyInput">Money Input</DocLink> or if you're using flags on the <DocLink href="/components/Select">Select</DocLink>.
+**Note:** Peer dependencies are only necessary if you're using components. `currency-flags` is only required if you're using the <DocLink href="/components/MoneyInput">Money Input</DocLink> or if you're using flags on the <DocLink href="/components/Select">Select</DocLink>.
 
-```
-# yarn
-yarn add react react-dom prop-types transferwise/bootstrap currency-flags
-
-# npm
-npm install react react-dom prop-types transferwise/bootstrap currency-flags
-```
-
-#### Don't I need Neptune CSS?
-
-Because our components still require Bootstrap, it is not currently necessary to use Neptune CSS with our components. You may still import Neptune CSS tokens if you wish to make use of the exposed custom properties in your application. They will not clash with Bootstrap. To do this, follow the [instructions below](#installing-css).
-
-### Using Components in your Application
-
-By default, apps come polyfilled. If you would like to use an unpolyfilled version because your app provides its own polyfills, see [Advanced Components Usage](#advanced-components-usage) below.
+## Usage
 
 ```js
 // This line only needs to be imported once in your application
-import 'bootstrap/dist/css/bootstrap.css';
+import '@transferwise/neptune-css/dist/css/neptune.css';
 
 import { Button } from '@transferwise/components';
 
@@ -55,55 +39,16 @@ export default function Hello() {
 }
 ```
 
-Browse our <DocLink href="/components">components</DocLink> for usage documentation, live previews and code snippets for each component.
+For information on what classes are available, see the <DocLink href="/styles/core/Typography">styles documentation</DocLink>. Refer to <DocLink href="/components/inputs/Button">components</DocLink> for usage documentation, live previews and code snippets for each component.
 
-### Installing CSS
+By default, apps come polyfilled. If you would like to use an unpolyfilled version because your app provides its own polyfills, see [Advanced Components Usage](#advanced-components-usage) below.
 
-```
-# yarn
-yarn add @transferwise/neptune-css
+### Tokens
 
-# npm
-npm install @transferwise/neptune-css
-```
-
-### Using CSS in your Application
-
-We expose three bundles for use: Tokens, Core and Addons. These can be used together or individually. Core includes Tokens, so if you include Core, you don't need Tokens.
-
-<DocLink href="/components/tokens">Tokens</DocLink> exposes a number of useful CSS properties on `:root`.
-If you're not familiar with using custom properties, have a read of the documentation on [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/--*).
-
-<DocLink href="/styles/core">Core</DocLink> includes the tokens, as well as typography styles.
-
-<DocLink href="/styles/addons">Addons</DocLink> provide a number of utility classes for display, spacing
-and more.
-
-Follow the links for full documentation on what is available in each bundle.
-
-**Note:** there are other files in the `dist` folder other than those mentioned here. Please do not rely on them, as we may remove them in future releases.
+Neptune CSS exposes a number of of useful CSS properties on `:root`. You can find information about what is available in the <DocLink href="/components/tokens">tokens documentation</DocLink>. If you're not familiar with using custom properties, have a read of the documentation on [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/--*).
 
 ```js
-// Tokens
-import '@transferwise/neptune-css/dist/css/neptune-tokens.css';
-
-// Core (Includes Tokens)
-import '@transferwise/neptune-css/dist/css/neptune-core.css';
-
-// Addons
-import '@transferwise/neptune-css/dist/css/neptune-addons.css';
-```
-
-#### Using with Bootstrap
-
-Our goal is to have self contained components that, along with Neptune Core and Addons provides a full application development framework. Right now, as our components rely on Bootstrap, they will not work with Neptune CSS alone.
-
-You may, however, want to make use of the CSS properties on a page where you have components, and so are already importing Bootstrap. This is fine - import Neptune Tokens after Bootstrap.
-
-```js
-// These only need to be imported once
-import 'bootstrap/dist/css/bootstrap.css';
-import '@transferwise/neptune-css/dist/css/neptune-tokens.css';
+import '@transferwise/neptune-css/dist/css/neptune.css';
 ```
 
 ```css
@@ -115,11 +60,30 @@ import '@transferwise/neptune-css/dist/css/neptune-tokens.css';
   color: #fff;
   cursor: pointer;
 
-  padding-left: var(--space-12);
-  padding-right: var(--space-12);
-
-  text-align: center;
+  padding: var(--space-8);
 }
+```
+
+### Advanced CSS Usage
+
+We expose three bundles for use. Our `neptune.css` bundle has everything. This is what you should use if using components. If you aren't using components, you have the option of just using Core, or Core + Addons. Follow the links for full documentation on what is available in each bundle.
+
+**Note:** there are other files in the `dist` folder other than those mentioned here. Please do not rely on them, as we may remove them in future releases.
+
+<DocLink href="/styles/core">Core</DocLink> includes the tokens, as well as typography styles.
+
+<DocLink href="/styles/addons">Addons</DocLink> provide a number of utility classes for display, spacing
+and more.
+
+```js
+// Everything
+import '@transferwise/neptune-css/dist/css/neptune.css';
+
+// Core (includes tokens)
+import '@transferwise/neptune-css/dist/css/neptune-core.css';
+
+// Addons
+import '@transferwise/neptune-css/dist/css/neptune-addons.css';
 ```
 
 ### Advanced Components Usage
@@ -250,7 +214,7 @@ If you need to override the import to use a different bundle, here is where you 
 
 You will need to find out how to specify module overrides in your particular build environment. Here's an example of how to do it in Webpack:
 
-```
+```json
   resolve: {
     alias: {
       '@transferwise/components': require.resolve(
@@ -262,13 +226,7 @@ You will need to find out how to specify module overrides in your particular bui
 
 #### Tree-shaking
 
-By default when importing this -
-
-```
-import { Button, Upload } from "@transferwise/components";
-```
-
-- you will get **polyfilled UMD** if your bundler doesn't support tree-shaking, **polyfilled ES** if it does.
+By default when importing this - `import { Button, Upload } from "@transferwise/components";` - you will get **polyfilled UMD** if your bundler doesn't support tree-shaking, **polyfilled ES** if it does.
 
 export const meta = {
   name: 'Setup',

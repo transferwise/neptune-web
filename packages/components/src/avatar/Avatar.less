@@ -1,4 +1,4 @@
-@import 'bootstrap/less/variables.less';
+@import (reference) '@transferwise/neptune-css/dist/css/variables/legacy-variables.less';
 
 // TODO: https://transferwise.atlassian.net/browse/DS-453
 // Still in the process of figuring out whether this variable should be coming from less or custom properties
@@ -45,6 +45,7 @@
   &--outlined {
     border: @avatar-outline-border-width solid @avatar-outline-border-color;
     cursor: pointer;
+
     &:hover {
       border-color: @avatar-outline-border-color-hover;
     }
@@ -77,7 +78,6 @@
   &.avatar--initials,
   &.avatar--emoji {
     // There is a problem how emojis & text vertically aligned between Windows and Mac. Setting font family to Arial seems to resolve it.
-    // Slack discussion: https://transferwise.slack.com/archives/CJNBX9CP6/p1592926116250200
     font-family: Arial;
   }
 

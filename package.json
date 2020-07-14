@@ -18,13 +18,19 @@
   "version": "1.0.0",
   "main": "packages/components/build/main.js",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/@transferwise/neptune-tokens"
+    ]
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.3.4",
     "@commitlint/config-conventional": "^8.3.4",
     "@transferwise/eslint-config": "^6.0.0",
+    "@transferwise/neptune-tokens": "^0.1.0",
     "eslint": "^6.8.0",
     "eslint-config-react-app": "^5.2.1",
     "eslint-loader": "^4.0.0",

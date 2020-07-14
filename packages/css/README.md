@@ -23,10 +23,10 @@ npm install @transferwise/neptune-css
 There are three bundles to choose from, depending on your needs:
 
 ```js
-// Tokens
-import '@transferwise/neptune-css/dist/css/neptune-tokens.css';
+// Everything
+import '@transferwise/neptune-css/dist/css/neptune.css';
 
-// Core (Includes Tokens)
+// Core (Including Tokens)
 import '@transferwise/neptune-css/dist/css/neptune-core.css';
 
 // Addons

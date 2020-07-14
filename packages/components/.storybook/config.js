@@ -6,7 +6,6 @@ import { withA11y } from '@storybook/addon-a11y';
 
 import theme from './common/theme';
 import '@transferwise/neptune-css/dist/css/neptune.css';
-import '@transferwise/neptune-css/dist/css/neptune-tokens.css';
 import 'currency-flags/dist/currency-flags.min.css';
 import '@transferwise/icons/dist/icons.min.css';
 

@@ -56,6 +56,7 @@
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "@transferwise/less-config": "^1.0.4",
+    "@transferwise/neptune-tokens": "^0.1.0",
     "@transferwise/test-config": "^1.0.3",
     "babel-loader": "^8.1.0",
     "babel-preset-minify": "^0.5.1",
@@ -67,7 +68,6 @@
     "rollup-plugin-uglify": "^6.0.4"
   },
   "peerDependencies": {
-    "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
     "currency-flags": "^2.1.1",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
@@ -90,20 +90,5 @@
   },
   "resolutions": {
     "@storybook/**/kind-of": "^6.0.3"
-  },
-  "stylelint": {
-    "extends": [
-      "../../stylelint.config.js"
-    ],
-    "rules": {
-      "csstools/value-no-unknown-custom-properties": [
-        true,
-        {
-          "importFrom": [
-            "../../node_modules/@transferwise/neptune-css/dist/css/neptune-tokens.css"
-          ]
-        }
-      ]
-    }
   }
 }
