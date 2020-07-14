@@ -27,7 +27,7 @@ export default [
       {
         title: 'Tokens',
         dir: 'styles/tokens',
-        fileOrder: ['Breakpoints', 'Colors', 'Spacing'],
+        fileOrder: ['Colors', 'Spacing', 'Breakpoints'],
       },
       {
         title: 'Core',

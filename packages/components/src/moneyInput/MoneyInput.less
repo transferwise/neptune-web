@@ -1,4 +1,4 @@
-@import 'bootstrap/less/variables';
+@import '@transferwise/neptune-tokens/colors-base.less';
 
 .tw-money-input {
   .tw-money-input__fixed-currency {
@@ -7,7 +7,7 @@
 
   &__keyline {
     width: 2px;
-    border: solid 1px @brand-smoke;
+    border: solid 1px @color-base-smoke-mid;
     height: 24px;
     display: inline-block;
     margin-right: 24px;
@@ -15,13 +15,13 @@
   }
 
   &--disabled {
-    background-color: @brand-smoke-plus-20;
+    background-color: var(--color-background-neutral);
     cursor: not-allowed;
   }
 
   &__fixed-currency {
     span {
-      color: @brand-grey-plus-10;
+      color: @color-base-grey-mid;
     }
 
     position: relative;

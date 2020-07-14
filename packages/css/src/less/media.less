@@ -7,9 +7,11 @@
 .media {
   display: flex;
 }
+
 .media + .media {
   margin-top: calc(var(--spacer) * 3);
 }
+
 .media-body {
   flex: 1;
 
@@ -21,6 +23,7 @@
 .media-middle {
   align-self: center;
 }
+
 .media-bottom {
   align-self: flex-end;
 }
@@ -43,6 +46,7 @@
 
 .media-left {
   padding-right: var(--space-16);
+
   @media (--screen-sm) {
     padding-right: var(--space-24);
   }

@@ -31,12 +31,13 @@
 }
 
 .generate-anim(
-  @name: 'slide';
-  @direction: 1; // 1 = animate to right, -1 = animate to left,
+@name: 'slide';
+@direction: 1; // 1 = animate to right, -1 = animate to left,
   @positions: -50%, 50%, 20%, 60%;
-  @delay: 0;
+@delay: 0;
 ) {
   @opacity-anim-name: '@{name}-opacity';
+
   animation: e(@name) 6s linear 0s infinite, e(@opacity-anim-name) 6s linear 0s infinite;
 
   // Opacity animation frames

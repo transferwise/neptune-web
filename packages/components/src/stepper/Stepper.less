@@ -1,10 +1,12 @@
-@import 'bootstrap/less/variables';
+@import '@transferwise/neptune-tokens/colors-base.less';
+@import '@transferwise/neptune-css/src/less/variables/_custom-media.less';
+@import '@transferwise/neptune-css/src/less/variables/_typography.less';
 
 .tw-stepper {
   padding-bottom: 24px;
 
-  @media only screen and (max-width: @screen-xs-max) {
-    padding-bottom: 0px;
+  @media only screen and (--screen-xs-max) {
+    padding-bottom: 0;
   }
 
   &__step {
@@ -12,22 +14,22 @@
     list-style-type: none;
 
     &--active .tw-stepper__step-label {
-      color: @brand-navy-minus-10;
-      font-weight: @font-weight-semi-bold;
+      color: @color-base-navy-mid;
+      font-weight: var(--font-weight-semi-bold);
     }
 
     &--clickable .tw-stepper__step-label {
-      color: @brand-light-blue;
-      font-weight: @font-weight-semi-bold;
+      color: @color-base-blue-light;
+      font-weight: var(--font-weight-semi-bold);
       transition: color 0.15s ease-in-out;
 
       &:hover,
       &:focus {
-        color: @brand-light-blue-minus-10;
+        color: @color-base-blue-mid;
       }
     }
 
-    @media screen and (min-width: @screen-sm-min) and (max-width: @screen-md-max) {
+    @media screen and (--screen-sm) and (--screen-md-max) {
       &:first-child .tooltip-inner {
         transform: translateX(~'calc(50% - 32px)');
       }
@@ -43,7 +45,7 @@
   }
 
   &__step-label {
-    color: @brand-smoke-minus-10;
+    color: @color-base-smoke-dark;
     transition: color 0.6s ease-in-out;
     position: absolute;
     white-space: nowrap;
@@ -71,7 +73,7 @@
 .progress-bar-ending {
   float: left;
   height: 100%;
-  background: linear-gradient(to right, @brand-light-blue, @brand-navy-minus-10);
+  background: linear-gradient(to right, @color-base-blue-light, @color-base-navy-mid);
   transition: width 0.6s ease-in-out;
 
   &::after {
@@ -81,7 +83,7 @@
     margin-top: -3px;
     margin-right: -4px;
     content: '';
-    background-color: @brand-navy-minus-10;
+    background-color: @color-base-navy-mid;
     border-radius: 4px;
   }
 }
@@ -89,7 +91,7 @@
 .progress-bar-filler {
   float: left;
   height: 100%;
-  background-color: @brand-light-blue;
+  background-color: @color-base-blue-light;
   border-top-left-radius: 1px;
   border-bottom-left-radius: 1px;
   transition: width 0.6s ease-in-out;

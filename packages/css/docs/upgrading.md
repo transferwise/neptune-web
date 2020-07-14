@@ -6,10 +6,10 @@
 
 - The full Neptune CSS bundle that contains `neptune-tokens`, `neptune-core`, `neptune-addons`, and all available CSS components.
 
-### `neptune-tokens.css`
+### Variables
 
-- Semantic design tokens are now available as custom properties (CSS variables).
-- Variables are still available as partials from `dist/css/variables` but usage of tokens from `neptune-tokens.css` is preferred.
+- Semantic design tokens are now available as custom properties (CSS variables) from the @transferwise/neptune-tokens repo.
+- Bootstrap variables are still available from legacy-variables.less, but use of custom properties is encouraged.
 
 ### `neptune-core.css`
 

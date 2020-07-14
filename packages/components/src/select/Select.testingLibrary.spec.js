@@ -75,8 +75,8 @@ describe('Select', () => {
           {...props}
           search
           options={[
-            { value: 0, label: 'Hungarian Forint', currency: 'HUF' },
-            { value: 1, label: 'British Pounds', currency: 'GBP' },
+            { value: 0, label: 'Hungarian forint', currency: 'HUF' },
+            { value: 1, label: 'British pound', currency: 'GBP' },
           ]}
         />,
       );
@@ -89,7 +89,7 @@ describe('Select', () => {
       expect(container.querySelector('.tw-dropdown-item.tw-dropdown-item--focused')).toEqual(
         container.querySelector('.tw-dropdown-item'),
       );
-      expect(getByText('Hungarian Forint').parentElement.parentElement).toHaveClass(
+      expect(getByText('Hungarian forint').parentElement.parentElement).toHaveClass(
         'tw-dropdown-item tw-dropdown-item--clickable tw-dropdown-item--focused',
       );
     });

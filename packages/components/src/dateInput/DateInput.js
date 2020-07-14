@@ -11,24 +11,23 @@ import { getMonthNames, isDateValid, isMonthAndYearFormat } from '../common/date
 const DEFAULT_LOCALE = 'en-GB';
 
 const MonthBeforeDay = ['en-US', 'ja-JP'];
-const INITIAL_DEFAULT_STATE = { year: null, month: 0, day: null };
+const INITIAL_DEFAULT_STATE = { year: null, month: null, day: null };
 
-const DateInput = (props) => {
-  const {
-    disabled,
-    size,
-    value,
-    locale,
-    dayLabel,
-    monthLabel,
-    yearLabel,
-    monthFormat,
-    mode,
-    onChange,
-    onFocus,
-    onBlur,
-  } = props;
-
+const DateInput = ({
+  disabled,
+  size,
+  value,
+  locale,
+  dayLabel,
+  monthLabel,
+  yearLabel,
+  monthFormat,
+  mode,
+  onChange,
+  onFocus,
+  onBlur,
+  placeholders,
+}) => {
   const getDateObject = () => {
     if (value && isDateValid(value)) {
       return typeof value === 'string' ? convertToLocalMidnight(value) : value;
@@ -71,6 +70,9 @@ const DateInput = (props) => {
 
   const getSelectElement = () => {
     const months = getMonthNames(locale, monthFormat);
+
+    const selected = month === null ? null : { selected: { value: month, label: months[month] } };
+
     return (
       <div>
         <label htmlFor="date-input-month" className="sr-only">
@@ -80,14 +82,14 @@ const DateInput = (props) => {
           id="date-input-month"
           name="month"
           className="form-control"
-          selected={{ value: month, label: months[month] }}
           onChange={(selectedValue) => handleMonthChange(selectedValue)}
           disabled={disabled}
-          placeholder="Select an option..."
+          placeholder={placeholders.month}
           options={getMonthsOptions()}
           size={size}
           onFocus={onFocus}
           onBlur={onBlur}
+          {...selected}
         />
       </div>
     );
@@ -137,6 +139,10 @@ const DateInput = (props) => {
   };
 
   const handleMonthChange = (selectedValue) => {
+    if (!selectedValue) {
+      setMonth(null);
+      return;
+    }
     const selectedMonth = selectedValue ? selectedValue.value : 0;
     const { checkedDay } = checkDate(day, selectedMonth, year);
     setMonth(selectedMonth);
@@ -216,7 +222,7 @@ const DateInput = (props) => {
                 onChange={(event) => handleDayChange(event)}
                 onFocus={onFocus}
                 onBlur={onBlur}
-                placeholder="DD"
+                placeholder={placeholders.day}
                 disabled={disabled}
               />
             </div>
@@ -235,7 +241,7 @@ const DateInput = (props) => {
               type="number"
               name="year"
               className="form-control"
-              placeholder="YYYY"
+              placeholder={placeholders.year}
               value={year || ''}
               onChange={(event) => handleYearChange(event)}
               onFocus={onFocus}
@@ -266,6 +272,11 @@ DateInput.propTypes = {
   yearLabel: Types.string,
   monthFormat: Types.oneOf([DateInput.MonthFormat.LONG, DateInput.MonthFormat.SHORT]),
   mode: Types.oneOf([DateInput.DateMode.DAY_MONTH_YEAR, DateInput.DateMode.MONTH_YEAR]),
+  placeholders: Types.shape({
+    day: Types.node,
+    month: Types.node,
+    year: Types.node,
+  }),
 };
 
 DateInput.defaultProps = {
@@ -280,6 +291,11 @@ DateInput.defaultProps = {
   yearLabel: 'Year',
   monthFormat: DateInput.MonthFormat.LONG,
   mode: DateInput.DateMode.DAY_MONTH_YEAR,
+  placeholders: {
+    day: 'DD',
+    month: 'Month',
+    year: 'YYYY',
+  },
 };
 
 export default DateInput;
