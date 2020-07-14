@@ -55,7 +55,7 @@ export const basic = () => {
       label: 'Globe',
     },
     {
-      label: 'British Pound',
+      label: 'British pound',
     },
     {
       label: 'Euro',
