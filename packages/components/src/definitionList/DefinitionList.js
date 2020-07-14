@@ -45,7 +45,13 @@ DefinitionList.propTypes = {
       key: Types.string.isRequired,
     }),
   ),
-  layout: Types.oneOf(Object.values(DefinitionList.Layout)),
+  layout: Types.oneOf([
+    DefinitionList.Layout.VERTICAL_TWO_COLUMN,
+    DefinitionList.Layout.VERTICAL_ONE_COLUMN,
+    DefinitionList.Layout.HORIZONTAL_JUSTIFIED,
+    DefinitionList.Layout.HORIZONTAL_LEFT_ALIGNED,
+    DefinitionList.Layout.HORIZONTAL_RIGHT_ALIGNED,
+  ]),
   muted: Types.bool,
 };
 
