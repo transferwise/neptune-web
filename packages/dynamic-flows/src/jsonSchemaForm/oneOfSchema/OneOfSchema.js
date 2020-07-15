@@ -4,8 +4,8 @@ import Types from 'prop-types';
 import GenericSchema from '../genericSchema';
 import SchemaFormControl from '../schemaFormControl';
 
-import { getValidModelParts } from '../validation/valid-model';
-import { isValidSchema } from '../validation/schema-validators';
+import { getValidModelParts } from '../../common/validation/valid-model';
+import { isValidSchema } from '../../common/validation/schema-validators';
 
 const OneOfSchema = (props) => {
   const getModelPartsForSchemas = (model, schemas) =>

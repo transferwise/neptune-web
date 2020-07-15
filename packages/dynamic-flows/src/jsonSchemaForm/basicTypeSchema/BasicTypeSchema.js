@@ -5,8 +5,8 @@ import classNames from 'classnames';
 import SchemaFormControl from '../schemaFormControl';
 import ControlFeedback from '../controlFeedback';
 
-import { getValidationFailures } from '../validation/validation-failures';
-import { getValidModelParts } from '../validation/valid-model';
+import { getValidationFailures } from '../../common/validation/validation-failures';
+import { getValidModelParts } from '../../common/validation/valid-model';
 
 const BasicTypeSchema = (props) => {
   const onChange = (newModel) => {
