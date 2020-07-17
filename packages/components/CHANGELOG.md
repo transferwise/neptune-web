@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@28.0.0...@transferwise/components@28.1.0) (2020-07-17)
+
+
+### Features
+
+* expose complete step of upload component ([#490](https://github.com/transferwise/neptune-web/issues/490)) ([82991a0](https://github.com/transferwise/neptune-web/commit/82991a0b95904d62f0918567be0af96e49aa38b4))
+
+
+
+
+
 # [28.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.14.0...@transferwise/components@28.0.0) (2020-07-14)
 
 
