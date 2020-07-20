@@ -6,8 +6,14 @@ import SchemaFormControl from '../schemaFormControl';
 
 import { getValidModelParts } from '../validation/valid-model';
 import { isValidSchema } from '../validation/schema-validators';
+import { isArray } from '../validation/type-validators';
 
 const OneOfSchema = (props) => {
+  if (!isArray(props.schema.oneOf)) {
+    console.error('Incorrect format', props.schema); // eslint-disable-line
+    return '';
+  }
+
   const getModelPartsForSchemas = (model, schemas) =>
     schemas.map((schema) => getValidModelParts(model, schema));
 
@@ -17,10 +23,10 @@ const OneOfSchema = (props) => {
     return index >= 0 ? index : 0;
   };
 
-  const onChange = (model, index) => {
+  const onChange = (model, schema, index) => {
     models[index] = model;
     setModels(models);
-    props.onChange(model, props.schema.oneOf[index]);
+    props.onChange(model, schema);
   };
 
   const onChooseNewSchema = (index) => {
@@ -66,9 +72,9 @@ const OneOfSchema = (props) => {
   const schemaForSelect = mapSchemas(props.schema);
 
   return (
-    <div>
+    <>
       {props.schema.oneOf.length > 1 && (
-        <div className="m-b-3">
+        <div className="form-group">
           {props.schema.title && (
             <label className="control-label" htmlFor={id}>
               {props.schema.title}
@@ -92,12 +98,12 @@ const OneOfSchema = (props) => {
           errors={props.errors}
           locale={props.locale}
           translations={props.translations}
-          onChange={(model) => onChange(model, schemaIndex)}
+          onChange={(model, schema) => onChange(model, schema, schemaIndex)}
           submitted={props.submitted}
           hideTitle
         />
       )}
-    </div>
+    </>
   );
 };
 
