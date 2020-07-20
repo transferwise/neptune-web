@@ -52,7 +52,8 @@
     "husky": "^4.2.5",
     "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
     "currency-flags": "^1.2.1",
-    "react-axe": "^3.4.1"
+    "react-axe": "^3.4.1",
+    "bundlesize": "^0.18.0"
   },
   "resolutions": {
     "lerna/**/kind-of": "^6.0.3",
@@ -64,8 +65,8 @@
     "build": "lerna run build --stream",
     "docs": "lerna run docs --stream",
     "docs:deploy": "lerna run docs:deploy",
-    "test": "lerna run test --stream",
-    "clean": " npm-run-all clean:*",
+    "test": "lerna run test --stream && bundlesize",
+    "clean": "npm-run-all clean:*",
     "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules  && rm -rf .next",
     "clean:lock": "find . -name '*.lock' -or -name '*-lock.json' -type f -delete",
     "lint": "lerna run lint",
