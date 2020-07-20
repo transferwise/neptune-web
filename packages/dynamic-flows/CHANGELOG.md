@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.0.1...@transferwise/dynamic-flows@3.1.0) (2020-07-20)
+
+
+### Features
+
+* add trigger schema to json schema form model change ([4c4e1b8](https://github.com/transferwise/neptune-web/commit/4c4e1b867d57b46d2d8081cca91c3e03355244a9))
+
+
+
+
+
 ## [3.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.0.0...@transferwise/dynamic-flows@3.0.1) (2020-07-17)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
