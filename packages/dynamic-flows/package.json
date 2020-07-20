@@ -63,6 +63,7 @@
   "dependencies": {
     "@babel/runtime": "^7.9.2",
     "@transferwise/components": "^28.1.0",
+    "@transferwise/icons": "^2.0.0",
     "@transferwise/neptune-css": "^2.0.0",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5"

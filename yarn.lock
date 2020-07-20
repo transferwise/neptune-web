@@ -3718,6 +3718,11 @@
   resolved "https://registry.yarnpkg.com/@transferwise/icons/-/icons-1.5.0.tgz#4b0f6e71862e4e331b0a45f6bd77bae8eba0021d"
   integrity sha512-qHdaX+0YdTGwSoZqNH7FB+Gp1ytgk60xybkEtx+D9PT494B6Ddv94O2qZ5OR/K6vv+d9wd7brep6tMloBu6EBQ==
 
+"@transferwise/icons@^2.0.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@transferwise/icons/-/icons-2.3.0.tgz#b7bbea6aba4cb7f350783615c163c969aabc3230"
+  integrity sha512-616alyY2P1xdA4nokH+fDcue2gPTGtOlFw9srkERnOLr3ZkVTxr32UJagMpb3VTwPGXvwc2ENNQvyb++T9Oigw==
+
 "@transferwise/neptune-tokens@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@transferwise/neptune-tokens/-/neptune-tokens-0.1.0.tgz#0d5080c00a0dc2c4034b97da40a08655368391a9"
