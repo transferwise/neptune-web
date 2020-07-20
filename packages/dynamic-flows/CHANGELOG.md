@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.1.0...@transferwise/dynamic-flows@3.2.0) (2020-07-20)
+
+
+### Features
+
+* add dynamic layout and associated components ([23f6306](https://github.com/transferwise/neptune-web/commit/23f630654f625ca05c79b9d8edb2879f1985962b))
+
+
+
+
+
 # [3.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.0.1...@transferwise/dynamic-flows@3.1.0) (2020-07-20)
 
 
