@@ -23,8 +23,6 @@ We officially support three bundles:
 - `neptune-tokens.less`
 - `neptune-addons.less`
 
-`neptune-legacy.bundle.less` is also in use by some teams, but we will soon be deprecating this.
-
 # How are the bundles built?
 
 `less` in `src` files are run through less and then postcss, and copied to the `dist` folder.
