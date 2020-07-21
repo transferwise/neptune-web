@@ -3,15 +3,15 @@ import { Select } from '@transferwise/components';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import WithNormalizer from './';
+import WithNormaliser from '.';
 
-describe('withNormalizer', () => {
+describe('WithNormaliser', () => {
   it('when user types a string it returns string value', () => {
     const onChange = jest.fn();
     render(
-      <WithNormalizer>
+      <WithNormaliser>
         <input type="text" data-testid="input" onChange={onChange} />
-      </WithNormalizer>,
+      </WithNormaliser>,
     );
     const input = screen.getByTestId('input');
     userEvent.type(input, 'username');
@@ -21,9 +21,9 @@ describe('withNormalizer', () => {
   it('when user types a number in a text input it returns a string', () => {
     const onChange = jest.fn();
     render(
-      <WithNormalizer>
+      <WithNormaliser>
         <input type="text" data-testid="input" onChange={onChange} />
-      </WithNormalizer>,
+      </WithNormaliser>,
     );
     const input = screen.getByTestId('input');
     userEvent.type(input, '123');
@@ -33,9 +33,9 @@ describe('withNormalizer', () => {
   it('when user types a number in a numeric input it returns a number', () => {
     const onChange = jest.fn();
     render(
-      <WithNormalizer>
+      <WithNormaliser>
         <input type="number" data-testid="input" onChange={onChange} />
-      </WithNormalizer>,
+      </WithNormaliser>,
     );
     const input = screen.getByTestId('input');
     userEvent.type(input, '123');
@@ -45,7 +45,7 @@ describe('withNormalizer', () => {
   it('when user select an option it returns option value', () => {
     const onChange = jest.fn();
     render(
-      <WithNormalizer>
+      <WithNormaliser>
         <Select
           size="md"
           placeholder="placeholder"
@@ -57,7 +57,7 @@ describe('withNormalizer', () => {
             { value: 1, label: 'Another thing', secondary: 'with secondary text this time' },
           ]}
         />
-      </WithNormalizer>,
+      </WithNormaliser>,
     );
 
     userEvent.click(screen.getByRole('button'));

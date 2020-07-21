@@ -7,7 +7,7 @@ const methodsToExtend = ['onChange', 'onBlur', 'onFocus', 'onSuccess', 'onFailur
  *
  * This function is a temporary function used to normalize the returned values from our form related components. Please DO NOT USE THIS COMPONENT.
  */
-const WithNormalizer = ({ children }) => {
+const WithNormaliser = ({ children }) => {
   const handleChildEvent = (childHandler) => (event) => {
     const value = normalizeEvent(event, children.props.type);
 
@@ -27,4 +27,4 @@ const WithNormalizer = ({ children }) => {
   });
 };
 
-export default WithNormalizer;
+export default WithNormaliser;

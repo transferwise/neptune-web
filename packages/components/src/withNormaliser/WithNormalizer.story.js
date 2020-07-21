@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import WithNormalizer from './WithNormalizer';
-import { Select, Upload } from '@transferwise/components';
+import Select from '../select';
+import Upload from '../upload';
 import { action } from '@storybook/addon-actions';
 
 export default {
@@ -21,7 +22,7 @@ export const basic = () => {
         <label htmlFor="inputTest">Input field with normalizer</label>
         <WithNormalizer>
           <input
-            type="number"
+            type="text"
             id="inputTest"
             className="form-control"
             onChange={(e) => setInputValue(e)}
@@ -38,8 +39,6 @@ export const basic = () => {
             id="selectTest"
             size="md"
             placeholder="placeholder"
-            dropdownRight
-            dropdownWidth
             inverse={false}
             block
             onChange={(v) => setSelectValue(v)}
