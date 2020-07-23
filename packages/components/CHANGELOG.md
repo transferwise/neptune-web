@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@28.1.1...@transferwise/components@28.2.0) (2020-07-23)
+
+
+### Features
+
+* switch component ([#502](https://github.com/transferwise/neptune-web/issues/502)) ([cf43f4e](https://github.com/transferwise/neptune-web/commit/cf43f4e998646e7fdb49cb9267df25ae3195689b))
+
+
+
+
+
 ## [28.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@28.1.0...@transferwise/components@28.1.1) (2020-07-20)
 
 **Note:** Version bump only for package @transferwise/components
