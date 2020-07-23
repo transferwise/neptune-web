@@ -36,11 +36,16 @@ html.ios-click {
       right: calc(var(--space-8) * 2);
     }
   }
-  // fix selected item's icon alignment (icons v2)
+  // React
   .dropdown-toggle > span > .tw-icon {
     position: static;
     display: inline-block;
     margin-right: var(--space-8);
+  }
+  // Angular
+  .dropdown-toggle tw-icon span.tw-icon {
+    position: static;
+    display: inline-block;
   }
 }
 

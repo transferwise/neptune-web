@@ -1,4 +1,4 @@
-@import '@transferwise/neptune-css/src/less/variables/_colors.less';
+@import 'variables/_colors.less';
 
 .tw-checkbox-check {
   position: relative;
@@ -9,10 +9,13 @@
   &::after {
     content: '';
     position: absolute;
-    background: #fff;
+    background: var(--color-background-screen);
     transform: translateX(0.5px) rotate(-45deg);
     transform-origin: left bottom;
     left: 8px;
+    .tw-checkbox-button[disabled] & {
+      background-color: var(--color-text-inactive);
+    }
   }
   &::before {
     top: 9px;
