@@ -9,8 +9,17 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
   let component;
   let schema;
   let errors;
-  let controlSchema;
   let onChange;
+
+  const stringSchema = {
+    title: 'Label',
+    type: 'string',
+    minLength: 2,
+  };
+
+  const constSchema = {
+    enum: ['abcd'],
+  };
 
   beforeEach(() => {
     schema = {
@@ -21,14 +30,8 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
               title: 'Title',
               type: 'object',
               properties: {
-                string: {
-                  title: 'Label',
-                  type: 'string',
-                  minLength: 2,
-                },
-                const: {
-                  enum: ['abcd'],
-                },
+                string: stringSchema,
+                const: constSchema,
               },
             },
           ],
@@ -36,7 +39,6 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
       ],
     };
 
-    controlSchema = schema.allOf[0].oneOf[0].properties.string;
     onChange = jest.fn();
     errors = {
       string: 'Error',
@@ -55,7 +57,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
     });
 
     it('should render a label for the schema control', () => {
-      expect(component.find('label').first().text()).toEqual(controlSchema.title);
+      expect(component.find('label').first().text()).toEqual(stringSchema.title);
     });
 
     it('should render the model value in the relevant control', () => {
@@ -67,7 +69,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
     });
 
     it('should broadcast a change for the const', () => {
-      expect(onChange).toHaveBeenCalledWith({ string: 'foo', const: 'abcd' }, true);
+      expect(onChange).toHaveBeenCalledWith({ string: 'foo', const: 'abcd' }, true, constSchema);
       expect(onChange).toHaveBeenCalledTimes(1);
     });
   });
@@ -78,7 +80,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
     });
 
     it('should trigger the component onChange', () => {
-      expect(onChange).toHaveBeenCalledWith({ string: 'new', const: 'abcd' }, true);
+      expect(onChange).toHaveBeenCalledWith({ string: 'new', const: 'abcd' }, true, stringSchema);
       expect(onChange).toHaveBeenCalledTimes(2);
     });
   });
@@ -89,7 +91,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
     });
 
     it('should remove the value from the model', () => {
-      expect(onChange).toHaveBeenCalledWith({ const: 'abcd' }, true);
+      expect(onChange).toHaveBeenCalledWith({ const: 'abcd' }, true, stringSchema);
     });
 
     describe('and then to something else invalid', () => {
@@ -108,7 +110,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
       });
 
       it('should call onChange with the new value', () => {
-        expect(onChange).toHaveBeenCalledWith({ string: 'bar', const: 'abcd' }, true);
+        expect(onChange).toHaveBeenCalledWith({ string: 'bar', const: 'abcd' }, true, stringSchema);
       });
 
       it('should have called onChange again', () => {

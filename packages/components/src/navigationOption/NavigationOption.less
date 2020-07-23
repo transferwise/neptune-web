@@ -1,4 +1,5 @@
-@import 'bootstrap/less/variables';
+@import '@transferwise/neptune-css/src/less/variables/_colors.less';
+@import '@transferwise/neptune-css/src/less/variables/_typography.less';
 
 .tw-navigation-option {
   text-decoration: none;
@@ -18,12 +19,11 @@
   }
 
   & .media-body {
-    color: @text-color;
-    font-weight: @font-weight-normal;
+    color: @color-base-grey-dark;
+    font-weight: var(--font-weight);
   }
 }
 
-// TODO: Move to Bootstrap if considered reasonable
 .tw-navigation-option__chevron {
   padding: 0;
   border: none;
@@ -32,15 +32,17 @@
 
   &:hover,
   &:focus {
-    color: @link-hover-color;
+    color: var(--color-text-link-hover);
   }
+
   &:active {
-    color: @link-active-color;
+    color: var(--color-text-link-active);
   }
+
   &[disabled] {
     &:hover,
     &:focus {
-      color: @link-disabled-color;
+      color: var(--color-text-inactive);
     }
   }
 }

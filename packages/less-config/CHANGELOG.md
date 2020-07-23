@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/less-config@1.0.4...@transferwise/less-config@2.0.0) (2020-07-14)
+
+
+* feat!: definition list improvements and more (#476) ([c330ed9](https://github.com/transferwise/neptune-web/commit/c330ed93363feb0864f3636c9fc5e79399df6d20)), closes [#476](https://github.com/transferwise/neptune-web/issues/476)
+
+
+### BREAKING CHANGES
+
+* Breaking changes in definition list
+
+
+
+
+
+## [1.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/less-config@1.0.3...@transferwise/less-config@1.0.4) (2020-07-10)
+
+
+### Bug Fixes
+
+* force resolution of kind-of to 6.0.3 to prevent security vulnerability ([#472](https://github.com/transferwise/neptune-web/issues/472)) ([18316d0](https://github.com/transferwise/neptune-web/commit/18316d05279547a64f7c3d46e8b636b9f05f7db4))
+
+
+
+
+
 ## [1.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/less-config@1.0.2...@transferwise/less-config@1.0.3) (2020-06-24)
 
 

@@ -29,14 +29,14 @@ describe('Money Input', () => {
       {
         value: 'USD',
         label: 'USD',
-        note: 'United States Dollar',
+        note: 'United States dollar',
         currency: 'usd',
         searchable: 'Hong Kong, Saudi Arabia',
       },
       {
         value: 'GBP',
         label: 'GBP',
-        note: 'Great British Pound',
+        note: 'British pound',
         currency: 'gbp',
         searchable: 'England, Scotland, Wales',
       },
@@ -46,13 +46,13 @@ describe('Money Input', () => {
       {
         value: 'CAD',
         label: 'CAD',
-        note: 'Canada Dollar',
+        note: 'Canadian dollar',
         currency: 'cad',
       },
       {
         value: 'AUD',
         label: 'AUD',
-        note: 'Australia Dollar',
+        note: 'Australian dollar',
         currency: 'aud',
       },
     ];
@@ -157,7 +157,7 @@ describe('Money Input', () => {
     it('hides headers', () => {
       const currencies = [
         { header: 'A currency' },
-        { value: 'GBP', label: 'Pound' },
+        { value: 'GBP', label: 'British pound' },
         { header: 'Another currency' },
         { value: 'EUR', label: 'Euro' },
       ];
@@ -166,21 +166,21 @@ describe('Money Input', () => {
 
       searchCurrencies('O');
       expect(displayedCurrencies()).toEqual([
-        { value: 'GBP', label: 'Pound' },
+        { value: 'GBP', label: 'British pound' },
         { value: 'EUR', label: 'Euro' },
       ]);
     });
 
     it('searches by label', () => {
       const currencies = [
-        { value: 'GBP', label: 'Pound' },
+        { value: 'GBP', label: 'British pound' },
         { value: 'EUR', label: 'Euro' },
       ];
       component.setProps({ currencies });
       expect(displayedCurrencies()).toEqual(currencies);
 
       searchCurrencies('P');
-      expect(displayedCurrencies()).toEqual([{ value: 'GBP', label: 'Pound' }]);
+      expect(displayedCurrencies()).toEqual([{ value: 'GBP', label: 'British pound' }]);
     });
 
     it('searches by note', () => {
@@ -241,7 +241,7 @@ describe('Money Input', () => {
         {
           value: 'AUD',
           label: 'AUD',
-          note: 'Australia Dollar',
+          note: 'Australian dollar',
           currency: 'aud',
         },
         {
@@ -254,7 +254,7 @@ describe('Money Input', () => {
         {
           value: 'USD',
           label: 'USD',
-          note: 'United States Dollar',
+          note: 'United States dollar',
           currency: 'usd',
           searchable: 'Hong Kong, Saudi Arabia',
         },

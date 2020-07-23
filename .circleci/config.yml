@@ -29,17 +29,9 @@ aliases:
     name: Build packages
     command: yarn build
 
-  - &build-docs
-    name: Build docs
-    command: yarn docs:build
-
   - &deploy-docs
     name: Deploy docs
     command: yarn docs:deploy
-
-  - &deploy-docs-for-branch
-    name: Deploy docs for branch
-    command: yarn docs:deploy-for-branch
 
   - &lerna-publish
     name: Publish packages
@@ -69,13 +61,25 @@ aliases:
       git config --global user.email "circleci@transferwise.com"
       git config --global user.name "CircleCI"
 
+  - &save-yarn-cache
+    key: yarn-cache-{{ checksum "yarn.lock" }}
+    paths:
+      - ~/.cache/yarn
+
+  - &restore-yarn-cache
+    keys:
+      - yarn-cache-{{ checksum "yarn.lock" }}
+      - yarn-cache-
+
 jobs:
   install:
     <<: *container
     steps:
       - checkout
+      - restore-cache: *restore-yarn-cache
       - run: *install
       - *persist-workspace
+      - save_cache: *save-yarn-cache
 
   build:
     <<: *container
@@ -98,11 +102,11 @@ jobs:
       - run: *test
       - *persist-workspace
 
-  deploy-docs-to-root:
+  deploy-docs:
     <<: *container
     steps:
       - *attach-workspace
-      - run: *build-docs
+      - run: *build
       - run: *set-github-credentials
       - run: *deploy-docs
 
@@ -110,9 +114,9 @@ jobs:
     <<: *container
     steps:
       - *attach-workspace
-      - run: *build-docs
+      - run: *build
       - run: *set-github-credentials
-      - run: *deploy-docs-for-branch
+      - run: *deploy-docs
 
   conventional-commit-lint:
     <<: *container
@@ -187,14 +191,14 @@ workflows:
       - deploy-docs-for-branch:
           context: frontend-build
           requires:
-            - test
+            - build
           filters:
             branches:
               ignore:
                 - gh-pages
                 - master
 
-      - deploy-docs-to-root:
+      - deploy-docs:
           context: frontend-build
           requires:
             - test-master

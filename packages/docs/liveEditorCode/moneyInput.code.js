@@ -23,7 +23,7 @@
     {
       value: 'GBP',
       label: 'GBP',
-      note: 'Great British Pound',
+      note: 'British pound',
       currency: 'gbp',
       searchable: 'England, Scotland, Wales',
     },

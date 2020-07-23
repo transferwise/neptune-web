@@ -3,18 +3,18 @@
   muted={false}
   definitions={[
     {
-      title: <span>First title</span>,
-      value: <span>first value</span>,
+      title: 'A simple title',
+      value: 'A simple value',
       key: 'first',
     },
     {
-      title: 'Second title',
-      value: 'second value happenstobereallylongtodemonstratethewordbreak',
+      title: <span>Use wrapper elements to style</span>,
+      value: <span className="h3">89.45GBP</span>,
       key: 'second',
     },
     {
-      title: <>Third title</>,
-      value: <>third value</>,
+      title: 'Long strings will wrap',
+      value: 'And values with long words will eventuallybreakontothenextline',
       key: 'third',
     },
   ]}

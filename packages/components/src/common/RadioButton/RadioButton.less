@@ -1,10 +1,8 @@
-@import 'bootstrap/less/variables';
-
-// TODO: Move to Bootstrap if considered reasonable
-input[type="radio"] {
-  &:focus, &:active {
+input[type='radio'] {
+  &:focus,
+  &:active {
     & + .tw-radio-button {
-      border-color: @input-border-focus;
+      border-color: var(--color-border-focus);
       outline: none;
     }
   }

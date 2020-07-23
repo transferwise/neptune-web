@@ -1,4 +1,5 @@
-@import 'bootstrap/less/variables';
+@import '@transferwise/neptune-tokens/colors-base.less';
+@import '@transferwise/neptune-css/src/less/variables/_custom-media.less';
 
 html.ios-click {
   cursor: pointer;
@@ -10,40 +11,40 @@ html.ios-click {
       cursor: pointer;
       .tw-icon {
         display: inline-block;
-        margin-right: @spacer;
+        margin-right: var(--space-8);
       }
     }
 
     &--divider {
       border-bottom-style: solid;
       border-bottom-width: 1px;
-      border-bottom-color: @brand-smoke-plus-20;
+      border-bottom-color: @color-base-smoke-fade;
     }
 
     &--focused {
-      background-color: @brand-smoke-plus-20;
+      background-color: var(--color-background-neutral);
     }
 
     .currency-flag {
-      margin-right: @spacer;
+      margin-right: var(--space-8);
     }
   }
   .dropdown-toggle {
     .tw-icon {
       position: absolute;
-      top: @spacer * 2;
-      right: @spacer * 2;
+      top: calc(var(--space-8) * 2);
+      right: calc(var(--space-8) * 2);
     }
   }
   // fix selected item's icon alignment (icons v2)
   .dropdown-toggle > span > .tw-icon {
     position: static;
     display: inline-block;
-    margin-right: @spacer;
+    margin-right: var(--space-8);
   }
 }
 
-@media (max-width: @screen-xs-max) {
+@media (--screen-xs-max) {
   .dropup,
   .dropdown {
     > .tw-select.dropdown-menu {
@@ -83,6 +84,7 @@ html.ios-click {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -93,6 +95,7 @@ html.ios-click {
     opacity: 0;
     transform: translateY(100%);
   }
+
   to {
     opacity: 1;
     transform: none;

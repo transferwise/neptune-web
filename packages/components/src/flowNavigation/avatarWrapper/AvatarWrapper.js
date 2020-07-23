@@ -18,7 +18,7 @@ export default function AvatarWrapper({ url, profileType }) {
   useEffect(() => setImageLoadError(false), [url]);
 
   return (
-    <div className="tw-avatar-wrapper">
+    <>
       {isBusinessProfile && (
         <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
           <BriefcaseIcon />
@@ -34,7 +34,7 @@ export default function AvatarWrapper({ url, profileType }) {
           {renderImage && <img src={url} alt="avatar" onError={() => setImageLoadError(true)} />}
         </Avatar>
       )}
-    </div>
+    </>
   );
 }
 

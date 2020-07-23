@@ -4,7 +4,7 @@
 
 Neptune is the Design System built by and used at TransferWise. Neptune Web is the Neptune framework for Web. Neptune Web provides a way to build high quality, consistent user experiences on the web with ease.
 
-This is the Neptune Web React component library. It works well with [Neptune CSS](https://github.com/transferwise/neptune-web/tree/master/packages/css).
+This is the Neptune Web React component library. It uses [Neptune CSS](https://github.com/transferwise/neptune-web/tree/master/packages/css).
 
 ## Usage
 
@@ -14,15 +14,15 @@ Install `@transferwise/components` and its peer dependencies. **Note:** currency
 
 ```
 # yarn
-yarn add @transferwise/components react react-dom prop-types transferwise/bootstrap currency-flags
+yarn add @transferwise/components react react-dom prop-types currency-flags
 
 # npm
-npm install @transferwise/components react react-dom prop-types transferwise/bootstrap currency-flags
+npm install @transferwise/components react react-dom prop-types currency-flags
 ```
 
 ```js
 // This line only needs to be imported once in your application
-import 'bootstrap/dist/css/bootstrap.css';
+import '@transferwise/neptune-css/dist/css/neptune.css';
 
 import { Button } from '@transferwise/components';
 

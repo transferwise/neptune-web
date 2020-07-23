@@ -246,5 +246,9 @@ describe('Upload', () => {
           done();
         });
     });
+
+    it('exposes complete step as a static property', () => {
+      expect(Upload.CompleteStep).toBe(CompleteStep);
+    });
   });
 });

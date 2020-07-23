@@ -367,17 +367,14 @@ export default class Typeahead extends Component {
 
   renderMenu = ({
     footer,
-    showSuggestions,
-    optionsShown,
     options,
     id,
     keyboardFocusedOptionIndex,
     query,
-    minQueryLength,
     allowNew,
     showNewEntry,
+    dropdownOpen,
   }) => {
-    const dropdownOpen = optionsShown && showSuggestions && query.length >= minQueryLength;
     const optionsToRender = [...options];
     if (
       allowNew &&
@@ -436,16 +433,16 @@ export default class Typeahead extends Component {
 
     const clearButton = clearable && (query || selected.length > 0);
 
+    const dropdownOpen = optionsShown && showSuggestions && query.length >= minQueryLength;
+
     const menu = this.renderMenu({
       footer,
-      showSuggestions,
       options,
-      optionsShown,
       keyboardFocusedOptionIndex,
       query,
-      minQueryLength,
       allowNew,
       showNewEntry,
+      dropdownOpen,
     });
 
     const hasError = errorState || (alert && alert.type === Alert.Type.ERROR);
@@ -458,6 +455,7 @@ export default class Typeahead extends Component {
           'typeahead--has-value': selected.length > 0,
           'typeahead--empty': selected.length === 0,
           'typeahead--multiple': multiple,
+          open: dropdownOpen,
         })}
         onClick={this.stopPropagation}
       >

@@ -226,7 +226,7 @@ blockquote {
     font-size: var(--font-size-small);
     line-height: 1.7142857143; // 24/14
 
-    &:before {
+    &::before {
       content: '\2014 \00A0'; // em dash, nbsp
     }
   }
@@ -250,11 +250,11 @@ blockquote {
   border-left: 0;
 
   footer {
-    &:before {
+    &::before {
       content: '';
     }
 
-    &:after {
+    &::after {
       content: '\00A0 \2014'; // nbsp, em dash
     }
   }

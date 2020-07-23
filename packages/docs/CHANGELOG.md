@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.0.2...@transferwise/neptune-docs@5.0.3) (2020-07-20)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [5.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.0.1...@transferwise/neptune-docs@5.0.2) (2020-07-20)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [5.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.0.0...@transferwise/neptune-docs@5.0.1) (2020-07-17)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [5.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.7.0...@transferwise/neptune-docs@5.0.0) (2020-07-14)
+
+
+* feat!: definition list improvements and more (#476) ([c330ed9](https://github.com/transferwise/neptune-web/commit/c330ed93363feb0864f3636c9fc5e79399df6d20)), closes [#476](https://github.com/transferwise/neptune-web/issues/476)
+
+
+### BREAKING CHANGES
+
+* Breaking changes in definition list
+
+
+
+
+
+# [4.7.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.6.3...@transferwise/neptune-docs@4.7.0) (2020-07-14)
+
+
+### Features
+
+* adding className prop to Navigation option ([#481](https://github.com/transferwise/neptune-web/issues/481)) ([bf68b5a](https://github.com/transferwise/neptune-web/commit/bf68b5a6016c5b937b143276473d44a0c270cc8b))
+
+
+
+
+
+## [4.6.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.6.2...@transferwise/neptune-docs@4.6.3) (2020-07-10)
+
+
+### Bug Fixes
+
+* force resolution of kind-of to 6.0.3 to prevent security vulnerability ([#472](https://github.com/transferwise/neptune-web/issues/472)) ([18316d0](https://github.com/transferwise/neptune-web/commit/18316d05279547a64f7c3d46e8b636b9f05f7db4))
+
+
+
+
+
 ## [4.6.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.6.1...@transferwise/neptune-docs@4.6.2) (2020-07-09)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

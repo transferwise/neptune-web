@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.1.0...@transferwise/dynamic-flows@3.2.0) (2020-07-20)
+
+
+### Features
+
+* add dynamic layout and associated components ([23f6306](https://github.com/transferwise/neptune-web/commit/23f630654f625ca05c79b9d8edb2879f1985962b))
+
+
+
+
+
+# [3.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.0.1...@transferwise/dynamic-flows@3.1.0) (2020-07-20)
+
+
+### Features
+
+* add trigger schema to json schema form model change ([4c4e1b8](https://github.com/transferwise/neptune-web/commit/4c4e1b867d57b46d2d8081cca91c3e03355244a9))
+
+
+
+
+
+## [3.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.0.0...@transferwise/dynamic-flows@3.0.1) (2020-07-17)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+# [3.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.28...@transferwise/dynamic-flows@3.0.0) (2020-07-14)
+
+
+* feat!: definition list improvements and more (#476) ([c330ed9](https://github.com/transferwise/neptune-web/commit/c330ed93363feb0864f3636c9fc5e79399df6d20)), closes [#476](https://github.com/transferwise/neptune-web/issues/476)
+
+
+### BREAKING CHANGES
+
+* Breaking changes in definition list
+
+
+
+
+
+## [2.2.28](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.27...@transferwise/dynamic-flows@2.2.28) (2020-07-14)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [2.2.27](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.26...@transferwise/dynamic-flows@2.2.27) (2020-07-10)
+
+
+### Bug Fixes
+
+* force resolution of kind-of to 6.0.3 to prevent security vulnerability ([#472](https://github.com/transferwise/neptune-web/issues/472)) ([18316d0](https://github.com/transferwise/neptune-web/commit/18316d05279547a64f7c3d46e8b636b9f05f7db4))
+
+
+
+
+
 ## [2.2.26](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@2.2.25...@transferwise/dynamic-flows@2.2.26) (2020-07-09)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows

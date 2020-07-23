@@ -33,7 +33,7 @@ const OverlayHeader = ({ avatar, profileType, onClose, theme }) => {
         </div>
       }
       rightContent={
-        <div className="m-lg-t-1 tw-flow-navigation__avatar-with-close-button">
+        <div className="tw-flow-navigation__right-content m-lg-t-1">
           {avatar && <AvatarWrapper url={avatar.url} profileType={profileType} />}
           {closeButton}
         </div>

@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = config => ({
+module.exports = (config) => ({
   ...config,
   module: {
     ...config.module,
@@ -18,7 +18,4 @@ module.exports = config => ({
     ],
   },
   plugins: [...config.plugins],
-  externals: {
-    bootstrap: true,
-  },
 });

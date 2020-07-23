@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/dynamic-flows",
-  "version": "2.2.26",
+  "version": "3.2.0",
   "description": "Transferwise dynamic flows and forms",
   "license": "Apache-2.0",
   "main": "./build/es/polyfill/index.js",
@@ -33,7 +33,9 @@
     "test:watch": "jest --watch --env=jsdom --config=../../node_modules/@transferwise/test-config/jest.config.js",
     "test:lint": "jest --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
     "lint": "eslint 'src/**/*.js'",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "lintless": "stylelint ./src/**/*.less",
+    "lintless:fix": "yarn lintless --fix"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
@@ -47,22 +49,27 @@
     "@storybook/addon-info": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/react": "^5.3.18",
-    "@transferwise/less-config": "^1.0.3",
-    "@transferwise/test-config": "^1.0.2",
+    "@transferwise/less-config": "^2.0.0",
+    "@transferwise/neptune-tokens": "^0.1.0",
+    "@transferwise/test-config": "^1.0.3",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-preset-minify": "^0.5.1"
   },
   "peerDependencies": {
-    "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.9.2",
-    "@transferwise/components": "^27.13.1",
+    "@transferwise/components": "^28.1.1",
+    "@transferwise/icons": "^2.0.0",
+    "@transferwise/neptune-css": "^2.1.0",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5"
+  },
+  "resolutions": {
+    "@storybook/**/kind-of": "^6.0.3"
   }
 }

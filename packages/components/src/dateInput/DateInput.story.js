@@ -1,7 +1,7 @@
 import React from 'react';
 import DateInput from './DateInput';
 import { action } from '@storybook/addon-actions';
-import { boolean, select, date } from '@storybook/addon-knobs';
+import { boolean, select, date, text } from '@storybook/addon-knobs';
 
 export default {
   component: DateInput,
@@ -19,6 +19,9 @@ export const basic = () => {
   );
   const mode = select('mode', Object.values(DateInput.DateMode), DateInput.DateMode.DAY_MONTH_YEAR);
   const value = date('value', new Date('2020-01-01'));
+  const day = text('dayPlacheholder', 'DD');
+  const month = text('monthPlaceholder', 'Select an option...');
+  const year = text('yearPlaceholder', 'YYYY');
 
   return (
     <DateInput
@@ -30,6 +33,11 @@ export const basic = () => {
       monthFormat={monthFormat}
       mode={mode}
       key={value}
+      placeholders={{
+        day,
+        month,
+        year,
+      }}
     />
   );
 };

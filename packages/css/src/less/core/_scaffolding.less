@@ -256,14 +256,16 @@ dd {
   }
 }
 
+/* Deprecated - use the Neptune Web DefinitionList component */
 .dl-horizontal {
   dd {
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       display: table;
       content: ' ';
     }
-    &:after {
+
+    &::after {
       clear: both;
     }
   }
@@ -286,6 +288,7 @@ dd {
   }
 }
 
+/* Deprecated - use the Neptune Web DefinitionList component */
 .dl-horizontal-item {
   display: flex;
   flex-wrap: nowrap;

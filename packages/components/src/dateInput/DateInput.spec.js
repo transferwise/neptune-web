@@ -45,10 +45,7 @@ describe('Date Input Component', () => {
     });
 
     it('sets month field to 0', () => {
-      expect(selectMonth.props().selected).toEqual({
-        value: 0,
-        label: MONTHS_EN[0],
-      });
+      expect(selectMonth.props().selected).toBeNull();
     });
 
     it('sets year field to empty', () => {

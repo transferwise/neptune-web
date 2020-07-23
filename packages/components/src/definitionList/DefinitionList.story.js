@@ -10,18 +10,18 @@ export default {
 export const basic = () => {
   const items = [
     {
-      title: <span>First title</span>,
-      value: <span>first value</span>,
+      title: 'A simple title',
+      value: 'A simple value',
       key: 'first',
     },
     {
-      title: 'Second title',
-      value: 'second value happenstobereallylongtodemonstratethewordbreak',
+      title: <span>Use wrapper elements to style</span>,
+      value: <span className="h3">89.45GBP</span>,
       key: 'second',
     },
     {
-      title: <span>Third title</span>,
-      value: <span>third value</span>,
+      title: 'Long strings will wrap',
+      value: 'And values with long words will eventuallybreakontothenextline',
       key: 'third',
     },
   ];
@@ -31,7 +31,7 @@ export const basic = () => {
   const layout = select(
     'layout',
     Object.values(DefinitionList.Layout),
-    DefinitionList.Layout.VERTICAL_TWO_COLUMN,
+    DefinitionList.Layout.HORIZONTAL_LEFT_ALIGNED,
   );
 
   return <DefinitionList layout={layout} muted={muted} definitions={definitions} />;

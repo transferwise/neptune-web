@@ -14,12 +14,14 @@ table {
   background-color: @table-bg;
   border-collapse: separate;
 }
+
 caption {
   padding-top: @table-cell-padding;
   padding-bottom: @table-cell-padding;
   color: @text-muted;
   text-align: left;
 }
+
 th {
   text-align: left;
 }
@@ -44,6 +46,7 @@ th {
       transition: border ease @panel-focus-transtion;
     }
   }
+
   > .thead > ol > li,
   > .tbody > dl > dd,
   > .tfoot > ol > li {
@@ -78,6 +81,7 @@ th {
       }
     }
   }
+
   > .thead:first-child {
     > ol:first-child {
       > li {
@@ -102,10 +106,12 @@ th {
     font-size: @font-size-small;
     color: @headings-color;
   }
+
   > tbody,
   > .tbody {
     font-size: @font-size-small;
   }
+
   > tbody > tr > th,
   > .tbody > dl > .th {
     color: @headings-color;
@@ -125,6 +131,7 @@ th {
       }
     }
   }
+
   > .thead > ol > li,
   > .tbody > dl > dd {
     padding: @table-condensed-cell-padding;
@@ -144,6 +151,7 @@ th {
     background-color: @gray-base;
   }
 }
+
 @media (max-width: @screen-sm-max) {
   div.table-bordered:not(.table-responsive) {
     border: 0;
@@ -174,6 +182,7 @@ th {
   > tbody > tr:hover {
     background-color: @table-bg-hover;
   }
+
   @media (min-width: @screen-md-min) {
     > .tbody > dl:hover {
       background-color: @table-bg-hover;
@@ -190,6 +199,7 @@ table col[class*='col-'] {
   float: none;
   display: table-column;
 }
+
 table {
   td,
   th {
@@ -283,10 +293,13 @@ table {
 @media (min-width: @screen-md-min) {
   .table {
     display: table;
+
     > .thead {
       display: table-header-group;
+
       > ol {
         display: table-row;
+
         > li {
           display: table-cell;
           font-weight: @font-weight-bold;
@@ -294,13 +307,17 @@ table {
         }
       }
     }
+
     > .tbody {
       display: table-row-group;
+
       > dl {
         display: table-row;
+
         > dt {
           display: none;
         }
+
         > dd {
           display: table-cell;
           font-size: @font-size-small;
@@ -308,22 +325,26 @@ table {
         }
       }
     }
+
     > .tfoot {
       display: table-footer-group;
     }
   }
 }
+
 @media (max-width: @screen-sm-max) {
   .table {
     > .thead {
       display: none;
     }
+
     > .tbody {
       > dl {
         border: 1px @input-border solid;
         border-radius: @border-radius-base;
         margin-bottom: @line-height-computed;
         padding: @line-height-computed @line-height-computed 0;
+
         > dd {
           padding: 0;
           border: 0;
@@ -336,6 +357,7 @@ table {
     }
   }
 }
+
 @media (max-width: @screen-xs-max) {
   .table > .tbody > dl {
     padding-bottom: 8px;
@@ -345,8 +367,10 @@ table {
 /* Deprecated - Table CSS for components moved inside @transferwise/components */
 .table-calendar {
   min-width: 300px;
+
   > tbody > tr > td {
     padding: 0;
+
     > a {
       display: block;
       padding: 4px 0;
@@ -359,12 +383,14 @@ table {
         background-color: @brand-navy;
         color: #fff;
       }
+
       &:not([disabled]):hover {
         background-color: @brand-light-blue;
         color: #fff;
       }
     }
   }
+
   > thead > tr > th {
     text-align: center;
   }

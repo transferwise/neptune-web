@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/less-config",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Neptune Web shared gulp css config files and dependencies",
   "license": "Apache-2.0",
   "main": "./gulpfile.js",
@@ -14,6 +14,7 @@
     "url": "git+https://github.com/transferwise/neptune-web.git"
   },
   "devDependencies": {
+    "@arshaw/postcss-custom-properties": "^9.1.1",
     "autoprefixer": "^9.7.6",
     "cssnano": "^4.1.10",
     "gulp": "^4.0.2",
@@ -30,6 +31,12 @@
     "gulp-rename": "^2.0.0",
     "postcss-custom-media": "^7.0.8",
     "postcss-custom-properties": "^9.0.2",
-    "postcss-import": "^12.0.1"
+    "postcss-import": "^12.0.1",
+    "stylelint": "^13.6.1",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-value-no-unknown-custom-properties": "^3.0.0"
+  },
+  "resolutions": {
+    "gulp/**/kind-of": "^6.0.3"
   }
 }

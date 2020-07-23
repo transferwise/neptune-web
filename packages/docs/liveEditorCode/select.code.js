@@ -41,7 +41,7 @@
         { value: 3, label: 'Profile', icon: <ProfileIcon /> },
         { value: 4, label: 'Globe', icon: <GlobeIcon /> },
         { header: 'Currencies' },
-        { value: 5, label: 'British Pound', currency: 'gbp' },
+        { value: 5, label: 'British pound', currency: 'gbp' },
         { value: 6, label: 'Euro', currency: 'eur' },
         { separator: true },
         { value: 7, label: 'Something else' },

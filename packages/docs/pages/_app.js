@@ -23,7 +23,7 @@ if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
 class MyApp extends App {
   componentDidMount() {
     const { pathname } = Router;
-    if (pathname === '/') {
+    if (pathname === '/' || pathname === '/_error') {
       Router.push(addBasePath('about/Home'));
     }
   }
