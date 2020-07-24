@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.2.1...@transferwise/dynamic-flows@3.2.2) (2020-07-24)
+
+
+### Bug Fixes
+
+* oneOf schemas with const will not default to first value ([5d9015c](https://github.com/transferwise/neptune-web/commit/5d9015c6a14ed018ed163d80d8e5f648054c27d2))
+
+
+
+
+
 ## [3.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.2.0...@transferwise/dynamic-flows@3.2.1) (2020-07-23)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
