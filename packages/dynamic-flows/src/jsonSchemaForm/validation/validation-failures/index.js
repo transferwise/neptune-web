@@ -20,16 +20,16 @@ import {
 } from '../rule-validators';
 
 function getValidationFailures(value, schema, isRequired) {
-  if (isNull(value)) {
-    return isRequired ? ['required'] : [];
-  }
-
   if (schema.enum) {
     return getEnumValidationFailures(value, schema, isRequired);
   }
 
   if (schema.const) {
     return getConstValidationFailures(value, schema, isRequired);
+  }
+
+  if (isNull(value)) {
+    return isRequired ? ['required'] : [];
   }
 
   switch (schema.type) {
@@ -123,7 +123,7 @@ function getEnumValidationFailures(value, schema, isRequired) {
     return ['required'];
   }
 
-  if (!isNull(value) && schema.enum.indexOf(value) === -1) {
+  if (isNull(value) || schema.enum.indexOf(value) === -1) {
     return ['enum'];
   }
   return [];
@@ -134,7 +134,7 @@ function getConstValidationFailures(value, schema, isRequired) {
     return ['required'];
   }
 
-  if (!isNull(value) && value !== schema.const) {
+  if (value !== schema.const) {
     return ['enum'];
   }
   return [];
