@@ -15,6 +15,8 @@ import {
 } from '../common/domHelpers';
 import { addClassAndTriggerReflow, removeClass } from './domHelpers';
 
+import './Select.css';
+
 function clamp(from, to, value) {
   return Math.max(Math.min(to, value), from);
 }
@@ -580,7 +582,7 @@ export default class Select extends Component {
               onClick={this.handleButtonClick}
             >
               {this.renderButtonInternals()}
-              <Chevron disabled={disabled} />
+              <Chevron disabled={disabled} className="tw-select-chevron" />
             </button>
             {animationState !== 'exited' && this.renderOptionsList()}
             {animationState !== 'exited' && this.renderOverlay()}

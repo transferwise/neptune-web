@@ -1,18 +1,17 @@
 @import '@transferwise/neptune-tokens/colors-base.less';
 @import '@transferwise/neptune-css/src/less/variables/_custom-media.less';
 
-html.ios-click {
-  cursor: pointer;
-}
-
 .tw-select {
+  .tw-icon {
+    display: inline-block;
+    margin-right: var(--space-8);
+    vertical-align: middle;
+    margin-top: -4px;
+  }
+
   .tw-dropdown-item {
     &--clickable {
       cursor: pointer;
-      .tw-icon {
-        display: inline-block;
-        margin-right: var(--space-8);
-      }
     }
 
     &--divider {
@@ -29,23 +28,18 @@ html.ios-click {
       margin-right: var(--space-8);
     }
   }
-  .dropdown-toggle {
-    .tw-icon {
-      position: absolute;
-      top: calc(var(--space-8) * 2);
-      right: calc(var(--space-8) * 2);
-    }
+
+  .dropdown-toggle .tw-select-chevron {
+    position: absolute;
+    top: calc(var(--space-8) * 2);
+    right: calc(var(--space-8) * 2);
+    margin: 0;
   }
-  // React
+
   .dropdown-toggle > span > .tw-icon {
     position: static;
     display: inline-block;
     margin-right: var(--space-8);
-  }
-  // Angular
-  .dropdown-toggle tw-icon span.tw-icon {
-    position: static;
-    display: inline-block;
   }
 }
 
