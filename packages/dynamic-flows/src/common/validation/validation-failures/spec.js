@@ -138,6 +138,9 @@ describe('Given a library for identifying validation failures', () => {
     it('should return [enum] when not const', () => {
       expect(getValidationFailures('1234', schema)).toEqual(['enum']);
     });
+    it('should return [enum] when null', () => {
+      expect(getValidationFailures(null, schema)).toEqual(['enum']);
+    });
   });
 
   describe('when validating an enum schema', () => {
@@ -150,6 +153,9 @@ describe('Given a library for identifying validation failures', () => {
     });
     it('should return [enum] when not allowed', () => {
       expect(getValidationFailures('d', schema)).toEqual(['enum']);
+    });
+    it('should return [enum] when null', () => {
+      expect(getValidationFailures(null, schema)).toEqual(['enum']);
     });
   });
 

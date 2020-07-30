@@ -10,6 +10,14 @@ describe('Given a component from rendering allOf schemas', () => {
   let props;
   let onChange;
 
+  const stringSchema = {
+    type: 'string',
+  };
+
+  const numberSchema = {
+    type: 'number',
+  };
+
   const schema = {
     title: 'Complete all sections',
     description: 'Description',
@@ -17,18 +25,14 @@ describe('Given a component from rendering allOf schemas', () => {
       {
         type: 'object',
         properties: {
-          string: {
-            type: 'string',
-          },
+          string: stringSchema,
         },
         width: 'md',
       },
       {
         type: 'object',
         properties: {
-          number: {
-            type: 'number',
-          },
+          number: numberSchema,
         },
         width: 'sm',
       },
@@ -104,7 +108,7 @@ describe('Given a component from rendering allOf schemas', () => {
 
   describe('when a child schema triggers onChange', () => {
     beforeEach(() => {
-      numberSchemaComponent.simulate('change', { number: 2 });
+      numberSchemaComponent.simulate('change', { number: 2 }, numberSchema);
     });
 
     it('should trigger the components onChange once', () => {
@@ -112,7 +116,7 @@ describe('Given a component from rendering allOf schemas', () => {
     });
 
     it('should combine the changed model with the other (valid) parts of the model', () => {
-      expect(onChange).toHaveBeenCalledWith({ string: 'a', number: 2 }, schema.allOf[1]);
+      expect(onChange).toHaveBeenCalledWith({ string: 'a', number: 2 }, numberSchema);
     });
   });
 });

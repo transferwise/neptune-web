@@ -374,4 +374,6 @@ Upload.defaultProps = {
   usPlaceholder: 'Drag and drop a file less than 5MB',
 };
 
+Upload.CompleteStep = CompleteStep;
+
 export default Upload;

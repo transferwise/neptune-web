@@ -6,21 +6,36 @@ import SchemaFormControl from '../schemaFormControl';
 
 import { getValidModelParts } from '../../common/validation/valid-model';
 import { isValidSchema } from '../../common/validation/schema-validators';
+import { isArray } from '../../common/validation/type-validators';
 
 const OneOfSchema = (props) => {
+  if (!isArray(props.schema.oneOf)) {
+    console.error('Incorrect format', props.schema); // eslint-disable-line
+    return '';
+  }
+
   const getModelPartsForSchemas = (model, schemas) =>
     schemas.map((schema) => getValidModelParts(model, schema));
 
-  // Determine which schema to show intitially based on validity of model, default to 0
   const getActiveSchemaIndex = (schema, model) => {
     const index = schema.oneOf.findIndex((childSchema) => isValidSchema(model, childSchema));
-    return index >= 0 ? index : 0;
+    // If our model satisfies one of the schemas, use that schema.
+    if (index >= 0) {
+      return index;
+    }
+    // Otherwise, default to the first schema if it's not a const
+    if (schema.oneOf[0] && !isConstSchema(schema.oneOf[0])) {
+      return 0;
+    }
+    // Otherwise do not default
+    return null;
   };
 
-  const onChange = (model, index) => {
+  const onChange = (model, schema, index) => {
     models[index] = model;
     setModels(models);
-    props.onChange(model, props.schema.oneOf[index]);
+
+    props.onChange(model, schema);
   };
 
   const onChooseNewSchema = (index) => {
@@ -28,8 +43,10 @@ const OneOfSchema = (props) => {
 
     const newSchema = props.schema.oneOf[index];
 
-    // const schemas broadcast a change automatically
-    if (!isConstSchema(newSchema)) {
+    if (isConstSchema(newSchema)) {
+      // If new schema is a const we want to share the parent schema, not the const
+      props.onChange(newSchema.const || newSchema.enum[0], props.schema);
+    } else {
       props.onChange(models[index], newSchema);
     }
   };
@@ -66,9 +83,9 @@ const OneOfSchema = (props) => {
   const schemaForSelect = mapSchemas(props.schema);
 
   return (
-    <div>
+    <>
       {props.schema.oneOf.length > 1 && (
-        <div className="m-b-3">
+        <div className="form-group">
           {props.schema.title && (
             <label className="control-label" htmlFor={id}>
               {props.schema.title}
@@ -85,19 +102,19 @@ const OneOfSchema = (props) => {
         </div>
       )}
 
-      {props.schema.oneOf[schemaIndex] && (
+      {props.schema.oneOf[schemaIndex] && !isConstSchema(props.schema.oneOf[schemaIndex]) && (
         <GenericSchema
           schema={props.schema.oneOf[schemaIndex]}
           model={models[schemaIndex]}
           errors={props.errors}
           locale={props.locale}
           translations={props.translations}
-          onChange={(model) => onChange(model, schemaIndex)}
+          onChange={(model, schema) => onChange(model, schema, schemaIndex)}
           submitted={props.submitted}
           hideTitle
         />
       )}
-    </div>
+    </>
   );
 };
 

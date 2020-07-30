@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@2.0.0...@transferwise/neptune-css@2.1.0) (2020-07-20)
+
+
+### Features
+
+* add dynamic layout and associated components ([23f6306](https://github.com/transferwise/neptune-web/commit/23f630654f625ca05c79b9d8edb2879f1985962b))
+
+
+
+
+
+# [2.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.3.1...@transferwise/neptune-css@2.0.0) (2020-07-14)
+
+
+* feat!: definition list improvements and more (#476) ([c330ed9](https://github.com/transferwise/neptune-web/commit/c330ed93363feb0864f3636c9fc5e79399df6d20)), closes [#476](https://github.com/transferwise/neptune-web/issues/476)
+
+
+### BREAKING CHANGES
+
+* Breaking changes in definition list
+
+
+
+
+
 ## [1.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.3.0...@transferwise/neptune-css@1.3.1) (2020-07-10)
 
 
