@@ -2,8 +2,6 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import './CheckboxButton.css';
-
 const CheckboxButton = ({ checked, disabled, readOnly, className, onClick, onFocus, onBlur }) => (
   <button
     type="button"
