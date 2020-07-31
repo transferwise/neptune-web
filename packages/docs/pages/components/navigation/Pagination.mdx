@@ -1,0 +1,10 @@
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import { Pagination } from '@transferwise/components';
+import code from '../../../liveEditorCode/pagination.code';
+
+<LiveEditorBlock code={code} scope={{ Pagination }} display="vertical" />
+<GeneratePropsTable componentName="Pagination" />
+
+export const meta = {
+  name: 'Pagination',
+};

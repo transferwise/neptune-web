@@ -1,0 +1,49 @@
+.tw-pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin-bottom: var(--space-24);
+
+  li {
+    display: inline; // Remove list-style and block-level defaults
+
+    &:first-child > a {
+      margin-left: 0;
+    }
+    &:last-child > a {
+      margin-right: 0;
+    }
+  }
+
+  a {
+    float: left; // Collapse white-space
+    line-height: var(--space-48);
+    text-decoration: none;
+    color: var(--color-text-primary);
+    margin: 0 var(--space-4);
+    width: var(--space-48);
+    text-align: center;
+    border-radius: 50%;
+    font-weight: normal;
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-background-neutral);
+    }
+
+    &.active {
+      background-color: var(--color-background-neutral);
+      font-weight: bold;
+      cursor: not-allowed;
+    }
+
+    &.disabled {
+      color: var(--color-text-inactive);
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+  }
+
+  svg {
+    margin: var(--space-16);
+  }
+}
