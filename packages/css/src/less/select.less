@@ -2,6 +2,13 @@
 @import '@transferwise/neptune-css/src/less/variables/_custom-media.less';
 
 .tw-select {
+  .tw-icon {
+    display: inline-block;
+    margin-right: var(--space-8);
+    margin-top: -2px;
+    vertical-align: middle;
+  }
+
   .tw-dropdown-item {
     &--clickable {
       cursor: pointer;
@@ -22,38 +29,14 @@
     }
   }
 
-  .dropdown-toggle .tw-select-chevron {
-    position: absolute;
-    top: calc(var(--space-8) * 2);
-    right: calc(var(--space-8) * 2);
+  .dropdown-toggle .tw-select-chevron,
+  .dropdown-toggle tw-chevron-down-icon > span {
     margin: 0;
   }
-
-  .dropdown-toggle > span > .tw-icon {
+  .dropdown-toggle > span > .tw-icon,
+  .dropdown-toggle tw-icon span.tw-icon {
     position: static;
     display: inline-block;
-    margin-right: var(--space-8);
-  }
-
-  // React
-  .tw-icon {
-    display: inline-block;
-    margin-right: var(--space-8);
-    vertical-align: middle;
-    margin-top: -4px;
-  }
-
-  // Angular
-  .tw-select-option-link tw-icon {
-    margin-top: -2px;
-    display: inline-block;
-  }
-
-  .tw-select-selected tw-icon {
-    display: inline-block;
-    vertical-align: middle;
-    height: 24px;
-    margin-top: -4px;
   }
 
   .circle .tw-icon {
