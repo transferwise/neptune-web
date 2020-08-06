@@ -7,7 +7,7 @@ import FormControl from '../formControl';
 import { FormControlType, Size } from '../common';
 
 import { getControlType } from '../common/requirements';
-import { getValidationFailures } from './validation/validation-failures';
+import { getValidationFailures } from '../common/validation/validation-failures';
 
 export const FieldTypes = {
   STRING: 'string',

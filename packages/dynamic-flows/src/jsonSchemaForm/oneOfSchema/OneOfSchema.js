@@ -4,9 +4,9 @@ import Types from 'prop-types';
 import GenericSchema from '../genericSchema';
 import SchemaFormControl from '../schemaFormControl';
 
-import { getValidModelParts } from '../validation/valid-model';
-import { isValidSchema } from '../validation/schema-validators';
-import { isArray } from '../validation/type-validators';
+import { getValidModelParts } from '../../common/validation/valid-model';
+import { isValidSchema } from '../../common/validation/schema-validators';
+import { isArray } from '../../common/validation/type-validators';
 
 const OneOfSchema = (props) => {
   if (!isArray(props.schema.oneOf)) {

@@ -46,6 +46,7 @@ The full list of commands available to run from the root directory are:
 - `docs` - builds all packages and starts the Neptune Web docs
 - `lint` - lints all packages
 - `test` - runs tests in all packages (includes a lint)
+- `create-component` - creates all the necessary files needed when a react component gets added to the library
 
 As said above, we recommend running most commands from within the package you're working in.
 

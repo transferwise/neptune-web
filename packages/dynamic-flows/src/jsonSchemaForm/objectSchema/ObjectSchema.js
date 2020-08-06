@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import GenericSchema from '../genericSchema';
-import { getValidModelParts } from '../validation/valid-model';
+import { getValidModelParts } from '../../common/validation/valid-model';
 
 const ObjectSchema = (props) => {
   const [model, setModel] = useState({ ...(props.model || {}) });
