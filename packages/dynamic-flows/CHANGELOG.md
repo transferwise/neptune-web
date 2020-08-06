@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.2.2...@transferwise/dynamic-flows@3.3.0) (2020-08-06)
+
+
+### Bug Fixes
+
+* adding stylelinting and fixing up basic linting errors ([#461](https://github.com/transferwise/neptune-web/issues/461)) ([bcff126](https://github.com/transferwise/neptune-web/commit/bcff126da2bd28dfe29fce24da54c4a0ace0bf16))
+* removing bootstrap and updating tokens / neptune css documentation ([#478](https://github.com/transferwise/neptune-web/issues/478)) ([3c6a650](https://github.com/transferwise/neptune-web/commit/3c6a6505cbe65e26b5b3138d54da13dc94a510f1))
+
+
+### Features
+
+* value normalizer ([#485](https://github.com/transferwise/neptune-web/issues/485)) ([639e1c4](https://github.com/transferwise/neptune-web/commit/639e1c4cf1d9f4e7a21acf2ff7970fb9e5451fa1))
+
+
+
+
+
 ## [3.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.2.1...@transferwise/dynamic-flows@3.2.2) (2020-07-24)
 
 

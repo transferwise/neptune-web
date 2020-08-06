@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/less-config@2.0.0...@transferwise/less-config@2.0.1) (2020-08-06)
+
+
+### Bug Fixes
+
+* adding stylelinting and fixing up basic linting errors ([#461](https://github.com/transferwise/neptune-web/issues/461)) ([bcff126](https://github.com/transferwise/neptune-web/commit/bcff126da2bd28dfe29fce24da54c4a0ace0bf16))
+* replace bootstrap variables with neptune tokens ([#452](https://github.com/transferwise/neptune-web/issues/452)) ([ab0d0fd](https://github.com/transferwise/neptune-web/commit/ab0d0fd7cf24eab48eb02a928527d822605bcbb2)), closes [#468](https://github.com/transferwise/neptune-web/issues/468)
+
+
+
+
+
 # [2.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/less-config@1.0.4...@transferwise/less-config@2.0.0) (2020-07-14)
 
 
