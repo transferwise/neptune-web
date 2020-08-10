@@ -30,6 +30,7 @@
     "@commitlint/cli": "^8.3.4",
     "@commitlint/config-conventional": "^8.3.4",
     "@transferwise/eslint-config": "^6.0.0",
+    "@transferwise/files-scaffold": "^1.0.1",
     "@transferwise/neptune-tokens": "^0.1.0",
     "eslint": "^6.8.0",
     "eslint-config-react-app": "^5.2.1",
@@ -52,7 +53,12 @@
     "husky": "^4.2.5",
     "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
     "currency-flags": "^1.2.1",
-    "react-axe": "^3.4.1"
+    "react-axe": "^3.4.1",
+    "bundlesize": "^0.18.0"
+  },
+  "resolutions": {
+    "lerna/**/kind-of": "^6.0.3",
+    "lint-staged/**/kind-of": "^6.0.3"
   },
   "resolutions": {
     "lerna/**/kind-of": "^6.0.3",
@@ -64,13 +70,13 @@
     "build": "lerna run build --stream",
     "docs": "lerna run docs --stream",
     "docs:deploy": "lerna run docs:deploy",
-    "test": "lerna run test --stream",
-    "clean": " npm-run-all clean:*",
-    "clean:modules": "find . -name node_modules  -type d -prune -exec rm -rf {} \\;",
-    "clean:next-build": "find . -name .next  -type d -prune -exec rm -rf {} \\;",
+    "test": "lerna run test --stream && bundlesize",
+    "clean": "npm-run-all clean:*",
+    "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules  && rm -rf .next",
     "clean:lock": "find . -name '*.lock' -or -name '*-lock.json' -type f -delete",
     "lint": "lerna run lint",
-    "preinstall": "node enforce-yarn.js"
+    "preinstall": "node enforce-yarn.js",
+    "create-component": "files-scaffold"
   },
   "husky": {
     "hooks": {
