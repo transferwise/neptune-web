@@ -2,8 +2,8 @@ import React from 'react';
 import Types from 'prop-types';
 
 import FormControl from '../../formControl';
-import { isNull, isUndefined } from '../validation/type-validators';
-import { getValidModelParts } from '../validation/valid-model';
+import { isNull, isUndefined } from '../../common/validation/type-validators';
+import { getValidModelParts } from '../../common/validation/valid-model';
 
 const SchemaFormControl = (props) => {
   const isNativeInput = (schemaType) => schemaType === 'string' || schemaType === 'number';

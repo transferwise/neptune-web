@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.1.1...@transferwise/neptune-docs@5.1.2) (2020-08-06)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [5.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.1.0...@transferwise/neptune-docs@5.1.1) (2020-07-24)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [5.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.0.3...@transferwise/neptune-docs@5.1.0) (2020-07-23)
+
+
+### Features
+
+* switch component ([#502](https://github.com/transferwise/neptune-web/issues/502)) ([cf43f4e](https://github.com/transferwise/neptune-web/commit/cf43f4e998646e7fdb49cb9267df25ae3195689b))
+
+
+
+
+
 ## [5.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.0.2...@transferwise/neptune-docs@5.0.3) (2020-07-20)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

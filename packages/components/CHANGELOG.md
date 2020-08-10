@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@28.2.0...@transferwise/components@28.2.1) (2020-08-06)
+
+
+### Bug Fixes
+
+* add z-index only for opened typeahead ([#468](https://github.com/transferwise/neptune-web/issues/468)) ([4338052](https://github.com/transferwise/neptune-web/commit/43380522abd0fcf164d6d60e2674bd1457ddc4c9))
+* adding stylelinting and fixing up basic linting errors ([#461](https://github.com/transferwise/neptune-web/issues/461)) ([bcff126](https://github.com/transferwise/neptune-web/commit/bcff126da2bd28dfe29fce24da54c4a0ace0bf16))
+* allow empty month in dateInput ([#470](https://github.com/transferwise/neptune-web/issues/470)) ([4c9723a](https://github.com/transferwise/neptune-web/commit/4c9723ae171d487bf3d8c68cab0441d8409c3285))
+* removing bootstrap and updating tokens / neptune css documentation ([#478](https://github.com/transferwise/neptune-web/issues/478)) ([3c6a650](https://github.com/transferwise/neptune-web/commit/3c6a6505cbe65e26b5b3138d54da13dc94a510f1))
+* replace bootstrap variables with neptune tokens ([#452](https://github.com/transferwise/neptune-web/issues/452)) ([ab0d0fd](https://github.com/transferwise/neptune-web/commit/ab0d0fd7cf24eab48eb02a928527d822605bcbb2)), closes [#468](https://github.com/transferwise/neptune-web/issues/468)
+
+
+
+
+
+# [28.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@28.1.1...@transferwise/components@28.2.0) (2020-07-23)
+
+
+### Features
+
+* switch component ([#502](https://github.com/transferwise/neptune-web/issues/502)) ([cf43f4e](https://github.com/transferwise/neptune-web/commit/cf43f4e998646e7fdb49cb9267df25ae3195689b))
+
+
+
+
+
 ## [28.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@28.1.0...@transferwise/components@28.1.1) (2020-07-20)
 
 **Note:** Version bump only for package @transferwise/components

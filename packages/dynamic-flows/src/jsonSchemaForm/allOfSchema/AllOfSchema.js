@@ -3,7 +3,7 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 
 import GenericSchema from '../genericSchema';
-import { getValidModelParts } from '../validation/valid-model';
+import { getValidModelParts } from '../../common/validation/valid-model';
 
 const AllOfSchema = (props) => {
   const onChange = (index, model, triggerSchema) => {

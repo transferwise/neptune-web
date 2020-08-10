@@ -13,13 +13,21 @@ import {
   isValidMinLength,
   isValidMaxLength,
   isValidPattern,
-  isValidMax,
-  isValidMin,
+  isValidMaximum,
+  isValidMinimum,
   isValidMinItems,
   isValidMaxItems,
 } from '../rule-validators';
 
 function getValidationFailures(value, schema, isRequired) {
+  if (schema.enum) {
+    return getEnumValidationFailures(value, schema, isRequired);
+  }
+
+  if (schema.const) {
+    return getConstValidationFailures(value, schema, isRequired);
+  }
+
   if (isNull(value)) {
     return isRequired ? ['required'] : [];
   }
@@ -64,11 +72,11 @@ function getStringValidationFailures(value, schema, isRequired) {
   if (!isValidPattern(value, schema.pattern)) {
     failures.push('pattern');
   }
-  if (!isValidMin(value, schema.min)) {
-    failures.push('min');
+  if (!isValidMinimum(value, schema.minimum)) {
+    failures.push('minimum');
   }
-  if (!isValidMax(value, schema.max)) {
-    failures.push('max');
+  if (!isValidMaximum(value, schema.maximum)) {
+    failures.push('maximum');
   }
   return failures;
 }
@@ -82,11 +90,11 @@ function getNumberValidationFailures(value, schema, isRequired) {
   if (!isValidRequired(value, isRequired)) {
     failures.push('required');
   }
-  if (!isValidMin(value, schema.min)) {
-    failures.push('min');
+  if (!isValidMinimum(value, schema.minimum)) {
+    failures.push('minimum');
   }
-  if (!isValidMax(value, schema.max)) {
-    failures.push('max');
+  if (!isValidMaximum(value, schema.maximum)) {
+    failures.push('maximum');
   }
   return failures;
 }
@@ -108,6 +116,28 @@ function getBooleanValidationFailures(value, schema, isRequired) {
     failures.push('required');
   }
   return failures;
+}
+
+function getEnumValidationFailures(value, schema, isRequired) {
+  if (!isValidRequired(value, isRequired)) {
+    return ['required'];
+  }
+
+  if (isNull(value) || schema.enum.indexOf(value) === -1) {
+    return ['enum'];
+  }
+  return [];
+}
+
+function getConstValidationFailures(value, schema, isRequired) {
+  if (!isValidRequired(value, isRequired)) {
+    return ['required'];
+  }
+
+  if (value !== schema.const) {
+    return ['enum'];
+  }
+  return [];
 }
 
 function getArrayValidationFailures(value, schema) {
@@ -151,6 +181,8 @@ export {
   getNumberValidationFailures,
   getIntegerValidationFailures,
   getBooleanValidationFailures,
+  getEnumValidationFailures,
+  getConstValidationFailures,
   getArrayValidationFailures,
   getObjectValidationFailures,
 };

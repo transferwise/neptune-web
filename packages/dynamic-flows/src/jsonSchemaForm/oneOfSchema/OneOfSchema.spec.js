@@ -9,11 +9,12 @@ import SchemaFormControl from '../schemaFormControl/';
 describe('Given a oneOfSchema component', () => {
   let component;
   let genericSchema;
+  let schemaFormControl;
   let props;
   let onChange;
   let schema;
 
-  const model = { b: 2, c: 3 };
+  let model = { b: 2, c: 3 };
   const errors = { a: 'error' };
   const locale = 'en-GB';
   const submitted = false;
@@ -68,6 +69,7 @@ describe('Given a oneOfSchema component', () => {
       component = shallow(<OneOfSchema {...props} />);
 
       genericSchema = component.find(GenericSchema);
+      schemaFormControl = component.find(SchemaFormControl);
     });
 
     it('should render the schema title in a label', () => {
@@ -75,7 +77,7 @@ describe('Given a oneOfSchema component', () => {
     });
 
     it('should use a SchemaFormControl to choose between schemas', () => {
-      expect(component.find(SchemaFormControl)).toHaveLength(1);
+      expect(schemaFormControl).toHaveLength(1);
     });
 
     it('should render one generic schema component', () => {
@@ -104,7 +106,7 @@ describe('Given a oneOfSchema component', () => {
 
     describe('when another schema is selected', () => {
       beforeEach(() => {
-        component.find(SchemaFormControl).simulate('change', 2);
+        schemaFormControl.simulate('change', 2);
         // As changing the state causes a rerender, need to refetch child component
         genericSchema = component.find(GenericSchema);
       });
@@ -141,8 +143,8 @@ describe('Given a oneOfSchema component', () => {
 
       describe('when the user toggles to another schema, and back again', () => {
         beforeEach(() => {
-          component.find(SchemaFormControl).simulate('change', 2);
-          component.find(SchemaFormControl).simulate('change', 1);
+          schemaFormControl.simulate('change', 2);
+          schemaFormControl.simulate('change', 1);
           genericSchema = component.find(GenericSchema);
         });
 
@@ -181,6 +183,64 @@ describe('Given a oneOfSchema component', () => {
 
     it('should render the schema using a GenericSchema', () => {
       expect(component.find(GenericSchema)).toHaveLength(1);
+    });
+  });
+
+  describe('when the choice is from a set of constant values', () => {
+    beforeEach(() => {
+      schema = {
+        title: 'Choose schema',
+        placeholder: 'Please choose',
+        oneOf: [
+          {
+            title: 'One',
+            const: 1,
+          },
+          {
+            title: 'Two',
+            const: 2,
+          },
+          {
+            title: 'Three',
+            const: 3,
+          },
+        ],
+      };
+
+      model = null;
+
+      props = { schema, model, locale, onChange, submitted };
+      component = shallow(<OneOfSchema {...props} />);
+
+      genericSchema = component.find(GenericSchema);
+      schemaFormControl = component.find(SchemaFormControl);
+    });
+
+    it('should not render a generic schema', () => {
+      expect(genericSchema.length).toBe(0);
+    });
+
+    it('should not set a default for the SchemaFormControl value', () => {
+      expect(schemaFormControl.prop('value')).toBe(null);
+    });
+
+    it('should not broadcast a model update', () => {
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    describe('when the user changes schema', () => {
+      beforeEach(() => {
+        // SchemaFormControl broacasts the INDEX(1) of the schema
+        schemaFormControl.simulate('change', 1);
+      });
+
+      it('should broadcast the PARENT schema as the trigger, not the const', () => {
+        expect(onChange).toHaveBeenCalledWith(2, schema);
+      });
+
+      it('should only broadcast one change', () => {
+        expect(onChange).toHaveBeenCalledTimes(1);
+      });
     });
   });
 });
