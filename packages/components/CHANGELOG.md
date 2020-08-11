@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@28.2.1...@transferwise/components@28.3.0) (2020-08-11)
+
+
+### Features
+
+* **Tabs:** add non-full width headers option ([#516](https://github.com/transferwise/neptune-web/issues/516)) ([f40cc15](https://github.com/transferwise/neptune-web/commit/f40cc15ca03eb3f838d5eca3385a5533d21f7f0c))
+
+
+
+
+
 ## [28.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@28.2.0...@transferwise/components@28.2.1) (2020-08-06)
 
 
