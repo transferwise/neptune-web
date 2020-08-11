@@ -33,12 +33,14 @@ describe('Tabs', () => {
       tabs: generateTabs(),
       changeTabOnSwipe: true,
       name: 'test',
+      headerWidth: 'block',
       selected: 0,
       transitionSpacing: 'default',
       onTabSelect: jest.fn(),
       className: 'custom-class-name',
     };
 
+    jest.spyOn(HTMLLIElement.prototype, 'getBoundingClientRect').mockReturnValue({ width: 60 });
     jest.spyOn(HTMLDivElement.prototype, 'getBoundingClientRect').mockReturnValue({ width: 300 });
 
     component = mount(<Tabs {...props} />);
@@ -218,29 +220,59 @@ describe('Tabs', () => {
       component = mount(<Tabs {...props} />);
     });
 
-    test.each([
-      [1, '100%', `-300px`],
-      [99, '400%', '-900px'],
-      [3, '300%', '-600px'],
-      [4, '400%', '-900px'],
-      [5, '400%', '-900px'],
-    ])('when selecting tab number %p', (selected, lineTranslateX, sliderTranslateX) => {
+    test.each`
+      selected | headerWidth               | lineTranslateX | sliderTranslateX
+      ${1}     | ${Tabs.HeaderWidth.BLOCK} | ${'100%'}      | ${'-300px'}
+      ${99}    | ${Tabs.HeaderWidth.BLOCK} | ${'400%'}      | ${'-900px'}
+      ${3}     | ${Tabs.HeaderWidth.BLOCK} | ${'300%'}      | ${'-600px'}
+      ${4}     | ${Tabs.HeaderWidth.BLOCK} | ${'400%'}      | ${'-900px'}
+      ${5}     | ${Tabs.HeaderWidth.BLOCK} | ${'400%'}      | ${'-900px'}
+      ${1}     | ${Tabs.HeaderWidth.AUTO}  | ${'60px'}      | ${'-300px'}
+      ${99}    | ${Tabs.HeaderWidth.AUTO}  | ${'240px'}     | ${'-900px'}
+      ${3}     | ${Tabs.HeaderWidth.AUTO}  | ${'180px'}     | ${'-600px'}
+      ${4}     | ${Tabs.HeaderWidth.AUTO}  | ${'240px'}     | ${'-900px'}
+      ${5}     | ${Tabs.HeaderWidth.AUTO}  | ${'240px'}     | ${'-900px'}
+    `(
+      'when selecting tab number %selected when headerWidth is set to %headerWidth',
+      ({ selected, headerWidth, lineTranslateX, sliderTranslateX }) => {
+        component.setProps({ headerWidth });
+
+        const getLineStyles = () => getComputedStyle(component.find('.tabs__line').getDOMNode());
+        const getSliderStyles = () =>
+          getComputedStyle(component.find('.tabs__slider').getDOMNode());
+
+        component.setProps({ selected });
+
+        expect(component.state('isAnimating')).toBe(true);
+        expect(getLineStyles().getPropertyValue('transform')).toBe(`translateX(${lineTranslateX})`);
+        expect(getSliderStyles().getPropertyValue('transform')).toBe(
+          `translateX(${sliderTranslateX})`,
+        );
+
+        triggerSpringOnRest();
+
+        expect(component.state('isAnimating')).toBe(false);
+        expect(getLineStyles().getPropertyValue('transform')).toBe(`translateX(${lineTranslateX})`);
+        expect(getSliderStyles().getPropertyValue('transform')).toBe('translateX(0px)');
+      },
+    );
+
+    it('changes to full width tabs and updates translation value when width is larger than container', () => {
+      component.setProps({ headerWidth: Tabs.HeaderWidth.AUTO, selected: 1 });
+
       const getLineStyles = () => getComputedStyle(component.find('.tabs__line').getDOMNode());
-      const getSliderStyles = () => getComputedStyle(component.find('.tabs__slider').getDOMNode());
-
-      component.setProps({ selected });
-
-      expect(component.state('isAnimating')).toBe(true);
-      expect(getLineStyles().getPropertyValue('transform')).toBe(`translateX(${lineTranslateX})`);
-      expect(getSliderStyles().getPropertyValue('transform')).toBe(
-        `translateX(${sliderTranslateX})`,
-      );
 
       triggerSpringOnRest();
 
-      expect(component.state('isAnimating')).toBe(false);
-      expect(getLineStyles().getPropertyValue('transform')).toBe(`translateX(${lineTranslateX})`);
-      expect(getSliderStyles().getPropertyValue('transform')).toBe('translateX(0px)');
+      expect(getLineStyles().getPropertyValue('transform')).toBe(`translateX(60px)`);
+      expect(component.state('fullWidthTabs')).toBeFalsy();
+
+      component.setProps({ tabs: generateTabs([false, true, false, false, false, false, false]) });
+
+      triggerSpringOnRest();
+
+      expect(getLineStyles().getPropertyValue('transform')).toBe(`translateX(100%)`);
+      expect(component.state('fullWidthTabs')).toBeTruthy();
     });
 
     it('starts the transition offset by the spacer when one is provided', () => {

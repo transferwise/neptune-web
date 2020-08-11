@@ -37,9 +37,11 @@ class Tabs extends React.Component {
     isSwiping: false,
     isScrolling: false,
     lastSwipeVelocity: 0,
+    fullWidthTabs: this.props.headerWidth === Tabs.HeaderWidth.BLOCK,
   };
   container = null;
   containerWidth = 0;
+  tabRefs = [];
 
   get filteredTabsLength() {
     return this.props.tabs.filter(enabledTabsFilter).length;
@@ -52,6 +54,7 @@ class Tabs extends React.Component {
   componentDidMount() {
     const { selected } = this.props;
 
+    this.setTabWidth();
     this.switchTab(clamp(selected, MIN_INDEX, this.MAX_INDEX));
     this.animateToTab(clamp(selected, MIN_INDEX, this.MAX_INDEX), true);
     document.body.addEventListener('touchmove', this.disableScroll, { passive: false });
@@ -66,8 +69,16 @@ class Tabs extends React.Component {
     const currentSelectedTabIsDisabled = currentSelectedTab && currentSelectedTab.disabled;
     const prevSelectedTab = prevProps.tabs[prevSelected];
     const prevSelectedTabIsDisabled = prevSelectedTab && prevSelectedTab.disabled;
+    const currentTabsLength = this.props.tabs.length;
+    const prevTabsLength = prevProps.tabs.length;
     const currentDisabledTabsLength = this.props.tabs.filter(enabledTabsFilter).length;
     const prevDisabledTabsLength = prevProps.tabs.filter(enabledTabsFilter).length;
+    const currentHeaderWidth = this.props.headerWidth;
+    const prevFullHeaderWidth = prevProps.headerWidth;
+
+    if (currentHeaderWidth !== prevFullHeaderWidth || currentTabsLength !== prevTabsLength) {
+      this.setTabWidth();
+    }
 
     if (
       currentSelected !== prevSelected ||
@@ -114,6 +125,59 @@ class Tabs extends React.Component {
     const { tabs } = this.props;
 
     return tabs[index] && tabs[index].disabled;
+  };
+
+  getAllTabsWidth = () => {
+    return this.tabRefs
+      .map((ref) => {
+        return ref.getBoundingClientRect().width;
+      })
+      .reduce((a, b) => a + b, 0);
+  };
+
+  getDistanceToSelectedTab = (selectedTabIndex) => {
+    return this.tabRefs
+      .filter((_, idx) => idx < selectedTabIndex)
+      .map((ref) => ref.getBoundingClientRect().width)
+      .reduce((a, b) => a + b, 0);
+  };
+
+  setTabWidth = () => {
+    const { fullWidthTabs } = this.state;
+    const { headerWidth, selected } = this.props;
+
+    const allTabsWidth = this.getAllTabsWidth();
+
+    if (
+      !fullWidthTabs &&
+      (headerWidth === Tabs.HeaderWidth.BLOCK || this.containerWidth < allTabsWidth)
+    ) {
+      this.setState({ fullWidthTabs: true, translateLineX: `${selected * 100}%` });
+    }
+    if (
+      fullWidthTabs &&
+      headerWidth === Tabs.HeaderWidth.AUTO &&
+      this.containerWidth >= allTabsWidth
+    ) {
+      this.setState({
+        fullWidthTabs: false,
+        translateLineX: `${this.getDistanceToSelectedTab(selected)}px`,
+      });
+    }
+  };
+
+  getTabLineWidth = () => {
+    const { fullWidthTabs } = this.state;
+    const { selected, tabs } = this.props;
+
+    if (fullWidthTabs) {
+      return `${(1 / tabs.length) * 100}%`;
+    }
+
+    return `${
+      (this.tabRefs[selected] || this.tabRefs[this.tabRefs.length - 1]).getBoundingClientRect()
+        .width
+    }px`;
   };
 
   /*
@@ -189,7 +253,11 @@ class Tabs extends React.Component {
   };
 
   animateLine = (index) => {
-    this.setState({ translateLineX: `${index * 100}%` });
+    this.setState((prevState) => ({
+      translateLineX: prevState.fullWidthTabs
+        ? `${index * 100}%`
+        : `${this.getDistanceToSelectedTab(index)}px`,
+    }));
   };
 
   // Pass `instant` to set the `translateX` to the new panel with no transition
@@ -337,6 +405,7 @@ class Tabs extends React.Component {
       translateFrom,
       translateTo,
       lastSwipeVelocity,
+      fullWidthTabs,
     } = this.state;
 
     const spacer = SpacerWidth[transitionSpacing];
@@ -387,9 +456,13 @@ class Tabs extends React.Component {
                 disabled={disabled}
                 onClick={disabled ? null : this.handleTabClick(index)}
                 onKeyDown={this.onKeyDown(index)}
-                style={{
-                  width: `${(1 / tabs.length) * 100}%`,
+                ref={(node) => {
+                  this.tabRefs[index] = node;
                 }}
+                focusTab={() => {
+                  this.tabRefs[index].focus();
+                }}
+                {...(fullWidthTabs ? { style: { width: `${(1 / tabs.length) * 100}%` } } : {})}
               >
                 {title}
               </Tab>
@@ -399,7 +472,7 @@ class Tabs extends React.Component {
             <div
               className={classNames('tabs__line')}
               style={{
-                width: `${(1 / tabs.length) * 100}%`,
+                width: this.getTabLineWidth(),
                 transform: `translateX(${translateLineX})`,
               }}
             />
@@ -471,6 +544,8 @@ class Tabs extends React.Component {
 
 Tabs.SpacerSizes = { ...Size, NONE: 'default' };
 
+Tabs.HeaderWidth = { BLOCK: 'block', AUTO: 'auto' };
+
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
@@ -491,12 +566,14 @@ Tabs.propTypes = {
     Tabs.SpacerSizes.MEDIUM,
     Tabs.SpacerSizes.LARGE,
   ]),
+  headerWidth: PropTypes.oneOf([Tabs.HeaderWidth.AUTO, Tabs.HeaderWidth.BLOCK]),
 };
 
 Tabs.defaultProps = {
   changeTabOnSwipe: true,
   className: '',
   transitionSpacing: Tabs.SpacerSizes.NONE,
+  headerWidth: Tabs.HeaderWidth.BLOCK,
 };
 
 export default Tabs;
