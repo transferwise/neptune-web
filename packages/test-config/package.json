@@ -18,7 +18,7 @@
     "fullname": "transferwise/neptune-web",
     "url": "git+https://github.com/transferwise/neptune-web.git"
   },
-  "devDependencies": {
+  "dependencies": {
     "@testing-library/jest-dom": "^5.7.0",
     "@testing-library/react": "^10.0.4",
     "@testing-library/react-hooks": "^3.2.1",
