@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/test-config",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Neptune Web shared test config files and dependencies",
   "license": "Apache-2.0",
   "main": "jest.config.js",

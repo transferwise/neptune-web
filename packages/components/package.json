@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "28.3.1",
+  "version": "28.3.2",
   "description": "TransferWise styleguide components in react",
   "license": "Apache-2.0",
   "main": "./build/umd/polyfill/main.js",
@@ -56,7 +56,7 @@
     "@storybook/react": "^5.3.18",
     "@transferwise/less-config": "^2.0.2",
     "@transferwise/neptune-tokens": "^0.1.0",
-    "@transferwise/test-config": "^1.0.4",
+    "@transferwise/test-config": "^1.0.5",
     "babel-loader": "^8.1.0",
     "babel-preset-minify": "^0.5.1",
     "lodash.times": "^4.3.2",
