@@ -1,4 +1,4 @@
-import { isArray } from '../../../common/validation/type-validators';
+import { isArray } from '@transferwise/neptune-validation';
 
 export const groupCountriesByPrefix = (countries) => {
   const groupedArray = countries.reduce((acc, country) => {
