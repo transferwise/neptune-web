@@ -1,4 +1,4 @@
-import { convertStepToLayout } from './LayoutService';
+import { convertStepToLayout } from '.';
 
 describe('Given a utility service for handling dynamic layouts', () => {
   describe('when we receive a decision step', () => {
