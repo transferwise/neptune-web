@@ -209,6 +209,7 @@ describe('Given a utility service for handling dynamic layouts', () => {
             {
               type: 'form',
               schema,
+              model,
             },
           ],
         },

@@ -94,10 +94,11 @@ function convertStepDescriptionToDynamicParagraph(description) {
   };
 }
 
-function convertStepSchemaToDynamicForm(schema) {
+function convertStepSchemaToDynamicForm(schema, model) {
   return {
     type: 'form',
     schema,
+    model,
   };
 }
 
@@ -156,7 +157,7 @@ function getSchemaLayout(step) {
 
   if (step.schemas && step.schemas[0]) {
     const schema = step.schemas[0];
-    const dynamicForm = convertStepSchemaToDynamicForm(schema);
+    const dynamicForm = convertStepSchemaToDynamicForm(schema, step.model);
     if (isWideForm(schema)) {
       layout.push(dynamicForm);
     } else {
