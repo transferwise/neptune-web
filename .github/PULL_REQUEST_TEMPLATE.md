@@ -1,5 +1,3 @@
-☝ This title will appear in the changelog - keep it meaningful and follow [the commit lint format](https://github.com/transferwise/neptune-web/blob/master/CONTRIBUTING.md#versioning-and-commit-lint).
-
 ## 🖼 Context
 
 <!-- Why is this PR necessary? Please include links to mockups, JIRA ticket or other relevant documentation. -->
@@ -14,6 +12,7 @@
 
 ## ✅ Checklist
 
+- [ ] Make PR title meaningful and follow [the commit lint format](https://github.com/transferwise/neptune-web/blob/master/CONTRIBUTING.md#versioning-and-commit-lint) (it will appear in the changelog)
 - [ ] Changes are tested and all tests pass
 - [ ] Changes meet [accessibility standards](https://github.com/transferwise/neptune-web/blob/master/ACCESSIBILITY.md) and there are no violations in the console
 - [ ] Changes work in all supported browsers (don't forget IE11)
