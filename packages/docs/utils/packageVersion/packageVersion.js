@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 
-const PackageVersion = ({ version }) => <small>v{version}</small>;
+const PackageVersion = ({ version }) => <span>v{version}</span>;
 PackageVersion.propTypes = {
   version: Types.string.isRequired,
 };
