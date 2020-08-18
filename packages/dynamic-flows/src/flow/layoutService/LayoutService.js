@@ -19,7 +19,7 @@ function convertCommonComponents(step) {
   }
   if (step.image) {
     const image = convertStepImageToDynamicImage(step.image);
-    layout.push(dynamicBox([image]));
+    layout.push(dynamicBox([image], 'sm'));
   }
   if (step.description) {
     layout.push(convertStepDescriptionToDynamicParagraph(step.description));
@@ -29,14 +29,14 @@ function convertCommonComponents(step) {
 }
 
 function convertFormStepToDynamicLayout(step) {
-  let layout = convertCommonComponents(step);
+  const layout = convertCommonComponents(step);
 
   if (step.reviewFields) {
     layout.push(convertStepReviewToDynamicReview(step.reviewFields));
   }
 
   if (step.schemas) {
-    layout = layout.concat(getSchemaLayout(step));
+    layout.push(...getSchemaLayout(step));
   }
 
   if (step.actions) {
@@ -71,7 +71,7 @@ function convertDecisionStepToDynamicLayout(step) {
 function dynamicBox(components, size) {
   return {
     type: 'box',
-    width: size || 'sm',
+    width: size || 'md',
     components,
   };
 }
