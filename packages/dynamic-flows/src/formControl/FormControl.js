@@ -211,10 +211,9 @@ export default class FormControl extends PureComponent {
     return value;
   }
 
-  handleOnChange = (event) => {
+  handleOnChange = (event, option) => {
     const value = this.getValue(event);
-
-    this.props.onChange(value);
+    this.props.onChange(value, option);
   };
 
   handleOnFocus = (event) => this.props.onFocus && this.props.onFocus(this.getValue(event));
@@ -301,9 +300,9 @@ export default class FormControl extends PureComponent {
             id={id}
             selected={this.getSelectedOption(options)}
             options={options}
-            onChange={(newValue) => {
-              this.setState({ selectedOption: newValue });
-              this.handleOnChange(newValue);
+            onChange={(option) => {
+              this.setState({ selectedOption: option });
+              this.handleOnChange(option.value, option);
             }}
             onFocus={this.handleOnFocus}
             onBlur={this.handleOnBlur}

@@ -7,14 +7,22 @@ import { getValidModelParts } from '../../common/validation/valid-model';
 const ObjectSchema = (props) => {
   const [model, setModel] = useState({ ...(props.model || {}) });
 
-  const onChange = (propertyName, propertyModel, schema) => {
+  const onChange = (propertyName, propertyModel, schema, option) => {
+    let newModel = { ...model };
+
     if (propertyModel !== null) {
-      model[propertyName] = propertyModel;
+      newModel[propertyName] = propertyModel;
     } else {
-      delete model[propertyName];
+      delete newModel[propertyName];
     }
-    setModel(model);
-    props.onChange(model, schema);
+
+    // If this change was triggered by an option containing a data package, extend model.
+    if (option && option.data) {
+      newModel = { ...newModel, ...getValidModelParts(option.data, props.schema) };
+    }
+
+    setModel(newModel);
+    props.onChange(newModel, schema);
   };
 
   const getSchemaColumnClasses = (width) => {
@@ -48,11 +56,13 @@ const ObjectSchema = (props) => {
           >
             <GenericSchema
               schema={props.schema.properties[propertyName]}
-              model={props.model && props.model[propertyName]}
+              model={model && model[propertyName]}
               errors={props.errors && props.errors[propertyName]}
               locale={props.locale}
               translations={props.translations}
-              onChange={(newModel, schema) => onChange(propertyName, newModel, schema)}
+              onChange={(newModel, schema, option) =>
+                onChange(propertyName, newModel, schema, option)
+              }
               submitted={props.submitted}
               required={isRequired(propertyName)}
             />

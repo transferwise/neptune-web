@@ -1,0 +1,48 @@
+{
+  "type": "object",
+  "properties": {
+    "bankName": {
+      "title": "Branch",
+      "type": "string",
+      "placeholder": "Select your branch...",
+      "values": [
+        {
+          "value": "12345",
+          "label": "London - Oxford street",
+          "data": {
+            "streetAddress": "123 Oxford Street",
+            "city": "London"
+          }
+        },
+        {
+          "value": "12346",
+          "label": "London - Liverpool street",
+          "data": {
+            "streetAddress": "12 Liverpool Street",
+            "city": "London"
+          }
+        },
+        {
+          "value": "12347",
+          "label": "Bristol - Cabots Circus",
+          "data": {
+            "streetAddress": "1 Cabots Circus",
+            "city": "Bristol",
+            "invalid": "should be stripped"
+          }
+        }
+      ],
+      "enum": ["12345", "123456", "12347"]
+    },
+    "streetAddress": {
+      "title": "Street Address",
+      "type": "string",
+      "disabled": true
+    },
+    "city": {
+      "title": "City",
+      "type": "string",
+      "disabled": true
+    }
+  }
+}
