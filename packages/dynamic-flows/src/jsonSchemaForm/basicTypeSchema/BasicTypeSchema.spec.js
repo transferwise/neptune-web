@@ -99,13 +99,15 @@ describe('Given a component for rendering basic type schemas', () => {
     });
 
     describe('when control triggers onChange with a valid value', () => {
+      let option;
       beforeEach(() => {
-        formControl.simulate('change', 'barbar');
+        option = { value: 'barbar', label: 'BARBAR' };
+        formControl.simulate('change', 'barbar', option);
         feedbackComponent = component.find(ControlFeedback);
       });
 
       it('should trigger the components onChange with the new value', () => {
-        expect(onChange).toHaveBeenCalledWith('barbar', schema);
+        expect(onChange).toHaveBeenCalledWith('barbar', schema, option);
       });
 
       it('should tell the ControlFeedback it has been changed', () => {
@@ -114,14 +116,16 @@ describe('Given a component for rendering basic type schemas', () => {
     });
 
     describe('when control triggers onChange with an invalid value', () => {
+      let option;
       beforeEach(() => {
-        formControl.simulate('change', 'f');
+        option = { value: 'f', label: 'F' };
+        formControl.simulate('change', 'f', option);
         feedbackComponent = component.find(ControlFeedback);
         formControl = component.find(SchemaFormControl);
       });
 
       it('should trigger the components onChange with null', () => {
-        expect(onChange).toHaveBeenCalledWith(null, schema);
+        expect(onChange).toHaveBeenCalledWith(null, schema, option);
       });
 
       it('should pass the correct validation to ControlFeedback component', () => {
@@ -139,7 +143,7 @@ describe('Given a component for rendering basic type schemas', () => {
 
     describe('when control changes to a value that resolves to false', () => {
       beforeEach(() => {
-        formControl.simulate('change', '');
+        formControl.simulate('change', '', { value: 'f', label: 'F' });
         feedbackComponent = component.find(ControlFeedback);
         formControl = component.find(SchemaFormControl);
       });
@@ -164,7 +168,7 @@ describe('Given a component for rendering basic type schemas', () => {
     });
 
     it('should call the onChange handler with the default ', () => {
-      expect(onChange).toHaveBeenCalledWith(schema.default, schema);
+      expect(onChange).toHaveBeenCalledWith(schema.default, schema, undefined);
     });
   });
 

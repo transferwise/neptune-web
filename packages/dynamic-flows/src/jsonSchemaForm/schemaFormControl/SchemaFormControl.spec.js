@@ -243,22 +243,26 @@ describe('Given a component for rendering a form control based on a schema', () 
   });
 
   describe('when the FormControl triggers onChange', () => {
+    let option;
     beforeEach(() => {
-      component.find(FormControl).simulate('change', 'new');
+      option = { value: 'new', label: 'NEW!' };
+      component.find(FormControl).simulate('change', 'new', option);
     });
 
     it('should trigger the components onChange handler', () => {
-      expect(onChange).toHaveBeenCalledWith('new');
+      expect(onChange).toHaveBeenCalledWith('new', option);
     });
   });
 
   describe('when the FormControl triggers onChange with an invalid value', () => {
+    let option;
     beforeEach(() => {
-      component.find(FormControl).simulate('change', 2);
+      option = { value: 2, label: 'TWO!' };
+      component.find(FormControl).simulate('change', 2, option);
     });
 
     it('should trigger the components onChange handler with null', () => {
-      expect(onChange).toHaveBeenCalledWith(null);
+      expect(onChange).toHaveBeenCalledWith(null, option);
     });
   });
 
