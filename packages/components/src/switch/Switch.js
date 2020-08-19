@@ -1,6 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 import classnames from 'classnames';
+import requiredIf from 'react-required-if';
 import './Switch.css';
 import { CheckCircle, CrossCircle } from '@transferwise/icons';
 import KeyCodes from '../common/keyCodes';
@@ -16,7 +17,7 @@ import KeyCodes from '../common/keyCodes';
  * @usage '<Switch checked={checked} onClick={() => setCheck(!checked)} id='id' className='extra-class-name' />'
  * */
 
-const Switch = ({ checked, onClick, className, id }) => {
+const Switch = ({ onClick, ...htmlProps }) => {
   const handleKeyDown = (event) => {
     if (event.code === 32 || event.keyCode === KeyCodes.SPACE) {
       event.preventDefault();
@@ -28,36 +29,38 @@ const Switch = ({ checked, onClick, className, id }) => {
       className={classnames(
         'switch',
         {
-          'switch--unchecked': !checked,
-          'switch--checked': checked,
+          'switch--unchecked': !htmlProps.checked,
+          'switch--checked': htmlProps.checked,
         },
-        className,
+        htmlProps.className,
       )}
-      onClick={onClick}
+      onClick={htmlProps.onClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
-      role="checkbox"
-      aria-checked={checked}
-      id={id}
+      role="switch"
+      aria-checked={htmlProps.checked}
+      aria-label={htmlProps['aria-label']}
+      aria-labelledby={htmlProps['aria-labelledby']}
+      id={htmlProps.id}
     >
       <span className="switch--thumb">
-        {checked ? <CheckCircle filled size={24} /> : <CrossCircle filled size={24} />}
+        {htmlProps.checked ? <CheckCircle filled size={24} /> : <CrossCircle filled size={24} />}
       </span>
-      <input type="checkbox" checked={checked} readOnly />
+      <input type="checkbox" checked={htmlProps.checked} readOnly />
     </span>
   );
 };
 
 Switch.propTypes = {
-  checked: Types.bool,
   onClick: Types.func.isRequired,
-  className: Types.string,
-  id: Types.string,
+  // https://www.w3.org/TR/wai-aria/#aria-label
+  'aria-label': requiredIf(Types.string, (props) => props['aria-labelledby'] === undefined),
+  'aria-labelledby': Types.string,
 };
+
 Switch.defaultProps = {
-  checked: false,
-  className: null,
-  id: null,
+  'aria-label': undefined,
+  'aria-labelledby': undefined,
 };
 
 export default Switch;

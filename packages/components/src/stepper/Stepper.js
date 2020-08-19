@@ -28,6 +28,7 @@ const Stepper = ({ steps, activeStep }) => {
       <button
         className="btn-unstyled tw-stepper__step-label"
         disabled={!clickable}
+        aria-disabled={!clickable}
         onClick={() => clickable && step.onClick()}
       >
         <small>{step.label}</small>
@@ -37,6 +38,7 @@ const Stepper = ({ steps, activeStep }) => {
       <li
         key={index}
         style={{ left: `${index * stepPercentage * 100}%` }}
+        aria-label={step['aria-label']}
         className={`
           hidden-xs
           tw-stepper__step
@@ -61,7 +63,9 @@ const Stepper = ({ steps, activeStep }) => {
         <div className="progress-bar-filler" style={{ width: `${filledWidth * 100}%` }} />
         <div className="progress-bar-ending" style={{ width: `${endingWidth * 100}%` }} />
       </div>
-      <ul className="tw-stepper-steps p-t-1 m-b-0">{steps.map(renderStep)}</ul>
+      <ul className="tw-stepper-steps p-t-1 m-b-0" role="menu">
+        {steps.map(renderStep)}
+      </ul>
     </div>
   );
 };
@@ -72,6 +76,7 @@ Stepper.propTypes = {
     Types.shape({
       label: Types.node.isRequired,
       onClick: Types.func,
+      'aria-label': Types.string.isRequired,
       hoverLabel: Types.node,
     }),
   ).isRequired,

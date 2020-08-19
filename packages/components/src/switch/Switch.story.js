@@ -8,11 +8,20 @@ export default {
 
 export const basic = () => {
   const [checked, setCheck] = useState(false);
+  const labelText = 'Example with aria-labelledby';
 
   return (
     <>
-      <label htmlFor="myFieldId">A Possible label</label>
-      <Switch checked={checked} onClick={() => setCheck(!checked)} id="myFieldId" />
+      <label id="myFieldId" htmlFor="test-switch">
+        {labelText}
+      </label>
+      <Switch
+        id="test-switch"
+        checked={checked}
+        className="a-class-name"
+        onClick={() => setCheck(!checked)}
+        aria-labelledby="myFieldId"
+      />
     </>
   );
 };

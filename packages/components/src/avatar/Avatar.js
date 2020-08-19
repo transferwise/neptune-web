@@ -6,15 +6,16 @@ import { Size, Theme } from '../common';
 
 import './Avatar.css';
 
-const Avatar = ({ size, type, children, outlined, theme, backgroundColor, className }) => (
+const Avatar = ({ size, type, outlined, theme, backgroundColor, ...htmlProps }) => (
   <div
-    className={classnames('avatar', className, `avatar--${size}`, `avatar--${type}`, {
+    aria-label={htmlProps['aria-label']}
+    className={classnames('avatar', htmlProps.className, `avatar--${size}`, `avatar--${type}`, {
       'avatar--outlined': outlined,
       'avatar--dark': theme === Theme.DARK,
     })}
   >
     <div className="avatar__content" style={{ backgroundColor: backgroundColor || undefined }}>
-      {children}
+      {htmlProps.children}
     </div>
   </div>
 );
@@ -37,11 +38,10 @@ Avatar.propTypes = {
     Avatar.Type.EMOJI,
     Avatar.Type.INITIALS,
   ]),
-  children: Types.node,
   outlined: Types.bool,
   theme: Types.oneOf([Theme.LIGHT, Theme.DARK]),
   backgroundColor: Types.string,
-  className: Types.string,
+  'aria-label': Types.string.isRequired,
 };
 
 Avatar.defaultProps = {
@@ -50,8 +50,6 @@ Avatar.defaultProps = {
   outlined: false,
   theme: Theme.LIGHT,
   backgroundColor: null,
-  className: null,
-  children: null,
 };
 
 export default Avatar;

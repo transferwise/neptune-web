@@ -25,22 +25,21 @@ import '@transferwise/neptune-css/dist/css/flowNavigation.css';
  * @usage `<FlowNavigation activeStep={activeStep} onClose={callback} avatarUrl={someUrl} done={done} profileType={OverlayHeader.ProfyleType.BUSINESS} onGoBack={callback} theme={OverlayHeader.Theme.LIGHT} steps={steps} />`
  * */
 const FlowNavigation = ({
-  steps,
-  activeStep,
-  avatarUrl,
   done,
   profileType,
-  onClose,
   onGoBack,
   theme,
+  avatarProps,
+  stepperProps,
+  closeButtonProps,
 }) => {
-  const avatar = done ? null : <AvatarWrapper url={avatarUrl} profileType={profileType} />;
-  const closeButton = onClose && (
+  const avatar = done ? null : <AvatarWrapper {...avatarProps} profileType={profileType} />;
+  const closeButton = closeButtonProps && closeButtonProps.onClick && (
     <CloseButton
-      onClick={onClose}
       className={classNames('m-l-3', {
         'close-button-with-avatar': !done,
       })}
+      {...closeButtonProps}
     />
   );
   return (
@@ -48,7 +47,11 @@ const FlowNavigation = ({
       leftContent={
         <div className="m-lg-t-1">
           <Logo theme={theme} onGoBack={onGoBack} />
-          <BackButton steps={steps} activeStep={activeStep} onGoBack={onGoBack} />
+          <BackButton
+            steps={stepperProps.steps}
+            activeStep={stepperProps.activeStep}
+            onGoBack={onGoBack}
+          />
         </div>
       }
       rightContent={
@@ -60,7 +63,7 @@ const FlowNavigation = ({
       bottomContent={
         done || theme === Theme.DARK ? null : (
           <div className="tw-flow-navigation__stepper m-lg-t-1">
-            <Stepper activeStep={activeStep} steps={steps} />
+            <Stepper {...stepperProps} />
           </div>
         )
       }
@@ -76,32 +79,41 @@ FlowNavigation.ProfileType = ProfileType;
 FlowNavigation.Theme = Theme;
 
 FlowNavigation.defaultProps = {
-  activeStep: 0,
-  avatarUrl: '',
+  avatarProps: null,
   done: false,
   profileType: FlowNavigation.ProfileType.PERSONAL,
   onGoBack: null,
-  onClose: null,
   theme: Theme.LIGHT,
+  closeButtonProps: null,
 };
 
 FlowNavigation.propTypes = {
-  steps: Types.arrayOf(
-    Types.shape({
-      label: Types.node.isRequired,
-      onClick: Types.func,
-      hoverLabel: Types.node,
-    }),
-  ).isRequired,
-  activeStep: Types.number,
-  avatarUrl: Types.string,
+  closeButtonProps: Types.shape({
+    'aria-label': Types.string.isRequired,
+    onClick: Types.func.isRequired,
+  }),
+  stepperProps: Types.shape({
+    activeStep: Types.number,
+    steps: Types.arrayOf(
+      Types.shape({
+        label: Types.node.isRequired,
+        'aria-label': Types.string.isRequired,
+        'aria-la': Types.string.isRequired,
+        onClick: Types.func,
+        hoverLabel: Types.node,
+      }),
+    ).isRequired,
+  }).isRequired,
+  avatarProps: Types.shape({
+    url: Types.string,
+    'aria-label': Types.string,
+  }),
   done: Types.bool,
   profileType: Types.oneOf([
     FlowNavigation.ProfileType.PERSONAL,
     FlowNavigation.ProfileType.BUSINESS,
   ]),
   onGoBack: Types.func,
-  onClose: Types.func,
   theme: Types.oneOf([FlowNavigation.Theme.LIGHT, FlowNavigation.Theme.DARK]),
 };
 

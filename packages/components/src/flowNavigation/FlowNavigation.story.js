@@ -20,39 +20,46 @@ export const basic = () => {
 
   return (
     <FlowNavigation
-      activeStep={activeStep}
-      onClose={action('Close clicked')}
-      avatarUrl="https://github.com/transferwise.png"
       done={done}
       profileType={profileType}
+      avatarProps={{
+        url: 'https://github.com/transferwise.png',
+        'aria-label': 'Some text',
+      }}
+      stepperProps={{
+        activeStep,
+        steps: [
+          {
+            label: 'Amount',
+            'aria-label': 'Amount',
+            hoverLabel: (
+              <>
+                <div>
+                  <strong>100 GBP</strong>
+                </div>
+                0.2351 ETH
+              </>
+            ),
+          },
+          {
+            label: 'My details',
+            'aria-label': 'My details',
+            hoverLabel: (
+              <>
+                <div>
+                  <strong>Diana Jaramillo</strong>
+                </div>
+                dianajarm123@gmail.com
+              </>
+            ),
+          },
+          { label: 'Recipient', hoverLabel: 'Some person/dog' },
+          { label: 'Something', hoverLabel: 'Cool' },
+        ],
+      }}
+      closeButtonProps={{ onClick: action('Close clicked'), 'aria-label': 'Hello there!' }}
       onGoBack={action('go back')}
       theme={theme}
-      steps={[
-        {
-          label: 'Amount',
-          hoverLabel: (
-            <>
-              <div>
-                <strong>100 GBP</strong>
-              </div>
-              0.2351 ETH
-            </>
-          ),
-        },
-        {
-          label: 'My details',
-          hoverLabel: (
-            <>
-              <div>
-                <strong>Diana Jaramillo</strong>
-              </div>
-              dianajarm123@gmail.com
-            </>
-          ),
-        },
-        { label: 'Recipient', hoverLabel: 'Some person/dog' },
-        { label: 'Something', hoverLabel: 'Cool' },
-      ]}
     />
   );
 };

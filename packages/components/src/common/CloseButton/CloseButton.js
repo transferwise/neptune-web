@@ -5,11 +5,11 @@ import { Cross as CrossIcon } from '@transferwise/icons';
 
 import './CloseButton.css';
 
-export const CloseButton = ({ onClick, className }) => (
+export const CloseButton = ({ ...htmlProps }) => (
   <button
-    className={classNames('tw-close-button', 'btn-link', 'text-no-decoration', className)}
-    aria-label="Close"
-    onClick={onClick}
+    className={classNames('tw-close-button', 'btn-link', 'text-no-decoration', htmlProps.className)}
+    aria-label={htmlProps['aria-label']}
+    onClick={htmlProps.onClick}
   >
     <CrossIcon size={24} />
   </button>
@@ -17,11 +17,7 @@ export const CloseButton = ({ onClick, className }) => (
 
 CloseButton.propTypes = {
   onClick: Types.func.isRequired,
-  className: Types.string,
-};
-
-CloseButton.defaultProps = {
-  className: null,
+  'aria-label': Types.string.isRequired,
 };
 
 export default CloseButton;
