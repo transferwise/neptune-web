@@ -1,6 +1,4 @@
-// variables
 @import './variables/_colors.less';
-@import './variables/_sizes.less';
 @import './variables/_custom-media.less';
 @import './variables/_typography.less';
 
@@ -8,7 +6,18 @@
   background-color: var(--gray-base);
   font-size: var(--font-size-small);
   line-height: var(--line-height-base);
-  padding-top: var(--space-16);
+  padding-top: calc(var(--space-8) * 10);
+  padding-bottom: calc(var(--space-8) * 10);
+
+  @media (--screen-sm) {
+    padding-top: calc(var(--space-8) * 15);
+    padding-bottom: calc(var(--space-8) * 15);
+  }
+
+  @media (--screen-lg) {
+    padding-top: calc(var(--space-8) * 20);
+    padding-bottom: calc(var(--space-8) * 20);
+  }
 
   .footer-link,
   .link-icon {
@@ -21,6 +30,10 @@
     &:focus {
       color: var(--gray-darker);
     }
+  }
+
+  .link-icon {
+    text-decoration: none;
   }
 
   .footer-title {
@@ -100,13 +113,5 @@
 
   @media (--screen-xs-max) {
     position: relative;
-  }
-
-  @media (--screen-sm) {
-    padding-top: var(--space-24);
-  }
-
-  @media (--screen-lg) {
-    padding-top: var(--space-32);
   }
 }
