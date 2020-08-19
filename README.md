@@ -18,9 +18,9 @@ We are working on platform agnostic usage guidelines for components. Find them o
 
 Visit the [docs](https://transferwise.github.io/neptune-web/about/Home) or read more in the separate packages:
 
-- [React Components](https://github.com/transferwise/neptune-web/blob/master/packages/components)
-- [CSS](https://github.com/transferwise/neptune-web/blob/master/packages/css)
+- [React Components](https://github.com/transferwise/neptune-web/blob/main/packages/components)
+- [CSS](https://github.com/transferwise/neptune-web/blob/main/packages/css)
 
 ## Contribution
 
-We love contribution! 🙏 Read [the guide](https://github.com/transferwise/neptune-web/blob/master/CONTRIBUTING.md) to get started.
+We love contribution! 🙏 Read [the guide](https://github.com/transferwise/neptune-web/blob/main/CONTRIBUTING.md) to get started.
