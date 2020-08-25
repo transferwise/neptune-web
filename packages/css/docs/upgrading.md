@@ -1,39 +1,30 @@
 # Upgrading Guide
 
-## Available CSS Bundles
+For most users we recommended using `neptune.css`, the full Neptune CSS bundle that contains `neptune-core`, `neptune-addons`, and all available component CSS.
 
-### `neptune.css`
+# Custom properties
 
-- The full Neptune CSS bundle that contains `neptune-tokens`, `neptune-core`, `neptune-addons`, and all available CSS components.
+Custom properties can be found in `dist/props`. All officially supported custom properties are in [@transferwise/neptune-tokens](https://www.npmjs.com/package/@transferwise/neptune-tokens). For convenience, we expose all of these in a single file: `neptune-tokens.css`.
 
-### Variables
+If you were using a custom property which is not available in `neptune-tokens.css`, look for it in `legacy-custom-props.css`.
 
-- Semantic design tokens are now available as custom properties (CSS variables) from the @transferwise/neptune-tokens repo.
-- Bootstrap variables are still available from legacy-variables.less, but use of custom properties is encouraged.
+`--spacer` was particularly common: replace it with `--size-8` or other size tokens (from `@transferwise/neptune-tokens`). Avoid operations like `calc(var(--size) \* 5)` and use `var(--size-40)` instead.
 
-### `neptune-core.css`
+There are also other experimental custom properties in that folder, such as `custom-media`.
 
-#### Breaking change: `core.css` is renamed to `neptune-core.css`.
+# Variables
 
-#### Breaking change: `component-animations` moved to `neptune-addons.css`.
+There are a bunch of brand colours which have not yet been made available as custom properties. [@transferwise/neptune-tokens](https://www.npmjs.com/package/@transferwise/neptune-tokens) exposes a less file `colors-base.less` which has these colours. Use of this is recommended over the below.
 
-- Core typography now uses `rem` relative length unit for `font-size` and `unitless` values for `line-height`. This is to maximize accessibility, as it is generally best to use values that are relative to the user's default font size.
+Legacy less variables are exposed for use at `dist/less`. `legacy-variables.less` contains all variables that used to come from `bootstrap/less/variables.less`.
 
-- Old version of `normalize.css` is removed and only relevant rules from the new version of `normalize.css` (8.0.1) is used and consolidated into core.
-
-### `neptune-addons.css`
-
-- `responsive-utilities` renamed to `display-utilities` and moved to `neptune-addons.css` from `core`.
-
-## Breaking Changes
+# Breaking Changes
 
 - `core.css` is renamed to `neptune-core.css`.
 - `component-animations` moved to `/components` folder.
-- `responsive-utilities` moved to `neptune-addons.css`.
-
-## Deprecated Features
-
-- `--spacer` custom property. Replace its use for `--space-8`or other spacer tokens. Avoid operations as `calc(var(--spacer) \* 5)` and use `var(--spacer-40)` instead.
+- `responsive-utilities` renamed to `display-utilities` and moved to `neptune-addons.css` from `core`.
+- Core typography now uses `rem` relative length unit for `font-size` and `unitless` values for `line-height`. This is to maximize accessibility, as it is generally best to use values that are relative to the user's default font size.
+- Old version of `normalize.css` is removed and only relevant rules from the new version of `normalize.css` (8.0.1) is used and consolidated into core.
 
 ## Removed Rules
 

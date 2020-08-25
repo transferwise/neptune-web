@@ -43,43 +43,18 @@ For information on what classes are available, see the <DocLink href="/styles/co
 
 By default, apps come polyfilled. If you would like to use an unpolyfilled version because your app provides its own polyfills, see [Advanced Components Usage](#advanced-components-usage) below.
 
-### Tokens
-
-Neptune CSS exposes a number of of useful CSS properties on `:root`. You can find information about what is available in the <DocLink href="/components/tokens">tokens documentation</DocLink>. If you're not familiar with using custom properties, have a read of the documentation on [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/--*).
-
-```js
-import '@transferwise/neptune-css/dist/css/neptune.css';
-```
-
-```css
-.my-button {
-  background-color: var(--color-primary);
-  border-radius: var(--border-radius);
-  border: 1px solid transparent;
-
-  color: #fff;
-  cursor: pointer;
-
-  padding: var(--space-8);
-}
-```
-
 ### Advanced CSS Usage
 
-We expose three bundles for use. Our `neptune.css` bundle has everything. This is what you should use if using components. If you aren't using components, you have the option of just using Core, or Core + Addons. Follow the links for full documentation on what is available in each bundle.
+We expose three bundles for use. Our `neptune.css` bundle has everything. This is what you should use if using components. If you aren't using components, you have the option of just using `neptune-core.css`, or that and `neptune-addons.css`. <DocLink href="/styles/core">Core</DocLink> includes normalising and base styles such as typography. <DocLink href="/styles/addons">Addons</DocLink> provide a number of utility classes for display, spacing and more.
 
-**Note:** there are other files in the `dist` folder other than those mentioned here. Please do not rely on them, as we may remove them in future releases.
-
-<DocLink href="/styles/core">Core</DocLink> includes the tokens, as well as typography styles.
-
-<DocLink href="/styles/addons">Addons</DocLink> provide a number of utility classes for display, spacing
-and more.
+**Note:** there are other files in the `dist/css` folder other than those mentioned here. Please do not rely
+on them, as we may remove them in future releases.
 
 ```js
 // Everything
 import '@transferwise/neptune-css/dist/css/neptune.css';
 
-// Core (includes tokens)
+// Core
 import '@transferwise/neptune-css/dist/css/neptune-core.css';
 
 // Addons

@@ -16,17 +16,27 @@ const addPwd = (path) => `${process.env.PWD}/${path}`;
 const src = addPwd(argv.src || 'src/**');
 const dest = addPwd(argv.dest || 'dist/css');
 
-// Custom props don't need to be compiled. For now we presume they're in the variables folder inside the main source.
 const copyCustomProps = () => {
   return gulp
-    .src([`${src}/variables/*.less`])
-    .pipe(cssimport({ includePaths: ['../../node_modules'] }))
-    .pipe(changed('props')) // Only copy over files that aren't already in the destination
-    .pipe(gulp.dest(`${dest}/variables`));
+    .src([`${src}/*.{css,less}`])
+    .pipe(less())
+    .pipe(gulp.dest(addPwd(argv.dest || 'dist/props')));
 };
 
 // Watch props
-const watchCustomProps = () => gulp.watch([`${src}/variables/*.less`], copyCustomProps);
+const watchCustomProps = () => gulp.watch([`${src}/*.{css,less}`], copyCustomProps);
+
+// Variables props don't need to be compiled
+const copyVariables = () => {
+  return gulp
+    .src([`${src}/*.less`])
+    .pipe(cssimport({ includePaths: ['../../node_modules'] }))
+    .pipe(changed('props')) // Only copy over files that aren't already in the destination
+    .pipe(gulp.dest(addPwd(argv.dest || 'dist/less')));
+};
+
+// Watch vars
+const watchVariables = () => gulp.watch([`${src}/*.less`], copyVariables);
 
 // Compile all files
 const compileLess = () => {
@@ -56,3 +66,6 @@ exports.watchLess = watchLess;
 
 exports.copyCustomProps = copyCustomProps;
 exports.watchCustomProps = watchCustomProps;
+
+exports.copyVariables = copyVariables;
+exports.watchVariables = watchVariables;

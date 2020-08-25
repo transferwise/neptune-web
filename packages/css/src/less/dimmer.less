@@ -1,7 +1,4 @@
-/* Level 4 */
-
-@import './variables/_transitions.less';
-@import './variables/_zindex.less';
+@import (reference) '../variables/legacy-variables.less';
 
 .dimmer {
   position: fixed;
@@ -12,8 +9,8 @@
   height: 100%;
   width: 100%;
   background: rgba(55, 81, 126, 0);
-  transition: var(--transition-background);
-  z-index: var(--zindex-modal);
+  transition: background-color cubic-bezier(0, 0.94, 0.62, 1) 350ms;
+  z-index: @zindex-modal;
 
   &.dimmer--enter-done {
     background: rgba(55, 81, 126, 0.8);
@@ -28,7 +25,7 @@
   &.dimmer--exit-fade,
   &.dimmer--enter-fade {
     > * {
-      transition: var(--transition-opacity);
+      transition: opacity cubic-bezier(0, 0.94, 0.62, 1) 350ms;
     }
   }
 

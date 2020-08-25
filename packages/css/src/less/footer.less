@@ -1,34 +1,33 @@
-@import './variables/_colors.less';
-@import './variables/_custom-media.less';
-@import './variables/_typography.less';
+@import (reference) '../variables/neptune-tokens.less';
+@import (reference) './variables/_typography.less';
 
 .footer {
-  background-color: var(--gray-base);
-  font-size: var(--font-size-small);
-  line-height: var(--line-height-base);
-  padding-top: calc(var(--space-8) * 10);
-  padding-bottom: calc(var(--space-8) * 10);
+  background-color: @color-base-smoke-fade;
+  font-size: @font-size-small;
+  line-height: @line-height-base;
+  padding-top: calc(var(--size-8) * 10);
+  padding-bottom: calc(var(--size-8) * 10);
 
   @media (--screen-sm) {
-    padding-top: calc(var(--space-8) * 15);
-    padding-bottom: calc(var(--space-8) * 15);
+    padding-top: calc(var(--size-8) * 15);
+    padding-bottom: calc(var(--size-8) * 15);
   }
 
   @media (--screen-lg) {
-    padding-top: calc(var(--space-8) * 20);
-    padding-bottom: calc(var(--space-8) * 20);
+    padding-top: calc(var(--size-8) * 20);
+    padding-bottom: calc(var(--size-8) * 20);
   }
 
   .footer-link,
   .link-icon {
-    color: var(--brand-grey-plus-10);
+    color: @color-base-smoke-fade;
     font-weight: normal;
     text-decoration: underline;
 
     &:hover,
     &:active,
     &:focus {
-      color: var(--gray-darker);
+      color: #384347;
     }
   }
 
@@ -37,8 +36,12 @@
   }
 
   .footer-title {
-    font-size: var(--font-size-small);
+    font-size: @font-size-small;
     color: var(--color-text-primary);
+
+    @media (--screen-md) {
+      font-size: @font-size-small--desktop;
+    }
 
     .footer-link {
       color: var(--color-text-primary);
@@ -47,7 +50,7 @@
       &:hover,
       &:active,
       &:focus {
-        color: var(--brand-grey-plus-10);
+        color: @color-base-grey-mid;
       }
     }
   }
@@ -64,42 +67,42 @@
 
   .link-icon {
     svg {
-      fill: var(--brand-grey-plus-10);
+      fill: @color-base-grey-mid;
 
       &:hover,
       &:active,
       &:focus {
-        fill: var(--gray-darker);
+        fill: #384347;
       }
     }
   }
 
   &.footer-inverse {
-    background: var(--brand-navy);
+    background: @color-base-navy-light;
 
     .footer-link,
     .link-icon {
-      color: var(--brand-smoke-plus-20);
+      color: @color-base-smoke-fade;
 
       &:hover,
       &:active,
       &:focus {
-        color: var(--brand-smoke-minus-10);
+        color: @color-base-smoke-dark;
       }
 
       svg {
-        fill: var(--brand-smoke-plus-20);
+        fill: @color-base-smoke-fade;
 
         &:hover,
         &:active,
         &:focus {
-          fill: var(--brand-smoke-minus-10);
+          fill: @color-base-smoke-dark;
         }
       }
     }
 
     .footer-title {
-      color: var(--brand-smoke-plus-20);
+      color: @color-base-smoke-fade;
     }
 
     hr {
@@ -107,7 +110,7 @@
     }
 
     .tiny {
-      color: var(--brand-white);
+      color: @color-base-white;
     }
   }
 

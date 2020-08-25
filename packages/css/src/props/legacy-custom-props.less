@@ -1,0 +1,85 @@
+@import (reference) '../variables/neptune-tokens.less';
+
+:root {
+  // DEPRECATED!
+  // Use neptune-tokens.css. If the token you want isn't available there,
+  // raise an issue in @transferwise/neptune-tokens.
+
+  --border-radius: 3px;
+  --spacer: 8px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+
+  // Semantic colours that aren't a part of Neptune tokens yet
+  --color-text-link-hover: @color-base-blue-mid;
+  --color-text-link-active: @color-base-blue-dark;
+
+  // Deprecated
+  --brand-white: @color-base-white;
+  --link-color: var(--color-text-link);
+
+  // Blues
+  --brand-pale-blue: #dbf0fd;
+  --brand-navy-minus-20: @color-base-navy-dark;
+  --brand-navy-minus-10: @color-base-navy-mid;
+  --brand-navy: @color-base-navy-light;
+  --brand-blue-minus-20: #111824;
+  --brand-blue-minus-10: #192439;
+  --brand-blue: #223049;
+
+  // Light Blues
+  --brand-light-blue-minus-10: @color-base-blue-mid;
+  --brand-light-blue: @color-base-blue-light;
+
+  // Dark Grays
+  --brand-grey-plus-10: @color-base-grey-mid;
+
+  // Light Grays
+  --brand-smoke-minus-10: @color-base-smoke-dark;
+  --brand-smoke: @color-base-smoke-mid;
+  --brand-smoke-plus-10: @color-base-smoke-light;
+  --brand-smoke-plus-20: @color-base-smoke-fade;
+
+  // Greens
+  --brand-green-minus-10: @color-base-green-mid;
+  --brand-green: @color-base-green-light;
+
+  // Color Mapping
+  --gray-base: var(--brand-smoke-plus-20);
+  --gray-darker: #384347;
+  --gray-light: @color-base-grey-light;
+  --brand-primary: var(--brand-navy);
+  --body-bg: var(--brand-white);
+  --text-bold-color: var(--brand-navy-minus-10);
+
+  // Font sizes
+  --font-size-xx-large: 2.8rem; // 42px
+  --font-size-x-large: 1.8666666667rem; // 28px
+  --font-size-large: 1.4666666667rem; // 22px
+  --font-size-medium: 1.2rem; // 18px
+  --font-size: 0.9375rem; // 15px
+  --font-size-small: 0.9333333333rem; // 14px
+  --font-size-x-small: 0.8rem; // 12px
+  --line-height: 1.6; // 24/15
+}
+
+@media (--screen-md) {
+  :root {
+    --font-size-xx-large: 2.625rem; // 42px
+    --font-size-x-large: 1.75rem; // 28px
+    --font-size-large: 1.375rem; // 22px
+    --font-size-medium: 1.125rem; // 18px
+    --font-size: 1rem; // 16px
+    --font-size-small: 0.875rem; // 14px
+    --font-size-x-small: 0.75rem; // 12px
+    --line-height: 1.5; // 24/16px
+  }
+}

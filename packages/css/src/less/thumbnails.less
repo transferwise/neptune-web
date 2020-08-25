@@ -1,24 +1,21 @@
-@import './variables/_colors.less';
-@import './variables/_typography.less';
+@import (reference) '../variables/neptune-tokens.less';
+@import (reference) './variables/_typography.less';
 
 .thumbnail {
-  --thumbnail-padding: 0;
-  --thumbnail-bg: var(--body-bg);
-  --thumbnail-border: var(--brand-smoke-plus-10);
-  --thumbnail-border-radius: var(--border-radius-base);
-  --thumbnail-caption-color: var(--color-text-secondary);
-  --thumbnail-caption-padding: 24px;
-
   display: block;
   position: relative;
   width: 100%;
-  margin-bottom: var(--space-24);
-  padding: var(--thumbnail-padding);
+  margin-bottom: var(--size-24);
+  padding: 0;
   transition: border 0.2s ease-in-out;
-  border: 1px solid var(--thumbnail-border);
-  border-radius: var(--thumbnail-border-radius);
-  background-color: var(--thumbnail-bg);
-  line-height: var(--line-height);
+  border: 1px solid var(--color-border-neutral);
+  border-radius: 3px;
+  background-color: @color-base-white;
+  line-height: @line-height-base;
+
+  @media (--screen-md) {
+    line-height: @line-height-base--desktop;
+  }
 
   > img,
   a > img {
@@ -41,14 +38,14 @@
   a&:hover,
   a&:focus,
   a&.active {
-    border-color: var(--link-color);
+    border-color: var(--color-text-link);
   }
 
   // Image captions
 
   .caption {
-    padding: var(--thumbnail-caption-padding);
-    color: var(--thumbnail-caption-color);
+    padding: var(--size-24);
+    color: var(--color-text-secondary);
 
     :last-child {
       margin-bottom: 0;
@@ -58,10 +55,10 @@
   .thumbnail-title {
     position: absolute;
     z-index: 1;
-    top: var(--thumbnail-caption-padding);
-    margin-right: var(--thumbnail-caption-padding);
-    margin-left: var(--thumbnail-caption-padding);
-    color: var(--brand-white);
+    top: var(--size-24);
+    margin-right: var(--size-24);
+    margin-left: var(--size-24);
+    color: @color-base-white;
   }
 
   .thumbnail-title + img {

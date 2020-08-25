@@ -1,7 +1,7 @@
-@import 'bootstrap/less/variables';
+@import (reference) '../variables/neptune-tokens.less';
 
 .tw-flow-navigation {
-  border-bottom: 1px solid @brand-smoke-plus-10;
+  border-bottom: 1px solid var(--color-border-neutral);
   position: relative;
 
   &--done {
@@ -9,7 +9,7 @@
   }
 
   .flag {
-    margin-top: 4px;
+    margin-top: var(--size-4);
     background-position: left center;
     opacity: 1;
     transform: rotate(0deg);
@@ -27,23 +27,23 @@
   &__wrapper {
     padding-bottom: 0;
 
-    @media only screen and (min-width: @screen-sm-min) {
-      padding-bottom: 24px;
+    @media (--screen-sm) {
+      padding-bottom: var(--size-24);
     }
   }
 
   &__stepper {
-    padding-right: 8px;
-    padding-left: 8px;
+    padding-right: var(--size-8);
+    padding-left: var(--size-8);
 
-    @media only screen and (min-width: @screen-sm-min) and (max-width: @screen-md-max) {
+    @media (--screen-sm) and (--screen-md-max) {
       padding-right: 36px;
       padding-left: 36px;
     }
 
-    @media only screen and (min-width: @screen-lg-min) {
-      padding-right: 24px;
-      padding-left: 24px;
+    @media (--screen-lg) {
+      padding-right: var(--size-24);
+      padding-left: var(--size-24);
     }
   }
 
@@ -61,7 +61,7 @@
     line-height: 40px !important;
     position: relative;
     top: -2px;
-    margin-right: 12px;
+    margin-right: var(--size-12);
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
@@ -82,12 +82,12 @@
   &__close-button {
     display: inline;
     transition: color 0.15s ease-in-out;
-    color: @brand-light-blue;
+    color: var(--color-text-link);
     outline: 0;
     padding: 0;
 
     &:hover {
-      color: @brand-light-blue-minus-10;
+      color: @color-text-link-hover;
     }
   }
 
@@ -96,7 +96,7 @@
       cursor: default;
       content: '';
       height: 100%;
-      border-left: solid 1px @brand-smoke-plus-10;
+      border-left: solid 1px var(--color-border-neutral);
       left: -48px;
       position: relative;
     }
@@ -105,8 +105,8 @@
   .m-lg-t-1 {
     margin-top: 0;
 
-    @media only screen and (min-width: @screen-lg-min) {
-      margin-top: 8px;
+    @media (--screen-lg) {
+      margin-top: var(--size-8);
     }
   }
 }

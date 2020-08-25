@@ -1,3 +1,5 @@
+import { DocLink } from '../../../utils/pageUtils';
+
 export function ColorToken(props) {
   return (
     <div className="d-flex align-items-center m-b-2">
@@ -15,7 +17,9 @@ export function ColorToken(props) {
   );
 }
 
-**Note:** To use these properties in your application, you need `neptune-tokens.css` or `neptune-core.css` on your page. Tokens are exposed on `:root`. Refer to [Installing CSS](/about/Setup#installing-css) on the Setup page to get started.
+Semantic colours as custom properties for you to use in your application.
+
+**Note:** If this is your first time using custom properties in your application, read <DocLink href="/about/Styles#tokens-custom-properties">our guide</DocLink> first to get set up.
 
 ## Semantic colors
 
@@ -66,10 +70,6 @@ Neptune uses semantic colors, and distributes them as custom properties.
   <ColorToken token="--color-background-negative" />
   <ColorToken token="--color-background-warning" />
 </div>
-
-## Brand colors
-
-Brand colors are available as `LESS` variables from `variables/_colors.less`.
 
 export const meta = {
   name: 'Colors',

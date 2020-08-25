@@ -1,5 +1,3 @@
-@import './variables/_custom-media.less';
-@import (reference) './variables/_spacing.less';
 @import './addons/_spacing-utilities.less';
 
 .drawer {
@@ -24,8 +22,8 @@
   }
 
   .drawer-header {
-    height: calc(var(--spacer) * 7);
-    min-height: calc(var(--spacer) * 7);
+    height: var(--size-56);
+    min-height: var(--size-56);
 
     &.drawer-header--withborder {
       box-shadow: inset 0 -1px 0 0 rgb(226, 230, 232);
@@ -56,8 +54,8 @@
 @media (--screen-md) {
   .drawer {
     .drawer-header {
-      height: calc(var(--spacer) * 8);
-      min-height: calc(var(--spacer) * 8);
+      height: var(--size-64);
+      min-height: var(--size-64);
     }
 
     .drawer-p-x {

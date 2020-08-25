@@ -1,15 +1,11 @@
-/* Level 4 */
-
-@import './variables/_colors.less';
-@import './variables/_transitions.less';
-@import './variables/_zindex.less';
+@import (reference) '../variables/legacy-variables.less';
 
 .sliding-panel {
   transform: translateX(-100%);
-  transition: var(--transition-transform);
-  background: var(--brand-white);
+  transition: transform cubic-bezier(0, 0.94, 0.62, 1) 350ms;
+  background: var(--color-background-elevated);
   overflow-y: auto;
-  z-index: var(--zindex-navbar-fixed);
+  z-index: @zindex-navbar-fixed;
   position: absolute;
 
   &.sliding-panel--fixed {

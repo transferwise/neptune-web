@@ -198,11 +198,11 @@
 
 [class^='grid--'],
 [class*=' grid--'] {
-  grid-gap: calc(var(--spacer) * 4);
+  grid-gap: var(--size-32);
 
   [class^='grid--'],
   [class*=' grid--'] {
-    grid-gap: calc(var(--spacer) * 2);
+    grid-gap: var(--size-16);
   }
 }
 
@@ -223,7 +223,7 @@
 }
 
 .grid-row-gap--6 {
-  grid-row-gap: calc(var(--spacer) * 6);
+  grid-row-gap: var(--size-48);
 }
 
 /* Items */
