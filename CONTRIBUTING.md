@@ -1,6 +1,6 @@
 # Contributing
 
-Follow the instructions below to get started. Branch from `master`, and submit a pull request when you're ready.
+Follow the instructions below to get started. Branch from `main`, and submit a pull request when you're ready.
 
 ## Things to know
 
@@ -104,4 +104,4 @@ chore: updating the ci build config
 
 ## Releasing
 
-The [documentation](https://transferwise.github.io/neptune-web) and the new npm release will be automatically deployed when merging changes to master. Our use of conventional commits means we can bump package versions automatically based on the changes made. It also allows us to generate Changelogs.
+The [documentation](https://transferwise.github.io/neptune-web) and the new npm release will be automatically deployed when merging changes to `main`. Our use of conventional commits means we can bump package versions automatically based on the changes made. It also allows us to generate Changelogs.

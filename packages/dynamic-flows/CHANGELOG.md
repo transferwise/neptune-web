@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.4.0...@transferwise/dynamic-flows@3.4.1) (2020-08-19)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+# [3.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.3.3...@transferwise/dynamic-flows@3.4.0) (2020-08-18)
+
+
+### Features
+
+* add a layout service for converting dynamic flow steps without layouts to DynamicLayout format ([92d4488](https://github.com/transferwise/neptune-web/commit/92d4488599c6b0311ff98d5934792519899f6db7))
+
+
+
+
+
 ## [3.3.3](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.3.2...@transferwise/dynamic-flows@3.3.3) (2020-08-12)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows

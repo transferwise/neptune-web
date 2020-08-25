@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@2.1.2...@transferwise/neptune-css@2.1.3) (2020-08-19)
+
+
+### Bug Fixes
+
+* footer padding and icon underline ([#529](https://github.com/transferwise/neptune-web/issues/529)) ([242a394](https://github.com/transferwise/neptune-web/commit/242a3941528741c61cd29cf8a05ecae047bc01c9))
+
+
+
+
+
 ## [2.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@2.1.1...@transferwise/neptune-css@2.1.2) (2020-08-12)
 
 **Note:** Version bump only for package @transferwise/neptune-css

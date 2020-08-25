@@ -3735,40 +3735,10 @@
   resolved "https://registry.yarnpkg.com/@transferwise/icons/-/icons-2.3.0.tgz#b7bbea6aba4cb7f350783615c163c969aabc3230"
   integrity sha512-616alyY2P1xdA4nokH+fDcue2gPTGtOlFw9srkERnOLr3ZkVTxr32UJagMpb3VTwPGXvwc2ENNQvyb++T9Oigw==
 
-"@transferwise/neptune-css@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@transferwise/neptune-css/-/neptune-css-1.3.1.tgz#8f6d2f0395075c61a3cfb066356ccd48b11acf85"
-  integrity sha512-uk2G5unaG0sexdSy6flSv9BKtf+lqg5wYgHwwdPWhG/LV61DW688K4Q71YV+fdGnZY610B+ckAqQ3Joy54rshA==
-  dependencies:
-    "@transferwise/neptune-tokens" "^0.0.2"
-    bootstrap "github:transferwise/bootstrap#semver:^5.20.0"
-    svgo "1.3.2"
-
-"@transferwise/neptune-tokens@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@transferwise/neptune-tokens/-/neptune-tokens-0.0.2.tgz#3cd4c057050b6f76366224d14a64e5292ae61ef8"
-  integrity sha512-MdhmK0is4v+AFf+9g6tboC3mCJOGjI2wqaaDYAx1pgNCak9blq24ORy2THvPJyfPDOJgAl1QBXXejfsUr6NCpA==
-
 "@transferwise/neptune-tokens@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@transferwise/neptune-tokens/-/neptune-tokens-0.1.0.tgz#0d5080c00a0dc2c4034b97da40a08655368391a9"
   integrity sha512-XbLXGGO53p/ISPWQC92Jju80MrMH9LhNs1Fuz1u52Dgzsi67EsFJGDVTgIc24poVpmxsvYyV1kOOM1jDJgeDIw==
-
-"@transferwise/test-config@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@transferwise/test-config/-/test-config-1.0.5.tgz#72b4520f605aad65d7a54df4da43336c9be13acd"
-  integrity sha512-kc8WLESNBekTNSM1cuXnmZ3nLXtgNZNQUsRKAqqG7qJNsXBLoW/zotTVG2vtA/zRcQDhb8qAlEwih5ipQdnL+g==
-  dependencies:
-    "@testing-library/jest-dom" "^5.7.0"
-    "@testing-library/react" "^10.0.4"
-    "@testing-library/react-hooks" "^3.2.1"
-    "@testing-library/user-event" "^10.2.3"
-    enzyme "^3.11.0"
-    enzyme-adapter-react-16 "^1.15.2"
-    jest "^26.0.1"
-    jest-cli "^26.0.1"
-    jest-fetch-mock "^3.0.3"
-    jest-runner-eslint "^0.9.0"
 
 "@types/babel__core@^7.1.7":
   version "7.1.7"
@@ -12454,29 +12424,22 @@ kind-of@^2.0.1:
   dependencies:
     is-buffer "^1.0.2"
 
-kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
+kind-of@^3.0.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
   integrity sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ=
   dependencies:
     is-buffer "^1.1.5"
 
-kind-of@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-4.0.0.tgz#20813df3d712928b207378691a45066fae72dd57"
-  integrity sha1-IIE989cSkosgc3hpGkUGb65y3Vc=
-  dependencies:
-    is-buffer "^1.1.5"
-
-kind-of@^5.0.0, kind-of@^5.0.2:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-5.1.0.tgz#729c91e2d857b7a419a1f9aa65685c4c33f5845d"
-  integrity sha512-NGEErnH6F2vUuXDh+OlbcKW7/wOcfdRHaZ7VWtqCztfHri/++YKmP51OdWeGPuqCOba6kk2OTe5d02VmTB80Pw==
-
-kind-of@^6.0.0, kind-of@^6.0.2, kind-of@^6.0.3:
+kind-of@^3.0.3, kind-of@^3.2.0, kind-of@^4.0.0, kind-of@^5.0.0, kind-of@^6.0.0, kind-of@^6.0.2, kind-of@^6.0.3:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
+
+kind-of@^5.0.2:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-5.1.0.tgz#729c91e2d857b7a419a1f9aa65685c4c33f5845d"
+  integrity sha512-NGEErnH6F2vUuXDh+OlbcKW7/wOcfdRHaZ7VWtqCztfHri/++YKmP51OdWeGPuqCOba6kk2OTe5d02VmTB80Pw==
 
 klaw@^1.0.0:
   version "1.3.1"
