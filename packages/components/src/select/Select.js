@@ -420,7 +420,7 @@ export default class Select extends Component {
         <a className={`${this.style('tw-select-filter-link')} ${this.style('p-a-0')}`}>
           <div className={this.style('input-group')}>
             <span className={this.style('input-group-addon')}>
-              <SearchIcon />
+              <SearchIcon className={`${this.style('tw-icon')} ${this.style('tw-icon-search')}`} />
             </span>
             <input
               type="text"
@@ -497,7 +497,7 @@ export default class Select extends Component {
       >
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a disabled={option.disabled}>
-          <Option {...option} />
+          <Option {...option} classNames={this.props.classNames} />
         </a>
       </li>
     );
@@ -506,7 +506,7 @@ export default class Select extends Component {
   renderButtonInternals() {
     const { selected, placeholder } = this.props;
     if (selected) {
-      return <Option {...selected} selected />;
+      return <Option {...selected} classNames={this.props.classNames} selected />;
     }
     return <span className={this.style('form-control-placeholder')}>{placeholder}</span>;
   }
@@ -580,7 +580,12 @@ export default class Select extends Component {
               onClick={this.handleButtonClick}
             >
               {this.renderButtonInternals()}
-              <Chevron disabled={disabled} className="tw-select-chevron" />
+              <Chevron
+                disabled={disabled}
+                className={`${s('tw-icon')} ${s('tw-chevron-up-icon')} ${s('tw-chevron')} ${s(
+                  'chevron-color',
+                )} ${s('bottom')} ${s('tw-select-chevron')}`}
+              />
             </button>
             {animationState !== 'exited' && this.renderOptionsList()}
             {animationState !== 'exited' && this.renderOverlay()}
