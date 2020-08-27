@@ -4,8 +4,6 @@ import SnackbarProvider, { SnackbarConsumer } from './SnackbarProvider';
 import { Snackbar } from './Snackbar';
 import Button from '../button';
 
-import '@transferwise/neptune-css/dist/css/snackbar.css';
-
 export default {
   component: Snackbar,
   title: 'Snackbar',

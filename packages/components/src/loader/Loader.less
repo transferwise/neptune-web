@@ -1,5 +1,3 @@
-@import 'bootstrap/less/variables';
-
 @size-names: xs sm md lg xl;
 @sizes: 24px 48px 72px 96px 128px;
 
@@ -120,7 +118,7 @@
     width: 100%;
     height: 11%;
     margin: 7.5% 0;
-    background-color: @brand-light-blue;
+    background-color: var(--color-accent);
 
     .for(@c: 1) when (@c <= length(@sequences)) {
       &:nth-child(@{c}) {

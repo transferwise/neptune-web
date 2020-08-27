@@ -8,7 +8,7 @@ import Stepper from '../stepper';
 import Header from '../header';
 import { Theme, ProfileType } from '../common';
 
-import '@transferwise/neptune-css/dist/css/flowNavigation.css';
+import './FlowNavigation.css';
 
 /**
  * FlowNavigation is a header component that provides a logo, avatar and close button, for use in overlay screens.

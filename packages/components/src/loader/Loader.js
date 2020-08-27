@@ -2,7 +2,6 @@ import React from 'react';
 import Types from 'prop-types';
 import classnames from 'classnames';
 import { Size } from '../common';
-import '@transferwise/neptune-css/dist/css/loader-borderless.css';
 
 const Loader = (props) => {
   const { small, size, classNames } = props;

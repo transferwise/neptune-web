@@ -3,7 +3,6 @@ const less = require('gulp-less');
 const postcss = require('gulp-postcss');
 const plumber = require('gulp-plumber');
 const cached = require('gulp-cached');
-const changed = require('gulp-changed');
 const dependents = require('gulp-dependents');
 const print = require('gulp-print').default;
 const { argv } = require('yargs');
@@ -16,27 +15,15 @@ const addPwd = (path) => `${process.env.PWD}/${path}`;
 const src = addPwd(argv.src || 'src/**');
 const dest = addPwd(argv.dest || 'dist/css');
 
-const copyCustomProps = () => {
+const copyPropsAndVars = () => {
   return gulp
     .src([`${src}/*.{css,less}`])
-    .pipe(less())
+    .pipe(cssimport({ includePaths: ['../../node_modules'] }))
     .pipe(gulp.dest(addPwd(argv.dest || 'dist/props')));
 };
 
-// Watch props
-const watchCustomProps = () => gulp.watch([`${src}/*.{css,less}`], copyCustomProps);
-
-// Variables props don't need to be compiled
-const copyVariables = () => {
-  return gulp
-    .src([`${src}/*.less`])
-    .pipe(cssimport({ includePaths: ['../../node_modules'] }))
-    .pipe(changed('props')) // Only copy over files that aren't already in the destination
-    .pipe(gulp.dest(addPwd(argv.dest || 'dist/less')));
-};
-
-// Watch vars
-const watchVariables = () => gulp.watch([`${src}/*.less`], copyVariables);
+// Watch props / vars
+const watchPropsAndVars = () => gulp.watch([`${src}/*.{css,less}`], copyPropsAndVars);
 
 // Compile all files
 const compileLess = () => {
@@ -64,8 +51,5 @@ const watchLess = () => gulp.watch([src, `!**/variables/*.less`], compileLess);
 exports.compileLess = compileLess;
 exports.watchLess = watchLess;
 
-exports.copyCustomProps = copyCustomProps;
-exports.watchCustomProps = watchCustomProps;
-
-exports.copyVariables = copyVariables;
-exports.watchVariables = watchVariables;
+exports.copyPropsAndVars = copyPropsAndVars;
+exports.watchPropsAndVars = watchPropsAndVars;

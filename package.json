@@ -31,7 +31,7 @@
     "@commitlint/config-conventional": "^8.3.4",
     "@transferwise/eslint-config": "^6.0.0",
     "@transferwise/files-scaffold": "^1.0.1",
-    "@transferwise/neptune-tokens": "^0.1.0",
+    "@transferwise/neptune-tokens": "^1.0.0",
     "eslint": "^6.8.0",
     "eslint-config-react-app": "^5.2.1",
     "eslint-loader": "^4.0.0",
