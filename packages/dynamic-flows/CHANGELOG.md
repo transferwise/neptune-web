@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.5.0...@transferwise/dynamic-flows@3.6.0) (2020-08-28)
+
+
+### Features
+
+* ADS-1539 empty validation on optional field ([#541](https://github.com/transferwise/neptune-web/issues/541)) ([551c6f3](https://github.com/transferwise/neptune-web/commit/551c6f3253f7d4873ae1e6cc619302448be5ea21))
+
+
+
+
+
 # [3.5.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.4.1...@transferwise/dynamic-flows@3.5.0) (2020-08-28)
 
 
