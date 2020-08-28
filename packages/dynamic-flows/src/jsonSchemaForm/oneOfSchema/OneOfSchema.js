@@ -73,6 +73,7 @@ const OneOfSchema = (props) => {
       description: schema.description,
       const: index,
       disabled: schema.disabled,
+      icon: schema.icon,
     };
   };
 

@@ -148,6 +148,32 @@ describe('FormControl', () => {
       selectElem.simulate('blur');
     });
 
+    it('should enable search when number of options exceeds predefined amount', () => {
+      const options = [];
+      for (let i = 0; i < 20; i += 1) {
+        options.push({ value: i, label: 'something' });
+      }
+      props = {
+        type: 'select',
+        options,
+      };
+      component = mount(<FormControl {...{ ...defaultProps, ...props }} />);
+      expect(component.find(Select).prop('search')).toEqual(true);
+    });
+
+    it('should disable search when number of options is less than predefined amount', () => {
+      const options = [];
+      for (let i = 0; i < 19; i += 1) {
+        options.push({ value: i, label: 'something' });
+      }
+      props = {
+        type: 'select',
+        options,
+      };
+      component = mount(<FormControl {...{ ...defaultProps, ...props }} />);
+      expect(component.find(Select).prop('search')).toEqual(false);
+    });
+
     it('should allow search', () => {
       const onSearchChange = jest.fn();
       component.setProps({ onSearchChange });

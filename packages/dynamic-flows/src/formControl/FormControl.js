@@ -56,6 +56,7 @@ export default class FormControl extends PureComponent {
           Types.object,
           Types.instanceOf(Date),
         ]).isRequired,
+        note: Types.string,
         secondary: Types.string,
       }),
     ),
@@ -305,6 +306,7 @@ export default class FormControl extends PureComponent {
               this.setState({ selectedOption: newValue });
               this.handleOnChange(newValue);
             }}
+            search={options.length >= 20}
             onFocus={this.handleOnFocus}
             onBlur={this.handleOnBlur}
             required={required}
