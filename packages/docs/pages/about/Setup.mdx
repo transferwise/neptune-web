@@ -25,8 +25,11 @@ npm install react react-dom prop-types currency-flags # peer dependencies
 ## Usage
 
 ```js
-// This line only needs to be imported once in your application
+// These CSS imports only need to be imported once in your application
 import '@transferwise/neptune-css/dist/css/neptune.css';
+
+// This is only necessary if you are using the UMD build
+import '@transferwise/components/build/main.css';
 
 import { Button } from '@transferwise/components';
 
@@ -43,7 +46,7 @@ For information on what classes are available, see the <DocLink href="/styles/co
 
 By default, apps come polyfilled. If you would like to use an unpolyfilled version because your app provides its own polyfills, see [Advanced Components Usage](#advanced-components-usage) below.
 
-### Advanced CSS Usage
+## Advanced CSS Usage
 
 We expose three bundles for use. Our `neptune.css` bundle has everything. This is what you should use if using components. If you aren't using components, you have the option of just using `neptune-core.css`, or that and `neptune-addons.css`. <DocLink href="/styles/core">Core</DocLink> includes normalising and base styles such as typography. <DocLink href="/styles/addons">Addons</DocLink> provide a number of utility classes for display, spacing and more.
 
@@ -61,11 +64,11 @@ import '@transferwise/neptune-css/dist/css/neptune-core.css';
 import '@transferwise/neptune-css/dist/css/neptune-addons.css';
 ```
 
-### Advanced Components Usage
+## Advanced Components Usage
 
 The components are exposed in two formats: UMD and ES. We also provide polyfilled and non-polyfilled versions.
 
-#### Which bundle should I use?
+### Which bundle should I use?
 
 UMD is a combination of CommonJS and AMD. It works in both browser and server environments (Node). ES uses the standardized ES module format.
 
