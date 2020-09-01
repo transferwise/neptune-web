@@ -13,7 +13,7 @@
     "build:compile-css": "gulp compileLess --src='static/assets' --dest='static/assets'",
     "docs:deploy": "npm-run-all deploy:*",
     "deploy:export": "next export -o docs-build && touch docs-build/.nojekyll",
-    "deploy:gh-pages": "deploy-to-github-pages -d docs-build",
+    "deploy:gh-pages": "deploy-to-github-pages -d docs-build -m main",
     "lint": "eslint components/ pages/ utils/",
     "lint:fix": "yarn lint --fix",
     "test": "jest --config ../../node_modules/@transferwise/test-config/test/jest.lint.js"
@@ -63,7 +63,7 @@
     "@babel/core": "^7.5.5",
     "@transferwise/less-config": "^2.0.2",
     "babel-plugin-inline-react-svg": "^1.1.1",
-    "deploy-to-github-pages": "1.0.0-beta.5"
+    "deploy-to-github-pages": "1.0.0-beta.7"
   },
   "peerDependencies": {
     "react": "16.13.1",
