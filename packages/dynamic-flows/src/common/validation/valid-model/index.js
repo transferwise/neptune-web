@@ -7,6 +7,7 @@ import {
   isArray,
   isUndefined,
   isNull,
+  isEmpty,
 } from '@transferwise/neptune-validation';
 
 function getValidModelParts(model, schema) {
@@ -72,6 +73,9 @@ function cleanModelWithArraySchema(model, schema) {
 
 function cleanModelWithStringSchema(model) {
   if (isString(model)) {
+    if (isEmpty(model)) {
+      return null;
+    }
     return model;
   }
   return null;

@@ -7696,10 +7696,10 @@ depd@~1.1.2:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
-deploy-to-github-pages@1.0.0-beta.5:
-  version "1.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/deploy-to-github-pages/-/deploy-to-github-pages-1.0.0-beta.5.tgz#e7acd50bee1a4b6308620227ff72e106c0a04657"
-  integrity sha512-5Q9XjSXm3PS22LHSTCASL+dYPQOXlJl0tIaxCt7LWpCj+YnDcdTGONXB/yBcCAx5AsPQEzJ47qTPa/w2CJPlNA==
+deploy-to-github-pages@1.0.0-beta.7:
+  version "1.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/deploy-to-github-pages/-/deploy-to-github-pages-1.0.0-beta.7.tgz#a8e37b4464e393e7d1d0277842ad81bc01385a65"
+  integrity sha512-1XpslcI9khcXaF13A4YGhotBi6Mq6d8HRVFea6l+e8Yca+S4zbLpYXmJvRoZLkpu8mGdDPeMA+y/HABMWuJicw==
   dependencies:
     "@octokit/rest" "^15.15.1"
     commander "^2.19.0"
