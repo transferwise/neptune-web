@@ -20,7 +20,7 @@ npm install @transferwise/components @transferwise/neptune-css
 npm install react react-dom prop-types currency-flags # peer dependencies
 ```
 
-**Note:** Peer dependencies are only necessary if you're using components. `currency-flags` is only required if you're using the <DocLink href="/components/MoneyInput">Money Input</DocLink> or if you're using flags on the <DocLink href="/components/Select">Select</DocLink>.
+**Note:** Peer dependencies are only necessary if you're using components. `currency-flags` is only required if you're using the <DocLink href="/components/inputs/MoneyInput">Money Input</DocLink> or if you're using flags on the <DocLink href="/components/inputs/Select">Select</DocLink>.
 
 ## Usage
 
@@ -48,7 +48,7 @@ By default, apps come polyfilled. If you would like to use an unpolyfilled versi
 
 ## Advanced CSS Usage
 
-We expose three bundles for use. Our `neptune.css` bundle has everything. This is what you should use if using components. If you aren't using components, you have the option of just using `neptune-core.css`, or that and `neptune-addons.css`. <DocLink href="/styles/core">Core</DocLink> includes normalising and base styles such as typography. <DocLink href="/styles/addons">Addons</DocLink> provide a number of utility classes for display, spacing and more.
+We expose three bundles for use. Our `neptune.css` bundle has everything. This is what you should use if using components. If you aren't using components, you have the option of just using `neptune-core.css`, or that and `neptune-addons.css`. <DocLink href="/styles/core/Typography">Core</DocLink> includes normalising and base styles such as typography. <DocLink href="/styles/addons/BackgroundUtilities">Addons</DocLink> provide a number of utility classes for display, spacing and more.
 
 **Note:** there are other files in the `dist/css` folder other than those mentioned here. Please do not rely
 on them, as we may remove them in future releases.
