@@ -26,6 +26,7 @@ module.exports = () =>
           withMDX({
             transpileModules: [
               '@transferwise/dynamic-flows',
+              '@transferwise/components',
               '@transferwise/neptune-validation',
               'buble',
               'regexpu-core',

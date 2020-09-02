@@ -76,4 +76,8 @@ export default [
     ],
     searchable: true,
   },
+  {
+    title: 'Lab 👩‍🔬',
+    dir: 'lab',
+  },
 ];
