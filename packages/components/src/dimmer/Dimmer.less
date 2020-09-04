@@ -1,0 +1,59 @@
+@import (reference) '@transferwise/neptune-css/src/variables/zindex.less';
+
+.dimmer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(55, 81, 126, 0);
+  transition: background-color cubic-bezier(0, 0.94, 0.62, 1) 350ms;
+  z-index: @zindex-modal;
+
+  &.dimmer--enter-done {
+    background: rgba(55, 81, 126, 0.8);
+  }
+
+  &.dimmer--exit-active {
+    background: rgba(55, 81, 126, 0);
+  }
+
+  // Fades the content along the modal and prevents content to disappear with a jump when the
+  // component is unmounted
+  &.dimmer--exit-fade,
+  &.dimmer--enter-fade {
+    > * {
+      transition: opacity cubic-bezier(0, 0.94, 0.62, 1) 350ms;
+    }
+  }
+
+  &.dimmer--exit-fade {
+    > * {
+      opacity: 1;
+    }
+  }
+
+  &.dimmer--enter-fade {
+    > * {
+      opacity: 0;
+    }
+  }
+
+  &.dimmer--exit {
+    &.dimmer--exit-fade {
+      > * {
+        opacity: 0;
+      }
+    }
+  }
+
+  &.dimmer--enter-done {
+    &.dimmer--enter-fade {
+      > * {
+        opacity: 1;
+      }
+    }
+  }
+}

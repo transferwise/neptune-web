@@ -6,7 +6,7 @@ import SchemaFormControl from '../schemaFormControl';
 
 import { getValidModelParts } from '../../common/validation/valid-model';
 import { isValidSchema } from '../../common/validation/schema-validators';
-import { isArray } from '../../common/validation/type-validators';
+import { isArray } from '@transferwise/neptune-validation';
 
 const OneOfSchema = (props) => {
   if (!isArray(props.schema.oneOf)) {

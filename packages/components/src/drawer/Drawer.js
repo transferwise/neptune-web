@@ -1,7 +1,6 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import '@transferwise/neptune-css/dist/css/drawer.css';
 import Close from '@transferwise/icons/react/close';
 import SlidingPanel from '../slidingPanel';
 import Dimmer from '../dimmer';

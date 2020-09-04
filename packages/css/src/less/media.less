@@ -1,15 +1,9 @@
-/* Level 3 */
-
-@import './variables/_colors.less';
-@import './variables/_custom-media.less';
-@import './variables/_spacing.less';
-
 .media {
   display: flex;
 }
 
 .media + .media {
-  margin-top: calc(var(--spacer) * 3);
+  margin-top: var(--size-24);
 }
 
 .media-body {
@@ -37,18 +31,18 @@
 /* Alignment */
 
 .media-right {
-  padding-left: var(--space-16);
+  padding-left: var(--size-16);
 
   @media (--screen-sm) {
-    padding-left: var(--space-24);
+    padding-left: var(--size-24);
   }
 }
 
 .media-left {
-  padding-right: var(--space-16);
+  padding-right: var(--size-16);
 
   @media (--screen-sm) {
-    padding-right: var(--space-24);
+    padding-right: var(--size-24);
   }
 }
 

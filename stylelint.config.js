@@ -11,10 +11,7 @@ module.exports = {
     'csstools/value-no-unknown-custom-properties': [
       true,
       {
-        importFrom: [
-          './node_modules/@transferwise/neptune-tokens/colors.css',
-          './node_modules/@transferwise/neptune-tokens/spacing.css',
-        ],
+        importFrom: ['./node_modules/@transferwise/neptune-tokens/tokens.css'],
       },
     ],
   },

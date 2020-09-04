@@ -1,4 +1,4 @@
-import { isArray } from '../../../common/validation/type-validators';
+import { isArray } from '@transferwise/neptune-validation';
 /**
  * Checks if query is contained into object properties.
  * @param {object} option - the select option

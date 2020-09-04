@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
-import { isArray } from '../common/validation/type-validators';
+import { isArray } from '@transferwise/neptune-validation';
 import { Size } from '../common';
 
 import Select from '../select';

@@ -7,7 +7,7 @@ import Logo from '../flowNavigation/logo';
 import Header from '../header';
 import { Theme, ProfileType } from '../common';
 
-import '@transferwise/neptune-css/dist/css/flowNavigation.css';
+import '../flowNavigation/FlowNavigation.css';
 
 /**
  * OverlayHeader is a header component that provides a logo, avatar and close button, for use in overlay screens.

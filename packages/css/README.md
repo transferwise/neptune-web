@@ -26,7 +26,7 @@ There are three bundles to choose from, depending on your needs:
 // Everything
 import '@transferwise/neptune-css/dist/css/neptune.css';
 
-// Core (Including Tokens)
+// Core
 import '@transferwise/neptune-css/dist/css/neptune-core.css';
 
 // Addons

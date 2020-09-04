@@ -18,17 +18,12 @@ export default [
   {
     title: 'Getting started',
     dir: 'about',
-    fileOrder: ['Home', 'Setup', 'BrowserSupport', 'Versioning', 'Contributing'],
+    fileOrder: ['Home', 'Setup', 'Styles', 'BrowserSupport', 'Versioning', 'Contributing'],
   },
   {
     title: 'Styles',
     dir: 'styles',
     children: [
-      {
-        title: 'Tokens',
-        dir: 'styles/tokens',
-        fileOrder: ['Colors', 'Spacing', 'Breakpoints'],
-      },
       {
         title: 'Core',
         dir: 'styles/core',
@@ -38,6 +33,11 @@ export default [
         title: 'Addons',
         dir: 'styles/addons',
         fileOrder: ['BackgroundUtilities', 'DisplayUtilities', 'SpacingUtilities'],
+      },
+      {
+        title: 'Tokens',
+        dir: 'styles/tokens',
+        fileOrder: ['Colors', 'Sizes', 'Breakpoints'],
       },
     ],
   },
@@ -75,5 +75,9 @@ export default [
       },
     ],
     searchable: true,
+  },
+  {
+    title: 'Lab',
+    dir: 'lab',
   },
 ];

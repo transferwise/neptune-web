@@ -1,37 +1,24 @@
-/* Level 4 */
-
-@import './variables/_colors.less';
-
-.chevron-container {
-  --animation-duration: 300ms;
-  --small-stroke-width: 3px;
-  --medium-stroke-width: 4px;
-  --large-stroke-width: 5px;
-}
-
-.chevron-container line {
-  fill: none;
-  stroke: var(--brand-light-blue);
-  stroke-width: var(--medium-stroke-width);
-  stroke-linecap: square;
-}
-
-.chevron-container {
-  &.small line {
-    stroke-width: var(--small-stroke-width);
-  }
-
-  &.large line {
-    stroke-width: var(--large-stroke-width);
-  }
-}
-
 .chevron-container {
   transform-origin: 50% 50%;
 
+  line {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 4px;
+    stroke-linecap: square;
+  }
+
+  &.small line {
+    stroke-width: 3px;
+  }
+
+  &.large line {
+    stroke-width: 5px;
+  }
+
   &.animate,
   &.animate line {
-    transition: transform var(--animation-duration);
+    transition: transform 300ms;
   }
 
   .chevron-line-one {

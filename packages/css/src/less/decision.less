@@ -1,23 +1,12 @@
-/* Level 3 */
-
-@import './variables/_colors.less';
-@import './variables/_custom-media.less';
-
-:root {
-  --decision-focus-transition: var(--transition-duration);
-  --decision-padding-md: 12px;
-  --decision-padding-lg: 24px;
-  --decision-border: 1px solid var(--brand-smoke-plus-10);
-}
-
 .decision {
   cursor: pointer;
-  padding: var(--decision-padding-lg) var(--decision-padding-md) var(--decision-padding-lg) 0;
+  padding: var(--size-24) var(--size-12) var(--size-24) 0;
   margin-bottom: 0 !important;
-  border-top: var(--decision-border);
-  border-bottom: var(--decision-border);
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: var(--color-border-neutral);
   align-items: center;
-  transition: background-color ease var(--decision-focus-transition);
+  transition: background-color ease 350ms;
 
   + .decision {
     margin-top: -1px;
@@ -28,12 +17,12 @@
   }
 
   dl {
-    margin-top: 8px;
+    margin-top: var(--size-8);
   }
 
   .caret {
-    color: var(--brand-light-blue);
-    padding-bottom: 8px;
+    color: var(--color-accent);
+    padding-bottom: var(--size-8);
   }
 
   .media-left {
@@ -41,7 +30,7 @@
   }
 
   @media (--screen-xs) {
-    padding: var(--decision-padding-lg);
+    padding: var(--size-24);
 
     .media-left {
       display: block;
@@ -55,16 +44,16 @@
 
   &:not(.disabled):hover {
     @media (--screen-xs) {
-      background-color: var(--brand-smoke-plus-20);
+      background-color: var(--color-background-neutral);
 
       .circle-inverse {
-        background-color: #fff;
+        background-color: var(--color-background-elevated);
       }
     }
 
     .tw-checkbox-button,
     .tw-radio-button {
-      border-color: var(--brand-light-blue);
+      border-color: var(--color-border-focus);
     }
   }
 

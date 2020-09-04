@@ -2,7 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import Close from '@transferwise/icons/react/close';
-import '@transferwise/neptune-css/dist/css/chip.css';
+import './Chip.css';
 
 const Chip = (props) => {
   const { className, hasError, label, onRemove } = props;

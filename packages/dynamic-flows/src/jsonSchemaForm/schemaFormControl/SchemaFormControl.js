@@ -2,7 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 
 import FormControl from '../../formControl';
-import { isNull, isUndefined } from '../../common/validation/type-validators';
+import { isNull, isUndefined } from '@transferwise/neptune-validation';
 import { getValidModelParts } from '../../common/validation/valid-model';
 import { availableCurrencyFlags } from './availableCurrencyFlags';
 

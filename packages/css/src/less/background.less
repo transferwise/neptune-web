@@ -1,6 +1,4 @@
-/* Level 4 */
-
-@import './variables/_colors.less';
+@import (reference) '../variables/neptune-tokens.less';
 
 .bg {
   background-repeat: no-repeat;
@@ -9,12 +7,12 @@
   background-position: bottom;
 
   &--dark {
-    background-color: var(--brand-primary);
+    background-color: @color-base-navy-light;
     background-image: url(../img/bg-dark.svg);
   }
 
   &--light {
-    background-color: var(--gray-base);
+    background-color: var(--color-background-neutral);
     background-image: url(../img/bg-light.svg);
   }
 }

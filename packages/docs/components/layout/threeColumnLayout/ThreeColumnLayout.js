@@ -38,10 +38,10 @@ const ThreeColumns = ({ firstContent, secondContent, thirdContent }) => {
           size={{
             default: 0,
             xs: 0,
-            sm: 200,
-            md: 200,
-            lg: 200,
-            xl: 200,
+            sm: 220,
+            md: 220,
+            lg: 220,
+            xl: 220,
           }}
           justifyContent="flex-start"
           alignItems="flex-start"

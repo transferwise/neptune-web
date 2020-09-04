@@ -1,5 +1,5 @@
-@import '@transferwise/neptune-css/src/less/variables/_colors.less';
-@import '@transferwise/neptune-css/src/less/variables/_typography.less';
+@import (reference) '@transferwise/neptune-css/src/less/variables/_typography.less';
+@import (reference) '@transferwise/neptune-css/src/variables/neptune-tokens.less';
 
 .tw-navigation-option {
   text-decoration: none;
@@ -20,7 +20,7 @@
 
   & .media-body {
     color: @color-base-grey-dark;
-    font-weight: var(--font-weight);
+    font-weight: @font-weight-base;
   }
 }
 
