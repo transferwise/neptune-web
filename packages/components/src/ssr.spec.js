@@ -14,7 +14,6 @@ function isNotExcluded(componentName) {
 
 describe('Server side rendering', () => {
   const componentNames = Object.keys(components).filter(isNotExcluded);
-
   expect(componentNames.length).toBeGreaterThan(0);
 
   // stick all possible properties we might need to render all components in here
@@ -82,11 +81,17 @@ describe('Server side rendering', () => {
     SnackbarContext: {
       children: jest.fn(),
     },
+    Field: {
+      model: 'a model',
+      type: 'text',
+      children: <input />,
+    },
   };
 
   componentNames.forEach((componentName) => {
     it(`works for ${componentName} components`, () => {
       const Component = components[componentName];
+
       const newProps = { ...allProps };
       if (overrideProps[componentName]) {
         Object.keys(overrideProps[componentName]).forEach((propToOverrideKey) => {

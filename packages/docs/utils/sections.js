@@ -77,7 +77,7 @@ export default [
     searchable: true,
   },
   {
-    title: 'Lab 👩‍🔬',
+    title: 'Lab',
     dir: 'lab',
   },
 ];
