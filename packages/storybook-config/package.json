@@ -1,0 +1,25 @@
+{
+  "name": "@transferwise/storybook-config",
+  "version": "1.0.0",
+  "description": "Neptune Web shared gulp css config files and dependencies",
+  "license": "Apache-2.0",
+  "main": "./.storybook/main.js",
+  "repository": {
+    "type": "git",
+    "fullname": "transferwise/neptune-web",
+    "url": "git+https://github.com/transferwise/neptune-web.git"
+  },
+  "dependencies": {
+    "@babel/core": "^7.11.6",
+    "@storybook/addon-actions": "^6.0.21",
+    "@storybook/addon-essentials": "^6.0.21",
+    "@storybook/addon-links": "^6.0.21",
+    "@storybook/node-logger": "^6.0.21",
+    "@storybook/react": "^6.0.21",
+    "babel-loader": "^8.1.0",
+    "react-is": "^16.13.1",
+    "@storybook/addon-a11y": "^6.0.21",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-knobs": "^6.0.21"
+  }
+}

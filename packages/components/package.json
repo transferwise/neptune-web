@@ -20,7 +20,7 @@
   "scripts": {
     "dev": "npm-run-all --parallel dev:*",
     "dev:watch-less": "gulp watchLess --dest=src",
-    "dev:storybook": "start-storybook -p 3001",
+    "dev:storybook": "start-storybook -p 3001 -c ../../node_modules/@transferwise/storybook-config/.storybook/",
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf lib build",
     "build:compile-css": "gulp compileLess --dest=src",
@@ -49,11 +49,6 @@
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-json": "^4.0.3",
     "@rollup/plugin-node-resolve": "^7.1.3",
-    "@storybook/addon-a11y": "^5.3.18",
-    "@storybook/addon-actions": "^5.3.18",
-    "@storybook/addon-info": "^5.3.18",
-    "@storybook/addon-knobs": "^5.3.18",
-    "@storybook/react": "^5.3.18",
     "@transferwise/less-config": "^2.0.1",
     "@transferwise/neptune-tokens": "^0.1.0",
     "@transferwise/test-config": "^1.0.3",
@@ -86,8 +81,5 @@
     "react-required-if": "^1.0.3",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.2.1"
-  },
-  "resolutions": {
-    "@storybook/**/kind-of": "^6.0.3"
   }
 }

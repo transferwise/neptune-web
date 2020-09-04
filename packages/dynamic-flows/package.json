@@ -20,7 +20,7 @@
   "scripts": {
     "dev": "npm-run-all --parallel dev:*",
     "dev:watch-less": "gulp watchLess --dest=src",
-    "dev:storybook": "start-storybook",
+    "dev:storybook": "start-storybook -c ../../node_modules/@transferwise/storybook-config/.storybook/",
     "docs": "yarn build",
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf lib build",
@@ -38,17 +38,13 @@
     "lintless:fix": "yarn lintless --fix"
   },
   "devDependencies": {
+    "@transferwise/storybook-config": "^1.0.0",
     "@babel/cli": "^7.6.0",
     "@babel/core": "7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-transform-react-jsx": "^7.9.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.4.5",
-    "@storybook/addon-a11y": "^5.3.18",
-    "@storybook/addon-actions": "^5.3.18",
-    "@storybook/addon-info": "^5.3.18",
-    "@storybook/addon-knobs": "^5.3.18",
-    "@storybook/react": "^5.3.18",
     "@transferwise/less-config": "^2.0.1",
     "@transferwise/neptune-tokens": "^0.1.0",
     "@transferwise/test-config": "^1.0.3",
@@ -68,8 +64,5 @@
     "@transferwise/neptune-css": "^2.1.1",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5"
-  },
-  "resolutions": {
-    "@storybook/**/kind-of": "^6.0.3"
   }
 }
