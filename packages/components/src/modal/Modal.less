@@ -11,6 +11,7 @@
     transition: transform 0.3s ease-out;
     transform: translateY(-25%);
     height: 100%;
+    width: 100%;
   }
 
   &.in {
@@ -87,6 +88,19 @@
         min-height: var(--size-32);
         padding-bottom: 4px !important;
       }
+    }
+  }
+}
+
+@media (--screen-xs-max) {
+  .tw-modal-dialog {
+    padding: var(--size-16);
+    max-width: calc(
+      576px - var(--size-40) * 2 + var(--size-16) * 2
+    ); // --size-40 provides a smooth transition to the next padding breakpoint
+
+    &.tw-modal-sm {
+      max-width: calc(300px + var(--size-16) * 2);
     }
   }
 }
