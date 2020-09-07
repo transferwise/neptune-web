@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.0...@transferwise/components@29.0.1) (2020-09-07)
+
+
+### Bug Fixes
+
+* fix storybook and trigger publish ([#552](https://github.com/transferwise/neptune-web/issues/552)) ([47ab1e0](https://github.com/transferwise/neptune-web/commit/47ab1e0b29dac92ec3f52dfa2acf70532eba583f))
+
+
+
+
+
 # [29.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@28.3.3...@transferwise/components@29.0.0) (2020-09-04)
 
 
