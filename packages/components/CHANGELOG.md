@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.2...@transferwise/components@29.0.3) (2020-09-07)
+
+
+### Bug Fixes
+
+* Adjust modal with to be full width in mobile ([#553](https://github.com/transferwise/neptune-web/issues/553)) ([2fd07af](https://github.com/transferwise/neptune-web/commit/2fd07af4e79b0d08d3f6e4d7049c3fce3a1bc5aa))
+
+
+
+
+
 ## [29.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.0...@transferwise/components@29.0.2) (2020-09-07)
 
 
