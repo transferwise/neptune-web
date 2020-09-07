@@ -12,7 +12,7 @@ export const basic = () => {
   return (
     <>
       <Field
-        errors={null}
+        error={null}
         help="Please fill this form with a value length between 3 and 10"
         id="id"
         initValue="Neptune is cool"
@@ -30,7 +30,7 @@ export const basic = () => {
         <input type="text" className="form-control" />
       </Field>
       <Field
-        errors={null}
+        error={null}
         help="Please fill this form with a value between 3 and 10"
         id="id1"
         initValue={null}
@@ -48,7 +48,7 @@ export const basic = () => {
       </Field>
 
       <Field
-        errors={null}
+        error={null}
         help="Please insert a date between 2 and 3 of January 2000."
         id="id2"
         label="Date Input field"
@@ -80,7 +80,7 @@ export const basic = () => {
         />
       </Field>
       <Field
-        errors={null}
+        error={null}
         help="Please check to accept the Neptune Web conditions."
         id="id3"
         initValue={null}
