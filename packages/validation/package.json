@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-validation",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "description": "Neptune Web validation",
   "license": "Apache-2.0",
   "main": "src/index.js",
@@ -30,6 +30,6 @@
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
-    "@transferwise/test-config": "^1.0.5"
+    "@transferwise/test-config": "^2.0.0"
   }
 }

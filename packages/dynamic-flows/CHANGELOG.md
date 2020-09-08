@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.0.2...@transferwise/dynamic-flows@4.0.3) (2020-09-07)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [4.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.0.0...@transferwise/dynamic-flows@4.0.2) (2020-09-07)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [4.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.0.0...@transferwise/dynamic-flows@4.0.1) (2020-09-07)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+# [4.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.6.0...@transferwise/dynamic-flows@4.0.0) (2020-09-04)
+
+
+* feat!: neptune sprint 28 - Neptune CSS refactor and lab (#547) ([d0ea9ef](https://github.com/transferwise/neptune-web/commit/d0ea9ef1272ab2aae57d7a6d470110ec74af1d25)), closes [#547](https://github.com/transferwise/neptune-web/issues/547)
+
+
+### BREAKING CHANGES
+
+* Moved some CSS out of the css package and into components, deprecated some custom props and changed the directory structure of variable and props files
+
+
+
+
+
 # [3.6.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@3.5.0...@transferwise/dynamic-flows@3.6.0) (2020-08-28)
 
 

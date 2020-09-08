@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.2...@transferwise/components@29.0.3) (2020-09-07)
+
+
+### Bug Fixes
+
+* Adjust modal with to be full width in mobile ([#553](https://github.com/transferwise/neptune-web/issues/553)) ([2fd07af](https://github.com/transferwise/neptune-web/commit/2fd07af4e79b0d08d3f6e4d7049c3fce3a1bc5aa))
+
+
+
+
+
+## [29.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.0...@transferwise/components@29.0.2) (2020-09-07)
+
+
+### Bug Fixes
+
+* fix storybook and trigger publish ([#552](https://github.com/transferwise/neptune-web/issues/552)) ([47ab1e0](https://github.com/transferwise/neptune-web/commit/47ab1e0b29dac92ec3f52dfa2acf70532eba583f))
+
+
+
+
+
+## [29.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.0...@transferwise/components@29.0.1) (2020-09-07)
+
+
+### Bug Fixes
+
+* fix storybook and trigger publish ([#552](https://github.com/transferwise/neptune-web/issues/552)) ([47ab1e0](https://github.com/transferwise/neptune-web/commit/47ab1e0b29dac92ec3f52dfa2acf70532eba583f))
+
+
+
+
+
+# [29.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@28.3.3...@transferwise/components@29.0.0) (2020-09-04)
+
+
+* feat!: neptune sprint 28 - Neptune CSS refactor and lab (#547) ([d0ea9ef](https://github.com/transferwise/neptune-web/commit/d0ea9ef1272ab2aae57d7a6d470110ec74af1d25)), closes [#547](https://github.com/transferwise/neptune-web/issues/547)
+
+
+### BREAKING CHANGES
+
+* Moved some CSS out of the css package and into components, deprecated some custom props and changed the directory structure of variable and props files
+
+
+
+
+
 ## [28.3.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@28.3.2...@transferwise/components@28.3.3) (2020-08-19)
 
 **Note:** Version bump only for package @transferwise/components
