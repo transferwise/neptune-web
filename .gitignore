@@ -13,6 +13,7 @@ node_modules
 /build
 /docs-build
 /dist
+storybook-static/
 
 # misc
 

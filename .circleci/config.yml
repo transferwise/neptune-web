@@ -2,6 +2,8 @@
 # https://circleci.com/docs/2.0/local-cli/
 
 version: 2
+orbs:
+  percy: percy/agent@0.1.2
 
 aliases:
   - &workspace-root ~/neptune-web
@@ -175,6 +177,15 @@ workflows:
           filters:
             branches:
               only:
+                - main
+
+      - percy/finalize_all:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore:
+                - gh-pages
                 - main
 
       - deploy-docs-for-branch:

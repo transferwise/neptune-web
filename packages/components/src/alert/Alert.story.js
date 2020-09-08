@@ -15,10 +15,7 @@ export const basic = () => {
 
   const arrow = select('Arrow', Object.values(Alert.ArrowPosition), Alert.ArrowPosition.TOP_LEFT);
 
-  const content = text(
-    'Content',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ',
-  );
+  const content = text('Content', 'A change to story');
 
   return (
     <Alert

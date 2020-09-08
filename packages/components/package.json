@@ -37,7 +37,8 @@
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "yarn lint --fix",
     "lintless": "stylelint ./src/**/*.less",
-    "lintless:fix": "yarn lintless --fix"
+    "lintless:fix": "yarn lintless --fix",
+    "snapshot": "build-storybook && percy-storybook --widths=320,1280"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
@@ -46,6 +47,7 @@
     "@babel/plugin-transform-react-jsx": "^7.9.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.4.5",
+    "@percy/storybook": "^3.3.1",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-json": "^4.0.3",
     "@rollup/plugin-node-resolve": "^7.1.3",
