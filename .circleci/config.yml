@@ -181,7 +181,7 @@ workflows:
 
       - percy/finalize_all:
           requires:
-            - test
+            - build
           filters:
             branches:
               ignore:
