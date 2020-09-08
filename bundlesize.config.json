@@ -6,7 +6,7 @@
     },
     {
       "path": "./packages/components/build/umd/no-polyfill/main.js",
-      "maxSize": "100kB"
+      "maxSize": "110kB"
     },
     {
       "path": "./packages/components/build/main.css",
