@@ -4,26 +4,39 @@ import Types from 'prop-types';
 import Option from '../common/Option';
 import CheckboxButton from '../common/CheckboxButton';
 
-const CheckboxOption = ({ media, title, content, name, checked, onChange, complex, disabled }) => {
-  const sharedProps = { media, title, content, name, complex, disabled };
-
+const CheckboxOption = ({
+  media,
+  title,
+  content,
+  name,
+  checked,
+  onChange,
+  complex,
+  disabled,
+  ariaLabel,
+}) => {
   return (
     <Option
-      {...sharedProps}
+      media={media}
+      title={title}
+      content={content}
+      name={name}
+      complex={complex}
+      disabled={disabled}
       onClick={(event) => {
         event.preventDefault();
         if (!disabled) {
           onChange(!checked);
         }
       }}
-      button={<CheckboxButton checked={checked} disabled={disabled} />}
+      button={<CheckboxButton checked={checked} disabled={disabled} ariaLabel={ariaLabel} />}
     />
   );
 };
 
 CheckboxOption.propTypes = {
   media: Types.node,
-  id: Types.string.isRequired,
+  ariaLabel: Types.node.isRequired,
   name: Types.string.isRequired,
   title: Types.node.isRequired,
   content: Types.node,

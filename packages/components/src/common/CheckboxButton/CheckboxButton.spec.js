@@ -6,7 +6,7 @@ import CheckboxButton from '.';
 describe('Checkbox button', () => {
   let component;
   beforeEach(() => {
-    component = shallow(<CheckboxButton onClick={jest.fn()} />);
+    component = shallow(<CheckboxButton onClick={jest.fn()} ariaLabel="ariaLabel" />);
   });
 
   describe('by default', () => {

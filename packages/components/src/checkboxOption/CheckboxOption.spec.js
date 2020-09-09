@@ -8,7 +8,15 @@ describe('Checkbox option', () => {
   let component;
   beforeEach(() => {
     component = shallow(
-      <CheckboxOption media={<span />} id="" name="" title="" content="" onChange={jest.fn()} />,
+      <CheckboxOption
+        media={<span />}
+        id=""
+        name=""
+        title=""
+        content=""
+        onChange={jest.fn()}
+        ariaLabel="ariaLabel"
+      />,
     );
   });
 

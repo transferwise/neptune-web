@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
-import CheckboxButton from '../common/CheckboxButton';
 import classNames from 'classnames';
+import CheckboxButton from '../common/CheckboxButton';
 
 const Checkbox = ({
   id,
@@ -14,6 +14,7 @@ const Checkbox = ({
   onChange,
   onFocus,
   onBlur,
+  ariaLabel,
 }) => {
   const handleClick = () => (!disabled && !readOnly ? onChange(!checked) : null);
 
@@ -41,6 +42,7 @@ const Checkbox = ({
           onBlur={onBlur}
           disabled={disabled}
           readOnly={readOnly}
+          ariaLabel={ariaLabel}
         />
       </label>
     </div>
@@ -58,6 +60,7 @@ Checkbox.propTypes = {
   onFocus: Types.func,
   onChange: Types.func.isRequired,
   onBlur: Types.func,
+  ariaLabel: Types.node.isRequired,
 };
 
 Checkbox.defaultProps = {

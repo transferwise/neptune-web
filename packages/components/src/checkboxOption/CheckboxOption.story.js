@@ -1,8 +1,8 @@
 import React from 'react';
-import CheckboxOption from './CheckboxOption';
 import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import FastFlagIcon from '@transferwise/icons/react/fast-flag';
+import CheckboxOption from './CheckboxOption';
 
 export default {
   component: CheckboxOption,
@@ -20,6 +20,7 @@ export const basic = () => {
       content={content}
       onChange={action('value changed')}
       media={<FastFlagIcon />}
+      ariaLabel="a required aria label"
     />
   );
 };

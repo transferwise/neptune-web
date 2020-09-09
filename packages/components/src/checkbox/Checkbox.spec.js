@@ -1,20 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Checkbox from './';
+import Checkbox from '.';
 import CheckboxButton from '../common/CheckboxButton';
 
 describe('Checkbox', () => {
   let component;
-  let props;
 
   beforeEach(() => {
-    props = {
-      label: <b>hello</b>,
-      onChange: jest.fn(),
-      secondary: '',
-    };
-    component = shallow(<Checkbox {...props} />);
+    component = shallow(
+      <Checkbox label={<b>hello</b>} onChange={jest.fn()} secondary="" ariaLabel="ariaLabel" />,
+    );
   });
 
   it('renders the given label', () => {
