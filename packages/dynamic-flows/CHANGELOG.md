@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.0.4...@transferwise/dynamic-flows@4.1.0) (2020-09-09)
+
+
+### Features
+
+* Add validation to oneOfs ([#550](https://github.com/transferwise/neptune-web/issues/550)) ([3bd3ae3](https://github.com/transferwise/neptune-web/commit/3bd3ae3138fbcd2778ad42d3df1efca343313a28))
+
+
+
+
+
 ## [4.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.0.3...@transferwise/dynamic-flows@4.0.4) (2020-09-08)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
