@@ -5,11 +5,13 @@ import OneOfSchema from '.';
 
 import GenericSchema from '../genericSchema/';
 import SchemaFormControl from '../schemaFormControl/';
+import ControlFeedback from '../controlFeedback';
 
 describe('Given a oneOfSchema component', () => {
   let component;
   let genericSchema;
   let schemaFormControl;
+  let controlFeedback;
   let props;
   let onChange;
   let schema;
@@ -188,6 +190,7 @@ describe('Given a oneOfSchema component', () => {
 
   describe('when the choice is from a set of constant values', () => {
     beforeEach(() => {
+      jest.resetAllMocks();
       schema = {
         title: 'Choose schema',
         placeholder: 'Please choose',
@@ -214,6 +217,7 @@ describe('Given a oneOfSchema component', () => {
 
       genericSchema = component.find(GenericSchema);
       schemaFormControl = component.find(SchemaFormControl);
+      controlFeedback = component.find(ControlFeedback);
     });
 
     it('should not render a generic schema', () => {
@@ -228,9 +232,25 @@ describe('Given a oneOfSchema component', () => {
       expect(onChange).not.toHaveBeenCalled();
     });
 
+    it('should pass errors down if present', () => {
+      component = shallow(<OneOfSchema {...props} errors="Something is wrong" />);
+
+      controlFeedback = component.find(ControlFeedback);
+      expect(controlFeedback.prop('errors')).toBe('Something is wrong');
+    });
+
+    it('should not pass down errors if present but wrong type (should never happen)', () => {
+      component = shallow(
+        <OneOfSchema {...props} errors={{ choice: 'I should not be an object' }} />,
+      );
+
+      controlFeedback = component.find(ControlFeedback);
+      expect(controlFeedback.prop('errors')).toBe(null);
+    });
+
     describe('when the user changes schema', () => {
       beforeEach(() => {
-        // SchemaFormControl broacasts the INDEX(1) of the schema
+        // SchemaFormControl broadcasts the INDEX(1) of the schema
         schemaFormControl.simulate('change', 1);
       });
 
@@ -239,7 +259,41 @@ describe('Given a oneOfSchema component', () => {
       });
 
       it('should only broadcast one change', () => {
+        component = shallow(<OneOfSchema {...props} required model={1} />);
+
+        schemaFormControl = component.find(SchemaFormControl);
+        onChange.mockReset();
+        schemaFormControl.simulate('change', 2);
+
         expect(onChange).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    describe('when the schema is not required', () => {
+      describe('when value exists', () => {
+        it('should not display validation errors', () => {
+          schemaFormControl.simulate('change', 1);
+
+          expect(controlFeedback.prop('validations').length).toBe(0);
+        });
+      });
+
+      describe('when no value exists', () => {
+        it('should not display validation errors', () => {
+          expect(controlFeedback.prop('validations').length).toBe(0);
+        });
+      });
+    });
+
+    describe('when the schema is required', () => {
+      describe('when no value exists', () => {
+        it('should display validation errors', () => {
+          component = shallow(<OneOfSchema {...props} required />);
+          schemaFormControl = component.find(SchemaFormControl);
+
+          controlFeedback = component.find(ControlFeedback);
+          expect(controlFeedback.prop('validations').length).toBe(1);
+        });
       });
     });
   });

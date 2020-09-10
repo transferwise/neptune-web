@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
+import classNames from 'classnames';
 
 import GenericSchema from '../genericSchema';
 import SchemaFormControl from '../schemaFormControl';
+import ControlFeedback from '../controlFeedback';
 
 import { getValidModelParts } from '../../common/validation/valid-model';
+import { getValidationFailures } from '../../common/validation/validation-failures';
 import { isValidSchema } from '../../common/validation/schema-validators';
-import { isArray } from '@transferwise/neptune-validation';
+import { isArray, isEmpty } from '@transferwise/neptune-validation';
 
 const OneOfSchema = (props) => {
+  const [changed, setChanged] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [blurred, setBlurred] = useState(false);
+  const [validations, setValidations] = useState(
+    getValidationFailures(props.model, props.schema, props.required),
+  );
+
   if (!isArray(props.schema.oneOf)) {
     console.error('Incorrect format', props.schema); // eslint-disable-line
     return '';
@@ -34,8 +44,17 @@ const OneOfSchema = (props) => {
   const onChange = (model, schema, index) => {
     models[index] = model;
     setModels(models);
-
+    setChanged(true);
     props.onChange(model, schema);
+  };
+
+  const onFocus = () => {
+    setFocused(true);
+  };
+
+  const onBlur = () => {
+    setFocused(false);
+    setBlurred(true);
   };
 
   const onChooseNewSchema = (index) => {
@@ -46,14 +65,17 @@ const OneOfSchema = (props) => {
     if (isConstSchema(newSchema)) {
       // If new schema is a const we want to share the parent schema, not the const
       props.onChange(newSchema.const || newSchema.enum[0], props.schema);
+
+      // Apply validations for the change
+      setValidations(getValidationFailures(newSchema.const, props.schema, props.required));
     } else {
       props.onChange(models[index], newSchema);
     }
   };
 
-  const isConstSchema = (schema) => {
+  function isConstSchema(schema) {
     return schema.const || (schema.enum && schema.enum.length === 1);
-  };
+  }
 
   const [id, setId] = useState('');
   const [schemaIndex, setSchemaIndex] = useState(getActiveSchemaIndex(props.schema, props.model));
@@ -83,10 +105,25 @@ const OneOfSchema = (props) => {
 
   const schemaForSelect = mapSchemas(props.schema);
 
+  const formGroupClasses = {
+    'form-group': true,
+    'has-error':
+      (!changed && props.errors && !isEmpty(props.errors)) ||
+      ((props.submitted || (changed && blurred)) && validations.length),
+  };
+
+  const errorsToString = (errors) => {
+    // When oneOf represents a select, errors should be of type string
+    if (typeof errors === 'string') {
+      return errors;
+    }
+    return null;
+  };
+
   return (
     <>
       {props.schema.oneOf.length > 1 && (
-        <div className="form-group">
+        <div className={classNames(formGroupClasses)}>
           {props.schema.title && (
             <label className="control-label" htmlFor={id}>
               {props.schema.title}
@@ -96,9 +133,20 @@ const OneOfSchema = (props) => {
             id={id}
             schema={schemaForSelect}
             onChange={onChooseNewSchema}
+            onFocus={onFocus}
+            onBlur={onBlur}
             value={schemaIndex}
             translations={props.translations}
             locale={props.locale}
+          />
+          <ControlFeedback
+            changed={changed}
+            focused={focused}
+            blurred={blurred}
+            submitted={props.submitted}
+            errors={errorsToString(props.errors)}
+            schema={props.schema}
+            validations={validations}
           />
         </div>
       )}
@@ -123,6 +171,7 @@ OneOfSchema.propTypes = {
   schema: Types.shape({
     title: Types.string,
     control: Types.string,
+    placeholder: Types.string,
     oneOf: Types.arrayOf(Types.object).isRequired,
   }).isRequired,
   model: Types.oneOfType([Types.string, Types.number, Types.bool, Types.array, Types.shape({})]),
@@ -131,12 +180,14 @@ OneOfSchema.propTypes = {
   translations: Types.shape({}),
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
+  required: Types.bool,
 };
 
 OneOfSchema.defaultProps = {
   model: null,
   errors: null,
   locale: 'en-GB',
+  required: false,
   translations: {},
 };
 
