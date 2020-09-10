@@ -1,6 +1,6 @@
 import React from 'react';
-import Chevron from './Chevron';
 import { boolean, select } from '@storybook/addon-knobs';
+import Chevron from './Chevron';
 
 export default {
   component: Chevron,

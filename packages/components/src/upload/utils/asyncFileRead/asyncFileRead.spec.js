@@ -1,4 +1,4 @@
-import { asyncFileRead } from './';
+import { asyncFileRead } from '.';
 
 describe('asyncFileRead', () => {
   it('should resolve with data64', () => {

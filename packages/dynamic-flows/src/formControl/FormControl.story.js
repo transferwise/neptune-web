@@ -1,7 +1,7 @@
 import React from 'react';
-import FormControl from './FormControl';
 import { select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import FormControl from './FormControl';
 
 export default {
   component: FormControl,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Drawer from './';
+import Drawer from '.';
 import { fakeKeyDownEventForKey } from '../common/fakeEvents';
 import KEY_CODES from '../common/keyCodes';
 

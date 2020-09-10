@@ -1,7 +1,7 @@
 import React from 'react';
-import ProcessIndicator from './ProcessIndicator';
 import { select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import ProcessIndicator from './ProcessIndicator';
 
 export default {
   component: ProcessIndicator,

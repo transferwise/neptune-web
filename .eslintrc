@@ -3,7 +3,6 @@
 {
   "extends": "@transferwise",
   "rules": {
-    "no-mixed-operators": 0,
     "react/destructuring-assignment": [0, "never"],
     "jsx-a11y/label-has-for": [
       2,
@@ -14,40 +13,11 @@
       }
     ],
     // New Rules to remove in NP-101
-    "eol-last": "off",
-    "react/jsx-wrap-multilines": 0,
-    "lines-between-class-members": "off",
-    "import/no-useless-path-segments": 0,
-    "react/button-has-type": 0,
     "react/sort-comp": 0,
     "react/no-unused-state": 0,
-    "no-else-return": 0,
     "import/no-cycle": 0,
-    "import/order": 0,
     "fp/no-mutation": 0,
-    "react/jsx-one-expression-per-line": [
-      0,
-      {
-        "allow": "literal"
-      }
-    ],
-    "jsx-a11y/label-has-associated-control": [
-      2,
-      {
-        "required": {
-          "some": ["nesting", "id"]
-        }
-      }
-    ],
     "react/jsx-props-no-spreading": 0,
-    "react/static-property-placement": 0,
-    "react/state-in-constructor": 0,
-    "import/no-unresolved": [
-      2,
-      {
-        "ignore": [".css$"]
-      }
-    ],
     "import/no-extraneous-dependencies": [
       0,
       {

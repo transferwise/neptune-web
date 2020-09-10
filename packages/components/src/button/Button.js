@@ -34,6 +34,7 @@ const Button = ({
   );
 
   return (
+    /* eslint-disable react/button-has-type */
     <button type={htmlType} className={classes} disabled={disabled || loading} {...rest}>
       {children}
       {loading && <span className={classNames('btn-loader', { 'm-l-2': !block })} />}
@@ -63,7 +64,7 @@ Button.propTypes = {
   block: Types.bool,
   loading: Types.bool,
   // eslint-disable-next-line
-  onClick: requiredIf(Types.func, props => props.htmlType !== 'submit'),
+  onClick: requiredIf(Types.func, (props) => props.htmlType !== 'submit'),
   children: Types.node.isRequired,
   htmlType: Types.oneOf(['submit', 'reset', 'button']),
 };

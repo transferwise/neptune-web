@@ -7,10 +7,13 @@ export const SnackbarContext = React.createContext();
 export const SnackbarConsumer = SnackbarContext.Consumer;
 
 class SnackbarProvider extends Component {
-  state = {
-    text: '',
-    timestamp: 0,
-  };
+  constructor() {
+    super();
+    this.state = {
+      text: '',
+      timestamp: 0,
+    };
+  }
 
   create = ({ text, action }) => {
     this.setState({ text, timestamp: Date.now(), action });

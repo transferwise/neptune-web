@@ -1,7 +1,7 @@
 import React from 'react';
-import Chip from './Chip';
 import { boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import Chip from './Chip';
 
 export default {
   component: Chip,

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { mount } from 'enzyme';
 import doTimes from 'lodash.times';
 import Transition from 'react-transition-group/Transition';
-import Select from './';
+import Select from '.';
 import Option from './option';
 import KEY_CODES from '../common/keyCodes';
 import { fakeEvent, fakeKeyDownEventForKey } from '../common/fakeEvents';

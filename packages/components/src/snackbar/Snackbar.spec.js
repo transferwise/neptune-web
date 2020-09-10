@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
-import SnackbarAppendingToBody, { Snackbar, CSS_TRANSITION_DURATION } from '../snackbar/Snackbar';
-import SnackbarProvider, { SnackbarConsumer } from '../snackbar/SnackbarProvider';
+import SnackbarAppendingToBody, { Snackbar, CSS_TRANSITION_DURATION } from './Snackbar';
+import SnackbarProvider, { SnackbarConsumer } from './SnackbarProvider';
 
 describe('Snackbar', () => {
   const timeout = 1000;
@@ -22,7 +22,7 @@ describe('Snackbar', () => {
     const Container = () => (
       <SnackbarConsumer>
         {({ createSnackbar }) => (
-          <button className="button-trigger" onClick={() => createSnackbar(props)}>
+          <button type="button" className="button-trigger" onClick={() => createSnackbar(props)}>
             Trigger
           </button>
         )}
@@ -57,6 +57,7 @@ describe('Snackbar', () => {
         <SnackbarConsumer>
           {({ createSnackbar }) => (
             <button
+              type="button"
               className="button-trigger"
               onClick={() => createSnackbar({ text: <span>test</span> })}
             >

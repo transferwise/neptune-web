@@ -37,6 +37,7 @@ const FlowNavigation = ({
   const avatar = done ? null : <AvatarWrapper url={avatarUrl} profileType={profileType} />;
   const closeButton = onClose && (
     <button
+      type="button"
       className={classNames(
         'tw-flow-navigation__close-button',
         'btn-link',

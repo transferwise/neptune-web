@@ -19,10 +19,13 @@ const BackArrow = () => (
 
 /* eslint-disable react/no-array-index-key */
 class BackButton extends Component {
-  state = {
-    activeStep: this.props.activeStep,
-    isMovingBackward: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeStep: props.activeStep,
+      isMovingBackward: false,
+    };
+  }
 
   static getDerivedStateFromProps = (nextProps, prevState) => ({
     isMovingBackward: nextProps.activeStep < prevState.activeStep,
@@ -34,6 +37,7 @@ class BackButton extends Component {
 
     return (
       <button
+        type="button"
         className={`btn-unstyled visible-xs tw-flow-navigation__back-button ${
           !onGoBack ? 'tw-flow-navigation__back-button--hidden' : ''
         }`}

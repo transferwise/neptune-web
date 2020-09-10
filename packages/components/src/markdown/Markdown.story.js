@@ -1,7 +1,6 @@
 import React from 'react';
-import Markdown from './Markdown';
-
 import { text } from '@storybook/addon-knobs';
+import Markdown from './Markdown';
 
 export default {
   component: Markdown,

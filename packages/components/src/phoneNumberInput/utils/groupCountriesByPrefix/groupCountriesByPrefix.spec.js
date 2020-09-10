@@ -1,4 +1,4 @@
-import { groupCountriesByPrefix } from './';
+import { groupCountriesByPrefix } from '.';
 
 const countries = [
   {

@@ -1,7 +1,7 @@
 import React from 'react';
-import PhoneNumberInput from './PhoneNumberInput';
 import { select, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import PhoneNumberInput from './PhoneNumberInput';
 
 export default {
   component: PhoneNumberInput,

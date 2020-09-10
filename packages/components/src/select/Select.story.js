@@ -1,7 +1,6 @@
 import React from 'react';
-import Select from './Select';
-
 import { text, boolean, select } from '@storybook/addon-knobs';
+import Select from './Select';
 
 export default {
   component: Select,

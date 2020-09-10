@@ -7,32 +7,10 @@ import { Size, MessageType, ArrowPosition } from '../common';
 
 export default class Alert extends Component {
   static Size = Size;
+
   static Type = MessageType;
+
   static ArrowPosition = ArrowPosition;
-
-  static propTypes = {
-    type: Types.oneOf([Alert.Type.INFO, Alert.Type.WARNING, Alert.Type.ERROR, Alert.Type.SUCCESS]),
-    children: Types.node.isRequired,
-    size: Types.oneOf([Alert.Size.SMALL, Alert.Size.LARGE]),
-    dismissible: Types.bool,
-    // eslint-disable-next-line
-    onDismiss: requiredIf(Types.func, ({ dismissible }) => dismissible),
-    arrow: Types.oneOf([
-      Alert.ArrowPosition.TOP_LEFT,
-      Alert.ArrowPosition.TOP,
-      Alert.ArrowPosition.TOP_RIGHT,
-      Alert.ArrowPosition.BOTTOM_LEFT,
-      Alert.ArrowPosition.BOTTOM,
-      Alert.ArrowPosition.BOTTOM_RIGHT,
-    ]),
-  };
-
-  static defaultProps = {
-    type: Alert.Type.INFO,
-    size: Alert.Size.LARGE,
-    dismissible: false,
-    arrow: null,
-  };
 
   render() {
     const { type, arrow, size, children, dismissible, onDismiss } = this.props;
@@ -92,3 +70,27 @@ function arrowClasses(arrow) {
   }
   return null;
 }
+
+Alert.propTypes = {
+  type: Types.oneOf([Alert.Type.INFO, Alert.Type.WARNING, Alert.Type.ERROR, Alert.Type.SUCCESS]),
+  children: Types.node.isRequired,
+  size: Types.oneOf([Alert.Size.SMALL, Alert.Size.LARGE]),
+  dismissible: Types.bool,
+  // eslint-disable-next-line
+  onDismiss: requiredIf(Types.func, ({ dismissible }) => dismissible),
+  arrow: Types.oneOf([
+    Alert.ArrowPosition.TOP_LEFT,
+    Alert.ArrowPosition.TOP,
+    Alert.ArrowPosition.TOP_RIGHT,
+    Alert.ArrowPosition.BOTTOM_LEFT,
+    Alert.ArrowPosition.BOTTOM,
+    Alert.ArrowPosition.BOTTOM_RIGHT,
+  ]),
+};
+
+Alert.defaultProps = {
+  type: Alert.Type.INFO,
+  size: Alert.Size.LARGE,
+  dismissible: false,
+  arrow: null,
+};

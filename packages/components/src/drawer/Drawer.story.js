@@ -1,8 +1,8 @@
 import React from 'react';
-import Drawer from './Drawer';
-import Button from '../button';
 import { boolean, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import Drawer from './Drawer';
+import Button from '../button';
 
 export default {
   component: Drawer,

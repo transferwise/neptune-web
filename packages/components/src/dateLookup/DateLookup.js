@@ -21,45 +21,21 @@ const MODE = {
 
 class DateLookup extends PureComponent {
   static Size = Size;
+
   static MonthFormat = MonthFormat;
-  static propTypes = {
-    value: Types.instanceOf(Date),
-    min: Types.instanceOf(Date),
-    max: Types.instanceOf(Date),
-    size: Types.oneOf([DateLookup.Size.SMALL, DateLookup.Size.MEDIUM, DateLookup.Size.LARGE]),
-    locale: Types.string,
-    placeholder: Types.string,
-    label: Types.string,
-    monthFormat: Types.oneOf([DateLookup.MonthFormat.LONG, DateLookup.MonthFormat.SHORT]),
-    disabled: Types.bool,
-    onChange: Types.func.isRequired,
-    onFocus: Types.func,
-    onBlur: Types.func,
-  };
 
-  static defaultProps = {
-    value: null,
-    min: null,
-    max: null,
-    size: DateLookup.Size.MEDIUM,
-    locale: 'en-GB',
-    placeholder: '',
-    label: '',
-    monthFormat: DateLookup.MonthFormat.LONG,
-    disabled: false,
-    onFocus: null,
-    onBlur: null,
-  };
-
-  state = {
-    selectedDate: getStartOfDay(this.props.value),
-    min: getStartOfDay(this.props.min),
-    max: getStartOfDay(this.props.max),
-    viewMonth: (this.props.value || new Date()).getMonth(),
-    viewYear: (this.props.value || new Date()).getFullYear(),
-    open: false,
-    mode: MODE.DAY,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedDate: getStartOfDay(props.value),
+      min: getStartOfDay(props.min),
+      max: getStartOfDay(props.max),
+      viewMonth: (props.value || new Date()).getMonth(),
+      viewYear: (props.value || new Date()).getFullYear(),
+      open: false,
+      mode: MODE.DAY,
+    };
+  }
 
   static getDerivedStateFromProps(props, state) {
     const propsSelected = getStartOfDay(props.value);
@@ -262,5 +238,34 @@ class DateLookup extends PureComponent {
     );
   }
 }
+
+DateLookup.propTypes = {
+  value: Types.instanceOf(Date),
+  min: Types.instanceOf(Date),
+  max: Types.instanceOf(Date),
+  size: Types.oneOf([DateLookup.Size.SMALL, DateLookup.Size.MEDIUM, DateLookup.Size.LARGE]),
+  locale: Types.string,
+  placeholder: Types.string,
+  label: Types.string,
+  monthFormat: Types.oneOf([DateLookup.MonthFormat.LONG, DateLookup.MonthFormat.SHORT]),
+  disabled: Types.bool,
+  onChange: Types.func.isRequired,
+  onFocus: Types.func,
+  onBlur: Types.func,
+};
+
+DateLookup.defaultProps = {
+  value: null,
+  min: null,
+  max: null,
+  size: DateLookup.Size.MEDIUM,
+  locale: 'en-GB',
+  placeholder: '',
+  label: '',
+  monthFormat: DateLookup.MonthFormat.LONG,
+  disabled: false,
+  onFocus: null,
+  onBlur: null,
+};
 
 export default DateLookup;

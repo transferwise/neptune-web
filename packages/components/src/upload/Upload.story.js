@@ -1,8 +1,8 @@
 import React from 'react';
-import Upload from './Upload';
 
 import { select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import Upload from './Upload';
 
 const IMAGES = [
   {

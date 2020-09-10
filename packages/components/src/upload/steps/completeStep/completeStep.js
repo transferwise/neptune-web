@@ -46,7 +46,11 @@ const CompleteStep = (props) => {
           )}
         </div>
         {csButtonText && (
-          <button className="btn btn-default btn-sm m-t-3" onClick={(e) => onClear(e)}>
+          <button
+            type="button"
+            className="btn btn-default btn-sm m-t-3"
+            onClick={(e) => onClear(e)}
+          >
             {csButtonText}
           </button>
         )}

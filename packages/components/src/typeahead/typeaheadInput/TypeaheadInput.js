@@ -8,35 +8,12 @@ import classnames from 'classnames';
 const DEFAULT_INPUT_MIN_WIDTH = 10;
 
 export default class TypeaheadInput extends Component {
-  state = {
-    inputWidth: DEFAULT_INPUT_MIN_WIDTH,
-  };
-
-  static propTypes = {
-    typeaheadId: Types.string.isRequired,
-    name: Types.string.isRequired,
-    autoFocus: Types.bool,
-    multiple: Types.bool.isRequired,
-    value: Types.string.isRequired,
-    selected: Types.arrayOf(Types.object),
-    placeholder: Types.string,
-    optionsShown: Types.bool,
-    maxHeight: Types.number,
-
-    onChange: Types.func.isRequired,
-    renderChip: Types.func.isRequired,
-    onKeyDown: Types.func.isRequired,
-    onFocus: Types.func.isRequired,
-    onPaste: Types.func.isRequired,
-  };
-
-  static defaultProps = {
-    autoFocus: false,
-    maxHeight: null,
-    placeholder: '',
-    optionsShown: false,
-    selected: [],
-  };
+  constructor() {
+    super();
+    this.state = {
+      inputWidth: DEFAULT_INPUT_MIN_WIDTH,
+    };
+  }
 
   componentDidMount() {
     const { autoFocus } = this.props;
@@ -107,6 +84,7 @@ export default class TypeaheadInput extends Component {
       />
     );
   };
+
   render() {
     const { multiple, selected, value, maxHeight, renderChip } = this.props;
 
@@ -138,3 +116,29 @@ export default class TypeaheadInput extends Component {
     );
   }
 }
+
+TypeaheadInput.propTypes = {
+  typeaheadId: Types.string.isRequired,
+  name: Types.string.isRequired,
+  autoFocus: Types.bool,
+  multiple: Types.bool.isRequired,
+  value: Types.string.isRequired,
+  selected: Types.arrayOf(Types.object),
+  placeholder: Types.string,
+  optionsShown: Types.bool,
+  maxHeight: Types.number,
+
+  onChange: Types.func.isRequired,
+  renderChip: Types.func.isRequired,
+  onKeyDown: Types.func.isRequired,
+  onFocus: Types.func.isRequired,
+  onPaste: Types.func.isRequired,
+};
+
+TypeaheadInput.defaultProps = {
+  autoFocus: false,
+  maxHeight: null,
+  placeholder: '',
+  optionsShown: false,
+  selected: [],
+};

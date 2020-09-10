@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import FlowNavigation from './';
+import FlowNavigation from '.';
 import BackButton from './backButton';
 import Logo from './logo';
 

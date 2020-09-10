@@ -10,22 +10,6 @@ import TableLink from '../../tableLink';
 const SHORT_DAY_FORMAT = { day: 'numeric' };
 
 class DayCalendarTable extends PureComponent {
-  static propTypes = {
-    selectedDate: Types.instanceOf(Date),
-    min: Types.instanceOf(Date),
-    max: Types.instanceOf(Date),
-    viewMonth: Types.number.isRequired,
-    viewYear: Types.number.isRequired,
-    locale: Types.string.isRequired,
-    onSelect: Types.func.isRequired,
-  };
-
-  static defaultProps = {
-    selectedDate: null,
-    min: null,
-    max: null,
-  };
-
   getTableStructure = () => {
     const { viewMonth, viewYear } = this.props;
     let firstDayOfMonth = new Date(viewYear, viewMonth, 1).getDay();
@@ -130,5 +114,21 @@ class DayCalendarTable extends PureComponent {
     );
   }
 }
+
+DayCalendarTable.propTypes = {
+  selectedDate: Types.instanceOf(Date),
+  min: Types.instanceOf(Date),
+  max: Types.instanceOf(Date),
+  viewMonth: Types.number.isRequired,
+  viewYear: Types.number.isRequired,
+  locale: Types.string.isRequired,
+  onSelect: Types.func.isRequired,
+};
+
+DayCalendarTable.defaultProps = {
+  selectedDate: null,
+  min: null,
+  max: null,
+};
 
 export default DayCalendarTable;

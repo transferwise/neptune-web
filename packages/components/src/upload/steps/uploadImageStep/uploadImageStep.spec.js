@@ -1,7 +1,7 @@
 import React from 'react';
-import UploadImageStep from './';
 import { shallow } from 'enzyme';
 import Upload from '@transferwise/icons/react/upload';
+import UploadImageStep from '.';
 
 describe('uploadImageStep', () => {
   const UPLOADIMAGE_STEP_PROPS = {

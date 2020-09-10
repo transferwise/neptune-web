@@ -1,4 +1,4 @@
-import { postData } from './';
+import { postData } from '.';
 
 const HTTPOPTIONS = { url: 'a-url' };
 const DATA = 'some-data';

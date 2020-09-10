@@ -1,4 +1,4 @@
-import { cleanNumber } from './';
+import { cleanNumber } from '.';
 
 const TESTS = [
   { input: '', output: '' },

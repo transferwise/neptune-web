@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
+import { isArray, isEmpty } from '@transferwise/neptune-validation';
 import GenericSchema from '../genericSchema';
 import SchemaFormControl from '../schemaFormControl';
 import ControlFeedback from '../controlFeedback';
@@ -9,7 +10,6 @@ import ControlFeedback from '../controlFeedback';
 import { getValidModelParts } from '../../common/validation/valid-model';
 import { getValidationFailures } from '../../common/validation/validation-failures';
 import { isValidSchema } from '../../common/validation/schema-validators';
-import { isArray, isEmpty } from '@transferwise/neptune-validation';
 
 const OneOfSchema = (props) => {
   const [changed, setChanged] = useState(false);

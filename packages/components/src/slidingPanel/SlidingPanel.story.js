@@ -1,7 +1,6 @@
 import React from 'react';
-import SlidingPanel from './SlidingPanel';
-
 import { boolean, select } from '@storybook/addon-knobs';
+import SlidingPanel from './SlidingPanel';
 
 export default {
   component: SlidingPanel,

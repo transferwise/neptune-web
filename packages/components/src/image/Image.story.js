@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from './Image';
 import { action } from '@storybook/addon-actions';
 
 import { text, select, boolean } from '@storybook/addon-knobs';
+import Image from './Image';
 
 export default {
   component: Image,

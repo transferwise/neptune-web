@@ -53,10 +53,8 @@ function determineBestBottomPlacement(popover, documentBounds) {
   const overflowsWithBottomPlacement = calculateOverflows(popover, BOTTOM, documentBounds);
   if (overflowsWithBottomPlacement.overflowsLeft && !overflowsWithBottomPlacement.overflowsRight) {
     return BOTTOM_RIGHT;
-  } else if (
-    overflowsWithBottomPlacement.overflowsRight &&
-    !overflowsWithBottomPlacement.overflowsLeft
-  ) {
+  }
+  if (overflowsWithBottomPlacement.overflowsRight && !overflowsWithBottomPlacement.overflowsLeft) {
     return BOTTOM_LEFT;
   }
   return BOTTOM;

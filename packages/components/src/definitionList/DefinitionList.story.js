@@ -1,6 +1,6 @@
 import React from 'react';
-import DefinitionList from './DefinitionList';
 import { select, object, boolean } from '@storybook/addon-knobs';
+import DefinitionList from './DefinitionList';
 
 export default {
   component: DefinitionList,

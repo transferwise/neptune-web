@@ -15,34 +15,12 @@ import './Popover.css';
 export default class Popover extends Component {
   static Placement = Position;
 
-  static propTypes = {
-    children: Types.oneOfType([Types.element, Types.string]).isRequired,
-    title: Types.oneOfType([Types.element, Types.string]),
-    content: Types.oneOfType([Types.element, Types.string, Types.func]).isRequired,
-    containsFocusableElement: Types.bool,
-    preferredPlacement: Types.oneOf([
-      Popover.Placement.TOP,
-      Popover.Placement.RIGHT,
-      Popover.Placement.BOTTOM,
-      Popover.Placement.LEFT,
-      Popover.Placement.LEFT_TOP,
-      Popover.Placement.RIGHT_TOP,
-      Popover.Placement.BOTTOM_RIGHT,
-      Popover.Placement.BOTTOM_LEFT,
-    ]),
-    classNames: Types.objectOf(Types.string),
-  };
-
-  static defaultProps = {
-    title: null,
-    containsFocusableElement: false,
-    preferredPlacement: Popover.Placement.RIGHT,
-    classNames: {},
-  };
-
-  state = {
-    isOpen: false,
-  };
+  constructor() {
+    super();
+    this.state = {
+      isOpen: false,
+    };
+  }
 
   componentWillUnmount() {
     this.close();
@@ -142,3 +120,28 @@ export default class Popover extends Component {
     );
   }
 }
+
+Popover.propTypes = {
+  children: Types.oneOfType([Types.element, Types.string]).isRequired,
+  title: Types.oneOfType([Types.element, Types.string]),
+  content: Types.oneOfType([Types.element, Types.string, Types.func]).isRequired,
+  containsFocusableElement: Types.bool,
+  preferredPlacement: Types.oneOf([
+    Popover.Placement.TOP,
+    Popover.Placement.RIGHT,
+    Popover.Placement.BOTTOM,
+    Popover.Placement.LEFT,
+    Popover.Placement.LEFT_TOP,
+    Popover.Placement.RIGHT_TOP,
+    Popover.Placement.BOTTOM_RIGHT,
+    Popover.Placement.BOTTOM_LEFT,
+  ]),
+  classNames: Types.objectOf(Types.string),
+};
+
+Popover.defaultProps = {
+  title: null,
+  containsFocusableElement: false,
+  preferredPlacement: Popover.Placement.RIGHT,
+  classNames: {},
+};

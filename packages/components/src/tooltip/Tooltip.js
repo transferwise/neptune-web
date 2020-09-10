@@ -32,7 +32,13 @@ function getTooltipStyle(parent, tooltip, position, offset) {
 }
 
 class Tooltip extends Component {
-  state = { show: false, tooltipId: null };
+  constructor() {
+    super();
+    this.state = {
+      show: false,
+      tooltipId: null,
+    };
+  }
 
   componentDidMount() {
     // eslint-disable-next-line react/no-did-mount-set-state

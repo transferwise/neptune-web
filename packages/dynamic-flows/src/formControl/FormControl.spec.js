@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import FormControl from './';
 import {
   Checkbox,
   DateInput,
@@ -12,6 +11,7 @@ import {
   TextareaWithDisplayFormat,
   Upload,
 } from '@transferwise/components';
+import FormControl from '.';
 
 describe('FormControl', () => {
   let props;

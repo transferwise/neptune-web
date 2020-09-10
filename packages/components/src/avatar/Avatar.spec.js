@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Avatar from './';
+import Avatar from '.';
 
 describe('Avatar', () => {
   it('renders a medium sized thumbnail Avatar with NO outline', () => {

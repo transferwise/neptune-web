@@ -1,6 +1,6 @@
 import React from 'react';
-import InstructionsList from './InstructionsList';
 import { array } from '@storybook/addon-knobs';
+import InstructionsList from './InstructionsList';
 
 export default {
   component: InstructionsList,

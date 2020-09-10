@@ -1,10 +1,10 @@
 import React from 'react';
 import Types from 'prop-types';
 
-import BasicTypeSchema from '../basicTypeSchema/';
-import ObjectSchema from '../objectSchema/';
-import OneOfSchema from '../oneOfSchema/';
-import AllOfSchema from '../allOfSchema/';
+import BasicTypeSchema from '../basicTypeSchema';
+import ObjectSchema from '../objectSchema';
+import OneOfSchema from '../oneOfSchema';
+import AllOfSchema from '../allOfSchema';
 
 const basicTypes = ['string', 'number', 'integer', 'boolean'];
 

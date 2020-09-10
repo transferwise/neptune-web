@@ -1,6 +1,6 @@
 import React from 'react';
-import Accordion from './Accordion';
 import { object, select } from '@storybook/addon-knobs';
+import Accordion from './Accordion';
 
 export default {
   component: Accordion,

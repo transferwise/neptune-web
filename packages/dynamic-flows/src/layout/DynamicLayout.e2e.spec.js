@@ -1,9 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import DynamicLayout from '.';
-
 import { Alert } from '@transferwise/components';
+import DynamicLayout from '.';
 
 describe('E2E: Given a component for rendering a dynamic layout', () => {
   let component;

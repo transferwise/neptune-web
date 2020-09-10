@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { action } from '@storybook/addon-actions';
 import WithNormalizer from './WithNormalizer';
 import Select from '../select';
 import Upload from '../upload';
-import { action } from '@storybook/addon-actions';
 
 export default {
   component: WithNormalizer,

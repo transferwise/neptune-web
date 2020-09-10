@@ -38,7 +38,7 @@ const ProcessingStep = (props) => {
           {isError && psFailureText}
         </h4>
         {psButtonText && (
-          <button className="btn btn-default btn-sm" onClick={(e) => onClear(e)}>
+          <button type="button" className="btn btn-default btn-sm" onClick={(e) => onClear(e)}>
             {psButtonText}
           </button>
         )}

@@ -1,7 +1,7 @@
 import React from 'react';
-import DynamicLayout from './DynamicLayout';
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
+import DynamicLayout from './DynamicLayout';
 
 import allComponents from './layouts/all.json';
 import reviewStep from './layouts/review.json';

@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Field, { FieldTypes, FieldFormats } from '../field/Field';
+import { Alert } from '@transferwise/components';
+import Field, { FieldTypes, FieldFormats } from './Field';
 import FormControl from '../formControl/FormControl';
 import { FormControlType } from '../common';
-import { Alert } from '@transferwise/components';
 
 describe('Field', () => {
   let component;

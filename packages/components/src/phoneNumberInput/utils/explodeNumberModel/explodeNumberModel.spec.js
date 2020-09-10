@@ -1,4 +1,4 @@
-import { explodeNumberModel } from './';
+import { explodeNumberModel } from '.';
 
 describe('explodeNumberModel', () => {
   describe('when a valid number is provided', () => {

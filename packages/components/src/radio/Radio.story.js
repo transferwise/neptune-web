@@ -1,8 +1,8 @@
 import React from 'react';
-import Radio from './Radio';
 
 import { boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import Radio from './Radio';
 
 export default {
   component: Radio,

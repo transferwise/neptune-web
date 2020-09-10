@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import PhoneNumberInput from './';
+import PhoneNumberInput from '.';
 import { fakeEvent } from '../common/fakeEvents';
 
 const simulatePaste = (el, value) =>

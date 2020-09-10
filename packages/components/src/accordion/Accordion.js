@@ -6,26 +6,12 @@ import './Accordion.css';
 
 /* eslint-disable react/no-array-index-key */
 class Accordion extends PureComponent {
-  static propTypes = {
-    items: Types.arrayOf(
-      Types.shape({
-        id: Types.string,
-        title: Types.node.isRequired,
-        content: Types.node.isRequired,
-      }),
-    ).isRequired,
-    onClick: Types.func,
-    indexOpen: Types.number,
-  };
-
-  static defaultProps = {
-    onClick: null,
-    indexOpen: -1,
-  };
-
-  state = {
-    indexOpen: this.props.indexOpen,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      indexOpen: props.indexOpen,
+    };
+  }
 
   /* eslint-disable react/no-did-update-set-state */
   componentDidUpdate(prevProps) {
@@ -61,4 +47,20 @@ class Accordion extends PureComponent {
   }
 }
 
+Accordion.propTypes = {
+  items: Types.arrayOf(
+    Types.shape({
+      id: Types.string,
+      title: Types.node.isRequired,
+      content: Types.node.isRequired,
+    }),
+  ).isRequired,
+  onClick: Types.func,
+  indexOpen: Types.number,
+};
+
+Accordion.defaultProps = {
+  onClick: null,
+  indexOpen: -1,
+};
 export default Accordion;

@@ -26,73 +26,8 @@ const SEARCH_DELAY = 200;
 
 export default class Typeahead extends Component {
   static Size = Size;
-  static Type = MessageType;
-  static propTypes = {
-    id: Types.string.isRequired,
-    name: Types.string.isRequired,
-    options: Types.arrayOf(
-      Types.shape({
-        label: Types.string.isRequired,
-        note: Types.string,
-        secondary: Types.string,
-      }),
-    ).isRequired,
-    initialValue: Types.arrayOf(
-      Types.shape({
-        label: Types.string.isRequired,
-        note: Types.string,
-        secondary: Types.string,
-      }),
-    ),
-    onChange: Types.func.isRequired,
-    allowNew: Types.bool,
-    autoFocus: Types.bool,
-    clearable: Types.bool,
-    multiple: Types.bool,
-    showSuggestions: Types.bool,
-    showNewEntry: Types.bool,
-    searchDelay: Types.number,
-    maxHeight: Types.number,
-    minQueryLength: Types.number,
-    addon: Types.node,
-    placeholder: Types.string,
-    alert: Types.shape({
-      message: Types.string.isRequired,
-      type: Types.oneOf([Typeahead.Type.ERROR, Typeahead.Type.WARNING]).isRequired,
-    }),
-    footer: Types.node,
-    validateChip: Types.func,
-    onSearch: Types.func,
-    onBlur: Types.func,
-    onInputChange: Types.func,
-    onFocus: Types.func,
-    chipSeparators: Types.arrayOf(Types.string),
-    size: Types.oneOf([Typeahead.Size.MEDIUM, Typeahead.Size.LARGE]),
-  };
 
-  static defaultProps = {
-    allowNew: false,
-    autoFocus: false,
-    clearable: true,
-    multiple: false,
-    maxHeight: null,
-    showSuggestions: true,
-    showNewEntry: true,
-    searchDelay: SEARCH_DELAY,
-    minQueryLength: DEFAULT_MIN_QUERY_LENGTH,
-    addon: null,
-    placeholder: null,
-    alert: null,
-    footer: null,
-    size: Typeahead.Size.MEDIUM,
-    chipSeparators: [],
-    initialValue: [],
-    onSearch: null,
-    onBlur: null,
-    onInputChange: null,
-    onFocus: null,
-    validateChip: () => true,
-  };
+  static Type = MessageType;
 
   constructor(props) {
     super(props);
@@ -117,11 +52,10 @@ export default class Typeahead extends Component {
             query: selected[0].label,
             selected: [selected[0]],
           };
-        } else {
-          return {
-            query: '',
-          };
         }
+        return {
+          query: '',
+        };
       });
     }
   }
@@ -484,7 +418,7 @@ export default class Typeahead extends Component {
 
             {clearButton && (
               <div className="input-group-addon">
-                <button className="btn-unstyled" onClick={this.clear}>
+                <button type="button" className="btn-unstyled" onClick={this.clear}>
                   <i className=" input-group-text icon icon-close" />
                 </button>
               </div>
@@ -497,3 +431,70 @@ export default class Typeahead extends Component {
     );
   }
 }
+
+Typeahead.propTypes = {
+  id: Types.string.isRequired,
+  name: Types.string.isRequired,
+  options: Types.arrayOf(
+    Types.shape({
+      label: Types.string.isRequired,
+      note: Types.string,
+      secondary: Types.string,
+    }),
+  ).isRequired,
+  initialValue: Types.arrayOf(
+    Types.shape({
+      label: Types.string.isRequired,
+      note: Types.string,
+      secondary: Types.string,
+    }),
+  ),
+  onChange: Types.func.isRequired,
+  allowNew: Types.bool,
+  autoFocus: Types.bool,
+  clearable: Types.bool,
+  multiple: Types.bool,
+  showSuggestions: Types.bool,
+  showNewEntry: Types.bool,
+  searchDelay: Types.number,
+  maxHeight: Types.number,
+  minQueryLength: Types.number,
+  addon: Types.node,
+  placeholder: Types.string,
+  alert: Types.shape({
+    message: Types.string.isRequired,
+    type: Types.oneOf([Typeahead.Type.ERROR, Typeahead.Type.WARNING]).isRequired,
+  }),
+  footer: Types.node,
+  validateChip: Types.func,
+  onSearch: Types.func,
+  onBlur: Types.func,
+  onInputChange: Types.func,
+  onFocus: Types.func,
+  chipSeparators: Types.arrayOf(Types.string),
+  size: Types.oneOf([Typeahead.Size.MEDIUM, Typeahead.Size.LARGE]),
+};
+
+Typeahead.defaultProps = {
+  allowNew: false,
+  autoFocus: false,
+  clearable: true,
+  multiple: false,
+  maxHeight: null,
+  showSuggestions: true,
+  showNewEntry: true,
+  searchDelay: SEARCH_DELAY,
+  minQueryLength: DEFAULT_MIN_QUERY_LENGTH,
+  addon: null,
+  placeholder: null,
+  alert: null,
+  footer: null,
+  size: Typeahead.Size.MEDIUM,
+  chipSeparators: [],
+  initialValue: [],
+  onSearch: null,
+  onBlur: null,
+  onInputChange: null,
+  onFocus: null,
+  validateChip: () => true,
+};

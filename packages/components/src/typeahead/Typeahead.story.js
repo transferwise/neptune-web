@@ -1,7 +1,6 @@
 import React from 'react';
-import Typeahead from './Typeahead';
-
 import { boolean } from '@storybook/addon-knobs';
+import Typeahead from './Typeahead';
 
 export default {
   component: Typeahead,

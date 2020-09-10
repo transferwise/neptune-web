@@ -23,6 +23,7 @@ import '../flowNavigation/FlowNavigation.css';
 const OverlayHeader = ({ avatar, profileType, onClose, theme }) => {
   const closeButton = onClose && (
     <button
+      type="button"
       className={classNames(
         'tw-flow-navigation__close-button',
         'btn-link',

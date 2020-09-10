@@ -7,25 +7,6 @@ import Header from '../header';
 import DayCalendarTable from './table';
 
 class DayCalendar extends PureComponent {
-  static propTypes = {
-    selectedDate: Types.instanceOf(Date),
-    min: Types.instanceOf(Date),
-    max: Types.instanceOf(Date),
-    viewMonth: Types.number.isRequired,
-    viewYear: Types.number.isRequired,
-    locale: Types.string.isRequired,
-    monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]).isRequired,
-    onSelect: Types.func.isRequired,
-    onLabelClick: Types.func.isRequired,
-    onViewDateUpdate: Types.func.isRequired,
-  };
-
-  static defaultProps = {
-    selectedDate: null,
-    min: null,
-    max: null,
-  };
-
   selectPreviousMonth = () => {
     const { viewMonth, viewYear } = this.props;
     this.props.onViewDateUpdate({
@@ -70,5 +51,24 @@ class DayCalendar extends PureComponent {
     );
   }
 }
+
+DayCalendar.propTypes = {
+  selectedDate: Types.instanceOf(Date),
+  min: Types.instanceOf(Date),
+  max: Types.instanceOf(Date),
+  viewMonth: Types.number.isRequired,
+  viewYear: Types.number.isRequired,
+  locale: Types.string.isRequired,
+  monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]).isRequired,
+  onSelect: Types.func.isRequired,
+  onLabelClick: Types.func.isRequired,
+  onViewDateUpdate: Types.func.isRequired,
+};
+
+DayCalendar.defaultProps = {
+  selectedDate: null,
+  min: null,
+  max: null,
+};
 
 export default DayCalendar;

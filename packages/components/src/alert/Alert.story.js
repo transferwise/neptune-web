@@ -1,7 +1,7 @@
 import React from 'react';
-import Alert from './Alert';
 import { select, text, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import Alert from './Alert';
 
 export default {
   component: Alert,

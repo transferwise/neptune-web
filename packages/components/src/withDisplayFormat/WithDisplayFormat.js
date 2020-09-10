@@ -12,51 +12,6 @@ import {
 import { HistoryNavigator } from '../common';
 
 class WithDisplayFormat extends React.Component {
-  static propTypes = {
-    /**
-     * autocomplete hides our form help so we need to disable it when help text
-     * is present. Chrome ignores autocomplete=off, the only way to disable it is
-     * to provide an 'invalid' value, for which 'disabled' serves.
-     */
-    autoComplete: Types.oneOf(['on', 'off', 'disabled']),
-    className: Types.string,
-    disabled: Types.bool,
-    id: Types.string,
-    maxLength: Types.number,
-    minLength: Types.number,
-    name: Types.string,
-    onFocus: Types.func,
-    onBlur: Types.func,
-    onChange: Types.func.isRequired,
-    placeholder: Types.string,
-    readOnly: Types.bool,
-    render: Types.func.isRequired,
-    required: Types.bool,
-    displayPattern: Types.string,
-    type: Types.string,
-    inputMode: Types.string,
-    value: Types.string,
-  };
-
-  static defaultProps = {
-    autoComplete: 'off',
-    className: null,
-    disabled: false,
-    id: null,
-    maxLength: null,
-    minLength: null,
-    name: null,
-    placeholder: null,
-    readOnly: false,
-    required: false,
-    displayPattern: '',
-    type: 'text',
-    inputMode: null,
-    value: '',
-    onFocus: null,
-    onBlur: null,
-  };
-
   constructor(props) {
     super(props);
     const { value, displayPattern } = props;
@@ -305,5 +260,50 @@ class WithDisplayFormat extends React.Component {
     return this.props.render(renderProps);
   }
 }
+
+WithDisplayFormat.propTypes = {
+  /**
+   * autocomplete hides our form help so we need to disable it when help text
+   * is present. Chrome ignores autocomplete=off, the only way to disable it is
+   * to provide an 'invalid' value, for which 'disabled' serves.
+   */
+  autoComplete: Types.oneOf(['on', 'off', 'disabled']),
+  className: Types.string,
+  disabled: Types.bool,
+  id: Types.string,
+  maxLength: Types.number,
+  minLength: Types.number,
+  name: Types.string,
+  onFocus: Types.func,
+  onBlur: Types.func,
+  onChange: Types.func.isRequired,
+  placeholder: Types.string,
+  readOnly: Types.bool,
+  render: Types.func.isRequired,
+  required: Types.bool,
+  displayPattern: Types.string,
+  type: Types.string,
+  inputMode: Types.string,
+  value: Types.string,
+};
+
+WithDisplayFormat.defaultProps = {
+  autoComplete: 'off',
+  className: null,
+  disabled: false,
+  id: null,
+  maxLength: null,
+  minLength: null,
+  name: null,
+  placeholder: null,
+  readOnly: false,
+  required: false,
+  displayPattern: '',
+  type: 'text',
+  inputMode: null,
+  value: '',
+  onFocus: null,
+  onBlur: null,
+};
 
 export default WithDisplayFormat;

@@ -1,7 +1,7 @@
 import React from 'react';
-import MoneyInput from './MoneyInput';
 import { select, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import MoneyInput from './MoneyInput';
 
 export default {
   component: MoneyInput,
