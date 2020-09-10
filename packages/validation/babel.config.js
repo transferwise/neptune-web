@@ -1,3 +1,16 @@
+const umdConfig = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        useBuiltIns: 'usage',
+        corejs: '3.0.0',
+        modules: false,
+      },
+    ],
+  ],
+};
+
 const testConfig = {
   presets: [
     [
@@ -12,15 +25,26 @@ const testConfig = {
   ],
 };
 
-module.exports = {
-  // "unambiguous" - Consider the file a "module" if import/export statements are present, or else consider it a "script".
-  sourceType: 'unambiguous',
-  plugins: [
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-transform-react-jsx',
-    '@babel/plugin-transform-runtime',
+const esConfig = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        useBuiltIns: 'usage',
+        corejs: '3.0.0',
+        modules: false,
+      },
+    ],
+    ['minify', { builtIns: false, mangle: { exclude: { separators: true } } }],
   ],
+};
+
+module.exports = {
+  sourceType: 'unambiguous',
+  plugins: ['@babel/plugin-transform-runtime'],
   env: {
+    umd: umdConfig,
+    es: esConfig,
     test: testConfig,
   },
 };

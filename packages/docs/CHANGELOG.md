@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.5...@transferwise/neptune-docs@6.0.6) (2020-09-10)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.4...@transferwise/neptune-docs@6.0.5) (2020-09-09)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.3...@transferwise/neptune-docs@6.0.4) (2020-09-08)
+
+
+### Bug Fixes
+
+* add babel transpiled files ([#559](https://github.com/transferwise/neptune-web/issues/559)) ([bae211a](https://github.com/transferwise/neptune-web/commit/bae211a1d2f198d23d5d299077a613bf4fd4d9c9))
+
+
+
+
+
 ## [6.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.2...@transferwise/neptune-docs@6.0.3) (2020-09-07)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

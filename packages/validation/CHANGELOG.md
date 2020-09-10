@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-validation@2.0.1...@transferwise/neptune-validation@2.0.2) (2020-09-08)
+
+
+### Bug Fixes
+
+* add babel transpiled files ([#559](https://github.com/transferwise/neptune-web/issues/559)) ([bae211a](https://github.com/transferwise/neptune-web/commit/bae211a1d2f198d23d5d299077a613bf4fd4d9c9))
+
+
+
+
+
 ## [2.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-validation@2.0.0...@transferwise/neptune-validation@2.0.1) (2020-09-07)
 
 

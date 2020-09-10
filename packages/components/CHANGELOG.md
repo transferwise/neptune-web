@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.4...@transferwise/components@29.0.5) (2020-09-10)
+
+
+### Bug Fixes
+
+* importing loader css ([#566](https://github.com/transferwise/neptune-web/issues/566)) ([86b6e77](https://github.com/transferwise/neptune-web/commit/86b6e7730db460b87114185351d8de8fe07ed271))
+
+
+
+
+
+## [29.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.3...@transferwise/components@29.0.4) (2020-09-08)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
 ## [29.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.2...@transferwise/components@29.0.3) (2020-09-07)
 
 
