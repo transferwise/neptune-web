@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [29.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.5...@transferwise/components@29.1.0) (2020-09-10)
+
+
+### Features
+
+* InstructionsList now supports items of any renderable type ([#565](https://github.com/transferwise/neptune-web/issues/565)) ([db39f87](https://github.com/transferwise/neptune-web/commit/db39f87b0e2d2e9649cb50299aa31a4762f78cb8))
+
+
+
+
+
 ## [29.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.4...@transferwise/components@29.0.5) (2020-09-10)
 
 
