@@ -68,6 +68,7 @@ export default class Typeahead extends Component {
     onFocus: Types.func,
     chipSeparators: Types.arrayOf(Types.string),
     size: Types.oneOf([Typeahead.Size.MEDIUM, Typeahead.Size.LARGE]),
+    inputAutoComplete: Types.string,
   };
 
   static defaultProps = {
@@ -92,6 +93,7 @@ export default class Typeahead extends Component {
     onInputChange: null,
     onFocus: null,
     validateChip: () => true,
+    inputAutoComplete: 'new-password',
   };
 
   constructor(props) {
@@ -425,6 +427,7 @@ export default class Typeahead extends Component {
       autoFocus,
       maxHeight,
       alert,
+      inputAutoComplete,
     } = this.props;
 
     const { errorState, query, selected, optionsShown, keyboardFocusedOptionIndex } = this.state;
@@ -480,6 +483,7 @@ export default class Typeahead extends Component {
               onKeyDown={this.handleOnKeyDown}
               onFocus={this.handleOnFocus}
               onPaste={this.handleOnPaste}
+              autoComplete={inputAutoComplete}
             />
 
             {clearButton && (

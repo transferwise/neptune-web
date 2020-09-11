@@ -101,6 +101,7 @@ export const basic = () => {
       addon={<i className="input-group-text icon icon-search" />}
       onBlur={() => {}}
       options={options}
+      inputAutoComplete="off"
     />
   );
 };

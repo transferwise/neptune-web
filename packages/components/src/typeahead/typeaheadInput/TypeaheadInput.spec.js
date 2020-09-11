@@ -20,6 +20,7 @@ describe('Typeahead input', () => {
       onFocus: jest.fn(),
       onPaste: jest.fn(),
       onChange: jest.fn(),
+      autoComplete: 'off',
     };
 
     component = shallow(<TypeaheadInput {...props} />);
