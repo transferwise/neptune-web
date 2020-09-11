@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [29.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.1.4...@transferwise/components@29.2.0) (2020-09-11)
+
+
+### Features
+
+* badge component ([#419](https://github.com/transferwise/neptune-web/issues/419)) ([1732e0a](https://github.com/transferwise/neptune-web/commit/1732e0a61c43bd5e41ab436f7c91c472a58ee2a4))
+
+
+
+
+
 ## [29.1.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.1.3...@transferwise/components@29.1.4) (2020-09-11)
 
 
