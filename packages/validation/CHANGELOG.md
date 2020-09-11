@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-validation@2.0.4...@transferwise/neptune-validation@2.0.5) (2020-09-11)
+
+
+### Bug Fixes
+
+* fix core-js injection ([#579](https://github.com/transferwise/neptune-web/issues/579)) ([9a7fa75](https://github.com/transferwise/neptune-web/commit/9a7fa75432f5da78b29b7ae36008d28e4de56ea9))
+
+
+
+
+
 ## [2.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-validation@2.0.3...@transferwise/neptune-validation@2.0.4) (2020-09-11)
 
 **Note:** Version bump only for package @transferwise/neptune-validation
