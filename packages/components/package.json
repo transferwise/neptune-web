@@ -78,7 +78,7 @@
     "@transferwise/neptune-css": "^3.0.0",
     "@transferwise/neptune-validation": "^2.0.4",
     "classnames": "^2.2.6",
-    "commonmark": "^0.29.1",
+    "commonmark": "0.29.1",
     "core-js": "^3.6.5",
     "lodash.clamp": "^4.0.3",
     "lodash.debounce": "^4.0.8",
