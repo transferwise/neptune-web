@@ -40,8 +40,5 @@
     "rollup": "^2.7.6",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-uglify": "^6.0.4"
-  },
-  "peerDependency": {
-    "core-js": "^3.6.5"
   }
 }
