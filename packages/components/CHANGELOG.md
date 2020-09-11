@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.1.0...@transferwise/components@29.1.1) (2020-09-11)
+
+
+### Bug Fixes
+
+* typeahead visual bugs ([#571](https://github.com/transferwise/neptune-web/issues/571)) ([2ae380c](https://github.com/transferwise/neptune-web/commit/2ae380c20cd5274ebb18b0d32876fe29badc50a5))
+
+
+
+
+
 # [29.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.5...@transferwise/components@29.1.0) (2020-09-10)
 
 
