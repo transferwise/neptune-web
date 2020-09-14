@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import Close from '@transferwise/icons/react/close';
+import { Cross as CrossIcon } from '@transferwise/icons';
 
 import './Nudge.css';
 
@@ -16,7 +16,7 @@ const Nudge = ({ media, title, link, href, onDismiss, id, className }) => (
     </div>
     <div className="media-right">
       <button type="button" className="close" onClick={onDismiss} aria-label="close">
-        <Close size="sm" />
+        <CrossIcon />
       </button>
     </div>
   </div>

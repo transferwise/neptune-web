@@ -2,7 +2,7 @@ import React from 'react';
 import CheckboxOption from './CheckboxOption';
 import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import FastFlagIcon from '@transferwise/icons/react/fast-flag';
+import { FastFlag as FastFlagIcon } from '@transferwise/icons';
 
 export default {
   component: CheckboxOption,

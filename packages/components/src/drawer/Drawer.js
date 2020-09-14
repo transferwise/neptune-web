@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import Close from '@transferwise/icons/react/close';
+import { Cross as CrossIcon } from '@transferwise/icons';
 import SlidingPanel from '../slidingPanel';
 import Dimmer from '../dimmer';
 import { addNoScrollBodyClass, removeNoScrollBodyClass } from '../common';
@@ -48,12 +48,12 @@ const Drawer = ({ open, position, onClose, children, headerTitle, footerContent 
           >
             <div
               role="button"
-              className="drawer-header--close"
+              className="drawer-header close"
               tabIndex={0}
               onClick={onClose}
               onKeyDown={handleOnKeyDown}
             >
-              <Close />
+              <CrossIcon size={24} />
             </div>
             {headerTitle && (
               <div className="align-heading m-l-2">

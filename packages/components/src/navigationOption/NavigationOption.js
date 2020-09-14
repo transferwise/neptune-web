@@ -3,6 +3,7 @@ import React from 'react';
 import Types from 'prop-types';
 import requiredIf from 'react-required-if';
 import classNames from 'classnames';
+import Chevron from '../chevron';
 
 import Option from '../common/Option';
 import './NavigationOption.css';
@@ -45,9 +46,7 @@ const NavigationOption = ({
           onClick(event);
         }
       }}
-      button={
-        <span className="tw-navigation-option__chevron caret rotate270" disabled={disabled} />
-      }
+      button={<Chevron orientation={Chevron.Orientation.RIGHT} disabled={disabled} />}
     />
   );
 };

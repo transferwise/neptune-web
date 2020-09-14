@@ -28,7 +28,7 @@ describe('OpenButton', () => {
   });
 
   it('shows placeholder', () => {
-    expect(button().text()).toBe('Enter date..');
+    expect(button().text()).toContain('Enter date..');
   });
 
   describe('when date is provided', () => {
@@ -37,7 +37,7 @@ describe('OpenButton', () => {
     });
 
     it('shows selected date in long format', () => {
-      expect(button().text()).toBe('1.2.3');
+      expect(button().text()).toContain('1.2.3');
       expect(formatting.formatDate).toHaveBeenLastCalledWith(selectedDate, locale, {
         day: 'numeric',
         month: 'long',
