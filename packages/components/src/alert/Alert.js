@@ -1,51 +1,67 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Types from 'prop-types';
-
 import classNames from 'classnames';
 import requiredIf from 'react-required-if';
 import { Size, MessageType, ArrowPosition } from '../common';
 
-export default class Alert extends Component {
-  static Size = Size;
+/**
+ * Alerts give users important messages about their current task within the context of the page.
+ *
+ * @param {string} [arrow=null] - Set arrow position. One of ArrowPosition.
+ * @param {string} className - Extra classnames to be applied to the main container.
+ * @param {boolean} [dismissible=false] - Boolean that controls whether the alert can be dismissed or not by showing or hiding the close button.
+ * @param {function} [onDismiss] - Callback invoked on close button click. Required for dismissable alert only.
+ * @param {string} [size=Alert.Size.LARGE] - Size of the Alert.
+ * @param {string} type - Controls what type of alert to display: Success, Warning, Error, Info.
+ *
+ * @usage '<Alert
+ *    dismissible={dismissible}
+ *    onDismiss={() => setDismissed(true)}
+ *    size={size}
+ *    arrow={arrow}
+ *    type={type}
+ *   >
+ *     {content}
+ *   </Alert>'
+ * */
 
-  static Type = MessageType;
+const Alert = ({ arrow, children, className, dismissible, onDismiss, size, type }) => {
+  const alertConfigClasses = {
+    'alert-success': type === MessageType.SUCCESS,
+    'alert-info': type === MessageType.INFO,
+    'alert-warning': type === MessageType.WARNING,
+    'alert-danger': type === MessageType.ERROR,
+    small: size === Size.SMALL,
+    'p-x-2': size === Size.SMALL,
+    'p-y-1': size === Size.SMALL,
+  };
 
-  static ArrowPosition = ArrowPosition;
-
-  render() {
-    const { type, arrow, size, children, dismissible, onDismiss } = this.props;
-
-    const alertConfigClasses = {
-      'alert-success': type === Alert.Type.SUCCESS,
-      'alert-info': type === Alert.Type.INFO,
-      'alert-warning': type === Alert.Type.WARNING,
-      'alert-danger': type === Alert.Type.ERROR,
-      small: size === Alert.Size.SMALL,
-      'p-x-2': size === Alert.Size.SMALL,
-      'p-y-1': size === Alert.Size.SMALL,
-    };
-
-    return (
-      <div
-        role="alert"
-        className={classNames('alert', 'alert-detach', alertConfigClasses, arrowClasses(arrow))}
-      >
-        {dismissible && (
-          <button
-            type="button"
-            className="close"
-            data-dismiss="alert"
-            onClick={onDismiss}
-            aria-label="Close"
-          >
-            <span aria-hidden="true">×</span>
-          </button>
-        )}
-        {children}
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      role="alert"
+      className={classNames(
+        'alert',
+        'alert-detach',
+        alertConfigClasses,
+        arrowClasses(arrow),
+        className,
+      )}
+    >
+      {dismissible && (
+        <button
+          type="button"
+          className="close"
+          data-dismiss="alert"
+          onClick={onDismiss}
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      )}
+      {children}
+    </div>
+  );
+};
 
 function arrowClasses(arrow) {
   if (arrow) {
@@ -71,6 +87,10 @@ function arrowClasses(arrow) {
   return null;
 }
 
+Alert.Size = { SMALL: Size.SMALL, LARGE: Size.LARGE };
+Alert.Type = MessageType;
+Alert.ArrowPosition = ArrowPosition;
+
 Alert.propTypes = {
   type: Types.oneOf([Alert.Type.INFO, Alert.Type.WARNING, Alert.Type.ERROR, Alert.Type.SUCCESS]),
   children: Types.node.isRequired,
@@ -86,6 +106,7 @@ Alert.propTypes = {
     Alert.ArrowPosition.BOTTOM,
     Alert.ArrowPosition.BOTTOM_RIGHT,
   ]),
+  className: Types.string,
 };
 
 Alert.defaultProps = {
@@ -93,4 +114,7 @@ Alert.defaultProps = {
   size: Alert.Size.LARGE,
   dismissible: false,
   arrow: null,
+  className: '',
 };
+
+export default Alert;

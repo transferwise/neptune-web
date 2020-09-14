@@ -1,11 +1,11 @@
 // TODO: remove bootstrap dependencies
 
 // variables
-@import (reference) "bootstrap/less/variables.less";
+@import (reference) 'bootstrap/less/variables.less';
 
 /* Using feature queries to detect the support and giving a fallback */
 
-@supports not ((display: grid) and (grid-column-gap:1%)) {
+@supports not ((display: grid) and (grid-column-gap: 1%)) {
   .d-grid {
     display: flex;
     flex-wrap: wrap;
@@ -30,7 +30,8 @@
     }
   }
 
-  @media (-ms-high-contrast: active), screen and (min-width: @screen-md) and (-ms-high-contrast: none) {
+  @media (-ms-high-contrast: active),
+    screen and (min-width: @screen-md) and (-ms-high-contrast: none) {
     .d-grid {
       > * {
         margin-bottom: var(--size-32);
