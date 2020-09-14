@@ -1,6 +1,6 @@
 <div>
   <Summary
-    icon={<MoneyIcon size="md" />}
+    icon={<MoneyIcon size={24} />}
     title="Add money to your account"
     help={{
       title: 'Add money to your account',
@@ -14,9 +14,9 @@
       ),
     }}
   />
-  <Summary icon={<IdIcon size="md" />} title="You uploaded you identity documents" />
+  <Summary icon={<IdIcon size={24} />} title="You uploaded you identity documents" />
   <Summary
-    icon={<HomeIcon size="md" />}
+    icon={<HomeIcon size={24} />}
     title="You entered your card delivery address"
     content={
       <>
