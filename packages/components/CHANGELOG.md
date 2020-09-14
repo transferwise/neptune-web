@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [29.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.1.4...@transferwise/components@29.2.0) (2020-09-11)
+
+
+### Features
+
+* badge component ([#419](https://github.com/transferwise/neptune-web/issues/419)) ([1732e0a](https://github.com/transferwise/neptune-web/commit/1732e0a61c43bd5e41ab436f7c91c472a58ee2a4))
+
+
+
+
+
+## [29.1.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.1.3...@transferwise/components@29.1.4) (2020-09-11)
+
+
+### Bug Fixes
+
+* fix core-js injection ([#579](https://github.com/transferwise/neptune-web/issues/579)) ([9a7fa75](https://github.com/transferwise/neptune-web/commit/9a7fa75432f5da78b29b7ae36008d28e4de56ea9))
+
+
+
+
+
+## [29.1.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.1.2...@transferwise/components@29.1.3) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [29.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.1.1...@transferwise/components@29.1.2) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [29.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.1.0...@transferwise/components@29.1.1) (2020-09-11)
+
+
+### Bug Fixes
+
+* typeahead visual bugs ([#571](https://github.com/transferwise/neptune-web/issues/571)) ([2ae380c](https://github.com/transferwise/neptune-web/commit/2ae380c20cd5274ebb18b0d32876fe29badc50a5))
+
+
+
+
+
+# [29.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.5...@transferwise/components@29.1.0) (2020-09-10)
+
+
+### Features
+
+* InstructionsList now supports items of any renderable type ([#565](https://github.com/transferwise/neptune-web/issues/565)) ([db39f87](https://github.com/transferwise/neptune-web/commit/db39f87b0e2d2e9649cb50299aa31a4762f78cb8))
+
+
+
+
+
 ## [29.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.0.4...@transferwise/components@29.0.5) (2020-09-10)
 
 

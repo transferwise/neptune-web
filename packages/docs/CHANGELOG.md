@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.2.0...@transferwise/neptune-docs@6.2.1) (2020-09-14)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [6.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.1.4...@transferwise/neptune-docs@6.2.0) (2020-09-11)
+
+
+### Features
+
+* badge component ([#419](https://github.com/transferwise/neptune-web/issues/419)) ([1732e0a](https://github.com/transferwise/neptune-web/commit/1732e0a61c43bd5e41ab436f7c91c472a58ee2a4))
+
+
+
+
+
+## [6.1.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.1.3...@transferwise/neptune-docs@6.1.4) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.1.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.1.2...@transferwise/neptune-docs@6.1.3) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.1.1...@transferwise/neptune-docs@6.1.2) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.1.0...@transferwise/neptune-docs@6.1.1) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [6.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.6...@transferwise/neptune-docs@6.1.0) (2020-09-10)
+
+
+### Features
+
+* InstructionsList now supports items of any renderable type ([#565](https://github.com/transferwise/neptune-web/issues/565)) ([db39f87](https://github.com/transferwise/neptune-web/commit/db39f87b0e2d2e9649cb50299aa31a4762f78cb8))
+
+
+
+
+
 ## [6.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.5...@transferwise/neptune-docs@6.0.6) (2020-09-10)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

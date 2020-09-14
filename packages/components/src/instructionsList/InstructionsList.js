@@ -30,8 +30,8 @@ InstructionsList.defaultProps = {
 };
 
 InstructionsList.propTypes = {
-  dos: Types.arrayOf(Types.string),
-  donts: Types.arrayOf(Types.string),
+  dos: Types.arrayOf(Types.node),
+  donts: Types.arrayOf(Types.node),
 };
 
 export default InstructionsList;

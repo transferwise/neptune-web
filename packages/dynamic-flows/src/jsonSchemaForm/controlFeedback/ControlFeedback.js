@@ -10,7 +10,7 @@ const ControlFeedback = (props) => {
     ...props.schema.validationMessages,
   };
 
-  const isErrorVisible = !props.changed && props.errors;
+  const isErrorVisible = (props.submitted || !props.changed) && !!props.errors;
   const isValidationVisible =
     (props.submitted || (props.changed && props.blurred)) && !!props.validations.length;
   const isHelpVisible = props.focused && props.schema.help && !isValidationVisible;
@@ -81,7 +81,7 @@ ControlFeedback.defaultProps = {
     minLength: 'Value is too short',
     maxLength: 'Value is too long',
     pattern: 'Incorrect format',
-    required: 'Value is required',
+    required: 'Value is required...',
   },
 };
 

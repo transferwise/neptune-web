@@ -1,3 +1,4 @@
+export { default as Badge } from './badge';
 export { default as Checkbox } from './checkbox';
 export { default as Loader } from './loader';
 export { default as Radio } from './radio';

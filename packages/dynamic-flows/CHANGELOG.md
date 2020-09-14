@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.8](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.1.7...@transferwise/dynamic-flows@4.1.8) (2020-09-14)
+
+
+### Bug Fixes
+
+* displaying errors after the model has changed ([#581](https://github.com/transferwise/neptune-web/issues/581)) ([42d5e7a](https://github.com/transferwise/neptune-web/commit/42d5e7a2b295c5536b42910d88835d303dff1dc6))
+
+
+
+
+
+## [4.1.7](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.1.6...@transferwise/dynamic-flows@4.1.7) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [4.1.6](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.1.5...@transferwise/dynamic-flows@4.1.6) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [4.1.5](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.1.4...@transferwise/dynamic-flows@4.1.5) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [4.1.4](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.1.3...@transferwise/dynamic-flows@4.1.4) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [4.1.3](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.1.2...@transferwise/dynamic-flows@4.1.3) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [4.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.1.1...@transferwise/dynamic-flows@4.1.2) (2020-09-10)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
 ## [4.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.1.0...@transferwise/dynamic-flows@4.1.1) (2020-09-10)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows

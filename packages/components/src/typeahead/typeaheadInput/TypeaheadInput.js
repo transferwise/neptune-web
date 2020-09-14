@@ -50,6 +50,7 @@ export default class TypeaheadInput extends Component {
       onKeyDown,
       onFocus,
       onPaste,
+      autoComplete,
     } = this.props;
     const { inputWidth } = this.state;
 
@@ -77,7 +78,7 @@ export default class TypeaheadInput extends Component {
         aria-expanded={optionsShown}
         aria-haspopup="listbox"
         aria-controls={`menu-${typeaheadId}`}
-        autoComplete="new-password"
+        autoComplete={autoComplete}
         role="combobox"
         value={value}
         style={multiple && selected.length > 0 ? { width: inputWidth } : {}}
@@ -127,6 +128,7 @@ TypeaheadInput.propTypes = {
   placeholder: Types.string,
   optionsShown: Types.bool,
   maxHeight: Types.number,
+  autoComplete: Types.string.isRequired,
 
   onChange: Types.func.isRequired,
   renderChip: Types.func.isRequired,

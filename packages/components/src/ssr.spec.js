@@ -64,6 +64,7 @@ describe('Server side rendering', () => {
     isExpanded: true,
     details: 'yo',
     icon: <svg />,
+    badge: <svg />,
   };
 
   // Override props in case of name collision.
