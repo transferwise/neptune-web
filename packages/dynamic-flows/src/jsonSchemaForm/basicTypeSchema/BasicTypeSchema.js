@@ -79,7 +79,7 @@ const BasicTypeSchema = (props) => {
   const formGroupClasses = {
     'form-group': true,
     'has-error':
-      (!changed && props.errors) ||
+      ((props.submitted || !changed) && !!props.errors) ||
       ((props.submitted || (changed && blurred)) && validations.length),
     'has-info': focused && props.schema.help,
   };
