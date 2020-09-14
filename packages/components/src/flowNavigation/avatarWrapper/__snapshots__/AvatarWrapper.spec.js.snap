@@ -5,10 +5,10 @@ exports[`FlowNavigationAvatar renders as BUSINESS profile type 1`] = `
   class="tw-avatar-wrapper"
 >
   <div
-    class="avatar avatar--md avatar--icon"
+    class="tw-avatar tw-avatar--md tw-avatar--icon tw-avatar--light"
   >
     <div
-      class="avatar__content"
+      class="tw-avatar__content"
     >
       <div
         class="icon icon-bank"
@@ -23,10 +23,10 @@ exports[`FlowNavigationAvatar renders as PERSONAL profile type 1`] = `
   class="tw-avatar-wrapper"
 >
   <div
-    class="avatar avatar--md avatar--thumbnail"
+    class="tw-avatar tw-avatar--md tw-avatar--thumbnail tw-avatar--light"
   >
     <div
-      class="avatar__content"
+      class="tw-avatar__content"
     >
       <img
         alt="avatar"
@@ -42,10 +42,10 @@ exports[`FlowNavigationAvatar renders as PERSONAL profile type with an icon 1`] 
   class="tw-avatar-wrapper"
 >
   <div
-    class="avatar avatar--md avatar--icon"
+    class="tw-avatar tw-avatar--md tw-avatar--icon tw-avatar--light"
   >
     <div
-      class="avatar__content"
+      class="tw-avatar__content"
     >
       <div
         class="icon icon-profile"
