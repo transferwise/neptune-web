@@ -1,6 +1,6 @@
 import React from 'react';
 import RadioOption from './RadioOption';
-import FastFlagIcon from '@transferwise/icons/react/fast-flag';
+import { FastFlag as FastFlagIcon } from '@transferwise/icons';
 
 import { boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Types from 'prop-types';
-import FastFlagIcon from '@transferwise/icons/react/fast-flag'; // eslint-disable-line import/no-extraneous-dependencies
+import { FastFlag as FastFlagIcon } from '@transferwise/icons';
 
 import { Checkbox } from '../../';
 
