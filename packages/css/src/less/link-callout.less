@@ -1,25 +1,14 @@
-@import (reference) 'bootstrap/less/variables.less';
-@import 'bootstrap/less/glyphicons.less';
-
-.link-callout::after {
-  content: '\e080';
+.link-callout > .tw-icon-chevron-up {
   display: inline-block;
-  font-family: 'Glyphicons Halflings';
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  font-size: 10px;
   margin-left: 8px;
-  transition: transform 0.2s ease-in-out;
-  transform: none;
   pointer-events: none;
-  color: @link-color;
+  transition: transform 0.2s ease-in-out;
+  transform: rotate(+90deg);
 }
 
-.link-callout:hover::after,
-.link-callout:focus::after,
-.callout-container:hover .link-callout::after,
-.callout-container:focus .link-callout::after {
-  transform: translateX(4px);
+.link-callout:hover > .tw-icon-chevron-up,
+.link-callout:focus > .tw-icon-chevron-up,
+.callout-container:hover .link-callout > .tw-icon-chevron-up,
+.callout-container:focus .link-callout > .tw-icon-chevron-up {
+  transform: translateX(4px) rotate(+90deg);
 }
