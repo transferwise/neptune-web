@@ -7,8 +7,8 @@ import Head from 'next/head';
 import Router from 'next/router';
 import Layout from '../components/Layout';
 import '@transferwise/neptune-css/dist/css/neptune.css';
+import '@transferwise/icons/lib/styles/main.min.css';
 import 'currency-flags/dist/currency-flags.min.css';
-import '@transferwise/icons/dist/icons.min.css';
 
 import { addBasePath } from '../utils/pageUtils';
 
