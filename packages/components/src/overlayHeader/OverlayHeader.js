@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import AvatarWrapper from '../flowNavigation/avatarWrapper';
 import Logo from '../flowNavigation/logo';
 import Header from '../header';
-import CloseButton from '../common/CloseButton';
 import { Theme, ProfileType } from '../common';
 
 import '../flowNavigation/FlowNavigation.css';
@@ -23,7 +22,20 @@ import '../flowNavigation/FlowNavigation.css';
 
 const OverlayHeader = ({ avatar, profileType, onClose, theme }) => {
   const closeButton = onClose && (
-    <CloseButton onClick={onClose} className="m-l-3 close-button-with-avatar" />
+    <button
+      className={classNames(
+        'tw-flow-navigation__close-button',
+        'btn-link',
+        'text-no-decoration',
+        'icon',
+        'icon-close',
+        'icon-lg',
+        'm-l-3',
+        'close-button-with-avatar',
+      )}
+      aria-label="close button"
+      onClick={onClose}
+    />
   );
   return (
     <Header
@@ -33,7 +45,7 @@ const OverlayHeader = ({ avatar, profileType, onClose, theme }) => {
         </div>
       }
       rightContent={
-        <div className="tw-flow-navigation__right-content m-lg-t-1">
+        <div className="m-lg-t-1 tw-flow-navigation__avatar-with-close-button">
           {avatar && <AvatarWrapper url={avatar.url} profileType={profileType} />}
           {closeButton}
         </div>

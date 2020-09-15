@@ -57,13 +57,18 @@
     width: 40px !important;
     height: 40px !important;
     line-height: 40px !important;
-    margin: 0px;
+    position: relative;
+    top: -2px;
+    margin-right: var(--size-12);
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
 
     & img {
       vertical-align: bottom;
     }
 
-    & .tw-icon {
+    & .icon {
       line-height: 40px !important;
     }
   }
@@ -72,20 +77,27 @@
     top: -8px;
   }
 
-  &__right-content {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  &__close-button {
+    display: inline;
+    transition: color 0.15s ease-in-out;
+    color: var(--color-text-link);
+    outline: 0;
+    padding: 0;
+
+    &:hover {
+      color: var(--color-text-link-hover);
+    }
   }
 
-  &__right-content > .avatar-container {
-    display: flex;
-  }
-
-  &__right-content > .avatar-container > .circle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  & .close-button-with-avatar {
+    &::after {
+      cursor: default;
+      content: '';
+      height: 100%;
+      border-left: solid 1px var(--color-border-neutral);
+      left: -48px;
+      position: relative;
+    }
   }
 
   .m-lg-t-1 {

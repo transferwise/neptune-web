@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 import Avatar from '../../avatar';
 
-import { Profile as ProfileIcon, Briefcase as BriefcaseIcon } from '@transferwise/icons';
+import './avatarWrapper.css';
 
 const ProfileType = {
   BUSINESS: 'BUSINESS',
@@ -18,15 +18,15 @@ export default function AvatarWrapper({ url, profileType }) {
   useEffect(() => setImageLoadError(false), [url]);
 
   return (
-    <>
+    <div className="tw-avatar-wrapper">
       {isBusinessProfile && (
         <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
-          <BriefcaseIcon />
+          <div className="icon icon-bank" />
         </Avatar>
       )}
       {!isBusinessProfile && !renderImage && (
         <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
-          <ProfileIcon />
+          <div className="icon icon-profile" />
         </Avatar>
       )}
       {!isBusinessProfile && renderImage && (
@@ -34,7 +34,7 @@ export default function AvatarWrapper({ url, profileType }) {
           {renderImage && <img src={url} alt="avatar" onError={() => setImageLoadError(true)} />}
         </Avatar>
       )}
-    </>
+    </div>
   );
 }
 

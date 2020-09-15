@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import CompleteStep from './';
-import { AlertCircle as AlertCircleIcon, Document as DocumentIcon } from '@transferwise/icons';
+import AlertCircleIcon from '@transferwise/icons/react/alert-circle';
+import DocumentIcon from '@transferwise/icons/react/document';
 
 describe('CompleteStep', () => {
   const COMPLETED_STEP_PROPS = {

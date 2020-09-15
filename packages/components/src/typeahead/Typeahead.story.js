@@ -1,6 +1,5 @@
 import React from 'react';
 import Typeahead from './Typeahead';
-import { Search as SearchIcon } from '@transferwise/icons';
 
 import { boolean } from '@storybook/addon-knobs';
 
@@ -32,7 +31,7 @@ export const createable = () => {
       validateChip={validateChip}
       alert={{ message: 'alert message', type: 'success' }}
       onChange={() => {}}
-      addon={<SearchIcon />}
+      addon={<i className="input-group-text icon icon-search" />}
       onBlur={() => {}}
       options={[]}
     />
@@ -99,7 +98,7 @@ export const basic = () => {
         setTimeout(() => setOptions(options), 1500);
       }}
       onChange={() => {}}
-      addon={<SearchIcon />}
+      addon={<i className="input-group-text icon icon-search" />}
       onBlur={() => {}}
       options={options}
       inputAutoComplete="off"

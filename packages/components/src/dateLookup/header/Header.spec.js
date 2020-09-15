@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Chevron from '../../chevron';
 
 import Header from '.';
 
@@ -17,8 +16,8 @@ describe('Header', () => {
   });
 
   it('shows previous and next buttons', () => {
-    const chevrons = component.find(Chevron);
-    expect(chevrons).toHaveLength(2);
+    expect(component.find('button .icon-left')).toHaveLength(1);
+    expect(component.find('button .icon-right')).toHaveLength(1);
   });
 
   it('does not show label and middle button by default', () => {

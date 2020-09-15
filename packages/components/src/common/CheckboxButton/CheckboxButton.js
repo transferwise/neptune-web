@@ -12,7 +12,7 @@ const CheckboxButton = ({ checked, disabled, readOnly, className, onClick, onFoc
     onBlur={onBlur}
     disabled={disabled || readOnly}
   >
-    <span className="tw-checkbox-check" />
+    <span className="tw-checkbox-check glyphicon glyphicon-ok" />
   </button>
 );
 

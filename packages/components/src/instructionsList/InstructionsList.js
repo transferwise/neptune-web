@@ -1,9 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
-import {
-  CrossCircle as CrossCircleIcon,
-  CheckCircle as CheckCircleIcon,
-} from '@transferwise/icons';
+import CloseIcon from '@transferwise/icons/react/close-circle';
+import TickCircleIcon from '@transferwise/icons/react/tick-circle';
 
 import './InstructionsList.css';
 
@@ -12,14 +10,14 @@ const InstructionsList = ({ dos, donts }) => (
     {dos.map((doThis, index) => (
       // eslint-disable-next-line react/no-array-index-key
       <div className="instruction m-t-1" key={index}>
-        <CheckCircleIcon size={24} className="do" />
+        <TickCircleIcon className="do" />
         <p className="m-l-2 m-b-0 text-primary">{doThis}</p>
       </div>
     ))}
     {donts.map((dont, index) => (
       // eslint-disable-next-line react/no-array-index-key
       <div className="instruction m-t-1" key={index}>
-        <CrossCircleIcon size={24} className="dont" />
+        <CloseIcon className="dont" />
         <p className="m-l-2 m-b-0 text-primary">{dont}</p>
       </div>
     ))}
