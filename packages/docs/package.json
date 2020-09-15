@@ -41,7 +41,7 @@
     "@next/mdx": "^9.0.5",
     "@transferwise/components": "^29.3.3",
     "@transferwise/dynamic-flows": "^4.1.12",
-    "@transferwise/icons": "^2.0.0",
+    "@transferwise/icons": "^1.0.0",
     "@transferwise/neptune-css": "^3.0.1",
     "@transferwise/test-config": "^2.0.0",
     "@zeit/next-css": "^1.0.1",
