@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.4.0...@transferwise/neptune-docs@6.4.1) (2020-09-15)
+
+
+### Bug Fixes
+
+* revert icons ([#587](https://github.com/transferwise/neptune-web/issues/587)) ([dd5564a](https://github.com/transferwise/neptune-web/commit/dd5564a7fdf35ab9a9f90138ee7aaa3475fbdd17))
+
+
+
+
+
 # [6.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.3.2...@transferwise/neptune-docs@6.4.0) (2020-09-15)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@3.0.1...@transferwise/neptune-css@3.0.2) (2020-09-15)
+
+
+### Bug Fixes
+
+* revert icons ([#587](https://github.com/transferwise/neptune-web/issues/587)) ([dd5564a](https://github.com/transferwise/neptune-web/commit/dd5564a7fdf35ab9a9f90138ee7aaa3475fbdd17))
+
+
+
+
+
 ## [3.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@3.0.0...@transferwise/neptune-css@3.0.1) (2020-09-15)
 
 **Note:** Version bump only for package @transferwise/neptune-css

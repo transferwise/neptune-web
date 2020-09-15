@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.13](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.1.12...@transferwise/dynamic-flows@4.1.13) (2020-09-15)
+
+
+### Bug Fixes
+
+* revert icons ([#587](https://github.com/transferwise/neptune-web/issues/587)) ([dd5564a](https://github.com/transferwise/neptune-web/commit/dd5564a7fdf35ab9a9f90138ee7aaa3475fbdd17))
+
+
+
+
+
 ## [4.1.12](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@4.1.11...@transferwise/dynamic-flows@4.1.12) (2020-09-15)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
