@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.3.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.3.1...@transferwise/components@29.3.2) (2020-09-15)
+
+
+### Bug Fixes
+
+* move modal body class handling from Dimmer to Modal ([#572](https://github.com/transferwise/neptune-web/issues/572)) ([bcdb573](https://github.com/transferwise/neptune-web/commit/bcdb573a8402e8a17bb222499fd48f88ce9b74ca))
+
+
+
+
+
 ## [29.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.3.0...@transferwise/components@29.3.1) (2020-09-15)
 
 
