@@ -69,6 +69,7 @@ export default class Typeahead extends Component {
     chipSeparators: Types.arrayOf(Types.string),
     size: Types.oneOf([Typeahead.Size.MEDIUM, Typeahead.Size.LARGE]),
     inputAutoComplete: Types.string,
+    autoFillOnBlur: Types.bool,
   };
 
   static defaultProps = {
@@ -94,6 +95,7 @@ export default class Typeahead extends Component {
     onFocus: null,
     validateChip: () => true,
     inputAutoComplete: 'new-password',
+    autoFillOnBlur: true,
   };
 
   constructor(props) {
@@ -283,12 +285,12 @@ export default class Typeahead extends Component {
   handleDocumentClick = () => {
     if (this.state.optionsShown) {
       this.hideMenu();
-      const { allowNew, onBlur } = this.props;
+      const { allowNew, onBlur, autoFillOnBlur } = this.props;
       const { query } = this.state;
       this.setState({
         isFocused: false,
       });
-      if (allowNew && query.trim()) {
+      if (allowNew && autoFillOnBlur && query.trim()) {
         this.selectItem({ label: query });
       }
 
