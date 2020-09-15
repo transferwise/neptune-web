@@ -1,6 +1,8 @@
 import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
 import { OverlayHeader } from '@transferwise/components';
-import { Cross as CrossIcon, Check as CheckIcon } from '@transferwise/icons';
+import Close from '@transferwise/icons/react/close';
+import Tick from '@transferwise/icons/react/tick';
+
 import code from '../../../liveEditorCode/overlayHeader.code';
 
 Simple header component that displays a responsive logo an avatar and a close button.
@@ -26,25 +28,25 @@ Some elements can be toggled based on props values as per the table below.
       <tr>
         <th scope="row">closeButton = null</th>
         <td className="text-center">
-          <CheckIcon />
+          <Tick size="sm" />
         </td>
         <td>
-          <CrossIcon />
+          <Close size="sm" />
         </td>
         <td>
-          <CrossIcon />
+          <Tick size="sm" />
         </td>
       </tr>
       <tr>
         <th scope="row">avatar = null</th>
         <td>
-          <CheckIcon />
+          <Tick size="sm" />
         </td>
         <td>
-          <CheckIcon />
+          <Tick size="sm" />
         </td>
         <td>
-          <CrossIcon />
+          <Close size="sm" />
         </td>
       </tr>
     </tbody>

@@ -5,7 +5,7 @@
   title="Navigation option"
   content="Button and icon are vertically centered."
   onClick={() => alert('clicked')}
-  media={<FastFlagIcon size={24} />}
+  media={<FastFlagIcon />}
   showMediaAtAllSizes={false}
   showMediaCircle={true}
 />;

@@ -7,7 +7,7 @@
       details="Some more context"
       isExpanded={isExpanded}
       onClick={isExpanded => setIsExpanded(isExpanded)}
-      icon={<FastFlagIcon size={24} />}
+      icon={<FastFlagIcon />}
     >
       <div>Can be almost anything. Edit me :)</div>
     </Card>
