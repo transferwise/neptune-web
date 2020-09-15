@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.3.0...@transferwise/components@29.3.1) (2020-09-15)
+
+
+### Bug Fixes
+
+* add autoFillOnBlur to typeahead component ([#585](https://github.com/transferwise/neptune-web/issues/585)) ([b2ab0f0](https://github.com/transferwise/neptune-web/commit/b2ab0f02efaf95dbdc5bb2e51fd21553138efd47))
+
+
+
+
+
 # [29.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.2.0...@transferwise/components@29.3.0) (2020-09-15)
 
 
