@@ -40,8 +40,14 @@
   &:focus {
     text-decoration: none;
   }
-  &[aria-expanded='false'],
-  &.collapsed {
+
+  .caret {
+    margin-top: -3px;
+    transition: transform 0.15s linear;
+  }
+
+  &[aria-expanded='false'] .caret,
+  &.collapsed .caret {
     transform: rotate(-90deg);
   }
 }
