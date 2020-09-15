@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.2.1...@transferwise/neptune-docs@6.3.0) (2020-09-15)
+
+
+### Features
+
+* add nudge component ([#573](https://github.com/transferwise/neptune-web/issues/573)) ([28cc421](https://github.com/transferwise/neptune-web/commit/28cc421ee1246ee68d5124061cc4694297e69dd0))
+
+
+
+
+
 ## [6.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.2.0...@transferwise/neptune-docs@6.2.1) (2020-09-14)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

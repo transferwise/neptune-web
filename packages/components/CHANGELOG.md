@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [29.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.2.0...@transferwise/components@29.3.0) (2020-09-15)
+
+
+### Features
+
+* add nudge component ([#573](https://github.com/transferwise/neptune-web/issues/573)) ([28cc421](https://github.com/transferwise/neptune-web/commit/28cc421ee1246ee68d5124061cc4694297e69dd0))
+
+
+
+
+
 # [29.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.1.4...@transferwise/components@29.2.0) (2020-09-11)
 
 
