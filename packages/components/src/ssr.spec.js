@@ -39,6 +39,7 @@ describe('Server side rendering', () => {
     size: 'sm',
     body: 'body',
     onClose: jest.fn(),
+    onDismiss: jest.fn(),
     onRemove: jest.fn(),
     radios: [
       {
@@ -65,6 +66,8 @@ describe('Server side rendering', () => {
     details: 'yo',
     icon: <svg />,
     badge: <svg />,
+    link: 'link',
+    href: '#',
   };
 
   // Override props in case of name collision.
