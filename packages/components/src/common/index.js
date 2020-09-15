@@ -1,5 +1,5 @@
 export { default as HistoryNavigator } from './historyNavigator';
-export { addModalOpenBodyClass, removeModalOpenBodyClass } from './DOMOperations';
+export { addNoScrollBodyClass, removeNoScrollBodyClass } from './DOMOperations';
 export { Theme } from './theme';
 // Props
 export { Breakpoint } from './propsValues/breakpoint';

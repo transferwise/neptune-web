@@ -1,8 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Drawer from './';
+import { addNoScrollBodyClass, removeNoScrollBodyClass } from '../common';
 import { fakeKeyDownEventForKey } from '../common/fakeEvents';
 import KEY_CODES from '../common/keyCodes';
+
+jest.mock('../common');
+jest.useFakeTimers();
 
 describe('Drawer', () => {
   let component;
@@ -21,6 +25,38 @@ describe('Drawer', () => {
 
   afterEach(() => {
     jest.clearAllMocks();
+  });
+
+  describe('updating the body class', () => {
+    beforeEach(() => {
+      component = mount(<Drawer {...props} open={false} />);
+    });
+
+    it('removes no-scroll class upon removal if the drawer was sopen', () => {
+      expect(removeNoScrollBodyClass).not.toHaveBeenCalled();
+      component.unmount();
+      expect(removeNoScrollBodyClass).not.toHaveBeenCalled();
+
+      component = mount(<Drawer {...props} open />);
+
+      component.unmount();
+      expect(removeNoScrollBodyClass).toHaveBeenCalled();
+    });
+
+    it('adds and removes the no-scroll class upon enter and exit', () => {
+      expect(addNoScrollBodyClass).not.toBeCalled();
+
+      component.setProps({ open: true });
+      jest.runAllTimers();
+
+      expect(addNoScrollBodyClass).toBeCalled();
+      expect(removeNoScrollBodyClass).not.toBeCalled();
+
+      component.setProps({ open: false });
+      jest.runAllTimers();
+
+      expect(removeNoScrollBodyClass).toBeCalled();
+    });
   });
 
   it('renders slidingPanel with right props', () => {

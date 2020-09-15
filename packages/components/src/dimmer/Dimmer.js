@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import { addModalOpenBodyClass, removeModalOpenBodyClass } from '../common';
 import withNextPortal from '../withNextPortal/withNextPortal';
 
 import './Dimmer.css';
@@ -23,7 +22,6 @@ const Dimmer = ({ open, children, onClose, fadeContentOnExit, fadeContentOnEnter
   };
 
   const handleOnEnter = () => {
-    addModalOpenBodyClass();
     document.addEventListener('keydown', handleOnKeyDown);
   };
 
@@ -42,7 +40,6 @@ const Dimmer = ({ open, children, onClose, fadeContentOnExit, fadeContentOnEnter
   };
 
   const cleanup = () => {
-    removeModalOpenBodyClass();
     document.removeEventListener('keydown', handleOnKeyDown);
   };
 
