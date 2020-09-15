@@ -3,17 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [6.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.3.2...@transferwise/neptune-docs@6.4.0) (2020-09-15)
-
-
-### Features
-
-* migration on new icons ([cd957c3](https://github.com/transferwise/neptune-web/commit/cd957c30765af2cf8a6c9edb9d983c5971751028))
-
-
-
-
-
 ## [6.3.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.3.1...@transferwise/neptune-docs@6.3.2) (2020-09-15)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
