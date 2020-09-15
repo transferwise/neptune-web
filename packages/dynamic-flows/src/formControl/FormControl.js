@@ -119,7 +119,7 @@ export default class FormControl extends PureComponent {
     selectedOption: Types.shape({
       value: Types.any.isRequired,
       label: Types.node,
-      icon: Types.node,
+      icon: Types.string,
       currency: Types.string,
       note: Types.node,
       secondary: Types.node,

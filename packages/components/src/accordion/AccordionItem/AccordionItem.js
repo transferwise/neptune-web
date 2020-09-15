@@ -9,7 +9,12 @@ const AccordionItem = ({ id, title, content, onClick, isOpen, index }) => (
       <div className="media p-y-3" id="accordion-chevron">
         <div className="media-body">{typeof title === 'string' ? <h5>{title}</h5> : title}</div>
         <div className="media-right media-middle">
-          <Chevron orientation={isOpen ? Chevron.Orientation.TOP : Chevron.Orientation.BOTTOM} />
+          <Chevron
+            size={Chevron.Size.SMALL}
+            orientation={Chevron.Orientation.BOTTOM}
+            flip={isOpen}
+            animate
+          />
         </div>
       </div>
     </label>

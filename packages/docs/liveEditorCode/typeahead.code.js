@@ -55,7 +55,7 @@
       }}
       showNewEntry={showNewEntry}
       onChange={() => {}}
-      addon={<SearchIcon />}
+      addon={<i className="input-group-text icon icon-search" />}
       onBlur={() => {}}
       options={options}
     />

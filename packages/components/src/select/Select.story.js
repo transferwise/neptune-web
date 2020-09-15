@@ -1,6 +1,5 @@
 import React from 'react';
 import Select from './Select';
-import { Profile as ProfileIcon, Globe as GlobeIcon } from '@transferwise/icons';
 
 import { text, boolean, select } from '@storybook/addon-knobs';
 
@@ -49,8 +48,8 @@ export const basic = () => {
         { value: 1, label: 'Another thing', secondary: 'with secondary text this time' },
         { value: 2, label: 'A disabled thing', disabled: true },
         { header: 'Icons' },
-        { value: 3, label: 'Profile', icon: <ProfileIcon /> },
-        { value: 4, label: 'Globe', icon: <GlobeIcon /> },
+        { value: 3, label: 'Profile', icon: 'icon-profile' },
+        { value: 4, label: 'Globe', icon: 'icon-globe' },
         { header: 'Currencies' },
         { value: 5, label: 'British pound', currency: 'gbp' },
         { value: 6, label: 'Euro', currency: 'eur' },
@@ -149,7 +148,7 @@ export const customSearchFunction = () => {
           searchable: 'Australia',
           classNames: {},
           secondary: '',
-          icon: null,
+          icon: '',
           selected: false,
         },
         {
@@ -160,7 +159,7 @@ export const customSearchFunction = () => {
           searchable: 'Bulgaria',
           classNames: {},
           secondary: '',
-          icon: null,
+          icon: '',
           selected: false,
         },
         {
@@ -171,7 +170,7 @@ export const customSearchFunction = () => {
           searchable: 'Brazil',
           classNames: {},
           secondary: '',
-          icon: null,
+          icon: '',
           selected: false,
         },
       ]}
@@ -220,8 +219,8 @@ export const advancedSearch = () => {
         { value: 1, label: 'Another thing', secondary: 'with secondary text this time' },
         { value: 2, label: 'A disabled thing', disabled: true },
         { header: 'Icons' },
-        { value: 3, label: 'Profile', icon: <ProfileIcon /> },
-        { value: 4, label: 'Globe', icon: <GlobeIcon /> },
+        { value: 3, label: 'Profile', icon: 'icon-profile' },
+        { value: 4, label: 'Globe', icon: 'icon-globe' },
         { header: 'Currencies' },
         { value: 5, label: 'British pound', currency: 'gbp' },
         { value: 6, label: 'Euro', currency: 'eur' },

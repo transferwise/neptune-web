@@ -1,16 +1,17 @@
 @import (reference) '@transferwise/neptune-css/src/variables/neptune-tokens.less';
 
-.tw-select {
-  .tw-icon {
-    display: inline-block;
-    margin-right: var(--size-8);
-    margin-top: -2px;
-    vertical-align: middle;
-  }
+html.ios-click {
+  cursor: pointer;
+}
 
+.tw-select {
   .tw-dropdown-item {
     &--clickable {
       cursor: pointer;
+
+      .icon {
+        margin-right: var(--size-8);
+      }
     }
 
     &--divider {
@@ -26,35 +27,6 @@
     .currency-flag {
       margin-right: var(--size-8);
     }
-  }
-
-  .dropdown-toggle.btn-input {
-    &.btn-sm {
-      padding-right: var(--size-32);
-    }
-
-    &.btn-md {
-      padding-right: var(--size-40);
-    }
-
-    &.btn-lg {
-      padding-right: var(--size-48);
-    }
-  }
-
-  .dropdown-toggle .tw-select-chevron,
-  .dropdown-toggle tw-chevron-down-icon > span {
-    margin: 0;
-  }
-
-  .dropdown-toggle > span > .tw-icon,
-  .dropdown-toggle tw-icon span.tw-icon {
-    position: static;
-    display: inline-block;
-  }
-
-  .circle .tw-icon {
-    vertical-align: middle;
   }
 }
 

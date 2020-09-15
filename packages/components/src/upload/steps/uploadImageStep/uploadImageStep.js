@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Types from 'prop-types';
-import { Upload as UploadIcon } from '@transferwise/icons';
+import Upload from '@transferwise/icons/react/upload';
 
 class UploadImageStep extends PureComponent {
   static propTypes = {
@@ -33,7 +33,7 @@ class UploadImageStep extends PureComponent {
     if (!usHelpImage) {
       return (
         <div className="circle circle-sm circle-inverse p-t-1">
-          <UploadIcon size={24} />
+          <Upload size="md" />
         </div>
       );
     }
@@ -59,7 +59,7 @@ class UploadImageStep extends PureComponent {
               {usButtonText ? (
                 <span>{usButtonText}</span>
               ) : (
-                <UploadIcon size={24} className="m-r-0" />
+                <span className="icon icon-upload m-r-0" />
               )}
               <input
                 type="file"

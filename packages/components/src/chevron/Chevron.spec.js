@@ -1,48 +1,39 @@
 import React from 'react';
-import '@testing-library/jest-dom';
-import { render } from '@testing-library/react';
+import { shallow } from 'enzyme';
 import Chevron from '.';
 
-const { Orientation } = Chevron;
+const { Orientation, Size } = Chevron;
 
-describe('Chevron', () => {
-  describe('test rotation', () => {
-    it('top', () => {
-      const { container } = render(<Chevron orientation={Orientation.TOP} />);
+describe('Option', () => {
+  const props = {
+    orientation: Orientation.RIGHT,
+    size: Size.SMALL,
+    flip: false,
+    animate: false,
+  };
+  let wrapper;
 
-      expect(container.querySelector('.tw-icon-chevron-up.top')).not.toBe(null);
-    });
-
-    it('right', () => {
-      const { container } = render(<Chevron orientation={Orientation.RIGHT} />);
-
-      expect(container.querySelector('.tw-icon-chevron-up.right')).not.toBe(null);
-    });
-
-    it('left', () => {
-      const { container } = render(<Chevron orientation={Orientation.LEFT} />);
-
-      expect(container.querySelector('.tw-icon-chevron-up.left')).not.toBe(null);
-    });
-
-    it('down (default)', () => {
-      const { container } = render(<Chevron />);
-
-      expect(container.querySelector('.tw-icon-chevron-up.bottom')).not.toBe(null);
-    });
+  beforeEach(() => {
+    wrapper = shallow(<Chevron {...props} />);
   });
 
-  describe('disabled / enabled states', () => {
-    it('enabled (by default)', () => {
-      const { container } = render(<Chevron />);
+  it('has right classes when rendered with props', () => {
+    expect(wrapper.find('.chevron-container').hasClass('right')).toEqual(true);
+    expect(wrapper.find('.chevron-container').hasClass('sm')).toEqual(true);
 
-      expect(container.querySelector('.tw-icon-chevron-up')).toHaveClass('chevron-color');
-    });
+    expect(wrapper.find('.chevron-container').hasClass('animate')).toEqual(false);
+    expect(wrapper.find('.chevron-container').hasClass('flip')).toEqual(false);
+  });
 
-    it('disabled', () => {
-      const { container } = render(<Chevron disabled />);
+  it('has animate class when animate prop is true', () => {
+    expect(wrapper.find('.chevron-container').hasClass('animate')).toEqual(false);
+    wrapper.setProps({ animate: true });
+    expect(wrapper.find('.chevron-container').hasClass('animate')).toEqual(true);
+  });
 
-      expect(container.querySelector('.tw-icon-chevron-up')).not.toHaveClass('chevron-color');
-    });
+  it('has flip class when flip prop is true', () => {
+    expect(wrapper.find('.chevron-container').hasClass('flip')).toEqual(false);
+    wrapper.setProps({ flip: true });
+    expect(wrapper.find('.chevron-container').hasClass('flip')).toEqual(true);
   });
 });

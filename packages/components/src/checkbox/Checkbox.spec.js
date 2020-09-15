@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Checkbox from './';
-import CheckboxButton from '../checkboxButton';
+import CheckboxButton from '../common/CheckboxButton';
 
 describe('Checkbox', () => {
   let component;

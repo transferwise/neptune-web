@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import { Cross as CrossIcon } from '@transferwise/icons';
+import Close from '@transferwise/icons/react/close';
 import KEY_CODES from '../common/keyCodes';
 import './Modal.css';
 import { Size, addNoScrollBodyClass, removeNoScrollBodyClass } from '../common';
@@ -138,7 +138,7 @@ class Modal extends Component {
                 >
                   <h4 className="tw-modal-title">{title}</h4>
                   <button type="button" onClick={onClose} className="close" aria-label="close">
-                    <CrossIcon size={24} />
+                    <Close />
                   </button>
                 </div>
                 <div className="tw-modal-body">{body}</div>

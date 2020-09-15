@@ -1,6 +1,5 @@
 import React from 'react';
 import Types from 'prop-types';
-import Chevron from '../../chevron';
 
 const btnClasses = 'btn-link p-a-0 text-no-decoration font-weight-bold';
 
@@ -8,7 +7,7 @@ const Header = ({ label, onLabelClick, onPreviousClick, onNextClick }) => (
   <div className="text-xs-center p-t-1 p-b-2 clearfix">
     <div className="pull-xs-left">
       <button onClick={onPreviousClick} className={btnClasses}>
-        <Chevron orientation={Chevron.Orientation.LEFT} size={Chevron.Size.MEDIUM} />
+        <i className="icon icon-left icon-lg" />
       </button>
     </div>
     {label && (
@@ -18,7 +17,7 @@ const Header = ({ label, onLabelClick, onPreviousClick, onNextClick }) => (
     )}
     <div className="pull-xs-right">
       <button onClick={onNextClick} className={btnClasses}>
-        <Chevron orientation={Chevron.Orientation.RIGHT} size={Chevron.Size.MEDIUM} />
+        <i className="icon icon-right icon-lg" />
       </button>
     </div>
   </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 
 import Option from '../common/Option';
-import CheckboxButton from '../checkboxButton';
+import CheckboxButton from '../common/CheckboxButton';
 
 const CheckboxOption = ({ media, title, content, name, checked, onChange, complex, disabled }) => {
   const sharedProps = { media, title, content, name, complex, disabled };

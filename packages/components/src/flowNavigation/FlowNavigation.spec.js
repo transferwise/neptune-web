@@ -26,7 +26,7 @@ describe('Flow navigation', () => {
   }
 
   function closeButton() {
-    return component.find('.tw-close-button');
+    return component.find('.icon-close');
   }
 
   function backButton() {

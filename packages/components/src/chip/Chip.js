@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import { Cross as CrossIcon } from '@transferwise/icons';
+import Close from '@transferwise/icons/react/close';
 import './Chip.css';
 
 const Chip = (props) => {
@@ -9,8 +9,8 @@ const Chip = (props) => {
   return (
     <div className={classNames('chip', { 'has-error': hasError }, className)}>
       {label}
-      <button className="btn-unstyled chip-remove m-l-2" onClick={onRemove}>
-        <CrossIcon />
+      <button className="btn-unstyled chip-remove" onClick={onRemove}>
+        <Close size="sm" />
       </button>
     </div>
   );

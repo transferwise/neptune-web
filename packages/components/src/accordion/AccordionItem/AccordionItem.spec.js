@@ -58,7 +58,7 @@ describe('AccordionItem', () => {
     });
 
     it('chevron points up', () => {
-      expect(getChevron().prop('orientation')).toBe(Orientation.TOP);
+      expect(getChevron().prop('flip')).toBe(true);
     });
 
     it('displays the content when its an HTML element', () => {
