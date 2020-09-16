@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.0...@transferwise/neptune-docs@7.0.1) (2020-09-16)
+
+
+### Bug Fixes
+
+* pagination component in lab ([#586](https://github.com/transferwise/neptune-web/issues/586)) ([9c943ac](https://github.com/transferwise/neptune-web/commit/9c943ac70adfed05722e2e3a5cc1d8baa064e36b))
+
+
+
+
+
 # [7.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.4.1...@transferwise/neptune-docs@7.0.0) (2020-09-16)
 
 
