@@ -3,6 +3,7 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 import Select from '../select';
 import './MoneyInput.css';
+import { Size } from '../common/propsValues/size';
 
 import { formatAmount, parseAmount } from './currencyFormatting';
 
@@ -270,6 +271,8 @@ function sortOptionsLabelsToFirst(options, query) {
   });
 }
 
+MoneyInput.Size = { SMALL: Size.SMALL, MEDIUM: Size.MEDIUM, LARGE: Size.LARGE };
+
 MoneyInput.propTypes = {
   id: Types.string,
   currencies: Types.arrayOf(Currency).isRequired,
@@ -277,7 +280,7 @@ MoneyInput.propTypes = {
   onCurrencyChange: Types.func,
   placeholder: Types.number,
   amount: Types.number,
-  size: Types.oneOf(['sm', 'md', 'lg']),
+  size: Types.oneOf([MoneyInput.Size.SMALL, MoneyInput.Size.MEDIUM, MoneyInput.Size.LARGE]),
   onAmountChange: Types.func,
   locale: Types.string,
   addon: Types.node,
@@ -289,7 +292,7 @@ MoneyInput.propTypes = {
 
 MoneyInput.defaultProps = {
   id: null,
-  size: 'lg',
+  size: MoneyInput.Size.LARGE,
   locale: 'en-GB',
   addon: null,
   searchPlaceholder: '',
