@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.1...@transferwise/components@30.0.2) (2020-09-16)
+
+
+### Bug Fixes
+
+* fix spacing in pagination component ([#589](https://github.com/transferwise/neptune-web/issues/589)) ([56dbba0](https://github.com/transferwise/neptune-web/commit/56dbba0905c059fa179b0a3ddcc67c759815a93d))
+
+
+
+
+
 ## [30.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.0...@transferwise/components@30.0.1) (2020-09-16)
 
 
