@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.3.4...@transferwise/components@30.0.0) (2020-09-16)
+
+
+* feat!: migration on icons v2 (#588) ([c502370](https://github.com/transferwise/neptune-web/commit/c502370ac25f338bafdf2742b8fedb503d1a32c6)), closes [#588](https://github.com/transferwise/neptune-web/issues/588)
+
+
+### BREAKING CHANGES
+
+* - Select component now expect 'icon' as a 'node' (React icon component) instead of 'string' (icon name)
+- Exposes CloseButton component
+- FormControl now accepts 'icon' as 'node'
+- deleted '.caret' CSS class
+- deleted 'iconfont.less'
+- stopped explicitly import 'glyphicons.less' and 'icons.less' from Bootstrap
+- renamed '.icon' on '.tw-icon' in styles
+
+
+
+
+
 ## [29.3.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.3.3...@transferwise/components@29.3.4) (2020-09-15)
 
 
