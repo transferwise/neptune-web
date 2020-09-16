@@ -2,7 +2,7 @@
   const [check, setCheck] = React.useState(false);
   return (
     <RadioOption
-      media={<FastFlagIcon />}
+      media={<FastFlagIcon size={24} />}
       title="Radio option"
       content="text"
       id="id"

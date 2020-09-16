@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import Types from 'prop-types';
-import HelpCircleIcon from '@transferwise/icons/react/help-circle';
+import { HelpCircle as HelpCircleIcon } from '@transferwise/icons';
 
 import Popover from '../popover';
 
@@ -17,7 +17,7 @@ const Summary = ({ as: Element, className, icon, title, help, content }) => (
           {help && (
             <div className="summary__help m-l-2">
               <Popover preferredPlacement="bottom-left" title={help.title} content={help.content}>
-                <HelpCircleIcon size="sm" />
+                <HelpCircleIcon />
               </Popover>
             </div>
           )}

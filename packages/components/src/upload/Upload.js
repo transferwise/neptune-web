@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import TopUpIcon from '@transferwise/icons/react/top-up';
+import { Plus as PlusIcon } from '@transferwise/icons';
 import { UploadImageStep, ProcessingStep, CompleteStep } from './steps';
 import { postData, asyncFileRead, isSizeValid, generateErrorMessage, isTypeValid } from './utils';
 import './Upload.css';
@@ -303,7 +303,7 @@ class Upload extends PureComponent {
           <div className="droppable-dropping-card droppable-card">
             <div className="droppable-card-content">
               <div className="circle circle-sm p-t-1 text-info">
-                <TopUpIcon />
+                <PlusIcon />
               </div>
               {usDropMessage && <h4 className="m-t-3">{usDropMessage}</h4>}
             </div>

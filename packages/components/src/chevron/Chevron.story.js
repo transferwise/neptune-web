@@ -1,6 +1,6 @@
 import React from 'react';
 import Chevron from './Chevron';
-import { boolean, select } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
 
 export default {
   component: Chevron,
@@ -14,7 +14,7 @@ export const basic = () => {
     Chevron.Orientation.TOP,
   );
   const size = select('size', Object.values(Chevron.Size), Chevron.Orientation.MEDIUM);
-  const flip = boolean('flip', true);
-  const animate = boolean('animate', true);
-  return <Chevron orientation={orientation} size={size} flip={flip} animate={animate} />;
+  const disabled = boolean('disabled', false);
+  const className = text('className', undefined);
+  return <Chevron {...{ orientation, size, disabled, className }} />;
 };

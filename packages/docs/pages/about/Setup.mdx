@@ -1,8 +1,7 @@
 import { DocLink } from '../../utils/pageUtils';
 import bundleSizes from '../../temp-bundle-sizes.js';
 import PrintBundleSize from '../../utils/bundleSize/printBundleSize';
-import CloseIcon from '@transferwise/icons/react/close';
-import TickIcon from '@transferwise/icons/react/tick';
+import { Cross as CrossIcon, Check as CheckIcon } from '@transferwise/icons';
 
 ## Installation
 
@@ -99,54 +98,54 @@ Below is a comparison of the different bundle options, along with where you can 
     <tr>
       <th scope="row">UMD + polyfill</th>
       <td>
-        <TickIcon size="sm" />
+        <CheckIcon />
       </td>
       <td>
         <PrintBundleSize bundleSize={bundleSizes.umd['polyfill'][0]} /> (gzip:~
         <PrintBundleSize bundleSize={bundleSizes.umd['polyfill'][1]} />)
       </td>
       <td>
-        <CloseIcon size="sm" />
+        <CrossIcon />
       </td>
       <td>None.</td>
     </tr>
     <tr>
       <th scope="row">UMD</th>
       <td>
-        <CloseIcon size="sm" />
+        <CrossIcon />
       </td>
       <td>
         <PrintBundleSize bundleSize={bundleSizes.umd['no-polyfill'][0]} /> (gzip:~
         <PrintBundleSize bundleSize={bundleSizes.umd['no-polyfill'][1]} />)
       </td>
       <td>
-        <CloseIcon size="sm" />
+        <CrossIcon />
       </td>
       <td>You must override the default import and include your own polyfill.</td>
     </tr>
     <tr>
       <th scope="row">ES + polyfill</th>
       <td>
-        <TickIcon size="sm" />
+        <CheckIcon />
       </td>
       <td>
         <PrintBundleSize bundleSize={bundleSizes.es.polyfill} />
       </td>
       <td>
-        <TickIcon size="sm" />
+        <CheckIcon />
       </td>
       <td>None.</td>
     </tr>
     <tr>
       <th scope="row">ES</th>
       <td>
-        <CloseIcon size="sm" />
+        <CrossIcon />
       </td>
       <td>
         <PrintBundleSize bundleSize={bundleSizes.es['no-polyfill']} />
       </td>
       <td>
-        <TickIcon size="sm" />
+        <CheckIcon />
       </td>
       <td>You must override the default import and include your own polyfill.</td>
     </tr>
