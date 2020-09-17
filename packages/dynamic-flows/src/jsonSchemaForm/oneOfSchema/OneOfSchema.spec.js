@@ -6,6 +6,7 @@ import OneOfSchema from '.';
 import GenericSchema from '../genericSchema/';
 import SchemaFormControl from '../schemaFormControl/';
 import ControlFeedback from '../controlFeedback';
+import DynamicAlert from '../../layout/alert';
 
 describe('Given a oneOfSchema component', () => {
   let component;
@@ -294,6 +295,31 @@ describe('Given a oneOfSchema component', () => {
           controlFeedback = component.find(ControlFeedback);
           expect(controlFeedback.prop('validations').length).toBe(1);
         });
+      });
+    });
+
+    describe('when alert exists', () => {
+      it('should render the alert', () => {
+        const alert = {
+          context: 'info',
+          markdown: 'some text',
+        };
+        const schemaWithAlert = { ...schema, alert };
+        component = shallow(<OneOfSchema {...props} schema={schemaWithAlert} />);
+
+        const alertComponent = component.find(DynamicAlert);
+
+        expect(alertComponent).toHaveLength(1);
+        expect(alertComponent.prop('component').context).toBe('info');
+        expect(alertComponent.prop('component').markdown).toBe('some text');
+      });
+    });
+
+    describe('when alert does not exist', () => {
+      it('should not render alert', () => {
+        const alertComponent = component.find(DynamicAlert);
+
+        expect(alertComponent).toHaveLength(0);
       });
     });
   });

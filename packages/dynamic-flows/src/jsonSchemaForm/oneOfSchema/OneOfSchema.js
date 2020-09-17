@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
@@ -10,6 +10,7 @@ import { getValidModelParts } from '../../common/validation/valid-model';
 import { getValidationFailures } from '../../common/validation/validation-failures';
 import { isValidSchema } from '../../common/validation/schema-validators';
 import { isArray, isEmpty } from '@transferwise/neptune-validation';
+import DynamicAlert from '../../layout/alert';
 
 const OneOfSchema = (props) => {
   const [changed, setChanged] = useState(false);
@@ -123,32 +124,35 @@ const OneOfSchema = (props) => {
   return (
     <>
       {props.schema.oneOf.length > 1 && (
-        <div className={classNames(formGroupClasses)}>
-          {props.schema.title && (
-            <label className="control-label" htmlFor={id}>
-              {props.schema.title}
-            </label>
-          )}
-          <SchemaFormControl
-            id={id}
-            schema={schemaForSelect}
-            onChange={onChooseNewSchema}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            value={schemaIndex}
-            translations={props.translations}
-            locale={props.locale}
-          />
-          <ControlFeedback
-            changed={changed}
-            focused={focused}
-            blurred={blurred}
-            submitted={props.submitted}
-            errors={errorsToString(props.errors)}
-            schema={props.schema}
-            validations={validations}
-          />
-        </div>
+        <>
+          {props.schema.alert && <DynamicAlert component={props.schema.alert} />}
+          <div className={classNames(formGroupClasses)}>
+            {props.schema.title && (
+              <label className="control-label" htmlFor={id}>
+                {props.schema.title}
+              </label>
+            )}
+            <SchemaFormControl
+              id={id}
+              schema={schemaForSelect}
+              onChange={onChooseNewSchema}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              value={schemaIndex}
+              translations={props.translations}
+              locale={props.locale}
+            />
+            <ControlFeedback
+              changed={changed}
+              focused={focused}
+              blurred={blurred}
+              submitted={props.submitted}
+              errors={errorsToString(props.errors)}
+              schema={props.schema}
+              validations={validations}
+            />
+          </div>
+        </>
       )}
 
       {props.schema.oneOf[schemaIndex] && !isConstSchema(props.schema.oneOf[schemaIndex]) && (
@@ -170,6 +174,10 @@ const OneOfSchema = (props) => {
 OneOfSchema.propTypes = {
   schema: Types.shape({
     title: Types.string,
+    alert: Types.shape({
+      context: Types.string,
+      markdown: Types.string,
+    }),
     control: Types.string,
     placeholder: Types.string,
     oneOf: Types.arrayOf(Types.object).isRequired,

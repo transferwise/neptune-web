@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import ObjectSchema from './ObjectSchema';
 import GenericSchema from '../genericSchema/';
+import DynamicAlert from '../../layout/alert';
 
 describe('Given a component for rendering object schemas', () => {
   let component;
@@ -112,6 +113,31 @@ describe('Given a component for rendering object schemas', () => {
 
     it('should trigger the components onChange with the key remove', () => {
       expect(props.onChange).toHaveBeenCalledWith({ string: 'a' }, schema.properties.number);
+    });
+  });
+
+  describe('when alert exists', () => {
+    it('should render the alert', () => {
+      const alert = {
+        context: 'info',
+        markdown: 'some text',
+      };
+      const schemaWithAlert = { ...schema, alert };
+      component = shallow(<ObjectSchema {...props} schema={schemaWithAlert} />);
+
+      const alertComponent = component.find(DynamicAlert);
+
+      expect(alertComponent).toHaveLength(1);
+      expect(alertComponent.prop('component').context).toBe('info');
+      expect(alertComponent.prop('component').markdown).toBe('some text');
+    });
+  });
+
+  describe('when alert does not exist', () => {
+    it('should not render alert', () => {
+      const alertComponent = component.find(DynamicAlert);
+
+      expect(alertComponent).toHaveLength(0);
     });
   });
 });

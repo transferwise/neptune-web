@@ -5,6 +5,7 @@ import BasicTypeSchema from './';
 
 import SchemaFormControl from '../schemaFormControl';
 import ControlFeedback from '../controlFeedback';
+import DynamicAlert from '../../layout/alert';
 
 describe('Given a component for rendering basic type schemas', () => {
   let component;
@@ -66,6 +67,32 @@ describe('Given a component for rendering basic type schemas', () => {
 
     it('should pass the schema to ControlFeedback', () => {
       expect(feedbackComponent.prop('schema')).toBe(schema);
+    });
+
+    describe('when alert exists', () => {
+      it('should render the alert', () => {
+        const alert = {
+          context: 'info',
+          markdown: 'some text',
+        };
+        const schemaWithAlert = { ...schema, alert };
+        component = shallow(<BasicTypeSchema {...props} schema={schemaWithAlert} />);
+
+        const alertComponent = component.find(DynamicAlert);
+
+        expect(alertComponent).toHaveLength(1);
+        expect(alertComponent.prop('component').context).toBe('info');
+        expect(alertComponent.prop('component').markdown).toBe('some text');
+      });
+    });
+
+    describe('when alert does not exist', () => {
+      it('should not render alert', () => {
+        component = shallow(<BasicTypeSchema {...props} />);
+        const alertComponent = component.find(DynamicAlert);
+
+        expect(alertComponent).toHaveLength(0);
+      });
     });
 
     describe('when control is focused', () => {
