@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.0.2...@transferwise/dynamic-flows@5.1.0) (2020-09-17)
+
+
+### Features
+
+* add alert support to dynamic flows ([#592](https://github.com/transferwise/neptune-web/issues/592)) ([35bdd59](https://github.com/transferwise/neptune-web/commit/35bdd596be8445202f6eaea13b26f0fc0e94ad33))
+
+
+
+
+
 ## [5.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.0.1...@transferwise/dynamic-flows@5.0.2) (2020-09-16)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
