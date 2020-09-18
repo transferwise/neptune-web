@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.2...@transferwise/components@30.0.3) (2020-09-18)
+
+
+### Bug Fixes
+
+* apply overflow hidden to content container ([#593](https://github.com/transferwise/neptune-web/issues/593)) ([f28225a](https://github.com/transferwise/neptune-web/commit/f28225ac0c8f2f967515916671f6b9b7a29278bd))
+
+
+
+
+
 ## [30.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.1...@transferwise/components@30.0.2) (2020-09-16)
 
 
