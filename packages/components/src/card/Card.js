@@ -50,7 +50,7 @@ const Card = ({
         />
       </div>
       {isOpen && (
-        <div className="p-l-panel p-r-panel p-b-panel">
+        <div className="p-l-panel p-r-panel p-b-panel tw-card__content">
           <div className="media">
             <div className="media-left">
               <div className="circle circle-sm circle-inverse circle-responsive invisible" />
