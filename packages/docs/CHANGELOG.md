@@ -273,7 +273,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
 ## [5.1.7](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.1.6...@transferwise/neptune-docs@5.1.7) (2020-08-18)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
