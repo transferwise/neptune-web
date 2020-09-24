@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.5...@transferwise/components@30.0.6) (2020-09-24)
+
+
+### Bug Fixes
+
+* alignment in money input component ([#599](https://github.com/transferwise/neptune-web/issues/599)) ([9cbef94](https://github.com/transferwise/neptune-web/commit/9cbef945fcbfd3d96e6bfcd29194c6c23019cf6d))
+
+
+
+
+
 ## [30.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.4...@transferwise/components@30.0.5) (2020-09-23)
 
 
