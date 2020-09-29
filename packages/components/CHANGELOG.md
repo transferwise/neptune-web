@@ -3,6 +3,149 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.0.7](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.6...@transferwise/components@30.0.7) (2020-09-28)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [30.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.5...@transferwise/components@30.0.6) (2020-09-24)
+
+
+### Bug Fixes
+
+* alignment in money input component ([#599](https://github.com/transferwise/neptune-web/issues/599)) ([9cbef94](https://github.com/transferwise/neptune-web/commit/9cbef945fcbfd3d96e6bfcd29194c6c23019cf6d))
+
+
+
+
+
+## [30.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.4...@transferwise/components@30.0.5) (2020-09-23)
+
+
+### Bug Fixes
+
+* **DefinitionList:** add padding for vertical layout ([#598](https://github.com/transferwise/neptune-web/issues/598)) ([ae76be1](https://github.com/transferwise/neptune-web/commit/ae76be1551016ff3ee1b66760bcc5f9c0db752e2))
+
+
+
+
+
+## [30.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.3...@transferwise/components@30.0.4) (2020-09-22)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [30.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.2...@transferwise/components@30.0.3) (2020-09-18)
+
+
+### Bug Fixes
+
+* apply overflow hidden to content container ([#593](https://github.com/transferwise/neptune-web/issues/593)) ([f28225a](https://github.com/transferwise/neptune-web/commit/f28225ac0c8f2f967515916671f6b9b7a29278bd))
+
+
+
+
+
+## [30.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.1...@transferwise/components@30.0.2) (2020-09-16)
+
+
+### Bug Fixes
+
+* fix spacing in pagination component ([#589](https://github.com/transferwise/neptune-web/issues/589)) ([56dbba0](https://github.com/transferwise/neptune-web/commit/56dbba0905c059fa179b0a3ddcc67c759815a93d))
+
+
+
+
+
+## [30.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.0...@transferwise/components@30.0.1) (2020-09-16)
+
+
+### Bug Fixes
+
+* pagination component in lab ([#586](https://github.com/transferwise/neptune-web/issues/586)) ([9c943ac](https://github.com/transferwise/neptune-web/commit/9c943ac70adfed05722e2e3a5cc1d8baa064e36b))
+
+
+
+
+
+# [30.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.3.4...@transferwise/components@30.0.0) (2020-09-16)
+
+
+* feat!: migration on icons v2 (#588) ([c502370](https://github.com/transferwise/neptune-web/commit/c502370ac25f338bafdf2742b8fedb503d1a32c6)), closes [#588](https://github.com/transferwise/neptune-web/issues/588)
+
+
+### BREAKING CHANGES
+
+* - Select component now expect 'icon' as a 'node' (React icon component) instead of 'string' (icon name)
+- Exposes CloseButton component
+- FormControl now accepts 'icon' as 'node'
+- deleted '.caret' CSS class
+- deleted 'iconfont.less'
+- stopped explicitly import 'glyphicons.less' and 'icons.less' from Bootstrap
+- renamed '.icon' on '.tw-icon' in styles
+
+
+
+
+
+## [29.3.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.3.3...@transferwise/components@29.3.4) (2020-09-15)
+
+
+### Bug Fixes
+
+* revert icons ([#587](https://github.com/transferwise/neptune-web/issues/587)) ([dd5564a](https://github.com/transferwise/neptune-web/commit/dd5564a7fdf35ab9a9f90138ee7aaa3475fbdd17))
+
+
+
+
+
+## [29.3.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.3.2...@transferwise/components@29.3.3) (2020-09-15)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [29.3.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.3.1...@transferwise/components@29.3.2) (2020-09-15)
+
+
+### Bug Fixes
+
+* move modal body class handling from Dimmer to Modal ([#572](https://github.com/transferwise/neptune-web/issues/572)) ([bcdb573](https://github.com/transferwise/neptune-web/commit/bcdb573a8402e8a17bb222499fd48f88ce9b74ca))
+
+
+
+
+
+## [29.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.3.0...@transferwise/components@29.3.1) (2020-09-15)
+
+
+### Bug Fixes
+
+* add autoFillOnBlur to typeahead component ([#585](https://github.com/transferwise/neptune-web/issues/585)) ([b2ab0f0](https://github.com/transferwise/neptune-web/commit/b2ab0f02efaf95dbdc5bb2e51fd21553138efd47))
+
+
+
+
+
+# [29.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.2.0...@transferwise/components@29.3.0) (2020-09-15)
+
+
+### Features
+
+* add nudge component ([#573](https://github.com/transferwise/neptune-web/issues/573)) ([28cc421](https://github.com/transferwise/neptune-web/commit/28cc421ee1246ee68d5124061cc4694297e69dd0))
+
+
+
+
+
 # [29.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@29.1.4...@transferwise/components@29.2.0) (2020-09-11)
 
 

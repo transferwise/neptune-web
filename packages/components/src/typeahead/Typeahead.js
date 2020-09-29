@@ -8,6 +8,8 @@ import debounce from 'lodash.debounce';
 import clamp from 'lodash.clamp';
 import classNames from 'classnames';
 
+import { Cross as CrossIcon } from '@transferwise/icons';
+
 import KeyCodes from '../common/keyCodes';
 import TypeaheadInput from './typeaheadInput/TypeaheadInput';
 import TypeaheadOption from './typeaheadOption/TypeaheadOption';
@@ -215,12 +217,12 @@ export default class Typeahead extends Component {
   handleDocumentClick = () => {
     if (this.state.optionsShown) {
       this.hideMenu();
-      const { allowNew, onBlur } = this.props;
+      const { allowNew, onBlur, autoFillOnBlur } = this.props;
       const { query } = this.state;
       this.setState({
         isFocused: false,
       });
-      if (allowNew && query.trim()) {
+      if (allowNew && autoFillOnBlur && query.trim()) {
         this.selectItem({ label: query });
       }
 
@@ -421,7 +423,7 @@ export default class Typeahead extends Component {
             {clearButton && (
               <div className="input-group-addon">
                 <button type="button" className="btn-unstyled" onClick={this.clear}>
-                  <i className=" input-group-text icon icon-close" />
+                  <CrossIcon />
                 </button>
               </div>
             )}
@@ -476,6 +478,7 @@ Typeahead.propTypes = {
   chipSeparators: Types.arrayOf(Types.string),
   size: Types.oneOf([Typeahead.Size.MEDIUM, Typeahead.Size.LARGE]),
   inputAutoComplete: Types.string,
+  autoFillOnBlur: Types.bool,
 };
 
 Typeahead.defaultProps = {
@@ -501,4 +504,5 @@ Typeahead.defaultProps = {
   onFocus: null,
   validateChip: () => true,
   inputAutoComplete: 'new-password',
+  autoFillOnBlur: true,
 };

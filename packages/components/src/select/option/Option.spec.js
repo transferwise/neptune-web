@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { Profile as ProfileIcon } from '@transferwise/icons';
 
 import Option from './Option';
 
@@ -27,8 +28,8 @@ describe('option', () => {
   });
 
   it('renders a given icon', () => {
-    component.setProps({ icon: 'swag' });
-    expect(component.find('i.icon.swag').length).toBe(1);
+    component.setProps({ icon: <ProfileIcon /> });
+    expect(component.find(ProfileIcon).length).toBe(1);
   });
 
   it('renders the given currency flag for a given currency', () => {

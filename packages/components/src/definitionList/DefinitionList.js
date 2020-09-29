@@ -20,10 +20,11 @@ const alignmentClassMap = {
 
 const DefinitionList = ({ definitions, layout, muted }) => (
   <dl
-    className={classNames('tw-definition-list', {
+    className={classNames('tw-definition-list d-flex ', {
       'text-muted': muted,
-      'tw-definition-list--columns': layout === Layout.VERTICAL_TWO_COLUMN,
-      'tw-definition-list--horizontal': isLayoutHorizontal(layout),
+      'flex-column': layout === Layout.VERTICAL_ONE_COLUMN,
+      'tw-definition-list--columns flex-column flex-row--sm': layout === Layout.VERTICAL_TWO_COLUMN,
+      'tw-definition-list--horizontal flex-column': isLayoutHorizontal(layout),
     })}
   >
     {definitions.map(({ title, value, key }) => (

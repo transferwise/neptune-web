@@ -1,23 +1,26 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
+import { isString } from '@transferwise/neptune-validation';
 import Chevron from '../../chevron';
 
 const AccordionItem = ({ id, title, content, onClick, isOpen, index }) => (
   <div id={id} className={classNames('tw-accordion-item decision p-a-0', { closed: !isOpen })}>
-    <label onClick={() => onClick(index)} className="tw-accordion-item" htmlFor="accordion-chevron">
-      <div className="media p-y-3" id="accordion-chevron">
-        <div className="media-body">{typeof title === 'string' ? <h5>{title}</h5> : title}</div>
+    <button
+      type="button"
+      aria-expanded={isOpen}
+      onClick={() => onClick(index)}
+      className="tw-accordion-item btn btn-link p-l-0 text-no-decoration"
+    >
+      <div className="media p-y-2">
+        <div className="media-body text-xs-left">
+          {isString(title) ? <span className="h5">{title}</span> : title}
+        </div>
         <div className="media-right media-middle">
-          <Chevron
-            size={Chevron.Size.SMALL}
-            orientation={Chevron.Orientation.BOTTOM}
-            flip={isOpen}
-            animate
-          />
+          <Chevron orientation={isOpen ? Chevron.Orientation.TOP : Chevron.Orientation.BOTTOM} />
         </div>
       </div>
-    </label>
+    </button>
     <div className="p-b-3 accordion-content">{content}</div>
   </div>
 );

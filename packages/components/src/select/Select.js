@@ -4,7 +4,9 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
 
+import { Search as SearchIcon } from '@transferwise/icons';
 import Option from './option';
+import Chevron from '../chevron';
 import KeyCodes from '../common/keyCodes';
 import { Breakpoint } from '../common';
 import {
@@ -12,8 +14,6 @@ import {
   removeClickClassFromDocumentOnIos,
 } from '../common/domHelpers';
 import { addClassAndTriggerReflow, removeClass } from './domHelpers';
-
-import './Select.css';
 
 function clamp(from, to, value) {
   return Math.max(Math.min(to, value), from);
@@ -350,7 +350,7 @@ export default class Select extends Component {
         <a className={`${this.style('tw-select-filter-link')} ${this.style('p-a-0')}`}>
           <div className={this.style('input-group')}>
             <span className={this.style('input-group-addon')}>
-              <i className={`${this.style('icon')} ${this.style('icon-search')}`} />
+              <SearchIcon className={`${this.style('tw-icon')} ${this.style('tw-icon-search')}`} />
             </span>
             <input
               type="text"
@@ -510,7 +510,12 @@ export default class Select extends Component {
               onClick={this.handleButtonClick}
             >
               {this.renderButtonInternals()}
-              <span className={this.style('caret')} />
+              <Chevron
+                disabled={disabled}
+                className={`${s('tw-icon')} ${s('tw-chevron-up-icon')} ${s('tw-chevron')} ${s(
+                  'chevron-color',
+                )} ${s('bottom')} ${s('tw-select-chevron')}`}
+              />
             </button>
             {animationState !== 'exited' && this.renderOptionsList()}
             {animationState !== 'exited' && this.renderOverlay()}
@@ -534,7 +539,7 @@ Select.propTypes = {
   selected: Types.shape({
     value: Types.any.isRequired,
     label: Types.node,
-    icon: Types.string,
+    icon: Types.node,
     currency: Types.string,
     note: Types.node,
     secondary: Types.node,
@@ -553,7 +558,7 @@ Select.propTypes = {
       value: Types.any,
       label: Types.node,
       header: Types.node,
-      icon: Types.string,
+      icon: Types.node,
       currency: Types.string,
       note: Types.node,
       secondary: Types.node,

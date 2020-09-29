@@ -12,8 +12,10 @@ const SlidingPanel = ({
   children,
   slidingPanelPositionFixed,
   showSlidingPanelBorder,
+  ...props
 }) => (
   <CSSTransition
+    {...props}
     in={open}
     // Wait for animation to finish before unmount.
     timeout={{ enter: 0, exit: EXIT_ANIMATION }}

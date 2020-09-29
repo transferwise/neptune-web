@@ -25,8 +25,18 @@ describe('DefinitionList', () => {
   const valueHasClass = (layout, className) =>
     withLayout(layout).find('dl.tw-definition-list dd').hasClass(className);
 
-  it('has applies correct class for vertical two-column layout', () => {
-    const colClass = 'tw-definition-list--columns';
+  it('applies correct flex class', () => {
+    const colClass = 'flex-column';
+
+    expect(listHasClass(VERTICAL_ONE_COLUMN, colClass)).toBe(true);
+    expect(listHasClass(VERTICAL_TWO_COLUMN, colClass)).toBe(true);
+    expect(listHasClass(HORIZONTAL_LEFT_ALIGNED, colClass)).toBe(true);
+    expect(listHasClass(HORIZONTAL_RIGHT_ALIGNED, colClass)).toBe(true);
+    expect(listHasClass(HORIZONTAL_JUSTIFIED, colClass)).toBe(true);
+  });
+
+  it('applies correct class for vertical two-column layout', () => {
+    const colClass = 'tw-definition-list--columns flex-column flex-row--sm';
 
     expect(listHasClass(VERTICAL_TWO_COLUMN, colClass)).toBe(true);
     expect(listHasClass(VERTICAL_ONE_COLUMN, colClass)).toBe(false);
@@ -35,8 +45,8 @@ describe('DefinitionList', () => {
     expect(listHasClass(HORIZONTAL_JUSTIFIED, colClass)).toBe(false);
   });
 
-  it('has applies correct class for horiztonal layouts', () => {
-    const rowClass = 'tw-definition-list--horizontal';
+  it('applies correct class for horiztonal layouts', () => {
+    const rowClass = 'tw-definition-list--horizontal flex-column';
 
     expect(listHasClass(VERTICAL_TWO_COLUMN, rowClass)).toBe(false);
     expect(listHasClass(VERTICAL_ONE_COLUMN, rowClass)).toBe(false);
@@ -45,7 +55,7 @@ describe('DefinitionList', () => {
     expect(listHasClass(HORIZONTAL_JUSTIFIED, rowClass)).toBe(true);
   });
 
-  it('has applies correct class for alignment', () => {
+  it('applies correct class for alignment', () => {
     expect(valueHasClass(VERTICAL_TWO_COLUMN, '')).toBe(true);
     expect(valueHasClass(VERTICAL_ONE_COLUMN, '')).toBe(true);
     expect(valueHasClass(HORIZONTAL_LEFT_ALIGNED, '')).toBe(true);

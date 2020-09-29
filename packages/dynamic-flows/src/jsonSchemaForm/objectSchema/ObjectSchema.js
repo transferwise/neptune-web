@@ -3,6 +3,7 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 import GenericSchema from '../genericSchema';
 import { getValidModelParts } from '../../common/validation/valid-model';
+import DynamicAlert from '../../layout/alert';
 
 const ObjectSchema = (props) => {
   const [model, setModel] = useState({ ...(props.model || {}) });
@@ -38,6 +39,8 @@ const ObjectSchema = (props) => {
       {props.schema.title && !props.hideTitle && <legend> {props.schema.title} </legend>}
       {props.schema.description && !props.hideTitle && <p> {props.schema.description} </p>}
 
+      {props.schema.alert && <DynamicAlert component={props.schema.alert} />}
+
       <div className="row">
         {Object.keys(props.schema.properties).map((propertyName) => (
           <div
@@ -66,6 +69,10 @@ const ObjectSchema = (props) => {
 ObjectSchema.propTypes = {
   schema: Types.shape({
     type: Types.oneOf(['object']).isRequired,
+    alert: Types.shape({
+      context: Types.string,
+      markdown: Types.string,
+    }),
     properties: Types.shape({}).isRequired,
     required: Types.arrayOf(Types.string),
     title: Types.string,

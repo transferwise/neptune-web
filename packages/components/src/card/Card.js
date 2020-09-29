@@ -43,19 +43,14 @@ const Card = ({
           decision={false}
           button={
             children && (
-              <Chevron
-                size={Chevron.Size.SMALL}
-                orientation={Chevron.Orientation.BOTTOM}
-                flip={isOpen}
-                animate
-              />
+              <Chevron orientation={isOpen ? Chevron.Orientation.TOP : Chevron.Orientation.DOWN} />
             )
           }
           inverseMediaCircle={isOpen}
         />
       </div>
       {isOpen && (
-        <div className="p-l-panel p-r-panel p-b-panel">
+        <div className="p-l-panel p-r-panel p-b-panel tw-card__content">
           <div className="media">
             <div className="media-left">
               <div className="circle circle-sm circle-inverse circle-responsive invisible" />

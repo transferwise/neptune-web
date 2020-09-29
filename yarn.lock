@@ -3725,15 +3725,10 @@
   resolved "https://registry.yarnpkg.com/@transferwise/formatting/-/formatting-2.4.1.tgz#c24dae2783d6a2d00652176087e9f6eb70728407"
   integrity sha512-9uyMzp2Xt/HJSMJacF/v5KIIhyOsMAKM1IHGigYy/ogc28KPJyMt7E8t0tqEtDU0frDFjtIQ1IpLOYh92qV5SQ==
 
-"@transferwise/icons@^1.0.0", "@transferwise/icons@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@transferwise/icons/-/icons-1.5.0.tgz#4b0f6e71862e4e331b0a45f6bd77bae8eba0021d"
-  integrity sha512-qHdaX+0YdTGwSoZqNH7FB+Gp1ytgk60xybkEtx+D9PT494B6Ddv94O2qZ5OR/K6vv+d9wd7brep6tMloBu6EBQ==
-
-"@transferwise/icons@^2.0.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@transferwise/icons/-/icons-2.3.0.tgz#b7bbea6aba4cb7f350783615c163c969aabc3230"
-  integrity sha512-616alyY2P1xdA4nokH+fDcue2gPTGtOlFw9srkERnOLr3ZkVTxr32UJagMpb3VTwPGXvwc2ENNQvyb++T9Oigw==
+"@transferwise/icons@^2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@transferwise/icons/-/icons-2.4.1.tgz#1614d4d3fbbb631a89ed24be7c7a422c03308ade"
+  integrity sha512-qwIjbQPtsLcC4nBPrX16Nw4oQS46yptvU/3Ek65fp/VB/x6jgwAEp6esHnKH9cz7mSs5+DW1CQROlWaC6Ysl+A==
 
 "@transferwise/neptune-tokens@^1.0.0":
   version "1.0.0"
@@ -6653,7 +6648,7 @@ commondir@^1.0.1:
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
 
-commonmark@^0.29.1:
+commonmark@0.29.1:
   version "0.29.1"
   resolved "https://registry.yarnpkg.com/commonmark/-/commonmark-0.29.1.tgz#fdbf5970ca23600f4a27487e30eed43b66b83ef5"
   integrity sha512-DafPdNYFXoEhsSiR4O+dJ45UJBfDL4cBTks4B+agKiaWt7qjG0bIhg5xuCE0RqU71ikJcBIf4/sRHh9vYQVF8Q==

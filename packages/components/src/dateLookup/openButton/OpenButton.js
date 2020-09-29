@@ -2,6 +2,8 @@ import React from 'react';
 import Types from 'prop-types';
 import { formatDate } from '@transferwise/formatting';
 
+import Chevron from '../../chevron';
+
 import { Size, MonthFormat } from '../../common';
 
 const OpenButton = ({
@@ -37,7 +39,7 @@ const OpenButton = ({
         {placeholder}
       </span>
     )}
-    <span className="caret" />
+    <Chevron orientation={Chevron.Orientation.BOTTOM} disabled={disabled} />
   </button>
 );
 

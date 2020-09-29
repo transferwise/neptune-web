@@ -1,31 +1,31 @@
-import { addModalOpenBodyClass, removeModalOpenBodyClass } from './DOMOperations';
+import { addNoScrollBodyClass, removeNoScrollBodyClass } from './DOMOperations';
 
 describe('DOM operations', () => {
-  describe('modal open operations', () => {
+  describe('add no-scroll operations', () => {
     afterEach(() => {
-      removeModalOpenBodyClass();
+      removeNoScrollBodyClass();
     });
 
-    it('adds modal open class to body tag', () => {
-      expect(bodyHasModalOpenClass()).toBe(false);
-      addModalOpenBodyClass();
-      expect(bodyHasModalOpenClass()).toBe(true);
+    it('adds no-scroll class to body tag', () => {
+      expect(bodyHasNoScrollClass()).toBe(false);
+      addNoScrollBodyClass();
+      expect(bodyHasNoScrollClass()).toBe(true);
     });
   });
 
-  describe('modal close operations', () => {
+  describe('remove no-scroll operations', () => {
     beforeEach(() => {
-      addModalOpenBodyClass();
+      addNoScrollBodyClass();
     });
 
-    it('removes modal open class from body tag', () => {
-      expect(bodyHasModalOpenClass()).toBe(true);
-      removeModalOpenBodyClass();
-      expect(bodyHasModalOpenClass()).toBe(false);
+    it('removes no-scroll class from body tag', () => {
+      expect(bodyHasNoScrollClass()).toBe(true);
+      removeNoScrollBodyClass();
+      expect(bodyHasNoScrollClass()).toBe(false);
     });
   });
 
-  function bodyHasModalOpenClass() {
-    return document.body.classList.contains('modal-open');
+  function bodyHasNoScrollClass() {
+    return document.body.classList.contains('no-scroll');
   }
 });

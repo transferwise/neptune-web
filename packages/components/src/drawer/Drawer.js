@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import Close from '@transferwise/icons/react/close';
+import { Cross as CrossIcon } from '@transferwise/icons';
 import SlidingPanel from '../slidingPanel';
 import Dimmer from '../dimmer';
+import { addNoScrollBodyClass, removeNoScrollBodyClass } from '../common';
 import './Drawer.css';
 
 import KEY_CODES from '../common/keyCodes';
@@ -20,9 +21,25 @@ const Drawer = ({ open, position, onClose, children, headerTitle, footerContent 
     }
   };
 
+  useEffect(() => {
+    return () => {
+      if (open) {
+        removeNoScrollBodyClass();
+      }
+    };
+  }, []);
+
+  const handleOnEnter = () => {
+    addNoScrollBodyClass();
+  };
+
+  const handleOnExit = () => {
+    removeNoScrollBodyClass();
+  };
+
   return (
     <Dimmer open={open} onClose={onClose}>
-      <SlidingPanel open={open} position={position}>
+      <SlidingPanel open={open} position={position} onEnter={handleOnEnter} onExit={handleOnExit}>
         <div className="drawer">
           <div
             className={classNames('drawer-header', 'drawer-p-x', {
@@ -31,12 +48,12 @@ const Drawer = ({ open, position, onClose, children, headerTitle, footerContent 
           >
             <div
               role="button"
-              className="drawer-header--close"
+              className="drawer-header close"
               tabIndex={0}
               onClick={onClose}
               onKeyDown={handleOnKeyDown}
             >
-              <Close />
+              <CrossIcon size={24} />
             </div>
             {headerTitle && (
               <div className="align-heading m-l-2">
