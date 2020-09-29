@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.0.8](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.7...@transferwise/components@30.0.8) (2020-09-29)
+
+
+### Bug Fixes
+
+* IE11 double fire event ([#595](https://github.com/transferwise/neptune-web/issues/595)) ([df4ae8b](https://github.com/transferwise/neptune-web/commit/df4ae8bfb52c6c5323ce5ab9386258a9544f2836))
+
+
+
+
+
 ## [30.0.7](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.6...@transferwise/components@30.0.7) (2020-09-28)
 
 **Note:** Version bump only for package @transferwise/components
