@@ -39,7 +39,7 @@ describe('AccordionItem', () => {
     });
 
     it('removes close class on click', () => {
-      clickLabel();
+      clickButton();
       expect(props.onClick).toHaveBeenCalledWith(1);
     });
   });
@@ -67,8 +67,8 @@ describe('AccordionItem', () => {
     });
   });
 
-  const getTitle = () => component.find('h5');
+  const getTitle = () => component.find('.h5');
   const getChevron = () => component.find(Chevron);
   const contentClosed = () => component.find('.closed');
-  const clickLabel = () => component.find('label').simulate('click');
+  const clickButton = () => component.find('button').simulate('click');
 });
