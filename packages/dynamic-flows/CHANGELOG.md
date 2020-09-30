@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.2.0...@transferwise/dynamic-flows@5.3.0) (2020-09-30)
+
+
+### Features
+
+* add logic for display order ([#601](https://github.com/transferwise/neptune-web/issues/601)) ([a42fff4](https://github.com/transferwise/neptune-web/commit/a42fff4397bb1b33de9a785314608302c4c6d6c1))
+
+
+
+
+
 # [5.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.1.6...@transferwise/dynamic-flows@5.2.0) (2020-09-30)
 
 
