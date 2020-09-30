@@ -125,7 +125,6 @@ const OneOfSchema = (props) => {
     <>
       {props.schema.oneOf.length > 1 && (
         <>
-          {props.schema.alert && <DynamicAlert component={props.schema.alert} />}
           <div className={classNames(formGroupClasses)}>
             {props.schema.title && (
               <label className="control-label" htmlFor={id}>
@@ -152,6 +151,7 @@ const OneOfSchema = (props) => {
               validations={validations}
             />
           </div>
+          {props.schema.alert && <DynamicAlert component={props.schema.alert} />}
         </>
       )}
 
