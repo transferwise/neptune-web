@@ -90,7 +90,6 @@ const BasicTypeSchema = (props) => {
   return (
     !isHidden && (
       <>
-        {props.schema.alert && <DynamicAlert component={props.schema.alert} />}
         <div className={classNames(formGroupClasses)}>
           {showLabel && (
             <label className="control-label" htmlFor={id}>
@@ -116,6 +115,7 @@ const BasicTypeSchema = (props) => {
             validations={validations}
           />
         </div>
+        {props.schema.alert && <DynamicAlert component={props.schema.alert} />}
       </>
     )
   );

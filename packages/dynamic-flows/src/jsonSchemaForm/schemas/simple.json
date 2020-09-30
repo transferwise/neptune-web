@@ -12,7 +12,7 @@
     },
     "string": {
       "type": "string",
-      "title": "Text input",
+      "title": "Text input"
     },
     "select": {
       "type": "integer",
