@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.3.0...@transferwise/dynamic-flows@5.4.0) (2020-09-30)
+
+
+### Features
+
+* move oneOf alerts to be below the oneOfs ([#606](https://github.com/transferwise/neptune-web/issues/606)) ([05b0433](https://github.com/transferwise/neptune-web/commit/05b04334cda333c01eb84f1cbba9cbde79bf8788))
+
+
+
+
+
 # [5.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.2.0...@transferwise/dynamic-flows@5.3.0) (2020-09-30)
 
 
