@@ -140,4 +140,61 @@ describe('Given a component for rendering object schemas', () => {
       expect(alertComponent).toHaveLength(0);
     });
   });
+
+  describe('when display order exists', () => {
+    const properties = {
+      string: { type: 'string' },
+      number: { type: 'number' },
+      something: { type: 'string' },
+    };
+
+    describe('when displayOrder contains all properties', () => {
+      it('should adhere to the specified order', () => {
+        const schemaWithDisplayOrder = {
+          ...schema,
+          properties,
+          displayOrder: ['number', 'something', 'string'],
+        };
+        component = shallow(<ObjectSchema {...props} schema={schemaWithDisplayOrder} />);
+
+        genericSchemaComponents = component.find(GenericSchema);
+
+        expect(genericSchemaComponents.at(0).prop('schema')).toBe(properties.number);
+        expect(genericSchemaComponents.at(1).prop('schema')).toBe(properties.something);
+        expect(genericSchemaComponents.at(2).prop('schema')).toBe(properties.string);
+      });
+    });
+
+    describe('when displayOrder contains only a subset of properties', () => {
+      it('should display any properties not specified in the display order in their natural order', () => {
+        const schemaWithDisplayOrder = { ...schema, properties, displayOrder: ['number'] };
+        component = shallow(<ObjectSchema {...props} schema={schemaWithDisplayOrder} />);
+
+        genericSchemaComponents = component.find(GenericSchema);
+
+        expect(genericSchemaComponents.at(0).prop('schema')).toBe(properties.number);
+        expect(genericSchemaComponents.at(1).prop('schema')).toBe(properties.string);
+        expect(genericSchemaComponents.at(2).prop('schema')).toBe(properties.something);
+      });
+    });
+  });
+
+  describe('when no display order exists', () => {
+    const properties = {
+      string: { type: 'string' },
+      number: { type: 'number' },
+      something: { type: 'string' },
+    };
+
+    it('should display properties in their natural order', () => {
+      const schemaWithoutDisplayOrder = { ...schema, properties };
+      component = shallow(<ObjectSchema {...props} schema={schemaWithoutDisplayOrder} />);
+
+      genericSchemaComponents = component.find(GenericSchema);
+
+      expect(genericSchemaComponents.at(0).prop('schema')).toBe(properties.string);
+      expect(genericSchemaComponents.at(1).prop('schema')).toBe(properties.number);
+      expect(genericSchemaComponents.at(2).prop('schema')).toBe(properties.something);
+    });
+  });
 });

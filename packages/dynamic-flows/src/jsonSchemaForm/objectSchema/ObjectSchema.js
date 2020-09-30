@@ -34,6 +34,10 @@ const ObjectSchema = (props) => {
     setModel(getValidModelParts(model, props.schema));
   }, [props.schema]);
 
+  const orderedPropertyNames = [
+    ...new Set([...(props.schema.displayOrder || []), ...Object.keys(props.schema.properties)]),
+  ];
+
   return (
     <fieldset>
       {props.schema.title && !props.hideTitle && <legend> {props.schema.title} </legend>}
@@ -42,7 +46,7 @@ const ObjectSchema = (props) => {
       {props.schema.alert && <DynamicAlert component={props.schema.alert} />}
 
       <div className="row">
-        {Object.keys(props.schema.properties).map((propertyName) => (
+        {orderedPropertyNames.map((propertyName) => (
           <div
             key={propertyName}
             className={classNames(
@@ -78,6 +82,7 @@ ObjectSchema.propTypes = {
     title: Types.string,
     description: Types.string,
     width: Types.oneOf(['sm', 'md', 'lg']),
+    displayOrder: Types.arrayOf(Types.string),
   }).isRequired,
   model: Types.shape({}),
   errors: Types.shape({}),
