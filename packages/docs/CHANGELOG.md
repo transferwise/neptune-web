@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.13](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.12...@transferwise/neptune-docs@7.0.13) (2020-09-30)
+
+
+### Bug Fixes
+
+* Neptune Sprint 29/30 - eslint fixes and a11y improvements ([#603](https://github.com/transferwise/neptune-web/issues/603)) ([ffcdba3](https://github.com/transferwise/neptune-web/commit/ffcdba3fff284fce8425892f15f824169f449941))
+
+
+
+
+
 ## [7.0.12](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.11...@transferwise/neptune-docs@7.0.12) (2020-09-30)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
