@@ -9,6 +9,8 @@ import '@transferwise/neptune-css/dist/css/neptune.css';
 import '@transferwise/icons/lib/styles/main.min.css';
 import 'currency-flags/dist/currency-flags.min.css';
 
+import './storybook.css';
+
 const style = {
   display: 'flex',
   alignItems: 'center',
@@ -40,7 +42,7 @@ addDecorator(withKnobs);
 addDecorator(
   withInfo({
     header: false,
-    inline: true,
+    inline: false,
   }),
 );
 addDecorator(CenterDecorator);

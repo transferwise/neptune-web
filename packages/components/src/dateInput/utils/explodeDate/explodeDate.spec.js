@@ -1,4 +1,4 @@
-import { explodeDate } from './';
+import { explodeDate } from '.';
 
 describe('explodeDate', () => {
   it('returns exploded model for valid format ', () => {

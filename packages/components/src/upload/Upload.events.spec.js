@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Upload from './';
+import Upload from '.';
 
 describe('Upload (events)', () => {
   let component;

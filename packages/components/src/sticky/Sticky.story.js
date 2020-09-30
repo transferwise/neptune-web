@@ -1,7 +1,6 @@
 import React from 'react';
-import Sticky from './Sticky';
-
 import { select, boolean } from '@storybook/addon-knobs';
+import Sticky from './Sticky';
 
 export default {
   component: Sticky,

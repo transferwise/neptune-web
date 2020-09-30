@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Radio from './';
+import Radio from '.';
 import RadioButton from '../common/RadioButton';
 
 describe('Radio', () => {

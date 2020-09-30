@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 
 import OneOfSchema from '.';
 
-import GenericSchema from '../genericSchema/';
-import SchemaFormControl from '../schemaFormControl/';
+import GenericSchema from '../genericSchema';
+import SchemaFormControl from '../schemaFormControl';
 import ControlFeedback from '../controlFeedback';
 import DynamicAlert from '../../layout/alert';
 

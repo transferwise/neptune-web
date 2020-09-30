@@ -1,7 +1,7 @@
 import React from 'react';
-import DateLookup from './DateLookup';
 import { action } from '@storybook/addon-actions';
 import { boolean, select, date, text } from '@storybook/addon-knobs';
+import DateLookup from './DateLookup';
 
 export default {
   component: DateLookup,

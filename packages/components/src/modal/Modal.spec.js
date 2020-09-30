@@ -92,7 +92,7 @@ describe('Modal', () => {
     });
 
     it('with footer content when `footer` specified as prop', () => {
-      component.setProps({ footer: <button>Some button</button> });
+      component.setProps({ footer: <button type="button">Some button</button> });
 
       expect(modalFooter()).toHaveLength(1);
     });

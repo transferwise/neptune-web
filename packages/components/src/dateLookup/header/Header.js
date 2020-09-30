@@ -7,17 +7,21 @@ const btnClasses = 'btn-link p-a-0 text-no-decoration font-weight-bold';
 const Header = ({ label, onLabelClick, onPreviousClick, onNextClick }) => (
   <div className="text-xs-center p-t-1 p-b-2 clearfix">
     <div className="pull-xs-left">
-      <button onClick={onPreviousClick} className={btnClasses}>
+      <button type="button" onClick={onPreviousClick} className={btnClasses}>
         <Chevron orientation={Chevron.Orientation.LEFT} size={Chevron.Size.MEDIUM} />
       </button>
     </div>
     {label && (
-      <button onClick={onLabelClick} className={`tw-date-lookup-header-current ${btnClasses}`}>
+      <button
+        type="button"
+        onClick={onLabelClick}
+        className={`tw-date-lookup-header-current ${btnClasses}`}
+      >
         {label}
       </button>
     )}
     <div className="pull-xs-right">
-      <button onClick={onNextClick} className={btnClasses}>
+      <button type="button" onClick={onNextClick} className={btnClasses}>
         <Chevron orientation={Chevron.Orientation.RIGHT} size={Chevron.Size.MEDIUM} />
       </button>
     </div>

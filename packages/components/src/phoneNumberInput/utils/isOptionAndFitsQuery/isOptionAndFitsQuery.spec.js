@@ -1,4 +1,4 @@
-import { startsWith, isOptionAndFitsQuery } from './';
+import { startsWith, isOptionAndFitsQuery } from '.';
 
 const DATA_TEST = [
   {

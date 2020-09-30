@@ -1,4 +1,4 @@
-import WithDisplayFormat from './';
+import WithDisplayFormat from '.';
 
 describe('WithDisplayFormat', () => {
   it('should return null if props change to the same value', () => {

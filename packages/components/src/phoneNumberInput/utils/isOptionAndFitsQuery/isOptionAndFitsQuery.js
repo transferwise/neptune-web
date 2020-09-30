@@ -17,9 +17,8 @@ export const startsWith = (property, query) => {
       property.filter((proper) => normalizeValue(proper).indexOf(normalizeValue(query)) === 0)
         .length > 0
     );
-  } else {
-    return normalizeValue(property).indexOf(normalizeValue(query)) === 0;
   }
+  return normalizeValue(property).indexOf(normalizeValue(query)) === 0;
 };
 
 const normalizeValue = (value) => value.toLowerCase().replace('+', '');

@@ -1,9 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import JsonSchemaForm from '.';
-
 import { Alert } from '@transferwise/components';
+import JsonSchemaForm from '.';
 
 describe('E2E: Given a component for rendering a JSON schema form', () => {
   let component;

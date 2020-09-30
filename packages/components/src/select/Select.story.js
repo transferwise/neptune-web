@@ -1,8 +1,9 @@
 import React from 'react';
-import Select from './Select';
+
 import { Profile as ProfileIcon, Globe as GlobeIcon } from '@transferwise/icons';
 
 import { text, boolean, select } from '@storybook/addon-knobs';
+import Select from './Select';
 
 export default {
   component: Select,

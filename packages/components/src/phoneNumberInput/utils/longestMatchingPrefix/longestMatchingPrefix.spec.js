@@ -1,4 +1,4 @@
-import { longestMatchingPrefix } from './';
+import { longestMatchingPrefix } from '.';
 
 describe('longestMatchingPrefix', () => {
   const matchingcodes = [

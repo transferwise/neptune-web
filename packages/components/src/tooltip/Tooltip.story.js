@@ -1,8 +1,7 @@
 import React from 'react';
+import { select, number, text } from '@storybook/addon-knobs';
 import Tooltip from './Tooltip';
 import Button from '../button';
-
-import { select, number, text } from '@storybook/addon-knobs';
 
 export default {
   component: Tooltip,

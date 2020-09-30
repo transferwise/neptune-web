@@ -2,9 +2,8 @@ import '@transferwise/neptune-css/dist/css/chevron.css';
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import { Size, Position } from '../common';
-
 import { ChevronUp } from '@transferwise/icons';
+import { Size, Position } from '../common';
 
 const CONTAINER_SIZE = {
   [Size.SMALL]: 16,

@@ -1,9 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ControlFeedback from './';
-
 import { Alert } from '@transferwise/components';
+import ControlFeedback from '.';
 
 describe('Given a component for rendering feedback next to controls', () => {
   let component;

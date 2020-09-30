@@ -1,6 +1,6 @@
 import React from 'react';
-import Money from './Money';
 import { select, text, number } from '@storybook/addon-knobs';
+import Money from './Money';
 
 export default {
   component: Money,

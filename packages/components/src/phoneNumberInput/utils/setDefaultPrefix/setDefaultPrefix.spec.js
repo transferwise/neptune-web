@@ -1,4 +1,4 @@
-import { setDefaultPrefix } from '../';
+import { setDefaultPrefix } from '..';
 
 describe('setDefaultPrefix', () => {
   it('should return right prefix when valid locale is passed', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
-import Markdown from './Markdown';
 import { render } from '@testing-library/react';
+import Markdown from './Markdown';
 
 const sublistMarkDown = `- sublist
    - sublist`;

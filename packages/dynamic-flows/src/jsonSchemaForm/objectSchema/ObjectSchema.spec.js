@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import ObjectSchema from './ObjectSchema';
-import GenericSchema from '../genericSchema/';
+import GenericSchema from '../genericSchema';
 import DynamicAlert from '../../layout/alert';
 
 describe('Given a component for rendering object schemas', () => {

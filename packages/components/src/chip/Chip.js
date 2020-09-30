@@ -9,7 +9,7 @@ const Chip = (props) => {
   return (
     <div className={classNames('chip', { 'has-error': hasError }, className)}>
       {label}
-      <button className="btn-unstyled chip-remove m-l-2" onClick={onRemove}>
+      <button type="button" className="btn-unstyled chip-remove m-l-2" onClick={onRemove}>
         <CrossIcon />
       </button>
     </div>

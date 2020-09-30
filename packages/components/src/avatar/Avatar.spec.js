@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Avatar from './';
+import Avatar from '.';
 
 describe('Avatar', () => {
   it('renders a medium sized thumbnail Avatar with NO outline', () => {
@@ -14,7 +14,7 @@ describe('Avatar', () => {
     );
 
     expect(getByText('😎').parentElement.parentElement).toHaveClass(
-      'avatar avatar--thumbnail avatar--md',
+      'tw-avatar tw-avatar--thumbnail tw-avatar--md',
     );
   });
 
@@ -28,7 +28,7 @@ describe('Avatar', () => {
     );
 
     expect(getByText('💰').parentElement.parentElement).toHaveClass(
-      'avatar avatar--emoji avatar--sm avatar--outlined',
+      'tw-avatar tw-avatar--emoji tw-avatar--sm tw-avatar--outlined',
     );
   });
 });

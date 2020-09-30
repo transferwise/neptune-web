@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Upload from './';
+import Upload from '.';
 import { CompleteStep, UploadImageStep, ProcessingStep } from './steps';
 import { ANIMATION_DURATION_IN_MS } from '../processIndicator';
 

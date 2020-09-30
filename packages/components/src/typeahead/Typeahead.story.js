@@ -1,8 +1,7 @@
 import React from 'react';
-import Typeahead from './Typeahead';
 import { Search as SearchIcon } from '@transferwise/icons';
-
 import { boolean } from '@storybook/addon-knobs';
+import Typeahead from './Typeahead';
 
 export default {
   component: Typeahead,

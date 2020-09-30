@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
-import Avatar from '../../avatar';
-
 import { Profile as ProfileIcon, Briefcase as BriefcaseIcon } from '@transferwise/icons';
+import Avatar from '../../avatar';
 
 const ProfileType = {
   BUSINESS: 'BUSINESS',

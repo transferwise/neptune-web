@@ -1,12 +1,13 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import Chevron from '../../chevron';
 import { isString } from '@transferwise/neptune-validation';
+import Chevron from '../../chevron';
 
 const AccordionItem = ({ id, title, content, onClick, isOpen, index }) => (
   <div id={id} className={classNames('tw-accordion-item decision p-a-0', { closed: !isOpen })}>
     <button
+      type="button"
       aria-expanded={isOpen}
       onClick={() => onClick(index)}
       className="tw-accordion-item btn btn-link p-l-0 text-no-decoration"

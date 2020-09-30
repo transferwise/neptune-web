@@ -406,9 +406,11 @@ const getControlForStringFormat = (format) => {
 const getSelectionType = (field) => {
   if (field.control) {
     return field.control;
-  } else if (field.type === 'select') {
+  }
+  if (field.type === 'select') {
     return 'select';
-  } else if (field.type === 'radio') {
+  }
+  if (field.type === 'radio') {
     return 'radio';
   }
 

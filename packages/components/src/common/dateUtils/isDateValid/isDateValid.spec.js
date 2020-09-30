@@ -1,4 +1,4 @@
-import { isDateValid } from './';
+import { isDateValid } from '.';
 
 describe('isDateValid', () => {
   it('should return false for invalid format ', () => {

@@ -2,34 +2,17 @@ import React, { Component } from 'react';
 import Types from 'prop-types';
 import { FastFlag as FastFlagIcon } from '@transferwise/icons';
 
-import { Checkbox } from '../../';
+import { Checkbox } from '../..';
 
 class OptionDocs extends Component {
-  static propTypes = {
-    type: Types.string.isRequired,
-    Option: Types.func.isRequired,
-    name: Types.string.isRequired,
-    callbackName: Types.string.isRequired,
-    callback: Types.func.isRequired,
-    callbackString: Types.string.isRequired,
-    propName: Types.string,
-    propValue: Types.bool,
-    title: Types.string.isRequired,
-    content: Types.string.isRequired,
-    extra: Types.string,
-  };
-
-  static defaultProps = {
-    propName: null,
-    propValue: false,
-    extra: '',
-  };
-
-  state = {
-    complex: false,
-    disabled: false,
-    hasMedia: true,
-  };
+  constructor() {
+    super();
+    this.state = {
+      complex: false,
+      disabled: false,
+      hasMedia: true,
+    };
+  }
 
   createStateLink(name) {
     return (value) => this.setState({ [name]: value });
@@ -145,5 +128,25 @@ function boolProp(name, value) {
   ${name}`
     : '';
 }
+
+OptionDocs.propTypes = {
+  type: Types.string.isRequired,
+  Option: Types.func.isRequired,
+  name: Types.string.isRequired,
+  callbackName: Types.string.isRequired,
+  callback: Types.func.isRequired,
+  callbackString: Types.string.isRequired,
+  propName: Types.string,
+  propValue: Types.bool,
+  title: Types.string.isRequired,
+  content: Types.string.isRequired,
+  extra: Types.string,
+};
+
+OptionDocs.defaultProps = {
+  propName: null,
+  propValue: false,
+  extra: '',
+};
 
 export default OptionDocs;

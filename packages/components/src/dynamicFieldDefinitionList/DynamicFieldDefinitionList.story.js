@@ -1,6 +1,6 @@
 import React from 'react';
-import DynamicFieldDefinitionList from './DynamicFieldDefinitionList';
 import { select, text, number, date } from '@storybook/addon-knobs';
+import DynamicFieldDefinitionList from './DynamicFieldDefinitionList';
 
 export default {
   component: DynamicFieldDefinitionList,

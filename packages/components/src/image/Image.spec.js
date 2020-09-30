@@ -1,9 +1,10 @@
 import React from 'react';
-import Image from './';
+
 import '@testing-library/jest-dom';
 import { render, fireEvent } from '@testing-library/react';
 import * as useHasIntersectedUtils from '../common/hooks/useHasIntersected/useHasIntersected';
 import { EmptyTransparentImage } from './Image';
+import Image from '.';
 
 const props = {
   id: 'id',

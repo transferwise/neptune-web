@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Tooltip from './';
+import Tooltip from '.';
 
 describe('Tooltip', () => {
   let props;
@@ -9,7 +9,7 @@ describe('Tooltip', () => {
 
   beforeEach(() => {
     props = {
-      children: <button>hello</button>,
+      children: <button type="button">hello</button>,
       label: <span id="label">label</span>,
     };
     component = shallow(<Tooltip {...props} />);

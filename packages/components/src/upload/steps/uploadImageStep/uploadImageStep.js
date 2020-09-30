@@ -3,17 +3,6 @@ import Types from 'prop-types';
 import { Upload as UploadIcon } from '@transferwise/icons';
 
 class UploadImageStep extends PureComponent {
-  static propTypes = {
-    fileDropped: Types.func.isRequired,
-    isComplete: Types.bool.isRequired,
-    usAccept: Types.string.isRequired,
-    usButtonText: Types.string.isRequired,
-    usDisabled: Types.bool.isRequired,
-    usHelpImage: Types.node.isRequired,
-    usLabel: Types.string.isRequired,
-    usPlaceholder: Types.string.isRequired,
-  };
-
   constructor() {
     super();
     this.uploadInputRef = React.createRef();
@@ -78,5 +67,16 @@ class UploadImageStep extends PureComponent {
     );
   }
 }
+
+UploadImageStep.propTypes = {
+  fileDropped: Types.func.isRequired,
+  isComplete: Types.bool.isRequired,
+  usAccept: Types.string.isRequired,
+  usButtonText: Types.string.isRequired,
+  usDisabled: Types.bool.isRequired,
+  usHelpImage: Types.node.isRequired,
+  usLabel: Types.string.isRequired,
+  usPlaceholder: Types.string.isRequired,
+};
 
 export default UploadImageStep;

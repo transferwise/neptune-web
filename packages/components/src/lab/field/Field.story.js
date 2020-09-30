@@ -1,7 +1,7 @@
 import React from 'react';
-import Field from './Field';
 import { Checkbox, DateInput } from '@transferwise/components';
 import { action } from '@storybook/addon-actions';
+import Field from './Field';
 
 export default {
   component: Field,

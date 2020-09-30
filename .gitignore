@@ -33,6 +33,7 @@ dist
 !tokens/tokens.css
 packages/css/pages/styles
 !packages/css/src/props/*.css
+!storybook.css
 
 # docs
 .next

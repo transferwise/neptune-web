@@ -1,7 +1,7 @@
 import React from 'react';
-import Pagination from './Pagination';
 import { action } from '@storybook/addon-actions';
 import { boolean, number, select } from '@storybook/addon-knobs';
+import Pagination from './Pagination';
 
 export default {
   component: Pagination,

@@ -1,7 +1,6 @@
 import React from 'react';
-import RadioGroup from './RadioGroup';
-
 import { action } from '@storybook/addon-actions';
+import RadioGroup from './RadioGroup';
 
 export default {
   component: RadioGroup,

@@ -1,10 +1,9 @@
 import React from 'react';
 import Types from 'prop-types';
 
+import { Button } from '@transferwise/components';
 import { actionModel, sizeModel, alignModel, marginModel, contextModel } from '../models';
 import { getMarginBottom } from '../utils';
-
-import { Button } from '@transferwise/components';
 
 const DynamicButton = (props) => {
   const { component, onAction } = props;

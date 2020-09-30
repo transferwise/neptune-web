@@ -3,27 +3,12 @@ import Types from 'prop-types';
 import Radio from '../radio';
 
 class RadioGroup extends Component {
-  static propTypes = {
-    radios: Types.arrayOf(
-      Types.shape({
-        id: Types.string,
-        value: Types.oneOfType([Types.number, Types.string]),
-        secondary: Types.string,
-        label: Types.string.isRequired,
-        disabled: Types.bool,
-        readOnly: Types.bool,
-      }),
-    ).isRequired,
-    onChange: Types.func.isRequired,
-    selectedValue: Types.oneOfType([Types.number, Types.string]),
-    name: Types.string.isRequired,
-  };
-
-  static defaultProps = {
-    selectedValue: null,
-  };
-
-  state = { selectedValue: this.props.selectedValue };
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedValue: props.selectedValue,
+    };
+  }
 
   handleOnChange = (selectedValue) => {
     const { onChange } = this.props;
@@ -60,5 +45,25 @@ class RadioGroup extends Component {
     ) : null;
   }
 }
+
+RadioGroup.propTypes = {
+  radios: Types.arrayOf(
+    Types.shape({
+      id: Types.string,
+      value: Types.oneOfType([Types.number, Types.string]),
+      secondary: Types.string,
+      label: Types.string.isRequired,
+      disabled: Types.bool,
+      readOnly: Types.bool,
+    }),
+  ).isRequired,
+  onChange: Types.func.isRequired,
+  selectedValue: Types.oneOfType([Types.number, Types.string]),
+  name: Types.string.isRequired,
+};
+
+RadioGroup.defaultProps = {
+  selectedValue: null,
+};
 
 export default RadioGroup;

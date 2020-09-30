@@ -1,8 +1,8 @@
 import React from 'react';
-import Modal from './Modal';
-import Button from '../button';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import Modal from './Modal';
+import Button from '../button';
 
 export default {
   component: Modal,

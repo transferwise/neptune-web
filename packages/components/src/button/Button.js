@@ -33,7 +33,16 @@ const Button = ({
     className,
   );
 
+  /** @DEPRECATED Size.EXTRA_SMALL */
+  if (size === Size.EXTRA_SMALL && process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line
+    console.warn(
+      '@transferwise/components: The value Button.Size.EXTRA_SMALL for the prop `size` in the Button component has been deprecated, and will be removed in the next major release. Please use Button.Size.SMALL instead.',
+    );
+  }
+
   return (
+    /* eslint-disable react/button-has-type */
     <button type={htmlType} className={classes} disabled={disabled || loading} {...rest}>
       {children}
       {loading && <span className={classNames('btn-loader', { 'm-l-2': !block })} />}
@@ -42,7 +51,12 @@ const Button = ({
 };
 
 Button.Type = Type;
-Button.Size = Size;
+Button.Size = {
+  EXTRA_SMALL: Size.EXTRA_SMALL,
+  SMALL: Size.SMALL,
+  MEDIUM: Size.MEDIUM,
+  LARGE: Size.LARGE,
+};
 
 Button.propTypes = {
   className: Types.string,
@@ -53,6 +67,7 @@ Button.propTypes = {
     Button.Type.DANGER,
     Button.Type.LINK,
   ]),
+  /** @DEPRECATED Button.Size.EXTRA_SMALL */
   size: Types.oneOf([
     Button.Size.EXTRA_SMALL,
     Button.Size.SMALL,
@@ -63,7 +78,7 @@ Button.propTypes = {
   block: Types.bool,
   loading: Types.bool,
   // eslint-disable-next-line
-  onClick: requiredIf(Types.func, props => props.htmlType !== 'submit'),
+  onClick: requiredIf(Types.func, (props) => props.htmlType !== 'submit'),
   children: Types.node.isRequired,
   htmlType: Types.oneOf(['submit', 'reset', 'button']),
 };

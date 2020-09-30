@@ -26,6 +26,7 @@ const Stepper = ({ steps, activeStep }) => {
 
     const labelButton = (
       <button
+        type="button"
         className="btn-unstyled tw-stepper__step-label"
         disabled={!clickable}
         onClick={() => clickable && step.onClick()}

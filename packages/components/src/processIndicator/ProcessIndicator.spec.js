@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import ProcessIndicator from './';
+import ProcessIndicator from '.';
 
 describe('processIndicator', () => {
   let wrapper;

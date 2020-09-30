@@ -12,29 +12,6 @@ const TRANSITION_DURATION_IN_MILLISECONDS = 150;
 
 class Modal extends Component {
   static Size = Size;
-  static propTypes = {
-    title: Types.node,
-    body: Types.node.isRequired,
-    footer: Types.node,
-    size: Types.oneOf([
-      Modal.Size.SMALL,
-      Modal.Size.MEDIUM,
-      Modal.Size.LARGE,
-      Modal.Size.EXTRA_LARGE,
-    ]),
-    onClose: Types.func.isRequired,
-    className: Types.string,
-    open: Types.bool.isRequired,
-    closeOnClick: Types.bool,
-  };
-
-  static defaultProps = {
-    title: null,
-    footer: null,
-    size: Modal.Size.MEDIUM,
-    className: '',
-    closeOnClick: true,
-  };
 
   onEscape = (event) => {
     const { onClose } = this.props;
@@ -159,5 +136,29 @@ class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  title: Types.node,
+  body: Types.node.isRequired,
+  footer: Types.node,
+  size: Types.oneOf([
+    Modal.Size.SMALL,
+    Modal.Size.MEDIUM,
+    Modal.Size.LARGE,
+    Modal.Size.EXTRA_LARGE,
+  ]),
+  onClose: Types.func.isRequired,
+  className: Types.string,
+  open: Types.bool.isRequired,
+  closeOnClick: Types.bool,
+};
+
+Modal.defaultProps = {
+  title: null,
+  footer: null,
+  size: Modal.Size.MEDIUM,
+  className: '',
+  closeOnClick: true,
+};
 
 export default Modal;

@@ -1,4 +1,4 @@
-import { findCountryByCode } from './';
+import { findCountryByCode } from '.';
 
 describe('findCountryByCode', () => {
   it('should return a country with the longest matching prefix', () => {

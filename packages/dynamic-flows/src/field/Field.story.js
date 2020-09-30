@@ -1,8 +1,8 @@
 import React from 'react';
-import Field from './Field';
-import FormControl from '../formControl';
 import { select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import Field from './Field';
+import FormControl from '../formControl';
 
 export default {
   component: Field,

@@ -2,22 +2,6 @@ import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 
 class TableLink extends PureComponent {
-  static propTypes = {
-    item: Types.number.isRequired, // day (1-31), month (0-11) or year (2018 etc)
-    type: Types.oneOf(['day', 'month', 'year']).isRequired,
-    title: Types.string,
-    longTitle: Types.string,
-    active: Types.bool.isRequired,
-    disabled: Types.bool.isRequired,
-    today: Types.bool.isRequired,
-    onClick: Types.func.isRequired,
-  };
-
-  static defaultProps = {
-    title: null,
-    longTitle: null,
-  };
-
   onClick = (event) => {
     event.preventDefault();
     if (!this.props.disabled) {
@@ -30,6 +14,7 @@ class TableLink extends PureComponent {
     return (
       <>
         <button
+          type="button"
           onClick={this.onClick}
           className={`tw-date-lookup-${type}-option ${active ? 'active' : ''} ${
             today ? 'today' : ''
@@ -43,5 +28,21 @@ class TableLink extends PureComponent {
     );
   }
 }
+
+TableLink.propTypes = {
+  item: Types.number.isRequired, // day (1-31), month (0-11) or year (2018 etc)
+  type: Types.oneOf(['day', 'month', 'year']).isRequired,
+  title: Types.string,
+  longTitle: Types.string,
+  active: Types.bool.isRequired,
+  disabled: Types.bool.isRequired,
+  today: Types.bool.isRequired,
+  onClick: Types.func.isRequired,
+};
+
+TableLink.defaultProps = {
+  title: null,
+  longTitle: null,
+};
 
 export default TableLink;

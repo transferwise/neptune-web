@@ -4,22 +4,18 @@ import { shallow } from 'enzyme';
 import Alert from './Alert';
 
 describe('Alert', () => {
-  const props = {
-    children: 'Lorem ipsum dolor sit amet.',
-    dismissed: false,
-  };
-  let component;
-
-  beforeEach(() => {
-    component = shallow(<Alert {...props} />);
-  });
+  const component = shallow(
+    <Alert dismissed={false} className="a-class-name">
+      Lorem ipsum dolor sit amet.
+    </Alert>,
+  );
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   it('renders the given string provided as the children prop', () => {
-    expect(component.text()).toContain(props.children);
+    expect(component.text()).toContain('Lorem ipsum dolor sit amet.');
   });
 
   describe('default properties', () => {
@@ -134,9 +130,8 @@ describe('Alert', () => {
   });
 
   describe('check onDismiss callback', () => {
-    let onDismiss;
+    const onDismiss = jest.fn();
     beforeEach(() => {
-      onDismiss = jest.fn();
       component.setProps({ dismissible: true, onDismiss });
     });
 

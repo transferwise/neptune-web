@@ -1,7 +1,7 @@
 import React from 'react';
-import JsonSchemaForm from './JsonSchemaForm';
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
+import JsonSchemaForm from './JsonSchemaForm';
 
 import simpleSchema from './schemas/simple.json';
 import oneOfSchema from './schemas/oneOf.json';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import DateInput from './';
+import DateInput from '.';
 
 import { LOCALES, MONTHS_EN, MONTHS_FR } from './data/testFixtures';
 import { fakeEvent } from '../common/fakeEvents';

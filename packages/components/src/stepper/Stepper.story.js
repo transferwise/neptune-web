@@ -1,8 +1,8 @@
 import React from 'react';
-import Stepper from './Stepper';
 
 import { select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import Stepper from './Stepper';
 
 export default {
   component: Stepper,

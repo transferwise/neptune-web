@@ -1,10 +1,9 @@
 import React from 'react';
 import Types from 'prop-types';
 
+import { DefinitionList } from '@transferwise/components';
 import { marginModel, actionModel, orientationModel } from '../models';
 import { getMarginBottom } from '../utils';
-
-import { DefinitionList } from '@transferwise/components';
 
 const DynamicReview = (props) => {
   const review = props.component;

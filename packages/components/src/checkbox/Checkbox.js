@@ -1,7 +1,8 @@
 import React from 'react';
 import Types from 'prop-types';
-import CheckboxButton from '../checkboxButton';
+
 import classNames from 'classnames';
+import CheckboxButton from '../checkboxButton';
 
 const Checkbox = ({
   id,

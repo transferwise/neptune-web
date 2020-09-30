@@ -61,7 +61,7 @@
     "lint-staged/**/kind-of": "^6.0.3"
   },
   "scripts": {
-    "setup": "yarn install && yarn build",
+    "setup": "yarn install --frozen-lockfile && yarn build",
     "start": "echo 'Run yarn setup to install dependencies and build all packages.'",
     "build": "lerna run build --stream",
     "docs": "lerna run docs --stream",

@@ -1,29 +1,11 @@
-@import (reference) '@transferwise/neptune-css/src/variables/legacy-variables.less';
-
-// TODO: https://transferwise.atlassian.net/browse/DS-453
-// Still in the process of figuring out whether this variable should be coming from less or custom properties
-@avatar-content-background-color: @brand-smoke-plus-20;
-@avatar-content-background-color-dark: @brand-navy-minus-10;
-@avatar-font-color: @brand-navy-minus-10;
+@import (reference) '@transferwise/neptune-css/src/variables/neptune-tokens.less';
 
 @avatar-diameter-lg: 72px;
 @avatar-diameter-md: 48px;
 @avatar-diameter-sm: 24px;
 
-@avatar-thumbnail-border-width: 1px;
-
-@avatar-outline-mask-size-lg: 3px;
-@avatar-outline-mask-size-md: 2px;
-@avatar-outline-mask-size-sm: 1px;
-
-@avatar-outline-border-width: 1px;
-@avatar-outline-border-color: @brand-light-blue;
-@avatar-outline-border-color-hover: @brand-light-blue-minus-10;
-
-.avatar {
-  display: block;
+.tw-avatar {
   position: relative;
-  text-align: left;
   border-radius: 50%;
   user-select: none;
   box-sizing: border-box;
@@ -35,7 +17,7 @@
     align-items: center;
     border-radius: 50%;
     overflow: hidden;
-    background-color: @avatar-content-background-color;
+    background-color: var(--color-background-neutral);
     height: 100%;
     width: 100%;
     max-height: 100%;
@@ -43,16 +25,16 @@
   }
 
   &--outlined {
-    border: @avatar-outline-border-width solid @avatar-outline-border-color;
+    border: 1px solid var(--color-control-accent);
     cursor: pointer;
 
     &:hover {
-      border-color: @avatar-outline-border-color-hover;
+      border-color: var(--color-control-accent-hover);
     }
   }
 
   &--dark &__content {
-    background: @avatar-content-background-color-dark;
+    background: @color-base-navy-mid;
   }
 
   &--thumbnail {
@@ -70,27 +52,27 @@
     }
   }
 
-  &.avatar--initials,
-  &.avatar--icon {
-    color: @avatar-font-color;
+  &.tw-avatar--initials,
+  &.tw-avatar--icon {
+    color: @color-text-primary;
   }
 
-  &.avatar--initials,
-  &.avatar--emoji {
+  &.tw-avatar--initials,
+  &.tw-avatar--emoji {
     // There is a problem how emojis & text vertically aligned between Windows and Mac. Setting font family to Arial seems to resolve it.
-    font-family: Arial;
+    font-family: Arial, sans-serif;
   }
 
   &--sm {
-    .avatar-dimension(@avatar-diameter-sm, @avatar-outline-mask-size-sm);
+    .avatar-dimension(@avatar-diameter-sm, 1px);
   }
 
   &--md {
-    .avatar-dimension(@avatar-diameter-md, @avatar-outline-mask-size-md);
+    .avatar-dimension(@avatar-diameter-md, 2px);
   }
 
   &--lg {
-    .avatar-dimension(@avatar-diameter-lg, @avatar-outline-mask-size-lg);
+    .avatar-dimension(@avatar-diameter-lg, 3px);
   }
 
   img {
@@ -103,22 +85,20 @@
   width: @avatar-size;
   height: @avatar-size;
 
-  &.avatar--outlined {
-    padding: @mask-size;
-  }
-
-  &.avatar--emoji,
-  &.avatar--icon {
+  &.tw-avatar--emoji,
+  &.tw-avatar--icon {
     font-size: @avatar-size * 0.5;
   }
 
-  &.avatar--initials {
+  &.tw-avatar--initials {
     font-size: @avatar-size * 0.35;
     font-weight: bold;
   }
 
-  &.avatar--outlined {
-    &.avatar--thumbnail::after {
+  &.tw-avatar--outlined {
+    padding: @mask-size;
+
+    &.tw-avatar--thumbnail::after {
       top: @mask-size;
       left: @mask-size;
       right: @mask-size;
@@ -126,18 +106,18 @@
     }
   }
 
-  &.avatar--thumbnail::after {
+  &.tw-avatar--thumbnail::after {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    border: @avatar-thumbnail-border-width solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     content: '';
     border-radius: 50%;
   }
 
-  &.avatar--dark.avatar--thumbnail::after {
+  &.tw-avatar--dark.tw-avatar--thumbnail::after {
     border-color: rgba(255, 255, 255, 0.08);
   }
 }

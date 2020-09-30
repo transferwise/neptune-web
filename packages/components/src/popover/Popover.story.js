@@ -1,8 +1,8 @@
 import React from 'react';
-import Popover from './Popover';
-import Button from '../button';
 import { select, text, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import Popover from './Popover';
+import Button from '../button';
 
 export default {
   component: Popover,

@@ -71,8 +71,6 @@ const DateInput = ({
   const getSelectElement = () => {
     const months = getMonthNames(locale, monthFormat);
 
-    const selected = month === null ? null : { selected: { value: month, label: months[month] } };
-
     return (
       <div>
         <label htmlFor="date-input-month" className="sr-only">
@@ -89,7 +87,7 @@ const DateInput = ({
           size={size}
           onFocus={onFocus}
           onBlur={onBlur}
-          {...selected}
+          selected={month === null ? null : { value: month, label: months[month] }}
         />
       </div>
     );
@@ -106,10 +104,10 @@ const DateInput = ({
   };
 
   const handleInternalValue = (newDay = day, newMonth = month, newYear = year) => {
-    let newValue = new Date(newYear, newMonth, newDay);
-    newValue = isDateValid(newValue) ? newValue : null;
+    const dateValue = new Date(newYear, newMonth, newDay);
+    const newValue = isDateValid(dateValue) ? dateValue : null;
     // Don't broadcast already broadcasted value.
-    /* eslint-disable no-lonely-if */
+
     if (newValue !== internalValue) {
       if (!newValue) {
         setInternalValue(INITIAL_DEFAULT_STATE);
@@ -119,15 +117,13 @@ const DateInput = ({
         if (newMonth >= 0 && newYear && (newMonth !== month || newYear !== year)) {
           setInternalValue(newValue);
         }
-      } else {
-        if (
-          newDay &&
-          newMonth >= 0 &&
-          newYear &&
-          (newDay !== day || newMonth !== month || newYear !== year)
-        ) {
-          setInternalValue(newValue);
-        }
+      } else if (
+        newDay &&
+        newMonth >= 0 &&
+        newYear &&
+        (newDay !== day || newMonth !== month || newYear !== year)
+      ) {
+        setInternalValue(newValue);
       }
     }
   };

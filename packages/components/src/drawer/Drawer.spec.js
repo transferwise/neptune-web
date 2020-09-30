@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Drawer from './';
+import Drawer from '.';
+
 import { addNoScrollBodyClass, removeNoScrollBodyClass } from '../common';
 import { fakeKeyDownEventForKey } from '../common/fakeEvents';
 import KEY_CODES from '../common/keyCodes';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import BasicTypeSchema from './';
+import BasicTypeSchema from '.';
 
 import SchemaFormControl from '../schemaFormControl';
 import ControlFeedback from '../controlFeedback';

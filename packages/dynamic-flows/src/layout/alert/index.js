@@ -1,10 +1,9 @@
 import React from 'react';
 import Types from 'prop-types';
 
+import { Alert, Markdown } from '@transferwise/components';
 import { sizeModel, marginModel, contextModel } from '../models';
 import { getMarginBottom } from '../utils';
-
-import { Alert, Markdown } from '@transferwise/components';
 
 const DynamicAlert = (props) => {
   const alert = props.component;

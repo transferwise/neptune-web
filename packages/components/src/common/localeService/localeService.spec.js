@@ -1,4 +1,4 @@
-import localeService from './';
+import localeService from '.';
 
 describe('localeService', () => {
   it('given a valid locale it should return the correct value', () => {
