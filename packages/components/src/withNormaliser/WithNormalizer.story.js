@@ -78,7 +78,7 @@ export const basic = () => {
             usDropMessage="Drop file to start upload"
             usLabel=""
             usPlaceholder="Drag and drop file less than 5MB"
-            usHelpImage="https://picsum.photos/200/300"
+            usHelpImage="https://github.com/transferwise.png"
             httpOptions={{
               url: 'https://httpbin.org/post',
               method: 'POST',
