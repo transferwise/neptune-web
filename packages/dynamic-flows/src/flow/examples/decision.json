@@ -1,0 +1,18 @@
+{
+  "type": "decision",
+  "key": "decide-thing-type",
+  "title": "Thing type",
+  "description": "Please choose between types of things",
+  "options": [
+    {
+      "title": "Thing one",
+      "description": "The first type of thing",
+      "url": "https://..."
+    },
+    {
+      "title": "Thing two",
+      "enabled": false,
+      "url": "https://..."
+    }
+  ]
+}

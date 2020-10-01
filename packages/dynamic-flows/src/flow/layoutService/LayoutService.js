@@ -1,4 +1,8 @@
 function convertStepToLayout(step) {
+  if (!step || !step.type) {
+    throw new Error('Missing step type');
+  }
+
   switch (step.type) {
     case 'final':
       return convertFinalStepToDynamicLayout(step);
@@ -78,7 +82,7 @@ function dynamicBox(components, size) {
 
 function convertStepTitleToDynamicHeading(title) {
   return {
-    type: 'title',
+    type: 'heading',
     text: title,
     size: 'lg',
     margin: 'lg',
@@ -111,9 +115,9 @@ function convertStepDecisionToDynamicDecision(options) {
 
 function convertStepDecisionOption(option) {
   return {
-    text: option.title,
-    description: option.description,
+    text: option.description,
     action: {
+      label: option.title,
       method: 'GET',
       url: option.url,
       disabled: option.disabled,
@@ -131,7 +135,7 @@ function convertStepImageToDynamicImage(url) {
 
 function convertStepActionToDynamicAction(action) {
   return {
-    type: 'action',
+    type: 'button',
     context: action.type,
     action: { ...action, type: undefined },
   };
@@ -174,4 +178,62 @@ function isWideForm() {
   return false;
 }
 
-export { convertStepToLayout };
+function inlineFormSchemas(layout, schemas, model) {
+  // console.log('inlining form schemas');
+  if (!layout) {
+    return [];
+  }
+  if (!schemas) {
+    return layout;
+  }
+
+  return layout.map((component) => {
+    if (component.type === 'form') {
+      return inlineFormSchema(component, schemas, model);
+    }
+
+    if (component.type === 'box') {
+      return inlineBoxFormSchemas(component, schemas, model);
+    }
+
+    if (component.type === 'columns') {
+      return inlineColumnsFormSchemas(component, schemas, model);
+    }
+
+    return component;
+  });
+}
+
+function inlineFormSchema(formComponent, schemas, model) {
+  if (formComponent.$schema) {
+    const newForm = {
+      ...formComponent,
+      schema: getSchemaById(schemas, formComponent.$schema),
+      model,
+    };
+    delete newForm.$schema;
+    return newForm;
+  }
+  return { ...formComponent, model };
+}
+
+function inlineBoxFormSchemas(boxComponent, schemas, model) {
+  return {
+    ...boxComponent,
+    components: inlineFormSchemas(boxComponent.components, schemas, model),
+  };
+}
+
+function inlineColumnsFormSchemas(columnsComponent, schemas, model) {
+  return {
+    ...columnsComponent,
+    left: inlineFormSchemas(columnsComponent.left, schemas, model),
+    right: inlineFormSchemas(columnsComponent.right, schemas, model),
+  };
+}
+
+function getSchemaById(schemas, id) {
+  return schemas.find((schema) => schema.id === id);
+}
+
+export { convertStepToLayout, inlineFormSchemas };

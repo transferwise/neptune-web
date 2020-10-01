@@ -50,6 +50,7 @@ describe('Given a component for dynamically rendering columns', () => {
         onModelChange={onModelChange}
         submitted={false}
         errors={{}}
+        model={model}
       />,
     );
   });
@@ -57,6 +58,11 @@ describe('Given a component for dynamically rendering columns', () => {
   it('should use a DynamicLayout to render the child components', () => {
     expect(component.find(DynamicLayout).at(0).prop('components')).toBe(columns.left);
     expect(component.find(DynamicLayout).at(1).prop('components')).toBe(columns.right);
+  });
+
+  it('should pass the model to the column components', () => {
+    expect(component.find(DynamicLayout).at(0).prop('model')).toBe(model);
+    expect(component.find(DynamicLayout).at(1).prop('model')).toBe(model);
   });
 
   describe('when the left layout triggers an action', () => {

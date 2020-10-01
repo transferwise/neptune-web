@@ -1,0 +1,37 @@
+{
+  "type": "form",
+  "key": "create-thing",
+  "title": "Create Thing",
+  "description": "Please enter all the details for the thing",
+  "schemas": [
+    {
+      "id": "#thing",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name of the thing"
+        }
+      }
+    }
+  ],
+  "layout": [
+    {
+      "type": "heading",
+      "text": "Layout title"
+    },
+    {
+      "type": "form",
+      "$schema": "#thing"
+    },
+    {
+      "type": "button",
+      "action": {
+        "label": "Submit",
+        "method": "POST",
+        "url": "/things",
+        "type": "primary"
+      }
+    }
+  ]
+}

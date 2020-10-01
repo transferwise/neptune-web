@@ -19,6 +19,7 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
   const model = { an: 'example' };
   const isValid = true;
   const schema = {
+    id: 'example',
     type: 'object',
     properties: {
       an: { type: 'string' },
@@ -65,6 +66,7 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
         { an: 'other example' },
         isValid,
         schema.properties.an,
+        schema,
       );
     });
   });

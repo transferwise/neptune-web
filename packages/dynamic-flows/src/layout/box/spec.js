@@ -40,12 +40,17 @@ describe('Given a component for dynamically rendering a box of other components'
         onModelChange={onModelChange}
         submitted={false}
         errors={{}}
+        model={model}
       />,
     );
   });
 
   it('should use a DynamicLayout to render the child components', () => {
     expect(component.find(DynamicLayout).prop('components')).toBe(box.components);
+  });
+
+  it('should the child component the model', () => {
+    expect(component.find(DynamicLayout).prop('model')).toBe(model);
   });
 
   describe('when the child layout triggers an action', () => {

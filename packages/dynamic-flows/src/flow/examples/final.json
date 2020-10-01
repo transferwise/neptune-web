@@ -1,0 +1,11 @@
+{
+  "type": "final",
+  "key": "final-step",
+  "title": "You did it!",
+  "description": "Congratulations, now do the next thing",
+  "action": {
+    "label": "Next",
+    "type": "primary",
+    "exit": true
+  }
+}

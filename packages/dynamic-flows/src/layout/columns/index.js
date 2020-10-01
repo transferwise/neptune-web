@@ -30,6 +30,7 @@ const DynamicColumns = (props) => {
           onAction={props.onAction}
           submitted={props.submitted}
           errors={props.errors}
+          model={props.model}
         />
       </div>
       <div className={rightWidth}>
@@ -39,6 +40,7 @@ const DynamicColumns = (props) => {
           onAction={props.onAction}
           submitted={props.submitted}
           errors={props.errors}
+          model={props.model}
         />
       </div>
     </div>
@@ -55,10 +57,12 @@ DynamicColumns.propTypes = {
     bias: Types.oneOf(['left', 'right']),
   }).isRequired,
   submitted: Types.bool.isRequired,
-  errors: Types.oneOfType([Types.string, Types.number, Types.object, Types.array, Types.bool]),
+  model: Types.oneOfType([Types.string, Types.number, Types.object, Types.array, Types.bool]),
+  errors: Types.oneOfType([Types.string, Types.object, Types.array]),
 };
 
 DynamicColumns.defaultProps = {
+  model: null,
   errors: null,
 };
 

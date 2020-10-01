@@ -18,11 +18,11 @@ const DynamicBox = (props) => {
       case 'xs':
         return ' col-md-4 col-md-offset-4';
       case 'sm':
-        return ' col-md-6 col-md-offset-3';
+        return ' col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4';
       case 'md':
-        return ' col-md-8 col-md-offset-2';
+        return ' col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3';
       case 'lg':
-        return ' col-md-10 col-md-offset-1';
+        return ' col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2';
       case 'xl':
       default:
         return ' col-xs-12';
@@ -38,6 +38,7 @@ const DynamicBox = (props) => {
           onAction={props.onAction}
           submitted={props.submitted}
           errors={props.errors}
+          model={props.model}
         />
       </div>
     );
@@ -53,6 +54,7 @@ const DynamicBox = (props) => {
             onAction={props.onAction}
             submitted={props.submitted}
             errors={props.errors}
+            model={props.model}
           />
         </div>
       </div>
@@ -70,10 +72,12 @@ DynamicBox.propTypes = {
     width: Types.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   }).isRequired,
   submitted: Types.bool.isRequired,
-  errors: Types.oneOfType([Types.string, Types.number, Types.object, Types.array, Types.bool]),
+  model: Types.oneOfType([Types.string, Types.number, Types.object, Types.array, Types.bool]),
+  errors: Types.oneOfType([Types.string, Types.object, Types.array]),
 };
 
 DynamicBox.defaultProps = {
+  model: null,
   errors: null,
 };
 

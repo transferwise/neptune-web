@@ -1,4 +1,4 @@
-import { convertStepToLayout } from '.';
+import { convertStepToLayout, inlineFormSchemas } from '.';
 
 describe('Given a utility service for handling dynamic layouts', () => {
   describe('when we receive a decision step', () => {
@@ -25,7 +25,7 @@ describe('Given a utility service for handling dynamic layouts', () => {
 
       const decisionLayout = [
         {
-          type: 'title',
+          type: 'heading',
           text: decisionStep.title,
           size: 'lg',
           margin: 'lg',
@@ -40,16 +40,16 @@ describe('Given a utility service for handling dynamic layouts', () => {
           type: 'decision',
           options: [
             {
-              text: option1.title,
-              description: option1.description,
+              text: option1.description,
               action: {
+                label: option1.title,
                 method: 'GET',
                 url: option1.url,
               },
             },
             {
-              text: option2.title,
               action: {
+                label: option2.title,
                 method: 'GET',
                 url: option2.url,
                 disabled: true,
@@ -86,7 +86,7 @@ describe('Given a utility service for handling dynamic layouts', () => {
 
       const finalLayout = [
         {
-          type: 'title',
+          type: 'heading',
           text: finalStep.title,
           size: 'lg',
           margin: 'lg',
@@ -113,7 +113,7 @@ describe('Given a utility service for handling dynamic layouts', () => {
           width: 'md',
           components: [
             {
-              type: 'action',
+              type: 'button',
               context: exitAction.type,
               action: { ...exitAction, type: undefined },
             },
@@ -163,10 +163,6 @@ describe('Given a utility service for handling dynamic layouts', () => {
         ],
       };
 
-      const model = {
-        a: 1,
-      };
-
       const formStep = {
         type: 'form',
         key: 'create-thing',
@@ -175,13 +171,12 @@ describe('Given a utility service for handling dynamic layouts', () => {
         refreshFormUrl: '/thing-requirements',
         actions: [submitAction, cancelAction],
         reviewFields,
-        model,
         schemas: [schema],
       };
 
       const finalLayout = [
         {
-          type: 'title',
+          type: 'heading',
           text: formStep.title,
           size: 'lg',
           margin: 'lg',
@@ -209,7 +204,6 @@ describe('Given a utility service for handling dynamic layouts', () => {
             {
               type: 'form',
               schema,
-              model,
             },
           ],
         },
@@ -218,12 +212,12 @@ describe('Given a utility service for handling dynamic layouts', () => {
           width: 'md',
           components: [
             {
-              type: 'action',
+              type: 'button',
               context: submitAction.type,
               action: { ...submitAction, type: undefined },
             },
             {
-              type: 'action',
+              type: 'button',
               context: cancelAction.type,
               action: { ...cancelAction, type: undefined },
             },
@@ -232,6 +226,174 @@ describe('Given a utility service for handling dynamic layouts', () => {
       ];
 
       expect(convertStepToLayout(formStep)).toEqual(finalLayout);
+    });
+  });
+
+  describe('when asked to inline schemas referenced by id', () => {
+    const schemas = [
+      {
+        id: '#myDetails',
+        type: 'object',
+        properties: {
+          name: { type: 'string' },
+        },
+      },
+      {
+        id: '#myAddress',
+        type: 'object',
+        properties: {
+          address: { type: 'string' },
+        },
+      },
+    ];
+
+    it('should inline schema of top level form components', () => {
+      const simpleLayout = [
+        {
+          type: 'form',
+          $schema: '#myDetails',
+        },
+        {
+          type: 'form',
+          $schema: '#myAddress',
+        },
+      ];
+
+      const expected = [
+        {
+          type: 'form',
+          schema: {
+            id: '#myDetails',
+            type: 'object',
+            properties: {
+              name: { type: 'string' },
+            },
+          },
+        },
+        {
+          type: 'form',
+          schema: {
+            id: '#myAddress',
+            type: 'object',
+            properties: {
+              address: { type: 'string' },
+            },
+          },
+        },
+      ];
+
+      expect(inlineFormSchemas(simpleLayout, schemas)).toEqual(expected);
+    });
+
+    it('should inline schemas inside boxes', () => {
+      const boxLayout = [
+        {
+          type: 'box',
+          components: [
+            {
+              type: 'form',
+              $schema: '#myAddress',
+            },
+          ],
+        },
+      ];
+
+      const expected = [
+        {
+          type: 'box',
+          components: [
+            {
+              type: 'form',
+              schema: {
+                id: '#myAddress',
+                type: 'object',
+                properties: {
+                  address: { type: 'string' },
+                },
+              },
+            },
+          ],
+        },
+      ];
+
+      expect(inlineFormSchemas(boxLayout, schemas)).toEqual(expected);
+    });
+
+    it('should inline schemas inside columns', () => {
+      const columnLayout = [
+        {
+          type: 'columns',
+          left: [
+            {
+              type: 'form',
+              $schema: '#myDetails',
+            },
+          ],
+          right: [
+            {
+              type: 'form',
+              $schema: '#myAddress',
+            },
+          ],
+        },
+      ];
+
+      const expected = [
+        {
+          type: 'columns',
+          left: [
+            {
+              type: 'form',
+              schema: {
+                id: '#myDetails',
+                type: 'object',
+                properties: {
+                  name: { type: 'string' },
+                },
+              },
+            },
+          ],
+          right: [
+            {
+              type: 'form',
+              schema: {
+                id: '#myAddress',
+                type: 'object',
+                properties: {
+                  address: { type: 'string' },
+                },
+              },
+            },
+          ],
+        },
+      ];
+
+      expect(inlineFormSchemas(columnLayout, schemas)).toEqual(expected);
+    });
+  });
+
+  describe('when asked to inline schemas and there are no schemas', () => {
+    const layout = [
+      {
+        type: 'heading',
+        text: 'Title',
+      },
+      {
+        type: 'paragraph',
+        text: 'Lorem Ipsum',
+      },
+    ];
+
+    it('should return the original layout', () => {
+      expect(inlineFormSchemas(layout, undefined)).toEqual(layout);
+      expect(inlineFormSchemas(layout, [])).toEqual(layout);
+    });
+  });
+
+  describe('when asked to inline schemas and there is no layout', () => {
+    it('should return an empty layout', () => {
+      expect(inlineFormSchemas(undefined, undefined)).toEqual([]);
+      expect(inlineFormSchemas(undefined, [])).toEqual([]);
     });
   });
 });

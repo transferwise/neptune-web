@@ -1,0 +1,48 @@
+{
+  "type": "form",
+  "key": "create-thing",
+  "title": "Create Thing",
+  "description": "Please enter all the details for the thing",
+  "schemas": [
+    {
+      "id": "#thing",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name of the thing"
+        }
+      }
+    }
+  ],
+  "model": {
+    "name": "default"
+  },
+  "reviewFields": {
+    "title": "A thing",
+    "fields": [
+      {
+        "title": "First label",
+        "value": "First value"
+      },
+      {
+        "title": "Second label",
+        "value": "Second value"
+      }
+    ]
+  },
+  "actions": [
+    {
+      "type": "primary",
+      "url": "/submit",
+      "label": "Submit",
+      "method": "POST"
+    },
+    {
+      "type": "default",
+      "url": "/skip",
+      "label": "Skip",
+      "method": "GET"
+    }
+  ]
+}

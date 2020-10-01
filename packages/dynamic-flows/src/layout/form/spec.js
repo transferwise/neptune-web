@@ -11,6 +11,7 @@ describe('Given a component for dynamically rendering forms', () => {
   let spec;
 
   const schema = {
+    id: '#example',
     type: 'object',
     properties: {
       an: { type: 'string' },
@@ -25,7 +26,6 @@ describe('Given a component for dynamically rendering forms', () => {
     spec = {
       component: 'form',
       schema,
-      model,
     };
     onModelChange = jest.fn();
     component = shallow(
@@ -34,6 +34,7 @@ describe('Given a component for dynamically rendering forms', () => {
         onModelChange={onModelChange}
         submitted={submitted}
         errors={errors}
+        model={model}
       />,
     );
   });
@@ -53,10 +54,10 @@ describe('Given a component for dynamically rendering forms', () => {
 
   describe('when the form triggers a model change', () => {
     beforeEach(() => {
-      component.find(JsonSchemaForm).simulate('change', model, true, schema);
+      component.find(JsonSchemaForm).simulate('change', model, true, schema.properties.an);
     });
     it('should broadcast onAction', () => {
-      expect(onModelChange).toHaveBeenCalledWith(model, true, schema);
+      expect(onModelChange).toHaveBeenCalledWith(model, true, schema.properties.an, schema);
     });
   });
 });

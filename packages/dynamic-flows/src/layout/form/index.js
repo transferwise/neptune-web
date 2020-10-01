@@ -9,12 +9,16 @@ import { getMarginBottom } from '../utils';
 const DynamicForm = (props) => {
   const form = props.component;
 
+  const onChange = (model, isValid, triggerSchema) => {
+    props.onModelChange(model, isValid, triggerSchema, form.schema);
+  };
+
   return (
     <JsonSchemaForm
       schema={form.schema}
-      model={form.model}
+      model={props.model}
       submitted={props.submitted}
-      onChange={props.onModelChange}
+      onChange={onChange}
       className={getMarginBottom(form.margin || 'lg')}
       errors={props.errors}
     />
@@ -25,16 +29,16 @@ DynamicForm.propTypes = {
   onModelChange: Types.func.isRequired,
   component: Types.shape({
     schema: Types.object,
-    model: Types.object,
-    submitted: false,
     margin: marginModel,
     orientation: orientationModel,
   }).isRequired,
   submitted: Types.bool.isRequired,
-  errors: Types.oneOfType([Types.string, Types.number, Types.object, Types.array, Types.bool]),
+  model: Types.oneOfType([Types.string, Types.number, Types.object, Types.array, Types.bool]),
+  errors: Types.oneOfType([Types.string, Types.object, Types.array]),
 };
 
 DynamicForm.defaultProps = {
+  model: null,
   errors: null,
 };
 
