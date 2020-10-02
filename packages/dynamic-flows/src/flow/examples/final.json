@@ -3,6 +3,7 @@
   "key": "final-step",
   "title": "You did it!",
   "description": "Congratulations, enjoy the rest of your day!",
+  "image": "https://transferwise.com/staticrab/homepage/_next/static/images/how_to_2-06281f8ea9caa50445f075d460434bcf.svg",
   "action": {
     "label": "Next",
     "type": "success",

@@ -1,0 +1,32 @@
+{
+  "type": "form",
+  "key": "review-thing",
+  "title": "Does everything look correct?",
+  "description": "Please check all the information",
+  "reviewFields": {
+    "fields": [
+      {
+        "title": "GBP to send",
+        "value": "100.00"
+      },
+      {
+        "title": "Send to",
+        "value": "EUR"
+      }
+    ]
+  },
+  "actions": [
+    {
+      "type": "primary",
+      "url": "/form",
+      "label": "Yes, continue",
+      "method": "GET"
+    },
+    {
+      "type": "warning",
+      "url": "/decision",
+      "label": "No, go back",
+      "method": "GET"
+    }
+  ]
+}

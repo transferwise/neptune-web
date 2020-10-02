@@ -2,7 +2,7 @@
   "type": "form",
   "key": "create-thing",
   "title": "Create Recipient",
-  "description": "Please enter all the details for the thing",
+  "description": "Please enter all the information",
   "schemas": [
     {
       "id": "#gbp-recipient",
@@ -32,23 +32,10 @@
   "model": {
     "name": "default"
   },
-  "reviewFields": {
-    "title": "A thing",
-    "fields": [
-      {
-        "title": "First label",
-        "value": "First value"
-      },
-      {
-        "title": "Second label",
-        "value": "Second value"
-      }
-    ]
-  },
   "actions": [
     {
       "type": "primary",
-      "url": "/review",
+      "url": "/confirm",
       "label": "Submit",
       "method": "POST"
     },

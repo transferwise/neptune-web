@@ -97,7 +97,7 @@ const DynamicFlow = (props) => {
   }, [props.specification]);
 
   // TODO Test
-  // Load the first step using the inittial flow URL
+  // Load the first step using the initial flow URL
   useEffect(() => {
     // const action = {
     //   url: props.flowUrl,

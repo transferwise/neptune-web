@@ -1,18 +1,17 @@
 {
   "type": "decision",
   "key": "decide-thing-type",
-  "title": "Thing type",
-  "description": "Please choose between types of things",
+  "title": "Who do you want to send the money to?",
   "options": [
     {
       "title": "Create a new recipient",
-      "description": "The first type of thing",
-      "url": "/form"
+      "description": "You will need their bank details to hand",
+      "url": "/recipient"
     },
     {
       "title": "Choose an existing recipient",
-      "enabled": false,
-      "url": "/form"
+      "disabled": false,
+      "url": "/review"
     }
   ]
 }

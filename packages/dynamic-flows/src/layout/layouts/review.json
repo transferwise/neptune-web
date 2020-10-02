@@ -62,7 +62,7 @@
             "orientation": "horizontal",
             "action": {
               "label": "Edit",
-              "url": "/edit-recipient",
+              "url": "/recipient",
               "method": "GET"
             },
             "definitions": [
