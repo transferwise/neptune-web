@@ -15,7 +15,7 @@ const DynamicReview = (props) => {
 
   const getReviewLayout = (orientation) => {
     if (orientation === 'horizontal') {
-      return DefinitionList.Layout.HORIZONTAL_JUSTIFIED;
+      return DefinitionList.Layout.HORIZONTAL_RIGHT_ALIGNED;
     }
     return DefinitionList.Layout.VERTICAL_ONE_COLUMN;
   };

@@ -57,6 +57,8 @@ describe('Given a component for rendering a dynamic flow', () => {
     required: ['a'],
   };
 
+  const flowUrl = '/step1';
+
   function getLayout() {
     return component.find(DynamicLayout);
   }
@@ -70,7 +72,9 @@ describe('Given a component for rendering a dynamic flow', () => {
   });
 
   describe('when there is JS step', () => {
-    it('should use the DynamicJS component', () => {});
+    it('should use the DynamicJS component', () => {
+      // TODO
+    });
   });
 
   describe('when there is a decision step with no step layout', () => {
@@ -95,7 +99,12 @@ describe('Given a component for rendering a dynamic flow', () => {
       };
 
       component = shallow(
-        <DynamicFlow specification={step} onClose={onClose} onStepChange={onStepChange} />,
+        <DynamicFlow
+          flowUrl={flowUrl}
+          specification={step}
+          onClose={onClose}
+          onStepChange={onStepChange}
+        />,
       );
     });
 
@@ -119,7 +128,12 @@ describe('Given a component for rendering a dynamic flow', () => {
       };
 
       component = shallow(
-        <DynamicFlow specification={step} onClose={onClose} onStepChange={onStepChange} />,
+        <DynamicFlow
+          flowUrl={flowUrl}
+          specification={step}
+          onClose={onClose}
+          onStepChange={onStepChange}
+        />,
       );
     });
 
@@ -150,7 +164,12 @@ describe('Given a component for rendering a dynamic flow', () => {
       };
 
       component = shallow(
-        <DynamicFlow specification={step} onClose={onClose} onStepChange={onStepChange} />,
+        <DynamicFlow
+          flowUrl={flowUrl}
+          specification={step}
+          onClose={onClose}
+          onStepChange={onStepChange}
+        />,
       );
     });
 
@@ -198,7 +217,12 @@ describe('Given a component for rendering a dynamic flow', () => {
       // const = [{ type: 'form', schema: thingSchema }];
 
       component = shallow(
-        <DynamicFlow specification={originalStep} onClose={onClose} onStepChange={onStepChange} />,
+        <DynamicFlow
+          flowUrl={flowUrl}
+          specification={originalStep}
+          onClose={onClose}
+          onStepChange={onStepChange}
+        />,
       );
     });
 

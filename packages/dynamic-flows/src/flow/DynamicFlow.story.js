@@ -1,4 +1,5 @@
 import React from 'react';
+
 import DynamicFlow from './DynamicFlow';
 import { action } from '@storybook/addon-actions';
 import { select } from '@storybook/addon-knobs';
@@ -24,16 +25,23 @@ export const basic = () => {
   const specification = select('step', steps, decisionStep);
 
   const onClose = () => {
-    console.log('onClose');
+    console.log('onClose'); // eslint-disable-line
     action('onClose');
   };
 
   const onStepChange = (broadcastAction) => {
-    console.log('onStepChange', broadcastAction);
+    console.log('onStepChange', broadcastAction); // eslint-disable-line
     action('onStepChange');
   };
 
+  const flowUrl = '/decision';
+
   return (
-    <DynamicFlow specification={specification} onClose={onClose} onStepChange={onStepChange} />
+    <DynamicFlow
+      flowUrl={flowUrl}
+      specification={specification}
+      onClose={onClose}
+      onStepChange={onStepChange}
+    />
   );
 };

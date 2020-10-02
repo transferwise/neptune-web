@@ -1,18 +1,32 @@
 {
   "type": "form",
   "key": "create-thing",
-  "title": "Create Thing",
+  "title": "Create Recipient",
   "description": "Please enter all the details for the thing",
   "schemas": [
     {
-      "id": "#thing",
+      "id": "#gbp-recipient",
       "type": "object",
       "properties": {
         "name": {
           "type": "string",
-          "title": "Name of the thing"
+          "title": "Recipient Name",
+          "minLength": 2
+        },
+        "accountNumber": {
+          "title": "Account number",
+          "type": "string",
+          "minLength": 6,
+          "maxLength": 10
+        },
+        "sortCode": {
+          "title": "Sort code",
+          "type": "string",
+          "minLength": 6,
+          "maxLength": 7
         }
-      }
+      },
+      "required": ["name", "accountNumber", "sortCode"]
     }
   ],
   "model": {
@@ -34,13 +48,13 @@
   "actions": [
     {
       "type": "primary",
-      "url": "/submit",
+      "url": "/review",
       "label": "Submit",
       "method": "POST"
     },
     {
-      "type": "default",
-      "url": "/skip",
+      "type": "warning",
+      "url": "/final",
       "label": "Skip",
       "method": "GET"
     }

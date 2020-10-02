@@ -4,7 +4,7 @@ import Types from 'prop-types';
 import { marginModel, actionModel } from '../models';
 import { getMarginBottom } from '../utils';
 
-import { NavigationOption } from '@transferwise/components';
+import { NavigationOption, NavigationOptionsList } from '@transferwise/components';
 
 import DynamicIcon from '../icon';
 
@@ -26,7 +26,9 @@ const DynamicDecision = (props) => {
 
   return (
     <div className={getMarginBottom(decision.margin)}>
-      {decision.options.map((option) => renderDecisionOption(option, props.onAction))}
+      <NavigationOptionsList>
+        {decision.options.map((option) => renderDecisionOption(option, props.onAction))}
+      </NavigationOptionsList>
     </div>
   );
 };

@@ -29,7 +29,7 @@
       "action": {
         "label": "Submit",
         "method": "POST",
-        "url": "/things",
+        "url": "/final",
         "type": "primary"
       }
     }

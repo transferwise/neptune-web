@@ -2,10 +2,11 @@
   "type": "final",
   "key": "final-step",
   "title": "You did it!",
-  "description": "Congratulations, now do the next thing",
+  "description": "Congratulations, enjoy the rest of your day!",
   "action": {
     "label": "Next",
-    "type": "primary",
-    "exit": true
+    "type": "success",
+    "method": "GET",
+    "url": "/exit"
   }
 }

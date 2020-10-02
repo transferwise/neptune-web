@@ -44,7 +44,7 @@
                 "value": "1.1363"
               },
               {
-                "label": "Rayna gets exactly",
+                "label": "Test gets exactly",
                 "value": "100 EUR"
               },
               {
@@ -68,19 +68,19 @@
             "definitions": [
               {
                 "label": "Name",
-                "value": "Rayna Kenter"
+                "value": "Test Name"
               },
               {
                 "label": "Email",
-                "value": "rk@gmail.com"
+                "value": "test@example.com"
               },
               {
                 "label": "Sort code",
-                "value": "40-00-04"
+                "value": "12-34-56"
               },
               {
                 "label": "Account number",
-                "value": "09424523"
+                "value": "12345678"
               }
             ]
           }
@@ -150,9 +150,9 @@
         "type": "button",
         "context": "success",
         "action": {
-          "label": "Schedule transfer",
+          "label": "Create transfer",
           "method": "POST",
-          "url": "/transfers"
+          "url": "/final"
         }
       }
     ]

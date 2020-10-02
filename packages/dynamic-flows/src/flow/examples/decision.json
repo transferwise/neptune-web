@@ -5,14 +5,14 @@
   "description": "Please choose between types of things",
   "options": [
     {
-      "title": "Thing one",
+      "title": "Create a new recipient",
       "description": "The first type of thing",
-      "url": "https://..."
+      "url": "/form"
     },
     {
-      "title": "Thing two",
+      "title": "Choose an existing recipient",
       "enabled": false,
-      "url": "https://..."
+      "url": "/form"
     }
   ]
 }
