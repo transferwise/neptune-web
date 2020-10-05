@@ -31,8 +31,14 @@ const DynamicFlow = (props) => {
     }
 
     if (modelIsValid || !isSubmit) {
-      fetchNewStep(action, method === 'GET' ? undefined : model);
+      const data = mergeModels(model, action.data);
+      fetchNewStep(action, method === 'GET' ? undefined : data);
     }
+  };
+
+  const mergeModels = (formModel, actionModel) => {
+    // TODO handle different data types
+    return { ...(actionModel || {}), ...(formModel || {}) };
   };
 
   const fetchNewStep = (action, model) => {

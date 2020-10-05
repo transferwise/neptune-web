@@ -16,23 +16,28 @@ inlineFormSchemas.mockImplementation(layoutService.inlineFormSchemas);
 
 describe('Given a component for rendering a dynamic flow', () => {
   let component;
-  let step;
   let onClose;
   let onStepChange;
 
-  const submitAction = {
+  const successAction = {
     label: 'Submit',
     method: 'POST',
-    url: '/things',
+    url: '/success',
+  };
+
+  const failureAction = {
+    label: 'Submit',
+    method: 'POST',
+    url: '/failure',
   };
 
   const skipAction = {
     label: 'Skip',
     method: 'GET',
-    url: '/step2',
+    url: '/navigate',
   };
 
-  const actions = [submitAction, skipAction];
+  const actions = [successAction, skipAction, failureAction];
 
   const reviewFields = {
     title: 'A thing',
@@ -57,7 +62,42 @@ describe('Given a component for rendering a dynamic flow', () => {
     required: ['a'],
   };
 
-  const flowUrl = '/step1';
+  const newSchema = {};
+  const newLayout = [{ type: 'form', newSchema }];
+  const newStep = { type: 'form', layout: newLayout };
+
+  const originalStep = {
+    type: 'form',
+    layout: [
+      {
+        type: 'form',
+        $schema: '#thing',
+      },
+    ],
+    schemas: [thingSchema],
+    actions: [successAction, skipAction],
+    model: { a: 99 },
+    refreshFormUrl: '/refresh',
+  };
+
+  const flowUrl = '/load';
+
+  request.mockImplementation((action) => {
+    switch (action.url) {
+      case '/load':
+        return Promise.resolve(originalStep);
+      case '/navigate':
+        return Promise.resolve(newStep);
+      case '/success':
+        return Promise.resolve(newStep);
+      case '/refresh':
+        return Promise.resolve(newStep);
+      case '/failure':
+        return Promise.reject();
+      default:
+        return Promise.reject();
+    }
+  });
 
   function getLayout() {
     return component.find(DynamicLayout);
@@ -78,30 +118,30 @@ describe('Given a component for rendering a dynamic flow', () => {
   });
 
   describe('when there is a decision step with no step layout', () => {
-    beforeEach(() => {
-      step = {
-        type: 'decision',
-        key: 'decide-thing-type',
-        title: 'Thing type',
-        description: 'Please choose between types of things',
-        options: [
-          {
-            title: 'Thing one',
-            description: 'The first type of thing',
-            url: 'https://...',
-          },
-          {
-            title: 'Thing two',
-            url: 'https://...',
-            enabled: false,
-          },
-        ],
-      };
+    const decisionStep = {
+      type: 'decision',
+      key: 'decide-thing-type',
+      title: 'Thing type',
+      description: 'Please choose between types of things',
+      options: [
+        {
+          title: 'Thing one',
+          description: 'The first type of thing',
+          url: 'https://...',
+        },
+        {
+          title: 'Thing two',
+          url: 'https://...',
+          enabled: false,
+        },
+      ],
+    };
 
+    beforeEach(() => {
       component = shallow(
         <DynamicFlow
           flowUrl={flowUrl}
-          specification={step}
+          specification={decisionStep}
           onClose={onClose}
           onStepChange={onStepChange}
         />,
@@ -109,28 +149,28 @@ describe('Given a component for rendering a dynamic flow', () => {
     });
 
     it('should first generate a layout using the layout service', () => {
-      expect(convertStepToLayout).toHaveBeenCalledWith(step);
+      expect(convertStepToLayout).toHaveBeenCalledWith(decisionStep);
     });
   });
 
   describe('when there is a form step with no step layout', () => {
-    beforeEach(() => {
-      step = {
-        type: 'form',
-        key: 'create-thing', // For tracking
-        title: 'Step 1',
-        description: 'Please create a thing',
-        refreshFormUrl: '/thing-requirements',
-        actions,
-        reviewFields,
-        model: { a: 1 },
-        schemas: [thingSchema],
-      };
+    const formStep = {
+      type: 'form',
+      key: 'create-thing', // For tracking
+      title: 'Step 1',
+      description: 'Please create a thing',
+      refreshFormUrl: '/thing-requirements',
+      actions,
+      reviewFields,
+      model: { a: 1 },
+      schemas: [thingSchema],
+    };
 
+    beforeEach(() => {
       component = shallow(
         <DynamicFlow
           flowUrl={flowUrl}
-          specification={step}
+          specification={formStep}
           onClose={onClose}
           onStepChange={onStepChange}
         />,
@@ -138,7 +178,7 @@ describe('Given a component for rendering a dynamic flow', () => {
     });
 
     it('should first generate a layout using the layout service', () => {
-      expect(convertStepToLayout).toHaveBeenCalledWith(step);
+      expect(convertStepToLayout).toHaveBeenCalledWith(formStep);
     });
 
     it('should inline any schemas referenced by id using the layout service', () => {
@@ -147,26 +187,26 @@ describe('Given a component for rendering a dynamic flow', () => {
   });
 
   describe('when there is a final step with no step layout', () => {
-    beforeEach(() => {
-      step = {
-        type: 'final',
-        key: 'thing-final',
-        success: true,
-        details: {
-          image: '/images/1234.png',
-          title: 'We create the thing!',
-          description: 'You now do stuff with the thing',
-          actionTitle: 'Continue',
-        },
-        result: {
-          exitValue: 'value',
-        },
-      };
+    const finalStep = {
+      type: 'final',
+      key: 'thing-final',
+      success: true,
+      details: {
+        image: '/images/1234.png',
+        title: 'We create the thing!',
+        description: 'You now do stuff with the thing',
+        actionTitle: 'Continue',
+      },
+      result: {
+        exitValue: 'value',
+      },
+    };
 
+    beforeEach(() => {
       component = shallow(
         <DynamicFlow
           flowUrl={flowUrl}
-          specification={step}
+          specification={finalStep}
           onClose={onClose}
           onStepChange={onStepChange}
         />,
@@ -174,48 +214,14 @@ describe('Given a component for rendering a dynamic flow', () => {
     });
 
     it('should first generate a layout using the layout service', () => {
-      expect(convertStepToLayout).toHaveBeenCalledWith(step);
+      expect(convertStepToLayout).toHaveBeenCalledWith(finalStep);
     });
   });
 
   describe('when there is a step layout', () => {
-    const newSchema = {};
-    const newLayout = [{ type: 'form', newSchema }];
-    const newStep = { type: 'form', layout: newLayout };
-
-    const originalStep = {
-      type: 'form',
-      layout: [
-        {
-          type: 'form',
-          $schema: '#thing',
-        },
-      ],
-      schemas: [thingSchema],
-      actions: [submitAction, skipAction],
-      model: { a: 99 },
-      refreshFormUrl: '/refresh',
-    };
-
-    const inlineLayout = [{ type: 'form', schema: thingSchema }];
+    const inlineFormLayout = [{ type: 'form', schema: thingSchema }];
 
     beforeEach(() => {
-      // step = {
-      //   type: 'form',
-      //   layout: [
-      //     {
-      //       type: 'form',
-      //       $schema: '#thing',
-      //     },
-      //   ],
-      //   schemas: [thingSchema],
-      //   actions: [submitAction, skipAction],
-      //   model: { a: 99 },
-      //   refreshFormUrl: '/refresh',
-      // };
-      //
-      // const = [{ type: 'form', schema: thingSchema }];
-
       component = shallow(
         <DynamicFlow
           flowUrl={flowUrl}
@@ -231,7 +237,7 @@ describe('Given a component for rendering a dynamic flow', () => {
     });
 
     it('should inline the form schema(s) and pass as the soecification as a layout', () => {
-      expect(getLayout().prop('components')).toEqual(inlineLayout);
+      expect(getLayout().prop('components')).toEqual(inlineFormLayout);
     });
 
     it('should pass the layout the step model', () => {
@@ -273,7 +279,7 @@ describe('Given a component for rendering a dynamic flow', () => {
       });
 
       it('should continue to render the original step', () => {
-        expect(getLayout().prop('components')).toEqual(inlineLayout);
+        expect(getLayout().prop('components')).toEqual(inlineFormLayout);
       });
     });
 
@@ -281,7 +287,7 @@ describe('Given a component for rendering a dynamic flow', () => {
       beforeEach(() => {
         request.mockImplementation(() => new Promise(() => {}));
         getLayout().simulate('modelChange', { a: 1 }, true, numberSchema, thingSchema);
-        getLayout().simulate('action', submitAction);
+        getLayout().simulate('action', successAction);
       });
 
       it('should tell the layout the form is submitted', () => {
@@ -289,7 +295,7 @@ describe('Given a component for rendering a dynamic flow', () => {
       });
 
       it('should make the corresponding request', () => {
-        expect(request).toHaveBeenCalledWith(submitAction, { a: 1 });
+        expect(request).toHaveBeenCalledWith(successAction, { a: 1 });
       });
     });
 
@@ -297,7 +303,7 @@ describe('Given a component for rendering a dynamic flow', () => {
       beforeEach(() => {
         request.mockImplementation(() => Promise.resolve(newStep));
         getLayout().simulate('modelChange', { a: 'invalid' }, false, numberSchema, thingSchema);
-        getLayout().simulate('action', submitAction);
+        getLayout().simulate('action', successAction);
       });
 
       it('should tell the layout the form is submitted', () => {
@@ -327,7 +333,7 @@ describe('Given a component for rendering a dynamic flow', () => {
       beforeEach(() => {
         request.mockImplementation(() => Promise.reject(errorResponse));
         getLayout().simulate('modelChange', { a: 1 }, true, numberSchema, thingSchema);
-        getLayout().simulate('action', submitAction);
+        getLayout().simulate('action', failureAction);
       });
 
       it('should pass those errors to the layout', () => {
@@ -344,7 +350,7 @@ describe('Given a component for rendering a dynamic flow', () => {
       beforeEach(() => {
         request.mockImplementation(() => Promise.resolve(newStep));
         getLayout().simulate('modelChange', { a: 1 }, true, numberSchema, thingSchema);
-        getLayout().simulate('action', submitAction);
+        getLayout().simulate('action', successAction);
       });
 
       it('should update the flow to use that step', () => {
@@ -361,7 +367,7 @@ describe('Given a component for rendering a dynamic flow', () => {
       beforeEach(() => {
         request.mockImplementation(() => Promise.resolve({}));
         getLayout().simulate('modelChange', { a: 1 }, true, numberSchema, thingSchema);
-        getLayout().simulate('action', submitAction);
+        getLayout().simulate('action', successAction);
       });
 
       it('should exit the flow', () => {
@@ -370,6 +376,20 @@ describe('Given a component for rendering a dynamic flow', () => {
 
       it('should not trigger onStepChange', () => {
         expect(onStepChange).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('when we submit an action with additional data', () => {
+      const dataAction = { ...successAction, data: { a: 2, c: true } };
+
+      beforeEach(() => {
+        request.mockImplementation(() => Promise.resolve(newStep));
+        getLayout().simulate('modelChange', { a: 1 }, true, numberSchema, thingSchema);
+        getLayout().simulate('action', dataAction);
+      });
+
+      it('should submit the latest model combined with the action data', () => {
+        expect(request).toHaveBeenCalledWith(dataAction, { a: 1, c: true });
       });
     });
 
