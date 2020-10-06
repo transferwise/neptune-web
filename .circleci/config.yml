@@ -187,17 +187,6 @@ workflows:
                 - gh-pages
                 - main
 
-      - deploy-docs-for-branch:
-          type: approval
-          context: frontend-build
-          requires:
-            - setup
-          filters:
-            branches:
-              ignore:
-                - gh-pages
-                - main
-
       - deploy-docs:
           context: frontend-build
           requires:
