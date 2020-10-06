@@ -61,7 +61,7 @@ const DynamicFlow = (props) => {
     setModelIsValid(isValid);
 
     if (triggerSchema.refreshRequirements) {
-      const action = { method: 'POST', url: props.specification.refreshFormUrl };
+      const action = { method: 'POST', url: stepSpecification.refreshFormUrl };
 
       request(action, newModel)
         .then((step) => {
@@ -72,14 +72,14 @@ const DynamicFlow = (props) => {
   };
 
   const onStepChange = (step) => {
-    setModel({});
+    setModel(step.model);
     updateStepSpecification(step);
     setSubmitted(false);
     props.onStepChange(step);
   };
 
   const updateStepSpecification = (step) => {
-    // setStepSpecification(step);
+    setStepSpecification(step);
     setLayout(getLayout(step));
     if (step.model) {
       setModel(step.model); // Replace model if we receive a new one
@@ -98,42 +98,42 @@ const DynamicFlow = (props) => {
   };
 
   // When we get a new specification from outside, reinitialise.
-  useEffect(() => {
-    onStepChange(props.specification);
-  }, [props.specification]);
+  // useEffect(() => {
+  //   onStepChange(props.specification);
+  // }, [props.specification]);
 
   // TODO Test
   // Load the first step using the initial flow URL
   useEffect(() => {
-    // const action = {
-    //   url: props.flowUrl,
-    //   method: 'GET',
-    // };
-    // fetchNewStep(action);
+    // console.log('flowUrl', props.flowUrl);
+    const action = {
+      url: props.flowUrl,
+      method: 'GET',
+    };
+    fetchNewStep(action);
   }, [props.flowUrl]);
 
-  const [model, setModel] = useState(props.specification.model);
+  const [model, setModel] = useState(); // useState(props.specification.model);
   const [modelIsValid, setModelIsValid] = useState(false); // Is this ok for init???
   const [submitted, setSubmitted] = useState(false);
-  // const [stepSpecification, setStepSpecification] = useState(props.specification);
-  const [layout, setLayout] = useState(getLayout(props.specification));
+  const [stepSpecification, setStepSpecification] = useState({});
+  const [layout, setLayout] = useState(); // useState(getLayout(props.specification));
   const [validations, setValidations] = useState();
-
-  if (!props.specification) {
-    return <>No specification</>;
-  }
 
   return (
     <>
-      <DynamicLayout
-        components={layout}
-        onAction={onAction}
-        onModelChange={onModelChange}
-        submitted={submitted}
-        locale={props.locale}
-        model={model}
-        errors={validations}
-      />
+      {!layout && <p>No layout</p>}
+      {layout && (
+        <DynamicLayout
+          components={layout}
+          onAction={onAction}
+          onModelChange={onModelChange}
+          submitted={submitted}
+          locale={props.locale}
+          model={model}
+          errors={validations}
+        />
+      )}
     </>
   );
 };
@@ -144,21 +144,10 @@ DynamicFlow.propTypes = {
   flowUrl: Types.string.isRequired,
   onClose: Types.func.isRequired,
   onStepChange: Types.func,
-  specification: Types.shape({
-    type: Types.string,
-    title: Types.string,
-    description: Types.string,
-    schemas: Types.array,
-    model: Types.shape({}),
-    layout: Types.array,
-    actions: Types.array,
-    refreshFormUrl: Types.string,
-  }),
   locale: Types.string,
 };
 
 DynamicFlow.defaultProps = {
-  specification: {},
   locale: 'en-GB',
   onStepChange: () => {},
 };

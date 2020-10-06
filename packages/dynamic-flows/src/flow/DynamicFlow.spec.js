@@ -1,4 +1,5 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { shallow } from 'enzyme';
 
 import DynamicFlow from '.';
@@ -8,6 +9,7 @@ import { request } from './stepService';
 
 jest.mock('./layoutService');
 jest.mock('./stepService');
+// jest.mock('../layout', () => 'layout');
 
 // We want to use the original implementation so everything continues to function
 const layoutService = jest.requireActual('./layoutService');
@@ -31,23 +33,23 @@ describe('Given a component for rendering a dynamic flow', () => {
     url: '/failure',
   };
 
-  const skipAction = {
+  const navigateAction = {
     label: 'Skip',
     method: 'GET',
-    url: '/navigate',
+    url: '/next',
   };
 
-  const actions = [successAction, skipAction, failureAction];
+  const actions = [successAction, navigateAction, failureAction];
 
-  const reviewFields = {
-    title: 'A thing',
-    fields: [
-      {
-        title: 'Label for a',
-        value: 'Value of a',
-      },
-    ],
-  };
+  // const reviewFields = {
+  //   title: 'A thing',
+  //   fields: [
+  //     {
+  //       title: 'Label for a',
+  //       value: 'Value of a',
+  //     },
+  //   ],
+  // };
 
   const numberSchema = { type: 'number' };
   const stringSchema = { type: 'string', refreshRequirements: true };
@@ -66,8 +68,11 @@ describe('Given a component for rendering a dynamic flow', () => {
   const newLayout = [{ type: 'form', newSchema }];
   const newStep = { type: 'form', layout: newLayout };
 
-  const originalStep = {
+  const formStep = {
     type: 'form',
+    key: 'create-thing', // For tracking
+    // title: 'Step 1',
+    // description: 'Please create a thing',
     layout: [
       {
         type: 'form',
@@ -75,27 +80,85 @@ describe('Given a component for rendering a dynamic flow', () => {
       },
     ],
     schemas: [thingSchema],
-    actions: [successAction, skipAction],
+    actions,
     model: { a: 99 },
     refreshFormUrl: '/refresh',
   };
 
-  const flowUrl = '/load';
+  const formStepNoLayout = { ...formStep };
+  delete formStepNoLayout.layout;
 
-  request.mockImplementation((action) => {
+  const decisionStep = {
+    type: 'decision',
+    key: 'decide-thing-type',
+    title: 'Thing type',
+    description: 'Please choose between types of things',
+    options: [
+      {
+        title: 'Thing one',
+        description: 'The first type of thing',
+        url: 'https://...',
+      },
+      {
+        title: 'Thing two',
+        url: 'https://...',
+        enabled: false,
+      },
+    ],
+  };
+
+  const finalStep = {
+    type: 'final',
+    key: 'thing-final',
+    success: true,
+    details: {
+      image: '/images/1234.png',
+      title: 'We create the thing!',
+      description: 'You now do stuff with the thing',
+      actionTitle: 'Continue',
+    },
+    result: {
+      exitValue: 'value',
+    },
+  };
+
+  const formUrl = '/form';
+  const formNoLayoutUrl = '/formNoLayout';
+  const decisionUrl = '/decision';
+  const finalUrl = '/final';
+
+  const errorResponse = {
+    error: "That's not allowed",
+    validation: {
+      a: 'something wrong with this',
+    },
+  };
+
+  request.mockImplementation((action, model) => {
     switch (action.url) {
-      case '/load':
-        return Promise.resolve(originalStep);
+      case '/form':
+        return Promise.resolve(formStep);
+      case '/formNoLayout':
+        return Promise.resolve(formStepNoLayout);
+      case '/decision':
+        return Promise.resolve(decisionStep);
+      case '/final':
+        return Promise.resolve(finalStep);
+      case '/exit':
+        return Promise.resolve({});
       case '/navigate':
         return Promise.resolve(newStep);
       case '/success':
         return Promise.resolve(newStep);
       case '/refresh':
-        return Promise.resolve(newStep);
+        if (model.failure) {
+          return Promise.reject();
+        }
+        return Promise.resolve(errorResponse);
       case '/failure':
-        return Promise.reject();
+        return Promise.reject(errorResponse);
       default:
-        return Promise.reject();
+        return Promise.reject(errorResponse);
     }
   });
 
@@ -111,6 +174,22 @@ describe('Given a component for rendering a dynamic flow', () => {
     request.mockClear();
   });
 
+  describe('when instantiated', () => {
+    beforeEach(() => {
+      // useEffect is not currently called when using shallow
+      // https://github.com/airbnb/enzyme/issues/2086
+      // Use mount an manually mock, information above
+      act(() => {
+        component = shallow(
+          <DynamicFlow flowUrl={decisionUrl} onClose={onClose} onStepChange={onStepChange} />,
+        );
+      });
+    });
+    it('should load the step specification using the supplied URL', () => {
+      expect(request).toHaveBeenCalledWith({ url: decisionUrl, method: 'GET' }, undefined);
+    });
+  });
+
   describe('when there is JS step', () => {
     it('should use the DynamicJS component', () => {
       // TODO
@@ -118,33 +197,9 @@ describe('Given a component for rendering a dynamic flow', () => {
   });
 
   describe('when there is a decision step with no step layout', () => {
-    const decisionStep = {
-      type: 'decision',
-      key: 'decide-thing-type',
-      title: 'Thing type',
-      description: 'Please choose between types of things',
-      options: [
-        {
-          title: 'Thing one',
-          description: 'The first type of thing',
-          url: 'https://...',
-        },
-        {
-          title: 'Thing two',
-          url: 'https://...',
-          enabled: false,
-        },
-      ],
-    };
-
     beforeEach(() => {
       component = shallow(
-        <DynamicFlow
-          flowUrl={flowUrl}
-          specification={decisionStep}
-          onClose={onClose}
-          onStepChange={onStepChange}
-        />,
+        <DynamicFlow flowUrl={decisionUrl} onClose={onClose} onStepChange={onStepChange} />,
       );
     });
 
@@ -154,31 +209,14 @@ describe('Given a component for rendering a dynamic flow', () => {
   });
 
   describe('when there is a form step with no step layout', () => {
-    const formStep = {
-      type: 'form',
-      key: 'create-thing', // For tracking
-      title: 'Step 1',
-      description: 'Please create a thing',
-      refreshFormUrl: '/thing-requirements',
-      actions,
-      reviewFields,
-      model: { a: 1 },
-      schemas: [thingSchema],
-    };
-
     beforeEach(() => {
       component = shallow(
-        <DynamicFlow
-          flowUrl={flowUrl}
-          specification={formStep}
-          onClose={onClose}
-          onStepChange={onStepChange}
-        />,
+        <DynamicFlow flowUrl={formNoLayoutUrl} onClose={onClose} onStepChange={onStepChange} />,
       );
     });
 
     it('should first generate a layout using the layout service', () => {
-      expect(convertStepToLayout).toHaveBeenCalledWith(formStep);
+      expect(convertStepToLayout).toHaveBeenCalledWith(formStepNoLayout);
     });
 
     it('should inline any schemas referenced by id using the layout service', () => {
@@ -187,29 +225,9 @@ describe('Given a component for rendering a dynamic flow', () => {
   });
 
   describe('when there is a final step with no step layout', () => {
-    const finalStep = {
-      type: 'final',
-      key: 'thing-final',
-      success: true,
-      details: {
-        image: '/images/1234.png',
-        title: 'We create the thing!',
-        description: 'You now do stuff with the thing',
-        actionTitle: 'Continue',
-      },
-      result: {
-        exitValue: 'value',
-      },
-    };
-
     beforeEach(() => {
       component = shallow(
-        <DynamicFlow
-          flowUrl={flowUrl}
-          specification={finalStep}
-          onClose={onClose}
-          onStepChange={onStepChange}
-        />,
+        <DynamicFlow flowUrl={finalUrl} onClose={onClose} onStepChange={onStepChange} />,
       );
     });
 
@@ -223,12 +241,7 @@ describe('Given a component for rendering a dynamic flow', () => {
 
     beforeEach(() => {
       component = shallow(
-        <DynamicFlow
-          flowUrl={flowUrl}
-          specification={originalStep}
-          onClose={onClose}
-          onStepChange={onStepChange}
-        />,
+        <DynamicFlow flowUrl={formUrl} onClose={onClose} onStepChange={onStepChange} />,
       );
     });
 
@@ -241,7 +254,7 @@ describe('Given a component for rendering a dynamic flow', () => {
     });
 
     it('should pass the layout the step model', () => {
-      expect(getLayout().prop('model')).toEqual(originalStep.model);
+      expect(getLayout().prop('model')).toEqual(formStep.model);
     });
 
     describe('when a model update is triggered by a schema with refreshRequirements', () => {
@@ -249,7 +262,6 @@ describe('Given a component for rendering a dynamic flow', () => {
       const newStepWithModel = { ...newStep, model: { a: 2 } };
 
       beforeEach(() => {
-        request.mockImplementation(() => Promise.resolve(newStepWithModel));
         getLayout().simulate('modelChange', newModel, true, stringSchema, thingSchema);
       });
 
@@ -271,10 +283,7 @@ describe('Given a component for rendering a dynamic flow', () => {
     });
 
     describe('when a refresh requirements call fails', () => {
-      const errorResponse = { error: "That's not allowed" };
-
       beforeEach(() => {
-        request.mockImplementation(() => Promise.reject(errorResponse));
         getLayout().simulate('modelChange', { a: 1, b: 'c' }, true, stringSchema, thingSchema);
       });
 
@@ -285,7 +294,6 @@ describe('Given a component for rendering a dynamic flow', () => {
 
     describe('when the layout broadcasts a POST action and the model is valid', () => {
       beforeEach(() => {
-        request.mockImplementation(() => new Promise(() => {}));
         getLayout().simulate('modelChange', { a: 1 }, true, numberSchema, thingSchema);
         getLayout().simulate('action', successAction);
       });
@@ -301,8 +309,8 @@ describe('Given a component for rendering a dynamic flow', () => {
 
     describe('when the layout broadcasts a POST action and the model is invalid', () => {
       beforeEach(() => {
-        request.mockImplementation(() => Promise.resolve(newStep));
-        getLayout().simulate('modelChange', { a: 'invalid' }, false, numberSchema, thingSchema);
+        // request.mockImplementation(() => Promise.resolve(newStep));
+        getLayout().simulate('modelChange', { invalid: true }, false, numberSchema, thingSchema);
         getLayout().simulate('action', successAction);
       });
 
@@ -317,21 +325,17 @@ describe('Given a component for rendering a dynamic flow', () => {
 
     describe('when the layout broadcasts a GET action and the model is invalid', () => {
       beforeEach(() => {
-        request.mockImplementation(() => Promise.resolve(newStep));
-        getLayout().simulate('modelChange', { a: 'invalid' }, false, numberSchema, thingSchema);
-        getLayout().simulate('action', skipAction);
+        getLayout().simulate('modelChange', { invalid: true }, false, numberSchema, thingSchema);
+        getLayout().simulate('action', navigateAction);
       });
 
       it('should ignore the invalid model and make the corresponding request', () => {
-        expect(request).toHaveBeenCalledWith(skipAction, undefined);
+        expect(request).toHaveBeenCalledWith(navigateAction, undefined);
       });
     });
 
     describe('when we submit an action but we receive a server error', () => {
-      const errorResponse = { error: "That's not allowed ", validation: { b: 'We need a B!' } };
-
       beforeEach(() => {
-        request.mockImplementation(() => Promise.reject(errorResponse));
         getLayout().simulate('modelChange', { a: 1 }, true, numberSchema, thingSchema);
         getLayout().simulate('action', failureAction);
       });
@@ -364,10 +368,14 @@ describe('Given a component for rendering a dynamic flow', () => {
 
     // TODO define an exit format?
     describe('when we submit an action and do not receive an error or valid step ', () => {
+      const exitAction = {
+        url: '/exit',
+        method: 'POST',
+      };
+
       beforeEach(() => {
-        request.mockImplementation(() => Promise.resolve({}));
         getLayout().simulate('modelChange', { a: 1 }, true, numberSchema, thingSchema);
-        getLayout().simulate('action', successAction);
+        getLayout().simulate('action', exitAction);
       });
 
       it('should exit the flow', () => {
@@ -383,7 +391,7 @@ describe('Given a component for rendering a dynamic flow', () => {
       const dataAction = { ...successAction, data: { a: 2, c: true } };
 
       beforeEach(() => {
-        request.mockImplementation(() => Promise.resolve(newStep));
+        // request.mockImplementation(() => Promise.resolve(newStep));
         getLayout().simulate('modelChange', { a: 1 }, true, numberSchema, thingSchema);
         getLayout().simulate('action', dataAction);
       });
@@ -408,7 +416,7 @@ describe('Given a component for rendering a dynamic flow', () => {
     //   });
     // });
 
-    describe('when the layout triggers an exit action', () => {
+    describe('when the layout triggers a client side exit action', () => {
       const exitAction = {
         title: 'Exit',
         type: 'delete',
@@ -443,7 +451,7 @@ describe('Given a component for rendering a dynamic flow', () => {
 action: { id, label, url, method, data, disabled, schemaId? error, loading? }
 
 <DynamicFlow
-  firstStepAction={action} // Use this to fetch first step, can then be used for refresh
+  url={url} // Use this to fetch first step, can then be used for refresh
   onClose=(exitData)
   onStepChange=(newStep, oldStep, action, data)
 
