@@ -168,14 +168,14 @@ workflows:
                 - main
 
       - hold:
-        type: approval
-        requires:
-          - setup
-        filters:
-          branches:
-            ignore:
-              - gh-pages
-              - main
+          type: approval
+          requires:
+            - setup
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - main
 
       - deploy-docs-for-branch:
           context: frontend-build
