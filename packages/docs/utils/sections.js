@@ -54,6 +54,10 @@ export default [
         dir: 'components/content',
       },
       {
+        title: 'Options',
+        dir: 'components/options',
+      },
+      {
         title: 'Alerts / Info',
         dir: 'components/alerts',
       },
@@ -72,6 +76,10 @@ export default [
       {
         title: 'Dynamic Forms',
         dir: 'components/dynamicForms',
+      },
+      {
+        title: 'Internal Components',
+        dir: 'components/internal',
       },
     ],
     searchable: true,

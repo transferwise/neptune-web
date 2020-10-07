@@ -2,6 +2,8 @@ import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
 import { Sticky, Button } from '@transferwise/components';
 import code from '../../../liveEditorCode/sticky.code';
 
+This component is used inside other components, such as Drawer. Please do not use it directly.
+
 <div>
   <LiveEditorBlock code={code} scope={{ Sticky, Button }} display="vertical" />
   <GeneratePropsTable componentName="Sticky" />
