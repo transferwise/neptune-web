@@ -110,6 +110,7 @@ const SchemaFormControl = (props) => {
     options,
     placeholder: props.schema.placeholder,
     autoComplete: !props.schema.help,
+    disabled: props.disabled,
   };
 
   return <FormControl type={controlType} value={safeValue} {...events} {...controlProps} />;
@@ -131,6 +132,7 @@ SchemaFormControl.propTypes = {
   onBlur: Types.func,
   translations: Types.shape({}),
   locale: Types.string,
+  disabled: Types.bool,
 };
 
 SchemaFormControl.defaultProps = {
@@ -139,6 +141,7 @@ SchemaFormControl.defaultProps = {
   locale: 'en-GB',
   onFocus: null,
   onBlur: null,
+  disabled: false,
 };
 
 export default SchemaFormControl;

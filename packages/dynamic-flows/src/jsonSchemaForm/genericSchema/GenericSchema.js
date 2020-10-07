@@ -41,6 +41,7 @@ GenericSchemaForm.propTypes = {
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
   hideTitle: Types.bool,
+  disabled: Types.bool,
 };
 
 GenericSchemaForm.defaultProps = {
@@ -49,6 +50,7 @@ GenericSchemaForm.defaultProps = {
   locale: 'en-GB',
   translations: {},
   hideTitle: false,
+  disabled: false,
 };
 
 export default GenericSchemaForm;
