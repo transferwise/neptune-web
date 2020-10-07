@@ -33,6 +33,7 @@ export const basic = () => {
   const errors = { string: stringError };
   const translations = {};
   const submitted = boolean('submitted', false);
+  const disabled = boolean('disabled', false);
 
   return (
     <JsonSchemaForm
@@ -43,6 +44,7 @@ export const basic = () => {
       translations={translations}
       onChange={action('onChange')}
       submitted={submitted}
+      disabled={disabled}
     />
   );
 };

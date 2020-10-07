@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.0.9](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.8...@transferwise/components@30.0.9) (2020-09-30)
+
+
+### Bug Fixes
+
+* Neptune Sprint 29/30 - eslint fixes and a11y improvements ([#603](https://github.com/transferwise/neptune-web/issues/603)) ([ffcdba3](https://github.com/transferwise/neptune-web/commit/ffcdba3fff284fce8425892f15f824169f449941))
+
+
+
+
+
 ## [30.0.8](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.7...@transferwise/components@30.0.8) (2020-09-29)
 
 

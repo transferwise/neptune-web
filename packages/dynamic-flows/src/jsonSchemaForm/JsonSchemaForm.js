@@ -41,6 +41,10 @@ JsonSchemaForm.propTypes = {
    * Tell the form if it has been submitted, triggering display of any validation failures.
    */
   submitted: Types.bool.isRequired,
+  /**
+   * Tell the form if it should disable all controls.
+   */
+  disabled: Types.bool,
 };
 
 JsonSchemaForm.defaultProps = {
@@ -48,6 +52,7 @@ JsonSchemaForm.defaultProps = {
   errors: null,
   locale: 'en-GB',
   translations: {},
+  disabled: false,
 };
 
 export default JsonSchemaForm;

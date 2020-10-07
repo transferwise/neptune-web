@@ -104,6 +104,7 @@ const BasicTypeSchema = (props) => {
             onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
+            disabled={props.disabled}
           />
           <ControlFeedback
             changed={changed}
@@ -145,6 +146,7 @@ BasicTypeSchema.propTypes = {
   submitted: Types.bool.isRequired,
   required: Types.bool,
   locale: Types.string,
+  disabled: Types.bool,
 };
 
 BasicTypeSchema.defaultProps = {
@@ -153,6 +155,7 @@ BasicTypeSchema.defaultProps = {
   translations: {},
   required: false,
   locale: 'en-GB',
+  disabled: false,
 };
 
 export default BasicTypeSchema;

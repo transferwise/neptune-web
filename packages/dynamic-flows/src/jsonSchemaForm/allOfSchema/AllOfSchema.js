@@ -52,6 +52,7 @@ const AllOfSchema = (props) => {
               translations={props.translations}
               onChange={(model, triggerSchema) => onChange(index, model, triggerSchema)}
               submitted={props.submitted}
+              disabled={props.disabled}
             />
           </div>
         ))}
@@ -73,6 +74,7 @@ AllOfSchema.propTypes = {
   translations: Types.shape({}),
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
+  disabled: Types.bool,
 };
 
 AllOfSchema.defaultProps = {
@@ -80,6 +82,7 @@ AllOfSchema.defaultProps = {
   errors: null,
   locale: 'en-GB',
   translations: {},
+  disabled: false,
 };
 
 export default AllOfSchema;

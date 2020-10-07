@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.4.1...@transferwise/dynamic-flows@5.5.0) (2020-10-07)
+
+
+### Features
+
+* Add 'disabled' prop to JsonSchemaForm [ADS-1617] ([e33fea6](https://github.com/transferwise/neptune-web/commit/e33fea6a7ee8808196c5bd4b219befa9dbaafbe7))
+
+
+
+
+
+## [5.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.4.0...@transferwise/dynamic-flows@5.4.1) (2020-09-30)
+
+
+### Bug Fixes
+
+* Neptune Sprint 29/30 - eslint fixes and a11y improvements ([#603](https://github.com/transferwise/neptune-web/issues/603)) ([ffcdba3](https://github.com/transferwise/neptune-web/commit/ffcdba3fff284fce8425892f15f824169f449941))
+
+
+
+
+
 # [5.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.3.0...@transferwise/dynamic-flows@5.4.0) (2020-09-30)
 
 
