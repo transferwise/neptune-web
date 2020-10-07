@@ -168,7 +168,6 @@ workflows:
                 - main
 
       - deploy-docs-for-branch:
-          type: approval
           context: frontend-build
           requires:
             - setup
