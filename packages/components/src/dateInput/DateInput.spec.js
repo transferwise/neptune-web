@@ -172,7 +172,84 @@ describe('Date Input Component', () => {
     });
   });
 
+  describe('when initialised', () => {
+    describe('without an initial value', () => {
+      it(`doesn't call the onChange callback`, () => {
+        component = mount(<DateInput {...props} />);
+
+        expect(props.onChange).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('with an initial value', () => {
+      it(`doesn't call the onChange callback`, () => {
+        component = mount(<DateInput {...props} value="1990-08" />);
+
+        expect(props.onChange).not.toHaveBeenCalled();
+      });
+    });
+  });
+
   describe('when user interacts', () => {
+    describe('with an empty date input', () => {
+      it('calls onChange with null if day is not entered', () => {
+        component = mount(<DateInput {...props} />);
+
+        // Select February
+        simulateSelectChange(2);
+
+        inputYear = component.find(YEAR_SELECTOR);
+
+        inputYear.simulate('change', { target: { value: '1990' } });
+
+        expect(props.onChange).toHaveBeenLastCalledWith(null);
+      });
+
+      it('calls onChange with null if month is not selected', () => {
+        component = mount(<DateInput {...props} />);
+
+        inputDay = component.find(DAY_SELECTOR);
+
+        inputDay.simulate('change', { target: { value: '12' } });
+
+        inputYear = component.find(YEAR_SELECTOR);
+
+        inputYear.simulate('change', { target: { value: '1990' } });
+
+        expect(props.onChange).toHaveBeenLastCalledWith(null);
+      });
+
+      it('calls onChange with null if year is not entered', () => {
+        component = mount(<DateInput {...props} />);
+
+        inputDay = component.find(DAY_SELECTOR);
+
+        inputDay.simulate('change', { target: { value: '12' } });
+
+        // Select February
+        simulateSelectChange(2);
+
+        expect(props.onChange).toHaveBeenLastCalledWith(null);
+      });
+
+      it('returns a valid date if all three fields are entered', () => {
+        component = mount(<DateInput {...props} />);
+
+        inputDay = component.find(DAY_SELECTOR);
+
+        inputDay.simulate('change', { target: { value: '12' } });
+
+        // Select February
+        simulateSelectChange(2);
+
+        inputYear = component.find(YEAR_SELECTOR);
+
+        inputYear.simulate('change', { target: { value: '1990' } });
+
+        expect(props.onChange).toHaveBeenLastCalledWith('1990-02-12');
+      });
+    });
+
     describe('with day input', () => {
       it('returns correct value for correct input', () => {
         component = mount(<DateInput {...props} value="2001-02-11" />);
@@ -192,6 +269,16 @@ describe('Date Input Component', () => {
         inputDay.simulate('change', { target: { value: 'aa' } });
 
         expect(props.onChange).toHaveBeenCalledWith(null);
+      });
+
+      it('returns null when day input is cleared', () => {
+        component = mount(<DateInput {...props} value="2001-01-01" />);
+
+        inputDay = component.find(DAY_SELECTOR);
+
+        inputDay.simulate('change', { target: { value: '' } });
+
+        expect(props.onChange).toHaveBeenLastCalledWith(null);
       });
     });
 
@@ -214,6 +301,15 @@ describe('Date Input Component', () => {
         simulateSelectChange(3);
 
         expect(props.onChange).toHaveBeenCalledWith('2001-03-01');
+      });
+
+      it('returns null when de-selecting month', () => {
+        component = mount(<DateInput {...props} value="2001-01-01" />);
+
+        // De-selects Month
+        simulateSelectChange(0);
+
+        expect(props.onChange).toHaveBeenLastCalledWith(null);
       });
     });
   });

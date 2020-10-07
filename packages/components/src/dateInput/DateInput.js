@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Types from 'prop-types';
 
 import Select from '../select';
@@ -52,9 +52,12 @@ const DateInput = ({
   const [day, setDay] = useState(() => getExplodedDate('day'));
   const [month, setMonth] = useState(() => getExplodedDate('month'));
   const [year, setYear] = useState(() => getExplodedDate('year'));
-  const [internalValue, setInternalValue] = useState(getDateObject);
+  const [lastBroadcastedValue, setLastBroadcastedValue] = useState(getDateObject);
 
   const getDateAsString = (date) => {
+    if (!isDateValid(date)) {
+      return '';
+    }
     switch (mode) {
       case DateMode.MONTH_YEAR:
         return [date.getFullYear(), `0${date.getMonth() + 1}`.slice(-2)].join('-');
@@ -104,27 +107,28 @@ const DateInput = ({
   };
 
   const handleInternalValue = (newDay = day, newMonth = month, newYear = year) => {
-    const dateValue = new Date(newYear, newMonth, newDay);
+    const dateValue =
+      newDay != null && newMonth != null && newYear != null
+        ? new Date(newYear, newMonth, newDay)
+        : null;
+
     const newValue = isDateValid(dateValue) ? dateValue : null;
-    // Don't broadcast already broadcasted value.
 
-    if (newValue !== internalValue) {
-      if (!newValue) {
-        setInternalValue(INITIAL_DEFAULT_STATE);
-      }
+    if (!newValue) {
+      broadcastNewValue(INITIAL_DEFAULT_STATE);
+    }
 
-      if (mode === DateMode.MONTH_YEAR) {
-        if (newMonth >= 0 && newYear && (newMonth !== month || newYear !== year)) {
-          setInternalValue(newValue);
-        }
-      } else if (
-        newDay &&
-        newMonth >= 0 &&
-        newYear &&
-        (newDay !== day || newMonth !== month || newYear !== year)
-      ) {
-        setInternalValue(newValue);
+    if (mode === DateMode.MONTH_YEAR) {
+      if (newMonth >= 0 && newYear && (newMonth !== month || newYear !== year)) {
+        broadcastNewValue(newValue);
       }
+    } else if (
+      newDay &&
+      newMonth >= 0 &&
+      newYear &&
+      (newDay !== day || newMonth !== month || newYear !== year)
+    ) {
+      broadcastNewValue(newValue);
     }
   };
 
@@ -137,6 +141,7 @@ const DateInput = ({
   const handleMonthChange = (selectedValue) => {
     if (!selectedValue) {
       setMonth(null);
+      handleInternalValue(day, null, year);
       return;
     }
     const selectedMonth = selectedValue ? selectedValue.value : 0;
@@ -167,13 +172,16 @@ const DateInput = ({
       handleInternalValue(checkedDay, month, slicedYear);
     } else {
       setYear(slicedYear);
+      handleInternalValue(day, month, null);
     }
   };
 
-  useEffect(() => {
-    const broadcastValue = internalValue ? getDateAsString(internalValue) : null;
-    onChange(broadcastValue);
-  }, [internalValue]);
+  const broadcastNewValue = (newValue) => {
+    if (newValue !== lastBroadcastedValue) {
+      setLastBroadcastedValue(newValue);
+      onChange(getDateAsString(newValue) || null);
+    }
+  };
 
   const checkDate = (newDay = null, newMonth = 0, newYear = null) => {
     let checkedDay = newDay;

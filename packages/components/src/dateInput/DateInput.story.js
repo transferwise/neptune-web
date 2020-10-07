@@ -18,26 +18,48 @@ export const basic = () => {
     DateInput.MonthFormat.LONG,
   );
   const mode = select('mode', Object.values(DateInput.DateMode), DateInput.DateMode.DAY_MONTH_YEAR);
-  const value = date('value', new Date('2020-01-01'));
+  const useInitialValue = boolean('useInitialValue', false);
+  const initialValue = date('initialValue', new Date('2020-01-01'));
   const day = text('dayPlacheholder', 'DD');
   const month = text('monthPlaceholder', 'Select an option...');
   const year = text('yearPlaceholder', 'YYYY');
 
+  const value = useInitialValue ? new Date(initialValue) : null;
+
+  const { changeLog, appendToLog } = useChangeLog();
+  React.useLayoutEffect(() => {
+    appendToLog(`DateInput key={${value}} ... />`);
+  }, [useInitialValue, initialValue]);
+
   return (
-    <DateInput
-      onChange={(val) => action(val)}
-      locale={locale}
-      disabled={disabled}
-      size={size}
-      value={new Date(value)}
-      monthFormat={monthFormat}
-      mode={mode}
-      key={value}
-      placeholders={{
-        day,
-        month,
-        year,
-      }}
-    />
+    <>
+      <DateInput
+        onChange={(val) => {
+          appendToLog(` onChange: ${val}`);
+          return action(val);
+        }}
+        locale={locale}
+        disabled={disabled}
+        size={size}
+        value={value}
+        monthFormat={monthFormat}
+        mode={mode}
+        key={value}
+        placeholders={{
+          day,
+          month,
+          year,
+        }}
+      />
+      <br />
+      <pre>{changeLog}</pre>
+    </>
   );
 };
+
+function useChangeLog() {
+  const [changeLog, setChangeLog] = React.useState('ChangeLog:');
+  const appendToLog = (line) => setChangeLog((log) => `${log}\n${line}`);
+
+  return { changeLog, appendToLog };
+}
