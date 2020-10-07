@@ -62,6 +62,7 @@ const ObjectSchema = (props) => {
               onChange={(newModel, schema) => onChange(propertyName, newModel, schema)}
               submitted={props.submitted}
               required={isRequired(propertyName)}
+              disabled={props.disabled}
             />
           </div>
         ))}
@@ -91,6 +92,7 @@ ObjectSchema.propTypes = {
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
   hideTitle: Types.bool,
+  disabled: Types.bool,
 };
 
 ObjectSchema.defaultProps = {
@@ -99,6 +101,7 @@ ObjectSchema.defaultProps = {
   locale: 'en-GB',
   translations: {},
   hideTitle: false,
+  disabled: false,
 };
 
 export default ObjectSchema;

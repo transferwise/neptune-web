@@ -1,5 +1,4 @@
 {
-  "type": "allOf",
   "allOf": [
     {
       "type": "object",
@@ -31,7 +30,7 @@
         "email": {
           "title": "E-mail",
           "type": "string",
-          "control": "TEXT",
+          "control": "text",
           "validationMessages": {
             "pattern": "The email address is invalid."
           },
@@ -47,7 +46,7 @@
         "profileId": {
           "title": "profileId",
           "type": "string",
-          "control": "TEXT",
+          "control": "text",
           "hidden": true
         },
         "name": {
@@ -57,7 +56,7 @@
             "fullName": {
               "title": "Full Name",
               "type": "string",
-              "control": "TEXT",
+              "control": "text",
               "validationMessages": {
                 "minLength": "Name needs to be between 3 and 35 characters long, and contain both first and last name.",
                 "maxLength": "Recipient name cannot be longer than 35 characters."
@@ -75,7 +74,7 @@
             "bsbCode": {
               "title": "BSB code",
               "type": "string",
-              "control": "TEXT",
+              "control": "text",
               "validationMessages": {
                 "pattern": "Please enter BSB number as 6 digits without a dash.",
                 "required": "Please enter a BSB number"
@@ -88,7 +87,7 @@
             "accountNumber": {
               "title": "Account number",
               "type": "string",
-              "control": "TEXT",
+              "control": "text",
               "validationMessages": {
                 "minLength": "Account number is too short. Please enter a valid account number.",
                 "maxLength": "Account number is too large. Please enter a valid account number.",
@@ -1073,7 +1072,7 @@
             "firstLine": {
               "title": "Street address",
               "type": "string",
-              "control": "TEXT",
+              "control": "text",
               "pattern": "^.{1,255}$",
               "minLength": 1,
               "maxLength": 255
@@ -1081,7 +1080,7 @@
             "city": {
               "title": "City",
               "type": "string",
-              "control": "TEXT",
+              "control": "text",
               "pattern": "^.{1,255}$",
               "minLength": 1,
               "maxLength": 255,
@@ -1090,7 +1089,7 @@
             "postCode": {
               "title": "Post Code",
               "type": "string",
-              "control": "TEXT",
+              "control": "text",
               "maxLength": 32,
               "width": "md"
             }

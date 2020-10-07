@@ -141,6 +141,7 @@ const OneOfSchema = (props) => {
               value={schemaIndex}
               translations={props.translations}
               locale={props.locale}
+              disabled={props.disabled}
             />
             <ControlFeedback
               changed={changed}
@@ -166,6 +167,7 @@ const OneOfSchema = (props) => {
           onChange={(model, schema) => onChange(model, schema, schemaIndex)}
           submitted={props.submitted}
           hideTitle
+          disabled={props.disabled}
         />
       )}
     </>
@@ -190,6 +192,7 @@ OneOfSchema.propTypes = {
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
   required: Types.bool,
+  disabled: Types.bool,
 };
 
 OneOfSchema.defaultProps = {
@@ -198,6 +201,7 @@ OneOfSchema.defaultProps = {
   locale: 'en-GB',
   required: false,
   translations: {},
+  disabled: false,
 };
 
 export default OneOfSchema;
