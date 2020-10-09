@@ -42,7 +42,12 @@ export const basic = () => {
       errors={errors}
       locale={locale}
       translations={translations}
-      onChange={action('onChange')}
+      onChange={(newModel, newValid, newTrigger, pAObject) => {
+        console.log(newModel, 'model')
+        console.log(newValid, 'valid')
+        console.log(newTrigger, 'trigger')
+        console.log(pAObject, 'paObject')
+      }}
       submitted={submitted}
       disabled={disabled}
     />

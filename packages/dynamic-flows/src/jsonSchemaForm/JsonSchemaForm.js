@@ -4,8 +4,8 @@ import GenericSchema from './genericSchema';
 import { isValidSchema } from '../common/validation/schema-validators';
 
 const JsonSchemaForm = (props) => {
-  const onChange = (model, schema) => {
-    props.onChange(model, isValidSchema(model, props.schema), schema);
+  const onChange = (model, schema, persistAsyncObject) => {
+    props.onChange(model, isValidSchema(model, props.schema), schema, persistAsyncObject);
   };
   return <GenericSchema {...props} onChange={onChange} />;
 };

@@ -12,7 +12,26 @@
     },
     "string": {
       "type": "string",
-      "title": "Text input"
+      "title": "Text input",
+      "persistAsync": {
+        "method": "POST",
+        "url": "/v1/cards",
+        "param": "cardNumber",
+        "idProperty": "cardToken",
+        "schema": {
+          "title": "Card Number",
+          "type": "number",
+          "placeholder": "1234567890123456",
+          "validationMessages": {
+            "minLength": "Card number is too short!",
+            "maxLength": "Card number is too long!",
+            "pattern": "Card number is invalid!"
+          },
+          "pattern": "^[0-9*]{13,19}$",
+          "minLength": 13,
+          "maxLength": 19
+        }
+      }
     },
     "select": {
       "type": "integer",

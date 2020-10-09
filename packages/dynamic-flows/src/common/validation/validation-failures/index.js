@@ -93,6 +93,12 @@ function getNumberValidationFailures(value, schema, isRequired) {
   if (!isValidMaximum(value, schema.maximum)) {
     failures.push('maximum');
   }
+  if (!isValidMinLength(value.toString(), schema.minLength)) {
+    failures.push('minLength');
+  }
+  if (!isValidMaxLength(value.toString(), schema.maxLength)) {
+    failures.push('maxLength');
+  }
   return failures;
 }
 

@@ -8,14 +8,14 @@ import DynamicAlert from '../../layout/alert';
 const ObjectSchema = (props) => {
   const [model, setModel] = useState({ ...(props.model || {}) });
 
-  const onChange = (propertyName, propertyModel, schema) => {
+  const onChange = (propertyName, propertyModel, schema, persistAsyncObject) => {
     if (propertyModel !== null) {
       model[propertyName] = propertyModel;
     } else {
       delete model[propertyName];
     }
     setModel(model);
-    props.onChange(model, schema);
+    props.onChange(model, schema, persistAsyncObject);
   };
 
   const getSchemaColumnClasses = (width) => {
@@ -59,7 +59,7 @@ const ObjectSchema = (props) => {
               errors={props.errors && props.errors[propertyName]}
               locale={props.locale}
               translations={props.translations}
-              onChange={(newModel, schema) => onChange(propertyName, newModel, schema)}
+              onChange={(newModel, schema, persistAsyncObject) => onChange(propertyName, newModel, schema, persistAsyncObject)}
               submitted={props.submitted}
               required={isRequired(propertyName)}
               disabled={props.disabled}

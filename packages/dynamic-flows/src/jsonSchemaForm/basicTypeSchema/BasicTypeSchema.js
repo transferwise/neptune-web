@@ -11,12 +11,21 @@ import DynamicAlert from '../../layout/alert';
 
 const BasicTypeSchema = (props) => {
   const onChange = (newModel) => {
-    setChanged(true);
-    setModelAndBroadcast(sanitiseModel(newModel));
+    if (!props.schema.persistAsync) {
+      setChanged(true);
+      setModelAndBroadcast(sanitiseModel(newModel));
+    }
+    if (props.schema.persistAsync) {
+      setChanged(true);
+      setValueAndBroadcastPersistAsync(newModel);
+    }
   };
 
   const getValidationKeys = (newModel) =>
     getValidationFailures(newModel, props.schema, props.required);
+
+  const getPersistAsyncValidationKeys = (newModel) =>
+    getValidationFailures(newModel, props.schema.persistAsync.schema, props.required);
 
   const setModelAndBroadcast = (newModel) => {
     setModel(newModel);
@@ -32,6 +41,22 @@ const BasicTypeSchema = (props) => {
     }
   };
 
+  const setValueAndBroadcastPersistAsync = (newModel) => {
+    setPersistAsyncModel(newModel);
+    const validationKeys = getPersistAsyncValidationKeys(newModel);
+    setValidations(validationKeys);
+
+    const broadcastModel = validationKeys.length ? null : newModel;
+
+    setLastModel(broadcastModel);
+
+    props.onChange(broadcastModel, props.schema, {
+      path: 'path',
+      value: newModel,
+      valid: validationKeys.length === 0,
+    });
+  };
+
   const sanitiseModel = (newModel) => getValidModelParts(newModel, props.schema);
 
   const onFocus = () => setFocused(true);
@@ -44,6 +69,7 @@ const BasicTypeSchema = (props) => {
 
   const [id, setId] = useState('');
   const [model, setModel] = useState(props.model);
+  const [persistAsyncModel, setPersistAsyncModel] = useState('');
   const [lastModel, setLastModel] = useState(props.model);
   const [changed, setChanged] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -87,19 +113,23 @@ const BasicTypeSchema = (props) => {
 
   const showLabel = props.schema.format !== 'file' && props.schema.type !== 'boolean';
 
+  const schemaToRender = props.schema.persistAsync
+    ? props.schema.persistAsync.schema
+    : props.schema;
+
   return (
     !isHidden && (
       <>
         <div className={classNames(formGroupClasses)}>
           {showLabel && (
             <label className="control-label" htmlFor={id}>
-              {props.schema.title}
+              {schemaToRender.title}
             </label>
           )}
           <SchemaFormControl
             id={id}
-            schema={props.schema}
-            value={model}
+            schema={schemaToRender}
+            value={!props.schema.persistAsync ? model : persistAsyncModel}
             locale={props.locale}
             onChange={onChange}
             onFocus={onFocus}
@@ -112,11 +142,11 @@ const BasicTypeSchema = (props) => {
             blurred={blurred}
             submitted={props.submitted}
             errors={props.errors}
-            schema={props.schema}
+            schema={schemaToRender}
             validations={validations}
           />
         </div>
-        {props.schema.alert && <DynamicAlert component={props.schema.alert} />}
+        {schemaToRender.alert && <DynamicAlert component={schemaToRender.alert} />}
       </>
     )
   );
@@ -138,6 +168,13 @@ BasicTypeSchema.propTypes = {
     disabled: Types.bool,
     hidden: Types.bool,
     help: Types.shape({}),
+    persistAsync: Types.shape({
+      method: Types.string,
+      url: Types.string,
+      param: Types.string,
+      idProperty: Types.string,
+      schema: Types.object,
+    }),
   }).isRequired,
   model: Types.oneOfType([Types.string, Types.number, Types.bool]),
   errors: Types.string,

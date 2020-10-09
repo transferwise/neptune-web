@@ -43,11 +43,11 @@ const OneOfSchema = (props) => {
     return null;
   };
 
-  const onChange = (model, schema, index) => {
+  const onChange = (model, schema, index, persistAsyncObject) => {
     models[index] = model;
     setModels(models);
     setChanged(true);
-    props.onChange(model, schema);
+    props.onChange(model, schema, persistAsyncObject);
   };
 
   const onFocus = () => {
@@ -164,7 +164,7 @@ const OneOfSchema = (props) => {
           errors={props.errors}
           locale={props.locale}
           translations={props.translations}
-          onChange={(model, schema) => onChange(model, schema, schemaIndex)}
+          onChange={(model, schema, persistAsyncObject) => onChange(model, schema, schemaIndex, persistAsyncObject)}
           submitted={props.submitted}
           hideTitle
           disabled={props.disabled}
