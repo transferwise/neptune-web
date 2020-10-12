@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Types from 'prop-types';
 
+import '../common/polyfills/closest';
 import Select from '../select';
 
 import { Size, DateMode, MonthFormat } from '../common';
 
 import { explodeDate, convertToLocalMidnight } from './utils';
 import { getMonthNames, isDateValid, isMonthAndYearFormat } from '../common/dateUtils';
+import './DateInput.css';
 
 const DEFAULT_LOCALE = 'en-GB';
 
@@ -27,6 +29,7 @@ const DateInput = ({
   onFocus,
   onBlur,
   placeholders,
+  id,
 }) => {
   const getDateObject = () => {
     if (value && isDateValid(value)) {
@@ -75,12 +78,10 @@ const DateInput = ({
     const months = getMonthNames(locale, monthFormat);
 
     return (
-      <div>
-        <label htmlFor="date-input-month" className="sr-only">
-          {monthLabel}
-        </label>
+      // eslint-disable-next-line
+      <label>
+        <span className="sr-only">{monthLabel}</span>
         <Select
-          id="date-input-month"
           name="month"
           className="form-control"
           onChange={(selectedValue) => handleMonthChange(selectedValue)}
@@ -88,11 +89,9 @@ const DateInput = ({
           placeholder={placeholders.month}
           options={getMonthsOptions()}
           size={size}
-          onFocus={onFocus}
-          onBlur={onBlur}
           selected={month === null ? null : { value: month, label: months[month] }}
         />
-      </div>
+      </label>
     );
   };
 
@@ -207,28 +206,29 @@ const DateInput = ({
   const monthBeforeDay = MonthBeforeDay.indexOf(locale) > -1;
 
   return (
-    <div className="tw-date">
+    <div
+      className="tw-date"
+      id={id}
+      onFocus={(e) => (shouldPropagateOnFocus(e) ? onFocus && onFocus() : e.stopPropagation())}
+      onBlur={(e) => (shouldPropagateOnBlur(e) ? onBlur && onBlur() : e.stopPropagation())}
+    >
       <div className="row">
         {monthBeforeDay && <div className={monthWidth}>{getSelectElement()}</div>}
-
         {!monthYearOnly && (
           <div className="col-sm-3">
             <div className={`input-group-${size}`}>
-              <label className="sr-only" htmlFor="date-input-day">
-                {dayLabel}
+              <label>
+                <span className="sr-only">{dayLabel}</span>
+                <input
+                  type="number"
+                  name="day"
+                  className="form-control"
+                  value={day || ''}
+                  onChange={(event) => handleDayChange(event)}
+                  placeholder={placeholders.day}
+                  disabled={disabled}
+                />
               </label>
-              <input
-                id="date-input-day"
-                type="number"
-                name="day"
-                className="form-control"
-                value={day || ''}
-                onChange={(event) => handleDayChange(event)}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                placeholder={placeholders.day}
-                disabled={disabled}
-              />
             </div>
           </div>
         )}
@@ -237,27 +237,46 @@ const DateInput = ({
 
         <div className="col-sm-4">
           <div className={`input-group-${size}`}>
-            <label className="sr-only" htmlFor="date-input-year">
-              {yearLabel}
+            <label>
+              <span className="sr-only">{yearLabel}</span>
+              <input
+                type="number"
+                name="year"
+                className="form-control"
+                placeholder={placeholders.year}
+                value={year || ''}
+                onChange={(event) => handleYearChange(event)}
+                disabled={disabled}
+              />
             </label>
-            <input
-              id="date-input-year"
-              type="number"
-              name="year"
-              className="form-control"
-              placeholder={placeholders.year}
-              value={year || ''}
-              onChange={(event) => handleYearChange(event)}
-              onFocus={onFocus}
-              onBlur={onBlur}
-              disabled={disabled}
-            />
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+// Should only propagate if the relatedTarget is not part of this DateInput component.
+function shouldPropagateOnFocus({ target, relatedTarget }) {
+  const targetParent = target.closest('.tw-date');
+  const relatedParent = relatedTarget && relatedTarget.closest('.tw-date');
+  return targetParent !== relatedParent;
+}
+
+// Should only propagate if the relatedTarget or the activeElement is not part of this DateInput component.
+function shouldPropagateOnBlur({ target, relatedTarget }) {
+  const blurElementParent = target.closest('.tw-date');
+  // Even though FocusEvent.relatedTarget is supported by IE
+  // (https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/relatedTarget)
+  // "IE11 sets document.activeElement to the next focused element before the blur event is called."
+  // (https://stackoverflow.com/a/49325196/986241)
+  // Therefore if the relatedTarget is null, we try the document.activeElement,
+  // which may contain the HTML element that is gaining focus
+  const focusElement =
+    relatedTarget || (document.activeElement !== target ? document.activeElement : null);
+  const focusElementParent = focusElement && focusElement.closest('.tw-date');
+  return blurElementParent !== focusElementParent;
+}
 
 DateInput.Size = Size;
 DateInput.DateMode = DateMode;
@@ -281,6 +300,7 @@ DateInput.propTypes = {
     month: Types.node,
     year: Types.node,
   }),
+  id: Types.string,
 };
 
 DateInput.defaultProps = {
@@ -300,6 +320,7 @@ DateInput.defaultProps = {
     month: 'Month',
     year: 'YYYY',
   },
+  id: '',
 };
 
 export default DateInput;

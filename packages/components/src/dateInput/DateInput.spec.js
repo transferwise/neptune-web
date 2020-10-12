@@ -314,6 +314,53 @@ describe('Date Input Component', () => {
     });
   });
 
+  describe('with day input and year input', () => {
+    describe('when switching from day input to year input', () => {
+      it('does not call onBlur nor onFocus', () => {
+        const onFocus = jest.fn();
+        const onBlur = jest.fn();
+
+        component = mount(<DateInput {...props} onFocus={onFocus} onBlur={onBlur} />);
+
+        inputDay = component.find(DAY_SELECTOR);
+        inputYear = component.find(YEAR_SELECTOR);
+
+        inputDay.simulate('focus');
+
+        inputDay.simulate('blur', { relatedTarget: inputYear.getDOMNode() });
+        inputYear.simulate('focus', { relatedTarget: inputDay.getDOMNode() });
+        inputYear.simulate('blur');
+
+        expect(onFocus).toHaveBeenCalledTimes(1);
+        expect(onBlur).toHaveBeenCalledTimes(1);
+
+        jest.useRealTimers();
+      });
+
+      it('does not call onBlur on IE11 either', () => {
+        const onBlur = jest.fn();
+
+        component = mount(<DateInput {...props} onBlur={onBlur} />);
+
+        inputDay = component.find(DAY_SELECTOR);
+        inputYear = component.find(YEAR_SELECTOR);
+
+        inputDay.simulate('focus');
+
+        Object.defineProperty(document, 'activeElement', {
+          value: inputYear.getDOMNode(),
+        });
+
+        inputDay.simulate('blur', { relatedTarget: null });
+        inputYear.simulate('focus', { relatedTarget: inputDay.getDOMNode() });
+
+        expect(onBlur).not.toHaveBeenCalled();
+
+        jest.useRealTimers();
+      });
+    });
+  });
+
   describe('when user selects invalid dates', () => {
     it('corrects days in lap years February', () => {
       component = mount(<DateInput {...props} value="2000-02-29" />);

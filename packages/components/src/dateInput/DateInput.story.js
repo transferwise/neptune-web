@@ -23,7 +23,6 @@ export const basic = () => {
   const day = text('dayPlacheholder', 'DD');
   const month = text('monthPlaceholder', 'Select an option...');
   const year = text('yearPlaceholder', 'YYYY');
-
   const value = useInitialValue ? new Date(initialValue) : null;
 
   const { changeLog, appendToLog } = useChangeLog();
@@ -38,18 +37,52 @@ export const basic = () => {
           appendToLog(` onChange: ${val}`);
           return action(val);
         }}
+        dayLabel="Day input"
+        monthLabel="Month Select"
+        yearLabel="Year input"
         locale={locale}
         disabled={disabled}
         size={size}
         value={value}
         monthFormat={monthFormat}
         mode={mode}
-        key={value}
+        onFocus={() => {
+          appendToLog(` onFocus`);
+        }}
+        onBlur={() => {
+          appendToLog(` onBlur`);
+        }}
         placeholders={{
           day,
           month,
           year,
         }}
+        id="date-input-1"
+      />
+      <br />
+      <DateInput
+        onChange={(val) => {
+          appendToLog(` onChange: ${val}`);
+          return action(val);
+        }}
+        locale={locale}
+        disabled={disabled}
+        size={size}
+        value={value}
+        monthFormat={monthFormat}
+        mode={mode}
+        onFocus={() => {
+          appendToLog(` onFocus`);
+        }}
+        onBlur={() => {
+          appendToLog(` onBlur`);
+        }}
+        placeholders={{
+          day,
+          month,
+          year,
+        }}
+        id="date-input-2"
       />
       <br />
       <pre>{changeLog}</pre>
@@ -58,8 +91,7 @@ export const basic = () => {
 };
 
 function useChangeLog() {
-  const [changeLog, setChangeLog] = React.useState('ChangeLog:');
+  const [changeLog, setChangeLog] = React.useState('ChangeLog: (events from both components)');
   const appendToLog = (line) => setChangeLog((log) => `${log}\n${line}`);
-
   return { changeLog, appendToLog };
 }
