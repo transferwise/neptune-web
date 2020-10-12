@@ -7,18 +7,18 @@
 
 .dimmer {
   position: fixed;
+  z-index: @zindex-modal;
+  top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  top: 0;
-  height: 100%;
   width: 100%;
-  background: rgba(55, 81, 126, 0);
+  height: 100%;
   transition: background-color cubic-bezier(0, 0.94, 0.62, 1) 350ms;
-  z-index: @zindex-modal;
+  background: rgba(55, 81, 126, 0);
 
   &.dimmer--enter-done {
-    background: rgba(55, 81, 126, 0.8);
+    background: rgba(55, 81, 126, 0.6);
   }
 
   &.dimmer--exit-active {
