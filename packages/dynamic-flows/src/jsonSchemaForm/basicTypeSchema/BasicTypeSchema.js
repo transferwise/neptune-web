@@ -51,7 +51,7 @@ const BasicTypeSchema = (props) => {
     setLastModel(broadcastModel);
 
     props.onChange(broadcastModel, props.schema, {
-      path: 'path',
+      path: 'path', // TODO: Add path to parent
       value: newModel,
       valid: validationKeys.length === 0,
     });
