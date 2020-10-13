@@ -8,8 +8,9 @@
         "**/*.md",
         "**/*.spec.js",
         "**/*.yml",
-        "**/*.docs.js",
-        "**/components/docs/**",
+        "**/*.story.js",
+        "packages/components/src/neptuneCssTest",
+        "packages/.storybook",
         "packages/docs"
       ]
     }

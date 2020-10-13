@@ -10,7 +10,7 @@ export default {
 export const basic = () => {
   const textDF = text('textDF', 'helloworld');
   const numberDF = number('numberDF', 123456);
-  const dateDF = date('dateDF', new Date());
+  const dateDF = date('dateDF', new Date('01-01-2000'));
   const passwordDF = text('passwordDF', 'password');
   const phoneDF = text('phoneDF', '+441234567890');
   const textareaDF = text('textareaDF', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');

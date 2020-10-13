@@ -16,7 +16,7 @@ export const basic = () => {
   const label = text('label', 'label');
   const monthFormat = select('monthFormat', ['long', 'short']);
 
-  const value = date('value', new Date());
+  const value = date('value', new Date('02-02-2000'));
   const minvalue = date('minvalue', new Date('2000-01-01'));
   const maxvalue = date('maxvalue', new Date('2040-03-01'));
 

@@ -1,0 +1,335 @@
+<div class="bs-docs-section">
+  <h1 id="droppable" class="page-header">Droppable</h1>
+
+  <p>
+    Droppable is a set of styles for a drag and drop form component. An implementation can be found
+    in our styleguide-components repository.
+  </p>
+
+  <div class="bs-example" data-example-id="droppable-example">
+    <div class="droppable droppable-md">
+      <div class="droppable-default-card">
+        <div class="droppable-card-content">
+          <div class="m-b-2">
+            <i class="icon icon-upload icon-xxl"></i>
+          </div>
+          <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+          <button class="btn btn-primary">Or select file</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="droppable-cards">Droppable cards</h2>
+  <p>
+    The various states of the droppable component are contained within cards for each state. The
+    visibility and transitions between states are managed by modifier classes.
+  </p>
+  <p>There are four cards and corresponding states:</p>
+  <ul>
+    <li>
+      <code>.droppable-default-card</code> is used for the default state, it is enabled when none of
+      the other states is present. The default card determines the height of the component so be
+      sure to include enough content to make sure the component can accomodate the other cards.
+    </li>
+    <li>
+      <code>.droppable-droppping</code> is used when a file is eligible to be dropped on the
+      component, it enables the <code>.droppable-dropping-card</code>.
+    </li>
+    <li>
+      <code>.droppable-processing</code> is used when we're processing the upload or sending a file
+      to the server. It enables the <code>.droppable-processing-card</code>.
+    </li>
+    <li>
+      <code>.droppable-complete</code> is used when processing is complete, it enables the
+      <code>.droppable-processing-card</code>.
+    </li>
+  </ul>
+
+  <p>Within the card use <code>.droppable-card-content</code> to vertically centre the content.</p>
+
+  <div class="bs-example" data-example-id="droppable-cards-example">
+    <div class="row">
+      <div class="col-sm-6 m-b-3">
+        <div class="droppable droppable-md">
+          <div class="droppable-default-card">
+            <div class="droppable-card-content">
+              <div class="m-b-2">
+                <i class="icon icon-upload icon-xxl"></i>
+              </div>
+              <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+              <button class="btn btn-primary">Or select file</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 m-b-3">
+        <div class="droppable droppable-md droppable-dropping">
+          <div class="droppable-default-card">
+            <div class="droppable-card-content">
+              <div class="m-b-2">
+                <i class="icon icon-upload icon-xxl"></i>
+              </div>
+              <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+              <button class="btn btn-primary">Or select file</button>
+            </div>
+          </div>
+          <div class="droppable-dropping-card droppable-card">
+            <div class="droppable-card-content">
+              <h4 class="m-b-2">Drop file to start upload</h4>
+              <div class="circle circle-sm">
+                <i class="icon icon-add"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 m-b-3">
+        <div class="droppable droppable-md droppable-processing">
+          <div class="droppable-default-card">
+            <div class="droppable-card-content">
+              <div class="m-b-2">
+                <i class="icon icon-upload icon-xxl"></i>
+              </div>
+              <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+              <button class="btn btn-primary">Or select file</button>
+            </div>
+          </div>
+          <div class="droppable-processing-card droppable-card">
+            <div class="droppable-card-content">
+              <h4 class="m-b-2">Uploading</h4>
+              <div>
+                <span class="process process-sm">
+                  <span class="process-icon-container">
+                    <span class="process-icon-horizontal"></span>
+                    <span class="process-icon-vertical"></span>
+                  </span>
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
+                    <circle class="process-circle" cx="50%" cy="50%" r="45%" fill-opacity="0.0" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 m-b-3">
+        <div class="droppable droppable-md droppable-complete">
+          <div class="droppable-default-card">
+            <div class="droppable-card-content">
+              <div class="m-b-2">
+                <i class="icon icon-upload icon-xxl"></i>
+              </div>
+              <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+              <button class="btn btn-primary">Or select file</button>
+            </div>
+          </div>
+          <div class="droppable-complete-card droppable-card">
+            <div class="droppable-card-content">
+              <h4 class="m-b-2">Upload complete!</h4>
+              <img src="../assets/img/css2-bg.jpg" alt="uploaded" class="thumbnail m-b-3" />
+              <p class="text-ellipsis m-b-2">css.png</p>
+              <p class="m-t-2 m-b-0">
+                <a href="">Choose a different file?</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="droppable-states">Droppable states</h2>
+  <p>
+    As you add and remove the droppable states the cards will animate in and out with appropriate
+    transitions.
+  </p>
+
+  <div class="bs-example" data-example-id="droppable-states-example">
+    <div class="droppable droppable-lg" id="droppable-live-example">
+      <div class="droppable-default-card">
+        <div class="droppable-card-content">
+          <div class="m-b-2">
+            <i class="icon icon-upload icon-xxl"></i>
+          </div>
+          <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+          <button class="btn btn-primary">Or select file</button>
+        </div>
+      </div>
+      <div class="droppable-dropping-card droppable-card">
+        <div class="droppable-card-content">
+          <h4 class="m-b-2">Drop file to start upload</h4>
+          <div class="circle circle-sm">
+            <i class="icon icon-add"></i>
+          </div>
+        </div>
+      </div>
+      <div class="droppable-processing-card droppable-card">
+        <div class="droppable-card-content">
+          <h4 class="m-b-2">Uploading</h4>
+          <div>
+            <span class="process process-sm">
+              <span class="process-icon-container">
+                <span class="process-icon-horizontal"></span>
+                <span class="process-icon-vertical"></span>
+              </span>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
+                <circle class="process-circle" cx="50%" cy="50%" r="45%" fill-opacity="0.0" />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="droppable-complete-card droppable-card">
+        <div class="droppable-card-content">
+          <h4 class="m-b-2">Upload complete!</h4>
+          <img src="../assets/img/css2-bg.jpg" alt="uploaded" class="thumbnail m-b-3" />
+          <p class="text-ellipsis m-b-2">css.png</p>
+          <p class="m-t-2 m-b-0">
+            <a href="">Choose a different file?</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="m-x-auto text-xs-center m-b-3">
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-primary active">
+        <input
+          type="radio"
+          name="options"
+          id="option1"
+          autocomplete="off"
+          checked
+          onchange="$('#droppable-live-example').removeClass('droppable-dropping droppable-processing droppable-complete'); $('#droppable-state-label').text('');"
+        />
+        Default
+      </label>
+      <label class="btn btn-primary">
+        <input
+          type="radio"
+          name="options"
+          id="option2"
+          autocomplete="off"
+          onchange="$('#droppable-live-example').addClass('droppable-dropping').removeClass('droppable-processing droppable-complete'); $('#droppable-state-label').text(' droppable-dropping');"
+        />
+        Dropping
+      </label>
+      <label class="btn btn-primary">
+        <input
+          type="radio"
+          name="options"
+          id="option3"
+          autocomplete="off"
+          onchange="$('#droppable-live-example').addClass('droppable-processing').removeClass('droppable-dropping droppable-complete'); $('#droppable-state-label').text(' droppable-processing');"
+        />
+        Processing
+      </label>
+      <label class="btn btn-primary">
+        <input
+          type="radio"
+          name="options"
+          id="option4"
+          autocomplete="off"
+          onchange="$('#droppable-live-example').addClass('droppable-complete').removeClass('droppable-dropping droppable-processing'); $('#droppable-state-label').text(' droppable-complete');"
+        />
+        Complete
+      </label>
+    </div>
+  </div>
+  <pre>
+&lt;div class="droppable droppable-lg<span id='droppable-state-label'></span>"&gt;
+  &lt;div class="droppable-default-card droppable-card"&gt;...&lt;/div&gt;
+  &lt;div class="droppable-dropping-card droppable-card"&gt;...&lt;/div&gt;
+  &lt;div class="droppable-processing-card droppable-card"&gt;...&lt;/div&gt;
+  &lt;div class="droppable-complete-card droppable-card"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+  <!--
+  <h2 id="droppable-mobile">Mobile behaviour</h2>
+  <p>Typically, mobile devices will not have drag and drop capabilities, so we
+    should customise messaging to those users and give an alternative option.</p>
+  <p>We have two classes to help show and hide content in the different scenarios,
+      anything inside <code>.droppable-mobile</code> will only be visible on
+      mobile screen widths.  Anything inside <code>.droppable-desktop</code> will
+      only appear on larger screens.</p>
+
+  <div class="bs-example" data-example-id="droppable-mobile-example">
+    <div class="droppable droppable-md">
+      <div class="m-b-2">
+        <i class="icon icon-upload icon-xxl"></i>
+      </div>
+      <div class="droppable-desktop">
+        <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+        <button class="btn btn-primary">Or select file</button>
+      </div>
+      <div class="droppable-mobile">
+        <p class="m-b-2">Upload .CSV file less than 5MB</p>
+        <button class="btn btn-primary">Select file</button>
+      </div>
+    </div>
+  </div>
+
+-->
+  <h2 id="droppable-sizes">Size variants</h2>
+  <p>
+    Depending on the column you are using your droppable component within, you may wish to use a
+    different size variant. Full width UIs will likely use the large variant
+    <code>.droppable-lg</code>, whereas a UI asking for multiple uploads (e.g. the front and back of
+    a document) may use the smaller variant <code>.droppable-sm</code> in a column layout.
+  </p>
+
+  <div class="bs-example" data-example-id="droppable-size-examples">
+    <div class="row m-b-3">
+      <div class="col-sm-6 col-md-4">
+        <div class="droppable droppable-sm">
+          <div class="m-b-2">
+            <i class="icon icon-upload icon-xxl"></i>
+          </div>
+          <div class="droppable-desktop">
+            <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+            <button class="btn btn-primary">Or select file</button>
+          </div>
+          <div class="droppable-mobile">
+            <p class="m-b-2">Upload .CSV file less than 5MB</p>
+            <button class="btn btn-primary">Select file</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row m-b-3">
+      <div class="col-sm-8 col-md-6">
+        <div class="droppable droppable-md">
+          <div class="m-b-2">
+            <i class="icon icon-upload icon-xxl"></i>
+          </div>
+          <div class="droppable-desktop">
+            <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+            <button class="btn btn-primary">Or select file</button>
+          </div>
+          <div class="droppable-mobile">
+            <p class="m-b-2">Upload .CSV file less than 5MB</p>
+            <button class="btn btn-primary">Select file</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="droppable droppable-lg">
+          <div class="m-b-2">
+            <i class="icon icon-upload icon-xxl"></i>
+          </div>
+          <div class="droppable-desktop">
+            <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+            <button class="btn btn-primary">Or select file</button>
+          </div>
+          <div class="droppable-mobile">
+            <p class="m-b-2">Upload .CSV file less than 5MB</p>
+            <button class="btn btn-primary">Select file</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
