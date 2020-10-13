@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.0.13](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.12...@transferwise/components@30.0.13) (2020-10-13)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
 ## [30.0.12](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.11...@transferwise/components@30.0.12) (2020-10-13)
 
 **Note:** Version bump only for package @transferwise/components
