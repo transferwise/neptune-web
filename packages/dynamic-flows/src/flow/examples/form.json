@@ -44,6 +44,12 @@
       "url": "/final",
       "label": "Skip",
       "method": "GET"
+    },
+    {
+      "type": "failure",
+      "url": "/error",
+      "label": "Fail submission",
+      "method": "POST"
     }
   ]
 }

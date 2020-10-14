@@ -12,7 +12,7 @@ const reviewStep = {
   layout: reviewLayout,
 };
 
-function request(action, data) {
+async function request(action, data) {
   console.log('request', action.url, data); // eslint-disable-line
 
   switch (action.url) {

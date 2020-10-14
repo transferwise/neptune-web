@@ -41,29 +41,35 @@ const DynamicFlow = (props) => {
     return { ...(actionModel || {}), ...(formModel || {}) };
   };
 
-  const fetchNewStep = (action, model) => {
-    request(action, model)
-      .then((step) => {
-        // If we don't receive a valid step, exit the flow
-        if (!step.type) {
-          props.onClose();
-        } else {
-          onStepChange(step);
-        }
-      })
-      .catch((response) => {
-        setValidations(response.validation);
-      });
+  const fetchNewStep = async (action, model) => {
+    let response;
+    try {
+      console.log('fetch'); // eslint-disable-line
+      response = await request(action, model);
+
+      console.log('then'); // eslint-disable-line
+      // If we don't receive a valid step, exit the flow
+      if (!response.type) {
+        props.onClose();
+      } else {
+        onStepChange(response);
+      }
+    } catch (error) {
+      console.log('catch', error); // eslint-disable-line
+      setValidations(error.validation); // TODO this not thrown
+    }
   };
 
-  const onModelChange = (newModel, isValid, triggerSchema) => {
+  const onModelChange = async (newModel, isValid, triggerSchema) => {
     setModel(newModel);
     setModelIsValid(isValid);
 
     if (triggerSchema.refreshRequirements) {
       const action = { method: 'POST', url: stepSpecification.refreshFormUrl };
 
-      request(action, newModel)
+      const response = await request(action, newModel);
+
+      response
         .then((step) => {
           updateStepSpecification(step);
         })
@@ -105,7 +111,7 @@ const DynamicFlow = (props) => {
   // TODO Test
   // Load the first step using the initial flow URL
   useEffect(() => {
-    // console.log('flowUrl', props.flowUrl);
+    console.log('flowUrl', props.flowUrl); // eslint-disable-line
     const action = {
       url: props.flowUrl,
       method: 'GET',
