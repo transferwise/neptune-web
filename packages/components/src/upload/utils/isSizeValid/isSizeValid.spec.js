@@ -1,4 +1,4 @@
-import { isSizeValid } from './';
+import { isSizeValid } from '.';
 
 const MAXSIZE = 5000;
 

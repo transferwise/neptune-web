@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render, cleanup } from '@testing-library/react';
 
-import InputWithDisplayFormat from './';
+import InputWithDisplayFormat from '.';
 
 describe('InputWithDisplayFormat', () => {
   function renderInput(props) {

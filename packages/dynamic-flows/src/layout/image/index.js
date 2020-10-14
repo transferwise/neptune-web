@@ -1,10 +1,9 @@
 import React from 'react';
 import Types from 'prop-types';
 
+import { Image } from '@transferwise/components';
 import { marginModel } from '../models';
 import { getMarginBottom } from '../utils';
-
-import { Image } from '@transferwise/components';
 
 const DynamicImage = (props) => {
   const image = props.component;

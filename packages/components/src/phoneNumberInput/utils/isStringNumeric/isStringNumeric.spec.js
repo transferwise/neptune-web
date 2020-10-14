@@ -1,4 +1,4 @@
-import { isStringNumeric } from './';
+import { isStringNumeric } from '.';
 
 describe('isStringNumeric', () => {
   it('should return true when numeric sting is provided', () => {

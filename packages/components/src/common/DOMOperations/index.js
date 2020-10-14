@@ -1,3 +1,3 @@
-import { addModalOpenBodyClass, removeModalOpenBodyClass } from './DOMOperations';
+import { addNoScrollBodyClass, removeNoScrollBodyClass } from './DOMOperations';
 
-export { addModalOpenBodyClass, removeModalOpenBodyClass };
+export { addNoScrollBodyClass, removeNoScrollBodyClass };

@@ -1,4 +1,4 @@
-import { isValidPhoneNumber } from '../';
+import { isValidPhoneNumber } from '..';
 
 describe('isValidPhoneNumber', () => {
   it('should return true for valid string numbers', () => {

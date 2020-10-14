@@ -1,7 +1,6 @@
 import React from 'react';
 import Types from 'prop-types';
-import AlertCircleIcon from '@transferwise/icons/react/alert-circle';
-import DocumentIcon from '@transferwise/icons/react/document';
+import { AlertCircle as AlertCircleIcon, Document as DocumentIcon } from '@transferwise/icons';
 
 const CompleteStep = (props) => {
   const {
@@ -21,7 +20,7 @@ const CompleteStep = (props) => {
         <div>
           {isError ? (
             <>
-              <AlertCircleIcon size="xxl" className="text-danger" />
+              <AlertCircleIcon size={24} className="text-danger" />
               {csFailureText && <p className="m-t-2">{csFailureText}</p>}
             </>
           ) : (
@@ -29,7 +28,7 @@ const CompleteStep = (props) => {
               {isImage && uploadedImage ? (
                 <img src={uploadedImage} alt="OK" className="thumbnail " />
               ) : (
-                <DocumentIcon size="xl" />
+                <DocumentIcon />
               )}
 
               {fileName && (
@@ -46,7 +45,11 @@ const CompleteStep = (props) => {
           )}
         </div>
         {csButtonText && (
-          <button className="btn btn-default btn-sm m-t-3" onClick={(e) => onClear(e)}>
+          <button
+            type="button"
+            className="btn btn-default btn-sm m-t-3"
+            onClick={(e) => onClear(e)}
+          >
             {csButtonText}
           </button>
         )}

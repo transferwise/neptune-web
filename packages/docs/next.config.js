@@ -15,7 +15,7 @@ const pageExtensions = ['js', 'mdx'];
 const branch = process.env.CIRCLE_BRANCH;
 const assetPrefix =
   process.env.NODE_ENV === 'production'
-    ? `/neptune-web${branch !== 'master' ? `/branch/${branch}` : ''}`
+    ? `/neptune-web${branch === 'main' ? '' : `/branch/${branch}`}`
     : '';
 
 module.exports = () =>
@@ -26,6 +26,9 @@ module.exports = () =>
           withMDX({
             transpileModules: [
               '@transferwise/dynamic-flows',
+              // Required for labs which is only exported as es version.
+              '@transferwise/components',
+              '@transferwise/neptune-validation',
               'buble',
               'regexpu-core',
               'unicode-match-property-ecmascript',

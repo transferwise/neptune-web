@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import TextareaWithDisplayFormat from './';
+import TextareaWithDisplayFormat from '.';
 
 describe('TextareaWithDisplayFormat', () => {
   const props = { displayPattern: '**-**', onChange: jest.fn() };

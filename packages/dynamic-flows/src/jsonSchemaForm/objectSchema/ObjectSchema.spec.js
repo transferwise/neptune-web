@@ -2,7 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import ObjectSchema from './ObjectSchema';
-import GenericSchema from '../genericSchema/';
+import GenericSchema from '../genericSchema';
+import DynamicAlert from '../../layout/alert';
 
 describe('Given a component for rendering object schemas', () => {
   let component;
@@ -112,6 +113,88 @@ describe('Given a component for rendering object schemas', () => {
 
     it('should trigger the components onChange with the key remove', () => {
       expect(props.onChange).toHaveBeenCalledWith({ string: 'a' }, schema.properties.number);
+    });
+  });
+
+  describe('when alert exists', () => {
+    it('should render the alert', () => {
+      const alert = {
+        context: 'info',
+        markdown: 'some text',
+      };
+      const schemaWithAlert = { ...schema, alert };
+      component = shallow(<ObjectSchema {...props} schema={schemaWithAlert} />);
+
+      const alertComponent = component.find(DynamicAlert);
+
+      expect(alertComponent).toHaveLength(1);
+      expect(alertComponent.prop('component').context).toBe('info');
+      expect(alertComponent.prop('component').markdown).toBe('some text');
+    });
+  });
+
+  describe('when alert does not exist', () => {
+    it('should not render alert', () => {
+      const alertComponent = component.find(DynamicAlert);
+
+      expect(alertComponent).toHaveLength(0);
+    });
+  });
+
+  describe('when display order exists', () => {
+    const properties = {
+      string: { type: 'string' },
+      number: { type: 'number' },
+      something: { type: 'string' },
+    };
+
+    describe('when displayOrder contains all properties', () => {
+      it('should adhere to the specified order', () => {
+        const schemaWithDisplayOrder = {
+          ...schema,
+          properties,
+          displayOrder: ['number', 'something', 'string'],
+        };
+        component = shallow(<ObjectSchema {...props} schema={schemaWithDisplayOrder} />);
+
+        genericSchemaComponents = component.find(GenericSchema);
+
+        expect(genericSchemaComponents.at(0).prop('schema')).toBe(properties.number);
+        expect(genericSchemaComponents.at(1).prop('schema')).toBe(properties.something);
+        expect(genericSchemaComponents.at(2).prop('schema')).toBe(properties.string);
+      });
+    });
+
+    describe('when displayOrder contains only a subset of properties', () => {
+      it('should display any properties not specified in the display order in their natural order', () => {
+        const schemaWithDisplayOrder = { ...schema, properties, displayOrder: ['number'] };
+        component = shallow(<ObjectSchema {...props} schema={schemaWithDisplayOrder} />);
+
+        genericSchemaComponents = component.find(GenericSchema);
+
+        expect(genericSchemaComponents.at(0).prop('schema')).toBe(properties.number);
+        expect(genericSchemaComponents.at(1).prop('schema')).toBe(properties.string);
+        expect(genericSchemaComponents.at(2).prop('schema')).toBe(properties.something);
+      });
+    });
+  });
+
+  describe('when no display order exists', () => {
+    const properties = {
+      string: { type: 'string' },
+      number: { type: 'number' },
+      something: { type: 'string' },
+    };
+
+    it('should display properties in their natural order', () => {
+      const schemaWithoutDisplayOrder = { ...schema, properties };
+      component = shallow(<ObjectSchema {...props} schema={schemaWithoutDisplayOrder} />);
+
+      genericSchemaComponents = component.find(GenericSchema);
+
+      expect(genericSchemaComponents.at(0).prop('schema')).toBe(properties.string);
+      expect(genericSchemaComponents.at(1).prop('schema')).toBe(properties.number);
+      expect(genericSchemaComponents.at(2).prop('schema')).toBe(properties.something);
     });
   });
 });

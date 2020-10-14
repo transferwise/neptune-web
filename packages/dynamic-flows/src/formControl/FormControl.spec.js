@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import FormControl from './';
 import {
   Checkbox,
   DateInput,
@@ -12,6 +11,7 @@ import {
   TextareaWithDisplayFormat,
   Upload,
 } from '@transferwise/components';
+import FormControl from '.';
 
 describe('FormControl', () => {
   let props;
@@ -146,6 +146,32 @@ describe('FormControl', () => {
 
     testBlurHandler(() => {
       selectElem.simulate('blur');
+    });
+
+    it('should enable search when number of options exceeds predefined amount', () => {
+      const options = [];
+      for (let i = 0; i < 20; i += 1) {
+        options.push({ value: i, label: 'something' });
+      }
+      props = {
+        type: 'select',
+        options,
+      };
+      component = mount(<FormControl {...{ ...defaultProps, ...props }} />);
+      expect(component.find(Select).prop('search')).toEqual(true);
+    });
+
+    it('should disable search when number of options is less than predefined amount', () => {
+      const options = [];
+      for (let i = 0; i < 19; i += 1) {
+        options.push({ value: i, label: 'something' });
+      }
+      props = {
+        type: 'select',
+        options,
+      };
+      component = mount(<FormControl {...{ ...defaultProps, ...props }} />);
+      expect(component.find(Select).prop('search')).toEqual(false);
     });
 
     it('should allow search', () => {

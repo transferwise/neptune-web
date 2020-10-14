@@ -1,15 +1,16 @@
 {
   "command": {
     "publish": {
-      "allowBranch": "master",
+      "allowBranch": ["main", "beta"],
       "conventionalCommits": true,
       "verifyAccess": false,
       "ignoreChanges": [
         "**/*.md",
         "**/*.spec.js",
         "**/*.yml",
-        "**/*.docs.js",
-        "**/components/docs/**",
+        "**/*.story.js",
+        "packages/components/src/neptuneCssTest",
+        "packages/.storybook",
         "packages/docs"
       ]
     }

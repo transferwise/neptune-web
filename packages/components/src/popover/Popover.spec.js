@@ -19,7 +19,9 @@ describe('Popover', () => {
 
     component = shallow(
       <Popover content="Some content.">
-        <button id="trigger">Trigger</button>
+        <button type="button" id="trigger">
+          Trigger
+        </button>
       </Popover>,
     );
   });
@@ -96,7 +98,9 @@ describe('Popover', () => {
   it('toggles on click', () => {
     component = mount(
       <Popover content="Some content.">
-        <button id="trigger">Trigger</button>
+        <button type="button" id="trigger">
+          Trigger
+        </button>
       </Popover>,
     );
     expect(popoverIsOpen()).toBe(false);
@@ -121,7 +125,9 @@ describe('Popover', () => {
   it('ignores keyUp event on a button', () => {
     component = mount(
       <Popover content="Some content.">
-        <button id="trigger">Trigger</button>
+        <button type="button" id="trigger">
+          Trigger
+        </button>
       </Popover>,
     );
 
@@ -133,7 +139,9 @@ describe('Popover', () => {
   it('closes on outside click when open', () => {
     component = mount(
       <Popover content="Some content.">
-        <button id="trigger">Trigger</button>
+        <button type="button" id="trigger">
+          Trigger
+        </button>
       </Popover>,
     );
     clickPopoverTrigger();
@@ -146,7 +154,9 @@ describe('Popover', () => {
   it('does not have document listener when closed', () => {
     component = mount(
       <Popover content="Some content.">
-        <button id="trigger">Trigger</button>
+        <button type="button" id="trigger">
+          Trigger
+        </button>
       </Popover>,
     );
     jest.spyOn(component.instance(), 'closePopoverOnOutsideClick');
@@ -166,7 +176,9 @@ describe('Popover', () => {
   it('removes document listener when unmounted', () => {
     component = mount(
       <Popover content="Some content.">
-        <button id="trigger">Trigger</button>
+        <button type="button" id="trigger">
+          Trigger
+        </button>
       </Popover>,
     );
     jest.spyOn(component.instance(), 'closePopoverOnOutsideClick');
@@ -181,7 +193,9 @@ describe('Popover', () => {
   it('gets placement for popover element and preferred placement', () => {
     component = mount(
       <Popover content="Some content.">
-        <button id="trigger">Trigger</button>
+        <button type="button" id="trigger">
+          Trigger
+        </button>
       </Popover>,
     );
     component.setProps({ preferredPlacement: Popover.Placement.BOTTOM });
@@ -199,7 +213,9 @@ describe('Popover', () => {
     getPlacement.mockReturnValue(Popover.Placement.RIGHT_TOP);
     component = mount(
       <Popover content="Some content.">
-        <button id="trigger">Trigger</button>
+        <button type="button" id="trigger">
+          Trigger
+        </button>
       </Popover>,
     );
     component.setProps({ preferredPlacement: Popover.Placement.LEFT_TOP });

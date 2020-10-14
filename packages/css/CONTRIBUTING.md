@@ -1,6 +1,6 @@
 # Contributing
 
-Please start by reading the [general contribution guide](<(https://github.com/transferwise/neptune-web/blob/master/CONTRIBUTING.md)>) to get set up and familiarise yourself with our process. Then read on for specific information about working with the CSS.
+Please start by reading the [general contribution guide](<(https://github.com/transferwise/neptune-web/blob/main/CONTRIBUTING.md)>) to get set up and familiarise yourself with our process. Then read on for specific information about working with the CSS.
 
 # Get started
 
@@ -19,11 +19,11 @@ E.g. `link-callout.(css|less)`
 
 We officially support three bundles:
 
-- `neptune-core.less`
-- `neptune-tokens.less`
+- `neptune.css`
+- `neptune-core.css`
 - `neptune-addons.less`
 
-`neptune-legacy.bundle.less` is also in use by some teams, but we will soon be deprecating this.
+We also expose some less variables and props, which can be found in `dist/less` and `dist/props` respectively.
 
 # How are the bundles built?
 

@@ -1,6 +1,4 @@
-@import '@transferwise/neptune-css/src/less/variables/_transitions.less';
-@import '@transferwise/neptune-css/src/less/variables/_colors.less';
-@import '@transferwise/neptune-css/src/less/variables/_spacing.less';
+@import (reference) '@transferwise/neptune-css/src/variables/neptune-tokens.less';
 
 .switch {
   display: inline-flex;
@@ -9,27 +7,34 @@
   border-radius: 16px;
   padding: 2px;
   cursor: pointer;
-  border: 1px solid var(--brand-smoke);
+  border: 1px solid @color-base-smoke-mid;
+
   &--thumb {
     display: flex;
-    transition: var(--transition-transform);
+    transition: transform cubic-bezier(0, 0.94, 0.62, 1) 350ms;
+
     .tw-icon {
-      color: var(--brand-white);
+      color: var(--color-text-control);
     }
   }
+
   &--unchecked {
-    background: var(--brand-smoke);
+    background: @color-base-smoke-mid;
+
     .switch--thumb {
       transform: translateX(0);
     }
   }
+
   &--checked {
-    border: 1px solid var(--color-accent);
-    background: var(--color-accent);
+    border: 1px solid var(--color-control-accent);
+    background: var(--color-control-accent);
+
     .switch--thumb {
       transform: translateX(20px);
     }
   }
+
   input {
     opacity: 0;
     display: none;

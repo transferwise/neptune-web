@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/less-config",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Neptune Web shared gulp css config files and dependencies",
   "license": "Apache-2.0",
   "main": "./gulpfile.js",
@@ -19,7 +19,6 @@
     "cssnano": "^4.1.10",
     "gulp": "^4.0.2",
     "gulp-cached": "^1.1.1",
-    "gulp-changed": "^4.0.2",
     "gulp-cssimport": "^7.0.0",
     "gulp-dependents": "^1.2.3",
     "gulp-filter": "^6.0.0",

@@ -2,7 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import '@transferwise/neptune-css/dist/css/sliding-panel.css';
+import './SlidingPanel.css';
 
 export const EXIT_ANIMATION = 350;
 
@@ -12,8 +12,10 @@ const SlidingPanel = ({
   children,
   slidingPanelPositionFixed,
   showSlidingPanelBorder,
+  ...props
 }) => (
   <CSSTransition
+    {...props}
     in={open}
     // Wait for animation to finish before unmount.
     timeout={{ enter: 0, exit: EXIT_ANIMATION }}

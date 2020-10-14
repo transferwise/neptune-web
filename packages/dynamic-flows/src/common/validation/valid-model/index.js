@@ -7,7 +7,8 @@ import {
   isArray,
   isUndefined,
   isNull,
-} from '../type-validators';
+  isEmpty,
+} from '@transferwise/neptune-validation';
 
 function getValidModelParts(model, schema) {
   if (schema.allOf) {
@@ -72,6 +73,9 @@ function cleanModelWithArraySchema(model, schema) {
 
 function cleanModelWithStringSchema(model) {
   if (isString(model)) {
+    if (isEmpty(model)) {
+      return null;
+    }
     return model;
   }
   return null;

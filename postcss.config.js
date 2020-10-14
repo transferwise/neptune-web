@@ -9,14 +9,12 @@ module.exports = {
     'postcss-import': {},
     autoprefixer: {},
     '@arshaw/postcss-custom-properties': {
-      importFrom: [
-        '../../node_modules/@transferwise/neptune-tokens/colors.css',
-        '../../node_modules/@transferwise/neptune-tokens/spacing.css',
-      ],
+      importFrom: ['../../node_modules/@transferwise/neptune-tokens/tokens.css'],
       preserveWithFallback: true,
     },
     'postcss-custom-media': {
       stage: 1,
+      importFrom: '../../packages/css/src/props/custom-media.css',
     },
     cssnano: {
       preset: 'default',

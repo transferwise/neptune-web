@@ -1,4 +1,5 @@
-@import (reference) '../variables/_colors.less';
+@import (reference) '../../variables/neptune-tokens.less';
+@import (reference) '../variables/_typography.less';
 @import '../mixins/_text-emphasis.less';
 
 .text-xs-left {
@@ -146,15 +147,15 @@
 }
 
 .font-weight-bold {
-  font-weight: var(--font-weight-bold, 800) !important;
+  font-weight: @font-weight-bold !important;
 }
 
 .font-weight-semi-bold {
-  font-weight: var(--font-weight-semi-bold, 600) !important;
+  font-weight: @font-weight-semi-bold !important;
 }
 
 .font-weight-normal {
-  font-weight: var(--font-weight, 500) !important;
+  font-weight: @font-weight-base !important;
 }
 
 .font-italic {
@@ -218,52 +219,52 @@
 .display-2,
 .display-3,
 .display-4 {
-  font-weight: var(--font-weight-bold);
+  font-weight: @font-weight-bold;
 }
 
 .display-1 {
-  margin-bottom: var(--space-24);
+  margin-bottom: var(--size-24);
   font-size: 3.7333333333rem; // 56/15px
   line-height: 4.8rem; // 72/15px
 
   @media (--screen-md) {
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--size-8);
     font-size: 6.5rem; // 104px
     line-height: 8rem; // 128px
   }
 }
 
 .display-2 {
-  margin-bottom: var(--space-24);
+  margin-bottom: var(--size-24);
   font-size: 3.7333333333rem; // 56/15px
   line-height: 4.8rem; // 72/15px
 
   @media (--screen-md) {
-    margin-bottom: var(--space-16);
+    margin-bottom: var(--size-16);
     font-size: 5.5rem; // 88px
     line-height: 7rem; // 112px
   }
 }
 
 .display-3 {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--size-8);
   font-size: 2.8rem; // 42/15px
   line-height: 3.2rem; // 48/15px
 
   @media (--screen-md) {
-    margin-bottom: var(--space-24);
+    margin-bottom: var(--size-24);
     font-size: 4.5rem; // 72px
     line-height: 5.5rem; // 88px
   }
 }
 
 .display-4 {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--size-4);
   font-size: 1.8666666667rem; // 28/15px
   line-height: 2.1333333333rem; // 32/15px
 
   @media (--screen-md) {
-    margin-bottom: var(--space-24);
+    margin-bottom: var(--size-24);
     font-size: 3.5rem; // 56px
     line-height: 4.5rem; // 72px
   }

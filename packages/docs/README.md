@@ -8,4 +8,4 @@ This is the Neptune Web Documentation website. See the [live site](https://trans
 
 ## Contributing
 
-We love contribution! 🙏 Read [the guide](https://github.com/transferwise/neptune-web/blob/master/CONTRIBUTING.md) to get started.
+We love contribution! 🙏 Read [the guide](https://github.com/transferwise/neptune-web/blob/main/CONTRIBUTING.md) to get started.

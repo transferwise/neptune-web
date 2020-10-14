@@ -1,4 +1,4 @@
-import { isTypeValid } from './';
+import { isTypeValid } from '.';
 
 const pdfFile = {
   type: 'application/pdf',

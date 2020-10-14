@@ -72,6 +72,10 @@ const Sidebar = ({ router: { pathname }, section }) => {
     updateLinks(getLinks({ pathname, section }));
   }, [section]);
 
+  useEffect(() => {
+    updateLinks(getLinks({ pathname, section }));
+  }, [pathname]);
+
   const handleKeyDown = (event) => {
     // Allow user to type slash into liveEditor.
     if (event.target.className !== 'npm__react-simple-code-editor__textarea') {

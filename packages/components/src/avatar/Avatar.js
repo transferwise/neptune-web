@@ -6,22 +6,32 @@ import { Size, Theme } from '../common';
 
 import './Avatar.css';
 
-const Avatar = ({ size, type, children, outlined, theme, backgroundColor, className }) => (
+const Avatar = ({ backgroundColor, children, className, outlined, size, theme, type }) => (
   <div
-    className={classnames('avatar', className, `avatar--${size}`, `avatar--${type}`, {
-      'avatar--outlined': outlined,
-      'avatar--dark': theme === Theme.DARK,
-    })}
+    className={classnames(
+      'tw-avatar',
+      className,
+      `tw-avatar--${size}`,
+      `tw-avatar--${type}`,
+      `tw-avatar--${theme}`,
+      {
+        'tw-avatar--outlined': outlined,
+      },
+    )}
   >
-    <div className="avatar__content" style={{ backgroundColor: backgroundColor || undefined }}>
+    <div className="tw-avatar__content" style={{ backgroundColor: backgroundColor || undefined }}>
       {children}
     </div>
   </div>
 );
 
-Avatar.Size = Size;
-Avatar.Theme = Theme;
+Avatar.Size = {
+  SMALL: Size.SMALL,
+  MEDIUM: Size.MEDIUM,
+  LARGE: Size.LARGE,
+};
 
+Avatar.Theme = Theme;
 Avatar.Type = {
   THUMBNAIL: 'thumbnail',
   ICON: 'icon',
@@ -30,28 +40,28 @@ Avatar.Type = {
 };
 
 Avatar.propTypes = {
+  backgroundColor: Types.string,
+  children: Types.node,
+  className: Types.string,
+  outlined: Types.bool,
   size: Types.oneOf([Avatar.Size.SMALL, Avatar.Size.MEDIUM, Avatar.Size.LARGE]),
+  theme: Types.oneOf([Theme.LIGHT, Theme.DARK]),
   type: Types.oneOf([
     Avatar.Type.THUMBNAIL,
     Avatar.Type.ICON,
     Avatar.Type.EMOJI,
     Avatar.Type.INITIALS,
   ]),
-  children: Types.node,
-  outlined: Types.bool,
-  theme: Types.oneOf([Theme.LIGHT, Theme.DARK]),
-  backgroundColor: Types.string,
-  className: Types.string,
 };
 
 Avatar.defaultProps = {
-  type: Avatar.Type.THUMBNAIL,
-  size: Avatar.Size.MEDIUM,
-  outlined: false,
-  theme: Theme.LIGHT,
   backgroundColor: null,
-  className: null,
   children: null,
+  className: null,
+  outlined: false,
+  size: Avatar.Size.MEDIUM,
+  theme: Theme.LIGHT,
+  type: Avatar.Type.THUMBNAIL,
 };
 
 export default Avatar;

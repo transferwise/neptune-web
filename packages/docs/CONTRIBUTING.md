@@ -1,6 +1,6 @@
 # Contributing
 
-Please start by reading the [general contribution guide](https://github.com/transferwise/neptune-web/blob/master/CONTRIBUTING.md) to get set up and familiarise yourself with our process. Then read on for specific information about working with the Components.
+Please start by reading the [general contribution guide](https://github.com/transferwise/neptune-web/blob/main/CONTRIBUTING.md) to get set up and familiarise yourself with our process. Then read on for specific information about working with the Components.
 
 # Get started
 

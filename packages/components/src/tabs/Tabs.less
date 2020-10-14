@@ -1,7 +1,5 @@
-@import '@transferwise/neptune-tokens/colors-base.less';
-@import '@transferwise/neptune-css/src/less/variables/_custom-media.less';
-@import '@transferwise/neptune-css/src/less/variables/_transitions.less';
-@import '@transferwise/neptune-css/src/less/variables/_typography.less';
+@import (reference) '@transferwise/neptune-css/src/variables/neptune-tokens.less';
+@import (reference) '@transferwise/neptune-css/src/less/variables/_typography.less';
 
 @transition-timing-function: ease-in-out;
 @short-transition-duration: 0.15s;
@@ -15,10 +13,10 @@
     cursor: pointer;
     outline: none;
     text-align: center;
-    padding: var(--space-8);
+    padding: var(--size-8);
     margin-bottom: -@line-thickness;
     color: @color-base-navy-mid;
-    font-weight: var(--font-weight-semi-bold);
+    font-weight: @font-weight-semi-bold;
     transition: color @short-transition-duration @transition-timing-function;
 
     &--selected {
@@ -59,7 +57,7 @@
   &__line {
     height: @line-thickness;
     background-color: @color-base-blue-light;
-    transition: var(--transition-transform);
+    transition: transform cubic-bezier(0, 0.94, 0.62, 1) 350ms;
   }
 
   &__panel-container {
@@ -72,7 +70,7 @@
 
   &__panel {
     &--selected {
-      padding: var(--space-8);
+      padding: var(--size-8);
       border: 1px solid @color-base-navy-light;
     }
 

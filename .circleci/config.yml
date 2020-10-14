@@ -21,13 +21,9 @@ aliases:
       paths:
         - '*'
 
-  - &install
-    name: Install dependencies
-    command: yarn install --frozen-lockfile
-
-  - &build
-    name: Build packages
-    command: yarn build
+  - &setup
+    name: Install dependencies and build packages
+    command: yarn setup
 
   - &deploy-docs
     name: Deploy docs
@@ -36,6 +32,10 @@ aliases:
   - &lerna-publish
     name: Publish packages
     command: npx lerna publish -m "[skip ci] Release" --yes
+
+  - &lerna-publish-beta
+    name: Publish packages
+    command: npx lerna publish --canary --preid beta --dist-tag beta -m "[skip ci] Release" --yes
 
   - &conventional-commit-lint
     name: Conventional Commits check
@@ -68,21 +68,14 @@ aliases:
       - yarn-cache-
 
 jobs:
-  install:
+  setup:
     <<: *container
     steps:
       - checkout
       - restore-cache: *restore-yarn-cache
-      - run: *install
+      - run: *setup
       - *persist-workspace
       - save_cache: *save-yarn-cache
-
-  build:
-    <<: *container
-    steps:
-      - *attach-workspace
-      - run: *build
-      - *persist-workspace
 
   test:
     <<: *container
@@ -91,7 +84,7 @@ jobs:
       - run: *test
       - *persist-workspace
 
-  test-master:
+  test-main:
     <<: *container
     steps:
       - *attach-workspace
@@ -102,7 +95,6 @@ jobs:
     <<: *container
     steps:
       - *attach-workspace
-      - run: *build
       - run: *set-github-credentials
       - run: *deploy-docs
 
@@ -110,7 +102,6 @@ jobs:
     <<: *container
     steps:
       - *attach-workspace
-      - run: *build
       - run: *set-github-credentials
       - run: *deploy-docs
 
@@ -128,11 +119,19 @@ jobs:
       - run: *add-npm-release-token
       - run: *lerna-publish
 
+  publish-prerelease:
+    <<: *container
+    steps:
+      - *attach-workspace
+      - run: *set-github-credentials
+      - run: *add-npm-release-token
+      - run: *lerna-publish-beta
+
 workflows:
   version: 2
   build-deploy-release:
     jobs:
-      - install:
+      - setup:
           context: frontend-build
           filters:
             branches:
@@ -141,63 +140,65 @@ workflows:
       - conventional-commit-lint:
           context: frontend-build
           requires:
-            - install
+            - setup
           filters:
             branches:
               ignore: gh-pages
-
-      # Build has to run before test as yarn workspace symlink the dependencies.
-      - build:
-          context: frontend-build
-          filters:
-            branches:
-              ignore: gh-pages
-          requires:
-            - install
 
       # On current branch the flow should NOT be blocked if there is an error in commit message
       - test:
           context: frontend-build
           requires:
-            - build
+            - setup
           filters:
             branches:
               ignore:
                 - gh-pages
-                - master
+                - main
 
-      # On Master the flow should be blocked if there is an error in commit message
-      - test-master:
+      # On 'main' branch the flow should be blocked if there is an error in commit message
+      - test-main:
           context: frontend-build
           requires:
-            - build
+            - setup
             - conventional-commit-lint
           filters:
             branches:
-              only: master
+              only:
+                - main
+                - beta
 
       - deploy-docs-for-branch:
           context: frontend-build
           requires:
-            - build
+            - setup
           filters:
             branches:
               ignore:
                 - gh-pages
-                - master
+                - main
 
       - deploy-docs:
           context: frontend-build
           requires:
-            - test-master
+            - test-main
           filters:
             branches:
-              only: master
+              only:
+                - main
 
       - publish:
           context: frontend-publish
           requires:
-            - test-master
+            - test-main
           filters:
             branches:
-              only: master
+              only: main
+
+      - publish-prerelease:
+          context: frontend-publish
+          requires:
+            - test-main
+          filters:
+            branches:
+              only: beta

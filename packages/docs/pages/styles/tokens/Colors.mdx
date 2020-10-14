@@ -1,3 +1,5 @@
+import { DocLink } from '../../../utils/pageUtils';
+
 export function ColorToken(props) {
   return (
     <div className="d-flex align-items-center m-b-2">
@@ -15,18 +17,18 @@ export function ColorToken(props) {
   );
 }
 
-**Note:** To use these properties in your application, you need `neptune-tokens.css` or `neptune-core.css` on your page. Tokens are exposed on `:root`. Refer to [Installing CSS](/about/Setup#installing-css) on the Setup page to get started.
+Semantic colours as custom properties for you to use in your application.
+
+**Note:** If this is your first time using custom properties in your application, read <DocLink href="/about/Styles#tokens-custom-properties">our guide</DocLink> first to get set up.
 
 ## Semantic colors
 
 Neptune uses semantic colors, and distributes them as custom properties.
 
 <div className="m-b-4">
+  <h3>Basic colors</h3>
   <ColorToken token="--color-primary" textColor="#fff" />
   <ColorToken token="--color-secondary" textColor="#fff" />
-</div>
-
-<div className="m-b-4">
   <ColorToken token="--color-accent" textColor="#fff" />
   <ColorToken token="--color-positive" textColor="#fff" />
   <ColorToken token="--color-negative" textColor="#fff" />
@@ -34,9 +36,11 @@ Neptune uses semantic colors, and distributes them as custom properties.
 </div>
 
 <div className="m-b-4">
+  <h3>Text colors</h3>
   <ColorToken token="--color-text-primary" textColor="#fff" />
   <ColorToken token="--color-text-secondary" textColor="#fff" />
   <ColorToken token="--color-text-inactive" textColor="#fff" />
+  <ColorToken token="--color-text-control" textColor="#fff" />
   <ColorToken token="--color-text-important" textColor="#fff" />
   <ColorToken token="--color-text-link" textColor="#fff" />
   <ColorToken token="--color-text-link-hover" textColor="#fff" />
@@ -47,18 +51,37 @@ Neptune uses semantic colors, and distributes them as custom properties.
 </div>
 
 <div className="m-b-4">
+  <h3>Control colors</h3>
+  <p>
+    Control tokens should be used to paint interactive areas in components, such as buttons, the
+    background of a checkbox, or a switch.
+  </p>
   <ColorToken token="--color-control-accent" textColor="#fff" />
+  <ColorToken token="--color-control-accent-hover" textColor="#fff" />
+  <ColorToken token="--color-control-accent-active" textColor="#fff" />
   <ColorToken token="--color-control-positive" textColor="#fff" />
+  <ColorToken token="--color-control-positive-hover" textColor="#fff" />
+  <ColorToken token="--color-control-positive-active" textColor="#fff" />
   <ColorToken token="--color-control-negative" textColor="#fff" />
+  <ColorToken token="--color-control-negative-hover" textColor="#fff" />
+  <ColorToken token="--color-control-negative-active" textColor="#fff" />
   <ColorToken token="--color-control-warning" textColor="#fff" />
+  <ColorToken token="--color-control-warning-hover" textColor="#fff" />
+  <ColorToken token="--color-control-warning-active" textColor="#fff" />
 </div>
 
 <div className="m-b-4">
+  <h3>Border colors</h3>
+  <p>We use border tokens for component borders and individual lines.</p>
   <ColorToken token="--color-border-neutral" />
   <ColorToken token="--color-border-focus" textColor="#fff" />
+  <ColorToken token="--color-border-positive" textColor="#fff" />
+  <ColorToken token="--color-border-negative" textColor="#fff" />
+  <ColorToken token="--color-border-warning" textColor="#fff" />
 </div>
 
 <div className="m-b-4">
+  <h3>Background colors</h3>
   <ColorToken token="--color-background-screen" />
   <ColorToken token="--color-background-elevated" />
   <ColorToken token="--color-background-accent" />
@@ -66,10 +89,6 @@ Neptune uses semantic colors, and distributes them as custom properties.
   <ColorToken token="--color-background-negative" />
   <ColorToken token="--color-background-warning" />
 </div>
-
-## Brand colors
-
-Brand colors are available as `LESS` variables from `variables/_colors.less`.
 
 export const meta = {
   name: 'Colors',

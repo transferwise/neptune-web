@@ -1,25 +1,24 @@
-@import (reference) '../variables/_spacing.less';
+@import (reference) '../../variables/neptune-tokens.less';
 @import '../mixins/_spacing.less';
 
 // These variables are not exposed in _spacing because they shouldn't be used outside of this file.
-@space-64: 64px;
-@space-72: 72px;
-@space-96: 96px;
+@size-72: 72px;
+@size-96: 96px;
 
 .spacing(0, 0);
-.spacing(1, @space-8);
-.spacing(2, @space-16);
-.spacing(3, @space-24);
-.spacing(4, @space-32);
-.spacing(5, @space-40);
+.spacing(1, @size-8);
+.spacing(2, @size-16);
+.spacing(3, @size-24);
+.spacing(4, @size-32);
+.spacing(5, @size-40);
 
-.spacing-vertical(4, @space-32);
-.spacing-vertical(5, @space-40);
+.spacing-vertical(4, @size-32);
+.spacing-vertical(5, @size-40);
 
-.responsive-spacing(panel, @space-16, @space-24, @space-32);
-.responsive-spacing-vertical(section-1, @space-16, @space-24, @space-32);
-.responsive-spacing-vertical(section-2, @space-32, @space-48, @space-64);
-.responsive-spacing-vertical(section-3, @space-48, @space-72, @space-96);
+.responsive-spacing(panel, @size-16, @size-24, @size-32);
+.responsive-spacing-vertical(section-1, @size-16, @size-24, @size-32);
+.responsive-spacing-vertical(section-2, @size-32, @size-48, @size-64);
+.responsive-spacing-vertical(section-3, @size-48, @size-72, @size-96);
 
 .m-x-auto {
   margin-right: auto !important;
@@ -27,16 +26,16 @@
 }
 
 .section {
-  padding-top: @space-48;
-  padding-bottom: @space-48;
+  padding-top: @size-48;
+  padding-bottom: @size-48;
 
   @media (--screen-sm) {
-    padding-top: @space-72;
-    padding-bottom: @space-72;
+    padding-top: @size-72;
+    padding-bottom: @size-72;
   }
 
   @media (--screen-lg) {
-    padding-top: @space-96;
-    padding-bottom: @space-96;
+    padding-top: @size-96;
+    padding-bottom: @size-96;
   }
 }

@@ -36,7 +36,7 @@ const plugins = [
   resolve(),
   babel({
     runtimeHelpers: true,
-    exclude: ['node_modules/**', '../../node_modules/**'],
+    exclude: [/node_modules/],
   }),
   // Convert CJ into ES6
   commonjs({ sourcemap: false, namedExports }),

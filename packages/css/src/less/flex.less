@@ -1,26 +1,21 @@
-// TODO: remove bootstrap dependencies
-
-// variables
-@import (reference) 'bootstrap/less/variables.less';
-
 // mixins
 @import (reference) './mixins/_flex.less';
 
 .flex-properties(~'');
 
-@media (min-width: @screen-sm-min) {
+@media (--screen-sm) {
   .flex-properties(--sm);
 }
 
-@media (min-width: @screen-md-min) {
+@media (--screen-md) {
   .flex-properties(--md);
 }
 
-@media (min-width: @screen-lg-min) {
+@media (--screen-lg) {
   .flex-properties(--lg);
 }
 
-@media (min-width: @screen-xl-min) {
+@media (--screen-xl) {
   .flex-properties(--xl);
 }
 
@@ -29,42 +24,42 @@
   display: flex;
   flex: 1;
   flex-wrap: wrap;
-  margin-right: calc(-1 * calc(var(--spacer) * 2));
-  margin-left: calc(-1 * calc(var(--spacer) * 2));
+  margin-right: calc(-1 * var(--size-16));
+  margin-left: calc(-1 * var(--size-16));
 
-  @media all and (min-width: @screen-sm) {
-    margin-right: calc(-1 * calc(var(--spacer) * 3));
-    margin-left: calc(-1 * calc(var(--spacer) * 3));
+  @media (--screen-sm) {
+    margin-right: calc(-1 * var(--size-24));
+    margin-left: calc(-1 * var(--size-24));
   }
 
-  @media all and (min-width: @screen-md) {
-    margin-right: calc(-1 * calc(var(--spacer) * 4));
-    margin-left: calc(-1 * calc(var(--spacer) * 4));
+  @media (--screen-md) {
+    margin-right: calc(-1 * var(--size-32));
+    margin-left: calc(-1 * var(--size-32));
   }
 
-  @media all and (min-width: @screen-lg) {
-    margin-right: calc(-1 * calc(var(--spacer) * 6));
-    margin-left: calc(-1 * calc(var(--spacer) * 6));
+  @media (--screen-lg) {
+    margin-right: calc(-1 * var(--size-48));
+    margin-left: calc(-1 * var(--size-48));
   }
 }
 
 .flex__item {
-  padding-right: calc(var(--spacer) * 2);
-  padding-left: calc(var(--spacer) * 2);
+  padding-right: var(--size-16);
+  padding-left: var(--size-16);
 
-  @media all and (min-width: @screen-sm) {
-    padding-right: calc(var(--spacer) * 3);
-    padding-left: calc(var(--spacer) * 3);
+  @media (--screen-sm) {
+    padding-right: var(--size-24);
+    padding-left: var(--size-24);
   }
 
-  @media all and (min-width: @screen-md) {
-    padding-right: calc(var(--spacer) * 4);
-    padding-left: calc(var(--spacer) * 4);
+  @media (--screen-md) {
+    padding-right: var(--size-32);
+    padding-left: var(--size-32);
   }
 
-  @media all and (min-width: @screen-lg) {
-    padding-right: calc(var(--spacer) * 6);
-    padding-left: calc(var(--spacer) * 6);
+  @media (--screen-lg) {
+    padding-right: var(--size-48);
+    padding-left: var(--size-48);
   }
 }
 
@@ -73,7 +68,7 @@
   max-width: 50%;
 
   &--md {
-    @media all and (max-width: @screen-md) {
+    @media (--screen-sm-max) {
       flex: 0 0 50%;
       max-width: 50%;
     }
@@ -85,7 +80,7 @@
   max-width: 100%;
 
   &--md {
-    @media all and (max-width: @screen-md) {
+    @media (--screen-sm-max) {
       flex: 0 0 100%;
       max-width: 100%;
     }

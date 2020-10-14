@@ -1,10 +1,10 @@
 import React from 'react';
 import Types from 'prop-types';
 
-import BasicTypeSchema from '../basicTypeSchema/';
-import ObjectSchema from '../objectSchema/';
-import OneOfSchema from '../oneOfSchema/';
-import AllOfSchema from '../allOfSchema/';
+import BasicTypeSchema from '../basicTypeSchema';
+import ObjectSchema from '../objectSchema';
+import OneOfSchema from '../oneOfSchema';
+import AllOfSchema from '../allOfSchema';
 
 const basicTypes = ['string', 'number', 'integer', 'boolean'];
 
@@ -41,6 +41,7 @@ GenericSchemaForm.propTypes = {
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
   hideTitle: Types.bool,
+  disabled: Types.bool,
 };
 
 GenericSchemaForm.defaultProps = {
@@ -49,6 +50,7 @@ GenericSchemaForm.defaultProps = {
   locale: 'en-GB',
   translations: {},
   hideTitle: false,
+  disabled: false,
 };
 
 export default GenericSchemaForm;

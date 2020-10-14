@@ -7,6 +7,7 @@ import ControlFeedback from '../controlFeedback';
 
 import { getValidationFailures } from '../../common/validation/validation-failures';
 import { getValidModelParts } from '../../common/validation/valid-model';
+import DynamicAlert from '../../layout/alert';
 
 const BasicTypeSchema = (props) => {
   const onChange = (newModel) => {
@@ -79,7 +80,7 @@ const BasicTypeSchema = (props) => {
   const formGroupClasses = {
     'form-group': true,
     'has-error':
-      (!changed && props.errors) ||
+      ((props.submitted || !changed) && !!props.errors) ||
       ((props.submitted || (changed && blurred)) && validations.length),
     'has-info': focused && props.schema.help,
   };
@@ -88,31 +89,35 @@ const BasicTypeSchema = (props) => {
 
   return (
     !isHidden && (
-      <div className={classNames(formGroupClasses)}>
-        {showLabel && (
-          <label className="control-label" htmlFor={id}>
-            {props.schema.title}
-          </label>
-        )}
-        <SchemaFormControl
-          id={id}
-          schema={props.schema}
-          value={model}
-          locale={props.locale}
-          onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-        />
-        <ControlFeedback
-          changed={changed}
-          focused={focused}
-          blurred={blurred}
-          submitted={props.submitted}
-          errors={props.errors}
-          schema={props.schema}
-          validations={validations}
-        />
-      </div>
+      <>
+        <div className={classNames(formGroupClasses)}>
+          {showLabel && (
+            <label className="control-label" htmlFor={id}>
+              {props.schema.title}
+            </label>
+          )}
+          <SchemaFormControl
+            id={id}
+            schema={props.schema}
+            value={model}
+            locale={props.locale}
+            onChange={onChange}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            disabled={props.disabled}
+          />
+          <ControlFeedback
+            changed={changed}
+            focused={focused}
+            blurred={blurred}
+            submitted={props.submitted}
+            errors={props.errors}
+            schema={props.schema}
+            validations={validations}
+          />
+        </div>
+        {props.schema.alert && <DynamicAlert component={props.schema.alert} />}
+      </>
     )
   );
 };
@@ -120,6 +125,10 @@ const BasicTypeSchema = (props) => {
 BasicTypeSchema.propTypes = {
   schema: Types.shape({
     type: Types.oneOf(['string', 'number', 'integer', 'boolean']),
+    alert: Types.shape({
+      context: Types.string,
+      markdown: Types.string,
+    }),
     enum: Types.arrayOf(Types.oneOfType([Types.string, Types.number, Types.bool])),
     const: Types.oneOfType([Types.string, Types.number, Types.bool]),
     format: Types.string,
@@ -137,6 +146,7 @@ BasicTypeSchema.propTypes = {
   submitted: Types.bool.isRequired,
   required: Types.bool,
   locale: Types.string,
+  disabled: Types.bool,
 };
 
 BasicTypeSchema.defaultProps = {
@@ -145,6 +155,7 @@ BasicTypeSchema.defaultProps = {
   translations: {},
   required: false,
   locale: 'en-GB',
+  disabled: false,
 };
 
 export default BasicTypeSchema;

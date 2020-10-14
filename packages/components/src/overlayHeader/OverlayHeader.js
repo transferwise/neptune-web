@@ -5,9 +5,10 @@ import classNames from 'classnames';
 import AvatarWrapper from '../flowNavigation/avatarWrapper';
 import Logo from '../flowNavigation/logo';
 import Header from '../header';
+import CloseButton from '../common/CloseButton';
 import { Theme, ProfileType } from '../common';
 
-import '@transferwise/neptune-css/dist/css/flowNavigation.css';
+import '../flowNavigation/FlowNavigation.css';
 
 /**
  * OverlayHeader is a header component that provides a logo, avatar and close button, for use in overlay screens.
@@ -22,20 +23,7 @@ import '@transferwise/neptune-css/dist/css/flowNavigation.css';
 
 const OverlayHeader = ({ avatar, profileType, onClose, theme }) => {
   const closeButton = onClose && (
-    <button
-      className={classNames(
-        'tw-flow-navigation__close-button',
-        'btn-link',
-        'text-no-decoration',
-        'icon',
-        'icon-close',
-        'icon-lg',
-        'm-l-3',
-        'close-button-with-avatar',
-      )}
-      aria-label="close button"
-      onClick={onClose}
-    />
+    <CloseButton onClick={onClose} className="m-l-3 close-button-with-avatar" />
   );
   return (
     <Header
@@ -45,7 +33,7 @@ const OverlayHeader = ({ avatar, profileType, onClose, theme }) => {
         </div>
       }
       rightContent={
-        <div className="m-lg-t-1 tw-flow-navigation__avatar-with-close-button">
+        <div className="tw-flow-navigation__right-content m-lg-t-1">
           {avatar && <AvatarWrapper url={avatar.url} profileType={profileType} />}
           {closeButton}
         </div>

@@ -1,8 +1,8 @@
 import React from 'react';
-import NavigationOption from './NavigationOption';
 import { text, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import FastFlagIcon from '@transferwise/icons/react/fast-flag';
+import { FastFlag as FastFlagIcon } from '@transferwise/icons';
+import NavigationOption from './NavigationOption';
 
 export default {
   component: NavigationOption,

@@ -1,8 +1,7 @@
 import { DocLink } from '../../utils/pageUtils';
 import bundleSizes from '../../temp-bundle-sizes.js';
 import PrintBundleSize from '../../utils/bundleSize/printBundleSize';
-import CloseIcon from '@transferwise/icons/react/close';
-import TickIcon from '@transferwise/icons/react/tick';
+import { Cross as CrossIcon, Check as CheckIcon } from '@transferwise/icons';
 
 ## Installation
 
@@ -20,13 +19,16 @@ npm install @transferwise/components @transferwise/neptune-css
 npm install react react-dom prop-types currency-flags # peer dependencies
 ```
 
-**Note:** Peer dependencies are only necessary if you're using components. `currency-flags` is only required if you're using the <DocLink href="/components/MoneyInput">Money Input</DocLink> or if you're using flags on the <DocLink href="/components/Select">Select</DocLink>.
+**Note:** Peer dependencies are only necessary if you're using components. `currency-flags` is only required if you're using the <DocLink href="/components/inputs/MoneyInput">Money Input</DocLink> or if you're using flags on the <DocLink href="/components/inputs/Select">Select</DocLink>.
 
 ## Usage
 
 ```js
-// This line only needs to be imported once in your application
+// These CSS imports only need to be imported once in your application
 import '@transferwise/neptune-css/dist/css/neptune.css';
+
+// This is only necessary if you are using the UMD build
+import '@transferwise/components/build/main.css';
 
 import { Button } from '@transferwise/components';
 
@@ -43,54 +45,29 @@ For information on what classes are available, see the <DocLink href="/styles/co
 
 By default, apps come polyfilled. If you would like to use an unpolyfilled version because your app provides its own polyfills, see [Advanced Components Usage](#advanced-components-usage) below.
 
-### Tokens
+## Advanced CSS Usage
 
-Neptune CSS exposes a number of of useful CSS properties on `:root`. You can find information about what is available in the <DocLink href="/components/tokens">tokens documentation</DocLink>. If you're not familiar with using custom properties, have a read of the documentation on [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/--*).
+We expose three bundles for use. Our `neptune.css` bundle has everything. This is what you should use if using components. If you aren't using components, you have the option of just using `neptune-core.css`, or that and `neptune-addons.css`. <DocLink href="/styles/core/Typography">Core</DocLink> includes normalising and base styles such as typography. <DocLink href="/styles/addons/BackgroundUtilities">Addons</DocLink> provide a number of utility classes for display, spacing and more.
 
-```js
-import '@transferwise/neptune-css/dist/css/neptune.css';
-```
-
-```css
-.my-button {
-  background-color: var(--color-primary);
-  border-radius: var(--border-radius);
-  border: 1px solid transparent;
-
-  color: #fff;
-  cursor: pointer;
-
-  padding: var(--space-8);
-}
-```
-
-### Advanced CSS Usage
-
-We expose three bundles for use. Our `neptune.css` bundle has everything. This is what you should use if using components. If you aren't using components, you have the option of just using Core, or Core + Addons. Follow the links for full documentation on what is available in each bundle.
-
-**Note:** there are other files in the `dist` folder other than those mentioned here. Please do not rely on them, as we may remove them in future releases.
-
-<DocLink href="/styles/core">Core</DocLink> includes the tokens, as well as typography styles.
-
-<DocLink href="/styles/addons">Addons</DocLink> provide a number of utility classes for display, spacing
-and more.
+**Note:** there are other files in the `dist/css` folder other than those mentioned here. Please do not rely
+on them, as we may remove them in future releases.
 
 ```js
 // Everything
 import '@transferwise/neptune-css/dist/css/neptune.css';
 
-// Core (includes tokens)
+// Core
 import '@transferwise/neptune-css/dist/css/neptune-core.css';
 
 // Addons
 import '@transferwise/neptune-css/dist/css/neptune-addons.css';
 ```
 
-### Advanced Components Usage
+## Advanced Components Usage
 
 The components are exposed in two formats: UMD and ES. We also provide polyfilled and non-polyfilled versions.
 
-#### Which bundle should I use?
+### Which bundle should I use?
 
 UMD is a combination of CommonJS and AMD. It works in both browser and server environments (Node). ES uses the standardized ES module format.
 
@@ -121,54 +98,54 @@ Below is a comparison of the different bundle options, along with where you can 
     <tr>
       <th scope="row">UMD + polyfill</th>
       <td>
-        <TickIcon size="sm" />
+        <CheckIcon />
       </td>
       <td>
         <PrintBundleSize bundleSize={bundleSizes.umd['polyfill'][0]} /> (gzip:~
         <PrintBundleSize bundleSize={bundleSizes.umd['polyfill'][1]} />)
       </td>
       <td>
-        <CloseIcon size="sm" />
+        <CrossIcon />
       </td>
       <td>None.</td>
     </tr>
     <tr>
       <th scope="row">UMD</th>
       <td>
-        <CloseIcon size="sm" />
+        <CrossIcon />
       </td>
       <td>
         <PrintBundleSize bundleSize={bundleSizes.umd['no-polyfill'][0]} /> (gzip:~
         <PrintBundleSize bundleSize={bundleSizes.umd['no-polyfill'][1]} />)
       </td>
       <td>
-        <CloseIcon size="sm" />
+        <CrossIcon />
       </td>
       <td>You must override the default import and include your own polyfill.</td>
     </tr>
     <tr>
       <th scope="row">ES + polyfill</th>
       <td>
-        <TickIcon size="sm" />
+        <CheckIcon />
       </td>
       <td>
         <PrintBundleSize bundleSize={bundleSizes.es.polyfill} />
       </td>
       <td>
-        <TickIcon size="sm" />
+        <CheckIcon />
       </td>
       <td>None.</td>
     </tr>
     <tr>
       <th scope="row">ES</th>
       <td>
-        <CloseIcon size="sm" />
+        <CrossIcon />
       </td>
       <td>
         <PrintBundleSize bundleSize={bundleSizes.es['no-polyfill']} />
       </td>
       <td>
-        <TickIcon size="sm" />
+        <CheckIcon />
       </td>
       <td>You must override the default import and include your own polyfill.</td>
     </tr>

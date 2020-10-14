@@ -6,9 +6,6 @@ import {
   isInteger,
   isBoolean,
   isNull,
-} from '../type-validators';
-
-import {
   isValidRequired,
   isValidMinLength,
   isValidMaxLength,
@@ -17,7 +14,7 @@ import {
   isValidMinimum,
   isValidMinItems,
   isValidMaxItems,
-} from '../rule-validators';
+} from '@transferwise/neptune-validation';
 
 function getValidationFailures(value, schema, isRequired) {
   if (schema.enum) {

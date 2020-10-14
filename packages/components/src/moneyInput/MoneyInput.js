@@ -3,6 +3,7 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 import Select from '../select';
 import './MoneyInput.css';
+import { Size } from '../common/propsValues/size';
 
 import { formatAmount, parseAmount } from './currencyFormatting';
 
@@ -21,46 +22,17 @@ const formatAmountIfSet = (amount, currency, locale) => {
 };
 
 export default class MoneyInput extends Component {
-  static propTypes = {
-    id: Types.string,
-    currencies: Types.arrayOf(Currency).isRequired,
-    selectedCurrency: Currency.isRequired,
-    onCurrencyChange: Types.func,
-    placeholder: Types.number,
-    amount: Types.number,
-    size: Types.oneOf(['sm', 'md', 'lg']),
-    onAmountChange: Types.func,
-    locale: Types.string,
-    addon: Types.node,
-    searchPlaceholder: Types.string,
-    customActionLabel: Types.node,
-    onCustomAction: Types.func,
-    classNames: Types.objectOf(Types.string),
-  };
-
-  static defaultProps = {
-    id: null,
-    size: 'lg',
-    locale: 'en-GB',
-    addon: null,
-    searchPlaceholder: '',
-    onCurrencyChange: null,
-    placeholder: null,
-    amount: null,
-    onAmountChange: null,
-    customActionLabel: '',
-    onCustomAction: null,
-    classNames: {},
-  };
-
-  state = {
-    searchQuery: '',
-    formattedAmount: formatAmountIfSet(
-      this.props.amount,
-      this.props.selectedCurrency.currency,
-      this.props.locale,
-    ),
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchQuery: '',
+      formattedAmount: formatAmountIfSet(
+        props.amount,
+        props.selectedCurrency.currency,
+        props.locale,
+      ),
+    };
+  }
 
   // eslint-disable-next-line
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -298,3 +270,37 @@ function sortOptionsLabelsToFirst(options, query) {
     return 0;
   });
 }
+
+MoneyInput.Size = { SMALL: Size.SMALL, MEDIUM: Size.MEDIUM, LARGE: Size.LARGE };
+
+MoneyInput.propTypes = {
+  id: Types.string,
+  currencies: Types.arrayOf(Currency).isRequired,
+  selectedCurrency: Currency.isRequired,
+  onCurrencyChange: Types.func,
+  placeholder: Types.number,
+  amount: Types.number,
+  size: Types.oneOf([MoneyInput.Size.SMALL, MoneyInput.Size.MEDIUM, MoneyInput.Size.LARGE]),
+  onAmountChange: Types.func,
+  locale: Types.string,
+  addon: Types.node,
+  searchPlaceholder: Types.string,
+  customActionLabel: Types.node,
+  onCustomAction: Types.func,
+  classNames: Types.objectOf(Types.string),
+};
+
+MoneyInput.defaultProps = {
+  id: null,
+  size: MoneyInput.Size.LARGE,
+  locale: 'en-GB',
+  addon: null,
+  searchPlaceholder: '',
+  onCurrencyChange: null,
+  placeholder: null,
+  amount: null,
+  onAmountChange: null,
+  customActionLabel: '',
+  onCustomAction: null,
+  classNames: {},
+};

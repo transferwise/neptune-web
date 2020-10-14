@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import JsonSchemaForm from '.';
 
-import GenericSchema from './genericSchema/';
+import GenericSchema from './genericSchema';
 
 describe('Given a component for rendering a JSON schema form', () => {
   let component;

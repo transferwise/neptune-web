@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import FlowNavigation from './';
+import FlowNavigation from '.';
 import BackButton from './backButton';
 import Logo from './logo';
 
@@ -26,7 +26,7 @@ describe('Flow navigation', () => {
   }
 
   function closeButton() {
-    return component.find('.icon-close');
+    return component.find('.tw-close-button');
   }
 
   function backButton() {

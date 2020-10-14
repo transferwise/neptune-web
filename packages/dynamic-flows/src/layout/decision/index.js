@@ -1,10 +1,9 @@
 import React from 'react';
 import Types from 'prop-types';
 
+import { NavigationOption, NavigationOptionsList } from '@transferwise/components';
 import { marginModel, actionModel } from '../models';
 import { getMarginBottom } from '../utils';
-
-import { NavigationOption, NavigationOptionsList } from '@transferwise/components';
 
 import DynamicIcon from '../icon';
 

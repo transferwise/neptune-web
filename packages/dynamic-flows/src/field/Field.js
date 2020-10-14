@@ -35,130 +35,6 @@ const DefaultValidationMessages = {
 };
 
 export default class Field extends Component {
-  static propTypes = {
-    name: Types.string.isRequired,
-    value: Types.oneOfType([
-      Types.string,
-      Types.number,
-      Types.bool,
-      Types.object,
-      Types.shape({
-        value: Types.any.isRequired,
-        label: Types.node,
-        icon: Types.string,
-        currency: Types.string,
-        note: Types.node,
-        secondary: Types.node,
-      }),
-    ]),
-    field: Types.shape({
-      type: Types.oneOf(Object.values(FieldTypes)).isRequired,
-      label: Types.string.isRequired,
-      required: Types.bool,
-      disabled: Types.bool,
-      hidden: Types.bool,
-      readOnly: Types.bool,
-      autoComplete: Types.bool,
-      placeholder: Types.string,
-      searchPlaceholder: Types.string,
-      control: Types.oneOf(Object.values(FormControlType)),
-      format: Types.oneOf(Object.values(FieldFormats)),
-      displayPattern: Types.string,
-      help: Types.shape({
-        message: Types.string,
-        image: Types.string,
-        list: Types.arrayOf(Types.string),
-        do: Types.arrayOf(Types.string),
-        dont: Types.arrayOf(Types.string),
-      }),
-
-      pattern: Types.string,
-      minLength: Types.number,
-      maxLength: Types.number,
-
-      minimum: Types.number,
-      maximum: Types.number,
-
-      uploadProps: Types.shape({
-        animationDelay: Types.number,
-        csButtonText: Types.string,
-        csFailureText: Types.string,
-        csSuccessText: Types.string,
-        csTooLargeMessage: Types.string,
-        csWrongTypeMessage: Types.string,
-        httpOptions: Types.shape({}),
-        maxSize: Types.number,
-        onCancel: Types.func,
-        onFailure: Types.func,
-        onStart: Types.func,
-        onSuccess: Types.func,
-        psButtonText: Types.string,
-        psFailureText: Types.string,
-        psProcessingText: Types.string,
-        psSuccessText: Types.string,
-        size: Types.string,
-        usAccept: Types.oneOf(['*', 'image/*', 'application/*']),
-        usButtonText: Types.string,
-        usDisabled: Types.bool,
-        usDropMessage: Types.string,
-        usHelpImage: Types.string,
-        usLabel: Types.string,
-        usPlaceholder: Types.string,
-      }),
-
-      options: Types.arrayOf(
-        Types.shape({
-          id: Types.string,
-          label: Types.oneOfType([Types.node, Types.string]).isRequired,
-          value: Types.oneOfType([
-            Types.number,
-            Types.string,
-            Types.bool,
-            Types.object,
-            Types.instanceOf(Date),
-          ]).isRequired,
-          header: Types.node,
-          icon: Types.string,
-          currency: Types.string,
-          note: Types.node,
-          secondary: Types.oneOfType([Types.node, Types.string]),
-          separator: Types.bool,
-          disabled: Types.bool,
-        }),
-      ),
-      size: Types.oneOf(Object.values(Size)),
-
-      validationMessages: Types.shape({
-        required: Types.string,
-        pattern: Types.string,
-        minlength: Types.string,
-        maxlength: Types.string,
-        min: Types.string,
-        max: Types.string,
-      }),
-    }).isRequired,
-
-    locale: Types.string,
-    countryCode: Types.string,
-    onChange: Types.func.isRequired,
-    onFocus: Types.func,
-    onBlur: Types.func,
-    errorMessage: Types.string,
-    warningMessage: Types.string,
-    label: Types.string,
-  };
-
-  static defaultProps = {
-    locale: 'en-GB',
-    countryCode: null,
-    value: null,
-    errorMessage: null,
-    warningMessage: null,
-    onFocus: null,
-    onBlur: null,
-    label: null,
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -230,28 +106,33 @@ export default class Field extends Component {
           <div key={key}>{validationFailures[key]}</div>
         )),
       };
-    } else if (error && errorMessage) {
+    }
+    if (error && errorMessage) {
       return {
         type: Alert.Type.ERROR,
         content: <>{errorMessage}</>,
       };
-    } else if (warningMessage) {
+    }
+    if (warningMessage) {
       return {
         type: Alert.Type.WARNING,
         content: <>{warningMessage}</>,
       };
-    } else if (focused && field.help && field.help.message) {
+    }
+    if (focused && field.help && field.help.message) {
       return {
         type: Alert.Type.INFO,
         content: <>{field.help.message}</>,
       };
-    } else if (focused && field.help && field.help.list && field.help.list.length > 0) {
+    }
+    if (focused && field.help && field.help.list && field.help.list.length > 0) {
       return {
         type: Alert.Type.INFO,
         // eslint-disable-next-line react/no-array-index-key
         content: field.help.list.map((item, index) => <div key={index}>{item}</div>),
       };
-    } else if (
+    }
+    if (
       focused &&
       field.help &&
       field.help.do &&
@@ -267,7 +148,8 @@ export default class Field extends Component {
           </div>
         ),
       };
-    } else if (focused && control !== FormControlType.FILE && field.help && field.help.image) {
+    }
+    if (focused && control !== FormControlType.FILE && field.help && field.help.image) {
       return {
         type: Alert.Type.INFO,
         content: <img className="thumbnail m-y-2" src={`${field.help.image}`} alt={field.label} />,
@@ -323,3 +205,121 @@ export default class Field extends Component {
     );
   }
 }
+
+Field.propTypes = {
+  name: Types.string.isRequired,
+  value: Types.oneOfType([
+    Types.string,
+    Types.number,
+    Types.bool,
+    Types.object,
+    Types.shape({
+      value: Types.any.isRequired,
+      label: Types.node,
+      icon: Types.string,
+      currency: Types.string,
+      note: Types.node,
+      secondary: Types.node,
+    }),
+  ]),
+  field: Types.shape({
+    type: Types.oneOf(Object.values(FieldTypes)).isRequired,
+    label: Types.string.isRequired,
+    required: Types.bool,
+    disabled: Types.bool,
+    hidden: Types.bool,
+    readOnly: Types.bool,
+    autoComplete: Types.bool,
+    placeholder: Types.string,
+    searchPlaceholder: Types.string,
+    control: Types.oneOf(Object.values(FormControlType)),
+    format: Types.oneOf(Object.values(FieldFormats)),
+    displayPattern: Types.string,
+    help: Types.shape({
+      message: Types.string,
+      image: Types.string,
+      list: Types.arrayOf(Types.string),
+      do: Types.arrayOf(Types.string),
+      dont: Types.arrayOf(Types.string),
+    }),
+    pattern: Types.string,
+    minLength: Types.number,
+    maxLength: Types.number,
+    minimum: Types.number,
+    maximum: Types.number,
+    uploadProps: Types.shape({
+      animationDelay: Types.number,
+      csButtonText: Types.string,
+      csFailureText: Types.string,
+      csSuccessText: Types.string,
+      csTooLargeMessage: Types.string,
+      csWrongTypeMessage: Types.string,
+      httpOptions: Types.shape({}),
+      maxSize: Types.number,
+      onCancel: Types.func,
+      onFailure: Types.func,
+      onStart: Types.func,
+      onSuccess: Types.func,
+      psButtonText: Types.string,
+      psFailureText: Types.string,
+      psProcessingText: Types.string,
+      psSuccessText: Types.string,
+      size: Types.string,
+      usAccept: Types.oneOf(['*', 'image/*', 'application/*']),
+      usButtonText: Types.string,
+      usDisabled: Types.bool,
+      usDropMessage: Types.string,
+      usHelpImage: Types.string,
+      usLabel: Types.string,
+      usPlaceholder: Types.string,
+    }),
+    options: Types.arrayOf(
+      Types.shape({
+        id: Types.string,
+        label: Types.oneOfType([Types.node, Types.string]).isRequired,
+        value: Types.oneOfType([
+          Types.number,
+          Types.string,
+          Types.bool,
+          Types.object,
+          Types.instanceOf(Date),
+        ]).isRequired,
+        header: Types.node,
+        icon: Types.string,
+        currency: Types.string,
+        note: Types.node,
+        secondary: Types.oneOfType([Types.node, Types.string]),
+        separator: Types.bool,
+        disabled: Types.bool,
+      }),
+    ),
+    size: Types.oneOf(Object.values(Size)),
+    validationMessages: Types.shape({
+      required: Types.string,
+      pattern: Types.string,
+      minlength: Types.string,
+      maxlength: Types.string,
+      min: Types.string,
+      max: Types.string,
+    }),
+  }).isRequired,
+  locale: Types.string,
+  countryCode: Types.string,
+  onChange: Types.func.isRequired,
+  onFocus: Types.func,
+  onBlur: Types.func,
+  errorMessage: Types.string,
+  warningMessage: Types.string,
+  label: Types.string,
+};
+
+Field.defaultProps = {
+  locale: 'en-GB',
+  countryCode: null,
+  value: null,
+  errorMessage: null,
+  warningMessage: null,
+  onFocus: null,
+  onBlur: null,
+  label: null,
+};

@@ -1,4 +1,4 @@
-import { convertToLocalMidnight } from './';
+import { convertToLocalMidnight } from '.';
 
 describe('convertToObjectDate.spec', () => {
   it('returns utc date for valid ISO long format ', () => {

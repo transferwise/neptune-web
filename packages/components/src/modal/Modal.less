@@ -1,5 +1,3 @@
-@import '@transferwise/neptune-css/src/less/variables/_custom-media.less';
-
 .tw-modal {
   height: 100%;
   width: 100vw;
@@ -13,6 +11,7 @@
     transition: transform 0.3s ease-out;
     transform: translateY(-25%);
     height: 100%;
+    width: 100%;
   }
 
   &.in {
@@ -44,7 +43,7 @@
     }
 
     .tw-modal-header {
-      min-height: calc(var(--space-8) * 7);
+      min-height: calc(var(--size-8) * 7);
       justify-content: space-between;
       box-shadow: inset 0 -1px 0 0 rgb(226, 230, 232);
 
@@ -63,7 +62,7 @@
     .tw-modal-header,
     .tw-modal-footer,
     .tw-modal-body {
-      padding: var(--space-16);
+      padding: var(--size-16);
     }
 
     .tw-modal-title {
@@ -71,8 +70,8 @@
     }
 
     .tw-modal-footer {
-      padding-top: var(--space-12);
-      padding-bottom: var(--space-12);
+      padding-top: var(--size-12);
+      padding-bottom: var(--size-12);
       box-shadow: inset 0 1px 0 0 rgb(226, 230, 232);
 
       &.modal--withoutborder {
@@ -86,9 +85,22 @@
       }
 
       .tw-modal-header {
-        min-height: var(--space-32);
+        min-height: var(--size-32);
         padding-bottom: 4px !important;
       }
+    }
+  }
+}
+
+@media (--screen-xs-max) {
+  .tw-modal-dialog {
+    padding: var(--size-16);
+    max-width: calc(
+      576px - var(--size-40) * 2 + var(--size-16) * 2
+    ); // --size-40 provides a smooth transition to the next padding breakpoint
+
+    &.tw-modal-sm {
+      max-width: calc(300px + var(--size-16) * 2);
     }
   }
 }
@@ -101,26 +113,26 @@
 
     .tw-modal-content {
       .tw-modal-header {
-        min-height: calc(var(--space-8) * 8);
+        min-height: calc(var(--size-8) * 8);
       }
 
       .tw-modal-header,
       .tw-modal-footer,
       .tw-modal-body {
-        padding: var(--space-32) var(--space-24);
+        padding: var(--size-32) var(--size-24);
       }
     }
 
     .tw-modal-compact {
       .tw-modal-header {
-        min-height: calc(var(--space-8) * 7);
+        min-height: calc(var(--size-8) * 7);
       }
 
       .tw-modal-header,
       .tw-modal-footer,
       .tw-modal-body {
-        padding-top: var(--space-16);
-        padding-bottom: var(--space-16);
+        padding-top: var(--size-16);
+        padding-bottom: var(--size-16);
       }
     }
   }
@@ -136,7 +148,7 @@
 
 @media (--screen-sm) {
   .tw-modal {
-    padding: var(--space-40);
+    padding: var(--size-40);
 
     .tw-modal-dialog {
       .tw-modal-content {

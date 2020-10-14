@@ -4,7 +4,7 @@
 
 Neptune is the Design System built by and used at TransferWise. Neptune Web is the Neptune framework for Web. Neptune Web provides a way to build high quality, consistent user experiences on the web with ease.
 
-This is the Neptune Web React component library. It uses [Neptune CSS](https://github.com/transferwise/neptune-web/tree/master/packages/css).
+This is the Neptune Web React component library. It uses [Neptune CSS](https://github.com/transferwise/neptune-web/tree/main/packages/css).
 
 ## Usage
 
@@ -41,4 +41,4 @@ Visit the [docs](https://transferwise.github.io/neptune-web) for information on 
 
 ## Contributing
 
-We love contribution! 🙏 Read [the guide](https://github.com/transferwise/neptune-web/blob/master/packages/components/CONTRIBUTING.md) to get started.
+We love contribution! 🙏 Read [the guide](https://github.com/transferwise/neptune-web/blob/main/packages/components/CONTRIBUTING.md) to get started.

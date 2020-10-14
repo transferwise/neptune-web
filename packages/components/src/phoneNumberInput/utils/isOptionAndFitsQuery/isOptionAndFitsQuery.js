@@ -1,4 +1,4 @@
-import { isArray } from '../../../common/validation/type-validators';
+import { isArray } from '@transferwise/neptune-validation';
 /**
  * Checks if query is contained into object properties.
  * @param {object} option - the select option
@@ -17,9 +17,8 @@ export const startsWith = (property, query) => {
       property.filter((proper) => normalizeValue(proper).indexOf(normalizeValue(query)) === 0)
         .length > 0
     );
-  } else {
-    return normalizeValue(property).indexOf(normalizeValue(query)) === 0;
   }
+  return normalizeValue(property).indexOf(normalizeValue(query)) === 0;
 };
 
 const normalizeValue = (value) => value.toLowerCase().replace('+', '');

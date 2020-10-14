@@ -1,6 +1,4 @@
-@import '@transferwise/neptune-css/src/less/variables/_custom-media.less';
-@import '@transferwise/neptune-css/src/less/variables/_sizes.less';
-@import '@transferwise/neptune-css/src/less/variables/_zindex.less';
+@import (reference) '@transferwise/neptune-css/src/variables/legacy-variables.less';
 
 @animation-timing-function: ease-in-out;
 @animation-duration: 0.03s;
@@ -8,7 +6,7 @@
 .typeahead {
   &.open {
     .input-group {
-      z-index: var(--zindex-popover);
+      z-index: @zindex-popover;
     }
   }
 
@@ -76,18 +74,18 @@
 
     &.typeahead--has-value {
       .typeahead__input-container {
-        padding-left: var(--space-8);
+        padding-left: var(--size-8);
       }
 
       .typeahead__input {
-        margin-bottom: calc(-1 * var(--space-8) + 1px);
-        margin-left: var(--space-4);
+        margin-bottom: calc(-1 * var(--size-8) + 1px);
+        margin-left: var(--size-4);
       }
 
       .typeahead__input-wrapper {
         &::after {
           content: '';
-          height: calc(var(--space-8) - 1);
+          height: calc(var(--size-8) - 1);
           width: 100%;
         }
       }
@@ -116,7 +114,7 @@
   &-sm {
     &.typeahead--multiple {
       .typeahead__input-container {
-        min-height: var(--input-height-small);
+        min-height: @input-height-small;
       }
 
       .typeahead__input {
@@ -128,7 +126,7 @@
   &-md {
     &.typeahead--multiple {
       .typeahead__input-container {
-        min-height: var(--input-height-base);
+        min-height: @input-height-base;
       }
     }
   }
@@ -136,15 +134,15 @@
   &-lg {
     &.typeahead--multiple {
       .typeahead__input-container {
-        min-height: var(--input-height-large);
+        min-height: @input-height-large;
       }
 
       .typeahead__input {
-        padding-top: calc(var(--space-8) - 1);
+        padding-top: calc(var(--size-8) - 1);
       }
 
       .typeahead__input-wrapper {
-        padding-bottom: var(--space-8);
+        padding-bottom: var(--size-8);
         margin: 0;
 
         &::after {

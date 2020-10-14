@@ -9,27 +9,8 @@ export const ANIMATION_DURATION_IN_MS = 1500;
 
 class ProcessIndicator extends Component {
   static Status = Status;
-  static Size = Size;
-  static propTypes = {
-    status: Types.oneOf([
-      ProcessIndicator.Status.PROCESSING,
-      ProcessIndicator.Status.FAILED,
-      ProcessIndicator.Status.SUCCEEDED,
-      ProcessIndicator.Status.HIDDEN,
-    ]),
-    size: Types.oneOf([
-      ProcessIndicator.Size.EXTRA_SMALL,
-      ProcessIndicator.Size.SMALL,
-      ProcessIndicator.Size.EXTRA_LARGE,
-    ]),
-    onAnimationCompleted: Types.func,
-  };
 
-  static defaultProps = {
-    status: ProcessIndicator.Status.PROCESSING,
-    size: ProcessIndicator.Size.SMALL,
-    onAnimationCompleted: null,
-  };
+  static Size = Size;
 
   constructor(props) {
     super(props);
@@ -117,5 +98,25 @@ class ProcessIndicator extends Component {
     );
   }
 }
+ProcessIndicator.propTypes = {
+  status: Types.oneOf([
+    ProcessIndicator.Status.PROCESSING,
+    ProcessIndicator.Status.FAILED,
+    ProcessIndicator.Status.SUCCEEDED,
+    ProcessIndicator.Status.HIDDEN,
+  ]),
+  size: Types.oneOf([
+    ProcessIndicator.Size.EXTRA_SMALL,
+    ProcessIndicator.Size.SMALL,
+    ProcessIndicator.Size.EXTRA_LARGE,
+  ]),
+  onAnimationCompleted: Types.func,
+};
+
+ProcessIndicator.defaultProps = {
+  status: ProcessIndicator.Status.PROCESSING,
+  size: ProcessIndicator.Size.SMALL,
+  onAnimationCompleted: null,
+};
 
 export default ProcessIndicator;

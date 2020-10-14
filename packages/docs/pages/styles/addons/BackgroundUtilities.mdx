@@ -18,11 +18,13 @@ export function BackgroundToken(props) {
   );
 }
 
-**Note:** To use these classes in your application, you need `neptune-addons.css` on your page. Refer to [Installing CSS](/about/Setup#installing-css) on the Setup page to get started.
+import { DocLink } from '../../../utils/pageUtils';
+
+Background utility classes.
+
+**Note:** To use these classes in your application, you need `neptune.css` or `neptune-addons.css` on your page. Refer to <DocLink href="/about/Setup#installation">Installation</DocLink> on the Setup page to get started.
 
 ## Contextual backgrounds
-
-Neptune uses utility background classes.
 
 <div className="m-b-4">
   <BackgroundToken token="bg-default" />
@@ -33,10 +35,6 @@ Neptune uses utility background classes.
   <BackgroundToken token="bg-warning" />
 </div>
 
-<p>
-  <code>@color-base-white</code> for <code>bg-info</code> and <code>bg-primary</code> headings.
-</p>
-
 export const meta = {
-  name: 'Background Utilities',
+  name: 'Background utilities',
 };

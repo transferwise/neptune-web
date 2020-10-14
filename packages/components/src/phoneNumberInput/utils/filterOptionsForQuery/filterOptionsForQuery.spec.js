@@ -1,4 +1,4 @@
-import { filterOptionsForQuery } from '../';
+import { filterOptionsForQuery } from '..';
 
 const DATA_TEST = [
   {

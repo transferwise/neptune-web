@@ -2,7 +2,6 @@
 
 // variables
 @import (reference) 'bootstrap/less/variables.less';
-@import './variables/_spacing.less';
 
 // mixins
 @import (reference) 'bootstrap/less/mixins/circle.less';
@@ -13,25 +12,26 @@
 li,
 li > a {
   > .circle:first-child {
-    margin-right: var(--spacer);
+    margin-right: var(--size-8);
   }
 }
 
 .btn {
   .circle:first-child {
-    margin-right: var(--spacer);
+    margin-right: var(--size-8);
   }
 }
 
-li .circle {
-  display: inline-block;
-  vertical-align: bottom;
-}
-
-.btn .circle .icon,
-.dropdown-menu li .circle .icon {
+.btn .circle .tw-icon,
+.dropdown-menu li .circle .tw-icon {
   float: none;
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
+}
+
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,6 +1,6 @@
 # Contributing
 
-Please start by reading the [general contribution guide](https://github.com/transferwise/neptune-web/blob/master/CONTRIBUTING.md) to get set up and familiarise yourself with our process. Then read on for specific information about working with Dynamic Flows.
+Please start by reading the [general contribution guide](https://github.com/transferwise/neptune-web/blob/main/CONTRIBUTING.md) to get set up and familiarise yourself with our process. Then read on for specific information about working with Dynamic Flows.
 
 # Get started
 
@@ -37,7 +37,7 @@ As a reminder: to load the docs, run `docs` **from the root of the monorepo**, n
 
 # Accessibility
 
-Please familiarise yourself with our [accessibility guidelines](https://github.com/transferwise/neptune-web/blob/master/ACCESSIBILITY.md) and ensure your changes meet accessibility standards.
+Please familiarise yourself with our [accessibility guidelines](https://github.com/transferwise/neptune-web/blob/main/ACCESSIBILITY.md) and ensure your changes meet accessibility standards.
 
 # Testing
 
@@ -55,4 +55,4 @@ Before submitting a PR you should ensure:
 
 We document our components in the `docs` package. This documentation will be published to [our public docs site](https://transferwise.github.io/neptune-web/) when your changes are merged.
 
-To run the docs environment locally, run `docs` **from the root of the monorepo**. Please read [the guide](https://github.com/transferwise/neptune-web/blob/master/packages/docs/CONTRIBUTING.md) for further instructions on writing docs.
+To run the docs environment locally, run `docs` **from the root of the monorepo**. Please read [the guide](https://github.com/transferwise/neptune-web/blob/main/packages/docs/CONTRIBUTING.md) for further instructions on writing docs.

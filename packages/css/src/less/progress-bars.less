@@ -1,75 +1,70 @@
-@import './variables/_colors.less';
-@import './variables/_typography.less';
+@import (reference) '../variables/neptune-tokens.less';
+@import (reference) './variables/_typography.less';
+
+@progress-height: 2px;
+@progress-pip-size: 8px;
 
 .progress {
-  --progress-height: 2px;
-  --progress-height-lg: 32px;
-  --progress-bg: var(--brand-smoke-plus-10);
-  --progress-bar-color: var(--brand-white);
-  --progress-bar-bg: var(--brand-light-blue);
-  --progress-bar-primary-bg: var(--brand-navy);
-  --progress-bar-success-bg: var(--brand-green);
-  --progress-bar-warning-bg: var(--color-warning);
-  --progress-bar-danger-bg: var(--color-negative);
-  --progress-bar-info-bg: var(--brand-light-blue);
-  --progress-pip-size: 8px;
-
-  height: var(--progress-height);
-  margin-top: calc((var(--space-24) - var(--progress-height)) / 2);
-  margin-bottom: calc((var(--space-24) - var(--progress-height)) / 2);
-  background-color: var(--progress-bg);
-  border-radius: calc(var(--progress-height) / 2);
+  height: @progress-height;
+  margin-top: calc((var(--size-24) - @progress-height) / 2);
+  margin-bottom: calc((var(--size-24) - @progress-height) / 2);
+  background-color: @color-base-smoke-light;
+  border-radius: calc(@progress-height / 2);
 }
 
 .progress-bar {
   float: left;
   width: 0%;
   height: 100%;
-  font-size: var(--font-size);
+  font-size: @font-size-base;
   font-weight: bold;
-  color: var(--progress-bar-color);
+  color: @color-base-white;
   text-align: right;
-  background-color: var(--progress-bar-bg);
+  background-color: @color-base-blue-light;
   transition: width 0.6s ease;
+
+  @media (--screen-md) {
+    font-size: @font-size-base--desktop;
+  }
 
   &::after {
     content: '';
     float: right;
-    margin-top: calc(var(--progress-pip-size / 2) + 1);
-    margin-right: calc(var(--progress-pip-size / 2));
-    width: var(--progress-pip-size);
-    height: var(--progress-pip-size);
+    margin-top: @progress-pip-size / 2 + 1;
+    margin-right: @progress-pip-size / 2;
+    width: @progress-pip-size;
+    height: @progress-pip-size;
     background-color: inherit;
-    border-radius: (var(--progress-pip-size / 2));
+    border-radius: @progress-pip-size / 2;
   }
 
   &:first-child {
-    border-top-left-radius: calc(var(--progress-height / 2));
-    border-bottom-left-radius: calc(var(--progress-height / 2));
+    border-top-left-radius: @progress-height / 2;
+    border-bottom-left-radius: @progress-height / 2;
   }
 
   &:last-child {
-    border-top-right-radius: calc(var(--progress-height / 2));
-    border-bottom-right-radius: calc(var(--progress-height / 2));
+    border-top-right-radius: @progress-height / 2;
+    border-bottom-right-radius: @progress-height / 2;
   }
 }
 
 .progress-bar-primary {
-  background-color: var(--progress-bar-primary-bg);
+  background-color: @color-base-navy-light;
 }
 
 .progress-bar-success {
-  background-color: var(--progress-bar-success-bg);
+  background-color: @color-base-green-light;
 }
 
 .progress-bar-info {
-  background-color: var(--progress-bar-info-bg);
+  background-color: @color-base-blue-light;
 }
 
 .progress-bar-warning {
-  background-color: var(--progress-bar-warning-bg);
+  background-color: var(--color-warning);
 }
 
 .progress-bar-danger {
-  background-color: var(--progress-bar-danger-bg);
+  background-color: var(--color-negative);
 }

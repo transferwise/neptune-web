@@ -3,6 +3,402 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.20](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.19...@transferwise/neptune-docs@7.0.20) (2020-10-13)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.19](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.18...@transferwise/neptune-docs@7.0.19) (2020-10-13)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.18](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.17...@transferwise/neptune-docs@7.0.18) (2020-10-13)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.17](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.16...@transferwise/neptune-docs@7.0.17) (2020-10-12)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.16](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.15...@transferwise/neptune-docs@7.0.16) (2020-10-12)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.15](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.14...@transferwise/neptune-docs@7.0.15) (2020-10-07)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.14](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.13...@transferwise/neptune-docs@7.0.14) (2020-10-07)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.13](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.12...@transferwise/neptune-docs@7.0.13) (2020-09-30)
+
+
+### Bug Fixes
+
+* Neptune Sprint 29/30 - eslint fixes and a11y improvements ([#603](https://github.com/transferwise/neptune-web/issues/603)) ([ffcdba3](https://github.com/transferwise/neptune-web/commit/ffcdba3fff284fce8425892f15f824169f449941))
+
+
+
+
+
+## [7.0.12](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.11...@transferwise/neptune-docs@7.0.12) (2020-09-30)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.11](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.10...@transferwise/neptune-docs@7.0.11) (2020-09-30)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.10](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.9...@transferwise/neptune-docs@7.0.10) (2020-09-30)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.9](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.8...@transferwise/neptune-docs@7.0.9) (2020-09-29)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.8](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.7...@transferwise/neptune-docs@7.0.8) (2020-09-28)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.7](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.6...@transferwise/neptune-docs@7.0.7) (2020-09-24)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.5...@transferwise/neptune-docs@7.0.6) (2020-09-23)
+
+
+### Bug Fixes
+
+* **DefinitionList:** add padding for vertical layout ([#598](https://github.com/transferwise/neptune-web/issues/598)) ([ae76be1](https://github.com/transferwise/neptune-web/commit/ae76be1551016ff3ee1b66760bcc5f9c0db752e2))
+
+
+
+
+
+## [7.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.4...@transferwise/neptune-docs@7.0.5) (2020-09-22)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.3...@transferwise/neptune-docs@7.0.4) (2020-09-18)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.2...@transferwise/neptune-docs@7.0.3) (2020-09-17)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.1...@transferwise/neptune-docs@7.0.2) (2020-09-16)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [7.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.0.0...@transferwise/neptune-docs@7.0.1) (2020-09-16)
+
+
+### Bug Fixes
+
+* pagination component in lab ([#586](https://github.com/transferwise/neptune-web/issues/586)) ([9c943ac](https://github.com/transferwise/neptune-web/commit/9c943ac70adfed05722e2e3a5cc1d8baa064e36b))
+
+
+
+
+
+# [7.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.4.1...@transferwise/neptune-docs@7.0.0) (2020-09-16)
+
+
+* feat!: migration on icons v2 (#588) ([c502370](https://github.com/transferwise/neptune-web/commit/c502370ac25f338bafdf2742b8fedb503d1a32c6)), closes [#588](https://github.com/transferwise/neptune-web/issues/588)
+
+
+### BREAKING CHANGES
+
+* - Select component now expect 'icon' as a 'node' (React icon component) instead of 'string' (icon name)
+- Exposes CloseButton component
+- FormControl now accepts 'icon' as 'node'
+- deleted '.caret' CSS class
+- deleted 'iconfont.less'
+- stopped explicitly import 'glyphicons.less' and 'icons.less' from Bootstrap
+- renamed '.icon' on '.tw-icon' in styles
+
+
+
+
+
+## [6.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.4.0...@transferwise/neptune-docs@6.4.1) (2020-09-15)
+
+
+### Bug Fixes
+
+* revert icons ([#587](https://github.com/transferwise/neptune-web/issues/587)) ([dd5564a](https://github.com/transferwise/neptune-web/commit/dd5564a7fdf35ab9a9f90138ee7aaa3475fbdd17))
+
+
+
+
+
+# [6.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.3.2...@transferwise/neptune-docs@6.4.0) (2020-09-15)
+
+
+### Features
+
+* migration on new icons ([cd957c3](https://github.com/transferwise/neptune-web/commit/cd957c30765af2cf8a6c9edb9d983c5971751028))
+
+
+
+
+
+## [6.3.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.3.1...@transferwise/neptune-docs@6.3.2) (2020-09-15)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.3.0...@transferwise/neptune-docs@6.3.1) (2020-09-15)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [6.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.2.1...@transferwise/neptune-docs@6.3.0) (2020-09-15)
+
+
+### Features
+
+* add nudge component ([#573](https://github.com/transferwise/neptune-web/issues/573)) ([28cc421](https://github.com/transferwise/neptune-web/commit/28cc421ee1246ee68d5124061cc4694297e69dd0))
+
+
+
+
+
+## [6.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.2.0...@transferwise/neptune-docs@6.2.1) (2020-09-14)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [6.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.1.4...@transferwise/neptune-docs@6.2.0) (2020-09-11)
+
+
+### Features
+
+* badge component ([#419](https://github.com/transferwise/neptune-web/issues/419)) ([1732e0a](https://github.com/transferwise/neptune-web/commit/1732e0a61c43bd5e41ab436f7c91c472a58ee2a4))
+
+
+
+
+
+## [6.1.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.1.3...@transferwise/neptune-docs@6.1.4) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.1.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.1.2...@transferwise/neptune-docs@6.1.3) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.1.1...@transferwise/neptune-docs@6.1.2) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.1.0...@transferwise/neptune-docs@6.1.1) (2020-09-11)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [6.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.6...@transferwise/neptune-docs@6.1.0) (2020-09-10)
+
+
+### Features
+
+* InstructionsList now supports items of any renderable type ([#565](https://github.com/transferwise/neptune-web/issues/565)) ([db39f87](https://github.com/transferwise/neptune-web/commit/db39f87b0e2d2e9649cb50299aa31a4762f78cb8))
+
+
+
+
+
+## [6.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.5...@transferwise/neptune-docs@6.0.6) (2020-09-10)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.4...@transferwise/neptune-docs@6.0.5) (2020-09-09)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.3...@transferwise/neptune-docs@6.0.4) (2020-09-08)
+
+
+### Bug Fixes
+
+* add babel transpiled files ([#559](https://github.com/transferwise/neptune-web/issues/559)) ([bae211a](https://github.com/transferwise/neptune-web/commit/bae211a1d2f198d23d5d299077a613bf4fd4d9c9))
+
+
+
+
+
+## [6.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.2...@transferwise/neptune-docs@6.0.3) (2020-09-07)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.0...@transferwise/neptune-docs@6.0.2) (2020-09-07)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [6.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@6.0.0...@transferwise/neptune-docs@6.0.1) (2020-09-07)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [6.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.1.11...@transferwise/neptune-docs@6.0.0) (2020-09-04)
+
+
+* feat!: neptune sprint 28 - Neptune CSS refactor and lab (#547) ([d0ea9ef](https://github.com/transferwise/neptune-web/commit/d0ea9ef1272ab2aae57d7a6d470110ec74af1d25)), closes [#547](https://github.com/transferwise/neptune-web/issues/547)
+
+
+### BREAKING CHANGES
+
+* Moved some CSS out of the css package and into components, deprecated some custom props and changed the directory structure of variable and props files
+
+
+
+
+
+## [5.1.11](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.1.10...@transferwise/neptune-docs@5.1.11) (2020-09-01)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [5.1.10](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.1.9...@transferwise/neptune-docs@5.1.10) (2020-08-28)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [5.1.9](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.1.8...@transferwise/neptune-docs@5.1.9) (2020-08-28)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [5.1.8](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.1.6...@transferwise/neptune-docs@5.1.8) (2020-08-19)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
 ## [5.1.7](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@5.1.6...@transferwise/neptune-docs@5.1.7) (2020-08-18)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

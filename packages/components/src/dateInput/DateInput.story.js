@@ -1,7 +1,7 @@
 import React from 'react';
-import DateInput from './DateInput';
 import { action } from '@storybook/addon-actions';
 import { boolean, select, date, text } from '@storybook/addon-knobs';
+import DateInput from './DateInput';
 
 export default {
   component: DateInput,

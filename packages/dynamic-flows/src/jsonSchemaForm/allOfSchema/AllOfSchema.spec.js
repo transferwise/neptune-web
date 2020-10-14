@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import AllOfSchema from '.';
-import GenericSchema from '../genericSchema/';
+import GenericSchema from '../genericSchema';
 
 describe('Given a component from rendering allOf schemas', () => {
   let component;

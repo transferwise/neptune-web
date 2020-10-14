@@ -1,19 +1,8 @@
 import React, { PureComponent } from 'react';
 import Types from 'prop-types';
-import Upload from '@transferwise/icons/react/upload';
+import { Upload as UploadIcon } from '@transferwise/icons';
 
 class UploadImageStep extends PureComponent {
-  static propTypes = {
-    fileDropped: Types.func.isRequired,
-    isComplete: Types.bool.isRequired,
-    usAccept: Types.string.isRequired,
-    usButtonText: Types.string.isRequired,
-    usDisabled: Types.bool.isRequired,
-    usHelpImage: Types.node.isRequired,
-    usLabel: Types.string.isRequired,
-    usPlaceholder: Types.string.isRequired,
-  };
-
   constructor() {
     super();
     this.uploadInputRef = React.createRef();
@@ -33,7 +22,7 @@ class UploadImageStep extends PureComponent {
     if (!usHelpImage) {
       return (
         <div className="circle circle-sm circle-inverse p-t-1">
-          <Upload size="md" />
+          <UploadIcon size={24} />
         </div>
       );
     }
@@ -59,7 +48,7 @@ class UploadImageStep extends PureComponent {
               {usButtonText ? (
                 <span>{usButtonText}</span>
               ) : (
-                <span className="icon icon-upload m-r-0" />
+                <UploadIcon size={24} className="m-r-0" />
               )}
               <input
                 type="file"
@@ -78,5 +67,16 @@ class UploadImageStep extends PureComponent {
     );
   }
 }
+
+UploadImageStep.propTypes = {
+  fileDropped: Types.func.isRequired,
+  isComplete: Types.bool.isRequired,
+  usAccept: Types.string.isRequired,
+  usButtonText: Types.string.isRequired,
+  usDisabled: Types.bool.isRequired,
+  usHelpImage: Types.node.isRequired,
+  usLabel: Types.string.isRequired,
+  usPlaceholder: Types.string.isRequired,
+};
 
 export default UploadImageStep;

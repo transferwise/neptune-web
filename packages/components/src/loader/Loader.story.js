@@ -1,6 +1,6 @@
 import React from 'react';
-import Loader from './Loader';
 import { boolean, select } from '@storybook/addon-knobs';
+import Loader from './Loader';
 
 export default {
   component: Loader,

@@ -1,4 +1,4 @@
-import { isNull, isNumber, isUndefined } from '../../../common/validation/type-validators';
+import { isNull, isNumber, isUndefined } from '@transferwise/neptune-validation';
 
 function isSyntheticEvent(value) {
   return (

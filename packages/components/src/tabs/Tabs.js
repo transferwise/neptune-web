@@ -27,20 +27,26 @@ const enabledTabsFilter = (tab) => !tab.disabled;
 const SpacerWidth = { default: 0, xs: 8, sm: 16, md: 24, lg: 32 };
 
 class Tabs extends React.Component {
-  state = {
-    start: null,
-    translateX: 0,
-    translateFrom: 0,
-    translateTo: 0,
-    translateLineX: null,
-    isAnimating: false,
-    isSwiping: false,
-    isScrolling: false,
-    lastSwipeVelocity: 0,
-    fullWidthTabs: this.props.headerWidth === Tabs.HeaderWidth.BLOCK,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      start: null,
+      translateX: 0,
+      translateFrom: 0,
+      translateTo: 0,
+      translateLineX: null,
+      isAnimating: false,
+      isSwiping: false,
+      isScrolling: false,
+      lastSwipeVelocity: 0,
+      fullWidthTabs: props.headerWidth === Tabs.HeaderWidth.BLOCK,
+    };
+  }
+
   container = null;
+
   containerWidth = 0;
+
   tabRefs = [];
 
   get filteredTabsLength() {
@@ -223,15 +229,14 @@ class Tabs extends React.Component {
     if (swipedLeftToRight(start, end)) {
       if (currentSelected > MIN_INDEX && currentSelected !== nextSelected) {
         return Math.min(difference, this.containerWidth);
-      } else {
-        return elasticDrag;
       }
-    } else if (swipedRightToLeft(start, end)) {
+      return elasticDrag;
+    }
+    if (swipedRightToLeft(start, end)) {
       if (currentSelected < this.MAX_INDEX && currentSelected !== nextSelected) {
         return -Math.min(difference, this.containerWidth);
-      } else {
-        return -elasticDrag;
       }
+      return -elasticDrag;
     }
 
     return false;

@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import '@transferwise/neptune-css/dist/css/dimmer.css';
-import { addModalOpenBodyClass, removeModalOpenBodyClass } from '../common';
 import withNextPortal from '../withNextPortal/withNextPortal';
+
+import './Dimmer.css';
 
 import KEY_CODES from '../common/keyCodes';
 
@@ -22,7 +22,6 @@ const Dimmer = ({ open, children, onClose, fadeContentOnExit, fadeContentOnEnter
   };
 
   const handleOnEnter = () => {
-    addModalOpenBodyClass();
     document.addEventListener('keydown', handleOnKeyDown);
   };
 
@@ -41,7 +40,6 @@ const Dimmer = ({ open, children, onClose, fadeContentOnExit, fadeContentOnEnter
   };
 
   const cleanup = () => {
-    removeModalOpenBodyClass();
     document.removeEventListener('keydown', handleOnKeyDown);
   };
 

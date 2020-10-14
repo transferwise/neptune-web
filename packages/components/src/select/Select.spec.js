@@ -3,7 +3,8 @@ import { createPortal } from 'react-dom';
 import { mount } from 'enzyme';
 import doTimes from 'lodash.times';
 import Transition from 'react-transition-group/Transition';
-import Select from './';
+import { Profile } from '@transferwise/icons';
+import Select from '.';
 import Option from './option';
 import KEY_CODES from '../common/keyCodes';
 import { fakeEvent, fakeKeyDownEventForKey } from '../common/fakeEvents';
@@ -206,7 +207,7 @@ describe('Select', () => {
         value: 0,
         label: 'ayy',
         note: 'yo',
-        icon: 'red thing',
+        icon: <Profile />,
         currency: '',
         secondary: '',
         classNames: {},

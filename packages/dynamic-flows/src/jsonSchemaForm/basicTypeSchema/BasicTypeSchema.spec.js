@@ -1,10 +1,11 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import BasicTypeSchema from './';
+import BasicTypeSchema from '.';
 
 import SchemaFormControl from '../schemaFormControl';
 import ControlFeedback from '../controlFeedback';
+import DynamicAlert from '../../layout/alert';
 
 describe('Given a component for rendering basic type schemas', () => {
   let component;
@@ -68,6 +69,32 @@ describe('Given a component for rendering basic type schemas', () => {
       expect(feedbackComponent.prop('schema')).toBe(schema);
     });
 
+    describe('when alert exists', () => {
+      it('should render the alert', () => {
+        const alert = {
+          context: 'info',
+          markdown: 'some text',
+        };
+        const schemaWithAlert = { ...schema, alert };
+        component = shallow(<BasicTypeSchema {...props} schema={schemaWithAlert} />);
+
+        const alertComponent = component.find(DynamicAlert);
+
+        expect(alertComponent).toHaveLength(1);
+        expect(alertComponent.prop('component').context).toBe('info');
+        expect(alertComponent.prop('component').markdown).toBe('some text');
+      });
+    });
+
+    describe('when alert does not exist', () => {
+      it('should not render alert', () => {
+        component = shallow(<BasicTypeSchema {...props} />);
+        const alertComponent = component.find(DynamicAlert);
+
+        expect(alertComponent).toHaveLength(0);
+      });
+    });
+
     describe('when control is focused', () => {
       beforeEach(() => {
         formControl.simulate('focus');
@@ -111,6 +138,25 @@ describe('Given a component for rendering basic type schemas', () => {
       it('should tell the ControlFeedback it has been changed', () => {
         expect(feedbackComponent.prop('changed')).toEqual(true);
       });
+
+      it('should broadcast null value for optional field when valid input changes to empty string', () => {
+        model = 'foo';
+        const isRequired = false;
+        props = { schema, model, errors, isRequired, onChange, submitted, translations };
+        component = shallow(<BasicTypeSchema {...props} />);
+
+        formControl = component.find(SchemaFormControl);
+        feedbackComponent = component.find(ControlFeedback);
+
+        // valid non null value
+        formControl.simulate('change', 'barbar');
+        expect(onChange).toHaveBeenCalledWith('barbar', schema);
+
+        // empty value but is still valid
+        formControl.simulate('change', '');
+        expect(onChange).toHaveBeenCalledWith(null, schema);
+        expect(feedbackComponent.prop('validations').length).toEqual(0);
+      });
     });
 
     describe('when control triggers onChange with an invalid value', () => {
@@ -148,8 +194,8 @@ describe('Given a component for rendering basic type schemas', () => {
         expect(formControl.prop('value')).not.toEqual(schema.default);
       });
 
-      it('should pass empty value to the form control', () => {
-        expect(formControl.prop('value')).toBe('');
+      it('should pass null value to the form control', () => {
+        expect(formControl.prop('value')).toBe(null);
       });
     });
   });

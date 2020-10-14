@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProcessingStep from './';
+import ProcessingStep from '.';
 import ProcessIndicator from '../../../processIndicator';
 
 describe('ProcessingStep', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
-import OverlayHeader from './OverlayHeader';
 import { select, object } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import OverlayHeader from './OverlayHeader';
 
 export default {
   component: OverlayHeader,

@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
 import DimmerAppendingToBody, { Dimmer, EXIT_ANIMATION } from './Dimmer';
-import { addModalOpenBodyClass, removeModalOpenBodyClass } from '../common';
 
 const handleOnEnter = () => jest.fn();
 const handleOnClose = () => jest.fn();
@@ -103,13 +102,6 @@ describe('Dimmer', () => {
     });
   });
 
-  it('removes modal-open class upon removal', () => {
-    component = mount(<Dimmer {...props} />);
-    expect(removeModalOpenBodyClass).not.toHaveBeenCalled();
-    component.unmount();
-    expect(removeModalOpenBodyClass).toHaveBeenCalled();
-  });
-
   describe('behaviourally', () => {
     let originalAddEventListener;
     let documentEventCallbacks;
@@ -140,19 +132,6 @@ describe('Dimmer', () => {
 
       pressEscapeOnComponent();
       expect(props.onClose).toBeCalled();
-    });
-
-    it('executes dimmer open operations on enter', () => {
-      expect(addModalOpenBodyClass).not.toBeCalled();
-      component.find('CSSTransition').simulate('enter');
-      expect(addModalOpenBodyClass).toBeCalled();
-    });
-
-    it('executes dimmer close operations on exit', () => {
-      expect(removeModalOpenBodyClass).not.toBeCalled();
-      component.find('CSSTransition').simulate('exited');
-
-      expect(removeModalOpenBodyClass).toBeCalled();
     });
 
     function clickDimmer(event) {

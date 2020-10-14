@@ -1,84 +1,24 @@
-/* Level 4 */
-
-@import './variables/_colors.less';
-
-.chevron-container {
-  --animation-duration: 300ms;
-  --small-stroke-width: 3px;
-  --medium-stroke-width: 4px;
-  --large-stroke-width: 5px;
-}
-
-.chevron-container line {
-  fill: none;
-  stroke: var(--brand-light-blue);
-  stroke-width: var(--medium-stroke-width);
-  stroke-linecap: square;
-}
-
-.chevron-container {
-  &.small line {
-    stroke-width: var(--small-stroke-width);
-  }
-
-  &.large line {
-    stroke-width: var(--large-stroke-width);
-  }
-}
-
-.chevron-container {
-  transform-origin: 50% 50%;
-
-  &.animate,
-  &.animate line {
-    transition: transform var(--animation-duration);
-  }
-
-  .chevron-line-one {
-    transform-origin: 50% 65%;
-  }
-
-  .chevron-line-two {
-    transform-origin: 50% 65%;
-  }
-
-  &.flip .chevron-line-one {
-    transform: rotate(-90deg);
-  }
-
-  &.flip .chevron-line-two {
-    transform: rotate(90deg);
-  }
+.tw-chevron {
+  display: inline-block;
+  transition: transform cubic-bezier(0, 0.94, 0.62, 1) 350ms;
 
   &.top {
-    transform: rotate(-180deg) translateY(0%);
-  }
-
-  &.top.flip {
-    transform: rotate(-180deg) translateY(-30%);
+    transform: rotate(0deg);
   }
 
   &.right {
-    transform: rotate(-90deg) translateY(0%);
-  }
-
-  &.right.flip {
-    transform: rotate(-90deg) translateY(-30%);
+    transform: rotate(+90deg);
   }
 
   &.bottom {
-    transform: rotate(0deg) translateY(0%);
-  }
-
-  &.bottom.flip {
-    transform: rotate(0deg) translateY(-30%);
+    transform: rotate(180deg);
   }
 
   &.left {
-    transform: rotate(90deg) translateY(0%);
+    transform: rotate(270deg);
   }
+}
 
-  &.left.flip {
-    transform: rotate(90deg) translateY(-30%);
-  }
+.chevron-color {
+  color: var(--color-control-accent);
 }
