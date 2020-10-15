@@ -54,4 +54,9 @@ addParameters({
   },
 });
 
-configure(require.context('../src', true, /\.story\.js$/), module);
+const requires = [require.context('../src', true, /\.story\.js$/)];
+if (process.env.CI) {
+  requires.push(require.context('../test', true, /\.story\.js$/));
+}
+
+configure(requires, module);
