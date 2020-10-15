@@ -325,7 +325,9 @@ Upload.propTypes = {
     url: Types.string.isRequired,
     method: Types.oneOf(['POST', 'PUT', 'PATCH']),
     fileInputName: Types.string,
+    // eslint-disable-next-line react/forbid-prop-types
     data: Types.object,
+    // eslint-disable-next-line react/forbid-prop-types
     headers: Types.object,
   }),
   maxSize: Types.number,

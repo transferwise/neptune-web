@@ -24,7 +24,9 @@ const DynamicForm = (props) => {
 DynamicForm.propTypes = {
   onModelChange: Types.func.isRequired,
   component: Types.shape({
+    // eslint-disable-next-line react/forbid-prop-types
     schema: Types.object,
+    // eslint-disable-next-line react/forbid-prop-types
     model: Types.object,
     submitted: false,
     margin: marginModel,
