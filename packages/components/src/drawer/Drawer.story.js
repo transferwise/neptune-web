@@ -10,8 +10,8 @@ export default {
 };
 
 export const basic = () => {
-  const open = boolean('open', false);
-  const position = select('position', ['left', 'right'], 'right');
+  const open = boolean('open', true);
+  const position = select('position', Object.values(Drawer.Position), Drawer.Position.RIGHT);
 
   return (
     <Drawer
@@ -25,7 +25,8 @@ export const basic = () => {
       }
       headerTitle="A title"
     >
-      <input type="text" className="form-control" />
+      <label htmlFor="id">Label</label>
+      <input type="text" className="form-control" id="id" />
       <p className="m-t-3">Cat ipsum dolor sit amet, purr when being pet.</p>
     </Drawer>
   );

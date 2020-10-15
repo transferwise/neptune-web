@@ -6,10 +6,11 @@ import SlidingPanel from '../slidingPanel';
 import Dimmer from '../dimmer';
 import { addNoScrollBodyClass, removeNoScrollBodyClass } from '../common';
 import './Drawer.css';
+import { Position } from '../common/propsValues/position';
 
 import KEY_CODES from '../common/keyCodes';
 
-const Drawer = ({ open, position, onClose, children, headerTitle, footerContent }) => {
+const Drawer = ({ children, footerContent, headerTitle, onClose, open, position }) => {
   const handleOnKeyDown = (event) => {
     if (
       event.keyCode === KEY_CODES.ESCAPE ||
@@ -52,6 +53,7 @@ const Drawer = ({ open, position, onClose, children, headerTitle, footerContent 
               tabIndex={0}
               onClick={onClose}
               onKeyDown={handleOnKeyDown}
+              aria-label="Close"
             >
               <CrossIcon size={24} />
             </div>
@@ -75,22 +77,29 @@ const Drawer = ({ open, position, onClose, children, headerTitle, footerContent 
   );
 };
 
+Drawer.Position = { LEFT: Position.LEFT, RIGHT: Position.RIGHT };
+
 Drawer.propTypes = {
-  open: Types.bool,
-  position: Types.oneOf(['left', 'right']),
+  /** The content to appear in the drawer body. */
   children: Types.node,
-  onClose: Types.func,
-  headerTitle: Types.string,
+  /** The content to appear in the drawer footer. */
   footerContent: Types.node,
+  /** The content to appear in the drawer header. */
+  headerTitle: Types.string,
+  /** The action to perform on close click. */
+  onClose: Types.func.isRequired,
+  /** The status of Drawer either open or not. */
+  open: Types.bool,
+  /** The placement of Drawer on the screen either left or right. */
+  position: Types.oneOf([Drawer.Position.LEFT, Drawer.Position.RIGHT]),
 };
 
 Drawer.defaultProps = {
-  open: false,
   children: null,
-  position: 'right',
-  onClose: null,
-  headerTitle: null,
   footerContent: null,
+  headerTitle: null,
+  open: false,
+  position: Drawer.Position.RIGHT,
 };
 
 export default Drawer;
