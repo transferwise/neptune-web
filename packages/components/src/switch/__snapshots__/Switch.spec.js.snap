@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Switch renders component when checked 1`] = `
-<DocumentFragment>
+<div>
   <span
     aria-checked="true"
+    aria-label="a label"
     class="switch switch--checked a-class-name"
     id="id"
-    role="checkbox"
+    role="switch"
     tabindex="0"
   >
     <span
@@ -36,16 +37,17 @@ exports[`Switch renders component when checked 1`] = `
       type="checkbox"
     />
   </span>
-</DocumentFragment>
+</div>
 `;
 
 exports[`Switch renders component when unchecked 1`] = `
-<DocumentFragment>
+<div>
   <span
     aria-checked="false"
+    aria-label="a label"
     class="switch switch--unchecked a-class-name"
     id="id"
-    role="checkbox"
+    role="switch"
     tabindex="0"
   >
     <span
@@ -74,5 +76,5 @@ exports[`Switch renders component when unchecked 1`] = `
       type="checkbox"
     />
   </span>
-</DocumentFragment>
+</div>
 `;
