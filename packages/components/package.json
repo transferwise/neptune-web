@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "30.1.0",
+  "version": "30.1.1",
   "description": "TransferWise styleguide components in react",
   "license": "Apache-2.0",
   "main": "./build/umd/polyfill/main.js",
@@ -76,7 +76,7 @@
     "@babel/runtime": "^7.9.2",
     "@transferwise/formatting": "^2.1.0",
     "@transferwise/icons": "^2.4.0",
-    "@transferwise/neptune-css": "^4.0.3",
+    "@transferwise/neptune-css": "^4.0.4",
     "@transferwise/neptune-validation": "^2.0.5",
     "classnames": "^2.2.6",
     "commonmark": "0.29.1",

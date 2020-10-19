@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.3...@transferwise/neptune-css@4.0.4) (2020-10-19)
+
+
+### Bug Fixes
+
+* chrome inputs font crop ([#612](https://github.com/transferwise/neptune-web/issues/612)) ([bedcc8f](https://github.com/transferwise/neptune-web/commit/bedcc8fc7662d352496d4abe4cc74454dc03b4c1))
+
+
+
+
+
 ## [4.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.2...@transferwise/neptune-css@4.0.3) (2020-09-30)
 
 

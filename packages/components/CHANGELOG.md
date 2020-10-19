@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.1.0...@transferwise/components@30.1.1) (2020-10-19)
+
+
+### Bug Fixes
+
+* chrome inputs font crop ([#612](https://github.com/transferwise/neptune-web/issues/612)) ([bedcc8f](https://github.com/transferwise/neptune-web/commit/bedcc8fc7662d352496d4abe4cc74454dc03b4c1))
+
+
+
+
+
 # [30.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.13...@transferwise/components@30.1.0) (2020-10-15)
 
 
