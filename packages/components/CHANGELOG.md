@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.1.1...@transferwise/components@30.1.2) (2020-10-19)
+
+
+### Bug Fixes
+
+* enforce upload validation to handle empty mime type ([#610](https://github.com/transferwise/neptune-web/issues/610)) ([20d20b5](https://github.com/transferwise/neptune-web/commit/20d20b5d020cafc8d483098fd2e10c2f45c30951))
+
+
+
+
+
 ## [30.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.1.0...@transferwise/components@30.1.1) (2020-10-19)
 
 
