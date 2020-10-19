@@ -24,7 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
   const ReactDOM = require('react-dom');
   const axe = require('react-axe');
   const context = {
-    include: [['#story-root']],
+    include: [['#root']],
   };
   axe(React, ReactDOM, 1000, undefined, context);
 }
