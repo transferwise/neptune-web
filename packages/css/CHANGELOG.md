@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.4...@transferwise/neptune-css@4.0.5) (2020-10-20)
+
+
+### Bug Fixes
+
+* add font-display to fonts ([#640](https://github.com/transferwise/neptune-web/issues/640)) ([cf4c27d](https://github.com/transferwise/neptune-web/commit/cf4c27d9faade1d2cb7c3531d6d31883cb952ae4))
+
+
+
+
+
 ## [4.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.3...@transferwise/neptune-css@4.0.4) (2020-10-19)
 
 
