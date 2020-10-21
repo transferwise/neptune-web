@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.1.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.1.3...@transferwise/components@30.1.4) (2020-10-21)
+
+
+### Bug Fixes
+
+* invalid arguments supplied to oneOf ([#641](https://github.com/transferwise/neptune-web/issues/641)) ([141676a](https://github.com/transferwise/neptune-web/commit/141676a4100e63134835f96df1d79bf35817b242))
+
+
+
+
+
 ## [30.1.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.1.2...@transferwise/components@30.1.3) (2020-10-20)
 
 **Note:** Version bump only for package @transferwise/components
