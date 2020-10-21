@@ -13,7 +13,8 @@
         "**/neptuneCssTest/**",
         "**/test/**",
         "packages/docs",
-        "lerna.json"
+        "lerna.json",
+        "**/CODEOWNERS"
       ]
     }
   },
