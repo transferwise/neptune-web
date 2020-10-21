@@ -68,16 +68,36 @@ class DateLookup extends PureComponent {
 
   element = React.createRef();
 
+  dropdown = React.createRef();
+
   open = () => {
     const { onFocus } = this.props;
     this.setState({ open: true, mode: MODE.DAY }, () => {
+      this.adjustIfOffscreen();
       this.focusOn('.tw-date-lookup-header-current');
     });
     if (onFocus) {
       onFocus();
     }
 
+    window.addEventListener('resize', this.adjustIfOffscreen);
     document.addEventListener('click', this.handleOutsideClick, true);
+  };
+
+  adjustIfOffscreen = () => {
+    if (this.open && this.dropdown && this.dropdown.current) {
+      const dropdown = this.dropdown.current;
+      const bounding = dropdown.getBoundingClientRect();
+
+      const rightSideOffscreen =
+        bounding.right > (window.innerWidth || document.documentElement.clientWidth);
+      const leftSideOffscreen = bounding.left < 0;
+
+      if (rightSideOffscreen) {
+        // If both sides are offscreen, 🤷
+        dropdown.classList[leftSideOffscreen ? 'remove' : 'add']('dropdown-menu-xs-right');
+      }
+    }
   };
 
   close = () => {
@@ -86,6 +106,7 @@ class DateLookup extends PureComponent {
     if (onBlur) {
       onBlur();
     }
+    window.removeEventListener('resize', this.adjustIfOffscreen);
     document.removeEventListener('click', this.handleOutsideClick, true);
   };
 
@@ -208,7 +229,7 @@ class DateLookup extends PureComponent {
           onClick={this.open}
         />
         {open && (
-          <div className="dropdown-menu">
+          <div ref={this.dropdown} className="dropdown-menu tw-date-lookup-menu">
             {mode === MODE.DAY && (
               <DayCalendar
                 {...{ selectedDate, min, max, viewMonth, viewYear, locale, monthFormat }}

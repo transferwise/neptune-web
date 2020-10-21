@@ -96,4 +96,65 @@ describe('DateLookup (events)', () => {
     expect(props.onChange).toHaveBeenCalledWith(d);
     expect(container.querySelector('button.dropdown-toggle')).toHaveFocus();
   });
+
+  describe('adjust if offscreen', () => {
+    const winWidth = (width) => {
+      window.innerWidth = width;
+    };
+
+    const calPosition = (left) => {
+      Element.prototype.getBoundingClientRect = jest.fn(() => {
+        return {
+          width: 200,
+          height: 100,
+          top: 0,
+          left,
+          bottom: 0,
+          right: left + 200,
+        };
+      });
+    };
+
+    it('will not adjust if the calendar is not offscreen', () => {
+      winWidth(300);
+      calPosition(0, 300);
+      openDateLookup();
+
+      expect(container.querySelector('.tw-date-lookup-menu')).not.toHaveClass(
+        'dropdown-menu-xs-right',
+      );
+    });
+
+    it('will adjust if the calendar is offscreen to the right', () => {
+      winWidth(200);
+      calPosition(100, 200);
+      openDateLookup();
+
+      expect(container.querySelector('.tw-date-lookup-menu')).toHaveClass('dropdown-menu-xs-right');
+    });
+
+    it('will not do anything if the calendar is offscreen on both sides', () => {
+      winWidth(100);
+      calPosition(-10, 100);
+      openDateLookup();
+
+      expect(container.querySelector('.tw-date-lookup-menu')).not.toHaveClass(
+        'dropdown-menu-xs-right',
+      );
+    });
+
+    it('will add the class on resize if necessary', () => {
+      winWidth(300);
+      calPosition(0, 300);
+      openDateLookup();
+
+      expect(container.querySelector('.tw-date-lookup-menu')).not.toHaveClass(
+        'dropdown-menu-xs-right',
+      );
+
+      winWidth(100);
+      window.dispatchEvent(new Event('resize'));
+      expect(container.querySelector('.tw-date-lookup-menu')).toHaveClass('dropdown-menu-xs-right');
+    });
+  });
 });
