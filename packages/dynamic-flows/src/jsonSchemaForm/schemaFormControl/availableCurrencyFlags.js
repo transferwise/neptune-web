@@ -1,4 +1,21 @@
-export const availableCurrencyFlags = [
+/**
+ * @param {string} iconName
+ * @returns {{currency:string}}
+ */
+export function getCurrencyFlag(iconName) {
+  if (iconName) {
+    const index = availablePrefixedCurrencyFlags.indexOf(iconName);
+    if (index >= 0) {
+      return {
+        currency: availableCurrencyFlags[index],
+      };
+    }
+  }
+
+  return null;
+}
+
+const availableCurrencyFlags = [
   'eur',
   'gbp',
   'inr',
@@ -58,3 +75,5 @@ export const availableCurrencyFlags = [
   'zar',
   'zmw',
 ];
+
+const availablePrefixedCurrencyFlags = availableCurrencyFlags.map((code) => `flag-${code}`);

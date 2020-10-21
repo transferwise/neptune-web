@@ -7,6 +7,7 @@ import simpleSchema from './schemas/simple.json';
 import oneOfSchema from './schemas/oneOf.json';
 import allOfSchema from './schemas/allOf.json';
 import audRecipientSchema from './schemas/audRecipient.json';
+import currencySchema from './schemas/currency.json';
 
 export default {
   component: JsonSchemaForm,
@@ -19,6 +20,7 @@ export const basic = () => {
     oneOf: oneOfSchema,
     allOf: allOfSchema,
     'AUD Recipient': audRecipientSchema,
+    currency: currencySchema,
   };
 
   const schema = select('schema', schemas, simpleSchema);
