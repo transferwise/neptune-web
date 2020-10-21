@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.6.5...@transferwise/dynamic-flows@5.7.0) (2020-10-21)
+
+
+### Features
+
+* support new currency flag schema ([#617](https://github.com/transferwise/neptune-web/issues/617)) ([dc83241](https://github.com/transferwise/neptune-web/commit/dc8324196d720005c68b0d5d6d0ed3d4fc6e9026))
+
+
+
+
+
 ## [5.6.5](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.6.4...@transferwise/dynamic-flows@5.6.5) (2020-10-21)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
