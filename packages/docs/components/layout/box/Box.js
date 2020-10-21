@@ -72,10 +72,10 @@ const Box = props => {
 Box.Size = { ...Size, SMALLEST: 'default' };
 
 Box.propTypes = {
-  alignItems: Types.oneOf([...Object.values(AlignItems)]),
+  alignItems: Types.oneOf(Object.values(AlignItems)),
   children: Types.oneOfType([Types.arrayOf(Types.node), Types.node]),
   className: Types.string,
-  justifyContent: Types.oneOf([...Object.values(JustifyContent)]),
+  justifyContent: Types.oneOf(Object.values(JustifyContent)),
   marginX: Types.number,
   marginY: Types.number,
   paddingX: Types.number,
