@@ -14,7 +14,8 @@
         "**/test/**",
         "packages/docs",
         "lerna.json",
-        "**/CODEOWNERS"
+        "**/CODEOWNERS",
+        "**/.gitignore"
       ]
     }
   },
