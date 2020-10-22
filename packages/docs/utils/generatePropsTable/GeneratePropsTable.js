@@ -1,15 +1,17 @@
 import React from 'react';
 import Types from 'prop-types';
-import { isArray } from 'util';
+
 import { parsePropsForTable } from '../parsePropsForTable';
-import propsData from '../../temp-docgen-output';
+import propsData from '../../temp-tabular-props';
 
 const GeneratePropsTable = ({ componentName }) => {
-  if (!propsData || !propsData[componentName]) {
-    return null;
-  }
+  let data = propsData;
 
-  const schema = propsData[componentName];
+  // If componentName === * return all props for all components
+  // otherwise return only the ones of the component specified.
+  if (componentName !== '*') {
+    data = data.filter((el) => el.displayName === componentName);
+  }
 
   return (
     <div className="scroll-table">
@@ -18,25 +20,29 @@ const GeneratePropsTable = ({ componentName }) => {
         <thead>
           <tr>
             <th>Name</th>
+            {componentName === '*' && <td>Used in</td>}
             <th>PropType</th>
             <th>Required</th>
             <th>Default Value</th>
             <th>Allowed Values</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
-          {Object.keys(schema.props).map((propName) => {
-            const prop = schema.props[propName];
-            const { type, allowedValues, required, defaultValue } = parsePropsForTable(prop);
-
-            return (
-              <tr key={propName}>
+          {getPropsList(data).map(
+            (
+              { allowedValues, defaultValue, description, displayName, propName, required, type },
+              key,
+            ) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <tr key={`${propName}-${key}`}>
                 <th scope="row">{propName}</th>
+                {componentName === '*' && <td>{displayName}</td>}
                 <td>{type}</td>
                 <td>{required ? 'true' : 'false'}</td>
                 <td>{defaultValue}</td>
                 <td>
-                  {isArray(allowedValues) ? (
+                  {Array.isArray(allowedValues) ? (
                     <ul>
                       {allowedValues.map((value) => (
                         <li key={value}>{value}</li>
@@ -46,14 +52,17 @@ const GeneratePropsTable = ({ componentName }) => {
                     allowedValues
                   )}
                 </td>
+                <td>{description}</td>
               </tr>
-            );
-          })}
+            ),
+          )}
         </tbody>
       </table>
     </div>
   );
 };
+
+const getPropsList = (data) => (data ? Object.values(data).map(parsePropsForTable) : []);
 
 GeneratePropsTable.propTypes = {
   componentName: Types.string.isRequired,

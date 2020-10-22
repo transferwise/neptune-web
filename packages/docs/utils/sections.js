@@ -85,6 +85,11 @@ export default [
     searchable: true,
   },
   {
+    title: 'Devs',
+    dir: 'devs',
+    hidden: true,
+  },
+  {
     title: 'Lab',
     dir: 'lab',
   },

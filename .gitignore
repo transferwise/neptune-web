@@ -58,8 +58,5 @@ stats.html
 *.iml
 .vscode
 
-
-DOCGEN_OUTPUT.js
-temp-docgen-output.js
 temp-bundle-sizes.js
-
+temp-tabular-props.js
