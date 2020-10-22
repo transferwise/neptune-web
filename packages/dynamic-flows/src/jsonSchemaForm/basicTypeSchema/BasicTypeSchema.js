@@ -23,7 +23,7 @@ const BasicTypeSchema = (props) => {
     const validationKeys = getValidationKeys(newModel);
     setValidations(validationKeys);
 
-    const broadcastModel = validationKeys.length ? null : newModel;
+    const broadcastModel = newModel;
 
     setLastModel(broadcastModel);
 

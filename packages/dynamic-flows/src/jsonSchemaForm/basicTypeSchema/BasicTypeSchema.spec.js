@@ -166,8 +166,8 @@ describe('Given a component for rendering basic type schemas', () => {
         formControl = component.find(SchemaFormControl);
       });
 
-      it('should trigger the components onChange with null', () => {
-        expect(onChange).toHaveBeenCalledWith(null, schema);
+      it('should trigger the components onChange with the invalid value', () => {
+        expect(onChange).toHaveBeenCalledWith('f', schema);
       });
 
       it('should pass the correct validation to ControlFeedback component', () => {
