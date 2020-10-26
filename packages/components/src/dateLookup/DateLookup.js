@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 
 import KeyCodes from '../common/keyCodes';
-import { Size, MonthFormat } from '../common';
+import { Size, MonthFormat, Breakpoint } from '../common';
 import { isWithinRange, moveToWithinRange } from '../common/dateUtils';
 import { getStartOfDay } from './getStartOfDay';
 
@@ -10,6 +10,9 @@ import OpenButton from './openButton';
 import DayCalendar from './dayCalendar';
 import MonthCalendar from './monthCalendar';
 import YearCalendar from './yearCalendar';
+
+import SlidingPanel from '../slidingPanel';
+import Dimmer from '../dimmer';
 
 import './DateLookup.css';
 
@@ -24,6 +27,10 @@ class DateLookup extends PureComponent {
 
   static MonthFormat = MonthFormat;
 
+  element = React.createRef();
+
+  dropdown = React.createRef();
+
   constructor(props) {
     super(props);
     this.state = {
@@ -34,8 +41,13 @@ class DateLookup extends PureComponent {
       viewYear: (props.value || new Date()).getFullYear(),
       open: false,
       mode: MODE.DAY,
+      isMobile: false,
     };
   }
+
+  getWindowSize = () =>
+    (typeof window !== 'undefined' && window.innerWidth) ||
+    (typeof document !== 'undefined' && document.documentElement.clientWidth);
 
   static getDerivedStateFromProps(props, state) {
     const propsSelected = getStartOfDay(props.value);
@@ -66,35 +78,42 @@ class DateLookup extends PureComponent {
     }
   }
 
-  element = React.createRef();
-
-  dropdown = React.createRef();
+  componentWillUnmount() {
+    // Prevents memory leak by cleaning state.
+    this.setState = () => {};
+  }
 
   open = () => {
     const { onFocus } = this.props;
-    this.setState({ open: true, mode: MODE.DAY }, () => {
-      this.adjustIfOffscreen();
-      this.focusOn('.tw-date-lookup-header-current');
-    });
+
+    this.setState(
+      { open: true, mode: MODE.DAY, isMobile: this.getWindowSize() <= Breakpoint.SMALL },
+      () => {
+        this.adjustIfOffscreen();
+        this.focusOn('.tw-date-lookup-header-current');
+      },
+    );
     if (onFocus) {
       onFocus();
     }
 
-    window.addEventListener('resize', this.adjustIfOffscreen);
+    window.addEventListener('resize', this.resizeHandler);
     document.addEventListener('click', this.handleOutsideClick, true);
   };
 
+  resizeHandler = () =>
+    this.setState({ isMobile: this.getWindowSize() <= Breakpoint.SMALL }, this.adjustIfOffscreen());
+
   adjustIfOffscreen = () => {
-    if (this.open && this.dropdown && this.dropdown.current) {
+    if (!this.state.isMobile && this.open && this.dropdown && this.dropdown.current) {
       const dropdown = this.dropdown.current;
       const bounding = dropdown.getBoundingClientRect();
 
-      const rightSideOffscreen =
-        bounding.right > (window.innerWidth || document.documentElement.clientWidth);
+      const rightSideOffscreen = bounding.right > this.getWindowSize();
       const leftSideOffscreen = bounding.left < 0;
 
       if (rightSideOffscreen) {
-        // If both sides are offscreen, 🤷
+        // It is very unlikely that both sides are offscreen because we are rendering as full width on mobile
         dropdown.classList[leftSideOffscreen ? 'remove' : 'add']('dropdown-menu-xs-right');
       }
     }
@@ -111,9 +130,11 @@ class DateLookup extends PureComponent {
   };
 
   handleOutsideClick = (event) => {
-    if (!this.state.open) {
+    const { isMobile } = this.state;
+    if (!this.state.open || isMobile) {
       return;
     }
+
     const dropdown = this.element.current.querySelector('.dropdown-menu');
     if (dropdown && !dropdown.contains(event.target)) {
       this.close();
@@ -215,8 +236,41 @@ class DateLookup extends PureComponent {
     this.setState({ viewMonth: month, viewYear: year });
   };
 
+  getCalendar = () => {
+    const { selectedDate, min, max, viewMonth, viewYear, mode } = this.state;
+    const { locale, placeholder, monthFormat } = this.props;
+    return (
+      <>
+        {mode === MODE.DAY && (
+          <DayCalendar
+            {...{ selectedDate, min, max, viewMonth, viewYear, locale, monthFormat }}
+            onSelect={this.handleSelectedDateUpdate}
+            onLabelClick={this.switchToYears}
+            onViewDateUpdate={this.handleViewDateUpdate}
+          />
+        )}
+        {mode === MODE.MONTH && (
+          <MonthCalendar
+            {...{ selectedDate, min, max, viewYear, locale, placeholder }}
+            onSelect={this.switchToDays}
+            onLabelClick={this.switchToYears}
+            onViewDateUpdate={this.handleViewDateUpdate}
+          />
+        )}
+        {mode === MODE.YEAR && (
+          <YearCalendar
+            {...{ selectedDate, min, max, viewYear, locale, placeholder }}
+            onSelect={this.switchToMonths}
+            onViewDateUpdate={this.handleViewDateUpdate}
+          />
+        )}
+      </>
+    );
+  };
+
   render() {
-    const { selectedDate, min, max, viewMonth, viewYear, open, mode } = this.state;
+    const { selectedDate, open, isMobile } = this.state;
+
     const { size, locale, placeholder, label, monthFormat, disabled } = this.props;
     return (
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
@@ -228,32 +282,18 @@ class DateLookup extends PureComponent {
           {...{ selectedDate, size, locale, placeholder, label, monthFormat, disabled }}
           onClick={this.open}
         />
-        {open && (
-          <div ref={this.dropdown} className="dropdown-menu tw-date-lookup-menu">
-            {mode === MODE.DAY && (
-              <DayCalendar
-                {...{ selectedDate, min, max, viewMonth, viewYear, locale, monthFormat }}
-                onSelect={this.handleSelectedDateUpdate}
-                onLabelClick={this.switchToYears}
-                onViewDateUpdate={this.handleViewDateUpdate}
-              />
-            )}
-            {mode === MODE.MONTH && (
-              <MonthCalendar
-                {...{ selectedDate, min, max, viewYear, locale, placeholder }}
-                onSelect={this.switchToDays}
-                onLabelClick={this.switchToYears}
-                onViewDateUpdate={this.handleViewDateUpdate}
-              />
-            )}
-            {mode === MODE.YEAR && (
-              <YearCalendar
-                {...{ selectedDate, min, max, viewYear, locale, placeholder }}
-                onSelect={this.switchToMonths}
-                onViewDateUpdate={this.handleViewDateUpdate}
-              />
-            )}
-          </div>
+        {isMobile ? (
+          <Dimmer open={open} onClose={this.close}>
+            <SlidingPanel open={open} position="bottom">
+              {this.getCalendar()}
+            </SlidingPanel>
+          </Dimmer>
+        ) : (
+          open && (
+            <div ref={this.dropdown} className="dropdown-menu tw-date-lookup-menu">
+              {this.getCalendar()}
+            </div>
+          )
         )}
       </div>
     );
