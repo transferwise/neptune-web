@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.7.1...@transferwise/dynamic-flows@5.8.0) (2020-10-29)
+
+
+### Features
+
+* add persist async ([#639](https://github.com/transferwise/neptune-web/issues/639)) ([e965ec2](https://github.com/transferwise/neptune-web/commit/e965ec24e9d4d9e9feb45275185bbac75b415248))
+
+
+
+
+
 ## [5.7.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.7.0...@transferwise/dynamic-flows@5.7.1) (2020-10-26)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
