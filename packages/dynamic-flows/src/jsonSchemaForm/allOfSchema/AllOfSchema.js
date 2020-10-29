@@ -53,6 +53,7 @@ const AllOfSchema = (props) => {
               onChange={(model, triggerSchema) => onChange(index, model, triggerSchema)}
               submitted={props.submitted}
               disabled={props.disabled}
+              onPersistAsync={props.onPersistAsync}
             />
           </div>
         ))}
@@ -75,6 +76,7 @@ AllOfSchema.propTypes = {
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
   disabled: Types.bool,
+  onPersistAsync: Types.func.isRequired,
 };
 
 AllOfSchema.defaultProps = {

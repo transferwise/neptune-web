@@ -17,6 +17,7 @@ const DynamicForm = (props) => {
       onChange={props.onModelChange}
       className={getMarginBottom(form.margin || 'lg')}
       errors={props.errors}
+      onPersistAsync={props.onPersistAsync}
     />
   );
 };
@@ -34,6 +35,7 @@ DynamicForm.propTypes = {
   }).isRequired,
   submitted: Types.bool.isRequired,
   errors: Types.oneOfType([Types.string, Types.number, Types.object, Types.array, Types.bool]),
+  onPersistAsync: Types.func.isRequired,
 };
 
 DynamicForm.defaultProps = {

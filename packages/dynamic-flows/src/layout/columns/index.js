@@ -30,6 +30,7 @@ const DynamicColumns = (props) => {
           onAction={props.onAction}
           submitted={props.submitted}
           errors={props.errors}
+          onPersistAsync={props.onPersistAsync}
         />
       </div>
       <div className={rightWidth}>
@@ -39,6 +40,7 @@ const DynamicColumns = (props) => {
           onAction={props.onAction}
           submitted={props.submitted}
           errors={props.errors}
+          onPersistAsync={props.onPersistAsync}
         />
       </div>
     </div>
@@ -56,6 +58,7 @@ DynamicColumns.propTypes = {
   }).isRequired,
   submitted: Types.bool.isRequired,
   errors: Types.oneOfType([Types.string, Types.number, Types.object, Types.array, Types.bool]),
+  onPersistAsync: Types.func.isRequired,
 };
 
 DynamicColumns.defaultProps = {
