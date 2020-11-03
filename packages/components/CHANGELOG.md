@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.3.0...@transferwise/components@30.3.1) (2020-11-03)
+
+
+### Bug Fixes
+
+* change tw-btn class so as not to clash with ad-blockers who want to block twitter buttons ([#647](https://github.com/transferwise/neptune-web/issues/647)) ([9881cd0](https://github.com/transferwise/neptune-web/commit/9881cd062594ca69b63129fe28bc7f3b5aed25ee))
+
+
+
+
+
 # [30.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.2.0...@transferwise/components@30.3.0) (2020-10-26)
 
 
