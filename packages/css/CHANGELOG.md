@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.5...@transferwise/neptune-css@4.0.6) (2020-11-04)
+
+
+### Bug Fixes
+
+* resetting button outlines to what they used to be ([#652](https://github.com/transferwise/neptune-web/issues/652)) ([f48d2a2](https://github.com/transferwise/neptune-web/commit/f48d2a29cc35c9e00efec879fd60b19c6354a6f8))
+
+
+
+
+
 ## [4.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.4...@transferwise/neptune-css@4.0.5) (2020-10-20)
 
 
