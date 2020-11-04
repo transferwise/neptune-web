@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
+import { isEmpty } from '@transferwise/neptune-validation';
 import Select from '../select';
 import './MoneyInput.css';
 import { Size } from '../common/propsValues/size';
@@ -52,7 +53,9 @@ export default class MoneyInput extends Component {
     this.setState({
       formattedAmount: value,
     });
-    const parsed = parseAmount(value, this.props.selectedCurrency.currency, this.props.locale);
+    const parsed = isEmpty(value)
+      ? null
+      : parseAmount(value, this.props.selectedCurrency.currency, this.props.locale);
     if (!Number.isNaN(parsed)) {
       this.props.onAmountChange(parsed);
     }
