@@ -9,6 +9,7 @@ describe('Given a component for dynamically rendering columns', () => {
   let onAction;
   let onModelChange;
   let columns;
+  let onPersistAsync;
 
   const button1 = {
     type: 'button',
@@ -43,6 +44,8 @@ describe('Given a component for dynamically rendering columns', () => {
 
     onAction = jest.fn();
     onModelChange = jest.fn();
+    onPersistAsync = jest.fn();
+
     component = shallow(
       <DynamicColumns
         component={columns}
@@ -50,6 +53,7 @@ describe('Given a component for dynamically rendering columns', () => {
         onModelChange={onModelChange}
         submitted={false}
         errors={{}}
+        onPersistAsync={onPersistAsync}
       />,
     );
   });

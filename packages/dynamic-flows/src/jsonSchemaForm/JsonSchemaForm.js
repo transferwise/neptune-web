@@ -45,6 +45,12 @@ JsonSchemaForm.propTypes = {
    * Tell the form if it should disable all controls.
    */
   disabled: Types.bool,
+  /**
+   * Fires when any internal persist async is triggered and API call is underway.
+   *
+   * Provides a QueryablePromise of the persist async call.
+   */
+  onPersistAsync: Types.func.isRequired,
 };
 
 JsonSchemaForm.defaultProps = {

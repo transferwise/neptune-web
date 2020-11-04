@@ -17,6 +17,7 @@ const DynamicForm = (props) => {
       onChange={props.onModelChange}
       className={getMarginBottom(form.margin || 'lg')}
       errors={props.errors}
+      onPersistAsync={props.onPersistAsync}
     />
   );
 };
@@ -24,7 +25,9 @@ const DynamicForm = (props) => {
 DynamicForm.propTypes = {
   onModelChange: Types.func.isRequired,
   component: Types.shape({
+    // eslint-disable-next-line react/forbid-prop-types
     schema: Types.object,
+    // eslint-disable-next-line react/forbid-prop-types
     model: Types.object,
     submitted: false,
     margin: marginModel,
@@ -32,6 +35,7 @@ DynamicForm.propTypes = {
   }).isRequired,
   submitted: Types.bool.isRequired,
   errors: Types.oneOfType([Types.string, Types.number, Types.object, Types.array, Types.bool]),
+  onPersistAsync: Types.func.isRequired,
 };
 
 DynamicForm.defaultProps = {

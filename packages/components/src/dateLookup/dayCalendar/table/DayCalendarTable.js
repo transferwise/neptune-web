@@ -73,7 +73,7 @@ class DayCalendarTable extends PureComponent {
         <thead>
           <tr>
             {this.days.map((day, index) => (
-              <th key={day}>
+              <th key={day} className="text-xs-center">
                 <span className="hidden-xs">{day.substring(0, 3)}</span>
                 <span className="visible-xs-inline-block">
                   {this.daysShort[index].substring(0, 2)}

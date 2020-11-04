@@ -125,11 +125,11 @@ const Pagination = ({
 Pagination.Type = Type;
 
 Pagination.propTypes = {
-  type: Types.oneOf(
+  type: Types.oneOf([
     Pagination.Type.NUMBERS_ONLY,
     Pagination.Type.ARROWS_ONLY,
     Pagination.Type.FULL,
-  ),
+  ]),
   numberOfPages: Types.number.isRequired,
   currentPageIndex: Types.number.isRequired,
   onClick: Types.func.isRequired,

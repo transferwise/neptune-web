@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import Types from 'prop-types';
 
 import DefinitionList from '../definitionList';
@@ -7,35 +7,22 @@ import createDefinitions from './utils/createDefinitions';
 
 import { Layout } from '../common';
 
-class DynamicFieldDefinitionList extends PureComponent {
-  static Layout = Layout;
+const DynamicFieldDefinitionList = ({ model, locale, title, layout, fields }) => (
+  <>
+    {title && (
+      <div className="m-t-1">
+        <div className="p-t-3 h4">{title}</div>
+      </div>
+    )}
 
-  static Layout = Layout;
+    <DefinitionList
+      layout={layout}
+      definitions={createDefinitions(prepFields(fields), model, locale)}
+    />
+  </>
+);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      fields: prepFields(props.fields),
-    };
-  }
-
-  render() {
-    const { model, locale, title, layout } = this.props;
-    const { fields } = this.state;
-
-    return (
-      <>
-        {title && (
-          <div className="m-t-1">
-            <h4 className="page-header p-t-3">{title}</h4>
-          </div>
-        )}
-
-        <DefinitionList layout={layout} definitions={createDefinitions(fields, model, locale)} />
-      </>
-    );
-  }
-}
+DynamicFieldDefinitionList.Layout = Layout;
 
 DynamicFieldDefinitionList.propTypes = {
   model: Types.shape({}).isRequired,

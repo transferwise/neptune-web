@@ -5,25 +5,28 @@ import BasicTypeSchema from '../basicTypeSchema';
 import ObjectSchema from '../objectSchema';
 import OneOfSchema from '../oneOfSchema';
 import AllOfSchema from '../allOfSchema';
-
-const basicTypes = ['string', 'number', 'integer', 'boolean'];
+import PersistAsyncSchema from '../persistAsyncSchema';
+import { getSchemaType, schemaType } from './schemaType';
 
 const GenericSchemaForm = (props) => {
   const { schema } = props;
 
-  const isObject = schema.type === 'object';
-  const isOneOf = !!schema.oneOf;
-  const isAllOf = !!schema.allOf;
-  const isBasicType = basicTypes.indexOf(schema.type) >= 0 || !!schema.enum || !!schema.const;
+  const type = getSchemaType(schema);
 
-  return (
-    <>
-      {isBasicType && !isOneOf && <BasicTypeSchema {...props} />}
-      {isObject && <ObjectSchema {...props} />}
-      {isOneOf && <OneOfSchema {...props} />}
-      {isAllOf && <AllOfSchema {...props} />}
-    </>
-  );
+  switch (type) {
+    case schemaType.PERSIST_ASYNC:
+      return <PersistAsyncSchema {...props} />;
+    case schemaType.BASIC:
+      return <BasicTypeSchema {...props} />;
+    case schemaType.OBJECT:
+      return <ObjectSchema {...props} />;
+    case schemaType.ONE_OF:
+      return <OneOfSchema {...props} />;
+    case schemaType.ALL_OF:
+      return <AllOfSchema {...props} />;
+    default:
+      return <></>;
+  }
 };
 
 GenericSchemaForm.propTypes = {
@@ -33,6 +36,7 @@ GenericSchemaForm.propTypes = {
     const: Types.oneOfType([Types.string, Types.number, Types.bool]),
     oneOf: Types.arrayOf(Types.shape({})),
     allOf: Types.arrayOf(Types.shape({})),
+    persistAsync: Types.shape({}),
   }).isRequired,
   model: Types.oneOfType([Types.string, Types.number, Types.bool, Types.array, Types.shape({})]),
   errors: Types.oneOfType([Types.string, Types.array, Types.shape({})]),
@@ -42,6 +46,7 @@ GenericSchemaForm.propTypes = {
   submitted: Types.bool.isRequired,
   hideTitle: Types.bool,
   disabled: Types.bool,
+  onPersistAsync: Types.func.isRequired,
 };
 
 GenericSchemaForm.defaultProps = {

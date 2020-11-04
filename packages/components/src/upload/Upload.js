@@ -3,7 +3,14 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 import { Plus as PlusIcon } from '@transferwise/icons';
 import { UploadImageStep, ProcessingStep, CompleteStep } from './steps';
-import { postData, asyncFileRead, isSizeValid, generateErrorMessage, isTypeValid } from './utils';
+import {
+  postData,
+  asyncFileRead,
+  isSizeValid,
+  generateErrorMessage,
+  isTypeValid,
+  getFileType,
+} from './utils';
 import './Upload.css';
 import ProcessIndicator from '../processIndicator';
 
@@ -156,7 +163,7 @@ class Upload extends PureComponent {
     }
   };
 
-  fileDropped = (file) => {
+  fileDropped = async (file) => {
     const { httpOptions, maxSize, onStart, usDisabled, usAccept } = this.props;
 
     if (usDisabled) {
@@ -167,23 +174,39 @@ class Upload extends PureComponent {
       throw new Error('Could not retrieve file');
     }
 
-    if (onStart) {
-      onStart(file);
-    }
-
     this.setState({
-      isImage: file.type && file.type.indexOf('image') > -1,
       fileName: file.name,
       isDroppable: false,
       isProcessing: true,
     });
 
-    if (!isTypeValid(file, usAccept)) {
+    if (onStart) {
+      onStart(file);
+    }
+
+    let file64 = null;
+
+    try {
+      file64 = await asyncFileRead(file);
+    } catch (e) {
+      this.asyncResponse(e, PROCESS_STATE[0]);
+    }
+
+    if (!file64) {
+      return false;
+    }
+
+    this.setState({
+      isImage: getFileType(file, file64).indexOf('image') > -1,
+    });
+
+    if (!isTypeValid(file, usAccept, file64)) {
       const response = {
         status: 415,
         statusText: 'Unsupported Media Type',
       };
-      return this.asyncResponse(response, PROCESS_STATE[0]);
+      this.asyncResponse(response, PROCESS_STATE[0]);
+      return false;
     }
 
     if (!isSizeValid(file, maxSize)) {
@@ -191,24 +214,27 @@ class Upload extends PureComponent {
         status: 413,
         statusText: 'Request Entity Too Large',
       };
-      return this.asyncResponse(response, PROCESS_STATE[0]);
+      this.asyncResponse(response, PROCESS_STATE[0]);
+      return false;
     }
 
     if (httpOptions) {
       // Post the file to provided endpoint
-      return this.asyncPost(file)
+      this.asyncPost(file)
         .then((response) => this.asyncResponse(response, 'success'))
-        .then(() => asyncFileRead(file))
-        .then((response) => this.showDataImage(response))
-        .catch((error) => this.asyncResponse(error, PROCESS_STATE[0]));
+        .then(() => {
+          this.showDataImage(file64);
+          return true;
+        })
+        .catch((error) => {
+          this.asyncResponse(error, PROCESS_STATE[0]);
+          return false;
+        });
     }
     // Post on form submit. And return the encoded image.
-    return asyncFileRead(file)
-      .then((response) => {
-        this.showDataImage(response);
-        this.asyncResponse(response, 'success');
-      })
-      .catch((error) => this.asyncResponse(error, PROCESS_STATE[0]));
+    this.showDataImage(file64);
+    this.asyncResponse(file64, 'success');
+    return true;
   };
 
   render() {
@@ -325,7 +351,9 @@ Upload.propTypes = {
     url: Types.string.isRequired,
     method: Types.oneOf(['POST', 'PUT', 'PATCH']),
     fileInputName: Types.string,
+    // eslint-disable-next-line react/forbid-prop-types
     data: Types.object,
+    // eslint-disable-next-line react/forbid-prop-types
     headers: Types.object,
   }),
   maxSize: Types.number,

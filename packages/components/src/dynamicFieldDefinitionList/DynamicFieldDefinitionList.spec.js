@@ -19,5 +19,5 @@ describe('DynamicFieldDefinitionList', () => {
     expect(title(component).exists()).toBe(false);
   });
 
-  const title = (component) => component.find('h4');
+  const title = (component) => component.find('.h4');
 });

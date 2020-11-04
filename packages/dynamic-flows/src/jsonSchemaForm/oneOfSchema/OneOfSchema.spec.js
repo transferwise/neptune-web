@@ -15,6 +15,7 @@ describe('Given a oneOfSchema component', () => {
   let controlFeedback;
   let props;
   let onChange;
+  let onPersistAsync;
   let schema;
 
   let model = { b: 2, c: 3 };
@@ -28,6 +29,7 @@ describe('Given a oneOfSchema component', () => {
 
   beforeEach(() => {
     onChange = jest.fn();
+    onPersistAsync = jest.fn();
   });
 
   describe('when initialised with multiple schemas', () => {
@@ -68,7 +70,16 @@ describe('Given a oneOfSchema component', () => {
         ],
       };
 
-      props = { schema, model, errors, locale, onChange, submitted, translations };
+      props = {
+        schema,
+        model,
+        errors,
+        locale,
+        onChange,
+        submitted,
+        translations,
+        onPersistAsync,
+      };
       component = shallow(<OneOfSchema {...props} />);
 
       genericSchema = component.find(GenericSchema);
@@ -176,7 +187,16 @@ describe('Given a oneOfSchema component', () => {
         ],
       };
 
-      props = { schema, model, errors, locale, onChange, submitted, translations };
+      props = {
+        schema,
+        model,
+        errors,
+        locale,
+        onChange,
+        submitted,
+        translations,
+        onPersistAsync,
+      };
       component = shallow(<OneOfSchema {...props} />);
     });
 
@@ -213,7 +233,14 @@ describe('Given a oneOfSchema component', () => {
 
       model = null;
 
-      props = { schema, model, locale, onChange, submitted };
+      props = {
+        schema,
+        model,
+        locale,
+        onChange,
+        submitted,
+        onPersistAsync,
+      };
       component = shallow(<OneOfSchema {...props} />);
 
       genericSchema = component.find(GenericSchema);

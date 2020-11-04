@@ -248,14 +248,34 @@ describe('Given a component for rendering a form control based on a schema', () 
         schema: {
           oneOf: [
             { const: 1, title: 'One' },
-            { const: 3, title: 'Three', icon: { name: 'gbp' } },
+            { const: 2, title: 'Two', icon: { name: 'flag-usd' } },
+            { const: 3, title: 'Three', icon: { name: 'flag-gbp' } },
           ],
         },
       });
 
       expect(component.find(FormControl).prop('options')).toEqual([
         { value: 1, label: 'One' },
+        { value: 2, label: 'Two', currency: 'usd' },
         { value: 3, label: 'Three', currency: 'gbp' },
+      ]);
+    });
+
+    it(`should ignore "icon.name" when it's a NOT a supported currency flag`, () => {
+      component.setProps({
+        schema: {
+          oneOf: [
+            { const: 1, title: 'One' },
+            { const: 2, title: 'Two', icon: { name: 'flag-usd' } },
+            { const: 3, title: 'Three', icon: { name: 'usd' } },
+          ],
+        },
+      });
+
+      expect(component.find(FormControl).prop('options')).toEqual([
+        { value: 1, label: 'One' },
+        { value: 2, label: 'Two', currency: 'usd' },
+        { value: 3, label: 'Three' },
       ]);
     });
 

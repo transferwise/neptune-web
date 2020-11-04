@@ -7,6 +7,8 @@ import simpleSchema from './schemas/simple.json';
 import oneOfSchema from './schemas/oneOf.json';
 import allOfSchema from './schemas/allOf.json';
 import audRecipientSchema from './schemas/audRecipient.json';
+import fileUploadPersistAsyncSchema from './schemas/upload_persist_async.json';
+import currencySchema from './schemas/currency.json';
 
 export default {
   component: JsonSchemaForm,
@@ -19,6 +21,8 @@ export const basic = () => {
     oneOf: oneOfSchema,
     allOf: allOfSchema,
     'AUD Recipient': audRecipientSchema,
+    'File upload persist async': fileUploadPersistAsyncSchema,
+    currency: currencySchema,
   };
 
   const schema = select('schema', schemas, simpleSchema);
@@ -45,6 +49,7 @@ export const basic = () => {
       onChange={action('onChange')}
       submitted={submitted}
       disabled={disabled}
+      onPersistAsync={() => {}}
     />
   );
 };

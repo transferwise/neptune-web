@@ -166,6 +166,7 @@ workflows:
             branches:
               only:
                 - main
+                - beta
 
       - deploy-docs-for-branch:
           context: frontend-build
@@ -197,8 +198,7 @@ workflows:
       - publish-prerelease:
           context: frontend-publish
           requires:
-            - test
-            - setup
+            - test-main
           filters:
             branches:
               only: beta

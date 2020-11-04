@@ -8,9 +8,14 @@
         "**/*.md",
         "**/*.spec.js",
         "**/*.yml",
-        "**/*.docs.js",
-        "**/components/docs/**",
-        "packages/docs"
+        "**/*.story.js",
+        "**/.storybook/**",
+        "**/neptuneCssTest/**",
+        "**/test/**",
+        "packages/docs",
+        "lerna.json",
+        "**/CODEOWNERS",
+        "**/.gitignore"
       ]
     }
   },

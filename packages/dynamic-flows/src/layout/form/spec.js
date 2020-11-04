@@ -9,6 +9,7 @@ describe('Given a component for dynamically rendering forms', () => {
   let component;
   let onModelChange;
   let spec;
+  let onPersistAsync;
 
   const schema = {
     type: 'object',
@@ -28,12 +29,14 @@ describe('Given a component for dynamically rendering forms', () => {
       model,
     };
     onModelChange = jest.fn();
+    onPersistAsync = jest.fn();
     component = shallow(
       <DynamicForm
         component={spec}
         onModelChange={onModelChange}
         submitted={submitted}
         errors={errors}
+        onPersistAsync={onPersistAsync}
       />,
     );
   });

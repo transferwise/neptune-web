@@ -26,11 +26,21 @@ describe('Given a component for rendering a JSON schema form', () => {
     const model = { a: 2 };
     const locale = 'en-GB';
     const onChange = jest.fn();
+    const onPersistAsync = jest.fn();
     const submitted = false;
     const errors = { a: 'b' };
     const translations = {};
 
-    props = { schema, model, onChange, submitted, locale, errors, translations };
+    props = {
+      schema,
+      model,
+      onChange,
+      submitted,
+      locale,
+      errors,
+      translations,
+      onPersistAsync,
+    };
     component = shallow(<JsonSchemaForm {...props} />);
 
     genericSchema = component.find(GenericSchema);

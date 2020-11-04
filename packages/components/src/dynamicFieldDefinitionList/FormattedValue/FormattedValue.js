@@ -65,6 +65,7 @@ FormattedValue.propTypes = {
     tagClassName: Types.shape({
       h3: Types.bool,
     }),
+    // eslint-disable-next-line react/forbid-prop-types
     values: Types.arrayOf(Types.shape({ value: Types.any })),
   }).isRequired,
   // eslint-disable-next-line react/forbid-prop-types

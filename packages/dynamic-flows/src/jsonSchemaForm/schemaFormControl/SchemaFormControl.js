@@ -4,7 +4,7 @@ import Types from 'prop-types';
 import { isNull, isUndefined } from '@transferwise/neptune-validation';
 import FormControl from '../../formControl';
 import { getValidModelParts } from '../../common/validation/valid-model';
-import { availableCurrencyFlags } from './availableCurrencyFlags';
+import { getCurrencyFlag } from './availableCurrencyFlags';
 
 const SchemaFormControl = (props) => {
   const isNativeInput = (schemaType) => schemaType === 'string' || schemaType === 'number';
@@ -68,16 +68,7 @@ const SchemaFormControl = (props) => {
     return null;
   };
 
-  const mapIcon = (icon) => {
-    if (icon) {
-      if (icon.name && availableCurrencyFlags.includes(icon.name)) {
-        return {
-          currency: icon.name,
-        };
-      }
-    }
-    return null;
-  };
+  const mapIcon = (icon) => (icon ? getCurrencyFlag(icon.name) : null);
 
   const mapConstSchemaToOption = (schema) => {
     const keyForDescription =
