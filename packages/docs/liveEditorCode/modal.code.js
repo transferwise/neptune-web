@@ -4,11 +4,22 @@
     <>
       <Button onClick={() => setOpen(true)}>Open Modal</Button>
       <Modal
-        body="Lorem Ipsum is simply dummy text of the printing 1500s, when an"
+        body={
+          <>
+            <DateInput onChange={console && console.log} value={new Date()} />
+            <p className="m-t-4">
+              I'm baby actually poke kickstarter, street art jean shorts bespoke chambray activated
+              charcoal ramps marfa shoreditch tumeric tumblr. Mixtape cred palo santo, cliche lyft
+              marfa ethical waistcoat poke jean shorts. Scenester readymade selvage disrupt pok pok.
+              La croix stumptown try-hard chartreuse. I'm baby actually poke kickstarter, street art
+              jean shorts bespoke chambray activated charcoal ramps marfa shoreditch tumeric
+            </p>
+          </>
+        }
         open={open}
         onClose={() => setOpen(false)}
         size={Modal.Size.MEDIUM}
-        title="title"
+        title="I'm a hipster!"
         className=""
         footer={
           <Button block onClick={() => alert('clicked')}>
