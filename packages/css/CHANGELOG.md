@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.7](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.6...@transferwise/neptune-css@4.0.7) (2020-11-05)
+
+
+### Bug Fixes
+
+* render select into dimmer for mobile view ([#651](https://github.com/transferwise/neptune-web/issues/651)) ([14bd4f4](https://github.com/transferwise/neptune-web/commit/14bd4f4d866ffa67f8f092cae738bb18a8ba7a9c))
+
+
+
+
+
 ## [4.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.5...@transferwise/neptune-css@4.0.6) (2020-11-04)
 
 
