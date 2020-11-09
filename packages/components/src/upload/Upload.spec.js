@@ -226,6 +226,7 @@ describe('Upload', () => {
           component.update();
           expect(component.find(CompleteStep).props()).toEqual({
             ...COMPLETED_STEP_PROPS,
+            isImage: false,
             isComplete: true,
             isError: true,
             uploadedImage: null,

@@ -1,0 +1,1 @@
+export { getFileType } from './getFileType';

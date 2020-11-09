@@ -9,6 +9,7 @@ describe('Given a component from rendering allOf schemas', () => {
   let genericSchemaComponents;
   let props;
   let onChange;
+  let onPersistAsync;
 
   const stringSchema = {
     type: 'string',
@@ -53,8 +54,18 @@ describe('Given a component from rendering allOf schemas', () => {
 
   beforeEach(() => {
     onChange = jest.fn();
+    onPersistAsync = jest.fn();
 
-    props = { schema, model, errors, locale, onChange, submitted, translations };
+    props = {
+      schema,
+      model,
+      errors,
+      locale,
+      onChange,
+      submitted,
+      translations,
+      onPersistAsync,
+    };
     component = shallow(<AllOfSchema {...props} />);
 
     genericSchemaComponents = component.find(GenericSchema);

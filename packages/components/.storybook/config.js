@@ -24,7 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
   const ReactDOM = require('react-dom');
   const axe = require('react-axe');
   const context = {
-    include: [['#story-root']],
+    include: [['#root']],
   };
   axe(React, ReactDOM, 1000, undefined, context);
 }
@@ -54,4 +54,9 @@ addParameters({
   },
 });
 
-configure(require.context('../src', true, /\.story\.js$/), module);
+const requires = [require.context('../src', true, /\.story\.js$/)];
+if (process.env.CI) {
+  requires.push(require.context('../test', true, /\.story\.js$/));
+}
+
+configure(requires, module);

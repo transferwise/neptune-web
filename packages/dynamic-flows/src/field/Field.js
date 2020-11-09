@@ -214,6 +214,7 @@ Field.propTypes = {
     Types.bool,
     Types.object,
     Types.shape({
+      // eslint-disable-next-line react/forbid-prop-types
       value: Types.any.isRequired,
       label: Types.node,
       icon: Types.string,

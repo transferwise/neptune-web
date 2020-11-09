@@ -537,6 +537,7 @@ Select.propTypes = {
   size: Types.oneOf(['sm', 'md', 'lg']),
   block: Types.bool,
   selected: Types.shape({
+    // eslint-disable-next-line react/forbid-prop-types
     value: Types.any.isRequired,
     label: Types.node,
     icon: Types.node,
@@ -555,6 +556,7 @@ Select.propTypes = {
   onBlur: Types.func,
   options: Types.arrayOf(
     Types.shape({
+      // eslint-disable-next-line react/forbid-prop-types
       value: Types.any,
       label: Types.node,
       header: Types.node,

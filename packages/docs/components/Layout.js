@@ -30,15 +30,17 @@ const Layout = ({ children, router: { pathname } }) => {
       </Link>
       <ul className="Nav Nav--dark">
         <li className="Nav__Group">Neptune</li>
-        {sections.map((section) => (
-          <li key={section.title}>
-            <Link href={getFirstPageInSection(section).path}>
-              <a className={`Nav__Link ${rootDir === section.dir ? 'active' : ''}`}>
-                {section.title}
-              </a>
-            </Link>
-          </li>
-        ))}
+        {sections
+          .filter((sec) => !sec.hidden)
+          .map((section) => (
+            <li key={section.title}>
+              <Link href={getFirstPageInSection(section).path}>
+                <a className={`Nav__Link ${rootDir === section.dir ? 'active' : ''}`}>
+                  {section.title}
+                </a>
+              </Link>
+            </li>
+          ))}
       </ul>
     </div>
   );

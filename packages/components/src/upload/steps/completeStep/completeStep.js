@@ -16,8 +16,8 @@ const CompleteStep = (props) => {
   } = props;
   return (
     <div className="droppable-complete-card droppable-card" aria-hidden={!isComplete}>
-      <div className="droppable-card-content ">
-        <div>
+      <div className="droppable-card-content">
+        <div className="droppable-card-content d-flex flex-column align-items-center">
           {isError ? (
             <>
               <AlertCircleIcon size={24} className="text-danger" />
@@ -38,7 +38,7 @@ const CompleteStep = (props) => {
               )}
               {csSuccessText && (
                 <div className="caption m-t-1">
-                  <h4>{csSuccessText}</h4>
+                  <span className="h4">{csSuccessText}</span>
                 </div>
               )}
             </>

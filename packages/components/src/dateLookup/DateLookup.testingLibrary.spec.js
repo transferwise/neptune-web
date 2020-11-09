@@ -1,9 +1,15 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import DateLookup from '.';
+import { Breakpoint } from '../common';
+
+jest.mock('../dimmer', () => {
+  // eslint-disable-next-line
+  return ({ children }) => <div className="dimmer">{children}</div>;
+});
 
 describe('DateLookup (events)', () => {
   const date = new Date(2018, 11, 27);
@@ -12,6 +18,10 @@ describe('DateLookup (events)', () => {
 
   let props;
   let container;
+
+  const winWidth = (width) => {
+    window.innerWidth = width;
+  };
 
   const openDateLookup = () => {
     const button = container.querySelector('button.dropdown-toggle');
@@ -95,5 +105,70 @@ describe('DateLookup (events)', () => {
 
     expect(props.onChange).toHaveBeenCalledWith(d);
     expect(container.querySelector('button.dropdown-toggle')).toHaveFocus();
+  });
+
+  describe('adjust if offscreen', () => {
+    const calPosition = (left) => {
+      Element.prototype.getBoundingClientRect = jest.fn(() => {
+        return {
+          width: 200,
+          height: 100,
+          top: 0,
+          left,
+          bottom: 0,
+          right: left + 200,
+        };
+      });
+    };
+
+    it('will not adjust if the calendar is not offscreen', () => {
+      winWidth(600);
+      calPosition(0);
+      openDateLookup();
+
+      expect(container.querySelector('.tw-date-lookup-menu')).not.toHaveClass(
+        'dropdown-menu-xs-right',
+      );
+    });
+
+    it('will adjust if the calendar is offscreen to the right', () => {
+      winWidth(600);
+      calPosition(500);
+      openDateLookup();
+
+      expect(container.querySelector('.tw-date-lookup-menu')).toHaveClass('dropdown-menu-xs-right');
+    });
+
+    it('will add the class on resize if necessary', () => {
+      winWidth(700);
+      calPosition(500);
+      openDateLookup();
+
+      expect(container.querySelector('.tw-date-lookup-menu')).not.toHaveClass(
+        'dropdown-menu-xs-right',
+      );
+
+      winWidth(600);
+      fireEvent(window, new Event('resize'));
+
+      expect(container.querySelector('.tw-date-lookup-menu')).toHaveClass('dropdown-menu-xs-right');
+    });
+  });
+
+  describe('at extra small breakpoints', () => {
+    it('it opens dateLookup using slider', () => {
+      winWidth(Breakpoint.SMALL);
+      openDateLookup();
+      expect(container.querySelector('.dimmer')).toBeInTheDocument();
+    });
+
+    it('it opens dateLookup using slider', () => {
+      winWidth(Breakpoint.SMALL + 1);
+      openDateLookup();
+      expect(container.querySelector('.dimmer')).not.toBeInTheDocument();
+      winWidth(Breakpoint.SMALL);
+      fireEvent(window, new Event('resize'));
+      expect(container.querySelector('.dimmer')).toBeInTheDocument();
+    });
   });
 });

@@ -17,12 +17,6 @@ class RadioGroup extends Component {
 
   render() {
     const { radios, name } = this.props;
-
-    if (!radios || radios.length < 2) {
-      // eslint-disable-next-line
-      console.error('At least two radio options should be provided');
-    }
-
     const { selectedValue } = this.state;
     return radios && radios.length > 1 ? (
       <>

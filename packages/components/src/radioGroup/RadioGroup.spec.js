@@ -30,28 +30,11 @@ const RADIOS = [
 ];
 
 describe('RadioGroup', () => {
-  beforeEach(() => {
-    console.error = jest.fn();
-  });
-  afterEach(() => {
-    console.error.mockClear();
-  });
-
-  it('returns null if radios are not provvalueed', () => {
+  it('renders null if no radios are provided', () => {
     expect(shallow(<RadioGroup radios={[]} {...props} />).toBeNully);
   });
 
-  it('Throws error if radios are not provvalueed', () => {
-    shallow(<RadioGroup radios={[]} {...props} />);
-    expect(console.error).toHaveBeenCalled();
-  });
-
-  it(`Doesn't throw error if radios are provvalueed`, () => {
-    shallow(<RadioGroup radios={RADIOS} {...props} />);
-    expect(console.error).not.toHaveBeenCalled();
-  });
-
-  it('returns radio options', () => {
+  it('renders radio options', () => {
     const component = shallow(<RadioGroup radios={RADIOS} {...props} />);
     expect(component.find(Radio).length).toBe(RADIOS.length);
     expect(JSON.stringify(component.find(Radio).at(0).props())).toEqual(

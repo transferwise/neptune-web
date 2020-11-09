@@ -30,6 +30,7 @@ lerna-debug.log
 # CSS
 dist
 *.css
+!**/_next/static/css/**
 !tokens/tokens.css
 packages/css/pages/styles
 !packages/css/src/props/*.css
@@ -57,8 +58,5 @@ stats.html
 *.iml
 .vscode
 
-
-DOCGEN_OUTPUT.js
-temp-docgen-output.js
 temp-bundle-sizes.js
-
+temp-tabular-props.js

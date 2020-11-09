@@ -20,7 +20,7 @@ const Button = ({
 }) => {
   const classes = classNames(
     `btn btn-${size}`,
-    `tw-btn tw-btn-${size}`,
+    `np-btn np-btn-${size}`,
     {
       'btn-loading': loading,
       'btn-primary': type === Type.PRIMARY,
@@ -28,7 +28,7 @@ const Button = ({
       'btn-default': type === Type.SECONDARY,
       'btn-danger': type === Type.DANGER,
       'btn-link': type === Type.LINK,
-      'btn-block tw-btn-block': block,
+      'btn-block np-btn-block': block,
     },
     className,
   );

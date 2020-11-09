@@ -58,7 +58,6 @@ class UploadImageStep extends PureComponent {
                 name="file-upload"
                 onChange={() => this.onManualUpload()}
                 ref={this.uploadInputRef}
-                value=""
               />
             </label>
           </div>

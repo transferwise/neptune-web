@@ -38,6 +38,9 @@ const BasicTypeSchema = (props) => {
   const onBlur = () => {
     setFocused(false);
     setBlurred(true);
+    if (props.onBlur) {
+      props.onBlur();
+    }
   };
 
   const generateId = () => String(Math.floor(100000000 * Math.random()));
@@ -147,6 +150,7 @@ BasicTypeSchema.propTypes = {
   required: Types.bool,
   locale: Types.string,
   disabled: Types.bool,
+  onBlur: Types.func,
 };
 
 BasicTypeSchema.defaultProps = {
@@ -156,6 +160,7 @@ BasicTypeSchema.defaultProps = {
   required: false,
   locale: 'en-GB',
   disabled: false,
+  onBlur: null,
 };
 
 export default BasicTypeSchema;

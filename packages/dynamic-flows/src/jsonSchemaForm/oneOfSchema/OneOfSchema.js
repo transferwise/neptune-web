@@ -168,6 +168,7 @@ const OneOfSchema = (props) => {
           submitted={props.submitted}
           hideTitle
           disabled={props.disabled}
+          onPersistAsync={props.onPersistAsync}
         />
       )}
     </>
@@ -193,6 +194,7 @@ OneOfSchema.propTypes = {
   submitted: Types.bool.isRequired,
   required: Types.bool,
   disabled: Types.bool,
+  onPersistAsync: Types.func.isRequired,
 };
 
 OneOfSchema.defaultProps = {

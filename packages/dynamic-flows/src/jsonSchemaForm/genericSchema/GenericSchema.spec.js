@@ -7,6 +7,7 @@ import BasicTypeSchema from '../basicTypeSchema';
 import ObjectSchema from '../objectSchema';
 import OneOfSchema from '../oneOfSchema';
 import AllOfSchema from '../allOfSchema';
+import PersistAsyncSchema from '../persistAsyncSchema';
 
 describe('Given a component for rendering any generic schema', () => {
   let component;
@@ -16,6 +17,7 @@ describe('Given a component for rendering any generic schema', () => {
   let schema;
   let model;
   let errors;
+  let onPersistAsync;
 
   const locale = 'en-GB';
   const required = true;
@@ -26,7 +28,15 @@ describe('Given a component for rendering any generic schema', () => {
 
   beforeEach(() => {
     onChange = jest.fn();
-    sharedProps = { locale, required, onChange, submitted, translations };
+    onPersistAsync = jest.fn();
+    sharedProps = {
+      locale,
+      required,
+      onChange,
+      submitted,
+      translations,
+      onPersistAsync,
+    };
   });
 
   describe('when a string schema is supplied ', () => {
@@ -301,6 +311,48 @@ describe('Given a component for rendering any generic schema', () => {
       it('should trigger the components onChange with the model', () => {
         expect(onChange).toHaveBeenCalledWith('b', schema.allOf[0]);
       });
+    });
+  });
+
+  describe('when a persist async schema is supplied', () => {
+    beforeEach(() => {
+      model = null;
+      schema = {
+        type: 'string',
+        title: 'Text input',
+        persistAsync: {
+          method: 'POST',
+          url: '/v1/cards',
+          param: 'cardNumber',
+          idProperty: 'cardToken',
+          schema: {
+            title: 'Persist Async Title',
+            type: 'string',
+            placeholder: 'aPlaceholder',
+          },
+        },
+      };
+      props = { ...sharedProps, model, schema, errors };
+
+      component = shallow(<GenericSchema {...props} />);
+    });
+
+    it('should render persist async schema', () => {
+      expect(component.find(PersistAsyncSchema).length).toBe(1);
+    });
+
+    it('should pass through the supplied data to the PersistAsyncSchema', () => {
+      const persistAsyncComponent = component.find(PersistAsyncSchema);
+
+      expect(persistAsyncComponent.prop('schema')).toEqual(schema);
+      expect(persistAsyncComponent.prop('model')).toEqual(model);
+      expect(persistAsyncComponent.prop('errors')).toEqual(errors);
+      expect(persistAsyncComponent.prop('locale')).toEqual(locale);
+      expect(persistAsyncComponent.prop('translations')).toEqual(translations);
+    });
+
+    it('should not render basic type schema', () => {
+      expect(component.find(BasicTypeSchema).length).toBe(0);
     });
   });
 });
