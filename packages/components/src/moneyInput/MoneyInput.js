@@ -186,7 +186,7 @@ export default class MoneyInput extends Component {
             </span>
           </div>
         ) : (
-          <span
+          <div
             className={classNames(
               this.style('input-group-btn'),
               this.style('amount-currency-select-btn'),
@@ -207,7 +207,7 @@ export default class MoneyInput extends Component {
               dropdownWidth="lg"
               inverse
             />
-          </span>
+          </div>
         )}
       </div>
     );
