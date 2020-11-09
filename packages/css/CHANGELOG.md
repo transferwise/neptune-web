@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.8](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.7...@transferwise/neptune-css@4.0.8) (2020-11-09)
+
+
+### Bug Fixes
+
+* revert PR [#652](https://github.com/transferwise/neptune-web/issues/652) (re-applying focus styles) ([#662](https://github.com/transferwise/neptune-web/issues/662)) ([d9289aa](https://github.com/transferwise/neptune-web/commit/d9289aa1e8660da74e357ee4c2b9193fd45ffc3c))
+
+
+
+
+
 ## [4.0.7](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.6...@transferwise/neptune-css@4.0.7) (2020-11-05)
 
 
