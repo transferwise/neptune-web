@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.3.4...@transferwise/components@30.4.0) (2020-11-09)
+
+
+### Features
+
+* snackbar with a light theme ([#663](https://github.com/transferwise/neptune-web/issues/663)) ([e1d2fa2](https://github.com/transferwise/neptune-web/commit/e1d2fa2f58f93f7812d8fdc032a25385833d9b21))
+
+
+
+
+
 ## [30.3.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.3.3...@transferwise/components@30.3.4) (2020-11-09)
 
 **Note:** Version bump only for package @transferwise/components

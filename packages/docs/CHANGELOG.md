@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.1.14...@transferwise/neptune-docs@7.2.0) (2020-11-09)
+
+
+### Features
+
+* snackbar with a light theme ([#663](https://github.com/transferwise/neptune-web/issues/663)) ([e1d2fa2](https://github.com/transferwise/neptune-web/commit/e1d2fa2f58f93f7812d8fdc032a25385833d9b21))
+
+
+
+
+
 ## [7.1.14](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@7.1.13...@transferwise/neptune-docs@7.1.14) (2020-11-09)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
