@@ -1,15 +1,11 @@
 - Start Date: 2019-11-15
-- Status: Agreed
+- Status: Progress
 
 # Summary
 
 Given Neptune is still early in development, we have given little consideration to how we may make breaking changes to a component's API.
 
 In this RFC, we propose a way to deprecate a React component's API, and consider how the deprecation strategy can be managed across the team.
-
-# Basic example
-
-N/A
 
 # Motivation
 
@@ -19,201 +15,92 @@ While there are many facets to this, we have agreed that breaking changes should
 
 # Detailed design
 
-As TransferWise is adopting React as it's primary frontend framework, we could introduce a higher-order component, with two responsibilities:
-
-1. Deciding which version of a component to serve
-2. Warning the consumer of API changes, when using the old API.
-
-This could be controlled by a `deprecationConfiguration` capable of generating useful warnings for the consumer.
+As part of the deprecation process we are proposing a light approach that introduces breaking changes progressively. The deprecation's steps will be:
+ 
+- Default the new prop value to old prop (valid only for prop renaming)
+- Introduction of a deprecation message with final deprecation date.
+- Remove the deprecated prop/s.
+ 
 
 ## Code example
 
 Take a cut down version of the Button component:
 
 ```js
-function Button({ label }) {
-  return <button>{label}</button>;
-}
+const Button = ({ label }) => <button>{label}</button>
 ```
 
 We want to update the API so `label` becomes `children` so it more closely mirrors the HTML standard:
 
 ```js
-function Button({ children }) {
-  return <button>{children}</button>;
-}
+const Button = ({ children }) => <button>{children}</button>
 ```
 
-​In this case we should:
+​In this case we will:
 
-1. Allow the user to continue using the old API for a period of time
+1. Allow the user to continue using the old API for a period of time.
 2. Throw a warning to the user that they should be using `children` instead of `label`.
-3. Inform the user of the breaking change, in the form of a link to the changelog
 
-To achieve #1, we could provide a higher-order component, with some method of deciding which component to use:
+To achieve #1, we will:
+
+- leave available the old prop for usage.
 
 ```js
-// HoC
-const EitherOr = (Component1, Component2, decider) => {
-  return class Wrapper extends React.Component {
-    render() {
-      const useNew = decider(this.props);
-      const ComponentToRender = useNew ? Component1 : Component2;
+const Button = ({ label }) => <button>{label}</button>
 
-      return <ComponentToRender {...this.props} />;
-    }
-  };
-};
+```
+- add the new prop `children` and default its value to old one `label`.
 
-// Button/index.js
-import OldButton from './button';
-import NewButton from './newButton';
-import EitherOr from '../EitherOr';
+```js
+const Button = ({ children = label, label  }) => <button>{children}</button>
 
-function decider(props) {
-  return !props.label;
+```
+This solution is back-compatible and if `children` is not provided it will default to `label`.
+
+To achieve #2, we will:
+ - add a customProp deprecate function that will throw a warn message for the deprecated prop, including the `expire date`
+
+```js
+const Button = ({ children = label, label  }) => <button>{children}</button>
+
+Button.propTypes = {
+  // eslint-disable-next-line react/require-default-props
+  children: Type.node,
+  /** @DEPRECATED please use children instead */
+  label: deprecated(Types.node, 'Please use children instead', deprecationDate),
 }
 
-export default EitherOr(NewButton, OldButton, decider);
-```
-
-The decider function in this case, returns `true` if the new api should be used. This satisfies #1, allowing us to release the change a minor version until the deprecation is removed in favour of the new API. More on this later.
-
-To satisfy #2, the decider function could also throw warnings:
-
-```js
-function decider(props) {
-  if (props.label) {
-    console.warn("Button's `label` prop is deprecated, please use `children` instead");
-  }
-
-  return true;
+Button.defaultProp ={
+  label: 'labelDefault'
 }
 
-export default EitherOr(NewButton, OldButton, decider);
 ```
+The code above will result in `children` value to be:
+ - `children` if provided 
+ - `label` if provided
+ - `labelDefault` which is the default value of label
 
-Satisfying #3 is as straight-forward as including a link in the `console.warn`:
-
-```js
-console.warn(
-  "Button's `label` prop is deprecated, please use `children` instead. See https://github.com/transferwise/neptune/blob/master/packages/components/CHANGELOG.md#v1500 for more information",
-);
+The `deprecated` API will be the following:
 ```
-
-One possible issue with this, is the emphasis placed on the engineer introducing the deprecation to manually write a good deprecation message for the consumer. For more complex deprecations than the example, it requires the engineer to write a lot of boilerplate code.
-
-It's possible to solve this by creating the concept of a deprecation configuration and using that as the "decider":
-
-```js
-const EitherOr = (Component1, Component2, config) => {
-  return class Wrapper extends React.Component {
-    render() {
-      const useNew = decider(config, { props: this.props });
-      const ComponentToRender = useNew ? Component1 : Component2;
-
-      return <ComponentToRender {...this.props} />;
-    }
-  };
-};
-
-function decider(config, { props }) {
-  let useNew = true;
-
-  Object.keys(props).forEach(prop => {
-    const propConfig = config.props[prop];
-​
-    if (propConfig) {
-      const { newProp, changelog, customLog } = propConfig;
-      const defaultLogMessage = `${prop} has been deprecated.`
-        useNew = false;
-​
-      console.warn(customLog ? customLog(newProp, prop, changelog) : defaultLogMessage);
-    }
-  });
-
-  return useNew;
-}
-
-const deprecationConfiguration = {
-  props: {
-    label: {
-      newProp: 'children', // or `null` to warn that a prop has been removed entirely
-      changelog: 'http://...',
-      customLog: (newProp, oldProp, changelog) =>
-        `${oldProp} has been replaced with ${newProp}. Chech out the [changelog](${changelog}) for more details.`,
-    },
-  },
-};
-
-export default EitherOr(NewButton, OldButton, deprecationConfiguration);
+ const deprecated = (validator, message = null, deprecationDate = null)
 ```
+where:
+ - validator is one of the default Type validators
+ - message is the console.warn message text
+ - deprecationDate is the expire date of the prop and it will also appear in the console.warn
 
-This enables the deprecation to be expressed as a POJO, and for us to auto-generate warnings where applicable.
+ ## Caveaut
 
-More so, we can add additional features to the configuration, addressing the needs of `context`, and in theory, we could build in a way to automatically break the old API under certain circumstances, e.g., the package has been released as a major version:
+Although `children` is not required it doesn't have a default value (this is the reason of the eslint disable). This is because the propDefault has precednece ove the arguments re-assignment. If we define:
 
-```js
-const deprecationConfiguration = {
-  metadata: {
-    breakingVersion: '2.x.x',
-  },
-  ...
-};
 ```
-
-To offer maximum flexibility and control to the deprecating engineer, we propose that we support a decider as a function and a decider as a configuration object. The function intended to be used where an API has changed beyond recognition and a props map or similar would make little sense. @sergonius [put together an example](https://codesandbox.io/s/deprecating-react-components-pf0yp) of how it could work.
-
-## Other considerations
-
-In adopting this strategy for deprecating Neptune components, we add uncertainty around versioning. As we can now deprecate components, maintaining the legacy API for a period of time, engineers can release what would have been a breaking change as a minor release. To account for this, we propose that contributors to Neptune should no longer be able to release breaking changes. Instead, the #design-systems should control and maintain when a deprecation notice should be removed, and thus the release of breaking changes.
-
-Deprecated component APIs can exist for a pre-agreed amount of time and removed by the design-systems team when necessary, releasing a new major, breaking version of Neptune components.
-
-# Drawbacks
-
-- For the deprecation period, in case of critical changes, you'd need to apply them to both components
-- Newly introduced `required` props are not able to be expressed in a useful way. In theory, we can rely on prop-types and the introduction prop-type warnings as errors within tests to account for this.
-  ​
-
-# Alternatives
-
-​
-There are two clear alternatives:
-
-1. Run with the `function`-only decider, for simpler implementation on our end
-2. Deprecate props within a component directly, e.g.:
-
-```js
-function Button({ label, children }) {
-  const renderedChildren = label || children;
-
-  if (label) {
-    console.warn("Button's `label` prop is deprecated, please use `children` instead");
-  }
-
-  return <Button>{renderedChildren}</Button>;
+Button.defaultProp ={
+  children: 'childrenDefault',
+  label: 'labelDefault'
 }
 ```
+ `children = label` will be overriden and the `children` will default to `childrenDefault` rather than `label` or `labelDefault`.
 
-The concern here being the increased complexity in understand how the component works, and removing the depecration
-​
-
-# Adoption strategy
-
-​
-Since this solution is purely an addition, it requires no changes to any existing components. Implementing the HOC would be a one-liner as shown in the examples above.
-​
-
-# How we teach this
-
-​
-The addition of documentation covering:
-
-1. When a deprecation should be added
-2. How to use the HoC
-3. Communication of a deprecation, and what a good change log item looks like
-   ​
 
 # Conclusion
 
