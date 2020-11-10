@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.9.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.8.7...@transferwise/dynamic-flows@5.9.0) (2020-11-10)
+
+
+### Features
+
+* persistAsyncSchema renders passed down errors ([5e0e493](https://github.com/transferwise/neptune-web/commit/5e0e4930caf443c86a881d9e73776e3fbcac6989))
+
+
+
+
+
 ## [5.8.7](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.8.6...@transferwise/dynamic-flows@5.8.7) (2020-11-10)
 
 
