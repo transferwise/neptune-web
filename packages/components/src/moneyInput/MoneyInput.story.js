@@ -9,7 +9,7 @@ export default {
 };
 
 export const basic = () => {
-  const size = select('size', Object.values(MoneyInput.Size), MoneyInput.Size.MEDIUM);
+  const size = select('size', Object.values(MoneyInput.Size), MoneyInput.Size.LARGE);
   const locale = select('locale', ['en-GB', 'jp-JP'], 'en-GB');
   const amount = number('amount', 1000);
   const placeholder = number('placeholder', null);
