@@ -31,6 +31,7 @@ describe('Given a component for rendering persist async schemas', () => {
       },
     },
   };
+  const errors = 'some error';
 
   const translations = {};
   const submitted = false;
@@ -96,6 +97,7 @@ describe('Given a component for rendering persist async schemas', () => {
       onPersistAsync,
       translations,
       submitted,
+      errors,
     };
   });
 
@@ -114,6 +116,7 @@ describe('Given a component for rendering persist async schemas', () => {
       const basic = component.find(PersistAsyncSchema).find(BasicTypeSchema);
       expect(basic).toHaveLength(1);
       expect(basic.prop('schema').title).toBe('A title');
+      expect(basic.prop('errors')).toBe('some error');
     });
 
     describe('when the field value is valid', () => {

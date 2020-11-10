@@ -80,7 +80,7 @@ const PersistAsyncSchema = (props) => {
         onChange={persistAsyncOnChange}
         submitted={props.submitted || fieldSubmitted}
         schema={props.schema.persistAsync.schema}
-        errors={persistAsyncError}
+        errors={persistAsyncError || props.errors}
         onBlur={onBlur}
       />
     </>
@@ -114,6 +114,7 @@ PersistAsyncSchema.propTypes = {
     help: Types.shape({}),
   }).isRequired,
   translations: Types.shape({}),
+  errors: Types.oneOfType([Types.string, Types.array, Types.shape({})]),
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
   onPersistAsync: Types.func.isRequired,
@@ -121,6 +122,7 @@ PersistAsyncSchema.propTypes = {
 
 PersistAsyncSchema.defaultProps = {
   translations: {},
+  errors: null,
 };
 
 export default PersistAsyncSchema;
