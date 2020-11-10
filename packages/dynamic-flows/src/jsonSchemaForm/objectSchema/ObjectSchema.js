@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import isEqual from 'lodash.isequal';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import GenericSchema from '../genericSchema';
@@ -31,7 +32,11 @@ const ObjectSchema = (props) => {
 
   useEffect(() => {
     // When the schema changes, only retain valid parts of the model
-    setModel(getValidModelParts(model, props.schema));
+    const newModel = getValidModelParts(model, props.schema);
+    setModel(newModel);
+    if (!isEqual(newModel, model)) {
+      props.onChange(newModel, props.schema);
+    }
   }, [props.schema]);
 
   const orderedPropertyNames = [

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 import ObjectSchema from './ObjectSchema';
 import GenericSchema from '../genericSchema';
@@ -9,6 +9,7 @@ describe('Given a component for rendering object schemas', () => {
   let component;
   let genericSchemaComponents;
   let props;
+  let onChange;
 
   const schema = {
     type: 'object',
@@ -41,7 +42,7 @@ describe('Given a component for rendering object schemas', () => {
   let numberSchemaComponent;
 
   beforeEach(() => {
-    const onChange = jest.fn();
+    onChange = jest.fn();
     const onPersistAsync = jest.fn();
 
     props = {
@@ -205,6 +206,29 @@ describe('Given a component for rendering object schemas', () => {
       expect(genericSchemaComponents.at(0).prop('schema')).toBe(properties.string);
       expect(genericSchemaComponents.at(1).prop('schema')).toBe(properties.number);
       expect(genericSchemaComponents.at(2).prop('schema')).toBe(properties.something);
+    });
+  });
+
+  describe('when the schema changes', () => {
+    const schemaWithOnlyNumberProperty = {
+      ...schema,
+      properties: {
+        number: { type: 'number' },
+      },
+    };
+
+    beforeEach(() => {
+      component = mount(<ObjectSchema {...props} />);
+
+      onChange.mockClear();
+    });
+
+    it('should broadcast the valid part of the schema', () => {
+      component.setProps({ schema: schemaWithOnlyNumberProperty });
+      component.update();
+
+      expect(onChange).toHaveBeenCalledWith({ number: 1 }, schemaWithOnlyNumberProperty);
+      expect(onChange).toHaveBeenCalledTimes(1);
     });
   });
 });
