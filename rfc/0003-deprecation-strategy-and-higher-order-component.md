@@ -52,7 +52,7 @@ const Button = ({ label }) => <button>{label}</button>
 - add the new prop `children` and default its value to old one `label`.
 
 ```js
-const Button = ({ children = label, label  }) => <button>{children}</button>
+const Button = ({ label, children = label }) => <button>{children}</button>
 
 ```
 This solution is back-compatible and if `children` is not provided it will default to `label`.
@@ -61,7 +61,7 @@ To achieve #2, we will:
  - add a customProp deprecate function that will throw a warn message for the deprecated prop, including the `expire date`
 
 ```js
-const Button = ({ children = label, label  }) => <button>{children}</button>
+const Button = ({ label, children = label }) => <button>{children}</button>
 
 Button.propTypes = {
   // eslint-disable-next-line react/require-default-props
