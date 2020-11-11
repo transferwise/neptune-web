@@ -11,7 +11,7 @@ describe('withNextPortal', () => {
   });
 
   it('should create a portal with the component', () => {
-    ReactDOM.createPortal.mockReturnValue(() => null);
+    ReactDOM.createPortal.mockImplementation(() => null);
     const props = {};
     const Component = withNextPortal(AnyComponent);
     const expected = mount(<AnyComponent {...props} />);

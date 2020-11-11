@@ -189,7 +189,7 @@ describe('Modal', () => {
 
     it('closes on `esc` keypress on document', () => {
       ReactDOM.createPortal = jest.fn();
-      ReactDOM.createPortal.mockReturnValue(() => null);
+      ReactDOM.createPortal.mockImplementation(() => null);
       const onClose = jest.fn();
       component = mount(<Modal title="Some title" body="Some body" onClose={onClose} open />);
       expect(onClose).not.toBeCalled();
