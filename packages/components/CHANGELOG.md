@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.5.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.4.1...@transferwise/components@30.5.0) (2020-11-11)
+
+
+### Features
+
+* Add support for extra small chevron ([#667](https://github.com/transferwise/neptune-web/issues/667)) ([1a94f27](https://github.com/transferwise/neptune-web/commit/1a94f27f07587b847e03ccfd6e0acaecea65ea1c))
+
+
+
+
+
 ## [30.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.4.0...@transferwise/components@30.4.1) (2020-11-10)
 
 
