@@ -47,13 +47,14 @@ const PersistAsyncSchema = (props) => {
   };
 
   const broadcast = (status, response) => {
-    const { idProperty } = props.schema.persistAsync;
+    const { idProperty, param } = props.schema.persistAsync;
 
     if (isStatus2xx(status)) {
       const id = getIdFromResponse(idProperty, response);
       props.onChange(id, props.schema);
     } else if (isStatus422(status)) {
-      const error = getErrorFromResponse(idProperty, response);
+      const error = getErrorFromResponse(param, response);
+      props.onChange(null, props.schema);
       setPersistAsyncError(error);
     } else {
       setPersistAsyncError('Something went wrong, please try again later!');

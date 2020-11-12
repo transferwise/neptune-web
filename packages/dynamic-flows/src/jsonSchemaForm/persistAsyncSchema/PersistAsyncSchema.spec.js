@@ -73,7 +73,7 @@ describe('Given a component for rendering persist async schemas', () => {
         case '666666':
           response = getMockFetchPromise(
             422,
-            { validation: { anIdProperty: 'Invalid param!' } },
+            { validation: { [param]: 'Invalid param!' } },
             0,
             init.signal,
           );
@@ -161,6 +161,12 @@ describe('Given a component for rendering persist async schemas', () => {
               .find(PersistAsyncSchema)
               .find(BasicTypeSchema);
             expect(basicTypeSchema.prop('errors')).toEqual('Invalid param!');
+          });
+
+          it('should broadcast null value', async () => {
+            await wait(1);
+            expect(onChange).toHaveBeenCalledTimes(1);
+            expect(onChange).toHaveBeenCalledWith(null, schema);
           });
         });
 
