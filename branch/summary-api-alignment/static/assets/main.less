@@ -8,13 +8,6 @@ h1.colored-dot + p {
   font-size: @font-size-large;
 }
 
-@media (min-width: 767px) {
-  h1[id] + p,
-  h1.colored-dot + p {
-    font-size: @font-size-large--desktop;
-  }
-}
-
 h2[id],
 h2.docs-heading,
 p + h2[id] {
@@ -74,12 +67,6 @@ p + h2[id] {
   font-size: @font-size-small;
 }
 
-@media (min-width: 767px) {
-  .Sidebar__Search {
-    font-size: @font-size-small--desktop;
-  }
-}
-
 .Nav {
   overflow-y: auto;
   margin-bottom: 0;
@@ -87,12 +74,6 @@ p + h2[id] {
   list-style: none;
   border-top: 1px solid #e2e6e8;
   font-size: @font-size-small;
-}
-
-@media (min-width: 767px) {
-  .Nav {
-    font-size: @font-size-small--desktop;
-  }
 }
 
 .Nav__Link {
@@ -126,12 +107,6 @@ p + h2[id] {
   color: @color-base-grey-light;
   font-size: @font-size-x-small;
   font-weight: 600;
-}
-
-@media (min-width: 767px) {
-  .Nav__Group {
-    font-size: @font-size-x-small--desktop;
-  }
 }
 
 .Sidebar .Nav__Group {
