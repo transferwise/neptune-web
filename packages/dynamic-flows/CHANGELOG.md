@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.11.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.10.0...@transferwise/dynamic-flows@5.11.0) (2020-11-13)
+
+
+### Features
+
+* pass down displayFormat ([#675](https://github.com/transferwise/neptune-web/issues/675)) ([e297fb9](https://github.com/transferwise/neptune-web/commit/e297fb9f07faf1dc94c7bad5247ef55b5fa8d952))
+
+
+
+
+
 # [5.10.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.9.1...@transferwise/dynamic-flows@5.10.0) (2020-11-12)
 
 
