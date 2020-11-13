@@ -102,6 +102,7 @@ const SchemaFormControl = (props) => {
     placeholder: props.schema.placeholder,
     autoComplete: !props.schema.help,
     disabled: props.disabled,
+    displayPattern: props.schema.displayFormat,
   };
 
   return <FormControl type={controlType} value={safeValue} {...events} {...controlProps} />;
@@ -117,6 +118,7 @@ SchemaFormControl.propTypes = {
     title: Types.string,
     placeholder: Types.string,
     help: Types.shape({}),
+    displayFormat: Types.string,
   }).isRequired,
   onChange: Types.func.isRequired,
   onFocus: Types.func,

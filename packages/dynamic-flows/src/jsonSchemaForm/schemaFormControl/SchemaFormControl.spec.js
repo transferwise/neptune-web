@@ -63,11 +63,15 @@ describe('Given a component for rendering a form control based on a schema', () 
 
   describe('when a string schema is supplied', () => {
     beforeEach(() => {
-      component.setProps({ schema: { type: 'string' } });
+      component.setProps({ schema: { type: 'string', displayFormat: '**-**-*' } });
     });
 
     it('should ask the FormControl for a text control', () => {
       expect(component.find(FormControl).prop('type')).toEqual('text');
+    });
+
+    it('should pass the displayFormat down', () => {
+      expect(component.find(FormControl).prop('displayPattern')).toEqual('**-**-*');
     });
   });
 
