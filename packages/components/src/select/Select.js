@@ -564,7 +564,7 @@ Select.propTypes = {
     }),
   ).isRequired,
   /**
-   * To have full controll of your search value and response use `onSearchChange` function combined with `searchValue` and custom filtering on the options array.
+   * To have full control of your search value and response use `onSearchChange` function combined with `searchValue` and custom filtering on the options array.
    * DO NOT USE TOGETHER WITH `search` PROPERTY
    */
   onSearchChange: Types.func,

@@ -14,8 +14,10 @@ describe('Money Input', () => {
   let component;
   let props;
 
+  let currencies;
+
   beforeEach(() => {
-    const currencies = [
+    currencies = [
       {
         header: 'Popular currencies',
       },
@@ -155,7 +157,7 @@ describe('Money Input', () => {
     });
 
     it('hides headers', () => {
-      const currencies = [
+      currencies = [
         { header: 'A currency' },
         { value: 'GBP', label: 'British pound' },
         { header: 'Another currency' },
@@ -172,7 +174,7 @@ describe('Money Input', () => {
     });
 
     it('searches by label', () => {
-      const currencies = [
+      currencies = [
         { value: 'GBP', label: 'British pound' },
         { value: 'EUR', label: 'Euro' },
       ];
@@ -184,7 +186,7 @@ describe('Money Input', () => {
     });
 
     it('searches by note', () => {
-      const currencies = [
+      currencies = [
         { value: 'GBP', note: 'Queen money' },
         { value: 'EUR', note: 'Other money' },
       ];
@@ -196,7 +198,7 @@ describe('Money Input', () => {
     });
 
     it('searches by searchable string', () => {
-      const currencies = [
+      currencies = [
         { value: 'GBP', searchable: 'Great Britain, United Kingdom' },
         { value: 'EUR', searchable: 'Europe' },
       ];
@@ -210,7 +212,7 @@ describe('Money Input', () => {
     });
 
     it('shows custom action option on every search when onCustomAction is passed to MoneyInput', () => {
-      const currencies = [
+      currencies = [
         { value: 'GBP', searchable: 'Great Britain, United Kingdom' },
         { value: 'EUR', searchable: 'Europe' },
       ];
@@ -409,7 +411,7 @@ describe('Money Input', () => {
   });
 
   it('shows custom action last when onCustomAction prop is passed to MoneyInput', () => {
-    const currencies = [
+    currencies = [
       { value: 'GBP', searchable: 'Great Britain, United Kingdom' },
       { value: 'EUR', searchable: 'Europe' },
     ];
@@ -465,6 +467,38 @@ describe('Money Input', () => {
     it('allows a placeholder of 0', () => {
       component.setProps({ placeholder: 0, locale: 'en-US', numberFormatPrecision: 3 });
       expect(amountInput().prop('placeholder')).toBe('formatted 0, en-US, eur');
+    });
+  });
+
+  describe('onSearchChange()', () => {
+    it('notifies the consumer when user types into the search field', () => {
+      const getCurrencyByValue = (searchValue) =>
+        currencies.find(({ value }) => value === searchValue);
+
+      const onSearchChange = jest.fn();
+      component.setProps({ onSearchChange });
+
+      searchCurrencies('e');
+      expect(onSearchChange).toHaveBeenCalledWith({
+        searchQuery: 'e',
+        filteredOptions: [
+          getCurrencyByValue('EUR'),
+          getCurrencyByValue('USD'),
+          getCurrencyByValue('GBP'),
+        ],
+      });
+
+      searchCurrencies('eur');
+      expect(onSearchChange).toHaveBeenCalledWith({
+        searchQuery: 'eur',
+        filteredOptions: [getCurrencyByValue('EUR')],
+      });
+
+      searchCurrencies('');
+      expect(onSearchChange).toHaveBeenCalledWith({
+        searchQuery: '',
+        filteredOptions: [...currencies],
+      });
     });
   });
 });

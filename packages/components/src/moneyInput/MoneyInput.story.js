@@ -27,6 +27,7 @@ export const basic = () => {
         addon={null}
         placeholder={placeholder}
         searchPlaceholder="Type a currency or country"
+        onSearchChange={action('search query changed')}
         onCustomAction={action('Custom action')}
         customActionLabel="Custom action label"
         currencies={[
