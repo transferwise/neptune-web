@@ -14,6 +14,9 @@ const PersistAsyncSchema = (props) => {
     throw new Error('Not implemented');
   }
 
+  const setGenericPersistAsyncError = () =>
+    setPersistAsyncError('Something went wrong, please try again later!');
+
   const getPersistAsyncResponse = async (currentPersistAsyncModel, persistAsyncSpec) => {
     const signal = abortCurrentRequestAndGetNewAbortSignal();
 
@@ -32,9 +35,8 @@ const PersistAsyncSchema = (props) => {
     );
     props.onPersistAsync(persistAsyncFetch);
     const response = await persistAsyncFetch;
-    const responseJson = await response.json();
 
-    broadcast(response.status, responseJson);
+    broadcast(response);
   };
 
   const abortCurrentRequestAndGetNewAbortSignal = () => {
@@ -46,18 +48,22 @@ const PersistAsyncSchema = (props) => {
     return newAbortController.signal;
   };
 
-  const broadcast = (status, response) => {
-    const { idProperty, param } = props.schema.persistAsync;
-
-    if (isStatus2xx(status)) {
-      const id = getIdFromResponse(idProperty, response);
-      props.onChange(id, props.schema);
-    } else if (isStatus422(status)) {
-      const error = getErrorFromResponse(param, response);
-      props.onChange(null, props.schema);
-      setPersistAsyncError(error);
-    } else {
-      setPersistAsyncError('Something went wrong, please try again later!');
+  const broadcast = async (response) => {
+    try {
+      const jsonResponse = await response.json();
+      const { idProperty, param } = props.schema.persistAsync;
+      if (isStatus2xx(response.status)) {
+        const id = getIdFromResponse(idProperty, jsonResponse);
+        props.onChange(id, props.schema);
+      } else if (isStatus422(response.status)) {
+        const error = getErrorFromResponse(param, jsonResponse);
+        props.onChange(null, props.schema);
+        setPersistAsyncError(error);
+      } else {
+        setGenericPersistAsyncError();
+      }
+    } catch (e) {
+      setGenericPersistAsyncError();
     }
   };
 
