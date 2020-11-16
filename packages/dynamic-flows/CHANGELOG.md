@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.11.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.11.0...@transferwise/dynamic-flows@5.11.1) (2020-11-16)
+
+
+### Bug Fixes
+
+* PersistAsyncSchema not broadcasting error 500 ([#673](https://github.com/transferwise/neptune-web/issues/673)) ([bacd07f](https://github.com/transferwise/neptune-web/commit/bacd07f449276a3219b5b00fc6d91ff309d2192b))
+
+
+
+
+
 # [5.11.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.10.0...@transferwise/dynamic-flows@5.11.0) (2020-11-13)
 
 
