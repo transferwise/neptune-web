@@ -471,15 +471,20 @@ describe('Money Input', () => {
   });
 
   describe('onSearchChange()', () => {
-    it('notifies the consumer when user types into the search field', () => {
+    it('notifies the consumer when the search field is changed', () => {
       const getCurrencyByValue = (searchValue) =>
         currencies.find(({ value }) => value === searchValue);
 
       const onSearchChange = jest.fn();
-      component.setProps({ onSearchChange });
+      const onCustomAction = jest.fn();
+      component.setProps({
+        onSearchChange,
+        customActionLabel: 'customActionLabel',
+        onCustomAction,
+      });
 
       searchCurrencies('e');
-      expect(onSearchChange).toHaveBeenCalledWith({
+      expect(onSearchChange).toHaveBeenLastCalledWith({
         searchQuery: 'e',
         filteredOptions: [
           getCurrencyByValue('EUR'),
@@ -488,14 +493,21 @@ describe('Money Input', () => {
         ],
       });
 
+      searchCurrencies('');
+      expect(onSearchChange).toHaveBeenLastCalledWith({
+        searchQuery: '',
+        filteredOptions: [...currencies],
+      });
+
       searchCurrencies('eur');
-      expect(onSearchChange).toHaveBeenCalledWith({
+      expect(onSearchChange).toHaveBeenLastCalledWith({
         searchQuery: 'eur',
         filteredOptions: [getCurrencyByValue('EUR')],
       });
 
-      searchCurrencies('');
-      expect(onSearchChange).toHaveBeenCalledWith({
+      currencySelect().prop('onChange')({ value: 'CUSTOM_ACTION' });
+      expect(onCustomAction).toHaveBeenCalledTimes(1);
+      expect(onSearchChange).toHaveBeenLastCalledWith({
         searchQuery: '',
         filteredOptions: [...currencies],
       });

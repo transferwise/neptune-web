@@ -100,7 +100,7 @@ export default class MoneyInput extends Component {
   }
 
   handleSelectChange = (value) => {
-    this.setState({ searchQuery: '' });
+    this.handleSearchChange('');
 
     if (this.props.onCustomAction && value.value === CUSTOM_ACTION) {
       this.props.onCustomAction();
