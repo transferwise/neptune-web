@@ -1,3 +1,0 @@
-files:
-  - source: packages/components/lang/en.json
-    translation: /lang/%two_letters_code%.%file_extension%
