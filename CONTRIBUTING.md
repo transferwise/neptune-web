@@ -79,13 +79,15 @@ In `settings.json` (use the command `Open Settings (JSON)` to get there):
 
 We follow [Semantic Versioning](https://semver.org). We require that commit messages follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/#summary) standard. In this way, we can automatically bump the version of our packages when necessary.
 
+**These rules apply to both normal commit messages and PR titles** (if you are using squash and merge).
+
 The rules are simple:
 
 - All your commit messages must follow the format `<type>(scope?): subject`
 - The type must be one of the following: [`fix`, `feat`, `refactor`, `build`, `chore`, `docs`, `perf`, `test`]
 - If you are fixing something, use `fix`. This will bump the patch version.
 - If you are adding a new feature, use `feat`. This will bump the minor version.
-- If you are committing a breaking change, add a ! after the type: `feat!: this is a breaking change`
+- Breaking changes must have the words `BREAKING CHANGE` as the first two words in the commit description. We also add a `!` after the type to make it obvious in the commit log.<sup>*</sup>
 
 Using anything other than `fix` or `feat` without a `!` will not trigger a version bump. This is useful for changes to CI config, documentation or tests. Feel free to choose the type that best reflects the work you're doing.
 
@@ -101,6 +103,8 @@ docs: updating the docs
 refactor(button): refactoring the button implementation
 chore: updating the ci build config
 ```
+
+<sup>*</sup> Generally the core design system team will handle breaking change releases. If you are planning a breaking change, please talk to us.
 
 ## Releasing
 
