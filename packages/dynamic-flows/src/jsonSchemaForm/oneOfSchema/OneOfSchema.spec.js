@@ -118,6 +118,15 @@ describe('Given a oneOfSchema component', () => {
       expect(genericSchema.prop('translations')).toEqual(translations);
     });
 
+    describe('when no model is present', () => {
+      it('should not render a generic schema', () => {
+        component = shallow(<OneOfSchema {...props} model={{}} />);
+        genericSchema = component.find(GenericSchema);
+
+        expect(genericSchema.length).toBe(0);
+      });
+    });
+
     describe('when another schema is selected', () => {
       beforeEach(() => {
         schemaFormControl.simulate('change', 2);

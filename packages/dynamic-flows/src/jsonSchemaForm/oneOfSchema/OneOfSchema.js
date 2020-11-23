@@ -35,10 +35,12 @@ const OneOfSchema = (props) => {
     if (index >= 0) {
       return index;
     }
-    // Otherwise, default to the first schema if it's not a const
-    if (schema.oneOf[0] && !isConstSchema(schema.oneOf[0])) {
+
+    // If we have a non-const oneOf and there's only one, active index must be the first one
+    if (schema.oneOf.length === 1 && !isConstSchema(schema.oneOf[0])) {
       return 0;
     }
+
     // Otherwise do not default
     return null;
   };
@@ -76,7 +78,7 @@ const OneOfSchema = (props) => {
   };
 
   function isConstSchema(schema) {
-    return schema.const || (schema.enum && schema.enum.length === 1);
+    return !!schema && (schema.const || (schema.enum && schema.enum.length === 1));
   }
 
   const [id, setId] = useState('');
