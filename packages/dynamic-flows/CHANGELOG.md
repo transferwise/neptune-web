@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.12.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.11.3...@transferwise/dynamic-flows@5.12.0) (2020-11-23)
+
+
+### Features
+
+* Remove oneOf schemas defaulting logic ([#688](https://github.com/transferwise/neptune-web/issues/688)) ([8087fe8](https://github.com/transferwise/neptune-web/commit/8087fe8c90531c78f1258416e01c7dc73b27ea34))
+
+
+
+
+
 ## [5.11.3](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.11.2...@transferwise/dynamic-flows@5.11.3) (2020-11-17)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
