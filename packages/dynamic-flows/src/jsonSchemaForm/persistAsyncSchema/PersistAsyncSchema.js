@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Types from 'prop-types';
+import { isNull } from '@transferwise/neptune-validation';
 import BasicTypeSchema from '../basicTypeSchema';
 import { isStatus2xx, isStatus422, QueryablePromise } from '../../common/api/utils';
 
@@ -72,7 +73,9 @@ const PersistAsyncSchema = (props) => {
   const getErrorFromResponse = (errorProperty, response) => response.validation?.[errorProperty];
 
   const onBlur = () => {
-    getPersistAsyncResponse(persistAsyncModel, props.schema.persistAsync);
+    if (!isNull(persistAsyncModel)) {
+      getPersistAsyncResponse(persistAsyncModel, props.schema.persistAsync);
+    }
   };
 
   const persistAsyncOnChange = (newPersistAsyncModel) => {
@@ -84,6 +87,7 @@ const PersistAsyncSchema = (props) => {
   return (
     <>
       <BasicTypeSchema
+        required={props.required}
         onChange={persistAsyncOnChange}
         submitted={props.submitted || fieldSubmitted}
         schema={props.schema.persistAsync.schema}
@@ -125,11 +129,13 @@ PersistAsyncSchema.propTypes = {
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
   onPersistAsync: Types.func.isRequired,
+  required: Types.bool,
 };
 
 PersistAsyncSchema.defaultProps = {
   translations: {},
   errors: null,
+  required: false,
 };
 
 export default PersistAsyncSchema;

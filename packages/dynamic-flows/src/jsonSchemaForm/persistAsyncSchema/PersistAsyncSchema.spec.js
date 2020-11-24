@@ -32,7 +32,7 @@ describe('Given a component for rendering persist async schemas', () => {
     },
   };
   const errors = 'some error';
-
+  const required = true;
   const translations = {};
   const submitted = false;
 
@@ -117,6 +117,7 @@ describe('Given a component for rendering persist async schemas', () => {
       translations,
       submitted,
       errors,
+      required,
     };
   });
 
@@ -151,6 +152,16 @@ describe('Given a component for rendering persist async schemas', () => {
       expect(basic).toHaveLength(1);
       expect(basic.prop('schema').title).toBe('A title');
       expect(basic.prop('errors')).toBe('some error');
+      expect(basic.prop('required')).toBe(true);
+    });
+
+    describe('when the field value is null', () => {
+      it('should not trigger persist async on blur', () => {
+        enterValueAndBlur(null);
+
+        expect(global.fetch).toHaveBeenCalledTimes(0);
+        expect(onPersistAsync).toHaveBeenCalledTimes(0);
+      });
     });
 
     describe('when the field value is valid', () => {
