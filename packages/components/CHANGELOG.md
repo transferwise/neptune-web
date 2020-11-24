@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.7.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.6.1...@transferwise/components@30.7.0) (2020-11-24)
+
+
+### Features
+
+* allow select to search note and secondary by default ([#693](https://github.com/transferwise/neptune-web/issues/693)) ([415cc4e](https://github.com/transferwise/neptune-web/commit/415cc4e17b123a20960f09645bf1cacb74290705))
+
+
+
+
+
 ## [30.6.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.6.0...@transferwise/components@30.6.1) (2020-11-17)
 
 
