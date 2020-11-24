@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.14.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.13.0...@transferwise/dynamic-flows@5.14.0) (2020-11-24)
+
+
+### Features
+
+* ADS-1721 Client side persist async validation ([#694](https://github.com/transferwise/neptune-web/issues/694)) ([076b81c](https://github.com/transferwise/neptune-web/commit/076b81c25e31e88b734f79a88bc10f2aeeea7b8d))
+
+
+
+
+
 # [5.13.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.12.1...@transferwise/dynamic-flows@5.13.0) (2020-11-24)
 
 
