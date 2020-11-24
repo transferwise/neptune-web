@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.13.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.12.1...@transferwise/dynamic-flows@5.13.0) (2020-11-24)
+
+
+### Features
+
+* bump components version to allow searching descriptions on Selects ([#692](https://github.com/transferwise/neptune-web/issues/692)) ([dece883](https://github.com/transferwise/neptune-web/commit/dece883f1fb83305576ecd60a7334828b0f62e0d))
+
+
+
+
+
 ## [5.12.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@5.12.0...@transferwise/dynamic-flows@5.12.1) (2020-11-24)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
