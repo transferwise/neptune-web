@@ -56,6 +56,8 @@ const arrayIncludesString = (arrayToSearch, keyword) =>
 
 const defaultFilterFunction = (option, keyword) =>
   (option.label && includesString(option.label, keyword)) ||
+  (option.note && includesString(option.note, keyword)) ||
+  (option.secondary && includesString(option.secondary, keyword)) ||
   (option.currency && includesString(option.currency, keyword)) ||
   (option.searchStrings && arrayIncludesString(option.searchStrings, keyword));
 
