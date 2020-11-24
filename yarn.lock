@@ -3418,6 +3418,26 @@
   dependencies:
     "@babel/runtime" "^7.10.2"
 
+"@transferwise/components@^30.7.0":
+  version "30.7.0"
+  resolved "https://registry.yarnpkg.com/@transferwise/components/-/components-30.7.0.tgz#70d38fc598e5713b3f402bb6abff9be0898f4beb"
+  integrity sha512-mfUFvkx6Azn2U0cB29SvIREA8DcOZwXtc49UYnorD6ukCsi+L4l4jjVjYPsfsnb3Hgkdu3udvPwQfaGGph1EYw==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@transferwise/formatting" "^2.1.0"
+    "@transferwise/icons" "^2.4.0"
+    "@transferwise/neptune-css" "^4.0.8"
+    "@transferwise/neptune-validation" "^2.0.5"
+    classnames "^2.2.6"
+    commonmark "0.29.1"
+    core-js "^3.6.5"
+    lodash.clamp "^4.0.3"
+    lodash.debounce "^4.0.8"
+    lodash.topairs "^4.3.0"
+    react-required-if "^1.0.3"
+    react-spring "^8.0.27"
+    react-transition-group "^4.2.1"
+
 "@transferwise/eslint-config@^6.0.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@transferwise/eslint-config/-/eslint-config-6.1.0.tgz#a931d2d72ea9f05d379915cf6f22fc0e15352dfe"

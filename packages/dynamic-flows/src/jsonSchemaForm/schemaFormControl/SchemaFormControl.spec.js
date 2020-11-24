@@ -207,96 +207,94 @@ describe('Given a component for rendering a form control based on a schema', () 
       ]);
     });
 
-    it('should set secondary field if total length of label and description exceeds predefined length', () => {
-      component.setProps({
-        schema: {
-          oneOf: [
-            { const: 1, title: 'One' },
-            {
-              const: 3,
-              title: 'Three',
-              description: 'reeeeeeaaallllllllly loooooooooooooooooooooongggggggggggg',
-            },
-          ],
-        },
-      });
+    describe('when the total length of label and description exceeds predefined length', () => {
+      it('should set the secondary field', () => {
+        component.setProps({
+          schema: {
+            oneOf: [
+              {
+                const: 3,
+                title: 'Three',
+                description: 'reeeeeeaaallllllllly loooooooooooooooooooooongggggggggggg',
+              },
+            ],
+          },
+        });
 
-      expect(component.find(FormControl).prop('options')).toEqual([
-        { value: 1, label: 'One' },
-        {
-          value: 3,
-          label: 'Three',
-          secondary: 'reeeeeeaaallllllllly loooooooooooooooooooooongggggggggggg',
-        },
-      ]);
+        expect(component.find(FormControl).prop('options')[0].secondary).toEqual(
+          'reeeeeeaaallllllllly loooooooooooooooooooooongggggggggggg',
+        );
+      });
     });
 
-    it('should set note field if total length of label and description is less than predefined length', () => {
-      component.setProps({
-        schema: {
-          oneOf: [
-            { const: 1, title: 'One' },
-            { const: 3, title: 'Three', description: 'short description' },
-          ],
-        },
-      });
+    describe('when the total length of label and description is less than predefined length', () => {
+      it('should set the note field', () => {
+        component.setProps({
+          schema: {
+            oneOf: [{ const: 3, title: 'Three', description: 'short description' }],
+          },
+        });
 
-      expect(component.find(FormControl).prop('options')).toEqual([
-        { value: 1, label: 'One' },
-        { value: 3, label: 'Three', note: 'short description' },
-      ]);
+        expect(component.find(FormControl).prop('options')[0].note).toEqual('short description');
+      });
     });
 
-    it('should set currency field when icon name is a supported currency flag', () => {
-      component.setProps({
-        schema: {
-          oneOf: [
-            { const: 1, title: 'One' },
-            { const: 2, title: 'Two', icon: { name: 'flag-usd' } },
-            { const: 3, title: 'Three', icon: { name: 'flag-gbp' } },
-          ],
-        },
-      });
+    describe('when icon name is a supported currency flag', () => {
+      it('should set currency field', () => {
+        component.setProps({
+          schema: {
+            oneOf: [
+              { const: 1, title: 'One' },
+              { const: 2, title: 'Two', icon: { name: 'flag-usd' } },
+              { const: 3, title: 'Three', icon: { name: 'flag-gbp' } },
+            ],
+          },
+        });
 
-      expect(component.find(FormControl).prop('options')).toEqual([
-        { value: 1, label: 'One' },
-        { value: 2, label: 'Two', currency: 'usd' },
-        { value: 3, label: 'Three', currency: 'gbp' },
-      ]);
+        expect(component.find(FormControl).prop('options')).toEqual([
+          { value: 1, label: 'One' },
+          { value: 2, label: 'Two', currency: 'usd' },
+          { value: 3, label: 'Three', currency: 'gbp' },
+        ]);
+      });
     });
 
-    it(`should ignore "icon.name" when it's a NOT a supported currency flag`, () => {
-      component.setProps({
-        schema: {
-          oneOf: [
-            { const: 1, title: 'One' },
-            { const: 2, title: 'Two', icon: { name: 'flag-usd' } },
-            { const: 3, title: 'Three', icon: { name: 'usd' } },
-          ],
-        },
-      });
+    describe("when there's a mix of supported and unsupported icons", () => {
+      it('should ignore the unsupported currencies', () => {
+        component.setProps({
+          schema: {
+            oneOf: [
+              { const: 1, title: 'One' },
+              { const: 2, title: 'Two', icon: { name: 'flag-usd' } },
+              { const: 3, title: 'Three', icon: { name: 'usd' } },
+            ],
+          },
+        });
 
-      expect(component.find(FormControl).prop('options')).toEqual([
-        { value: 1, label: 'One' },
-        { value: 2, label: 'Two', currency: 'usd' },
-        { value: 3, label: 'Three' },
-      ]);
+        expect(component.find(FormControl).prop('options')).toEqual([
+          { value: 1, label: 'One' },
+          { value: 2, label: 'Two', currency: 'usd' },
+          { value: 3, label: 'Three' },
+        ]);
+      });
     });
 
-    it('should not set currency field when icon name is not a supported currency flag', () => {
-      component.setProps({
-        schema: {
-          oneOf: [
-            { const: 1, title: 'One' },
-            { const: 3, title: 'Three', icon: { name: 'something invalid' } },
-          ],
-        },
-      });
+    describe('when icon name is not a supported currency flag', () => {
+      it('should not set currency field', () => {
+        component.setProps({
+          schema: {
+            oneOf: [
+              { const: 1, title: 'One' },
+              { const: 3, title: 'Three', icon: { name: 'something invalid' } },
+            ],
+          },
+        });
 
-      expect(component.find(FormControl).prop('options')).toEqual([
-        { value: 1, label: 'One' },
-        { value: 3, label: 'Three' },
-      ]);
+        expect(component.find(FormControl).prop('options')).toEqual([
+          { value: 1, label: 'One' },
+          { value: 3, label: 'Three' },
+        ]);
+      });
     });
   });
 

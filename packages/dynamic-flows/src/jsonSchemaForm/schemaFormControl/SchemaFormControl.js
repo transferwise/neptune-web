@@ -4,7 +4,7 @@ import Types from 'prop-types';
 import { isNull, isUndefined } from '@transferwise/neptune-validation';
 import FormControl from '../../formControl';
 import { getValidModelParts } from '../../common/validation/valid-model';
-import { getCurrencyFlag } from './availableCurrencyFlags';
+import { mapConstSchemaToOption } from './optionMapper';
 
 const SchemaFormControl = (props) => {
   const isNativeInput = (schemaType) => schemaType === 'string' || schemaType === 'number';
@@ -66,20 +66,6 @@ const SchemaFormControl = (props) => {
       return schema.oneOf.map(mapConstSchemaToOption);
     }
     return null;
-  };
-
-  const mapIcon = (icon) => (icon ? getCurrencyFlag(icon.name) : null);
-
-  const mapConstSchemaToOption = (schema) => {
-    const keyForDescription =
-      (schema.title + schema.description).length > 50 ? 'secondary' : 'note';
-    return {
-      value: !isUndefined(schema.const) ? schema.const : schema.enum[0],
-      label: schema.title,
-      [keyForDescription]: schema.description,
-      ...mapIcon(schema.icon),
-      disabled: schema.disabled,
-    };
   };
 
   const controlType = getControlType(props.schema);
