@@ -50,7 +50,7 @@ const Option = ({
     )}
     <div className="media-body">
       <div className="h5">{title}</div>
-      {content}
+      {content && <div className="decision__content">{content}</div>}
     </div>
     <div className="media-right">{button}</div>
   </Element>

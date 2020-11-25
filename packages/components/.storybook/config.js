@@ -48,6 +48,11 @@ addDecorator(
 addDecorator(CenterDecorator);
 addDecorator(StrictModeDecorator);
 addParameters({
+  a11y: {
+    config: {
+      rules: [{ id: 'color-contrast', enabled: false }],
+    },
+  },
   options: {
     theme,
     panelPosition: 'right',

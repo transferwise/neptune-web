@@ -1,51 +1,46 @@
 @import (reference) '@transferwise/neptune-css/src/less/variables/_typography.less';
 
-.summary {
-  &__main {
-    display: flex;
+.np-summary {
+  min-width: 280px;
+  &__title {
+    margin-top: 2px;
+    line-height: calc(22 / 16);
+
+    .np-info__small {
+      margin-top: 2px;
+    }
   }
 
   &__icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    width: 44px;
-    height: 44px;
-    margin-top: -10px;
-    margin-bottom: -10px;
-  }
-
-  &__title {
-    display: flex;
-  }
-
-  &__help {
-    margin-top: 3px;
-    height: 16px;
-
-    .tw-icon {
-      color: var(--color-accent);
-      display: inline-block;
+    position: relative;
+    color: var(--color-text-primary);
+    .np-summary-icon__done {
+      color: var(--color-positive);
     }
-
-    [data-toggle='popover']:not(.btn) {
-      // Bootstrap popover has !important dotted border bottom
-      // This doesn't make sense on a help icon
-      border-bottom: none !important;
+    .np-summary-icon__pending {
+      color: var(--color-warning);
+    }
+    // The second icon is the badge
+    :nth-child(2) {
+      position: absolute;
+      right: -8px;
+      bottom: -6px;
     }
   }
 
-  &__content {
+  &__description {
     margin-top: var(--size-4);
     font-size: @font-size-small;
-
-    @media (--screen-md) {
-      font-size: @font-size-small--desktop;
-    }
+    line-height: calc(20 / 14);
   }
 
-  & + .summary {
+  &__action {
+    margin-top: var(--size-4);
+    font-size: @font-size-small;
+    line-height: calc(18 / 14);
+  }
+
+  & + .np-summary {
     margin-top: var(--size-24);
   }
 }

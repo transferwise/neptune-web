@@ -1,0 +1,18 @@
+export const MarkdownNodeTypes = {
+  BLOCK_QUOTE: 'block_quote',
+  CODE_BLOCK: 'code_block',
+  CODE: 'code',
+  EMPH: 'emph',
+  HEADING: 'heading',
+  HTML_BLOCK: 'html_block',
+  HTML_INLINE: 'html_inline',
+  IMAGE: 'image',
+  ITEM: 'item',
+  LINEBREAK: 'linebreak',
+  LINK: 'link',
+  LIST: 'list',
+  PARAGRAPH: 'paragraph',
+  SOFTBREAK: 'softbreak',
+  STRONG: 'strong',
+  THEMATIC_BREAK: 'thematic_break',
+};

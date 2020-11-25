@@ -1,0 +1,38 @@
+.np-info {
+  height: 16px;
+  button,
+  [data-toggle='popover']:not(.btn) {
+    height: 16px;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  &__large {
+    height: 24px;
+    button,
+    [data-toggle='popover']:not(.btn) {
+      height: 24px;
+      display: inline-block;
+    }
+  }
+
+  .tw-icon {
+    cursor: pointer;
+    color: var(--color-accent);
+    display: inline-block;
+  }
+
+  [data-toggle='popover']:not(.btn) {
+    // Bootstrap popover has !important dotted border bottom
+    // This doesn't make sense on a help icon
+    border-bottom: none !important;
+    &:focus {
+      outline: revert;
+    }
+  }
+
+  button {
+    border: none;
+    background: transparent;
+  }
+}

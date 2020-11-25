@@ -9,10 +9,11 @@ export default {
 
 export const basic = () => (
   <>
-    <Alert type="error">
-      This page is used only for visual regression testing. We DO NOT guarantee support for the
-      elements used on this page. Please DO NOT use as reference.
-    </Alert>
+    <Alert
+      type="negative"
+      message="This page is used only for visual regression testing. We DO NOT guarantee support for the
+      elements used on this page. Please DO NOT use as reference."
+    />
     <div className="m-t-5" dangerouslySetInnerHTML={{ __html: Object.values(components) }} />
   </>
 );

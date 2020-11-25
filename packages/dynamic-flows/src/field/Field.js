@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import { Alert, InstructionsList } from '@transferwise/components';
+import { InlineAlert, InstructionsList } from '@transferwise/components';
 import FormControl from '../formControl';
 import { FormControlType, Size } from '../common';
 
@@ -101,7 +101,7 @@ export default class Field extends Component {
 
     if (this.objectSizeOf(validationFailures) > 0) {
       return {
-        type: Alert.Type.ERROR,
+        type: InlineAlert.Type.ERROR,
         content: Object.keys(validationFailures).map((key) => (
           <div key={key}>{validationFailures[key]}</div>
         )),
@@ -109,25 +109,25 @@ export default class Field extends Component {
     }
     if (error && errorMessage) {
       return {
-        type: Alert.Type.ERROR,
+        type: InlineAlert.Type.ERROR,
         content: <>{errorMessage}</>,
       };
     }
     if (warningMessage) {
       return {
-        type: Alert.Type.WARNING,
+        type: InlineAlert.Type.WARNING,
         content: <>{warningMessage}</>,
       };
     }
     if (focused && field.help && field.help.message) {
       return {
-        type: Alert.Type.INFO,
+        type: InlineAlert.Type.INFO,
         content: <>{field.help.message}</>,
       };
     }
     if (focused && field.help && field.help.list && field.help.list.length > 0) {
       return {
-        type: Alert.Type.INFO,
+        type: InlineAlert.Type.INFO,
         // eslint-disable-next-line react/no-array-index-key
         content: field.help.list.map((item, index) => <div key={index}>{item}</div>),
       };
@@ -141,7 +141,7 @@ export default class Field extends Component {
       field.help.dont.length > 0
     ) {
       return {
-        type: Alert.Type.INFO,
+        type: InlineAlert.Type.INFO,
         content: (
           <div className="m-b-1">
             <InstructionsList dos={field.help.do} donts={field.help.dont} />
@@ -151,7 +151,7 @@ export default class Field extends Component {
     }
     if (focused && control !== FormControlType.FILE && field.help && field.help.image) {
       return {
-        type: Alert.Type.INFO,
+        type: InlineAlert.Type.INFO,
         content: <img className="thumbnail m-y-2" src={`${field.help.image}`} alt={field.label} />,
       };
     }
@@ -176,9 +176,9 @@ export default class Field extends Component {
     return (
       <div
         className={classNames('form-group', `tw-field-${name}`, {
-          'has-info': alert.type === Alert.Type.INFO && showAlert,
-          'has-error': alert.type === Alert.Type.ERROR && showAlert,
-          'has-warning': alert.type === Alert.Type.WARNING && showAlert,
+          'has-info': alert.type === InlineAlert.Type.INFO && showAlert,
+          'has-error': alert.type === InlineAlert.Type.ERROR && showAlert,
+          'has-warning': alert.type === InlineAlert.Type.WARNING && showAlert,
           hidden: field.hidden,
         })}
       >
@@ -196,11 +196,7 @@ export default class Field extends Component {
           onFocus={(event) => this.onFocus(event)}
           onBlur={(event) => this.onBlur(event)}
         />
-        {showAlert && (
-          <Alert type={alert.type} size={Alert.Size.SMALL} arrow={Alert.ArrowPosition.TOP_LEFT}>
-            {alert.content}
-          </Alert>
-        )}
+        {showAlert && <InlineAlert type={alert.type}>{alert.content}</InlineAlert>}
       </div>
     );
   }

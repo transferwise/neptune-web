@@ -5,7 +5,7 @@
     amount={1000}
     locale="en-GB"
     size="lg"
-    onAmountChange={() => console.log('amount changed')}
+    onAmountChange={value => console.log('amount changed', value)}
     onCurrencyChange={() => alert('currency changed')}
     addon={null}
     searchPlaceholder="Type a currency or country"

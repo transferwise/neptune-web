@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { Alert, Checkbox, Radio, Select } from '@transferwise/components';
+import { InlineAlert, Checkbox, Radio, Select } from '@transferwise/components';
 
 import JsonSchemaForm from '.';
 
@@ -123,7 +123,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
     });
 
     it('should render an error', () => {
-      expect(component.find(Alert).contains(errors.string)).toBe(true);
+      expect(component.find(InlineAlert).contains(errors.string)).toBe(true);
     });
 
     it('should broadcast a change for the const', () => {
@@ -148,8 +148,16 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
       component.find('input[type="text"]').simulate('change', { target: { value: 'x' } });
     });
 
-    it('should remove the value from the model', () => {
-      expect(onChange).toHaveBeenCalledWith({ const: 'abcd' }, true, stringSchema);
+    it('should NOT remove the value from the model', () => {
+      expect(onChange).toHaveBeenLastCalledWith(
+        { const: 'abcd', string: 'x' },
+        false,
+        stringSchema,
+      );
+    });
+
+    it('should call onChange with valid = false', () => {
+      expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(false);
     });
 
     describe('and then to something else invalid', () => {
@@ -157,8 +165,8 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
         component.find('input[type="text"]').simulate('change', { target: { value: 'y' } });
       });
 
-      it('should not call onChange again', () => {
-        expect(onChange).toHaveBeenCalledTimes(2);
+      it('should call onChange again', () => {
+        expect(onChange).toHaveBeenCalledTimes(3);
       });
     });
 

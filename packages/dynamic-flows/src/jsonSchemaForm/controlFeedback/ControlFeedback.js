@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 
-import { Alert } from '@transferwise/components';
+import { InlineAlert } from '@transferwise/components';
 
 const ControlFeedback = (props) => {
   // Use validation messages from the schema if possible.
@@ -17,20 +17,16 @@ const ControlFeedback = (props) => {
 
   return (
     <div>
-      {isErrorVisible && (
-        <Alert type="error" size="sm">
-          {props.errors}
-        </Alert>
-      )}
+      {isErrorVisible && <InlineAlert type="error">{props.errors}</InlineAlert>}
       {isValidationVisible && (
-        <Alert type="error" size="sm">
+        <InlineAlert type="error">
           {props.validations.map((validation) => (
             <div key={validation}>{validationMessages[validation]}</div>
           ))}
-        </Alert>
+        </InlineAlert>
       )}
       {isHelpVisible && (
-        <Alert type="info" size="sm">
+        <InlineAlert type="info">
           {props.schema.help.message && <div>{props.schema.help.message}</div>}
           {props.schema.help.list && (
             <ul className="list-unstyled">
@@ -39,7 +35,7 @@ const ControlFeedback = (props) => {
               ))}
             </ul>
           )}
-        </Alert>
+        </InlineAlert>
       )}
     </div>
   );

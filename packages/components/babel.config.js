@@ -77,6 +77,7 @@ module.exports = {
   sourceType: 'unambiguous',
   plugins: [
     '@babel/plugin-proposal-class-properties',
+    '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-transform-react-jsx',
     '@babel/plugin-transform-runtime',
   ],

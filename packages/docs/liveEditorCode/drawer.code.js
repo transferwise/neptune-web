@@ -12,7 +12,7 @@
       </Button>
       <Drawer
         open={open}
-        position="right"
+        position={Drawer.Position.RIGHT}
         onClose={() => setOpen(false)}
         footerContent={
           <Button onClick={() => setOpen(false)} block>

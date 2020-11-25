@@ -311,13 +311,29 @@ describe('Money Input', () => {
     expect(assertions).toEqual(1);
   });
 
-  it('does not call onAmountChange with a parsed number if unable to parse', () => {
+  it('does call onAmountChange when input value is empty', () => {
+    const testValue = '';
     const onAmountChange = jest.fn();
     component.setProps({ onAmountChange });
-    numberFormatting.parseAmount = jest.fn(() => NaN);
-    enterAmount('cannot parse this yo');
-    expect(onAmountChange).not.toHaveBeenCalled();
+    numberFormatting.parseAmount = jest.fn();
+    enterAmount(testValue);
+    expect(numberFormatting.parseAmount).not.toHaveBeenCalled();
+    expect(onAmountChange).toHaveBeenCalledTimes(1);
+    expect(onAmountChange).toHaveBeenLastCalledWith(null);
   });
+
+  test.each(['cannot parse this yo', '  '])(
+    "does not call onAmountChange with a parsed number if unable to parse value '%s'",
+    (testValue) => {
+      const onAmountChange = jest.fn();
+      component.setProps({ onAmountChange });
+      numberFormatting.parseAmount = jest.fn(() => NaN);
+      enterAmount(testValue);
+      expect(onAmountChange).not.toHaveBeenCalled();
+      expect(numberFormatting.parseAmount).toHaveBeenCalledTimes(1);
+      expect(numberFormatting.parseAmount).toHaveBeenLastCalledWith(testValue, 'eur', 'en-GB');
+    },
+  );
 
   it('passes the id given to the input element', () => {
     expect(amountInput().prop('id')).toBeNull();
