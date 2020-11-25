@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.8...@transferwise/neptune-css@5.0.0) (2020-11-25)
+
+
+* refactor!: Neptune Web November Release (#695) ([e04fe15](https://github.com/transferwise/neptune-web/commit/e04fe15cc94116cd1c9e9f867a8378a0275edf33)), closes [#695](https://github.com/transferwise/neptune-web/issues/695) [#623](https://github.com/transferwise/neptune-web/issues/623) [#624](https://github.com/transferwise/neptune-web/issues/624) [#653](https://github.com/transferwise/neptune-web/issues/653) [#657](https://github.com/transferwise/neptune-web/issues/657) [#659](https://github.com/transferwise/neptune-web/issues/659) [#658](https://github.com/transferwise/neptune-web/issues/658) [#654](https://github.com/transferwise/neptune-web/issues/654) [#655](https://github.com/transferwise/neptune-web/issues/655) [#498](https://github.com/transferwise/neptune-web/issues/498) [#672](https://github.com/transferwise/neptune-web/issues/672) [#650](https://github.com/transferwise/neptune-web/issues/650) [#684](https://github.com/transferwise/neptune-web/issues/684) [#691](https://github.com/transferwise/neptune-web/issues/691) [#671](https://github.com/transferwise/neptune-web/issues/671) [#697](https://github.com/transferwise/neptune-web/issues/697)
+
+
+### BREAKING CHANGES
+
+* Neptune Web November Release (#695)
+* add conditionally required aria-label or aria-labelledby
+* required onclick
+* onAmountChange will now trigger even if the value is empty
+* Marketing components CSS can now be found in: https://github.com/transferwise/marketing-components/tree/main/packages/css
+
+Co-authored-by: Helen Durrant <61203573+helendurranttw@users.noreply.github.com>
+* DateInput - onChange when month is not selected (#614)
+
+Before: When month is not selected, it defaults to 0 which is January. This results in the component dispatching `onChange` with a seemingly valid data, when in reality the user hasn't finished composing the date.
+After: When month is not selected, we don't construct a Date object, and the `onChange` event contains `null` instead.
+
+Before: onChange was not being called if the user de-selected a month
+After: onChange is called with null
+* date input onFocus/onBlur grouped events (#626)
+
+DateInput now only triggers “onFocus” and “onBlur” when the focus changes outside of its 3 sub-components, and not when cycling through them.
+* base font size is now 16px across all screen widths
+* consumer will have to provide icons and neptune-css
+* this removes the size prop from Alert - there is now only one size
+
+
+
+
+
 ## [4.0.8](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.7...@transferwise/neptune-css@4.0.8) (2020-11-09)
 
 
