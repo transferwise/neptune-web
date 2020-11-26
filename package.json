@@ -71,7 +71,8 @@
     "clean:lock": "find . -name '*.lock' -or -name '*-lock.json' -type f -delete",
     "lint": "lerna run lint",
     "preinstall": "node enforce-yarn.js",
-    "create-component": "files-scaffold"
+    "create-component": "files-scaffold",
+    "test:visual": "lerna run test:visual --stream"
   },
   "husky": {
     "hooks": {

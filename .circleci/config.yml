@@ -45,6 +45,10 @@ aliases:
     name: Test packages
     command: yarn test
 
+  - &visual-test
+    name: Visual Regression test
+    command: yarn test:visual
+
   - &add-npm-release-token
     name: Set NPM publish token
     command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_PUBLISH" >> ~/.npmrc
@@ -89,6 +93,13 @@ jobs:
     steps:
       - *attach-workspace
       - run: *test
+      - *persist-workspace
+
+  visual-test:
+    <<: *container
+    steps:
+      - *attach-workspace
+      - run: *visual-test
       - *persist-workspace
 
   deploy-docs:
@@ -150,6 +161,26 @@ workflows:
           context: frontend-build
           requires:
             - setup
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - main
+
+      - hold-visual-test:
+          type: approval
+          requires:
+            - test
+            - setup
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - main
+
+      - visual-test:
+          requires:
+            - hold-visual-test
           filters:
             branches:
               ignore:

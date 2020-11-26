@@ -49,6 +49,8 @@ lib
 build
 docs-build
 stats.html
+build-storybook.log
+storybook-static
 
 
 # editors

@@ -60,7 +60,8 @@ addParameters({
 });
 
 const requires = [require.context('../src', true, /\.story\.js$/)];
-if (process.env.CI) {
+
+if (process.env.STORYBOOK_CIRCLECI) {
   requires.push(require.context('../test', true, /\.story\.js$/));
 }
 
