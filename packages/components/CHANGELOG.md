@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.1...@transferwise/components@31.0.2) (2020-11-30)
+
+
+### Bug Fixes
+
+* Australian Antarctic Territory ISO code and genericize longestMatchingPrefix test data ([#698](https://github.com/transferwise/neptune-web/issues/698)) ([beafd19](https://github.com/transferwise/neptune-web/commit/beafd19146b5e11e47e70e0bcfc72fce65e0ee71))
+
+
+
+
+
 ## [31.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.0...@transferwise/components@31.0.1) (2020-11-26)
 
 **Note:** Version bump only for package @transferwise/components
