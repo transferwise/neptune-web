@@ -3,16 +3,16 @@ import { longestMatchingPrefix } from '.';
 describe('longestMatchingPrefix', () => {
   const matchingcodes = [
     {
-      name: 'Australia',
-      iso2: 'AU',
-      iso3: 'AUS',
-      phone: '+61',
+      name: 'Some country',
+      iso2: 'AB',
+      iso3: 'ABC',
+      phone: '+34',
     },
     {
-      name: 'Australian External Territories',
-      iso2: 'AU',
-      iso3: 'AUS',
-      phone: '+672',
+      name: 'Some country with same ISO code',
+      iso2: 'AB',
+      iso3: 'ABC',
+      phone: '+123',
     },
   ];
   it('should return a country with the longest matching prefix', () => {
