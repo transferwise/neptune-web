@@ -375,4 +375,41 @@ describe('Given a component for rendering a form control based on a schema', () 
       expect(onBlur).toHaveBeenCalled();
     });
   });
+
+  describe('when props contains disabled property', () => {
+    describe('when disabled through component props', () => {
+      it('should pass down disabled to the FormControl', () => {
+        props = { ...props, disabled: true };
+
+        component = shallow(<SchemaFormControl {...props} />);
+        formControlComponent = component.find(FormControl);
+
+        expect(formControlComponent.prop('disabled')).toBe(true);
+      });
+    });
+
+    describe('when disabled through schema', () => {
+      it('should pass down disabled to the FormControl', () => {
+        schema = { ...schema, disabled: true };
+        props = { ...props, schema };
+
+        component = shallow(<SchemaFormControl {...props} />);
+        formControlComponent = component.find(FormControl);
+
+        expect(formControlComponent.prop('disabled')).toBe(true);
+      });
+    });
+
+    describe('when disabled both through component props and schema', () => {
+      it('should pass down disabled to the FormControl', () => {
+        schema = { ...schema, disabled: true };
+        props = { ...props, disabled: true, schema };
+
+        component = shallow(<SchemaFormControl {...props} />);
+        formControlComponent = component.find(FormControl);
+
+        expect(formControlComponent.prop('disabled')).toBe(true);
+      });
+    });
+  });
 });

@@ -87,7 +87,7 @@ const SchemaFormControl = (props) => {
     options,
     placeholder: props.schema.placeholder,
     autoComplete: !props.schema.help,
-    disabled: props.disabled,
+    disabled: props.disabled || props.schema.disabled,
     displayPattern: props.schema.displayFormat,
   };
 
@@ -105,6 +105,7 @@ SchemaFormControl.propTypes = {
     placeholder: Types.string,
     help: Types.shape({}),
     displayFormat: Types.string,
+    disabled: Types.bool,
   }).isRequired,
   onChange: Types.func.isRequired,
   onFocus: Types.func,
