@@ -27,7 +27,7 @@ yarn test:watch
 ## All available commands
 
 - `dev` - starts Storybook, and watches for changes
-- `build` - builds the components
+- `build` - builds the components and generates a stats.html with details about the bundle.
 - `test` - runs component tests, and lints components
 - `test:watch` - runs component tests, watching for changes
 - `lint` - lints components
