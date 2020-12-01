@@ -3,6 +3,7 @@ import babel from 'rollup-plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import { uglify } from 'rollup-plugin-uglify';
+import visualizer from 'rollup-plugin-visualizer';
 import json from '@rollup/plugin-json';
 
 import pkg from './package.json';
@@ -47,6 +48,7 @@ const plugins = [
   }),
   json(),
   uglify(),
+  visualizer(),
 ];
 
 export default [

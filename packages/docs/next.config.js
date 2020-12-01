@@ -17,55 +17,61 @@ const assetPrefix =
     ? `/neptune-web${branch === 'main' ? '' : `/branch/${branch}`}`
     : '';
 
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 module.exports = () =>
-  withTM(
-    withImages(
-      withCSS(
-        withMDX({
-          transpileModules: [
-            '@transferwise/dynamic-flows',
-            // Required for labs which is only exported as es version.
-            '@transferwise/components',
-            '@transferwise/neptune-validation',
-            'buble',
-            'regexpu-core',
-            'unicode-match-property-ecmascript',
-            'unicode-match-property-value-ecmascript',
-          ],
-          pageExtensions,
-          assetPrefix,
-          env: {
-            ASSET_PREFIX: assetPrefix,
-          },
+  withBundleAnalyzer(
+    withTM(
+      withImages(
+        withCSS(
+          withMDX({
+            transpileModules: [
+              '@transferwise/dynamic-flows',
+              // Required for labs which is only exported as es version.
+              '@transferwise/components',
+              '@transferwise/neptune-validation',
+              'buble',
+              'regexpu-core',
+              'unicode-match-property-ecmascript',
+              'unicode-match-property-value-ecmascript',
+            ],
+            pageExtensions,
+            assetPrefix,
+            env: {
+              ASSET_PREFIX: assetPrefix,
+            },
 
-          webpack(config, options) {
-            const { isServer } = options;
+            webpack(config, options) {
+              const { isServer } = options;
 
-            config.module.rules.push(
-              {
-                test: [/\.code.js$/, /\.txt$/],
-                use: 'raw-loader',
-              },
-              {
-                test: /\.(woff(2)?|eot|ttf|otf|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                use: [
-                  {
-                    loader: require.resolve('url-loader'),
-                    options: {
-                      limit: 8192,
-                      fallback: require.resolve('file-loader'),
-                      publicPath: `${assetPrefix}/_next/static/chunks/fonts/`,
-                      outputPath: `${isServer ? '../' : ''}static/chunks/fonts/`,
-                      name: '[name]-[hash].[ext]',
+              config.module.rules.push(
+                {
+                  test: [/\.code.js$/, /\.txt$/],
+                  use: 'raw-loader',
+                },
+                {
+                  test: /\.(woff(2)?|eot|ttf|otf|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                  use: [
+                    {
+                      loader: require.resolve('url-loader'),
+                      options: {
+                        limit: 8192,
+                        fallback: require.resolve('file-loader'),
+                        publicPath: `${assetPrefix}/_next/static/chunks/fonts/`,
+                        outputPath: `${isServer ? '../' : ''}static/chunks/fonts/`,
+                        name: '[name]-[hash].[ext]',
+                      },
                     },
-                  },
-                ],
-              },
-            );
+                  ],
+                },
+              );
 
-            return config;
-          },
-        }),
+              return config;
+            },
+          }),
+        ),
       ),
     ),
   );

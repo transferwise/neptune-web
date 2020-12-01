@@ -70,7 +70,8 @@
     "rollup": "^2.7.6",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-postcss": "^2.0.3",
-    "rollup-plugin-uglify": "^6.0.4"
+    "rollup-plugin-uglify": "^6.0.4",
+    "rollup-plugin-visualizer": "^4.2.0"
   },
   "peerDependencies": {
     "@transferwise/icons": "^2.5.0",
