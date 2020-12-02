@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Upload from '.';
-import { CompleteStep, UploadImageStep, ProcessingStep } from './steps';
+import { CompleteStep, UploadImageStep, MediaUploadStep, ProcessingStep } from './steps';
 import { ANIMATION_DURATION_IN_MS } from '../processIndicator';
 
 jest.useFakeTimers();
@@ -91,6 +91,17 @@ describe('Upload', () => {
 
   it('renders the UploadImageStep by default', () => {
     expect(component.find(UploadImageStep)).toHaveLength(1);
+    expect(component.find(MediaUploadStep)).toHaveLength(0);
+    expect(component.find(ProcessingStep)).toHaveLength(0);
+    expect(component.find(CompleteStep)).toHaveLength(0);
+    expect(component.find('.droppable-dropping-card')).toHaveLength(1);
+  });
+
+  it(`renders the MediaUploadStep by default is it's the uploadStep in props`, () => {
+    component.setProps({ uploadStep: Upload.UploadStep.MEDIA_UPLOAD_STEP });
+
+    expect(component.find(MediaUploadStep)).toHaveLength(1);
+    expect(component.find(UploadImageStep)).toHaveLength(0);
     expect(component.find(ProcessingStep)).toHaveLength(0);
     expect(component.find(CompleteStep)).toHaveLength(0);
     expect(component.find('.droppable-dropping-card')).toHaveLength(1);
