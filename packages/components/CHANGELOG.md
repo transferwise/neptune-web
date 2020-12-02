@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.4...@transferwise/components@31.1.0) (2020-12-02)
+
+
+### Features
+
+* add microapps media API for Google Spot app support ([#704](https://github.com/transferwise/neptune-web/issues/704)) ([f4d4d65](https://github.com/transferwise/neptune-web/commit/f4d4d658ce8619448383d5abdae3b3b00275112f))
+
+
+
+
+
 ## [31.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.3...@transferwise/components@31.0.4) (2020-12-02)
 
 
