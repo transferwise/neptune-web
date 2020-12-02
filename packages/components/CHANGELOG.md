@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.1.1...@transferwise/components@31.2.0) (2020-12-02)
+
+
+### Features
+
+* adds target attribute to actions ([#714](https://github.com/transferwise/neptune-web/issues/714)) ([321489f](https://github.com/transferwise/neptune-web/commit/321489f89bdd38854f6df395b91f7a5ecd20ad12))
+
+
+
+
+
 ## [31.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.1.0...@transferwise/components@31.1.1) (2020-12-02)
 
 
