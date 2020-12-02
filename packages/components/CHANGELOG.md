@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.2...@transferwise/components@31.0.3) (2020-12-02)
+
+
+### Bug Fixes
+
+* refactor tabs touch events to avoid warnings ([#708](https://github.com/transferwise/neptune-web/issues/708)) ([fba064a](https://github.com/transferwise/neptune-web/commit/fba064a60174fff6f9658fd547b3f0fc2052ff20))
+
+
+
+
+
 ## [31.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.1...@transferwise/components@31.0.2) (2020-11-30)
 
 
