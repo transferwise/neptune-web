@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.0.0...@transferwise/neptune-css@5.0.1) (2020-12-02)
+
+
+### Bug Fixes
+
+* fixing circular dep and updating deps for security fixes ([#712](https://github.com/transferwise/neptune-web/issues/712)) ([2a95c74](https://github.com/transferwise/neptune-web/commit/2a95c746183c78e5992e28dafe954a901269e740))
+
+
+
+
+
 # [5.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.8...@transferwise/neptune-css@5.0.0) (2020-11-25)
 
 

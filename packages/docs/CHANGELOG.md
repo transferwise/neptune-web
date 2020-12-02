@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.7](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.0.6...@transferwise/neptune-docs@8.0.7) (2020-12-02)
+
+
+### Bug Fixes
+
+* fixing circular dep and updating deps for security fixes ([#712](https://github.com/transferwise/neptune-web/issues/712)) ([2a95c74](https://github.com/transferwise/neptune-web/commit/2a95c746183c78e5992e28dafe954a901269e740))
+
+
+
+
+
 ## [8.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.0.5...@transferwise/neptune-docs@8.0.6) (2020-12-02)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
