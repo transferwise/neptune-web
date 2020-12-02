@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.3...@transferwise/components@31.0.4) (2020-12-02)
+
+
+### Bug Fixes
+
+* add disabled attribute to Option ([#713](https://github.com/transferwise/neptune-web/issues/713)) ([7883ead](https://github.com/transferwise/neptune-web/commit/7883eadbc5d2ba2721a7dc369bf007f379fe45b4))
+
+
+
+
+
 ## [31.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.2...@transferwise/components@31.0.3) (2020-12-02)
 
 
