@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.3.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.1...@transferwise/components@31.3.2) (2020-12-03)
+
+
+### Bug Fixes
+
+* update wrong aria-label-type ([#719](https://github.com/transferwise/neptune-web/issues/719)) ([486c264](https://github.com/transferwise/neptune-web/commit/486c2647dfc3a39523976ec082a846bad572df2e))
+
+
+
+
+
 ## [31.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.0...@transferwise/components@31.3.1) (2020-12-03)
 
 **Note:** Version bump only for package @transferwise/components
