@@ -20,6 +20,7 @@ describe('Summary', () => {
         info={{
           title: 'title',
           content: 'description',
+          'aria-label': 'aria-label',
         }}
         icon={<strong>icon</strong>}
         status={Summary.Status.DONE}

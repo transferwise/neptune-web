@@ -1,7 +1,7 @@
 import React from 'react';
 import { text, select } from '@storybook/addon-knobs';
 
-import Info from './Info';
+import Info from '.';
 
 export default {
   component: Info,
@@ -17,5 +17,13 @@ export const basic = () => {
   const presentation = select('Presentation', [Info.Presentation.POPOVER, Info.Presentation.MODAL]);
   const size = select('Size', [Info.Size.SMALL, Info.Size.LARGE]);
 
-  return <Info content={content} presentation={presentation} size={size} title={title} />;
+  return (
+    <Info
+      content={content}
+      presentation={presentation}
+      size={size}
+      title={title}
+      aria-label="Click here for more details"
+    />
+  );
 };

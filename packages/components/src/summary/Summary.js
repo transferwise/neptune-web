@@ -30,7 +30,6 @@ const Summary = ({
   icon,
   illustration,
   info = help,
-
   status,
   title,
 }) => {
@@ -52,6 +51,7 @@ const Summary = ({
           <strong>{title}</strong>
           {info && (
             <Info
+              aria-label={info['aria-label']}
               className="m-l-1 hidden-xs"
               content={info.content}
               presentation={info.presentation}
@@ -69,6 +69,7 @@ const Summary = ({
       </div>
       {info && (
         <Info
+          aria-label={info['aria-label']}
           className="m-l-2 hidden-sm hidden-md hidden-lg hidden-xl"
           content={info.content}
           presentation={info.presentation}
@@ -120,6 +121,7 @@ Summary.propTypes = {
   /** Infos displayed on help Icon click inside Popover or Modal */
   // eslint-disable-next-line
   info: Types.shape({
+    'aria-label': Types.node,
     content: Types.node.isRequired,
     presentation: Types.oneOf([Info.Presentation.POPOVER, Info.Presentation.MODAL]),
     title: Types.node,

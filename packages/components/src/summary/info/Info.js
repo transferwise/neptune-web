@@ -4,15 +4,22 @@ import classNames from 'classnames';
 import { HelpCircle as HelpCircleIcon } from '@transferwise/icons';
 import Popover from '../../popover';
 import Modal from '../../modal';
+
 import { Size } from '../../common';
 import './Info.css';
 
-const Info = ({ className, content, presentation, size, title }) => {
+const Info = (props) => {
+  const { className, content, presentation, size, title } = props;
   const [open, setOpen] = useState(false);
 
   const isModal = presentation === Info.Presentation.MODAL;
   const isSmall = size === Info.Size.SMALL;
-  const icon = <HelpCircleIcon size={isSmall ? 16 : 24} />;
+
+  const buttonProps = {
+    'aria-label': props['aria-label'],
+    className: 'btn-unstyled',
+    children: <HelpCircleIcon size={isSmall ? 16 : 24} />,
+  };
 
   return (
     <span
@@ -23,14 +30,12 @@ const Info = ({ className, content, presentation, size, title }) => {
     >
       {isModal ? (
         <>
-          <button type="button" onClick={() => setOpen(true)}>
-            {icon}
-          </button>
+          <button type="button" onClick={() => setOpen(true)} {...buttonProps} />
           <Modal body={content} onClose={() => setOpen(false)} open={open} title={title} />
         </>
       ) : (
         <Popover content={content} preferredPlacement={Popover.Placement.BOTTOM_LEFT} title={title}>
-          {icon}
+          <button type="button" {...buttonProps} />
         </Popover>
       )}
     </span>
@@ -45,6 +50,7 @@ Info.Presentation = {
 Info.Size = { SMALL: Size.SMALL, LARGE: Size.LARGE };
 
 Info.propTypes = {
+  'aria-label': Types.node,
   /** Extra classes applied to Info */
   className: Types.string,
   /** Content displayed inside a Popover a Modal */
@@ -58,11 +64,12 @@ Info.propTypes = {
 };
 
 Info.defaultProps = {
-  className: null,
-  content: null,
+  'aria-label': undefined,
+  className: undefined,
+  content: undefined,
   presentation: Info.Presentation.POPOVER,
   size: Info.Size.SMALL,
-  title: null,
+  title: undefined,
 };
 
 export default Info;
