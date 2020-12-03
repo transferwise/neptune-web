@@ -17,6 +17,7 @@ export const basic = () => {
     Decision.Presentation.LIST_BLOCK,
   );
   const disabled = boolean('disabled', false);
+  const size = select('size', [Decision.Size.MEDIUM, Decision.Size.SMALL]);
 
   return (
     <>
@@ -88,6 +89,7 @@ export const basic = () => {
         ]}
         presentation={presentation}
         type={Decision.Type.NAVIGATION}
+        size={size}
       />
     </>
   );

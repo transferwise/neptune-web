@@ -12,13 +12,24 @@ const SizeSwapper = ({ items }) => {
     return null;
   }
   const ref = useRef(null);
+
   const [clientWidth] = useClientWidth({ ref });
 
   // If all breakpoints are specified and clientWidth never > breakpoint itemsToRender can be undefined.
   // Do not use deconstruct here to get items and layout.
-  const itemsToRender = items
-    .filter(({ breakpoint = 0 }) => clientWidth >= breakpoint)
-    .slice(-1)[0];
+  let itemsToRender = [];
+
+  if (clientWidth) {
+    // eslint-disable-next-line
+    itemsToRender = items.filter(({ breakpoint = 0 }) => clientWidth >= breakpoint).pop();
+  } else {
+    // On SSR environments useClientWidth returns null because ref is undefined so we render
+    // all elements by default.
+    // If there's no SSR and on first Hydration only the right elements are going to be rendered.
+    // If clientWidth is null or zero all elements render like a responsive technique would do.
+    // eslint-disable-next-line
+    itemsToRender.items = items.map(({ items }) => Object.values(items));
+  }
 
   // Always return parent container even if there are no items to display to
   // keep the ref on DOM and let clientWidth be calculated properly.
@@ -27,6 +38,7 @@ const SizeSwapper = ({ items }) => {
       className={classNames('np-size-swapper d-flex', {
         'flex-column': itemsToRender && itemsToRender.layout === Layout.COLUMN,
       })}
+      style={{ visibility: clientWidth ? 'visible' : 'hidden' }}
       ref={ref}
     >
       {itemsToRender && itemsToRender.items}

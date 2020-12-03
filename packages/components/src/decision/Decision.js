@@ -21,7 +21,7 @@ const Decision = ({ options, presentation, type, size }) => {
         },
         {
           items: [],
-          breakpoint: SizeSwapper.Breakpoint.MEDIUM,
+          breakpoint: isSmall ? SizeSwapper.Breakpoint.EXTRA_SMALL : SizeSwapper.Breakpoint.SMALL,
         },
       ];
 
