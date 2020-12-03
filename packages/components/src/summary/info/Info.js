@@ -50,7 +50,7 @@ Info.Presentation = {
 Info.Size = { SMALL: Size.SMALL, LARGE: Size.LARGE };
 
 Info.propTypes = {
-  'aria-label': Types.node,
+  'aria-label': Types.string,
   /** Extra classes applied to Info */
   className: Types.string,
   /** Content displayed inside a Popover a Modal */

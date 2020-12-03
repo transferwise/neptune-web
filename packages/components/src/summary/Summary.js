@@ -121,7 +121,7 @@ Summary.propTypes = {
   /** Infos displayed on help Icon click inside Popover or Modal */
   // eslint-disable-next-line
   info: Types.shape({
-    'aria-label': Types.node,
+    'aria-label': Types.string,
     content: Types.node.isRequired,
     presentation: Types.oneOf([Info.Presentation.POPOVER, Info.Presentation.MODAL]),
     title: Types.node,
