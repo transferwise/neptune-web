@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.3.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.2...@transferwise/components@31.3.3) (2020-12-03)
+
+
+### Bug Fixes
+
+* sizeswapper fix ([#703](https://github.com/transferwise/neptune-web/issues/703)) ([f9fe8e2](https://github.com/transferwise/neptune-web/commit/f9fe8e2584970379187ca906d7768b7bf7faca66))
+
+
+
+
+
 ## [31.3.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.1...@transferwise/components@31.3.2) (2020-12-03)
 
 
