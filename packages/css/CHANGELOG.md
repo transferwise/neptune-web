@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.0.1...@transferwise/neptune-css@5.0.2) (2020-12-03)
+
+
+### Bug Fixes
+
+* allow select options to wrap in mobile ([#717](https://github.com/transferwise/neptune-web/issues/717)) ([e7ab645](https://github.com/transferwise/neptune-web/commit/e7ab645420c065b7453c246115ec11112e33f1b9))
+
+
+
+
+
 ## [5.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.0.0...@transferwise/neptune-css@5.0.1) (2020-12-02)
 
 
