@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.2.0...@transferwise/components@31.3.0) (2020-12-03)
+
+
+### Features
+
+* add aria-label for Info button ([#707](https://github.com/transferwise/neptune-web/issues/707)) ([acdb489](https://github.com/transferwise/neptune-web/commit/acdb48980a655c8ddd66b4888108a2308c08882b))
+
+
+
+
+
 # [31.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.1.1...@transferwise/components@31.2.0) (2020-12-02)
 
 

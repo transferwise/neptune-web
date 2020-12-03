@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.0.8...@transferwise/neptune-docs@8.1.0) (2020-12-03)
+
+
+### Features
+
+* add aria-label for Info button ([#707](https://github.com/transferwise/neptune-web/issues/707)) ([acdb489](https://github.com/transferwise/neptune-web/commit/acdb48980a655c8ddd66b4888108a2308c08882b))
+
+
+
+
+
 ## [8.0.8](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.0.7...@transferwise/neptune-docs@8.0.8) (2020-12-02)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
