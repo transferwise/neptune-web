@@ -106,7 +106,7 @@
       },
       {
         "type": "alert",
-        "markdown": "#### This is an alert \n\r We can use **markdown** to provide formatting capabilties.",
+        "markdown": "This is an alert - we can use **bold** to provide emphasis.",
         "context": "warning",
         "size": "md"
       },

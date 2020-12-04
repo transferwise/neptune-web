@@ -20,6 +20,7 @@ exports[`Summary renders full component 1`] = `
       >
         <svg
           fill="currentColor"
+          focusable="false"
           height="16"
           width="16"
         >
@@ -59,6 +60,7 @@ exports[`Summary renders full component 1`] = `
             >
               <svg
                 fill="currentColor"
+                focusable="false"
                 height="16"
                 width="16"
               >
@@ -121,6 +123,7 @@ exports[`Summary renders full component 1`] = `
         >
           <svg
             fill="currentColor"
+            focusable="false"
             height="24"
             width="24"
           >

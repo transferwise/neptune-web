@@ -14,6 +14,7 @@ exports[`FlowNavigationAvatar renders as BUSINESS profile type 1`] = `
     >
       <svg
         fill="currentColor"
+        focusable="false"
         height="16"
         width="16"
       >
@@ -60,6 +61,7 @@ exports[`FlowNavigationAvatar renders as PERSONAL profile type with an icon 1`] 
     >
       <svg
         fill="currentColor"
+        focusable="false"
         height="16"
         width="16"
       >
