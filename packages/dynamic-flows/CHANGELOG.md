@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.10...@transferwise/dynamic-flows@7.0.0) (2020-12-07)
+
+
+### Code Refactoring
+
+* JsonSchemaForm onChange(model, triggerSchema, triggerModel) [ADS-1747] ([#718](https://github.com/transferwise/neptune-web/issues/718)) ([5f4685b](https://github.com/transferwise/neptune-web/commit/5f4685b13a16a38afe720e97693a7a7d0bb7dce6))
+
+
+### BREAKING CHANGES
+
+* JsonSchemaForm onChange callback is now called with:
+
+`onChange(model, triggerSchema, triggerModel)` and the consumer can use the now exposed `isValidSchema` function to validate either the entire model or the trigger model.
+
+
+
+
+
 ## [6.1.10](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.9...@transferwise/dynamic-flows@6.1.10) (2020-12-04)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
