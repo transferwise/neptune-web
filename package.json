@@ -56,7 +56,8 @@
   },
   "resolutions": {
     "lerna/**/kind-of": "^6.0.3",
-    "lint-staged/**/kind-of": "^6.0.3"
+    "lint-staged/**/kind-of": "^6.0.3",
+    "**/adjust-sourcemap-loader/object-path": "^0.11.5"
   },
   "scripts": {
     "setup": "yarn install --frozen-lockfile && yarn build",
