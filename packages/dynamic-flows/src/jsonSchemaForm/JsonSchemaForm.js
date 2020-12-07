@@ -1,13 +1,9 @@
 import React from 'react';
 import Types from 'prop-types';
 import GenericSchema from './genericSchema';
-import { isValidSchema } from '../common/validation/schema-validators';
 
 const JsonSchemaForm = (props) => {
-  const onChange = (model, schema) => {
-    props.onChange(model, isValidSchema(model, props.schema), schema);
-  };
-  return <GenericSchema {...props} onChange={onChange} />;
+  return <GenericSchema {...props} />;
 };
 
 JsonSchemaForm.propTypes = {

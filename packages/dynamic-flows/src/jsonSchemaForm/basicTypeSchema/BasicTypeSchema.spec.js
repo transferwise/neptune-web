@@ -132,7 +132,7 @@ describe('Given a component for rendering basic type schemas', () => {
       });
 
       it('should trigger the components onChange with the new value', () => {
-        expect(onChange).toHaveBeenCalledWith('barbar', schema);
+        expect(onChange).toHaveBeenCalledWith('barbar', schema, 'barbar');
       });
 
       it('should tell the ControlFeedback it has been changed', () => {
@@ -150,11 +150,11 @@ describe('Given a component for rendering basic type schemas', () => {
 
         // valid non null value
         formControl.simulate('change', 'barbar');
-        expect(onChange).toHaveBeenCalledWith('barbar', schema);
+        expect(onChange).toHaveBeenCalledWith('barbar', schema, 'barbar');
 
         // empty value but is still valid
         formControl.simulate('change', '');
-        expect(onChange).toHaveBeenCalledWith(null, schema);
+        expect(onChange).toHaveBeenCalledWith(null, schema, null);
         expect(feedbackComponent.prop('validations').length).toEqual(0);
       });
     });
@@ -167,7 +167,7 @@ describe('Given a component for rendering basic type schemas', () => {
       });
 
       it('should trigger the components onChange with the invalid value', () => {
-        expect(onChange).toHaveBeenCalledWith('f', schema);
+        expect(onChange).toHaveBeenCalledWith('f', schema, 'f');
       });
 
       it('should pass the correct validation to ControlFeedback component', () => {
@@ -210,7 +210,7 @@ describe('Given a component for rendering basic type schemas', () => {
     });
 
     it('should call the onChange handler with the default ', () => {
-      expect(onChange).toHaveBeenCalledWith(schema.default, schema);
+      expect(onChange).toHaveBeenCalledWith(schema.default, schema, schema.default);
     });
   });
 
@@ -227,7 +227,7 @@ describe('Given a component for rendering basic type schemas', () => {
     });
 
     it('should call the onChange handler with the const ', () => {
-      expect(onChange).toHaveBeenCalledWith(constSchema.const, constSchema);
+      expect(onChange).toHaveBeenCalledWith(constSchema.const, constSchema, constSchema.const);
     });
 
     it('should not show any label or control ', () => {
@@ -249,7 +249,7 @@ describe('Given a component for rendering basic type schemas', () => {
     });
 
     it('should call the onChange handler with the const ', () => {
-      expect(onChange).toHaveBeenCalledWith(enumSchema.enum[0], enumSchema);
+      expect(onChange).toHaveBeenCalledWith(enumSchema.enum[0], enumSchema, enumSchema.enum[0]);
     });
 
     it('should not show any label or control ', () => {

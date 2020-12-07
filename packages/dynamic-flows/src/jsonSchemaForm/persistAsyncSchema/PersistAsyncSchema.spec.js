@@ -180,7 +180,11 @@ describe('Given a component for rendering persist async schemas', () => {
           it('should broadcast the persist async response value', async () => {
             await wait(5);
             expect(onChange).toHaveBeenCalledTimes(1);
-            expect(onChange).toHaveBeenCalledWith('response-from-200-fast', schema);
+            expect(onChange).toHaveBeenCalledWith(
+              'response-from-200-fast',
+              schema,
+              'response-from-200-fast',
+            );
           });
         });
 
@@ -197,7 +201,7 @@ describe('Given a component for rendering persist async schemas', () => {
           it('should broadcast null value', async () => {
             await wait(1);
             expect(onChange).toHaveBeenCalledTimes(1);
-            expect(onChange).toHaveBeenCalledWith(null, schema);
+            expect(onChange).toHaveBeenCalledWith(null, schema, null);
           });
         });
 
@@ -243,7 +247,11 @@ describe('Given a component for rendering persist async schemas', () => {
               await wait(120);
               expect(onChange).toHaveBeenCalledTimes(1);
 
-              expect(onChange).toHaveBeenCalledWith('response-from-200-fast', schema);
+              expect(onChange).toHaveBeenCalledWith(
+                'response-from-200-fast',
+                schema,
+                'response-from-200-fast',
+              );
             });
           });
         });

@@ -28,7 +28,7 @@ const BasicTypeSchema = (props) => {
     setLastModel(broadcastModel);
 
     if (broadcastModel !== lastModel) {
-      props.onChange(broadcastModel, props.schema);
+      props.onChange(broadcastModel, props.schema, broadcastModel);
     }
   };
 

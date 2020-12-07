@@ -56,10 +56,19 @@ describe('Given a component for dynamically rendering forms', () => {
 
   describe('when the form triggers a model change', () => {
     beforeEach(() => {
-      component.find(JsonSchemaForm).simulate('change', model, true, schema);
+      component.find(JsonSchemaForm).simulate(
+        'change',
+        model,
+        {
+          an: { type: 'string' },
+        },
+        'example',
+      );
     });
     it('should broadcast onAction', () => {
-      expect(onModelChange).toHaveBeenCalledWith(model, true, schema);
+      expect(onModelChange).toHaveBeenCalledWith(model, schema, 'example', {
+        an: { type: 'string' },
+      });
     });
   });
 });

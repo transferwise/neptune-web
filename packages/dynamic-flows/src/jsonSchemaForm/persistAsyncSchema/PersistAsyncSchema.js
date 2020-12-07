@@ -55,10 +55,10 @@ const PersistAsyncSchema = (props) => {
       const { idProperty, param } = props.schema.persistAsync;
       if (isStatus2xx(response.status)) {
         const id = getIdFromResponse(idProperty, jsonResponse);
-        props.onChange(id, props.schema);
+        props.onChange(id, props.schema, id);
       } else if (isStatus422(response.status)) {
         const error = getErrorFromResponse(param, jsonResponse);
-        props.onChange(null, props.schema);
+        props.onChange(null, props.schema, null);
         setPersistAsyncError(error);
       } else {
         setGenericPersistAsyncError();

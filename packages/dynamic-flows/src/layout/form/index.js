@@ -9,12 +9,16 @@ import { getMarginBottom } from '../utils';
 const DynamicForm = (props) => {
   const form = props.component;
 
+  const onChange = (model, triggerSchema, triggerModel) => {
+    props.onModelChange(model, form.schema, triggerModel, triggerSchema);
+  };
+
   return (
     <JsonSchemaForm
       schema={form.schema}
       model={form.model}
       submitted={props.submitted}
-      onChange={props.onModelChange}
+      onChange={onChange}
       className={getMarginBottom(form.margin || 'lg')}
       errors={props.errors}
       onPersistAsync={props.onPersistAsync}
