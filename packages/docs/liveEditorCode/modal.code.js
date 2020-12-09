@@ -17,6 +17,8 @@
           </>
         }
         open={open}
+        scroll={Modal.Scroll.CONTENT}
+        position={Modal.Position.TOP}
         onClose={() => setOpen(false)}
         size={Modal.Size.MEDIUM}
         title="I'm a hipster!"
