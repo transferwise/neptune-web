@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.1.7...@transferwise/neptune-docs@8.2.0) (2020-12-09)
+
+
+### Features
+
+* add support for content adaptive container of Modal component and allow to show DOM over it's footer ([#709](https://github.com/transferwise/neptune-web/issues/709)) ([6694996](https://github.com/transferwise/neptune-web/commit/66949963e5dc151e27aab96dddb20f9264ff859b))
+
+
+
+
+
 ## [8.1.7](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.1.6...@transferwise/neptune-docs@8.1.7) (2020-12-08)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
