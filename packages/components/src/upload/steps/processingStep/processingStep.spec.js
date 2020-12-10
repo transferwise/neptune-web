@@ -44,14 +44,14 @@ describe('ProcessingStep', () => {
     expect(component.find('h4').text()).toBe(PROCESSING_STEP_PROPS.psProcessingText);
   });
 
-  it('renders psSuccessText if isSuccess is true', () => {
+  it('renders psProcessingText if isSuccess is true but we are still processing', () => {
     component = shallow(<ProcessingStep {...PROCESSING_STEP_PROPS} isSuccess />);
-    expect(component.find('h4').text()).toBe(PROCESSING_STEP_PROPS.psSuccessText);
+    expect(component.find('h4').text()).toBe(PROCESSING_STEP_PROPS.psProcessingText);
   });
 
-  it('renders psFailureText if isError is true', () => {
+  it('renders psProcessingText if isError is true but we are still processing', () => {
     component = shallow(<ProcessingStep {...PROCESSING_STEP_PROPS} isError />);
-    expect(component.find('h4').text()).toBe(PROCESSING_STEP_PROPS.psFailureText);
+    expect(component.find('h4').text()).toBe(PROCESSING_STEP_PROPS.psProcessingText);
   });
 
   it('renders button when psButtonText is set up', () => {
