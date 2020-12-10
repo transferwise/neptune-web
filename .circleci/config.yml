@@ -44,6 +44,8 @@ aliases:
   - &test
     name: Test packages
     command: yarn test
+    environment:
+      NODE_OPTIONS: --max_old_space_size=4096
 
   - &visual-test
     name: Visual Regression test
