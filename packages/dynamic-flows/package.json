@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/dynamic-flows",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "Transferwise dynamic flows and forms",
   "license": "Apache-2.0",
   "main": "./build/es/polyfill/index.js",
@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "@transferwise/components": "^31.4.0",
+    "@transferwise/components": "^31.4.1",
     "@transferwise/icons": "^2.6.0",
     "@transferwise/neptune-css": "^5.0.4",
     "classnames": "^2.2.6",

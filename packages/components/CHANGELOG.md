@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.4.0...@transferwise/components@31.4.1) (2020-12-10)
+
+
+### Bug Fixes
+
+* fixed Avatar hover state in NavigationOption ([#725](https://github.com/transferwise/neptune-web/issues/725)) ([1ad51a0](https://github.com/transferwise/neptune-web/commit/1ad51a09ae62eaea906474cd826ae580e17a88da))
+
+
+
+
+
 # [31.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.5...@transferwise/components@31.4.0) (2020-12-09)
 
 
