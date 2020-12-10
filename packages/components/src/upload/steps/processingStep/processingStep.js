@@ -33,9 +33,9 @@ const ProcessingStep = (props) => {
           onAnimationCompleted={(status) => onAnimationCompleted(status)}
         />
         <h4 className="m-t-3 m-b-3">
-          {!isSuccess && !isError && isProcessing && psProcessingText}
-          {isSuccess && psSuccessText}
-          {isError && psFailureText}
+          {isProcessing && psProcessingText}
+          {isSuccess && !isProcessing && psSuccessText}
+          {isError && !isProcessing && psFailureText}
         </h4>
         {psButtonText && (
           <button type="button" className="btn btn-default btn-sm" onClick={(e) => onClear(e)}>
