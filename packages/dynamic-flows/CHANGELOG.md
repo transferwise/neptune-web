@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@7.0.4...@transferwise/dynamic-flows@8.0.0) (2020-12-11)
+
+
+* refactor!: consumers must now provide neptune components, css and icons (#733) ([551330b](https://github.com/transferwise/neptune-web/commit/551330b8fad9c9d848504ef63dc467429ffd12a3)), closes [#733](https://github.com/transferwise/neptune-web/issues/733)
+
+
+### BREAKING CHANGES
+
+* Consumers must now provide neptune components, css and icons packages
+
+
+
+
+
 ## [7.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@7.0.3...@transferwise/dynamic-flows@7.0.4) (2020-12-11)
 
 **Note:** This was a breaking change even if it was marked as minor update. Consumers must provide @transferwise/components, @transferwise/icons and @transferwise/neptune-css from now on.
