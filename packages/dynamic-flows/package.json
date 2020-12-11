@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/dynamic-flows",
-  "version": "7.0.3",
+  "version": "8.0.0",
   "description": "Transferwise dynamic flows and forms",
   "license": "Apache-2.0",
   "main": "./build/es/polyfill/index.js",
@@ -49,22 +49,25 @@
     "@storybook/addon-docs": "^6.1.9",
     "@storybook/addon-knobs": "^6.1.9",
     "@storybook/react": "^6.1.9",
+    "@transferwise/components": "^31.4.1",
+    "@transferwise/icons": "^2.6.0",
     "@transferwise/less-config": "^3.0.0",
+    "@transferwise/neptune-css": "^5.0.4",
     "@transferwise/neptune-tokens": "^1.0.0",
     "@transferwise/test-config": "^2.0.0",
     "babel-loader": "^8.1.0",
     "babel-preset-minify": "^0.5.1"
   },
   "peerDependencies": {
+    "@transferwise/components": "^31.4.1",
+    "@transferwise/icons": "^2.6.0",
+    "@transferwise/neptune-css": "^5.0.4",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "@transferwise/components": "^31.4.1",
-    "@transferwise/icons": "^2.6.0",
-    "@transferwise/neptune-css": "^5.0.4",
     "classnames": "^2.2.6",
     "core-js": "^3.8.0",
     "lodash.isequal": "^4.5.0"
