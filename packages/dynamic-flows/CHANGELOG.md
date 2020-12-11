@@ -5,8 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [7.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@7.0.3...@transferwise/dynamic-flows@7.0.4) (2020-12-11)
 
-**Note:** Version bump only for package @transferwise/dynamic-flows
-
+**Note:** This was a breaking change even if it was marked as minor update. Consumers must provide @transferwise/components, @transferwise/icons and @transferwise/neptune-css from now on.
 
 
 
