@@ -1,0 +1,7 @@
+[
+  {
+    "path": "./src/index.js",
+    "import": "{ createStore }",
+    "limit": "150 KB"
+  }
+]
