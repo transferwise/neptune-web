@@ -28,9 +28,7 @@ const props = {
   onStart: jest.fn(),
   onSuccess: jest.fn(),
   psButtonText: 'psButtonText',
-  psFailureText: 'csFailureText',
   psProcessingText: 'psProcessingText',
-  psSuccessText: 'csSuccessText',
   usAccept: 'image/*',
   usButtonText: 'Or Select File',
   usDropMessage: 'Drop file to start upload',
@@ -51,14 +49,11 @@ const UPLOADIMAGE_STEP_PROPS = {
 const PROCESSING_STEP_PROPS = {
   isComplete: false,
   isError: false,
-  isProcessing: true,
   isSuccess: false,
   onAnimationCompleted: expect.any(Function),
   onClear: expect.any(Function),
   psButtonText: props.psButtonText,
-  psFailureText: props.psFailureText,
   psProcessingText: props.psProcessingText,
-  psSuccessText: props.psSuccessText,
 };
 
 const COMPLETED_STEP_PROPS = {

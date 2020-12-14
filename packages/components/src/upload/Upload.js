@@ -255,9 +255,7 @@ class Upload extends PureComponent {
       usLabel,
       usPlaceholder,
       psButtonText,
-      psFailureText,
       psProcessingText,
-      psSuccessText,
       csButtonText,
       csSuccessText,
       size,
@@ -311,14 +309,11 @@ class Upload extends PureComponent {
           <ProcessingStep
             isComplete={isComplete}
             isError={isError}
-            isProcessing={isProcessing}
             isSuccess={isSuccess}
             onAnimationCompleted={(status) => this.onAnimationCompleted(status)}
             onClear={(e) => this.handleOnClear(e)}
             psButtonText={psButtonText}
-            psFailureText={psFailureText}
             psProcessingText={psProcessingText}
-            psSuccessText={psSuccessText}
           />
         )}
         {/* Starts render the step when isSuccess or isError are true so markup is there when css transition kicks in
@@ -375,9 +370,7 @@ Upload.propTypes = {
   onStart: Types.func,
   onSuccess: Types.func,
   psButtonText: Types.string,
-  psFailureText: Types.string,
   psProcessingText: Types.string,
-  psSuccessText: Types.string,
   size: Types.oneOf(['sm', 'md', 'lg']),
   usAccept: Types.oneOf(ACCEPTED_FORMAT),
   usButtonText: Types.string,
@@ -406,9 +399,7 @@ Upload.defaultProps = {
   onStart: null,
   onSuccess: null,
   psButtonText: 'Cancel',
-  psFailureText: 'Upload failed.Please, try again',
   psProcessingText: 'Uploading...',
-  psSuccessText: 'Upload complete!',
   size: 'md',
   usAccept: 'image/*',
   usButtonText: 'Or Select File',
