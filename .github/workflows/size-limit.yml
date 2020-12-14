@@ -13,5 +13,6 @@ jobs:
       - run: npm run setup
       - uses: andresz1/size-limit-action@v1.0.0
         with:
+          skip_step: install
           directory: packages/components/
           github_token: ${{ secrets.GITHUB_TOKEN }}
