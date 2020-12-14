@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.4.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.4.1...@transferwise/components@31.4.2) (2020-12-14)
+
+
+### Bug Fixes
+
+* improve UX of file uploading step in Upload component ([#729](https://github.com/transferwise/neptune-web/issues/729)) ([574648b](https://github.com/transferwise/neptune-web/commit/574648be21d2056418631d2e6d9e04d686c1715a))
+
+
+
+
+
 ## [31.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.4.0...@transferwise/components@31.4.1) (2020-12-10)
 
 
