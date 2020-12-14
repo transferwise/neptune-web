@@ -155,5 +155,11 @@
         0
       ]
     }
-  }
+  },
+  "size-limit": [
+    {
+      "path": "build/es/polyfill/index.js",
+      "limit": "120 KB"
+    }
+  ]
 }
