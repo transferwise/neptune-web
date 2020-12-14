@@ -13,6 +13,8 @@ const input = 'src/index.js';
 const file =
   process.env.NODE_ENV === 'umd-nopolyfill' ? './build/umd/no-polyfill/main.js' : pkg.main;
 
+const analyzePlugins = process.env.ANALYZE ? [visualizer()] : [];
+
 // Rollup can resolve only explicit exports.
 // https://github.com/rollup/rollup/issues/2671
 // https://github.com/rollup/rollup-plugin-commonjs
@@ -48,7 +50,7 @@ const plugins = [
   }),
   json(),
   uglify(),
-  visualizer(),
+  ...analyzePlugins,
 ];
 
 export default [

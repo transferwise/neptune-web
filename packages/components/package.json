@@ -35,6 +35,7 @@
     "test:watch": "jest --watch --env=jsdom --config=../../node_modules/@transferwise/test-config/jest.config.js",
     "test:lint": "jest --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
     "test:visual": "yarn chromatic CHROMATIC_PROJECT_TOKEN || true",
+    "test:analize-bundle": "ANALYZE=true NODE_ENV=umd rollup -c",
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "yarn lint --fix",
     "lintless": "stylelint ./src/**/*.less",

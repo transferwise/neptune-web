@@ -27,11 +27,12 @@ yarn test:watch
 ## All available commands
 
 - `dev` - starts Storybook, and watches for changes
-- `build` - builds the components and generates a stats.html with details about the bundle.
+- `build` - builds the components
 - `test` - runs component tests, and lints components
 - `test:watch` - runs component tests, watching for changes
 - `lint` - lints components
 - `lint:fix` - lints components and fixes any errors that can be automatically fixed
+- `test:analize-bundle` - generates a stats.html that shows the bundle composition
 
 As a reminder: to load the docs, run `docs` **from the root of the monorepo**, not from here.
 
