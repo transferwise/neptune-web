@@ -155,11 +155,5 @@
         0
       ]
     }
-  },
-  "size-limit": [
-    {
-      "path": "packages/components/build/umd/polyfill/main.js",
-      "limit": "150 KB"
-    }
-  ]
+  }
 }
