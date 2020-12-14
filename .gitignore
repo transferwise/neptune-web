@@ -41,7 +41,7 @@ packages/css/pages/styles
 !packages/css/pages/app.css
 
 # lock
-package-lock.json
+
 yarn-error.log
 
 # COMPONENTS
