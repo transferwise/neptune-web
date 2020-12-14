@@ -59,11 +59,11 @@
     "react-docgen": "^5.3.1",
     "react-docgen-external-proptypes-handler": "^2.0.0",
     "react-live": "^2.2.2",
-    "rehype-slug": "^3.0.0"
+    "rehype-slug": "^3.0.0",
+    "@next/bundle-analyzer": "10.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "@next/bundle-analyzer": "10.0.3",
     "@transferwise/less-config": "^3.0.0",
     "babel-plugin-inline-react-svg": "^1.1.1",
     "deploy-to-github-pages": "1.0.0-beta.7"
