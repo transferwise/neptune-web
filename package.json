@@ -74,7 +74,7 @@
     "lint": "lerna run lint",
     "create-component": "files-scaffold",
     "test:visual": "lerna run test:visual --stream",
-    "size": "npm run build && size-limit"
+    "size": "size-limit"
   },
   "husky": {
     "hooks": {
