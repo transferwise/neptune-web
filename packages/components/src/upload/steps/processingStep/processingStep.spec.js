@@ -7,14 +7,11 @@ describe('ProcessingStep', () => {
   const PROCESSING_STEP_PROPS = {
     isComplete: false,
     isError: false,
-    isProcessing: true,
     isSuccess: false,
     onAnimationCompleted: jest.fn(),
     onClear: jest.fn(),
     psButtonText: 'psButtonText',
-    psFailureText: 'psFailureText',
     psProcessingText: 'psProcessingText',
-    psSuccessText: 'psSuccessText',
   };
   let component;
   beforeEach(() => {
@@ -42,16 +39,6 @@ describe('ProcessingStep', () => {
 
   it('renders psProcessingText', () => {
     expect(component.find('h4').text()).toBe(PROCESSING_STEP_PROPS.psProcessingText);
-  });
-
-  it('renders psSuccessText if isSuccess is true', () => {
-    component = shallow(<ProcessingStep {...PROCESSING_STEP_PROPS} isSuccess />);
-    expect(component.find('h4').text()).toBe(PROCESSING_STEP_PROPS.psSuccessText);
-  });
-
-  it('renders psFailureText if isError is true', () => {
-    component = shallow(<ProcessingStep {...PROCESSING_STEP_PROPS} isError />);
-    expect(component.find('h4').text()).toBe(PROCESSING_STEP_PROPS.psFailureText);
   });
 
   it('renders button when psButtonText is set up', () => {

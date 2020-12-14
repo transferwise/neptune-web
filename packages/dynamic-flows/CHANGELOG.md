@@ -3,6 +3,160 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@8.0.0...@transferwise/dynamic-flows@8.0.1) (2020-12-14)
+
+
+### Bug Fixes
+
+* improve UX of file uploading step in Upload component ([#729](https://github.com/transferwise/neptune-web/issues/729)) ([574648b](https://github.com/transferwise/neptune-web/commit/574648be21d2056418631d2e6d9e04d686c1715a))
+
+
+
+
+
+# [8.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@7.0.4...@transferwise/dynamic-flows@8.0.0) (2020-12-11)
+
+
+* refactor!: consumers must now provide neptune components, css and icons (#733) ([551330b](https://github.com/transferwise/neptune-web/commit/551330b8fad9c9d848504ef63dc467429ffd12a3)), closes [#733](https://github.com/transferwise/neptune-web/issues/733)
+
+
+### BREAKING CHANGES
+
+* Consumers must now provide neptune components, css and icons packages
+
+
+
+
+
+## [7.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@7.0.3...@transferwise/dynamic-flows@7.0.4) (2020-12-11)
+
+**Note:** This was a breaking change even if it was marked as minor update. Consumers must provide @transferwise/components, @transferwise/icons and @transferwise/neptune-css from now on.
+
+
+
+
+## [7.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@7.0.2...@transferwise/dynamic-flows@7.0.3) (2020-12-10)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [7.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@7.0.1...@transferwise/dynamic-flows@7.0.2) (2020-12-09)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [7.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@7.0.0...@transferwise/dynamic-flows@7.0.1) (2020-12-07)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+# [7.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.10...@transferwise/dynamic-flows@7.0.0) (2020-12-07)
+
+
+### Code Refactoring
+
+* JsonSchemaForm onChange(model, triggerSchema, triggerModel) [ADS-1747] ([#718](https://github.com/transferwise/neptune-web/issues/718)) ([5f4685b](https://github.com/transferwise/neptune-web/commit/5f4685b13a16a38afe720e97693a7a7d0bb7dce6))
+
+
+### BREAKING CHANGES
+
+* JsonSchemaForm onChange callback is now called with:
+
+`onChange(model, triggerSchema, triggerModel)` and the consumer can use the now exposed `isValidSchema` function to validate either the entire model or the trigger model.
+
+
+
+
+
+## [6.1.10](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.9...@transferwise/dynamic-flows@6.1.10) (2020-12-04)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [6.1.9](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.8...@transferwise/dynamic-flows@6.1.9) (2020-12-03)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [6.1.8](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.7...@transferwise/dynamic-flows@6.1.8) (2020-12-03)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [6.1.7](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.6...@transferwise/dynamic-flows@6.1.7) (2020-12-03)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [6.1.6](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.5...@transferwise/dynamic-flows@6.1.6) (2020-12-03)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [6.1.5](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.4...@transferwise/dynamic-flows@6.1.5) (2020-12-02)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [6.1.4](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.3...@transferwise/dynamic-flows@6.1.4) (2020-12-02)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [6.1.3](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.2...@transferwise/dynamic-flows@6.1.3) (2020-12-02)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [6.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.1...@transferwise/dynamic-flows@6.1.2) (2020-12-02)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [6.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.1.0...@transferwise/dynamic-flows@6.1.1) (2020-12-02)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
 # [6.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@6.0.2...@transferwise/dynamic-flows@6.1.0) (2020-11-30)
 
 

@@ -7,4 +7,5 @@ export const Position = {
   LEFT: 'left',
   LEFT_TOP: 'left-top',
   RIGHT_TOP: 'right-top',
+  CENTER: 'center',
 };

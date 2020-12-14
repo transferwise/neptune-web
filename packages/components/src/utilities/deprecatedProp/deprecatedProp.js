@@ -1,4 +1,4 @@
-import { logActionRequired } from '..';
+import { logActionRequired } from '../logActionRequired';
 
 const deprecatedMessage = ({ component, propName, message, expiryDate }) => {
   const messages = [`${component} has deprecated the use of ${propName}.`];

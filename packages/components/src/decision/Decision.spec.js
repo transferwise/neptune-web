@@ -4,6 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Decision from '.';
 import Avatar from '../avatar';
+import { Breakpoint } from '../common';
 
 jest.mock('lodash.throttle', () => jest.fn((fn) => fn));
 
@@ -39,7 +40,7 @@ describe('Decision', () => {
 
   let container;
   beforeEach(() => {
-    resetClientWidth(500);
+    resetClientWidth(Breakpoint.EXTRA_SMALL - 1);
   });
 
   describe(`when presentation is ${Decision.Presentation.LIST_BLOCK}`, () => {
@@ -53,7 +54,7 @@ describe('Decision', () => {
     });
 
     it('renders only Tile after first breakpoint', () => {
-      resetClientWidth(900);
+      resetClientWidth(Breakpoint.SMALL);
       fireEvent(window, new Event('resize'));
 
       expect(getNavigationOption()).not.toBeInTheDocument();
@@ -79,7 +80,7 @@ describe('Decision', () => {
     });
 
     it('renders Small Tile after breakpoint', () => {
-      resetClientWidth(900);
+      resetClientWidth(Breakpoint.EXTRA_SMALL);
       fireEvent(window, new Event('resize'));
 
       expect(getNavigationOption()).not.toBeInTheDocument();

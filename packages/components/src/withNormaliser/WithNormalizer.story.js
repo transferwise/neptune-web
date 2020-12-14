@@ -68,9 +68,7 @@ export const basic = () => {
             csWrongTypeMessage="Please provide a supported format"
             maxSize={500000}
             psUploadText="Cancel"
-            psFailureText="Upload failed.Please, try again"
             psProcessingText="Uploading..."
-            psSuccessText="Upload complete!"
             size="sm"
             usAccept="image/*"
             usUploadText="Or Select File"

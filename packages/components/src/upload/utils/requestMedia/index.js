@@ -1,0 +1,1 @@
+export { requestMedia } from './requestMedia';

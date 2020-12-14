@@ -70,21 +70,21 @@ describe('Given a component for rendering a JSON schema form', () => {
 
   describe('when the child generic schema triggers onChange', () => {
     beforeEach(() => {
-      genericSchema.simulate('change', { a: 1 }, numberSchema);
+      genericSchema.simulate('change', { a: 1 }, numberSchema, 1);
     });
 
     it('should trigger the component onChange', () => {
-      expect(props.onChange).toHaveBeenCalledWith({ a: 1 }, true, numberSchema);
+      expect(props.onChange).toHaveBeenCalledWith({ a: 1 }, numberSchema, 1);
     });
   });
 
   describe('when the child generic schema triggers with an invalid model', () => {
     beforeEach(() => {
-      genericSchema.simulate('change', { b: 'invalid' }, numberSchema);
+      genericSchema.simulate('change', { b: 'invalid' }, numberSchema, 1);
     });
 
     it('should trigger the component onChange, marking as invalid', () => {
-      expect(props.onChange).toHaveBeenCalledWith({ b: 'invalid' }, false, numberSchema);
+      expect(props.onChange).toHaveBeenCalledWith({ b: 'invalid' }, numberSchema, 1);
     });
   });
 });

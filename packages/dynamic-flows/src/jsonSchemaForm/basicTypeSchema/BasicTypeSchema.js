@@ -28,7 +28,7 @@ const BasicTypeSchema = (props) => {
     setLastModel(broadcastModel);
 
     if (broadcastModel !== lastModel) {
-      props.onChange(broadcastModel, props.schema);
+      props.onChange(broadcastModel, props.schema, broadcastModel);
     }
   };
 
@@ -54,7 +54,7 @@ const BasicTypeSchema = (props) => {
   const [validations, setValidations] = useState([]);
 
   const onSchemaChange = () => {
-    // If no model, change to the default, only run this when the schema changes
+    // if no model, change to the default, only run this when the schema changes
     if (!model && props.schema.default) {
       setModelAndBroadcast(props.schema.default);
     }

@@ -45,7 +45,16 @@ describe('Dimmer', () => {
   it('renders with right props', () => {
     component = mount(<Dimmer {...props} />);
     expect(component.find(Dimmer)).toHaveLength(1);
-    expect(component.find(Dimmer).props()).toEqual({ ...props, children: null });
+    expect(component.find(Dimmer).props()).toEqual({ ...props, scrollable: false, children: null });
+  });
+
+  it('do not make Dimmer auto scrollable if scrollable=false', () => {
+    expect(component.find('.dimmer').hasClass('dimmer--scrollable')).toBe(false);
+  });
+
+  it('makes Dimmer auto scrollable if scrollable=true', () => {
+    component.setProps({ scrollable: true });
+    expect(component.find('.dimmer').hasClass('dimmer--scrollable')).toBe(true);
   });
 
   it('renders CSSTransition with right props', () => {

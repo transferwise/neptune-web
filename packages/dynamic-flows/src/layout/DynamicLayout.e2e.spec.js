@@ -17,7 +17,6 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
   };
 
   const model = { an: 'example' };
-  const isValid = true;
   const schema = {
     type: 'object',
     properties: {
@@ -66,7 +65,8 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
     it('should broadcast onModelChange', () => {
       expect(onModelChange).toHaveBeenCalledWith(
         { an: 'other example' },
-        isValid,
+        schema,
+        'other example',
         schema.properties.an,
       );
     });

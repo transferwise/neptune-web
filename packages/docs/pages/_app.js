@@ -16,8 +16,8 @@ import '../static/assets/main.css';
 
 if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
   const ReactDOM = require('react-dom'); // eslint-disable-line global-require
-  const axe = require('react-axe'); // eslint-disable-line global-require
-  axe(React, ReactDOM, 1000);
+  const axe = require('@axe-core/react'); // eslint-disable-line global-require
+  axe(React, ReactDOM, 1000, {});
 }
 
 class MyApp extends App {

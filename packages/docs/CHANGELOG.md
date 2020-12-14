@@ -3,6 +3,162 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.2.3...@transferwise/neptune-docs@8.2.4) (2020-12-14)
+
+
+### Bug Fixes
+
+* improve UX of file uploading step in Upload component ([#729](https://github.com/transferwise/neptune-web/issues/729)) ([574648b](https://github.com/transferwise/neptune-web/commit/574648be21d2056418631d2e6d9e04d686c1715a))
+
+
+
+
+
+## [8.2.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.2.2...@transferwise/neptune-docs@8.2.3) (2020-12-11)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [8.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.2.1...@transferwise/neptune-docs@8.2.2) (2020-12-11)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [8.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.2.0...@transferwise/neptune-docs@8.2.1) (2020-12-10)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [8.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.1.7...@transferwise/neptune-docs@8.2.0) (2020-12-09)
+
+
+### Features
+
+* add support for content adaptive container of Modal component and allow to show DOM over it's footer ([#709](https://github.com/transferwise/neptune-web/issues/709)) ([6694996](https://github.com/transferwise/neptune-web/commit/66949963e5dc151e27aab96dddb20f9264ff859b))
+
+
+
+
+
+## [8.1.7](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.1.6...@transferwise/neptune-docs@8.1.7) (2020-12-08)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [8.1.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.1.5...@transferwise/neptune-docs@8.1.6) (2020-12-07)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [8.1.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.1.4...@transferwise/neptune-docs@8.1.5) (2020-12-07)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [8.1.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.1.3...@transferwise/neptune-docs@8.1.4) (2020-12-04)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [8.1.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.1.2...@transferwise/neptune-docs@8.1.3) (2020-12-03)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [8.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.1.1...@transferwise/neptune-docs@8.1.2) (2020-12-03)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [8.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.1.0...@transferwise/neptune-docs@8.1.1) (2020-12-03)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [8.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.0.8...@transferwise/neptune-docs@8.1.0) (2020-12-03)
+
+
+### Features
+
+* add aria-label for Info button ([#707](https://github.com/transferwise/neptune-web/issues/707)) ([acdb489](https://github.com/transferwise/neptune-web/commit/acdb48980a655c8ddd66b4888108a2308c08882b))
+
+
+
+
+
+## [8.0.8](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.0.7...@transferwise/neptune-docs@8.0.8) (2020-12-02)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [8.0.7](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.0.6...@transferwise/neptune-docs@8.0.7) (2020-12-02)
+
+
+### Bug Fixes
+
+* fixing circular dep and updating deps for security fixes ([#712](https://github.com/transferwise/neptune-web/issues/712)) ([2a95c74](https://github.com/transferwise/neptune-web/commit/2a95c746183c78e5992e28dafe954a901269e740))
+
+
+
+
+
+## [8.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.0.5...@transferwise/neptune-docs@8.0.6) (2020-12-02)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [8.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.0.4...@transferwise/neptune-docs@8.0.5) (2020-12-02)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [8.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.0.3...@transferwise/neptune-docs@8.0.4) (2020-12-02)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
 ## [8.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@8.0.2...@transferwise/neptune-docs@8.0.3) (2020-11-30)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

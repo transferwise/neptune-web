@@ -32,6 +32,7 @@ const Option = ({
     href={href}
     onClick={onClick}
     htmlFor={htmlFor}
+    disabled={disabled && Element === 'button'}
   >
     {media && (
       <div className="media-left">

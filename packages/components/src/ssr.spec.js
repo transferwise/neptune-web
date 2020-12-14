@@ -100,6 +100,7 @@ describe('Server side rendering', () => {
     Tile: {
       media: <img alt="img" />,
     },
+    Modal: { position: 'top' },
   };
 
   componentNames.forEach((componentName) => {

@@ -102,13 +102,14 @@ describe('Given a component for rendering object schemas', () => {
 
   describe('when a generic schema component triggers onChange', () => {
     beforeEach(() => {
-      numberSchemaComponent.simulate('change', 2, schema.properties.number);
+      numberSchemaComponent.simulate('change', 2, schema.properties.number, 2);
     });
 
     it('should trigger the components onChange with the new value under the correct key', () => {
       expect(props.onChange).toHaveBeenCalledWith(
         { string: 'a', number: 2 },
         schema.properties.number,
+        2,
       );
     });
 
@@ -119,11 +120,11 @@ describe('Given a component for rendering object schemas', () => {
 
   describe('when a generic schema component triggers a null onChange', () => {
     beforeEach(() => {
-      numberSchemaComponent.simulate('change', null, schema.properties.number);
+      numberSchemaComponent.simulate('change', null, schema.properties.number, null);
     });
 
     it('should trigger the components onChange with the key remove', () => {
-      expect(props.onChange).toHaveBeenCalledWith({ string: 'a' }, schema.properties.number);
+      expect(props.onChange).toHaveBeenCalledWith({ string: 'a' }, schema.properties.number, null);
     });
   });
 
@@ -227,7 +228,11 @@ describe('Given a component for rendering object schemas', () => {
       component.setProps({ schema: schemaWithOnlyNumberProperty });
       component.update();
 
-      expect(onChange).toHaveBeenCalledWith({ number: 1 }, schemaWithOnlyNumberProperty);
+      expect(onChange).toHaveBeenCalledWith(
+        { number: 1 }, //
+        schemaWithOnlyNumberProperty,
+        { number: 1 },
+      );
       expect(onChange).toHaveBeenCalledTimes(1);
     });
   });

@@ -45,11 +45,11 @@ const OneOfSchema = (props) => {
     return null;
   };
 
-  const onChange = (model, schema, index) => {
+  const onChildModelChange = (index, model, triggerSchema, triggerModel) => {
     models[index] = model;
     setModels(models);
     setChanged(true);
-    props.onChange(model, schema);
+    props.onChange(model, triggerSchema, triggerModel);
   };
 
   const onFocus = () => {
@@ -68,12 +68,13 @@ const OneOfSchema = (props) => {
 
     if (isConstSchema(newSchema)) {
       // If new schema is a const we want to share the parent schema, not the const
-      props.onChange(newSchema.const || newSchema.enum[0], props.schema);
+      const model = newSchema.const || newSchema.enum[0];
+      props.onChange(model, props.schema, model);
 
       // Apply validations for the change
       setValidations(getValidationFailures(newSchema.const, props.schema, props.required));
     } else {
-      props.onChange(models[index], newSchema);
+      props.onChange(models[index], newSchema, models[index]);
     }
   };
 
@@ -166,7 +167,9 @@ const OneOfSchema = (props) => {
           errors={props.errors}
           locale={props.locale}
           translations={props.translations}
-          onChange={(model, schema) => onChange(model, schema, schemaIndex)}
+          onChange={(model, triggerSchema, triggerModel) =>
+            onChildModelChange(schemaIndex, model, triggerSchema, triggerModel)
+          }
           submitted={props.submitted}
           hideTitle
           disabled={props.disabled}

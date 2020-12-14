@@ -127,7 +127,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
     });
 
     it('should broadcast a change for the const', () => {
-      expect(onChange).toHaveBeenCalledWith({ string: 'foo', const: 'abcd' }, true, constSchema);
+      expect(onChange).toHaveBeenCalledWith({ string: 'foo', const: 'abcd' }, constSchema, 'abcd');
       expect(onChange).toHaveBeenCalledTimes(1);
     });
   });
@@ -138,7 +138,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
     });
 
     it('should trigger the component onChange', () => {
-      expect(onChange).toHaveBeenCalledWith({ string: 'new', const: 'abcd' }, true, stringSchema);
+      expect(onChange).toHaveBeenCalledWith({ string: 'new', const: 'abcd' }, stringSchema, 'new');
       expect(onChange).toHaveBeenCalledTimes(2);
     });
   });
@@ -149,15 +149,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
     });
 
     it('should NOT remove the value from the model', () => {
-      expect(onChange).toHaveBeenLastCalledWith(
-        { const: 'abcd', string: 'x' },
-        false,
-        stringSchema,
-      );
-    });
-
-    it('should call onChange with valid = false', () => {
-      expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(false);
+      expect(onChange).toHaveBeenLastCalledWith({ const: 'abcd', string: 'x' }, stringSchema, 'x');
     });
 
     describe('and then to something else invalid', () => {
@@ -176,7 +168,11 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
       });
 
       it('should call onChange with the new value', () => {
-        expect(onChange).toHaveBeenCalledWith({ string: 'bar', const: 'abcd' }, true, stringSchema);
+        expect(onChange).toHaveBeenCalledWith(
+          { string: 'bar', const: 'abcd' },
+          stringSchema,
+          'bar',
+        );
       });
 
       it('should have called onChange again', () => {

@@ -43,7 +43,12 @@ const Alert = (props) => {
       <div className="alert__message p-l-2 flex-grow-1">
         <div>{children || <InlineMarkdown>{message}</InlineMarkdown>}</div>
         {action && (
-          <a href={action.href} className="m-t-1 d-inline-block" aria-label={action['aria-label']}>
+          <a
+            href={action.href}
+            className="m-t-1 d-inline-block"
+            aria-label={action['aria-label']}
+            target={action.target}
+          >
             {action.text}
           </a>
         )}
@@ -85,6 +90,7 @@ Alert.propTypes = {
   action: Types.shape({
     'aria-label': Types.string,
     href: Types.string.isRequired,
+    target: Types.string,
     text: Types.node.isRequired,
   }),
   className: Types.string,

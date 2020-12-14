@@ -135,19 +135,33 @@ describe('Alert', () => {
   });
 
   describe('action', () => {
-    const action = {
-      'aria-label': 'Learn more about fluffy kittens',
-      href: 'fluffykittens.com',
-      text: 'Learn more',
-    };
+    it('sets text and href', () => {
+      const action = {
+        href: 'fluffykittens.com',
+        text: 'Learn more',
+      };
+      render(<Alert action={action} message={message} />);
 
-    it('is rendered with aria-label and href set', () => {
+      const el = screen.getByText(action.text);
+
+      expect(el).toHaveAttribute('href', action.href);
+      expect(el).not.toHaveAttribute('aria-label');
+      expect(el).not.toHaveAttribute('target');
+    });
+
+    it('adds additional attributes', () => {
+      const action = {
+        'aria-label': 'Learn more about fluffy kittens',
+        href: 'fluffykittens.com',
+        text: 'Learn more',
+        target: '_blank',
+      };
       render(<Alert action={action} message={message} />);
 
       const el = screen.getByText(action.text);
 
       expect(el).toHaveAttribute('aria-label', action['aria-label']);
-      expect(el).toHaveAttribute('href', action.href);
+      expect(el).toHaveAttribute('target', action.target);
     });
   });
 

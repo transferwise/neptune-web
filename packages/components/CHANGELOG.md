@@ -3,6 +3,151 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.4.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.4.1...@transferwise/components@31.4.2) (2020-12-14)
+
+
+### Bug Fixes
+
+* improve UX of file uploading step in Upload component ([#729](https://github.com/transferwise/neptune-web/issues/729)) ([574648b](https://github.com/transferwise/neptune-web/commit/574648be21d2056418631d2e6d9e04d686c1715a))
+
+
+
+
+
+## [31.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.4.0...@transferwise/components@31.4.1) (2020-12-10)
+
+
+### Bug Fixes
+
+* fixed Avatar hover state in NavigationOption ([#725](https://github.com/transferwise/neptune-web/issues/725)) ([1ad51a0](https://github.com/transferwise/neptune-web/commit/1ad51a09ae62eaea906474cd826ae580e17a88da))
+
+
+
+
+
+# [31.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.5...@transferwise/components@31.4.0) (2020-12-09)
+
+
+### Features
+
+* add support for content adaptive container of Modal component and allow to show DOM over it's footer ([#709](https://github.com/transferwise/neptune-web/issues/709)) ([6694996](https://github.com/transferwise/neptune-web/commit/66949963e5dc151e27aab96dddb20f9264ff859b))
+
+
+
+
+
+## [31.3.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.4...@transferwise/components@31.3.5) (2020-12-07)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [31.3.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.3...@transferwise/components@31.3.4) (2020-12-04)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [31.3.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.2...@transferwise/components@31.3.3) (2020-12-03)
+
+
+### Bug Fixes
+
+* sizeswapper fix ([#703](https://github.com/transferwise/neptune-web/issues/703)) ([f9fe8e2](https://github.com/transferwise/neptune-web/commit/f9fe8e2584970379187ca906d7768b7bf7faca66))
+
+
+
+
+
+## [31.3.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.1...@transferwise/components@31.3.2) (2020-12-03)
+
+
+### Bug Fixes
+
+* update wrong aria-label-type ([#719](https://github.com/transferwise/neptune-web/issues/719)) ([486c264](https://github.com/transferwise/neptune-web/commit/486c2647dfc3a39523976ec082a846bad572df2e))
+
+
+
+
+
+## [31.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.0...@transferwise/components@31.3.1) (2020-12-03)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+# [31.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.2.0...@transferwise/components@31.3.0) (2020-12-03)
+
+
+### Features
+
+* add aria-label for Info button ([#707](https://github.com/transferwise/neptune-web/issues/707)) ([acdb489](https://github.com/transferwise/neptune-web/commit/acdb48980a655c8ddd66b4888108a2308c08882b))
+
+
+
+
+
+# [31.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.1.1...@transferwise/components@31.2.0) (2020-12-02)
+
+
+### Features
+
+* adds target attribute to actions ([#714](https://github.com/transferwise/neptune-web/issues/714)) ([321489f](https://github.com/transferwise/neptune-web/commit/321489f89bdd38854f6df395b91f7a5ecd20ad12))
+
+
+
+
+
+## [31.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.1.0...@transferwise/components@31.1.1) (2020-12-02)
+
+
+### Bug Fixes
+
+* fixing circular dep and updating deps for security fixes ([#712](https://github.com/transferwise/neptune-web/issues/712)) ([2a95c74](https://github.com/transferwise/neptune-web/commit/2a95c746183c78e5992e28dafe954a901269e740))
+
+
+
+
+
+# [31.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.4...@transferwise/components@31.1.0) (2020-12-02)
+
+
+### Features
+
+* add microapps media API for Google Spot app support ([#704](https://github.com/transferwise/neptune-web/issues/704)) ([f4d4d65](https://github.com/transferwise/neptune-web/commit/f4d4d658ce8619448383d5abdae3b3b00275112f))
+
+
+
+
+
+## [31.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.3...@transferwise/components@31.0.4) (2020-12-02)
+
+
+### Bug Fixes
+
+* add disabled attribute to Option ([#713](https://github.com/transferwise/neptune-web/issues/713)) ([7883ead](https://github.com/transferwise/neptune-web/commit/7883eadbc5d2ba2721a7dc369bf007f379fe45b4))
+
+
+
+
+
+## [31.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.2...@transferwise/components@31.0.3) (2020-12-02)
+
+
+### Bug Fixes
+
+* refactor tabs touch events to avoid warnings ([#708](https://github.com/transferwise/neptune-web/issues/708)) ([fba064a](https://github.com/transferwise/neptune-web/commit/fba064a60174fff6f9658fd547b3f0fc2052ff20))
+
+
+
+
+
 ## [31.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.1...@transferwise/components@31.0.2) (2020-11-30)
 
 

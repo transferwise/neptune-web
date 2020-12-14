@@ -20,6 +20,7 @@ exports[`Summary renders full component 1`] = `
       >
         <svg
           fill="currentColor"
+          focusable="false"
           height="16"
           width="16"
         >
@@ -43,11 +44,14 @@ exports[`Summary renders full component 1`] = `
         <span
           class="m-l-1 hidden-xs np-info np-info__small"
         >
-          <span
+          <button
             aria-expanded="false"
+            aria-label="aria-label"
+            class="btn-unstyled"
             data-toggle="popover"
             role="button"
             tabindex="0"
+            type="button"
           >
             <span
               aria-hidden="true"
@@ -56,6 +60,7 @@ exports[`Summary renders full component 1`] = `
             >
               <svg
                 fill="currentColor"
+                focusable="false"
                 height="16"
                 width="16"
               >
@@ -69,7 +74,7 @@ exports[`Summary renders full component 1`] = `
                 />
               </svg>
             </span>
-          </span>
+          </button>
           <div
             class="tw-popover popover animate in scale-down"
           >
@@ -102,11 +107,14 @@ exports[`Summary renders full component 1`] = `
     <span
       class="m-l-2 hidden-sm hidden-md hidden-lg hidden-xl np-info np-info__large"
     >
-      <span
+      <button
         aria-expanded="false"
+        aria-label="aria-label"
+        class="btn-unstyled"
         data-toggle="popover"
         role="button"
         tabindex="0"
+        type="button"
       >
         <span
           aria-hidden="true"
@@ -115,6 +123,7 @@ exports[`Summary renders full component 1`] = `
         >
           <svg
             fill="currentColor"
+            focusable="false"
             height="24"
             width="24"
           >
@@ -128,7 +137,7 @@ exports[`Summary renders full component 1`] = `
             />
           </svg>
         </span>
-      </span>
+      </button>
       <div
         class="tw-popover popover animate in scale-down"
       >

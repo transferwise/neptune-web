@@ -20,6 +20,7 @@ exports[`Switch renders component when checked 1`] = `
       >
         <svg
           fill="currentColor"
+          focusable="false"
           height="24"
           width="24"
         >
@@ -60,6 +61,7 @@ exports[`Switch renders component when unchecked 1`] = `
       >
         <svg
           fill="currentColor"
+          focusable="false"
           height="24"
           width="24"
         >

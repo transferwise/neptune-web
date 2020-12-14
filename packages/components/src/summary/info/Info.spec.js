@@ -12,6 +12,7 @@ describe('Info', () => {
     content: 'content',
     className: 'className',
     title: 'title',
+    'aria-label': 'aria-label',
   };
 
   it('renders small icon', () => {
@@ -30,16 +31,16 @@ describe('Info', () => {
 
   describe(`when in ${Info.Presentation.POPOVER} mode`, () => {
     it('renders popover component', () => {
-      const { container, getByRole } = render(<Info {...props} />);
+      const { container, getByLabelText } = render(<Info {...props} />);
       const helpIcon = getHelpIcon({ container });
 
       expect(helpIcon).toBeInTheDocument();
-      expect(getByRole('button').getAttribute('data-toggle')).toEqual('popover');
+      expect(getByLabelText('aria-label').getAttribute('data-toggle')).toEqual('popover');
     });
 
     it('opens popover onClick', () => {
-      const { container, getByRole } = render(<Info {...props} />);
-      const popOverButton = getByRole('button');
+      const { container, getByLabelText } = render(<Info {...props} />);
+      const popOverButton = getByLabelText('aria-label');
       const helpIcon = getHelpIcon({ container });
 
       expect(helpIcon).toBeInTheDocument();
@@ -49,8 +50,9 @@ describe('Info', () => {
       expect(popOverButton.getAttribute('aria-expanded')).toEqual('true');
     });
   });
+
   describe(`when in ${Info.Presentation.MODAL} mode`, () => {
-    it('renders modal component', () => {
+    it('opens modal onClick', () => {
       const { container } = render(<Info {...props} presentation={Info.Presentation.MODAL} />);
       const helpIcon = getHelpIcon({ container });
 

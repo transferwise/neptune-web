@@ -3,7 +3,7 @@
   "type": "object",
   "alert": {
     "context": "warning",
-    "markdown": "### Some markdown goes here\n ```\nconsole.log('hello world')\n```"
+    "markdown": "Some **markdown** goes here"
   },
   "properties": {
     "number": {
