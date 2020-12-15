@@ -26,6 +26,13 @@ class MyApp extends App {
     if (pathname === '/' || pathname === '/_error') {
       Router.push(addBasePath('about/Home'));
     }
+
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem(
+        'sidebar-scroll',
+        document.querySelector('.Sidebar__Inner .Nav').scrollTop,
+      );
+    });
   }
 
   render() {

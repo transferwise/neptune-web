@@ -37,13 +37,18 @@ const getLinks = ({ pathname, section }) => {
 };
 
 const Sidebar = ({ router: { pathname }, section }) => {
-  const [links, updateLinks] = useState([]);
-  const [filteredLinks, updateFilteredLinks] = useState('');
+  const [links, updateLinks] = useState(getLinks({ pathname, section }));
+  const [filteredLinks, updateFilteredLinks] = useState(links.map(({ content }) => content));
 
   const [searchInput, updateSearchInput] = useState('');
   const searchEl = useRef(null);
+  const scrollableNavEl = useRef(null);
 
   useEffect(() => {
+    const top = localStorage.getItem('sidebar-scroll');
+    if (top !== null) {
+      scrollableNavEl.current.scrollTop = parseInt(top, 10);
+    }
     if (window) {
       window.addEventListener('keydown', handleKeyDown);
     }
@@ -104,7 +109,9 @@ const Sidebar = ({ router: { pathname }, section }) => {
         />
       )}
       <div className="Sidebar__Inner">
-        <ul className="Nav">{filteredLinks}</ul>
+        <ul className="Nav" ref={scrollableNavEl}>
+          {filteredLinks}
+        </ul>
       </div>
     </div>
   );
