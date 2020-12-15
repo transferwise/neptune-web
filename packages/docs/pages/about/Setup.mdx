@@ -7,15 +7,15 @@ import { Cross as CrossIcon, Check as CheckIcon } from '@transferwise/icons';
 
 Neptune Web is published to npm as two packages: [@transferwise/components](https://www.npmjs.com/package/@transferwise/components) and [@transferwise/neptune-css](https://www.npmjs.com/package/@transferwise/neptune-css).
 
-**If you want to use the components, you need Neptune CSS.**
+**If you want to use the components, you need Neptune CSS and Icons.**
 
 ```bash
 # yarn
-yarn add @transferwise/components @transferwise/neptune-css
+yarn add @transferwise/components @transferwise/neptune-css @transferwise/icons
 yarn add react react-dom prop-types currency-flags # peer dependencies
 
 # npm
-npm install @transferwise/components @transferwise/neptune-css
+npm install @transferwise/components @transferwise/neptune-css @transferwise/icons
 npm install react react-dom prop-types currency-flags # peer dependencies
 ```
 
@@ -26,6 +26,7 @@ npm install react react-dom prop-types currency-flags # peer dependencies
 ```js
 // These CSS imports only need to be imported once in your application
 import '@transferwise/neptune-css/dist/css/neptune.css';
+import '@transferwise/icons/lib/styles/main.min.css';
 
 // This is only necessary if you are using the UMD build
 import '@transferwise/components/build/main.css';

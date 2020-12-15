@@ -5,13 +5,13 @@ exports[`Switch renders component when checked 1`] = `
   <span
     aria-checked="true"
     aria-label="a label"
-    class="switch switch--checked a-class-name"
+    class="np-switch np-switch--checked a-class-name"
     id="id"
     role="switch"
     tabindex="0"
   >
     <span
-      class="switch--thumb"
+      class="np-switch--thumb"
     >
       <span
         aria-hidden="true"
@@ -20,6 +20,7 @@ exports[`Switch renders component when checked 1`] = `
       >
         <svg
           fill="currentColor"
+          focusable="false"
           height="24"
           width="24"
         >
@@ -45,13 +46,13 @@ exports[`Switch renders component when unchecked 1`] = `
   <span
     aria-checked="false"
     aria-label="a label"
-    class="switch switch--unchecked a-class-name"
+    class="np-switch np-switch--unchecked a-class-name"
     id="id"
     role="switch"
     tabindex="0"
   >
     <span
-      class="switch--thumb"
+      class="np-switch--thumb"
     >
       <span
         aria-hidden="true"
@@ -60,6 +61,7 @@ exports[`Switch renders component when unchecked 1`] = `
       >
         <svg
           fill="currentColor"
+          focusable="false"
           height="24"
           width="24"
         >

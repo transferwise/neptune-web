@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tile matches snapshot when regular size 1`] = `
+<DocumentFragment>
+  <a
+    aria-label="Receive money"
+    class="decision flex-column np-tile text-no-decoration text-xs-center p-y-5 p-x-4"
+    href="#href"
+  >
+    <div
+      class="np-tile__media d-flex justify-content-center"
+    >
+      <svg
+        data-testid="illustration"
+      />
+    </div>
+    <div
+      class="np-tile__title"
+    >
+      Receive money
+    </div>
+    <div
+      class="np-tile__description"
+    >
+      Receive money from friends and family like a local
+    </div>
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Tile matches snapshot when small size 1`] = `
+<DocumentFragment>
+  <a
+    aria-label="Receive money"
+    class="decision flex-column np-tile text-no-decoration text-xs-center np-tile--small p-a-2"
+    href="#href"
+  >
+    <div
+      class="np-tile__media d-flex justify-content-center"
+    >
+      <svg
+        data-testid="illustration"
+      />
+    </div>
+    <div
+      class="np-tile__title"
+    >
+      Receive money
+    </div>
+    <div
+      class="np-tile__description"
+    >
+      Receive money from friends and family like a local
+    </div>
+  </a>
+</DocumentFragment>
+`;

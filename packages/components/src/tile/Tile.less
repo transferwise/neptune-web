@@ -1,0 +1,49 @@
+@import (reference) '@transferwise/neptune-css/src/less/variables/_typography.less';
+
+.np-tile {
+  min-width: 120px;
+  border-radius: var(--radius-small);
+  width: 100%;
+
+  &.decision {
+    margin-top: 0;
+    border: 1px solid var(--color-border-neutral);
+  }
+  &__media {
+    width: 100%;
+  }
+
+  &__title {
+    margin-top: var(--size-16);
+    font-size: 1.333333rem; // 20px
+    line-height: calc(24 / 20); // 24px
+    color: var(--color-text-primary);
+  }
+
+  &__description {
+    margin-top: var(--size-12);
+    line-height: calc(22 / 16); // 22px
+    color: var(--color-text-secondary);
+    font-weight: @font-weight-base;
+  }
+
+  &--small {
+    .np-tile__title {
+      margin-top: var(--size-12);
+      font-size: @font-size-base; //16px
+      line-height: calc(22 / 16); // 22px
+    }
+
+    .np-tile__description {
+      margin-top: var(--size-4);
+    }
+  }
+  &:hover {
+    .tw-avatar {
+      pointer-events: none;
+      .tw-avatar__content {
+        background-color: var(--color-background-screen);
+      }
+    }
+  }
+}

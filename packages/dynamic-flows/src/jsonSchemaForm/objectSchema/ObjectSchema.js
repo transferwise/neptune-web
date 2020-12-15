@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import isEqual from 'lodash.isequal';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import GenericSchema from '../genericSchema';
@@ -8,14 +9,14 @@ import DynamicAlert from '../../layout/alert';
 const ObjectSchema = (props) => {
   const [model, setModel] = useState({ ...(props.model || {}) });
 
-  const onChange = (propertyName, propertyModel, schema) => {
+  const onChangeProperty = (propertyName, propertyModel, triggerSchema, triggerModel) => {
     if (propertyModel !== null) {
       model[propertyName] = propertyModel;
     } else {
       delete model[propertyName];
     }
     setModel(model);
-    props.onChange(model, schema);
+    props.onChange(model, triggerSchema, triggerModel);
   };
 
   const getSchemaColumnClasses = (width) => {
@@ -31,7 +32,12 @@ const ObjectSchema = (props) => {
 
   useEffect(() => {
     // When the schema changes, only retain valid parts of the model
-    setModel(getValidModelParts(model, props.schema));
+    const newModel = getValidModelParts(model, props.schema);
+    setModel(newModel);
+    if (!isEqual(newModel, model)) {
+      const triggerModel = newModel;
+      props.onChange(newModel, props.schema, triggerModel);
+    }
   }, [props.schema]);
 
   const orderedPropertyNames = [
@@ -59,7 +65,9 @@ const ObjectSchema = (props) => {
               errors={props.errors && props.errors[propertyName]}
               locale={props.locale}
               translations={props.translations}
-              onChange={(newModel, schema) => onChange(propertyName, newModel, schema)}
+              onChange={(newModel, triggerSchema, triggerModel) =>
+                onChangeProperty(propertyName, newModel, triggerSchema, triggerModel)
+              }
               submitted={props.submitted}
               required={isRequired(propertyName)}
               disabled={props.disabled}

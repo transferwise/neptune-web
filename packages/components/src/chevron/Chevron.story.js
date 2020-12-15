@@ -13,7 +13,7 @@ export const basic = () => {
     Object.values(Chevron.Orientation),
     Chevron.Orientation.TOP,
   );
-  const size = select('size', Object.values(Chevron.Size), Chevron.Orientation.MEDIUM);
+  const size = select('size', Object.values(Chevron.Size), Chevron.Size.MEDIUM);
   const disabled = boolean('disabled', false);
   const className = text('className', undefined);
   return <Chevron {...{ orientation, size, disabled, className }} />;

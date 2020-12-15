@@ -31,14 +31,15 @@ describe('Given a component for rendering persist async schemas', () => {
       },
     },
   };
-
+  const errors = 'some error';
+  const required = true;
   const translations = {};
   const submitted = false;
 
-  const getMockFetchPromise = (status, mockResponse, delay, signal) => {
+  const getMockFetchPromise = (status, jsonFn, delay, signal) => {
     const response = {
       status,
-      json: () => Promise.resolve(mockResponse),
+      json: jsonFn,
     };
     return new Promise((resolve) => {
       let aborted = false;
@@ -58,27 +59,46 @@ describe('Given a component for rendering persist async schemas', () => {
       let response;
 
       switch (JSON.parse(init.body)[param]) {
-        case '777777':
-          response = getMockFetchPromise(200, { anIdProperty: 'some-resp-12345' }, 5, init.signal);
-          break;
-        case '888888':
+        case '200--ok--fast-5ms':
           response = getMockFetchPromise(
             200,
-            { anIdProperty: 'other-resp-54321' },
+            () => Promise.resolve({ anIdProperty: 'response-from-200-fast' }),
+            5,
+            init.signal,
+          );
+          break;
+        case '200--ok--slow-100ms':
+          response = getMockFetchPromise(
+            200,
+            () => Promise.resolve({ anIdProperty: 'response-from-200-slow' }),
             100,
             init.signal,
           );
           break;
-        case '666666':
+        case '422--error':
           response = getMockFetchPromise(
             422,
-            { validation: { anIdProperty: 'Invalid param!' } },
+            () => Promise.resolve({ validation: { [param]: 'Invalid param! (422)' } }),
             0,
             init.signal,
           );
           break;
+        case '499--json-body':
+          response = getMockFetchPromise(
+            499,
+            () => Promise.resolve({ validation: { [param]: 'Invalid param! (499)' } }),
+            0,
+            init.signal,
+          );
+          break;
+        case '499--no-body':
+          response = getMockFetchPromise(499, () => Promise.reject(''), 0, init.signal);
+          break;
+        case '500--no-body':
+          response = getMockFetchPromise(500, () => Promise.reject(''), 0, init.signal);
+          break;
         default:
-          response = getMockFetchPromise(500, {}, 0, init.signal);
+          response = getMockFetchPromise(500, () => Promise.reject(''), 0, init.signal);
       }
       return response;
     });
@@ -96,11 +116,28 @@ describe('Given a component for rendering persist async schemas', () => {
       onPersistAsync,
       translations,
       submitted,
+      errors,
+      required,
     };
   });
 
   describe('when the supplied props are valid', () => {
     let component;
+
+    function getComponentErrorsProp() {
+      const basicTypeSchema = component.update().find(PersistAsyncSchema).find(BasicTypeSchema);
+      return basicTypeSchema.prop('errors');
+    }
+
+    function enterValueAndBlur(value) {
+      const formControl = component
+        .find(PersistAsyncSchema)
+        .find(BasicTypeSchema)
+        .find(SchemaFormControl);
+      formControl.simulate('change', { target: { value } });
+      formControl.simulate('blur');
+      return formControl;
+    }
 
     beforeEach(() => {
       component = mount(<PersistAsyncSchema {...props} />);
@@ -114,18 +151,24 @@ describe('Given a component for rendering persist async schemas', () => {
       const basic = component.find(PersistAsyncSchema).find(BasicTypeSchema);
       expect(basic).toHaveLength(1);
       expect(basic.prop('schema').title).toBe('A title');
+      expect(basic.prop('errors')).toBe('some error');
+      expect(basic.prop('required')).toBe(true);
+    });
+
+    describe('when the field value is null', () => {
+      it('should not trigger persist async on blur', () => {
+        enterValueAndBlur(null);
+
+        expect(global.fetch).toHaveBeenCalledTimes(0);
+        expect(onPersistAsync).toHaveBeenCalledTimes(0);
+      });
     });
 
     describe('when the field value is valid', () => {
       describe('when a persist async is triggered', () => {
         describe('when the request is successful', () => {
           beforeEach(() => {
-            const formControl = component
-              .find(PersistAsyncSchema)
-              .find(BasicTypeSchema)
-              .find(SchemaFormControl);
-            formControl.simulate('change', { target: { value: '777777' } });
-            formControl.simulate('blur');
+            enterValueAndBlur('200--ok--fast-5ms');
           });
 
           it('should trigger onPersistAsync correctly', () => {
@@ -137,47 +180,56 @@ describe('Given a component for rendering persist async schemas', () => {
           it('should broadcast the persist async response value', async () => {
             await wait(5);
             expect(onChange).toHaveBeenCalledTimes(1);
-            expect(onChange).toHaveBeenCalledWith('some-resp-12345', schema);
+            expect(onChange).toHaveBeenCalledWith(
+              'response-from-200-fast',
+              schema,
+              'response-from-200-fast',
+            );
           });
         });
 
         describe('when the request fails with 422 error', () => {
           beforeEach(() => {
-            const formControl = component
-              .find(PersistAsyncSchema)
-              .find(BasicTypeSchema)
-              .find(SchemaFormControl);
-            formControl.simulate('change', { target: { value: '666666' } });
-            formControl.simulate('blur');
+            enterValueAndBlur('422--error');
           });
 
           it('should pass down the error', async () => {
             await wait(1);
-            const basicTypeSchema = component
-              .update()
-              .find(PersistAsyncSchema)
-              .find(BasicTypeSchema);
-            expect(basicTypeSchema.prop('errors')).toEqual('Invalid param!');
+            expect(getComponentErrorsProp()).toEqual('Invalid param! (422)');
+          });
+
+          it('should broadcast null value', async () => {
+            await wait(1);
+            expect(onChange).toHaveBeenCalledTimes(1);
+            expect(onChange).toHaveBeenCalledWith(null, schema, null);
           });
         });
 
-        describe('when the request fails without error', () => {
-          beforeEach(async () => {
-            const formControl = component
-              .find(PersistAsyncSchema)
-              .find(BasicTypeSchema)
-              .find(SchemaFormControl);
-            formControl.simulate('change', { target: { value: '999999' } });
-            formControl.simulate('blur');
-          });
-
+        describe('when the request fails with status 500 and no body', () => {
           it('should render fallback error message', async () => {
+            enterValueAndBlur('500--no-body');
             await wait(1);
-            const basicTypeSchema = component
-              .update()
-              .find(PersistAsyncSchema)
-              .find(BasicTypeSchema);
-            expect(basicTypeSchema.prop('errors')).toEqual(
+            expect(getComponentErrorsProp()).toEqual(
+              'Something went wrong, please try again later!',
+            );
+          });
+        });
+
+        describe('when the request fails with status 499 and some json body', () => {
+          it('should render fallback error message', async () => {
+            enterValueAndBlur('499--json-body');
+            await wait(1);
+            expect(getComponentErrorsProp()).toEqual(
+              'Something went wrong, please try again later!',
+            );
+          });
+        });
+
+        describe('when the request fails with status 499 and no body', () => {
+          it('should render fallback error message', async () => {
+            enterValueAndBlur('499--no-body');
+            await wait(1);
+            expect(getComponentErrorsProp()).toEqual(
               'Something went wrong, please try again later!',
             );
           });
@@ -185,25 +237,21 @@ describe('Given a component for rendering persist async schemas', () => {
 
         describe('when a second request is triggered', () => {
           beforeEach(async () => {
-            const formControl = component
-              .find(PersistAsyncSchema)
-              .find(BasicTypeSchema)
-              .find(SchemaFormControl);
-            formControl.simulate('change', { target: { value: '888888' } });
-            formControl.simulate('blur');
-
+            enterValueAndBlur('200--ok--slow-100ms');
             await wait(1);
-
-            formControl.simulate('change', { target: { value: '777777' } });
-            formControl.simulate('blur');
+            enterValueAndBlur('200--ok--fast-5ms');
           });
 
           describe('when the first request returns slower than the second request', () => {
             it('should still broadcast the result from the second request', async () => {
-              await wait(200);
+              await wait(120);
               expect(onChange).toHaveBeenCalledTimes(1);
 
-              expect(onChange).toHaveBeenCalledWith('some-resp-12345', schema);
+              expect(onChange).toHaveBeenCalledWith(
+                'response-from-200-fast',
+                schema,
+                'response-from-200-fast',
+              );
             });
           });
         });

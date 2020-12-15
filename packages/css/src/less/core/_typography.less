@@ -30,11 +30,11 @@ h1,
   margin-bottom: var(--size-4);
   font-weight: @font-weight-bold;
   font-size: @font-size-x-large;
-  line-height: 1.1428571429; // 32/28
+  line-height: @line-height-x-large;
 
   @media (--screen-md) {
     margin-bottom: var(--size-8);
-    font-size: @font-size-xx-large--desktop;
+    font-size: @font-size-xx-large;
   }
 }
 
@@ -42,25 +42,25 @@ h2,
 .h2 {
   margin-bottom: 2px;
   font-size: @font-size-large;
-  line-height: 1.3636363636; //30/22
+  line-height: @line-height-large;
 
   @media (--screen-md) {
     margin-bottom: var(--size-4);
     font-weight: @font-weight-bold;
-    font-size: @font-size-x-large--desktop;
-    line-height: 1.1428571429; // 32/28
+    font-size: @font-size-x-large;
+    line-height: @line-height-x-large;
   }
 }
 
 h3,
 .h3 {
   font-size: @font-size-medium;
-  line-height: 1.3333333333; // 24/18
+  line-height: @line-height-medium;
 
   @media (--screen-md) {
     margin-bottom: 2px;
-    font-size: @font-size-large--desktop;
-    line-height: 1.3636363636; // 30/22
+    font-size: @font-size-large;
+    line-height: @line-height-large;
   }
 }
 
@@ -68,23 +68,15 @@ h4,
 h5,
 .h4,
 .h5 {
-  font-size: 1.0666666667rem; // 16/15
-  line-height: 1.5; // 24/16
+  font-size: @font-size-base;
+  line-height: @line-height-base;
 }
 
 h4,
 .h4 {
   @media (--screen-md) {
-    font-size: @font-size-medium--desktop;
-    line-height: 1.3333333333; // 24/18
-  }
-}
-
-h5,
-.h5 {
-  @media (--screen-md) {
-    font-size: @font-size-base--desktop;
-    line-height: @line-height-base--desktop;
+    font-size: @font-size-medium;
+    line-height: @line-height-medium;
   }
 }
 
@@ -92,11 +84,7 @@ h6,
 .h6 {
   color: @color-base-grey-light;
   font-size: @font-size-small;
-  line-height: 1.7142857143; // 24/14
-
-  @media (--screen-md) {
-    font-size: @font-size-small--desktop;
-  }
+  line-height: @line-height-small;
 }
 
 h1,
@@ -149,7 +137,7 @@ p {
   line-height: 1.7777777778; // 32/18
 
   @media (--screen-md) {
-    font-size: @font-size-large--desktop;
+    font-size: @font-size-large;
     line-height: 1.4545454545; // 32/22
   }
 }
@@ -157,21 +145,13 @@ p {
 small,
 .small {
   font-size: @font-size-small;
-  line-height: 1.7142857143; // 24/14
-
-  @media (--screen-md) {
-    font-size: @font-size-small--desktop;
-  }
+  line-height: @line-height-small;
 }
 
 .tiny {
   color: @color-base-grey-light;
   font-size: @font-size-x-small;
-  line-height: 2; // 24/12
-
-  @media (--screen-md) {
-    font-size: @font-size-x-small--desktop;
-  }
+  line-height: @line-height-x-small;
 }
 
 strong,
@@ -237,11 +217,7 @@ blockquote {
     display: block;
     color: @color-base-grey-light;
     font-size: @font-size-small;
-    line-height: 1.7142857143; // 24/14
-
-    @media (--screen-md) {
-      font-size: @font-size-small--desktop;
-    }
+    line-height: @line-height-small;
 
     &::before {
       content: '\2014 \00A0'; // em dash, nbsp
@@ -254,8 +230,8 @@ blockquote {
 
   @media (--screen-lg) {
     margin: var(--size-32);
-    font-size: @font-size-medium--desktop;
-    line-height: 1.3333333333; // 24/18
+    font-size: @font-size-medium;
+    line-height: @line-height-medium;
   }
 }
 
@@ -292,14 +268,10 @@ pre {
   overflow: auto;
   color: @color-base-grey-dark;
   font-size: @font-size-small;
-  line-height: 1.7142857143; // 24/14
+  line-height: @line-height-small;
   word-wrap: break-word;
   word-break: break-all;
   background-color: var(--color-background-neutral);
-
-  @media (--screen-md) {
-    font-size: @font-size-small--desktop;
-  }
 
   code {
     padding: 0;

@@ -1,0 +1,14 @@
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import code from '../../../liveEditorCode/decision.code.js';
+
+import { Decision, Avatar } from '@transferwise/components';
+
+Decision can be used for illustrating major decisions for the user.
+Because blocks will not wrap onto multiple lines, we suggest keeping the number of options under four when using presentation `LIST_BLOCK`.
+
+<LiveEditorBlock code={code} scope={{ Decision, Avatar }} display="vertical" />
+<GeneratePropsTable componentName="Decision" />
+
+export const meta = {
+  name: 'Decision',
+};

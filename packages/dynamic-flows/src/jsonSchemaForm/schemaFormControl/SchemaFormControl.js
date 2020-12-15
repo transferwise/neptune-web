@@ -4,7 +4,7 @@ import Types from 'prop-types';
 import { isNull, isUndefined } from '@transferwise/neptune-validation';
 import FormControl from '../../formControl';
 import { getValidModelParts } from '../../common/validation/valid-model';
-import { getCurrencyFlag } from './availableCurrencyFlags';
+import { mapConstSchemaToOption } from './optionMapper';
 
 const SchemaFormControl = (props) => {
   const isNativeInput = (schemaType) => schemaType === 'string' || schemaType === 'number';
@@ -68,20 +68,6 @@ const SchemaFormControl = (props) => {
     return null;
   };
 
-  const mapIcon = (icon) => (icon ? getCurrencyFlag(icon.name) : null);
-
-  const mapConstSchemaToOption = (schema) => {
-    const keyForDescription =
-      (schema.title + schema.description).length > 50 ? 'secondary' : 'note';
-    return {
-      value: !isUndefined(schema.const) ? schema.const : schema.enum[0],
-      label: schema.title,
-      [keyForDescription]: schema.description,
-      ...mapIcon(schema.icon),
-      disabled: schema.disabled,
-    };
-  };
-
   const controlType = getControlType(props.schema);
   const options = getOptions(props.schema);
 
@@ -101,7 +87,8 @@ const SchemaFormControl = (props) => {
     options,
     placeholder: props.schema.placeholder,
     autoComplete: !props.schema.help,
-    disabled: props.disabled,
+    disabled: props.disabled || props.schema.disabled,
+    displayPattern: props.schema.displayFormat,
   };
 
   return <FormControl type={controlType} value={safeValue} {...events} {...controlProps} />;
@@ -117,6 +104,8 @@ SchemaFormControl.propTypes = {
     title: Types.string,
     placeholder: Types.string,
     help: Types.shape({}),
+    displayFormat: Types.string,
+    disabled: Types.bool,
   }).isRequired,
   onChange: Types.func.isRequired,
   onFocus: Types.func,

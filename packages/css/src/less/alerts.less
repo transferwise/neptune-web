@@ -1,15 +1,139 @@
-// TODO: remove bootstrap dependencies
-
-// variables
-@import (reference) 'bootstrap/less/variables.less';
-
-// mixins
-@import (reference) 'bootstrap/less/mixins/arrows.less';
-@import (reference) 'bootstrap/less/mixins/alerts.less';
-@import 'bootstrap/less/alerts.less';
+@import (reference) '../variables/legacy-variables.less';
+@import (reference) '@transferwise/neptune-css/src/less/addons/_spacing-utilities.less';
+@import (reference) '../variables/neptune-tokens.less';
+@import (reference) './mixins/_alerts.less';
 
 .alert {
+  padding: var(--size-16);
+  border-radius: var(--radius-medium);
+  color: var(--color-text-primary);
+  background-color: var(--color-background-neutral);
+  min-width: 200px;
+  font-size: @font-size-base;
+  margin-bottom: var(--size-16);
+
+  // Adjust for the font baseline offset
+  &__message {
+    margin-top: 2px;
+  }
+
   .close {
     margin-top: var(--size-4);
   }
+
+  p,
+  ul {
+    .m-b-0;
+  }
+
+  p + p {
+    .m-t-1;
+  }
+}
+
+.arrow {
+  .arrow(@alert-arrow-width);
+}
+
+// Field validation alerts
+.form-group {
+  .alert {
+    position: relative; // Elevate over input
+    padding: 4px 16px 3px;
+    margin-top: -2px;
+    border-style: solid;
+    border-color: @input-border;
+    border-width: 0 1px 1px 1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: 0;
+    transition: border-color 0.15s ease-in-out;
+
+    .arrow(@alert-arrow-width);
+  }
+
+  .radio ~ .alert,
+  .checkbox ~ .alert,
+  .alert-detach {
+    border-width: 0;
+    margin-top: 12px;
+    border-radius: var(--radius-small);
+  }
+
+  .alert-focus,
+  .alert-info,
+  .alert-success,
+  .alert-warning,
+  .alert-danger {
+    display: none;
+  }
+}
+
+.alert-success,
+.alert-positive {
+  .alert-variant(
+    @color-background-positive;
+    @color-base-green-dark;
+    darken(@color-base-green-dark, 10%);
+  );
+}
+
+.alert-info,
+.alert-neutral {
+  .alert-variant(
+    @color-background-neutral;
+    @color-text-primary;
+    darken(@color-text-primary, 10%);
+  );
+}
+
+.alert-warning {
+  .alert-variant(
+    @color-background-warning;
+    @color-base-orange-dark;
+    darken(@color-base-orange-dark, 10%);
+  );
+}
+
+.alert-danger,
+.alert-negative {
+  .alert-variant(
+    @color-background-negative;
+    @color-base-red-dark;
+    darken(@color-base-red-dark, 10%);
+  );
+}
+
+.form-group:focus-within .alert-focus,
+input:focus ~ .alert-focus,
+.btn:focus ~ .alert-focus {
+  display: block;
+  border-color: @alert-info-border;
+}
+
+.focus .alert-focus,
+.has-focus .alert-focus,
+.has-info .alert-info,
+.has-warning .alert-warning,
+.has-success .alert-success,
+.has-error .alert-danger {
+  display: block;
+}
+
+// Ensure we only show one type at a time
+.has-info .help-block,
+.has-info .alert-focus,
+.has-warning .help-block,
+.has-warning .alert-focus,
+.has-warning .alert-info,
+.has-success .help-block,
+.has-success .alert-focus,
+.has-success .alert-info,
+.has-success .alert-warning,
+.has-error .help-block,
+.has-error .alert-focus,
+.has-error .alert-info,
+.has-error .alert-warning,
+.has-error .alert-success {
+  display: none !important;
 }

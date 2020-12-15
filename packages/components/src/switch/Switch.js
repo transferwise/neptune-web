@@ -1,24 +1,11 @@
 import React from 'react';
 import Types from 'prop-types';
 import classnames from 'classnames';
-import requiredIf from 'react-required-if';
-import './Switch.css';
-
 import { CheckCircle, CrossCircle } from '@transferwise/icons';
-import KeyCodes from '../common/keyCodes';
+import './Switch.css';
+import { logActionRequiredIf } from '../utilities';
 
-/**
- * Switch component provides a simple switch button.
- *
- * @param {string} [aria-label=null] - Required IF no aria-labelledby is provided.
- * @param {string} [aria-labelledby=null] - Required IF no aria-label is provided. To be used when an external label needs to be coupled with the switch.
- * @param {boolean} [checked=false] - Boolean to set the switch status.
- * @param {string} [className=''] - String that contains extra-classes.
- * @param {string} [id=''] - Element Id.
- * @param {function} onClick - Function that manages the onCLick event.
- *
- * @usage '<Switch aria-labelledby='A switch with a label' checked={checked} className='extra-class-name' id='switchID' onClick={() => setCheck(!checked)} />'
- * */
+import KeyCodes from '../common/keyCodes';
 
 const Switch = (props) => {
   const { checked, className, id, onClick } = props;
@@ -28,13 +15,22 @@ const Switch = (props) => {
       onClick();
     }
   };
+
+  const ariaLabel = props['aria-label'];
+  const ariaLabelledby = ariaLabel ? null : props['aria-labelledby'];
+
+  logActionRequiredIf(
+    'Switch now expects either `aria-label` or `aria-labelledby`, and will soon make these props required. Please update your usage to provide one or the other.',
+    !ariaLabel && !ariaLabelledby,
+  );
+
   return (
     <span
       className={classnames(
-        'switch',
+        'np-switch',
         {
-          'switch--unchecked': !checked,
-          'switch--checked': checked,
+          'np-switch--unchecked': !checked,
+          'np-switch--checked': checked,
         },
         className,
       )}
@@ -43,11 +39,11 @@ const Switch = (props) => {
       tabIndex={0}
       role="switch"
       aria-checked={checked}
-      aria-labelledby={props['aria-labelledby']}
-      aria-label={props['aria-label']}
+      aria-label={ariaLabel}
+      aria-labelledby={ariaLabelledby}
       id={id}
     >
-      <span className="switch--thumb">
+      <span className="np-switch--thumb">
         {checked ? <CheckCircle filled size={24} /> : <CrossCircle filled size={24} />}
       </span>
       <input type="checkbox" checked={checked} readOnly />
@@ -56,17 +52,17 @@ const Switch = (props) => {
 };
 
 Switch.propTypes = {
-  /** Required IF no aria-labelledby is provided. */
-  'aria-label': requiredIf(Types.string, (props) => !props['aria-labelledby']),
-  /** Required IF no aria-label is provided. To be used when an external label needs to be coupled with the switch. */
-  'aria-labelledby': requiredIf(Types.string, (props) => !props['aria-label']),
-  /** Boolean to set the switch status. */
+  /** Used to describe the purpose of the switch. To be used if there is no external label (i.e. aria-labelledby is null) */
+  'aria-label': Types.string,
+  /** A reference to a label that describes the purpose of the switch. Ignored if aria-label is provided */
+  'aria-labelledby': Types.string,
+  /** Whether the switch is checked or not */
   checked: Types.bool,
-  /** String that contains extra-classes. */
+  /** Classes to apply to the switch container */
   className: Types.string,
-  /** Element Id */
+  /** ID to apply to the switch container */
   id: Types.string,
-  /** Function that manages the click event. */
+  /** Function called when the switch is toggled */
   onClick: Types.func.isRequired,
 };
 

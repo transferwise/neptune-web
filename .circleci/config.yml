@@ -44,6 +44,12 @@ aliases:
   - &test
     name: Test packages
     command: yarn test
+    environment:
+      NODE_OPTIONS: --max_old_space_size=4096
+
+  - &visual-test
+    name: Visual Regression test
+    command: yarn test:visual
 
   - &add-npm-release-token
     name: Set NPM publish token
@@ -89,6 +95,13 @@ jobs:
     steps:
       - *attach-workspace
       - run: *test
+      - *persist-workspace
+
+  visual-test:
+    <<: *container
+    steps:
+      - *attach-workspace
+      - run: *visual-test
       - *persist-workspace
 
   deploy-docs:
@@ -150,6 +163,26 @@ workflows:
           context: frontend-build
           requires:
             - setup
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - main
+
+      - hold-visual-test:
+          type: approval
+          requires:
+            - test
+            - setup
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - main
+
+      - visual-test:
+          requires:
+            - hold-visual-test
           filters:
             branches:
               ignore:

@@ -103,12 +103,22 @@ export default class MoneyInput extends Component {
   }
 
   handleSelectChange = (value) => {
-    this.setState({ searchQuery: '' });
+    this.handleSearchChange('');
 
     if (this.props.onCustomAction && value.value === CUSTOM_ACTION) {
       this.props.onCustomAction();
     } else {
       this.props.onCurrencyChange(value);
+    }
+  };
+
+  handleSearchChange = (searchQuery) => {
+    this.setState({ searchQuery });
+    if (this.props.onSearchChange) {
+      this.props.onSearchChange({
+        searchQuery,
+        filteredOptions: filterOptionsForQuery(this.props.currencies, searchQuery),
+      });
     }
   };
 
@@ -199,7 +209,7 @@ export default class MoneyInput extends Component {
               onChange={this.handleSelectChange}
               placeholder="Select an option..."
               searchPlaceholder={this.props.searchPlaceholder}
-              onSearchChange={(searchQuery) => this.setState({ searchQuery })}
+              onSearchChange={this.handleSearchChange}
               searchValue={this.state.searchQuery}
               size={size}
               required
@@ -288,6 +298,10 @@ MoneyInput.propTypes = {
   locale: Types.string,
   addon: Types.node,
   searchPlaceholder: Types.string,
+  /**
+   * Allows the consumer to react to searching, while the search itself is handled internally. Called with `{ searchQuery: string, filteredOptions: Currency[]  }`
+   */
+  onSearchChange: Types.func,
   customActionLabel: Types.node,
   onCustomAction: Types.func,
   classNames: Types.objectOf(Types.string),
@@ -299,6 +313,7 @@ MoneyInput.defaultProps = {
   locale: 'en-GB',
   addon: null,
   searchPlaceholder: '',
+  onSearchChange: undefined,
   onCurrencyChange: null,
   placeholder: null,
   amount: null,

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image } from '@transferwise/components';
 import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import Image from '../image';
 
 import Nudge from '.';
 

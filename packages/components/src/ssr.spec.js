@@ -62,17 +62,19 @@ describe('Server side rendering', () => {
     },
     alt: '',
     src: '',
-    isExpanded: true,
     details: 'yo',
     icon: <svg />,
     badge: <svg />,
     link: 'link',
     href: '#',
+    description: 'description',
     'aria-label': 'a label',
   };
 
   // Override props in case of name collision.
   const overrideProps = {
+    Alert: { children: undefined, message: 'Fluffy kittens', size: undefined },
+    Card: { isExpanded: true },
     Typeahead: { size: 'md' },
     InputWithDisplayFormat: { displayPattern: '**-**' },
     TextareaWithDisplayFormat: { displayPattern: '**-**' },
@@ -91,6 +93,14 @@ describe('Server side rendering', () => {
       type: 'text',
       children: <input />,
     },
+    Summary: {
+      status: 'done',
+      content: undefined,
+    },
+    Tile: {
+      media: <img alt="img" />,
+    },
+    Modal: { position: 'top' },
   };
 
   componentNames.forEach((componentName) => {
@@ -104,7 +114,13 @@ describe('Server side rendering', () => {
         });
       }
 
-      const string = renderToString(<Component {...newProps} />);
+      const string = renderToString(
+        componentName.endsWith('Context') ? (
+          <Component.Provider {...newProps} />
+        ) : (
+          <Component {...newProps} />
+        ),
+      );
       expect(string).toEqual(expect.any(String));
     });
   });

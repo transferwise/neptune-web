@@ -1,3 +1,4 @@
+// @DEPRECATED
 export default {
   DOWN: 40,
   UP: 38,

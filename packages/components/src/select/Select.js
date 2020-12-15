@@ -1,5 +1,4 @@
 import React, { Component, createRef } from 'react';
-import { createPortal } from 'react-dom';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
@@ -14,6 +13,8 @@ import {
   removeClickClassFromDocumentOnIos,
 } from '../common/domHelpers';
 import { addClassAndTriggerReflow, removeClass } from './domHelpers';
+import Dimmer from '../dimmer';
+import SlidingPanel from '../slidingPanel';
 
 function clamp(from, to, value) {
   return Math.max(Math.min(to, value), from);
@@ -55,6 +56,8 @@ const arrayIncludesString = (arrayToSearch, keyword) =>
 
 const defaultFilterFunction = (option, keyword) =>
   (option.label && includesString(option.label, keyword)) ||
+  (option.note && includesString(option.note, keyword)) ||
+  (option.secondary && includesString(option.secondary, keyword)) ||
   (option.currency && includesString(option.currency, keyword)) ||
   (option.searchStrings && arrayIncludesString(option.searchStrings, keyword));
 
@@ -312,7 +315,7 @@ export default class Select extends Component {
       required,
       search,
     } = this.props;
-    const { open, shouldRenderWithPortal } = this.state;
+    const { open } = this.state;
     const s = this.style;
 
     const canSearch = !!onSearchChange || !!search;
@@ -330,10 +333,6 @@ export default class Select extends Component {
         {this.renderOptions()}
       </ul>
     );
-
-    if (shouldRenderWithPortal) {
-      return createPortal(list, document.body);
-    }
 
     return list;
   }
@@ -441,19 +440,9 @@ export default class Select extends Component {
     return <span className={this.style('form-control-placeholder')}>{placeholder}</span>;
   }
 
-  renderOverlay() {
-    const { open, shouldRenderWithPortal } = this.state;
-
-    if (open && shouldRenderWithPortal) {
-      return createPortal(<div className="tw-select select-overlay" />, document.body);
-    }
-
-    return null;
-  }
-
   render() {
     const { disabled, size, block, id, dropdownUp, inverse } = this.props;
-    const { open } = this.state;
+    const { open, shouldRenderWithPortal } = this.state;
     const s = this.style;
 
     const groupClass = classNames(s('tw-select'), s('btn-group'), {
@@ -478,50 +467,57 @@ export default class Select extends Component {
     const openClass = s('open');
     return (
       // A transition is used here in order to mount and unmount the dropdown menu while retaining animations
-      <Transition
-        in={open}
-        timeout={BOOTSTRAP_DROPDOWN_ANIMATION_TIME}
-        onEntering={() => {
-          if (this.dropdownMenuRef.current) {
-            addClassAndTriggerReflow(this.dropdownMenuRef.current, openClass);
-          }
-        }}
-        onExit={() => {
-          if (this.dropdownMenuRef.current) {
-            removeClass(this.dropdownMenuRef.current, openClass);
-          }
-        }}
-      >
-        {(animationState) => (
-          <div // eslint-disable-line jsx-a11y/no-static-element-interactions
-            className={groupClass}
-            ref={this.dropdownMenuRef}
-            onKeyDown={this.handleKeyDown}
-            onTouchMove={this.handleTouchStart}
-            onFocus={this.handleOnFocus}
-            onBlur={this.handleOnBlur}
+      <>
+        <div // eslint-disable-line jsx-a11y/no-static-element-interactions
+          className={groupClass}
+          ref={this.dropdownMenuRef}
+          onKeyDown={this.handleKeyDown}
+          onTouchMove={this.handleTouchStart}
+          onFocus={this.handleOnFocus}
+          onBlur={this.handleOnBlur}
+        >
+          <button
+            disabled={disabled}
+            className={buttonClass}
+            type="button"
+            id={id}
+            aria-expanded={open}
+            onClick={this.handleButtonClick}
           >
-            <button
+            {this.renderButtonInternals()}
+            <Chevron
               disabled={disabled}
-              className={buttonClass}
-              type="button"
-              id={id}
-              aria-expanded={open}
-              onClick={this.handleButtonClick}
+              className={`${s('tw-icon')} ${s('tw-chevron-up-icon')} ${s('tw-chevron')} ${s(
+                'chevron-color',
+              )} ${s('bottom')} ${s('tw-select-chevron')}`}
+            />
+          </button>
+          {!shouldRenderWithPortal ? (
+            <Transition
+              in={open}
+              timeout={BOOTSTRAP_DROPDOWN_ANIMATION_TIME}
+              onEntering={() => {
+                if (this.dropdownMenuRef.current) {
+                  addClassAndTriggerReflow(this.dropdownMenuRef.current, openClass);
+                }
+              }}
+              onExit={() => {
+                if (this.dropdownMenuRef.current) {
+                  removeClass(this.dropdownMenuRef.current, openClass);
+                }
+              }}
             >
-              {this.renderButtonInternals()}
-              <Chevron
-                disabled={disabled}
-                className={`${s('tw-icon')} ${s('tw-chevron-up-icon')} ${s('tw-chevron')} ${s(
-                  'chevron-color',
-                )} ${s('bottom')} ${s('tw-select-chevron')}`}
-              />
-            </button>
-            {animationState !== 'exited' && this.renderOptionsList()}
-            {animationState !== 'exited' && this.renderOverlay()}
-          </div>
-        )}
-      </Transition>
+              {(animationState) => animationState !== 'exited' && this.renderOptionsList()}
+            </Transition>
+          ) : (
+            <Dimmer open={open}>
+              <SlidingPanel open={open} position="bottom">
+                {this.renderOptionsList()}
+              </SlidingPanel>
+            </Dimmer>
+          )}
+        </div>
+      </>
     );
   }
 }
@@ -570,7 +566,7 @@ Select.propTypes = {
     }),
   ).isRequired,
   /**
-   * To have full controll of your search value and response use `onSearchChange` function combined with `searchValue` and custom filtering on the options array.
+   * To have full control of your search value and response use `onSearchChange` function combined with `searchValue` and custom filtering on the options array.
    * DO NOT USE TOGETHER WITH `search` PROPERTY
    */
   onSearchChange: Types.func,

@@ -7,9 +7,7 @@
   csWrongTypeMessage="Please provide a supported format"
   maxSize={5000000}
   psButtonText="Cancel"
-  psFailureText="Upload failed.Please, try again"
   psProcessingText="Uploading..."
-  psSuccessText="Upload complete!"
   size="md"
   usAccept="image/*"
   usButtonText="Or Select File"

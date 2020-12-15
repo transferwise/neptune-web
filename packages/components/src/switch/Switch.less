@@ -1,16 +1,20 @@
 @import (reference) '@transferwise/neptune-css/src/variables/neptune-tokens.less';
 
-.switch {
+.np-switch {
   display: inline-flex;
-  width: 50px;
   overflow: hidden;
-  border-radius: 16px;
+
+  width: 50px;
   padding: 2px;
+
   cursor: pointer;
+
   border: 1px solid @color-base-smoke-mid;
+  border-radius: 16px;
 
   &--thumb {
     display: flex;
+
     transition: transform cubic-bezier(0, 0.94, 0.62, 1) 350ms;
 
     .tw-icon {
@@ -30,17 +34,20 @@
     border: 1px solid var(--color-control-accent);
     background: var(--color-control-accent);
 
-    .switch--thumb {
+    .np-switch--thumb {
       transform: translateX(20px);
     }
   }
 
   input {
-    opacity: 0;
-    display: none;
     position: absolute;
+    left: -100%;
+
+    display: none;
+
     width: 0;
     height: 0;
-    left: -100%;
+
+    opacity: 0;
   }
 }

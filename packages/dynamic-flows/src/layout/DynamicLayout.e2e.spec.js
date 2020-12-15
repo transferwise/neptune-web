@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { Alert } from '@transferwise/components';
+import { InlineAlert } from '@transferwise/components';
 import DynamicLayout from '.';
 
 describe('E2E: Given a component for rendering a dynamic layout', () => {
@@ -17,7 +17,6 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
   };
 
   const model = { an: 'example' };
-  const isValid = true;
   const schema = {
     type: 'object',
     properties: {
@@ -56,7 +55,7 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
   });
 
   it('should show the supplied error message ', () => {
-    expect(component.find(Alert).contains(errors.an)).toBe(true);
+    expect(component.find(InlineAlert).contains(errors.an)).toBe(true);
   });
 
   describe('when a form element is changed', () => {
@@ -66,7 +65,8 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
     it('should broadcast onModelChange', () => {
       expect(onModelChange).toHaveBeenCalledWith(
         { an: 'other example' },
-        isValid,
+        schema,
+        'other example',
         schema.properties.an,
       );
     });

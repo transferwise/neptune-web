@@ -57,6 +57,7 @@ module.exports = () =>
                       publicPath: `${assetPrefix}/_next/static/chunks/fonts/`,
                       outputPath: `${isServer ? '../' : ''}static/chunks/fonts/`,
                       name: '[name]-[hash].[ext]',
+                      esModule: false,
                     },
                   },
                 ],

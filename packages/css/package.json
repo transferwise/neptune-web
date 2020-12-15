@@ -1,7 +1,7 @@
 {
   "name": "@transferwise/neptune-css",
   "description": "Neptune CSS is TransferWise's Design System CSS library",
-  "version": "4.0.6",
+  "version": "5.0.4",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -26,15 +26,12 @@
     "build:clean": "rm -rf dist",
     "build:copy-assets": "npm-run-all --parallel copy:*",
     "build:compile-less": "gulp compileLess --src='src/less'",
-    "build:compile-deprecated": "gulp compileLess --src='src/less/deprecated' --dest='dist/css/deprecated'",
     "build:copy-props": "gulp copyPropsAndVars --src='src/props' --dest='dist/props'",
     "build:copy-vars": "gulp copyPropsAndVars --src='src/variables' --dest='dist/less'",
     "dev": "npm-run-all --parallel dev:*",
-    "dev:link": "node ./linkFolder.js",
     "dev:less": "gulp watchLess --src='src/less/**'",
     "dev:props": "gulp watchPropsAndVars --src='src/props'",
     "dev:vars": "gulp watchPropsAndVars --src='src/variables'",
-    "dev:next": "next dev",
     "docs": "yarn build",
     "copy:images": "cpx 'src/img/**' dist/img",
     "copy:fonts": "cpx 'src/fonts/*' dist/fonts",
@@ -48,10 +45,11 @@
     "svgo": "1.3.2"
   },
   "devDependencies": {
+    "@mdx-js/loader": "^1.5.8",
     "@next/mdx": "^9.0.5",
     "@transferwise/less-config": "^3.0.0",
     "@zeit/next-css": "^1.0.1",
-    "next": "^9.3.2",
+    "next": "^9.5.5",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",

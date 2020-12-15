@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import { Plus as PlusIcon } from '@transferwise/icons';
-import { UploadImageStep, ProcessingStep, CompleteStep } from './steps';
+import { UploadImageStep, MediaUploadStep, ProcessingStep, CompleteStep } from './steps';
 import {
   postData,
   asyncFileRead,
@@ -23,6 +23,14 @@ const ACCEPTED_FORMAT = ['*', 'image/*', 'application/*', 'text/csv'];
  */
 const ANIMATION_FIX = 10;
 const MAX_SIZE_DEFAULT = 5000000;
+const UPLOAD_STEPS = {
+  UPLOAD_IMAGE_STEP: 'uploadImageStep',
+  MEDIA_UPLOAD_STEP: 'mediaUploadStep',
+};
+const UPLOAD_STEP_COMPONENTS = {
+  [UPLOAD_STEPS.UPLOAD_IMAGE_STEP]: UploadImageStep,
+  [UPLOAD_STEPS.MEDIA_UPLOAD_STEP]: MediaUploadStep,
+};
 
 class Upload extends PureComponent {
   constructor(props) {
@@ -247,12 +255,11 @@ class Upload extends PureComponent {
       usLabel,
       usPlaceholder,
       psButtonText,
-      psFailureText,
       psProcessingText,
-      psSuccessText,
       csButtonText,
       csSuccessText,
       size,
+      uploadStep,
     } = this.props;
 
     const {
@@ -266,6 +273,8 @@ class Upload extends PureComponent {
       isSuccess,
       uploadedImage,
     } = this.state;
+
+    const UploadStepComponent = UPLOAD_STEP_COMPONENTS[uploadStep] || UploadImageStep;
 
     return (
       <div
@@ -284,7 +293,7 @@ class Upload extends PureComponent {
         onDragOver={(e) => e.preventDefault()}
       >
         {!isProcessing && !isComplete && (
-          <UploadImageStep
+          <UploadStepComponent
             fileDropped={(file) => this.fileDropped(file)}
             isComplete={isComplete}
             usAccept={usAccept}
@@ -300,14 +309,11 @@ class Upload extends PureComponent {
           <ProcessingStep
             isComplete={isComplete}
             isError={isError}
-            isProcessing={isProcessing}
             isSuccess={isSuccess}
             onAnimationCompleted={(status) => this.onAnimationCompleted(status)}
             onClear={(e) => this.handleOnClear(e)}
             psButtonText={psButtonText}
-            psFailureText={psFailureText}
             psProcessingText={psProcessingText}
-            psSuccessText={psSuccessText}
           />
         )}
         {/* Starts render the step when isSuccess or isError are true so markup is there when css transition kicks in
@@ -340,6 +346,8 @@ class Upload extends PureComponent {
   }
 }
 
+Upload.UploadStep = UPLOAD_STEPS;
+
 Upload.propTypes = {
   animationDelay: Types.number,
   csButtonText: Types.string,
@@ -362,9 +370,7 @@ Upload.propTypes = {
   onStart: Types.func,
   onSuccess: Types.func,
   psButtonText: Types.string,
-  psFailureText: Types.string,
   psProcessingText: Types.string,
-  psSuccessText: Types.string,
   size: Types.oneOf(['sm', 'md', 'lg']),
   usAccept: Types.oneOf(ACCEPTED_FORMAT),
   usButtonText: Types.string,
@@ -373,6 +379,10 @@ Upload.propTypes = {
   usHelpImage: Types.node,
   usLabel: Types.string,
   usPlaceholder: Types.string,
+  uploadStep: Types.oneOf([
+    Upload.UploadStep.UPLOAD_IMAGE_STEP,
+    Upload.UploadStep.MEDIA_UPLOAD_STEP,
+  ]),
 };
 
 Upload.defaultProps = {
@@ -389,9 +399,7 @@ Upload.defaultProps = {
   onStart: null,
   onSuccess: null,
   psButtonText: 'Cancel',
-  psFailureText: 'Upload failed.Please, try again',
   psProcessingText: 'Uploading...',
-  psSuccessText: 'Upload complete!',
   size: 'md',
   usAccept: 'image/*',
   usButtonText: 'Or Select File',
@@ -400,6 +408,7 @@ Upload.defaultProps = {
   usHelpImage: '',
   usLabel: '',
   usPlaceholder: 'Drag and drop a file less than 5MB',
+  uploadStep: Upload.UploadStep.UPLOAD_IMAGE_STEP,
 };
 
 Upload.CompleteStep = CompleteStep;

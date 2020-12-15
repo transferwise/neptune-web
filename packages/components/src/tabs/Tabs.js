@@ -445,9 +445,9 @@ class Tabs extends React.Component {
 
     return (
       <div
-        onTouchStart={changeTabOnSwipe && this.handleTouchStart}
-        onTouchEnd={changeTabOnSwipe && this.handleTouchEnd}
-        onTouchMove={changeTabOnSwipe && this.handleTouchMove}
+        onTouchStart={changeTabOnSwipe ? this.handleTouchStart : undefined}
+        onTouchEnd={changeTabOnSwipe ? this.handleTouchEnd : undefined}
+        onTouchMove={changeTabOnSwipe ? this.handleTouchMove : undefined}
         className={classNames('tabs', className)}
       >
         <TabList>

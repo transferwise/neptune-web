@@ -10,6 +10,7 @@
               label: 'Bite me',
               onClick: () => alert("I can't believe you've done this."),
             },
+            theme: 'light', // or 'dark'
           })
         }
       >

@@ -7,10 +7,16 @@ import Dimmer from '../dimmer';
 import { addNoScrollBodyClass, removeNoScrollBodyClass } from '../common';
 import './Drawer.css';
 import { Position } from '../common/propsValues/position';
+import { logActionRequiredIf } from '../utilities';
 
 import KEY_CODES from '../common/keyCodes';
 
 const Drawer = ({ children, footerContent, headerTitle, onClose, open, position }) => {
+  logActionRequiredIf(
+    'Drawer now expects `onClose`, and will soon make this prop required. Please update your usage to provide it.',
+    !onClose,
+  );
+
   const handleOnKeyDown = (event) => {
     if (
       event.keyCode === KEY_CODES.ESCAPE ||
@@ -41,35 +47,35 @@ const Drawer = ({ children, footerContent, headerTitle, onClose, open, position 
   return (
     <Dimmer open={open} onClose={onClose}>
       <SlidingPanel open={open} position={position} onEnter={handleOnEnter} onExit={handleOnExit}>
-        <div className="drawer">
+        <div className="np-drawer">
           <div
-            className={classNames('drawer-header', 'drawer-p-x', {
-              'drawer-header--withborder': headerTitle,
+            className={classNames('np-drawer-header', 'np-drawer-p-x', {
+              'np-drawer-header--withborder': headerTitle,
             })}
           >
             <div
               role="button"
-              className="drawer-header close"
+              className="np-drawer-header close"
               tabIndex={0}
               onClick={onClose}
-              onKeyDown={handleOnKeyDown}
+              onKeyDown={onClose && handleOnKeyDown}
               aria-label="Close"
             >
               <CrossIcon size={24} />
             </div>
             {headerTitle && (
               <div className="align-heading m-l-2">
-                <h3 className="drawer-header--title">{headerTitle}</h3>
+                <div className="np-drawer-header--title h3">{headerTitle}</div>
               </div>
             )}
           </div>
           {children && (
-            <div className={classNames('drawer-content', 'drawer-p-x', 'drawer-p-y')}>
+            <div className={classNames('np-drawer-content', 'np-drawer-p-x', 'np-drawer-p-y')}>
               {children}
             </div>
           )}
           {footerContent && (
-            <div className={classNames('drawer-footer', 'drawer-p-x')}>{footerContent}</div>
+            <div className={classNames('np-drawer-footer', 'np-drawer-p-x')}>{footerContent}</div>
           )}
         </div>
       </SlidingPanel>
@@ -87,7 +93,7 @@ Drawer.propTypes = {
   /** The content to appear in the drawer header. */
   headerTitle: Types.string,
   /** The action to perform on close click. */
-  onClose: Types.func.isRequired,
+  onClose: Types.func,
   /** The status of Drawer either open or not. */
   open: Types.bool,
   /** The placement of Drawer on the screen either left or right. */
@@ -98,6 +104,7 @@ Drawer.defaultProps = {
   children: null,
   footerContent: null,
   headerTitle: null,
+  onClose: null,
   open: false,
   position: Drawer.Position.RIGHT,
 };

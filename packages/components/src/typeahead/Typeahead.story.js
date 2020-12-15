@@ -1,7 +1,8 @@
 import React from 'react';
 import { Search as SearchIcon } from '@transferwise/icons';
-import { boolean } from '@storybook/addon-knobs';
+import { select, boolean } from '@storybook/addon-knobs';
 import Typeahead from './Typeahead';
+import InlineAlert from '../inlineAlert';
 
 export default {
   component: Typeahead,
@@ -29,7 +30,6 @@ export const createable = () => {
       placeholder="placeholder"
       chipSeparators={[',', ' ']}
       validateChip={validateChip}
-      alert={{ message: 'alert message', type: 'success' }}
       onChange={() => {}}
       addon={<SearchIcon />}
       onBlur={() => {}}
@@ -77,6 +77,12 @@ export const basic = () => {
   const allowNew = boolean('allowNew', false);
   const showSuggestions = boolean('showSuggestions', true);
   const showNewEntry = boolean('showNewEntry', true);
+  const showAlert = boolean('alert', false);
+  const alertType = select(
+    'alert type',
+    [InlineAlert.Type.ERROR, InlineAlert.Type.WARNING],
+    InlineAlert.Type.ERROR,
+  );
 
   return (
     <Typeahead
@@ -93,7 +99,7 @@ export const basic = () => {
       placeholder="placeholder"
       chipSeparators={[',', ' ']}
       validateChip={validateChip}
-      alert={{ message: 'alert message', type: 'success' }}
+      alert={showAlert && { message: `Couldn't add item`, type: alertType }}
       onSearch={() => {
         setTimeout(() => setOptions(options), 1500);
       }}

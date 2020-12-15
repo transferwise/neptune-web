@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Types from 'prop-types';
+import { isNull } from '@transferwise/neptune-validation';
 import BasicTypeSchema from '../basicTypeSchema';
 import { isStatus2xx, isStatus422, QueryablePromise } from '../../common/api/utils';
 
@@ -13,6 +14,9 @@ const PersistAsyncSchema = (props) => {
     // TODO: Add support for base64url format
     throw new Error('Not implemented');
   }
+
+  const setGenericPersistAsyncError = () =>
+    setPersistAsyncError('Something went wrong, please try again later!');
 
   const getPersistAsyncResponse = async (currentPersistAsyncModel, persistAsyncSpec) => {
     const signal = abortCurrentRequestAndGetNewAbortSignal();
@@ -32,9 +36,8 @@ const PersistAsyncSchema = (props) => {
     );
     props.onPersistAsync(persistAsyncFetch);
     const response = await persistAsyncFetch;
-    const responseJson = await response.json();
 
-    broadcast(response.status, responseJson);
+    broadcast(response);
   };
 
   const abortCurrentRequestAndGetNewAbortSignal = () => {
@@ -46,17 +49,22 @@ const PersistAsyncSchema = (props) => {
     return newAbortController.signal;
   };
 
-  const broadcast = (status, response) => {
-    const { idProperty } = props.schema.persistAsync;
-
-    if (isStatus2xx(status)) {
-      const id = getIdFromResponse(idProperty, response);
-      props.onChange(id, props.schema);
-    } else if (isStatus422(status)) {
-      const error = getErrorFromResponse(idProperty, response);
-      setPersistAsyncError(error);
-    } else {
-      setPersistAsyncError('Something went wrong, please try again later!');
+  const broadcast = async (response) => {
+    try {
+      const jsonResponse = await response.json();
+      const { idProperty, param } = props.schema.persistAsync;
+      if (isStatus2xx(response.status)) {
+        const id = getIdFromResponse(idProperty, jsonResponse);
+        props.onChange(id, props.schema, id);
+      } else if (isStatus422(response.status)) {
+        const error = getErrorFromResponse(param, jsonResponse);
+        props.onChange(null, props.schema, null);
+        setPersistAsyncError(error);
+      } else {
+        setGenericPersistAsyncError();
+      }
+    } catch (e) {
+      setGenericPersistAsyncError();
     }
   };
 
@@ -65,7 +73,9 @@ const PersistAsyncSchema = (props) => {
   const getErrorFromResponse = (errorProperty, response) => response.validation?.[errorProperty];
 
   const onBlur = () => {
-    getPersistAsyncResponse(persistAsyncModel, props.schema.persistAsync);
+    if (!isNull(persistAsyncModel)) {
+      getPersistAsyncResponse(persistAsyncModel, props.schema.persistAsync);
+    }
   };
 
   const persistAsyncOnChange = (newPersistAsyncModel) => {
@@ -77,10 +87,11 @@ const PersistAsyncSchema = (props) => {
   return (
     <>
       <BasicTypeSchema
+        required={props.required}
         onChange={persistAsyncOnChange}
         submitted={props.submitted || fieldSubmitted}
         schema={props.schema.persistAsync.schema}
-        errors={persistAsyncError}
+        errors={persistAsyncError || props.errors}
         onBlur={onBlur}
       />
     </>
@@ -114,13 +125,17 @@ PersistAsyncSchema.propTypes = {
     help: Types.shape({}),
   }).isRequired,
   translations: Types.shape({}),
+  errors: Types.oneOfType([Types.string, Types.array, Types.shape({})]),
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
   onPersistAsync: Types.func.isRequired,
+  required: Types.bool,
 };
 
 PersistAsyncSchema.defaultProps = {
   translations: {},
+  errors: null,
+  required: false,
 };
 
 export default PersistAsyncSchema;

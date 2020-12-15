@@ -118,6 +118,15 @@ describe('Given a oneOfSchema component', () => {
       expect(genericSchema.prop('translations')).toEqual(translations);
     });
 
+    describe('when no model is present', () => {
+      it('should not render a generic schema', () => {
+        component = shallow(<OneOfSchema {...props} model={{}} />);
+        genericSchema = component.find(GenericSchema);
+
+        expect(genericSchema.length).toBe(0);
+      });
+    });
+
     describe('when another schema is selected', () => {
       beforeEach(() => {
         schemaFormControl.simulate('change', 2);
@@ -134,13 +143,13 @@ describe('Given a oneOfSchema component', () => {
       });
 
       it('should trigger onChange with only the properties in the new schema', () => {
-        expect(onChange).toHaveBeenCalledWith({ c: 3 }, schema.oneOf[2]);
+        expect(onChange).toHaveBeenCalledWith({ c: 3 }, schema.oneOf[2], { c: 3 });
       });
     });
 
     describe('when the generic schema triggers an onChange event', () => {
       beforeEach(() => {
-        genericSchema.simulate('change', { b: 4 }, schema.oneOf[1]);
+        genericSchema.simulate('change', { b: 4 }, schema.oneOf[1], 4);
       });
 
       it('should trigger the components onChange once', () => {
@@ -148,7 +157,7 @@ describe('Given a oneOfSchema component', () => {
       });
 
       it('should broadcast the changed model from the child', () => {
-        expect(onChange).toHaveBeenCalledWith({ b: 4 }, schema.oneOf[1]);
+        expect(onChange).toHaveBeenCalledWith({ b: 4 }, schema.oneOf[1], 4);
       });
 
       it('should not change the input model', () => {
@@ -283,7 +292,7 @@ describe('Given a oneOfSchema component', () => {
       });
 
       it('should broadcast the PARENT schema as the trigger, not the const', () => {
-        expect(onChange).toHaveBeenCalledWith(2, schema);
+        expect(onChange).toHaveBeenCalledWith(2, schema, 2);
       });
 
       it('should only broadcast one change', () => {

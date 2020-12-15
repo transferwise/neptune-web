@@ -5,7 +5,7 @@ import doTimes from 'lodash.times';
 import { fakeEvent, fakeKeyDownEventForKey } from '../common/fakeEvents';
 import Typeahead from './Typeahead';
 import KeyCodes from '../common/keyCodes';
-import { Alert } from '..';
+import { InlineAlert } from '..';
 
 describe('Typeahead', () => {
   let component;
@@ -256,7 +256,7 @@ describe('Typeahead', () => {
     };
     const text = 'test';
 
-    expect(component.find(Alert)).toHaveLength(0);
+    expect(component.find(InlineAlert)).toHaveLength(0);
     expect(formGroup().hasClass('has-error')).toBe(false);
     component.setProps({
       validateChip: () => {
@@ -270,13 +270,13 @@ describe('Typeahead', () => {
     });
 
     expect(formGroup().hasClass('has-error')).toBe(true);
-    expect(component.find(Alert)).toHaveLength(1);
+    expect(component.find(InlineAlert)).toHaveLength(1);
 
     input().simulate('change', { target: { value: text } });
     input().simulate('keyDown', event);
 
     expect(formGroup().hasClass('has-error')).toBe(true);
-    expect(component.find(Alert)).toHaveLength(1);
+    expect(component.find(InlineAlert)).toHaveLength(1);
     component.setProps({
       alert: {
         message: 'test',
@@ -285,13 +285,13 @@ describe('Typeahead', () => {
     });
 
     expect(formGroup().hasClass('has-error')).toBe(true);
-    expect(component.find(Alert)).toHaveLength(0);
+    expect(component.find(InlineAlert)).toHaveLength(0);
 
     closeButton().simulate('click', fakeEvent());
 
     expect(formGroup().hasClass('has-error')).toBe(false);
     expect(formGroup().hasClass('has-warning')).toBe(true);
-    expect(component.find(Alert)).toHaveLength(1);
+    expect(component.find(InlineAlert)).toHaveLength(1);
   });
 
   describe('menu', () => {

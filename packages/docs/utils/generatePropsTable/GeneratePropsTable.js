@@ -13,7 +13,7 @@ const GeneratePropsTable = ({ componentName }) => {
     data = data.filter((el) => el.displayName === componentName);
   }
 
-  return (
+  return data && data.length ? (
     <div className="scroll-table">
       <h2 className="docs-heading">Props</h2>
       <table className="table table-condensed docs-table">
@@ -59,7 +59,7 @@ const GeneratePropsTable = ({ componentName }) => {
         </tbody>
       </table>
     </div>
-  );
+  ) : null;
 };
 
 const getPropsList = (data) => (data ? Object.values(data).map(parsePropsForTable) : []);

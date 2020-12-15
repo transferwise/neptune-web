@@ -26,6 +26,10 @@
     .currency-flag {
       margin-right: var(--size-8);
     }
+
+    > a {
+      white-space: normal;
+    }
   }
 
   .dropdown-toggle.btn-input {
@@ -59,59 +63,14 @@
 }
 
 @media (--screen-xs-max) {
-  .dropup,
-  .dropdown {
-    > .tw-select.dropdown-menu {
-      transition: none !important;
-    }
-  }
-
-  .tw-select.select-overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    display: block !important;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    animation: twSelectFadeIn 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
-  }
-
   .tw-select.dropdown-menu.dropdown-menu--open {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    top: auto;
-    max-width: 100%;
-    width: 100% !important;
     max-height: 50vh;
-    animation: twSelectFadeUp 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
-    visibility: visible;
+    max-width: 100%;
     opacity: 1;
     overflow: auto;
-  }
-}
-
-@keyframes twSelectFadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes twSelectFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-
-  to {
-    opacity: 1;
+    position: static;
     transform: none;
+    visibility: visible;
+    width: 100% !important;
   }
 }

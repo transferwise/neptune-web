@@ -9,7 +9,7 @@ export default {
 };
 
 export const basic = () => {
-  const size = select('size', Object.values(MoneyInput.Size), MoneyInput.Size.MEDIUM);
+  const size = select('size', Object.values(MoneyInput.Size), MoneyInput.Size.LARGE);
   const locale = select('locale', ['en-GB', 'jp-JP'], 'en-GB');
   const amount = number('amount', 1000);
   const placeholder = number('placeholder', null);
@@ -27,6 +27,7 @@ export const basic = () => {
         addon={null}
         placeholder={placeholder}
         searchPlaceholder="Type a currency or country"
+        onSearchChange={action('search query changed')}
         onCustomAction={action('Custom action')}
         customActionLabel="Custom action label"
         currencies={[

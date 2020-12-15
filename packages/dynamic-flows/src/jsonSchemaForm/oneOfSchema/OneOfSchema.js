@@ -35,19 +35,21 @@ const OneOfSchema = (props) => {
     if (index >= 0) {
       return index;
     }
-    // Otherwise, default to the first schema if it's not a const
-    if (schema.oneOf[0] && !isConstSchema(schema.oneOf[0])) {
+
+    // If we have a non-const oneOf and there's only one, active index must be the first one
+    if (schema.oneOf.length === 1 && !isConstSchema(schema.oneOf[0])) {
       return 0;
     }
+
     // Otherwise do not default
     return null;
   };
 
-  const onChange = (model, schema, index) => {
+  const onChildModelChange = (index, model, triggerSchema, triggerModel) => {
     models[index] = model;
     setModels(models);
     setChanged(true);
-    props.onChange(model, schema);
+    props.onChange(model, triggerSchema, triggerModel);
   };
 
   const onFocus = () => {
@@ -66,17 +68,18 @@ const OneOfSchema = (props) => {
 
     if (isConstSchema(newSchema)) {
       // If new schema is a const we want to share the parent schema, not the const
-      props.onChange(newSchema.const || newSchema.enum[0], props.schema);
+      const model = newSchema.const || newSchema.enum[0];
+      props.onChange(model, props.schema, model);
 
       // Apply validations for the change
       setValidations(getValidationFailures(newSchema.const, props.schema, props.required));
     } else {
-      props.onChange(models[index], newSchema);
+      props.onChange(models[index], newSchema, models[index]);
     }
   };
 
   function isConstSchema(schema) {
-    return schema.const || (schema.enum && schema.enum.length === 1);
+    return !!schema && (schema.const || (schema.enum && schema.enum.length === 1));
   }
 
   const [id, setId] = useState('');
@@ -164,7 +167,9 @@ const OneOfSchema = (props) => {
           errors={props.errors}
           locale={props.locale}
           translations={props.translations}
-          onChange={(model, schema) => onChange(model, schema, schemaIndex)}
+          onChange={(model, triggerSchema, triggerModel) =>
+            onChildModelChange(schemaIndex, model, triggerSchema, triggerModel)
+          }
           submitted={props.submitted}
           hideTitle
           disabled={props.disabled}
