@@ -20,6 +20,9 @@ describe('Server side rendering', () => {
   const allProps = {
     currencies: [],
     steps: [],
+    stepper: {
+      steps: [],
+    },
     items: [],
     children: 'yo',
     id: '1',
@@ -69,6 +72,7 @@ describe('Server side rendering', () => {
     href: '#',
     description: 'description',
     'aria-label': 'a label',
+    logo: <svg />,
   };
 
   // Override props in case of name collision.

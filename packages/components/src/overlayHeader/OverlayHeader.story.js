@@ -1,29 +1,33 @@
 import React from 'react';
-import { select, object } from '@storybook/addon-knobs';
+import { select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import { Profile as ProfileIcon, Briefcase as BriefcaseIcon } from '@transferwise/icons';
 import OverlayHeader from './OverlayHeader';
+import Avatar from '../avatar';
+import Logo from '../common/logo';
 
 export default {
   component: OverlayHeader,
   title: 'OverlayHeader',
 };
 
+const avatarProfiles = {
+  '': null,
+  Business: <BriefcaseIcon />,
+  Profile: <ProfileIcon />,
+};
+
 export const basic = () => {
-  const theme = select('theme', Object.values(OverlayHeader.Theme), OverlayHeader.Theme.LIGHT);
-  const profileType = select(
-    'profileType',
-    Object.values(OverlayHeader.ProfileType),
-    OverlayHeader.ProfileType.PERSONAL,
-  );
-
-  const avatar = object('avatar', { url: 'https://github.com/transferwise.png' });
-
+  const showAvatar = select('avatar', Object.keys(avatarProfiles), 'Profile');
   return (
     <OverlayHeader
+      logo={<Logo />}
       onClose={action('Close clicked')}
-      avatar={avatar}
-      profileType={profileType}
-      theme={theme}
+      avatar={
+        <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
+          {avatarProfiles[showAvatar]}
+        </Avatar>
+      }
     />
   );
 };

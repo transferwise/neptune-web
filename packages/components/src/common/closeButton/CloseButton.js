@@ -8,7 +8,7 @@ import './CloseButton.css';
 export const CloseButton = ({ onClick, className }) => (
   <button
     type="button"
-    className={classNames('tw-close-button', 'btn-link', 'text-no-decoration', className)}
+    className={classNames('np-close-button', 'btn-link', 'text-no-decoration', className)}
     aria-label="Close"
     onClick={onClick}
   >

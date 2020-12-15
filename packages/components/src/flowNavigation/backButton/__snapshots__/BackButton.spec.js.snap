@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackButton renders as expected 1`] = `
+<div>
+  <button
+    class="np-back-button align-items-center btn-unstyled className"
+    type="button"
+  >
+    <span
+      aria-hidden="true"
+      class="tw-icon tw-icon-arrow-left "
+      role="presentation"
+    >
+      <svg
+        fill="currentColor"
+        focusable="false"
+        height="24"
+        width="24"
+      >
+        <path
+          d="M5.814 13H22v-2H5.814l6.893-6.893L11.293 2.7 2 12l9.293 9.3 1.414-1.407L5.814 13z"
+        />
+      </svg>
+    </span>
+    label
+  </button>
+</div>
+`;
