@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.5.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.4.2...@transferwise/components@31.5.0) (2020-12-16)
+
+
+### Bug Fixes
+
+* release build ([#740](https://github.com/transferwise/neptune-web/issues/740)) ([a1b3a4a](https://github.com/transferwise/neptune-web/commit/a1b3a4aae1e343d0e0ecf5b315d2d7151a5f1310))
+
+
+### Features
+
+* internalization support ([#674](https://github.com/transferwise/neptune-web/issues/674)) ([10c533f](https://github.com/transferwise/neptune-web/commit/10c533fd9af2bb25d0f9b195ea941989252bf09e))
+
+
+
+
+
 ## [31.4.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.4.1...@transferwise/components@31.4.2) (2020-12-14)
 
 
