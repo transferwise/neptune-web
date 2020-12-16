@@ -1,9 +1,10 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import FlowNavigation from '.';
+import { FlowNavigation, Provider } from '..';
 import BackButton from './backButton';
 import Logo from './logo';
+import en from '../../i18n/en.json';
 
 describe('Flow navigation', () => {
   let component;
@@ -51,7 +52,12 @@ describe('Flow navigation', () => {
       onGoBack: jest.fn(),
     };
 
-    component = mount(<FlowNavigation {...props} />);
+    component = mount(<FlowNavigation {...props} />, {
+      // eslint-disable-next-line react/prop-types
+      wrappingComponent: ({ children }) => {
+        return <Provider i18n={{ locale: 'en', messages: en }}>{children}</Provider>;
+      },
+    });
   });
 
   it('passes steps and active step to stepper', () => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import DateInput from '../../dateInput';
-import Checkbox from '../../checkbox';
+
+import { Checkbox, DateInput } from '../..';
 import Field from './Field';
 
 export default {

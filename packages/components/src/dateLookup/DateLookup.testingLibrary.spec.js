@@ -1,7 +1,8 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent } from '@testing-library/react';
 import user from '@testing-library/user-event';
+
+import { render, screen, fireEvent } from '../test-utils';
 
 import DateLookup from '.';
 import { Breakpoint } from '../common';

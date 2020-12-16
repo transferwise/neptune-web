@@ -1,6 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '../test-utils';
 
 import Decision from '.';
 import Avatar from '../avatar';

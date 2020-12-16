@@ -1,5 +1,5 @@
-import { fireEvent } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
+import { fireEvent } from '../../test-utils';
 
 import { useClientWidth } from './useClientWidth';
 

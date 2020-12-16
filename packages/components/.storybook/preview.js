@@ -1,9 +1,12 @@
 import React, { StrictMode } from 'react';
-import { addParameters } from '@storybook/react';
+import { select } from '@storybook/addon-knobs';
 
+import { Provider } from '../src';
 import '@transferwise/neptune-css/dist/css/neptune.css';
 import '@transferwise/icons/lib/styles/main.min.css';
 import 'currency-flags/dist/currency-flags.min.css';
+
+import supportedLocales from '../i18n';
 
 import './storybook.css';
 
@@ -45,4 +48,15 @@ const CenterDecorator = (storyFn) => (
   </div>
 );
 
-export const decorators = [StrictModeDecorator, CenterDecorator];
+const ProviderDecorator = (storyFn) => {
+  const locales = Object.keys(supportedLocales);
+  const locale = select('locale (global)', locales, locales[0]);
+  const messages = supportedLocales[locale];
+  const props = {
+    i18n: { locale, messages },
+    children: storyFn(),
+  };
+  return <Provider {...props} />;
+};
+
+export const decorators = [StrictModeDecorator, CenterDecorator, ProviderDecorator];
