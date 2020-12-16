@@ -5,7 +5,6 @@
       "conventionalCommits": true,
       "verifyAccess": false,
       "ignoreChanges": [
-        "**/*.md",
         "**/*.spec.js",
         "**/*.yml",
         "**/*.story.js",
