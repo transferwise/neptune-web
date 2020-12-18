@@ -1,7 +1,7 @@
 import React from 'react';
 
 import '@testing-library/jest-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '../test-utils';
 import * as useHasIntersectedUtils from '../common/hooks/useHasIntersected/useHasIntersected';
 import { EmptyTransparentImage } from './Image';
 import Image from '.';

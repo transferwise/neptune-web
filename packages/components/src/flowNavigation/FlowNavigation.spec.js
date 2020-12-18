@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render } from '@testing-library/react';
-import { screen } from '@testing-library/dom';
+
+import { render, screen } from '../test-utils';
 
 import FlowNavigation from '.';
 import { Breakpoint } from '../common';

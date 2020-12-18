@@ -5,8 +5,9 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import * as components from '.';
+import en from '../i18n/en.json';
 
-const excluded = ['useSnackbar'];
+const excluded = ['useSnackbar', 'Provider'];
 
 function isNotExcluded(componentName) {
   return !excluded.includes(componentName);
@@ -107,6 +108,7 @@ describe('Server side rendering', () => {
     Modal: { position: 'top' },
   };
 
+  const { Provider } = components;
   componentNames.forEach((componentName) => {
     it(`works for ${componentName} components`, () => {
       const Component = components[componentName];
@@ -119,11 +121,13 @@ describe('Server side rendering', () => {
       }
 
       const string = renderToString(
-        componentName.endsWith('Context') ? (
-          <Component.Provider {...newProps} />
-        ) : (
-          <Component {...newProps} />
-        ),
+        <Provider i18n={{ locale: 'en', messages: en }}>
+          {componentName.endsWith('Context') ? (
+            <Component.Provider {...newProps} />
+          ) : (
+            <Component {...newProps} />
+          )}
+        </Provider>,
       );
       expect(string).toEqual(expect.any(String));
     });

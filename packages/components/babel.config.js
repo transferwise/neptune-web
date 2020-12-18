@@ -80,6 +80,7 @@ module.exports = {
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-transform-react-jsx',
     '@babel/plugin-transform-runtime',
+    ['react-intl', { removeDefaultMessage: true }],
   ],
   env: {
     test: testConfig,

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.5.0...@transferwise/components@32.0.0) (2020-12-16)
+
+
+* feat!: internalization support (#674) ([aa9750d](https://github.com/transferwise/neptune-web/commit/aa9750de9268d928365fd49ad8f5379bb6e858b7)), closes [#674](https://github.com/transferwise/neptune-web/issues/674)
+
+
+### BREAKING CHANGES
+
+* - use `Provider` component
+- provide `react-intl` v5.x.x
+
+
+
+
+
 ## [31.4.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.4.1...@transferwise/components@31.4.2) (2020-12-14)
 
 

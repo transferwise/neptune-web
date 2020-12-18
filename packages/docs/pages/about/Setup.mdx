@@ -12,11 +12,11 @@ Neptune Web is published to npm as two packages: [@transferwise/components](http
 ```bash
 # yarn
 yarn add @transferwise/components @transferwise/neptune-css @transferwise/icons
-yarn add react react-dom prop-types currency-flags # peer dependencies
+yarn add react react-dom react-intl prop-types currency-flags # peer dependencies
 
 # npm
 npm install @transferwise/components @transferwise/neptune-css @transferwise/icons
-npm install react react-dom prop-types currency-flags # peer dependencies
+npm install react react-dom react-intl prop-types currency-flags # peer dependencies
 ```
 
 **Note:** Peer dependencies are only necessary if you're using components. `currency-flags` is only required if you're using the <DocLink href="/components/inputs/MoneyInput">Money Input</DocLink> or if you're using flags on the <DocLink href="/components/inputs/Select">Select</DocLink>.
@@ -31,13 +31,19 @@ import '@transferwise/icons/lib/styles/main.min.css';
 // This is only necessary if you are using the UMD build
 import '@transferwise/components/build/main.css';
 
-import { Button } from '@transferwise/components';
+import { Provider, Button } from '@transferwise/components';
+import translations from '@transferwise/components/build/i18n';
 
-export default function Hello() {
+export default function App() {
+  const currentLocale = ...
+
   return (
-    <Button size={Button.Size.SMALL} block={true}>
-      Hello Neptune
-    </Button>
+    // Components must be wrapped by the Provider component, which initialises and provides
+    // context data for them. This should usually be done once at the top app level component
+    <Provider i18n={{ locale: currentLocale, messages: translations[currentLocale] }}>
+      ...
+      <Button size={Button.Size.SMALL} block>...</Button>
+    </Provider>
   );
 }
 ```
@@ -45,6 +51,35 @@ export default function Hello() {
 For information on what classes are available, see the <DocLink href="/styles/core/Typography">styles documentation</DocLink>. Refer to <DocLink href="/components/inputs/Button">components</DocLink> for usage documentation, live previews and code snippets for each component.
 
 By default, apps come polyfilled. If you would like to use an unpolyfilled version because your app provides its own polyfills, see [Advanced Components Usage](#advanced-components-usage) below.
+
+## Translations and the Provider
+
+You need to pass a translations object to the `Provider` component. This can be done in a few different ways, depending on the setup of your library / application.
+
+Translation files can be accessed directly, which gives you the opportunity to load them dynamically:
+
+```js
+import de from '@transferwise/components/build/i18n/de.json';
+
+const locale = 'zh-HK';
+import(`@transferwise/components/build/i18n/${locale}.json`);
+```
+
+Or you can load them all at once:
+
+```js
+import translations from '@transferwise/components/build/i18n';
+```
+
+To avoid locale code mapping hassle you can use our internal mapping API:
+
+```js
+import { mapLocale, LOCALES, DEFAULT_LOCALE } from "@transferwise/components/build/es/polyfill/common/locale";
+```
+
+**Note:** `Provider` must be used in repositories which bundle components (i.e. lists `@transferwise/components` as a `dependency`). For repositories which don't bundle components (typically those that list it as a `peerDependency`) it is unnecessary (often it's similar component libraries).
+
+You may need to add it to your development environment (you can do this in Storybook via decorators), demo pages or [tests](https://testing-library.com/docs/example-react-intl/#creating-a-custom-render-function).
 
 ## Advanced CSS Usage
 
