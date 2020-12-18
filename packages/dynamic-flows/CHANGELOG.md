@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@8.0.3...@transferwise/dynamic-flows@8.1.0) (2020-12-18)
+
+
+### Features
+
+* ADS-1785 Add support for tabs ([#743](https://github.com/transferwise/neptune-web/issues/743)) ([94d26ac](https://github.com/transferwise/neptune-web/commit/94d26acdccaf8a38b5f2e528ee8fd99cc5827b68))
+
+
+
+
+
 ## [8.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@8.0.2...@transferwise/dynamic-flows@8.0.3) (2020-12-16)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
