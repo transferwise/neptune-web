@@ -45,10 +45,13 @@ const Sidebar = ({ router: { pathname }, section }) => {
   const scrollableNavEl = useRef(null);
 
   useEffect(() => {
-    const top = localStorage.getItem('sidebar-scroll');
-    if (top !== null) {
-      scrollableNavEl.current.scrollTop = parseInt(top, 10);
-    }
+    // @TODO
+    // We need to show the user a cookie banner before we do this. Because it's used solely for the purposes
+    // of making the site run well, we don't need to ask for consent, but we do need to inform them.
+    // const top = localStorage.getItem('sidebar-scroll');
+    // if (top !== null) {
+    //   scrollableNavEl.current.scrollTop = parseInt(top, 10);
+    // }
     if (window) {
       window.addEventListener('keydown', handleKeyDown);
     }
