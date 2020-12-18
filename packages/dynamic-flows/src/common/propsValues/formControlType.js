@@ -13,4 +13,5 @@ export const FormControlType = {
   TEXT: 'text',
   TEXTAREA: 'textarea',
   UPLOAD: 'upload',
+  TAB: 'tab',
 };

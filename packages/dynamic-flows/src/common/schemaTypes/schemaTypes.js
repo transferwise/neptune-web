@@ -8,15 +8,15 @@ export const schemaType = {
   BASIC: 'basic',
 };
 
-const isPersistAsyncSchema = (schema) => !!schema.persistAsync;
+export const isPersistAsyncSchema = (schema) => !!schema.persistAsync;
 
-const isObjectSchema = (schema) => schema.type === 'object';
+export const isObjectSchema = (schema) => schema.type === 'object';
 
-const isOneOfSchema = (schema) => !!schema.oneOf;
+export const isOneOfSchema = (schema) => !!schema.oneOf;
 
-const isAllOfSchema = (schema) => !!schema.allOf;
+export const isAllOfSchema = (schema) => !!schema.allOf;
 
-const isBasicSchema = (schema) =>
+export const isBasicSchema = (schema) =>
   basicTypes.indexOf(schema.type) >= 0 || !!schema.enum || !!schema.const;
 
 export const getSchemaType = (schema) => {

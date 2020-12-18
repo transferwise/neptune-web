@@ -7,7 +7,7 @@ import simpleSchema from './schemas/simple.json';
 import oneOfSchema from './schemas/oneOf.json';
 import allOfSchema from './schemas/allOf.json';
 import audRecipientSchema from './schemas/audRecipient.json';
-import fileUploadPersistAsyncSchema from './schemas/upload_persist_async.json';
+import fileUploadPersistAsyncSchema from './schemas/uploadPersistAsync.json';
 import currencySchema from './schemas/currency.json';
 
 export default {

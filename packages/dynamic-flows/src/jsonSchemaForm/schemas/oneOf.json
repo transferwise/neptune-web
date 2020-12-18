@@ -9,6 +9,7 @@
     "bankDetails": {
       "title": "Bank type",
       "placeholder": "Please select an account type",
+      "control": "tab",
       "oneOf": [
         {
           "title": "Bank Code",
