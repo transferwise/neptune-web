@@ -1,5 +1,4 @@
-import React from 'react';
-import { action } from '@storybook/addon-actions';
+import React, { useState } from 'react';
 import { boolean, text } from '@storybook/addon-knobs';
 import Checkbox from './Checkbox';
 
@@ -9,20 +8,22 @@ export default {
 };
 
 export const basic = () => {
-  const checked = boolean('checked', false);
+  const [checked, setChecked] = useState(true);
   const required = boolean('required', false);
   const disabled = boolean('disabled', false);
+  const readOnly = boolean('readOnly', false);
   const label = text('label', 'Checkbox');
   const secondary = text('secondary', '');
 
   return (
     <Checkbox
       label={label}
-      onChange={action('Checked')}
+      onChange={() => setChecked(!checked)}
       checked={checked}
       required={required}
       disabled={disabled}
       secondary={secondary}
+      readOnly={readOnly}
     />
   );
 };

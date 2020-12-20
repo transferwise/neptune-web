@@ -16,8 +16,6 @@ const Checkbox = ({
   onFocus,
   onBlur,
 }) => {
-  const handleClick = () => (!disabled && !readOnly ? onChange(!checked) : null);
-
   const hasError = required && !disabled && !readOnly && !checked;
 
   const classList = classNames({
@@ -38,10 +36,9 @@ const Checkbox = ({
           className={classNames({ 'has-error': hasError })}
           checked={checked}
           onFocus={onFocus}
-          onClick={handleClick}
+          onChange={() => onChange(!checked)}
           onBlur={onBlur}
-          disabled={disabled}
-          readOnly={readOnly}
+          disabled={disabled || readOnly}
         />
       </label>
     </div>

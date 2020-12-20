@@ -80,6 +80,7 @@ describe('Server side rendering', () => {
   const overrideProps = {
     Alert: { children: undefined, message: 'Fluffy kittens', size: undefined },
     Card: { isExpanded: true },
+    CheckboxButton: { children: undefined, onChange: jest.fn() },
     Typeahead: { size: 'md' },
     InputWithDisplayFormat: { displayPattern: '**-**' },
     TextareaWithDisplayFormat: { displayPattern: '**-**' },

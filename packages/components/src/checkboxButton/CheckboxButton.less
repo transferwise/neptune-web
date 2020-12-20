@@ -1,0 +1,31 @@
+@import (reference) '@transferwise/neptune-css/src/variables/neptune-tokens.less';
+
+.np-checkbox-button {
+  input[type="checkbox"] {
+    // Place the actual input on top of the SVG, so people using touch to find elements will still find it
+    position: absolute;
+    width: var(--size-24);
+    height: var(--size-24);
+    opacity: 0;
+    margin: 0;
+
+    &:not(:disabled) {
+      cursor: pointer;
+    }
+  }
+
+  .tw-checkbox-check {
+    pointer-events: none;
+  }
+}
+
+.checkbox .np-checkbox-button {
+  position: absolute;
+  left: 14px;
+  top: 12px;
+
+  input[type="checkbox"], .tw-checkbox-button {
+    left: 0;
+    top: 0;
+  }
+}

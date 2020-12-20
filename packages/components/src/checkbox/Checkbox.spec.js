@@ -1,116 +1,130 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import '@testing-library/jest-dom';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 import Checkbox from '.';
-import CheckboxButton from '../checkboxButton';
 
 describe('Checkbox', () => {
-  let component;
   let props;
 
   beforeEach(() => {
     props = {
       label: <b>hello</b>,
       onChange: jest.fn(),
-      secondary: '',
     };
-    component = shallow(<Checkbox {...props} />);
   });
 
   it('renders the given label', () => {
-    expect(component.containsMatchingElement(<b>hello</b>)).toBe(true);
+    const { container } = render(<Checkbox {...props} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('is enabled by default', () => {
+    render(<Checkbox {...props} />);
+    expect(getCheckboxContainer()).not.toHaveClass('disabled');
   });
 
   it('does not render secondary text', () => {
-    expect(component.find('small')).toHaveLength(0);
+    const { container } = render(<Checkbox {...props} />);
+    expect(container.querySelector('small')).not.toBeInTheDocument();
   });
 
-  it('calls change handler with new checked value when not disabled and checkbox button is clicked', () => {
+  it('calls change handler with new checked value when checkbox button is clicked', () => {
     const onChange = jest.fn();
-    component.setProps({ onChange });
+
+    const { rerender } = render(<Checkbox {...props} onChange={onChange} />);
 
     expect(onChange).not.toBeCalled();
-    clickCheckboxButton();
-    expect(onChange).toBeCalledWith(true);
+    fireEvent.click(getLabel());
+    expect(onChange).toHaveBeenCalledWith(true);
 
-    component.setProps({ checked: true });
-    clickCheckboxButton();
-    expect(onChange).toBeCalledWith(false);
+    rerender(<Checkbox {...props} onChange={onChange} checked />);
+
+    fireEvent.click(getLabel());
+    expect(onChange).toHaveBeenCalledWith(false);
   });
 
   it('does not call change handler on checkbox button click when disabled', () => {
     const onChange = jest.fn();
-    component.setProps({ onChange, disabled: true });
 
-    expect(onChange).not.toBeCalled();
-    clickCheckboxButton();
+    render(<Checkbox {...props} onChange={onChange} disabled />);
+
+    fireEvent.click(getLabel());
     expect(onChange).not.toBeCalled();
   });
 
   it('does not call change handler on checkbox button click when readOnly', () => {
     const onChange = jest.fn();
-    component.setProps({ onChange, readOnly: true });
 
-    expect(onChange).not.toBeCalled();
-    clickCheckboxButton();
+    render(<Checkbox {...props} onChange={onChange} readOnly />);
+
+    fireEvent.click(getLabel());
     expect(onChange).not.toBeCalled();
   });
 
-  it('has disabled class when the flag is passed', () => {
-    expect(isDisabled()).toBe(false);
-
-    component.setProps({ disabled: true });
-    expect(isDisabled()).toBe(true);
+  it('has disabled class when the disabled prop is true', () => {
+    render(<Checkbox {...props} disabled />);
+    expect(getCheckboxContainer()).toHaveClass('disabled');
   });
 
-  it('has error class and passes it to checkbox button when required and not disabled and readOnly', () => {
-    component.setProps({ disabled: true, readOnly: true, required: true });
-    expect(hasErrorClass()).toBe(false);
-    expect(checkboxButtonHasError()).toBe(false);
-    component.setProps({ disabled: false, readOnly: false, required: true, checked: true });
-    expect(hasErrorClass()).toBe(false);
-    expect(checkboxButtonHasError()).toBe(false);
+  it('has error class and passes it to checkbox button when required and not checked', () => {
+    const { rerender } = render(<Checkbox {...props} required checked />);
+    expect(getCheckboxContainer()).not.toHaveClass('has-error');
 
-    component.setProps({ disabled: false, readOnly: false, required: true, checked: false });
-    expect(hasErrorClass()).toBe(true);
-    expect(checkboxButtonHasError()).toBe(true);
+    rerender(<Checkbox {...props} required />);
+
+    expect(getCheckboxContainer()).toHaveClass('has-error');
+  });
+
+  it('ignores required if disabled or readOnly', () => {
+    const { rerender } = render(<Checkbox {...props} required disabled />);
+    expect(getCheckboxContainer()).not.toHaveClass('has-error');
+
+    rerender(<Checkbox {...props} required readOnly />);
+    expect(getCheckboxContainer()).not.toHaveClass('has-error');
   });
 
   it('has an asterisk after the label when required', () => {
-    component.setProps({ required: true });
-    expect(component.text()).toContain('*');
+    render(<Checkbox {...props} required />);
+
+    expect(screen.getByText('*')).toBeInTheDocument();
+    expect(screen.getByText('*').tagName).toBe('LABEL');
+  });
+
+  it(`doesn't passes checked to checkbox button`, () => {
+    render(<Checkbox {...props} />);
+    expect(getCheckbox()).not.toHaveAttribute('checked');
   });
 
   it('passes checked to checkbox button', () => {
-    expect(checkboxButton().prop('checked')).toBe(false);
-    component.setProps({ checked: true });
-    expect(checkboxButton().prop('checked')).toBe(true);
+    render(<Checkbox {...props} checked />);
+    expect(getCheckbox()).toHaveAttribute('checked');
   });
 
   it('passes disabled to checkbox button', () => {
-    expect(checkboxButton().prop('disabled')).toBe(false);
-    component.setProps({ disabled: true });
-    expect(checkboxButton().prop('disabled')).toBe(true);
+    const { rerender } = render(<Checkbox {...props} />);
+    expect(getCheckbox()).not.toHaveAttribute('disabled');
+
+    rerender(<Checkbox {...props} disabled />);
+    expect(getCheckbox()).toHaveAttribute('disabled');
   });
 
-  it('passes readOnly to checkbox button', () => {
-    expect(checkboxButton().prop('readOnly')).toBe(false);
-    component.setProps({ readOnly: true });
-    expect(checkboxButton().prop('readOnly')).toBe(true);
+  it('disables checkbox button if readOnly', () => {
+    const { rerender } = render(<Checkbox {...props} />);
+
+    expect(getCheckbox()).not.toHaveAttribute('disabled');
+
+    rerender(<Checkbox {...props} readOnly />);
+    expect(getCheckbox()).toHaveAttribute('disabled');
   });
 
   it('displays secondary text when supplied', () => {
-    component.setProps({ secondary: 'additional info' });
-    expect(component.find('small').text()).toContain('additional info');
-    expect(component.find('.checkbox').hasClass('checkbox-lg')).toBe(true);
+    render(<Checkbox {...props} secondary="secondary text" />);
+    expect(screen.getByText('secondary text')).toBeInTheDocument();
+    expect(getCheckboxContainer()).toHaveClass('checkbox-lg');
   });
 
-  const isDisabled = () => component.hasClass('disabled');
-  const hasErrorClass = () => component.hasClass('has-error');
-  const checkboxButton = () => component.find(CheckboxButton);
-  const checkboxButtonHasError = () => checkboxButton().hasClass('has-error');
-
-  function clickCheckboxButton() {
-    checkboxButton().simulate('click');
-  }
+  const getCheckboxContainer = () => screen.getByText('hello').parentElement.parentElement;
+  const getLabel = () => screen.getByText('hello').parentElement;
+  const getCheckbox = () => screen.getByRole('checkbox');
 });

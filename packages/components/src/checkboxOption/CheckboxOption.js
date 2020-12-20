@@ -10,35 +10,32 @@ const CheckboxOption = ({ media, title, content, name, checked, onChange, comple
   return (
     <Option
       {...sharedProps}
-      onClick={(event) => {
-        event.preventDefault();
-        if (!disabled) {
-          onChange(!checked);
-        }
-      }}
-      button={<CheckboxButton checked={checked} disabled={disabled} />}
+      button={
+        <CheckboxButton checked={checked} disabled={disabled} onChange={() => onChange(!checked)} />
+      }
     />
   );
 };
 
 CheckboxOption.propTypes = {
-  media: Types.node,
-  id: Types.string.isRequired,
-  name: Types.string.isRequired,
-  title: Types.node.isRequired,
-  content: Types.node,
   checked: Types.bool,
-  onChange: Types.func.isRequired,
   complex: Types.bool,
+  content: Types.node,
   disabled: Types.bool,
+  id: Types.string,
+  media: Types.node,
+  name: Types.string.isRequired,
+  onChange: Types.func.isRequired,
+  title: Types.node.isRequired,
 };
 
 CheckboxOption.defaultProps = {
-  media: null,
-  content: null,
   checked: false,
   complex: false,
+  content: null,
   disabled: false,
+  id: undefined,
+  media: null,
 };
 
 export default CheckboxOption;
