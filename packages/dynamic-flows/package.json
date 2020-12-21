@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/dynamic-flows",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "description": "Transferwise dynamic flows and forms",
   "license": "Apache-2.0",
   "main": "./build/es/polyfill/index.js",
