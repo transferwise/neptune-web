@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import Types from 'prop-types';
 import { isArray } from '@transferwise/neptune-validation';
 import { Size } from '../common';
@@ -21,22 +22,20 @@ import './PhoneNumberInput.css';
 
 const ALLOWED_PHONE_CHARS = /^$|^[\d-\s]+$/;
 
-const PhoneNumberInput = (props) => {
-  const {
-    onChange,
-    searchPlaceholder,
-    disabled,
-    required,
-    size,
-    placeholder,
-    onFocus,
-    onBlur,
-    locale,
-    countryCode,
-  } = props;
-
+const PhoneNumberInput = ({
+  required,
+  disabled,
+  initialValue,
+  onChange,
+  onFocus,
+  onBlur,
+  countryCode,
+  searchPlaceholder,
+  size,
+  placeholder,
+}) => {
+  const intl = useIntl();
   const getInitialValue = () => {
-    const { initialValue } = props;
     const cleanValue = initialValue ? cleanNumber(initialValue) : null;
     return cleanValue && isValidPhoneNumber(cleanValue) ? cleanValue : null;
   };
@@ -49,7 +48,7 @@ const PhoneNumberInput = (props) => {
   const listSortedByPhone = groupCountriesByPrefix(sortArrayByProperty(countries, 'phone'));
 
   const getSuffixPrefix = (value) => {
-    let prefix = setDefaultPrefix(locale, countryCode);
+    let prefix = setDefaultPrefix(intl.locale, countryCode);
     let suffix = '';
     if (value) {
       ({ prefix, suffix } = explodeNumberModel(value));
@@ -167,7 +166,6 @@ PhoneNumberInput.propTypes = {
   onFocus: Types.func,
   onBlur: Types.func,
   countryCode: Types.string,
-  locale: Types.string,
   searchPlaceholder: Types.string,
   size: Types.oneOf([
     PhoneNumberInput.Size.SMALL,
@@ -184,7 +182,6 @@ PhoneNumberInput.defaultProps = {
   onFocus() {},
   onBlur() {},
   countryCode: null,
-  locale: 'en-GB',
   searchPlaceholder: 'Prefix',
   size: PhoneNumberInput.Size.MEDIUM,
   placeholder: '',

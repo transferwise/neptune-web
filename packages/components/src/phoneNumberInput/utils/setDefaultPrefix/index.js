@@ -1,4 +1,4 @@
-import localeService from '../../../common/localeService';
+import { mapLocale } from '../../../common/locale';
 import { findCountryByCode } from '../findCountryByCode';
 
 /**
@@ -7,11 +7,7 @@ import { findCountryByCode } from '../findCountryByCode';
  * @returns {string}
  */
 export const setDefaultPrefix = (locale, countryCode) => {
-  const localeCountry = localeService.getCountryFromLocale(locale);
-  const country = findCountryByCode(countryCode) || findCountryByCode(localeCountry);
-  let prefix = '+44';
-  if (country) {
-    prefix = country.phone;
-  }
-  return prefix;
+  const mappedLocale = mapLocale(locale);
+  const country = findCountryByCode(countryCode) || findCountryByCode(mappedLocale);
+  return country?.phone ?? '+44';
 };

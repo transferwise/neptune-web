@@ -23,7 +23,7 @@ export function mapLocale(locale) {
     return locale;
   }
   const iso2Code = locale.slice(0, COUNTRY_ISO2_CODE_LENGTH);
-  if (LOCALES.includes(locale)) {
+  if (LOCALES.includes(iso2Code)) {
     return iso2Code;
   }
   return null;
