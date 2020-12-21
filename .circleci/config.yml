@@ -168,6 +168,7 @@ workflows:
               ignore:
                 - gh-pages
                 - main
+                - main-temp
 
       - hold-visual-test:
           type: approval
@@ -179,6 +180,7 @@ workflows:
               ignore:
                 - gh-pages
                 - main
+                - main-temp
 
       - visual-test:
           requires:
@@ -188,6 +190,7 @@ workflows:
               ignore:
                 - gh-pages
                 - main
+                - main-temp
 
       # On 'main' branch the flow should be blocked if there is an error in commit message
       - test-main:
@@ -199,6 +202,7 @@ workflows:
             branches:
               only:
                 - main
+                - main-temp
                 - beta
 
       - deploy-docs-for-branch:
@@ -226,7 +230,9 @@ workflows:
             - test-main
           filters:
             branches:
-              only: main
+              only:
+                - main
+                - main-temp
 
       - publish-prerelease:
           context: frontend-publish

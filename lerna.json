@@ -1,7 +1,7 @@
 {
   "command": {
     "publish": {
-      "allowBranch": ["main", "beta"],
+      "allowBranch": ["main", "beta", "main-temp"],
       "conventionalCommits": true,
       "verifyAccess": false,
       "ignoreChanges": [
