@@ -21,18 +21,15 @@
     "dev": "npm-run-all --parallel dev:*",
     "dev:watch-less": "gulp watchLess --dest=src",
     "dev:storybook": "start-storybook -p 3001",
-    "dev:translations": "npx npm-watch",
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf lib build",
-    "build:crowdin-source-file": "formatjs extract 'src/**/*.messages.js' --out-file i18n/en.json --format i18n/formatter.js",
     "build:compile-css": "gulp compileLess --dest=src",
     "build:umd": "NODE_ENV=umd rollup -c",
     "build:umd-nopolyfill": "NODE_ENV=umd-nopolyfill rollup -c",
-    "build:es": "NODE_ENV=es babel src -d build/es/polyfill --ignore '**/*.spec.js','**/*.story.js','**/__mocks__','**/test-utils'",
-    "build:es-nopolyfill": "NODE_ENV=es-nopolyfill babel src -d build/es/no-polyfill --ignore '**/*.spec.js','**/*.story.js','**/__mocks__','**/test-utils'",
+    "build:es": "NODE_ENV=es babel src -d build/es/polyfill --ignore '**/*.spec.js','**/*.story.js','**/__mocks__'",
+    "build:es-nopolyfill": "NODE_ENV=es-nopolyfill babel src -d build/es/no-polyfill --ignore '**/*.spec.js','**/*.story.js','**/__mocks__'",
     "build:copy-files": "cpx 'src/**/!(db)/*.{css,json,svg}' build/es/polyfill",
     "build:copy-files2": "cpx 'src/**/!(db)/*.{css,json,svg}' build/es/no-polyfill",
-    "build:copy-lang": "cpx 'i18n/*.json' build/i18n && cpx 'i18n/*.json' build/es/i18n && cpx 'i18n/index.js' build/i18n",
     "docs": "yarn build",
     "test": "jest --env=jsdom --runInBand --config=../../node_modules/@transferwise/test-config/jest.config.js && yarn test:lint",
     "test:watch": "jest --watch --env=jsdom --config=../../node_modules/@transferwise/test-config/jest.config.js",
@@ -85,8 +82,7 @@
     "currency-flags": "^2.1.1",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-intl": "^5.10.0"
+    "react-dom": "16.13.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
@@ -103,9 +99,6 @@
     "react-required-if": "^1.0.3",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.2.1"
-  },
-  "watch": {
-    "build:crowdin-source-file": "src/**/*.messages.js"
   },
   "resolutions": {
     "@storybook/**/kind-of": "^6.0.3"

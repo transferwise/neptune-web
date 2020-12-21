@@ -2,8 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Logo from '../flowNavigation/logo';
 
-import { OverlayHeader, Provider } from '..';
-import en from '../../i18n/en.json';
+import OverlayHeader from '.';
 
 describe('Overlay header', () => {
   let component;
@@ -36,12 +35,7 @@ describe('Overlay header', () => {
       onClose: jest.fn(),
     };
 
-    component = mount(<OverlayHeader {...props} />, {
-      // eslint-disable-next-line react/prop-types
-      wrappingComponent: ({ children }) => {
-        return <Provider i18n={{ locale: 'en', messages: en }}>{children}</Provider>;
-      },
-    });
+    component = mount(<OverlayHeader {...props} />);
   });
 
   it('passes avatar url and profile type to avatar', () => {

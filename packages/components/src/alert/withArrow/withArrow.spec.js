@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, getByRole } from '../../test-utils';
+import { render, getByRole } from '@testing-library/react';
 import withArrow, { ArrowPosition } from './withArrow';
 import Alert from '../Alert';
 

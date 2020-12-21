@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, getByRole } from '../test-utils';
+import { render, getByRole } from '@testing-library/react';
 import InlineAlert from './InlineAlert';
 
 describe('InlineAlert', () => {

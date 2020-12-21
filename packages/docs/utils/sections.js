@@ -74,10 +74,6 @@ export default [
         dir: 'components/overlays',
       },
       {
-        title: 'Context',
-        dir: 'components/context',
-      },
-      {
         title: 'Dynamic Forms',
         dir: 'components/dynamicForms',
       },
