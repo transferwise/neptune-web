@@ -1,10 +1,10 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
-import { Provider } from '@transferwise/components';
 import Layout from '../components/Layout';
 import '@transferwise/neptune-css/dist/css/neptune.css';
 import '@transferwise/icons/lib/styles/main.min.css';
@@ -21,12 +21,6 @@ if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
 }
 
 class MyApp extends App {
-  static async getInitialProps() {
-    const defaultLocale = 'en';
-    const messages = await import(`@transferwise/components/i18n/${defaultLocale}`);
-    return { locale: defaultLocale, messages };
-  }
-
   componentDidMount() {
     const { pathname } = Router;
     if (pathname === '/' || pathname === '/_error') {
@@ -42,10 +36,10 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, locale, messages } = this.props;
+    const { Component, pageProps } = this.props;
 
     return (
-      <Provider i18n={{ locale, messages }}>
+      <>
         <Head>
           <title>Neptune Design System — TransferWise</title>
         </Head>
@@ -53,7 +47,7 @@ class MyApp extends App {
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </Provider>
+      </>
     );
   }
 }

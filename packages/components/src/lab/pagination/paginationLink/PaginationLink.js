@@ -1,13 +1,8 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import { useIntl } from 'react-intl';
-
-import messages from './PaginationLink.messages';
 
 const PaginationLink = ({ disabled, active, pageNumber, onClick, children }) => {
-  const intl = useIntl();
-
   const handleClick = (e) => {
     e.preventDefault();
     if (!disabled && !active) {
@@ -21,10 +16,8 @@ const PaginationLink = ({ disabled, active, pageNumber, onClick, children }) => 
     }
   };
 
-  const ariaLabel = intl.formatMessage(
-    active ? messages.ariaLabelActive : messages.ariaLabelInactive,
-    { pageNumber },
-  );
+  const ariaLabel = active ? `Go to page ${pageNumber}` : `Current page, page ${pageNumber}`;
+
   return (
     <li>
       <a

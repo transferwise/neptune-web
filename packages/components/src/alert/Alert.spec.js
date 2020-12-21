@@ -1,5 +1,9 @@
 /* eslint-disable no-console */
 import React from 'react';
+import userEvent from '@testing-library/user-event';
+import { render, cleanup } from '@testing-library/react';
+import { screen } from '@testing-library/dom';
+
 import {
   InfoCircle,
   CheckCircle,
@@ -7,8 +11,6 @@ import {
   Alert as AlertIcon,
   Emoji,
 } from '@transferwise/icons';
-
-import { render, cleanup, screen, userEvent } from '../test-utils';
 import Alert from './Alert';
 
 describe('Alert', () => {

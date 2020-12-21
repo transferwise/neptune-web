@@ -1,13 +1,11 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import { useIntl } from 'react-intl';
 
 import { ChevronLeft, ChevronRight } from '@transferwise/icons';
 
 import PaginationLink from './paginationLink';
 
-import messages from './Pagination.messages';
 import './Pagination.css';
 
 const Type = {
@@ -83,9 +81,8 @@ const Pagination = ({
     }
   }
 
-  const intl = useIntl();
   return (
-    <nav role="navigation" aria-label={intl.formatMessage(messages.ariaLabel)}>
+    <nav role="navigation" aria-label="Pagination navigation">
       <ul className={classNames('tw-pagination', className)}>
         {showArrows && (
           <PaginationLink

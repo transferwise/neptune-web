@@ -1,9 +1,8 @@
 import React from 'react';
+import { Select } from '@transferwise/components';
 import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { render, screen } from '../test-utils';
-
-import { Select } from '..';
 import WithNormaliser from '.';
 
 describe('WithNormaliser', () => {

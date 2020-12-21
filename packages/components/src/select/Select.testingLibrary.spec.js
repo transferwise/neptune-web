@@ -1,8 +1,8 @@
 import React from 'react';
 import Transition from 'react-transition-group/Transition';
 import '@testing-library/jest-dom';
+import { render } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { render } from '../test-utils';
 
 import Select from '.';
 

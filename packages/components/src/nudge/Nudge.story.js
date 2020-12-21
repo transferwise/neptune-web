@@ -1,8 +1,9 @@
 import React from 'react';
 import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import Image from '../image';
 
-import { Image, Nudge } from '..';
+import Nudge from '.';
 
 export default {
   component: Nudge,

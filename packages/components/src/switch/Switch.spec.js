@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, screen } from '../test-utils';
+import { render, fireEvent, screen } from '@testing-library/react';
 import Switch from './Switch';
 
 import KeyCodes from '../common/keyCodes';
