@@ -1,4 +1,5 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import { formatDate, formatNumber } from '@transferwise/formatting';
@@ -22,7 +23,8 @@ const getValueLabel = (options, value) => {
  */
 const mask = (value) => new Array(value.length + 1).join('*');
 
-const FormattedValue = ({ field, value, locale }) => {
+const FormattedValue = ({ field, value }) => {
+  const intl = useIntl();
   const style = [];
   if (field.tagClassName && field.tagClassName.h3) {
     style.push('h3');
@@ -34,9 +36,11 @@ const FormattedValue = ({ field, value, locale }) => {
     case 'radio':
       return <span>{getValueLabel(field.values, value)}</span>;
     case 'date':
-      return <span>{formatDate(value instanceof Date ? value : new Date(value), locale)}</span>;
+      return (
+        <span>{formatDate(value instanceof Date ? value : new Date(value), intl.locale)}</span>
+      );
     case 'number':
-      return <span>{formatNumber(value, locale)}</span>;
+      return <span>{formatNumber(value, intl.locale)}</span>;
     case 'password':
       return <span>{mask(value)}</span>;
     case 'file':
@@ -70,11 +74,6 @@ FormattedValue.propTypes = {
   }).isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   value: Types.any.isRequired,
-  locale: Types.string,
-};
-
-FormattedValue.defaultProps = {
-  locale: 'en-GB',
 };
 
 export default FormattedValue;

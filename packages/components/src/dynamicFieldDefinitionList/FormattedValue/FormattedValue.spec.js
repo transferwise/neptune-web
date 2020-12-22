@@ -1,7 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { formatNumber } from '@transferwise/formatting';
 import FormattedValue from './FormattedValue';
+import { Provider } from '../..';
+import { LOCALES } from '../../common/locale';
+
+function customRender(component, locale = 'en') {
+  return mount(component, {
+    // eslint-disable-next-line react/prop-types
+    wrappingComponent: ({ children }) => {
+      return <Provider i18n={{ locale, messages: {} }}>{children}</Provider>;
+    },
+  });
+}
 
 describe('FormattedValue', () => {
   let props;
@@ -12,6 +23,8 @@ describe('FormattedValue', () => {
 
   describe('when given a text field', () => {
     beforeEach(() => {
+      // eslint-disable-next-line prefer-destructuring
+      locale = LOCALES[3];
       props = {
         value: 'ABCD',
         field: {
@@ -26,7 +39,7 @@ describe('FormattedValue', () => {
           },
         },
       };
-      component = shallow(<FormattedValue {...props} />);
+      component = customRender(<FormattedValue {...props} />, locale);
       item = component.find('span');
     });
 
@@ -44,7 +57,6 @@ describe('FormattedValue', () => {
       value = 1234;
       props = {
         value,
-        locale,
         field: {
           title: 'Number',
           type: 'number',
@@ -53,7 +65,7 @@ describe('FormattedValue', () => {
           control: 'number',
         },
       };
-      component = shallow(<FormattedValue {...props} />);
+      component = customRender(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -72,12 +84,12 @@ describe('FormattedValue', () => {
           control: 'date',
         },
       };
-      component = shallow(<FormattedValue {...props} />);
+      component = customRender(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
     it('should display the formatted date value', () => {
-      expect(item.text()).toBe('20/12/2000');
+      expect(item.text()).toBe('12/20/2000');
     });
   });
 
@@ -101,7 +113,7 @@ describe('FormattedValue', () => {
           ],
         },
       };
-      component = shallow(<FormattedValue {...props} />);
+      component = customRender(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -130,7 +142,7 @@ describe('FormattedValue', () => {
           ],
         },
       };
-      component = shallow(<FormattedValue {...props} />);
+      component = customRender(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -149,7 +161,7 @@ describe('FormattedValue', () => {
           control: 'checkbox',
         },
       };
-      component = shallow(<FormattedValue {...props} />);
+      component = customRender(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -168,7 +180,7 @@ describe('FormattedValue', () => {
           control: 'password',
         },
       };
-      component = shallow(<FormattedValue {...props} />);
+      component = customRender(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -187,7 +199,7 @@ describe('FormattedValue', () => {
           control: 'file',
         },
       };
-      component = shallow(<FormattedValue {...props} />);
+      component = customRender(<FormattedValue {...props} />);
       item = component.find('img');
     });
 
