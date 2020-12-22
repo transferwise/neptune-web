@@ -1,4 +1,5 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import Types from 'prop-types';
 import { formatDate } from '@transferwise/formatting';
 
@@ -13,15 +14,16 @@ const MonthCalendarTable = ({
   min,
   max,
   viewYear,
-  locale,
   placeholder,
   onSelect,
 }) => {
+  const intl = useIntl();
+
   const getLink = (month) => (
     <TableLink
       item={month}
       type="month"
-      title={formatDate(new Date(viewYear, month), locale, MONTH_ONLY_FORMAY)}
+      title={formatDate(new Date(viewYear, month), intl.locale, MONTH_ONLY_FORMAY)}
       active={!!(selected && month === selected.getMonth() && viewYear === selected.getFullYear())}
       disabled={isDisabled(month)}
       today={viewYear === new Date().getFullYear() && month === new Date().getMonth()}
@@ -62,7 +64,6 @@ MonthCalendarTable.propTypes = {
   min: Types.instanceOf(Date),
   max: Types.instanceOf(Date),
   viewYear: Types.number.isRequired,
-  locale: Types.string.isRequired,
   placeholder: Types.string.isRequired,
   onSelect: Types.func.isRequired,
 };

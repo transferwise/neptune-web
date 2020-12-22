@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import Types from 'prop-types';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import { isEmpty } from '@transferwise/neptune-validation';
 import Select from '../select';
 import './MoneyInput.css';
@@ -22,206 +23,204 @@ const formatAmountIfSet = (amount, currency, locale) => {
   return typeof amount === 'number' ? formatAmount(amount, currency, locale) : '';
 };
 
-export default class MoneyInput extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchQuery: '',
-      formattedAmount: formatAmountIfSet(
-        props.amount,
-        props.selectedCurrency.currency,
-        props.locale,
-      ),
-    };
-  }
+let amountFocused = false;
+function MoneyInput({
+  id,
+  currencies,
+  selectedCurrency,
+  onCurrencyChange,
+  placeholder,
+  amount,
+  size,
+  onAmountChange,
+  addon,
+  searchPlaceholder,
+  onSearchChange,
+  customActionLabel,
+  onCustomAction,
+  classNames,
+}) {
+  const intl = useIntl();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [formattedAmount, setFormattedAmount] = useState(
+    formatAmountIfSet(amount, selectedCurrency.currency, intl.locale),
+  );
 
-  // eslint-disable-next-line
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!this.amountFocused) {
-      this.setState({
-        formattedAmount: formatAmountIfSet(
-          nextProps.amount,
-          nextProps.selectedCurrency.currency,
-          nextProps.locale,
-        ),
-      });
-    }
-  }
-
-  onAmountChange = (event) => {
+  function handleOnAmountChange(event) {
     const { value } = event.target;
-    this.setState({
-      formattedAmount: value,
-    });
+    console.log('call handleOnAmountChange; value', value);
+    setFormattedAmount(value);
     const parsed = isEmpty(value)
       ? null
-      : parseAmount(value, this.props.selectedCurrency.currency, this.props.locale);
+      : parseAmount(value, selectedCurrency.currency, intl.locale);
     if (!Number.isNaN(parsed)) {
-      this.props.onAmountChange(parsed);
+      onAmountChange(parsed);
     }
-  };
+  }
 
-  onAmountBlur = () => {
-    this.amountFocused = false;
-    this.setAmount();
-  };
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log('call useEffect', amountFocused);
+    if (!amountFocused) {
+      setFormattedAmount(formatAmountIfSet(amount, selectedCurrency.currency, intl.locale));
+    }
+  }, [amount, selectedCurrency]);
 
-  onAmountFocus = () => {
-    this.amountFocused = true;
-  };
+  function onAmountBlur() {
+    console.log('onAmountBlur');
+    amountFocused = false;
+    setAmount();
+  }
 
-  getSelectOptions() {
-    const selectOptions = [...filterOptionsForQuery(this.props.currencies, this.state.searchQuery)];
+  function onAmountFocus() {
+    amountFocused = true;
+  }
 
-    if (this.props.onCustomAction) {
-      selectOptions.push({ value: CUSTOM_ACTION, label: this.props.customActionLabel });
+  function getSelectOptions() {
+    const selectOptions = [...filterOptionsForQuery(currencies, searchQuery)];
+
+    if (onCustomAction) {
+      selectOptions.push({ value: CUSTOM_ACTION, label: customActionLabel });
     }
 
     return selectOptions;
   }
 
-  setAmount() {
-    this.setState((previousState) => {
-      const parsed = parseAmount(
-        previousState.formattedAmount,
-        this.props.selectedCurrency.currency,
-        this.props.locale,
-      );
+  function setAmount() {
+    setFormattedAmount((prevState) => {
+      console.log('prevState', prevState);
+      const parsed = parseAmount(prevState, selectedCurrency.currency, intl.locale);
       if (Number.isNaN(parsed)) {
         return {
-          formattedAmount: previousState.formattedAmount,
+          formattedAmount: prevState,
         };
       }
       return {
-        formattedAmount: formatAmountIfSet(
-          parsed,
-          this.props.selectedCurrency.currency,
-          this.props.locale,
-        ),
+        formattedAmount: formatAmountIfSet(parsed, selectedCurrency.currency, intl.locale),
       };
     });
   }
 
-  handleSelectChange = (value) => {
-    this.handleSearchChange('');
+  // function setAmount() {
+  //   const parsed = parseAmount(previousFormattedAmount, selectedCurrency.currency, intl.locale);
+  //   if (Number.isNaN(parsed)) {
+  //     setFormattedAmount(previousFormattedAmount);
+  //   } else {
+  //     setFormattedAmount(formatAmountIfSet(parsed, selectedCurrency.currency, intl.locale));
+  //   }
+  // }
 
-    if (this.props.onCustomAction && value.value === CUSTOM_ACTION) {
-      this.props.onCustomAction();
+  function handleSelectChange(value) {
+    handleSearchChange('');
+
+    if (onCustomAction && value.value === CUSTOM_ACTION) {
+      onCustomAction();
     } else {
-      this.props.onCurrencyChange(value);
+      onCurrencyChange(value);
     }
-  };
+  }
 
-  handleSearchChange = (searchQuery) => {
-    this.setState({ searchQuery });
-    if (this.props.onSearchChange) {
-      this.props.onSearchChange({
-        searchQuery,
-        filteredOptions: filterOptionsForQuery(this.props.currencies, searchQuery),
+  function handleSearchChange(query) {
+    setSearchQuery(query);
+    if (onSearchChange) {
+      onSearchChange({
+        query,
+        filteredOptions: filterOptionsForQuery(currencies, query),
       });
     }
-  };
-
-  style = (className) => this.props.classNames[className] || className;
-
-  render() {
-    const { selectedCurrency, onCurrencyChange, size, addon } = this.props;
-    const selectOptions = this.getSelectOptions();
-    const isFixedCurrency =
-      !this.state.searchQuery &&
-      ((selectOptions.length === 1 && selectOptions[0].currency === selectedCurrency.currency) ||
-        !onCurrencyChange);
-
-    const disabled = !this.props.onAmountChange;
-    return (
-      <div
-        className={classNames(
-          this.style('tw-money-input'),
-          this.style('input-group'),
-          this.style(`input-group-${size}`),
-        )}
-      >
-        <input
-          id={this.props.id}
-          value={this.state.formattedAmount}
-          type="text"
-          inputMode="decimal"
-          className={classNames(this.style('form-control'))}
-          onChange={this.onAmountChange}
-          onFocus={this.onAmountFocus}
-          onBlur={this.onAmountBlur}
-          disabled={disabled}
-          placeholder={formatAmountIfSet(
-            this.props.placeholder,
-            this.props.selectedCurrency.currency,
-            this.props.locale,
-          )}
-          autoComplete="off"
-        />
-        {addon && (
-          <span
-            className={classNames(
-              this.style('input-group-addon'),
-              this.style(`input-${size}`),
-              disabled ? this.style('tw-money-input--disabled') : '',
-            )}
-          >
-            {addon}
-          </span>
-        )}
-        {isFixedCurrency ? (
-          <div
-            className={classNames(
-              this.style('input-group-addon'),
-              this.style(`input-${size}`),
-              this.style('tw-money-input__fixed-currency'),
-              disabled ? this.style('tw-money-input--disabled') : '',
-            )}
-          >
-            {size === 'lg' && (
-              <>
-                <i className={classNames(this.style('tw-money-input__keyline'))} />
-                <i
-                  className={classNames(
-                    this.style('currency-flag'),
-                    this.style(`currency-flag-${selectedCurrency.currency.toLowerCase()}`),
-                    this.style('hidden-xs'),
-                    this.style('m-r-2'),
-                  )}
-                />
-              </>
-            )}
-            <span className={size === 'lg' ? this.style('m-r-1') : ''}>
-              {selectedCurrency.currency.toUpperCase()}
-            </span>
-          </div>
-        ) : (
-          <div
-            className={classNames(
-              this.style('input-group-btn'),
-              this.style('amount-currency-select-btn'),
-            )}
-          >
-            <Select
-              classNames={this.props.classNames}
-              options={selectOptions}
-              selected={{ ...selectedCurrency, note: null }}
-              onChange={this.handleSelectChange}
-              placeholder="Select an option..."
-              searchPlaceholder={this.props.searchPlaceholder}
-              onSearchChange={this.handleSearchChange}
-              searchValue={this.state.searchQuery}
-              size={size}
-              required
-              dropdownRight="xs"
-              dropdownWidth="lg"
-              inverse
-            />
-          </div>
-        )}
-      </div>
-    );
   }
+
+  function style(className) {
+    return classNames[className] || className;
+  }
+
+  const selectOptions = getSelectOptions();
+  const isFixedCurrency =
+    !searchQuery &&
+    ((selectOptions.length === 1 && selectOptions[0].currency === selectedCurrency.currency) ||
+      !onCurrencyChange);
+
+  const disabled = !onAmountChange;
+
+  return (
+    <div
+      className={classnames(
+        style('tw-money-input'),
+        style('input-group'),
+        style(`input-group-${size}`),
+      )}
+    >
+      <input
+        id={id}
+        value={formattedAmount}
+        type="text"
+        inputMode="decimal"
+        className={classnames(style('form-control'))}
+        onChange={handleOnAmountChange}
+        onFocus={onAmountFocus}
+        onBlur={onAmountBlur}
+        disabled={disabled}
+        placeholder={formatAmountIfSet(placeholder, selectedCurrency.currency, intl.locale)}
+        autoComplete="off"
+      />
+      {addon && (
+        <span
+          className={classnames(
+            style('input-group-addon'),
+            style(`input-${size}`),
+            disabled ? style('tw-money-input--disabled') : '',
+          )}
+        >
+          {addon}
+        </span>
+      )}
+      {isFixedCurrency ? (
+        <div
+          className={classnames(
+            style('input-group-addon'),
+            style(`input-${size}`),
+            style('tw-money-input__fixed-currency'),
+            disabled ? style('tw-money-input--disabled') : '',
+          )}
+        >
+          {size === 'lg' && (
+            <>
+              <i className={classnames(style('tw-money-input__keyline'))} />
+              <i
+                className={classnames(
+                  style('currency-flag'),
+                  style(`currency-flag-${selectedCurrency.currency.toLowerCase()}`),
+                  style('hidden-xs'),
+                  style('m-r-2'),
+                )}
+              />
+            </>
+          )}
+          <span className={size === 'lg' ? style('m-r-1') : ''}>
+            {selectedCurrency.currency.toUpperCase()}
+          </span>
+        </div>
+      ) : (
+        <div className={classnames(style('input-group-btn'), style('amount-currency-select-btn'))}>
+          <Select
+            classNames={classNames}
+            options={selectOptions}
+            selected={{ ...selectedCurrency, note: null }}
+            onChange={handleSelectChange}
+            placeholder="Select an option..."
+            searchPlaceholder={searchPlaceholder}
+            onSearchChange={handleSearchChange}
+            searchValue={searchQuery}
+            size={size}
+            required
+            dropdownRight="xs"
+            dropdownWidth="lg"
+            inverse
+          />
+        </div>
+      )}
+    </div>
+  );
 }
 
 function filterOptionsForQuery(options, query) {
@@ -295,7 +294,6 @@ MoneyInput.propTypes = {
   amount: Types.number,
   size: Types.oneOf([MoneyInput.Size.SMALL, MoneyInput.Size.MEDIUM, MoneyInput.Size.LARGE]),
   onAmountChange: Types.func,
-  locale: Types.string,
   addon: Types.node,
   searchPlaceholder: Types.string,
   /**
@@ -310,7 +308,6 @@ MoneyInput.propTypes = {
 MoneyInput.defaultProps = {
   id: null,
   size: MoneyInput.Size.LARGE,
-  locale: 'en-GB',
   addon: null,
   searchPlaceholder: '',
   onSearchChange: undefined,
@@ -322,3 +319,5 @@ MoneyInput.defaultProps = {
   onCustomAction: null,
   classNames: {},
 };
+
+export default MoneyInput;

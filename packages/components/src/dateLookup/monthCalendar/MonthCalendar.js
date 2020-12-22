@@ -1,41 +1,50 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import { useIntl } from 'react-intl';
 import Types from 'prop-types';
 import { formatDate } from '@transferwise/formatting';
 
 import Header from '../header';
 import MonthCalendarTable from './table';
 
-class MonthCalendar extends PureComponent {
-  onMonthSelect = (month) => {
-    this.props.onViewDateUpdate({ month });
-    this.props.onSelect();
-  };
+function MonthCalendar({
+  selectedDate,
+  min,
+  max,
+  viewYear,
+  placeholder,
+  onSelect,
+  onLabelClick,
+  onViewDateUpdate,
+}) {
+  const intl = useIntl();
 
-  selectPreviousYear = () => {
-    this.props.onViewDateUpdate({ year: this.props.viewYear - 1 });
-  };
-
-  selectNextYear = () => {
-    this.props.onViewDateUpdate({ year: this.props.viewYear + 1 });
-  };
-
-  render() {
-    const { selectedDate, min, max, viewYear, locale, placeholder, onLabelClick } = this.props;
-    return (
-      <div>
-        <Header
-          label={formatDate(new Date(viewYear, 0), locale, { year: 'numeric' })}
-          onLabelClick={onLabelClick}
-          onPreviousClick={this.selectPreviousYear}
-          onNextClick={this.selectNextYear}
-        />
-        <MonthCalendarTable
-          {...{ selectedDate, min, max, viewYear, locale, placeholder }}
-          onSelect={this.onMonthSelect}
-        />
-      </div>
-    );
+  function onMonthSelect(month) {
+    onViewDateUpdate({ month });
+    onSelect();
   }
+
+  function selectPreviousYear() {
+    onViewDateUpdate({ year: viewYear - 1 });
+  }
+
+  function selectNextYear() {
+    onViewDateUpdate({ year: viewYear + 1 });
+  }
+
+  return (
+    <div>
+      <Header
+        label={formatDate(new Date(viewYear, 0), intl.locale, { year: 'numeric' })}
+        onLabelClick={onLabelClick}
+        onPreviousClick={selectPreviousYear}
+        onNextClick={selectNextYear}
+      />
+      <MonthCalendarTable
+        {...{ selectedDate, min, max, viewYear, placeholder }}
+        onSelect={onMonthSelect}
+      />
+    </div>
+  );
 }
 
 MonthCalendar.propTypes = {
@@ -43,7 +52,6 @@ MonthCalendar.propTypes = {
   min: Types.instanceOf(Date),
   max: Types.instanceOf(Date),
   viewYear: Types.number.isRequired,
-  locale: Types.string.isRequired,
   placeholder: Types.string.isRequired,
   onSelect: Types.func.isRequired,
   onLabelClick: Types.func.isRequired,

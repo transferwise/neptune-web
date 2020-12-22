@@ -1,35 +1,40 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import Types from 'prop-types';
 
 import Header from '../header';
 import YearCalendarTable from './table';
 
-class YearCalendar extends PureComponent {
-  onYearSelect = (year) => {
-    this.props.onViewDateUpdate({ year });
-    this.props.onSelect();
-  };
-
-  selectPreviousYears = () => {
-    this.props.onViewDateUpdate({ year: this.props.viewYear - 20 });
-  };
-
-  selectNextYears = () => {
-    this.props.onViewDateUpdate({ year: this.props.viewYear + 20 });
-  };
-
-  render() {
-    const { selectedDate, min, max, viewYear, locale, placeholder } = this.props;
-    return (
-      <div>
-        <Header onPreviousClick={this.selectPreviousYears} onNextClick={this.selectNextYears} />
-        <YearCalendarTable
-          {...{ selectedDate, min, max, viewYear, locale, placeholder }}
-          onSelect={this.onYearSelect}
-        />
-      </div>
-    );
+function YearCalendar({
+  selectedDate,
+  min,
+  max,
+  viewYear,
+  placeholder,
+  onSelect,
+  onViewDateUpdate,
+}) {
+  function onYearSelect(year) {
+    onViewDateUpdate({ year });
+    onSelect();
   }
+
+  function selectPreviousYears() {
+    onViewDateUpdate({ year: viewYear - 20 });
+  }
+
+  function selectNextYears() {
+    onViewDateUpdate({ year: viewYear + 20 });
+  }
+
+  return (
+    <div>
+      <Header onPreviousClick={selectPreviousYears} onNextClick={selectNextYears} />
+      <YearCalendarTable
+        {...{ selectedDate, min, max, viewYear, placeholder }}
+        onSelect={onYearSelect}
+      />
+    </div>
+  );
 }
 
 YearCalendar.propTypes = {
@@ -37,7 +42,6 @@ YearCalendar.propTypes = {
   min: Types.instanceOf(Date),
   max: Types.instanceOf(Date),
   viewYear: Types.number.isRequired,
-  locale: Types.string.isRequired,
   placeholder: Types.string.isRequired,
   onSelect: Types.func.isRequired,
   onViewDateUpdate: Types.func.isRequired,
