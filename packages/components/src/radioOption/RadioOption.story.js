@@ -30,3 +30,29 @@ export const basic = () => {
     />
   );
 };
+
+export const tile = () => {
+  const checked = boolean('checked', true);
+  const title = text('title', 'title');
+  const content = text('content', 'content');
+  return (
+    <RadioOption
+      media={
+        <img
+          src="https://transferwise.com/public-resources/assets/bank-details/bank-details-flow/finish.svg"
+          alt=""
+        />
+      }
+      presentation={RadioOption.presentation.TILE}
+      title={title}
+      content={content}
+      id="id"
+      name="radio-option"
+      checked={checked}
+      onChange={action('checked')}
+      complex
+      disabled={false}
+      value="value"
+    />
+  );
+};

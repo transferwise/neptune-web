@@ -6,11 +6,21 @@ import { Size, Key } from '../common';
 
 import './Tile.css';
 
-export const Tile = ({ className, description, disabled, href, media, onClick, size, title }) => {
+export const Tile = ({
+  className,
+  description,
+  disabled,
+  href,
+  media,
+  onClick,
+  size,
+  title,
+  as: Element,
+}) => {
   const isSmall = size === Tile.Size.SMALL;
 
   return (
-    <a
+    <Element
       className={classNames(
         'decision',
         'flex-column',
@@ -40,13 +50,14 @@ export const Tile = ({ className, description, disabled, href, media, onClick, s
       <div className="np-tile__media d-flex justify-content-center">{media}</div>
       <div className="np-tile__title">{title}</div>
       {description && <div className="np-tile__description">{description}</div>}
-    </a>
+    </Element>
   );
 };
 
 Tile.Size = Size;
 
 Tile.propTypes = {
+  as: Types.elementType,
   /** Classes to apply to the Tile container */
   className: Types.string,
   description: Types.node,
@@ -62,6 +73,7 @@ Tile.propTypes = {
 };
 
 Tile.defaultProps = {
+  as: 'a',
   className: '',
   description: null,
   disabled: false,

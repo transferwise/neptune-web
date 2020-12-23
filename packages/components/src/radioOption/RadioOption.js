@@ -3,6 +3,7 @@ import Types from 'prop-types';
 
 import Option from '../common/Option';
 import RadioButton from '../common/RadioButton';
+import Tile from '../tile';
 
 const RadioOption = ({
   media,
@@ -15,26 +16,50 @@ const RadioOption = ({
   complex,
   disabled,
   value,
+  presentation,
 }) => {
   const sharedProps = { media, title, content, name, complex, disabled };
-  return (
-    <Option
-      {...sharedProps}
-      button={
-        <RadioButton
+
+  if (presentation === RadioOption.presentation.OPTION) {
+    return (
+      <Option
+        {...sharedProps}
+        button={
+          <RadioButton
+            id={id}
+            name={name}
+            checked={checked}
+            onChange={onChange}
+            disabled={disabled}
+            value={value}
+          />
+        }
+      />
+    );
+  }
+
+  if (presentation === RadioOption.presentation.TILE) {
+    return (
+      <label>
+        <Tile as="div" title={title} description={content} disabled={disabled} media={media} />
+        <input
           id={id}
           name={name}
           checked={checked}
           onChange={onChange}
           disabled={disabled}
           value={value}
+          type="radio"
         />
-      }
-    />
-  );
+      </label>
+    );
+  }
 };
 
+RadioOption.presentation = { OPTION: 'OPTION', TILE: 'TILE' };
+
 RadioOption.propTypes = {
+  presentation: Types.oneOf(Object.values(RadioOption.presentation)),
   media: Types.node,
   id: Types.string.isRequired,
   name: Types.string.isRequired,
@@ -48,6 +73,7 @@ RadioOption.propTypes = {
 };
 
 RadioOption.defaultProps = {
+  presentation: RadioOption.presentation.OPTION,
   media: null,
   content: null,
   checked: false,
