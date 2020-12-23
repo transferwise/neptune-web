@@ -20,24 +20,6 @@ const RadioOption = ({
 }) => {
   const sharedProps = { media, title, content, name, complex, disabled };
 
-  if (presentation === RadioOption.presentation.OPTION) {
-    return (
-      <Option
-        {...sharedProps}
-        button={
-          <RadioButton
-            id={id}
-            name={name}
-            checked={checked}
-            onChange={onChange}
-            disabled={disabled}
-            value={value}
-          />
-        }
-      />
-    );
-  }
-
   if (presentation === RadioOption.presentation.TILE) {
     return (
       <label>
@@ -55,6 +37,22 @@ const RadioOption = ({
       </label>
     );
   }
+
+  return (
+    <Option
+      {...sharedProps}
+      button={
+        <RadioButton
+          id={id}
+          name={name}
+          checked={checked}
+          onChange={onChange}
+          disabled={disabled}
+          value={value}
+        />
+      }
+    />
+  );
 };
 
 RadioOption.presentation = { OPTION: 'OPTION', TILE: 'TILE' };
