@@ -22,7 +22,7 @@ const RadioOption = ({
 
   if (presentation === RadioOption.presentation.TILE) {
     return (
-      <label>
+      <label htmlFor={name}>
         <Tile as="div" title={title} description={content} disabled={disabled} media={media} />
         <input
           className="sr-only"
