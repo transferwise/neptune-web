@@ -43,6 +43,7 @@ const RadioOption = ({
       <label>
         <Tile as="div" title={title} description={content} disabled={disabled} media={media} />
         <input
+          className="sr-only"
           id={id}
           name={name}
           checked={checked}
