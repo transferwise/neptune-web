@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useIntl } from 'react-intl';
 import Types from 'prop-types';
 
 import '../common/polyfills/closest';
@@ -10,16 +11,13 @@ import { explodeDate, convertToLocalMidnight } from './utils';
 import { getMonthNames, isDateValid, isMonthAndYearFormat } from '../common/dateUtils';
 import './DateInput.css';
 
-const DEFAULT_LOCALE = 'en-GB';
-
-const MonthBeforeDay = ['en-US', 'ja-JP'];
+const MonthBeforeDay = ['ja'];
 const INITIAL_DEFAULT_STATE = { year: null, month: null, day: null };
 
 const DateInput = ({
   disabled,
   size,
   value,
-  locale,
   dayLabel,
   monthLabel,
   yearLabel,
@@ -31,6 +29,7 @@ const DateInput = ({
   placeholders,
   id,
 }) => {
+  const intl = useIntl();
   const getDateObject = () => {
     if (value && isDateValid(value)) {
       return typeof value === 'string' ? convertToLocalMidnight(value) : value;
@@ -75,7 +74,7 @@ const DateInput = ({
   };
 
   const getSelectElement = () => {
-    const months = getMonthNames(locale, monthFormat);
+    const months = getMonthNames(intl.locale, monthFormat);
 
     return (
       // eslint-disable-next-line
@@ -97,7 +96,7 @@ const DateInput = ({
 
   const getMonthsOptions = () => {
     const options = [];
-    const months = getMonthNames(locale, monthFormat);
+    const months = getMonthNames(intl.locale, monthFormat);
 
     months.forEach((label, index) => {
       options.push({ value: index, label });
@@ -203,7 +202,7 @@ const DateInput = ({
 
   const monthYearOnly = mode === DateMode.MONTH_YEAR;
   const monthWidth = monthYearOnly ? 'col-sm-8' : 'col-sm-5';
-  const monthBeforeDay = MonthBeforeDay.indexOf(locale) > -1;
+  const monthBeforeDay = MonthBeforeDay.includes(intl.locale);
 
   return (
     <div
@@ -286,7 +285,6 @@ DateInput.propTypes = {
   disabled: Types.bool,
   size: Types.oneOf([DateInput.Size.SMALL, DateInput.Size.MEDIUM, DateInput.Size.LARGE]),
   value: Types.oneOfType([Types.string, Types.instanceOf(Date)]),
-  locale: Types.string,
   onChange: Types.func.isRequired, // eslint-disable-line
   onFocus: Types.func,
   onBlur: Types.func,
@@ -307,7 +305,6 @@ DateInput.defaultProps = {
   disabled: false,
   size: DateInput.Size.MEDIUM,
   value: null,
-  locale: DEFAULT_LOCALE,
   onFocus: null,
   onBlur: null,
   dayLabel: 'Day',

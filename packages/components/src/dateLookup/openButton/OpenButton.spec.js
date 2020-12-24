@@ -1,7 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import * as formatting from '@transferwise/formatting';
 
+import { Provider } from '../../..';
 import OpenButton from '.';
 
 jest.mock('@transferwise/formatting', () => ({
@@ -10,21 +11,25 @@ jest.mock('@transferwise/formatting', () => ({
 
 describe('OpenButton', () => {
   const selectedDate = new Date(1990, 11, 27);
-  const locale = 'xx';
+  const locale = 'en';
   let component;
   let props;
 
   beforeEach(() => {
     props = {
       size: 'md',
-      locale,
       placeholder: 'Enter date..',
       label: '',
       monthFormat: 'long',
       disabled: false,
       onClick: jest.fn(),
     };
-    component = shallow(<OpenButton {...props} />);
+    component = mount(<OpenButton {...props} />, {
+      // eslint-disable-next-line react/prop-types
+      wrappingComponent: ({ children }) => {
+        return <Provider i18n={{ locale, messages: {} }}>{children}</Provider>;
+      },
+    });
   });
 
   it('shows placeholder', () => {

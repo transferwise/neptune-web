@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { customMount } from '../test-utils';
 import Upload from '.';
 import { CompleteStep, UploadImageStep, MediaUploadStep, ProcessingStep } from './steps';
 import { ANIMATION_DURATION_IN_MS } from '../processIndicator';
@@ -71,7 +71,7 @@ const COMPLETED_STEP_PROPS = {
 describe('Upload', () => {
   let component;
   beforeEach(() => {
-    component = shallow(<Upload {...props} />);
+    component = customMount(<Upload {...props} />);
     asyncFileRead.mockImplementation(() => new Promise((resolve) => resolve('a value')));
   });
 
@@ -201,7 +201,7 @@ describe('Upload', () => {
 
   describe('when file is processed', () => {
     it('step changes from UploadImageStep to CompleteStep', (done) => {
-      component = mount(<Upload {...props} />);
+      component = customMount(<Upload {...props} />);
       expect(component.find(UploadImageStep)).toHaveLength(1);
       expect(component.find(ProcessingStep)).toHaveLength(0);
       expect(component.find(CompleteStep)).toHaveLength(0);
@@ -221,7 +221,7 @@ describe('Upload', () => {
     });
 
     it('step CompleteStep is called with error props', (done) => {
-      component = mount(<Upload {...props} />);
+      component = customMount(<Upload {...props} />);
       asyncFileRead.mockImplementation(() => new Promise((resolve, reject) => reject('An error')));
 
       component
@@ -242,7 +242,7 @@ describe('Upload', () => {
     });
 
     it('onSuccess is called with response when httpOptions are provided', (done) => {
-      component = mount(<Upload {...props} httpOptions={{ url: 'a-url' }} />);
+      component = customMount(<Upload {...props} httpOptions={{ url: 'a-url' }} />);
 
       component
         .instance()

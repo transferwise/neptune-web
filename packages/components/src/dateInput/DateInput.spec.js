@@ -1,7 +1,7 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
 
-import DateInput from '.';
+import { DateInput } from '..';
+import { customMount } from '../test-utils';
 
 import { LOCALES, MONTHS_EN, MONTHS_FR } from './data/testFixtures';
 import { fakeEvent } from '../common/fakeEvents';
@@ -28,7 +28,7 @@ describe('Date Input Component', () => {
   const props = { onChange: jest.fn() };
 
   beforeEach(() => {
-    component = shallow(<DateInput {...props} />);
+    component = customMount(<DateInput {...props} />);
 
     selectMonth = component.find(MONTH_SELECTOR);
     inputDay = component.find(DAY_SELECTOR);
@@ -37,6 +37,7 @@ describe('Date Input Component', () => {
 
   afterEach(() => {
     jest.resetAllMocks();
+    // component.detach();
   });
 
   describe('when initialised without a model', () => {
@@ -70,7 +71,7 @@ describe('Date Input Component', () => {
   describe('when initialised with a model', () => {
     describe('as a valid Date instance', () => {
       it(`sets values correctly`, () => {
-        component = shallow(<DateInput {...props} value="1971-02-01" />);
+        component = customMount(<DateInput {...props} value="1971-02-01" />);
 
         selectMonth = component.find(MONTH_SELECTOR);
         inputDay = component.find(DAY_SELECTOR);
@@ -84,7 +85,7 @@ describe('Date Input Component', () => {
 
     describe('as a valid short ISO8601 string', () => {
       it('sets values correctly', () => {
-        component = shallow(<DateInput {...props} value="1990-08-22" />);
+        component = customMount(<DateInput {...props} value="1990-08-22" />);
 
         selectMonth = component.find(MONTH_SELECTOR);
         inputDay = component.find(DAY_SELECTOR);
@@ -98,7 +99,7 @@ describe('Date Input Component', () => {
 
     describe('as a valid short ISO8601 string with year and month only', () => {
       it('sets values correctly', () => {
-        component = shallow(<DateInput {...props} value="1990-08" />);
+        component = customMount(<DateInput {...props} value="1990-08" />);
 
         selectMonth = component.find(MONTH_SELECTOR);
         inputDay = component.find(DAY_SELECTOR);
@@ -112,7 +113,7 @@ describe('Date Input Component', () => {
 
     describe('as a valid long ISO8601 string', () => {
       it('sets values correctly', () => {
-        component = shallow(<DateInput {...props} value="1990-02-28T00:00:00.000Z" />);
+        component = customMount(<DateInput {...props} value="1990-02-28T00:00:00.000Z" />);
 
         selectMonth = component.find(MONTH_SELECTOR);
         inputDay = component.find(DAY_SELECTOR);
@@ -126,7 +127,7 @@ describe('Date Input Component', () => {
 
     describe('when disabled is set to true', () => {
       it('sets values to disabled', () => {
-        component = shallow(<DateInput {...props} disabled />);
+        component = customMount(<DateInput {...props} disabled />);
 
         selectMonth = component.find(MONTH_SELECTOR);
         inputDay = component.find(DAY_SELECTOR);
@@ -140,7 +141,7 @@ describe('Date Input Component', () => {
 
     describe('when disabled is set to false', () => {
       it("doesn't sets values to disabled", () => {
-        component = shallow(<DateInput {...props} />);
+        component = customMount(<DateInput {...props} />);
 
         selectMonth = component.find(MONTH_SELECTOR);
         inputDay = component.find(DAY_SELECTOR);
@@ -155,7 +156,7 @@ describe('Date Input Component', () => {
 
   describe('when locale is provided', () => {
     it('updates selectMonth based on locale', () => {
-      component = shallow(<DateInput {...props} locale={LOCALES.fr} />);
+      component = customMount(<DateInput {...props} />, { locale: LOCALES.fr, messages: {} });
       selectMonth = component.find(MONTH_SELECTOR);
 
       expect(selectMonth.props().options[0].label).toEqual(MONTHS_FR[0]);
@@ -166,7 +167,7 @@ describe('Date Input Component', () => {
     });
 
     it('shows day before month if locale is JP', () => {
-      component = shallow(<DateInput {...props} locale={LOCALES.jp} />);
+      component = customMount(<DateInput {...props} />, { locale: LOCALES.jp, messages: {} });
 
       expect(component.find('.form-control').at(0).type()).toBeInstanceOf(Function);
     });
@@ -175,7 +176,7 @@ describe('Date Input Component', () => {
   describe('when initialised', () => {
     describe('without an initial value', () => {
       it(`doesn't call the onChange callback`, () => {
-        component = mount(<DateInput {...props} />);
+        component = customMount(<DateInput {...props} />);
 
         expect(props.onChange).not.toHaveBeenCalled();
       });
@@ -183,7 +184,7 @@ describe('Date Input Component', () => {
 
     describe('with an initial value', () => {
       it(`doesn't call the onChange callback`, () => {
-        component = mount(<DateInput {...props} value="1990-08" />);
+        component = customMount(<DateInput {...props} value="1990-08" />);
 
         expect(props.onChange).not.toHaveBeenCalled();
       });
@@ -193,7 +194,7 @@ describe('Date Input Component', () => {
   describe('when user interacts', () => {
     describe('with an empty date input', () => {
       it('calls onChange with null if day is not entered', () => {
-        component = mount(<DateInput {...props} />);
+        component = customMount(<DateInput {...props} />);
 
         // Select February
         simulateSelectChange(2);
@@ -206,7 +207,7 @@ describe('Date Input Component', () => {
       });
 
       it('calls onChange with null if month is not selected', () => {
-        component = mount(<DateInput {...props} />);
+        component = customMount(<DateInput {...props} />);
 
         inputDay = component.find(DAY_SELECTOR);
 
@@ -220,7 +221,7 @@ describe('Date Input Component', () => {
       });
 
       it('calls onChange with null if year is not entered', () => {
-        component = mount(<DateInput {...props} />);
+        component = customMount(<DateInput {...props} />);
 
         inputDay = component.find(DAY_SELECTOR);
 
@@ -233,7 +234,7 @@ describe('Date Input Component', () => {
       });
 
       it('returns a valid date if all three fields are entered', () => {
-        component = mount(<DateInput {...props} />);
+        component = customMount(<DateInput {...props} />);
 
         inputDay = component.find(DAY_SELECTOR);
 
@@ -252,7 +253,7 @@ describe('Date Input Component', () => {
 
     describe('with day input', () => {
       it('returns correct value for correct input', () => {
-        component = mount(<DateInput {...props} value="2001-02-11" />);
+        component = customMount(<DateInput {...props} value="2001-02-11" />);
 
         inputDay = component.find(DAY_SELECTOR);
 
@@ -262,7 +263,7 @@ describe('Date Input Component', () => {
       });
 
       it('returns null for invalid input', () => {
-        component = mount(<DateInput {...props} value="2001-01-01" />);
+        component = customMount(<DateInput {...props} value="2001-01-01" />);
 
         inputDay = component.find(DAY_SELECTOR);
 
@@ -272,7 +273,7 @@ describe('Date Input Component', () => {
       });
 
       it('returns null when day input is cleared', () => {
-        component = mount(<DateInput {...props} value="2001-01-01" />);
+        component = customMount(<DateInput {...props} value="2001-01-01" />);
 
         inputDay = component.find(DAY_SELECTOR);
 
@@ -284,7 +285,7 @@ describe('Date Input Component', () => {
 
     describe('with year input', () => {
       it('returns correct value for correct input', () => {
-        component = mount(<DateInput {...props} value="2001-01-01" />);
+        component = customMount(<DateInput {...props} value="2001-01-01" />);
         inputYear = component.find(YEAR_SELECTOR);
 
         inputYear.simulate('change', { target: { value: '1990' } });
@@ -295,7 +296,7 @@ describe('Date Input Component', () => {
 
     describe('with month select', () => {
       it('returns correct value for correct input', () => {
-        component = mount(<DateInput {...props} value="2001-01-01" />);
+        component = customMount(<DateInput {...props} value="2001-01-01" />);
 
         // Selects March
         simulateSelectChange(3);
@@ -304,7 +305,7 @@ describe('Date Input Component', () => {
       });
 
       it('returns null when de-selecting month', () => {
-        component = mount(<DateInput {...props} value="2001-01-01" />);
+        component = customMount(<DateInput {...props} value="2001-01-01" />);
 
         // De-selects Month
         simulateSelectChange(0);
@@ -320,7 +321,7 @@ describe('Date Input Component', () => {
         const onFocus = jest.fn();
         const onBlur = jest.fn();
 
-        component = mount(<DateInput {...props} onFocus={onFocus} onBlur={onBlur} />);
+        component = customMount(<DateInput {...props} onFocus={onFocus} onBlur={onBlur} />);
 
         inputDay = component.find(DAY_SELECTOR);
         inputYear = component.find(YEAR_SELECTOR);
@@ -340,7 +341,7 @@ describe('Date Input Component', () => {
       it('does not call onBlur on IE11 either', () => {
         const onBlur = jest.fn();
 
-        component = mount(<DateInput {...props} onBlur={onBlur} />);
+        component = customMount(<DateInput {...props} onBlur={onBlur} />);
 
         inputDay = component.find(DAY_SELECTOR);
         inputYear = component.find(YEAR_SELECTOR);
@@ -363,7 +364,7 @@ describe('Date Input Component', () => {
 
   describe('when user selects invalid dates', () => {
     it('corrects days in lap years February', () => {
-      component = mount(<DateInput {...props} value="2000-02-29" />);
+      component = customMount(<DateInput {...props} value="2000-02-29" />);
 
       expect(component.find(DAY_SELECTOR).prop('value')).toBe(29);
 
@@ -374,7 +375,7 @@ describe('Date Input Component', () => {
     });
 
     it('corrects days too high in February', () => {
-      component = mount(<DateInput {...props} />);
+      component = customMount(<DateInput {...props} />);
 
       inputDay = component.find(DAY_SELECTOR);
       inputYear = component.find(YEAR_SELECTOR);
@@ -388,7 +389,7 @@ describe('Date Input Component', () => {
     });
 
     it("doesn't correct days in lap years February", () => {
-      component = mount(<DateInput {...props} value="2000-03-29" />);
+      component = customMount(<DateInput {...props} value="2000-03-29" />);
 
       // Selects February
       simulateSelectChange(2);
@@ -397,7 +398,7 @@ describe('Date Input Component', () => {
     });
 
     it('corrects days too high for selected months', () => {
-      component = mount(<DateInput {...props} value="2001-01-31" />);
+      component = customMount(<DateInput {...props} value="2001-01-31" />);
 
       // Selects April
       simulateSelectChange(4);
@@ -406,7 +407,7 @@ describe('Date Input Component', () => {
     });
 
     it('lowers days if value entered too high', () => {
-      const comp = shallow(<DateInput {...props} />);
+      const comp = customMount(<DateInput {...props} />);
 
       inputDay = comp.find(DAY_SELECTOR);
 
@@ -416,7 +417,7 @@ describe('Date Input Component', () => {
     });
 
     it('highers days if value entered too low', () => {
-      const comp = shallow(<DateInput {...props} />);
+      const comp = customMount(<DateInput {...props} />);
 
       inputDay = comp.find(DAY_SELECTOR);
 
@@ -432,7 +433,7 @@ describe('Date Input Component', () => {
         mode: 'month-year',
         value: '2001-01-01',
       };
-      component = mount(<DateInput {...{ ...props, ...extraProps }} />);
+      component = customMount(<DateInput {...{ ...props, ...extraProps }} />);
     });
 
     it('should only display month and year inputs', () => {

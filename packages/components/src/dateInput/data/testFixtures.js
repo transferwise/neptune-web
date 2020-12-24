@@ -29,11 +29,11 @@ export const MONTHS_EN = [
   'December',
 ];
 
-export const LOCALES = {
-  en: 'en-GB',
-  fr: 'fr-FR',
-  us: 'en-US',
-  jp: 'ja-JP',
-};
+export const DEFAULT_LOCALE = 'en';
 
-export const DEFAULT_LOCALE = 'en-GB';
+export const LOCALES = {
+  en: DEFAULT_LOCALE,
+  fr: 'fr',
+  us: DEFAULT_LOCALE,
+  jp: 'ja',
+};

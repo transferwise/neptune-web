@@ -1,17 +1,16 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import Types from 'prop-types';
 import { formatMoney } from '@transferwise/formatting';
 
-const Money = ({ amount, currency, locale }) => <>{formatMoney(amount, currency, locale)}</>;
+const Money = ({ amount, currency }) => {
+  const intl = useIntl();
+  return <>{formatMoney(amount, currency, intl.locale)}</>;
+};
 
 Money.propTypes = {
   amount: Types.number.isRequired,
   currency: Types.string.isRequired,
-  locale: Types.string,
-};
-
-Money.defaultProps = {
-  locale: 'en',
 };
 
 export default Money;
