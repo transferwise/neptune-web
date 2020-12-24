@@ -1,10 +1,9 @@
-import React, { createRef, useState, useEffect } from 'react';
+import React, { PureComponent } from 'react';
+import { injectIntl } from 'react-intl';
 import Types from 'prop-types';
-import classnames from 'classnames';
 
 import KeyCodes from '../common/keyCodes';
 import { Size, MonthFormat, Breakpoint } from '../common';
-import { usePrevious } from '../common/hooks';
 import { isWithinRange, moveToWithinRange } from '../common/dateUtils';
 import { getStartOfDay } from './getStartOfDay';
 
@@ -24,91 +23,96 @@ const MODE = {
   YEAR: 'year',
 };
 
-DateLookup.Size = Size;
+class DateLookup extends PureComponent {
+  static Size = Size;
 
-DateLookup.MonthFormat = MonthFormat;
-function DateLookup(props) {
-  const [selectedDate, setSelectedDate] = useState(getStartOfDay(props.value));
-  const [min, setMin] = useState(getStartOfDay(props.min));
-  const [max, setMax] = useState(getStartOfDay(props.max));
-  const [viewMonth, setViewMonth] = useState((props.value || new Date()).getMonth());
-  const [viewYear, setViewYear] = useState((props.value || new Date()).getFullYear());
-  const [isOpen, setIsOpen] = useState(false);
-  const [mode, setMode] = useState(MODE.DAY);
-  const [isMobile, setIsMobile] = useState(false);
+  static MonthFormat = MonthFormat;
 
-  const elementRef = createRef();
-  const dropdownRef = createRef();
+  element = React.createRef();
 
-  function getWindowSize() {
-    return (
-      (typeof window !== 'undefined' && window.innerWidth) ||
-      (typeof document !== 'undefined' && document.documentElement.clientWidth)
+  dropdown = React.createRef();
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedDate: getStartOfDay(props.value),
+      min: getStartOfDay(props.min),
+      max: getStartOfDay(props.max),
+      viewMonth: (props.value || new Date()).getMonth(),
+      viewYear: (props.value || new Date()).getFullYear(),
+      open: false,
+      mode: MODE.DAY,
+      isMobile: false,
+    };
+    // eslint-disable-next-line react/prop-types
+    this.locale = this.props.intl.locale;
+  }
+
+  getWindowSize = () =>
+    (typeof window !== 'undefined' && window.innerWidth) ||
+    (typeof document !== 'undefined' && document.documentElement.clientWidth);
+
+  static getDerivedStateFromProps(props, state) {
+    const propsSelected = getStartOfDay(props.value);
+    const propsMin = getStartOfDay(props.min);
+    const propsMax = getStartOfDay(props.max);
+    const hasSelectedChanged = +state.selectedDate !== +propsSelected;
+    const hasMinChanged = +state.min !== +propsMin;
+    const hasMaxChanged = +state.max !== +propsMax;
+    if (hasSelectedChanged || hasMinChanged || hasMaxChanged) {
+      const selectedDate = hasSelectedChanged ? propsSelected : state.selectedDate;
+      const min = hasMinChanged ? propsMin : state.min;
+      const max = hasMaxChanged ? propsMax : state.max;
+      // make sure that selected date is within allowed range
+      if (!isWithinRange(selectedDate, min, max)) {
+        props.onChange(moveToWithinRange(selectedDate, min, max));
+        return null;
+      }
+      const viewMonth = (selectedDate || new Date()).getMonth();
+      const viewYear = (selectedDate || new Date()).getFullYear();
+      return { selectedDate, min, max, viewMonth, viewYear };
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps) {
+    if (+this.props.value !== +prevProps.value && this.state.open) {
+      this.focusOn('.active');
+    }
+  }
+
+  componentWillUnmount() {
+    // Prevents memory leak by cleaning state.
+    this.setState = () => {};
+  }
+
+  open = () => {
+    const { onFocus } = this.props;
+
+    this.setState(
+      { open: true, mode: MODE.DAY, isMobile: this.getWindowSize() <= Breakpoint.SMALL },
+      () => {
+        this.adjustIfOffscreen();
+        this.focusOn('.tw-date-lookup-header-current');
+      },
     );
-  }
-
-  const propsSelected = getStartOfDay(props.value);
-  const propsMin = getStartOfDay(props.min);
-  const propsMax = getStartOfDay(props.max);
-  const hasSelectedChanged = +selectedDate !== +propsSelected;
-  const hasMinChanged = +min !== +propsMin;
-  const hasMaxChanged = +max !== +propsMax;
-  if (hasSelectedChanged || hasMinChanged || hasMaxChanged) {
-    const newSelectedDate = hasSelectedChanged ? propsSelected : selectedDate;
-    const newMin = hasMinChanged ? propsMin : min;
-    const newMax = hasMaxChanged ? propsMax : max;
-    // make sure that selected date is within allowed range
-    if (!isWithinRange(newSelectedDate, newMin, newMax)) {
-      props.onChange(moveToWithinRange(newSelectedDate, newMin, newMax));
-      return null;
-    }
-    setSelectedDate(newSelectedDate);
-    setMin(newMin);
-    setMax(newMax);
-    setViewMonth((newSelectedDate || new Date()).getMonth());
-    setViewYear((newSelectedDate || new Date()).getFullYear());
-  }
-
-  const previousPropsValue = usePrevious(props.value);
-  useEffect(() => {
-    if (+props.value !== +previousPropsValue && isOpen) {
-      focusOn('.active');
-    }
-  });
-
-  useEffect(() => {
-    adjustIfOffscreen();
-    focusOn('.tw-date-lookup-header-current');
-  }, [isOpen, mode, isMobile]);
-
-  function open() {
-    const { onFocus } = props;
-
-    setIsOpen(true);
-    setMode(MODE.DAY);
-    setIsMobile(getWindowSize() <= Breakpoint.SMALL);
-
     if (onFocus) {
       onFocus();
     }
-    window.addEventListener('resize', resizeHandler);
-    document.addEventListener('click', handleOutsideClick, true);
-  }
 
-  function resizeHandler() {
-    setIsMobile(getWindowSize() <= Breakpoint.SMALL);
-  }
+    window.addEventListener('resize', this.resizeHandler);
+    document.addEventListener('click', this.handleOutsideClick, true);
+  };
 
-  useEffect(() => {
-    adjustIfOffscreen();
-  }, [isMobile]);
+  resizeHandler = () =>
+    this.setState({ isMobile: this.getWindowSize() <= Breakpoint.SMALL }, this.adjustIfOffscreen());
 
-  function adjustIfOffscreen() {
-    if (!isMobile && isOpen && dropdownRef && dropdownRef.current) {
-      const dropdown = dropdownRef.current;
+  adjustIfOffscreen = () => {
+    if (!this.state.isMobile && this.open && this.dropdown && this.dropdown.current) {
+      const dropdown = this.dropdown.current;
       const bounding = dropdown.getBoundingClientRect();
 
-      const rightSideOffscreen = bounding.right > getWindowSize();
+      const rightSideOffscreen = bounding.right > this.getWindowSize();
       const leftSideOffscreen = bounding.left < 0;
 
       if (rightSideOffscreen) {
@@ -116,73 +120,76 @@ function DateLookup(props) {
         dropdown.classList[leftSideOffscreen ? 'remove' : 'add']('dropdown-menu-xs-right');
       }
     }
-  }
+  };
 
-  function close() {
-    setIsOpen(false);
-    const { onBlur } = props;
+  close = () => {
+    const { onBlur } = this.props;
+    this.setState({ open: false });
     if (onBlur) {
       onBlur();
     }
-    window.removeEventListener('resize', adjustIfOffscreen);
-    document.removeEventListener('click', handleOutsideClick, true);
-  }
+    window.removeEventListener('resize', this.adjustIfOffscreen);
+    document.removeEventListener('click', this.handleOutsideClick, true);
+  };
 
-  function handleOutsideClick(event) {
-    if (!isOpen || isMobile) {
+  handleOutsideClick = (event) => {
+    const { isMobile } = this.state;
+    if (!this.state.open || isMobile) {
       return;
     }
 
-    const dropdown = elementRef.current.querySelector('.dropdown-menu');
+    const dropdown = this.element.current.querySelector('.dropdown-menu');
     if (dropdown && !dropdown.contains(event.target)) {
-      close();
+      this.close();
     }
-  }
+  };
 
-  function handleKeyDown(event) {
+  handleKeyDown = (event) => {
+    const { open } = this.state;
     switch (event.keyCode) {
       case KeyCodes.LEFT:
-        if (isOpen) {
-          adjustDate(-1, -1, -1);
+        if (open) {
+          this.adjustDate(-1, -1, -1);
         } else {
-          open();
+          this.open();
         }
         event.preventDefault();
         break;
       case KeyCodes.UP:
-        if (isOpen) {
-          adjustDate(-7, -4, -4);
+        if (open) {
+          this.adjustDate(-7, -4, -4);
         } else {
-          open();
+          this.open();
         }
         event.preventDefault();
         break;
       case KeyCodes.RIGHT:
-        if (isOpen) {
-          adjustDate(1, 1, 1);
+        if (open) {
+          this.adjustDate(1, 1, 1);
         } else {
-          open();
+          this.open();
         }
         event.preventDefault();
         break;
       case KeyCodes.DOWN:
-        if (isOpen) {
-          adjustDate(7, 4, 4);
+        if (open) {
+          this.adjustDate(7, 4, 4);
         } else {
-          open();
+          this.open();
         }
         event.preventDefault();
         break;
       case KeyCodes.ESCAPE:
-        close();
+        this.close();
         event.preventDefault();
         break;
       default:
         break;
     }
-  }
+  };
 
-  function adjustDate(daysToAdd, monthsToAdd, yearsToAdd) {
+  adjustDate = (daysToAdd, monthsToAdd, yearsToAdd) => {
+    const { selectedDate, min, max, mode } = this.state;
     let date;
     if (selectedDate) {
       date = new Date(
@@ -195,107 +202,113 @@ function DateLookup(props) {
     }
     date = moveToWithinRange(date, min, max);
     if (+date !== +selectedDate) {
-      props.onChange(date);
+      this.props.onChange(date);
     }
-  }
+  };
 
-  function focusOn(preferredElement, fallbackElement) {
-    const el = elementRef.current.querySelector(preferredElement);
+  focusOn = (preferredElement, fallbackElement) => {
+    const el = this.element.current.querySelector(preferredElement);
     if (el) {
       el.focus();
     } else if (fallbackElement) {
-      focusOn(fallbackElement);
+      this.focusOn(fallbackElement);
     }
-  }
+  };
 
-  function switchMode(newMode) {
-    setMode(newMode);
-  }
+  switchMode = (mode) => {
+    this.setState({ mode }, () => {
+      this.focusOn('.active', '.today');
+    });
+  };
 
-  useEffect(() => {
-    focusOn('.active', '.today');
-  }, [mode]);
+  switchToDays = () => this.switchMode(MODE.DAY);
 
-  function switchToDays() {
-    switchMode(MODE.DAY);
-  }
+  switchToMonths = () => this.switchMode(MODE.MONTH);
 
-  function switchToMonths() {
-    switchMode(MODE.MONTH);
-  }
+  switchToYears = () => this.switchMode(MODE.YEAR);
 
-  function switchToYears() {
-    switchMode(MODE.YEAR);
-  }
+  handleSelectedDateUpdate = (selectedDate) => {
+    this.setState({ selectedDate }, () => {
+      this.props.onChange(selectedDate);
+      this.close();
+      this.focusOn('.btn');
+    });
+  };
 
-  useEffect(() => {
-    props.onChange(selectedDate);
-    close();
-    focusOn('.btn');
-  }, [selectedDate]);
+  handleViewDateUpdate = ({ month = this.state.viewMonth, year = this.state.viewYear }) => {
+    this.setState({ viewMonth: month, viewYear: year });
+  };
 
-  function handleViewDateUpdate({ month = viewMonth, year = viewYear }) {
-    setViewMonth(month);
-    setViewYear(year);
-  }
-
-  function getCalendar() {
-    const { placeholder, monthFormat } = props;
+  getCalendar = () => {
+    const { selectedDate, min, max, viewMonth, viewYear, mode } = this.state;
+    const { placeholder, monthFormat } = this.props;
     return (
       <>
         {mode === MODE.DAY && (
           <DayCalendar
-            {...{ selectedDate, min, max, viewMonth, viewYear, monthFormat }}
-            onSelect={(date) => setSelectedDate(date)}
-            onLabelClick={switchToYears}
-            onViewDateUpdate={handleViewDateUpdate}
+            {...{ selectedDate, min, max, viewMonth, viewYear, locale: this.locale, monthFormat }}
+            onSelect={this.handleSelectedDateUpdate}
+            onLabelClick={this.switchToYears}
+            onViewDateUpdate={this.handleViewDateUpdate}
           />
         )}
         {mode === MODE.MONTH && (
           <MonthCalendar
-            {...{ selectedDate, min, max, viewYear, placeholder }}
-            onSelect={switchToDays}
-            onLabelClick={switchToYears}
-            onViewDateUpdate={handleViewDateUpdate}
+            {...{ selectedDate, min, max, viewYear, locale: this.locale, placeholder }}
+            onSelect={this.switchToDays}
+            onLabelClick={this.switchToYears}
+            onViewDateUpdate={this.handleViewDateUpdate}
           />
         )}
         {mode === MODE.YEAR && (
           <YearCalendar
-            {...{ selectedDate, min, max, viewYear, placeholder }}
-            onSelect={switchToMonths}
-            onViewDateUpdate={handleViewDateUpdate}
+            {...{ selectedDate, min, max, viewYear, locale: this.locale, placeholder }}
+            onSelect={this.switchToMonths}
+            onViewDateUpdate={this.handleViewDateUpdate}
           />
         )}
       </>
     );
-  }
+  };
 
-  const { size, placeholder, label, monthFormat, disabled } = props;
-  return (
-    <div // eslint-disable-line jsx-a11y/no-static-element-interactions
-      ref={elementRef}
-      className={classnames('btn-group', 'btn-block', 'dropdown', { open: isOpen })}
-      onKeyDown={handleKeyDown}
-    >
-      <OpenButton
-        {...{ selectedDate, size, placeholder, label, monthFormat, disabled }}
-        onClick={open}
-      />
-      {isMobile ? (
-        <Dimmer open={isOpen} onClose={close}>
-          <SlidingPanel open={isOpen} position="bottom">
-            {getCalendar()}
-          </SlidingPanel>
-        </Dimmer>
-      ) : (
-        isOpen && (
-          <div ref={dropdownRef} className="dropdown-menu tw-date-lookup-menu">
-            {getCalendar()}
-          </div>
-        )
-      )}
-    </div>
-  );
+  render() {
+    const { selectedDate, open, isMobile } = this.state;
+
+    const { size, placeholder, label, monthFormat, disabled } = this.props;
+    return (
+      <div // eslint-disable-line jsx-a11y/no-static-element-interactions
+        ref={this.element}
+        className={`btn-group btn-block dropdown ${open ? 'open' : ''}`}
+        onKeyDown={this.handleKeyDown}
+      >
+        <OpenButton
+          {...{
+            selectedDate,
+            size,
+            locale: this.locale,
+            placeholder,
+            label,
+            monthFormat,
+            disabled,
+          }}
+          onClick={this.open}
+        />
+        {isMobile ? (
+          <Dimmer open={open} onClose={this.close}>
+            <SlidingPanel open={open} position="bottom">
+              {this.getCalendar()}
+            </SlidingPanel>
+          </Dimmer>
+        ) : (
+          open && (
+            <div ref={this.dropdown} className="dropdown-menu tw-date-lookup-menu">
+              {this.getCalendar()}
+            </div>
+          )
+        )}
+      </div>
+    );
+  }
 }
 
 DateLookup.propTypes = {
@@ -325,4 +338,4 @@ DateLookup.defaultProps = {
   onBlur: null,
 };
 
-export default DateLookup;
+export default injectIntl(DateLookup);

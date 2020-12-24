@@ -26,6 +26,7 @@ describe('DateLookup view', () => {
       onChange: jest.fn(),
     };
     component = shallow(<DateLookup {...props} />);
+    console.log('component', component);
   });
 
   it('shows open button', () => {
