@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import Types from 'prop-types';
 import { isNull } from '@transferwise/neptune-validation';
+import { useIntl } from 'react-intl';
 import BasicTypeSchema from '../basicTypeSchema';
 import { isStatus2xx, isStatus422, QueryablePromise } from '../../common/api/utils';
+import messages from './PersistAsyncSchema.messages';
 
 const PersistAsyncSchema = (props) => {
+  const intl = useIntl();
+
   const [persistAsyncModel, setPersistAsyncModel] = useState(null);
   const [persistAsyncError, setPersistAsyncError] = useState(null);
   const [fieldSubmitted, setFieldSubmitted] = useState(false);
@@ -16,7 +20,7 @@ const PersistAsyncSchema = (props) => {
   }
 
   const setGenericPersistAsyncError = () =>
-    setPersistAsyncError('Something went wrong, please try again later!');
+    setPersistAsyncError(intl.formatMessage(messages.genericError));
 
   const getPersistAsyncResponse = async (currentPersistAsyncModel, persistAsyncSpec) => {
     const signal = abortCurrentRequestAndGetNewAbortSignal();
