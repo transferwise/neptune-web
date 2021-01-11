@@ -6,7 +6,7 @@ import ObjectSchema from '../objectSchema';
 import OneOfSchema from '../oneOfSchema';
 import AllOfSchema from '../allOfSchema';
 import PersistAsyncSchema from '../persistAsyncSchema';
-import { getSchemaType, schemaType } from './schemaType';
+import { getSchemaType, schemaType } from '../../common/schemaTypes/schemaTypes';
 
 const GenericSchemaForm = (props) => {
   const { schema } = props;

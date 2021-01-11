@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@32.0.1...@transferwise/components@32.0.2) (2021-01-11)
+
+
+### Bug Fixes
+
+* correct mapLocale logic ([b7eed21](https://github.com/transferwise/neptune-web/commit/b7eed215779063d2b7f542b6fd40a68e3da60c3f))
+
+
+
+
+
+## [32.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@32.0.0...@transferwise/components@32.0.1) (2021-01-07)
+
+
+### Bug Fixes
+
+* not opening currency dropdown in MoneyInput component ([#753](https://github.com/transferwise/neptune-web/issues/753)) ([f0bd99f](https://github.com/transferwise/neptune-web/commit/f0bd99fecbd9f514ca13d8989d01491717f8a47e))
+
+
+
+
+
+# [32.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.5.0...@transferwise/components@32.0.0) (2020-12-16)
+
+
+* feat!: internalization support (#674) ([aa9750d](https://github.com/transferwise/neptune-web/commit/aa9750de9268d928365fd49ad8f5379bb6e858b7)), closes [#674](https://github.com/transferwise/neptune-web/issues/674)
+
+
+### BREAKING CHANGES
+
+* - use `Provider` component
+- provide `react-intl` v5.x.x
+
+
+
+
+
 ## [31.4.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.4.1...@transferwise/components@31.4.2) (2020-12-14)
 
 

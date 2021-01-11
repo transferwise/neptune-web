@@ -8,6 +8,7 @@ import {
   PhoneNumberInput,
   RadioGroup,
   Select,
+  Tabs,
   TextareaWithDisplayFormat,
   Upload,
 } from '@transferwise/components';
@@ -248,6 +249,37 @@ describe('FormControl', () => {
 
     testChangeHandler(() => {
       radioGroup.simulate('change', 1);
+    }, 1);
+  });
+
+  describe('type: tabs', () => {
+    let tabs;
+
+    beforeEach(() => {
+      props = {
+        type: 'tab',
+        options: [
+          { value: 0, label: 'Zero' },
+          { value: 1, label: 'One' },
+        ],
+        onChange: jest.fn().mockImplementation((newValue) => {
+          currentValue = newValue;
+        }),
+      };
+      component = shallow(<FormControl {...{ ...defaultProps, ...props }} />);
+      tabs = component.find(Tabs);
+    });
+
+    afterEach(() => {
+      component.unmount();
+    });
+
+    it('should render tab', () => {
+      expect(tabs.exists()).toBeTruthy();
+    });
+
+    testChangeHandler(() => {
+      tabs.simulate('tabSelect', 1);
     }, 1);
   });
 

@@ -33,12 +33,15 @@ class MyApp extends App {
       Router.push(addBasePath('about/Home'));
     }
 
-    window.addEventListener('beforeunload', () => {
-      localStorage.setItem(
-        'sidebar-scroll',
-        document.querySelector('.Sidebar__Inner .Nav').scrollTop,
-      );
-    });
+    // @TODO
+    // We need to show the user a cookie banner before we do this. Because it's used solely for the purposes
+    // of making the site run well, we don't need to ask for consent, but we do need to inform them.
+    // window.addEventListener('beforeunload', () => {
+    //   localStorage.setItem(
+    //     'sidebar-scroll',
+    //     document.querySelector('.Sidebar__Inner .Nav').scrollTop,
+    //   );
+    // });
   }
 
   render() {

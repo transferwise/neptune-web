@@ -1,9 +1,9 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import PersistAsyncSchema from './PersistAsyncSchema';
 import BasicTypeSchema from '../basicTypeSchema';
 import SchemaFormControl from '../schemaFormControl';
+import { mount } from '../../test-utils';
 
 const wait = (t) => {
   return act(() => {

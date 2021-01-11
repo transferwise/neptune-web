@@ -182,6 +182,23 @@ describe('Given a component for rendering a form control based on a schema', () 
     });
   });
 
+  describe('when a schema with oneOf two consts is supplied', () => {
+    beforeEach(() => {
+      component.setProps({
+        schema: {
+          oneOf: [
+            { const: 1, title: 'One' },
+            { const: 2, title: 'Two' },
+          ],
+        },
+      });
+    });
+
+    it('should ask the FormControl for a radio control', () => {
+      expect(component.find(FormControl).prop('type')).toEqual('radio');
+    });
+  });
+
   describe('when a schema with oneOf three consts is supplied', () => {
     beforeEach(() => {
       component.setProps({
@@ -294,6 +311,54 @@ describe('Given a component for rendering a form control based on a schema', () 
           { value: 1, label: 'One' },
           { value: 3, label: 'Three' },
         ]);
+      });
+    });
+  });
+
+  describe('when a schema with oneOf objects is supplied with tab control is supplied', () => {
+    const getConstSchemaMappedFromObject = (index) => ({
+      title: 'some title',
+      const: index,
+    });
+
+    describe('when the number of oneOf objects is 3 or less', () => {
+      it('should use type as dictated', () => {
+        const schemaFormControlProps = {
+          schema: {
+            oneOf: [
+              getConstSchemaMappedFromObject(0),
+              getConstSchemaMappedFromObject(1),
+              getConstSchemaMappedFromObject(2),
+            ],
+            originalType: 'object',
+            control: 'tab',
+          },
+        };
+
+        component.setProps(schemaFormControlProps);
+
+        expect(component.find(FormControl).prop('type')).toEqual('tab');
+      });
+    });
+
+    describe('when the number of oneOf objects is greater than 3', () => {
+      it('should override with the select type', () => {
+        const schemaFormControlProps = {
+          schema: {
+            oneOf: [
+              getConstSchemaMappedFromObject(0),
+              getConstSchemaMappedFromObject(1),
+              getConstSchemaMappedFromObject(2),
+              getConstSchemaMappedFromObject(3),
+            ],
+            originalType: 'object',
+            control: 'tab',
+          },
+        };
+
+        component.setProps(schemaFormControlProps);
+
+        expect(component.find(FormControl).prop('type')).toEqual('select');
       });
     });
   });

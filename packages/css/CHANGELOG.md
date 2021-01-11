@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.0.4...@transferwise/neptune-css@5.1.0) (2020-12-16)
+
+
+### Features
+
+* internalization support ([#674](https://github.com/transferwise/neptune-web/issues/674)) ([10c533f](https://github.com/transferwise/neptune-web/commit/10c533fd9af2bb25d0f9b195ea941989252bf09e))
+
+
+
+
+
 ## [5.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.0.3...@transferwise/neptune-css@5.0.4) (2020-12-07)
 
 **Note:** Version bump only for package @transferwise/neptune-css
