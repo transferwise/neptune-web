@@ -87,7 +87,13 @@ The rules are simple:
 - The type must be one of the following: [`fix`, `feat`, `refactor`, `build`, `chore`, `docs`, `perf`, `test`]
 - If you are fixing something, use `fix`. This will bump the patch version.
 - If you are adding a new feature, use `feat`. This will bump the minor version.
-- Breaking changes must have the words `BREAKING CHANGE` as the first two words in the commit description. We also add a `!` after the type to make it obvious in the commit log.<sup>*</sup>
+- Breaking changes must have the words `BREAKING CHANGE:` as the first two words in the commit description. We also add a `!` after the type to make it obvious in the commit log.<sup>*</sup>
+For example:
+```
+feat!: Some feature
+
+BREAKING CHANGE: Description of breaking changes
+```
 
 Using anything other than `fix` or `feat` without a `!` will not trigger a version bump. This is useful for changes to CI config, documentation or tests. Feel free to choose the type that best reflects the work you're doing.
 
