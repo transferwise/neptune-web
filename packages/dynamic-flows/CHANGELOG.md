@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@8.1.1...@transferwise/dynamic-flows@9.0.0) (2021-01-11)
+
+
+* feat!: Add translations for dynamic flows ([6a80b35](https://github.com/transferwise/neptune-web/commit/6a80b35c3f6a3144a1a0ff8f3cb7e30abb94d3f9))
+
+
+### BREAKING CHANGES
+
+* JsonSchemaForm now requires react-intl provider
+
+
+
+
+
 ## [8.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@8.1.0...@transferwise/dynamic-flows@8.1.1) (2021-01-07)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows

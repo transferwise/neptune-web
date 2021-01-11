@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@32.0.1...@transferwise/components@32.0.2) (2021-01-11)
+
+
+### Bug Fixes
+
+* correct mapLocale logic ([b7eed21](https://github.com/transferwise/neptune-web/commit/b7eed215779063d2b7f542b6fd40a68e3da60c3f))
+
+
+
+
+
 ## [32.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@32.0.0...@transferwise/components@32.0.1) (2021-01-07)
 
 
