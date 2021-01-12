@@ -32,15 +32,17 @@ import '@transferwise/icons/lib/styles/main.min.css';
 import '@transferwise/components/build/main.css';
 
 import { Provider, Button } from '@transferwise/components';
-import translations from '@transferwise/components/build/i18n';
+import componentsTranslations from '@transferwise/components/build/i18n';
+
+import appTranslations from '...';
 
 export default function App() {
-  const currentLocale = ...
-
+  const locale = ...
+  const messages = { ...componentsTranslations[locale], ...appTranslations[locale] };
   return (
     // Components must be wrapped by the Provider component, which initialises and provides
     // context data for them. This should usually be done once at the top app level component
-    <Provider i18n={{ locale: currentLocale, messages: translations[currentLocale] }}>
+    <Provider i18n={{ locale, messages }}>
       ...
       <Button size={Button.Size.SMALL} block>...</Button>
     </Provider>
@@ -55,6 +57,29 @@ By default, apps come polyfilled. If you would like to use an unpolyfilled versi
 ## Translations and the Provider
 
 You need to pass a translations object to the `Provider` component. This can be done in a few different ways, depending on the setup of your library / application.
+
+**Note:** `Provider` component uses react-intl which creates a context using [`RawIntlProvider`](https://formatjs.io/docs/react-intl/components/#rawintlprovider).
+If your code already uses react-intl and its providers (e.g `RawIntlProvider` or `IntlProvider`) replace them with `Provider` passing all translations objects (`@transferwise/components` translation files, your app translation files, etc) there
+(Translations can be combined using rest operator (as shown on above example) or using [`formatjs compile`](https://formatjs.io/docs/guides/distribute-libraries#declaring-with-a-convention)).
+In case your code uses some other framework / library then setup should be handled separately, example with retranslate library:
+
+```js
+import { TranslationProvider } from 'retranslate';
+import appTranslations from '...';
+
+import { Provider } from '@transferwise/components';
+import componentsTranslations from '@transferwise/components/build/i18n';
+
+const locale = '...';
+
+const App = () => (
+  <TranslationProvider messages={appTranslations} language={locale}>
+    <Provider i18n={{ locale, messages: componentsTranslations }}>
+      ..
+    </Provider>
+  </TranslationProvider>
+);
+```
 
 Translation files can be accessed directly, which gives you the opportunity to load them dynamically:
 
