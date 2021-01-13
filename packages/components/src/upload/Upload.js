@@ -35,6 +35,7 @@ const UPLOAD_STEP_COMPONENTS = {
 };
 
 function Upload(props) {
+  const intl = useIntl();
   let dragCounter = 0;
   let timeouts = null;
   const errorMessages = {
@@ -43,7 +44,6 @@ function Upload(props) {
     unknownError: props.csFailureText || intl.formatMessage(messages.csFailureText),
   };
 
-  const intl = useIntl();
   const [errorMessage, setErrorMessage] = useState('');
   const [fileName, setFileName] = useState('');
   const [isComplete, setIsComplete] = useState(false);

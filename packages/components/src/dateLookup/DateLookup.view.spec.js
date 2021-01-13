@@ -1,11 +1,19 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+// eslint-disable-next-line no-unused-vars
+import { shallow, mount } from 'enzyme';
+// eslint-disable-next-line no-unused-vars
+import { injectIntl, useIntl } from 'react-intl';
 
 import DateLookup from '.';
 import OpenButton from './openButton';
 import DayCalendar from './dayCalendar';
 import MonthCalendar from './monthCalendar';
 import YearCalendar from './yearCalendar';
+
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: 'en' }} />,
+  useIntl: () => ({ locale: 'en' }),
+}));
 
 describe('DateLookup view', () => {
   const date = new Date(2018, 11, 27);
@@ -20,13 +28,11 @@ describe('DateLookup view', () => {
       min,
       max,
       size: 'lg',
-      locale: 'xx',
       placeholder: 'Asd..',
       label: 'Date..',
       onChange: jest.fn(),
     };
     component = shallow(<DateLookup {...props} />);
-    console.log('component', component);
   });
 
   it('shows open button', () => {
@@ -36,7 +42,7 @@ describe('DateLookup view', () => {
   it('passes props forward to open button', () => {
     expect(+openButton().prop('selectedDate')).toBe(+date);
     expect(openButton().prop('size')).toBe('lg');
-    expect(openButton().prop('locale')).toBe('xx');
+    expect(openButton().prop('locale')).toBe('en');
     expect(openButton().prop('placeholder')).toBe('Asd..');
     expect(openButton().prop('label')).toBe('Date..');
     expect(openButton().prop('monthFormat')).toBe('long');
@@ -112,7 +118,7 @@ describe('DateLookup view', () => {
 
   describe('when in year mode', () => {
     beforeEach(() => {
-      component.setState({ open: true, mode: 'year' });
+      component.dive().setState({ open: true, mode: 'year' });
     });
 
     it('renders year calendar', () => {

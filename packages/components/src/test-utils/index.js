@@ -1,7 +1,8 @@
 import React from 'react';
+import { IntlProvider } from 'react-intl';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 import { Provider } from '..';
 import en from '../../i18n/en.json';
@@ -16,6 +17,30 @@ function customMount(ui, providerProps = { locale: 'en', messages: en }) {
 }
 
 export { customMount };
+
+const defaultLocale = 'en';
+
+export function mountWithIntl(node) {
+  return mount(node, {
+    wrappingComponent: IntlProvider,
+    wrappingComponentProps: {
+      locale: defaultLocale,
+      defaultLocale,
+      messages: en,
+    },
+  });
+}
+
+export function shallowWithIntl(node) {
+  return shallow(node, {
+    wrappingComponent: IntlProvider,
+    wrappingComponentProps: {
+      locale: defaultLocale,
+      defaultLocale,
+      messages: en,
+    },
+  });
+}
 
 /**
  * Custom `render` function which wraps passed elements in Provider component
