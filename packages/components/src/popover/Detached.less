@@ -1,0 +1,38 @@
+@import (reference) '@transferwise/neptune-css/dist/less/zindex.less';
+
+.np-dropdown {
+  z-index: @zindex-popover;
+  padding: var(--size-16) var(--size-24);
+  background-color: var(--color-background-elevated);
+  background-clip: padding-box;
+  border: 1px solid var(--color-background-elevated);
+  border-radius: var(--radius-small);
+  box-shadow: 0px 0px 40px rgba(34, 48, 73, 0.2);
+
+  #arrow,
+  #arrow::before {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    z-index: -1;
+  }
+
+  #arrow::before {
+    content: '';
+    transform: rotate(45deg);
+    background: #fff;
+  }
+
+  &[data-popper-placement^='top'] > #arrow {
+    bottom: -6px;
+  }
+  &[data-popper-placement^='right'] > #arrow {
+    left: -6px;
+  }
+  &[data-popper-placement^='bottom'] > #arrow {
+    top: -6px;
+  }
+  &[data-popper-placement^='left'] > #arrow {
+    right: -6px;
+  }
+}

@@ -4,7 +4,7 @@ import Types from 'prop-types';
 import './Popover.css';
 
 import { Position } from '../common';
-import Dropdown from './Dropdown';
+import Detached from './Detached';
 
 const Popover = ({
   children,
@@ -47,7 +47,7 @@ const Popover = ({
 
       {open && (
         <div className="np-popover__dropdown">
-          <Dropdown
+          <Detached
             arrow
             flip={flip}
             referenceElement={referenceElement}
@@ -59,7 +59,7 @@ const Popover = ({
           >
             {title && <div className="h5">{title}</div>}
             <div className="np-popover__content m-t-1">{content}</div>
-          </Dropdown>
+          </Detached>
         </div>
       )}
     </span>
