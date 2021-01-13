@@ -78,7 +78,7 @@ const BasicTypeSchema = (props) => {
   const isHidden = props.schema.hidden || isConst;
 
   useEffect(onSchemaChange, [props.schema]);
-  useEffect(onModelChange, [props.model]);
+  useEffect(onModelChange, [props.model, props.submitted]);
 
   const formGroupClasses = {
     'form-group': true,
