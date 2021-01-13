@@ -1,147 +1,114 @@
-import React, { Component, cloneElement } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import Types from 'prop-types';
-import classNames from 'classnames';
-import { Position } from '../common';
-import { getPlacement, getPositionRelativeToParent } from './positioning';
-import { wrapInDOMElementIfNecessary } from './DOMWrapping';
-import KeyCodes from '../common/keyCodes';
-import {
-  addClickClassToDocumentOnIos,
-  removeClickClassFromDocumentOnIos,
-} from '../common/domHelpers';
 
 import './Popover.css';
 
-export default class Popover extends Component {
-  static Placement = Position;
+import { Position } from '../common';
+import Dropdown from './Dropdown';
 
-  constructor() {
-    super();
-    this.state = {
-      isOpen: false,
-    };
-  }
-
-  componentWillUnmount() {
-    this.close();
-  }
-
-  closePopoverOnOutsideClick = (event) => {
-    const popoverClicked = this.popoverElement.contains(event.target);
-    const triggerClicked = this.triggerElement.contains(event.target);
-
-    if (!popoverClicked && !triggerClicked) {
-      this.close();
+const Popover = ({
+  children,
+  content,
+  fallbackPlacements,
+  flip,
+  intialOpen,
+  preferredPlacement,
+  title,
+}) => {
+  const referenceElement = useRef(null);
+  const [open, setOpen] = useState(intialOpen || false);
+  // This instance has to be stored this way so it won't change and can be removed with removeEventListener
+  const closePopoverOnOutsideClick = useCallback((event) => {
+    if (!referenceElement.current.contains(event.target)) {
+      setOpen(false);
     }
+  }, []);
+
+  const handleClick = () => {
+    setOpen(!open);
   };
 
-  handleKeyUp = (event) => {
-    if (event.target.nodeName !== 'BUTTON' && event.keyCode === KeyCodes.ENTER) {
-      this.toggle();
+  useEffect(() => {
+    if (open) {
+      document.addEventListener('click', closePopoverOnOutsideClick, true);
+    } else {
+      document.removeEventListener('click', closePopoverOnOutsideClick, true);
     }
-  };
+  }, [open]);
 
-  open = () => {
-    this.setState({ isOpen: true });
+  return (
+    <span ref={referenceElement} className="d-inline-block">
+      {/* setting ref on child wont work for React components without forwardRef  */}
+      {React.Children.map(children, (child) => {
+        return React.cloneElement(child, {
+          onClick: () => handleClick(),
+        });
+      })}
 
-    addClickClassToDocumentOnIos();
-    document.addEventListener('click', this.closePopoverOnOutsideClick, true);
-  };
-
-  close = () => {
-    this.setState({ isOpen: false });
-
-    removeClickClassFromDocumentOnIos();
-    document.removeEventListener('click', this.closePopoverOnOutsideClick, true);
-  };
-
-  toggle = () => (this.state.isOpen ? this.close() : this.open());
-
-  createTrigger = () => {
-    const { children: child, containsFocusableElement } = this.props;
-    const { isOpen } = this.state;
-    const wrappedChild = wrapInDOMElementIfNecessary(child);
-
-    const focusableProps = !containsFocusableElement && {
-      tabIndex: 0,
-      role: 'button',
-      'aria-expanded': isOpen,
-    };
-
-    return cloneElement(wrappedChild, {
-      ...focusableProps,
-      'data-toggle': 'popover',
-      onClick: this.toggle,
-      onKeyUp: this.handleKeyUp,
-      ref: (element) => {
-        this.triggerElement = element;
-      },
-    });
-  };
-
-  style = (className) => this.props.classNames[className] || className;
-
-  render() {
-    const { title, content, preferredPlacement } = this.props;
-    const { isOpen } = this.state;
-
-    const trigger = this.createTrigger();
-
-    const placement = getPlacement(this.popoverElement, preferredPlacement);
-    const popoverClassName = classNames(
-      'tw-popover',
-      this.style('popover'),
-      this.style('animate'),
-      this.style('in'),
-      { [this.style('scale-down')]: !isOpen },
-      this.style(placement),
-    );
-
-    const { top, left } = getPositionRelativeToParent(this.popoverElement, placement);
-
-    return (
-      <>
-        {trigger}
-        <div
-          className={popoverClassName}
-          ref={(element) => {
-            this.popoverElement = element;
-          }}
-          style={{ top, left }}
-        >
-          {title && <h3 className={classNames(this.style('popover-title'))}>{title}</h3>}
-          <p className={classNames(this.style('popover-content'), this.style('m-b-0'))}>
-            {typeof content === 'function'
-              ? content({ isOpen, close: this.close.bind(this) })
-              : content}
-          </p>
+      {open && (
+        <div className="np-popover__dropdown">
+          <Dropdown
+            arrow
+            flip={flip}
+            referenceElement={referenceElement}
+            fallbackPlacements={fallbackPlacements}
+            placement={preferredPlacement}
+            open={open}
+            extraStyles={{ maxWidth: 252 }}
+            offset={[0, 12]}
+          >
+            {title && <div className="h5">{title}</div>}
+            <div className="np-popover__content m-t-1">{content}</div>
+          </Dropdown>
         </div>
-      </>
-    );
-  }
-}
+      )}
+    </span>
+  );
+};
+
+Popover.Placement = {
+  TOP: Position.TOP,
+  RIGHT: Position.RIGHT,
+  BOTTOM: Position.BOTTOM,
+  LEFT: Position.LEFT,
+};
+
+Popover.defaultProps = {
+  fallbackPlacements: Popover.Placement.TOP,
+  flip: true,
+  intialOpen: false,
+  preferredPlacement: Popover.Placement.TOP,
+  title: undefined,
+};
 
 Popover.propTypes = {
-  children: Types.oneOfType([Types.element, Types.string]).isRequired,
-  title: Types.oneOfType([Types.element, Types.string]),
-  content: Types.oneOfType([Types.element, Types.string, Types.func]).isRequired,
-  containsFocusableElement: Types.bool,
+  children: Types.element.isRequired,
+  content: Types.node.isRequired,
+  fallbackPlacements: Types.arrayOf(
+    Types.oneOf([
+      Popover.Placement.TOP,
+      Popover.Placement.RIGHT,
+      Popover.Placement.BOTTOM,
+      Popover.Placement.LEFT,
+    ]),
+  ),
+  flip: Types.bool,
+  intialOpen: Types.bool,
   preferredPlacement: Types.oneOf([
     Popover.Placement.TOP,
     Popover.Placement.RIGHT,
     Popover.Placement.BOTTOM,
     Popover.Placement.LEFT,
-    Popover.Placement.LEFT_TOP,
-    Popover.Placement.RIGHT_TOP,
-    Popover.Placement.BOTTOM_RIGHT,
-    Popover.Placement.BOTTOM_LEFT,
+    'top-start',
+    'top-end',
+    'bottom-start',
+    'bottom-end',
+    'right-start',
+    'right-end',
+    'left-start',
+    'left-end',
   ]),
-  classNames: Types.objectOf(Types.string),
+  title: Types.string,
 };
 
-Popover.defaultProps = {
-  title: null,
-  containsFocusableElement: false,
-  preferredPlacement: Popover.Placement.RIGHT,
-  classNames: {},
-};
+export default Popover;
