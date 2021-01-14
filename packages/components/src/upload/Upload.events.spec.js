@@ -2,6 +2,14 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Upload from '.';
 
+const defaultLocale = 'en';
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => (
+    <Component {...props} intl={{ locale: defaultLocale, formatMessage: (id) => `${id}` }} />
+  ),
+  defineMessages: (translations) => translations,
+}));
+
 describe('Upload (events)', () => {
   let component;
   const props = {
