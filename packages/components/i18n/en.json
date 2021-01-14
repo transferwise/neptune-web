@@ -1,5 +1,6 @@
 {
   "neptune.CloseButton.ariaLabel": "Close",
+  "neptune.MoneyInput.Select.placeholder": "Select an option...",
   "neptune.Pagination.ariaLabel": "Pagination navigation",
   "neptune.PaginationLink.ariaLabel.active": "Go to page {pageNumber}",
   "neptune.PaginationLink.ariaLabel.inactive": "Current page, page {pageNumber}",
