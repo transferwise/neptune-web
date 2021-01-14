@@ -1,4 +1,4 @@
-import React, { cloneElement } from 'react';
+import React, { cloneElement, useState, useRef } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import requiredIf from 'react-required-if';
@@ -23,6 +23,8 @@ const iconTypeMap = {
 };
 
 const Alert = (props) => {
+  const [shoudlFire, setShouldFire] = useState(false);
+  const linkRef = useRef(null);
   const { arrow, action, children, className, icon, onDismiss, message, type } = props;
 
   if (arrow) {
@@ -37,13 +39,35 @@ const Alert = (props) => {
   const Icon = iconTypeMap[mappedType];
   const iconEl = icon ? cloneElement(icon, { size: 24 }) : <Icon size={24} />;
 
+  const handleTouchStart = () => {
+    setShouldFire(true);
+  };
+
+  const handleTouchMove = () => {
+    setShouldFire(false);
+  };
+
+  const handleTouchEnd = () => {
+    setShouldFire(false);
+    if (shoudlFire) {
+      linkRef.current.click();
+    }
+  };
+
   const alert = (
-    <div role="alert" className={classNames('alert d-flex', `alert-${mappedType}`, className)}>
+    <div
+      role="alert"
+      className={classNames('alert d-flex', `alert-${mappedType}`, className)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchMove={handleTouchMove}
+    >
       {iconEl}
       <div className="alert__message p-l-2 flex-grow-1">
         <div>{children || <InlineMarkdown>{message}</InlineMarkdown>}</div>
         {action && (
           <a
+            ref={linkRef}
             href={action.href}
             className="m-t-1 d-inline-block"
             aria-label={action['aria-label']}
