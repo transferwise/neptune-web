@@ -1,5 +1,5 @@
 import React from 'react';
-import { customMount } from '../test-utils';
+import { shallow, mount } from 'enzyme';
 import Upload from '.';
 import { CompleteStep, UploadImageStep, MediaUploadStep, ProcessingStep } from './steps';
 import { ANIMATION_DURATION_IN_MS } from '../processIndicator';
@@ -11,6 +11,15 @@ jest.mock('./utils/postData', () => ({
 
 jest.mock('./utils/asyncFileRead');
 const { asyncFileRead } = require('./utils/asyncFileRead');
+
+const defaultLocale = 'en';
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => (
+    <Component {...props} intl={{ locale: defaultLocale, formatMessage: (id) => `${id}` }} />
+  ),
+  useIntl: () => ({ locale: defaultLocale }),
+  defineMessages: (translations) => translations,
+}));
 
 const TEST_FILE = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' });
 const ANIMATION_DELAY = ANIMATION_DURATION_IN_MS * 2;
@@ -71,7 +80,7 @@ const COMPLETED_STEP_PROPS = {
 describe('Upload', () => {
   let component;
   beforeEach(() => {
-    component = customMount(<Upload {...props} />);
+    component = shallow(<Upload {...props} />).dive();
     asyncFileRead.mockImplementation(() => new Promise((resolve) => resolve('a value')));
   });
 
@@ -93,7 +102,7 @@ describe('Upload', () => {
   });
 
   it(`renders the MediaUploadStep by default is it's the uploadStep in props`, () => {
-    component.setProps({ uploadStep: Upload.UploadStep.MEDIA_UPLOAD_STEP });
+    component.setProps({ uploadStep: 'mediaUploadStep' });
 
     expect(component.find(MediaUploadStep)).toHaveLength(1);
     expect(component.find(UploadImageStep)).toHaveLength(0);
@@ -201,12 +210,14 @@ describe('Upload', () => {
 
   describe('when file is processed', () => {
     it('step changes from UploadImageStep to CompleteStep', (done) => {
-      component = customMount(<Upload {...props} />);
+      component = mount(<Upload {...props} />);
+      console.log(component.debug());
       expect(component.find(UploadImageStep)).toHaveLength(1);
       expect(component.find(ProcessingStep)).toHaveLength(0);
       expect(component.find(CompleteStep)).toHaveLength(0);
 
       component
+        .find(Upload)
         .instance()
         .fileDropped(TEST_FILE)
         .then(() => {
@@ -221,7 +232,7 @@ describe('Upload', () => {
     });
 
     it('step CompleteStep is called with error props', (done) => {
-      component = customMount(<Upload {...props} />);
+      component = mount(<Upload {...props} />);
       asyncFileRead.mockImplementation(() => new Promise((resolve, reject) => reject('An error')));
 
       component
@@ -242,7 +253,7 @@ describe('Upload', () => {
     });
 
     it('onSuccess is called with response when httpOptions are provided', (done) => {
-      component = customMount(<Upload {...props} httpOptions={{ url: 'a-url' }} />);
+      component = mount(<Upload {...props} httpOptions={{ url: 'a-url' }} />);
 
       component
         .instance()
@@ -252,10 +263,6 @@ describe('Upload', () => {
           expect(props.onSuccess).toHaveBeenCalledWith('ServerResponse', TEST_FILE.name);
           done();
         });
-    });
-
-    it('exposes complete step as a static property', () => {
-      expect(Upload.CompleteStep).toBe(CompleteStep);
     });
   });
 });

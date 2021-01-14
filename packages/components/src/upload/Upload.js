@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useIntl } from 'react-intl';
+import React, { PureComponent } from 'react';
+import { injectIntl } from 'react-intl';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import { Plus as PlusIcon } from '@transferwise/icons';
@@ -34,128 +34,151 @@ const UPLOAD_STEP_COMPONENTS = {
   [UPLOAD_STEPS.MEDIA_UPLOAD_STEP]: MediaUploadStep,
 };
 
-function Upload(props) {
-  const intl = useIntl();
-  let dragCounter = 0;
-  let timeouts = null;
-  const errorMessages = {
-    413: props.csTooLargeMessage || intl.formatMessage(messages.csTooLargeMessage),
-    415: props.csWrongTypeMessage || intl.formatMessage(messages.csWrongTypeMessage),
-    unknownError: props.csFailureText || intl.formatMessage(messages.csFailureText),
-  };
+class Upload extends PureComponent {
+  constructor(props) {
+    super(props);
+    // eslint-disable-next-line react/prop-types
+    this.formatMessage = this.props.intl.formatMessage;
+    this.dragCounter = 0;
+    this.errorMessage = {
+      413: props.csTooLargeMessage || this.formatMessage(messages.csTooLargeMessage),
+      415: props.csWrongTypeMessage || this.formatMessage(messages.csWrongTypeMessage),
+      unknownError: props.csFailureText || this.formatMessage(messages.csFailureText),
+    };
+    this.timeouts = null;
 
-  const [errorMessage, setErrorMessage] = useState('');
-  const [fileName, setFileName] = useState('');
-  const [isComplete, setIsComplete] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [isImage, setIsImage] = useState(false);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [response, setResponse] = useState(null);
-  const [uploadedImage, setUploadedImage] = useState(null);
-  const [isDroppable, setIsDroppable] = useState(false);
+    this.state = {
+      errorMessage: '',
+      fileName: '',
+      isComplete: false,
+      isError: false,
+      isImage: false,
+      isProcessing: false,
+      isSuccess: false,
+      response: null,
+      uploadedImage: null,
+    };
+  }
 
-  function onDragLeave(e) {
+  onDragLeave(e) {
     e.preventDefault();
-    dragCounter -= 1;
-    if (dragCounter === 0) {
-      setIsDroppable(false);
+    this.dragCounter -= 1;
+    if (this.dragCounter === 0) {
+      this.setState({ isDroppable: false });
     }
   }
 
-  function onDragEnter(e) {
+  onDragEnter(e) {
     e.preventDefault();
-    dragCounter += 1;
-    const { usDisabled } = props;
-    if (dragCounter === 1 && !usDisabled) {
-      setIsDroppable(true);
+    this.dragCounter += 1;
+    const { usDisabled } = this.props;
+    if (this.dragCounter === 1 && !usDisabled) {
+      this.setState({ isDroppable: true });
     }
   }
 
-  function onDrop(e) {
+  onDrop(e) {
     e.preventDefault();
-    reset();
+    this.reset();
     if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
-      fileDropped(e.dataTransfer.files[0]);
+      this.fileDropped(e.dataTransfer.files[0]);
     }
   }
 
-  async function onAnimationCompleted(status) {
-    const { animationDelay } = props;
-    const isFailed = status === ProcessIndicator.Status.FAILED;
-    if (isProcessing && (status === ProcessIndicator.Status.SUCCEEDED || isFailed)) {
-      timeouts = setTimeout(() => {
-        setIsProcessing(false);
-        setIsComplete(true);
-        if (isFailed) {
-          setErrorMessage(generateErrorMessage(response.status, errorMessages));
-        }
+  onAnimationCompleted = async (status) => {
+    const { response, isProcessing, fileName } = this.state;
+    // Success.
+    const { animationDelay } = this.props;
+    if (isProcessing && status === ProcessIndicator.Status.SUCCEEDED) {
+      const { onSuccess } = this.props;
+      this.timeouts = setTimeout(() => {
+        this.setState(
+          {
+            isProcessing: false,
+            isComplete: true,
+          },
+          () => (onSuccess ? onSuccess(response, fileName) : {}),
+        );
       }, animationDelay);
     }
-  }
-
-  useEffect(() => {
-    if (errorMessage) {
-      if (props.onFailure) {
-        props.onFailure(response);
-      }
-    } else if (props.onSuccess) {
-      props.onSuccess(response, fileName);
+    // Failure.
+    if (isProcessing && status === ProcessIndicator.Status.FAILED) {
+      const { onFailure } = this.props;
+      this.timeouts = setTimeout(() => {
+        this.setState(
+          {
+            errorMessage: generateErrorMessage(response.status, this.errorMessage),
+            isProcessing: false,
+            isComplete: true,
+          },
+          () => (onFailure ? onFailure(response) : {}),
+        );
+      }, animationDelay);
     }
-  }, [errorMessage]);
+  };
 
-  function asyncPost(file) {
-    const { httpOptions } = props;
+  asyncPost = (file) => {
+    const { httpOptions } = this.props;
     const { fileInputName = file.name, data = {} } = httpOptions || {};
 
     const formData = new FormData();
     formData.append(fileInputName, file);
     Object.keys(data).forEach((key) => formData.append(key, data[key]));
-    return postData(prepareHttpOptions(httpOptions), formData);
-  }
+    return postData(this.prepareHttpOptions(httpOptions), formData);
+  };
 
-  function asyncResponse(res, type) {
+  asyncResponse = (response, type) => {
     // Gives time to the animation callback to fire.
-    timeouts = setTimeout(() => {
-      setResponse(res);
-      setIsError(type === PROCESS_STATE[0]);
-      setIsSuccess(type === PROCESS_STATE[1]);
+    this.timeouts = setTimeout(() => {
+      this.setState({
+        response,
+        isError: type === PROCESS_STATE[0],
+        isSuccess: type === PROCESS_STATE[1],
+      });
     }, ANIMATION_FIX);
-  }
+  };
 
-  function prepareHttpOptions(httpOptions) {
+  prepareHttpOptions = (httpOptions) => {
     if (!httpOptions.url) {
       throw new Error('You must supply a URL to post image data asynchronously');
     }
     return httpOptions;
-  }
+  };
 
-  function handleOnClear(e) {
+  handleOnClear = (e) => {
     e.preventDefault();
-    const { onCancel } = props;
+    const { onCancel } = this.props;
     if (onCancel) {
       onCancel();
     }
-    reset();
-  }
 
-  function reset() {
-    dragCounter = 0;
-    clearTimeout(timeouts);
-    setIsComplete(false);
-    setIsError(false);
-    setIsProcessing(false);
-    setIsSuccess(false);
-  }
+    this.reset();
+  };
 
-  function showDataImage(dataUrl) {
+  reset = () => {
+    this.dragCounter = 0;
+    clearTimeout(this.timeouts);
+    this.setState({
+      isComplete: false,
+      isError: false,
+      isProcessing: false,
+      isSuccess: false,
+    });
+  };
+
+  showDataImage = (dataUrl) => {
+    const { isImage } = this.state;
     if (isImage) {
-      setUploadedImage(dataUrl);
+      this.setState({
+        uploadedImage: dataUrl,
+      });
     }
-  }
+  };
 
-  async function fileDropped(file) {
-    if (props.usDisabled) {
+  fileDropped = async (file) => {
+    const { httpOptions, maxSize, onStart, usDisabled, usAccept } = this.props;
+
+    if (usDisabled) {
       return false;
     }
 
@@ -163,12 +186,14 @@ function Upload(props) {
       throw new Error('Could not retrieve file');
     }
 
-    setFileName(file.name);
-    setIsDroppable(false);
-    setIsProcessing(true);
+    this.setState({
+      fileName: file.name,
+      isDroppable: false,
+      isProcessing: true,
+    });
 
-    if (props.onStart) {
-      props.onStart(file);
+    if (onStart) {
+      onStart(file);
     }
 
     let file64 = null;
@@ -176,141 +201,155 @@ function Upload(props) {
     try {
       file64 = await asyncFileRead(file);
     } catch (e) {
-      asyncResponse(e, PROCESS_STATE[0]);
+      this.asyncResponse(e, PROCESS_STATE[0]);
     }
 
     if (!file64) {
       return false;
     }
 
-    setIsImage(getFileType(file, file64).indexOf('image') > -1);
+    this.setState({
+      isImage: getFileType(file, file64).indexOf('image') > -1,
+    });
 
     if (!isTypeValid(file, usAccept, file64)) {
-      asyncResponse(
-        {
-          status: 415,
-          statusText: 'Unsupported Media Type',
-        },
-        PROCESS_STATE[0],
-      );
+      const response = {
+        status: 415,
+        statusText: 'Unsupported Media Type',
+      };
+      this.asyncResponse(response, PROCESS_STATE[0]);
       return false;
     }
 
-    if (!isSizeValid(file, props.maxSize)) {
-      asyncResponse(
-        {
-          status: 413,
-          statusText: 'Request Entity Too Large',
-        },
-        PROCESS_STATE[0],
-      );
+    if (!isSizeValid(file, maxSize)) {
+      const response = {
+        status: 413,
+        statusText: 'Request Entity Too Large',
+      };
+      this.asyncResponse(response, PROCESS_STATE[0]);
       return false;
     }
 
-    if (props.httpOptions) {
+    if (httpOptions) {
       // Post the file to provided endpoint
-      asyncPost(file)
-        .then((res) => asyncResponse(res, 'success'))
+      this.asyncPost(file)
+        .then((response) => this.asyncResponse(response, 'success'))
         .then(() => {
-          showDataImage(file64);
+          this.showDataImage(file64);
           return true;
         })
         .catch((error) => {
-          asyncResponse(error, PROCESS_STATE[0]);
+          this.asyncResponse(error, PROCESS_STATE[0]);
           return false;
         });
     }
     // Post on form submit. And return the encoded image.
-    showDataImage(file64);
-    asyncResponse(file64, 'success');
+    this.showDataImage(file64);
+    this.asyncResponse(file64, 'success');
     return true;
-  }
+  };
 
-  const {
-    usDropMessage,
-    usAccept,
-    usButtonText,
-    usDisabled,
-    usHelpImage,
-    usLabel,
-    usPlaceholder,
-    psButtonText,
-    psProcessingText,
-    csButtonText,
-    csSuccessText,
-    size,
-    uploadStep,
-  } = props;
+  render() {
+    const {
+      usDropMessage,
+      usAccept,
+      usButtonText,
+      usDisabled,
+      usHelpImage,
+      usLabel,
+      usPlaceholder,
+      psButtonText,
+      psProcessingText,
+      csButtonText,
+      csSuccessText,
+      size,
+      uploadStep,
+    } = this.props;
 
-  const UploadStepComponent = UPLOAD_STEP_COMPONENTS[uploadStep] || UploadImageStep;
+    const {
+      errorMessage,
+      fileName,
+      isComplete,
+      isDroppable,
+      isError,
+      isImage,
+      isProcessing,
+      isSuccess,
+      uploadedImage,
+    } = this.state;
 
-  return (
-    <div
-      className={classNames({
-        droppable: true,
-        'tw-droppable-sm droppable-sm': size === 'sm',
-        'tw-droppable-md droppable-md': size === 'md' || !size,
-        'tw-droppable-lg droppable-lg': size === 'lg',
-        'droppable-dropping': isDroppable,
-        'droppable-processing': isProcessing,
-        'droppable-complete': isComplete,
-      })}
-      onDragEnter={(e) => onDragEnter(e)}
-      onDragLeave={(e) => onDragLeave(e)}
-      onDrop={(e) => onDrop(e)}
-      onDragOver={(e) => e.preventDefault()}
-    >
-      {!isProcessing && !isComplete && (
-        <UploadStepComponent
-          fileDropped={(file) => fileDropped(file)}
-          isComplete={isComplete}
-          usAccept={usAccept}
-          usButtonText={usButtonText || intl.formatMessage(messages.usButtonText)}
-          usDisabled={usDisabled}
-          usHelpImage={usHelpImage}
-          usLabel={usLabel}
-          usPlaceholder={usPlaceholder || intl.formatMessage(messages.usPlaceholder)}
-        />
-      )}
+    const UploadStepComponent = UPLOAD_STEP_COMPONENTS[uploadStep] || UploadImageStep;
 
-      {isProcessing && (
-        <ProcessingStep
-          isComplete={isComplete}
-          isError={isError}
-          isSuccess={isSuccess}
-          onAnimationCompleted={(status) => onAnimationCompleted(status)}
-          onClear={(e) => handleOnClear(e)}
-          psButtonText={psButtonText || intl.formatMessage(messages.psButtonText)}
-          psProcessingText={psProcessingText || intl.formatMessage(messages.psProcessingText)}
-        />
-      )}
-      {/* Starts render the step when isSuccess or isError are true so markup is there when css transition kicks in
+    return (
+      <div
+        className={classNames({
+          droppable: true,
+          'tw-droppable-sm droppable-sm': size === 'sm',
+          'tw-droppable-md droppable-md': size === 'md' || !size,
+          'tw-droppable-lg droppable-lg': size === 'lg',
+          'droppable-dropping': isDroppable,
+          'droppable-processing': isProcessing,
+          'droppable-complete': isComplete,
+        })}
+        onDragEnter={(e) => this.onDragEnter(e)}
+        onDragLeave={(e) => this.onDragLeave(e)}
+        onDrop={(e) => this.onDrop(e)}
+        onDragOver={(e) => e.preventDefault()}
+      >
+        {!isProcessing && !isComplete && (
+          <UploadStepComponent
+            fileDropped={(file) => this.fileDropped(file)}
+            isComplete={isComplete}
+            usAccept={usAccept}
+            usButtonText={usButtonText || this.formatMessage(messages.usButtonText)}
+            usDisabled={usDisabled}
+            usHelpImage={usHelpImage}
+            usLabel={usLabel}
+            usPlaceholder={usPlaceholder || this.formatMessage(messages.usPlaceholder)}
+          />
+        )}
+
+        {isProcessing && (
+          <ProcessingStep
+            isComplete={isComplete}
+            isError={isError}
+            isSuccess={isSuccess}
+            onAnimationCompleted={(status) => this.onAnimationCompleted(status)}
+            onClear={(e) => this.handleOnClear(e)}
+            psButtonText={psButtonText || this.formatMessage(messages.psButtonText)}
+            psProcessingText={psProcessingText || this.formatMessage(messages.psProcessingText)}
+          />
+        )}
+        {/* Starts render the step when isSuccess or isError are true so markup is there when css transition kicks in
         css transition to work properly */}
-      {(isSuccess || isError || isComplete) && (
-        <CompleteStep
-          fileName={fileName}
-          isComplete={isComplete}
-          isError={isError}
-          isImage={isImage}
-          onClear={(e) => handleOnClear(e)}
-          csButtonText={csButtonText || intl.formatMessage(messages.csButtonText)}
-          csFailureText={errorMessage}
-          csSuccessText={csSuccessText || intl.formatMessage(messages.csSuccessText)}
-          uploadedImage={uploadedImage}
-        />
-      )}
-      {!isProcessing && (
-        <div className="droppable-dropping-card droppable-card">
-          <div className="droppable-card-content">
-            <div className="circle circle-sm p-t-1 text-info">
-              <PlusIcon />
+        {(isSuccess || isError || isComplete) && (
+          <CompleteStep
+            fileName={fileName}
+            isComplete={isComplete}
+            isError={isError}
+            isImage={isImage}
+            onClear={(e) => this.handleOnClear(e)}
+            csButtonText={csButtonText || this.formatMessage(messages.csButtonText)}
+            csFailureText={errorMessage}
+            csSuccessText={csSuccessText || this.formatMessage(messages.csSuccessText)}
+            uploadedImage={uploadedImage}
+          />
+        )}
+        {!isProcessing && (
+          <div className="droppable-dropping-card droppable-card">
+            <div className="droppable-card-content">
+              <div className="circle circle-sm p-t-1 text-info">
+                <PlusIcon />
+              </div>
+              <h4 className="m-t-3">
+                {usDropMessage || this.formatMessage(messages.usDropMessage)}
+              </h4>
             </div>
-            <h4 className="m-t-3">{usDropMessage || intl.formatMessage(messages.usDropMessage)}</h4>
           </div>
-        </div>
-      )}
-    </div>
-  );
+        )}
+      </div>
+    );
+  }
 }
 
 Upload.UploadStep = UPLOAD_STEPS;
@@ -380,4 +419,4 @@ Upload.defaultProps = {
 
 Upload.CompleteStep = CompleteStep;
 
-export default Upload;
+export default injectIntl(Upload);

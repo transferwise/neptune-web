@@ -10,6 +10,15 @@ jest.mock('./currencyFormatting', () => ({
 
 const numberFormatting = require('./currencyFormatting');
 
+const defaultLocale = 'en';
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => (
+    <Component {...props} intl={{ locale: defaultLocale, formatMessage: (id) => `${id}` }} />
+  ),
+  useIntl: () => ({ locale: defaultLocale }),
+  defineMessages: (translations) => translations,
+}));
+
 describe('Money Input', () => {
   let component;
   let props;
@@ -65,7 +74,7 @@ describe('Money Input', () => {
       onAmountChange: jest.fn(),
       onCurrencyChange: jest.fn(),
     };
-    component = shallow(<MoneyInput {...props} />);
+    component = shallow(<MoneyInput {...props} />).dive();
   });
 
   function currencySelect() {
@@ -271,34 +280,24 @@ describe('Money Input', () => {
       );
     });
 
-    it('formats the amount passed in', () => {
-      component.setProps({ amount: 123, locale: 'et-EE', numberFormatPrecision: 3 });
-      expect(amountInput().prop('value')).toBe('formatted 123, et-EE, eur');
-    });
-
     it('formats the number you input after you blur it', () => {
-      component.setProps({ locale: 'en-US', numberFormatPrecision: 3 });
+      component.setProps({ numberFormatPrecision: 3 });
       numberFormatting.parseAmount = jest.fn(parseFloat);
       enterAmount('123.45');
       expect(amountInput().prop('value')).toBe('123.45');
 
       blurAmount();
-      expect(amountInput().prop('value')).toBe('formatted 123.45, en-US, eur');
-    });
-
-    it('formats a value of 0', () => {
-      component.setProps({ amount: 0, locale: 'et-EE', numberFormatPrecision: 3 });
-      expect(amountInput().prop('value')).toBe('formatted 0, et-EE, eur');
+      expect(amountInput().prop('value')).toBe('formatted 123.45, en, eur');
     });
   });
 
   it('parses the number you input and calls onAmountChange with it', () => {
     const onAmountChange = jest.fn();
     let assertions = 0;
-    component.setProps({ onAmountChange, locale: 'es-ES', numberFormatPrecision: 1 });
+    component.setProps({ onAmountChange, numberFormatPrecision: 1 });
     numberFormatting.parseAmount = jest.fn((amount, currency, locale) => {
       expect(amount).toBe('500.1234');
-      expect(locale).toBe('es-ES');
+      expect(locale).toBe('en');
       expect(currency).toBe('eur');
       assertions += 1;
       return 500.1;
@@ -331,7 +330,7 @@ describe('Money Input', () => {
       enterAmount(testValue);
       expect(onAmountChange).not.toHaveBeenCalled();
       expect(numberFormatting.parseAmount).toHaveBeenCalledTimes(1);
-      expect(numberFormatting.parseAmount).toHaveBeenLastCalledWith(testValue, 'eur', 'en-GB');
+      expect(numberFormatting.parseAmount).toHaveBeenLastCalledWith(testValue, 'eur', 'en');
     },
   );
 
@@ -476,13 +475,13 @@ describe('Money Input', () => {
     });
 
     it('shows a formatted placeholder when provided', () => {
-      component.setProps({ placeholder: 12345.67, locale: 'en-US', numberFormatPrecision: 3 });
-      expect(amountInput().prop('placeholder')).toBe('formatted 12345.67, en-US, eur');
+      component.setProps({ placeholder: 12345.67, numberFormatPrecision: 3 });
+      expect(amountInput().prop('placeholder')).toBe('formatted 12345.67, en, eur');
     });
 
     it('allows a placeholder of 0', () => {
-      component.setProps({ placeholder: 0, locale: 'en-US', numberFormatPrecision: 3 });
-      expect(amountInput().prop('placeholder')).toBe('formatted 0, en-US, eur');
+      component.setProps({ placeholder: 0, numberFormatPrecision: 3 });
+      expect(amountInput().prop('placeholder')).toBe('formatted 0, en, eur');
     });
   });
 
