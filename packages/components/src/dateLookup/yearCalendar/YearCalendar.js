@@ -1,40 +1,35 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import Types from 'prop-types';
 
 import Header from '../header';
 import YearCalendarTable from './table';
 
-function YearCalendar({
-  selectedDate,
-  min,
-  max,
-  viewYear,
-  placeholder,
-  onSelect,
-  onViewDateUpdate,
-}) {
-  function onYearSelect(year) {
-    onViewDateUpdate({ year });
-    onSelect();
-  }
+class YearCalendar extends PureComponent {
+  onYearSelect = (year) => {
+    this.props.onViewDateUpdate({ year });
+    this.props.onSelect();
+  };
 
-  function selectPreviousYears() {
-    onViewDateUpdate({ year: viewYear - 20 });
-  }
+  selectPreviousYears = () => {
+    this.props.onViewDateUpdate({ year: this.props.viewYear - 20 });
+  };
 
-  function selectNextYears() {
-    onViewDateUpdate({ year: viewYear + 20 });
-  }
+  selectNextYears = () => {
+    this.props.onViewDateUpdate({ year: this.props.viewYear + 20 });
+  };
 
-  return (
-    <div>
-      <Header onPreviousClick={selectPreviousYears} onNextClick={selectNextYears} />
-      <YearCalendarTable
-        {...{ selectedDate, min, max, viewYear, placeholder }}
-        onSelect={onYearSelect}
-      />
-    </div>
-  );
+  render() {
+    const { selectedDate, min, max, viewYear, placeholder } = this.props;
+    return (
+      <div>
+        <Header onPreviousClick={this.selectPreviousYears} onNextClick={this.selectNextYears} />
+        <YearCalendarTable
+          {...{ selectedDate, min, max, viewYear, placeholder }}
+          onSelect={this.onYearSelect}
+        />
+      </div>
+    );
+  }
 }
 
 YearCalendar.propTypes = {
