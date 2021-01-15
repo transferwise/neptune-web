@@ -1,4 +1,5 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { shallow } from 'enzyme';
 
 import DateLookup from '.';
@@ -7,10 +8,7 @@ import DayCalendar from './dayCalendar';
 import MonthCalendar from './monthCalendar';
 import YearCalendar from './yearCalendar';
 
-jest.mock('react-intl', () => ({
-  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: 'en' }} />,
-  useIntl: () => ({ locale: 'en' }),
-}));
+jest.mock('react-intl');
 
 describe('DateLookup view', () => {
   const date = new Date(2018, 11, 27);
@@ -29,7 +27,8 @@ describe('DateLookup view', () => {
       label: 'Date..',
       onChange: jest.fn(),
     };
-    component = shallow(<DateLookup {...props} />).dive();
+    useIntl.mockReturnValue({ locale: 'en' });
+    component = shallow(<DateLookup {...props} />);
   });
 
   it('shows open button', () => {

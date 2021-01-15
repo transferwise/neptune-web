@@ -3,8 +3,37 @@ import { useIntl } from 'react-intl';
 import { shallow, mount } from 'enzyme';
 import { DateInput } from '..';
 
-import { LOCALES, MONTHS_EN, MONTHS_FR } from './data/testFixtures';
 import { fakeEvent } from '../common/fakeEvents';
+
+const MONTHS_FR = [
+  'janvier',
+  'février',
+  'mars',
+  'avril',
+  'mai',
+  'juin',
+  'juillet',
+  'août',
+  'septembre',
+  'octobre',
+  'novembre',
+  'décembre',
+];
+
+const MONTHS_EN = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
 const FEBRUARY_OPTION = { value: 1, label: MONTHS_EN[1] };
 
@@ -14,10 +43,9 @@ const YEAR_SELECTOR = 'input[name="year"]';
 
 jest.mock('react-intl');
 jest.mock('@transferwise/formatting', () => {
-  const { MONTHS_FR, LOCALES, MONTHS_EN } = require('./data/testFixtures'); // eslint-disable-line
   return {
     formatDate: (month, locale) =>
-      locale === LOCALES.fr ? MONTHS_FR[month.getMonth()] : MONTHS_EN[month.getMonth()],
+      locale === 'fr' ? MONTHS_FR[month.getMonth()] : MONTHS_EN[month.getMonth()],
   };
 });
 
@@ -39,7 +67,6 @@ describe('Date Input Component', () => {
 
   afterEach(() => {
     jest.resetAllMocks();
-    // component.detach();
   });
 
   describe('when initialised without a model', () => {
@@ -158,7 +185,7 @@ describe('Date Input Component', () => {
 
   describe('when locale is provided', () => {
     it('updates selectMonth based on locale', () => {
-      useIntl.mockReturnValue({ locale: LOCALES.fr });
+      useIntl.mockReturnValue({ locale: 'fr' });
       component = shallow(<DateInput {...props} />);
       selectMonth = component.find(MONTH_SELECTOR);
 
@@ -170,7 +197,7 @@ describe('Date Input Component', () => {
     });
 
     it('shows day before month if locale is JP', () => {
-      useIntl.mockReturnValue({ locale: LOCALES.jp });
+      useIntl.mockReturnValue({ locale: 'ja' });
       component = shallow(<DateInput {...props} />);
 
       expect(component.find('.form-control').at(0).type()).toBeInstanceOf(Function);
@@ -411,7 +438,7 @@ describe('Date Input Component', () => {
     });
 
     it('lowers days if value entered too high', () => {
-      const comp = mount(<DateInput {...props} />);
+      const comp = shallow(<DateInput {...props} />);
 
       inputDay = comp.find(DAY_SELECTOR);
 
@@ -421,7 +448,7 @@ describe('Date Input Component', () => {
     });
 
     it('highers days if value entered too low', () => {
-      const comp = mount(<DateInput {...props} />);
+      const comp = shallow(<DateInput {...props} />);
 
       inputDay = comp.find(DAY_SELECTOR);
 

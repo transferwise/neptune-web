@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { injectIntl } from 'react-intl';
 import Types from 'prop-types';
 
 import KeyCodes from '../common/keyCodes';
@@ -44,8 +43,6 @@ class DateLookup extends PureComponent {
       mode: MODE.DAY,
       isMobile: false,
     };
-    // eslint-disable-next-line react/prop-types
-    this.locale = this.props.intl.locale;
   }
 
   getWindowSize = () =>
@@ -246,7 +243,7 @@ class DateLookup extends PureComponent {
       <>
         {mode === MODE.DAY && (
           <DayCalendar
-            {...{ selectedDate, min, max, viewMonth, viewYear, locale: this.locale, monthFormat }}
+            {...{ selectedDate, min, max, viewMonth, viewYear, monthFormat }}
             onSelect={this.handleSelectedDateUpdate}
             onLabelClick={this.switchToYears}
             onViewDateUpdate={this.handleViewDateUpdate}
@@ -254,7 +251,7 @@ class DateLookup extends PureComponent {
         )}
         {mode === MODE.MONTH && (
           <MonthCalendar
-            {...{ selectedDate, min, max, viewYear, locale: this.locale, placeholder }}
+            {...{ selectedDate, min, max, viewYear, placeholder }}
             onSelect={this.switchToDays}
             onLabelClick={this.switchToYears}
             onViewDateUpdate={this.handleViewDateUpdate}
@@ -262,7 +259,7 @@ class DateLookup extends PureComponent {
         )}
         {mode === MODE.YEAR && (
           <YearCalendar
-            {...{ selectedDate, min, max, viewYear, locale: this.locale, placeholder }}
+            {...{ selectedDate, min, max, viewYear, placeholder }}
             onSelect={this.switchToMonths}
             onViewDateUpdate={this.handleViewDateUpdate}
           />
@@ -282,15 +279,7 @@ class DateLookup extends PureComponent {
         onKeyDown={this.handleKeyDown}
       >
         <OpenButton
-          {...{
-            selectedDate,
-            size,
-            locale: this.locale,
-            placeholder,
-            label,
-            monthFormat,
-            disabled,
-          }}
+          {...{ selectedDate, size, placeholder, label, monthFormat, disabled }}
           onClick={this.open}
         />
         {isMobile ? (
@@ -338,4 +327,4 @@ DateLookup.defaultProps = {
   onBlur: null,
 };
 
-export default injectIntl(DateLookup);
+export default DateLookup;

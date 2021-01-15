@@ -29,7 +29,7 @@ const DateInput = ({
   placeholders,
   id,
 }) => {
-  const intl = useIntl();
+  const { locale } = useIntl();
   const getDateObject = () => {
     if (value && isDateValid(value)) {
       return typeof value === 'string' ? convertToLocalMidnight(value) : value;
@@ -74,7 +74,7 @@ const DateInput = ({
   };
 
   const getSelectElement = () => {
-    const months = getMonthNames(intl.locale, monthFormat);
+    const months = getMonthNames(locale, monthFormat);
 
     return (
       // eslint-disable-next-line
@@ -96,7 +96,7 @@ const DateInput = ({
 
   const getMonthsOptions = () => {
     const options = [];
-    const months = getMonthNames(intl.locale, monthFormat);
+    const months = getMonthNames(locale, monthFormat);
 
     months.forEach((label, index) => {
       options.push({ value: index, label });
@@ -202,7 +202,7 @@ const DateInput = ({
 
   const monthYearOnly = mode === DateMode.MONTH_YEAR;
   const monthWidth = monthYearOnly ? 'col-sm-8' : 'col-sm-5';
-  const monthBeforeDay = MonthBeforeDay.includes(intl.locale);
+  const monthBeforeDay = MonthBeforeDay.indexOf(locale) > -1;
 
   return (
     <div
