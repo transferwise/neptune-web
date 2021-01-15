@@ -210,14 +210,12 @@ describe('Upload', () => {
 
   describe('when file is processed', () => {
     it('step changes from UploadImageStep to CompleteStep', (done) => {
-      component = mount(<Upload {...props} />);
-      console.log(component.debug());
+      component = mount(<Upload {...props} />).children();
       expect(component.find(UploadImageStep)).toHaveLength(1);
       expect(component.find(ProcessingStep)).toHaveLength(0);
       expect(component.find(CompleteStep)).toHaveLength(0);
 
       component
-        .find(Upload)
         .instance()
         .fileDropped(TEST_FILE)
         .then(() => {
@@ -232,7 +230,7 @@ describe('Upload', () => {
     });
 
     it('step CompleteStep is called with error props', (done) => {
-      component = mount(<Upload {...props} />);
+      component = mount(<Upload {...props} />).children();
       asyncFileRead.mockImplementation(() => new Promise((resolve, reject) => reject('An error')));
 
       component
@@ -253,7 +251,7 @@ describe('Upload', () => {
     });
 
     it('onSuccess is called with response when httpOptions are provided', (done) => {
-      component = mount(<Upload {...props} httpOptions={{ url: 'a-url' }} />);
+      component = mount(<Upload {...props} httpOptions={{ url: 'a-url' }} />).children();
 
       component
         .instance()

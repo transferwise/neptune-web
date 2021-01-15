@@ -1,4 +1,5 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { shallow } from 'enzyme';
 import * as formatting from '@transferwise/formatting';
 
@@ -7,6 +8,7 @@ import * as dateUtils from '../../../common/dateUtils';
 import DayCalendarTable from '.';
 import TableLink from '../../tableLink';
 
+jest.mock('react-intl');
 jest.mock('@transferwise/formatting', () => ({
   formatDate: jest.fn().mockReturnValue('XXXX'),
 }));
@@ -21,7 +23,7 @@ jest.mock('../../getStartOfDay', () => ({
 }));
 
 describe('DayCalendarTable', () => {
-  const locale = 'xx';
+  const locale = 'en';
   let component;
   let props;
 
@@ -32,6 +34,7 @@ describe('DayCalendarTable', () => {
       locale,
       onSelect: jest.fn(),
     };
+    useIntl.mockReturnValue({ locale });
     component = shallow(<DayCalendarTable {...props} />);
   });
 

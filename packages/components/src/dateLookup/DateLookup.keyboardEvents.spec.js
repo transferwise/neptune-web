@@ -6,6 +6,11 @@ import { fakeKeyDownEventForKey } from '../common/fakeEvents';
 
 import DateLookup from '.';
 
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: 'en' }} />,
+  useIntl: () => ({ locale: 'en' }),
+}));
+
 describe('DateLookup (keyboard events)', () => {
   const date = new Date(2018, 11, 27);
   let component;
@@ -13,7 +18,7 @@ describe('DateLookup (keyboard events)', () => {
 
   beforeEach(() => {
     props = { value: date, onChange: jest.fn() };
-    component = mount(<DateLookup {...props} />);
+    component = mount(<DateLookup {...props} />).children();
   });
 
   it('can be opened by LEFT arrow', () => {

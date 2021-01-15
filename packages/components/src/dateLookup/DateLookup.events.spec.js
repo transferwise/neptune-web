@@ -3,6 +3,11 @@ import { mount } from 'enzyme';
 
 import DateLookup from '.';
 
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: 'en' }} />,
+  useIntl: () => ({ locale: 'en' }),
+}));
+
 describe('DateLookup (events)', () => {
   const date = new Date(2018, 11, 27);
   const min = new Date(2018, 11, 26);
@@ -27,7 +32,7 @@ describe('DateLookup (events)', () => {
       label: 'Date..',
       onChange: jest.fn(),
     };
-    component = mount(<DateLookup {...props} />);
+    component = mount(<DateLookup {...props} />).children();
   });
 
   afterEach(() => {
@@ -80,7 +85,7 @@ describe('DateLookup (events)', () => {
     });
 
     it('closes', () => {
-      component = mount(<DateLookup {...props} />);
+      component = mount(<DateLookup {...props} />).children();
       component.instance().handleOutsideClick({ target: '' });
       expect(component.instance().state.open).toBe(false);
     });

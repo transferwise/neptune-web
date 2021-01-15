@@ -1,4 +1,5 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { shallow } from 'enzyme';
 import * as formatting from '@transferwise/formatting';
 
@@ -6,6 +7,7 @@ import DayCalendar from '.';
 import Header from '../header';
 import DayCalendarTable from './table';
 
+jest.mock('react-intl');
 jest.mock('@transferwise/formatting', () => ({
   formatDate: jest.fn().mockReturnValue('MonthName XXXX'),
 }));
@@ -24,12 +26,12 @@ describe('DayCalendar', () => {
       max,
       viewMonth: 10,
       viewYear: 2018,
-      locale: 'xx',
       monthFormat: 'long',
       onSelect: jest.fn(),
       onLabelClick: jest.fn(),
       onViewDateUpdate: jest.fn(),
     };
+    useIntl.mockReturnValue({ locale: 'en' });
     component = shallow(<DayCalendar {...props} />);
   });
 
@@ -39,7 +41,7 @@ describe('DayCalendar', () => {
 
   it('shows formatted date as header label in long format', () => {
     expect(header().prop('label')).toBe('MonthName XXXX');
-    expect(formatting.formatDate).toHaveBeenCalledWith(new Date(2018, 10), 'xx', {
+    expect(formatting.formatDate).toHaveBeenCalledWith(new Date(2018, 10), 'en', {
       month: 'long',
       year: 'numeric',
     });
@@ -48,7 +50,7 @@ describe('DayCalendar', () => {
   it('shows formatted date as header label in short format', () => {
     component.setProps({ monthFormat: 'short' });
     expect(header().prop('label')).toBe('MonthName XXXX');
-    expect(formatting.formatDate).toHaveBeenCalledWith(new Date(2018, 10), 'xx', {
+    expect(formatting.formatDate).toHaveBeenCalledWith(new Date(2018, 10), 'en', {
       month: 'short',
       year: 'numeric',
     });
@@ -98,7 +100,6 @@ describe('DayCalendar', () => {
     expect(table().prop('max')).toBe(max);
     expect(table().prop('viewMonth')).toBe(10);
     expect(table().prop('viewYear')).toBe(2018);
-    expect(table().prop('locale')).toBe('xx');
   });
 
   it('passes onSelect to table component', () => {
