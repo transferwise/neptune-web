@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "32.0.2",
+  "version": "32.0.3",
   "description": "TransferWise styleguide components in react",
   "license": "Apache-2.0",
   "main": "./build/umd/polyfill/main.js",
@@ -84,8 +84,8 @@
     "@transferwise/neptune-css": "^5.0.1",
     "currency-flags": "^2.1.1",
     "prop-types": "^15.7.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "^16",
+    "react-dom": "^16",
     "react-intl": "^5.10.0"
   },
   "dependencies": {
