@@ -16,10 +16,10 @@ class RadioGroup extends Component {
   };
 
   render() {
-    const { radios, name } = this.props;
+    const { radios, name, stacked } = this.props;
     const { selectedValue } = this.state;
     return radios && radios.length > 1 ? (
-      <>
+      <div className={`${stacked ? 'radio-group--stacked' : ''}`}>
         {radios.map(({ id, value, label, disabled, secondary, readOnly }, index) => (
           <Radio
             id={id}
@@ -33,9 +33,10 @@ class RadioGroup extends Component {
             secondary={secondary}
             onChange={(val) => this.handleOnChange(val)}
             readOnly={readOnly}
+            stacked={stacked}
           />
         ))}
-      </>
+      </div>
     ) : null;
   }
 }
@@ -54,10 +55,12 @@ RadioGroup.propTypes = {
   onChange: Types.func.isRequired,
   selectedValue: Types.oneOfType([Types.number, Types.string]),
   name: Types.string.isRequired,
+  stacked: Types.bool,
 };
 
 RadioGroup.defaultProps = {
   selectedValue: null,
+  stacked: false,
 };
 
 export default RadioGroup;
