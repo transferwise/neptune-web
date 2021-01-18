@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import Types from 'prop-types';
-import classname from 'classnames';
 
-function TableLink({ item, type, title, longTitle, active, disabled, today, onClick }) {
-  function handleOnClick(event) {
+class TableLink extends PureComponent {
+  onClick = (event) => {
     event.preventDefault();
-    if (!disabled) {
-      onClick(item);
+    if (!this.props.disabled) {
+      this.props.onClick(this.props.item);
     }
-  }
+  };
 
-  return (
-    <>
-      <button
-        type="button"
-        onClick={handleOnClick}
-        className={classname(`tw-date-lookup-${type}-option`, { active, today })}
-        disabled={disabled}
-        aria-label={longTitle}
-      >
-        {title || item}
-      </button>
-    </>
-  );
+  render() {
+    const { item, type, title, longTitle, active, disabled, today } = this.props;
+    return (
+      <>
+        <button
+          type="button"
+          onClick={this.onClick}
+          className={`tw-date-lookup-${type}-option ${active ? 'active' : ''} ${
+            today ? 'today' : ''
+          }`}
+          disabled={disabled}
+          aria-label={longTitle}
+        >
+          {title || item}
+        </button>
+      </>
+    );
+  }
 }
 
 TableLink.propTypes = {

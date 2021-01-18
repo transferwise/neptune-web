@@ -1,5 +1,4 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 import { shallow } from 'enzyme';
 import * as formatting from '@transferwise/formatting';
 
@@ -7,7 +6,9 @@ import MonthCalendar from '.';
 import Header from '../header';
 import MonthCalendarTable from './table';
 
-jest.mock('react-intl');
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: 'en' }} />,
+}));
 jest.mock('@transferwise/formatting', () => ({
   formatDate: jest.fn().mockReturnValue('XXXX'),
 }));
@@ -30,8 +31,7 @@ describe('MonthCalendar', () => {
       onLabelClick: jest.fn(),
       onViewDateUpdate: jest.fn(),
     };
-    useIntl.mockReturnValue({ locale: 'en' });
-    component = shallow(<MonthCalendar {...props} />);
+    component = shallow(<MonthCalendar {...props} />).dive();
   });
 
   it('shows the header', () => {
@@ -49,6 +49,24 @@ describe('MonthCalendar', () => {
     expect(header().prop('onLabelClick')).toBe(props.onLabelClick);
   });
 
+  it('passes selectPreviousYear to header component', () => {
+    expect(header().prop('onPreviousClick')).toBe(component.instance().selectPreviousYear);
+  });
+
+  it('passes selectNextYear header component', () => {
+    expect(header().prop('onNextClick')).toBe(component.instance().selectNextYear);
+  });
+
+  it('calls onViewDateUpdate on previous year select', () => {
+    component.instance().selectPreviousYear();
+    expect(props.onViewDateUpdate).toBeCalledWith({ year: 2017 });
+  });
+
+  it('calls onViewDateUpdate on next year select', () => {
+    component.instance().selectNextYear();
+    expect(props.onViewDateUpdate).toBeCalledWith({ year: 2019 });
+  });
+
   it('shows month calendar table', () => {
     expect(table()).toHaveLength(1);
   });
@@ -59,6 +77,16 @@ describe('MonthCalendar', () => {
     expect(table().prop('max')).toBe(max);
     expect(table().prop('viewYear')).toBe(2018);
     expect(table().prop('placeholder')).toBe('Enter date..');
+  });
+
+  it('passes onMonthSelect to table component', () => {
+    expect(table().prop('onSelect')).toBe(component.instance().onMonthSelect);
+  });
+
+  it('calls onViewDateUpdate and onSelect on month select', () => {
+    component.instance().onMonthSelect(1);
+    expect(props.onViewDateUpdate).toBeCalledWith({ month: 1 });
+    expect(props.onSelect).toBeCalled();
   });
 
   const header = () => component.find(Header);

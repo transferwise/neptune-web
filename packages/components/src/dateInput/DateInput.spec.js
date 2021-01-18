@@ -1,7 +1,8 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { shallow, mount } from 'enzyme';
-import { DateInput } from '..';
+
+import DateInput from '.';
 
 import { fakeEvent } from '../common/fakeEvents';
 
