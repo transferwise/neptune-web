@@ -24,7 +24,7 @@ const getValueLabel = (options, value) => {
 const mask = (value) => new Array(value.length + 1).join('*');
 
 const FormattedValue = ({ field, value }) => {
-  const intl = useIntl();
+  const { locale } = useIntl();
   const style = [];
   if (field.tagClassName && field.tagClassName.h3) {
     style.push('h3');
@@ -36,11 +36,9 @@ const FormattedValue = ({ field, value }) => {
     case 'radio':
       return <span>{getValueLabel(field.values, value)}</span>;
     case 'date':
-      return (
-        <span>{formatDate(value instanceof Date ? value : new Date(value), intl.locale)}</span>
-      );
+      return <span>{formatDate(value instanceof Date ? value : new Date(value), locale)}</span>;
     case 'number':
-      return <span>{formatNumber(value, intl.locale)}</span>;
+      return <span>{formatNumber(value, locale)}</span>;
     case 'password':
       return <span>{mask(value)}</span>;
     case 'file':

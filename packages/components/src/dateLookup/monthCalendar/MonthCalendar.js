@@ -16,7 +16,7 @@ function MonthCalendar({
   onLabelClick,
   onViewDateUpdate,
 }) {
-  const intl = useIntl();
+  const { locale } = useIntl();
 
   function onMonthSelect(month) {
     onViewDateUpdate({ month });
@@ -34,7 +34,7 @@ function MonthCalendar({
   return (
     <div>
       <Header
-        label={formatDate(new Date(viewYear, 0), intl.locale, { year: 'numeric' })}
+        label={formatDate(new Date(viewYear, 0), locale, { year: 'numeric' })}
         onLabelClick={onLabelClick}
         onPreviousClick={selectPreviousYear}
         onNextClick={selectNextYear}

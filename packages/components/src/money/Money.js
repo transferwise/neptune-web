@@ -4,8 +4,8 @@ import Types from 'prop-types';
 import { formatMoney } from '@transferwise/formatting';
 
 const Money = ({ amount, currency }) => {
-  const intl = useIntl();
-  return <>{formatMoney(amount, currency, intl.locale)}</>;
+  const { locale } = useIntl();
+  return <>{formatMoney(amount, currency, locale)}</>;
 };
 
 Money.propTypes = {

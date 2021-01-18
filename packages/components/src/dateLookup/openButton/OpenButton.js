@@ -8,7 +8,7 @@ import Chevron from '../../chevron';
 import { Size, MonthFormat } from '../../common';
 
 const OpenButton = ({ selectedDate, size, placeholder, label, monthFormat, disabled, onClick }) => {
-  const intl = useIntl();
+  const { locale } = useIntl();
   return (
     <button
       onClick={onClick}
@@ -19,7 +19,7 @@ const OpenButton = ({ selectedDate, size, placeholder, label, monthFormat, disab
       {label && <span className="control-label small m-r-1">{label}</span>}
       {selectedDate ? (
         <span>
-          {formatDate(selectedDate, intl.locale, {
+          {formatDate(selectedDate, locale, {
             day: 'numeric',
             month: monthFormat,
             year: 'numeric',

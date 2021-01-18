@@ -1,30 +1,20 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { useIntl } from 'react-intl';
+import { shallow } from 'enzyme';
 import { formatNumber } from '@transferwise/formatting';
 import FormattedValue from './FormattedValue';
-import { Provider } from '../..';
-import { LOCALES } from '../../common/locale';
 
-function customRender(component, locale = 'en') {
-  return mount(component, {
-    // eslint-disable-next-line react/prop-types
-    wrappingComponent: ({ children }) => {
-      return <Provider i18n={{ locale, messages: {} }}>{children}</Provider>;
-    },
-  });
-}
+jest.mock('react-intl');
 
 describe('FormattedValue', () => {
   let props;
-  let locale;
   let value;
   let component;
   let item;
+  useIntl.mockReturnValue({ locale: 'en' });
 
   describe('when given a text field', () => {
     beforeEach(() => {
-      // eslint-disable-next-line prefer-destructuring
-      locale = LOCALES[3];
       props = {
         value: 'ABCD',
         field: {
@@ -39,7 +29,7 @@ describe('FormattedValue', () => {
           },
         },
       };
-      component = customRender(<FormattedValue {...props} />, locale);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -65,7 +55,7 @@ describe('FormattedValue', () => {
           control: 'number',
         },
       };
-      component = customRender(<FormattedValue {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -84,7 +74,7 @@ describe('FormattedValue', () => {
           control: 'date',
         },
       };
-      component = customRender(<FormattedValue {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -113,7 +103,7 @@ describe('FormattedValue', () => {
           ],
         },
       };
-      component = customRender(<FormattedValue {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -142,7 +132,7 @@ describe('FormattedValue', () => {
           ],
         },
       };
-      component = customRender(<FormattedValue {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -161,7 +151,7 @@ describe('FormattedValue', () => {
           control: 'checkbox',
         },
       };
-      component = customRender(<FormattedValue {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -180,7 +170,7 @@ describe('FormattedValue', () => {
           control: 'password',
         },
       };
-      component = customRender(<FormattedValue {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('span');
     });
 
@@ -199,7 +189,7 @@ describe('FormattedValue', () => {
           control: 'file',
         },
       };
-      component = customRender(<FormattedValue {...props} />);
+      component = shallow(<FormattedValue {...props} />);
       item = component.find('img');
     });
 

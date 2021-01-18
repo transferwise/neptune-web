@@ -1,10 +1,11 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { useIntl } from 'react-intl';
+import { shallow } from 'enzyme';
 import * as formatting from '@transferwise/formatting';
 
-import { Provider } from '../../..';
 import OpenButton from '.';
 
+jest.mock('react-intl');
 jest.mock('@transferwise/formatting', () => ({
   formatDate: jest.fn().mockReturnValue('1.2.3'),
 }));
@@ -24,12 +25,8 @@ describe('OpenButton', () => {
       disabled: false,
       onClick: jest.fn(),
     };
-    component = mount(<OpenButton {...props} />, {
-      // eslint-disable-next-line react/prop-types
-      wrappingComponent: ({ children }) => {
-        return <Provider i18n={{ locale, messages: {} }}>{children}</Provider>;
-      },
-    });
+    useIntl.mockReturnValue({ locale });
+    component = shallow(<OpenButton {...props} />);
   });
 
   it('shows placeholder', () => {

@@ -10,12 +10,10 @@ jest.mock('./currencyFormatting', () => ({
 
 const numberFormatting = require('./currencyFormatting');
 
-const defaultLocale = 'en';
 jest.mock('react-intl', () => ({
   injectIntl: (Component) => (props) => (
-    <Component {...props} intl={{ locale: defaultLocale, formatMessage: (id) => `${id}` }} />
+    <Component {...props} intl={{ locale: 'en', formatMessage: (id) => `${id}` }} />
   ),
-  useIntl: () => ({ locale: defaultLocale }),
   defineMessages: (translations) => translations,
 }));
 

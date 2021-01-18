@@ -3,7 +3,7 @@ import { findCountryByCode } from '../findCountryByCode';
 
 /**
  * Given a valid locale it returns the correspondent prefix if found or +44 otherwise.
- * @param {string} locale - a string that represent the locale ex:'es-ES'
+ * @param {string} locale - a string that represent the locale ex:'es'
  * @returns {string}
  */
 export const setDefaultPrefix = (locale, countryCode) => {

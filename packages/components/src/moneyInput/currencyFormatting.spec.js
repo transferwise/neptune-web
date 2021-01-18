@@ -10,10 +10,7 @@ describe('Number formatting', () => {
   });
 
   it('parses localized numbers', () => {
-    [
-      ['1234.56', 'en-GB'],
-      ['1,23,4.56', 'en-US'],
-    ].forEach(([number, locale]) => {
+    [['1234.56', 'en']].forEach(([number, locale]) => {
       expect(parseAmount(number, 'gbp', locale)).toBe(1234.56);
     });
   });

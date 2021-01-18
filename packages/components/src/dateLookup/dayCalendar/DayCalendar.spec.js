@@ -1,5 +1,4 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 import { shallow } from 'enzyme';
 import * as formatting from '@transferwise/formatting';
 
@@ -7,7 +6,9 @@ import DayCalendar from '.';
 import Header from '../header';
 import DayCalendarTable from './table';
 
-jest.mock('react-intl');
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: 'en' }} />,
+}));
 jest.mock('@transferwise/formatting', () => ({
   formatDate: jest.fn().mockReturnValue('MonthName XXXX'),
 }));
@@ -31,8 +32,7 @@ describe('DayCalendar', () => {
       onLabelClick: jest.fn(),
       onViewDateUpdate: jest.fn(),
     };
-    useIntl.mockReturnValue({ locale: 'en' });
-    component = shallow(<DayCalendar {...props} />);
+    component = shallow(<DayCalendar {...props} />).dive();
   });
 
   it('shows the header', () => {
@@ -58,6 +58,36 @@ describe('DayCalendar', () => {
 
   it('passes onLabelClick to header component', () => {
     expect(header().prop('onLabelClick')).toBe(props.onLabelClick);
+  });
+
+  it('passes selectPreviousMonth to header component', () => {
+    expect(header().prop('onPreviousClick')).toBe(component.instance().selectPreviousMonth);
+  });
+
+  it('passes selectNextMonth header component', () => {
+    expect(header().prop('onNextClick')).toBe(component.instance().selectNextMonth);
+  });
+
+  it('calls onViewDateUpdate on previous month select', () => {
+    component.instance().selectPreviousMonth();
+    expect(props.onViewDateUpdate).toBeCalledWith({ year: 2018, month: 9 });
+  });
+
+  it('calls onViewDateUpdate on previous month select (year before)', () => {
+    component.setProps({ viewMonth: 0 });
+    component.instance().selectPreviousMonth();
+    expect(props.onViewDateUpdate).toBeCalledWith({ year: 2017, month: 11 });
+  });
+
+  it('calls onViewDateUpdate on next year select', () => {
+    component.instance().selectNextMonth();
+    expect(props.onViewDateUpdate).toBeCalledWith({ year: 2018, month: 11 });
+  });
+
+  it('calls onViewDateUpdate on next year select (year after)', () => {
+    component.setProps({ viewMonth: 11 });
+    component.instance().selectNextMonth();
+    expect(props.onViewDateUpdate).toBeCalledWith({ year: 2019, month: 0 });
   });
 
   it('shows month calendar table', () => {

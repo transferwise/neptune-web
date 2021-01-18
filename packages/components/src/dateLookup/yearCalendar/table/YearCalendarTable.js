@@ -10,13 +10,13 @@ const COLS = 4;
 const YEAR_ONLY_FORMAT = { year: 'numeric' };
 
 const YearCalendarTable = ({ selectedDate, min, max, viewYear, placeholder, onSelect }) => {
-  const intl = useIntl();
+  const { locale } = useIntl();
   const startYear = viewYear - (viewYear % 20);
   const getLink = (year) => (
     <TableLink
       item={year}
       type="year"
-      title={formatDate(new Date(year, 0), intl.locale, YEAR_ONLY_FORMAT)}
+      title={formatDate(new Date(year, 0), locale, YEAR_ONLY_FORMAT)}
       active={!!(selectedDate && year === selectedDate.getFullYear())}
       disabled={!!((min && year < min.getFullYear()) || (max && year > max.getFullYear()))}
       today={year === new Date().getFullYear()}

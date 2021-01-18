@@ -1,5 +1,4 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 import { shallow } from 'enzyme';
 import * as formatting from '@transferwise/formatting';
 
@@ -8,7 +7,10 @@ import * as dateUtils from '../../../common/dateUtils';
 import DayCalendarTable from '.';
 import TableLink from '../../tableLink';
 
-jest.mock('react-intl');
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: 'en' }} />,
+}));
+
 jest.mock('@transferwise/formatting', () => ({
   formatDate: jest.fn().mockReturnValue('XXXX'),
 }));
@@ -31,11 +33,9 @@ describe('DayCalendarTable', () => {
     props = {
       viewMonth: 11,
       viewYear: 2018,
-      locale,
       onSelect: jest.fn(),
     };
-    useIntl.mockReturnValue({ locale });
-    component = shallow(<DayCalendarTable {...props} />);
+    component = shallow(<DayCalendarTable {...props} />).dive();
   });
 
   it('shows weekday names in table header', () => {
@@ -103,6 +103,15 @@ describe('DayCalendarTable', () => {
       viewYear: today.getFullYear(),
     });
     expect(component.find(TableLink).find({ today: true }).prop('item')).toBe(today.getDate());
+  });
+
+  it('passes selectDay to TableLink', () => {
+    expect(getTableLinkAt(0).prop('onClick')).toBe(component.instance().selectDay);
+  });
+
+  it('calls onSelect when day gets selected', () => {
+    component.instance().selectDay(1);
+    expect(props.onSelect).toBeCalledWith(new Date(2018, 11, 1));
   });
 
   const getTableLinkAt = (i) => component.find(TableLink).at(i);

@@ -243,7 +243,8 @@ describe('Given a telephone number component', () => {
 
       describe('and country code', () => {
         beforeEach(() => {
-          component = shallow(<PhoneNumberInput {...props} locale="es-ES" countryCode="US" />);
+          useIntl.mockReturnValue({ locale: 'es' });
+          component = shallow(<PhoneNumberInput {...props} countryCode="US" />);
           select = component.find(PREFIX_SELECT_SELECTOR);
           input = component.find(NUMBER_SELECTOR);
         });

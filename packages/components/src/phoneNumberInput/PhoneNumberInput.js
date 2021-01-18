@@ -34,8 +34,7 @@ const PhoneNumberInput = (props) => {
     onBlur,
     countryCode,
   } = props;
-
-  const intl = useIntl();
+  const { locale } = useIntl();
 
   const getInitialValue = () => {
     const { initialValue } = props;
@@ -51,7 +50,7 @@ const PhoneNumberInput = (props) => {
   const listSortedByPhone = groupCountriesByPrefix(sortArrayByProperty(countries, 'phone'));
 
   const getSuffixPrefix = (value) => {
-    let prefix = setDefaultPrefix(intl.locale, countryCode);
+    let prefix = setDefaultPrefix(locale, countryCode);
     let suffix = '';
     if (value) {
       ({ prefix, suffix } = explodeNumberModel(value));

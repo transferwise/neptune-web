@@ -35,7 +35,7 @@ const DEFAULT_CURRENCY_DECIMALS = 2;
 
 function isNumberLocaleSupported() {
   const number = 1234;
-  const numberString = number.toLocaleString && number.toLocaleString('en-GB');
+  const numberString = number.toLocaleString && number.toLocaleString('en');
   return numberString === '1,234';
 }
 
