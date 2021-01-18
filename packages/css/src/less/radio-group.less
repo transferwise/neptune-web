@@ -1,0 +1,25 @@
+@import (reference) '@transferwise/neptune-css/src/variables/neptune-tokens.less';
+
+.radio-group--stacked {
+  border: 1px solid @color-base-smoke-mid;
+  border-radius: 3px;
+
+  .radio {
+    margin-top: 0;
+
+    label {
+      border: 0;
+    }
+
+    + .radio:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      margin: 0 16px;
+      border-top: 1px solid @color-base-smoke-mid;
+    }
+  }
+}
