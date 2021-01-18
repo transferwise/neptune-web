@@ -1,26 +1,28 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { shallow } from 'enzyme';
 import * as formatting from '@transferwise/formatting';
 
 import YearCalendarTable from '.';
 import TableLink from '../../tableLink';
 
+jest.mock('react-intl');
 jest.mock('@transferwise/formatting', () => ({
   formatDate: jest.fn().mockReturnValue('XXXX'),
 }));
 
 describe('YearCalendarTable', () => {
-  const locale = 'xx';
+  const locale = 'en';
   let component;
   let props;
 
   beforeEach(() => {
     props = {
       viewYear: 2018,
-      locale,
       placeholder: 'Enter date..',
       onSelect: jest.fn(),
     };
+    useIntl.mockReturnValue({ locale });
     component = shallow(<YearCalendarTable {...props} />);
   });
 

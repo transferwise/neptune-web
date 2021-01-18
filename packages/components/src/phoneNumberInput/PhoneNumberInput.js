@@ -22,20 +22,23 @@ import './PhoneNumberInput.css';
 
 const ALLOWED_PHONE_CHARS = /^$|^[\d-\s]+$/;
 
-const PhoneNumberInput = ({
-  required,
-  disabled,
-  initialValue,
-  onChange,
-  onFocus,
-  onBlur,
-  countryCode,
-  searchPlaceholder,
-  size,
-  placeholder,
-}) => {
+const PhoneNumberInput = (props) => {
+  const {
+    onChange,
+    searchPlaceholder,
+    disabled,
+    required,
+    size,
+    placeholder,
+    onFocus,
+    onBlur,
+    countryCode,
+  } = props;
+
   const intl = useIntl();
+
   const getInitialValue = () => {
+    const { initialValue } = props;
     const cleanValue = initialValue ? cleanNumber(initialValue) : null;
     return cleanValue && isValidPhoneNumber(cleanValue) ? cleanValue : null;
   };

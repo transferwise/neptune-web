@@ -60,36 +60,6 @@ describe('DayCalendar', () => {
     expect(header().prop('onLabelClick')).toBe(props.onLabelClick);
   });
 
-  it('passes selectPreviousMonth to header component', () => {
-    expect(header().prop('onPreviousClick')).toBe(component.instance().selectPreviousMonth);
-  });
-
-  it('passes selectNextMonth header component', () => {
-    expect(header().prop('onNextClick')).toBe(component.instance().selectNextMonth);
-  });
-
-  it('calls onViewDateUpdate on previous month select', () => {
-    component.instance().selectPreviousMonth();
-    expect(props.onViewDateUpdate).toBeCalledWith({ year: 2018, month: 9 });
-  });
-
-  it('calls onViewDateUpdate on previous month select (year before)', () => {
-    component.setProps({ viewMonth: 0 });
-    component.instance().selectPreviousMonth();
-    expect(props.onViewDateUpdate).toBeCalledWith({ year: 2017, month: 11 });
-  });
-
-  it('calls onViewDateUpdate on next year select', () => {
-    component.instance().selectNextMonth();
-    expect(props.onViewDateUpdate).toBeCalledWith({ year: 2018, month: 11 });
-  });
-
-  it('calls onViewDateUpdate on next year select (year after)', () => {
-    component.setProps({ viewMonth: 11 });
-    component.instance().selectNextMonth();
-    expect(props.onViewDateUpdate).toBeCalledWith({ year: 2019, month: 0 });
-  });
-
   it('shows month calendar table', () => {
     expect(table()).toHaveLength(1);
   });

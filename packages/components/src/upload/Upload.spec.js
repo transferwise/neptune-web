@@ -17,7 +17,6 @@ jest.mock('react-intl', () => ({
   injectIntl: (Component) => (props) => (
     <Component {...props} intl={{ locale: defaultLocale, formatMessage: (id) => `${id}` }} />
   ),
-  useIntl: () => ({ locale: defaultLocale }),
   defineMessages: (translations) => translations,
 }));
 

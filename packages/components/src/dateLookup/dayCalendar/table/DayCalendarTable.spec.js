@@ -105,15 +105,6 @@ describe('DayCalendarTable', () => {
     expect(component.find(TableLink).find({ today: true }).prop('item')).toBe(today.getDate());
   });
 
-  it('passes selectDay to TableLink', () => {
-    expect(getTableLinkAt(0).prop('onClick')).toBe(component.instance().selectDay);
-  });
-
-  it('calls onSelect when day gets selected', () => {
-    component.instance().selectDay(1);
-    expect(props.onSelect).toBeCalledWith(new Date(2018, 11, 1));
-  });
-
   const getTableLinkAt = (i) => component.find(TableLink).at(i);
   const getTableDataAt = (i) => component.find('tbody td').at(i);
 });
