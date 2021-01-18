@@ -67,4 +67,10 @@ describe('RadioGroup', () => {
 
     expect(props.onChange).toHaveBeenCalledWith('value-test2');
   });
+
+  it('appends radio-group--stacked selector when stacked', () => {
+    const component = shallow(<RadioGroup radios={RADIOS} stacked {...props} />);
+
+    expect(component.hasClass('radio-group--stacked')).toBeTruthy();
+  });
 });
