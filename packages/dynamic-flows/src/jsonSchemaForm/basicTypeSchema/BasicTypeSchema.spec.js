@@ -183,6 +183,21 @@ describe('Given a component for rendering basic type schemas', () => {
       });
     });
 
+    describe('when submitted changes to true without a change to the model', () => {
+      beforeEach(() => {
+        component = mount(<BasicTypeSchema {...props} required model={null} />);
+      });
+
+      it('should update validations using the current model', () => {
+        component.setProps({ submitted: true });
+
+        feedbackComponent = component.find(ControlFeedback);
+
+        expect(component.find('div.has-error')).toHaveLength(1);
+        expect(feedbackComponent.prop('validations')).toEqual(['required']);
+      });
+    });
+
     describe('when control changes to a value that resolves to false', () => {
       beforeEach(() => {
         formControl.simulate('change', '');
