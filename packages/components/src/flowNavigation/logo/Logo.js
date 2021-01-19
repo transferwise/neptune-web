@@ -6,17 +6,28 @@ import { Theme } from '../../common';
 
 const Logo = ({ theme, onGoBack }) => (
   <>
+    <div className={classNames('logo', 'hidden-xs')}>
+      <img
+        src={
+          theme === Theme.LIGHT
+            ? 'https://transferwise.com/public-resources/assets/logos/transferwise/logo.svg'
+            : 'https://transferwise.com/public-resources/assets/logos/transferwise/logo_inverse.svg'
+        }
+        className="logo__image"
+        alt="TransferWise"
+      />
+    </div>
     <div
-      className={classNames('logo', 'logo-3', 'hidden-xs', {
-        'logo-primary': theme === Theme.LIGHT,
-        'logo-inverse': theme === Theme.DARK,
-      })}
-    />
-    <div
-      className={classNames('flag', 'flag-info', 'logo-3', 'visible-xs', {
+      className={classNames('flag', 'visible-xs', {
         'flag--hidden': onGoBack,
       })}
-    />
+    >
+      <img
+        src="https://transferwise.com/public-resources/assets/logos/transferwise/flag.svg"
+        className="logo__image"
+        alt="TransferWise"
+      />
+    </div>
   </>
 );
 
