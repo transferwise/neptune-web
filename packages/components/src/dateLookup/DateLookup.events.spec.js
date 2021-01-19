@@ -1,10 +1,13 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 import { mount } from 'enzyme';
 
 import DateLookup from '.';
 
-jest.mock('react-intl');
+const defaultLocale = 'en';
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: defaultLocale }} />,
+  useIntl: () => ({ locale: defaultLocale }),
+}));
 
 describe('DateLookup (events)', () => {
   const date = new Date(2018, 11, 27);
@@ -29,7 +32,6 @@ describe('DateLookup (events)', () => {
       label: 'Date..',
       onChange: jest.fn(),
     };
-    useIntl.mockReturnValue({ locale: 'en' });
     component = mount(<DateLookup {...props} />);
   });
 

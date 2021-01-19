@@ -1,5 +1,4 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 import { mount } from 'enzyme';
 
 import KEY_CODES from '../common/keyCodes';
@@ -7,7 +6,11 @@ import { fakeKeyDownEventForKey } from '../common/fakeEvents';
 
 import DateLookup from '.';
 
-jest.mock('react-intl');
+const defaultLocale = 'en';
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: defaultLocale }} />,
+  useIntl: () => ({ locale: defaultLocale }),
+}));
 
 describe('DateLookup (keyboard events)', () => {
   const date = new Date(2018, 11, 27);
@@ -15,7 +18,6 @@ describe('DateLookup (keyboard events)', () => {
   let props;
 
   beforeEach(() => {
-    useIntl.mockReturnValue({ locale: 'en' });
     props = { value: date, onChange: jest.fn() };
     component = mount(<DateLookup {...props} />);
   });
