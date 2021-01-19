@@ -70,7 +70,7 @@ const BasicTypeSchema = (props) => {
     setId(generateId());
   };
 
-  const onModelChange = () => {
+  const refreshValidations = () => {
     setValidations(getValidationKeys(model));
   };
 
@@ -78,7 +78,7 @@ const BasicTypeSchema = (props) => {
   const isHidden = props.schema.hidden || isConst;
 
   useEffect(onSchemaChange, [props.schema]);
-  useEffect(onModelChange, [props.model]);
+  useEffect(refreshValidations, [props.model, props.submitted]);
 
   const formGroupClasses = {
     'form-group': true,
