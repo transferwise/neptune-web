@@ -19,10 +19,15 @@ export const LOCALES = [
 ];
 
 export function mapLocale(locale) {
-  if (LOCALES.includes(locale)) {
-    return locale;
+  if (!locale || locale.trim().length === 0) {
+    return null;
   }
-  const iso2Code = locale.slice(0, COUNTRY_ISO2_CODE_LENGTH);
+  const adjustedLocale = locale.replace('_', '-').toLowerCase();
+  const mappedLocale = LOCALES.find((value) => value.toLowerCase() === adjustedLocale);
+  if (mappedLocale) {
+    return mappedLocale;
+  }
+  const iso2Code = adjustedLocale.slice(0, COUNTRY_ISO2_CODE_LENGTH);
   if (LOCALES.includes(iso2Code)) {
     return iso2Code;
   }
