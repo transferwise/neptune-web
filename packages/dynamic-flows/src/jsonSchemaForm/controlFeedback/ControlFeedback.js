@@ -13,7 +13,6 @@ const ControlFeedback = (props) => {
   const isErrorVisible = (props.submitted || !props.changed) && !!props.errors;
   const isValidationVisible =
     (props.submitted || (props.changed && props.blurred)) && !!props.validations.length;
-  const isHelpVisible = props.focused && props.schema.help && !isValidationVisible;
 
   return (
     <div>
@@ -23,18 +22,6 @@ const ControlFeedback = (props) => {
           {props.validations.map((validation) => (
             <div key={validation}>{validationMessages[validation]}</div>
           ))}
-        </InlineAlert>
-      )}
-      {isHelpVisible && (
-        <InlineAlert type="info">
-          {props.schema.help.message && <div>{props.schema.help.message}</div>}
-          {props.schema.help.list && (
-            <ul className="list-unstyled">
-              {props.schema.help.list.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          )}
         </InlineAlert>
       )}
     </div>
@@ -51,9 +38,8 @@ const validationMessagesProps = Types.shape({
 });
 
 ControlFeedback.propTypes = {
-  changed: Types.bool.isRequired, // Has the control been iteracted with
+  changed: Types.bool.isRequired, // Has the control been interacted with
   blurred: Types.bool.isRequired, // Has the control been blurred at least once
-  focused: Types.bool.isRequired, // Is the control in focus
   submitted: Types.bool.isRequired,
   errors: Types.string,
   validations: Types.arrayOf(Types.string),

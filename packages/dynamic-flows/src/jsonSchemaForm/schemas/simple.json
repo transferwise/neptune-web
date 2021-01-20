@@ -8,7 +8,10 @@
   "properties": {
     "number": {
       "type": "number",
-      "title": "Number input"
+      "title": "Number input",
+      "help": {
+        "markdown": "![aba-example](https://transferwise.com/static/images/aba-example.png)"
+      }
     },
     "string": {
       "type": "string",

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
+import { Markdown, Popover } from '@transferwise/components';
+import { HelpCircle as HelpIcon } from '@transferwise/icons';
 import SchemaFormControl from '../schemaFormControl';
 import ControlFeedback from '../controlFeedback';
 
@@ -85,10 +87,11 @@ const BasicTypeSchema = (props) => {
     'has-error':
       ((props.submitted || !changed) && !!props.errors) ||
       ((props.submitted || (changed && blurred)) && validations.length),
-    'has-info': focused && props.schema.help,
   };
 
   const showLabel = props.schema.format !== 'file' && props.schema.type !== 'boolean';
+
+  const hasHelp = !!props.schema.help;
 
   return (
     !isHidden && (
@@ -98,6 +101,14 @@ const BasicTypeSchema = (props) => {
             <label className="control-label" htmlFor={id}>
               {props.schema.title}
             </label>
+          )}
+          {hasHelp && (
+            <Popover
+              content={<Markdown>{props.schema.help.markdown}</Markdown>}
+              preferredPlacement={Popover.Placement.BOTTOM}
+            >
+              <HelpIcon size={16} filled />
+            </Popover>
           )}
           <SchemaFormControl
             id={id}
@@ -140,7 +151,7 @@ BasicTypeSchema.propTypes = {
     default: Types.oneOfType([Types.string, Types.number, Types.bool]),
     disabled: Types.bool,
     hidden: Types.bool,
-    help: Types.shape({}),
+    help: Types.shape({ markdown: Types.string }),
   }).isRequired,
   model: Types.oneOfType([Types.string, Types.number, Types.bool]),
   errors: Types.string,
