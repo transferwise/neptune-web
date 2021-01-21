@@ -33,11 +33,12 @@ import '@transferwise/components/build/main.css';
 
 import { Provider, Button } from '@transferwise/components';
 import componentsTranslations from '@transferwise/components/build/i18n';
+import { mapLocale } from "@transferwise/components/build/es/polyfill/common/locale";
 
 import appTranslations from '...';
 
 export default function App() {
-  const locale = ...
+  const locale = mapLocale(global.locale);
   const messages = { ...componentsTranslations[locale], ...appTranslations[locale] };
   return (
     // Components must be wrapped by the Provider component, which initialises and provides
@@ -48,6 +49,12 @@ export default function App() {
     </Provider>
   );
 }
+```
+
+**Note:** we recommend map you locale code to ours before passing it into `Provider` and fetching translations, you can use our internal API for this:
+
+```js
+import { mapLocale, LOCALES, DEFAULT_LOCALE } from "@transferwise/components/build/es/polyfill/common/locale";
 ```
 
 For information on what classes are available, see the <DocLink href="/styles/core/Typography">styles documentation</DocLink>. Refer to <DocLink href="/components/inputs/Button">components</DocLink> for usage documentation, live previews and code snippets for each component.
@@ -69,12 +76,13 @@ import appTranslations from '...';
 
 import { Provider } from '@transferwise/components';
 import componentsTranslations from '@transferwise/components/build/i18n';
+import { mapLocale } from "@transferwise/components/build/es/polyfill/common/locale";
 
-const locale = '...';
+const locale = mapLocale(global.locale);
 
 const App = () => (
-  <TranslationProvider messages={appTranslations} language={locale}>
-    <Provider i18n={{ locale, messages: componentsTranslations }}>
+  <TranslationProvider messages={appTranslations} language={global.locale}>
+    <Provider i18n={{ locale, messages: componentsTranslations[locale] }}>
       ..
     </Provider>
   </TranslationProvider>
@@ -94,12 +102,6 @@ Or you can load them all at once:
 
 ```js
 import translations from '@transferwise/components/build/i18n';
-```
-
-To avoid locale code mapping hassle you can use our internal mapping API:
-
-```js
-import { mapLocale, LOCALES, DEFAULT_LOCALE } from "@transferwise/components/build/es/polyfill/common/locale";
 ```
 
 **Note:** `Provider` must be used in repositories which bundle components (i.e. lists `@transferwise/components` as a `dependency`). For repositories which don't bundle components (typically those that list it as a `peerDependency`) it is unnecessary (often it's similar component libraries).
