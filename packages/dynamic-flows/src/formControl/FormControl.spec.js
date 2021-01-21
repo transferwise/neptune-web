@@ -25,7 +25,6 @@ describe('FormControl', () => {
       id: 'control',
       placeholder: 'placeholder',
       name: 'control',
-      locale: 'en-GB',
       disabled: false,
       readOnly: false,
       required: true,

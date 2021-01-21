@@ -19,7 +19,7 @@ describe('Given a telephone number component', () => {
   const NUMBER_SELECTOR = 'input[name="phoneNumber"]';
 
   beforeEach(() => {
-    useIntl.mockReturnValue({ locale: 'en' });
+    useIntl.mockReturnValue({ locale: 'en-GB' });
   });
 
   afterEach(() => {

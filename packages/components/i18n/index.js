@@ -1,4 +1,4 @@
-import en from './en.json';
+import en from './en-GB.json';
 import de from './de.json';
 import es from './es.json';
 import fr from './fr.json';
@@ -13,4 +13,20 @@ import ru from './ru.json';
 import tr from './tr.json';
 import zhHK from './zh-HK.json';
 
-export default { en, de, es, fr, hu, id, it, ja, pl, pt, ro, ru, tr, 'zh-HK': zhHK };
+export default {
+  'en-GB': en,
+  'en-US': en,
+  de,
+  es,
+  fr,
+  hu,
+  id,
+  it,
+  ja,
+  pl,
+  pt,
+  ro,
+  ru,
+  tr,
+  'zh-HK': zhHK,
+};

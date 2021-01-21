@@ -10,9 +10,10 @@ jest.mock('./currencyFormatting', () => ({
 
 const numberFormatting = require('./currencyFormatting');
 
+const defaultLocale = 'en-GB';
 jest.mock('react-intl', () => ({
   injectIntl: (Component) => (props) => (
-    <Component {...props} intl={{ locale: 'en', formatMessage: (id) => `${id}` }} />
+    <Component {...props} intl={{ locale: defaultLocale, formatMessage: (id) => `${id}` }} />
   ),
   defineMessages: (translations) => translations,
 }));
@@ -285,7 +286,7 @@ describe('Money Input', () => {
       expect(amountInput().prop('value')).toBe('123.45');
 
       blurAmount();
-      expect(amountInput().prop('value')).toBe('formatted 123.45, en, eur');
+      expect(amountInput().prop('value')).toBe('formatted 123.45, en-GB, eur');
     });
   });
 
@@ -295,7 +296,7 @@ describe('Money Input', () => {
     component.setProps({ onAmountChange, numberFormatPrecision: 1 });
     numberFormatting.parseAmount = jest.fn((amount, currency, locale) => {
       expect(amount).toBe('500.1234');
-      expect(locale).toBe('en');
+      expect(locale).toBe(defaultLocale);
       expect(currency).toBe('eur');
       assertions += 1;
       return 500.1;
@@ -328,7 +329,11 @@ describe('Money Input', () => {
       enterAmount(testValue);
       expect(onAmountChange).not.toHaveBeenCalled();
       expect(numberFormatting.parseAmount).toHaveBeenCalledTimes(1);
-      expect(numberFormatting.parseAmount).toHaveBeenLastCalledWith(testValue, 'eur', 'en');
+      expect(numberFormatting.parseAmount).toHaveBeenLastCalledWith(
+        testValue,
+        'eur',
+        defaultLocale,
+      );
     },
   );
 
@@ -474,12 +479,12 @@ describe('Money Input', () => {
 
     it('shows a formatted placeholder when provided', () => {
       component.setProps({ placeholder: 12345.67, numberFormatPrecision: 3 });
-      expect(amountInput().prop('placeholder')).toBe('formatted 12345.67, en, eur');
+      expect(amountInput().prop('placeholder')).toBe('formatted 12345.67, en-GB, eur');
     });
 
     it('allows a placeholder of 0', () => {
       component.setProps({ placeholder: 0, numberFormatPrecision: 3 });
-      expect(amountInput().prop('placeholder')).toBe('formatted 0, en, eur');
+      expect(amountInput().prop('placeholder')).toBe('formatted 0, en-GB, eur');
     });
   });
 

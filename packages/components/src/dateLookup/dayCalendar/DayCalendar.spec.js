@@ -6,8 +6,9 @@ import DayCalendar from '.';
 import Header from '../header';
 import DayCalendarTable from './table';
 
+const locale = 'en-GB';
 jest.mock('react-intl', () => ({
-  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: 'en' }} />,
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale }} />,
 }));
 jest.mock('@transferwise/formatting', () => ({
   formatDate: jest.fn().mockReturnValue('MonthName XXXX'),
@@ -41,7 +42,7 @@ describe('DayCalendar', () => {
 
   it('shows formatted date as header label in long format', () => {
     expect(header().prop('label')).toBe('MonthName XXXX');
-    expect(formatting.formatDate).toHaveBeenCalledWith(new Date(2018, 10), 'en', {
+    expect(formatting.formatDate).toHaveBeenCalledWith(new Date(2018, 10), locale, {
       month: 'long',
       year: 'numeric',
     });
@@ -50,7 +51,7 @@ describe('DayCalendar', () => {
   it('shows formatted date as header label in short format', () => {
     component.setProps({ monthFormat: 'short' });
     expect(header().prop('label')).toBe('MonthName XXXX');
-    expect(formatting.formatDate).toHaveBeenCalledWith(new Date(2018, 10), 'en', {
+    expect(formatting.formatDate).toHaveBeenCalledWith(new Date(2018, 10), locale, {
       month: 'short',
       year: 'numeric',
     });

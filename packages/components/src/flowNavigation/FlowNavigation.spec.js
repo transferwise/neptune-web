@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import { FlowNavigation, Provider } from '..';
 import BackButton from './backButton';
 import Logo from './logo';
-import en from '../../i18n/en.json';
+import en from '../../i18n/en-GB.json';
 
 describe('Flow navigation', () => {
   let component;
@@ -55,7 +55,7 @@ describe('Flow navigation', () => {
     component = mount(<FlowNavigation {...props} />, {
       // eslint-disable-next-line react/prop-types
       wrappingComponent: ({ children }) => {
-        return <Provider i18n={{ locale: 'en', messages: en }}>{children}</Provider>;
+        return <Provider i18n={{ locale: 'en-GB', messages: en }}>{children}</Provider>;
       },
     });
   });

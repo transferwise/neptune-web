@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import Logo from '../flowNavigation/logo';
 
 import { OverlayHeader, Provider } from '..';
-import en from '../../i18n/en.json';
+import en from '../../i18n/en-GB.json';
 
 describe('Overlay header', () => {
   let component;
@@ -39,7 +39,7 @@ describe('Overlay header', () => {
     component = mount(<OverlayHeader {...props} />, {
       // eslint-disable-next-line react/prop-types
       wrappingComponent: ({ children }) => {
-        return <Provider i18n={{ locale: 'en', messages: en }}>{children}</Provider>;
+        return <Provider i18n={{ locale: 'en-GB', messages: en }}>{children}</Provider>;
       },
     });
   });

@@ -58,7 +58,7 @@ describe('Date Input Component', () => {
   const props = { onChange: jest.fn() };
 
   beforeEach(() => {
-    useIntl.mockReturnValue({ locale: 'en' });
+    useIntl.mockReturnValue({ locale: 'en-GB' });
     component = shallow(<DateInput {...props} />);
 
     selectMonth = component.find(MONTH_SELECTOR);

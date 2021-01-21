@@ -12,7 +12,7 @@ jest.mock('./utils/postData', () => ({
 jest.mock('./utils/asyncFileRead');
 const { asyncFileRead } = require('./utils/asyncFileRead');
 
-const defaultLocale = 'en';
+const defaultLocale = 'en-GB';
 jest.mock('react-intl', () => ({
   injectIntl: (Component) => (props) => (
     <Component {...props} intl={{ locale: defaultLocale, formatMessage: (id) => `${id}` }} />

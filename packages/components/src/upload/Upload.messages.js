@@ -3,7 +3,7 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   csButtonText: {
     id: 'neptune.Upload.csButtonText',
-    defaultMessage: 'Select other file?',
+    defaultMessage: 'Upload another file?',
   },
   csFailureText: {
     id: 'neptune.Upload.csFailureText',
@@ -19,7 +19,7 @@ export default defineMessages({
   },
   csWrongTypeMessage: {
     id: 'neptune.Upload.csWrongTypeMessage',
-    defaultMessage: 'Please provide a supported format',
+    defaultMessage: 'File type not supported. Please try again with a different file',
   },
   psButtonText: {
     id: 'neptune.Upload.psButtonText',
@@ -31,7 +31,7 @@ export default defineMessages({
   },
   usButtonText: {
     id: 'neptune.Upload.usButtonText',
-    defaultMessage: 'Or Select File',
+    defaultMessage: 'Or select a file',
   },
   usDropMessage: {
     id: 'neptune.Upload.usDropMessage',

@@ -12,7 +12,7 @@ jest.mock('@transferwise/formatting', () => ({
 }));
 
 describe('YearCalendarTable', () => {
-  const locale = 'en';
+  const locale = 'en-GB';
   let component;
   let props;
 

@@ -5,7 +5,7 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import * as components from '.';
-import en from '../i18n/en.json';
+import en from '../i18n/en-GB.json';
 
 const excluded = ['useSnackbar', 'Provider'];
 
@@ -117,7 +117,7 @@ describe('Server side rendering', () => {
       }
 
       const string = renderToString(
-        <Provider i18n={{ locale: 'en', messages: en }}>
+        <Provider i18n={{ locale: 'en-GB', messages: en }}>
           {componentName.endsWith('Context') ? (
             <Component.Provider {...newProps} />
           ) : (

@@ -6,8 +6,9 @@ import MonthCalendar from '.';
 import Header from '../header';
 import MonthCalendarTable from './table';
 
+const defaultLocale = 'en-GB';
 jest.mock('react-intl', () => ({
-  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: 'en' }} />,
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: defaultLocale }} />,
 }));
 jest.mock('@transferwise/formatting', () => ({
   formatDate: jest.fn().mockReturnValue('XXXX'),
@@ -40,7 +41,7 @@ describe('MonthCalendar', () => {
 
   it('shows formatted date as header label', () => {
     expect(header().prop('label')).toBe('XXXX');
-    expect(formatting.formatDate).toHaveBeenCalledWith(new Date(2018, 0), 'en', {
+    expect(formatting.formatDate).toHaveBeenCalledWith(new Date(2018, 0), defaultLocale, {
       year: 'numeric',
     });
   });

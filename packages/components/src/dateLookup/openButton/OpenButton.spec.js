@@ -12,7 +12,7 @@ jest.mock('@transferwise/formatting', () => ({
 
 describe('OpenButton', () => {
   const selectedDate = new Date(1990, 11, 27);
-  const locale = 'en';
+  const locale = 'en-GB';
   let component;
   let props;
 

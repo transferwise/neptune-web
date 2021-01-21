@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Upload from '.';
 
-const defaultLocale = 'en';
+const defaultLocale = 'en-GB';
 jest.mock('react-intl', () => ({
   injectIntl: (Component) => (props) => (
     <Component {...props} intl={{ locale: defaultLocale, formatMessage: (id) => `${id}` }} />

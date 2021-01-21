@@ -14,7 +14,7 @@ describe('DateLookup state', () => {
 
   beforeEach(() => {
     defaultProps = { onChange: jest.fn() };
-    useIntl.mockReturnValue({ locale: 'en' });
+    useIntl.mockReturnValue({ locale: 'en-GB' });
     component = shallow(<DateLookup {...defaultProps} />);
   });
 

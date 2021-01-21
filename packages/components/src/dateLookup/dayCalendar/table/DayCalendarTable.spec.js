@@ -7,8 +7,9 @@ import * as dateUtils from '../../../common/dateUtils';
 import DayCalendarTable from '.';
 import TableLink from '../../tableLink';
 
+const locale = 'en-GB';
 jest.mock('react-intl', () => ({
-  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: 'en' }} />,
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale }} />,
 }));
 
 jest.mock('@transferwise/formatting', () => ({
@@ -25,7 +26,6 @@ jest.mock('../../getStartOfDay', () => ({
 }));
 
 describe('DayCalendarTable', () => {
-  const locale = 'en';
   let component;
   let props;
 

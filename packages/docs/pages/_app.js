@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
 
 class MyApp extends App {
   static async getInitialProps() {
-    const defaultLocale = 'en';
+    const defaultLocale = 'en-GB';
     const messages = await import(`@transferwise/components/i18n/${defaultLocale}`);
     return { locale: defaultLocale, messages };
   }

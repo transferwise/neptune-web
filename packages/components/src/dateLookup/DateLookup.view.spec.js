@@ -7,7 +7,7 @@ import DayCalendar from './dayCalendar';
 import MonthCalendar from './monthCalendar';
 import YearCalendar from './yearCalendar';
 
-const defaultLocale = 'en';
+const defaultLocale = 'en-GB';
 jest.mock('react-intl', () => ({
   injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: defaultLocale }} />,
   useIntl: () => ({ locale: defaultLocale }),

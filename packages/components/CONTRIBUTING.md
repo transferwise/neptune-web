@@ -54,8 +54,8 @@ Define messages using the [`defineMessages`](https://formatjs.io/docs/react-intl
 
 Once you have defined the messages and agreed on copy, they must be sent to the translations vendor (Crowdin). To do this:
  
-1. Run `yarn build` (it will regenerate a main source file (`en.json`) out of all `*.message.js` files)
-2. Push changes (or only `en.json`) to your remote branch (this will make Crowdin notice new messages)
+1. Run `yarn build` (it will regenerate a main source file (`en-GB.json`) out of all `*.message.js` files)
+2. Push changes (or only `en-GB.json`) to your remote branch (this will make Crowdin notice new messages)
 3. Right after that Crowdin will create a PR (where the base branch is your feature branch) with placeholders (English messages) in other translation files. It will commit into same PR (or a new PR in case you have merged the first one) with translated messages, as soon as translators translate them.
 
 If you merge your feature PR without all the translations (which is okay-ish), Crowdin should do the same, just on the `main` branch.

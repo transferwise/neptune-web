@@ -11,7 +11,7 @@ describe('FormattedValue', () => {
   let value;
   let component;
   let item;
-  useIntl.mockReturnValue({ locale: 'en' });
+  useIntl.mockReturnValue({ locale: 'en-GB' });
 
   describe('when given a text field', () => {
     beforeEach(() => {
@@ -79,7 +79,7 @@ describe('FormattedValue', () => {
     });
 
     it('should display the formatted date value', () => {
-      expect(item.text()).toBe('12/20/2000');
+      expect(item.text()).toBe('20/12/2000');
     });
   });
 
