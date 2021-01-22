@@ -89,7 +89,7 @@ export const withAvatarIcon = () => {
 };
 
 export const withCustomAvatarImage = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(4);
   const [closed, setClosed] = useState(false);
   const showAvatar = boolean('show avatar', true);
   const showCloseButton = boolean('show closeButton', true);
