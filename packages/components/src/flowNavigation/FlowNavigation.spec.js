@@ -5,7 +5,7 @@ import { render, screen } from '../test-utils';
 
 import FlowNavigation from '.';
 import { Breakpoint } from '../common';
-import Logo from '../common/logo';
+
 import Avatar from '../avatar';
 
 jest.mock('lodash.throttle', () => jest.fn((fn) => fn));
@@ -17,12 +17,6 @@ jest.mock('./animatedLabel', () => {
 jest.mock('./backButton', () => {
   // eslint-disable-next-line react/prop-types
   return ({ className, label }) => <div className={className}>BackButton{label}</div>;
-});
-jest.mock('../common/logo', () => {
-  // eslint-disable-next-line react/prop-types
-  const mockedLogo = ({ className, type }) => <div className={className}>Logo {type}</div>;
-  mockedLogo.Type = { FULL: 'FULL', FLAG: 'FLAG' };
-  return mockedLogo;
 });
 
 describe('FlowNavigation', () => {
@@ -47,7 +41,10 @@ describe('FlowNavigation', () => {
         TM
       </Avatar>
     ),
-    logo: <Logo type={Logo.Type.FULL} />,
+    logo: {
+      desktop: <img alt="logo_desktop" src="img_desktop" width="138" height="24" />,
+      mobile: <img alt="logo_mobile" src="img_mobile" height="32" width="24" />,
+    },
     onClose: jest.fn(),
     steps: [
       {
@@ -92,19 +89,21 @@ describe('FlowNavigation', () => {
       expect(render(<FlowNavigation {...props} />).container).toMatchSnapshot();
     });
 
-    it(`renders Logo ${Logo.Type.FLAG} if onGoBack is not provided and activeStep = 0`, () => {
+    it(`renders logo mobile if onGoBack is not provided and activeStep = 0`, () => {
       const { rerender } = render(<FlowNavigation {...props} />);
+      const logoRootContainer = logoFlag().parentElement.parentElement;
+      const logoContainer = logoFlag().parentElement;
 
-      expect(logoFlag().parentElement).toHaveClass('visible-xs');
-      expect(logoFlag()).toHaveClass('np-flow-navigation--logo__display');
+      expect(logoContainer).toHaveClass('np-flow-navigation--logo__display');
+      expect(logoRootContainer).toHaveClass('visible-xs');
 
       rerender(<FlowNavigation {...props} activeStep={1} />);
 
-      expect(logoFlag().parentElement).toHaveClass('visible-xs');
+      expect(logoRootContainer).toHaveClass('visible-xs');
 
       rerender(<FlowNavigation {...props} onGoBack={jest.fn()} activeStep={1} />);
 
-      expect(logoFlag()).toHaveClass('np-flow-navigation--logo__hidden');
+      expect(logoContainer).toHaveClass('np-flow-navigation--logo__hidden');
     });
 
     it('renders BackButton with AnimatedLabel if onGoBack is provided and activeStep > 0', () => {
@@ -121,6 +120,6 @@ describe('FlowNavigation', () => {
       expect(screen.getByText('AnimatedLabel')).toBeInTheDocument();
     });
   });
-  const logoFlag = () => screen.getByText(`Logo ${Logo.Type.FLAG}`);
-  const logoFull = () => screen.getByText(`Logo ${Logo.Type.FULL}`);
+  const logoFlag = () => screen.getByAltText(`logo_mobile`);
+  const logoFull = () => screen.getByAltText(`logo_desktop`);
 });

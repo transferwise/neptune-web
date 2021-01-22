@@ -3,7 +3,6 @@ import { boolean, select } from '@storybook/addon-knobs';
 import { Profile as ProfileIcon, Briefcase as BriefcaseIcon } from '@transferwise/icons';
 import FlowNavigation from './FlowNavigation';
 import Avatar from '../avatar';
-import Logo from '../common/logo';
 
 export default {
   component: FlowNavigation,
@@ -16,7 +15,7 @@ const avatarProfiles = {
 };
 
 export const withAvatarIcon = () => {
-  const [activeStep, setActiveStep] = useState(4);
+  const [activeStep, setActiveStep] = useState(0);
   const [closed, setClosed] = useState(false);
   const showAvatar = select('avatar', Object.keys(avatarProfiles), 'Profile');
   const showCloseButton = boolean('show closeButton', true);
@@ -31,7 +30,24 @@ export const withAvatarIcon = () => {
           </Avatar>
         )
       }
-      logo={<Logo />}
+      logo={{
+        desktop: (
+          <img
+            alt="logo"
+            src="https://transferwise.com/public-resources/assets/logos/transferwise/logo.svg"
+            width="138"
+            height="24"
+          />
+        ),
+        mobile: (
+          <img
+            alt="logo"
+            src="https://transferwise.com/public-resources/assets/logos/transferwise/flag.svg"
+            height="32"
+            width="24"
+          />
+        ),
+      }}
       onClose={showCloseButton && (() => setClosed(true))}
       onGoBack={showMobileBackButton && (() => setActiveStep(activeStep > 0 ? activeStep - 1 : 0))}
       activeStep={activeStep}
@@ -88,7 +104,24 @@ export const withCustomAvatarImage = () => {
           </Avatar>
         )
       }
-      logo={<Logo />}
+      logo={{
+        desktop: (
+          <img
+            alt="logo"
+            src="https://transferwise.com/public-resources/assets/logos/transferwise/logo.svg"
+            width="138"
+            height="24"
+          />
+        ),
+        mobile: (
+          <img
+            alt="logo"
+            src="https://transferwise.com/public-resources/assets/logos/transferwise/flag.svg"
+            height="32"
+            width="24"
+          />
+        ),
+      }}
       onClose={showCloseButton && (() => setClosed(true))}
       onGoBack={
         showMobileBackButton && (() => setActiveStep(activeStep - 1 > 0 ? activeStep - 1 : 0))

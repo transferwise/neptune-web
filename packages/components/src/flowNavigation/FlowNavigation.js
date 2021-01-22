@@ -6,7 +6,6 @@ import Stepper from '../stepper';
 import AnimatedLabel from './animatedLabel';
 import BackButton from './backButton';
 import CloseButton from '../common/closeButton';
-import Logo from '../common/logo';
 
 import { Theme, Breakpoint } from '../common';
 import { useClientWidth } from '../common/hooks';
@@ -34,13 +33,14 @@ const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, steps }) 
           onClick={onGoBack}
         />
       )}
-      <Logo
-        type={Logo.Type.FLAG}
+      <div
         className={classNames('np-flow-navigation--logo', {
           'np-flow-navigation--logo__hidden': activeStep,
           'np-flow-navigation--logo__display': !activeStep,
         })}
-      />
+      >
+        {logo.mobile}
+      </div>
     </div>
   );
 
@@ -54,7 +54,7 @@ const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, steps }) 
       })}
       leftContent={
         <>
-          <div className="hidden-xs">{logo}</div>
+          <div className="hidden-xs">{logo.desktop}</div>
           {getLeftContentSmall()}
         </>
       }
@@ -90,7 +90,7 @@ FlowNavigation.propTypes = {
   activeStep: Types.number,
   /** An Avatar */
   avatar: Types.element,
-  logo: Types.node.isRequired,
+  logo: Types.shape({ desktop: Types.node.isRequired, mobile: Types.node.isRequired }).isRequired,
   /** Called when the close button is clicked. If not provided the close button won't show */
   onClose: Types.func,
   /** Called when the back button is clicked. If not provided the back button won't show. The back button only shows on small screens */
