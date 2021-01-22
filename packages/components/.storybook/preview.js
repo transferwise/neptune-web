@@ -6,6 +6,7 @@ import '@transferwise/neptune-css/dist/css/neptune.css';
 import '@transferwise/icons/lib/styles/main.min.css';
 import 'currency-flags/dist/currency-flags.min.css';
 
+import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import supportedLocales from '../i18n';
 
 import './storybook.css';
@@ -28,6 +29,9 @@ export const parameters = {
   },
   options: {
     panelPosition: 'right',
+  },
+  viewport: {
+    viewports: MINIMAL_VIEWPORTS,
   },
 };
 

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnimatedLabel renders all labels 1`] = `
+<div>
+  <div
+    class="np-animated-label"
+  >
+    <div
+      class="text-xs-left np-animated-label--in"
+    >
+      label1
+    </div>
+    <div
+      class="text-xs-left np-animated-label--out"
+    >
+      label2
+    </div>
+    <div
+      class="text-xs-left"
+    >
+      label3
+    </div>
+  </div>
+</div>
+`;

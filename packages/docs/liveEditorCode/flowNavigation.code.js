@@ -1,17 +1,17 @@
 () => {
-  const [activeStep, setActiveStep] = React.useState(1);
-  const updateActiveStep = (step) => () => setActiveStep(step);
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [closed, setClosed] = React.useState(false);
 
-  return (
+  return !closed ? (
     <FlowNavigation
-      activeStep={activeStep}
-      onClose={() => alert('Close clicked')}
-      avatarUrl="https://github.com/transferwise.png"
-      done={false}
-      profileType={FlowNavigation.ProfileType.BUSINESS}
-      theme={FlowNavigation.Theme.LIGHT}
-      onGoBack={() => alert('If onGoBack is null, the arrow is replaced with a flag')}
-      showCloseButton
+      avatar={
+        <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
+          <ProfileIcon />
+        </Avatar>
+      }
+      logo={<Logo />}
+      onClose={() => setClosed(true)}
+      onGoBack={() => setActiveStep(activeStep - 1 > 0 ? activeStep - 1 : 0)}
       steps={[
         {
           label: 'Amount',
@@ -23,23 +23,29 @@
               0.2351 ETH
             </>
           ),
-          onClick: updateActiveStep(0),
+          onClick: () => setActiveStep(0),
         },
         {
-          label: 'My details',
+          label: 'You',
           hoverLabel: (
             <>
               <div>
-                <strong>Diana Jaramillo</strong>
+                <strong>Elena Durante</strong>
               </div>
-              dianajarm123@gmail.com
+              elenadurante@test.com
             </>
           ),
-          onClick: updateActiveStep(1),
+          onClick: () => setActiveStep(1),
         },
-        { label: 'Recipient', hoverLabel: 'Some person/dog', onClick: updateActiveStep(2) },
-        { label: 'Something', hoverLabel: 'Cool', onClick: updateActiveStep(3) },
+        { label: 'Recipient', hoverLabel: 'Daniele Tomboro', onClick: () => setActiveStep(2) },
+        { label: 'Review', hoverLabel: 'Antonio Dozortevo', onClick: () => setActiveStep(3) },
+        {
+          label: 'Pay',
+          hoverLabel: 'Enrico Gusso II',
+          onClick: () => setActiveStep(4),
+        },
       ]}
+      activeStep={activeStep}
     />
-  );
+  ) : null;
 };

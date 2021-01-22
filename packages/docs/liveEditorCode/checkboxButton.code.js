@@ -2,7 +2,8 @@
   const [checked, setChecked] = React.useState(true);
   return (
     <CheckboxButton
-      onChange={newState => setChecked(newState)}
+      aria-label="Toggle email updates"
+      onChange={() => setChecked(!checked)}
       checked={checked}
       disabled={false}
     />

@@ -108,7 +108,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
 
     it('should render a checkbox for the boolean schema', () => {
       const check = screen.getByLabelText('Check');
-      expect(check).toHaveClass('tw-checkbox-button');
+      expect(check.parentElement).toHaveClass('np-checkbox-button');
     });
 
     it('should render radio buttons for the enum schema', () => {
