@@ -8,8 +8,11 @@ exports[`OverlayHeader renders as expected 1`] = `
     <div
       class="align-items-center d-flex"
     >
-      <div
-        class="np-logo logo logo-3 logo-primary"
+      <img
+        alt="logo_desktop"
+        height="24"
+        src="img_desktop"
+        width="138"
       />
     </div>
     <div

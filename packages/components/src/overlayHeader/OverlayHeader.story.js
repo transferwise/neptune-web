@@ -4,7 +4,6 @@ import { action } from '@storybook/addon-actions';
 import { Profile as ProfileIcon, Briefcase as BriefcaseIcon } from '@transferwise/icons';
 import OverlayHeader from './OverlayHeader';
 import Avatar from '../avatar';
-import Logo from '../common/logo';
 
 export default {
   component: OverlayHeader,
@@ -21,7 +20,14 @@ export const basic = () => {
   const showAvatar = select('avatar', Object.keys(avatarProfiles), 'Profile');
   return (
     <OverlayHeader
-      logo={<Logo />}
+      logo={
+        <img
+          alt="logo"
+          src="https://transferwise.com/public-resources/assets/logos/transferwise/logo.svg"
+          width="138"
+          height="24"
+        />
+      }
       onClose={action('Close clicked')}
       avatar={
         <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
