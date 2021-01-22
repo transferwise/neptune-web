@@ -9,7 +9,24 @@
           <ProfileIcon />
         </Avatar>
       }
-      logo={<Logo />}
+      logo={{
+        desktop: (
+          <img
+            alt="logo"
+            src="https://transferwise.com/public-resources/assets/logos/transferwise/logo.svg"
+            width="138"
+            height="24"
+          />
+        ),
+        mobile: (
+          <img
+            alt="logo"
+            src="https://transferwise.com/public-resources/assets/logos/transferwise/flag.svg"
+            height="32"
+            width="24"
+          />
+        ),
+      }}
       onClose={() => setClosed(true)}
       onGoBack={() => setActiveStep(activeStep - 1 > 0 ? activeStep - 1 : 0)}
       steps={[
