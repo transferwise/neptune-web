@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@33.0.0...@transferwise/components@33.0.1) (2021-01-25)
+
+
+### Bug Fixes
+
+* simplify RadioButton HTML by using a span ([#767](https://github.com/transferwise/neptune-web/issues/767)) ([fb4a6e4](https://github.com/transferwise/neptune-web/commit/fb4a6e4ac4084b71eb560548d7742168aa17a362))
+
+
+
+
+
 # [33.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@32.0.3...@transferwise/components@33.0.0) (2021-01-22)
 
 

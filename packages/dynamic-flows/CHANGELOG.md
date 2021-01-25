@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@10.0.0...@transferwise/dynamic-flows@10.1.0) (2021-01-25)
+
+
+### Features
+
+* markdown tooltips for dynamic flows ([#768](https://github.com/transferwise/neptune-web/issues/768)) ([f71b106](https://github.com/transferwise/neptune-web/commit/f71b106a8b8baa85d4251d7a3603f34cb0aa3972))
+
+
+
+
+
 # [10.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@9.0.2...@transferwise/dynamic-flows@10.0.0) (2021-01-22)
 
 
