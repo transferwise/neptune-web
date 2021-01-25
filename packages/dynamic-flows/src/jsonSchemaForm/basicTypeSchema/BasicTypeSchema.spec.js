@@ -6,6 +6,7 @@ import BasicTypeSchema from '.';
 import SchemaFormControl from '../schemaFormControl';
 import ControlFeedback from '../controlFeedback';
 import DynamicAlert from '../../layout/alert';
+import Help from './help';
 
 describe('Given a component for rendering basic type schemas', () => {
   let component;
@@ -92,6 +93,31 @@ describe('Given a component for rendering basic type schemas', () => {
         const alertComponent = component.find(DynamicAlert);
 
         expect(alertComponent).toHaveLength(0);
+      });
+    });
+
+    describe('when help exists', () => {
+      it('should render help popover', () => {
+        const help = {
+          markdown: 'some help',
+        };
+        const schemaWithHelp = { ...schema, help };
+
+        component = shallow(<BasicTypeSchema {...props} schema={schemaWithHelp} />);
+
+        const helpPopover = component.find(Help);
+
+        expect(helpPopover).toHaveLength(1);
+      });
+    });
+
+    describe('when help does not exist', () => {
+      it('should not render help popover', () => {
+        component = shallow(<BasicTypeSchema {...props} />);
+
+        const helpPopover = component.find(Help);
+
+        expect(helpPopover).toHaveLength(0);
       });
     });
 

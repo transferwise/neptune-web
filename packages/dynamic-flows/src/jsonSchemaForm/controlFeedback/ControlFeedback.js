@@ -13,7 +13,7 @@ const ControlFeedback = (props) => {
   const isErrorVisible = (props.submitted || !props.changed) && !!props.errors;
   const isValidationVisible =
     (props.submitted || (props.changed && props.blurred)) && !!props.validations.length;
-  const isHelpVisible = props.focused && props.schema.help && !isValidationVisible;
+  const isDescriptionVisible = props.focused && props.schema.description && !isValidationVisible;
 
   return (
     <div>
@@ -25,16 +25,9 @@ const ControlFeedback = (props) => {
           ))}
         </InlineAlert>
       )}
-      {isHelpVisible && (
+      {isDescriptionVisible && (
         <InlineAlert type="info">
-          {props.schema.help.message && <div>{props.schema.help.message}</div>}
-          {props.schema.help.list && (
-            <ul className="list-unstyled">
-              {props.schema.help.list.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          )}
+          {props.schema.description && <div>{props.schema.description}</div>}
         </InlineAlert>
       )}
     </div>
@@ -51,7 +44,7 @@ const validationMessagesProps = Types.shape({
 });
 
 ControlFeedback.propTypes = {
-  changed: Types.bool.isRequired, // Has the control been iteracted with
+  changed: Types.bool.isRequired, // Has the control been interacted with
   blurred: Types.bool.isRequired, // Has the control been blurred at least once
   focused: Types.bool.isRequired, // Is the control in focus
   submitted: Types.bool.isRequired,
@@ -59,10 +52,7 @@ ControlFeedback.propTypes = {
   validations: Types.arrayOf(Types.string),
   validationMessages: validationMessagesProps,
   schema: Types.shape({
-    help: Types.shape({
-      message: Types.string,
-      list: Types.arrayOf(Types.string),
-    }),
+    description: Types.string,
     validationMessages: validationMessagesProps,
   }).isRequired,
 };
