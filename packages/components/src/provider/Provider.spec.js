@@ -4,7 +4,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { render, waitFor, cleanup, screen } from '@testing-library/react';
 
 import Provider from '.';
-import closeButtonMessages from '../common/CloseButton/CloseButton.messages';
+import closeButtonMessages from '../common/closeButton/CloseButton.messages';
 
 describe('Provider', () => {
   beforeAll(() => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import Provider from './Provider';
-import closeButtonMessages from '../common/CloseButton/CloseButton.messages';
+import closeButtonMessages from '../common/closeButton/CloseButton.messages';
 
 export default {
   component: Provider,

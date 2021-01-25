@@ -14,6 +14,7 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-a11y',
     '@storybook/addon-docs',
+    '@storybook/addon-viewport',
   ],
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({

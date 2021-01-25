@@ -13,7 +13,7 @@ export const CloseButton = ({ onClick, className }) => {
   return (
     <button
       type="button"
-      className={classNames('tw-close-button', 'btn-link', 'text-no-decoration', className)}
+      className={classNames('np-close-button', 'btn-link', 'text-no-decoration', className)}
       aria-label={intl.formatMessage(messages.ariaLabel)}
       onClick={onClick}
     >

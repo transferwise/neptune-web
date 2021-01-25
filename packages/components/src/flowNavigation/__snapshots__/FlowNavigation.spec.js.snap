@@ -1,0 +1,263 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FlowNavigation on mobile renders as expected 1`] = `
+<div>
+  <div
+    class="np-header d-flex flex-wrap np-flow-navigation np-flow-navigation--small"
+  >
+    <div
+      class="align-items-center d-flex flex__item--8"
+    >
+      <div
+        class="hidden-xs"
+      >
+        <div>
+          Logo 
+          FULL
+        </div>
+      </div>
+      <div
+        class="visible-xs"
+      >
+        <div
+          class="np-flow-navigation--logo np-flow-navigation--logo__display"
+        >
+          Logo 
+          FLAG
+        </div>
+      </div>
+    </div>
+    <div
+      class="align-items-center d-flex justify-content-end flex__item--4 "
+    >
+      <div
+        class="tw-avatar tw-avatar--md tw-avatar--initials tw-avatar--light"
+      >
+        <div
+          class="tw-avatar__content"
+        >
+          TM
+        </div>
+      </div>
+      <span
+        class="separator"
+      />
+      <button
+        aria-label="Close"
+        class="np-close-button btn-link text-no-decoration"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="tw-icon tw-icon-cross "
+          role="presentation"
+        >
+          <svg
+            fill="currentColor"
+            focusable="false"
+            height="24"
+            width="24"
+          >
+            <path
+              d="M12 13.414l7.293 7.293 1.414-1.414L13.414 12l7.293-7.293-1.414-1.414L12 10.586 4.707 3.293 3.293 4.707 10.586 12l-7.293 7.293 1.414 1.414L12 13.414z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <div
+      class="align-items-center d-flex justify-content-center flex__item--12"
+    >
+      <div
+        class="tw-stepper np-flow-navigation__stepper m-t-1"
+      >
+        <div
+          class="progress"
+        >
+          <div
+            class="progress-bar-filler"
+            style="width: 0%;"
+          />
+          <div
+            class="progress-bar-ending"
+            style="width: 0%;"
+          />
+        </div>
+        <ul
+          class="tw-stepper-steps p-t-1 m-b-0"
+        >
+          <li
+            class="
+          hidden-xs
+          tw-stepper__step
+          tw-stepper__step--active
+          
+        "
+            style="left: 0%;"
+          >
+            <button
+              class="btn-unstyled tw-stepper__step-label"
+              disabled=""
+              type="button"
+            >
+              <small>
+                label-0
+              </small>
+            </button>
+          </li>
+          <li
+            class="
+          hidden-xs
+          tw-stepper__step
+          
+          
+        "
+            style="left: 100%;"
+          >
+            <button
+              class="btn-unstyled tw-stepper__step-label"
+              disabled=""
+              type="button"
+            >
+              <small>
+                label-1
+              </small>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FlowNavigation renders as expected 1`] = `
+<div>
+  <div
+    class="np-header d-flex flex-wrap np-flow-navigation np-flow-navigation--large"
+  >
+    <div
+      class="align-items-center d-flex"
+    >
+      <div
+        class="hidden-xs"
+      >
+        <div>
+          Logo 
+          FULL
+        </div>
+      </div>
+      <div
+        class="visible-xs"
+      >
+        <div
+          class="np-flow-navigation--logo np-flow-navigation--logo__display"
+        >
+          Logo 
+          FLAG
+        </div>
+      </div>
+    </div>
+    <div
+      class="align-items-center d-flex justify-content-end order-2"
+    >
+      <div
+        class="tw-avatar tw-avatar--md tw-avatar--initials tw-avatar--light"
+      >
+        <div
+          class="tw-avatar__content"
+        >
+          TM
+        </div>
+      </div>
+      <span
+        class="separator"
+      />
+      <button
+        aria-label="Close"
+        class="np-close-button btn-link text-no-decoration"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="tw-icon tw-icon-cross "
+          role="presentation"
+        >
+          <svg
+            fill="currentColor"
+            focusable="false"
+            height="24"
+            width="24"
+          >
+            <path
+              d="M12 13.414l7.293 7.293 1.414-1.414L13.414 12l7.293-7.293-1.414-1.414L12 10.586 4.707 3.293 3.293 4.707 10.586 12l-7.293 7.293 1.414 1.414L12 13.414z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <div
+      class="align-items-center d-flex justify-content-center order-1 flex-grow-1"
+    >
+      <div
+        class="tw-stepper np-flow-navigation__stepper m-t-1"
+      >
+        <div
+          class="progress"
+        >
+          <div
+            class="progress-bar-filler"
+            style="width: 0%;"
+          />
+          <div
+            class="progress-bar-ending"
+            style="width: 0%;"
+          />
+        </div>
+        <ul
+          class="tw-stepper-steps p-t-1 m-b-0"
+        >
+          <li
+            class="
+          hidden-xs
+          tw-stepper__step
+          tw-stepper__step--active
+          
+        "
+            style="left: 0%;"
+          >
+            <button
+              class="btn-unstyled tw-stepper__step-label"
+              disabled=""
+              type="button"
+            >
+              <small>
+                label-0
+              </small>
+            </button>
+          </li>
+          <li
+            class="
+          hidden-xs
+          tw-stepper__step
+          
+          
+        "
+            style="left: 100%;"
+          >
+            <button
+              class="btn-unstyled tw-stepper__step-label"
+              disabled=""
+              type="button"
+            >
+              <small>
+                label-1
+              </small>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
