@@ -10,7 +10,6 @@ import {
   Select,
   Tabs,
   TextareaWithDisplayFormat,
-  Upload,
 } from '@transferwise/components';
 import FormControl from '.';
 
@@ -49,7 +48,6 @@ describe('FormControl', () => {
   testCustomControl('date', DateInput);
   testCustomControl('tel', PhoneNumberInput);
   testCustomControl('checkbox', Checkbox);
-  testCustomControl('upload', Upload);
   testCustomControl('text', InputWithDisplayFormat);
   testCustomControl('textarea', TextareaWithDisplayFormat);
   testCustomControl('date-lookup', DateLookup);
