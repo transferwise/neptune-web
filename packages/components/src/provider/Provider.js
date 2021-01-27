@@ -5,6 +5,7 @@ import en from '../../i18n/en.json';
 import { DEFAULT_LOCALE, adjustLocale } from '../common/locale';
 
 function Provider({ i18n, children }) {
+  console.log('i18n', ...i18n);
   const cache = createIntlCache();
   const { locale, messages } = i18n;
   const adjustedLocale = adjustLocale(locale);

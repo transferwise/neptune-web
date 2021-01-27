@@ -7,7 +7,7 @@ import '@transferwise/icons/lib/styles/main.min.css';
 import 'currency-flags/dist/currency-flags.min.css';
 
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { DEFAULT_LOCALE } from '../src/common/locale';
+import { DEFAULT_LOCALE, getLangFromLocale } from '../src/common/locale';
 import supportedLangs from '../i18n';
 
 import './storybook.css';
@@ -53,12 +53,13 @@ const CenterDecorator = (storyFn) => (
   </div>
 );
 
-const EXAMPLE_OF_LOCALES = [DEFAULT_LOCALE, 'en-US', 'ja-JP', 'zh-HK', 'es', 'fr'];
+// list is not exhaustive but should enough for testing diff edge cases
+// feel free to add more during development
+const severalExamplesOfSupportedLocales = [DEFAULT_LOCALE, 'en-US', 'ja-JP', 'zh-HK', 'es', 'fr', 'ru', 'de', 'tr'];
 
 const ProviderDecorator = (storyFn) => {
-  const langCodes = Object.keys(supportedLangs);
-  const lang = select('lang (global)', langCodes, langCodes[0]);
-  const locale = select('locale (global)', EXAMPLE_OF_LOCALES, DEFAULT_LOCALE);
+  const locale = select('locale (global)', severalExamplesOfSupportedLocales, DEFAULT_LOCALE);
+  const lang = getLangFromLocale(locale);
   const messages = supportedLangs[lang];
   const props = {
     i18n: { locale, messages },

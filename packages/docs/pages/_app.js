@@ -5,6 +5,10 @@ import App from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
 import { Provider } from '@transferwise/components';
+import {
+  getLangFromLocale,
+  DEFAULT_LOCALE,
+} from '@transferwise/components/build/es/polyfill/common/locale';
 import Layout from '../components/Layout';
 import '@transferwise/neptune-css/dist/css/neptune.css';
 import '@transferwise/icons/lib/styles/main.min.css';
@@ -22,9 +26,9 @@ if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
 
 class MyApp extends App {
   static async getInitialProps() {
-    const defaultLocale = 'en-GB';
-    const messages = await import(`@transferwise/components/i18n/${defaultLocale}`);
-    return { locale: defaultLocale, messages };
+    const lang = getLangFromLocale(DEFAULT_LOCALE);
+    const messages = await import(`@transferwise/components/i18n/${lang}`);
+    return { locale: DEFAULT_LOCALE, messages };
   }
 
   componentDidMount() {
