@@ -136,7 +136,7 @@ class Tabs extends React.Component {
   getAllTabsWidth = () => {
     return this.tabRefs
       .map((ref) => {
-        return ref.getBoundingClientRect().width;
+        return ref ? ref.getBoundingClientRect().width : 0;
       })
       .reduce((a, b) => a + b, 0);
   };
@@ -144,7 +144,7 @@ class Tabs extends React.Component {
   getDistanceToSelectedTab = (selectedTabIndex) => {
     return this.tabRefs
       .filter((_, idx) => idx < selectedTabIndex)
-      .map((ref) => ref.getBoundingClientRect().width)
+      .map((ref) => (ref ? ref.getBoundingClientRect().width : 0))
       .reduce((a, b) => a + b, 0);
   };
 
@@ -180,10 +180,9 @@ class Tabs extends React.Component {
       return `${(1 / tabs.length) * 100}%`;
     }
 
-    return `${
-      (this.tabRefs[selected] || this.tabRefs[this.tabRefs.length - 1]).getBoundingClientRect()
-        .width
-    }px`;
+    const ref = this.tabRefs[selected] || this.tabRefs[this.tabRefs.length - 1];
+    const width = ref ? ref.getBoundingClientRect().width : 0;
+    return `${width}px`;
   };
 
   /*
