@@ -30,7 +30,6 @@ function Provider({ i18n, children }) {
 }
 
 Provider.propTypes = {
-  /** locale: e.g es-ES, ja-JP, en-GB, en; messages */
   i18n: Types.shape({
     locale: Types.string.isRequired,
     messages: Types.shape.isRequired,

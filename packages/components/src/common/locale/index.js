@@ -24,7 +24,7 @@ export const SUPPORTED_LANGUAGES = [
  * Verifies and adjusts locale (replace `_` with `-`)
  * Returns null if locale is unrecognized by {Intl.Locale}
  *
- * @param locale (`es`, `es-ES`, `en-GB`, `en`, `ja`, `ja-JP` etc)
+ * @param locale (`es`, `es_ES`, `en-GB`, `en`, `ja`, `ja-JP` etc)
  * @returns {Intl.Locale.baseName|null}
  */
 export function adjustLocale(locale) {

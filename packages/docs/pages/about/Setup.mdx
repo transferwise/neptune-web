@@ -62,13 +62,13 @@ import {
   DEFAULT_LANG,
   // array of strings of supported languages
   SUPPORTED_LANGUAGES,
-  // Verifies whether provided local is valid using JS natives {Intl#getCanonicalLocales}
+  // Verifies whether provided local is valid using JS natives (Intl)
   isLocaleValid,
-  // Verifies and adjusts locale (replace `_` with `-`) returns null if locale is unrecognized by {Intl.Locale}
+  // Verifies and adjusts locale (replace `_` with `-`) returns null if locale is unrecognized by Intl
   adjustLocale,
   // * Provides corresponding country code (iso2) for provided locale if the value is invalid returns null
   getCountryFromLocale,
-  // Provides corresponding lang (iso2) for provided locale if locale is invalid return null
+  // Provides corresponding lang code (iso2) for provided locale if the value is invalid returns null
   getLangFromLocale,
 } from "@transferwise/components/build/es/polyfill/common/locale";
 ```
@@ -98,7 +98,7 @@ const lang = getLangFromLocale(global.locale);
 
 const App = () => (
   <TranslationProvider messages={appTranslations} language={global.locale}>
-    <Provider i18n={{ locale, messages: componentsTranslations[lang] }}>
+    <Provider i18n={{ locale: global.locale, messages: componentsTranslations[lang] }}>
       ..
     </Provider>
   </TranslationProvider>
