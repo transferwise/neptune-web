@@ -1,10 +1,12 @@
 @import (reference) '../variables/legacy-variables.less';
 @import (reference) './mixins/_grid.less';
 @import (reference) './mixins/_grid-framework.less';
+@import (reference) './mixins/_clearfix.less';
 
 // Set the container width, and override it for fixed navbars in media queries.
 .container {
   .container-fixed();
+  .clearfix ();
 
   @media (min-width: @screen-xl-min) {
     max-width: @container-xl;
@@ -33,6 +35,7 @@
 // Rows contain and clear the floats of your columns.
 .row {
   .make-row();
+  .clearfix ();
 }
 
 // Common styles for small and large grid columns
@@ -75,37 +78,37 @@
   }
 }
 
-[class*="col-sm"],
-[class*="col-md"],
-[class*="col-lg"],
-[class*="col-xl"] {
+[class*='col-sm'],
+[class*='col-md'],
+[class*='col-lg'],
+[class*='col-xl'] {
   margin-bottom: (@spacer-y * 2);
 }
 
-[class*="col-xs"] {
+[class*='col-xs'] {
   margin-bottom: 0;
 }
 
 @media (min-width: @screen-sm-min) {
-  [class*="col-sm"] {
+  [class*='col-sm'] {
     margin-bottom: 0;
   }
 }
 
 @media (min-width: @screen-md-min) {
-  [class*="col-md"] {
+  [class*='col-md'] {
     margin-bottom: 0;
   }
 }
 
 @media (min-width: @screen-lg-min) {
-  [class*="col-lg"] {
+  [class*='col-lg'] {
     margin-bottom: 0;
   }
 }
 
 @media (min-width: @screen-xl-min) {
-  [class*="col-xl"] {
+  [class*='col-xl'] {
     margin-bottom: 0;
   }
 }
@@ -114,7 +117,7 @@
   display: flex;
   flex-wrap: wrap;
 
-  > [class*="col-"] {
+  > [class*='col-'] {
     display: flex;
   }
 
@@ -132,7 +135,7 @@
     margin-left: -8px;
   }
 
-  [class*="col-"] {
+  [class*='col-'] {
     padding-right: 8px;
     padding-left: 8px;
   }
