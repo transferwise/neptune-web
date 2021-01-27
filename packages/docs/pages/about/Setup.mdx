@@ -33,13 +33,14 @@ import '@transferwise/components/build/main.css';
 
 import { Provider, Button } from '@transferwise/components';
 import componentsTranslations from '@transferwise/components/build/i18n';
-import { mapLocale } from "@transferwise/components/build/es/polyfill/common/locale";
+import { adjustLocale, getLangFromLocale } from "@transferwise/components/build/es/polyfill/common/locale";
 
 import appTranslations from '...';
 
 export default function App() {
-  const locale = mapLocale(global.locale);
-  const messages = { ...componentsTranslations[locale], ...appTranslations[locale] };
+  const locale = adjustLocale(global.locale);
+  const lang = getLangFromLocale(locale);
+  const messages = { ...componentsTranslations[lang], ...appTranslations[lang] };
   return (
     // Components must be wrapped by the Provider component, which initialises and provides
     // context data for them. This should usually be done once at the top app level component
@@ -54,7 +55,22 @@ export default function App() {
 **Note:** we recommend map you locale code to ours before passing it into `Provider` and fetching translations, you can use our internal API for this:
 
 ```js
-import { mapLocale, LOCALES, DEFAULT_LOCALE } from "@transferwise/components/build/es/polyfill/common/locale";
+import {
+  // `en-GB`
+  DEFAULT_LOCALE,
+  // `en`
+  DEFAULT_LANG,
+  // array of strings of supported languages
+  SUPPORTED_LANGUAGES,
+  // Verifies whether provided local is valid using JS natives {Intl#getCanonicalLocales}
+  isLocaleValid,
+  // Verifies and adjusts locale (replace `_` with `-`) returns null if locale is unrecognized by {Intl.Locale}
+  adjustLocale,
+  // * Provides corresponding country code (iso2) for provided locale if the value is invalid returns null
+  getCountryFromLocale,
+  // Provides corresponding lang (iso2) for provided locale if locale is invalid return null
+  getLangFromLocale,
+} from "@transferwise/components/build/es/polyfill/common/locale";
 ```
 
 For information on what classes are available, see the <DocLink href="/styles/core/Typography">styles documentation</DocLink>. Refer to <DocLink href="/components/inputs/Button">components</DocLink> for usage documentation, live previews and code snippets for each component.
@@ -76,13 +92,13 @@ import appTranslations from '...';
 
 import { Provider } from '@transferwise/components';
 import componentsTranslations from '@transferwise/components/build/i18n';
-import { mapLocale } from "@transferwise/components/build/es/polyfill/common/locale";
+import { getLangFromLocale } from "@transferwise/components/build/es/polyfill/common/locale";
 
-const locale = mapLocale(global.locale);
+const lang = getLangFromLocale(global.locale);
 
 const App = () => (
   <TranslationProvider messages={appTranslations} language={global.locale}>
-    <Provider i18n={{ locale, messages: componentsTranslations[locale] }}>
+    <Provider i18n={{ locale, messages: componentsTranslations[lang] }}>
       ..
     </Provider>
   </TranslationProvider>

@@ -20,6 +20,13 @@ export const SUPPORTED_LANGUAGES = [
   'zh',
 ];
 
+/**
+ * Verifies and adjusts locale (replace `_` with `-`)
+ * Returns null if locale is unrecognized by {Intl.Locale}
+ *
+ * @param locale (`es`, `es-ES`, `en-GB`, `en`, `ja`, `ja-JP` etc)
+ * @returns {Intl.Locale.baseName|null}
+ */
 export function adjustLocale(locale) {
   if (!locale || locale.trim().length === 0) {
     return null;
@@ -32,7 +39,14 @@ export function adjustLocale(locale) {
   }
 }
 
-export function mapLocaleToLanguage(locale) {
+/**
+ * Provides corresponding lang (iso2) for provided locale
+ * if locale is invalid return null
+ *
+ * @param locale (`es`, `es-ES`, `en-GB`, `en`, `ja`, `ja-JP` etc)
+ * @returns {Intl.Locale.language|null}
+ */
+export function getLangFromLocale(locale) {
   const adjustedLocale = adjustLocale(locale);
   if (adjustedLocale === null) {
     return null;
@@ -48,19 +62,31 @@ export function mapLocaleToLanguage(locale) {
   }
 }
 
-export const localeService = {
-  isValid: (locale) => {
-    try {
-      Intl.getCanonicalLocales(locale);
-      return true;
-    } catch {
-      return false;
-    }
-  },
-  getCountryFromLocale: (locale) => {
-    if (localeService.isValid(locale)) {
-      return locale.slice(0, COUNTRY_ISO2_CODE_LENGTH);
-    }
-    return null;
-  },
+/**
+ * Provides corresponding country code (iso2) for provided locale
+ * if the value is invalid returns null
+ *
+ * @param locale (`es`, `es-ES`, `en-GB`, `en`, `ja`, `ja-JP` etc)
+ * @returns {string|null}
+ */
+export const getCountryFromLocale = (locale) => {
+  if (isLocaleValid(locale)) {
+    return locale.slice(0, COUNTRY_ISO2_CODE_LENGTH);
+  }
+  return null;
+};
+
+/**
+ * Verifies whether provided local is valid using JS natives {Intl#getCanonicalLocales}
+ *
+ * @param locale (`es`, `es-ES`, `en-GB`, `en`, `ja`, `ja-JP` etc)
+ * @returns {boolean}
+ */
+export const isLocaleValid = (locale) => {
+  try {
+    Intl.getCanonicalLocales(locale);
+    return true;
+  } catch {
+    return false;
+  }
 };

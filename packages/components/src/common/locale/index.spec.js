@@ -1,8 +1,8 @@
-import { mapLocaleToLanguage, adjustLocale, localeService, SUPPORTED_LANGUAGES } from '.';
+import { getLangFromLocale, adjustLocale, getCountryFromLocale, SUPPORTED_LANGUAGES } from '.';
 import translationFiles from '../../../i18n';
 
 describe('locale utils', () => {
-  describe('mapLocaleToLanguage', () => {
+  describe('getLangFromLocale', () => {
     test.each([
       ['en-GB', 'en'],
       ['en_GB', 'en'],
@@ -25,7 +25,7 @@ describe('locale utils', () => {
       ['zh-tw', 'zh'],
       ['nl-nl', null],
     ])('locale "%s" -> language "%s"', (locale, expectedValue) => {
-      expect(mapLocaleToLanguage(locale)).toBe(expectedValue);
+      expect(getLangFromLocale(locale)).toBe(expectedValue);
     });
   });
 
@@ -84,18 +84,18 @@ describe('locale utils', () => {
     });
   });
 
-  describe('localeService', () => {
+  describe('getCountryFromLocale', () => {
     it('given a valid locale it should return the correct value', () => {
-      expect(localeService.getCountryFromLocale('es-ES')).toBe('es');
+      expect(getCountryFromLocale('es-ES')).toBe('es');
     });
     it('given an invalid locale it should return false', () => {
-      expect(localeService.getCountryFromLocale('es_ES')).toBe(null);
+      expect(getCountryFromLocale('es_ES')).toBe(null);
     });
     it('given an invalid locale it should return false', () => {
-      expect(localeService.getCountryFromLocale('es_E')).toBe(null);
+      expect(getCountryFromLocale('es_E')).toBe(null);
     });
     it('given an invalid locale it should return false', () => {
-      expect(localeService.getCountryFromLocale('es-E')).toBe(null);
+      expect(getCountryFromLocale('es-E')).toBe(null);
     });
   });
 });
