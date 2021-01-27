@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@7.0.0...@transferwise/neptune-css@7.0.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* add clearfix to grid layout ([#772](https://github.com/transferwise/neptune-web/issues/772)) ([02e73c2](https://github.com/transferwise/neptune-web/commit/02e73c2baa7adaced43b03caada755486a83dc6d))
+
+
+
+
+
 # [7.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@6.0.0...@transferwise/neptune-css@7.0.0) (2021-01-27)
 
 
