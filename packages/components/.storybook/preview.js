@@ -7,7 +7,8 @@ import '@transferwise/icons/lib/styles/main.min.css';
 import 'currency-flags/dist/currency-flags.min.css';
 
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
-import supportedLocales from '../i18n';
+import { DEFAULT_LOCALE } from '../src/common/locale';
+import supportedLangs from '../i18n';
 
 import './storybook.css';
 
@@ -52,10 +53,13 @@ const CenterDecorator = (storyFn) => (
   </div>
 );
 
+const EXAMPLE_OF_LOCALES = [DEFAULT_LOCALE, 'en-US', 'ja-JP', 'zh-HK', 'es', 'fr'];
+
 const ProviderDecorator = (storyFn) => {
-  const locales = Object.keys(supportedLocales);
-  const locale = select('locale (global)', locales, locales[0]);
-  const messages = supportedLocales[locale];
+  const langCodes = Object.keys(supportedLangs);
+  const lang = select('lang (global)', langCodes, langCodes[0]);
+  const locale = select('locale (global)', EXAMPLE_OF_LOCALES, DEFAULT_LOCALE);
+  const messages = supportedLangs[lang];
   const props = {
     i18n: { locale, messages },
     children: storyFn(),

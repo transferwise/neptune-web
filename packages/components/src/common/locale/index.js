@@ -1,55 +1,54 @@
-const ENGLISH_LOCALE = 'en';
+export const DEFAULT_LANG = 'en';
 export const DEFAULT_LOCALE = 'en-GB';
-export const US_LOCALE = 'en-US';
-export const JAPANESE_LOCALE = 'ja';
-export const GERMAN_LOCALE = 'de';
-export const SPANISH_LOCALE = 'es';
-export const FRENCH_LOCALE = 'fr';
-export const HUNGARIAN_LOCALE = 'hu';
-export const INDONESIAN_LOCALE = 'id';
-export const ITALIAN_LOCALE = 'it';
-export const POLISH_LOCALE = 'pl';
-export const PORTUGUESE_LOCALE = 'pt';
-export const ROMANIAN_LOCALE = 'ro';
-export const RUSSIAN_LOCALE = 'ru';
-export const TURKISH_LOCALE = 'tr';
-export const HONG_KONG_LOCALE = 'zh-HK';
 
-const COUNTRY_ISO2_CODE_LENGTH = 2;
-
-export const LOCALES = [
-  DEFAULT_LOCALE,
-  US_LOCALE,
-  GERMAN_LOCALE,
-  SPANISH_LOCALE,
-  FRENCH_LOCALE,
-  HUNGARIAN_LOCALE,
-  INDONESIAN_LOCALE,
-  ITALIAN_LOCALE,
-  JAPANESE_LOCALE,
-  POLISH_LOCALE,
-  PORTUGUESE_LOCALE,
-  ROMANIAN_LOCALE,
-  RUSSIAN_LOCALE,
-  TURKISH_LOCALE,
-  HONG_KONG_LOCALE,
+export const SUPPORTED_LANGUAGES = [
+  DEFAULT_LANG,
+  'ja',
+  'de',
+  'es',
+  'fr',
+  'hu',
+  'id',
+  'it',
+  'pl',
+  'pt',
+  'ro',
+  'ru',
+  'tr',
+  'zh',
 ];
 
-export function mapLocale(locale) {
+export function adjustLocale(locale) {
   if (!locale || locale.trim().length === 0) {
     return null;
   }
-  if (ENGLISH_LOCALE === locale.toLowerCase()) {
-    return DEFAULT_LOCALE;
+  try {
+    const { baseName } = new Intl.Locale(locale.replace('_', '-'));
+    return baseName;
+  } catch (e) {
+    return null;
   }
-  const adjustedLocale = locale.replace('_', '-').toLowerCase();
-  const mappedLocale = LOCALES.find((value) => value.toLowerCase() === adjustedLocale);
-  if (mappedLocale) {
-    return mappedLocale;
-  }
-  const iso2Code = adjustedLocale.slice(0, COUNTRY_ISO2_CODE_LENGTH);
-  if (LOCALES.includes(iso2Code)) {
-    return iso2Code;
-  }
-  return null;
 }
+
+export function mapLocaleToLanguage(locale) {
+  const adjustedLocale = adjustLocale(locale);
+  if (adjustedLocale === null) {
+    return null;
+  }
+  try {
+    const { language } = new Intl.Locale(adjustedLocale);
+    if (SUPPORTED_LANGUAGES.includes(language)) {
+      return language;
+    }
+    return null;
+  } catch (e) {
+    return null;
+  }
+}
+
+export const localeService = {
+  // This regex expect a string in a format xx-XX.
+  regex: /^[a-z]{2}(-[A-Z]{2})?$/,
+  isValid: (testLocale) => localeService.regex.test(testLocale),
+  getCountryFromLocale: (locale) => localeService.isValid(locale) && locale.slice(3, 5),
+};

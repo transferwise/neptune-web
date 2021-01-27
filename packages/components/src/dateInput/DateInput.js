@@ -6,13 +6,12 @@ import '../common/polyfills/closest';
 import Select from '../select';
 
 import { Size, DateMode, MonthFormat } from '../common';
-import { US_LOCALE, JAPANESE_LOCALE } from '../common/locale';
 
 import { explodeDate, convertToLocalMidnight } from './utils';
 import { getMonthNames, isDateValid, isMonthAndYearFormat } from '../common/dateUtils';
 import './DateInput.css';
 
-const MonthBeforeDay = [US_LOCALE, JAPANESE_LOCALE];
+const MonthBeforeDay = ['en-US', 'ja-JP'];
 const INITIAL_DEFAULT_STATE = { year: null, month: null, day: null };
 
 const DateInput = ({

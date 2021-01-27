@@ -5,7 +5,7 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import * as components from '.';
-import en from '../i18n/en-GB.json';
+import en from '../i18n/en.json';
 
 const excluded = ['useSnackbar', 'Provider'];
 

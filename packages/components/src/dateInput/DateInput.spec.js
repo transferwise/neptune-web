@@ -36,6 +36,15 @@ const MONTHS_EN = [
   'December',
 ];
 
+export const LOCALES = {
+  en: 'en-GB',
+  fr: 'fr-FR',
+  us: 'en-US',
+  jp: 'ja-JP',
+};
+
+export const DEFAULT_LOCALE = 'en-GB';
+
 const FEBRUARY_OPTION = { value: 1, label: MONTHS_EN[1] };
 
 const DAY_SELECTOR = 'input[name="day"]';
@@ -46,7 +55,7 @@ jest.mock('react-intl');
 jest.mock('@transferwise/formatting', () => {
   return {
     formatDate: (month, locale) =>
-      locale === 'fr' ? MONTHS_FR[month.getMonth()] : MONTHS_EN[month.getMonth()],
+      locale === LOCALES.fr ? MONTHS_FR[month.getMonth()] : MONTHS_EN[month.getMonth()],
   };
 });
 
@@ -58,7 +67,7 @@ describe('Date Input Component', () => {
   const props = { onChange: jest.fn() };
 
   beforeEach(() => {
-    useIntl.mockReturnValue({ locale: 'en-GB' });
+    useIntl.mockReturnValue({ locale: DEFAULT_LOCALE });
     component = shallow(<DateInput {...props} />);
 
     selectMonth = component.find(MONTH_SELECTOR);
@@ -186,7 +195,7 @@ describe('Date Input Component', () => {
 
   describe('when locale is provided', () => {
     it('updates selectMonth based on locale', () => {
-      useIntl.mockReturnValue({ locale: 'fr' });
+      useIntl.mockReturnValue({ locale: LOCALES.fr });
       component = shallow(<DateInput {...props} />);
       selectMonth = component.find(MONTH_SELECTOR);
 
@@ -198,7 +207,7 @@ describe('Date Input Component', () => {
     });
 
     it('shows day before month if locale is JP', () => {
-      useIntl.mockReturnValue({ locale: 'ja' });
+      useIntl.mockReturnValue({ locale: LOCALES.jp });
       component = shallow(<DateInput {...props} />);
 
       expect(component.find('.form-control').at(0).type()).toBeInstanceOf(Function);

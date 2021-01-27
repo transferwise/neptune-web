@@ -1,4 +1,4 @@
-import en from './en-GB.json';
+import en from './en.json';
 import de from './de.json';
 import es from './es.json';
 import fr from './fr.json';
@@ -11,11 +11,10 @@ import pt from './pt.json';
 import ro from './ro.json';
 import ru from './ru.json';
 import tr from './tr.json';
-import zhHK from './zh-HK.json';
+import zh from './zh.json';
 
 export default {
-  'en-GB': en,
-  'en-US': en,
+  en,
   de,
   es,
   fr,
@@ -28,5 +27,5 @@ export default {
   ro,
   ru,
   tr,
-  'zh-HK': zhHK,
+  zh,
 };

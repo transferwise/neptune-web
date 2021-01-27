@@ -20,7 +20,7 @@ describe('Provider', () => {
   beforeEach(cleanup);
 
   it('does not add any elements in the DOM', async () => {
-    const locale = 'en-GB';
+    const locale = 'en';
     const messages = await import(`../../i18n/${locale}.json`);
     const { container } = render(<Provider i18n={{ locale, messages }} />);
 
@@ -30,11 +30,11 @@ describe('Provider', () => {
   test.each([
     ['zh-HK', 'zh-HK'],
     ['ru', 'ru'],
-    ['en', 'en-GB'],
+    ['en-GB', 'en-GB'],
     ['en-US', 'en-US'],
     ['en_US', 'en-US'],
     ['en_GB', 'en-GB'],
-    ['lol', 'en-GB'],
+    ['ja', 'ja'],
   ])('check locale value "%s"', (locale, expectedValue) => {
     const messages = {};
     const TestComponent = () => {
@@ -52,7 +52,7 @@ describe('Provider', () => {
 
   test.each([
     ['ru', 'Закрыть'],
-    ['en-GB', 'Close'],
+    ['en', 'Close'],
   ])('switching locale (%s)', async (locale, expectedMessage) => {
     expect(document.body).toBeEmptyDOMElement();
 
