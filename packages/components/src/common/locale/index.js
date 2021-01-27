@@ -1,6 +1,8 @@
 export const DEFAULT_LANG = 'en';
 export const DEFAULT_LOCALE = 'en-GB';
 
+const COUNTRY_ISO2_CODE_LENGTH = 2;
+
 export const SUPPORTED_LANGUAGES = [
   DEFAULT_LANG,
   'ja',
@@ -47,8 +49,18 @@ export function mapLocaleToLanguage(locale) {
 }
 
 export const localeService = {
-  // This regex expect a string in a format xx-XX.
-  regex: /^[a-z]{2}(-[A-Z]{2})?$/,
-  isValid: (testLocale) => localeService.regex.test(testLocale),
-  getCountryFromLocale: (locale) => localeService.isValid(locale) && locale.slice(3, 5),
+  isValid: (locale) => {
+    try {
+      Intl.getCanonicalLocales(locale);
+      return true;
+    } catch {
+      return false;
+    }
+  },
+  getCountryFromLocale: (locale) => {
+    if (localeService.isValid(locale)) {
+      return locale.slice(0, COUNTRY_ISO2_CODE_LENGTH);
+    }
+    return null;
+  },
 };

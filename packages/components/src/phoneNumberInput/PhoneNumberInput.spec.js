@@ -183,7 +183,7 @@ describe('Given a telephone number component', () => {
 
   describe('when supplied with a placeholder', () => {
     beforeEach(() => {
-      useIntl.mockReturnValue({ locale: 'es' });
+      useIntl.mockReturnValue({ locale: 'es-ES' });
       component = shallow(
         <PhoneNumberInput {...props} initialValue="+12345678" placeholder="placeholder" />,
       );
@@ -197,7 +197,7 @@ describe('Given a telephone number component', () => {
 
   describe('when supplied with a search placeholder', () => {
     beforeEach(() => {
-      useIntl.mockReturnValue({ locale: 'es' });
+      useIntl.mockReturnValue({ locale: 'es-ES' });
       component = shallow(
         <PhoneNumberInput
           {...props}
@@ -216,7 +216,7 @@ describe('Given a telephone number component', () => {
   describe('when supplied with a locale', () => {
     describe('and a value', () => {
       beforeEach(() => {
-        useIntl.mockReturnValue({ locale: 'es' });
+        useIntl.mockReturnValue({ locale: 'es-ES' });
         component = shallow(<PhoneNumberInput {...props} initialValue="+12345678" />);
         select = component.find(PREFIX_SELECT_SELECTOR);
         input = component.find(NUMBER_SELECTOR);
@@ -243,7 +243,7 @@ describe('Given a telephone number component', () => {
 
       describe('and country code', () => {
         beforeEach(() => {
-          useIntl.mockReturnValue({ locale: 'es' });
+          useIntl.mockReturnValue({ locale: 'es-ES' });
           component = shallow(<PhoneNumberInput {...props} countryCode="US" />);
           select = component.find(PREFIX_SELECT_SELECTOR);
           input = component.find(NUMBER_SELECTOR);

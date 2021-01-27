@@ -86,16 +86,16 @@ describe('locale utils', () => {
 
   describe('localeService', () => {
     it('given a valid locale it should return the correct value', () => {
-      expect(localeService.getCountryFromLocale('es-ES')).toBe('ES');
+      expect(localeService.getCountryFromLocale('es-ES')).toBe('es');
     });
     it('given an invalid locale it should return false', () => {
-      expect(localeService.getCountryFromLocale('es_ES')).toBe(false);
+      expect(localeService.getCountryFromLocale('es_ES')).toBe(null);
     });
     it('given an invalid locale it should return false', () => {
-      expect(localeService.getCountryFromLocale('es_E')).toBe(false);
+      expect(localeService.getCountryFromLocale('es_E')).toBe(null);
     });
     it('given an invalid locale it should return false', () => {
-      expect(localeService.getCountryFromLocale('es-E')).toBe(false);
+      expect(localeService.getCountryFromLocale('es-E')).toBe(null);
     });
   });
 });

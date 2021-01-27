@@ -1,4 +1,4 @@
-import en from './en-GB.json';
+import en from './en.json';
 import ja from './ja.json';
 
-export default { 'en-GB': en, 'en-US': en, ja };
+export default { en, ja };
