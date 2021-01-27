@@ -20,7 +20,6 @@
         selected={selectedLocale}
         onChange={(item) => {
           const lang = item.value.slice(0, 2);
-          console.log('item', item, 'lang', lang);
           setI18n({ locale: item.value, messages: supportedLanguages[lang] });
           setSelectedLocale(item);
         }}

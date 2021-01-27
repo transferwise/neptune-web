@@ -1,13 +1,11 @@
 import React from 'react';
 import Types from 'prop-types';
-import { createIntl, createIntlCache, RawIntlProvider } from 'react-intl';
+import { IntlProvider } from 'react-intl';
 import en from '../../i18n/en.json';
 import { DEFAULT_LOCALE, adjustLocale } from '../common/locale';
 
 function Provider({ i18n, children }) {
-  console.log('i18n', ...i18n);
-  const cache = createIntlCache();
-  const { locale, messages } = i18n;
+  const { locale, messages, defaultRichTextElements } = i18n;
   const adjustedLocale = adjustLocale(locale);
   let intlConfig;
   if (adjustedLocale == null) {
@@ -19,8 +17,16 @@ function Provider({ i18n, children }) {
   } else {
     intlConfig = { locale: adjustedLocale, messages };
   }
-  const intl = createIntl(intlConfig, cache);
-  return <RawIntlProvider value={intl}>{children}</RawIntlProvider>;
+  return (
+    <IntlProvider
+      defaultLocale={DEFAULT_LOCALE}
+      locale={intlConfig.locale}
+      messages={intlConfig.messages}
+      defaultRichTextElements={defaultRichTextElements}
+    >
+      {children}
+    </IntlProvider>
+  );
 }
 
 Provider.propTypes = {
@@ -28,6 +34,7 @@ Provider.propTypes = {
   i18n: Types.shape({
     locale: Types.string.isRequired,
     messages: Types.shape.isRequired,
+    defaultRichTextElements: Types.shape.isRequired,
   }).isRequired,
   children: Types.node,
 };
