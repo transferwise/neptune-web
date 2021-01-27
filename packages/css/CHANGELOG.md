@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@6.0.0...@transferwise/neptune-css@7.0.0) (2021-01-27)
+
+
+* feat!: remove logo classes from navbar (#762) ([59b9962](https://github.com/transferwise/neptune-web/commit/59b996296d4d6dd472011b2fc09a208d0f6153ed)), closes [#762](https://github.com/transferwise/neptune-web/issues/762)
+
+
+### BREAKING CHANGES
+
+* The navigation logo is not offered via CSS class anymore. We recommend to consume the logo as an asset.
+
+Co-authored-by: andreapiras <16908937+andreapiras@users.noreply.github.com>
+
+
+
+
+
 # [6.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.1.0...@transferwise/neptune-css@6.0.0) (2021-01-22)
 
 
