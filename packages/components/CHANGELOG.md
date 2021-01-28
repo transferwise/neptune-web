@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@33.0.3...@transferwise/components@33.0.4) (2021-01-28)
+
+
+### Bug Fixes
+
+* fix TypeError when updating tabs prop to empty array ([#773](https://github.com/transferwise/neptune-web/issues/773)) ([eacb6f3](https://github.com/transferwise/neptune-web/commit/eacb6f384950929cce5978daadbb68cf9d438acc))
+
+
+
+
+
 ## [33.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@33.0.2...@transferwise/components@33.0.3) (2021-01-27)
 
 **Note:** Version bump only for package @transferwise/components
