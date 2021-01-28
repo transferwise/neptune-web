@@ -34,7 +34,9 @@ export function adjustLocale(locale) {
   try {
     const { baseName } = new Intl.Locale(locale.replace('_', '-'));
     return baseName;
-  } catch (e) {
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
     return null;
   }
 }
@@ -57,7 +59,9 @@ export function getLangFromLocale(locale) {
       return language;
     }
     return null;
-  } catch (e) {
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
     return null;
   }
 }
