@@ -62,40 +62,35 @@ describe('locale utils', () => {
     });
 
     it('lang codes should match to names of translations object', () => {
-      // eslint-disable-next-line guard-for-in,no-restricted-syntax
-      for (const property in translationFiles) {
+      Object.keys(translationFiles).forEach((property) => {
         const result = SUPPORTED_LANGUAGES.includes(property);
         if (!result) {
           // eslint-disable-next-line no-console
           console.log(`'${property}' doesn't exist in ${[SUPPORTED_LANGUAGES]}`);
         }
         expect(result).toBe(true);
-      }
+      });
     });
 
     it('lang codes should match with names of translations files', async () => {
-      // eslint-disable-next-line guard-for-in,no-restricted-syntax
       for (let i = 0; i < SUPPORTED_LANGUAGES.length; i += 1) {
         const locale = SUPPORTED_LANGUAGES[i];
         // eslint-disable-next-line no-await-in-loop
         const file = await import(`../../../i18n/${locale}.json`);
         expect(file).not.toBe(null);
+        expect(file.default).toBe(translationFiles[locale]);
       }
     });
   });
 
   describe('getCountryFromLocale', () => {
-    it('given a valid locale it should return the correct value', () => {
-      expect(getCountryFromLocale('es-ES')).toBe('es');
-    });
-    it('given an invalid locale it should return false', () => {
-      expect(getCountryFromLocale('es_ES')).toBe(null);
-    });
-    it('given an invalid locale it should return false', () => {
-      expect(getCountryFromLocale('es_E')).toBe(null);
-    });
-    it('given an invalid locale it should return false', () => {
-      expect(getCountryFromLocale('es-E')).toBe(null);
+    test.each([
+      ['es-ES', 'es'],
+      ['es_ES', null],
+      ['es_E', null],
+      ['es-E', null],
+    ])('given an "%s" as a locale value it should return "%s"', (locale, expectedValue) => {
+      expect(getCountryFromLocale(locale)).toBe(expectedValue);
     });
   });
 });

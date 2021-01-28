@@ -27,9 +27,7 @@ const formatAmountIfSet = (amount, currency, locale) => {
 class MoneyInput extends Component {
   constructor(props) {
     super(props);
-    // eslint-disable-next-line react/prop-types
     this.locale = this.props.intl.locale;
-    // eslint-disable-next-line react/prop-types
     this.formatMessage = this.props.intl.formatMessage;
     this.state = {
       searchQuery: '',

@@ -37,7 +37,6 @@ const UPLOAD_STEP_COMPONENTS = {
 class Upload extends PureComponent {
   constructor(props) {
     super(props);
-    // eslint-disable-next-line react/prop-types
     this.formatMessage = this.props.intl.formatMessage;
     this.dragCounter = 0;
     this.errorMessage = {

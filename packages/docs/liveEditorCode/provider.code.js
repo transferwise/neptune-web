@@ -1,5 +1,5 @@
 () => {
-  const lang = defaultLocale.slice(0, 2);
+  const lang = getLangFromLocale(defaultLocale);
   const [i18n, setI18n] = React.useState({
     locale: defaultLocale,
     messages: supportedLanguages[lang],
@@ -19,7 +19,7 @@
         id="locales"
         selected={selectedLocale}
         onChange={(item) => {
-          const lang = item.value.slice(0, 2);
+          const lang = getLangFromLocale(item.value);
           setI18n({ locale: item.value, messages: supportedLanguages[lang] });
           setSelectedLocale(item);
         }}

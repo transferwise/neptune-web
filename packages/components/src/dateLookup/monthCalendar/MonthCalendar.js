@@ -26,7 +26,6 @@ class MonthCalendar extends PureComponent {
       min,
       max,
       viewYear,
-      // eslint-disable-next-line react/prop-types
       intl: { locale },
       placeholder,
       onLabelClick,

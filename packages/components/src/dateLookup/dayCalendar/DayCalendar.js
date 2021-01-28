@@ -31,7 +31,6 @@ class DayCalendar extends PureComponent {
       max,
       viewMonth,
       viewYear,
-      // eslint-disable-next-line react/prop-types
       intl: { locale },
       monthFormat,
       onLabelClick,

@@ -46,10 +46,8 @@ class DayCalendarTable extends PureComponent {
     return weeks;
   };
 
-  // eslint-disable-next-line react/prop-types
   days = getDayNames(this.props.intl.locale, 'short');
 
-  // eslint-disable-next-line react/prop-types
   daysShort = getDayNames(this.props.intl.locale, 'narrow');
 
   selectDay = (day) => {
@@ -72,7 +70,6 @@ class DayCalendarTable extends PureComponent {
     const {
       viewMonth,
       viewYear,
-      // eslint-disable-next-line react/prop-types
       intl: { locale },
     } = this.props;
     const weeks = this.getTableStructure();

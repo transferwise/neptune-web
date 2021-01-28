@@ -8,7 +8,7 @@ function Provider({ i18n, children }) {
   const { locale, messages, defaultRichTextElements } = i18n;
   const adjustedLocale = adjustLocale(locale);
   let intlConfig;
-  if (adjustedLocale == null) {
+  if (adjustedLocale === null) {
     // eslint-disable-next-line no-console
     console.warn(
       `Unsupported locale value was provided: '${locale}', defaulting to '${DEFAULT_LOCALE}'`,
