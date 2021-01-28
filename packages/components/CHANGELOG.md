@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@33.0.4...@transferwise/components@33.0.5) (2021-01-28)
+
+
+### Bug Fixes
+
+* add component animations back into neptune ([#774](https://github.com/transferwise/neptune-web/issues/774)) ([f46f046](https://github.com/transferwise/neptune-web/commit/f46f046ca487e6acd5d0d90cfccb2c2d7b69bbc1))
+
+
+
+
+
 ## [33.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@33.0.3...@transferwise/components@33.0.4) (2021-01-28)
 
 
