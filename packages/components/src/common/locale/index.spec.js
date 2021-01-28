@@ -86,7 +86,7 @@ describe('locale utils', () => {
   describe('getCountryFromLocale', () => {
     test.each([
       ['es-ES', 'es'],
-      ['es_ES', null],
+      ['es_ES', 'es'],
       ['es_E', null],
       ['es-E', null],
     ])('given an "%s" as a locale value it should return "%s"', (locale, expectedValue) => {

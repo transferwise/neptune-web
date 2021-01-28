@@ -41,7 +41,7 @@ export function adjustLocale(locale) {
 
 /**
  * Provides corresponding lang (iso2) for provided locale
- * if locale is invalid return null
+ * if locale is invalid or language is unsupported returns null
  *
  * @param locale (`es`, `es-ES`, `en-GB`, `en`, `ja`, `ja-JP` etc)
  * @returns {Intl.Locale.language|null}
@@ -70,23 +70,9 @@ export function getLangFromLocale(locale) {
  * @returns {string|null}
  */
 export const getCountryFromLocale = (locale) => {
-  if (isLocaleValid(locale)) {
-    return locale.slice(0, COUNTRY_ISO2_CODE_LENGTH);
+  const adjustedLocale = adjustLocale(locale);
+  if (adjustedLocale === null) {
+    return null;
   }
-  return null;
-};
-
-/**
- * Verifies whether provided local is valid using JS natives {Intl#getCanonicalLocales}
- *
- * @param locale (`es`, `es-ES`, `en-GB`, `en`, `ja`, `ja-JP` etc)
- * @returns {boolean}
- */
-export const isLocaleValid = (locale) => {
-  try {
-    Intl.getCanonicalLocales(locale);
-    return true;
-  } catch {
-    return false;
-  }
+  return adjustedLocale.slice(0, COUNTRY_ISO2_CODE_LENGTH);
 };

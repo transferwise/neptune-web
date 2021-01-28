@@ -35,6 +35,11 @@ describe('Provider', () => {
     ['en_US', 'en-US'],
     ['en_GB', 'en-GB'],
     ['ja', 'ja'],
+    ['ja-JP', 'ja-JP'],
+    ['', 'en-GB'],
+    [' ', 'en-GB'],
+    [null, 'en-GB'],
+    [undefined, 'en-GB'],
   ])('check locale value "%s"', (locale, expectedValue) => {
     const messages = {};
     const TestComponent = () => {
