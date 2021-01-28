@@ -103,7 +103,8 @@
     "lodash.topairs": "^4.3.0",
     "react-required-if": "^1.0.3",
     "react-spring": "^8.0.27",
-    "react-transition-group": "^4.2.1"
+    "react-transition-group": "^4.2.1",
+    "@formatjs/intl-locale": "^2.4.14"
   },
   "watch": {
     "build:crowdin-source-file": "src/**/*.messages.js"
