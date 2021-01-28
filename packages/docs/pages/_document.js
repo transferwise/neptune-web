@@ -14,9 +14,10 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          {/* The below is necessary to stop animations running on page load in Chrome
+          <script type="text/javascript">
+            {/* The below is necessary to stop animations running on page load in Chrome
           (https://bugs.chromium.org/p/chromium/issues/detail?id=332189) */}
-          <script type="text/javascript">&nsbp</script>
+          </script>
         </body>
       </Html>
     );
