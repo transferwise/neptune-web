@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@8.0.0...@transferwise/neptune-css@8.1.0) (2021-01-29)
+
+
+### Features
+
+* **css:** font-display swap and remove unused fonts ([#775](https://github.com/transferwise/neptune-web/issues/775)) ([f88f5cf](https://github.com/transferwise/neptune-web/commit/f88f5cf4990ba669be2f63f7fe834508af752bf1))
+
+
+
+
+
 # [8.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@7.0.2...@transferwise/neptune-css@8.0.0) (2021-01-29)
 
 
