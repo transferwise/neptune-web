@@ -142,6 +142,7 @@ const PhoneNumberInput = (props) => {
         <div className={`input-group input-group-${size}`}>
           <input
             name="phoneNumber"
+            inputMode="numeric"
             value={suffix}
             type="text"
             className="form-control"
