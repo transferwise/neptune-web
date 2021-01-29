@@ -1,7 +1,6 @@
 <DynamicFieldDefinitionList
   title="This is an awesome component"
   layout={DynamicFieldDefinitionList.Layout.VERTICAL_TWO_COLUMN}
-  locale="en-GB"
   model={{
     text: 'helloworld',
     number: 123456,

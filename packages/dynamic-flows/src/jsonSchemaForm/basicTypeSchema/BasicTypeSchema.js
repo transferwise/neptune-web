@@ -8,6 +8,7 @@ import ControlFeedback from '../controlFeedback';
 import { getValidationFailures } from '../../common/validation/validation-failures';
 import { getValidModelParts } from '../../common/validation/valid-model';
 import DynamicAlert from '../../layout/alert';
+import Help from './help';
 
 const BasicTypeSchema = (props) => {
   const onChange = (newModel) => {
@@ -70,7 +71,7 @@ const BasicTypeSchema = (props) => {
     setId(generateId());
   };
 
-  const onModelChange = () => {
+  const refreshValidations = () => {
     setValidations(getValidationKeys(model));
   };
 
@@ -78,17 +79,19 @@ const BasicTypeSchema = (props) => {
   const isHidden = props.schema.hidden || isConst;
 
   useEffect(onSchemaChange, [props.schema]);
-  useEffect(onModelChange, [props.model]);
+  useEffect(refreshValidations, [props.model, props.submitted]);
 
   const formGroupClasses = {
     'form-group': true,
     'has-error':
       ((props.submitted || !changed) && !!props.errors) ||
-      ((props.submitted || (changed && blurred)) && validations.length),
-    'has-info': focused && props.schema.help,
+      ((props.submitted || (changed && blurred)) && !!validations.length),
+    'has-info': focused && !!props.schema.description,
   };
 
   const showLabel = props.schema.format !== 'file' && props.schema.type !== 'boolean';
+
+  const hasHelp = !!props.schema.help;
 
   return (
     !isHidden && (
@@ -99,6 +102,7 @@ const BasicTypeSchema = (props) => {
               {props.schema.title}
             </label>
           )}
+          {hasHelp && <Help help={props.schema.help} />}
           <SchemaFormControl
             id={id}
             schema={props.schema}
@@ -140,7 +144,8 @@ BasicTypeSchema.propTypes = {
     default: Types.oneOfType([Types.string, Types.number, Types.bool]),
     disabled: Types.bool,
     hidden: Types.bool,
-    help: Types.shape({}),
+    help: Types.shape({ markdown: Types.string }),
+    description: Types.string,
   }).isRequired,
   model: Types.oneOfType([Types.string, Types.number, Types.bool]),
   errors: Types.string,

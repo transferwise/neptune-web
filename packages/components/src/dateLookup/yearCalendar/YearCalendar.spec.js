@@ -18,7 +18,6 @@ describe('YearCalendar', () => {
       min,
       max,
       viewYear: 2018,
-      locale: 'xx',
       placeholder: 'Enter date..',
       onSelect: jest.fn(),
       onViewDateUpdate: jest.fn(),
@@ -57,7 +56,6 @@ describe('YearCalendar', () => {
     expect(table().prop('min')).toBe(min);
     expect(table().prop('max')).toBe(max);
     expect(table().prop('viewYear')).toBe(2018);
-    expect(table().prop('locale')).toBe('xx');
     expect(table().prop('placeholder')).toBe('Enter date..');
   });
 

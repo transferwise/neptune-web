@@ -1,32 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { boolean, select } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { Profile as ProfileIcon, Briefcase as BriefcaseIcon } from '@transferwise/icons';
 import FlowNavigation from './FlowNavigation';
+import Avatar from '../avatar';
+import Logo from '../common/logo';
 
 export default {
   component: FlowNavigation,
   title: 'FlowNavigation',
 };
+const avatarProfiles = {
+  '': null,
+  Business: <BriefcaseIcon />,
+  Profile: <ProfileIcon />,
+};
 
-export const basic = () => {
-  const activeStep = select('activeStep', [0, 1, 2, 3]);
-  const done = boolean('done', false);
-  const theme = select('theme', Object.values(FlowNavigation.Theme), FlowNavigation.Theme.LIGHT);
-  const profileType = select(
-    'profileType',
-    Object.values(FlowNavigation.ProfileType),
-    FlowNavigation.ProfileType.BUSINESS,
-  );
+export const withAvatarIcon = () => {
+  const [activeStep, setActiveStep] = useState(4);
+  const [closed, setClosed] = useState(false);
+  const showAvatar = select('avatar', Object.keys(avatarProfiles), 'Profile');
+  const showCloseButton = boolean('show closeButton', true);
+  const showMobileBackButton = boolean('show mobile backButton', true);
 
-  return (
+  return !closed ? (
     <FlowNavigation
+      avatar={
+        !showAvatar ? null : (
+          <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
+            {avatarProfiles[showAvatar]}
+          </Avatar>
+        )
+      }
+      logo={<Logo />}
+      onClose={showCloseButton && (() => setClosed(true))}
+      onGoBack={showMobileBackButton && (() => setActiveStep(activeStep > 0 ? activeStep - 1 : 0))}
       activeStep={activeStep}
-      onClose={action('Close clicked')}
-      avatarUrl="https://github.com/transferwise.png"
-      done={done}
-      profileType={profileType}
-      onGoBack={action('go back')}
-      theme={theme}
       steps={[
         {
           label: 'Amount',
@@ -38,21 +46,87 @@ export const basic = () => {
               0.2351 ETH
             </>
           ),
+          onClick: () => setActiveStep(0),
         },
         {
-          label: 'My details',
+          label: 'You',
           hoverLabel: (
             <>
               <div>
-                <strong>Diana Jaramillo</strong>
+                <strong>Elena Durante</strong>
               </div>
-              dianajarm123@gmail.com
+              elenadurante@test.com
             </>
           ),
+          onClick: () => setActiveStep(1),
         },
-        { label: 'Recipient', hoverLabel: 'Some person/dog' },
-        { label: 'Something', hoverLabel: 'Cool' },
+        { label: 'Recipient', hoverLabel: 'Daniele Tomboro', onClick: () => setActiveStep(2) },
+        { label: 'Review', hoverLabel: 'Antonio Dozortevo', onClick: () => setActiveStep(3) },
+        {
+          label: 'Pay',
+          hoverLabel: 'Enrico Gusso II',
+          onClick: () => setActiveStep(4),
+        },
       ]}
     />
-  );
+  ) : null;
+};
+
+export const withCustomAvatarImage = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const [closed, setClosed] = useState(false);
+  const showAvatar = boolean('show avatar', true);
+  const showCloseButton = boolean('show closeButton', true);
+  const showMobileBackButton = boolean('show mobile backButton', true);
+
+  return !closed ? (
+    <FlowNavigation
+      avatar={
+        !showAvatar ? null : (
+          <Avatar type={Avatar.Type.THUMBNAIL} size={Avatar.Size.MEDIUM}>
+            <img src="https://github.com/transferwise.png" alt="avatar" />
+          </Avatar>
+        )
+      }
+      logo={<Logo />}
+      onClose={showCloseButton && (() => setClosed(true))}
+      onGoBack={
+        showMobileBackButton && (() => setActiveStep(activeStep - 1 > 0 ? activeStep - 1 : 0))
+      }
+      activeStep={activeStep}
+      steps={[
+        {
+          label: 'Amount',
+          hoverLabel: (
+            <>
+              <div>
+                <strong>100 GBP</strong>
+              </div>
+              0.2351 ETH
+            </>
+          ),
+          onClick: () => setActiveStep(0),
+        },
+        {
+          label: 'You',
+          hoverLabel: (
+            <>
+              <div>
+                <strong>Elena Durante</strong>
+              </div>
+              elenadurante@test.com
+            </>
+          ),
+          onClick: () => setActiveStep(1),
+        },
+        { label: 'Recipient', hoverLabel: 'Daniele Tomboro', onClick: () => setActiveStep(2) },
+        { label: 'Review', hoverLabel: 'Antonio Dozortevo', onClick: () => setActiveStep(3) },
+        {
+          label: 'Pay',
+          hoverLabel: 'Enrico Gusso II',
+          onClick: () => setActiveStep(4),
+        },
+      ]}
+    />
+  ) : null;
 };

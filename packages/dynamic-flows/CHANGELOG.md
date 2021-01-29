@@ -3,6 +3,136 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.4](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@10.1.3...@transferwise/dynamic-flows@10.1.4) (2021-01-28)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [10.1.3](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@10.1.2...@transferwise/dynamic-flows@10.1.3) (2021-01-28)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [10.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@10.1.1...@transferwise/dynamic-flows@10.1.2) (2021-01-27)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [10.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@10.1.0...@transferwise/dynamic-flows@10.1.1) (2021-01-27)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+# [10.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@10.0.0...@transferwise/dynamic-flows@10.1.0) (2021-01-25)
+
+
+### Features
+
+* markdown tooltips for dynamic flows ([#768](https://github.com/transferwise/neptune-web/issues/768)) ([f71b106](https://github.com/transferwise/neptune-web/commit/f71b106a8b8baa85d4251d7a3603f34cb0aa3972))
+
+
+
+
+
+# [10.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@9.0.2...@transferwise/dynamic-flows@10.0.0) (2021-01-22)
+
+
+* refactor!: improving FlowNavigation and Checkbox (#765) ([d52212d](https://github.com/transferwise/neptune-web/commit/d52212d13e9c822e7c1d24e5dc4d4bf49ac14814)), closes [#765](https://github.com/transferwise/neptune-web/issues/765) [#724](https://github.com/transferwise/neptune-web/issues/724)
+
+
+### BREAKING CHANGES
+
+* FlowNavigation refactor
+- removed avatarURL and profileType props, replaced with avatar prop
+- removed done prop
+- removed theme prop
+* CheckboxButton now requires an onChange handler, and people using it directly should provide an aria-label
+
+* test: update test
+
+Co-authored-by: andreapiras <16908937+andreapiras@users.noreply.github.com>
+
+
+
+
+
+## [9.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@9.0.1...@transferwise/dynamic-flows@9.0.2) (2021-01-19)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [9.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@9.0.0...@transferwise/dynamic-flows@9.0.1) (2021-01-14)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+# [9.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@8.1.1...@transferwise/dynamic-flows@9.0.0) (2021-01-11)
+
+
+* feat!: Add translations for dynamic flows ([6a80b35](https://github.com/transferwise/neptune-web/commit/6a80b35c3f6a3144a1a0ff8f3cb7e30abb94d3f9))
+
+
+### BREAKING CHANGES
+
+* JsonSchemaForm now requires react-intl provider
+
+
+
+
+
+## [8.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@8.1.0...@transferwise/dynamic-flows@8.1.1) (2021-01-07)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+# [8.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@8.0.3...@transferwise/dynamic-flows@8.1.0) (2020-12-18)
+
+
+### Features
+
+* ADS-1785 Add support for tabs ([#743](https://github.com/transferwise/neptune-web/issues/743)) ([94d26ac](https://github.com/transferwise/neptune-web/commit/94d26acdccaf8a38b5f2e528ee8fd99cc5827b68))
+
+
+
+
+
+## [8.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@8.0.2...@transferwise/dynamic-flows@8.0.3) (2020-12-16)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [8.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@8.0.1...@transferwise/dynamic-flows@8.0.2) (2020-12-16)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
 ## [8.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@8.0.0...@transferwise/dynamic-flows@8.0.1) (2020-12-14)
 
 

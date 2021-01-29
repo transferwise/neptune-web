@@ -1,62 +1,48 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import '@testing-library/jest-dom';
+import { render, fireEvent } from '../test-utils';
 
 import CheckboxButton from '.';
 
 describe('Checkbox button', () => {
-  let component;
-  beforeEach(() => {
-    component = shallow(<CheckboxButton onClick={jest.fn()} />);
-  });
+  let getByRole;
 
   describe('by default', () => {
-    it('does not have checked class ', () => {
-      expect(hasCheckedClass()).toBe(false);
-    });
-
-    it('has aria-pressed as false ', () => {
-      expect(hasAriaPressedAsTrue()).toBe(false);
-    });
-
-    it('is not disabled ', () => {
-      expect(isDisabled()).toBe(false);
-    });
-  });
-
-  describe('when checked', () => {
     beforeEach(() => {
-      component.setProps({ checked: true });
+      ({ getByRole } = render(<CheckboxButton onChange={jest.fn()} />));
+    });
+    it('is not checked', () => {
+      getByRole('checkbox', { checked: false });
     });
 
-    it('has checked class', () => {
-      expect(hasCheckedClass()).toBe(true);
-    });
-
-    it('has aria-pressed as true', () => {
-      expect(hasAriaPressedAsTrue()).toBe(true);
+    it('is not disabled', () => {
+      getByRole('checkbox', { disabled: false });
     });
   });
 
-  it('is disabled when disabled flag is passed', () => {
-    component.setProps({ disabled: true });
-    expect(isDisabled()).toBe(true);
+  it('applies aria-label if provided', () => {
+    ({ getByRole } = render(<CheckboxButton onChange={jest.fn()} aria-label="An aria label" />));
+    getByRole('checkbox', { name: 'An aria label' });
   });
 
-  it('is disabled when readOnly flag is passed', () => {
-    component.setProps({ readOnly: true });
-    expect(isDisabled()).toBe(true);
+  it('is checked when checked prop is true', () => {
+    ({ getByRole } = render(<CheckboxButton checked onChange={jest.fn()} />));
+    getByRole('checkbox', { checked: true });
   });
 
-  it('calls click handler on click', () => {
-    const onClick = jest.fn();
-    component.setProps({ onClick });
-
-    expect(onClick).not.toBeCalled();
-    component.simulate('click');
-    expect(onClick).toBeCalled();
+  it('is disabled when disabled prop is true', () => {
+    ({ getByRole } = render(<CheckboxButton disabled onChange={jest.fn()} />));
+    getByRole('checkbox', { disabled: true });
   });
 
-  const hasCheckedClass = () => component.hasClass('checked');
-  const hasAriaPressedAsTrue = () => component.prop('aria-pressed');
-  const isDisabled = () => component.prop('disabled');
+  it('calls onChange handler on change', () => {
+    const onChange = jest.fn();
+    ({ getByRole } = render(<CheckboxButton onChange={onChange} />));
+
+    const input = getByRole('checkbox');
+
+    expect(onChange).not.toBeCalled();
+    fireEvent(input, new MouseEvent('click', { bubbles: true }));
+    expect(onChange).toBeCalled();
+  });
 });

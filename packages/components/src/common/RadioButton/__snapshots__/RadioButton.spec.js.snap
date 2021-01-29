@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio button renders checked state correctly 1`] = `
+<div>
+  <input
+    checked=""
+    class="sr-only"
+    name="radio-name"
+    type="radio"
+    value=""
+  />
+  <span
+    class="tw-radio-button checked"
+  >
+    <span
+      class="tw-radio-check"
+    />
+  </span>
+</div>
+`;
+
+exports[`Radio button renders correctly 1`] = `
+<div>
+  <input
+    class="sr-only"
+    id="an-id"
+    name="a-name"
+    type="radio"
+    value="a-value"
+  />
+  <span
+    class="tw-radio-button"
+  >
+    <span
+      class="tw-radio-check"
+    />
+  </span>
+</div>
+`;
+
+exports[`Radio button renders disabled state correctly 1`] = `
+<div>
+  <input
+    class="sr-only"
+    disabled=""
+    name="radio-name"
+    type="radio"
+    value=""
+  />
+  <span
+    class="tw-radio-button disabled"
+  >
+    <span
+      class="tw-radio-check"
+    />
+  </span>
+</div>
+`;

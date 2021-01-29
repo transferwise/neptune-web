@@ -3,6 +3,77 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@7.0.1...@transferwise/neptune-css@7.0.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* add component animations back into neptune ([#774](https://github.com/transferwise/neptune-web/issues/774)) ([f46f046](https://github.com/transferwise/neptune-web/commit/f46f046ca487e6acd5d0d90cfccb2c2d7b69bbc1))
+
+
+
+
+
+## [7.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@7.0.0...@transferwise/neptune-css@7.0.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* add clearfix to grid layout ([#772](https://github.com/transferwise/neptune-web/issues/772)) ([02e73c2](https://github.com/transferwise/neptune-web/commit/02e73c2baa7adaced43b03caada755486a83dc6d))
+
+
+
+
+
+# [7.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@6.0.0...@transferwise/neptune-css@7.0.0) (2021-01-27)
+
+
+* feat!: remove logo classes from navbar (#762) ([59b9962](https://github.com/transferwise/neptune-web/commit/59b996296d4d6dd472011b2fc09a208d0f6153ed)), closes [#762](https://github.com/transferwise/neptune-web/issues/762)
+
+
+### BREAKING CHANGES
+
+* The navigation logo is not offered via CSS class anymore. We recommend to consume the logo as an asset.
+
+Co-authored-by: andreapiras <16908937+andreapiras@users.noreply.github.com>
+
+
+
+
+
+# [6.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.1.0...@transferwise/neptune-css@6.0.0) (2021-01-22)
+
+
+* refactor!: improving FlowNavigation and Checkbox (#765) ([d52212d](https://github.com/transferwise/neptune-web/commit/d52212d13e9c822e7c1d24e5dc4d4bf49ac14814)), closes [#765](https://github.com/transferwise/neptune-web/issues/765) [#724](https://github.com/transferwise/neptune-web/issues/724)
+
+
+### BREAKING CHANGES
+
+* FlowNavigation refactor
+- removed avatarURL and profileType props, replaced with avatar prop
+- removed done prop
+- removed theme prop
+* CheckboxButton now requires an onChange handler, and people using it directly should provide an aria-label
+
+* test: update test
+
+Co-authored-by: andreapiras <16908937+andreapiras@users.noreply.github.com>
+
+
+
+
+
+# [5.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.0.4...@transferwise/neptune-css@5.1.0) (2020-12-16)
+
+
+### Features
+
+* internalization support ([#674](https://github.com/transferwise/neptune-web/issues/674)) ([10c533f](https://github.com/transferwise/neptune-web/commit/10c533fd9af2bb25d0f9b195ea941989252bf09e))
+
+
+
+
+
 ## [5.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.0.3...@transferwise/neptune-css@5.0.4) (2020-12-07)
 
 **Note:** Version bump only for package @transferwise/neptune-css

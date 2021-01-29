@@ -1,151 +1,126 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import '@testing-library/jest-dom';
 
-import { FlowNavigation, Provider } from '..';
-import BackButton from './backButton';
-import Logo from './logo';
-import en from '../../i18n/en.json';
+import { render, screen } from '../test-utils';
 
-describe('Flow navigation', () => {
-  let component;
-  let props;
+import FlowNavigation from '.';
+import { Breakpoint } from '../common';
+import Logo from '../common/logo';
+import Avatar from '../avatar';
 
-  function flagHidden() {
-    return component.find('.flag').hasClass('flag--hidden');
-  }
+jest.mock('lodash.throttle', () => jest.fn((fn) => fn));
 
-  function logo() {
-    return component.find(Logo);
-  }
+jest.mock('./animatedLabel', () => {
+  // eslint-disable-next-line react/prop-types
+  return ({ className }) => <div className={className}>AnimatedLabel</div>;
+});
+jest.mock('./backButton', () => {
+  // eslint-disable-next-line react/prop-types
+  return ({ className, label }) => <div className={className}>BackButton{label}</div>;
+});
+jest.mock('../common/logo', () => {
+  // eslint-disable-next-line react/prop-types
+  const mockedLogo = ({ className, type }) => <div className={className}>Logo {type}</div>;
+  mockedLogo.Type = { FULL: 'FULL', FLAG: 'FLAG' };
+  return mockedLogo;
+});
 
-  function stepper() {
-    return component.find('Stepper');
-  }
-
-  function avatar() {
-    return component.find('AvatarWrapper');
-  }
-
-  function closeButton() {
-    return component.find('.tw-close-button');
-  }
-
-  function backButton() {
-    return component.find(BackButton);
-  }
-
-  function closeButtonWithAvatar() {
-    return closeButton().hasClass('close-button-with-avatar');
-  }
-
-  function bottomBorderHidden() {
-    return component.find('div.tw-flow-navigation--done');
-  }
-
+describe('FlowNavigation', () => {
+  const originalClientWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'clientWidth');
+  const resetClientWidth = (width) => {
+    Object.defineProperty(HTMLElement.prototype, 'clientWidth', {
+      configurable: true,
+      value: width,
+    });
+  };
   beforeEach(() => {
-    props = {
-      avatarUrl: '',
-      profileType: 'BUSINESS',
-      steps: [],
-      activeStep: 0,
-      onClose: jest.fn(),
-      onGoBack: jest.fn(),
-    };
+    resetClientWidth(Breakpoint.MEDIUM + 1);
+  });
 
-    component = mount(<FlowNavigation {...props} />, {
-      // eslint-disable-next-line react/prop-types
-      wrappingComponent: ({ children }) => {
-        return <Provider i18n={{ locale: 'en', messages: en }}>{children}</Provider>;
+  afterAll(() => {
+    Object.defineProperty(HTMLElement.prototype, 'clientWidth', originalClientWidth);
+  });
+
+  const props = {
+    avatar: (
+      <Avatar type={Avatar.Type.INITIALS} size={Avatar.Size.MEDIUM}>
+        TM
+      </Avatar>
+    ),
+    logo: <Logo type={Logo.Type.FULL} />,
+    onClose: jest.fn(),
+    steps: [
+      {
+        label: 'label-0',
       },
+      { label: 'label-1' },
+    ],
+    activeStep: 0,
+  };
+
+  it(`renders as expected`, () => {
+    expect(render(<FlowNavigation {...props} />).container).toMatchSnapshot();
+  });
+
+  it(`renders full Logo not visible on mobile`, () => {
+    render(<FlowNavigation {...props} />);
+    expect(logoFull().parentElement).toHaveClass('hidden-xs');
+  });
+
+  it(`renders separator if avatar and onClose are provided`, () => {
+    const { container } = render(<FlowNavigation {...props} />);
+
+    expect(container.querySelector('.separator')).toBeInTheDocument();
+  });
+
+  it(`doesn't render separator if avatar or onClose are not provided `, () => {
+    const { container, rerender } = render(<FlowNavigation {...props} onClose={null} />);
+
+    expect(container.querySelector('.separator')).not.toBeInTheDocument();
+
+    rerender(<FlowNavigation {...props} avatar={null} />);
+
+    expect(container.querySelector('.separator')).not.toBeInTheDocument();
+  });
+
+  describe('on mobile', () => {
+    beforeEach(() => {
+      resetClientWidth(Breakpoint.MEDIUM - 1);
+    });
+
+    it('renders as expected', () => {
+      expect(render(<FlowNavigation {...props} />).container).toMatchSnapshot();
+    });
+
+    it(`renders Logo ${Logo.Type.FLAG} if onGoBack is not provided and activeStep = 0`, () => {
+      const { rerender } = render(<FlowNavigation {...props} />);
+
+      expect(logoFlag().parentElement).toHaveClass('visible-xs');
+      expect(logoFlag()).toHaveClass('np-flow-navigation--logo__display');
+
+      rerender(<FlowNavigation {...props} activeStep={1} />);
+
+      expect(logoFlag().parentElement).toHaveClass('visible-xs');
+
+      rerender(<FlowNavigation {...props} onGoBack={jest.fn()} activeStep={1} />);
+
+      expect(logoFlag()).toHaveClass('np-flow-navigation--logo__hidden');
+    });
+
+    it('renders BackButton with AnimatedLabel if onGoBack is provided and activeStep > 0', () => {
+      const { rerender } = render(<FlowNavigation {...props} onGoBack={jest.fn()} />);
+
+      expect(screen.queryByText('BackButton')).toBeNull();
+
+      rerender(<FlowNavigation {...props} activeStep={1} />);
+      expect(screen.queryByText('BackButton')).toBeNull();
+
+      rerender(<FlowNavigation {...props} onGoBack={jest.fn()} activeStep={1} />);
+
+      expect(screen.getByText('BackButton').parentElement).toHaveClass('visible-xs');
+      expect(screen.getByText('AnimatedLabel')).toBeInTheDocument();
     });
   });
-
-  it('passes steps and active step to stepper', () => {
-    props.steps = [
-      { label: '1', something: true },
-      { label: '2', another: 'yes' },
-    ];
-    props.activeStep = 1337;
-    component.setProps(props);
-    expect(stepper().length).toBe(1);
-    expect(stepper().props()).toEqual({
-      steps: props.steps,
-      activeStep: props.activeStep,
-    });
-  });
-
-  it('passes avatar url and profile type to avatar', () => {
-    props.avatarUrl = 'https://example.com/avatar';
-    props.profileType = 'BUSINESS';
-    component.setProps(props);
-    expect(avatar().length).toBe(1);
-    expect(avatar().props()).toEqual({
-      url: props.avatarUrl,
-      profileType: props.profileType,
-    });
-    expect(closeButtonWithAvatar()).toBe(true);
-  });
-
-  it('calls onClose callback when close button clicked', () => {
-    expect(props.onClose).not.toHaveBeenCalled();
-    closeButton().simulate('click');
-    expect(props.onClose).toHaveBeenCalled();
-  });
-
-  it('passes steps to back button', () => {
-    component.setProps({ steps: [{ label: '1' }, { label: '2' }] });
-    expect(backButton().prop('steps')).toEqual([{ label: '1' }, { label: '2' }]);
-  });
-
-  it('passes active step to back button', () => {
-    component.setProps({ activeStep: 2 });
-    expect(backButton().prop('activeStep')).toBe(2);
-  });
-
-  it('passes onGoBack callback to back button', () => {
-    const onGoBack = jest.fn();
-    component.setProps({ onGoBack });
-    expect(backButton().prop('onGoBack')).toBe(onGoBack);
-  });
-
-  it('hides the flag when user can go back', () => {
-    component.setProps({ onGoBack: jest.fn() });
-    expect(flagHidden()).toBe(true);
-    component.setProps({ onGoBack: null });
-    expect(flagHidden()).toBe(false);
-  });
-
-  it('hides the avatar if done is true', () => {
-    component.setProps({ done: true });
-    expect(avatar().length).toBe(0);
-    expect(closeButtonWithAvatar()).toBe(false);
-  });
-
-  it('hides the stepper if done is true', () => {
-    component.setProps({ done: true });
-    expect(stepper().length).toBe(0);
-  });
-
-  it('hides the bottom border if done is true', () => {
-    expect(bottomBorderHidden()).toHaveLength(0);
-    component.setProps({ done: true });
-    expect(bottomBorderHidden()).toHaveLength(1);
-  });
-
-  it('hides the close button if onClose is not defined', () => {
-    component.setProps({ onClose: undefined });
-    expect(closeButton().exists()).toBe(false);
-  });
-
-  it('inverts the logo if theme is dark', () => {
-    expect(logo().prop('theme')).toBe(FlowNavigation.Theme.LIGHT);
-    component.setProps({ theme: FlowNavigation.Theme.DARK });
-    expect(logo().prop('theme')).toBe(FlowNavigation.Theme.DARK);
-  });
-
-  it('hides the stepper if theme is dark', () => {
-    expect(stepper().length).toBe(1);
-    component.setProps({ theme: FlowNavigation.Theme.DARK });
-    expect(stepper().length).toBe(0);
-  });
+  const logoFlag = () => screen.getByText(`Logo ${Logo.Type.FLAG}`);
+  const logoFull = () => screen.getByText(`Logo ${Logo.Type.FULL}`);
 });

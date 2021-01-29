@@ -4,10 +4,13 @@ import Types from 'prop-types';
 import { isNull, isUndefined } from '@transferwise/neptune-validation';
 import FormControl from '../../formControl';
 import { getValidModelParts } from '../../common/validation/valid-model';
+import { isOneOfSchema } from '../../common/schemaTypes/schemaTypes';
+import { FormControlType } from '../../common';
 import { mapConstSchemaToOption } from './optionMapper';
 
 const SchemaFormControl = (props) => {
-  const isNativeInput = (schemaType) => schemaType === 'string' || schemaType === 'number';
+  const isNativeInput = (propsSchemaType) =>
+    propsSchemaType === 'string' || propsSchemaType === 'number';
 
   const getSanitisedValue = (value) =>
     isNativeInput(props.schema.type) && (isNull(value) || isUndefined(value)) ? '' : value;
@@ -19,6 +22,9 @@ const SchemaFormControl = (props) => {
 
   const getControlType = (schema) => {
     if (schema.control) {
+      if (isOneOfSchema(schema) && schema.oneOf.length > 3) {
+        return FormControlType.SELECT;
+      }
       return schema.control;
     }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import Types from 'prop-types';
 import { formatDate } from '@transferwise/formatting';
 
@@ -8,7 +9,8 @@ const ROWS = 5;
 const COLS = 4;
 const YEAR_ONLY_FORMAT = { year: 'numeric' };
 
-const YearCalendarTable = ({ selectedDate, min, max, viewYear, locale, placeholder, onSelect }) => {
+const YearCalendarTable = ({ selectedDate, min, max, viewYear, placeholder, onSelect }) => {
+  const { locale } = useIntl();
   const startYear = viewYear - (viewYear % 20);
   const getLink = (year) => (
     <TableLink
@@ -48,7 +50,6 @@ YearCalendarTable.propTypes = {
   min: Types.instanceOf(Date),
   max: Types.instanceOf(Date),
   viewYear: Types.number.isRequired,
-  locale: Types.string.isRequired,
   placeholder: Types.string.isRequired,
   onSelect: Types.func.isRequired,
 };

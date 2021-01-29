@@ -8,8 +8,8 @@ import {
   PhoneNumberInput,
   RadioGroup,
   Select,
+  Tabs,
   TextareaWithDisplayFormat,
-  Upload,
 } from '@transferwise/components';
 import FormControl from '.';
 
@@ -24,7 +24,6 @@ describe('FormControl', () => {
       id: 'control',
       placeholder: 'placeholder',
       name: 'control',
-      locale: 'en-GB',
       disabled: false,
       readOnly: false,
       required: true,
@@ -49,7 +48,6 @@ describe('FormControl', () => {
   testCustomControl('date', DateInput);
   testCustomControl('tel', PhoneNumberInput);
   testCustomControl('checkbox', Checkbox);
-  testCustomControl('upload', Upload);
   testCustomControl('text', InputWithDisplayFormat);
   testCustomControl('textarea', TextareaWithDisplayFormat);
   testCustomControl('date-lookup', DateLookup);
@@ -248,6 +246,37 @@ describe('FormControl', () => {
 
     testChangeHandler(() => {
       radioGroup.simulate('change', 1);
+    }, 1);
+  });
+
+  describe('type: tabs', () => {
+    let tabs;
+
+    beforeEach(() => {
+      props = {
+        type: 'tab',
+        options: [
+          { value: 0, label: 'Zero' },
+          { value: 1, label: 'One' },
+        ],
+        onChange: jest.fn().mockImplementation((newValue) => {
+          currentValue = newValue;
+        }),
+      };
+      component = shallow(<FormControl {...{ ...defaultProps, ...props }} />);
+      tabs = component.find(Tabs);
+    });
+
+    afterEach(() => {
+      component.unmount();
+    });
+
+    it('should render tab', () => {
+      expect(tabs.exists()).toBeTruthy();
+    });
+
+    testChangeHandler(() => {
+      tabs.simulate('tabSelect', 1);
     }, 1);
   });
 

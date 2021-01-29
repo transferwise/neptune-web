@@ -105,7 +105,10 @@ const OneOfSchema = (props) => {
   };
 
   const mapSchemas = (schema) => {
-    return { ...schema, oneOf: schema.oneOf.map(mapOneOfToConst) };
+    return {
+      ...schema,
+      oneOf: schema.oneOf.map(mapOneOfToConst),
+    };
   };
 
   const schemaForSelect = mapSchemas(props.schema);

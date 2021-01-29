@@ -3,7 +3,7 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 
 import { Breakpoint } from '../common';
-import useClientWidth from './hooks';
+import { useClientWidth } from '../common/hooks';
 
 const Layout = { COLUMN: 'COLUMN' };
 

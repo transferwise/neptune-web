@@ -7,6 +7,12 @@ import DayCalendar from './dayCalendar';
 import MonthCalendar from './monthCalendar';
 import YearCalendar from './yearCalendar';
 
+const defaultLocale = 'en-GB';
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: defaultLocale }} />,
+  useIntl: () => ({ locale: defaultLocale }),
+}));
+
 describe('DateLookup view', () => {
   const date = new Date(2018, 11, 27);
   const min = new Date(2018, 11, 26);
@@ -20,7 +26,6 @@ describe('DateLookup view', () => {
       min,
       max,
       size: 'lg',
-      locale: 'xx',
       placeholder: 'Asd..',
       label: 'Date..',
       onChange: jest.fn(),
@@ -35,7 +40,6 @@ describe('DateLookup view', () => {
   it('passes props forward to open button', () => {
     expect(+openButton().prop('selectedDate')).toBe(+date);
     expect(openButton().prop('size')).toBe('lg');
-    expect(openButton().prop('locale')).toBe('xx');
     expect(openButton().prop('placeholder')).toBe('Asd..');
     expect(openButton().prop('label')).toBe('Date..');
     expect(openButton().prop('monthFormat')).toBe('long');
@@ -69,7 +73,6 @@ describe('DateLookup view', () => {
       expect(+dayCalendar().prop('max')).toBe(+max);
       expect(dayCalendar().prop('viewMonth')).toBe(11);
       expect(dayCalendar().prop('viewYear')).toBe(2018);
-      expect(dayCalendar().prop('locale')).toBe('xx');
       expect(dayCalendar().prop('monthFormat')).toBe('long');
     });
 
@@ -96,7 +99,6 @@ describe('DateLookup view', () => {
       expect(+monthCalendar().prop('min')).toBe(+min);
       expect(+monthCalendar().prop('max')).toBe(+max);
       expect(monthCalendar().prop('viewYear')).toBe(2018);
-      expect(monthCalendar().prop('locale')).toBe('xx');
       expect(monthCalendar().prop('placeholder')).toBe('Asd..');
     });
 
@@ -123,7 +125,6 @@ describe('DateLookup view', () => {
       expect(+yearCalendar().prop('min')).toBe(+min);
       expect(+yearCalendar().prop('max')).toBe(+max);
       expect(yearCalendar().prop('viewYear')).toBe(2018);
-      expect(yearCalendar().prop('locale')).toBe('xx');
       expect(yearCalendar().prop('placeholder')).toBe('Asd..');
     });
 

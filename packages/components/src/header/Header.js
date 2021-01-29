@@ -2,32 +2,56 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-const Header = ({ leftContent, rightContent, bottomContent, className }) => (
-  <div className={classNames(className)}>
-    <div className="container">
-      <div className="row p-t-3 ">
-        <div className="col-lg-2 col-xs-6">{leftContent}</div>
-        <div className="col-lg-2 col-xs-6 col-lg-push-8 text-xs-right">{rightContent}</div>
-        <div className="col-xs-12 col-lg-6 col-lg-pull-2 col-lg-offset-1 p-x-0">
-          {bottomContent}
-        </div>
+const Header = React.forwardRef((props, ref) => {
+  const { bottomContent, className, layout, leftContent, rightContent } = props;
+  const isVertical = layout === Header.Layout.VERTICAL;
+
+  return (
+    <div className={classNames('np-header', 'd-flex', 'flex-wrap', className)} ref={ref}>
+      <div
+        className={classNames('align-items-center', 'd-flex', {
+          'flex__item--8': isVertical,
+        })}
+      >
+        {leftContent}
+      </div>
+
+      <div
+        className={classNames('align-items-center', 'd-flex', 'justify-content-end', {
+          'flex__item--4 ': isVertical,
+          'order-2': !isVertical,
+        })}
+      >
+        {rightContent}
+      </div>
+      <div
+        className={classNames('align-items-center', 'd-flex', 'justify-content-center', {
+          'flex__item--12': isVertical,
+          'order-1 flex-grow-1': !isVertical,
+        })}
+      >
+        {bottomContent}
       </div>
     </div>
-  </div>
-);
+  );
+});
+
+Header.Layout = { VERTICAL: 'VERTICAL', HORIZONTAL: 'HORIZONTAL' };
 
 Header.defaultProps = {
-  leftContent: null,
-  rightContent: null,
-  bottomContent: null,
-  className: null,
+  bottomContent: undefined,
+  className: undefined,
+  layout: Header.Layout.HORIZONTAL,
+  leftContent: undefined,
+  rightContent: undefined,
 };
 
 Header.propTypes = {
-  leftContent: Types.node,
-  rightContent: Types.node,
   bottomContent: Types.node,
   className: Types.string,
+  layout: Types.oneOf([Header.Layout.HORIZONTAL, Header.Layout.VERTICAL]),
+  leftContent: Types.node,
+  rightContent: Types.node,
 };
 
 export default Header;

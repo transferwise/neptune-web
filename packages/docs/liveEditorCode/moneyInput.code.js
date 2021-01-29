@@ -3,7 +3,6 @@
   <MoneyInput
     id="money-input"
     amount={1000}
-    locale="en-GB"
     size="lg"
     onAmountChange={value => console.log('amount changed', value)}
     onCurrencyChange={() => alert('currency changed')}

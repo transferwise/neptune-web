@@ -1,29 +1,31 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { shallow } from 'enzyme';
 import * as formatting from '@transferwise/formatting';
 
 import OpenButton from '.';
 
+jest.mock('react-intl');
 jest.mock('@transferwise/formatting', () => ({
   formatDate: jest.fn().mockReturnValue('1.2.3'),
 }));
 
 describe('OpenButton', () => {
   const selectedDate = new Date(1990, 11, 27);
-  const locale = 'xx';
+  const locale = 'en-GB';
   let component;
   let props;
 
   beforeEach(() => {
     props = {
       size: 'md',
-      locale,
       placeholder: 'Enter date..',
       label: '',
       monthFormat: 'long',
       disabled: false,
       onClick: jest.fn(),
     };
+    useIntl.mockReturnValue({ locale });
     component = shallow(<OpenButton {...props} />);
   });
 

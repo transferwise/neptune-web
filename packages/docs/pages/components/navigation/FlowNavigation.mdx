@@ -1,8 +1,17 @@
 import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
-import { FlowNavigation } from '@transferwise/components';
+import { FlowNavigation, Avatar, Logo } from '@transferwise/components';
+import { Profile as ProfileIcon, Briefcase as BriefcaseIcon } from '@transferwise/icons';
+
 import code from '../../../liveEditorCode/flowNavigation.code';
 
-<LiveEditorBlock code={code} scope={{ FlowNavigation }} display="vertical" />
+<LiveEditorBlock
+  code={code}
+  scope={{ FlowNavigation, Avatar, BriefcaseIcon, ProfileIcon, Logo }}
+  display="vertical"
+/>
+
+Use FlowNavigation to help a user navigate through a flow. If a Stepper does not need to be included please use [OverflowHeader](/components/overlays/OverlayHeader) instead.
+
 <GeneratePropsTable componentName="FlowNavigation" />
 
 export const meta = {

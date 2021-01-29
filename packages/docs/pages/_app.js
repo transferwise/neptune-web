@@ -5,6 +5,10 @@ import App from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
 import { Provider } from '@transferwise/components';
+import {
+  getLangFromLocale,
+  DEFAULT_LOCALE,
+} from '@transferwise/components/build/es/polyfill/common/locale';
 import Layout from '../components/Layout';
 import '@transferwise/neptune-css/dist/css/neptune.css';
 import '@transferwise/icons/lib/styles/main.min.css';
@@ -22,9 +26,9 @@ if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
 
 class MyApp extends App {
   static async getInitialProps() {
-    const defaultLocale = 'en';
-    const messages = await import(`@transferwise/components/i18n/${defaultLocale}`);
-    return { locale: defaultLocale, messages };
+    const lang = getLangFromLocale(DEFAULT_LOCALE);
+    const messages = await import(`@transferwise/components/i18n/${lang}`);
+    return { locale: DEFAULT_LOCALE, messages };
   }
 
   componentDidMount() {
@@ -33,12 +37,15 @@ class MyApp extends App {
       Router.push(addBasePath('about/Home'));
     }
 
-    window.addEventListener('beforeunload', () => {
-      localStorage.setItem(
-        'sidebar-scroll',
-        document.querySelector('.Sidebar__Inner .Nav').scrollTop,
-      );
-    });
+    // @TODO
+    // We need to show the user a cookie banner before we do this. Because it's used solely for the purposes
+    // of making the site run well, we don't need to ask for consent, but we do need to inform them.
+    // window.addEventListener('beforeunload', () => {
+    //   localStorage.setItem(
+    //     'sidebar-scroll',
+    //     document.querySelector('.Sidebar__Inner .Nav').scrollTop,
+    //   );
+    // });
   }
 
   render() {

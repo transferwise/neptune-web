@@ -7,7 +7,7 @@ import createDefinitions from './utils/createDefinitions';
 
 import { Layout } from '../common';
 
-const DynamicFieldDefinitionList = ({ model, locale, title, layout, fields }) => (
+const DynamicFieldDefinitionList = ({ model, title, layout, fields }) => (
   <>
     {title && (
       <div className="m-t-1">
@@ -15,10 +15,7 @@ const DynamicFieldDefinitionList = ({ model, locale, title, layout, fields }) =>
       </div>
     )}
 
-    <DefinitionList
-      layout={layout}
-      definitions={createDefinitions(prepFields(fields), model, locale)}
-    />
+    <DefinitionList layout={layout} definitions={createDefinitions(prepFields(fields), model)} />
   </>
 );
 
@@ -27,7 +24,6 @@ DynamicFieldDefinitionList.Layout = Layout;
 DynamicFieldDefinitionList.propTypes = {
   model: Types.shape({}).isRequired,
   fields: Types.shape({}).isRequired,
-  locale: Types.string,
   title: Types.string,
   layout: Types.oneOf([
     DynamicFieldDefinitionList.Layout.VERTICAL_TWO_COLUMN,
@@ -38,7 +34,6 @@ DynamicFieldDefinitionList.propTypes = {
 };
 
 DynamicFieldDefinitionList.defaultProps = {
-  locale: 'en-GB',
   title: null,
   layout: DynamicFieldDefinitionList.Layout.VERTICAL_TWO_COLUMN,
 };

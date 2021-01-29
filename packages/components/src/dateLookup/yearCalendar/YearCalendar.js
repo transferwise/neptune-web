@@ -19,12 +19,12 @@ class YearCalendar extends PureComponent {
   };
 
   render() {
-    const { selectedDate, min, max, viewYear, locale, placeholder } = this.props;
+    const { selectedDate, min, max, viewYear, placeholder } = this.props;
     return (
       <div>
         <Header onPreviousClick={this.selectPreviousYears} onNextClick={this.selectNextYears} />
         <YearCalendarTable
-          {...{ selectedDate, min, max, viewYear, locale, placeholder }}
+          {...{ selectedDate, min, max, viewYear, placeholder }}
           onSelect={this.onYearSelect}
         />
       </div>
@@ -37,7 +37,6 @@ YearCalendar.propTypes = {
   min: Types.instanceOf(Date),
   max: Types.instanceOf(Date),
   viewYear: Types.number.isRequired,
-  locale: Types.string.isRequired,
   placeholder: Types.string.isRequired,
   onSelect: Types.func.isRequired,
   onViewDateUpdate: Types.func.isRequired,

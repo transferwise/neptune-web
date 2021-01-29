@@ -10,6 +10,7 @@ import {
   Select,
   TextareaWithDisplayFormat,
   Upload,
+  Tabs,
 } from '@transferwise/components';
 
 import { Size, MonthFormat, DateMode, FormControlType } from '../common';
@@ -101,6 +102,10 @@ export default class FormControl extends PureComponent {
     return selectedOption;
   };
 
+  getSelectedOptionFromIndex = (options, newIndex) => {
+    return options.find((option) => option.value === newIndex);
+  };
+
   mapOption = (option) => {
     return {
       ...option,
@@ -114,7 +119,6 @@ export default class FormControl extends PureComponent {
       name,
       placeholder,
       step,
-      locale,
       countryCode,
       type,
       options,
@@ -186,6 +190,24 @@ export default class FormControl extends PureComponent {
           />
         );
 
+      case FormControlType.TAB:
+        return (
+          <Tabs
+            id={id}
+            selected={this.getSelectedOption(options)?.value || 0}
+            tabs={options.map((option) => ({
+              title: option.label,
+              content: <></>,
+              disabled: option.disabled || false,
+            }))}
+            onTabSelect={(newIndex) => {
+              this.setState({ selectedOption: this.getSelectedOptionFromIndex(options, newIndex) });
+              this.handleOnChange(newIndex);
+            }}
+            name={id}
+          />
+        );
+
       case FormControlType.NUMBER:
         return (
           <input
@@ -233,7 +255,6 @@ export default class FormControl extends PureComponent {
         return (
           <DateInput
             disabled={disabled}
-            locale={locale}
             onBlur={this.handleOnBlur}
             onChange={this.handleOnChange}
             onFocus={this.handleOnFocus}
@@ -250,7 +271,6 @@ export default class FormControl extends PureComponent {
             value={value}
             min={minDate}
             max={maxDate}
-            locale={locale}
             placeholder={placeholder}
             label={label}
             onChange={this.handleOnChange}
@@ -265,7 +285,6 @@ export default class FormControl extends PureComponent {
         return (
           <PhoneNumberInput
             disabled={disabled}
-            locale={locale}
             countryCode={countryCode}
             onBlur={this.handleOnBlur}
             onChange={this.handleOnChange}
@@ -368,12 +387,12 @@ FormControl.propTypes = {
     FormControl.Type.TEXT,
     FormControl.Type.TEXTAREA,
     FormControl.Type.UPLOAD,
+    FormControl.Type.TAB,
   ]),
   name: Types.string.isRequired,
   id: Types.string,
   placeholder: Types.string,
   step: Types.number,
-  locale: Types.string,
   countryCode: Types.string,
   options: Types.arrayOf(
     Types.shape({
@@ -458,7 +477,6 @@ FormControl.defaultProps = {
   type: FormControl.Type.TEXT,
   id: null,
   placeholder: null,
-  locale: null,
   countryCode: null,
   options: [],
   step: 1,

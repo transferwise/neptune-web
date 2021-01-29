@@ -21,7 +21,6 @@ export const basic = () => {
     <DynamicFieldDefinitionList
       title="title"
       layout={DynamicFieldDefinitionList.Layout.VERTICAL_TWO_COLUMN}
-      locale="en-GB"
       model={{
         text: textDF,
         number: numberDF,
