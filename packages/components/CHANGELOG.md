@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [34.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.0.1...@transferwise/components@34.1.0) (2021-01-29)
+
+
+### Features
+
+* **PhoneNumberInput:** suggest numeric keyboard for phone input on mobile web ([#777](https://github.com/transferwise/neptune-web/issues/777)) ([542f3c7](https://github.com/transferwise/neptune-web/commit/542f3c70f152daeb1362ef3b101a92a1f776bd3c))
+
+
+
+
+
 ## [34.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.0.0...@transferwise/components@34.0.1) (2021-01-29)
 
 
