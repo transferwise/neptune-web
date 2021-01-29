@@ -9,7 +9,6 @@ export default {
 };
 
 export const basic = () => {
-  const locale = select('locale', ['en-GB', 'jp-JP'], 'en-GB');
   const disabled = boolean('disabled', false);
   const size = select('size', Object.values(DateInput.Size), DateInput.Size.MEDIUM);
   const monthFormat = select(
@@ -40,7 +39,6 @@ export const basic = () => {
         dayLabel="Day input"
         monthLabel="Month Select"
         yearLabel="Year input"
-        locale={locale}
         disabled={disabled}
         size={size}
         value={value}
@@ -65,7 +63,6 @@ export const basic = () => {
           appendToLog(` onChange: ${val}`);
           return action(val);
         }}
-        locale={locale}
         disabled={disabled}
         size={size}
         value={value}

@@ -12,16 +12,16 @@
     &:active:hover {
       border-color: @input-border-focus;
 
-      input[type=radio],
-      input[type=checkbox] {
+      input[type='radio'],
+      input[type='checkbox'] {
         + .input-replacement {
           border-color: @input-border-focus;
         }
       }
     }
 
-    input[type=radio],
-    input[type=checkbox] {
+    input[type='radio'],
+    input[type='checkbox'] {
       display: block;
       position: absolute;
       top: 13px;
@@ -52,7 +52,7 @@
   }
 
   &:hover,
-  input[type="checkbox"]:hover + &,
+  input[type='checkbox']:hover + &,
   .checkbox:hover & {
     border-color: @color-base-grey-light;
   }
@@ -61,17 +61,17 @@
   &.focus,
   &:focus:hover,
   &.focus:hover,
-  input[type="checkbox"]:focus + &,
+  input[type='checkbox']:focus + &,
   &:active,
   &.active,
-  input[type="checkbox"]:active + & {
+  input[type='checkbox']:active + & {
     border-color: @input-border-focus;
     outline: none;
   }
 
   &[checked],
   &.checked,
-  input[type="checkbox"]:checked + & {
+  input[type='checkbox']:checked + & {
     border-color: var(--color-control-accent) !important;
     background-color: var(--color-control-accent);
 
@@ -82,20 +82,20 @@
 
   &[checked]:hover,
   &.checked:hover,
-  input[type="checkbox"]:not(:disabled):checked:hover + & {
+  input[type='checkbox']:not(:disabled):checked:hover + & {
     border-color: var(--color-control-accent-hover) !important;
     background-color: var(--color-control-accent-hover);
   }
 
   &[checked]:active,
   &.checked:active,
-  input[type="checkbox"]:not(:disabled):checked:active + & {
+  input[type='checkbox']:not(:disabled):checked:active + & {
     border-color: var(--color-control-accent-active) !important;
     background-color: var(--color-control-accent-active);
   }
 
   &[disabled],
-  input[type="checkbox"]:disabled + & {
+  input[type='checkbox']:disabled + & {
     background-color: @color-base-smoke-fade;
     border-color: @color-base-smoke-mid !important;
     cursor: @cursor-disabled;
@@ -119,17 +119,17 @@
     }
   }
 
-  .checkbox.has-error input[type="checkbox"]:checked + & {
+  .checkbox.has-error input[type='checkbox']:checked + & {
     border-color: var(--color-control-negative) !important;
     background-color: var(--color-control-negative);
   }
 
-  .checkbox.has-error input[type="checkbox"]:checked:hover + & {
+  .checkbox.has-error input[type='checkbox']:checked:hover + & {
     border-color: var(--color-control-negative-hover) !important;
     background-color: var(--color-control-negative-hover);
   }
 
-  .checkbox.has-error input[type="checkbox"]:checked:active + & {
+  .checkbox.has-error input[type='checkbox']:checked:active + & {
     border-color: var(--color-control-negative-active) !important;
     background-color: var(--color-control-negative-active);
   }

@@ -119,7 +119,6 @@ export default class FormControl extends PureComponent {
       name,
       placeholder,
       step,
-      locale,
       countryCode,
       type,
       options,
@@ -256,7 +255,6 @@ export default class FormControl extends PureComponent {
         return (
           <DateInput
             disabled={disabled}
-            locale={locale}
             onBlur={this.handleOnBlur}
             onChange={this.handleOnChange}
             onFocus={this.handleOnFocus}
@@ -273,7 +271,6 @@ export default class FormControl extends PureComponent {
             value={value}
             min={minDate}
             max={maxDate}
-            locale={locale}
             placeholder={placeholder}
             label={label}
             onChange={this.handleOnChange}
@@ -288,7 +285,6 @@ export default class FormControl extends PureComponent {
         return (
           <PhoneNumberInput
             disabled={disabled}
-            locale={locale}
             countryCode={countryCode}
             onBlur={this.handleOnBlur}
             onChange={this.handleOnChange}
@@ -397,7 +393,6 @@ FormControl.propTypes = {
   id: Types.string,
   placeholder: Types.string,
   step: Types.number,
-  locale: Types.string,
   countryCode: Types.string,
   options: Types.arrayOf(
     Types.shape({
@@ -482,7 +477,6 @@ FormControl.defaultProps = {
   type: FormControl.Type.TEXT,
   id: null,
   placeholder: null,
-  locale: null,
   countryCode: null,
   options: [],
   step: 1,

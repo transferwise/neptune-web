@@ -1,5 +1,7 @@
 import { formatAmount } from '@transferwise/formatting';
 
+import { DEFAULT_LOCALE } from '../common/locale';
+
 export { formatAmount };
 
 // TODO: do not duplicate this between formatting and components
@@ -35,7 +37,7 @@ const DEFAULT_CURRENCY_DECIMALS = 2;
 
 function isNumberLocaleSupported() {
   const number = 1234;
-  const numberString = number.toLocaleString && number.toLocaleString('en-GB');
+  const numberString = number.toLocaleString && number.toLocaleString(DEFAULT_LOCALE);
   return numberString === '1,234';
 }
 

@@ -11,7 +11,6 @@ export default {
 export const basic = () => {
   const disabled = boolean('disabled', false);
   const label = text('label', 'label');
-  const locale = select('locale', ['en-GB', 'jp-JP'], 'en-GB');
   const monthFormat = select('monthFormat', ['long', 'short']);
   const placeholder = text('placeholder', 'placeholder');
   const size = select('size', Object.values(DateLookup.Size), DateLookup.Size.MEDIUM);
@@ -24,7 +23,6 @@ export const basic = () => {
     <DateLookup
       disabled={disabled}
       label={label}
-      locale={locale}
       max={new Date(maxvalue)}
       min={new Date(minvalue)}
       monthFormat={monthFormat}
@@ -39,7 +37,6 @@ export const basic = () => {
 export const rightAligned = () => {
   const disabled = boolean('disabled', false);
   const label = text('label', 'label');
-  const locale = select('locale', ['en-GB', 'jp-JP'], 'en-GB');
   const monthFormat = select('monthFormat', ['long', 'short']);
   const placeholder = text('placeholder', 'placeholder');
   const size = select('size', Object.values(DateLookup.Size), DateLookup.Size.MEDIUM);
@@ -61,7 +58,6 @@ export const rightAligned = () => {
         <DateLookup
           disabled={disabled}
           label={label}
-          locale={locale}
           max={new Date(maxvalue)}
           min={new Date(minvalue)}
           monthFormat={monthFormat}

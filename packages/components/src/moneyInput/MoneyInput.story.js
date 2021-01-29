@@ -10,7 +10,6 @@ export default {
 
 export const basic = () => {
   const size = select('size', Object.values(MoneyInput.Size), MoneyInput.Size.LARGE);
-  const locale = select('locale', ['en-GB', 'jp-JP'], 'en-GB');
   const amount = number('amount', 1000);
   const placeholder = number('placeholder', null);
 
@@ -20,7 +19,6 @@ export const basic = () => {
       <MoneyInput
         id="money-input"
         amount={amount}
-        locale={locale}
         size={size}
         onAmountChange={action('amount changed')}
         onCurrencyChange={action('currency changed')}

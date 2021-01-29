@@ -24,7 +24,7 @@
     "docs": "yarn build",
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf lib build",
-    "build:crowdin-source-file": "formatjs extract 'src/**/*.messages.js' --out-file i18n/en.json --format i18n/formatter.js",
+    "build:crowdin-source-file": "formatjs extract 'src/**/*.messages.js' --out-file i18n/en.json --format i18n/formatter.js && prettier --find-config-path --write i18n/*.json",
     "build:compile-less": "gulp compileLess --dest=src",
     "build:es": "NODE_ENV=es babel src -d build/es/polyfill --ignore '**/*.spec.js','**/*.story.js'",
     "build:es-nopolyfill": "NODE_ENV=es-nopolyfill babel src -d build/es/no-polyfill --ignore '**/*.spec.js','**/*.story.js'",

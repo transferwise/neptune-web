@@ -1,8 +1,11 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { shallow, mount } from 'enzyme';
 
 import PhoneNumberInput from '.';
 import { fakeEvent } from '../common/fakeEvents';
+
+jest.mock('react-intl');
 
 const simulatePaste = (el, value) =>
   el.simulate('paste', { nativeEvent: { clipboardData: { getData: () => value } } });
@@ -14,6 +17,10 @@ describe('Given a telephone number component', () => {
   const props = { onChange: jest.fn() };
   const PREFIX_SELECT_SELECTOR = 'Select';
   const NUMBER_SELECTOR = 'input[name="phoneNumber"]';
+
+  beforeEach(() => {
+    useIntl.mockReturnValue({ locale: 'en-GB' });
+  });
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -176,13 +183,9 @@ describe('Given a telephone number component', () => {
 
   describe('when supplied with a placeholder', () => {
     beforeEach(() => {
+      useIntl.mockReturnValue({ locale: 'es-ES' });
       component = shallow(
-        <PhoneNumberInput
-          {...props}
-          initialValue="+12345678"
-          locale="es-ES"
-          placeholder="placeholder"
-        />,
+        <PhoneNumberInput {...props} initialValue="+12345678" placeholder="placeholder" />,
       );
       input = component.find(NUMBER_SELECTOR);
     });
@@ -194,11 +197,11 @@ describe('Given a telephone number component', () => {
 
   describe('when supplied with a search placeholder', () => {
     beforeEach(() => {
+      useIntl.mockReturnValue({ locale: 'es-ES' });
       component = shallow(
         <PhoneNumberInput
           {...props}
           initialValue="+12345678"
-          locale="es-ES"
           searchPlaceholder="searchPlaceholder"
         />,
       );
@@ -213,9 +216,8 @@ describe('Given a telephone number component', () => {
   describe('when supplied with a locale', () => {
     describe('and a value', () => {
       beforeEach(() => {
-        component = shallow(
-          <PhoneNumberInput {...props} initialValue="+12345678" locale="es-ES" />,
-        );
+        useIntl.mockReturnValue({ locale: 'es-ES' });
+        component = shallow(<PhoneNumberInput {...props} initialValue="+12345678" />);
         select = component.find(PREFIX_SELECT_SELECTOR);
         input = component.find(NUMBER_SELECTOR);
       });
@@ -228,7 +230,8 @@ describe('Given a telephone number component', () => {
     describe('and no value', () => {
       describe('and no country code', () => {
         beforeEach(() => {
-          component = shallow(<PhoneNumberInput {...props} locale="es-ES" />);
+          useIntl.mockReturnValue({ locale: 'es' });
+          component = shallow(<PhoneNumberInput {...props} />);
           select = component.find(PREFIX_SELECT_SELECTOR);
           input = component.find(NUMBER_SELECTOR);
         });
@@ -240,33 +243,8 @@ describe('Given a telephone number component', () => {
 
       describe('and country code', () => {
         beforeEach(() => {
-          component = shallow(<PhoneNumberInput {...props} locale="es-ES" countryCode="US" />);
-          select = component.find(PREFIX_SELECT_SELECTOR);
-          input = component.find(NUMBER_SELECTOR);
-        });
-
-        it('should override locale prefix with country specific prefix', () => {
-          expect(select.props().selected.value).toBe('+1');
-        });
-      });
-    });
-
-    describe('that is incorrect and no value', () => {
-      describe('and no country code', () => {
-        beforeEach(() => {
-          component = shallow(<PhoneNumberInput {...props} locale="xx-XX" />);
-          select = component.find(PREFIX_SELECT_SELECTOR);
-          input = component.find(NUMBER_SELECTOR);
-        });
-
-        it('should default to +44 (UK)', () => {
-          expect(select.props().selected.value).toBe('+44');
-        });
-      });
-
-      describe('and country code', () => {
-        beforeEach(() => {
-          component = shallow(<PhoneNumberInput {...props} locale="xx-XX" countryCode="US" />);
+          useIntl.mockReturnValue({ locale: 'es-ES' });
+          component = shallow(<PhoneNumberInput {...props} countryCode="US" />);
           select = component.find(PREFIX_SELECT_SELECTOR);
           input = component.find(NUMBER_SELECTOR);
         });

@@ -23,6 +23,14 @@
       {
         "devDependencies": ["src/**/*.story.js", ".storybook/*.js"]
       }
+    ],
+    "react/prop-types": [
+      "error",
+      {
+        "ignore": [
+          "intl"
+        ]
+      }
     ]
   }
 }

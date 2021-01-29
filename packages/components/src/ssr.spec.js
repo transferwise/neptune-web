@@ -122,7 +122,7 @@ describe('Server side rendering', () => {
       }
 
       const string = renderToString(
-        <Provider i18n={{ locale: 'en', messages: en }}>
+        <Provider i18n={{ locale: 'en-GB', messages: en }}>
           {componentName.endsWith('Context') ? (
             <Component.Provider {...newProps} />
           ) : (

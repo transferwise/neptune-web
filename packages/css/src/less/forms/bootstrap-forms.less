@@ -7,7 +7,6 @@
 // Forms
 // --------------------------------------------------
 
-
 // Normalize non-controls
 //
 // Restyle and baseline non-control form elements.
@@ -52,7 +51,6 @@ label,
   transition: color ease-in-out 0.15s;
 }
 
-
 // Normalize form controls
 //
 // While most of our form styles require extra classes, some basic normalization
@@ -60,34 +58,34 @@ label,
 // address browser inconsistencies.
 
 // Override content-box in Normalize (* isn't specific enough)
-input[type="search"] {
+input[type='search'] {
   box-sizing: border-box;
 }
 
-input[type="number"] {
+input[type='number'] {
   appearance: textfield;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   appearance: none;
   margin: 0;
 }
 
 // Position radios and checkboxes better
-input[type="radio"],
-input[type="checkbox"] {
+input[type='radio'],
+input[type='checkbox'] {
   margin: 4px 0 0;
   margin-top: 1px \9; // IE8-9
   line-height: normal;
 }
 
-input[type="file"] {
+input[type='file'] {
   display: block;
 }
 
 // Make range inputs behave like textual form controls
-input[type="range"] {
+input[type='range'] {
   display: block;
   width: 100%;
 }
@@ -99,9 +97,9 @@ select[size] {
 }
 
 // Focus for file, radio, and checkbox
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
+input[type='file']:focus,
+input[type='radio']:focus,
+input[type='checkbox']:focus {
   .tab-focus();
 }
 
@@ -113,7 +111,6 @@ output {
   line-height: @line-height-base;
   color: @input-color;
 }
-
 
 // Common form controls
 //
@@ -197,7 +194,6 @@ output {
   }
 }
 
-
 // Search inputs in iOS
 //
 // This overrides the extra rounded corners on search inputs in iOS so that our
@@ -205,10 +201,9 @@ output {
 // be added to `.form-control` as it's not specific enough. For details, see
 // https://github.com/twbs/bootstrap/issues/11586.
 
-input[type="search"] {
+input[type='search'] {
   appearance: none;
 }
-
 
 // Special styles for iOS temporal inputs
 //
@@ -218,10 +213,10 @@ input[type="search"] {
 // for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
 
 @media screen and (min-device-pixel-ratio: 0) {
-  input[type="date"],
-  input[type="time"],
-  input[type="datetime-local"],
-  input[type="month"] {
+  input[type='date'],
+  input[type='time'],
+  input[type='datetime-local'],
+  input[type='month'] {
     line-height: @input-height-base;
 
     &.input-sm,
@@ -235,7 +230,6 @@ input[type="search"] {
     }
   }
 }
-
 
 // Form groups
 //
@@ -257,10 +251,9 @@ input[type="search"] {
   }
 }
 
-.row-equal-height > [class*="col-"] > .form-group {
+.row-equal-height > [class*='col-'] > .form-group {
   width: 100%;
 }
-
 
 // Checkboxes and radios
 //
@@ -287,10 +280,10 @@ input[type="search"] {
   margin-top: (@padding-base-vertical * 1.5);
 }
 
-.radio input[type="radio"],
-.radio-inline input[type="radio"],
-.checkbox input[type="checkbox"],
-.checkbox-inline input[type="checkbox"] {
+.radio input[type='radio'],
+.radio-inline input[type='radio'],
+.checkbox input[type='checkbox'],
+.checkbox-inline input[type='checkbox'] {
   position: absolute;
   margin-left: -20px;
   margin-top: 4px \9;
@@ -318,8 +311,8 @@ input[type="search"] {
 // Some special care is needed because <label>s don't inherit their parent's `cursor`.
 //
 // Note: Neither radios nor checkboxes can be readonly.
-input[type="radio"],
-input[type="checkbox"] {
+input[type='radio'],
+input[type='checkbox'] {
   &[disabled],
   &.disabled,
   fieldset[disabled] & {
@@ -345,7 +338,6 @@ input[type="checkbox"] {
   }
 }
 
-
 // Static form control text
 //
 // Apply class to a `p` element to make any string of text align with labels in
@@ -369,7 +361,6 @@ input[type="checkbox"] {
     padding-right: 0;
   }
 }
-
 
 // Form control sizing
 //
@@ -435,7 +426,8 @@ input[type="checkbox"] {
   .input-group-lg > .form-control,
   .input-group-lg > .input-group-addon {
     height: @input-height-large;
-    padding: (@padding-small-vertical + @line-height-computed) @padding-small-horizontal @padding-small-vertical;
+    padding: (@padding-small-vertical + @line-height-computed) @padding-small-horizontal
+      @padding-small-vertical;
     font-size: @input-font-size-large;
     line-height: @input-line-height-large;
   }
@@ -525,7 +517,6 @@ input[type="checkbox"] {
   }
 }
 
-
 // Help text
 //
 // Apply to any element you wish to create light text for placement immediately
@@ -541,9 +532,7 @@ input[type="checkbox"] {
   padding: 4px 16px 3px;
   font-size: @font-size-small;
   line-height: @line-height-computed;
-  transition:
-    border-color 0.15s ease-in-out,
-    background-color 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 
   a {
     color: inherit;
@@ -603,7 +592,6 @@ input[type="checkbox"] {
   );
 }
 
-
 // Reposition feedback icon if input has visible label above
 .has-feedback label {
   & ~ .form-control-feedback {
@@ -614,8 +602,6 @@ input[type="checkbox"] {
     top: 0;
   }
 }
-
-
 
 // Inline forms
 //
@@ -629,7 +615,6 @@ input[type="checkbox"] {
 // Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
 
 .form-inline {
-
   // Kick in the inline
   @media (min-width: @screen-sm-min) {
     // Inline-block all the things for "inline"
@@ -686,8 +671,8 @@ input[type="checkbox"] {
       }
     }
 
-    .radio input[type="radio"],
-    .checkbox input[type="checkbox"] {
+    .radio input[type='radio'],
+    .checkbox input[type='checkbox'] {
       position: relative;
       margin-left: 0;
     }
@@ -699,14 +684,12 @@ input[type="checkbox"] {
   }
 }
 
-
 // Horizontal forms
 //
 // Horizontal forms are built on grid classes and allow you to create forms with
 // labels on the left and inputs on the right.
 
 .form-horizontal {
-
   // Consistent vertical alignment of radios and checkboxes
   //
   // Labels also get some reset styles, but that is scoped to a media query below.
@@ -771,7 +754,7 @@ input[type="checkbox"] {
   }
 }
 
-@import "checkbox-radio.less";
+@import 'checkbox-radio.less';
 
 .input-group .input-group-btn + input {
   border-left: 0 solid transparent;
@@ -835,14 +818,14 @@ input[type="checkbox"] {
   margin-left: -6px;
   margin-right: -6px;
 
-  [class*="col-"] {
+  [class*='col-'] {
     padding-left: 6px;
     padding-right: 6px;
   }
 }
 
 @media (max-width: @screen-xs-max) {
-  .form-group .row [class*="col-sm-"] {
+  .form-group .row [class*='col-sm-'] {
     margin-bottom: 0;
 
     .form-control,
@@ -853,7 +836,7 @@ input[type="checkbox"] {
 }
 
 @media (max-width: @screen-sm-max) {
-  .form-group .row [class*="col-md-"] {
+  .form-group .row [class*='col-md-'] {
     margin-bottom: 0;
 
     .form-control,
@@ -864,7 +847,7 @@ input[type="checkbox"] {
 }
 
 @media (max-width: @screen-md-max) {
-  .form-group .row [class*="col-lg-"] {
+  .form-group .row [class*='col-lg-'] {
     margin-bottom: 0;
 
     .form-control,
@@ -875,7 +858,7 @@ input[type="checkbox"] {
 }
 
 @media (max-width: @screen-lg-max) {
-  .form-group .row [class*="col-xl-"] {
+  .form-group .row [class*='col-xl-'] {
     margin-bottom: 0;
 
     .form-control,

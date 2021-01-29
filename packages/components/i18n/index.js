@@ -11,6 +11,21 @@ import pt from './pt.json';
 import ro from './ro.json';
 import ru from './ru.json';
 import tr from './tr.json';
-import zhHK from './zh-HK.json';
+import zh from './zh.json';
 
-export default { en, de, es, fr, hu, id, it, ja, pl, pt, ro, ru, tr, 'zh-HK': zhHK };
+export default {
+  en,
+  de,
+  es,
+  fr,
+  hu,
+  id,
+  it,
+  ja,
+  pl,
+  pt,
+  ro,
+  ru,
+  tr,
+  zh,
+};
