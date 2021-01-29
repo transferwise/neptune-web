@@ -4,7 +4,7 @@ exports[`CloseButton renders as expected 1`] = `
 <div>
   <button
     aria-label="Close"
-    class="np-close-button btn-link text-no-decoration className"
+    class="np-close-button close btn-link text-no-decoration np-close-button--large className"
     type="button"
   >
     <span

@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '../test-utils';
 
 import OverlayHeader from '.';
-import Logo from '../common/logo';
+
 import Avatar from '../avatar';
 
 describe('OverlayHeader', () => {
@@ -12,7 +12,7 @@ describe('OverlayHeader', () => {
         TM
       </Avatar>
     ),
-    logo: <Logo />,
+    logo: <img alt="logo_desktop" src="img_desktop" width="138" height="24" />,
     onClose: jest.fn(),
   };
   it('renders as expected', () => {

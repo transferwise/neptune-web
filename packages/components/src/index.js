@@ -57,4 +57,4 @@ export { default as Switch } from './switch';
 export { default as Decision } from './decision';
 export { default as Nudge } from './nudge';
 export { default as InlineAlert } from './inlineAlert';
-export { default as Logo } from './common/logo';
+export { default as AvatarWrapper } from './common/avatarWrapper';

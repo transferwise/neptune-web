@@ -3,13 +3,16 @@
 exports[`OverlayHeader renders as expected 1`] = `
 <div>
   <div
-    class="np-header d-flex flex-wrap np-overlay-header"
+    class="np-header d-flex flex-wrap np-overlay-header p-a-3"
   >
     <div
       class="align-items-center d-flex"
     >
-      <div
-        class="np-logo logo logo-3 logo-primary"
+      <img
+        alt="logo_desktop"
+        height="24"
+        src="img_desktop"
+        width="138"
       />
     </div>
     <div
@@ -29,7 +32,7 @@ exports[`OverlayHeader renders as expected 1`] = `
       />
       <button
         aria-label="Close"
-        class="np-close-button btn-link text-no-decoration"
+        class="np-close-button close btn-link text-no-decoration np-close-button--large"
         type="button"
       >
         <span

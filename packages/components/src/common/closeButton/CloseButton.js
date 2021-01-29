@@ -8,27 +8,40 @@ import messages from './CloseButton.messages';
 
 import './CloseButton.css';
 
-export const CloseButton = ({ onClick, className }) => {
+export const CloseButton = React.forwardRef((props, ref) => {
   const intl = useIntl();
+  const { onClick, className, size } = props;
   return (
     <button
+      ref={ref}
       type="button"
-      className={classNames('np-close-button', 'btn-link', 'text-no-decoration', className)}
+      className={classNames(
+        'np-close-button close btn-link text-no-decoration',
+        { 'np-close-button--large': size === CloseButton.Size.LARGE },
+        className,
+      )}
       aria-label={intl.formatMessage(messages.ariaLabel)}
       onClick={onClick}
     >
-      <CrossIcon size={24} />
+      <CrossIcon size={size} />
     </button>
   );
+});
+
+CloseButton.Size = {
+  SMALL: 16,
+  LARGE: 24,
 };
 
 CloseButton.propTypes = {
   onClick: Types.func.isRequired,
   className: Types.string,
+  size: Types.oneOf(Object.values(CloseButton.Size)),
 };
 
 CloseButton.defaultProps = {
   className: null,
+  size: CloseButton.Size.LARGE,
 };
 
 export default CloseButton;

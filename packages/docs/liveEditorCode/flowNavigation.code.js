@@ -4,12 +4,22 @@
 
   return !closed ? (
     <FlowNavigation
+      done={false}
       avatar={
-        <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
-          <ProfileIcon />
-        </Avatar>
+        <AvatarWrapper
+          url="https://github.com/transferwise.png"
+          profileType={AvatarWrapper.ProfileType.PERSONAL}
+        />
       }
-      logo={<Logo />}
+      logo={
+        <img
+          alt="logo"
+          src="./../../static/assets/img/logo_full.svg"
+          width="138"
+          width="138"
+          height="24"
+        />
+      }
       onClose={() => setClosed(true)}
       onGoBack={() => setActiveStep(activeStep - 1 > 0 ? activeStep - 1 : 0)}
       steps={[

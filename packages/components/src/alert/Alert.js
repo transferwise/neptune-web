@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import requiredIf from 'react-required-if';
 import { InfoCircle, CheckCircle, CrossCircle, Alert as AlertIcon } from '@transferwise/icons';
 import { Sentiment, Size } from '../common';
-import CloseButton from './closeButton';
+import CloseButton from '../common/closeButton';
 import withArrow, { ArrowPosition } from './withArrow';
 import InlineMarkdown from './inlineMarkdown';
 import { logActionRequiredIf, deprecated } from '../utilities';

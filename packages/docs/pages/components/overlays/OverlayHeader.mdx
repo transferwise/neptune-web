@@ -1,13 +1,14 @@
 import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
-import { OverlayHeader, Avatar, Logo } from '@transferwise/components';
+import { OverlayHeader, Avatar, AvatarWrapper } from '@transferwise/components';
 import { Briefcase as BriefcaseIcon, Profile as ProfileIcon } from '@transferwise/icons';
 import code from '../../../liveEditorCode/overlayHeader.code';
 
 Simple header component that displays a responsive logo an avatar and a close button.
+The current and recommended size for logo is width = 138px height=24px.
 
 <LiveEditorBlock
   code={code}
-  scope={{ OverlayHeader, Avatar, BriefcaseIcon, ProfileIcon, Logo }}
+  scope={{ OverlayHeader, Avatar, BriefcaseIcon, ProfileIcon, AvatarWrapper }}
   display="vertical"
 />
 <GeneratePropsTable componentName="OverlayHeader" />

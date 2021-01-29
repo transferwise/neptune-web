@@ -6,19 +6,20 @@ import Stepper from '../stepper';
 import AnimatedLabel from './animatedLabel';
 import BackButton from './backButton';
 import CloseButton from '../common/closeButton';
-import Logo from '../common/logo';
 
 import { Theme, Breakpoint } from '../common';
 import { useClientWidth } from '../common/hooks';
 
 import './FlowNavigation.css';
 
-const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, steps }) => {
+const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, done, steps }) => {
   const ref = useRef(null);
 
   const [clientWidth] = useClientWidth({ ref });
   const closeButton = onClose && <CloseButton onClick={onClose} />;
   const isSmall = clientWidth < Breakpoint.MEDIUM;
+
+  const newAvatar = done ? null : avatar;
 
   const getLeftContentSmall = () => (
     <div className="visible-xs">
@@ -34,46 +35,54 @@ const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, steps }) 
           onClick={onGoBack}
         />
       )}
-      <Logo
-        type={Logo.Type.FLAG}
-        className={classNames('np-flow-navigation--logo', {
-          'np-flow-navigation--logo__hidden': activeStep,
-          'np-flow-navigation--logo__display': !activeStep,
+      <div
+        className={classNames('np-flow-navigation--flag', {
+          'np-flow-navigation--flag__hidden': activeStep,
+          'np-flow-navigation--flag__display': !activeStep,
         })}
       />
     </div>
   );
 
   return (
-    <Header
-      ref={ref}
-      className={classNames('np-flow-navigation', {
-        'np-flow-navigation--hidden': !clientWidth,
-        'np-flow-navigation--large': !isSmall,
-        'np-flow-navigation--small': isSmall,
-      })}
-      leftContent={
-        <>
-          <div className="hidden-xs">{logo}</div>
-          {getLeftContentSmall()}
-        </>
-      }
-      rightContent={
-        <>
-          {avatar}
-          {avatar && closeButton && <span className="separator" />}
-          {closeButton}
-        </>
-      }
-      bottomContent={
-        <Stepper
-          activeStep={activeStep}
-          steps={steps}
-          className={classNames('np-flow-navigation__stepper m-t-1')}
-        />
-      }
-      layout={isSmall ? Header.Layout.VERTICAL : Header.Layout.HORIZONTAL}
-    />
+    <div
+      className={classNames(
+        'np-flow-navigation  d-flex align-items-center justify-content-center p-y-3',
+        { 'np-flow-navigation--border-bottom': !done },
+      )}
+    >
+      <Header
+        ref={ref}
+        className={classNames('np-flow-navigation__content p-x-3', {
+          'np-flow-navigation--hidden': !clientWidth,
+          'np-flow-navigation--large': !isSmall,
+          'np-flow-navigation--small': isSmall,
+        })}
+        leftContent={
+          <>
+            <div className="hidden-xs">{logo}</div>
+            {getLeftContentSmall()}
+          </>
+        }
+        rightContent={
+          <>
+            {newAvatar}
+            {newAvatar && closeButton && <span className="separator" />}
+            {closeButton}
+          </>
+        }
+        bottomContent={
+          !done && (
+            <Stepper
+              activeStep={activeStep}
+              steps={steps}
+              className={classNames('np-flow-navigation__stepper m-t-1')}
+            />
+          )
+        }
+        layout={isSmall ? Header.Layout.VERTICAL : Header.Layout.HORIZONTAL}
+      />
+    </div>
   );
 };
 
@@ -84,6 +93,7 @@ FlowNavigation.defaultProps = {
   avatar: undefined,
   onGoBack: undefined,
   onClose: undefined,
+  done: false,
 };
 
 FlowNavigation.propTypes = {
@@ -95,6 +105,7 @@ FlowNavigation.propTypes = {
   onClose: Types.func,
   /** Called when the back button is clicked. If not provided the back button won't show. The back button only shows on small screens */
   onGoBack: Types.func,
+  done: Types.bool,
   /** Steps to be displayed in stepper. If you don't need the stepper, please use OverlayHeader instead */
   steps: Types.arrayOf(
     Types.shape({

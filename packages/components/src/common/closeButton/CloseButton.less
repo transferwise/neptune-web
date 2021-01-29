@@ -1,6 +1,14 @@
 .np-close-button {
+  transition: color 0.15s ease-in-out;
   color: var(--color-control-accent);
-  height: var(--size-24);
+  border: none;
+  background: none;
+  padding: 0;
+  height: var(--size-16);
+
+  &--large {
+    height: var(--size-24);
+  }
 
   &:hover {
     color: var(--color-control-accent-hover);
