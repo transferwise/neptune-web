@@ -32,43 +32,26 @@ import '@transferwise/icons/lib/styles/main.min.css';
 import '@transferwise/components/build/main.css';
 
 import { Provider, Button } from '@transferwise/components';
-import componentsTranslations from '@transferwise/components/build/i18n';
-import { adjustLocale, getLangFromLocale } from "@transferwise/components/build/es/polyfill/common/locale";
+import componentTranslations from '@transferwise/components/build/i18n';
+import { getLangFromLocale } from '@transferwise/components/build/es/polyfill/common/locale';
 
 import appTranslations from '...';
 
 export default function App() {
-  const locale = adjustLocale(global.locale);
+  // locale is your current locale, e.g. en-GB, en_GB or es
   const lang = getLangFromLocale(locale);
-  const messages = { ...componentsTranslations[lang], ...appTranslations[lang] };
+  const messages = { ...componentTranslations[lang], ...appTranslations[lang] };
   return (
-    // Components must be wrapped by the Provider component, which initialises and provides
-    // context data for them. This should usually be done once at the top app level component
+    // Components must be wrapped by the Provider component once at the app level
+    // See `Translations and the Provider` below for more information
     <Provider i18n={{ locale, messages }}>
       ...
-      <Button size={Button.Size.SMALL} block>...</Button>
+      <Button size={Button.Size.SMALL} block>
+        ...
+      </Button>
     </Provider>
   );
 }
-```
-
-**Note:** we recommend map you locale code to ours before passing it into `Provider` and fetching translations, you can use our internal API for this:
-
-```js
-import {
-  // `en-GB`
-  DEFAULT_LOCALE,
-  // `en`
-  DEFAULT_LANG,
-  // array of strings of supported languages
-  SUPPORTED_LANGUAGES,
-  // Verifies and adjusts locale (replace `_` with `-`) returns null if locale is unrecognized by Intl
-  adjustLocale,
-  // * Provides corresponding country code (iso2) for provided locale if the value is invalid returns null
-  getCountryFromLocale,
-  // Provides corresponding lang code (iso2) for provided locale if the value is invalid returns null
-  getLangFromLocale,
-} from "@transferwise/components/build/es/polyfill/common/locale";
 ```
 
 For information on what classes are available, see the <DocLink href="/styles/core/Typography">styles documentation</DocLink>. Refer to <DocLink href="/components/inputs/Button">components</DocLink> for usage documentation, live previews and code snippets for each component.
@@ -77,50 +60,108 @@ By default, apps come polyfilled. If you would like to use an unpolyfilled versi
 
 ## Translations and the Provider
 
-You need to pass a translations object to the `Provider` component. This can be done in a few different ways, depending on the setup of your library / application.
+`Provider` supplies translations for our components. It must be used in all applications that bundle components (i.e. has `@transferwise/components` as a `dependency`). You need to pass it an object containing the translated messages for the current locale. It doesn't matter what translations library you are using for your app translations, though we recommend [react-intl](https://formatjs.io/docs/react-intl).
 
-**Note:** `Provider` component uses react-intl which creates a context using [`RawIntlProvider`](https://formatjs.io/docs/react-intl/components/#rawintlprovider).
-If your code already uses react-intl and its providers (e.g `RawIntlProvider` or `IntlProvider`) replace them with `Provider` passing all translations objects (`@transferwise/components` translation files, your app translation files, etc) there
-(Translations can be combined using rest operator (as shown on above example) or using [`formatjs compile`](https://formatjs.io/docs/guides/distribute-libraries#declaring-with-a-convention)).
-In case your code uses some other framework / library then setup should be handled separately, example with retranslate library:
+**Note:** Applications which don't bundle components (such as other component libraries, or any repo that has `@transferwise/components` as a `peerDependency`) probably do not need `Provider`.
+
+### If you already use react-intl
+
+Internally `Provider` uses [react-intl](https://formatjs.io/docs/react-intl/), which creates a context using [RawIntlProvider](https://formatjs.io/docs/react-intl/components/#rawintlprovider).
+
+If your code already uses `react-intl` and its providers (`RawIntlProvider`, `IntlProvider`) **replace them with `Provider`**. You will need to include all your app translations and translations for `@transferwise/components` in the translations object you pass to `Provider`. Translations can be combined as shown below, or you can use the `formatjs` [compile](https://formatjs.io/docs/guides/distribute-libraries#declaring-with-a-convention) method.
+
+```js
+import appTranslations from '...';
+
+import { Provider } from '@transferwise/components';
+import componentTranslations from '@transferwise/components/build/i18n';
+import { getLangFromLocale } from '@transferwise/components/build/es/polyfill/common/locale';
+
+export default function App() {
+  // locale is your current locale, e.g. en-GB, en_GB or es
+  const lang = getLangFromLocale(locale);
+  const messages = { ...componentTranslations[lang], ...appTranslations[lang] };
+  return <Provider i18n={{ locale, messages }}>...</Provider>;
+}
+```
+
+### If you use another i18n library
+
+If you are not using `react-intl`, just pass the component translations to `Provider`, and handle your app translations with your library. Here is an example using [retranslate](https://github.com/Tankenstein/retranslate):
 
 ```js
 import { TranslationProvider } from 'retranslate';
 import appTranslations from '...';
 
 import { Provider } from '@transferwise/components';
-import componentsTranslations from '@transferwise/components/build/i18n';
-import { getLangFromLocale } from "@transferwise/components/build/es/polyfill/common/locale";
+import componentTranslations from '@transferwise/components/build/i18n';
+import { getLangFromLocale } from '@transferwise/components/build/es/polyfill/common/locale';
 
-const lang = getLangFromLocale(global.locale);
+export default function App() {
+  // locale is your current locale, e.g. en-GB, en_GB or es
+  const lang = getLangFromLocale(locale);
 
-const App = () => (
-  <TranslationProvider messages={appTranslations} language={global.locale}>
-    <Provider i18n={{ locale: global.locale, messages: componentsTranslations[lang] }}>
-      ..
-    </Provider>
-  </TranslationProvider>
-);
+  return (
+    <TranslationProvider messages={appTranslations} language={locale}>
+      <Provider i18n={{ locale, messages: componentTranslations[lang] }}>...</Provider>
+    </TranslationProvider>
+  );
+}
 ```
 
-Translation files can be accessed directly, which gives you the opportunity to load them dynamically:
+### Adding Provider to your dev environment
+
+You may need to add `Provider` to your development environment for our components to work properly. You can do this in Storybook using [decorators](https://storybook.js.org/docs/react/writing-stories/decorators), and in React Testing Library using a [custom render function](https://testing-library.com/docs/example-react-intl/#creating-a-custom-render-function).
+
+### Mapping locales
+
+`Provider` will make an effort to map from known but unsupported locales (such as `en_GB`, `ES` and `ZH-HK`) to their supported equivalents (i.e `en-GB`, `es` and `zh-HK`).
+
+You do not need to map your locales before passing them to `Provider`, but if you want to access the adjusted locale you can access the method we use:
 
 ```js
+import { adjustLocale } from '@transferwise/components/build/es/polyfill/common/locale';
+
+// Will adjust, or return null if the locale is not recognised
+const adjustedLocale = adjustLocale(locale);
+```
+
+### Helper functions
+
+If necessary you can access our internal helper functions and some other useful values:
+
+```js
+import {
+  // `en-GB`
+  DEFAULT_LOCALE,
+  // `en`
+  DEFAULT_LANG,
+  // An array of strings of supported languages
+  SUPPORTED_LANGUAGES,
+  // Verifies and adjusts locale (replace `_` with `-`) returns null if locale is invalid
+  adjustLocale,
+  // Country code (iso2) for the provided locale, or null if the locale is invalid
+  getCountryFromLocale,
+  // Lang code (iso2) for the provided locale, or null if the locale is invalid
+  getLangFromLocale,
+} from '@transferwise/components/build/es/polyfill/common/locale';
+```
+
+### Loading translation files
+
+Translation files can be accessed directly, giving you flexibility in how you load them:
+
+```js
+// Statically
 import de from '@transferwise/components/build/i18n/de.json';
 
+// Dynamically
 const locale = 'zh-HK';
 import(`@transferwise/components/build/i18n/${locale}.json`);
-```
 
-Or you can load them all at once:
-
-```js
+// Load them all at once
 import translations from '@transferwise/components/build/i18n';
 ```
-
-**Note:** `Provider` must be used in repositories which bundle components (i.e. lists `@transferwise/components` as a `dependency`). For repositories which don't bundle components (typically those that list it as a `peerDependency`) it is unnecessary (often it's similar component libraries).
-
-You may need to add it to your development environment (you can do this in Storybook via decorators), demo pages or [tests](https://testing-library.com/docs/example-react-intl/#creating-a-custom-render-function).
 
 ## Advanced CSS Usage
 
