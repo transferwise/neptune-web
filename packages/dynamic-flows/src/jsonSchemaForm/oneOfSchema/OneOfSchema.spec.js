@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import OneOfSchema from '.';
 
@@ -133,34 +133,29 @@ describe('Given a oneOfSchema component', () => {
           title: 'Currency',
           type: 'string',
           oneOf: [
-            { title: 'EUR', icon: { name: 'flag-eur' }, description: 'Euro', const: 'EUR' },
+            { title: 'EUR', description: 'Euro', const: 'EUR' },
             {
               title: 'GBP',
-              icon: { name: 'flag-gbp' },
               description: 'British pound',
               const: 'GBP',
             },
             {
               title: 'USD',
-              icon: { name: 'flag-usd' },
               description: 'United States dollar',
               const: 'USD',
             },
             {
               title: 'ARS',
-              icon: { name: 'flag-ars' },
               description: 'Argentine peso',
               const: 'ARS',
             },
             {
               title: 'AUD',
-              icon: { name: 'flag-aud' },
               description: 'Australian dollar',
               const: 'AUD',
             },
           ],
           validationMessages: { required: 'Please enter currency.' },
-          refreshFormOnChange: true,
           default: 'USD',
         };
 
@@ -174,7 +169,19 @@ describe('Given a oneOfSchema component', () => {
             const control = component.find(SchemaFormControl);
             expect(control.prop('value')).toBe(defaultIndex);
           });
+
+          it('broadcasts onChange with the default value', () => {
+            component = mount(
+              <OneOfSchema {...props} schema={currencySchema} model={{}} onChange={onChange} />,
+            );
+            expect(onChange).toHaveBeenLastCalledWith(
+              currencySchema.default,
+              currencySchema,
+              currencySchema.default,
+            );
+          });
         });
+
         describe('and there is no valid default value', () => {
           it('renders a SchemaFormControl with a value of null  ', () => {
             component = shallow(
@@ -186,6 +193,18 @@ describe('Given a oneOfSchema component', () => {
             );
             const control = component.find(SchemaFormControl);
             expect(control.prop('value')).toBe(null);
+          });
+
+          it('does not broadcast onChange callback', () => {
+            component = mount(
+              <OneOfSchema
+                {...props}
+                schema={{ ...currencySchema, default: 'BANANA' }}
+                model={{}}
+                onChange={onChange}
+              />,
+            );
+            expect(onChange).not.toHaveBeenCalled();
           });
         });
       });
