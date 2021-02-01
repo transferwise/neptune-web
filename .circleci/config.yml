@@ -132,7 +132,7 @@ jobs:
       - run: *add-npm-release-token
       - run: *lerna-publish
 
-  publish-prerelease:
+  publish-beta:
     <<: *container
     steps:
       - *attach-workspace
@@ -189,7 +189,8 @@ workflows:
                 - gh-pages
                 - main
 
-      # On 'main' branch the flow should be blocked if there is an error in commit message
+      # On `main` branch the workflow should be blocked if there is an error in commit message
+      # hence it requires `conventional-commit-lint` job
       - test-main:
           context: frontend-build
           requires:
@@ -199,7 +200,6 @@ workflows:
             branches:
               only:
                 - main
-                - beta
 
       - deploy-docs-for-branch:
           context: frontend-build
@@ -228,10 +228,13 @@ workflows:
             branches:
               only: main
 
-      - publish-prerelease:
+      - publish-beta:
+          type: approval
           context: frontend-publish
           requires:
             - test-main
           filters:
             branches:
-              only: beta
+              ignore:
+                - gh-pages
+                - main
