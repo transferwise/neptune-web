@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [34.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.1.1...@transferwise/components@34.2.0) (2021-02-01)
+
+
+### Features
+
+* whole alert is tappable on mobile ([#759](https://github.com/transferwise/neptune-web/issues/759)) ([aa3a75e](https://github.com/transferwise/neptune-web/commit/aa3a75e208bfa0e9c4f3d5bccca0f841cf2070b2))
+
+
+
+
+
 ## [34.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.1.0...@transferwise/components@34.1.1) (2021-01-29)
 
 **Note:** Version bump only for package @transferwise/components
