@@ -109,7 +109,7 @@ FlowNavigation.propTypes = {
   /** Steps to be displayed in stepper. If you don't need the stepper, please use OverlayHeader instead */
   steps: Types.arrayOf(
     Types.shape({
-      label: Types.string.isRequired,
+      label: Types.node.isRequired,
       onClick: Types.func,
       hoverLabel: Types.node,
     }),
