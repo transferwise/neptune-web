@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.1...@transferwise/components@34.2.2) (2021-02-01)
+
+
+### Bug Fixes
+
+* revert step label type ([#785](https://github.com/transferwise/neptune-web/issues/785)) ([119d153](https://github.com/transferwise/neptune-web/commit/119d1538705c552c6d4d6231772febb148890ff1))
+
+
+
+
+
 ## [34.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.0...@transferwise/components@34.2.1) (2021-02-01)
 
 **Note:** Version bump only for package @transferwise/components
