@@ -37,10 +37,14 @@ const OneOfSchema = (props) => {
   const getModelPartsForSchemas = (model, schemas) =>
     schemas.map((schema) => getValidModelParts(model, schema));
 
+  const getValidIndexFromModel = (schema, model) =>
+    schema.oneOf.findIndex((childSchema) => isValidSchema(model, childSchema));
+
+  const getValidIndexFromDefault = (schema) =>
+    schema.oneOf.findIndex((childSchema) => isValidSchema(schema.default, childSchema));
+
   const getActiveSchemaIndex = (schema, model) => {
-    const indexFromModel = schema.oneOf.findIndex((childSchema) =>
-      isValidSchema(model, childSchema),
-    );
+    const indexFromModel = getValidIndexFromModel(schema, model);
     // If our model satisfies one of the schemas, use that schema.
     if (indexFromModel >= 0) {
       return indexFromModel;
@@ -52,9 +56,7 @@ const OneOfSchema = (props) => {
     }
 
     if (isConstSchema(schema.oneOf[0])) {
-      const indexFromDefault = schema.oneOf.findIndex((childSchema) =>
-        isValidSchema(schema.default, childSchema),
-      );
+      const indexFromDefault = getValidIndexFromDefault(schema);
       // If the default value satisfies one of the schemas, use that schema.
       if (indexFromDefault >= 0) {
         return indexFromDefault;
@@ -106,6 +108,12 @@ const OneOfSchema = (props) => {
 
   // When the schema we receive from parent changes
   useEffect(() => {
+    const modelIndex = getValidIndexFromModel(props.schema, props.model);
+    const defaultIndex = getValidIndexFromDefault(props.schema);
+    if (modelIndex === -1 && defaultIndex >= 0) {
+      onChooseNewSchema(defaultIndex);
+    }
+
     setId(generateId());
   }, [props.schema]);
 
