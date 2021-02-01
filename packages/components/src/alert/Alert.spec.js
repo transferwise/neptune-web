@@ -8,12 +8,24 @@ import {
   Emoji,
 } from '@transferwise/icons';
 
-import { render, cleanup, screen, userEvent } from '../test-utils';
+import { render, cleanup, screen, userEvent, fireEvent } from '../test-utils';
 import Alert from './Alert';
+
+jest.mock('react', () => {
+  const originReact = jest.requireActual('react');
+  const mUseRef = jest.fn();
+  return {
+    ...originReact,
+    useRef: mUseRef,
+  };
+});
 
 describe('Alert', () => {
   let component;
   let container;
+  let alert;
+  let closeButton;
+  let action;
 
   const renderIcon = (Icon) => render(<Icon size={24} />).container.innerHTML;
 
@@ -134,7 +146,7 @@ describe('Alert', () => {
 
   describe('action', () => {
     it('sets text and href', () => {
-      const action = {
+      action = {
         href: 'fluffykittens.com',
         text: 'Learn more',
       };
@@ -148,7 +160,7 @@ describe('Alert', () => {
     });
 
     it('adds additional attributes', () => {
-      const action = {
+      action = {
         'aria-label': 'Learn more about fluffy kittens',
         href: 'fluffykittens.com',
         text: 'Learn more',
@@ -252,6 +264,127 @@ describe('Alert', () => {
 
       expect(component).toHaveClass(classForType(Alert.Type.WARNING));
       expect(component).toContainHTML(iconTypeMap[Alert.Type.WARNING]);
+    });
+  });
+
+  describe('on touch devices', () => {
+    const { location } = window;
+
+    beforeAll(() => {
+      delete window.location;
+      window.open = jest.fn();
+      window.location = {
+        assign: jest.fn(),
+      };
+    });
+
+    afterAll(() => {
+      window.location = location;
+    });
+
+    describe('when target is not blank', () => {
+      beforeEach(() => {
+        action = {
+          'aria-label': 'Learn more about fluffy kittens',
+          href: '/test',
+          text: 'Learn more',
+        };
+
+        render(<Alert action={action} message={message} onDismiss={jest.fn()} />);
+
+        alert = screen.getByRole('alert');
+        closeButton = screen.getByLabelText('Close');
+
+        jest.spyOn(React, 'useRef').mockReturnValue({
+          current: closeButton,
+        });
+      });
+
+      afterEach(() => {
+        cleanup();
+      });
+
+      it('loads action on tap', () => {
+        fireEvent.touchStart(alert);
+        expect(window.location.assign).not.toHaveBeenCalled();
+        fireEvent.touchEnd(alert);
+        expect(window.location.assign).toHaveBeenCalledWith(action.href);
+      });
+
+      it('doesn`t redirect on touch move', () => {
+        fireEvent.touchStart(alert);
+        expect(window.location.assign).not.toHaveBeenCalled();
+        fireEvent.touchMove(alert);
+        expect(window.location.assign).not.toHaveBeenCalled();
+        fireEvent.touchEnd(alert);
+        expect(window.location.assign).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('when target is blank', () => {
+      beforeEach(() => {
+        action = {
+          'aria-label': 'Learn more about fluffy kittens',
+          href: '/test',
+          text: 'Learn more',
+          target: '_blank',
+        };
+
+        render(<Alert action={action} message={message} onDismiss={jest.fn()} />);
+
+        alert = screen.getByRole('alert');
+        closeButton = screen.getByLabelText('Close');
+
+        jest.spyOn(React, 'useRef').mockReturnValue({
+          current: closeButton,
+        });
+      });
+
+      afterEach(() => {
+        cleanup();
+      });
+
+      it('opens a new window on tap', () => {
+        fireEvent.touchStart(alert);
+        expect(window.open).not.toHaveBeenCalled();
+        fireEvent.touchEnd(alert);
+        expect(window.open).toHaveBeenCalledWith(action.href);
+      });
+    });
+
+    describe('when action is not provided', () => {
+      beforeEach(() => {
+        render(<Alert message={message} onDismiss={jest.fn()} />);
+
+        alert = screen.getByRole('alert');
+        closeButton = screen.getByLabelText('Close');
+
+        jest.spyOn(React, 'useRef').mockReturnValue({
+          current: closeButton,
+        });
+      });
+
+      afterEach(() => {
+        cleanup();
+      });
+
+      it('opens a new window on tap', () => {
+        fireEvent.touchStart(alert);
+        expect(window.open).not.toHaveBeenCalled();
+        fireEvent.touchEnd(alert);
+        expect(window.open).not.toHaveBeenCalled();
+      });
+    });
+
+    it('when close button is clicked redirection is not triggered', () => {
+      jest.spyOn(React, 'useRef').mockReturnValue({
+        current: closeButton,
+      });
+
+      fireEvent.touchStart(closeButton);
+      expect(window.open).not.toHaveBeenCalled();
+      fireEvent.touchEnd(closeButton);
+      expect(window.open).not.toHaveBeenCalled();
     });
   });
 });

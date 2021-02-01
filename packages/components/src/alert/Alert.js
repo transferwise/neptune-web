@@ -1,4 +1,4 @@
-import React, { cloneElement } from 'react';
+import React, { cloneElement, useState, useRef } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import requiredIf from 'react-required-if';
@@ -23,7 +23,9 @@ const iconTypeMap = {
 };
 
 const Alert = (props) => {
+  const [shouldFire, setShouldFire] = useState(false);
   const { arrow, action, children, className, icon, onDismiss, message, type } = props;
+  const closeButtonRef = useRef(null);
 
   if (arrow) {
     const AlertWithArrow = withArrow(Alert, arrow);
@@ -37,8 +39,32 @@ const Alert = (props) => {
   const Icon = iconTypeMap[mappedType];
   const iconEl = icon ? cloneElement(icon, { size: 24 }) : <Icon size={24} />;
 
+  const handleTouchStart = () => setShouldFire(true);
+
+  const handleTouchMove = () => setShouldFire(false);
+
+  const handleTouchEnd = (event) => {
+    if (shouldFire && action) {
+      // Check if current event is triggered from closeButton
+      if (closeButtonRef?.current && !closeButtonRef.current.contains(event.target)) {
+        if (action?.target === '_blank') {
+          window.top.open(action.href);
+        } else {
+          window.top.location.assign(action.href);
+        }
+      }
+    }
+    setShouldFire(false);
+  };
+
   const alert = (
-    <div role="alert" className={classNames('alert d-flex', `alert-${mappedType}`, className)}>
+    <div
+      role="alert"
+      className={classNames('alert d-flex', `alert-${mappedType}`, className)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchMove={handleTouchMove}
+    >
       {iconEl}
       <div className="alert__message p-l-2 flex-grow-1">
         <div>{children || <InlineMarkdown>{message}</InlineMarkdown>}</div>
@@ -54,7 +80,12 @@ const Alert = (props) => {
         )}
       </div>
       {onDismiss && (
-        <CloseButton onClick={onDismiss} size={CloseButton.Size.SMALL} className="m-l-2" />
+        <CloseButton
+          onClick={onDismiss}
+          size={CloseButton.Size.SMALL}
+          className="m-l-2"
+          ref={closeButtonRef}
+        />
       )}
     </div>
   );
