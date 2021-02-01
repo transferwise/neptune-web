@@ -119,11 +119,75 @@ describe('Given a oneOfSchema component', () => {
     });
 
     describe('when no model is present', () => {
-      it('should not render a generic schema', () => {
-        component = shallow(<OneOfSchema {...props} model={{}} />);
-        genericSchema = component.find(GenericSchema);
+      describe('and children schemas are non-const', () => {
+        it('should not render a generic schema', () => {
+          component = shallow(<OneOfSchema {...props} model={{}} />);
+          genericSchema = component.find(GenericSchema);
 
-        expect(genericSchema.length).toBe(0);
+          expect(genericSchema.length).toBe(0);
+        });
+      });
+
+      describe('and children schemas are const', () => {
+        const currencySchema = {
+          title: 'Currency',
+          type: 'string',
+          oneOf: [
+            { title: 'EUR', icon: { name: 'flag-eur' }, description: 'Euro', const: 'EUR' },
+            {
+              title: 'GBP',
+              icon: { name: 'flag-gbp' },
+              description: 'British pound',
+              const: 'GBP',
+            },
+            {
+              title: 'USD',
+              icon: { name: 'flag-usd' },
+              description: 'United States dollar',
+              const: 'USD',
+            },
+            {
+              title: 'ARS',
+              icon: { name: 'flag-ars' },
+              description: 'Argentine peso',
+              const: 'ARS',
+            },
+            {
+              title: 'AUD',
+              icon: { name: 'flag-aud' },
+              description: 'Australian dollar',
+              const: 'AUD',
+            },
+          ],
+          validationMessages: { required: 'Please enter currency.' },
+          refreshFormOnChange: true,
+          default: 'USD',
+        };
+
+        const defaultIndex = currencySchema.oneOf.findIndex(
+          (childSchema) => childSchema.const === currencySchema.default,
+        );
+
+        describe('and there is a valid default value', () => {
+          it('renders a SchemaFormControl with a value as expected', () => {
+            component = shallow(<OneOfSchema {...props} schema={currencySchema} model={{}} />);
+            const control = component.find(SchemaFormControl);
+            expect(control.prop('value')).toBe(defaultIndex);
+          });
+        });
+        describe('and there is no valid default value', () => {
+          it('renders a SchemaFormControl with a value of null  ', () => {
+            component = shallow(
+              <OneOfSchema
+                {...props}
+                schema={{ ...currencySchema, default: 'BANANA' }}
+                model={{}}
+              />,
+            );
+            const control = component.find(SchemaFormControl);
+            expect(control.prop('value')).toBe(null);
+          });
+        });
       });
     });
 
