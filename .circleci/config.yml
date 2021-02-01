@@ -76,7 +76,7 @@ aliases:
 jobs:
   setup:
     <<: *container
-    resource_class: xlarge
+    resource_class: large
     steps:
       - checkout
       - restore-cache: *restore-yarn-cache
@@ -86,7 +86,7 @@ jobs:
 
   test:
     <<: *container
-    resource_class: xlarge
+    resource_class: large
     steps:
       - *attach-workspace
       - run: *test
@@ -94,7 +94,7 @@ jobs:
 
   test-main:
     <<: *container
-    resource_class: xlarge
+    resource_class: large
     steps:
       - *attach-workspace
       - run: *test
