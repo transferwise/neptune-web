@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.2.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.2...@transferwise/components@34.2.3) (2021-02-02)
+
+
+### Bug Fixes
+
+* flow navigation alignments ([#790](https://github.com/transferwise/neptune-web/issues/790)) ([35f881f](https://github.com/transferwise/neptune-web/commit/35f881fc417f2d95e4c9c97d7461cbcdfae13f93))
+
+
+
+
+
 ## [34.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.1...@transferwise/components@34.2.2) (2021-02-01)
 
 
