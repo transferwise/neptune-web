@@ -12,12 +12,17 @@ import { useClientWidth } from '../common/hooks';
 
 import './FlowNavigation.css';
 
+// Size switches on parent container which may or may not have the same size as the window.
+const containerBreakpoints = {
+  'np-flow-navigation--sm': Breakpoint.SMALL,
+  'np-flow-navigation--lg': Breakpoint.LARGE,
+};
+
 const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, done, steps }) => {
   const ref = useRef(null);
 
   const [clientWidth] = useClientWidth({ ref });
   const closeButton = onClose && <CloseButton onClick={onClose} />;
-  const isSmall = clientWidth < Breakpoint.MEDIUM;
 
   const newAvatar = done ? null : avatar;
 
@@ -46,18 +51,23 @@ const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, done, ste
 
   return (
     <div
+      ref={ref}
       className={classNames(
-        'np-flow-navigation  d-flex align-items-center justify-content-center p-y-3',
+        'np-flow-navigation d-flex align-items-center justify-content-center p-y-3',
         { 'np-flow-navigation--border-bottom': !done },
       )}
     >
       <Header
-        ref={ref}
-        className={classNames('np-flow-navigation__content p-x-3', {
-          'np-flow-navigation--hidden': !clientWidth,
-          'np-flow-navigation--large': !isSmall,
-          'np-flow-navigation--small': isSmall,
-        })}
+        className={classNames(
+          'np-flow-navigation__content p-x-3',
+          {
+            'np-flow-navigation--hidden': !clientWidth,
+            'np-flow-navigation--xs-max': clientWidth < Breakpoint.SMALL,
+          },
+          Object.keys(containerBreakpoints).filter(
+            (key) => clientWidth >= containerBreakpoints[key],
+          ),
+        )}
         leftContent={
           <>
             <div className="hidden-xs">{logo}</div>
@@ -76,11 +86,11 @@ const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, done, ste
             <Stepper
               activeStep={activeStep}
               steps={steps}
-              className={classNames('np-flow-navigation__stepper m-t-1')}
+              className={classNames('np-flow-navigation__stepper')}
             />
           )
         }
-        layout={isSmall ? Header.Layout.VERTICAL : Header.Layout.HORIZONTAL}
+        layout={clientWidth < Breakpoint.LARGE ? Header.Layout.VERTICAL : Header.Layout.HORIZONTAL}
       />
     </div>
   );
