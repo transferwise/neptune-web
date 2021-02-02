@@ -75,6 +75,34 @@ In `settings.json` (use the command `Open Settings (JSON)` to get there):
 }
 ```
 
+## Testing
+
+### Beta Releases
+
+If you wish to test your changes in some consumer codebase and `yarn link` is not so sufficient or/and convenient approach, then you can easily publish beta version(s) on NPM registry and use it in any NPM repository.
+
+Steps:
+1. push changes into your feature/fix branch
+2. find build on [CircleCI](https://app.circleci.com/pipelines/github/transferwise/neptune-web)
+3. approve `hold-beta-release` job
+4. Lerna will [publish](https://github.com/lerna/lerna/blob/main/commands/publish/README.md#--canary) affected packages [tagged as beta](https://docs.npmjs.com/adding-dist-tags-to-packages)
+
+---
+
+Note: set the exact beta version without any [update types or version ranges](https://docs.npmjs.com/cli/v6/configuring-npm/package-json#dependencies) (e.g `^`, `~`) as usually NPM clients tend to opt-out installing beta (unstable) versions, correct example:
+
+```js
+// in package.json
+"@transferwise/neptune-css": "4.0.4-beta.7",
+
+// or just `beta`, NPM client will pick up latest beta version
+"@transferwise/components": "beta",
+```
+
+### Visual Testing
+
+(To be added)
+
 ## Versioning and commit lint
 
 We follow [Semantic Versioning](https://semver.org). We require that commit messages follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/#summary) standard. In this way, we can automatically bump the version of our packages when necessary.

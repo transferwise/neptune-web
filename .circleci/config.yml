@@ -34,8 +34,9 @@ aliases:
     command: npx lerna publish -m "[skip ci] Release" --yes
 
   - &lerna-publish-beta
-    name: Publish packages
-    command: npx lerna publish --canary --preid beta --dist-tag beta -m "[skip ci] Release" --yes
+    name: Publish package(s) as beta changes
+    command: |
+      npx lerna publish --canary --preid beta --dist-tag beta --yes
 
   - &conventional-commit-lint
     name: Conventional Commits check
@@ -132,7 +133,7 @@ jobs:
       - run: *add-npm-release-token
       - run: *lerna-publish
 
-  publish-prerelease:
+  publish-beta:
     <<: *container
     steps:
       - *attach-workspace
@@ -173,7 +174,6 @@ workflows:
           type: approval
           requires:
             - test
-            - setup
           filters:
             branches:
               ignore:
@@ -189,7 +189,8 @@ workflows:
                 - gh-pages
                 - main
 
-      # On 'main' branch the flow should be blocked if there is an error in commit message
+      # On `main` branch the workflow should be blocked if there is an error in commit message
+      # hence it requires `conventional-commit-lint` job
       - test-main:
           context: frontend-build
           requires:
@@ -199,7 +200,6 @@ workflows:
             branches:
               only:
                 - main
-                - beta
 
       - deploy-docs-for-branch:
           context: frontend-build
@@ -228,10 +228,23 @@ workflows:
             branches:
               only: main
 
-      - publish-prerelease:
-          context: frontend-publish
+      - hold-beta-release:
+          type: approval
           requires:
-            - test-main
+            - conventional-commit-lint
+            - test
           filters:
             branches:
-              only: beta
+              ignore:
+                - gh-pages
+                - main
+
+      - publish-beta:
+          context: frontend-publish
+          requires:
+            - hold-beta-release
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - main
