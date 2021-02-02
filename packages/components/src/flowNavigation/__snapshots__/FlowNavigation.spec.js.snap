@@ -3,10 +3,10 @@
 exports[`FlowNavigation on mobile renders as expected 1`] = `
 <div>
   <div
-    class="np-flow-navigation  d-flex align-items-center justify-content-center p-y-3 np-flow-navigation--border-bottom"
+    class="np-flow-navigation d-flex align-items-center justify-content-center p-y-3 np-flow-navigation--border-bottom"
   >
     <div
-      class="np-header d-flex flex-wrap np-flow-navigation__content p-x-3 np-flow-navigation--small"
+      class="np-header d-flex flex-wrap np-flow-navigation__content p-x-3 np-flow-navigation--sm"
     >
       <div
         class="align-items-center d-flex flex__item--8"
@@ -71,7 +71,7 @@ exports[`FlowNavigation on mobile renders as expected 1`] = `
         class="align-items-center d-flex justify-content-center flex__item--12"
       >
         <div
-          class="tw-stepper np-flow-navigation__stepper m-t-1"
+          class="tw-stepper np-flow-navigation__stepper"
         >
           <div
             class="progress"
@@ -137,10 +137,10 @@ exports[`FlowNavigation on mobile renders as expected 1`] = `
 exports[`FlowNavigation renders as expected 1`] = `
 <div>
   <div
-    class="np-flow-navigation  d-flex align-items-center justify-content-center p-y-3 np-flow-navigation--border-bottom"
+    class="np-flow-navigation d-flex align-items-center justify-content-center p-y-3 np-flow-navigation--border-bottom"
   >
     <div
-      class="np-header d-flex flex-wrap np-flow-navigation__content p-x-3 np-flow-navigation--large"
+      class="np-header d-flex flex-wrap np-flow-navigation__content p-x-3 np-flow-navigation--sm np-flow-navigation--lg"
     >
       <div
         class="align-items-center d-flex"
@@ -205,7 +205,7 @@ exports[`FlowNavigation renders as expected 1`] = `
         class="align-items-center d-flex justify-content-center order-1 flex-grow-1"
       >
         <div
-          class="tw-stepper np-flow-navigation__stepper m-t-1"
+          class="tw-stepper np-flow-navigation__stepper"
         >
           <div
             class="progress"
