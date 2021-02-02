@@ -12,19 +12,32 @@
     width: 100%;
     min-width: 320px;
     max-width: 1164px;
-    @media (--screen-sm) {
-      .p-b-2;
-    }
   }
 
   &__stepper {
     .p-b-0;
     .p-x-0;
-    @media (--screen-sm) {
-      .p-x-5;
+
+    @media (--screen-xs-max) {
+      .tw-stepper-steps {
+        display: none;
+      }
+      .progress {
+        .m-b-0;
+      }
     }
+
+    @media (--screen-sm) {
+      .p-x-3;
+      min-height: 56px;
+    }
+
     @media (--screen-lg) {
       max-width: 562px;
+    }
+
+    @media (--screen-xl) {
+      .p-x-5;
     }
   }
 
@@ -32,6 +45,7 @@
     .m-x-2;
     height: var(--size-32);
     width: 1px;
+    min-width: 1px;
     background-color: var(--color-border-neutral);
   }
 

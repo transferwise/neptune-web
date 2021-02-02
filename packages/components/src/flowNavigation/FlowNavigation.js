@@ -17,7 +17,7 @@ const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, done, ste
 
   const [clientWidth] = useClientWidth({ ref });
   const closeButton = onClose && <CloseButton onClick={onClose} />;
-  const isSmall = clientWidth < Breakpoint.MEDIUM;
+  const isSmall = clientWidth < Breakpoint.LARGE;
 
   const newAvatar = done ? null : avatar;
 
@@ -76,7 +76,7 @@ const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, done, ste
             <Stepper
               activeStep={activeStep}
               steps={steps}
-              className={classNames('np-flow-navigation__stepper m-t-1')}
+              className={classNames('np-flow-navigation__stepper')}
             />
           )
         }
