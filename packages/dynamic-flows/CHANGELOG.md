@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@11.0.9...@transferwise/dynamic-flows@11.1.0) (2021-02-02)
+
+
+### Features
+
+* Display oneOf const when only 1 option ([#791](https://github.com/transferwise/neptune-web/issues/791)) ([77a0a59](https://github.com/transferwise/neptune-web/commit/77a0a59c9efabd6b07b56bdafb86ce160ff71f7d))
+
+
+
+
+
 ## [11.0.9](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@11.0.8...@transferwise/dynamic-flows@11.0.9) (2021-02-02)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
