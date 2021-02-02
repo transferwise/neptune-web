@@ -72,7 +72,10 @@
     "lint": "lerna run lint",
     "preinstall": "node enforce-yarn.js",
     "create-component": "files-scaffold",
-    "test:visual": "lerna run test:visual --stream"
+    "test:visual": "lerna run test:visual --stream",
+    "test-ci": "lerna run test --parallel --no-prefix",
+    "lint-ci": "lerna run lint --parallel --no-prefix",
+    "bundlesize-ci": "bundlesize"
   },
   "husky": {
     "hooks": {
