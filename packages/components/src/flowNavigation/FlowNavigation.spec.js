@@ -28,7 +28,7 @@ describe('FlowNavigation', () => {
     });
   };
   beforeEach(() => {
-    resetClientWidth(Breakpoint.MEDIUM + 1);
+    resetClientWidth(Breakpoint.LARGE + 1);
   });
 
   afterAll(() => {
@@ -107,9 +107,30 @@ describe('FlowNavigation', () => {
     expect(container.querySelector('.np-flow-navigation__stepper')).not.toBeInTheDocument();
   });
 
+  it(`renders xs-max class`, () => {
+    resetClientWidth(Breakpoint.SMALL - 1);
+    const { container } = render(<FlowNavigation {...props} onClose={null} />);
+
+    expect(container.querySelector('.np-flow-navigation--xs-max')).toBeInTheDocument();
+  });
+
+  it(`renders sm class`, () => {
+    resetClientWidth(Breakpoint.SMALL);
+    const { container } = render(<FlowNavigation {...props} onClose={null} />);
+
+    expect(container.querySelector('.np-flow-navigation--sm')).toBeInTheDocument();
+  });
+
+  it(`renders lg class`, () => {
+    resetClientWidth(Breakpoint.LARGE);
+    const { container } = render(<FlowNavigation {...props} onClose={null} />);
+
+    expect(container.querySelector('.np-flow-navigation--lg')).toBeInTheDocument();
+  });
+
   describe('on mobile', () => {
     beforeEach(() => {
-      resetClientWidth(Breakpoint.MEDIUM - 1);
+      resetClientWidth(Breakpoint.LARGE - 1);
     });
 
     it('renders as expected', () => {
