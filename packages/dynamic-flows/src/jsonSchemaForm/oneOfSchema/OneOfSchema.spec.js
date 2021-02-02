@@ -368,6 +368,27 @@ describe('Given a oneOfSchema component', () => {
       expect(controlFeedback.prop('errors')).toBe(null);
     });
 
+    describe('when one option is supplied', () => {
+      beforeEach(() => {
+        schema = {
+          title: 'Choose schema',
+          oneOf: [
+            {
+              title: 'One',
+              const: 1,
+            },
+          ],
+        };
+
+        props = { ...props, schema };
+        component = shallow(<OneOfSchema {...props} />);
+      });
+
+      it('should render a SchemaFormControl', () => {
+        expect(component.find(SchemaFormControl)).toHaveLength(1);
+      });
+    });
+
     describe('when the user changes schema', () => {
       beforeEach(() => {
         // SchemaFormControl broadcasts the INDEX(1) of the schema

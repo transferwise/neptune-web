@@ -154,7 +154,7 @@ const OneOfSchema = (props) => {
 
   return (
     <>
-      {props.schema.oneOf.length > 1 && (
+      {(props.schema.oneOf.length > 1 || isConstSchema(props.schema.oneOf[0])) && (
         <>
           <div className={classNames(formGroupClasses)}>
             {props.schema.title && (
