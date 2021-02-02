@@ -28,7 +28,7 @@ describe('FlowNavigation', () => {
     });
   };
   beforeEach(() => {
-    resetClientWidth(Breakpoint.MEDIUM + 1);
+    resetClientWidth(Breakpoint.LARGE + 1);
   });
 
   afterAll(() => {
@@ -109,7 +109,7 @@ describe('FlowNavigation', () => {
 
   describe('on mobile', () => {
     beforeEach(() => {
-      resetClientWidth(Breakpoint.MEDIUM - 1);
+      resetClientWidth(Breakpoint.LARGE - 1);
     });
 
     it('renders as expected', () => {
