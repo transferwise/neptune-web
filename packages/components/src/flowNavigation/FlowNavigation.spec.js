@@ -137,17 +137,23 @@ describe('FlowNavigation', () => {
       expect(render(<FlowNavigation {...props} />).container).toMatchSnapshot();
     });
 
-    it(`renders logo mobile if onGoBack is not provided and activeStep = 0`, () => {
-      const { container, rerender } = render(<FlowNavigation {...props} />);
+    it(`renders flag if activeStep <= 0 onGoBack or is not provided`, () => {
+      const { container, rerender } = render(
+        <FlowNavigation {...props} activeStep={0} onGoBack={undefined} />,
+      );
 
       const flag = container.querySelector('.np-flow-navigation--flag');
 
       expect(flag.parentElement).toHaveClass('visible-xs');
       expect(flag).toHaveClass('np-flow-navigation--flag__display');
 
-      rerender(<FlowNavigation {...props} activeStep={1} />);
+      rerender(<FlowNavigation {...props} activeStep={1} onGoBack={undefined} />);
 
-      expect(flag.parentElement).toHaveClass('visible-xs');
+      expect(flag).toHaveClass('np-flow-navigation--flag__display');
+
+      rerender(<FlowNavigation {...props} activeStep={0} onGoBack={jest.fn()} />);
+
+      expect(flag).toHaveClass('np-flow-navigation--flag__display');
 
       rerender(<FlowNavigation {...props} onGoBack={jest.fn()} activeStep={1} />);
 

@@ -26,28 +26,31 @@ const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, done, ste
 
   const newAvatar = done ? null : avatar;
 
-  const getLeftContentSmall = () => (
-    <div className="visible-xs">
-      {onGoBack && activeStep > 0 && (
-        <BackButton
-          label={
-            <AnimatedLabel
-              className="m-x-1"
-              labels={steps.map((step) => step.label)}
-              activeLabel={activeStep}
-            />
-          }
-          onClick={onGoBack}
+  const getLeftContentSmall = () => {
+    const displayGoBack = onGoBack && activeStep > 0;
+    return (
+      <div className="visible-xs">
+        {displayGoBack && (
+          <BackButton
+            label={
+              <AnimatedLabel
+                className="m-x-1"
+                labels={steps.map((step) => step.label)}
+                activeLabel={activeStep}
+              />
+            }
+            onClick={onGoBack}
+          />
+        )}
+        <div
+          className={classNames('np-flow-navigation--flag', {
+            'np-flow-navigation--flag__hidden': displayGoBack,
+            'np-flow-navigation--flag__display': !displayGoBack,
+          })}
         />
-      )}
-      <div
-        className={classNames('np-flow-navigation--flag', {
-          'np-flow-navigation--flag__hidden': activeStep,
-          'np-flow-navigation--flag__display': !activeStep,
-        })}
-      />
-    </div>
-  );
+      </div>
+    );
+  };
 
   return (
     <div
