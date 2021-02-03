@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.2.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.3...@transferwise/components@34.2.4) (2021-02-03)
+
+
+### Bug Fixes
+
+* fix logic for mobile flag ([#793](https://github.com/transferwise/neptune-web/issues/793)) ([1941439](https://github.com/transferwise/neptune-web/commit/19414394abd92dc8c9f464225f1c8b272585bda0))
+
+
+
+
+
 ## [34.2.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.2...@transferwise/components@34.2.3) (2021-02-02)
 
 
