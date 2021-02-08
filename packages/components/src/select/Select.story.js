@@ -30,41 +30,80 @@ export const basic = () => {
   const search = boolean('search', false);
 
   return (
-    <Select
-      size={size}
-      placeholder={placeholder}
-      dropdownRight={dropdownRight}
-      dropdownWidth={dropdownWidth}
-      inverse={inverse}
-      block={block}
-      selected={selected}
-      disabled={disabled}
-      search={search}
-      onChange={(v) => setSelected(v)}
-      required={required}
-      searchPlaceholder="Search placeholder"
-      dropdownUp={dropdownUp}
-      options={[
-        { header: 'Basic' },
-        { value: 0, label: 'A thing', note: 'with a note' },
-        { value: 1, label: 'Another thing', secondary: 'with secondary text this time' },
-        { value: 2, label: 'A disabled thing', disabled: true },
-        { header: 'Icons' },
-        { value: 3, label: 'Profile', icon: <ProfileIcon /> },
-        { value: 4, label: 'Globe', icon: <GlobeIcon /> },
-        { header: 'Currencies' },
-        { value: 5, label: 'British pound', currency: 'gbp' },
-        { value: 6, label: 'Euro', currency: 'eur' },
-        { separator: true },
-        { value: 7, label: 'Something else' },
-        { header: 'Options with searchable alternatives' },
-        {
-          value: 8,
-          label: 'A thing with searchable alternatives',
-          searchStrings: ['abbreviation', 'acronym', 'nickname'],
-        },
-      ]}
-    />
+    <>
+      <Select
+        size={size}
+        placeholder={placeholder}
+        dropdownRight={dropdownRight}
+        dropdownWidth={dropdownWidth}
+        inverse={inverse}
+        block={block}
+        selected={selected}
+        disabled={disabled}
+        search={search}
+        onChange={(v) => setSelected(v)}
+        required={required}
+        searchPlaceholder="Search placeholder"
+        dropdownUp={dropdownUp}
+        options={[
+          { header: 'Basic' },
+          { value: 0, label: 'A thing', note: 'with a note' },
+          { value: 1, label: 'Another thing', secondary: 'with secondary text this time' },
+          { value: 2, label: 'A disabled thing', disabled: true },
+          { header: 'Icons' },
+          { value: 3, label: 'Profile', icon: <ProfileIcon /> },
+          { value: 4, label: 'Globe', icon: <GlobeIcon /> },
+          { header: 'Currencies' },
+          { value: 5, label: 'British pound', currency: 'gbp' },
+          { value: 6, label: 'Euro', currency: 'eur' },
+          { separator: true },
+          { value: 7, label: 'Something else' },
+          { header: 'Options with searchable alternatives' },
+          {
+            value: 8,
+            label: 'A thing with searchable alternatives',
+            searchStrings: ['abbreviation', 'acronym', 'nickname'],
+          },
+        ]}
+      />
+      <br />
+      <br />
+      <Select
+        size="sm"
+        placeholder={placeholder}
+        dropdownRight={dropdownRight}
+        dropdownWidth={dropdownWidth}
+        inverse={inverse}
+        block={block}
+        selected={selected}
+        disabled={disabled}
+        search={search}
+        onChange={(v) => setSelected(v)}
+        required={required}
+        searchPlaceholder="Search placeholder"
+        dropdownUp={dropdownUp}
+        options={[
+          { header: 'Basic' },
+          { value: 0, label: 'A thing', note: 'with a note' },
+          { value: 1, label: 'Another thing', secondary: 'with secondary text this time' },
+          { value: 2, label: 'A disabled thing', disabled: true },
+          { header: 'Icons' },
+          { value: 3, label: 'Profile', icon: <ProfileIcon /> },
+          { value: 4, label: 'Globe', icon: <GlobeIcon /> },
+          { header: 'Currencies' },
+          { value: 5, label: 'British pound', currency: 'gbp' },
+          { value: 6, label: 'Euro', currency: 'eur' },
+          { separator: true },
+          { value: 7, label: 'Something else' },
+          { header: 'Options with searchable alternatives' },
+          {
+            value: 8,
+            label: 'A thing with searchable alternatives',
+            searchStrings: ['abbreviation', 'acronym', 'nickname'],
+          },
+        ]}
+      />
+    </>
   );
 };
 
