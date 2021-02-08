@@ -6,6 +6,7 @@ import ObjectSchema from '../objectSchema';
 import OneOfSchema from '../oneOfSchema';
 import AllOfSchema from '../allOfSchema';
 import PersistAsyncSchema from '../persistAsyncSchema';
+import ValidationAsyncSchema from '../validationAsyncSchema';
 import { getSchemaType, schemaType } from '../../common/schemaTypes/schemaTypes';
 
 const GenericSchemaForm = (props) => {
@@ -16,6 +17,8 @@ const GenericSchemaForm = (props) => {
   switch (type) {
     case schemaType.PERSIST_ASYNC:
       return <PersistAsyncSchema {...props} />;
+    case schemaType.VALIDATION_ASYNC:
+      return <ValidationAsyncSchema {...props} />;
     case schemaType.BASIC:
       return <BasicTypeSchema {...props} />;
     case schemaType.OBJECT:
@@ -37,6 +40,7 @@ GenericSchemaForm.propTypes = {
     oneOf: Types.arrayOf(Types.shape({})),
     allOf: Types.arrayOf(Types.shape({})),
     persistAsync: Types.shape({}),
+    validationAsync: Types.shape({}),
   }).isRequired,
   model: Types.oneOfType([Types.string, Types.number, Types.bool, Types.array, Types.shape({})]),
   errors: Types.oneOfType([Types.string, Types.array, Types.shape({})]),

@@ -1,0 +1,16 @@
+{
+  "title": "Object schema",
+  "type": "object",
+  "properties": {
+    "iban": {
+      "type": "string",
+      "title": "IBAN",
+      "validationAsync": {
+        "method": "POST",
+        "url": "/v1/cards",
+        "param": "iban"
+      }
+    }
+  },
+  "required": ["iban"]
+}
