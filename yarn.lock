@@ -4065,9 +4065,9 @@
   integrity sha512-SLSn+1oSRMHElzVGWFfTrsB3b7sEPPIXnvkLaAXZUZfZ+HFXhY2GT1ZtjTJqJoXHQLFQUaPDElY2KsKxjneRyw==
 
 "@transferwise/neptune-tokens@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@transferwise/neptune-tokens/-/neptune-tokens-1.0.0.tgz#c919ae2492776c0a74a56cfab1a8fe03cab09830"
-  integrity sha512-F35PjYU4iI0de5l67vAa1u01hezzkmLtAIf1snnNQWfoOxJieTvn9lgsG9nHdySKhFhMBXq+60UUTwRLGxGW1Q==
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@transferwise/neptune-tokens/-/neptune-tokens-1.1.0.tgz#d33955805a3c1272a8724a89083496e7cec50830"
+  integrity sha512-uC5wxIN16wIUG4P0OK+DggUTtob0I9G1e0amq7P7BENF9JnsjT8DzIQnU/iRpJsuK807LGgnZz1fxTwBf5pIdw==
 
 "@types/anymatch@*":
   version "1.3.1"
