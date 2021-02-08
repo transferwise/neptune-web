@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { Profile as ProfileIcon, Briefcase as BriefcaseIcon } from '@transferwise/icons';
 import FlowNavigation from './FlowNavigation';
+import OverlayHeader from '../overlayHeader';
 import Avatar from '../avatar';
 import demoLogo from '../../public/assets/logo_full.svg';
 import AvatarWrapper from '../common/avatarWrapper';
@@ -250,5 +251,51 @@ export const withAvatarWrapper = () => {
         },
       ]}
     />
+  ) : null;
+};
+
+export const withOverlayHeaderComparison = () => {
+  const [activeStep, setActiveStep] = useState(4);
+  const [closed, setClosed] = useState(false);
+  const showAvatar = select('avatar', Object.keys(avatarProfiles), 'Profile');
+  const showCloseButton = boolean('show closeButton', true);
+  const showMobileBackButton = boolean('show mobile backButton', true);
+  const done = boolean('done', false);
+
+  return !closed ? (
+    <>
+      <div style={{ border: '1px solid #e8e8e8' }}>
+        <FlowNavigation
+          avatar={
+            showAvatar ? (
+              <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
+                {avatarProfiles[showAvatar]}
+              </Avatar>
+            ) : null
+          }
+          logo={<img alt="logo" src={demoLogo} width="138" />}
+          onClose={showCloseButton && (() => setClosed(true))}
+          onGoBack={
+            showMobileBackButton && (() => setActiveStep(activeStep > 0 ? activeStep - 1 : 0))
+          }
+          activeStep={activeStep}
+          done={done}
+          steps={[]}
+        />
+      </div>
+      <div style={{ border: '1px solid #e8e8e8' }}>
+        <OverlayHeader
+          logo={<img alt="logo" src={demoLogo} width="138" />}
+          onClose={showCloseButton && (() => setClosed(true))}
+          avatar={
+            showAvatar ? (
+              <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
+                {avatarProfiles[showAvatar]}
+              </Avatar>
+            ) : null
+          }
+        />
+      </div>
+    </>
   ) : null;
 };

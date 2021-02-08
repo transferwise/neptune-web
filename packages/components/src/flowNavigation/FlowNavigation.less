@@ -4,7 +4,11 @@
 
 .np-flow-navigation {
   width: 100%;
+  // This prevents jumping when border disappears.
+  min-height: 97px;
   &--border-bottom {
+    // This is the natural height of FlowNavigation when the Avatar is displayed.
+    min-height: 96px;
     border-bottom: 1px solid var(--color-border-neutral);
   }
 
