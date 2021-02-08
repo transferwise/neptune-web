@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-validation",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Neptune Web validation",
   "license": "Apache-2.0",
   "main": "./build/umd/polyfill/main.js",
