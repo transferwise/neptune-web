@@ -16,9 +16,8 @@
     "docs:deploy": "npm-run-all deploy:*",
     "deploy:export": "next export -o docs-build && touch docs-build/.nojekyll",
     "deploy:gh-pages": "deploy-to-github-pages -d docs-build -m main",
-    "lint": "eslint components/ pages/ utils/",
-    "lint:fix": "yarn lint --fix",
-    "test": "jest --config ../../node_modules/@transferwise/test-config/test/jest.lint.js"
+    "lint": "jest --maxWorkers=4 --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
+    "lint:fix": "eslint components/ pages/ utils/ --fix"
   },
   "repository": {
     "type": "git",

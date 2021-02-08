@@ -38,15 +38,21 @@ aliases:
     command: |
       npx lerna publish --canary --preid beta --dist-tag beta --yes
 
-  - &conventional-commit-lint
+  - &conventional-commit
     name: Conventional Commits check
     command: npx commitlint -f $(git log --author=CircleCI -1 --format=format:"%H") -V
 
   - &test
-    name: Test packages
+    name: Run tests across all packages
     command: yarn test
-    environment:
-      NODE_OPTIONS: --max_old_space_size=4096
+
+  - &lint
+    name: Perform code linting across all packages
+    command: yarn lint
+
+  - &bundlesize
+    name: Pefrorm bundlesize check
+    command: yarn bundlesize
 
   - &visual-test
     name: Visual Regression test
@@ -89,14 +95,19 @@ jobs:
     steps:
       - *attach-workspace
       - run: *test
-      - *persist-workspace
 
-  test-main:
+  lint:
     <<: *container
     steps:
       - *attach-workspace
-      - run: *test
-      - *persist-workspace
+      - run: *lint
+
+  bundlesize:
+    <<: *container
+    resource_class: small
+    steps:
+      - *attach-workspace
+      - run: *bundlesize
 
   visual-test:
     <<: *container
@@ -119,11 +130,12 @@ jobs:
       - run: *set-github-credentials
       - run: *deploy-docs
 
-  conventional-commit-lint:
+  conventional-commit:
     <<: *container
+    resource_class: small
     steps:
       - *attach-workspace
-      - run: *conventional-commit-lint
+      - run: *conventional-commit
 
   publish:
     <<: *container
@@ -151,16 +163,34 @@ workflows:
             branches:
               ignore: gh-pages
 
-      - conventional-commit-lint:
+      - conventional-commit:
           context: frontend-build
           requires:
             - setup
           filters:
             branches:
-              ignore: gh-pages
+              ignore:
+                - gh-pages
 
-      # On current branch the flow should NOT be blocked if there is an error in commit message
       - test:
+          context: frontend-build
+          requires:
+            - setup
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+
+      - lint:
+          context: frontend-build
+          requires:
+            - setup
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+
+      - bundlesize:
           context: frontend-build
           requires:
             - setup
@@ -189,18 +219,6 @@ workflows:
                 - gh-pages
                 - main
 
-      # On `main` branch the workflow should be blocked if there is an error in commit message
-      # hence it requires `conventional-commit-lint` job
-      - test-main:
-          context: frontend-build
-          requires:
-            - setup
-            - conventional-commit-lint
-          filters:
-            branches:
-              only:
-                - main
-
       - deploy-docs-for-branch:
           context: frontend-build
           requires:
@@ -214,7 +232,9 @@ workflows:
       - deploy-docs:
           context: frontend-build
           requires:
-            - test-main
+            - conventional-commit
+            - lint
+            - test
           filters:
             branches:
               only:
@@ -223,7 +243,9 @@ workflows:
       - publish:
           context: frontend-publish
           requires:
-            - test-main
+            - conventional-commit
+            - lint
+            - test
           filters:
             branches:
               only: main
@@ -231,7 +253,7 @@ workflows:
       - hold-beta-release:
           type: approval
           requires:
-            - conventional-commit-lint
+            - conventional-commit
             - test
           filters:
             branches:
