@@ -1,5 +1,6 @@
 import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
 import { Avatar } from '@transferwise/components';
+import { Profile } from '@transferwise/icons';
 import code from '../../../liveEditorCode/avatar.code';
 
 <LiveEditorBlock code={code} scope={{ Avatar }} />
@@ -195,6 +196,20 @@ import code from '../../../liveEditorCode/avatar.code';
       <td>
         <Avatar type={Avatar.Type.INITIALS} size={Avatar.Size.SMALL} outlined>
           TW
+        </Avatar>
+      </td>
+    </tr>
+    <tr>
+      <td>Avatar.Type.INITIALS</td>
+      <td>Avatar.Type.MEDIUM</td>
+      <td>
+        <Avatar theme={Avatar.Theme.DARK} type={Avatar.Type.INITIALS} size={Avatar.Size.MEDIUM}>
+          TW
+        </Avatar>
+      </td>
+      <td>
+        <Avatar theme={Avatar.Theme.DARK} type={Avatar.Type.INITIALS} size={Avatar.Size.MEDIUM} outlined>
+          <Profile />
         </Avatar>
       </td>
     </tr>
