@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@8.1.0...@transferwise/neptune-css@8.1.1) (2021-02-09)
+
+
+### Bug Fixes
+
+* removed old caret rotation ([#800](https://github.com/transferwise/neptune-web/issues/800)) ([fb9953e](https://github.com/transferwise/neptune-web/commit/fb9953e39cdc3483a0e6a3a1a3e34f1544cc828d))
+
+
+
+
+
 # [8.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@8.0.0...@transferwise/neptune-css@8.1.0) (2021-01-29)
 
 
