@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.2.10](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.9...@transferwise/components@34.2.10) (2021-02-09)
+
+
+### Bug Fixes
+
+* set white initials & icon for Avatar with dark theme ([#797](https://github.com/transferwise/neptune-web/issues/797)) ([0a968c2](https://github.com/transferwise/neptune-web/commit/0a968c2a735fbc9edde446b3ad681f04db61c608))
+
+
+
+
+
 ## [34.2.9](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.8...@transferwise/components@34.2.9) (2021-02-09)
 
 **Note:** Version bump only for package @transferwise/components

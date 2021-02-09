@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.18](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@10.0.17...@transferwise/neptune-docs@10.0.18) (2021-02-09)
+
+
+### Bug Fixes
+
+* set white initials & icon for Avatar with dark theme ([#797](https://github.com/transferwise/neptune-web/issues/797)) ([0a968c2](https://github.com/transferwise/neptune-web/commit/0a968c2a735fbc9edde446b3ad681f04db61c608))
+
+
+
+
+
 ## [10.0.17](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@10.0.16...@transferwise/neptune-docs@10.0.17) (2021-02-09)
 
 **Note:** Version bump only for package @transferwise/neptune-docs
