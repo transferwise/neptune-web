@@ -36,9 +36,6 @@ const ValidationAsyncSchema = (props) => {
     try {
       const jsonResponse = await response.json();
 
-      console.log(jsonResponse, 'r')
-      console.log(jsonResponse.message, 'm')
-
       if (response?.status === 200) {
         setValidationAsyncSuccessMessage(jsonResponse.message);
       } else if (response?.status === 422) {
@@ -76,6 +73,7 @@ const ValidationAsyncSchema = (props) => {
         schema={props.schema}
         errors={validationAsyncErrors || props.errors}
         onBlur={onBlur}
+        validationAsyncSuccessMessage={validationAsyncSuccessMessage}
       />
     </>
   );

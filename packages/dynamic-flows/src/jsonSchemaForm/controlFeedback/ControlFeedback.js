@@ -14,6 +14,7 @@ const ControlFeedback = (props) => {
   const isValidationVisible =
     (props.submitted || (props.changed && props.blurred)) && !!props.validations.length;
   const isDescriptionVisible = props.focused && props.schema.description && !isValidationVisible;
+  const isValidationAsyncSuccessMessageVisible = !!props.validationAsyncSuccessMessage;
 
   return (
     <div>
@@ -25,9 +26,12 @@ const ControlFeedback = (props) => {
           ))}
         </InlineAlert>
       )}
-      {isDescriptionVisible && (
+      {(isDescriptionVisible || isValidationAsyncSuccessMessageVisible) && (
         <InlineAlert type="info">
-          {props.schema.description && <div>{props.schema.description}</div>}
+          {isDescriptionVisible && <div>{props.schema.description}</div>}
+          {isValidationAsyncSuccessMessageVisible && (
+            <div>{props.validationAsyncSuccessMessage}</div>
+          )}
         </InlineAlert>
       )}
     </div>
@@ -55,6 +59,7 @@ ControlFeedback.propTypes = {
     description: Types.string,
     validationMessages: validationMessagesProps,
   }).isRequired,
+  validationAsyncSuccessMessage: Types.string,
 };
 
 ControlFeedback.defaultProps = {
@@ -69,6 +74,7 @@ ControlFeedback.defaultProps = {
     pattern: 'Incorrect format',
     required: 'Value is required...',
   },
+  validationAsyncSuccessMessage: null,
 };
 
 export default ControlFeedback;

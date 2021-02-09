@@ -5,11 +5,16 @@
     "iban": {
       "type": "string",
       "title": "IBAN",
+      "description": "IBAN is the international bank number.",
       "validationAsync": {
         "method": "POST",
-        "url": "/v1/cards",
+        "url": "http://localhost:3001/v1/iban/validate",
         "param": "iban"
       }
+    },
+    "number": {
+      "type": "number",
+      "title": "Number"
     }
   },
   "required": ["iban"]
