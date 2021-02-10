@@ -151,4 +151,20 @@ describe('Given a component for rendering feedback next to controls', () => {
       expect(component.find(InlineAlert).contains(schema.validationMessages.maxLength)).toBe(false);
     });
   });
+
+  describe('when validationAsyncSuccessMessage is supplied', () => {
+    beforeEach(() => {
+      component.setProps({ validationAsyncSuccessMessage: 'some message' });
+    });
+
+    it('should render the validation async success message as an info InLineAlert', () => {
+      const alert = component.find(InlineAlert);
+      expect(alert.length).toBe(1);
+      expect(alert.prop('type')).toBe('info');
+    });
+
+    it('should render the validation async success message', () => {
+      expect(component.find(InlineAlert).contains('some message')).toBe(true);
+    });
+  });
 });
