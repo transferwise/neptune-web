@@ -86,7 +86,7 @@ const BasicTypeSchema = (props) => {
     'has-error':
       ((props.submitted || !changed) && !!props.errors) ||
       ((props.submitted || (changed && blurred)) && !!validations.length),
-    'has-info': focused && !!props.schema.description,
+    'has-info': (focused && !!props.schema.description) || !!props.validationAsyncSuccessMessage,
   };
 
   const showLabel = props.schema.format !== 'file' && props.schema.type !== 'boolean';
@@ -121,6 +121,7 @@ const BasicTypeSchema = (props) => {
             errors={props.errors}
             schema={props.schema}
             validations={validations}
+            validationAsyncSuccessMessage={props.validationAsyncSuccessMessage}
           />
         </div>
         {props.schema.alert && <DynamicAlert component={props.schema.alert} />}
@@ -156,6 +157,7 @@ BasicTypeSchema.propTypes = {
   locale: Types.string,
   disabled: Types.bool,
   onBlur: Types.func,
+  validationAsyncSuccessMessage: Types.string,
 };
 
 BasicTypeSchema.defaultProps = {
@@ -166,6 +168,7 @@ BasicTypeSchema.defaultProps = {
   locale: 'en-GB',
   disabled: false,
   onBlur: null,
+  validationAsyncSuccessMessage: null,
 };
 
 export default BasicTypeSchema;

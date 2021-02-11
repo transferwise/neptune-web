@@ -1,15 +1,8 @@
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 import PersistAsyncSchema from './PersistAsyncSchema';
 import BasicTypeSchema from '../basicTypeSchema';
 import SchemaFormControl from '../schemaFormControl';
-import { mount } from '../../test-utils';
-
-const wait = (t) => {
-  return act(() => {
-    return new Promise((resolve) => setTimeout(resolve, t));
-  });
-};
+import { getMockFetchPromise, mount, wait } from '../../test-utils';
 
 describe('Given a component for rendering persist async schemas', () => {
   let onChange;
@@ -35,24 +28,6 @@ describe('Given a component for rendering persist async schemas', () => {
   const required = true;
   const translations = {};
   const submitted = false;
-
-  const getMockFetchPromise = (status, jsonFn, delay, signal) => {
-    const response = {
-      status,
-      json: jsonFn,
-    };
-    return new Promise((resolve) => {
-      let aborted = false;
-      if (signal) {
-        signal.addEventListener('abort', () => {
-          aborted = true;
-        });
-      }
-      setTimeout(() => {
-        return !aborted && resolve(response);
-      }, delay);
-    });
-  };
 
   const initialiseMockPersistAsyncEndpoint = () => {
     jest.spyOn(global, 'fetch').mockImplementation((input, init) => {

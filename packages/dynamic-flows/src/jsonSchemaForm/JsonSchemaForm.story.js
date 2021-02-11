@@ -16,6 +16,7 @@ import allOfSchema from './schemas/allOf.json';
 import audRecipientSchema from './schemas/audRecipient.json';
 import fileUploadPersistAsyncSchema from './schemas/uploadPersistAsync.json';
 import currencySchema from './schemas/currency.json';
+import validationAsyncSchema from './schemas/validationAsync.json';
 
 import translations from '../../build/i18n';
 
@@ -31,6 +32,7 @@ export const basic = () => {
     allOf: allOfSchema,
     'AUD Recipient': audRecipientSchema,
     'File upload persist async': fileUploadPersistAsyncSchema,
+    validationAsync: validationAsyncSchema,
     currency: currencySchema,
   };
 
