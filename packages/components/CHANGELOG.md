@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.2.12](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.11...@transferwise/components@34.2.12) (2021-02-12)
+
+
+### Bug Fixes
+
+* close Select dropdowns ([#798](https://github.com/transferwise/neptune-web/issues/798)) ([a51d568](https://github.com/transferwise/neptune-web/commit/a51d5683853aba378d231b37b7eba989b8371948))
+
+
+
+
+
 ## [34.2.11](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.10...@transferwise/components@34.2.11) (2021-02-11)
 
 **Note:** Version bump only for package @transferwise/components

@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/dynamic-flows",
-  "version": "11.3.1",
+  "version": "11.3.2",
   "description": "Transferwise dynamic flows and forms",
   "license": "Apache-2.0",
   "main": "./build/es/polyfill/index.js",
@@ -51,7 +51,7 @@
     "@storybook/addon-docs": "^6.1.9",
     "@storybook/addon-knobs": "^6.1.9",
     "@storybook/react": "^6.1.9",
-    "@transferwise/components": "^34.2.11",
+    "@transferwise/components": "^34.2.12",
     "@transferwise/icons": "^2.6.0",
     "@transferwise/less-config": "^3.0.0",
     "@transferwise/neptune-css": "^8.1.1",
