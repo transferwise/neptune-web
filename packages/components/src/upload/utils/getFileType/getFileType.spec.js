@@ -9,16 +9,16 @@ const data64Img = 'data:image/png;something';
 describe('getFileType', () => {
   describe('returns null', () => {
     it(`when both file and file64 haven't been provided`, () => {
-      expect(getFileType('', '')).toBeNull();
+      expect(getFileType('', '')).toBe('');
     });
     it(`when file has no type and file64 hasn't been provided `, () => {
-      expect(getFileType({}, '')).toBeNull();
+      expect(getFileType({}, '')).toBe('');
     });
     it(`when file has empty type and file64 hasn't been provided`, () => {
-      expect(getFileType({ type: '' }, '')).toBeNull();
+      expect(getFileType({ type: '' }, '')).toBe('');
     });
     it(`when file hasn't been provided and file64 is not supported`, () => {
-      expect(getFileType('', 'data:something-unexpected')).toBeNull();
+      expect(getFileType('', 'data:something-unexpected')).toBe('');
     });
   });
 
