@@ -18,17 +18,12 @@ export default function AvatarWrapper({ url, profileType }) {
 
   return (
     <>
-      {isBusinessProfile && (
+      {!renderImage && (
         <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
-          <BriefcaseIcon />
+          {isBusinessProfile ? <BriefcaseIcon /> : <ProfileIcon />}
         </Avatar>
       )}
-      {!isBusinessProfile && !renderImage && (
-        <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
-          <ProfileIcon />
-        </Avatar>
-      )}
-      {!isBusinessProfile && renderImage && (
+      {renderImage && (
         <Avatar type={Avatar.Type.THUMBNAIL} size={Avatar.Size.MEDIUM}>
           {renderImage && <img src={url} alt="avatar" onError={() => setImageLoadError(true)} />}
         </Avatar>

@@ -2,6 +2,21 @@
 
 exports[`FlowNavigationAvatar renders as BUSINESS profile type 1`] = `
 <div
+  class="tw-avatar tw-avatar--md tw-avatar--thumbnail tw-avatar--light"
+>
+  <div
+    class="tw-avatar__content"
+  >
+    <img
+      alt="avatar"
+      src="https://transferwise.com"
+    />
+  </div>
+</div>
+`;
+
+exports[`FlowNavigationAvatar renders as BUSINESS profile type with an icon 1`] = `
+<div
   class="tw-avatar tw-avatar--md tw-avatar--icon tw-avatar--light"
 >
   <div
