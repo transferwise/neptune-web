@@ -208,7 +208,7 @@ class Upload extends PureComponent {
     }
 
     this.setState({
-      isImage: getFileType(file, file64).indexOf('image') > -1,
+      isImage: (getFileType(file, file64) || '').indexOf('image') > -1,
     });
 
     if (!isTypeValid(file, usAccept, file64)) {
