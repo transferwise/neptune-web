@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.2.14](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.13...@transferwise/components@34.2.14) (2021-02-15)
+
+
+### Bug Fixes
+
+* **AvatarWrapper:** render avatars for business profiles ([#808](https://github.com/transferwise/neptune-web/issues/808)) ([cdf57f5](https://github.com/transferwise/neptune-web/commit/cdf57f511873a08d806964d38a6289f8eaf2332c))
+
+
+
+
+
 ## [34.2.13](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.12...@transferwise/components@34.2.13) (2021-02-15)
 
 
