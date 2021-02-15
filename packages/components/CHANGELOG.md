@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.2.13](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.12...@transferwise/components@34.2.13) (2021-02-15)
+
+
+### Bug Fixes
+
+* **Upload:** reference error when file type is null ([#807](https://github.com/transferwise/neptune-web/issues/807)) ([5ae0885](https://github.com/transferwise/neptune-web/commit/5ae0885c32b5c1b47da2b18d6c97bb830601327a))
+
+
+
+
+
 ## [34.2.12](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.11...@transferwise/components@34.2.12) (2021-02-12)
 
 
