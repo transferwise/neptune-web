@@ -24,10 +24,7 @@ const getLinks = ({ pathname, section }) => {
       content: (
         <li key={key}>
           <Link href={path}>
-            <a className={`Nav__Link ${isSelected ? 'active' : ''}`}>
-              {name} {component.meta.isPlaceholder && '*'}
-              {component.meta.isBeta && <span className="badge badge-success">beta</span>}
-            </a>
+            <a className={`Nav__Link ${isSelected ? 'active' : ''}`}>{name}</a>
           </Link>
         </li>
       ),

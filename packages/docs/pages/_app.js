@@ -17,6 +17,7 @@ import 'currency-flags/dist/currency-flags.min.css';
 import { addBasePath } from '../utils/pageUtils';
 
 import '../static/assets/main.css';
+import '../utils/prismTheme/code-snippets.css';
 
 if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
   const ReactDOM = require('react-dom'); // eslint-disable-line global-require

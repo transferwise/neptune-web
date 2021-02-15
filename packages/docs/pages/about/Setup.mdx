@@ -23,7 +23,7 @@ npm install react react-dom react-intl prop-types currency-flags # peer dependen
 
 ## Usage
 
-```js
+```jsx
 // These CSS imports only need to be imported once in your application
 import '@transferwise/neptune-css/dist/css/neptune.css';
 import '@transferwise/icons/lib/styles/main.min.css';
@@ -70,7 +70,7 @@ Internally `Provider` uses [react-intl](https://formatjs.io/docs/react-intl/), w
 
 If your code already uses `react-intl` and its providers (`RawIntlProvider`, `IntlProvider`) **replace them with `Provider`**. You will need to include all your app translations and translations for `@transferwise/components` in the translations object you pass to `Provider`. Translations can be combined as shown below, or you can use the `formatjs` [compile](https://formatjs.io/docs/guides/distribute-libraries#declaring-with-a-convention) method.
 
-```js
+```jsx
 import appTranslations from '...';
 
 import { Provider } from '@transferwise/components';
@@ -89,7 +89,7 @@ export default function App() {
 
 If you are not using `react-intl`, just pass the component translations to `Provider`, and handle your app translations with your library. Here is an example using [retranslate](https://github.com/Tankenstein/retranslate):
 
-```js
+```jsx
 import { TranslationProvider } from 'retranslate';
 import appTranslations from '...';
 

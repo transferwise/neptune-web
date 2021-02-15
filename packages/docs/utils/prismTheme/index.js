@@ -17,7 +17,6 @@ const theme = {
         color: colors.tag,
       },
     },
-
     {
       types: ['attr-name'],
       style: {

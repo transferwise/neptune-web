@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import Link from './Link';
+import Label from './Label';
 
 import { getFirstPageInSection, getPageFromPath } from '../utils/pageUtils';
 import sections from '../utils/sections';
@@ -36,7 +37,7 @@ const Layout = ({ children, router: { pathname } }) => {
             <li key={section.title}>
               <Link href={getFirstPageInSection(section).path}>
                 <a className={`Nav__Link ${rootDir === section.dir ? 'active' : ''}`}>
-                  {section.title}
+                  {section.title} {section.isNew && <Label type={Label.Type.NEW} />}
                 </a>
               </Link>
             </li>
@@ -52,7 +53,6 @@ const Layout = ({ children, router: { pathname } }) => {
   const thirdContent = (
     <div className="Content" role="main">
       {page && <h1 className="colored-dot">{page.component.meta.name}</h1>}
-      {page && page.component.meta.isBeta && <span className="badge">beta</span>}
       {children}
       <a className="btn btn-default m-t-4" href={editPath}>
         Edit these docs on Github

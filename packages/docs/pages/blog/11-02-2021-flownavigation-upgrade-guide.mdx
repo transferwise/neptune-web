@@ -1,0 +1,104 @@
+export const meta = {
+  name: 'FlowNavigation Upgrade Guide',
+};
+
+FlowNavigation has gone through a major refactor, and there are some breaking changes. This upgrade guide will provide the necessary steps to switch to the new version.
+
+API Changes
+
+Old API
+
+New API
+
+Change
+
+activeStep
+
+activeStep
+
+No change
+
+avatarUrl
+
+avatar
+
+Instead of a URL, we now expect an Avatar. Please provide this in avatar, and remove avatarURL. The old logic can still be used via AvatarWrapper component that embeds the business loigc
+
+done
+
+done
+
+Use to remove stepper and avatar and border
+
+-
+
+logo
+
+@new
+
+We used to display the logo within the component using CSS. We now expect you to pass in a logo as an image. You will need to use the inverse logo if working on a dark screen: https://transferwise.com/public-resources/assets/logos/transferwise/brand_logo_inverse.svg
+
+For old logo the recommended size are 
+
+width 142height 24
+
+https://transferwise.com/public-resources/assets/logos/transferwise/brand_logo.svg
+
+the new logo will be centrally aligned by default. In order to temporary aligned the old one please add an inline margin-top:-8px;
+
+onClose
+
+onClose
+
+No change
+
+onGoBack
+
+onGoBack
+
+No change
+
+theme
+
+-
+
+@deprecated
+
+Used to change logo appearances and borders. Now you can pass and manage logo. 
+
+Dependency requirements
+
+@transferwise/components >= 34.2.3
+
+@transferwise/neptune-css>= 8.0.1
+
+Style Changes
+
+Dimensions
+
+FlowNavigation is provided with a container that also provides the border-bottom
+
+Border
+
+done manages show/hide of the border. By default is set to true
+
+Code changes
+
+More detail on the API changes.
+
+avatarUrl replaced by Avatar      
+
+Avatar logic has been extracted but consumers can use AvatarWrapper component to implement the business logic
+
+theme has been removed 
+
+Previously a number of things were happening based on theme prop:
+
+switch  the Logo theme. Now Logo can be provided as prop so consumers can decide which  theme to applied
+
+hide the Stepper. Please use OverlayHeader if you don't need the Stepper 
+
+logo → added
+
+Consumers now have to provide logo asset for the full version of logo. The recommended size for the old logo https://transferwise.com/public-resources/assets/logos/transferwise/brand_logo.svg are width="142" height="24"
+

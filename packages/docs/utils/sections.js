@@ -89,6 +89,12 @@ export default [
     searchable: true,
   },
   {
+    title: 'Blog',
+    dir: 'blog',
+    searchable: true,
+    isNew: true,
+  },
+  {
     title: 'Devs',
     dir: 'devs',
     hidden: true,
