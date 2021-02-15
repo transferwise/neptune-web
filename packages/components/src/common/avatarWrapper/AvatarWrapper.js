@@ -16,24 +16,18 @@ export default function AvatarWrapper({ url, profileType }) {
   // Reset the errored state when url changes
   useEffect(() => setImageLoadError(false), [url]);
 
+  if (renderImage) {
+    return (
+      <Avatar type={Avatar.Type.THUMBNAIL} size={Avatar.Size.MEDIUM}>
+        {renderImage && <img src={url} alt="avatar" onError={() => setImageLoadError(true)} />}
+      </Avatar>
+    );
+  }
+
   return (
-    <>
-      {isBusinessProfile && (
-        <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
-          <BriefcaseIcon />
-        </Avatar>
-      )}
-      {!isBusinessProfile && !renderImage && (
-        <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
-          <ProfileIcon />
-        </Avatar>
-      )}
-      {!isBusinessProfile && renderImage && (
-        <Avatar type={Avatar.Type.THUMBNAIL} size={Avatar.Size.MEDIUM}>
-          {renderImage && <img src={url} alt="avatar" onError={() => setImageLoadError(true)} />}
-        </Avatar>
-      )}
-    </>
+    <Avatar type={Avatar.Type.ICON} size={Avatar.Size.MEDIUM}>
+      {isBusinessProfile ? <BriefcaseIcon /> : <ProfileIcon />}
+    </Avatar>
   );
 }
 

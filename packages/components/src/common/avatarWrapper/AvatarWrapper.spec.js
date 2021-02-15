@@ -5,6 +5,12 @@ import Avatar from '.';
 
 describe('FlowNavigationAvatar', () => {
   it('renders as BUSINESS profile type', async () => {
+    const { container } = render(<Avatar url="https://transferwise.com" profileType="BUSINESS" />);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('renders as BUSINESS profile type with an icon', async () => {
     const { container } = render(<Avatar url="" profileType="BUSINESS" />);
 
     expect(container.firstChild).toMatchSnapshot();
