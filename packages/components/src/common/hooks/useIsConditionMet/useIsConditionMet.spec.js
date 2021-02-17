@@ -3,11 +3,11 @@ import { act, renderHook } from '@testing-library/react-hooks';
 
 import { fireEvent, render } from '../../../test-utils';
 
-import { useIsClickOutside } from './useIsClickOutside';
+import { useIsConditionMet } from './useIsConditionMet';
 
 const MockApp = () => <button type="button">Hello!</button>;
 
-describe('useIsClickOutside', () => {
+describe('useIsConditionMet', () => {
   const callBack = jest.fn();
   beforeEach(() => {
     jest.clearAllMocks();
@@ -15,13 +15,13 @@ describe('useIsClickOutside', () => {
   it(`doesn't call callBack by default`, () => {
     const refs = [{ current: {} }];
 
-    renderHook(() => useIsClickOutside({ refs, callBack, attachListener: true }));
+    renderHook(() => useIsConditionMet({ refs, callBack, attachListener: true }));
     expect(callBack).not.toHaveBeenCalled();
   });
 
   it('calls callBack with true when click is not from ref', () => {
     renderHook(() =>
-      useIsClickOutside({
+      useIsConditionMet({
         refs: [{ current: { contains: () => false } }],
         callBack,
         attachListener: true,
@@ -41,7 +41,7 @@ describe('useIsClickOutside', () => {
     render(<MockApp />);
 
     renderHook(() =>
-      useIsClickOutside({
+      useIsConditionMet({
         refs: [{ current: { contains: () => true } }],
         callBack,
         attachListener: true,
@@ -57,7 +57,7 @@ describe('useIsClickOutside', () => {
 
   it('does not calls callBack when attachListener is false', () => {
     renderHook(() =>
-      useIsClickOutside({
+      useIsConditionMet({
         refs: [{ current: { contains: () => false } }],
         callBack,
         attachListener: false,

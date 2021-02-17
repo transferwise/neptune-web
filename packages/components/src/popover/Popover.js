@@ -7,9 +7,10 @@ import { logActionRequiredIf, deprecated } from '../utilities';
 
 import { Position } from '../common';
 import ResponsivePanel from '../common/responsivePanel';
-import { useIsClickOutside } from '../common/hooks';
+import { useIsConditionMet } from '../common/hooks';
 
 import './Popover.css';
+import keyCodes from '../common/keyCodes';
 
 const expiryDate = new Date('17-08-2021');
 
@@ -29,9 +30,20 @@ const Popover = ({
   const triggerRef = useRef(null);
   const responsivePanelRef = useRef(null);
 
-  useIsClickOutside({
-    refs: [responsivePanelRef, triggerRef],
-    callBack: (val) => val && clickOutsideCallback(true),
+  const callBack = (val) => val && clickOutsideCallback(true);
+
+  useIsConditionMet({
+    eventType: 'click',
+    condition: (event) =>
+      ![responsivePanelRef, triggerRef].some((el) => el?.current?.contains(event.target)),
+    callBack,
+    attachListener: open,
+  });
+
+  useIsConditionMet({
+    eventType: 'keydown',
+    condition: (event) => event.keyCode === keyCodes.ESCAPE,
+    callBack,
     attachListener: open,
   });
 
