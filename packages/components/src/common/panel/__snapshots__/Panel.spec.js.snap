@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel renders 1`] = `
+<div>
+  <div>
+    <div
+      class="np-panel"
+      style="position: absolute; left: 0px; top: 0px;"
+    >
+      <div
+        class="np-panel__arrow"
+      />
+      <div>
+        children
+      </div>
+    </div>
+  </div>
+</div>
+`;
