@@ -38,6 +38,23 @@ describe('useClientWidth', () => {
         fireEvent(window, new Event('resize'));
       });
       expect(result.current).toEqual([700]);
+
+      act(() => {
+        ref.current.clientWidth = 800;
+        fireEvent(window, new Event('resize'));
+      });
+      expect(result.current).toEqual([800]);
+    });
+  });
+
+  describe('when window ref is provided', () => {
+    it('returns window innerWidth', () => {
+      window.innerWidth = 600;
+      const {
+        result: { current },
+      } = renderHook(() => useClientWidth({ ref: window }));
+
+      expect(current).toEqual([600]);
     });
   });
 });

@@ -8,13 +8,17 @@ const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffec
 export const useClientWidth = ({ ref, throttleMs = THROTTLE_MS }) => {
   const [clientWidth, setClientWidth] = useState(null);
 
-  const updateClientWidth = () => {
-    if (ref && ref.current) {
-      setClientWidth(ref.current.clientWidth);
-    }
-  };
-
   useIsomorphicLayoutEffect(() => {
+    const updateClientWidth = () => {
+      if (ref) {
+        // if ref is referencing to window we check the window.innerWidth
+        if (ref.innerWidth) {
+          setClientWidth(ref.innerWidth);
+        } else if (ref.current) {
+          setClientWidth(ref.current.clientWidth);
+        }
+      }
+    };
     window.addEventListener('resize', throttle(updateClientWidth, throttleMs));
 
     updateClientWidth();
