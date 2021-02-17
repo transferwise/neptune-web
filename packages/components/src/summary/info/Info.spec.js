@@ -1,10 +1,18 @@
 import React from 'react';
-import { render, fireEvent } from '../../test-utils';
+import { render, fireEvent, waitFor } from '../../test-utils';
 import Info from './Info';
 
 jest.mock('../../dimmer', () => {
   // eslint-disable-next-line
   return ({ children }) => <div className="dimmer">{children}</div>;
+});
+
+jest.mock('../../common/hooks', () => {
+  // eslint-disable-next-line
+  return {
+    useIsClickOutside: () => false,
+    useClientWidth: () => [576],
+  };
 });
 
 describe('Info', () => {
@@ -15,54 +23,66 @@ describe('Info', () => {
     'aria-label': 'aria-label',
   };
 
-  it('renders small icon', () => {
-    const { container } = render(<Info {...props} />);
+  it('renders small icon', async () => {
+    await waitFor(() => {
+      render(<Info {...props} />);
+    });
 
-    const svgElement = getSvgIcon({ container });
+    const svgElement = getSvgIcon();
     expect(svgElement.getAttribute('height')).toBe('16');
   });
 
-  it('renders large icon', () => {
-    const { container } = render(<Info {...props} size={Info.Size.LARGE} />);
-    const svgElement = getSvgIcon({ container });
+  it('renders large icon', async () => {
+    await waitFor(() => {
+      render(<Info {...props} size={Info.Size.LARGE} />);
+    });
+    const svgElement = getSvgIcon();
 
     expect(svgElement.getAttribute('height')).toBe('24');
   });
 
   describe(`when in ${Info.Presentation.POPOVER} mode`, () => {
-    it('renders popover component', () => {
-      const { container, getByLabelText } = render(<Info {...props} />);
-      const helpIcon = getHelpIcon({ container });
+    it('renders popover component', async () => {
+      await waitFor(() => {
+        render(<Info {...props} open />);
+      });
 
-      expect(helpIcon).toBeInTheDocument();
-      expect(getByLabelText('aria-label').getAttribute('data-toggle')).toEqual('popover');
+      expect(getHelpIcon()).toBeInTheDocument();
+      expect(getPopover()).toBeInTheDocument();
     });
 
-    it('opens popover onClick', () => {
-      const { container, getByLabelText } = render(<Info {...props} />);
+    it('opens popover onClick', async () => {
+      let getByLabelText;
+
+      await waitFor(() => {
+        ({ getByLabelText } = render(<Info {...props} />));
+      });
       const popOverButton = getByLabelText('aria-label');
-      const helpIcon = getHelpIcon({ container });
 
-      expect(helpIcon).toBeInTheDocument();
-      expect(popOverButton.getAttribute('aria-expanded')).toEqual('false');
+      expect(getHelpIcon()).toBeInTheDocument();
 
+      expect(getPopover()).not.toHaveClass('np-panel--open');
       fireEvent.click(popOverButton);
-      expect(popOverButton.getAttribute('aria-expanded')).toEqual('true');
+
+      expect(getPopover()).toHaveClass('np-panel--open');
     });
   });
 
   describe(`when in ${Info.Presentation.MODAL} mode`, () => {
-    it('opens modal onClick', () => {
-      const { container } = render(<Info {...props} presentation={Info.Presentation.MODAL} />);
-      const helpIcon = getHelpIcon({ container });
+    it('opens modal onClick', async () => {
+      await waitFor(() => {
+        render(<Info {...props} presentation={Info.Presentation.MODAL} />);
+      });
+      const helpIcon = getHelpIcon();
 
-      expect(helpIcon).toBeInTheDocument();
+      expect(getHelpIcon()).toBeInTheDocument();
 
       fireEvent.click(helpIcon);
-      expect(container.querySelector('.tw-modal')).toBeInTheDocument();
+      expect(document.querySelector('.tw-modal')).toBeInTheDocument();
     });
   });
 
-  const getHelpIcon = ({ container }) => container.querySelector('.tw-icon-help-circle');
-  const getSvgIcon = ({ container }) => container.querySelector('.tw-icon-help-circle > svg');
+  const getHelpIcon = () => document.querySelector('.tw-icon-help-circle');
+  const getSvgIcon = () => document.querySelector('.tw-icon-help-circle > svg');
+  const getPopover = () => document.querySelector('.np-panel');
 });

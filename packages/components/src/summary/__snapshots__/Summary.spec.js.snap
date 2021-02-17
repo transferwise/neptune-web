@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Summary renders full component 1`] = `
-<DocumentFragment>
+<div>
   <div
     class="np-summary d-flex align-items-start"
   >
@@ -44,50 +44,70 @@ exports[`Summary renders full component 1`] = `
         <span
           class="m-l-1 hidden-xs np-info np-info__small"
         >
-          <button
-            aria-expanded="false"
-            aria-label="aria-label"
-            class="btn-unstyled"
-            data-toggle="popover"
-            role="button"
-            tabindex="0"
-            type="button"
+          <span
+            aria-describedby="id"
+            class="np-popover d-inline-block"
           >
-            <span
-              aria-hidden="true"
-              class="tw-icon tw-icon-help-circle "
-              role="presentation"
+            <button
+              aria-label="aria-label"
+              class="btn-unstyled"
+              type="button"
             >
-              <svg
-                fill="currentColor"
-                focusable="false"
-                height="16"
-                width="16"
+              <span
+                aria-hidden="true"
+                class="tw-icon tw-icon-help-circle "
+                role="presentation"
               >
-                <path
-                  d="M9 11a1 1 0 11-2 0 1 1 0 012 0zM10.443 4.8A2.3 2.3 0 007.3 3.96L5.136 5.21l.8 1.385L8.1 5.345a.7.7 0 01.7 1.212l-2.165 1.25.8 1.386L9.6 7.943a2.3 2.3 0 00.842-3.142z"
-                />
-                <path
-                  clip-rule="evenodd"
-                  d="M8 16A8 8 0 108 0a8 8 0 000 16zm0-1.6A6.4 6.4 0 108 1.6a6.4 6.4 0 000 12.8z"
-                  fill-rule="evenodd"
-                />
-              </svg>
-            </span>
-          </button>
+                <svg
+                  fill="currentColor"
+                  focusable="false"
+                  height="16"
+                  width="16"
+                >
+                  <path
+                    d="M9 11a1 1 0 11-2 0 1 1 0 012 0zM10.443 4.8A2.3 2.3 0 007.3 3.96L5.136 5.21l.8 1.385L8.1 5.345a.7.7 0 01.7 1.212l-2.165 1.25.8 1.386L9.6 7.943a2.3 2.3 0 00.842-3.142z"
+                  />
+                  <path
+                    clip-rule="evenodd"
+                    d="M8 16A8 8 0 108 0a8 8 0 000 16zm0-1.6A6.4 6.4 0 108 1.6a6.4 6.4 0 000 12.8z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </span>
+            </button>
+          </span>
           <div
-            class="tw-popover popover animate in scale-down"
+            class="np-size-swapper d-flex"
+            style="visibility: hidden;"
           >
-            <h3
-              class="popover-title"
-            >
-              title
-            </h3>
-            <p
-              class="popover-content m-b-0"
-            >
-              description
-            </p>
+            <div>
+              <div
+                class="np-panel"
+                style="position: absolute; left: 0px; top: 0px;"
+              >
+                <div
+                  class="np-panel__arrow"
+                />
+                <div
+                  aria-hidden="true"
+                  class="np-popover__content"
+                  id="id"
+                  role="tooltip"
+                >
+                  <span
+                    class="sr-only"
+                  >
+                    Tooltip:
+                  </span>
+                  <div
+                    class="h5"
+                  >
+                    title
+                  </div>
+                  description
+                </div>
+              </div>
+            </div>
           </div>
         </span>
       </div>
@@ -107,54 +127,74 @@ exports[`Summary renders full component 1`] = `
     <span
       class="m-l-2 hidden-sm hidden-md hidden-lg hidden-xl np-info np-info__large"
     >
-      <button
-        aria-expanded="false"
-        aria-label="aria-label"
-        class="btn-unstyled"
-        data-toggle="popover"
-        role="button"
-        tabindex="0"
-        type="button"
+      <span
+        aria-describedby="id"
+        class="np-popover d-inline-block"
       >
-        <span
-          aria-hidden="true"
-          class="tw-icon tw-icon-help-circle "
-          role="presentation"
+        <button
+          aria-label="aria-label"
+          class="btn-unstyled"
+          type="button"
         >
-          <svg
-            fill="currentColor"
-            focusable="false"
-            height="24"
-            width="24"
+          <span
+            aria-hidden="true"
+            class="tw-icon tw-icon-help-circle "
+            role="presentation"
           >
-            <path
-              d="M13.2 16a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0zM15.196 8.232a3 3 0 00-4.098-1.098L8.5 8.634l1 1.732 2.598-1.5a1 1 0 111 1.732l-2.598 1.5 1 1.732 2.598-1.5a3 3 0 001.098-4.098z"
-            />
-            <path
-              clip-rule="evenodd"
-              d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-2a8 8 0 100-16 8 8 0 000 16z"
-              fill-rule="evenodd"
-            />
-          </svg>
-        </span>
-      </button>
+            <svg
+              fill="currentColor"
+              focusable="false"
+              height="24"
+              width="24"
+            >
+              <path
+                d="M13.2 16a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0zM15.196 8.232a3 3 0 00-4.098-1.098L8.5 8.634l1 1.732 2.598-1.5a1 1 0 111 1.732l-2.598 1.5 1 1.732 2.598-1.5a3 3 0 001.098-4.098z"
+              />
+              <path
+                clip-rule="evenodd"
+                d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-2a8 8 0 100-16 8 8 0 000 16z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </span>
+        </button>
+      </span>
       <div
-        class="tw-popover popover animate in scale-down"
+        class="np-size-swapper d-flex"
+        style="visibility: hidden;"
       >
-        <h3
-          class="popover-title"
-        >
-          title
-        </h3>
-        <p
-          class="popover-content m-b-0"
-        >
-          description
-        </p>
+        <div>
+          <div
+            class="np-panel"
+            style="position: absolute; left: 0px; top: 0px;"
+          >
+            <div
+              class="np-panel__arrow"
+            />
+            <div
+              aria-hidden="true"
+              class="np-popover__content"
+              id="id"
+              role="tooltip"
+            >
+              <span
+                class="sr-only"
+              >
+                Tooltip:
+              </span>
+              <div
+                class="h5"
+              >
+                title
+              </div>
+              description
+            </div>
+          </div>
+        </div>
       </div>
     </span>
   </div>
-</DocumentFragment>
+</div>
 `;
 
 exports[`Summary renders minimal component 1`] = `

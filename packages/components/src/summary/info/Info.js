@@ -34,8 +34,14 @@ const Info = (props) => {
           <Modal body={content} onClose={() => setOpen(false)} open={open} title={title} />
         </>
       ) : (
-        <Popover content={content} preferredPlacement={Popover.Placement.BOTTOM_LEFT} title={title}>
-          <button type="button" {...buttonProps} />
+        <Popover
+          content={content}
+          position={Popover.Position.BOTTOM}
+          title={title}
+          open={open}
+          clickOutsideCallback={(val) => setOpen(!val)}
+        >
+          <button type="button" {...buttonProps} onClick={() => setOpen(true)} />
         </Popover>
       )}
     </span>

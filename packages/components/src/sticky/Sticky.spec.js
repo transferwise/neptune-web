@@ -19,7 +19,8 @@ describe('Sticky', () => {
 
   it('renders SlidingPanel with right props', () => {
     component = shallow(<Sticky {...props} />);
-    const slidingPanel = component.find('SlidingPanel');
+
+    const slidingPanel = component.find('ForwardRef');
     expect(slidingPanel).toHaveLength(1);
 
     expect(slidingPanel.props()).toEqual({

@@ -90,6 +90,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
+    "@popperjs/core": "^2.6.0",
     "@formatjs/intl-locale": "^2.4.14",
     "@transferwise/formatting": "^2.1.0",
     "@transferwise/neptune-validation": "^2.0.10",
@@ -101,9 +102,11 @@
     "lodash.difference": "^4.5.0",
     "lodash.throttle": "^4.1.1",
     "lodash.topairs": "^4.3.0",
+    "react-popper": "^2.2.4",
     "react-required-if": "^1.0.3",
     "react-spring": "^8.0.27",
-    "react-transition-group": "^4.2.1"
+    "react-transition-group": "^4.2.1",
+    "uniqid": "^5.2.0"
   },
   "watch": {
     "build:crowdin-source-file": "src/**/*.messages.js"
