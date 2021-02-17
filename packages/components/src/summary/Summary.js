@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React, { cloneElement } from 'react';
+import { useIntl } from 'react-intl';
 import Types from 'prop-types';
 import {
   CheckCircle as CheckCircleIcon,
@@ -11,11 +12,18 @@ import Info from './info';
 import { Status } from '../common';
 import { deprecated } from '../utilities';
 
+import messages from './Summary.messages';
 import './Summary.css';
 
 const BadgeIcons = {
   done: CheckCircleIcon,
   pending: PendingCircleIcon,
+};
+
+const statusLabels = {
+  [Status.NOT_DONE]: 'statusNotDone',
+  [Status.DONE]: 'statusDone',
+  [Status.PENDING]: 'statusPending',
 };
 
 const expiryDate = new Date('03-01-2021');
@@ -33,6 +41,8 @@ const Summary = ({
   status,
   title,
 }) => {
+  const intl = useIntl();
+
   let media = illustration;
   if (icon) {
     const iconSize = icon?.props?.size;
@@ -41,10 +51,13 @@ const Summary = ({
   const Badge = status && BadgeIcons[status];
 
   return (
-    <Element className={classNames('np-summary d-flex align-items-start', className)}>
+    <Element
+      className={classNames('np-summary d-flex align-items-start', className)}
+      aria-label={status && intl.formatMessage(messages[statusLabels[status]])}
+    >
       <div className="np-summary__icon">
         {media}
-        {status && <Badge size={16} filled className={`np-summary-icon__${status}`} />}
+        {Badge && <Badge size={16} filled className={`np-summary-icon__${status}`} />}
       </div>
       <div className="np-summary__body m-l-2">
         <div className="np-summary__title d-flex">
@@ -82,6 +95,7 @@ const Summary = ({
 };
 
 Summary.Status = {
+  NOT_DONE: Status.NOT_DONE,
   DONE: Status.DONE,
   PENDING: Status.PENDING,
 };
@@ -136,7 +150,7 @@ Summary.propTypes = {
   // eslint-disable-next-line
   icon: requiredIf(Types.node, ({ illustration }) => !illustration),
   /** Decides the badge applied to Icon */
-  status: Types.oneOf([Summary.Status.DONE, Summary.Status.PENDING]),
+  status: Types.oneOf([Summary.Status.NOT_DONE, Summary.Status.DONE, Summary.Status.PENDING]),
   /** Summary title */
   title: Types.node.isRequired,
 };
