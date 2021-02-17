@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popover on desktop renders correctly when open is false 1`] = `
+<div>
+  <span
+    aria-describedby="id"
+    class="np-popover d-inline-block"
+  >
+    <button
+      type="button"
+    >
+      Open
+    </button>
+  </span>
+  <div
+    class="np-size-swapper d-flex"
+    style="visibility: visible;"
+  >
+    <div>
+      <div
+        class="np-panel"
+        data-popper-escaped="true"
+        data-popper-placement="bottom"
+        data-popper-reference-hidden="true"
+        style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 12px);"
+      >
+        <div
+          class="np-panel__arrow"
+          style="position: absolute; left: 0px; transform: translate(5px, 0px);"
+        />
+        <div
+          aria-hidden="true"
+          class="np-popover__content"
+          id="id"
+          role="tooltip"
+        >
+          <span
+            class="sr-only"
+          >
+            Tooltip:
+          </span>
+          <div
+            class="h5"
+          >
+            title
+          </div>
+          content
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Popover on desktop renders correctly when open is true 1`] = `
+<div>
+  <span
+    aria-describedby="id"
+    class="np-popover d-inline-block"
+  >
+    <button
+      type="button"
+    >
+      Open
+    </button>
+  </span>
+  <div
+    class="np-size-swapper d-flex"
+    style="visibility: visible;"
+  >
+    <div>
+      <div
+        class="np-panel np-panel--open"
+        data-popper-escaped="true"
+        data-popper-placement="bottom"
+        data-popper-reference-hidden="true"
+        style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 12px);"
+      >
+        <div
+          class="np-panel__arrow"
+          style="position: absolute; left: 0px; transform: translate(5px, 0px);"
+        />
+        <div
+          aria-hidden="false"
+          class="np-popover__content"
+          id="id"
+          role="tooltip"
+        >
+          <span
+            class="sr-only"
+          >
+            Tooltip:
+          </span>
+          <div
+            class="h5"
+          >
+            title
+          </div>
+          content
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Popover on mobile renders 1`] = `
+<div>
+  <span
+    aria-describedby="id"
+    class="np-popover d-inline-block"
+  >
+    <button
+      type="button"
+    >
+      Open
+    </button>
+  </span>
+  <div
+    class="np-size-swapper d-flex"
+    style="visibility: visible;"
+  />
+</div>
+`;

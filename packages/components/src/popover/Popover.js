@@ -1,147 +1,136 @@
-import React, { Component, cloneElement } from 'react';
+import React, { useState, useRef } from 'react';
 import Types from 'prop-types';
-import classNames from 'classnames';
+import classnames from 'classnames';
+
+import uniqid from 'uniqid';
+import { logActionRequiredIf, deprecated } from '../utilities';
+
 import { Position } from '../common';
-import { getPlacement, getPositionRelativeToParent } from './positioning';
-import { wrapInDOMElementIfNecessary } from './DOMWrapping';
-import KeyCodes from '../common/keyCodes';
-import {
-  addClickClassToDocumentOnIos,
-  removeClickClassFromDocumentOnIos,
-} from '../common/domHelpers';
+import ResponsivePanel from '../common/responsivePanel';
+import { useIsClickOutside } from '../common/hooks';
 
 import './Popover.css';
 
-export default class Popover extends Component {
-  static Placement = Position;
+const expiryDate = new Date('17-08-2021');
 
-  constructor() {
-    super();
-    this.state = {
-      isOpen: false,
-    };
-  }
+const Popover = ({
+  children,
+  classNames,
+  clickOutsideCallback,
+  content,
+  open,
+  preferredPlacement,
+  position = preferredPlacement,
+  title,
+}) => {
+  logActionRequired({ position });
 
-  componentWillUnmount() {
-    this.close();
-  }
+  const [memoizedId] = useState(() => uniqid('np-popover-'));
+  const triggerRef = useRef(null);
+  const responsivePanelRef = useRef(null);
 
-  closePopoverOnOutsideClick = (event) => {
-    const popoverClicked = this.popoverElement.contains(event.target);
-    const triggerClicked = this.triggerElement.contains(event.target);
+  useIsClickOutside({
+    refs: [responsivePanelRef, triggerRef],
+    callBack: (val) => val && clickOutsideCallback(true),
+    attachListener: open,
+  });
 
-    if (!popoverClicked && !triggerClicked) {
-      this.close();
-    }
-  };
-
-  handleKeyUp = (event) => {
-    if (event.target.nodeName !== 'BUTTON' && event.keyCode === KeyCodes.ENTER) {
-      this.toggle();
-    }
-  };
-
-  open = () => {
-    this.setState({ isOpen: true });
-
-    addClickClassToDocumentOnIos();
-    document.addEventListener('click', this.closePopoverOnOutsideClick, true);
-  };
-
-  close = () => {
-    this.setState({ isOpen: false });
-
-    removeClickClassFromDocumentOnIos();
-    document.removeEventListener('click', this.closePopoverOnOutsideClick, true);
-  };
-
-  toggle = () => (this.state.isOpen ? this.close() : this.open());
-
-  createTrigger = () => {
-    const { children: child, containsFocusableElement } = this.props;
-    const { isOpen } = this.state;
-    const wrappedChild = wrapInDOMElementIfNecessary(child);
-
-    const focusableProps = !containsFocusableElement && {
-      tabIndex: 0,
-      role: 'button',
-      'aria-expanded': isOpen,
-    };
-
-    return cloneElement(wrappedChild, {
-      ...focusableProps,
-      'data-toggle': 'popover',
-      onClick: this.toggle,
-      onKeyUp: this.handleKeyUp,
-      ref: (element) => {
-        this.triggerElement = element;
-      },
-    });
-  };
-
-  style = (className) => this.props.classNames[className] || className;
-
-  render() {
-    const { title, content, preferredPlacement } = this.props;
-    const { isOpen } = this.state;
-
-    const trigger = this.createTrigger();
-
-    const placement = getPlacement(this.popoverElement, preferredPlacement);
-    const popoverClassName = classNames(
-      'tw-popover',
-      this.style('popover'),
-      this.style('animate'),
-      this.style('in'),
-      { [this.style('scale-down')]: !isOpen },
-      this.style(placement),
-    );
-
-    const { top, left } = getPositionRelativeToParent(this.popoverElement, placement);
-
-    return (
-      <>
-        {trigger}
-        <div
-          className={popoverClassName}
-          ref={(element) => {
-            this.popoverElement = element;
-          }}
-          style={{ top, left }}
-        >
-          {title && <h3 className={classNames(this.style('popover-title'))}>{title}</h3>}
-          <p className={classNames(this.style('popover-content'), this.style('m-b-0'))}>
-            {typeof content === 'function'
-              ? content({ isOpen, close: this.close.bind(this) })
-              : content}
-          </p>
+  return (
+    <span className={classnames('np-popover', classNames)}>
+      <span className="d-inline-block" ref={triggerRef} aria-describedby={memoizedId}>
+        {children}
+      </span>
+      <ResponsivePanel
+        open={open}
+        ref={responsivePanelRef}
+        triggerRef={triggerRef}
+        position={deprecatedPositions[position] || position}
+        arrow
+      >
+        <div className="np-popover__content" id={memoizedId} aria-hidden={!open} role="tooltip">
+          <span className="sr-only">Tooltip:</span>
+          <div className="h5">{title}</div>
+          {content}
         </div>
-      </>
-    );
-  }
-}
+      </ResponsivePanel>
+    </span>
+  );
+};
 
-Popover.propTypes = {
-  children: Types.oneOfType([Types.element, Types.string]).isRequired,
-  title: Types.oneOfType([Types.element, Types.string]),
-  content: Types.oneOfType([Types.element, Types.string, Types.func]).isRequired,
-  containsFocusableElement: Types.bool,
-  preferredPlacement: Types.oneOf([
-    Popover.Placement.TOP,
-    Popover.Placement.RIGHT,
-    Popover.Placement.BOTTOM,
-    Popover.Placement.LEFT,
-    Popover.Placement.LEFT_TOP,
-    Popover.Placement.RIGHT_TOP,
-    Popover.Placement.BOTTOM_RIGHT,
-    Popover.Placement.BOTTOM_LEFT,
-  ]),
-  classNames: Types.objectOf(Types.string),
+const logActionRequired = ({ position }) => {
+  logActionRequiredIf(
+    `Popover has deprecated the ${position} value for the 'position' prop. Please use ${deprecatedPositions[position]} instead.`,
+    deprecatedPositions[position],
+  );
+};
+
+Popover.Position = {
+  BOTTOM: Position.BOTTOM,
+  BOTTOM_LEFT: Position.BOTTOM_LEFT,
+  BOTTOM_RIGHT: Position.BOTTOM_RIGHT,
+  LEFT: Position.LEFT,
+  LEFT_TOP: Position.LEFT_TOP,
+  RIGHT: Position.RIGHT,
+  RIGHT_TOP: Position.RIGHT_TOP,
+  TOP: Position.TOP,
 };
 
 Popover.defaultProps = {
-  title: null,
-  containsFocusableElement: false,
-  preferredPlacement: Popover.Placement.RIGHT,
-  classNames: {},
+  classNames: undefined,
+  clickOutsideCallback: undefined,
+  open: false,
+  position: Popover.Position.TOP,
+  title: undefined,
 };
+
+Popover.propTypes = {
+  children: Types.node.isRequired,
+  classNames: Types.string,
+  clickOutsideCallback: Types.func,
+  content: Types.node.isRequired,
+  open: Types.bool,
+  /** @DEPRECATED please use position instead */
+  // eslint-disable-next-line
+  preferredPlacement: deprecated(
+    Types.oneOf([
+      Popover.Position.TOP,
+      Popover.Position.RIGHT,
+      Popover.Position.BOTTOM,
+      Popover.Position.LEFT,
+      Popover.Position.LEFT_TOP,
+      Popover.Position.RIGHT_TOP,
+      Popover.Position.BOTTOM_RIGHT,
+      Popover.Position.BOTTOM_LEFT,
+    ]),
+    {
+      component: 'Popover',
+      newProp: 'position',
+      expiryDate,
+    },
+  ),
+
+  position: Types.oneOf([
+    Popover.Position.BOTTOM,
+    Popover.Position.LEFT,
+    Popover.Position.RIGHT,
+    Popover.Position.TOP,
+    /* @DEPRECATED Please use BOTTOM instead. */
+    Popover.Position.BOTTOM_LEFT,
+    /* @DEPRECATED Please use BOTTOM instead. */
+    Popover.Position.BOTTOM_RIGHT,
+    /* @DEPRECATED Please use TOP instead. */
+    Popover.Position.LEFT_TOP,
+    /* @DEPRECATED Please use TOP instead. */
+    Popover.Position.RIGHT_TOP,
+  ]),
+  title: Types.node,
+};
+
+export const deprecatedPositions = {
+  [Position.BOTTOM_LEFT]: Popover.Position.BOTTOM,
+  [Position.BOTTOM_RIGHT]: Popover.Position.BOTTOM,
+  [Position.LEFT_TOP]: Popover.Position.TOP,
+  [Position.RIGHT_TOP]: Popover.Position.TOP,
+};
+
+export default Popover;

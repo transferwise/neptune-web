@@ -1,6 +1,7 @@
-import React from 'react';
-import { select, text, boolean } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import React, { useState } from 'react';
+import { select } from '@storybook/addon-knobs';
+
+import { InfoCircle } from '@transferwise/icons';
 import Popover from './Popover';
 import Button from '../button';
 
@@ -10,26 +11,29 @@ export default {
 };
 
 export const basic = () => {
-  const title = text('title', 'I am the Popover title');
-  const content = text('content', 'Lorem ipsum dolor sit amet');
-  const containsFocusableElement = boolean('containsFocusableElement', false);
-  const preferredPlacement = select(
-    'preferredPlacement',
-    Object.values(Popover.Placement),
-    Popover.Placement.BOTTOM,
-  );
+  const position = select('position', Object.values(Popover.Position), Popover.Position.TOP);
+  const [open, setOpen] = useState(false);
 
   return (
-    <Popover
-      title={title}
-      content={content}
-      containsFocusableElement={containsFocusableElement}
-      preferredPlacement={preferredPlacement}
-      key={preferredPlacement}
-    >
-      <Button onClick={action('clicked')} disabled={false} block={false} size={Button.Size.Medium}>
-        Click here to Open Popover!
-      </Button>
-    </Popover>
+    <>
+      <Popover
+        clickOutsideCallback={(val) => setOpen(!val)}
+        content={
+          <>
+            You’ll get this rate as long...
+            <button onClick={(val) => setOpen(!val)} type="button">
+              <InfoCircle />
+            </button>
+          </>
+        }
+        open={open}
+        position={position}
+        title="Guaranteed rate"
+      >
+        <Button type={Button.Type.PRIMARY} onClick={() => setOpen(!open)}>
+          Click here to Open Popover!
+        </Button>
+      </Popover>
+    </>
   );
 };
