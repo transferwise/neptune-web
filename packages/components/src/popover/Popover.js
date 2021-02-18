@@ -15,11 +15,11 @@ const expiryDate = new Date('17-08-2021');
 const Popover = ({
   children,
   classNames,
-  onClose,
   content,
+  onClose,
   open,
-  preferredPlacement,
   position = preferredPlacement,
+  preferredPlacement,
   title,
 }) => {
   logActionRequired({ position });
@@ -100,8 +100,8 @@ Popover.defaultProps = {
 Popover.propTypes = {
   children: Types.node.isRequired,
   classNames: Types.string,
-  onClose: Types.func,
   content: Types.node.isRequired,
+  onClose: Types.func,
   open: Types.bool,
   /** @DEPRECATED please use position instead */
   // eslint-disable-next-line
