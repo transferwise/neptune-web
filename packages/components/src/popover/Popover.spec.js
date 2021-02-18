@@ -24,7 +24,7 @@ describe('Popover', () => {
     open: false,
     position: Popover.Position.BOTTOM,
     title: 'title',
-    clickOutsideCallback: jest.fn(),
+    onClose: jest.fn(),
   };
 
   let container;
@@ -140,7 +140,7 @@ describe('Popover', () => {
       expect(getBottomSheet()).not.toBeInTheDocument();
     });
 
-    it('calls clickOutsideCallback withg correct value', async () => {
+    it('calls onClose withg correct value', async () => {
       await waitFor(() => {
         ({ container, rerender } = render(
           <Popover {...props} open>
@@ -150,10 +150,10 @@ describe('Popover', () => {
       });
 
       fireEvent.click(screen.getByText('Open'));
-      expect(props.clickOutsideCallback).not.toHaveBeenCalled();
+      expect(props.onClose).not.toHaveBeenCalled();
 
       fireEvent.click(document);
-      expect(props.clickOutsideCallback).toHaveBeenCalledWith(true);
+      expect(props.onClose).toHaveBeenCalledWith(true);
     });
   });
 

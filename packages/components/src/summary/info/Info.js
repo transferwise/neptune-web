@@ -39,7 +39,7 @@ const Info = (props) => {
           position={Popover.Position.BOTTOM}
           title={title}
           open={open}
-          clickOutsideCallback={(val) => setOpen(!val)}
+          onClose={(val) => setOpen(!val)}
         >
           <button type="button" {...buttonProps} onClick={() => setOpen(true)} />
         </Popover>

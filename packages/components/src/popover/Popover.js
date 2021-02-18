@@ -15,7 +15,7 @@ const expiryDate = new Date('17-08-2021');
 const Popover = ({
   children,
   classNames,
-  clickOutsideCallback,
+  onClose,
   content,
   open,
   preferredPlacement,
@@ -27,7 +27,7 @@ const Popover = ({
   const triggerRef = useRef(null);
   const responsivePanelRef = useRef(null);
 
-  const callBack = (val) => val && clickOutsideCallback(true);
+  const callBack = (val) => val && onClose(true);
 
   useAttachEvent({
     eventType: 'click',
@@ -91,7 +91,7 @@ Popover.Position = {
 
 Popover.defaultProps = {
   classNames: undefined,
-  clickOutsideCallback: undefined,
+  onClose: undefined,
   open: false,
   position: Popover.Position.TOP,
   title: undefined,
@@ -100,7 +100,7 @@ Popover.defaultProps = {
 Popover.propTypes = {
   children: Types.node.isRequired,
   classNames: Types.string,
-  clickOutsideCallback: Types.func,
+  onClose: Types.func,
   content: Types.node.isRequired,
   open: Types.bool,
   /** @DEPRECATED please use position instead */

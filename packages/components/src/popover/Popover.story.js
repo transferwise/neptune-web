@@ -17,12 +17,12 @@ export const basic = () => {
   return (
     <>
       <Popover
-        clickOutsideCallback={(val) => setOpen(!val)}
+        onClose={() => setOpen(false)}
         content={
           <>
             You’ll get this rate as long as we receive your 10 EUR within the next 51 hours.
             <button
-              onClick={(val) => setOpen(!val)}
+              onClick={() => setOpen(false)}
               type="button"
               aria-label="close"
               className="btn-unstyled pull-right"
