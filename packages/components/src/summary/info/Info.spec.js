@@ -10,7 +10,7 @@ jest.mock('../../dimmer', () => {
 jest.mock('../../common/hooks', () => {
   // eslint-disable-next-line
   return {
-    useIsClickOutside: () => false,
+    useAttachEvent: () => false,
     useClientWidth: () => [576],
   };
 });
