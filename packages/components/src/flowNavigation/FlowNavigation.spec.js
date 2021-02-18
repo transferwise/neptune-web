@@ -12,7 +12,11 @@ jest.mock('lodash.throttle', () => jest.fn((fn) => fn));
 
 jest.mock('./animatedLabel', () => {
   // eslint-disable-next-line react/prop-types
-  return ({ className }) => <div className={className}>AnimatedLabel</div>;
+  return ({ className, activeLabel }) => (
+    <div className={className} data-testid={`activeLabel-${activeLabel}`}>
+      AnimatedLabel
+    </div>
+  );
 });
 jest.mock('./backButton', () => {
   // eslint-disable-next-line react/prop-types
@@ -48,6 +52,7 @@ describe('FlowNavigation', () => {
         label: 'label-0',
       },
       { label: 'label-1' },
+      { label: 'label-2' },
     ],
     activeStep: 0,
   };
@@ -172,6 +177,18 @@ describe('FlowNavigation', () => {
 
       expect(screen.getByText('BackButton').parentElement).toHaveClass('visible-xs');
       expect(screen.getByText('AnimatedLabel')).toBeInTheDocument();
+    });
+
+    it('renders correct AnimatedLabel', () => {
+      const { rerender } = render(
+        <FlowNavigation {...props} onGoBack={jest.fn()} activeStep={1} />,
+      );
+
+      expect(screen.getByTestId('activeLabel-0')).toBeInTheDocument();
+
+      rerender(<FlowNavigation {...props} onGoBack={jest.fn()} activeStep={2} />);
+
+      expect(screen.getByTestId('activeLabel-1')).toBeInTheDocument();
     });
   });
   const logoFull = () => screen.getByAltText(`logo`);

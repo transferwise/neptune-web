@@ -114,7 +114,7 @@ exports[`FlowNavigation on mobile renders as expected 1`] = `
           
           
         "
-              style="left: 100%;"
+              style="left: 50%;"
             >
               <button
                 class="btn-unstyled tw-stepper__step-label"
@@ -123,6 +123,25 @@ exports[`FlowNavigation on mobile renders as expected 1`] = `
               >
                 <small>
                   label-1
+                </small>
+              </button>
+            </li>
+            <li
+              class="
+          hidden-xs
+          tw-stepper__step
+          
+          
+        "
+              style="left: 100%;"
+            >
+              <button
+                class="btn-unstyled tw-stepper__step-label"
+                disabled=""
+                type="button"
+              >
+                <small>
+                  label-2
                 </small>
               </button>
             </li>
@@ -248,7 +267,7 @@ exports[`FlowNavigation renders as expected 1`] = `
           
           
         "
-              style="left: 100%;"
+              style="left: 50%;"
             >
               <button
                 class="btn-unstyled tw-stepper__step-label"
@@ -257,6 +276,25 @@ exports[`FlowNavigation renders as expected 1`] = `
               >
                 <small>
                   label-1
+                </small>
+              </button>
+            </li>
+            <li
+              class="
+          hidden-xs
+          tw-stepper__step
+          
+          
+        "
+              style="left: 100%;"
+            >
+              <button
+                class="btn-unstyled tw-stepper__step-label"
+                disabled=""
+                type="button"
+              >
+                <small>
+                  label-2
                 </small>
               </button>
             </li>

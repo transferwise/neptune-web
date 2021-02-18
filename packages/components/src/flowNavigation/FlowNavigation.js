@@ -36,7 +36,7 @@ const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, done, ste
               <AnimatedLabel
                 className="m-x-1"
                 labels={steps.map((step) => step.label)}
-                activeLabel={activeStep}
+                activeLabel={activeStep - 1}
               />
             }
             onClick={onGoBack}
