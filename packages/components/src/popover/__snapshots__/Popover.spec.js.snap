@@ -6,7 +6,6 @@ exports[`Popover on desktop renders correctly when open is false 1`] = `
     class="np-popover"
   >
     <span
-      aria-describedby="id"
       class="d-inline-block"
     >
       <button
@@ -34,14 +33,8 @@ exports[`Popover on desktop renders correctly when open is false 1`] = `
           <div
             aria-hidden="true"
             class="np-popover__content"
-            id="id"
             role="tooltip"
           >
-            <span
-              class="sr-only"
-            >
-              Tooltip:
-            </span>
             <div
               class="h5"
             >
@@ -62,7 +55,6 @@ exports[`Popover on desktop renders correctly when open is true 1`] = `
     class="np-popover"
   >
     <span
-      aria-describedby="id"
       class="d-inline-block"
     >
       <button
@@ -70,6 +62,13 @@ exports[`Popover on desktop renders correctly when open is true 1`] = `
       >
         Open
       </button>
+      <span
+        class="sr-only"
+        role="status"
+      >
+        title
+        content
+      </span>
     </span>
     <div
       class="np-size-swapper d-flex"
@@ -90,14 +89,8 @@ exports[`Popover on desktop renders correctly when open is true 1`] = `
           <div
             aria-hidden="false"
             class="np-popover__content"
-            id="id"
             role="tooltip"
           >
-            <span
-              class="sr-only"
-            >
-              Tooltip:
-            </span>
             <div
               class="h5"
             >
@@ -118,7 +111,6 @@ exports[`Popover on mobile renders 1`] = `
     class="np-popover"
   >
     <span
-      aria-describedby="id"
       class="d-inline-block"
     >
       <button

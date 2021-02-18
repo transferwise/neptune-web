@@ -20,7 +20,7 @@ export const basic = () => {
         clickOutsideCallback={(val) => setOpen(!val)}
         content={
           <>
-            You’ll get this rate as long...
+            You’ll get this rate as long as we receive your 10 EUR within the next 51 hours.
             <button onClick={(val) => setOpen(!val)} type="button">
               <InfoCircle />
             </button>

@@ -1,8 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import Types from 'prop-types';
 import classnames from 'classnames';
 
-import uniqid from 'uniqid';
 import { logActionRequiredIf, deprecated } from '../utilities';
 
 import { Position } from '../common';
@@ -26,7 +25,6 @@ const Popover = ({
 }) => {
   logActionRequired({ position });
 
-  const [memoizedId] = useState(() => uniqid('np-popover-'));
   const triggerRef = useRef(null);
   const responsivePanelRef = useRef(null);
 
@@ -49,8 +47,14 @@ const Popover = ({
 
   return (
     <span className={classnames('np-popover', classNames)}>
-      <span className="d-inline-block" ref={triggerRef} aria-describedby={memoizedId}>
+      <span className="d-inline-block" ref={triggerRef}>
         {children}
+        {open && (
+          <span role="status" className="sr-only">
+            {title}
+            {content}
+          </span>
+        )}
       </span>
       <ResponsivePanel
         open={open}
@@ -59,8 +63,7 @@ const Popover = ({
         position={deprecatedPositions[position] || position}
         arrow
       >
-        <div className="np-popover__content" id={memoizedId} aria-hidden={!open} role="tooltip">
-          <span className="sr-only">Tooltip:</span>
+        <div className="np-popover__content" aria-hidden={!open} role="tooltip">
           <div className="h5">{title}</div>
           {content}
         </div>

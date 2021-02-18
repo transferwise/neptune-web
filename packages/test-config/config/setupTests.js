@@ -3,7 +3,6 @@ const enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
 
 global.fetch = require('jest-fetch-mock');
-jest.mock('uniqid', () => () => 'id');
 enzyme.configure({ adapter: new Adapter() });
 
 // https://github.com/esphen/jest-prop-type-error/blob/master/index.js

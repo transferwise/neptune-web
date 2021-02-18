@@ -48,7 +48,6 @@ exports[`Summary renders full component 1`] = `
             class="np-popover"
           >
             <span
-              aria-describedby="id"
               class="d-inline-block"
             >
               <button
@@ -94,14 +93,8 @@ exports[`Summary renders full component 1`] = `
                   <div
                     aria-hidden="true"
                     class="np-popover__content"
-                    id="id"
                     role="tooltip"
                   >
-                    <span
-                      class="sr-only"
-                    >
-                      Tooltip:
-                    </span>
                     <div
                       class="h5"
                     >
@@ -135,7 +128,6 @@ exports[`Summary renders full component 1`] = `
         class="np-popover"
       >
         <span
-          aria-describedby="id"
           class="d-inline-block"
         >
           <button
@@ -181,14 +173,8 @@ exports[`Summary renders full component 1`] = `
               <div
                 aria-hidden="true"
                 class="np-popover__content"
-                id="id"
                 role="tooltip"
               >
-                <span
-                  class="sr-only"
-                >
-                  Tooltip:
-                </span>
                 <div
                   class="h5"
                 >
