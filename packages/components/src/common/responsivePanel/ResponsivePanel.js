@@ -4,7 +4,6 @@ import Types from 'prop-types';
 import { Position } from '..';
 import BottomSheet from '../bottomSheet';
 import Panel from '../panel';
-
 import SizeSwapper from '../../sizeSwapper';
 
 const ResponsivePanel = forwardRef(({ arrow, children, open, position, triggerRef }, ref) => {

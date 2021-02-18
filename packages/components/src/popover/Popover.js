@@ -3,13 +3,12 @@ import Types from 'prop-types';
 import classnames from 'classnames';
 
 import { logActionRequiredIf, deprecated } from '../utilities';
-
 import { Position } from '../common';
 import ResponsivePanel from '../common/responsivePanel';
 import { useAttachEvent } from '../common/hooks';
+import keyCodes from '../common/keyCodes';
 
 import './Popover.css';
-import keyCodes from '../common/keyCodes';
 
 const expiryDate = new Date('17-08-2021');
 

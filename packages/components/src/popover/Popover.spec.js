@@ -76,6 +76,30 @@ describe('Popover', () => {
 
       expect(getPanel()).toBeInTheDocument();
     });
+
+    it('renders role status for assistive technologies readers', async () => {
+      await waitFor(() => {
+        ({ container, rerender } = render(
+          <Popover {...props}>
+            <button type="button">Open</button>
+          </Popover>,
+        ));
+      });
+
+      expect(screen.queryByRole('status')).toBeNull();
+
+      await waitFor(() => {
+        ({ container, rerender } = render(
+          <Popover {...props} open>
+            <button type="button">Open</button>
+          </Popover>,
+        ));
+      });
+
+      expect(screen.getByRole('status')).toBeInTheDocument();
+      expect(screen.getByRole('status').innerHTML).toBe(`${props.title}${props.content}`);
+      expect(screen.getByRole('status')).toHaveClass('sr-only');
+    });
   });
 
   describe('on mobile', () => {

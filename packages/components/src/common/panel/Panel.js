@@ -1,8 +1,8 @@
 import React, { useState, forwardRef } from 'react';
 import Types from 'prop-types';
 import classnames from 'classnames';
-
 import { usePopper } from 'react-popper';
+
 import { Position } from '..';
 import './Panel.css';
 
@@ -10,16 +10,7 @@ const Panel = forwardRef(({ arrow, children, className, open, position, triggerR
   const [arrowElement, setArrowElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
 
-  const modifiers = [
-    {
-      name: 'computeStyles',
-      options: {
-        adaptive: false,
-      },
-    },
-    // This flips the position if that position does not fit, the opposite position will be used.
-    { name: 'flip' },
-  ];
+  const modifiers = [];
 
   if (arrow) {
     modifiers.push({ name: 'arrow', options: { padding: 5, element: arrowElement } });
@@ -33,16 +24,20 @@ const Panel = forwardRef(({ arrow, children, className, open, position, triggerR
   });
 
   return (
-    <div ref={ref}>
+    // Popper recommends to use the popper element as a wrapper around an inner element that can have any CSS property transitioned for animations.
+    <div
+      ref={setPopperElement}
+      style={{ ...styles.popper }}
+      {...attributes.popper}
+      className={classnames('np-panel')}
+    >
       <div
-        className={classnames('np-panel', { 'np-panel--open': open }, className)}
-        ref={setPopperElement}
-        style={{ ...styles.popper }}
-        {...attributes.popper}
+        ref={ref}
+        className={classnames('np-panel__content', { 'np-panel--open': open }, className)}
       >
-        {arrow && <div className="np-panel__arrow" ref={setArrowElement} style={styles.arrow} />}
         {children}
       </div>
+      {arrow && <div className="np-panel__arrow" ref={setArrowElement} style={styles.arrow} />}
     </div>
   );
 });
