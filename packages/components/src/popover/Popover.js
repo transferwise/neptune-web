@@ -18,8 +18,8 @@ const Popover = ({
   content,
   onClose,
   open,
-  position = preferredPlacement,
   preferredPlacement,
+  position = preferredPlacement,
   title,
 }) => {
   logActionRequired({ position });
@@ -122,7 +122,6 @@ Popover.propTypes = {
       expiryDate,
     },
   ),
-
   position: Types.oneOf([
     Popover.Position.BOTTOM,
     Popover.Position.LEFT,
