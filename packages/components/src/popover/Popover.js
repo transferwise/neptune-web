@@ -7,7 +7,7 @@ import { logActionRequiredIf, deprecated } from '../utilities';
 
 import { Position } from '../common';
 import ResponsivePanel from '../common/responsivePanel';
-import { useIsConditionMet } from '../common/hooks';
+import { useAttachEvent } from '../common/hooks';
 
 import './Popover.css';
 import keyCodes from '../common/keyCodes';
@@ -32,7 +32,7 @@ const Popover = ({
 
   const callBack = (val) => val && clickOutsideCallback(true);
 
-  useIsConditionMet({
+  useAttachEvent({
     eventType: 'click',
     condition: (event) =>
       ![responsivePanelRef, triggerRef].some((el) => el?.current?.contains(event.target)),
@@ -40,7 +40,7 @@ const Popover = ({
     attachListener: open,
   });
 
-  useIsConditionMet({
+  useAttachEvent({
     eventType: 'keydown',
     condition: (event) => event.keyCode === keyCodes.ESCAPE,
     callBack,
