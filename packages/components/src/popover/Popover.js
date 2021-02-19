@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, cloneElement } from 'react';
 import Types from 'prop-types';
 import classnames from 'classnames';
 
@@ -16,8 +16,6 @@ const Popover = ({
   children,
   classNames,
   content,
-  onClose,
-  open,
   preferredPlacement,
   position = preferredPlacement,
   title,
@@ -26,8 +24,9 @@ const Popover = ({
 
   const triggerRef = useRef(null);
   const responsivePanelRef = useRef(null);
+  const [open, setOpen] = useState(false);
 
-  const callBack = (val) => val && onClose(true);
+  const callBack = (val) => val && setOpen(false);
 
   useAttachEvent({
     eventType: 'click',
@@ -47,7 +46,7 @@ const Popover = ({
   return (
     <span className={classnames('np-popover', classNames)}>
       <span className="d-inline-block" ref={triggerRef}>
-        {children}
+        {cloneElement(children, { onClick: () => setOpen(!open) })}
         {open && (
           <span role="status" className="sr-only">
             {title}
@@ -91,8 +90,6 @@ Popover.Position = {
 
 Popover.defaultProps = {
   classNames: undefined,
-  onClose: undefined,
-  open: false,
   position: Popover.Position.TOP,
   title: undefined,
 };
@@ -101,8 +98,6 @@ Popover.propTypes = {
   children: Types.node.isRequired,
   classNames: Types.string,
   content: Types.node.isRequired,
-  onClose: Types.func,
-  open: Types.bool,
   /** @DEPRECATED please use position instead */
   // eslint-disable-next-line
   preferredPlacement: deprecated(

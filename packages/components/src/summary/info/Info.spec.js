@@ -61,10 +61,11 @@ describe('Info', () => {
 
       expect(getHelpIcon()).toBeInTheDocument();
 
-      expect(getPopover()).not.toHaveClass('np-panel--open');
+      expect(getPopover().firstChild).not.toHaveClass('np-panel--open');
+
       fireEvent.click(popOverButton);
 
-      expect(getPopover()).toHaveClass('np-panel--open');
+      expect(getPopover().firstChild).toHaveClass('np-panel--open');
     });
   });
 

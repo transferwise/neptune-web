@@ -82,14 +82,13 @@ exports[`Summary renders full component 1`] = `
               class="np-size-swapper d-flex"
               style="visibility: hidden;"
             >
-              <div>
+              <div
+                class="np-panel"
+                style="position: absolute; left: 0px; top: 0px;"
+              >
                 <div
-                  class="np-panel"
-                  style="position: absolute; left: 0px; top: 0px;"
+                  class="np-panel__content"
                 >
-                  <div
-                    class="np-panel__arrow"
-                  />
                   <div
                     aria-hidden="true"
                     class="np-popover__content"
@@ -103,6 +102,9 @@ exports[`Summary renders full component 1`] = `
                     description
                   </div>
                 </div>
+                <div
+                  class="np-panel__arrow"
+                />
               </div>
             </div>
           </span>
@@ -162,14 +164,13 @@ exports[`Summary renders full component 1`] = `
           class="np-size-swapper d-flex"
           style="visibility: hidden;"
         >
-          <div>
+          <div
+            class="np-panel"
+            style="position: absolute; left: 0px; top: 0px;"
+          >
             <div
-              class="np-panel"
-              style="position: absolute; left: 0px; top: 0px;"
+              class="np-panel__content"
             >
-              <div
-                class="np-panel__arrow"
-              />
               <div
                 aria-hidden="true"
                 class="np-popover__content"
@@ -183,6 +184,9 @@ exports[`Summary renders full component 1`] = `
                 description
               </div>
             </div>
+            <div
+              class="np-panel__arrow"
+            />
           </div>
         </div>
       </span>

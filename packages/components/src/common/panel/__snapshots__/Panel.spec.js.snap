@@ -2,18 +2,20 @@
 
 exports[`Panel renders 1`] = `
 <div>
-  <div>
+  <div
+    class="np-panel"
+    style="position: absolute; left: 0px; top: 0px;"
+  >
     <div
-      class="np-panel"
-      style="position: absolute; left: 0px; top: 0px;"
+      class="np-panel__content"
     >
-      <div
-        class="np-panel__arrow"
-      />
       <div>
         children
       </div>
     </div>
+    <div
+      class="np-panel__arrow"
+    />
   </div>
 </div>
 `;

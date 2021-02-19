@@ -21,9 +21,9 @@ export const useAttachEvent = ({ attachListener, callBack, condition, eventType 
     const updateUseAttach = (event) => callBack(condition(event));
 
     if (attachListener) {
-      document.addEventListener(eventType, updateUseAttach);
+      document.addEventListener(eventType, updateUseAttach, true);
     }
 
-    return () => document.removeEventListener(eventType, updateUseAttach);
+    return () => document.removeEventListener(eventType, updateUseAttach, true);
   }, [attachListener]);
 };
