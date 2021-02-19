@@ -6,28 +6,14 @@ exports[`FlowNavigation on mobile renders as expected 1`] = `
     class="np-flow-navigation d-flex align-items-center justify-content-center p-y-3 np-flow-navigation--border-bottom"
   >
     <div
-      class="np-header d-flex flex-wrap np-flow-navigation__content p-x-3 np-flow-navigation--sm"
+      class="np-header d-flex flex-wrap np-flow-navigation__content p-x-3 np-flow-navigation--xs-max"
     >
       <div
         class="align-items-center d-flex flex__item--8"
       >
         <div
-          class="hidden-xs"
-        >
-          <img
-            alt="logo"
-            height="24"
-            src="logo.svg"
-            width="138"
-          />
-        </div>
-        <div
-          class="visible-xs"
-        >
-          <div
-            class="np-flow-navigation--flag np-flow-navigation--flag__display"
-          />
-        </div>
+          class="np-flow-navigation--flag np-flow-navigation--flag__display"
+        />
       </div>
       <div
         class="align-items-center d-flex justify-content-end flex__item--4 "
@@ -164,23 +150,12 @@ exports[`FlowNavigation renders as expected 1`] = `
       <div
         class="align-items-center d-flex"
       >
-        <div
-          class="hidden-xs"
-        >
-          <img
-            alt="logo"
-            height="24"
-            src="logo.svg"
-            width="138"
-          />
-        </div>
-        <div
-          class="visible-xs"
-        >
-          <div
-            class="np-flow-navigation--flag np-flow-navigation--flag__display"
-          />
-        </div>
+        <img
+          alt="logo"
+          height="24"
+          src="logo.svg"
+          width="138"
+        />
       </div>
       <div
         class="align-items-center d-flex justify-content-end order-2"

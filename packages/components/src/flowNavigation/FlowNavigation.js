@@ -23,13 +23,14 @@ const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, done, ste
 
   const [clientWidth] = useClientWidth({ ref });
   const closeButton = onClose && <CloseButton onClick={onClose} />;
+  const isSmall = clientWidth < Breakpoint.SMALL;
 
   const newAvatar = done ? null : avatar;
 
   const getLeftContentSmall = () => {
     const displayGoBack = onGoBack && activeStep > 0;
     return (
-      <div className="visible-xs">
+      <>
         {displayGoBack && (
           <BackButton
             label={
@@ -48,7 +49,7 @@ const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, done, ste
             'np-flow-navigation--flag__display': !displayGoBack,
           })}
         />
-      </div>
+      </>
     );
   };
 
@@ -65,18 +66,13 @@ const FlowNavigation = ({ activeStep, avatar, logo, onClose, onGoBack, done, ste
           'np-flow-navigation__content p-x-3',
           {
             'np-flow-navigation--hidden': !clientWidth,
-            'np-flow-navigation--xs-max': clientWidth < Breakpoint.SMALL,
+            'np-flow-navigation--xs-max': isSmall,
           },
           Object.keys(containerBreakpoints).filter(
             (key) => clientWidth >= containerBreakpoints[key],
           ),
         )}
-        leftContent={
-          <>
-            <div className="hidden-xs">{logo}</div>
-            {getLeftContentSmall()}
-          </>
-        }
+        leftContent={isSmall ? getLeftContentSmall() : logo}
         rightContent={
           <>
             {newAvatar}
