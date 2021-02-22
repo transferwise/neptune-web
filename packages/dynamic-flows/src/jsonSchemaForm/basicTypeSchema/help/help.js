@@ -6,10 +6,7 @@ import { HelpCircle as HelpIcon } from '@transferwise/icons';
 
 const Help = (props) => {
   return (
-    <Popover
-      content={<Markdown>{props.help.markdown}</Markdown>}
-      preferredPlacement={Popover.Placement.TOP}
-    >
+    <Popover content={<Markdown>{props.help.markdown}</Markdown>} position={Popover.Position.TOP}>
       <span className="m-l-1">
         <HelpIcon size={16} filled className="d-inline-block" />
       </span>
