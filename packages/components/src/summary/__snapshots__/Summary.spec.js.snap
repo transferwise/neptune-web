@@ -3,6 +3,7 @@
 exports[`Summary renders full component 1`] = `
 <DocumentFragment>
   <div
+    aria-label="Item done"
     class="np-summary d-flex align-items-start"
   >
     <div
