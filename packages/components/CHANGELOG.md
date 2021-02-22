@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [34.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.15...@transferwise/components@34.3.0) (2021-02-22)
+
+
+### Features
+
+* add aria-labels to Summary statuses ([#811](https://github.com/transferwise/neptune-web/issues/811)) ([5d6be4b](https://github.com/transferwise/neptune-web/commit/5d6be4bdbf6cb7c4724f78b7aeb67a11d1dce879))
+
+
+
+
+
 ## [34.2.15](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.14...@transferwise/components@34.2.15) (2021-02-19)
 
 
