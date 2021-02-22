@@ -61,9 +61,9 @@ describe('FlowNavigation', () => {
     expect(render(<FlowNavigation {...props} />).container).toMatchSnapshot();
   });
 
-  it(`renders full Logo not visible on mobile`, () => {
+  it(`renders full Logo`, () => {
     render(<FlowNavigation {...props} />);
-    expect(logoFull().parentElement).toHaveClass('hidden-xs');
+    expect(logoFull()).toBeInTheDocument();
   });
 
   it(`renders separator if avatar and onClose are provided`, () => {
@@ -135,11 +135,18 @@ describe('FlowNavigation', () => {
 
   describe('on mobile', () => {
     beforeEach(() => {
-      resetClientWidth(Breakpoint.LARGE - 1);
+      resetClientWidth(Breakpoint.SMALL - 1);
     });
 
     it('renders as expected', () => {
-      expect(render(<FlowNavigation {...props} />).container).toMatchSnapshot();
+      expect(
+        render(<FlowNavigation {...props} activeStep={1} onGoBack={jest.fn()} />).container,
+      ).toMatchSnapshot();
+    });
+
+    it(`doesn not render Logo`, () => {
+      render(<FlowNavigation {...props} />);
+      expect(screen.queryByAltText(`logo`)).not.toBeInTheDocument();
     });
 
     it(`renders flag if activeStep <= 0 onGoBack or is not provided`, () => {
@@ -149,7 +156,7 @@ describe('FlowNavigation', () => {
 
       const flag = container.querySelector('.np-flow-navigation--flag');
 
-      expect(flag.parentElement).toHaveClass('visible-xs');
+      expect(flag).toBeInTheDocument();
       expect(flag).toHaveClass('np-flow-navigation--flag__display');
 
       rerender(<FlowNavigation {...props} activeStep={1} onGoBack={undefined} />);
@@ -175,7 +182,7 @@ describe('FlowNavigation', () => {
 
       rerender(<FlowNavigation {...props} onGoBack={jest.fn()} activeStep={1} />);
 
-      expect(screen.getByText('BackButton').parentElement).toHaveClass('visible-xs');
+      expect(screen.getByText('BackButton')).toBeInTheDocument();
       expect(screen.getByText('AnimatedLabel')).toBeInTheDocument();
     });
 
