@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.3.0...@transferwise/components@34.3.1) (2021-02-22)
+
+
+### Bug Fixes
+
+* fix FN responsive behaviour ([#813](https://github.com/transferwise/neptune-web/issues/813)) ([9e89e3c](https://github.com/transferwise/neptune-web/commit/9e89e3c0bb13499942064a99525904120de64f06))
+
+
+
+
+
 # [34.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.15...@transferwise/components@34.3.0) (2021-02-22)
 
 
