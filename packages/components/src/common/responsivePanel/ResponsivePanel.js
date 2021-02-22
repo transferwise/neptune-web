@@ -10,7 +10,7 @@ import SizeSwapper from '../../sizeSwapper';
 import keyCodes from '../keyCodes';
 
 const ResponsivePanel = ({ arrow, onClose, children, open, position, triggerRef }) => {
-  const windowRef = typeof window !== 'undefined' && window;
+  const windowRef = typeof window === 'undefined' ? undefined : window;
 
   const ref = useRef(null);
 
