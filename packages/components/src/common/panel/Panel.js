@@ -50,7 +50,7 @@ Panel.Position = {
 };
 
 Panel.defaultProps = {
-  arrow: true,
+  arrow: false,
   className: undefined,
   open: false,
   position: Panel.Position.TOP,

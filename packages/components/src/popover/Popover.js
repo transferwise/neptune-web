@@ -5,8 +5,6 @@ import classnames from 'classnames';
 import { logActionRequiredIf, deprecated } from '../utilities';
 import { Position } from '../common';
 import ResponsivePanel from '../common/responsivePanel';
-import { useAttachEvent } from '../common/hooks';
-import keyCodes from '../common/keyCodes';
 
 import './Popover.css';
 
@@ -23,25 +21,9 @@ const Popover = ({
   logActionRequired({ position });
 
   const triggerRef = useRef(null);
-  const responsivePanelRef = useRef(null);
   const [open, setOpen] = useState(false);
 
-  const callBack = (val) => val && setOpen(false);
-
-  useAttachEvent({
-    eventType: 'click',
-    condition: (event) =>
-      ![responsivePanelRef, triggerRef].some((el) => el?.current?.contains(event.target)),
-    callBack,
-    attachListener: open,
-  });
-
-  useAttachEvent({
-    eventType: 'keydown',
-    condition: (event) => event.keyCode === keyCodes.ESCAPE,
-    callBack,
-    attachListener: open,
-  });
+  const onClose = (val) => !val && setOpen(false);
 
   return (
     <span className={classnames('np-popover', className)}>
@@ -63,9 +45,9 @@ const Popover = ({
       </span>
       <ResponsivePanel
         open={open}
-        ref={responsivePanelRef}
         triggerRef={triggerRef}
         position={deprecatedPositions[position] || position}
+        onClose={onClose}
         arrow
       >
         <div className="np-popover__content" aria-hidden={!open} role="tooltip">

@@ -1,13 +1,32 @@
-import React, { forwardRef } from 'react';
+import React, { useRef } from 'react';
 import Types from 'prop-types';
 
 import { Position } from '..';
+import { useAttachEvent } from '../hooks';
 import BottomSheet from '../bottomSheet';
 import Panel from '../panel';
 import SizeSwapper from '../../sizeSwapper';
 
-const ResponsivePanel = forwardRef(({ arrow, children, open, position, triggerRef }, ref) => {
+import keyCodes from '../keyCodes';
+
+const ResponsivePanel = ({ arrow, onClose, children, open, position, triggerRef }) => {
   const windowRef = typeof window !== 'undefined' && window;
+
+  const ref = useRef(null);
+
+  useAttachEvent({
+    eventType: 'click',
+    condition: (event) => [ref, triggerRef].some((el) => el?.current?.contains(event.target)),
+    callBack: onClose,
+    attachListener: open,
+  });
+
+  useAttachEvent({
+    eventType: 'keydown',
+    condition: (event) => event.keyCode === keyCodes.ESCAPE,
+    callBack: onClose,
+    attachListener: open,
+  });
 
   const items = [
     {
@@ -34,7 +53,7 @@ const ResponsivePanel = forwardRef(({ arrow, children, open, position, triggerRe
     },
   ];
   return <SizeSwapper items={items} ref={windowRef} />;
-});
+};
 
 ResponsivePanel.Position = {
   BOTTOM: Position.BOTTOM,
@@ -44,11 +63,13 @@ ResponsivePanel.Position = {
 };
 
 ResponsivePanel.defaultProps = {
-  position: ResponsivePanel.Position.TOP,
   arrow: false,
+  onClose: undefined,
+  position: ResponsivePanel.Position.TOP,
 };
 
 ResponsivePanel.propTypes = {
+  onClose: Types.func,
   children: Types.node.isRequired,
   position: Types.oneOf([
     ResponsivePanel.Position.TOP,
