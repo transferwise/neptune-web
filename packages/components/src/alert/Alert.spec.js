@@ -3,7 +3,7 @@ import React from 'react';
 import {
   InfoCircle,
   CheckCircle,
-  CrossCircle,
+  AlertCircle,
   Alert as AlertIcon,
   Emoji,
 } from '@transferwise/icons';
@@ -33,7 +33,7 @@ describe('Alert', () => {
     [Alert.Type.POSITIVE]: renderIcon(CheckCircle),
     [Alert.Type.NEUTRAL]: renderIcon(InfoCircle),
     [Alert.Type.WARNING]: renderIcon(AlertIcon),
-    [Alert.Type.NEGATIVE]: renderIcon(CrossCircle),
+    [Alert.Type.NEGATIVE]: renderIcon(AlertCircle),
   };
 
   const classForType = (type) => `alert-${type}`;
