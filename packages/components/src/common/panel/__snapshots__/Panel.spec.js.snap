@@ -12,10 +12,10 @@ exports[`Panel renders 1`] = `
       <div>
         children
       </div>
+      <div
+        class="np-panel__arrow"
+      />
     </div>
-    <div
-      class="np-panel__arrow"
-    />
   </div>
 </div>
 `;

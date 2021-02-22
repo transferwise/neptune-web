@@ -31,9 +31,9 @@ const Panel = forwardRef(({ arrow, children, className, open, position, triggerR
       ref={setPopperElement}
       style={{ ...styles.popper }}
       {...attributes.popper}
-      className={classnames('np-panel', className)}
+      className={classnames('np-panel', { 'np-panel--open': open }, className)}
     >
-      <div ref={ref} className={classnames('np-panel__content', { 'np-panel--open': open })}>
+      <div ref={ref} className={classnames('np-panel__content')}>
         {children}
         {/* Arrow has to stay inside content to get the same animations as the "dialog" and to get hidden when panel is closed. */}
         {arrow && (

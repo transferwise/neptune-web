@@ -101,10 +101,10 @@ exports[`Summary renders full component 1`] = `
                     </div>
                     description
                   </div>
+                  <div
+                    class="np-panel__arrow"
+                  />
                 </div>
-                <div
-                  class="np-panel__arrow"
-                />
               </div>
             </div>
           </span>
@@ -183,10 +183,10 @@ exports[`Summary renders full component 1`] = `
                 </div>
                 description
               </div>
+              <div
+                class="np-panel__arrow"
+              />
             </div>
-            <div
-              class="np-panel__arrow"
-            />
           </div>
         </div>
       </span>

@@ -2,7 +2,10 @@
 @import (reference) '@transferwise/neptune-css/dist/less/zindex.less';
 
 .np-panel {
-  z-index: @zindex-popover;
+  // This is needed because since the __content is visible:hidden the element will still occupy some space even if is not
+  // visible. That means that if there is an element in proximity may be not clickable because it is underneath the invisible
+  // layer.
+  z-index: -@zindex-popover;
   &__content {
     opacity: 0;
     visibility: hidden;
@@ -13,11 +16,16 @@
     transition: opacity 0.2s cubic-bezier(0.6, 0.2, 0.1, 1),
       transform 0.2s cubic-bezier(0.6, 0.2, 0.1, 1), visibility 0s linear 0s;
     transform: translateY(-10px) scale(0.95);
+    z-index: -@zindex-popover;
   }
   &--open {
-    transform: none;
-    opacity: 1;
-    visibility: visible;
+    z-index: @zindex-popover;
+    .np-panel__content {
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      height: auto;
+    }
   }
 
   &__arrow,
