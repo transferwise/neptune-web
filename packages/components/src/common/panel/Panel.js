@@ -15,7 +15,7 @@ const Panel = forwardRef(({ arrow, children, className, open, position, triggerR
   if (arrow) {
     modifiers.push({ name: 'arrow', options: { padding: 5, element: arrowElement } });
     // This lets you displace a popper element from its reference element.
-    modifiers.push({ name: 'offset', options: { offset: [0, 12] } });
+    modifiers.push({ name: 'offset', options: { offset: [0, 16] } });
   }
 
   const { styles, attributes } = usePopper(triggerRef.current, popperElement, {

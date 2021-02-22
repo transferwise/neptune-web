@@ -19,7 +19,7 @@ export const basic = () => {
       position={position}
       title="Guaranteed rate"
     >
-      <Button type={Button.Type.PRIMARY} onClick={() => console.log(`I'm overriden`)}>
+      <Button type={Button.Type.PRIMARY} onClick={() => console.log(`I'm also called`)}>
         Click here to Open Popover!
       </Button>
     </Popover>

@@ -14,7 +14,7 @@ const expiryDate = new Date('17-08-2021');
 
 const Popover = ({
   children,
-  classNames,
+  className,
   content,
   preferredPlacement,
   position = preferredPlacement,
@@ -44,9 +44,16 @@ const Popover = ({
   });
 
   return (
-    <span className={classnames('np-popover', classNames)}>
+    <span className={classnames('np-popover', className)}>
       <span className="d-inline-block" ref={triggerRef}>
-        {cloneElement(children, { onClick: () => setOpen(!open) })}
+        {cloneElement(children, {
+          onClick: () => {
+            if (children?.props?.onClick) {
+              children.props.onClick();
+            }
+            setOpen(!open);
+          },
+        })}
         {open && (
           <span role="status" className="sr-only">
             {title}
@@ -89,14 +96,14 @@ Popover.Position = {
 };
 
 Popover.defaultProps = {
-  classNames: undefined,
+  className: undefined,
   position: Popover.Position.TOP,
   title: undefined,
 };
 
 Popover.propTypes = {
   children: Types.node.isRequired,
-  classNames: Types.string,
+  className: Types.string,
   content: Types.node.isRequired,
   /** @DEPRECATED please use position instead */
   // eslint-disable-next-line
