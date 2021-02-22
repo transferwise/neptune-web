@@ -2,7 +2,7 @@ import React, { cloneElement, useState, useRef } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import requiredIf from 'react-required-if';
-import { InfoCircle, CheckCircle, CrossCircle, Alert as AlertIcon } from '@transferwise/icons';
+import { InfoCircle, CheckCircle, Alert as AlertIcon, AlertCircle } from '@transferwise/icons';
 import { Sentiment, Size } from '../common';
 import CloseButton from '../common/closeButton';
 import withArrow, { ArrowPosition } from './withArrow';
@@ -19,7 +19,7 @@ const iconTypeMap = {
   [Sentiment.POSITIVE]: CheckCircle,
   [Sentiment.NEUTRAL]: InfoCircle,
   [Sentiment.WARNING]: AlertIcon,
-  [Sentiment.NEGATIVE]: CrossCircle,
+  [Sentiment.NEGATIVE]: AlertCircle,
 };
 
 const Alert = (props) => {
