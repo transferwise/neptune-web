@@ -6,6 +6,8 @@ import { usePopper } from 'react-popper';
 import { Position } from '..';
 import './Panel.css';
 
+const POPOVEROFFSET = [0, 16];
+
 const Panel = forwardRef(({ arrow, children, className, open, position, triggerRef }, ref) => {
   const [arrowElement, setArrowElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
@@ -15,7 +17,7 @@ const Panel = forwardRef(({ arrow, children, className, open, position, triggerR
   if (arrow) {
     modifiers.push({ name: 'arrow', options: { padding: 5, element: arrowElement } });
     // This lets you displace a popper element from its reference element.
-    modifiers.push({ name: 'offset', options: { offset: [0, 16] } });
+    modifiers.push({ name: 'offset', options: { offset: POPOVEROFFSET } });
   }
 
   const { styles, attributes } = usePopper(triggerRef.current, popperElement, {
@@ -29,15 +31,19 @@ const Panel = forwardRef(({ arrow, children, className, open, position, triggerR
       ref={setPopperElement}
       style={{ ...styles.popper }}
       {...attributes.popper}
-      className={classnames('np-panel')}
+      className={classnames('np-panel', className)}
     >
-      <div
-        ref={ref}
-        className={classnames('np-panel__content', { 'np-panel--open': open }, className)}
-      >
+      <div ref={ref} className={classnames('np-panel__content', { 'np-panel--open': open })}>
         {children}
+        {/* Arrow has to stay inside content to get the same animations as the "dialog" and to get hidden when panel is closed. */}
+        {arrow && (
+          <div
+            className={classnames('np-panel__arrow')}
+            ref={setArrowElement}
+            style={styles.arrow}
+          />
+        )}
       </div>
-      {arrow && <div className="np-panel__arrow" ref={setArrowElement} style={styles.arrow} />}
     </div>
   );
 });
