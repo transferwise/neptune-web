@@ -11,10 +11,12 @@ export const useClientWidth = ({ ref, throttleMs = THROTTLE_MS }) => {
   useIsomorphicLayoutEffect(() => {
     const updateClientWidth = () => {
       if (ref) {
-        // if ref is referencing to window we check the window.innerWidth
+        // when `ref` is a window
         if (ref.innerWidth) {
           setClientWidth(ref.innerWidth);
-        } else if (ref.current) {
+        }
+        // when `ref` is an element
+        else if (ref.current) {
           setClientWidth(ref.current.clientWidth);
         }
       }
