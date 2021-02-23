@@ -6,6 +6,7 @@ import { Search as SearchIcon } from '@transferwise/icons';
 import Option from './option';
 import Chevron from '../chevron';
 import KeyCodes from '../common/keyCodes';
+import { isTouchDevice } from '../common/domHelpers';
 import ResponsivePanel from '../common/responsivePanel';
 
 function clamp(from, to, value) {
@@ -27,6 +28,8 @@ function stopPropagation(event) {
   }
   // document listener does not use SyntheticEvents
 }
+
+const defer = (fn) => setTimeout(fn, 0);
 
 const includesString = (str1, str2) => str1.toLowerCase().indexOf(str2.toLowerCase()) > -1;
 
@@ -209,33 +212,25 @@ export default class Select extends Component {
   }
 
   open() {
-    // TODO: should also add breakpoint-specific overflow:hidden class to body
-    this.setState({ open: true });
-    //   , () => {
-    //   const isTouchDevice =
-    //     typeof window !== 'undefined' &&
-    //     window.matchMedia &&
-    //     !!window.matchMedia('(pointer: coarse)').matches;
-    //   const searchable = !!this.props.onSearchChange || !!this.props.search;
+    this.setState({ open: true }, () => {
+      const isMobile = isTouchDevice();
+      const searchable = !!this.props.onSearchChange || !!this.props.search;
 
-    //   defer(() => {
-    //     if (!isTouchDevice && searchable && this.searchBoxRef.current) {
-    //       this.searchBoxRef.current.focus();
-    //     }
-    //   });
-    // });
-
-    // addClickClassToDocumentOnIos();
-    // document.addEventListener('click', this.handleDocumentClick, false);
+      defer(() => {
+        if (!isMobile && searchable && this.searchBoxRef.current) {
+          this.searchBoxRef.current.focus();
+        }
+      });
+    });
   }
 
-  close(status) {
+  close = (status) => {
     if (status) {
       this.setState({ open: false, keyboardFocusedOptionIndex: null });
     }
     // removeClickClassFromDocumentOnIos();
     // document.removeEventListener('click', this.handleDocumentClick, false);
-  }
+  };
 
   handleButtonClick = () => {
     if (!this.props.disabled) {
