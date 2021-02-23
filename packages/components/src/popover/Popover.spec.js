@@ -20,7 +20,7 @@ describe('Popover', () => {
   const props = {
     arrow: true,
     content: 'content',
-    position: Popover.Position.BOTTOM,
+    position: Popover.Placement.BOTTOM,
     title: 'title',
   };
 
@@ -57,7 +57,7 @@ describe('Popover', () => {
       expect(getPanel()).toBeInTheDocument();
     });
 
-    it('close renders Panel on document click', async () => {
+    it('close Panel on document click', async () => {
       await waitFor(() => {
         render(
           <Popover {...props}>

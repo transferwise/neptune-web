@@ -16,15 +16,14 @@ const ResponsivePanel = ({ arrow, onClose, children, open, position, triggerRef 
 
   useConditionalListener({
     eventType: 'click',
-    callBack: onClose((event) =>
-      [ref, triggerRef].some((el) => el?.current?.contains(event.target)),
-    ),
+    callback: (event) =>
+      onClose(![ref, triggerRef].some((el) => el?.current?.contains(event.target))),
     attachListener: open,
   });
 
   useConditionalListener({
     eventType: 'keydown',
-    callBack: onClose((event) => event.keyCode === keyCodes.ESCAPE),
+    callback: (event) => onClose(event.keyCode === keyCodes.ESCAPE),
     attachListener: open,
   });
 

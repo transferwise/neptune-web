@@ -67,11 +67,11 @@ describe('ResponsivePanel', () => {
 
       fireEvent.click(getPanel());
 
-      expect(props.onClose).toHaveBeenCalledWith(true);
+      expect(props.onClose).toHaveBeenCalledWith(false);
 
       fireEvent.click(document);
 
-      expect(props.onClose).toHaveBeenCalledWith(false);
+      expect(props.onClose).toHaveBeenCalledWith(true);
     });
   });
 
@@ -100,11 +100,11 @@ describe('ResponsivePanel', () => {
 
       fireEvent.click(getBottomSheet());
 
-      expect(props.onClose).toHaveBeenCalledWith(true);
+      expect(props.onClose).toHaveBeenCalledWith(false);
 
       fireEvent.click(document);
 
-      expect(props.onClose).toHaveBeenCalledWith(false);
+      expect(props.onClose).toHaveBeenCalledWith(true);
     });
   });
   const getBottomSheet = () => document.querySelector('.np-bottom-sheet');

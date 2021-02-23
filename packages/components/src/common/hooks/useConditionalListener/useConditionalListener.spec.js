@@ -8,74 +8,43 @@ describe('useConditionalListener', () => {
   const triggeredEvent = new Event('KittenEvent');
   const args = {
     eventType: 'click',
-    callBack: jest.fn(),
+    callback: jest.fn(),
     attachListener: true,
   };
   beforeEach(() => {
     jest.clearAllMocks();
   });
-  it(`by default doesn't call callBack`, () => {
+
+  it(`by default doesn't call callback`, () => {
     renderHook(() => useConditionalListener({ ...args }));
-    expect(args.callBack).not.toHaveBeenCalled();
+    expect(args.callback).not.toHaveBeenCalled();
   });
 
   describe('when attachListener is true', () => {
-    it('calls callback with true if conditon is met', () => {
-      renderHook(() =>
-        useConditionalListener({ ...args, attachListener: true, condition: () => true }),
-      );
+    it('calls callback when event is triggered', () => {
+      renderHook(() => useConditionalListener({ ...args }));
 
-      expect(args.callBack).not.toHaveBeenCalled();
+      expect(args.callback).not.toHaveBeenCalled();
 
       act(() => {
         fireEvent.click(document, triggeredEvent);
       });
 
-      expect(args.callBack).toHaveBeenCalledWith(true);
-    });
-
-    it('calls callback with false if conditon is not met', () => {
-      renderHook(() =>
-        useConditionalListener({ ...args, attachListener: true, condition: () => false }),
-      );
-
-      expect(args.callBack).not.toHaveBeenCalled();
-
-      act(() => {
-        fireEvent.click(document, triggeredEvent);
-      });
-
-      expect(args.callBack).toHaveBeenCalledWith(false);
+      expect(args.callback).toHaveBeenCalled();
     });
   });
 
   describe('when attachListener is false', () => {
-    it("doesn't calls callback if conditon is met", () => {
-      renderHook(() =>
-        useConditionalListener({ ...args, attachListener: false, condition: () => true }),
-      );
+    it("doesn't call callback when event is triggered", () => {
+      renderHook(() => useConditionalListener({ ...args, attachListener: false }));
 
-      expect(args.callBack).not.toHaveBeenCalled();
+      expect(args.callback).not.toHaveBeenCalled();
 
       act(() => {
         fireEvent.click(document, triggeredEvent);
       });
 
-      expect(args.callBack).not.toHaveBeenCalled();
-    });
-
-    it('calls callback with false if conditon is not met', () => {
-      renderHook(() =>
-        useConditionalListener({ ...args, attachListener: true, condition: () => false }),
-      );
-
-      expect(args.callBack).not.toHaveBeenCalled();
-
-      act(() => {
-        fireEvent.click(document, triggeredEvent);
-      });
-
-      expect(args.callBack).toHaveBeenCalledWith(false);
+      expect(args.callback).not.toHaveBeenCalled();
     });
   });
 });

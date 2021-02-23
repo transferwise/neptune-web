@@ -11,7 +11,7 @@ const Popover = ({ children, className, content, preferredPlacement, title }) =>
   const triggerRef = useRef(null);
   const [open, setOpen] = useState(false);
 
-  const onClose = (val) => !val && setOpen(false);
+  const onClose = (val) => val && setOpen(false);
 
   return (
     <span className={classnames('np-popover', className)}>

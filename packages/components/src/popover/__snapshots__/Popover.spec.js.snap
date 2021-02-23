@@ -28,9 +28,9 @@ exports[`Popover on desktop renders correctly when open is true 1`] = `
       <div
         class="np-panel np-panel--open"
         data-popper-escaped="true"
-        data-popper-placement="bottom"
+        data-popper-placement="right"
         data-popper-reference-hidden="true"
-        style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 16px);"
+        style="position: absolute; left: 0px; top: 0px; transform: translate(16px, 0px);"
       >
         <div
           class="np-panel__content"
@@ -49,7 +49,7 @@ exports[`Popover on desktop renders correctly when open is true 1`] = `
           </div>
           <div
             class="np-panel__arrow"
-            style="position: absolute; left: 0px; transform: translate(5px, 0px);"
+            style="position: absolute; top: 0px; transform: translate(0px, 5px);"
           />
         </div>
       </div>
