@@ -6,7 +6,7 @@ import { usePopper } from 'react-popper';
 import { Position } from '..';
 import './Panel.css';
 
-const POPOVEROFFSET = [0, 16];
+const POPOVER_OFFSET = [0, 16];
 
 const Panel = forwardRef(
   ({ arrow, children, className, open, position: placement, triggerRef }, ref) => {
