@@ -10,9 +10,7 @@ import OpenButton from './openButton';
 import DayCalendar from './dayCalendar';
 import MonthCalendar from './monthCalendar';
 import YearCalendar from './yearCalendar';
-
-import SlidingPanel from '../slidingPanel';
-import Dimmer from '../dimmer';
+import ResponsivePanel from '../common/responsivePanel';
 
 import './DateLookup.css';
 
@@ -282,19 +280,14 @@ class DateLookup extends PureComponent {
           {...{ selectedDate, size, placeholder, label, monthFormat, disabled }}
           onClick={this.open}
         />
-        {isMobile ? (
-          <Dimmer open={open} onClose={this.close}>
-            <SlidingPanel open={open} position="bottom">
-              {this.getCalendar()}
-            </SlidingPanel>
-          </Dimmer>
-        ) : (
-          open && (
-            <div ref={this.dropdown} className="dropdown-menu tw-date-lookup-menu">
-              {this.getCalendar()}
-            </div>
-          )
-        )}
+        <ResponsivePanel
+          open={open}
+          triggerRef={this.element}
+          onClose={this.close}
+          position={ResponsivePanel.Position.BOTTOM}
+        >
+          {isMobile ? this.getCalendar() : <div ref={this.dropdown}>{this.getCalendar()}</div>}
+        </ResponsivePanel>
       </div>
     );
   }

@@ -9,6 +9,8 @@ import KeyCodes from '../common/keyCodes';
 import { isTouchDevice } from '../common/domHelpers';
 import ResponsivePanel from '../common/responsivePanel';
 
+import './Select.css';
+
 function clamp(from, to, value) {
   return Math.max(Math.min(to, value), from);
 }
@@ -289,7 +291,7 @@ export default class Select extends Component {
     });
 
     const list = (
-      <ul className={dropdownClass} role="menu">
+      <ul aria-hidden={!open} role="menu">
         {!required && !canSearch && placeholder ? this.renderPlaceHolderOption() : ''}
         {canSearch ? this.renderSearchBox() : ''}
         {this.renderOptions()}
