@@ -1,20 +1,12 @@
 import React, { Component, createRef } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
-import Transition from 'react-transition-group/Transition';
 
 import { Search as SearchIcon } from '@transferwise/icons';
 import Option from './option';
 import Chevron from '../chevron';
 import KeyCodes from '../common/keyCodes';
-import { Breakpoint } from '../common';
-import {
-  addClickClassToDocumentOnIos,
-  removeClickClassFromDocumentOnIos,
-} from '../common/domHelpers';
-import { addClassAndTriggerReflow, removeClass } from './domHelpers';
-import Dimmer from '../dimmer';
-import SlidingPanel from '../slidingPanel';
+import ResponsivePanel from '../common/responsivePanel';
 
 function clamp(from, to, value) {
   return Math.max(Math.min(to, value), from);
@@ -35,19 +27,6 @@ function stopPropagation(event) {
   }
   // document listener does not use SyntheticEvents
 }
-
-function getShouldRenderWithPortal() {
-  return (
-    typeof document !== 'undefined' &&
-    typeof window !== 'undefined' &&
-    window.matchMedia &&
-    window.matchMedia(`(max-width: ${Breakpoint.SMALL}px)`).matches
-  );
-}
-
-const BOOTSTRAP_DROPDOWN_ANIMATION_TIME = 200;
-
-const defer = (fn) => setTimeout(fn, 0);
 
 const includesString = (str1, str2) => str1.toLowerCase().indexOf(str2.toLowerCase()) > -1;
 
@@ -92,23 +71,9 @@ export default class Select extends Component {
     this.dropdownMenuRef = createRef();
   }
 
-  componentDidMount() {
-    this.setState({
-      shouldRenderWithPortal: getShouldRenderWithPortal(),
-    });
-    window.addEventListener('resize', this.handleResize);
-  }
-
   componentWillUnmount() {
     this.close();
-    window.removeEventListener('resize', this.handleResize);
   }
-
-  handleResize = () => {
-    this.setState({
-      shouldRenderWithPortal: getShouldRenderWithPortal(),
-    });
-  };
 
   getIndexWithoutHeadersForIndexWithHeaders(index) {
     return this.getOptions().reduce((sum, option, currentIndex) => {
@@ -245,29 +210,31 @@ export default class Select extends Component {
 
   open() {
     // TODO: should also add breakpoint-specific overflow:hidden class to body
-    this.setState({ open: true }, () => {
-      const isTouchDevice =
-        typeof window !== 'undefined' &&
-        window.matchMedia &&
-        !!window.matchMedia('(pointer: coarse)').matches;
-      const searchable = !!this.props.onSearchChange || !!this.props.search;
+    this.setState({ open: true });
+    //   , () => {
+    //   const isTouchDevice =
+    //     typeof window !== 'undefined' &&
+    //     window.matchMedia &&
+    //     !!window.matchMedia('(pointer: coarse)').matches;
+    //   const searchable = !!this.props.onSearchChange || !!this.props.search;
 
-      defer(() => {
-        if (!isTouchDevice && searchable && this.searchBoxRef.current) {
-          this.searchBoxRef.current.focus();
-        }
-      });
-    });
+    //   defer(() => {
+    //     if (!isTouchDevice && searchable && this.searchBoxRef.current) {
+    //       this.searchBoxRef.current.focus();
+    //     }
+    //   });
+    // });
 
-    addClickClassToDocumentOnIos();
-    document.addEventListener('click', this.handleDocumentClick, false);
+    // addClickClassToDocumentOnIos();
+    // document.addEventListener('click', this.handleDocumentClick, false);
   }
 
-  close() {
-    this.setState({ open: false, keyboardFocusedOptionIndex: null });
-
-    removeClickClassFromDocumentOnIos();
-    document.removeEventListener('click', this.handleDocumentClick, false);
+  close(status) {
+    if (status) {
+      this.setState({ open: false, keyboardFocusedOptionIndex: null });
+    }
+    // removeClickClassFromDocumentOnIos();
+    // document.removeEventListener('click', this.handleDocumentClick, false);
   }
 
   handleButtonClick = () => {
@@ -276,11 +243,11 @@ export default class Select extends Component {
     }
   };
 
-  handleDocumentClick = () => {
-    if (this.state.open) {
-      this.close();
-    }
-  };
+  // handleDocumentClick = () => {
+  //   if (this.state.open) {
+  //     this.close();
+  //   }
+  // };
 
   handleTouchStart = (event) => {
     if (event.currentTarget === event.target && this.state.open) {
@@ -442,7 +409,7 @@ export default class Select extends Component {
 
   render() {
     const { disabled, size, block, id, dropdownUp, inverse } = this.props;
-    const { open, shouldRenderWithPortal } = this.state;
+    const { open } = this.state;
     const s = this.style;
 
     const groupClass = classNames(s('tw-select'), s('btn-group'), {
@@ -464,7 +431,6 @@ export default class Select extends Component {
       s('dropdown-toggle'),
     );
 
-    const openClass = s('open');
     return (
       // A transition is used here in order to mount and unmount the dropdown menu while retaining animations
       <>
@@ -492,30 +458,14 @@ export default class Select extends Component {
               )} ${s('bottom')} ${s('tw-select-chevron')}`}
             />
           </button>
-          {!shouldRenderWithPortal ? (
-            <Transition
-              in={open}
-              timeout={BOOTSTRAP_DROPDOWN_ANIMATION_TIME}
-              onEntering={() => {
-                if (this.dropdownMenuRef.current) {
-                  addClassAndTriggerReflow(this.dropdownMenuRef.current, openClass);
-                }
-              }}
-              onExit={() => {
-                if (this.dropdownMenuRef.current) {
-                  removeClass(this.dropdownMenuRef.current, openClass);
-                }
-              }}
-            >
-              {(animationState) => animationState !== 'exited' && this.renderOptionsList()}
-            </Transition>
-          ) : (
-            <Dimmer open={open}>
-              <SlidingPanel open={open} position="bottom">
-                {this.renderOptionsList()}
-              </SlidingPanel>
-            </Dimmer>
-          )}
+          <ResponsivePanel
+            open={open}
+            onClose={this.close}
+            position={ResponsivePanel.Position.BOTTOM}
+            triggerRef={this.dropdownMenuRef}
+          >
+            {this.renderOptionsList()}
+          </ResponsivePanel>
         </div>
       </>
     );
