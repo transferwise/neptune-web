@@ -3,7 +3,7 @@
   position={Popover.Position.TOP}
   title="Guaranteed rate"
 >
-  <Button type={Button.Type.PRIMARY} onClick={() => console.log('here')}>
+  <Button type={Button.Type.PRIMARY} onClick={() => console.log(`I'm also triggered`)}>
     Click here to Open Popover!
   </Button>
 </Popover>;

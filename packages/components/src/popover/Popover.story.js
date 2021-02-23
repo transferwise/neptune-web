@@ -11,12 +11,16 @@ export default {
 };
 
 export const basic = () => {
-  const position = select('position', Object.values(Popover.Position), Popover.Position.TOP);
+  const preferredPlacement = select(
+    'preferredPlacement',
+    Object.values(Popover.Placement),
+    Popover.Placement.TOP,
+  );
 
   return (
     <Popover
       content="You’ll get this rate as long as we receive your 10 EUR within the next 51 hours."
-      position={position}
+      preferredPlacement={preferredPlacement}
       title="Guaranteed rate"
     >
       <Button type={Button.Type.PRIMARY} onClick={() => console.log(`I'm also triggered`)}>

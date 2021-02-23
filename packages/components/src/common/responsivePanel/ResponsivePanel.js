@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import Types from 'prop-types';
 
 import { Position } from '..';
-import { useAttachEvent } from '../hooks';
+import { useConditionalListener } from '../hooks';
 import BottomSheet from '../bottomSheet';
 import Panel from '../panel';
 import SizeSwapper from '../../sizeSwapper';
@@ -14,17 +14,17 @@ const ResponsivePanel = ({ arrow, onClose, children, open, position, triggerRef 
 
   const ref = useRef(null);
 
-  useAttachEvent({
+  useConditionalListener({
     eventType: 'click',
-    condition: (event) => [ref, triggerRef].some((el) => el?.current?.contains(event.target)),
-    callBack: onClose,
+    callBack: onClose((event) =>
+      [ref, triggerRef].some((el) => el?.current?.contains(event.target)),
+    ),
     attachListener: open,
   });
 
-  useAttachEvent({
+  useConditionalListener({
     eventType: 'keydown',
-    condition: (event) => event.keyCode === keyCodes.ESCAPE,
-    callBack: onClose,
+    callBack: onClose((event) => event.keyCode === keyCodes.ESCAPE),
     attachListener: open,
   });
 

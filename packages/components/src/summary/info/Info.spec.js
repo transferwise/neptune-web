@@ -70,10 +70,9 @@ describe('Info', () => {
   });
 
   describe(`when in ${Info.Presentation.MODAL} mode`, () => {
-    it('opens modal onClick', async () => {
-      await waitFor(() => {
-        render(<Info {...props} presentation={Info.Presentation.MODAL} />);
-      });
+    it('opens modal onClick', () => {
+      render(<Info {...props} presentation={Info.Presentation.MODAL} />);
+
       const helpIcon = getHelpIcon();
 
       expect(getHelpIcon()).toBeInTheDocument();

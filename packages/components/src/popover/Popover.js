@@ -2,24 +2,12 @@ import React, { useRef, useState, cloneElement } from 'react';
 import Types from 'prop-types';
 import classnames from 'classnames';
 
-import { logActionRequiredIf, deprecated } from '../utilities';
 import { Position } from '../common';
 import ResponsivePanel from '../common/responsivePanel';
 
 import './Popover.css';
 
-const expiryDate = new Date('17-08-2021');
-
-const Popover = ({
-  children,
-  className,
-  content,
-  preferredPlacement,
-  position = preferredPlacement,
-  title,
-}) => {
-  logActionRequired({ position });
-
+const Popover = ({ children, className, content, preferredPlacement, title }) => {
   const triggerRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -46,7 +34,7 @@ const Popover = ({
       <ResponsivePanel
         open={open}
         triggerRef={triggerRef}
-        position={deprecatedPositions[position] || position}
+        position={deprecatedPositions[preferredPlacement] || preferredPlacement}
         onClose={onClose}
         arrow
       >
@@ -59,14 +47,7 @@ const Popover = ({
   );
 };
 
-const logActionRequired = ({ position }) => {
-  logActionRequiredIf(
-    `Popover has deprecated the ${position} value for the 'position' prop. Please use ${deprecatedPositions[position]} instead.`,
-    deprecatedPositions[position],
-  );
-};
-
-Popover.Position = {
+Popover.Placement = {
   BOTTOM: Position.BOTTOM,
   BOTTOM_LEFT: Position.BOTTOM_LEFT,
   BOTTOM_RIGHT: Position.BOTTOM_RIGHT,
@@ -79,7 +60,7 @@ Popover.Position = {
 
 Popover.defaultProps = {
   className: undefined,
-  position: Popover.Position.TOP,
+  preferredPlacement: Popover.Placement.RIGHT,
   title: undefined,
 };
 
@@ -87,47 +68,24 @@ Popover.propTypes = {
   children: Types.node.isRequired,
   className: Types.string,
   content: Types.node.isRequired,
-  /** @DEPRECATED please use position instead */
-  // eslint-disable-next-line
-  preferredPlacement: deprecated(
-    Types.oneOf([
-      Popover.Position.TOP,
-      Popover.Position.RIGHT,
-      Popover.Position.BOTTOM,
-      Popover.Position.LEFT,
-      Popover.Position.LEFT_TOP,
-      Popover.Position.RIGHT_TOP,
-      Popover.Position.BOTTOM_RIGHT,
-      Popover.Position.BOTTOM_LEFT,
-    ]),
-    {
-      component: 'Popover',
-      newProp: 'position',
-      expiryDate,
-    },
-  ),
-  position: Types.oneOf([
-    Popover.Position.BOTTOM,
-    Popover.Position.LEFT,
-    Popover.Position.RIGHT,
-    Popover.Position.TOP,
-    /* @DEPRECATED Please use BOTTOM instead. */
-    Popover.Position.BOTTOM_LEFT,
-    /* @DEPRECATED Please use BOTTOM instead. */
-    Popover.Position.BOTTOM_RIGHT,
-    /* @DEPRECATED Please use TOP instead. */
-    Popover.Position.LEFT_TOP,
-    /* @DEPRECATED Please use TOP instead. */
-    Popover.Position.RIGHT_TOP,
+  preferredPlacement: Types.oneOf([
+    Popover.Placement.TOP,
+    Popover.Placement.RIGHT,
+    Popover.Placement.BOTTOM,
+    Popover.Placement.LEFT,
+    Popover.Placement.LEFT_TOP,
+    Popover.Placement.RIGHT_TOP,
+    Popover.Placement.BOTTOM_RIGHT,
+    Popover.Placement.BOTTOM_LEFT,
   ]),
   title: Types.node,
 };
 
 export const deprecatedPositions = {
-  [Position.BOTTOM_LEFT]: Popover.Position.BOTTOM,
-  [Position.BOTTOM_RIGHT]: Popover.Position.BOTTOM,
-  [Position.LEFT_TOP]: Popover.Position.TOP,
-  [Position.RIGHT_TOP]: Popover.Position.TOP,
+  [Position.BOTTOM_LEFT]: Popover.Placement.BOTTOM,
+  [Position.BOTTOM_RIGHT]: Popover.Placement.BOTTOM,
+  [Position.LEFT_TOP]: Popover.Placement.TOP,
+  [Position.RIGHT_TOP]: Popover.Placement.TOP,
 };
 
 export default Popover;
