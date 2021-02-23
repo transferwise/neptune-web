@@ -13,7 +13,8 @@
     transform-origin: left bottom;
     left: var(--size-8);
 
-    .tw-checkbox-button[disabled] & {
+    .tw-checkbox-button[disabled] &,
+    input[type='checkbox']:disabled + .tw-checkbox-button & {
       background-color: var(--color-text-inactive);
     }
   }

@@ -6,11 +6,11 @@ import GenericSchema from '../genericSchema';
 import { getValidModelParts } from '../../common/validation/valid-model';
 
 const AllOfSchema = (props) => {
-  const onChange = (index, model, triggerSchema) => {
+  const onChangeModelIndex = (index, model, triggerSchema, triggerModel) => {
     const modelSchema = props.schema.allOf[index];
     models[index] = getValidModelParts(model, modelSchema);
     setModels(models);
-    props.onChange(combineModels(models), triggerSchema);
+    props.onChange(combineModels(models), triggerSchema, triggerModel);
   };
 
   const splitModel = (model, schemas) => {
@@ -50,9 +50,12 @@ const AllOfSchema = (props) => {
               errors={props.errors}
               locale={props.locale}
               translations={props.translations}
-              onChange={(model, triggerSchema) => onChange(index, model, triggerSchema)}
+              onChange={(model, triggerSchema, triggerModel) =>
+                onChangeModelIndex(index, model, triggerSchema, triggerModel)
+              }
               submitted={props.submitted}
               disabled={props.disabled}
+              onPersistAsync={props.onPersistAsync}
             />
           </div>
         ))}
@@ -75,6 +78,7 @@ AllOfSchema.propTypes = {
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
   disabled: Types.bool,
+  onPersistAsync: Types.func.isRequired,
 };
 
 AllOfSchema.defaultProps = {

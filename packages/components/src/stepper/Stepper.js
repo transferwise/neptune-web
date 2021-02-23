@@ -1,5 +1,6 @@
 import React from 'react';
 import Types from 'prop-types';
+import classNames from 'classnames';
 import './Stepper.css';
 import Tooltip from '../tooltip';
 import { isTouchDevice } from './deviceDetection';
@@ -9,7 +10,7 @@ function clamp(from, to, value) {
 }
 
 /* eslint-disable react/no-array-index-key */
-const Stepper = ({ steps, activeStep }) => {
+const Stepper = ({ steps, activeStep, className }) => {
   if (steps.length === 0) {
     return null;
   }
@@ -57,7 +58,7 @@ const Stepper = ({ steps, activeStep }) => {
   };
 
   return (
-    <div className="tw-stepper">
+    <div className={classNames('tw-stepper', className)}>
       <div className="progress">
         <div className="progress-bar-filler" style={{ width: `${filledWidth * 100}%` }} />
         <div className="progress-bar-ending" style={{ width: `${endingWidth * 100}%` }} />
@@ -77,10 +78,12 @@ Stepper.propTypes = {
     }),
   ).isRequired,
   activeStep: Types.number,
+  className: Types.string,
 };
 
 Stepper.defaultProps = {
   activeStep: 0,
+  className: undefined,
 };
 
 export default Stepper;

@@ -74,6 +74,10 @@ export default [
         dir: 'components/overlays',
       },
       {
+        title: 'Context',
+        dir: 'components/context',
+      },
+      {
         title: 'Dynamic Forms',
         dir: 'components/dynamicForms',
       },
@@ -83,6 +87,11 @@ export default [
       },
     ],
     searchable: true,
+  },
+  {
+    title: 'Devs',
+    dir: 'devs',
+    hidden: true,
   },
   {
     title: 'Lab',

@@ -4,10 +4,13 @@ import Types from 'prop-types';
 import { isNull, isUndefined } from '@transferwise/neptune-validation';
 import FormControl from '../../formControl';
 import { getValidModelParts } from '../../common/validation/valid-model';
-import { availableCurrencyFlags } from './availableCurrencyFlags';
+import { isOneOfSchema } from '../../common/schemaTypes/schemaTypes';
+import { FormControlType } from '../../common';
+import { mapConstSchemaToOption } from './optionMapper';
 
 const SchemaFormControl = (props) => {
-  const isNativeInput = (schemaType) => schemaType === 'string' || schemaType === 'number';
+  const isNativeInput = (propsSchemaType) =>
+    propsSchemaType === 'string' || propsSchemaType === 'number';
 
   const getSanitisedValue = (value) =>
     isNativeInput(props.schema.type) && (isNull(value) || isUndefined(value)) ? '' : value;
@@ -19,6 +22,9 @@ const SchemaFormControl = (props) => {
 
   const getControlType = (schema) => {
     if (schema.control) {
+      if (isOneOfSchema(schema) && schema.oneOf.length > 3) {
+        return FormControlType.SELECT;
+      }
       return schema.control;
     }
 
@@ -27,7 +33,7 @@ const SchemaFormControl = (props) => {
     }
 
     if (schema.oneOf) {
-      return schema.oneOf.length >= 3 ? 'select' : 'radio';
+      return schema.oneOf.length === 1 || schema.oneOf.length >= 3 ? 'select' : 'radio';
     }
 
     if (schema.type === 'string') {
@@ -68,29 +74,6 @@ const SchemaFormControl = (props) => {
     return null;
   };
 
-  const mapIcon = (icon) => {
-    if (icon) {
-      if (icon.name && availableCurrencyFlags.includes(icon.name)) {
-        return {
-          currency: icon.name,
-        };
-      }
-    }
-    return null;
-  };
-
-  const mapConstSchemaToOption = (schema) => {
-    const keyForDescription =
-      (schema.title + schema.description).length > 50 ? 'secondary' : 'note';
-    return {
-      value: !isUndefined(schema.const) ? schema.const : schema.enum[0],
-      label: schema.title,
-      [keyForDescription]: schema.description,
-      ...mapIcon(schema.icon),
-      disabled: schema.disabled,
-    };
-  };
-
   const controlType = getControlType(props.schema);
   const options = getOptions(props.schema);
 
@@ -110,7 +93,8 @@ const SchemaFormControl = (props) => {
     options,
     placeholder: props.schema.placeholder,
     autoComplete: !props.schema.help,
-    disabled: props.disabled,
+    disabled: props.disabled || props.schema.disabled,
+    displayPattern: props.schema.displayFormat,
   };
 
   return <FormControl type={controlType} value={safeValue} {...events} {...controlProps} />;
@@ -126,6 +110,8 @@ SchemaFormControl.propTypes = {
     title: Types.string,
     placeholder: Types.string,
     help: Types.shape({}),
+    displayFormat: Types.string,
+    disabled: Types.bool,
   }).isRequired,
   onChange: Types.func.isRequired,
   onFocus: Types.func,

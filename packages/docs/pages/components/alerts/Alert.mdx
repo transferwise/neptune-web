@@ -1,10 +1,11 @@
 import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
 import { Alert } from '@transferwise/components';
+import { Star } from '@transferwise/icons';
 import code from '../../../liveEditorCode/alert.code';
 
 Use Alert for contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 
-<LiveEditorBlock code={code} scope={{ Alert }} />
+<LiveEditorBlock code={code} scope={{ Alert, Star }} />
 <GeneratePropsTable componentName="Alert" />
 
 ## Types
@@ -18,33 +19,36 @@ Use Alert for contextual feedback messages for typical user actions with the han
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Default</th>
+      <th scope="row">Neutral</th>
       <td>
-        <Alert size="sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Alert>
+        <Alert message="Payments sent to your bank details **today** might not arrive in time for the holidays."></Alert>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Positive</th>
+      <td>
+        <Alert
+          type="positive"
+          message="Payments sent to your bank details **today** might not arrive in time for the holidays."
+        />
       </td>
     </tr>
     <tr>
       <th scope="row">Warning</th>
       <td>
-        <Alert type="warning" size="sm">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </Alert>
+        <Alert
+          type="warning"
+          message="Payments sent to your bank details **today** might not arrive in time for the holidays."
+        />
       </td>
     </tr>
     <tr>
-      <th scope="row">Success</th>
+      <th scope="row">Negative</th>
       <td>
-        <Alert type="success" size="sm">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </Alert>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Error</th>
-      <td>
-        <Alert type="error" size="sm">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </Alert>
+        <Alert
+          type="negative"
+          message="Payments sent to your bank details **today** might not arrive in time for the holidays."
+        />
       </td>
     </tr>
   </tbody>
@@ -52,7 +56,7 @@ Use Alert for contextual feedback messages for typical user actions with the han
 
 ## Content options
 
-`<Alert />` component accepts anything that can be rendered: numbers, strings, elements or an array (or [fragment](https://reactjs.org/docs/fragments.html)) containing these types.
+You can customise the message text style and the icon. Use the default icons where you can - only provide a custom icon if it helps give the user more context as to the contents of the message.
 
 <table className="table docs-table table-condensed">
   <thead>
@@ -63,22 +67,23 @@ Use Alert for contextual feedback messages for typical user actions with the han
   </thead>
   <tbody>
     <tr>
-      <td>Example of message with list items</td>
       <td>
-        <Alert size="sm" type="error" arrow="up-center">
-          <div>Number is required</div>
-          <div>Must be 10 or greater</div>
-          <div>Must be 99 or less</div>
-        </Alert>
+        The <code>message</code> prop accepts both plain text and text with bolded elements. To bold
+        words use the markdown style of <code>**two asterisks**</code>.
+      </td>
+      <td>
+        <Alert message="Payments sent to your bank details **today** might not arrive in time for the holidays." />
       </td>
     </tr>
     <tr>
-      <td>Example of message with bold text and link</td>
       <td>
-        <Alert size="sm">
-          <b>Lorem</b> ipsum dolor sit amet, consectetur{' '}
-          <a href="https://transferwise.com/help">adipisicing elit</a>.
-        </Alert>
+        Example of an Alert with icon = <code>&lt;Star /&gt;</code>
+      </td>
+      <td>
+        <Alert
+          icon={<Star />}
+          message="Thank you for your rating, your feedback is important to us."
+        />
       </td>
     </tr>
   </tbody>

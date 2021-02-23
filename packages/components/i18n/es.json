@@ -1,0 +1,17 @@
+{
+  "neptune.CloseButton.ariaLabel": "Cierra",
+  "neptune.MoneyInput.Select.placeholder": "Selecciona una opción...",
+  "neptune.Pagination.ariaLabel": "Navegación por las páginas",
+  "neptune.PaginationLink.ariaLabel.active": "Ve a la página {pageNumber}",
+  "neptune.PaginationLink.ariaLabel.inactive": "Página actual, página {pageNumber}",
+  "neptune.Upload.csButtonText": "Cargar otro archivo",
+  "neptune.Upload.csFailureText": "La carga del archivo ha fallado. Por favor, inténtalo de nuevo",
+  "neptune.Upload.csSuccessText": "¡Se ha subido el archivo!",
+  "neptune.Upload.csTooLargeMessage": "Por favor, sube un archivo de menos de 5 MB",
+  "neptune.Upload.csWrongTypeMessage": "Tipo de archivo no aceptado. Por favor, inténtalo de nuevo con un archivo diferente",
+  "neptune.Upload.psButtonText": "Cancela",
+  "neptune.Upload.psProcessingText": "Subiendo...",
+  "neptune.Upload.usButtonText": "O selecciona un archivo",
+  "neptune.Upload.usDropMessage": "Arrastra un archivo para subirlo",
+  "neptune.Upload.usPlaceholder": "Arrastra y suelta un archivo menor de 5MB"
+}

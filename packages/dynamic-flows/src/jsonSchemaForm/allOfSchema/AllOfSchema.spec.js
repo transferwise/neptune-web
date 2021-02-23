@@ -9,6 +9,7 @@ describe('Given a component from rendering allOf schemas', () => {
   let genericSchemaComponents;
   let props;
   let onChange;
+  let onPersistAsync;
 
   const stringSchema = {
     type: 'string',
@@ -53,8 +54,18 @@ describe('Given a component from rendering allOf schemas', () => {
 
   beforeEach(() => {
     onChange = jest.fn();
+    onPersistAsync = jest.fn();
 
-    props = { schema, model, errors, locale, onChange, submitted, translations };
+    props = {
+      schema,
+      model,
+      errors,
+      locale,
+      onChange,
+      submitted,
+      translations,
+      onPersistAsync,
+    };
     component = shallow(<AllOfSchema {...props} />);
 
     genericSchemaComponents = component.find(GenericSchema);
@@ -108,7 +119,7 @@ describe('Given a component from rendering allOf schemas', () => {
 
   describe('when a child schema triggers onChange', () => {
     beforeEach(() => {
-      numberSchemaComponent.simulate('change', { number: 2 }, numberSchema);
+      numberSchemaComponent.simulate('change', { number: 2 }, numberSchema, 2);
     });
 
     it('should trigger the components onChange once', () => {
@@ -116,7 +127,7 @@ describe('Given a component from rendering allOf schemas', () => {
     });
 
     it('should combine the changed model with the other (valid) parts of the model', () => {
-      expect(onChange).toHaveBeenCalledWith({ string: 'a', number: 2 }, numberSchema);
+      expect(onChange).toHaveBeenCalledWith({ string: 'a', number: 2 }, numberSchema, 2);
     });
   });
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 
-import { Alert } from '@transferwise/components';
+import { InlineAlert } from '@transferwise/components';
 
 const ControlFeedback = (props) => {
   // Use validation messages from the schema if possible.
@@ -13,33 +13,26 @@ const ControlFeedback = (props) => {
   const isErrorVisible = (props.submitted || !props.changed) && !!props.errors;
   const isValidationVisible =
     (props.submitted || (props.changed && props.blurred)) && !!props.validations.length;
-  const isHelpVisible = props.focused && props.schema.help && !isValidationVisible;
+  const isDescriptionVisible = props.focused && props.schema.description && !isValidationVisible;
+  const isValidationAsyncSuccessMessageVisible = !!props.validationAsyncSuccessMessage;
 
   return (
     <div>
-      {isErrorVisible && (
-        <Alert type="error" size="sm">
-          {props.errors}
-        </Alert>
-      )}
+      {isErrorVisible && <InlineAlert type="error">{props.errors}</InlineAlert>}
       {isValidationVisible && (
-        <Alert type="error" size="sm">
+        <InlineAlert type="error">
           {props.validations.map((validation) => (
             <div key={validation}>{validationMessages[validation]}</div>
           ))}
-        </Alert>
+        </InlineAlert>
       )}
-      {isHelpVisible && (
-        <Alert type="info" size="sm">
-          {props.schema.help.message && <div>{props.schema.help.message}</div>}
-          {props.schema.help.list && (
-            <ul className="list-unstyled">
-              {props.schema.help.list.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+      {(isDescriptionVisible || isValidationAsyncSuccessMessageVisible) && (
+        <InlineAlert type="info">
+          {isDescriptionVisible && <div>{props.schema.description}</div>}
+          {isValidationAsyncSuccessMessageVisible && (
+            <div>{props.validationAsyncSuccessMessage}</div>
           )}
-        </Alert>
+        </InlineAlert>
       )}
     </div>
   );
@@ -55,7 +48,7 @@ const validationMessagesProps = Types.shape({
 });
 
 ControlFeedback.propTypes = {
-  changed: Types.bool.isRequired, // Has the control been iteracted with
+  changed: Types.bool.isRequired, // Has the control been interacted with
   blurred: Types.bool.isRequired, // Has the control been blurred at least once
   focused: Types.bool.isRequired, // Is the control in focus
   submitted: Types.bool.isRequired,
@@ -63,12 +56,10 @@ ControlFeedback.propTypes = {
   validations: Types.arrayOf(Types.string),
   validationMessages: validationMessagesProps,
   schema: Types.shape({
-    help: Types.shape({
-      message: Types.string,
-      list: Types.arrayOf(Types.string),
-    }),
+    description: Types.string,
     validationMessages: validationMessagesProps,
   }).isRequired,
+  validationAsyncSuccessMessage: Types.string,
 };
 
 ControlFeedback.defaultProps = {
@@ -83,6 +74,7 @@ ControlFeedback.defaultProps = {
     pattern: 'Incorrect format',
     required: 'Value is required...',
   },
+  validationAsyncSuccessMessage: null,
 };
 
 export default ControlFeedback;

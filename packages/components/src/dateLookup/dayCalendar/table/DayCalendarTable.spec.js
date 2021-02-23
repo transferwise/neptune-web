@@ -7,6 +7,11 @@ import * as dateUtils from '../../../common/dateUtils';
 import DayCalendarTable from '.';
 import TableLink from '../../tableLink';
 
+const locale = 'en-GB';
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale }} />,
+}));
+
 jest.mock('@transferwise/formatting', () => ({
   formatDate: jest.fn().mockReturnValue('XXXX'),
 }));
@@ -21,7 +26,6 @@ jest.mock('../../getStartOfDay', () => ({
 }));
 
 describe('DayCalendarTable', () => {
-  const locale = 'xx';
   let component;
   let props;
 
@@ -29,10 +33,9 @@ describe('DayCalendarTable', () => {
     props = {
       viewMonth: 11,
       viewYear: 2018,
-      locale,
       onSelect: jest.fn(),
     };
-    component = shallow(<DayCalendarTable {...props} />);
+    component = shallow(<DayCalendarTable {...props} />).dive();
   });
 
   it('shows weekday names in table header', () => {

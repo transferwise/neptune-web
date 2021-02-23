@@ -6,14 +6,11 @@ const ProcessingStep = (props) => {
   const {
     isComplete,
     isError,
-    isProcessing,
     isSuccess,
     onAnimationCompleted,
     onClear,
     psButtonText,
-    psFailureText,
     psProcessingText,
-    psSuccessText,
   } = props;
 
   let processStatus = ProcessIndicator.Status.PROCESSING;
@@ -32,11 +29,7 @@ const ProcessingStep = (props) => {
           status={processStatus}
           onAnimationCompleted={(status) => onAnimationCompleted(status)}
         />
-        <h4 className="m-t-3 m-b-3">
-          {!isSuccess && !isError && isProcessing && psProcessingText}
-          {isSuccess && psSuccessText}
-          {isError && psFailureText}
-        </h4>
+        <h4 className="m-t-3 m-b-3">{psProcessingText}</h4>
         {psButtonText && (
           <button type="button" className="btn btn-default btn-sm" onClick={(e) => onClear(e)}>
             {psButtonText}
@@ -50,14 +43,11 @@ const ProcessingStep = (props) => {
 ProcessingStep.propTypes = {
   isComplete: Types.bool.isRequired,
   isError: Types.bool.isRequired,
-  isProcessing: Types.bool.isRequired,
   isSuccess: Types.bool.isRequired,
   onAnimationCompleted: Types.func.isRequired,
   onClear: Types.func.isRequired,
   psButtonText: Types.string.isRequired,
-  psFailureText: Types.string.isRequired,
   psProcessingText: Types.string.isRequired,
-  psSuccessText: Types.string.isRequired,
 };
 
 export default ProcessingStep;

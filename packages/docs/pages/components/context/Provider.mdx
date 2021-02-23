@@ -1,0 +1,46 @@
+import { FormattedMessage } from 'react-intl';
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import { Provider, Money, Select } from '@transferwise/components';
+import supportedLanguages from '@transferwise/components/build/i18n';
+import { getLangFromLocale } from '@transferwise/components/build/es/polyfill/common/locale';
+
+import messages from '@transferwise/components/build/es/no-polyfill/common/closeButton/CloseButton.messages';
+import code from '../../../liveEditorCode/provider.code';
+
+export const defaultLocale = 'en-GB';
+export const localeOptions = [
+  defaultLocale,
+  'en-US',
+  'ja-JP',
+  'zh-HK',
+  'es',
+  'fr',
+  'ru',
+  'de',
+  'tr',
+].map((locale) => ({
+  value: locale,
+  label: locale,
+}));
+
+Provides contextual data such as translations to components. See the [Provider usage guide](https://transferwise.github.io/neptune-web/branch/i18y/about/Setup#translations-and-the-provider) for more.
+
+<LiveEditorBlock
+  code={code}
+  scope={{
+    getLangFromLocale,
+    Provider,
+    Select,
+    Money,
+    FormattedMessage,
+    messages,
+    supportedLanguages,
+    localeOptions,
+    defaultLocale,
+  }}
+/>
+<GeneratePropsTable componentName="Provider" />
+
+export const meta = {
+  name: 'Provider',
+};

@@ -1,10 +1,49 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { shallow, mount } from 'enzyme';
 
 import DateInput from '.';
 
-import { LOCALES, MONTHS_EN, MONTHS_FR } from './data/testFixtures';
 import { fakeEvent } from '../common/fakeEvents';
+
+const MONTHS_FR = [
+  'janvier',
+  'février',
+  'mars',
+  'avril',
+  'mai',
+  'juin',
+  'juillet',
+  'août',
+  'septembre',
+  'octobre',
+  'novembre',
+  'décembre',
+];
+
+const MONTHS_EN = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+export const LOCALES = {
+  en: 'en-GB',
+  fr: 'fr-FR',
+  us: 'en-US',
+  jp: 'ja-JP',
+};
+
+export const DEFAULT_LOCALE = 'en-GB';
 
 const FEBRUARY_OPTION = { value: 1, label: MONTHS_EN[1] };
 
@@ -12,8 +51,8 @@ const DAY_SELECTOR = 'input[name="day"]';
 const MONTH_SELECTOR = 'Select';
 const YEAR_SELECTOR = 'input[name="year"]';
 
+jest.mock('react-intl');
 jest.mock('@transferwise/formatting', () => {
-  const { MONTHS_FR, LOCALES, MONTHS_EN } = require('./data/testFixtures'); // eslint-disable-line
   return {
     formatDate: (month, locale) =>
       locale === LOCALES.fr ? MONTHS_FR[month.getMonth()] : MONTHS_EN[month.getMonth()],
@@ -28,6 +67,7 @@ describe('Date Input Component', () => {
   const props = { onChange: jest.fn() };
 
   beforeEach(() => {
+    useIntl.mockReturnValue({ locale: DEFAULT_LOCALE });
     component = shallow(<DateInput {...props} />);
 
     selectMonth = component.find(MONTH_SELECTOR);
@@ -155,7 +195,8 @@ describe('Date Input Component', () => {
 
   describe('when locale is provided', () => {
     it('updates selectMonth based on locale', () => {
-      component = shallow(<DateInput {...props} locale={LOCALES.fr} />);
+      useIntl.mockReturnValue({ locale: LOCALES.fr });
+      component = shallow(<DateInput {...props} />);
       selectMonth = component.find(MONTH_SELECTOR);
 
       expect(selectMonth.props().options[0].label).toEqual(MONTHS_FR[0]);
@@ -166,13 +207,91 @@ describe('Date Input Component', () => {
     });
 
     it('shows day before month if locale is JP', () => {
-      component = shallow(<DateInput {...props} locale={LOCALES.jp} />);
+      useIntl.mockReturnValue({ locale: LOCALES.jp });
+      component = shallow(<DateInput {...props} />);
 
       expect(component.find('.form-control').at(0).type()).toBeInstanceOf(Function);
     });
   });
 
+  describe('when initialised', () => {
+    describe('without an initial value', () => {
+      it(`doesn't call the onChange callback`, () => {
+        component = mount(<DateInput {...props} />);
+
+        expect(props.onChange).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('with an initial value', () => {
+      it(`doesn't call the onChange callback`, () => {
+        component = mount(<DateInput {...props} value="1990-08" />);
+
+        expect(props.onChange).not.toHaveBeenCalled();
+      });
+    });
+  });
+
   describe('when user interacts', () => {
+    describe('with an empty date input', () => {
+      it('calls onChange with null if day is not entered', () => {
+        component = mount(<DateInput {...props} />);
+
+        // Select February
+        simulateSelectChange(2);
+
+        inputYear = component.find(YEAR_SELECTOR);
+
+        inputYear.simulate('change', { target: { value: '1990' } });
+
+        expect(props.onChange).toHaveBeenLastCalledWith(null);
+      });
+
+      it('calls onChange with null if month is not selected', () => {
+        component = mount(<DateInput {...props} />);
+
+        inputDay = component.find(DAY_SELECTOR);
+
+        inputDay.simulate('change', { target: { value: '12' } });
+
+        inputYear = component.find(YEAR_SELECTOR);
+
+        inputYear.simulate('change', { target: { value: '1990' } });
+
+        expect(props.onChange).toHaveBeenLastCalledWith(null);
+      });
+
+      it('calls onChange with null if year is not entered', () => {
+        component = mount(<DateInput {...props} />);
+
+        inputDay = component.find(DAY_SELECTOR);
+
+        inputDay.simulate('change', { target: { value: '12' } });
+
+        // Select February
+        simulateSelectChange(2);
+
+        expect(props.onChange).toHaveBeenLastCalledWith(null);
+      });
+
+      it('returns a valid date if all three fields are entered', () => {
+        component = mount(<DateInput {...props} />);
+
+        inputDay = component.find(DAY_SELECTOR);
+
+        inputDay.simulate('change', { target: { value: '12' } });
+
+        // Select February
+        simulateSelectChange(2);
+
+        inputYear = component.find(YEAR_SELECTOR);
+
+        inputYear.simulate('change', { target: { value: '1990' } });
+
+        expect(props.onChange).toHaveBeenLastCalledWith('1990-02-12');
+      });
+    });
+
     describe('with day input', () => {
       it('returns correct value for correct input', () => {
         component = mount(<DateInput {...props} value="2001-02-11" />);
@@ -192,6 +311,16 @@ describe('Date Input Component', () => {
         inputDay.simulate('change', { target: { value: 'aa' } });
 
         expect(props.onChange).toHaveBeenCalledWith(null);
+      });
+
+      it('returns null when day input is cleared', () => {
+        component = mount(<DateInput {...props} value="2001-01-01" />);
+
+        inputDay = component.find(DAY_SELECTOR);
+
+        inputDay.simulate('change', { target: { value: '' } });
+
+        expect(props.onChange).toHaveBeenLastCalledWith(null);
       });
     });
 
@@ -214,6 +343,62 @@ describe('Date Input Component', () => {
         simulateSelectChange(3);
 
         expect(props.onChange).toHaveBeenCalledWith('2001-03-01');
+      });
+
+      it('returns null when de-selecting month', () => {
+        component = mount(<DateInput {...props} value="2001-01-01" />);
+
+        // De-selects Month
+        simulateSelectChange(0);
+
+        expect(props.onChange).toHaveBeenLastCalledWith(null);
+      });
+    });
+  });
+
+  describe('with day input and year input', () => {
+    describe('when switching from day input to year input', () => {
+      it('does not call onBlur nor onFocus', () => {
+        const onFocus = jest.fn();
+        const onBlur = jest.fn();
+
+        component = mount(<DateInput {...props} onFocus={onFocus} onBlur={onBlur} />);
+
+        inputDay = component.find(DAY_SELECTOR);
+        inputYear = component.find(YEAR_SELECTOR);
+
+        inputDay.simulate('focus');
+
+        inputDay.simulate('blur', { relatedTarget: inputYear.getDOMNode() });
+        inputYear.simulate('focus', { relatedTarget: inputDay.getDOMNode() });
+        inputYear.simulate('blur');
+
+        expect(onFocus).toHaveBeenCalledTimes(1);
+        expect(onBlur).toHaveBeenCalledTimes(1);
+
+        jest.useRealTimers();
+      });
+
+      it('does not call onBlur on IE11 either', () => {
+        const onBlur = jest.fn();
+
+        component = mount(<DateInput {...props} onBlur={onBlur} />);
+
+        inputDay = component.find(DAY_SELECTOR);
+        inputYear = component.find(YEAR_SELECTOR);
+
+        inputDay.simulate('focus');
+
+        Object.defineProperty(document, 'activeElement', {
+          value: inputYear.getDOMNode(),
+        });
+
+        inputDay.simulate('blur', { relatedTarget: null });
+        inputYear.simulate('focus', { relatedTarget: inputDay.getDOMNode() });
+
+        expect(onBlur).not.toHaveBeenCalled();
+
+        jest.useRealTimers();
       });
     });
   });

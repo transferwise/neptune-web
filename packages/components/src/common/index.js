@@ -9,9 +9,10 @@ export { DateMode } from './propsValues/dateMode';
 export { MonthFormat } from './propsValues/monthFormat';
 // Position and Placement are duplicated and needs to be aligned with a breaking change
 // https://transferwise.atlassian.net/browse/DS-249
-export { Position, ArrowPosition } from './propsValues/position';
+export { Position } from './propsValues/position';
 export { Layout } from './propsValues/layouts';
 export { FormControlType } from './propsValues/formControlType';
 export { Status } from './propsValues/status';
-export { MessageType } from './propsValues/messageType';
+export { Sentiment } from './propsValues/sentiment';
 export { ProfileType } from './propsValues/profileType';
+export { Key } from './key';

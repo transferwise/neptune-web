@@ -26,7 +26,6 @@ export const basic = () => {
     <FormControl
       autoComplete={false}
       id="form-control-id"
-      locale="en"
       name="form-control-name"
       placeholder="Search placeholder"
       displayPattern={null}

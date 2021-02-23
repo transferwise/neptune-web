@@ -1,14 +1,17 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { shallow } from 'enzyme';
 import { formatNumber } from '@transferwise/formatting';
 import FormattedValue from './FormattedValue';
 
+jest.mock('react-intl');
+
 describe('FormattedValue', () => {
   let props;
-  let locale;
   let value;
   let component;
   let item;
+  useIntl.mockReturnValue({ locale: 'en-GB' });
 
   describe('when given a text field', () => {
     beforeEach(() => {
@@ -44,7 +47,6 @@ describe('FormattedValue', () => {
       value = 1234;
       props = {
         value,
-        locale,
         field: {
           title: 'Number',
           type: 'number',

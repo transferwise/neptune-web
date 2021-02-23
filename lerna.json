@@ -1,7 +1,7 @@
 {
   "command": {
     "publish": {
-      "allowBranch": ["main", "beta"],
+      "allowBranch": ["main"],
       "conventionalCommits": true,
       "verifyAccess": false,
       "ignoreChanges": [
@@ -9,9 +9,13 @@
         "**/*.spec.js",
         "**/*.yml",
         "**/*.story.js",
-        "packages/components/src/neptuneCssTest",
-        "packages/.storybook",
-        "packages/docs"
+        "**/.storybook/**",
+        "**/neptuneCssTest/**",
+        "**/test/**",
+        "packages/docs",
+        "lerna.json",
+        "**/CODEOWNERS",
+        "**/.gitignore"
       ]
     }
   },

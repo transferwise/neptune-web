@@ -9,6 +9,7 @@ describe('Given a component for dynamically rendering a box of other components'
   let onAction;
   let onModelChange;
   let box;
+  let onPersistAsync;
 
   const button = {
     type: 'button',
@@ -33,6 +34,8 @@ describe('Given a component for dynamically rendering a box of other components'
 
     onAction = jest.fn();
     onModelChange = jest.fn();
+    onPersistAsync = jest.fn();
+
     component = shallow(
       <DynamicBox
         component={box}
@@ -41,6 +44,7 @@ describe('Given a component for dynamically rendering a box of other components'
         submitted={false}
         errors={{}}
         model={model}
+        onPersistAsync={onPersistAsync}
       />,
     );
   });

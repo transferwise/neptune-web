@@ -46,7 +46,9 @@ const NavigationOption = ({
           onClick(event);
         }
       }}
-      button={<Chevron orientation={Chevron.Orientation.RIGHT} disabled={disabled} />}
+      button={
+        <Chevron orientation={Chevron.Orientation.RIGHT} disabled={disabled} className="d-block" />
+      }
     />
   );
 };

@@ -9,7 +9,14 @@ const cleanValue = (value) => {
   return newValue && typeof newValue === 'string' ? newValue.replace(/"|'/gi, '') : newValue;
 };
 
-const parsePropsForTable = ({ type, required, defaultValue }) => {
+const parsePropsForTable = ({
+  defaultValue,
+  description,
+  displayName,
+  propName,
+  required,
+  type,
+}) => {
   const getAllowedValues = (propType) => {
     switch (propType.name) {
       case 'arrayOf':
@@ -46,10 +53,13 @@ const parsePropsForTable = ({ type, required, defaultValue }) => {
   };
 
   return {
-    type: type.name || '–',
     allowedValues: getAllowedValues(type),
-    required,
     defaultValue: (defaultValue && cleanValue(defaultValue.value)) || '–',
+    description,
+    displayName,
+    propName,
+    required,
+    type: type.name || '–',
   };
 };
 

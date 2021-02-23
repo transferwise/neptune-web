@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snackbar accepts element as text 1`] = `"<div class=\\"snackbar\\"><span class=\\"snackbar__text snackbar__text--light snackbar__text-container-enter snackbar__text-container-enter-active\\"><span>test</span></span></div>"`;
+
+exports[`Snackbar adjusts the theme if passed 1`] = `"<div class=\\"snackbar\\"><span class=\\"snackbar__text snackbar__text--dark snackbar__text-container-enter snackbar__text-container-enter-active\\"><span>test</span></span></div>"`;

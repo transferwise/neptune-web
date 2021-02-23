@@ -77,49 +77,49 @@ describe('Drawer', () => {
   });
 
   it('renders drawer header if title is provided', () => {
-    expect(component.find('.drawer-header--title')).toHaveLength(0);
+    expect(component.find('.np-drawer-header--title')).toHaveLength(0);
     component.setProps({ headerTitle: 'A title' });
-    expect(component.find('.drawer-header--title')).toHaveLength(1);
-    expect(component.find('.drawer-header--title').text()).toBe('A title');
+    expect(component.find('.np-drawer-header--title')).toHaveLength(1);
+    expect(component.find('.np-drawer-header--title').text()).toBe('A title');
   });
 
   it('renders header with or without borders', () => {
-    expect(component.find('.drawer-header--withborder')).toHaveLength(0);
+    expect(component.find('.np-drawer-header--withborder')).toHaveLength(0);
     component.setProps({ headerTitle: 'A title' });
-    expect(component.find('.drawer-header--withborder')).toHaveLength(1);
+    expect(component.find('.np-drawer-header--withborder')).toHaveLength(1);
   });
 
   it('renders content if children are provided', () => {
-    expect(component.find('.drawer-content')).toHaveLength(0);
+    expect(component.find('.np-drawer-content')).toHaveLength(0);
     component.setProps({ children: 'SomeChildren' });
-    expect(component.find('.drawer-content')).toHaveLength(1);
+    expect(component.find('.np-drawer-content')).toHaveLength(1);
   });
 
   it('renders drawer footer if footerContent is provided', () => {
-    expect(component.find('.drawer-footer')).toHaveLength(0);
+    expect(component.find('.np-drawer-footer')).toHaveLength(0);
     component.setProps({ footerContent: 'SomeContent' });
-    expect(component.find('.drawer-footer')).toHaveLength(1);
+    expect(component.find('.np-drawer-footer')).toHaveLength(1);
   });
 
   it('adds padding ', () => {
     component.setProps({ children: 'content', footerContent: 'content' });
-    expect(component.find('.drawer-p-x')).toHaveLength(3);
-    expect(component.find('.drawer-p-y')).toHaveLength(1);
+    expect(component.find('.np-drawer-p-x')).toHaveLength(3);
+    expect(component.find('.np-drawer-p-y')).toHaveLength(1);
   });
 
   it('renders close button', () => {
-    expect(component.find(`.drawer-header .close`)).toHaveLength(1);
+    expect(component.find(`.np-drawer-header .close`)).toHaveLength(1);
   });
 
   it('calls onClose when user clicks close button', () => {
     expect(props.onClose).not.toBeCalled();
-    component.find(`.drawer-header .close`).simulate('click');
+    component.find(`.np-drawer-header .close`).simulate('click');
     expect(props.onClose).toBeCalled();
   });
 
   it('calls onClose when user press right key on close button', () => {
     expect(props.onClose).not.toBeCalled();
-    const closeButton = component.find(`.drawer-header .close`);
+    const closeButton = component.find(`.np-drawer-header .close`);
     closeButton.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.DOWN));
     expect(props.onClose).not.toBeCalled();
     closeButton.simulate('keyDown', fakeKeyDownEventForKey(KEY_CODES.ESCAPE));

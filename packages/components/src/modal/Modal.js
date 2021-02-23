@@ -5,13 +5,23 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 import { Cross as CrossIcon } from '@transferwise/icons';
 import KEY_CODES from '../common/keyCodes';
 import './Modal.css';
-import { Size, addNoScrollBodyClass, removeNoScrollBodyClass } from '../common';
+import { Size, Position, addNoScrollBodyClass, removeNoScrollBodyClass } from '../common';
 import Dimmer from '../dimmer';
 
 const TRANSITION_DURATION_IN_MILLISECONDS = 150;
 
 class Modal extends Component {
   static Size = Size;
+
+  static Scroll = {
+    CONTENT: 'content',
+    VIEWPORT: 'viewport',
+  };
+
+  static Position = {
+    [Position.TOP.toUpperCase()]: Position.TOP,
+    [Position.CENTER.toUpperCase()]: Position.CENTER,
+  };
 
   onEscape = (event) => {
     const { onClose } = this.props;
@@ -66,6 +76,8 @@ class Modal extends Component {
       open,
       size,
       closeOnClick,
+      scroll,
+      position,
       ...otherProps
     } = this.props;
 
@@ -74,7 +86,7 @@ class Modal extends Component {
     const noDivider = this.checkSpecialClasses('no-divider');
 
     return (
-      <Dimmer open={open}>
+      <Dimmer open={open} scrollable={scroll === Modal.Scroll.CONTENT}>
         <CSSTransition
           appear
           in={open}
@@ -85,7 +97,18 @@ class Modal extends Component {
           unmountOnExit
         >
           <div
-            className={`tw-modal fade ${className}`}
+            className={classNames(
+              'tw-modal',
+              'd-flex',
+              'justify-content-center',
+              {
+                'tw-modal--content': scroll === Modal.Scroll.CONTENT,
+                'align-items-center': position === Position.CENTER,
+                'align-items-start': position === Position.TOP,
+              },
+              'fade',
+              className,
+            )}
             tabIndex="-1"
             role="presentation"
             ref={(dialog) => {
@@ -96,22 +119,35 @@ class Modal extends Component {
             {...otherProps}
           >
             <div
-              className={classNames('tw-modal-dialog', {
+              className={classNames('tw-modal-dialog', 'd-flex', {
                 [`tw-modal-${this.props.size}`]: this.props.size,
               })}
               aria-modal
               role="dialog"
             >
               <div
-                className={classNames('tw-modal-content', {
-                  'tw-modal-compact': isCompact,
-                  'tw-modal-no-title': !title,
-                })}
+                className={classNames(
+                  'tw-modal-content',
+                  'd-flex',
+                  'flex-column',
+                  'justify-content-between',
+                  {
+                    'tw-modal-compact': isCompact,
+                    'tw-modal-no-title': !title,
+                  },
+                )}
               >
                 <div
-                  className={classNames('tw-modal-header', {
-                    'modal--withoutborder': !title || noDivider,
-                  })}
+                  className={classNames(
+                    'tw-modal-header',
+                    'd-flex',
+                    'align-items-center',
+                    'justify-content-between',
+                    'flex-wrap',
+                    {
+                      'modal--withoutborder': !title || noDivider,
+                    },
+                  )}
                 >
                   <h4 className="tw-modal-title">{title}</h4>
                   <button type="button" onClick={onClose} className="close" aria-label="close">
@@ -121,9 +157,15 @@ class Modal extends Component {
                 <div className="tw-modal-body">{body}</div>
                 {footer && (
                   <div
-                    className={classNames('tw-modal-footer', {
-                      'modal--withoutborder': noDivider,
-                    })}
+                    className={classNames(
+                      'tw-modal-footer',
+                      'd-flex',
+                      'align-items-center',
+                      'flex-wrap',
+                      {
+                        'modal--withoutborder': noDivider,
+                      },
+                    )}
                   >
                     {footer}
                   </div>
@@ -151,6 +193,8 @@ Modal.propTypes = {
   className: Types.string,
   open: Types.bool.isRequired,
   closeOnClick: Types.bool,
+  scroll: Types.oneOf([Modal.Scroll.CONTENT, Modal.Scroll.VIEWPORT]),
+  position: Types.oneOf([Modal.Position.TOP, Modal.Position.CENTER]),
 };
 
 Modal.defaultProps = {
@@ -159,6 +203,8 @@ Modal.defaultProps = {
   size: Modal.Size.MEDIUM,
   className: '',
   closeOnClick: true,
+  scroll: Modal.Scroll.VIEWPORT,
+  position: Modal.Position.CENTER,
 };
 
 export default Modal;

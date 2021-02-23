@@ -2,14 +2,14 @@
   const [dismissed, setDismissed] = React.useState(false);
   return dismissed ? null : (
     <Alert
-      dismissible
-      size={Alert.Size.SMALL}
-      arrow={Alert.ArrowPosition.TOP_LEFT}
-      type={Alert.Type.WARNING}
+      action={{
+        'aria-label': 'Learn more about expected payment times',
+        text: 'Learn more',
+        href: 'https://www.transferwise.com',
+      }}
+      message="Payments sent to your bank details **today** might not arrive in time for the holidays."
       onDismiss={() => setDismissed(true)}
-    >
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-      been the industry's standard dummy text ever since the 1500s when an unknown printer
-    </Alert>
+      type={Alert.Type.POSITIVE}
+    />
   );
 };

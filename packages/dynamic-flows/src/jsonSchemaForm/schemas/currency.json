@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "displayOrder": ["currency"],
+  "properties": {
+    "currency": {
+      "title": "Currency",
+      "type": "string",
+      "oneOf": [
+        { "title": "EUR", "icon": { "name": "flag-eur" }, "description": "Euro", "const": "EUR" },
+        {
+          "title": "GBP",
+          "icon": { "name": "flag-gbp" },
+          "description": "British pound",
+          "const": "GBP"
+        },
+        {
+          "title": "USD",
+          "icon": { "name": "flag-usd" },
+          "description": "United States dollar",
+          "const": "USD"
+        },
+        {
+          "title": "ARS",
+          "icon": { "name": "flag-ars" },
+          "description": "Argentine peso",
+          "const": "ARS"
+        },
+        {
+          "title": "AUD",
+          "icon": { "name": "flag-aud" },
+          "description": "Australian dollar",
+          "const": "AUD"
+        }
+      ],
+      "validationMessages": { "required": "Please enter currency." },
+      "refreshFormOnChange": true,
+      "default": "EUR"
+    }
+  },
+  "required": ["currency"]
+}

@@ -3,6 +3,241 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@8.1.0...@transferwise/neptune-css@8.1.1) (2021-02-09)
+
+
+### Bug Fixes
+
+* removed old caret rotation ([#800](https://github.com/transferwise/neptune-web/issues/800)) ([fb9953e](https://github.com/transferwise/neptune-web/commit/fb9953e39cdc3483a0e6a3a1a3e34f1544cc828d))
+
+
+
+
+
+# [8.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@8.0.0...@transferwise/neptune-css@8.1.0) (2021-01-29)
+
+
+### Features
+
+* **css:** font-display swap and remove unused fonts ([#775](https://github.com/transferwise/neptune-web/issues/775)) ([f88f5cf](https://github.com/transferwise/neptune-web/commit/f88f5cf4990ba669be2f63f7fe834508af752bf1))
+
+
+
+
+
+# [8.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@7.0.2...@transferwise/neptune-css@8.0.0) (2021-01-29)
+
+
+* chore!: i18n follow up changes and fixes (#749) ([387cad7](https://github.com/transferwise/neptune-web/commit/387cad79018f4294fd9722eb613bce9e8cf41ac1)), closes [#749](https://github.com/transferwise/neptune-web/issues/749)
+
+
+### BREAKING CHANGES
+
+* - `mapLocale` and `LOCALES` don't exist anymore, use `getLangFromLocale` and `SUPPORTED_LANGUAGES` from same place accordingly
+- renamed translations file `zhHK.json` to `zh.json`
+- deleted locale prop from several components (`Money`, `MoneyInput`, `PhoneNumberInput`, `FormattedValue`, `DynamicFieldDefinitionList`, `DateLookup`, `DateInput`, `Upload`) the value now coming from i18n context
+
+
+
+
+
+## [7.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@7.0.1...@transferwise/neptune-css@7.0.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* add component animations back into neptune ([#774](https://github.com/transferwise/neptune-web/issues/774)) ([f46f046](https://github.com/transferwise/neptune-web/commit/f46f046ca487e6acd5d0d90cfccb2c2d7b69bbc1))
+
+
+
+
+
+## [7.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@7.0.0...@transferwise/neptune-css@7.0.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* add clearfix to grid layout ([#772](https://github.com/transferwise/neptune-web/issues/772)) ([02e73c2](https://github.com/transferwise/neptune-web/commit/02e73c2baa7adaced43b03caada755486a83dc6d))
+
+
+
+
+
+# [7.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@6.0.0...@transferwise/neptune-css@7.0.0) (2021-01-27)
+
+
+* feat!: remove logo classes from navbar (#762) ([59b9962](https://github.com/transferwise/neptune-web/commit/59b996296d4d6dd472011b2fc09a208d0f6153ed)), closes [#762](https://github.com/transferwise/neptune-web/issues/762)
+
+
+### BREAKING CHANGES
+
+* The navigation logo is not offered via CSS class anymore. We recommend to consume the logo as an asset.
+
+Co-authored-by: andreapiras <16908937+andreapiras@users.noreply.github.com>
+
+
+
+
+
+# [6.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.1.0...@transferwise/neptune-css@6.0.0) (2021-01-22)
+
+
+* refactor!: improving FlowNavigation and Checkbox (#765) ([d52212d](https://github.com/transferwise/neptune-web/commit/d52212d13e9c822e7c1d24e5dc4d4bf49ac14814)), closes [#765](https://github.com/transferwise/neptune-web/issues/765) [#724](https://github.com/transferwise/neptune-web/issues/724)
+
+
+### BREAKING CHANGES
+
+* FlowNavigation refactor
+- removed avatarURL and profileType props, replaced with avatar prop
+- removed done prop
+- removed theme prop
+* CheckboxButton now requires an onChange handler, and people using it directly should provide an aria-label
+
+* test: update test
+
+Co-authored-by: andreapiras <16908937+andreapiras@users.noreply.github.com>
+
+
+
+
+
+# [5.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.0.4...@transferwise/neptune-css@5.1.0) (2020-12-16)
+
+
+### Features
+
+* internalization support ([#674](https://github.com/transferwise/neptune-web/issues/674)) ([10c533f](https://github.com/transferwise/neptune-web/commit/10c533fd9af2bb25d0f9b195ea941989252bf09e))
+
+
+
+
+
+## [5.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.0.3...@transferwise/neptune-css@5.0.4) (2020-12-07)
+
+**Note:** Version bump only for package @transferwise/neptune-css
+
+
+
+
+
+## [5.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.0.2...@transferwise/neptune-css@5.0.3) (2020-12-04)
+
+**Note:** Version bump only for package @transferwise/neptune-css
+
+
+
+
+
+## [5.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.0.1...@transferwise/neptune-css@5.0.2) (2020-12-03)
+
+
+### Bug Fixes
+
+* allow select options to wrap in mobile ([#717](https://github.com/transferwise/neptune-web/issues/717)) ([e7ab645](https://github.com/transferwise/neptune-web/commit/e7ab645420c065b7453c246115ec11112e33f1b9))
+
+
+
+
+
+## [5.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@5.0.0...@transferwise/neptune-css@5.0.1) (2020-12-02)
+
+
+### Bug Fixes
+
+* fixing circular dep and updating deps for security fixes ([#712](https://github.com/transferwise/neptune-web/issues/712)) ([2a95c74](https://github.com/transferwise/neptune-web/commit/2a95c746183c78e5992e28dafe954a901269e740))
+
+
+
+
+
+# [5.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.8...@transferwise/neptune-css@5.0.0) (2020-11-25)
+
+
+* refactor!: Neptune Web November Release (#695) ([e04fe15](https://github.com/transferwise/neptune-web/commit/e04fe15cc94116cd1c9e9f867a8378a0275edf33)), closes [#695](https://github.com/transferwise/neptune-web/issues/695) [#623](https://github.com/transferwise/neptune-web/issues/623) [#624](https://github.com/transferwise/neptune-web/issues/624) [#653](https://github.com/transferwise/neptune-web/issues/653) [#657](https://github.com/transferwise/neptune-web/issues/657) [#659](https://github.com/transferwise/neptune-web/issues/659) [#658](https://github.com/transferwise/neptune-web/issues/658) [#654](https://github.com/transferwise/neptune-web/issues/654) [#655](https://github.com/transferwise/neptune-web/issues/655) [#498](https://github.com/transferwise/neptune-web/issues/498) [#672](https://github.com/transferwise/neptune-web/issues/672) [#650](https://github.com/transferwise/neptune-web/issues/650) [#684](https://github.com/transferwise/neptune-web/issues/684) [#691](https://github.com/transferwise/neptune-web/issues/691) [#671](https://github.com/transferwise/neptune-web/issues/671) [#697](https://github.com/transferwise/neptune-web/issues/697)
+
+
+### BREAKING CHANGES
+
+* Neptune Web November Release (#695)
+* add conditionally required aria-label or aria-labelledby
+* required onclick
+* onAmountChange will now trigger even if the value is empty
+* Marketing components CSS can now be found in: https://github.com/transferwise/marketing-components/tree/main/packages/css
+
+Co-authored-by: Helen Durrant <61203573+helendurranttw@users.noreply.github.com>
+* DateInput - onChange when month is not selected (#614)
+
+Before: When month is not selected, it defaults to 0 which is January. This results in the component dispatching `onChange` with a seemingly valid data, when in reality the user hasn't finished composing the date.
+After: When month is not selected, we don't construct a Date object, and the `onChange` event contains `null` instead.
+
+Before: onChange was not being called if the user de-selected a month
+After: onChange is called with null
+* date input onFocus/onBlur grouped events (#626)
+
+DateInput now only triggers “onFocus” and “onBlur” when the focus changes outside of its 3 sub-components, and not when cycling through them.
+* base font size is now 16px across all screen widths
+* consumer will have to provide icons and neptune-css
+* this removes the size prop from Alert - there is now only one size
+
+
+
+
+
+## [4.0.8](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.7...@transferwise/neptune-css@4.0.8) (2020-11-09)
+
+
+### Bug Fixes
+
+* revert PR [#652](https://github.com/transferwise/neptune-web/issues/652) (re-applying focus styles) ([#662](https://github.com/transferwise/neptune-web/issues/662)) ([d9289aa](https://github.com/transferwise/neptune-web/commit/d9289aa1e8660da74e357ee4c2b9193fd45ffc3c))
+
+
+
+
+
+## [4.0.7](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.6...@transferwise/neptune-css@4.0.7) (2020-11-05)
+
+
+### Bug Fixes
+
+* render select into dimmer for mobile view ([#651](https://github.com/transferwise/neptune-web/issues/651)) ([14bd4f4](https://github.com/transferwise/neptune-web/commit/14bd4f4d866ffa67f8f092cae738bb18a8ba7a9c))
+
+
+
+
+
+## [4.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.5...@transferwise/neptune-css@4.0.6) (2020-11-04)
+
+
+### Bug Fixes
+
+* resetting button outlines to what they used to be ([#652](https://github.com/transferwise/neptune-web/issues/652)) ([f48d2a2](https://github.com/transferwise/neptune-web/commit/f48d2a29cc35c9e00efec879fd60b19c6354a6f8))
+
+
+
+
+
+## [4.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.4...@transferwise/neptune-css@4.0.5) (2020-10-20)
+
+
+### Bug Fixes
+
+* add font-display to fonts ([#640](https://github.com/transferwise/neptune-web/issues/640)) ([cf4c27d](https://github.com/transferwise/neptune-web/commit/cf4c27d9faade1d2cb7c3531d6d31883cb952ae4))
+
+
+
+
+
+## [4.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.3...@transferwise/neptune-css@4.0.4) (2020-10-19)
+
+
+### Bug Fixes
+
+* chrome inputs font crop ([#612](https://github.com/transferwise/neptune-web/issues/612)) ([bedcc8f](https://github.com/transferwise/neptune-web/commit/bedcc8fc7662d352496d4abe4cc74454dc03b4c1))
+
+
+
+
+
 ## [4.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@4.0.2...@transferwise/neptune-css@4.0.3) (2020-09-30)
 
 

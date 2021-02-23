@@ -75,9 +75,39 @@ In `settings.json` (use the command `Open Settings (JSON)` to get there):
 }
 ```
 
+## Testing
+
+### Beta Releases
+
+If you wish to test your changes in some consumer codebase and `yarn link` is not so sufficient or/and convenient approach, then you can easily publish beta version(s) on NPM registry and use it in any NPM repository.
+
+Steps:
+1. push changes into your feature/fix branch
+2. find build on [CircleCI](https://app.circleci.com/pipelines/github/transferwise/neptune-web)
+3. approve `hold-beta-release` job
+4. Lerna will [publish](https://github.com/lerna/lerna/blob/main/commands/publish/README.md#--canary) affected packages [tagged as beta](https://docs.npmjs.com/adding-dist-tags-to-packages)
+
+---
+
+Note: set the exact beta version without any [update types or version ranges](https://docs.npmjs.com/cli/v6/configuring-npm/package-json#dependencies) (e.g `^`, `~`) as usually NPM clients tend to opt-out installing beta (unstable) versions, correct example:
+
+```js
+// in package.json
+"@transferwise/neptune-css": "4.0.4-beta.7",
+
+// or just `beta`, NPM client will pick up latest beta version
+"@transferwise/components": "beta",
+```
+
+### Visual Testing
+
+(To be added)
+
 ## Versioning and commit lint
 
 We follow [Semantic Versioning](https://semver.org). We require that commit messages follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/#summary) standard. In this way, we can automatically bump the version of our packages when necessary.
+
+**These rules apply to both normal commit messages and PR titles** (if you are using squash and merge).
 
 The rules are simple:
 
@@ -85,7 +115,13 @@ The rules are simple:
 - The type must be one of the following: [`fix`, `feat`, `refactor`, `build`, `chore`, `docs`, `perf`, `test`]
 - If you are fixing something, use `fix`. This will bump the patch version.
 - If you are adding a new feature, use `feat`. This will bump the minor version.
-- If you are committing a breaking change, add a ! after the type: `feat!: this is a breaking change`
+- Breaking changes must have the words `BREAKING CHANGE:` as the first two words in the commit description. We also add a `!` after the type to make it obvious in the commit log.<sup>*</sup>
+For example:
+```
+feat!: Some feature
+
+BREAKING CHANGE: Description of breaking changes
+```
 
 Using anything other than `fix` or `feat` without a `!` will not trigger a version bump. This is useful for changes to CI config, documentation or tests. Feel free to choose the type that best reflects the work you're doing.
 
@@ -101,6 +137,8 @@ docs: updating the docs
 refactor(button): refactoring the button implementation
 chore: updating the ci build config
 ```
+
+<sup>*</sup> Generally the core design system team will handle breaking change releases. If you are planning a breaking change, please talk to us.
 
 ## Releasing
 

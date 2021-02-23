@@ -13,7 +13,7 @@ import { Cross as CrossIcon } from '@transferwise/icons';
 import KeyCodes from '../common/keyCodes';
 import TypeaheadInput from './typeaheadInput/TypeaheadInput';
 import TypeaheadOption from './typeaheadOption/TypeaheadOption';
-import Alert from '../alert';
+import InlineAlert from '../inlineAlert';
 import Chip from '../chip';
 import {
   addClickClassToDocumentOnIos,
@@ -21,7 +21,7 @@ import {
 } from '../common/domHelpers';
 
 import './Typeahead.css';
-import { Size, MessageType } from '../common';
+import { Size, Sentiment } from '../common';
 
 const DEFAULT_MIN_QUERY_LENGTH = 3;
 const SEARCH_DELAY = 200;
@@ -29,7 +29,7 @@ const SEARCH_DELAY = 200;
 export default class Typeahead extends Component {
   static Size = Size;
 
-  static Type = MessageType;
+  static Type = Sentiment;
 
   constructor(props) {
     super(props);
@@ -380,9 +380,9 @@ export default class Typeahead extends Component {
       dropdownOpen,
     });
 
-    const hasError = errorState || (alert && alert.type === Alert.Type.ERROR);
-    const displayAlert = (!errorState && alert) || (alert && alert.type === Alert.Type.ERROR);
-    const hasWarning = displayAlert && alert.type === Alert.Type.WARNING;
+    const hasError = errorState || (alert && alert.type === InlineAlert.Type.ERROR);
+    const displayAlert = (!errorState && alert) || (alert && alert.type === InlineAlert.Type.ERROR);
+    const hasWarning = displayAlert && alert.type === InlineAlert.Type.WARNING;
     return (
       <div
         id={id}
@@ -428,7 +428,7 @@ export default class Typeahead extends Component {
               </div>
             )}
           </div>
-          {displayAlert && <Alert type={alert.type}>{alert.message}</Alert>}
+          {displayAlert && <InlineAlert type={alert.type}>{alert.message}</InlineAlert>}
           {menu}
         </div>
       </div>

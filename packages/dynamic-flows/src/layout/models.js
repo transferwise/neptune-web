@@ -5,6 +5,7 @@ const actionModel = Types.shape({
   url: Types.string.isRequired,
   method: Types.oneOf(['GET', 'POST', 'PUT', 'PATCH']).isRequired,
   disabled: Types.boolean,
+  // eslint-disable-next-line react/forbid-prop-types
   data: Types.object,
 });
 

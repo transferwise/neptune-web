@@ -15,12 +15,12 @@ class SnackbarProvider extends Component {
     };
   }
 
-  create = ({ text, action }) => {
-    this.setState({ text, timestamp: Date.now(), action });
+  create = ({ action, text, theme }) => {
+    this.setState({ action, text, theme, timestamp: Date.now() });
   };
 
   render() {
-    const { text, timestamp, action } = this.state;
+    const { action, text, theme, timestamp } = this.state;
 
     return (
       <SnackbarContext.Provider
@@ -29,10 +29,11 @@ class SnackbarProvider extends Component {
         }}
       >
         <SnackbarPortal
+          action={action}
           text={text}
           timestamp={timestamp}
           timeout={this.props.timeout}
-          action={action}
+          theme={theme}
         />
         {this.props.children}
       </SnackbarContext.Provider>

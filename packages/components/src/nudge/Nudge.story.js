@@ -1,9 +1,8 @@
 import React from 'react';
-import { Image } from '@transferwise/components';
 import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import Nudge from '.';
+import { Image, Nudge } from '..';
 
 export default {
   component: Nudge,

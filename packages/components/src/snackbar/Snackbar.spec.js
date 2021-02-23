@@ -16,7 +16,7 @@ describe('Snackbar', () => {
     props = {
       text: 'hello, i am a snack',
       timestamp: Date.now(),
-      timeout: 4500,
+      timeout,
     };
 
     const Container = () => (
@@ -30,7 +30,7 @@ describe('Snackbar', () => {
     );
 
     component = mount(
-      <SnackbarProvider timeout={1000}>
+      <SnackbarProvider timeout={timeout}>
         <Container />
       </SnackbarProvider>,
     );
@@ -53,7 +53,7 @@ describe('Snackbar', () => {
 
   it('accepts element as text', async () => {
     const componentWithNode = mount(
-      <SnackbarProvider timeout={1000}>
+      <SnackbarProvider timeout={timeout}>
         <SnackbarConsumer>
           {({ createSnackbar }) => (
             <button
@@ -70,6 +70,8 @@ describe('Snackbar', () => {
     const snackbarWithNode = () => componentWithNode.find(Snackbar);
     componentWithNode.find('.button-trigger').simulate('click');
     expect(snackbarWithNode().text()).toContain('test');
+
+    expect(snackbarWithNode().html()).toMatchSnapshot();
   });
 
   it('displays a single snack for the given duration with the given text', async () => {
@@ -86,22 +88,24 @@ describe('Snackbar', () => {
     expect(snackbar().text()).not.toContain(props.text);
   });
 
-  it('does not update Snackbar when no text is passed', async () => {
-    const onDidUpdate = jest.fn();
-    Snackbar.prototype.componentDidUpdate = onDidUpdate;
-
-    expect(onDidUpdate).toHaveBeenCalledTimes(0);
-
-    buttonTrigger().simulate('click');
-    expect(onDidUpdate).toHaveBeenCalledTimes(1);
-
-    props.text = '';
-    buttonTrigger().simulate('click');
-    buttonTrigger().simulate('click');
-    expect(onDidUpdate).toHaveBeenCalledTimes(1);
-
-    props.text = 'doge';
-    buttonTrigger().simulate('click');
-    expect(onDidUpdate).toHaveBeenCalledTimes(2);
+  it('adjusts the theme if passed', async () => {
+    const componentWithNode = mount(
+      <SnackbarProvider timeout={timeout}>
+        <SnackbarConsumer>
+          {({ createSnackbar }) => (
+            <button
+              type="button"
+              className="button-trigger"
+              onClick={() => createSnackbar({ text: <span>test</span>, theme: 'dark' })}
+            >
+              Trigger
+            </button>
+          )}
+        </SnackbarConsumer>
+      </SnackbarProvider>,
+    );
+    const snackbarWithNode = () => componentWithNode.find(Snackbar);
+    componentWithNode.find('.button-trigger').simulate('click');
+    expect(snackbarWithNode().html()).toMatchSnapshot();
   });
 });

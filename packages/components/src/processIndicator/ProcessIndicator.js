@@ -85,7 +85,7 @@ class ProcessIndicator extends Component {
           <span className="process-icon-horizontal" />
           <span className="process-icon-vertical" />
         </span>
-        <svg xmlns="http://www.w3.org/2000/svg" space="preserve">
+        <svg xmlns="http://www.w3.org/2000/svg">
           <circle
             className="process-circle"
             cx="50%"

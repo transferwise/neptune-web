@@ -1,12 +1,9 @@
 .tw-modal {
   height: 100%;
   width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  outline: none;
 
   .tw-modal-dialog {
-    display: flex;
     max-height: 100%;
     transition: transform 0.3s ease-out;
     transform: translateY(-25%);
@@ -21,30 +18,21 @@
   }
 
   .tw-modal-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     max-height: 100vh;
     overflow: hidden;
     background: var(--color-background-elevated);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     width: 100%;
 
-    .tw-modal-header,
-    .tw-modal-footer {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
     .tw-modal-body {
+      // prevents overflowing content to show below modal footer
+      z-index: 1;
       flex: 1;
       overflow-y: auto;
     }
 
     .tw-modal-header {
       min-height: calc(var(--size-8) * 7);
-      justify-content: space-between;
       box-shadow: inset 0 -1px 0 0 rgb(226, 230, 232);
 
       &.modal--withoutborder {
@@ -139,6 +127,19 @@
 }
 
 @media (--screen-xs) {
+  &.tw-modal--content {
+    height: auto;
+    .tw-modal-dialog {
+      max-height: none;
+      .tw-modal-content {
+        max-height: none;
+        overflow: visible;
+        .tw-modal-body {
+          overflow-y: visible;
+        }
+      }
+    }
+  }
   .tw-modal-dialog {
     &.tw-modal-sm {
       width: 300px;
@@ -179,12 +180,14 @@
 }
 
 /* Internet explorer hack */
-// In internet explorer 11 modal sows up always collapsed.
+// In internet explorer 11 modal shows up always collapsed.
 @media all and (-ms-high-contrast: none) {
+  /* IE11 */
   _:-ms-fullscreen,
   :root .tw-modal {
+    height: 100%;
     .tw-modal-dialog {
-      height: 100%; /* IE11 */
+      height: 100%;
     }
   }
 }

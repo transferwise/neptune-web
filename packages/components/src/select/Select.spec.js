@@ -1,5 +1,4 @@
 import React from 'react';
-import { createPortal } from 'react-dom';
 import { mount } from 'enzyme';
 import doTimes from 'lodash.times';
 import Transition from 'react-transition-group/Transition';
@@ -13,6 +12,10 @@ import { addClassAndTriggerReflow, removeClass } from './domHelpers';
 jest.mock('react-dom');
 jest.mock('react-transition-group/Transition', () => jest.fn('placeholder'));
 jest.mock('./domHelpers');
+jest.mock('../dimmer', () => {
+  // eslint-disable-next-line
+  return ({ children }) => <div className="dimmer">{children}</div>;
+});
 
 describe('Select', () => {
   let component;
@@ -114,12 +117,6 @@ describe('Select', () => {
     openSelect();
     expectDropdownToBe().open();
     expectOpenClassToHaveBeenAdded();
-  });
-
-  it('does not create a portal when rendering', () => {
-    expect(createPortal).not.toHaveBeenCalled();
-    openSelect();
-    expect(createPortal).not.toHaveBeenCalled();
   });
 
   it('sets the open class on the menu', () => {
@@ -555,18 +552,17 @@ describe('Select', () => {
   });
 
   it('creates a portal for options list and overlay when rendering on mobile', () => {
-    expect(createPortal).not.toHaveBeenCalled();
-    expect(component.state('shouldRenderWithPortal')).toBe(false);
+    window.matchMedia = () => {
+      return { matches: true };
+    };
+    window.dispatchEvent(new Event('resize'));
+
+    expect(component.find('.dimmer')).toHaveLength(0);
 
     openSelect();
-    expect(createPortal).not.toHaveBeenCalled();
+
+    expect(component.find('.dimmer')).toHaveLength(1);
+
     expect(element('.dropdown-menu--open').exists()).toBe(true);
-    expect(document.querySelector('.select-overlay')).toBeFalsy();
-
-    component.setState({ shouldRenderWithPortal: true });
-    expect(createPortal).toHaveBeenCalledTimes(2);
-    openSelect();
-    expect(createPortal).toHaveBeenCalledWith(expect.anything(), document.body);
-    expect(element('.dropdown-menu--open').exists()).toBe(false);
   });
 });

@@ -90,9 +90,9 @@ const countries = [
     phone: '+61',
   },
   {
-    name: 'Australian External Territories',
-    iso2: 'AU',
-    iso3: 'AUS',
+    name: 'Australian Antarctic Territory',
+    iso2: 'AQ',
+    iso3: 'ATA',
     phone: '+672',
   },
   {

@@ -34,6 +34,11 @@ export default {
 
 export const basic = () => {
   const size = select('size', ['sm', 'md', 'lg'], 'md');
+  const usAccept = select(
+    'accepted format',
+    ['*', 'image/*', 'application/*', 'text/csv'],
+    'image/*',
+  );
   return (
     <Upload
       animationDelay={700}
@@ -44,11 +49,9 @@ export const basic = () => {
       csWrongTypeMessage="Please provide a supported format"
       maxSize={5000000}
       psUploadText="Cancel"
-      psFailureText="Upload failed.Please, try again"
       psProcessingText="Uploading..."
-      psSuccessText="Upload complete!"
       size={size}
-      usAccept="image/*"
+      usAccept={usAccept}
       usUploadText="Or Select File"
       usDisabled={false}
       usDropMessage="Drop file to start upload"
@@ -69,6 +72,11 @@ export const basic = () => {
 
 export const withCustomImage = () => {
   const size = select('size', ['sm', 'md', 'lg'], 'md');
+  const usAccept = select(
+    'accepted format',
+    ['*', 'image/*', 'application/*', 'text/csv'],
+    'image/*',
+  );
   return (
     <Upload
       animationDelay={700}
@@ -79,17 +87,15 @@ export const withCustomImage = () => {
       csWrongTypeMessage="Please provide a supported format"
       maxSize={5000000}
       psUploadText="Cancel"
-      psFailureText="Upload failed.Please, try again"
       psProcessingText="Uploading..."
-      psSuccessText="Upload complete!"
       size={size}
-      usAccept="image/*"
+      usAccept={usAccept}
       usUploadText="Or Select File"
       usDisabled={false}
       usDropMessage="Drop file to start upload"
       usLabel=""
       usPlaceholder="Drag and drop file less than 5MB"
-      usHelpImage={<img src={IMAGES[0].value} alt="test" />}
+      usHelpImage={<img src={IMAGES[1].value} alt="test" className="thumbnail" />}
       httpOptions={{
         url: 'https://httpbin.org/post',
         method: 'POST',
