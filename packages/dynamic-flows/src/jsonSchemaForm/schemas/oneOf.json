@@ -6,6 +6,71 @@
       "type": "string",
       "title": "Full name"
     },
+    "bankDetails": {
+      "title": "Bank type",
+      "placeholder": "Please select an account type",
+      "control": "tab",
+      "oneOf": [
+        {
+          "title": "Bank Code",
+          "type": "object",
+          "required": ["code"],
+          "properties": {
+            "code": {
+              "type": "string",
+              "title": "Code",
+              "default": "SOIWEUWQE"
+            }
+          }
+        },
+        {
+          "title": "Bank Number",
+          "type": "object",
+          "required": ["bankNumber", "bankSerial"],
+          "properties": {
+            "bankNumber": {
+              "type": "string",
+              "title": "Bank Number",
+              "displayFormat": "**-**-**",
+              "minLength": 6,
+              "maxLength": 7
+            },
+            "bankSerial": {
+              "type": "string",
+              "title": "Bank Serial",
+              "minLength": 8,
+              "maxLength": 10
+            }
+          }
+        },
+        {
+          "title": "Bank Details",
+          "type": "object",
+          "required": ["bankId", "bankLicense"],
+          "properties": {
+            "bankId": {
+              "type": "string",
+              "title": "Bank ID",
+              "displayFormat": "**-**-**",
+              "minLength": 6,
+              "maxLength": 7
+            },
+            "bankLicense": {
+              "type": "string",
+              "title": "Bank License",
+              "minLength": 8,
+              "maxLength": 10
+            },
+            "bankName": {
+              "type": "string",
+              "title": "Bank Name",
+              "minLength": 8,
+              "maxLength": 10
+            }
+          }
+        }
+      ]
+    },
     "details": {
       "title": "Account type",
       "oneOf": [

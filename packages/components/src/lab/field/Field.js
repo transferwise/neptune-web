@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import Alert from '../../alert';
+import InlineAlert from '../../inlineAlert';
 import { getValidationFailures } from './utils';
 import WithNormaliser from '../../withNormaliser';
 
@@ -118,11 +118,7 @@ const Field = (props) => {
         </label>
       )}
       <WithNormaliser>{React.cloneElement(props.children, childProps)}</WithNormaliser>
-      {message && (
-        <Alert type={messageType} size="sm">
-          {message}
-        </Alert>
-      )}
+      {message && <InlineAlert type={messageType}>{message}</InlineAlert>}
     </div>
   );
 };

@@ -1,16 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Switch renders component when checked 1`] = `
-<DocumentFragment>
+<div>
   <span
     aria-checked="true"
-    class="switch switch--checked a-class-name"
+    aria-label="a label"
+    class="np-switch np-switch--checked a-class-name"
     id="id"
-    role="checkbox"
+    role="switch"
     tabindex="0"
   >
     <span
-      class="switch--thumb"
+      class="np-switch--thumb"
     >
       <span
         aria-hidden="true"
@@ -19,6 +20,7 @@ exports[`Switch renders component when checked 1`] = `
       >
         <svg
           fill="currentColor"
+          focusable="false"
           height="24"
           width="24"
         >
@@ -36,20 +38,21 @@ exports[`Switch renders component when checked 1`] = `
       type="checkbox"
     />
   </span>
-</DocumentFragment>
+</div>
 `;
 
 exports[`Switch renders component when unchecked 1`] = `
-<DocumentFragment>
+<div>
   <span
     aria-checked="false"
-    class="switch switch--unchecked a-class-name"
+    aria-label="a label"
+    class="np-switch np-switch--unchecked a-class-name"
     id="id"
-    role="checkbox"
+    role="switch"
     tabindex="0"
   >
     <span
-      class="switch--thumb"
+      class="np-switch--thumb"
     >
       <span
         aria-hidden="true"
@@ -58,6 +61,7 @@ exports[`Switch renders component when unchecked 1`] = `
       >
         <svg
           fill="currentColor"
+          focusable="false"
           height="24"
           width="24"
         >
@@ -74,5 +78,5 @@ exports[`Switch renders component when unchecked 1`] = `
       type="checkbox"
     />
   </span>
-</DocumentFragment>
+</div>
 `;

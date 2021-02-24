@@ -1,18 +1,17 @@
 import React from 'react';
-import { mount } from 'enzyme';
-
-import { Alert, Checkbox, Radio, Select } from '@transferwise/components';
-
-import JsonSchemaForm from '.';
+import '@testing-library/jest-dom';
+import { render, screen, fireEvent } from '@testing-library/react';
+import JsonSchemaForm from './JsonSchemaForm';
 
 describe('E2E: Given a component for rendering a JSON schema form', () => {
-  let component;
   let schema;
   let errors;
   let onChange;
+  let onPersistAsync;
+  let props;
 
   const stringSchema = {
-    title: 'Label',
+    title: 'String',
     type: 'string',
     minLength: 2,
   };
@@ -22,7 +21,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
   };
 
   const enumSchema = {
-    title: 'Favourite number',
+    title: 'Enum',
     oneOf: [
       { const: 1, title: 'One' },
       { const: 2, title: 'Two' },
@@ -30,7 +29,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
   };
 
   const largeEnumSchema = {
-    title: 'Favourite number',
+    title: 'Large Enum',
     oneOf: [
       { const: 1, title: 'One' },
       { const: 2, title: 'Two' },
@@ -44,6 +43,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
   };
 
   const numberSchema = {
+    title: 'Number',
     type: 'number',
   };
 
@@ -70,6 +70,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
     };
 
     onChange = jest.fn();
+    onPersistAsync = jest.fn();
     errors = {
       string: 'Error',
     };
@@ -78,86 +79,107 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
     const locale = 'en-GB';
     const submitted = false;
     const disabled = false;
-    const props = { schema, model, errors, onChange, submitted, locale, disabled };
-    component = mount(<JsonSchemaForm {...props} />);
+    props = {
+      schema,
+      model,
+      errors,
+      onChange,
+      submitted,
+      locale,
+      disabled,
+      onPersistAsync,
+    };
   });
 
   describe('when initialised', () => {
-    it('should render a text input for the string schema', () => {
-      expect(component.find('input[type="text"]').length).toEqual(1);
+    beforeEach(() => {
+      render(<JsonSchemaForm {...props} />);
     });
 
-    it('should render a number input for the number schema', () => {
-      expect(component.find('input[type="number"]').length).toEqual(1);
+    it('should render text input control', () => {
+      const string = screen.getByLabelText('String');
+      expect(string.closest('input')).toHaveAttribute('type', 'text');
+    });
+
+    it('should render number input control', () => {
+      const number = screen.getByLabelText('Number');
+      expect(number.closest('input')).toHaveAttribute('type', 'number');
     });
 
     it('should render a checkbox for the boolean schema', () => {
-      expect(component.find(Checkbox).length).toEqual(1);
+      const check = screen.getByLabelText('Check');
+      expect(check.parentElement).toHaveClass('np-checkbox-button');
     });
 
     it('should render radio buttons for the enum schema', () => {
-      expect(component.find(Radio).length).toEqual(2);
+      screen.getByText('Enum');
+      expect(screen.getAllByRole('radio').length).toEqual(2);
     });
 
     it('should render a select for the large enum schema', () => {
-      expect(component.find(Select).length).toEqual(1);
-    });
-
-    it('should render a label for the text input control', () => {
-      expect(component.find('label').first().text()).toEqual(stringSchema.title);
+      const selectDropdownBtn = screen.getByLabelText('Large Enum');
+      expect(selectDropdownBtn.closest('div')).toHaveClass('tw-select');
     });
 
     it('should render the model value in the relevant control', () => {
-      expect(component.find('input[type="text"]').props().value).toEqual('foo');
+      expect(screen.getByLabelText('String').value).toBe('foo');
     });
 
     it('should render an error', () => {
-      expect(component.find(Alert).contains(errors.string)).toBe(true);
+      expect(screen.getByRole('alert')).toHaveTextContent(/error/i);
     });
 
     it('should broadcast a change for the const', () => {
-      expect(onChange).toHaveBeenCalledWith({ string: 'foo', const: 'abcd' }, true, constSchema);
+      expect(onChange).toHaveBeenCalledWith({ string: 'foo', const: 'abcd' }, constSchema, 'abcd');
       expect(onChange).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('when the text input value changes', () => {
     beforeEach(() => {
-      component.find('input[type="text"]').simulate('change', { target: { value: 'new' } });
+      render(<JsonSchemaForm {...props} />);
+
+      fireEvent.change(screen.getByLabelText('String'), { target: { value: 'new' } });
     });
 
     it('should trigger the component onChange', () => {
-      expect(onChange).toHaveBeenCalledWith({ string: 'new', const: 'abcd' }, true, stringSchema);
+      expect(onChange).toHaveBeenCalledWith({ string: 'new', const: 'abcd' }, stringSchema, 'new');
       expect(onChange).toHaveBeenCalledTimes(2);
     });
   });
 
   describe('when the text input value changes to something invalid', () => {
     beforeEach(() => {
-      component.find('input[type="text"]').simulate('change', { target: { value: 'x' } });
+      render(<JsonSchemaForm {...props} />);
+
+      fireEvent.change(screen.getByLabelText('String'), { target: { value: 'x' } });
     });
 
-    it('should remove the value from the model', () => {
-      expect(onChange).toHaveBeenCalledWith({ const: 'abcd' }, true, stringSchema);
+    it('should NOT remove the value from the model', () => {
+      expect(onChange).toHaveBeenLastCalledWith({ const: 'abcd', string: 'x' }, stringSchema, 'x');
     });
 
     describe('and then to something else invalid', () => {
       beforeEach(() => {
-        component.find('input[type="text"]').simulate('change', { target: { value: 'y' } });
+        fireEvent.change(screen.getByLabelText('String'), { target: { value: 'y' } });
       });
 
-      it('should not call onChange again', () => {
-        expect(onChange).toHaveBeenCalledTimes(2);
+      it('should call onChange again', () => {
+        expect(onChange).toHaveBeenCalledTimes(3);
       });
     });
 
     describe('and then to something valid', () => {
       beforeEach(() => {
-        component.find('input[type="text"]').simulate('change', { target: { value: 'bar' } });
+        fireEvent.change(screen.getByLabelText('String'), { target: { value: 'bar' } });
       });
 
       it('should call onChange with the new value', () => {
-        expect(onChange).toHaveBeenCalledWith({ string: 'bar', const: 'abcd' }, true, stringSchema);
+        expect(onChange).toHaveBeenCalledWith(
+          { string: 'bar', const: 'abcd' },
+          stringSchema,
+          'bar',
+        );
       });
 
       it('should have called onChange again', () => {
@@ -167,16 +189,46 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
   });
 
   describe('when disabled', () => {
+    it('should disable the controls', () => {
+      render(<JsonSchemaForm {...props} disabled />);
+
+      const controls = ['textbox', 'radio', 'button', 'spinbutton'];
+      controls.forEach((control) => {
+        screen.getAllByRole(control).forEach((node) => {
+          expect(node).toBeDisabled();
+        });
+      });
+    });
+  });
+
+  describe('when a property becomes required after initialisation, and the form is submitted', () => {
+    let node;
+
+    const optionalSchema = {
+      type: 'object',
+      title: 'Option A',
+      properties: {
+        a: {
+          title: 'A Number',
+          type: 'number',
+        },
+      },
+    };
+
+    const requiredSchema = {
+      ...optionalSchema,
+      required: ['a'],
+    };
+
     beforeEach(() => {
-      component.setProps({ disabled: true });
+      props = { ...props, schema: optionalSchema };
+      node = render(<JsonSchemaForm {...props} />);
     });
 
-    it('should disable the controls', () => {
-      expect(component.find('input[type="text"]').props().disabled).toBe(true);
-      expect(component.find('input[type="number"]').props().disabled).toBe(true);
-      expect(component.find(Checkbox).props().disabled).toBe(true);
-      expect(component.find(Radio).first().props().disabled).toBe(true);
-      expect(component.find(Select).props().disabled).toBe(true);
+    it('should display validation errors', () => {
+      node.rerender(<JsonSchemaForm {...props} schema={requiredSchema} submitted />);
+
+      screen.getByText('Value is required...');
     });
   });
 });

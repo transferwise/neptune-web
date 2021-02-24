@@ -3,4 +3,7 @@ export const Status = {
   FAILED: 'failed',
   SUCCEEDED: 'succeeded',
   HIDDEN: 'hidden',
+  DONE: 'done',
+  NOT_DONE: 'notDone',
+  PENDING: 'pending',
 };

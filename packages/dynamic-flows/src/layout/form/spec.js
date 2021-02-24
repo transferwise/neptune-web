@@ -9,6 +9,7 @@ describe('Given a component for dynamically rendering forms', () => {
   let component;
   let onModelChange;
   let spec;
+  let onPersistAsync;
 
   const schema = {
     id: '#example',
@@ -28,6 +29,7 @@ describe('Given a component for dynamically rendering forms', () => {
       schema,
     };
     onModelChange = jest.fn();
+    onPersistAsync = jest.fn();
     component = shallow(
       <DynamicForm
         component={spec}
@@ -35,6 +37,7 @@ describe('Given a component for dynamically rendering forms', () => {
         submitted={submitted}
         errors={errors}
         model={model}
+        onPersistAsync={onPersistAsync}
       />,
     );
   });
@@ -54,10 +57,10 @@ describe('Given a component for dynamically rendering forms', () => {
 
   describe('when the form triggers a model change', () => {
     beforeEach(() => {
-      component.find(JsonSchemaForm).simulate('change', model, true, schema.properties.an);
+      component.find(JsonSchemaForm).simulate('change', model, schema.properties, 'example');
     });
     it('should broadcast onAction', () => {
-      expect(onModelChange).toHaveBeenCalledWith(model, true, schema.properties.an, schema);
+      expect(onModelChange).toHaveBeenCalledWith(model, schema, 'example', schema.properties);
     });
   });
 });

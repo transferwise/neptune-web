@@ -2,6 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import requiredIf from 'react-required-if';
+import { logActionRequiredIf } from '../utilities';
 
 import './Button.css';
 
@@ -20,7 +21,7 @@ const Button = ({
 }) => {
   const classes = classNames(
     `btn btn-${size}`,
-    `tw-btn tw-btn-${size}`,
+    `np-btn np-btn-${size}`,
     {
       'btn-loading': loading,
       'btn-primary': type === Type.PRIMARY,
@@ -28,19 +29,15 @@ const Button = ({
       'btn-default': type === Type.SECONDARY,
       'btn-danger': type === Type.DANGER,
       'btn-link': type === Type.LINK,
-      'btn-block tw-btn-block': block,
+      'btn-block np-btn-block': block,
     },
     className,
   );
 
-  /** @DEPRECATED Size.EXTRA_SMALL */
-  if (size === Size.EXTRA_SMALL && process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line
-    console.warn(
-      '@transferwise/components: The value Button.Size.EXTRA_SMALL for the prop `size` in the Button component has been deprecated, and will be removed in the next major release. Please use Button.Size.SMALL instead.',
-    );
-  }
-
+  logActionRequiredIf(
+    'Button has deprecated the `Button.Size.EXTRA_SMALL` value for the `size` prop. Please use Button.Size.SMALL instead.',
+    size === Size.EXTRA_SMALL,
+  );
   return (
     /* eslint-disable react/button-has-type */
     <button type={htmlType} className={classes} disabled={disabled || loading} {...rest}>

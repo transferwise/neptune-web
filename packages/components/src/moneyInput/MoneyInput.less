@@ -32,6 +32,13 @@
 .tw-money-input .amount-currency-select-btn > .tw-select > .btn {
   display: flex;
   align-items: center;
+
+  span:not(.tw-icon) {
+    min-width: 2.6em; // fits a 3 letter string, ZMW being the longest one
+    @media (--screen-sm) {
+      min-width: calc(~'2.6em' + var(--size-32));
+    }
+  }
 }
 
 .tw-money-input .amount-currency-select-btn > .tw-select > .btn-addon.dropdown-toggle {

@@ -1,35 +1,49 @@
-<div>
+<ul>
   <Summary
-    icon={<MoneyIcon size={24} />}
-    title="Add money to your account"
-    help={{
-      title: 'Add money to your account',
-      content: (
-        <>
-          To open your account, you’ll need to add money to it at least once.
-          <br />
-          This isn’t a fee — it’s still your money. It just means that you’re ready to go once
-          you’re verified.
-        </>
-      ),
+    action={{
+      text: 'Change address',
+      href: '#change-address',
+      'aria-label': ' Click here to change address',
     }}
-  />
-  <Summary icon={<IdIcon size={24} />} title="You uploaded you identity documents" />
-  <Summary
+    as="li"
+    description="10 Downing Street, Westminster, London SW1A 2AA."
     icon={<HomeIcon size={24} />}
-    title="You entered your card delivery address"
-    content={
-      <>
-        Flat 3 Chaplin House, Shepperton Road
-        <br />
-        London N1 2NE
-        <br />
-        <a href="#foo">Edit address</a>
-      </>
-    }
-    help={{
-      title: 'Enter your card address',
-      content: 'When your card is ready we’ll post it to your home address.',
-    }}
+    title="Verify your address"
   />
-</div>;
+  <Summary
+    action={{
+      text: 'Change address',
+      href: '#change-address',
+      'aria-label': ' Click here to change address',
+    }}
+    as="li"
+    description="10 Downing Street, Westminster, London SW1A 2AA."
+    info={{
+      title: 'You entered your address',
+      content: 'Your address has been verified, no more actions are required.',
+      'aria-label': 'Please click here to know more about your address update status',
+    }}
+    icon={<HomeIcon size={24} />}
+    title="You verified your address"
+    status={Summary.Status.DONE}
+  />
+  <Summary
+    action={{
+      text: 'Change address',
+      href: '#change-address',
+      'aria-label': ' Click here to change address',
+    }}
+    as="li"
+    description="10 Downing Street, Westminster, London SW1A 2AA."
+    info={{
+      title: 'Address verification pending',
+      content:
+        'Your address change is currently being processed. Please allow 48 hours for verification.',
+      presentation: 'MODAL',
+      'aria-label': 'Please click here to know more about your address update status',
+    }}
+    icon={<HomeIcon size={24} />}
+    title="We’re verifying your address"
+    status={Summary.Status.PENDING}
+  />
+</ul>;

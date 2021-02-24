@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { render } from '@testing-library/react';
+import { render } from '../../test-utils';
 
 import Option from '.';
 
@@ -26,6 +26,16 @@ describe('Option', () => {
     expect(hasDisabledClass()).toBe(false);
     component.setProps({ disabled: true });
     expect(hasDisabledClass()).toBe(true);
+  });
+
+  it('has disabled attibute when the flag is passed for a button', () => {
+    expect(hasDisabledAttribute()).toBe(false);
+    component.setProps({ disabled: true });
+    expect(hasDisabledAttribute()).toBe(false);
+    component.setProps({ disabled: false, as: 'button' });
+    expect(hasDisabledAttribute()).toBe(false);
+    component.setProps({ disabled: true, as: 'button' });
+    expect(hasDisabledAttribute()).toBe(true);
   });
 
   it('passes the className it is given to the element it renders', () => {
@@ -100,6 +110,7 @@ describe('Option', () => {
   const hasDecisonClass = () => component.hasClass('decision');
   const hasComplexClass = () => component.hasClass('decision-complex');
   const hasDisabledClass = () => component.hasClass('disabled');
+  const hasDisabledAttribute = () => component.prop('disabled');
   const htmlFor = () => component.prop('htmlFor');
   const circle = () => component.find('.media-left');
   const circleContent = () => component.find('.media-left .circle');

@@ -5,8 +5,9 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import * as components from '.';
+import en from '../i18n/en.json';
 
-const excluded = ['useSnackbar'];
+const excluded = ['useSnackbar', 'Provider'];
 
 function isNotExcluded(componentName) {
   return !excluded.includes(componentName);
@@ -20,6 +21,9 @@ describe('Server side rendering', () => {
   const allProps = {
     currencies: [],
     steps: [],
+    stepper: {
+      steps: [],
+    },
     items: [],
     children: 'yo',
     id: '1',
@@ -62,16 +66,21 @@ describe('Server side rendering', () => {
     },
     alt: '',
     src: '',
-    isExpanded: true,
     details: 'yo',
     icon: <svg />,
     badge: <svg />,
     link: 'link',
     href: '#',
+    description: 'description',
+    'aria-label': 'a label',
+    logo: <svg />,
   };
 
   // Override props in case of name collision.
   const overrideProps = {
+    Alert: { children: undefined, message: 'Fluffy kittens', size: undefined },
+    Card: { isExpanded: true },
+    CheckboxButton: { children: undefined, onChange: jest.fn() },
     Typeahead: { size: 'md' },
     InputWithDisplayFormat: { displayPattern: '**-**' },
     TextareaWithDisplayFormat: { displayPattern: '**-**' },
@@ -90,8 +99,17 @@ describe('Server side rendering', () => {
       type: 'text',
       children: <input />,
     },
+    Summary: {
+      status: 'done',
+      content: undefined,
+    },
+    Tile: {
+      media: <img alt="img" />,
+    },
+    Modal: { position: 'top' },
   };
 
+  const { Provider } = components;
   componentNames.forEach((componentName) => {
     it(`works for ${componentName} components`, () => {
       const Component = components[componentName];
@@ -103,7 +121,15 @@ describe('Server side rendering', () => {
         });
       }
 
-      const string = renderToString(<Component {...newProps} />);
+      const string = renderToString(
+        <Provider i18n={{ locale: 'en-GB', messages: en }}>
+          {componentName.endsWith('Context') ? (
+            <Component.Provider {...newProps} />
+          ) : (
+            <Component {...newProps} />
+          )}
+        </Provider>,
+      );
       expect(string).toEqual(expect.any(String));
     });
   });

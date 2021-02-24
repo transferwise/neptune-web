@@ -1,5 +1,5 @@
 import ParsePropsForTable from './ParsePropsForTable';
-import propsData from '../../temp-docgen-output';
+import propsData from '../../temp-tabular-props';
 
 describe('ParsePropsForTable', () => {
   it('should return correct value for prop type', () => {

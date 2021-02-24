@@ -6,15 +6,30 @@ const glob = require('glob');
 
 const data = {};
 
-const files = glob.sync(`../components/src/**/*.{js,jsx}`, {
+const tabularFriendlyData = (metadata) => {
+  const structuredData = [];
+  Object.values(metadata).forEach((component) => {
+    if (component.props) {
+      const { props, displayName } = component;
+      Object.keys(props).forEach((propName) => {
+        structuredData.push({ displayName, propName, ...props[propName] });
+      });
+    }
+  });
+
+  return structuredData.sort((a, b) => (a.propName > b.propName ? 1 : -1));
+};
+
+const files = glob.sync(`../components/src/**/*.js`, {
   ignore: [
-    '../components/src/**/*.{spec,docs}.js',
+    '../components/src/**/*.{spec,docs,story}.js',
     '../components/src/**/index.js',
-    '../components/src/common/**/*.{js,jsx}',
-    '../components/src/dateInput/utils/**/*.{js,jsx}',
+    '../**/common/**',
+    '../**/utils/**',
     '../components/src/flowNavigation/avatar/*.js',
   ],
 });
+
 const metadata = {};
 files.sort().map((path) => {
   /* append display name handler to handlers list */
@@ -33,7 +48,9 @@ files.sort().map((path) => {
   return data;
 });
 
+const tableFriendlyProps = JSON.stringify(tabularFriendlyData(metadata), null, 2);
+
 fs.writeFileSync(
-  resolve(process.cwd(), 'temp-docgen-output.js'),
-  `export default ${JSON.stringify(metadata, null, 2)}`,
+  resolve(process.cwd(), 'temp-tabular-props.js'),
+  `export default ${tableFriendlyProps}`,
 );

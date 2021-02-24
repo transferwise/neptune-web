@@ -26,13 +26,14 @@
     width: calc(100% - var(--size-32));
     transition: 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
 
+    &--dark {
+      background: var(--color-background-screen);
+      color: var(--color-text-primary);
+    }
+
     @media (--screen-sm) {
       width: auto;
       max-width: 600px;
-    }
-
-    @media (--screen-md) {
-      font-size: @font-size-small--desktop;
     }
 
     &__action {

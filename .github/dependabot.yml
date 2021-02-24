@@ -1,0 +1,20 @@
+# This is an automatically generated base configuration
+# For further configuration options and tuning:
+# https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    allow:
+      - dependency-name: 'currency-flags'
+      - dependency-name: 'react'
+      - dependency-name: 'react-dom'
+      - dependency-name: 'typescript'
+      - dependency-name: '@transferwise/*'
+      - dependency-name: 'jest'
+      - dependency-name: '@testing-library/*'
+    pull-request-branch-name:
+      separator: '-'

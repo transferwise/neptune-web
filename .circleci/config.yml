@@ -34,16 +34,29 @@ aliases:
     command: npx lerna publish -m "[skip ci] Release" --yes
 
   - &lerna-publish-beta
-    name: Publish packages
-    command: npx lerna publish --canary --preid beta --dist-tag beta -m "[skip ci] Release" --yes
+    name: Publish package(s) as beta changes
+    command: |
+      npx lerna publish --canary --preid beta --dist-tag beta --yes
 
-  - &conventional-commit-lint
+  - &conventional-commit
     name: Conventional Commits check
     command: npx commitlint -f $(git log --author=CircleCI -1 --format=format:"%H") -V
 
   - &test
-    name: Test packages
+    name: Run tests across all packages
     command: yarn test
+
+  - &lint
+    name: Perform code linting across all packages
+    command: yarn lint
+
+  - &bundlesize
+    name: Pefrorm bundlesize check
+    command: yarn bundlesize
+
+  - &visual-test
+    name: Visual Regression test
+    command: yarn test:visual
 
   - &add-npm-release-token
     name: Set NPM publish token
@@ -82,13 +95,25 @@ jobs:
     steps:
       - *attach-workspace
       - run: *test
-      - *persist-workspace
 
-  test-main:
+  lint:
     <<: *container
     steps:
       - *attach-workspace
-      - run: *test
+      - run: *lint
+
+  bundlesize:
+    <<: *container
+    resource_class: small
+    steps:
+      - *attach-workspace
+      - run: *bundlesize
+
+  visual-test:
+    <<: *container
+    steps:
+      - *attach-workspace
+      - run: *visual-test
       - *persist-workspace
 
   deploy-docs:
@@ -105,11 +130,12 @@ jobs:
       - run: *set-github-credentials
       - run: *deploy-docs
 
-  conventional-commit-lint:
+  conventional-commit:
     <<: *container
+    resource_class: small
     steps:
       - *attach-workspace
-      - run: *conventional-commit-lint
+      - run: *conventional-commit
 
   publish:
     <<: *container
@@ -119,7 +145,7 @@ jobs:
       - run: *add-npm-release-token
       - run: *lerna-publish
 
-  publish-prerelease:
+  publish-beta:
     <<: *container
     steps:
       - *attach-workspace
@@ -137,16 +163,34 @@ workflows:
             branches:
               ignore: gh-pages
 
-      - conventional-commit-lint:
+      - conventional-commit:
           context: frontend-build
           requires:
             - setup
           filters:
             branches:
-              ignore: gh-pages
+              ignore:
+                - gh-pages
 
-      # On current branch the flow should NOT be blocked if there is an error in commit message
       - test:
+          context: frontend-build
+          requires:
+            - setup
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+
+      - lint:
+          context: frontend-build
+          requires:
+            - setup
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+
+      - bundlesize:
           context: frontend-build
           requires:
             - setup
@@ -156,17 +200,24 @@ workflows:
                 - gh-pages
                 - main
 
-      # On 'main' branch the flow should be blocked if there is an error in commit message
-      - test-main:
-          context: frontend-build
+      - hold-visual-test:
+          type: approval
           requires:
-            - setup
-            - conventional-commit-lint
+            - test
           filters:
             branches:
-              only:
+              ignore:
+                - gh-pages
                 - main
-                - beta
+
+      - visual-test:
+          requires:
+            - hold-visual-test
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - main
 
       - deploy-docs-for-branch:
           context: frontend-build
@@ -181,7 +232,9 @@ workflows:
       - deploy-docs:
           context: frontend-build
           requires:
-            - test-main
+            - conventional-commit
+            - lint
+            - test
           filters:
             branches:
               only:
@@ -190,15 +243,30 @@ workflows:
       - publish:
           context: frontend-publish
           requires:
-            - test-main
+            - conventional-commit
+            - lint
+            - test
           filters:
             branches:
               only: main
 
-      - publish-prerelease:
-          context: frontend-publish
+      - hold-beta-release:
+          type: approval
           requires:
-            - test-main
+            - conventional-commit
+            - test
           filters:
             branches:
-              only: beta
+              ignore:
+                - gh-pages
+                - main
+
+      - publish-beta:
+          context: frontend-publish
+          requires:
+            - hold-beta-release
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - main

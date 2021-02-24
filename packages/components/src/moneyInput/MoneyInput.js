@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { injectIntl } from 'react-intl';
 import Types from 'prop-types';
 import classNames from 'classnames';
+import { isEmpty } from '@transferwise/neptune-validation';
 import Select from '../select';
 import './MoneyInput.css';
 import { Size } from '../common/propsValues/size';
 
+import messages from './MoneyInput.messages';
 import { formatAmount, parseAmount } from './currencyFormatting';
 
 const Currency = Types.shape({
@@ -21,15 +24,17 @@ const formatAmountIfSet = (amount, currency, locale) => {
   return typeof amount === 'number' ? formatAmount(amount, currency, locale) : '';
 };
 
-export default class MoneyInput extends Component {
+class MoneyInput extends Component {
   constructor(props) {
     super(props);
+    this.locale = this.props.intl.locale;
+    this.formatMessage = this.props.intl.formatMessage;
     this.state = {
       searchQuery: '',
       formattedAmount: formatAmountIfSet(
         props.amount,
         props.selectedCurrency.currency,
-        props.locale,
+        this.locale,
       ),
     };
   }
@@ -41,7 +46,7 @@ export default class MoneyInput extends Component {
         formattedAmount: formatAmountIfSet(
           nextProps.amount,
           nextProps.selectedCurrency.currency,
-          nextProps.locale,
+          this.locale,
         ),
       });
     }
@@ -52,7 +57,9 @@ export default class MoneyInput extends Component {
     this.setState({
       formattedAmount: value,
     });
-    const parsed = parseAmount(value, this.props.selectedCurrency.currency, this.props.locale);
+    const parsed = isEmpty(value)
+      ? null
+      : parseAmount(value, this.props.selectedCurrency.currency, this.locale);
     if (!Number.isNaN(parsed)) {
       this.props.onAmountChange(parsed);
     }
@@ -82,7 +89,7 @@ export default class MoneyInput extends Component {
       const parsed = parseAmount(
         previousState.formattedAmount,
         this.props.selectedCurrency.currency,
-        this.props.locale,
+        this.locale,
       );
       if (Number.isNaN(parsed)) {
         return {
@@ -93,19 +100,29 @@ export default class MoneyInput extends Component {
         formattedAmount: formatAmountIfSet(
           parsed,
           this.props.selectedCurrency.currency,
-          this.props.locale,
+          this.locale,
         ),
       };
     });
   }
 
   handleSelectChange = (value) => {
-    this.setState({ searchQuery: '' });
+    this.handleSearchChange('');
 
     if (this.props.onCustomAction && value.value === CUSTOM_ACTION) {
       this.props.onCustomAction();
     } else {
       this.props.onCurrencyChange(value);
+    }
+  };
+
+  handleSearchChange = (searchQuery) => {
+    this.setState({ searchQuery });
+    if (this.props.onSearchChange) {
+      this.props.onSearchChange({
+        searchQuery,
+        filteredOptions: filterOptionsForQuery(this.props.currencies, searchQuery),
+      });
     }
   };
 
@@ -141,7 +158,7 @@ export default class MoneyInput extends Component {
           placeholder={formatAmountIfSet(
             this.props.placeholder,
             this.props.selectedCurrency.currency,
-            this.props.locale,
+            this.locale,
           )}
           autoComplete="off"
         />
@@ -183,7 +200,7 @@ export default class MoneyInput extends Component {
             </span>
           </div>
         ) : (
-          <span
+          <div
             className={classNames(
               this.style('input-group-btn'),
               this.style('amount-currency-select-btn'),
@@ -194,9 +211,9 @@ export default class MoneyInput extends Component {
               options={selectOptions}
               selected={{ ...selectedCurrency, note: null }}
               onChange={this.handleSelectChange}
-              placeholder="Select an option..."
+              placeholder={this.formatMessage(messages.selectPlaceholder)}
               searchPlaceholder={this.props.searchPlaceholder}
-              onSearchChange={(searchQuery) => this.setState({ searchQuery })}
+              onSearchChange={this.handleSearchChange}
               searchValue={this.state.searchQuery}
               size={size}
               required
@@ -204,7 +221,7 @@ export default class MoneyInput extends Component {
               dropdownWidth="lg"
               inverse
             />
-          </span>
+          </div>
         )}
       </div>
     );
@@ -282,9 +299,12 @@ MoneyInput.propTypes = {
   amount: Types.number,
   size: Types.oneOf([MoneyInput.Size.SMALL, MoneyInput.Size.MEDIUM, MoneyInput.Size.LARGE]),
   onAmountChange: Types.func,
-  locale: Types.string,
   addon: Types.node,
   searchPlaceholder: Types.string,
+  /**
+   * Allows the consumer to react to searching, while the search itself is handled internally. Called with `{ searchQuery: string, filteredOptions: Currency[]  }`
+   */
+  onSearchChange: Types.func,
   customActionLabel: Types.node,
   onCustomAction: Types.func,
   classNames: Types.objectOf(Types.string),
@@ -293,9 +313,9 @@ MoneyInput.propTypes = {
 MoneyInput.defaultProps = {
   id: null,
   size: MoneyInput.Size.LARGE,
-  locale: 'en-GB',
   addon: null,
   searchPlaceholder: '',
+  onSearchChange: undefined,
   onCurrencyChange: null,
   placeholder: null,
   amount: null,
@@ -304,3 +324,5 @@ MoneyInput.defaultProps = {
   onCustomAction: null,
   classNames: {},
 };
+
+export default injectIntl(MoneyInput);

@@ -9,34 +9,32 @@
           title: 'Title 1',
           disabled: false,
           content: (
-            <Alert>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum totam debitis similique
-            </Alert>
+            <Alert message="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum totam debitis similique" />
           ),
         },
         {
           title: 'Title 2',
           disabled: false,
           content: (
-            <Alert type="warning">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta officia animi
-              incidunt
-            </Alert>
+            <Alert
+              type="warning"
+              message="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum totam debitis similique"
+            />
           ),
         },
         {
           title: 'Title 3',
           disabled: true,
           content: (
-            <Alert type="error">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error placeat doloribus
-              nulla non
-            </Alert>
+            <Alert
+              type="negative"
+              message="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum totam debitis similique"
+            />
           ),
         },
       ]}
       selected={open}
-      onTabSelect={index => setOpen(index)}
+      onTabSelect={(index) => setOpen(index)}
     />
   );
 };

@@ -1,0 +1,69 @@
+{
+  "title": "Object schema",
+  "type": "object",
+  "properties": {
+    "number": {
+      "type": "string",
+      "title": "Number input",
+      "persistAsync": {
+        "method": "POST",
+        "url": "/v1/cards",
+        "param": "cardNumber",
+        "idProperty": "cardToken",
+        "schema": {
+          "title": "Card Number",
+          "format": "base64url",
+          "type": "string"
+        }
+      }
+    },
+    "string": {
+      "type": "string",
+      "title": "Text input",
+      "persistAsync": {
+        "method": "POST",
+        "url": "/v1/cards",
+        "param": "cardNumber",
+        "idProperty": "cardToken",
+        "schema": {
+          "title": "Card Number",
+          "type": "string",
+          "placeholder": "1234567890123456",
+          "validationMessages": {
+            "minLength": "Card number is too short!",
+            "maxLength": "Card number is too long!",
+            "pattern": "Card number is invalid!"
+          },
+          "pattern": "^[0-9*]{13,19}$",
+          "minLength": 13,
+          "maxLength": 19
+        }
+      }
+    },
+    "select": {
+      "type": "integer",
+      "title": "Select",
+      "control": "radio",
+      "placeholder": "Favourite number?",
+      "oneOf": [
+        {
+          "title": "One",
+          "const": 1,
+          "description": "The first number"
+        },
+        {
+          "title": "Two",
+          "const": 2,
+          "description": "The second number"
+        },
+        {
+          "title": "Three",
+          "const": 3,
+          "description": "The third number",
+          "disabled": true
+        }
+      ]
+    }
+  },
+  "required": ["number", "string", "select"]
+}

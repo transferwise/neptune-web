@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Alert } from '@transferwise/components';
+import { InlineAlert } from '@transferwise/components';
 import ControlFeedback from '.';
 
 describe('Given a component for rendering feedback next to controls', () => {
@@ -12,8 +12,9 @@ describe('Given a component for rendering feedback next to controls', () => {
   const schema = {
     type: 'string',
     help: {
-      message: 'Message',
+      markdown: 'some markdown',
     },
+    description: 'a description',
     validationMessages: {
       minLength: 'Custom minLength message',
       maxLength: 'Unshown validation message',
@@ -45,7 +46,7 @@ describe('Given a component for rendering feedback next to controls', () => {
 
   describe('when initialised without error', () => {
     it('should not show any alerts', () => {
-      expect(component.find(Alert).length).toBe(0);
+      expect(component.find(InlineAlert).length).toBe(0);
     });
   });
 
@@ -55,7 +56,7 @@ describe('Given a component for rendering feedback next to controls', () => {
     });
 
     it('should show an alert', () => {
-      const alert = component.find(Alert);
+      const alert = component.find(InlineAlert);
       expect(alert.length).toBe(1);
       expect(alert.prop('type')).toBe('error');
       expect(alert.contains('There was an external error')).toBe(true);
@@ -71,7 +72,7 @@ describe('Given a component for rendering feedback next to controls', () => {
     });
 
     it('should not show the original error', () => {
-      expect(component.find(Alert).length).toBe(0);
+      expect(component.find(InlineAlert).length).toBe(0);
     });
   });
 
@@ -80,14 +81,14 @@ describe('Given a component for rendering feedback next to controls', () => {
       component.setProps({ focused: true });
     });
 
-    it('should show an alert for help messages', () => {
-      const alert = component.find(Alert);
+    it('should show an alert for description', () => {
+      const alert = component.find(InlineAlert);
       expect(alert.length).toBe(1);
       expect(alert.prop('type')).toBe('info');
     });
 
     it('should show the supplied message', () => {
-      expect(component.find(Alert).contains(schema.help.message)).toBe(true);
+      expect(component.find(InlineAlert).contains(schema.description)).toBe(true);
     });
   });
 
@@ -97,17 +98,17 @@ describe('Given a component for rendering feedback next to controls', () => {
     });
 
     it('should show a validation alert', () => {
-      const alert = component.find(Alert);
+      const alert = component.find(InlineAlert);
       expect(alert.length).toBe(1);
       expect(alert.prop('type')).toBe('error');
     });
 
     it('should show validation messages for validation keys', () => {
-      expect(component.find(Alert).contains(schema.validationMessages.minLength)).toBe(true);
+      expect(component.find(InlineAlert).contains(schema.validationMessages.minLength)).toBe(true);
     });
 
     it('should not show validation messages for missing validation keys', () => {
-      expect(component.find(Alert).contains(schema.validationMessages.maxLength)).toBe(false);
+      expect(component.find(InlineAlert).contains(schema.validationMessages.maxLength)).toBe(false);
     });
   });
 
@@ -117,17 +118,17 @@ describe('Given a component for rendering feedback next to controls', () => {
     });
 
     it('should show a validation alert', () => {
-      const alert = component.find(Alert);
+      const alert = component.find(InlineAlert);
       expect(alert.length).toBe(1);
       expect(alert.prop('type')).toBe('error');
     });
 
     it('should show validation messages for validation keys', () => {
-      expect(component.find(Alert).contains(schema.validationMessages.minLength)).toBe(true);
+      expect(component.find(InlineAlert).contains(schema.validationMessages.minLength)).toBe(true);
     });
 
     it('should not show help messages', () => {
-      expect(component.find(Alert).contains(schema.help.message)).toBe(false);
+      expect(component.find(InlineAlert).contains(schema.description)).toBe(false);
     });
   });
 
@@ -137,17 +138,33 @@ describe('Given a component for rendering feedback next to controls', () => {
     });
 
     it('should show a validation alert', () => {
-      const alert = component.find(Alert);
+      const alert = component.find(InlineAlert);
       expect(alert.length).toBe(1);
       expect(alert.prop('type')).toBe('error');
     });
 
     it('should show validation messages for validation keys', () => {
-      expect(component.find(Alert).contains(schema.validationMessages.minLength)).toBe(true);
+      expect(component.find(InlineAlert).contains(schema.validationMessages.minLength)).toBe(true);
     });
 
     it('should not show validation messages for missing validation keys', () => {
-      expect(component.find(Alert).contains(schema.validationMessages.maxLength)).toBe(false);
+      expect(component.find(InlineAlert).contains(schema.validationMessages.maxLength)).toBe(false);
+    });
+  });
+
+  describe('when validationAsyncSuccessMessage is supplied', () => {
+    beforeEach(() => {
+      component.setProps({ validationAsyncSuccessMessage: 'some message' });
+    });
+
+    it('should render the validation async success message as an info InLineAlert', () => {
+      const alert = component.find(InlineAlert);
+      expect(alert.length).toBe(1);
+      expect(alert.prop('type')).toBe('info');
+    });
+
+    it('should render the validation async success message', () => {
+      expect(component.find(InlineAlert).contains('some message')).toBe(true);
     });
   });
 });

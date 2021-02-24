@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders the given label 1`] = `
+<div>
+  <div
+    class="checkbox"
+  >
+    <label>
+      <b>
+        hello
+      </b>
+      <span
+        class="np-checkbox-button"
+      >
+        <input
+          type="checkbox"
+        />
+        <span
+          class="tw-checkbox-button"
+        >
+          <span
+            class="tw-checkbox-check"
+          />
+        </span>
+      </span>
+    </label>
+  </div>
+</div>
+`;

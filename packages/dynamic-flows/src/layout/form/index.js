@@ -9,8 +9,8 @@ import { getMarginBottom } from '../utils';
 const DynamicForm = (props) => {
   const form = props.component;
 
-  const onChange = (model, isValid, triggerSchema) => {
-    props.onModelChange(model, isValid, triggerSchema, form.schema);
+  const onChange = (model, triggerSchema, triggerModel) => {
+    props.onModelChange(model, form.schema, triggerModel, triggerSchema);
   };
 
   return (
@@ -21,6 +21,7 @@ const DynamicForm = (props) => {
       onChange={onChange}
       className={getMarginBottom(form.margin || 'lg')}
       errors={props.errors}
+      onPersistAsync={props.onPersistAsync}
     />
   );
 };
@@ -28,13 +29,18 @@ const DynamicForm = (props) => {
 DynamicForm.propTypes = {
   onModelChange: Types.func.isRequired,
   component: Types.shape({
+    // eslint-disable-next-line react/forbid-prop-types
     schema: Types.object,
+    // eslint-disable-next-line react/forbid-prop-types
+    model: Types.object,
+    submitted: false,
     margin: marginModel,
     orientation: orientationModel,
   }).isRequired,
   submitted: Types.bool.isRequired,
   model: Types.oneOfType([Types.string, Types.number, Types.object, Types.array, Types.bool]),
   errors: Types.oneOfType([Types.string, Types.object, Types.array]),
+  onPersistAsync: Types.func.isRequired,
 };
 
 DynamicForm.defaultProps = {

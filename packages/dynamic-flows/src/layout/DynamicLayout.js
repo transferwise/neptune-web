@@ -17,7 +17,7 @@ import DynamicReview from './review';
 import { componentModel } from './models';
 
 const DynamicLayout = (props) => {
-  const { components, onModelChange, onAction, submitted, errors, model } = props;
+  const { components, onModelChange, onAction, submitted, errors, model, onPersistAsync } = props;
 
   const getKey = (component) => JSON.stringify(component);
 
@@ -47,6 +47,7 @@ const DynamicLayout = (props) => {
             submitted={submitted}
             errors={errors}
             model={model}
+            onPersistAsync={onPersistAsync}
           />
         );
       case 'form':
@@ -58,6 +59,7 @@ const DynamicLayout = (props) => {
             submitted={submitted}
             errors={errors}
             model={model}
+            onPersistAsync={onPersistAsync}
           />
         );
       case 'button':
@@ -72,6 +74,7 @@ const DynamicLayout = (props) => {
             submitted={submitted}
             errors={errors}
             model={model}
+            onPersistAsync={onPersistAsync}
           />
         );
       case 'decision':
@@ -93,6 +96,7 @@ DynamicLayout.propTypes = {
   submitted: Types.bool.isRequired,
   errors: Types.oneOfType([Types.string, Types.object, Types.array]),
   model: Types.oneOfType([Types.string, Types.object, Types.array, Types.number, Types.bool]),
+  onPersistAsync: Types.func.isRequired,
 };
 
 DynamicLayout.defaultProps = {

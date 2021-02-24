@@ -10,7 +10,7 @@ import KEY_CODES from '../common/keyCodes';
 
 export const EXIT_ANIMATION = 350;
 
-const Dimmer = ({ open, children, onClose, fadeContentOnExit, fadeContentOnEnter }) => {
+const Dimmer = ({ open, children, scrollable, onClose, fadeContentOnExit, fadeContentOnEnter }) => {
   useEffect(() => {
     return () => cleanup();
   }, []);
@@ -58,7 +58,11 @@ const Dimmer = ({ open, children, onClose, fadeContentOnExit, fadeContentOnEnter
       }}
       unmountOnExit
     >
-      <div role="presentation" className="dimmer" onClick={handleOnClick}>
+      <div
+        role="presentation"
+        className={classNames('dimmer', { 'dimmer--scrollable': scrollable })}
+        onClick={handleOnClick}
+      >
         {children}
       </div>
     </CSSTransition>
@@ -66,6 +70,7 @@ const Dimmer = ({ open, children, onClose, fadeContentOnExit, fadeContentOnEnter
 };
 
 Dimmer.propTypes = {
+  scrollable: Types.bool,
   open: Types.bool,
   children: Types.node,
   onClose: Types.func,
@@ -74,6 +79,7 @@ Dimmer.propTypes = {
 };
 
 Dimmer.defaultProps = {
+  scrollable: false,
   open: false,
   children: null,
   onClose: null,

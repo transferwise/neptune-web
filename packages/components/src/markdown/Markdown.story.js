@@ -4,7 +4,7 @@ import Markdown from './Markdown';
 
 export default {
   component: Markdown,
-  title: 'Markdwon',
+  title: 'Markdown',
 };
 
 export const basic = () => {

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chevron custom xs icon renders 1`] = `
+<div>
+  <span
+    aria-hidden="true"
+    class="tw-icon tw-icon-chevron tw-chevron chevron-color bottom"
+    role="presentation"
+  >
+    <svg
+      fill="currentColor"
+      focusable="false"
+      height="10"
+      viewBox="0 0 10 10"
+      width="10"
+    >
+      <path
+        d="M4.9995 2.0865L0.0635004 6.7645L1.2745 7.9125L4.9995 4.3835L8.7245 7.9135L9.9355 6.7645L4.9995 2.0865Z"
+        fill-rule="evenodd"
+      />
+    </svg>
+  </span>
+</div>
+`;

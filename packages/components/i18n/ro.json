@@ -1,0 +1,17 @@
+{
+  "neptune.CloseButton.ariaLabel": "Închide",
+  "neptune.MoneyInput.Select.placeholder": "Selectează o opţiune...",
+  "neptune.Pagination.ariaLabel": "Navigare prin pagină",
+  "neptune.PaginationLink.ariaLabel.active": "Du-te la pagina {pageNumber}",
+  "neptune.PaginationLink.ariaLabel.inactive": "Pagina curentă, pagina {pageNumber}",
+  "neptune.Upload.csButtonText": "Încarci un alt fișier?",
+  "neptune.Upload.csFailureText": "Încărcare eșuată. Te rugăm să încerci din nou",
+  "neptune.Upload.csSuccessText": "Încărcare completă!",
+  "neptune.Upload.csTooLargeMessage": "Te rugăm să furnizezi un fișier mai mic de 5MB",
+  "neptune.Upload.csWrongTypeMessage": "Tipul de fișier nu a fost acceptat. Te rugăm să încerci din nou cu un alt fișier",
+  "neptune.Upload.psButtonText": "Anulează",
+  "neptune.Upload.psProcessingText": "Se încarcă...",
+  "neptune.Upload.usButtonText": "Sau selectează un fișier",
+  "neptune.Upload.usDropMessage": "Atașează fișierul pentru a începe încărcarea",
+  "neptune.Upload.usPlaceholder": "Glisează și atașează un fișier de până în 5MB"
+}

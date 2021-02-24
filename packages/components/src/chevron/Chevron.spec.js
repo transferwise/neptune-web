@@ -1,7 +1,8 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render } from '@testing-library/react';
+import { render } from '../test-utils';
 import Chevron from '.';
+import { Size } from '../common';
 
 const { Orientation } = Chevron;
 
@@ -43,6 +44,13 @@ describe('Chevron', () => {
       const { container } = render(<Chevron disabled />);
 
       expect(container.querySelector('.tw-icon-chevron-up')).not.toHaveClass('chevron-color');
+    });
+  });
+
+  describe('custom xs icon', () => {
+    it('renders', () => {
+      const { container } = render(<Chevron size={Size.EXTRA_SMALL} />);
+      expect(container).toMatchSnapshot();
     });
   });
 });

@@ -51,6 +51,22 @@ describe('Modal', () => {
       expect(modal()).toHaveLength(1);
     });
 
+    it('with proper positioning classes', () => {
+      expect(modal().hasClass('align-items-center')).toBe(true);
+      expect(modal().hasClass('align-items-start')).toBe(false);
+
+      component.setProps({ position: Modal.Position.TOP });
+      expect(modal().hasClass('align-items-center')).toBe(false);
+      expect(modal().hasClass('align-items-start')).toBe(true);
+    });
+
+    it('with proper scroll classes', () => {
+      expect(modal().hasClass('tw-modal--content')).toBe(false);
+
+      component.setProps({ scroll: Modal.Scroll.CONTENT });
+      expect(modal().hasClass('tw-modal--content')).toBe(true);
+    });
+
     it('with right size when passed down the props', () => {
       component.setProps({ size: 'sm' });
       expect(modalDialog().hasClass('tw-modal-sm')).toBe(true);
@@ -189,7 +205,7 @@ describe('Modal', () => {
 
     it('closes on `esc` keypress on document', () => {
       ReactDOM.createPortal = jest.fn();
-      ReactDOM.createPortal.mockReturnValue(() => null);
+      ReactDOM.createPortal.mockImplementation(() => null);
       const onClose = jest.fn();
       component = mount(<Modal title="Some title" body="Some body" onClose={onClose} open />);
       expect(onClose).not.toBeCalled();

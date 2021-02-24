@@ -3,12 +3,15 @@
   "type": "object",
   "alert": {
     "context": "warning",
-    "markdown": "### Some markdown goes here\n ```\nconsole.log('hello world')\n```"
+    "markdown": "Some **markdown** goes here"
   },
   "properties": {
     "number": {
       "type": "number",
-      "title": "Number input"
+      "title": "Number input",
+      "help": {
+        "markdown": "Please see some help [here](https://transferwise.github.io/neptune-web/components/dynamicForms/JsonSchemaForm)"
+      }
     },
     "string": {
       "type": "string",

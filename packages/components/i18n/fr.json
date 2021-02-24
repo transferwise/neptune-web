@@ -1,0 +1,17 @@
+{
+  "neptune.CloseButton.ariaLabel": "Fermer",
+  "neptune.MoneyInput.Select.placeholder": "Sélectionner une option...",
+  "neptune.Pagination.ariaLabel": "Navigation par pagination",
+  "neptune.PaginationLink.ariaLabel.active": "Aller à la page {pageNumber}",
+  "neptune.PaginationLink.ariaLabel.inactive": "Page actuelle, page {pageNumber}",
+  "neptune.Upload.csButtonText": "Envoyer un autre fichier ?",
+  "neptune.Upload.csFailureText": "Échec du téléchargement. Veuillez réessayer",
+  "neptune.Upload.csSuccessText": "Téléchargement terminé !",
+  "neptune.Upload.csTooLargeMessage": "Veuillez fournir un fichier inférieur à 5 Mo",
+  "neptune.Upload.csWrongTypeMessage": "Format non pris en charge. Veuillez réessayer avec un fichier différent",
+  "neptune.Upload.psButtonText": "Annuler",
+  "neptune.Upload.psProcessingText": "Téléchargement...",
+  "neptune.Upload.usButtonText": "Ou sélectionnez un fichier",
+  "neptune.Upload.usDropMessage": "Déposer un fichier pour démarrer le téléchargement",
+  "neptune.Upload.usPlaceholder": "Glissez et déposez un fichier inférieur à 5 Mo"
+}

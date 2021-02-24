@@ -1,6 +1,5 @@
 import React from 'react';
 import Tabs from './Tabs';
-import Alert from '../alert';
 
 export default {
   component: Tabs,
@@ -19,29 +18,27 @@ export const basic = () => {
           title: 'Title 1',
           disabled: false,
           content: (
-            <Alert>
+            <div className="p-a-2">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum totam debitis similique
-            </Alert>
+            </div>
           ),
         },
         {
           title: 'Title 2',
           disabled: false,
           content: (
-            <Alert type="warning">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta officia animi
-              incidunt
-            </Alert>
+            <div className="p-a-2">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum totam debitis similique
+            </div>
           ),
         },
         {
           title: 'Title 3',
           disabled: true,
           content: (
-            <Alert type="error">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error placeat doloribus
-              nulla non
-            </Alert>
+            <div className="p-a-2">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum totam debitis similique
+            </div>
           ),
         },
       ]}
@@ -64,29 +61,27 @@ export const blockTabHeaderWidth = () => {
           title: 'Title 1',
           disabled: false,
           content: (
-            <Alert>
+            <div className="p-a-2">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum totam debitis similique
-            </Alert>
+            </div>
           ),
         },
         {
           title: 'Title 2',
           disabled: false,
           content: (
-            <Alert type="warning">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta officia animi
-              incidunt
-            </Alert>
+            <div className="p-a-2">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum totam debitis similique
+            </div>
           ),
         },
         {
           title: 'Title 3',
           disabled: true,
           content: (
-            <Alert type="error">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error placeat doloribus
-              nulla non
-            </Alert>
+            <div className="p-a-2">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum totam debitis similique
+            </div>
           ),
         },
       ]}

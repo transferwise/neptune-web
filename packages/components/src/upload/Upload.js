@@ -1,11 +1,20 @@
 import React, { PureComponent } from 'react';
+import { injectIntl } from 'react-intl';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import { Plus as PlusIcon } from '@transferwise/icons';
-import { UploadImageStep, ProcessingStep, CompleteStep } from './steps';
-import { postData, asyncFileRead, isSizeValid, generateErrorMessage, isTypeValid } from './utils';
+import { UploadImageStep, MediaUploadStep, ProcessingStep, CompleteStep } from './steps';
+import {
+  postData,
+  asyncFileRead,
+  isSizeValid,
+  generateErrorMessage,
+  isTypeValid,
+  getFileType,
+} from './utils';
 import './Upload.css';
 import ProcessIndicator from '../processIndicator';
+import messages from './Upload.messages';
 
 const PROCESS_STATE = ['error', 'success'];
 const ACCEPTED_FORMAT = ['*', 'image/*', 'application/*', 'text/csv'];
@@ -16,15 +25,24 @@ const ACCEPTED_FORMAT = ['*', 'image/*', 'application/*', 'text/csv'];
  */
 const ANIMATION_FIX = 10;
 const MAX_SIZE_DEFAULT = 5000000;
+const UPLOAD_STEPS = {
+  UPLOAD_IMAGE_STEP: 'uploadImageStep',
+  MEDIA_UPLOAD_STEP: 'mediaUploadStep',
+};
+const UPLOAD_STEP_COMPONENTS = {
+  [UPLOAD_STEPS.UPLOAD_IMAGE_STEP]: UploadImageStep,
+  [UPLOAD_STEPS.MEDIA_UPLOAD_STEP]: MediaUploadStep,
+};
 
 class Upload extends PureComponent {
   constructor(props) {
     super(props);
+    this.formatMessage = this.props.intl.formatMessage;
     this.dragCounter = 0;
     this.errorMessage = {
-      413: props.csTooLargeMessage || null,
-      415: props.csWrongTypeMessage || null,
-      unknownError: props.csFailureText || null,
+      413: props.csTooLargeMessage || this.formatMessage(messages.csTooLargeMessage),
+      415: props.csWrongTypeMessage || this.formatMessage(messages.csWrongTypeMessage),
+      unknownError: props.csFailureText || this.formatMessage(messages.csFailureText),
     };
     this.timeouts = null;
 
@@ -156,7 +174,7 @@ class Upload extends PureComponent {
     }
   };
 
-  fileDropped = (file) => {
+  fileDropped = async (file) => {
     const { httpOptions, maxSize, onStart, usDisabled, usAccept } = this.props;
 
     if (usDisabled) {
@@ -167,23 +185,39 @@ class Upload extends PureComponent {
       throw new Error('Could not retrieve file');
     }
 
-    if (onStart) {
-      onStart(file);
-    }
-
     this.setState({
-      isImage: file.type && file.type.indexOf('image') > -1,
       fileName: file.name,
       isDroppable: false,
       isProcessing: true,
     });
 
-    if (!isTypeValid(file, usAccept)) {
+    if (onStart) {
+      onStart(file);
+    }
+
+    let file64 = null;
+
+    try {
+      file64 = await asyncFileRead(file);
+    } catch (e) {
+      this.asyncResponse(e, PROCESS_STATE[0]);
+    }
+
+    if (!file64) {
+      return false;
+    }
+
+    this.setState({
+      isImage: getFileType(file, file64).indexOf('image') > -1,
+    });
+
+    if (!isTypeValid(file, usAccept, file64)) {
       const response = {
         status: 415,
         statusText: 'Unsupported Media Type',
       };
-      return this.asyncResponse(response, PROCESS_STATE[0]);
+      this.asyncResponse(response, PROCESS_STATE[0]);
+      return false;
     }
 
     if (!isSizeValid(file, maxSize)) {
@@ -191,24 +225,27 @@ class Upload extends PureComponent {
         status: 413,
         statusText: 'Request Entity Too Large',
       };
-      return this.asyncResponse(response, PROCESS_STATE[0]);
+      this.asyncResponse(response, PROCESS_STATE[0]);
+      return false;
     }
 
     if (httpOptions) {
       // Post the file to provided endpoint
-      return this.asyncPost(file)
+      this.asyncPost(file)
         .then((response) => this.asyncResponse(response, 'success'))
-        .then(() => asyncFileRead(file))
-        .then((response) => this.showDataImage(response))
-        .catch((error) => this.asyncResponse(error, PROCESS_STATE[0]));
+        .then(() => {
+          this.showDataImage(file64);
+          return true;
+        })
+        .catch((error) => {
+          this.asyncResponse(error, PROCESS_STATE[0]);
+          return false;
+        });
     }
     // Post on form submit. And return the encoded image.
-    return asyncFileRead(file)
-      .then((response) => {
-        this.showDataImage(response);
-        this.asyncResponse(response, 'success');
-      })
-      .catch((error) => this.asyncResponse(error, PROCESS_STATE[0]));
+    this.showDataImage(file64);
+    this.asyncResponse(file64, 'success');
+    return true;
   };
 
   render() {
@@ -221,12 +258,11 @@ class Upload extends PureComponent {
       usLabel,
       usPlaceholder,
       psButtonText,
-      psFailureText,
       psProcessingText,
-      psSuccessText,
       csButtonText,
       csSuccessText,
       size,
+      uploadStep,
     } = this.props;
 
     const {
@@ -240,6 +276,8 @@ class Upload extends PureComponent {
       isSuccess,
       uploadedImage,
     } = this.state;
+
+    const UploadStepComponent = UPLOAD_STEP_COMPONENTS[uploadStep] || UploadImageStep;
 
     return (
       <div
@@ -258,15 +296,15 @@ class Upload extends PureComponent {
         onDragOver={(e) => e.preventDefault()}
       >
         {!isProcessing && !isComplete && (
-          <UploadImageStep
+          <UploadStepComponent
             fileDropped={(file) => this.fileDropped(file)}
             isComplete={isComplete}
             usAccept={usAccept}
-            usButtonText={usButtonText}
+            usButtonText={usButtonText || this.formatMessage(messages.usButtonText)}
             usDisabled={usDisabled}
             usHelpImage={usHelpImage}
             usLabel={usLabel}
-            usPlaceholder={usPlaceholder}
+            usPlaceholder={usPlaceholder || this.formatMessage(messages.usPlaceholder)}
           />
         )}
 
@@ -274,14 +312,11 @@ class Upload extends PureComponent {
           <ProcessingStep
             isComplete={isComplete}
             isError={isError}
-            isProcessing={isProcessing}
             isSuccess={isSuccess}
             onAnimationCompleted={(status) => this.onAnimationCompleted(status)}
             onClear={(e) => this.handleOnClear(e)}
-            psButtonText={psButtonText}
-            psFailureText={psFailureText}
-            psProcessingText={psProcessingText}
-            psSuccessText={psSuccessText}
+            psButtonText={psButtonText || this.formatMessage(messages.psButtonText)}
+            psProcessingText={psProcessingText || this.formatMessage(messages.psProcessingText)}
           />
         )}
         {/* Starts render the step when isSuccess or isError are true so markup is there when css transition kicks in
@@ -293,9 +328,9 @@ class Upload extends PureComponent {
             isError={isError}
             isImage={isImage}
             onClear={(e) => this.handleOnClear(e)}
-            csButtonText={csButtonText}
+            csButtonText={csButtonText || this.formatMessage(messages.csButtonText)}
             csFailureText={errorMessage}
-            csSuccessText={csSuccessText}
+            csSuccessText={csSuccessText || this.formatMessage(messages.csSuccessText)}
             uploadedImage={uploadedImage}
           />
         )}
@@ -305,7 +340,9 @@ class Upload extends PureComponent {
               <div className="circle circle-sm p-t-1 text-info">
                 <PlusIcon />
               </div>
-              {usDropMessage && <h4 className="m-t-3">{usDropMessage}</h4>}
+              <h4 className="m-t-3">
+                {usDropMessage || this.formatMessage(messages.usDropMessage)}
+              </h4>
             </div>
           </div>
         )}
@@ -313,6 +350,8 @@ class Upload extends PureComponent {
     );
   }
 }
+
+Upload.UploadStep = UPLOAD_STEPS;
 
 Upload.propTypes = {
   animationDelay: Types.number,
@@ -325,7 +364,9 @@ Upload.propTypes = {
     url: Types.string.isRequired,
     method: Types.oneOf(['POST', 'PUT', 'PATCH']),
     fileInputName: Types.string,
+    // eslint-disable-next-line react/forbid-prop-types
     data: Types.object,
+    // eslint-disable-next-line react/forbid-prop-types
     headers: Types.object,
   }),
   maxSize: Types.number,
@@ -334,9 +375,7 @@ Upload.propTypes = {
   onStart: Types.func,
   onSuccess: Types.func,
   psButtonText: Types.string,
-  psFailureText: Types.string,
   psProcessingText: Types.string,
-  psSuccessText: Types.string,
   size: Types.oneOf(['sm', 'md', 'lg']),
   usAccept: Types.oneOf(ACCEPTED_FORMAT),
   usButtonText: Types.string,
@@ -345,35 +384,38 @@ Upload.propTypes = {
   usHelpImage: Types.node,
   usLabel: Types.string,
   usPlaceholder: Types.string,
+  uploadStep: Types.oneOf([
+    Upload.UploadStep.UPLOAD_IMAGE_STEP,
+    Upload.UploadStep.MEDIA_UPLOAD_STEP,
+  ]),
 };
 
 Upload.defaultProps = {
   animationDelay: 700,
-  csButtonText: 'Select other file?',
-  csFailureText: 'Upload failed.Please, try again',
-  csSuccessText: 'Upload complete!',
-  csTooLargeMessage: 'Please provide a file smaller than 5MB',
-  csWrongTypeMessage: 'Please provide a supported format',
+  csButtonText: undefined,
+  csFailureText: undefined,
+  csSuccessText: undefined,
+  csTooLargeMessage: undefined,
+  csWrongTypeMessage: undefined,
   httpOptions: null,
   maxSize: MAX_SIZE_DEFAULT,
   onCancel: null,
   onFailure: null,
   onStart: null,
   onSuccess: null,
-  psButtonText: 'Cancel',
-  psFailureText: 'Upload failed.Please, try again',
-  psProcessingText: 'Uploading...',
-  psSuccessText: 'Upload complete!',
+  psButtonText: undefined,
+  psProcessingText: undefined,
   size: 'md',
   usAccept: 'image/*',
-  usButtonText: 'Or Select File',
+  usButtonText: undefined,
   usDisabled: false,
-  usDropMessage: 'Drop file to start upload',
+  usDropMessage: undefined,
   usHelpImage: '',
   usLabel: '',
-  usPlaceholder: 'Drag and drop a file less than 5MB',
+  usPlaceholder: undefined,
+  uploadStep: Upload.UploadStep.UPLOAD_IMAGE_STEP,
 };
 
 Upload.CompleteStep = CompleteStep;
 
-export default Upload;
+export default injectIntl(Upload);

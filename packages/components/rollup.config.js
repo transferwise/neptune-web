@@ -1,5 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import { uglify } from 'rollup-plugin-uglify';
@@ -28,6 +28,7 @@ const globals = {
   react: 'React',
   'react-dom': 'ReactDOM',
   'prop-types': 'PropTypes',
+  icons: '@transferwise/icons',
 };
 
 // Plugins
@@ -35,7 +36,7 @@ const plugins = [
   // Resolves modules from node_modules
   resolve(),
   babel({
-    runtimeHelpers: true,
+    babelHelpers: 'runtime',
     exclude: [/node_modules/],
   }),
   // Convert CJ into ES6

@@ -1,8 +1,8 @@
 import React from 'react';
 import Transition from 'react-transition-group/Transition';
 import '@testing-library/jest-dom';
-import { render } from '@testing-library/react';
 import user from '@testing-library/user-event';
+import { render } from '../test-utils';
 
 import Select from '.';
 
@@ -67,6 +67,97 @@ describe('Select', () => {
         container.querySelector('.tw-dropdown-item'),
       );
       expect(getAllByText('yo')).toHaveLength(1);
+    });
+
+    describe('when options contain searchables', () => {
+      let component;
+      let input;
+
+      const searchableOptions = [
+        {
+          value: 0,
+          label: 'first_label',
+          note: 'first_note',
+          secondary: 'first_secondary',
+          currency: 'gbp',
+          searchStrings: ['first_search_string'],
+        },
+        {
+          value: 1,
+          label: 'second_label',
+          note: 'second_note',
+          secondary: 'second_secondary',
+          currency: 'usd',
+          searchStrings: ['second_search_string'],
+        },
+        {
+          value: 2,
+          label: 'third_label',
+          note: 'third_note',
+          secondary: 'third_secondary',
+          currency: 'eur',
+          searchStrings: ['third_search_string'],
+        },
+      ];
+
+      beforeEach(async () => {
+        component = render(<Select {...props} options={searchableOptions} search />);
+
+        openSelect(component.container);
+        await bustStackAndUpdate();
+
+        input = component.getByPlaceholderText('Search...');
+      });
+
+      describe('when searching by label', () => {
+        it('should display the search result', () => {
+          user.type(input, 'second_label');
+
+          expect(component.queryAllByText('first_label')).toHaveLength(0);
+          expect(component.queryAllByText('second_label')).toHaveLength(1);
+          expect(component.queryAllByText('third_label')).toHaveLength(0);
+        });
+      });
+
+      describe('when searching by note', () => {
+        it('should display the search result', () => {
+          user.type(input, 'third_note');
+
+          expect(component.queryAllByText('first_label')).toHaveLength(0);
+          expect(component.queryAllByText('second_label')).toHaveLength(0);
+          expect(component.queryAllByText('third_label')).toHaveLength(1);
+        });
+      });
+
+      describe('when searching by secondary', () => {
+        it('should display the search result', () => {
+          user.type(input, 'first_secondary');
+
+          expect(component.queryAllByText('first_label')).toHaveLength(1);
+          expect(component.queryAllByText('second_label')).toHaveLength(0);
+          expect(component.queryAllByText('third_label')).toHaveLength(0);
+        });
+      });
+
+      describe('when searching by currency', () => {
+        it('should display the search result', () => {
+          user.type(input, 'usd');
+
+          expect(component.queryAllByText('first_label')).toHaveLength(0);
+          expect(component.queryAllByText('second_label')).toHaveLength(1);
+          expect(component.queryAllByText('third_label')).toHaveLength(0);
+        });
+      });
+
+      describe('when searching by searchStrings', () => {
+        it('should display the search result', () => {
+          user.type(input, 'third_search_string');
+
+          expect(component.queryAllByText('first_label')).toHaveLength(0);
+          expect(component.queryAllByText('second_label')).toHaveLength(0);
+          expect(component.queryAllByText('third_label')).toHaveLength(1);
+        });
+      });
     });
 
     it('should filter the options with the default filter function in their currency attributum', async () => {

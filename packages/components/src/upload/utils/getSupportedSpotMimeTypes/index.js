@@ -1,0 +1,1 @@
+export { getSupportedSpotMimeTypes } from './getSupportedSpotMimeTypes';

@@ -3,6 +3,742 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.3.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.3.1...@transferwise/components@34.3.2) (2021-02-22)
+
+
+### Bug Fixes
+
+* update the alert icon to match designs ([#814](https://github.com/transferwise/neptune-web/issues/814)) ([fc96ca8](https://github.com/transferwise/neptune-web/commit/fc96ca86963238a108d2e842f7319295cd16ada1))
+
+
+
+
+
+## [34.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.3.0...@transferwise/components@34.3.1) (2021-02-22)
+
+
+### Bug Fixes
+
+* fix FN responsive behaviour ([#813](https://github.com/transferwise/neptune-web/issues/813)) ([9e89e3c](https://github.com/transferwise/neptune-web/commit/9e89e3c0bb13499942064a99525904120de64f06))
+
+
+
+
+
+# [34.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.15...@transferwise/components@34.3.0) (2021-02-22)
+
+
+### Features
+
+* add aria-labels to Summary statuses ([#811](https://github.com/transferwise/neptune-web/issues/811)) ([5d6be4b](https://github.com/transferwise/neptune-web/commit/5d6be4bdbf6cb7c4724f78b7aeb67a11d1dce879))
+
+
+
+
+
+## [34.2.15](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.14...@transferwise/components@34.2.15) (2021-02-19)
+
+
+### Bug Fixes
+
+* display the label of the previous page, not the current ([#812](https://github.com/transferwise/neptune-web/issues/812)) ([2dbdb47](https://github.com/transferwise/neptune-web/commit/2dbdb475dd5ccfd493e5d9979943a22bc98da17e))
+
+
+
+
+
+## [34.2.14](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.13...@transferwise/components@34.2.14) (2021-02-15)
+
+
+### Bug Fixes
+
+* **AvatarWrapper:** render avatars for business profiles ([#808](https://github.com/transferwise/neptune-web/issues/808)) ([cdf57f5](https://github.com/transferwise/neptune-web/commit/cdf57f511873a08d806964d38a6289f8eaf2332c))
+
+
+
+
+
+## [34.2.13](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.12...@transferwise/components@34.2.13) (2021-02-15)
+
+
+### Bug Fixes
+
+* **Upload:** reference error when file type is null ([#807](https://github.com/transferwise/neptune-web/issues/807)) ([5ae0885](https://github.com/transferwise/neptune-web/commit/5ae0885c32b5c1b47da2b18d6c97bb830601327a))
+
+
+
+
+
+## [34.2.12](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.11...@transferwise/components@34.2.12) (2021-02-12)
+
+
+### Bug Fixes
+
+* close Select dropdowns ([#798](https://github.com/transferwise/neptune-web/issues/798)) ([a51d568](https://github.com/transferwise/neptune-web/commit/a51d5683853aba378d231b37b7eba989b8371948))
+
+
+
+
+
+## [34.2.11](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.10...@transferwise/components@34.2.11) (2021-02-11)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [34.2.10](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.9...@transferwise/components@34.2.10) (2021-02-09)
+
+
+### Bug Fixes
+
+* set white initials & icon for Avatar with dark theme ([#797](https://github.com/transferwise/neptune-web/issues/797)) ([0a968c2](https://github.com/transferwise/neptune-web/commit/0a968c2a735fbc9edde446b3ad681f04db61c608))
+
+
+
+
+
+## [34.2.9](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.8...@transferwise/components@34.2.9) (2021-02-09)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [34.2.8](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.7...@transferwise/components@34.2.8) (2021-02-09)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [34.2.7](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.6...@transferwise/components@34.2.7) (2021-02-08)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [34.2.6](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.5...@transferwise/components@34.2.6) (2021-02-08)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [34.2.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.4...@transferwise/components@34.2.5) (2021-02-08)
+
+
+### Bug Fixes
+
+* add min-height to prevent jumping ([#794](https://github.com/transferwise/neptune-web/issues/794)) ([bcd2628](https://github.com/transferwise/neptune-web/commit/bcd26282ada8daf64b2f6369b1b96125cbbbaead))
+
+
+
+
+
+## [34.2.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.3...@transferwise/components@34.2.4) (2021-02-03)
+
+
+### Bug Fixes
+
+* fix logic for mobile flag ([#793](https://github.com/transferwise/neptune-web/issues/793)) ([1941439](https://github.com/transferwise/neptune-web/commit/19414394abd92dc8c9f464225f1c8b272585bda0))
+
+
+
+
+
+## [34.2.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.2...@transferwise/components@34.2.3) (2021-02-02)
+
+
+### Bug Fixes
+
+* flow navigation alignments ([#790](https://github.com/transferwise/neptune-web/issues/790)) ([35f881f](https://github.com/transferwise/neptune-web/commit/35f881fc417f2d95e4c9c97d7461cbcdfae13f93))
+
+
+
+
+
+## [34.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.1...@transferwise/components@34.2.2) (2021-02-01)
+
+
+### Bug Fixes
+
+* revert step label type ([#785](https://github.com/transferwise/neptune-web/issues/785)) ([119d153](https://github.com/transferwise/neptune-web/commit/119d1538705c552c6d4d6231772febb148890ff1))
+
+
+
+
+
+## [34.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.2.0...@transferwise/components@34.2.1) (2021-02-01)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+# [34.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.1.1...@transferwise/components@34.2.0) (2021-02-01)
+
+
+### Features
+
+* whole alert is tappable on mobile ([#759](https://github.com/transferwise/neptune-web/issues/759)) ([aa3a75e](https://github.com/transferwise/neptune-web/commit/aa3a75e208bfa0e9c4f3d5bccca0f841cf2070b2))
+
+
+
+
+
+## [34.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.1.0...@transferwise/components@34.1.1) (2021-01-29)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+# [34.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.0.1...@transferwise/components@34.1.0) (2021-01-29)
+
+
+### Features
+
+* **PhoneNumberInput:** suggest numeric keyboard for phone input on mobile web ([#777](https://github.com/transferwise/neptune-web/issues/777)) ([542f3c7](https://github.com/transferwise/neptune-web/commit/542f3c70f152daeb1362ef3b101a92a1f776bd3c))
+
+
+
+
+
+## [34.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.0.0...@transferwise/components@34.0.1) (2021-01-29)
+
+
+### Bug Fixes
+
+* reset old FlowNavigation logic ([#766](https://github.com/transferwise/neptune-web/issues/766)) ([95dd626](https://github.com/transferwise/neptune-web/commit/95dd62612dc6f546ef45f1d4cc586a30694ee198))
+
+
+
+
+
+# [34.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@33.0.5...@transferwise/components@34.0.0) (2021-01-29)
+
+
+* chore!: i18n follow up changes and fixes (#749) ([387cad7](https://github.com/transferwise/neptune-web/commit/387cad79018f4294fd9722eb613bce9e8cf41ac1)), closes [#749](https://github.com/transferwise/neptune-web/issues/749)
+
+
+### BREAKING CHANGES
+
+* - `mapLocale` and `LOCALES` don't exist anymore, use `getLangFromLocale` and `SUPPORTED_LANGUAGES` from same place accordingly
+- renamed translations file `zhHK.json` to `zh.json`
+- deleted locale prop from several components (`Money`, `MoneyInput`, `PhoneNumberInput`, `FormattedValue`, `DynamicFieldDefinitionList`, `DateLookup`, `DateInput`, `Upload`) the value now coming from i18n context
+
+
+
+
+
+## [33.0.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@33.0.4...@transferwise/components@33.0.5) (2021-01-28)
+
+
+### Bug Fixes
+
+* add component animations back into neptune ([#774](https://github.com/transferwise/neptune-web/issues/774)) ([f46f046](https://github.com/transferwise/neptune-web/commit/f46f046ca487e6acd5d0d90cfccb2c2d7b69bbc1))
+
+
+
+
+
+## [33.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@33.0.3...@transferwise/components@33.0.4) (2021-01-28)
+
+
+### Bug Fixes
+
+* fix TypeError when updating tabs prop to empty array ([#773](https://github.com/transferwise/neptune-web/issues/773)) ([eacb6f3](https://github.com/transferwise/neptune-web/commit/eacb6f384950929cce5978daadbb68cf9d438acc))
+
+
+
+
+
+## [33.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@33.0.2...@transferwise/components@33.0.3) (2021-01-27)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [33.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@33.0.1...@transferwise/components@33.0.2) (2021-01-27)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [33.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@33.0.0...@transferwise/components@33.0.1) (2021-01-25)
+
+
+### Bug Fixes
+
+* simplify RadioButton HTML by using a span ([#767](https://github.com/transferwise/neptune-web/issues/767)) ([fb4a6e4](https://github.com/transferwise/neptune-web/commit/fb4a6e4ac4084b71eb560548d7742168aa17a362))
+
+
+
+
+
+# [33.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@32.0.3...@transferwise/components@33.0.0) (2021-01-22)
+
+
+* refactor!: improving FlowNavigation and Checkbox (#765) ([d52212d](https://github.com/transferwise/neptune-web/commit/d52212d13e9c822e7c1d24e5dc4d4bf49ac14814)), closes [#765](https://github.com/transferwise/neptune-web/issues/765) [#724](https://github.com/transferwise/neptune-web/issues/724)
+
+
+### BREAKING CHANGES
+
+* FlowNavigation refactor
+- removed avatarURL and profileType props, replaced with avatar prop
+- removed done prop
+- removed theme prop
+* CheckboxButton now requires an onChange handler, and people using it directly should provide an aria-label
+
+* test: update test
+
+Co-authored-by: andreapiras <16908937+andreapiras@users.noreply.github.com>
+
+
+
+
+
+## [32.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@32.0.2...@transferwise/components@32.0.3) (2021-01-14)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [32.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@32.0.1...@transferwise/components@32.0.2) (2021-01-11)
+
+
+### Bug Fixes
+
+* correct mapLocale logic ([b7eed21](https://github.com/transferwise/neptune-web/commit/b7eed215779063d2b7f542b6fd40a68e3da60c3f))
+
+
+
+
+
+## [32.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@32.0.0...@transferwise/components@32.0.1) (2021-01-07)
+
+
+### Bug Fixes
+
+* not opening currency dropdown in MoneyInput component ([#753](https://github.com/transferwise/neptune-web/issues/753)) ([f0bd99f](https://github.com/transferwise/neptune-web/commit/f0bd99fecbd9f514ca13d8989d01491717f8a47e))
+
+
+
+
+
+# [32.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.5.0...@transferwise/components@32.0.0) (2020-12-16)
+
+
+* feat!: internalization support (#674) ([aa9750d](https://github.com/transferwise/neptune-web/commit/aa9750de9268d928365fd49ad8f5379bb6e858b7)), closes [#674](https://github.com/transferwise/neptune-web/issues/674)
+
+
+### BREAKING CHANGES
+
+* - use `Provider` component
+- provide `react-intl` v5.x.x
+
+
+
+
+
+## [31.4.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.4.1...@transferwise/components@31.4.2) (2020-12-14)
+
+
+### Bug Fixes
+
+* improve UX of file uploading step in Upload component ([#729](https://github.com/transferwise/neptune-web/issues/729)) ([574648b](https://github.com/transferwise/neptune-web/commit/574648be21d2056418631d2e6d9e04d686c1715a))
+
+
+
+
+
+## [31.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.4.0...@transferwise/components@31.4.1) (2020-12-10)
+
+
+### Bug Fixes
+
+* fixed Avatar hover state in NavigationOption ([#725](https://github.com/transferwise/neptune-web/issues/725)) ([1ad51a0](https://github.com/transferwise/neptune-web/commit/1ad51a09ae62eaea906474cd826ae580e17a88da))
+
+
+
+
+
+# [31.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.5...@transferwise/components@31.4.0) (2020-12-09)
+
+
+### Features
+
+* add support for content adaptive container of Modal component and allow to show DOM over it's footer ([#709](https://github.com/transferwise/neptune-web/issues/709)) ([6694996](https://github.com/transferwise/neptune-web/commit/66949963e5dc151e27aab96dddb20f9264ff859b))
+
+
+
+
+
+## [31.3.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.4...@transferwise/components@31.3.5) (2020-12-07)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [31.3.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.3...@transferwise/components@31.3.4) (2020-12-04)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [31.3.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.2...@transferwise/components@31.3.3) (2020-12-03)
+
+
+### Bug Fixes
+
+* sizeswapper fix ([#703](https://github.com/transferwise/neptune-web/issues/703)) ([f9fe8e2](https://github.com/transferwise/neptune-web/commit/f9fe8e2584970379187ca906d7768b7bf7faca66))
+
+
+
+
+
+## [31.3.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.1...@transferwise/components@31.3.2) (2020-12-03)
+
+
+### Bug Fixes
+
+* update wrong aria-label-type ([#719](https://github.com/transferwise/neptune-web/issues/719)) ([486c264](https://github.com/transferwise/neptune-web/commit/486c2647dfc3a39523976ec082a846bad572df2e))
+
+
+
+
+
+## [31.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.3.0...@transferwise/components@31.3.1) (2020-12-03)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+# [31.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.2.0...@transferwise/components@31.3.0) (2020-12-03)
+
+
+### Features
+
+* add aria-label for Info button ([#707](https://github.com/transferwise/neptune-web/issues/707)) ([acdb489](https://github.com/transferwise/neptune-web/commit/acdb48980a655c8ddd66b4888108a2308c08882b))
+
+
+
+
+
+# [31.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.1.1...@transferwise/components@31.2.0) (2020-12-02)
+
+
+### Features
+
+* adds target attribute to actions ([#714](https://github.com/transferwise/neptune-web/issues/714)) ([321489f](https://github.com/transferwise/neptune-web/commit/321489f89bdd38854f6df395b91f7a5ecd20ad12))
+
+
+
+
+
+## [31.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.1.0...@transferwise/components@31.1.1) (2020-12-02)
+
+
+### Bug Fixes
+
+* fixing circular dep and updating deps for security fixes ([#712](https://github.com/transferwise/neptune-web/issues/712)) ([2a95c74](https://github.com/transferwise/neptune-web/commit/2a95c746183c78e5992e28dafe954a901269e740))
+
+
+
+
+
+# [31.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.4...@transferwise/components@31.1.0) (2020-12-02)
+
+
+### Features
+
+* add microapps media API for Google Spot app support ([#704](https://github.com/transferwise/neptune-web/issues/704)) ([f4d4d65](https://github.com/transferwise/neptune-web/commit/f4d4d658ce8619448383d5abdae3b3b00275112f))
+
+
+
+
+
+## [31.0.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.3...@transferwise/components@31.0.4) (2020-12-02)
+
+
+### Bug Fixes
+
+* add disabled attribute to Option ([#713](https://github.com/transferwise/neptune-web/issues/713)) ([7883ead](https://github.com/transferwise/neptune-web/commit/7883eadbc5d2ba2721a7dc369bf007f379fe45b4))
+
+
+
+
+
+## [31.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.2...@transferwise/components@31.0.3) (2020-12-02)
+
+
+### Bug Fixes
+
+* refactor tabs touch events to avoid warnings ([#708](https://github.com/transferwise/neptune-web/issues/708)) ([fba064a](https://github.com/transferwise/neptune-web/commit/fba064a60174fff6f9658fd547b3f0fc2052ff20))
+
+
+
+
+
+## [31.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.1...@transferwise/components@31.0.2) (2020-11-30)
+
+
+### Bug Fixes
+
+* Australian Antarctic Territory ISO code and genericize longestMatchingPrefix test data ([#698](https://github.com/transferwise/neptune-web/issues/698)) ([beafd19](https://github.com/transferwise/neptune-web/commit/beafd19146b5e11e47e70e0bcfc72fce65e0ee71))
+
+
+
+
+
+## [31.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@31.0.0...@transferwise/components@31.0.1) (2020-11-26)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+# [31.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.7.0...@transferwise/components@31.0.0) (2020-11-25)
+
+
+* refactor!: Neptune Web November Release (#695) ([e04fe15](https://github.com/transferwise/neptune-web/commit/e04fe15cc94116cd1c9e9f867a8378a0275edf33)), closes [#695](https://github.com/transferwise/neptune-web/issues/695) [#623](https://github.com/transferwise/neptune-web/issues/623) [#624](https://github.com/transferwise/neptune-web/issues/624) [#653](https://github.com/transferwise/neptune-web/issues/653) [#657](https://github.com/transferwise/neptune-web/issues/657) [#659](https://github.com/transferwise/neptune-web/issues/659) [#658](https://github.com/transferwise/neptune-web/issues/658) [#654](https://github.com/transferwise/neptune-web/issues/654) [#655](https://github.com/transferwise/neptune-web/issues/655) [#498](https://github.com/transferwise/neptune-web/issues/498) [#672](https://github.com/transferwise/neptune-web/issues/672) [#650](https://github.com/transferwise/neptune-web/issues/650) [#684](https://github.com/transferwise/neptune-web/issues/684) [#691](https://github.com/transferwise/neptune-web/issues/691) [#671](https://github.com/transferwise/neptune-web/issues/671) [#697](https://github.com/transferwise/neptune-web/issues/697)
+
+
+### BREAKING CHANGES
+
+* Neptune Web November Release (#695)
+* add conditionally required aria-label or aria-labelledby
+* required onclick
+* onAmountChange will now trigger even if the value is empty
+* Marketing components CSS can now be found in: https://github.com/transferwise/marketing-components/tree/main/packages/css
+
+Co-authored-by: Helen Durrant <61203573+helendurranttw@users.noreply.github.com>
+* DateInput - onChange when month is not selected (#614)
+
+Before: When month is not selected, it defaults to 0 which is January. This results in the component dispatching `onChange` with a seemingly valid data, when in reality the user hasn't finished composing the date.
+After: When month is not selected, we don't construct a Date object, and the `onChange` event contains `null` instead.
+
+Before: onChange was not being called if the user de-selected a month
+After: onChange is called with null
+* date input onFocus/onBlur grouped events (#626)
+
+DateInput now only triggers “onFocus” and “onBlur” when the focus changes outside of its 3 sub-components, and not when cycling through them.
+* base font size is now 16px across all screen widths
+* consumer will have to provide icons and neptune-css
+* this removes the size prop from Alert - there is now only one size
+
+
+
+
+
+# [30.7.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.6.1...@transferwise/components@30.7.0) (2020-11-24)
+
+
+### Features
+
+* allow select to search note and secondary by default ([#693](https://github.com/transferwise/neptune-web/issues/693)) ([415cc4e](https://github.com/transferwise/neptune-web/commit/415cc4e17b123a20960f09645bf1cacb74290705))
+
+
+
+
+
+## [30.6.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.6.0...@transferwise/components@30.6.1) (2020-11-17)
+
+
+### Bug Fixes
+
+* notify when search query is cleared automatically ([#677](https://github.com/transferwise/neptune-web/issues/677)) ([d0fef3d](https://github.com/transferwise/neptune-web/commit/d0fef3df4cdcfce0877e84219e5949b5e09b2eab))
+
+
+
+
+
+# [30.6.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.5.1...@transferwise/components@30.6.0) (2020-11-16)
+
+
+### Features
+
+* add callback to react to search changes in money input ([#676](https://github.com/transferwise/neptune-web/issues/676)) ([a88e986](https://github.com/transferwise/neptune-web/commit/a88e9869534047a4baf071fe4b1069a66f6e7cc1))
+
+
+
+
+
+## [30.5.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.5.0...@transferwise/components@30.5.1) (2020-11-12)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+# [30.5.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.4.1...@transferwise/components@30.5.0) (2020-11-11)
+
+
+### Features
+
+* Add support for extra small chevron ([#667](https://github.com/transferwise/neptune-web/issues/667)) ([1a94f27](https://github.com/transferwise/neptune-web/commit/1a94f27f07587b847e03ccfd6e0acaecea65ea1c))
+
+
+
+
+
+## [30.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.4.0...@transferwise/components@30.4.1) (2020-11-10)
+
+
+### Bug Fixes
+
+* make moneyInput button width consistent ([#666](https://github.com/transferwise/neptune-web/issues/666)) ([e5368f6](https://github.com/transferwise/neptune-web/commit/e5368f6b77ff4752cef91bacb22f4b2f5b491ef8))
+
+
+
+
+
+# [30.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.3.4...@transferwise/components@30.4.0) (2020-11-09)
+
+
+### Features
+
+* snackbar with a light theme ([#663](https://github.com/transferwise/neptune-web/issues/663)) ([e1d2fa2](https://github.com/transferwise/neptune-web/commit/e1d2fa2f58f93f7812d8fdc032a25385833d9b21))
+
+
+
+
+
+## [30.3.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.3.3...@transferwise/components@30.3.4) (2020-11-09)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [30.3.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.3.2...@transferwise/components@30.3.3) (2020-11-05)
+
+
+### Bug Fixes
+
+* render select into dimmer for mobile view ([#651](https://github.com/transferwise/neptune-web/issues/651)) ([14bd4f4](https://github.com/transferwise/neptune-web/commit/14bd4f4d866ffa67f8f092cae738bb18a8ba7a9c))
+
+
+
+
+
+## [30.3.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.3.1...@transferwise/components@30.3.2) (2020-11-04)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [30.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.3.0...@transferwise/components@30.3.1) (2020-11-03)
+
+
+### Bug Fixes
+
+* change tw-btn class so as not to clash with ad-blockers who want to block twitter buttons ([#647](https://github.com/transferwise/neptune-web/issues/647)) ([9881cd0](https://github.com/transferwise/neptune-web/commit/9881cd062594ca69b63129fe28bc7f3b5aed25ee))
+
+
+
+
+
+# [30.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.2.0...@transferwise/components@30.3.0) (2020-10-26)
+
+
+### Features
+
+* add full screen mobile view for date lookup calendar ([#648](https://github.com/transferwise/neptune-web/issues/648)) ([4521586](https://github.com/transferwise/neptune-web/commit/4521586b20739e25d22a42df3b21b49b114439d9))
+
+
+
+
+
+# [30.2.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.1.4...@transferwise/components@30.2.0) (2020-10-21)
+
+
+### Features
+
+* add a min-width and the ability to right align the date lookup calendar ([#637](https://github.com/transferwise/neptune-web/issues/637)) ([9be6fc6](https://github.com/transferwise/neptune-web/commit/9be6fc60b07e5188e8a730108132fcf92ede9493))
+
+
+
+
+
+## [30.1.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.1.3...@transferwise/components@30.1.4) (2020-10-21)
+
+
+### Bug Fixes
+
+* invalid arguments supplied to oneOf ([#641](https://github.com/transferwise/neptune-web/issues/641)) ([141676a](https://github.com/transferwise/neptune-web/commit/141676a4100e63134835f96df1d79bf35817b242))
+
+
+
+
+
+## [30.1.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.1.2...@transferwise/components@30.1.3) (2020-10-20)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [30.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.1.1...@transferwise/components@30.1.2) (2020-10-19)
+
+
+### Bug Fixes
+
+* enforce upload validation to handle empty mime type ([#610](https://github.com/transferwise/neptune-web/issues/610)) ([20d20b5](https://github.com/transferwise/neptune-web/commit/20d20b5d020cafc8d483098fd2e10c2f45c30951))
+
+
+
+
+
+## [30.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.1.0...@transferwise/components@30.1.1) (2020-10-19)
+
+
+### Bug Fixes
+
+* chrome inputs font crop ([#612](https://github.com/transferwise/neptune-web/issues/612)) ([bedcc8f](https://github.com/transferwise/neptune-web/commit/bedcc8fc7662d352496d4abe4cc74454dc03b4c1))
+
+
+
+
+
+# [30.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.13...@transferwise/components@30.1.0) (2020-10-15)
+
+
+### Features
+
+* dependencies update([#620](https://github.com/transferwise/neptune-web/issues/620)) ([db7ae74](https://github.com/transferwise/neptune-web/commit/db7ae74c4ce52ef8799478837070f03b04534bbe))
+
+
+
+
+
 ## [30.0.13](https://github.com/transferwise/neptune-web/compare/@transferwise/components@30.0.12...@transferwise/components@30.0.13) (2020-10-13)
 
 **Note:** Version bump only for package @transferwise/components

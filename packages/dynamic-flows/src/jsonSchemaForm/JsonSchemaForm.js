@@ -1,13 +1,9 @@
 import React from 'react';
 import Types from 'prop-types';
 import GenericSchema from './genericSchema';
-import { isValidSchema } from '../common/validation/schema-validators';
 
 const JsonSchemaForm = (props) => {
-  const onChange = (model, schema) => {
-    props.onChange(model, isValidSchema(model, props.schema), schema);
-  };
-  return <GenericSchema {...props} onChange={onChange} />;
+  return <GenericSchema {...props} />;
 };
 
 JsonSchemaForm.propTypes = {
@@ -45,6 +41,12 @@ JsonSchemaForm.propTypes = {
    * Tell the form if it should disable all controls.
    */
   disabled: Types.bool,
+  /**
+   * Fires when any internal persist async is triggered and API call is underway.
+   *
+   * Provides a QueryablePromise of the persist async call.
+   */
+  onPersistAsync: Types.func.isRequired,
 };
 
 JsonSchemaForm.defaultProps = {

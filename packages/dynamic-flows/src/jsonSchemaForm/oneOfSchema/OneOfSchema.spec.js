@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import OneOfSchema from '.';
 
@@ -15,6 +15,7 @@ describe('Given a oneOfSchema component', () => {
   let controlFeedback;
   let props;
   let onChange;
+  let onPersistAsync;
   let schema;
 
   let model = { b: 2, c: 3 };
@@ -28,6 +29,7 @@ describe('Given a oneOfSchema component', () => {
 
   beforeEach(() => {
     onChange = jest.fn();
+    onPersistAsync = jest.fn();
   });
 
   describe('when initialised with multiple schemas', () => {
@@ -68,7 +70,16 @@ describe('Given a oneOfSchema component', () => {
         ],
       };
 
-      props = { schema, model, errors, locale, onChange, submitted, translations };
+      props = {
+        schema,
+        model,
+        errors,
+        locale,
+        onChange,
+        submitted,
+        translations,
+        onPersistAsync,
+      };
       component = shallow(<OneOfSchema {...props} />);
 
       genericSchema = component.find(GenericSchema);
@@ -107,6 +118,98 @@ describe('Given a oneOfSchema component', () => {
       expect(genericSchema.prop('translations')).toEqual(translations);
     });
 
+    describe('when no model is present', () => {
+      describe('and children schemas are non-const', () => {
+        it('should not render a generic schema', () => {
+          component = shallow(<OneOfSchema {...props} model={{}} />);
+          genericSchema = component.find(GenericSchema);
+
+          expect(genericSchema.length).toBe(0);
+        });
+      });
+
+      describe('and children schemas are const', () => {
+        const currencySchema = {
+          title: 'Currency',
+          type: 'string',
+          oneOf: [
+            { title: 'EUR', description: 'Euro', const: 'EUR' },
+            {
+              title: 'GBP',
+              description: 'British pound',
+              const: 'GBP',
+            },
+            {
+              title: 'USD',
+              description: 'United States dollar',
+              const: 'USD',
+            },
+            {
+              title: 'ARS',
+              description: 'Argentine peso',
+              const: 'ARS',
+            },
+            {
+              title: 'AUD',
+              description: 'Australian dollar',
+              const: 'AUD',
+            },
+          ],
+          validationMessages: { required: 'Please enter currency.' },
+          default: 'USD',
+        };
+
+        const defaultIndex = currencySchema.oneOf.findIndex(
+          (childSchema) => childSchema.const === currencySchema.default,
+        );
+
+        describe('and there is a valid default value', () => {
+          it('renders a SchemaFormControl with a value as expected', () => {
+            component = shallow(<OneOfSchema {...props} schema={currencySchema} model={{}} />);
+            const control = component.find(SchemaFormControl);
+            expect(control.prop('value')).toBe(defaultIndex);
+          });
+
+          it('broadcasts onChange with the default value', () => {
+            component = mount(
+              <OneOfSchema {...props} schema={currencySchema} model={{}} onChange={onChange} />,
+            );
+            expect(onChange).toHaveBeenLastCalledWith(
+              currencySchema.default,
+              currencySchema,
+              currencySchema.default,
+            );
+          });
+        });
+
+        describe('and there is no valid default value', () => {
+          it('renders a SchemaFormControl with a value of null  ', () => {
+            component = shallow(
+              <OneOfSchema
+                {...props}
+                schema={{ ...currencySchema, default: 'BANANA' }}
+                model={{}}
+              />,
+            );
+            const control = component.find(SchemaFormControl);
+            expect(control.prop('value')).toBe(null);
+          });
+
+          it('does not broadcast onChange callback', () => {
+            component = mount(
+              <OneOfSchema
+                {...props}
+                schema={{ ...currencySchema, default: 'BANANA' }}
+                model={{}}
+                onChange={onChange}
+              />,
+            );
+            expect(onChange).not.toHaveBeenCalled();
+          });
+        });
+      });
+    });
+
     describe('when another schema is selected', () => {
       beforeEach(() => {
         schemaFormControl.simulate('change', 2);
@@ -123,13 +226,13 @@ describe('Given a oneOfSchema component', () => {
       });
 
       it('should trigger onChange with only the properties in the new schema', () => {
-        expect(onChange).toHaveBeenCalledWith({ c: 3 }, schema.oneOf[2]);
+        expect(onChange).toHaveBeenCalledWith({ c: 3 }, schema.oneOf[2], { c: 3 });
       });
     });
 
     describe('when the generic schema triggers an onChange event', () => {
       beforeEach(() => {
-        genericSchema.simulate('change', { b: 4 }, schema.oneOf[1]);
+        genericSchema.simulate('change', { b: 4 }, schema.oneOf[1], 4);
       });
 
       it('should trigger the components onChange once', () => {
@@ -137,7 +240,7 @@ describe('Given a oneOfSchema component', () => {
       });
 
       it('should broadcast the changed model from the child', () => {
-        expect(onChange).toHaveBeenCalledWith({ b: 4 }, schema.oneOf[1]);
+        expect(onChange).toHaveBeenCalledWith({ b: 4 }, schema.oneOf[1], 4);
       });
 
       it('should not change the input model', () => {
@@ -176,7 +279,16 @@ describe('Given a oneOfSchema component', () => {
         ],
       };
 
-      props = { schema, model, errors, locale, onChange, submitted, translations };
+      props = {
+        schema,
+        model,
+        errors,
+        locale,
+        onChange,
+        submitted,
+        translations,
+        onPersistAsync,
+      };
       component = shallow(<OneOfSchema {...props} />);
     });
 
@@ -213,7 +325,14 @@ describe('Given a oneOfSchema component', () => {
 
       model = null;
 
-      props = { schema, model, locale, onChange, submitted };
+      props = {
+        schema,
+        model,
+        locale,
+        onChange,
+        submitted,
+        onPersistAsync,
+      };
       component = shallow(<OneOfSchema {...props} />);
 
       genericSchema = component.find(GenericSchema);
@@ -249,6 +368,27 @@ describe('Given a oneOfSchema component', () => {
       expect(controlFeedback.prop('errors')).toBe(null);
     });
 
+    describe('when one option is supplied', () => {
+      beforeEach(() => {
+        schema = {
+          title: 'Choose schema',
+          oneOf: [
+            {
+              title: 'One',
+              const: 1,
+            },
+          ],
+        };
+
+        props = { ...props, schema };
+        component = shallow(<OneOfSchema {...props} />);
+      });
+
+      it('should render a SchemaFormControl', () => {
+        expect(component.find(SchemaFormControl)).toHaveLength(1);
+      });
+    });
+
     describe('when the user changes schema', () => {
       beforeEach(() => {
         // SchemaFormControl broadcasts the INDEX(1) of the schema
@@ -256,7 +396,7 @@ describe('Given a oneOfSchema component', () => {
       });
 
       it('should broadcast the PARENT schema as the trigger, not the const', () => {
-        expect(onChange).toHaveBeenCalledWith(2, schema);
+        expect(onChange).toHaveBeenCalledWith(2, schema, 2);
       });
 
       it('should only broadcast one change', () => {

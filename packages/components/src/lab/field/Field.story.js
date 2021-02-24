@@ -1,6 +1,8 @@
 import React from 'react';
-import { Checkbox, DateInput } from '@transferwise/components';
+import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+
+import { Checkbox, DateInput } from '../..';
 import Field from './Field';
 
 export default {
@@ -9,11 +11,14 @@ export default {
 };
 
 export const basic = () => {
+  const error = text('manual error', 'This email address is already in use');
+  const help = text('help text', 'Please fill this form with a value length between 3 and 10');
+
   return (
     <>
       <Field
-        error={null}
-        help="Please fill this form with a value length between 3 and 10"
+        error={error}
+        help={help}
         id="id"
         initValue="Neptune is cool"
         onChange={(val) => action(val)}

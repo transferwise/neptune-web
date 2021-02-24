@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import Types from 'prop-types';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import withNextPortal from '../withNextPortal/withNextPortal';
+
+import { Theme } from '../common';
 
 import './Snackbar.css';
 
@@ -45,11 +47,11 @@ export class Snackbar extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { text, timestamp, action } = this.props;
+    const { action, text, theme, timestamp } = this.props;
 
     if (!prevProps.text) {
       // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({ visible: true, text, action }, () => {
+      this.setState({ visible: true, action, text, theme }, () => {
         this.setLeaveTimeout();
       });
     } else if (prevProps.timestamp !== timestamp) {
@@ -59,20 +61,20 @@ export class Snackbar extends Component {
         // eslint-disable-next-line react/no-did-update-set-state
         this.setState({ visible: false }, () => {
           this.transitionTimeout = setTimeout(() => {
-            this.setState({ text, action, visible: true });
+            this.setState({ visible: true, action, text, theme });
             this.setLeaveTimeout();
           }, CSS_TRANSITION_DURATION);
         });
       } else {
         // eslint-disable-next-line react/no-did-update-set-state
-        this.setState({ text, action, visible: true });
+        this.setState({ visible: true, action, text, theme });
         this.setLeaveTimeout();
       }
     }
   }
 
   render() {
-    const { text, visible, action } = this.state;
+    const { action, text, theme, visible } = this.state;
     const { timeout } = this.props;
 
     return (
@@ -87,7 +89,7 @@ export class Snackbar extends Component {
           }}
           unmountOnExit
         >
-          <span className="snackbar__text">
+          <span className={`snackbar__text snackbar__text--${theme}`}>
             {text}
             {action ? (
               <button type="button" className="snackbar__text__action" onClick={action.onClick}>
@@ -102,16 +104,19 @@ export class Snackbar extends Component {
 }
 
 Snackbar.propTypes = {
-  action: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
+  action: Types.shape({
+    label: Types.string.isRequired,
+    onClick: Types.func.isRequired,
   }),
-  text: PropTypes.node.isRequired,
-  timeout: PropTypes.number.isRequired,
-  timestamp: PropTypes.number.isRequired,
+  text: Types.node.isRequired,
+  theme: Types.oneOf([Theme.LIGHT, Theme.DARK]),
+  timeout: Types.number.isRequired,
+  timestamp: Types.number.isRequired,
 };
+
 Snackbar.defaultProps = {
   action: null,
+  theme: Theme.LIGHT,
 };
 
 export default withNextPortal(Snackbar);

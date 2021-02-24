@@ -1,13 +1,14 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { Alert } from '@transferwise/components';
+import { InlineAlert } from '@transferwise/components';
 import DynamicLayout from '.';
 
 describe('E2E: Given a component for rendering a dynamic layout', () => {
   let component;
   let onModelChange;
   let onAction;
+  let onPersistAsync;
 
   const action = {
     url: '/exampe',
@@ -16,7 +17,6 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
   };
 
   const model = { an: 'example' };
-  const isValid = true;
   const schema = {
     id: 'example',
     type: 'object',
@@ -33,6 +33,8 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
   beforeEach(() => {
     onAction = jest.fn();
     onModelChange = jest.fn();
+    onPersistAsync = jest.fn();
+
     component = mount(
       <DynamicLayout
         components={[box]}
@@ -40,6 +42,7 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
         onModelChange={onModelChange}
         submitted
         errors={errors}
+        onPersistAsync={onPersistAsync}
       />,
     );
   });
@@ -53,7 +56,7 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
   });
 
   it('should show the supplied error message ', () => {
-    expect(component.find(Alert).contains(errors.an)).toBe(true);
+    expect(component.find(InlineAlert).contains(errors.an)).toBe(true);
   });
 
   describe('when a form element is changed', () => {
@@ -63,7 +66,8 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
     it('should broadcast onModelChange', () => {
       expect(onModelChange).toHaveBeenCalledWith(
         { an: 'other example' },
-        isValid,
+        schema,
+        'other example',
         schema.properties.an,
         schema,
       );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Alert } from '@transferwise/components';
+import { InlineAlert } from '@transferwise/components';
 import Field, { FieldTypes, FieldFormats } from './Field';
 import FormControl from '../formControl/FormControl';
 import { FormControlType } from '../common';
@@ -288,14 +288,12 @@ describe('Field', () => {
     });
 
     it('should render the message', () => {
-      const alert = component.find(Alert);
+      const alert = component.find(InlineAlert);
       expect(alert).toHaveLength(1);
 
       const alertProps = alert.first().props();
       expect(alertProps.children.props.children).toBe('Custom error');
-      expect(alertProps.type).toBe(Alert.Type.ERROR);
-      expect(alertProps.size).toBe(Alert.Size.SMALL);
-      expect(alertProps.arrow).toBe(Alert.ArrowPosition.TOP_LEFT);
+      expect(alertProps.type).toBe(InlineAlert.Type.ERROR);
     });
 
     describe('when the value changes', () => {
@@ -304,7 +302,7 @@ describe('Field', () => {
       });
 
       it('it should not remove the error message', () => {
-        const alert = component.find(Alert);
+        const alert = component.find(InlineAlert);
         expect(alert).toHaveLength(1);
       });
 
@@ -317,17 +315,15 @@ describe('Field', () => {
     describe('when the error message changes', () => {
       it('it should show the new error message', () => {
         component.find(FormControl).simulate('change');
-        let alert = component.find(Alert);
+        let alert = component.find(InlineAlert);
 
         component.setProps({ ...defaultProps, ...props, errorMessage: 'New custom error' });
-        alert = component.find(Alert);
+        alert = component.find(InlineAlert);
         expect(alert).toHaveLength(1);
 
         const alertProps = alert.first().props();
         expect(alertProps.children.props.children).toBe('New custom error');
-        expect(alertProps.type).toBe(Alert.Type.ERROR);
-        expect(alertProps.size).toBe(Alert.Size.SMALL);
-        expect(alertProps.arrow).toBe(Alert.ArrowPosition.TOP_LEFT);
+        expect(alertProps.type).toBe(InlineAlert.Type.ERROR);
       });
     });
   });
@@ -364,14 +360,12 @@ describe('Field', () => {
       });
 
       it('should render the help message', () => {
-        const alert = component.find(Alert);
+        const alert = component.find(InlineAlert);
         expect(alert).toHaveLength(1);
 
         const alertProps = alert.first().props();
         expect(alertProps.children.props.children).toBe('Some useful hint');
-        expect(alertProps.type).toBe(Alert.Type.INFO);
-        expect(alertProps.size).toBe(Alert.Size.SMALL);
-        expect(alertProps.arrow).toBe(Alert.ArrowPosition.TOP_LEFT);
+        expect(alertProps.type).toBe(InlineAlert.Type.INFO);
       });
     });
 
@@ -381,7 +375,7 @@ describe('Field', () => {
       });
 
       it('should not render the help message', () => {
-        expect(component.find(Alert)).toHaveLength(0);
+        expect(component.find(InlineAlert)).toHaveLength(0);
       });
     });
 
@@ -403,7 +397,7 @@ describe('Field', () => {
       });
 
       it('should not render the help message', () => {
-        expect(component.find(Alert)).toHaveLength(0);
+        expect(component.find(InlineAlert)).toHaveLength(0);
       });
     });
   });
@@ -426,14 +420,12 @@ describe('Field', () => {
     });
 
     it('should render the message', () => {
-      const alert = component.find(Alert);
+      const alert = component.find(InlineAlert);
       expect(alert).toHaveLength(1);
 
       const alertProps = alert.first().props();
       expect(alertProps.children.props.children).toBe('Warning message');
-      expect(alertProps.type).toBe(Alert.Type.WARNING);
-      expect(alertProps.size).toBe(Alert.Size.SMALL);
-      expect(alertProps.arrow).toBe(Alert.ArrowPosition.TOP_LEFT);
+      expect(alertProps.type).toBe(InlineAlert.Type.WARNING);
     });
   });
 
@@ -518,7 +510,7 @@ describe('Field', () => {
     });
 
     it('should not hide the custom error message', () => {
-      expect(component.find(Alert)).toHaveLength(1);
+      expect(component.find(InlineAlert)).toHaveLength(1);
     });
   });
 });

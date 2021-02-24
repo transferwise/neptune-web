@@ -8,6 +8,7 @@ import ControlFeedback from '../controlFeedback';
 import { getValidationFailures } from '../../common/validation/validation-failures';
 import { getValidModelParts } from '../../common/validation/valid-model';
 import DynamicAlert from '../../layout/alert';
+import Help from './help';
 
 const BasicTypeSchema = (props) => {
   const onChange = (newModel) => {
@@ -23,12 +24,12 @@ const BasicTypeSchema = (props) => {
     const validationKeys = getValidationKeys(newModel);
     setValidations(validationKeys);
 
-    const broadcastModel = validationKeys.length ? null : newModel;
+    const broadcastModel = newModel;
 
     setLastModel(broadcastModel);
 
     if (broadcastModel !== lastModel) {
-      props.onChange(broadcastModel, props.schema);
+      props.onChange(broadcastModel, props.schema, broadcastModel);
     }
   };
 
@@ -38,6 +39,9 @@ const BasicTypeSchema = (props) => {
   const onBlur = () => {
     setFocused(false);
     setBlurred(true);
+    if (props.onBlur) {
+      props.onBlur();
+    }
   };
 
   const generateId = () => String(Math.floor(100000000 * Math.random()));
@@ -51,7 +55,7 @@ const BasicTypeSchema = (props) => {
   const [validations, setValidations] = useState([]);
 
   const onSchemaChange = () => {
-    // If no model, change to the default, only run this when the schema changes
+    // if no model, change to the default, only run this when the schema changes
     if (!model && props.schema.default) {
       setModelAndBroadcast(props.schema.default);
     }
@@ -67,7 +71,7 @@ const BasicTypeSchema = (props) => {
     setId(generateId());
   };
 
-  const onModelChange = () => {
+  const refreshValidations = () => {
     setValidations(getValidationKeys(model));
   };
 
@@ -75,17 +79,19 @@ const BasicTypeSchema = (props) => {
   const isHidden = props.schema.hidden || isConst;
 
   useEffect(onSchemaChange, [props.schema]);
-  useEffect(onModelChange, [props.model]);
+  useEffect(refreshValidations, [props.model, props.submitted]);
 
   const formGroupClasses = {
     'form-group': true,
     'has-error':
       ((props.submitted || !changed) && !!props.errors) ||
-      ((props.submitted || (changed && blurred)) && validations.length),
-    'has-info': focused && props.schema.help,
+      ((props.submitted || (changed && blurred)) && !!validations.length),
+    'has-info': (focused && !!props.schema.description) || !!props.validationAsyncSuccessMessage,
   };
 
   const showLabel = props.schema.format !== 'file' && props.schema.type !== 'boolean';
+
+  const hasHelp = !!props.schema.help;
 
   return (
     !isHidden && (
@@ -96,6 +102,7 @@ const BasicTypeSchema = (props) => {
               {props.schema.title}
             </label>
           )}
+          {hasHelp && <Help help={props.schema.help} />}
           <SchemaFormControl
             id={id}
             schema={props.schema}
@@ -114,6 +121,7 @@ const BasicTypeSchema = (props) => {
             errors={props.errors}
             schema={props.schema}
             validations={validations}
+            validationAsyncSuccessMessage={props.validationAsyncSuccessMessage}
           />
         </div>
         {props.schema.alert && <DynamicAlert component={props.schema.alert} />}
@@ -137,7 +145,8 @@ BasicTypeSchema.propTypes = {
     default: Types.oneOfType([Types.string, Types.number, Types.bool]),
     disabled: Types.bool,
     hidden: Types.bool,
-    help: Types.shape({}),
+    help: Types.shape({ markdown: Types.string }),
+    description: Types.string,
   }).isRequired,
   model: Types.oneOfType([Types.string, Types.number, Types.bool]),
   errors: Types.string,
@@ -147,6 +156,8 @@ BasicTypeSchema.propTypes = {
   required: Types.bool,
   locale: Types.string,
   disabled: Types.bool,
+  onBlur: Types.func,
+  validationAsyncSuccessMessage: Types.string,
 };
 
 BasicTypeSchema.defaultProps = {
@@ -156,6 +167,8 @@ BasicTypeSchema.defaultProps = {
   required: false,
   locale: 'en-GB',
   disabled: false,
+  onBlur: null,
+  validationAsyncSuccessMessage: null,
 };
 
 export default BasicTypeSchema;

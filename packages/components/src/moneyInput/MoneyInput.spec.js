@@ -10,12 +10,22 @@ jest.mock('./currencyFormatting', () => ({
 
 const numberFormatting = require('./currencyFormatting');
 
+const defaultLocale = 'en-GB';
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => (
+    <Component {...props} intl={{ locale: defaultLocale, formatMessage: (id) => `${id}` }} />
+  ),
+  defineMessages: (translations) => translations,
+}));
+
 describe('Money Input', () => {
   let component;
   let props;
 
+  let currencies;
+
   beforeEach(() => {
-    const currencies = [
+    currencies = [
       {
         header: 'Popular currencies',
       },
@@ -63,7 +73,7 @@ describe('Money Input', () => {
       onAmountChange: jest.fn(),
       onCurrencyChange: jest.fn(),
     };
-    component = shallow(<MoneyInput {...props} />);
+    component = shallow(<MoneyInput {...props} />).dive();
   });
 
   function currencySelect() {
@@ -155,7 +165,7 @@ describe('Money Input', () => {
     });
 
     it('hides headers', () => {
-      const currencies = [
+      currencies = [
         { header: 'A currency' },
         { value: 'GBP', label: 'British pound' },
         { header: 'Another currency' },
@@ -172,7 +182,7 @@ describe('Money Input', () => {
     });
 
     it('searches by label', () => {
-      const currencies = [
+      currencies = [
         { value: 'GBP', label: 'British pound' },
         { value: 'EUR', label: 'Euro' },
       ];
@@ -184,7 +194,7 @@ describe('Money Input', () => {
     });
 
     it('searches by note', () => {
-      const currencies = [
+      currencies = [
         { value: 'GBP', note: 'Queen money' },
         { value: 'EUR', note: 'Other money' },
       ];
@@ -196,7 +206,7 @@ describe('Money Input', () => {
     });
 
     it('searches by searchable string', () => {
-      const currencies = [
+      currencies = [
         { value: 'GBP', searchable: 'Great Britain, United Kingdom' },
         { value: 'EUR', searchable: 'Europe' },
       ];
@@ -210,7 +220,7 @@ describe('Money Input', () => {
     });
 
     it('shows custom action option on every search when onCustomAction is passed to MoneyInput', () => {
-      const currencies = [
+      currencies = [
         { value: 'GBP', searchable: 'Great Britain, United Kingdom' },
         { value: 'EUR', searchable: 'Europe' },
       ];
@@ -269,34 +279,24 @@ describe('Money Input', () => {
       );
     });
 
-    it('formats the amount passed in', () => {
-      component.setProps({ amount: 123, locale: 'et-EE', numberFormatPrecision: 3 });
-      expect(amountInput().prop('value')).toBe('formatted 123, et-EE, eur');
-    });
-
     it('formats the number you input after you blur it', () => {
-      component.setProps({ locale: 'en-US', numberFormatPrecision: 3 });
+      component.setProps({ numberFormatPrecision: 3 });
       numberFormatting.parseAmount = jest.fn(parseFloat);
       enterAmount('123.45');
       expect(amountInput().prop('value')).toBe('123.45');
 
       blurAmount();
-      expect(amountInput().prop('value')).toBe('formatted 123.45, en-US, eur');
-    });
-
-    it('formats a value of 0', () => {
-      component.setProps({ amount: 0, locale: 'et-EE', numberFormatPrecision: 3 });
-      expect(amountInput().prop('value')).toBe('formatted 0, et-EE, eur');
+      expect(amountInput().prop('value')).toBe('formatted 123.45, en-GB, eur');
     });
   });
 
   it('parses the number you input and calls onAmountChange with it', () => {
     const onAmountChange = jest.fn();
     let assertions = 0;
-    component.setProps({ onAmountChange, locale: 'es-ES', numberFormatPrecision: 1 });
+    component.setProps({ onAmountChange, numberFormatPrecision: 1 });
     numberFormatting.parseAmount = jest.fn((amount, currency, locale) => {
       expect(amount).toBe('500.1234');
-      expect(locale).toBe('es-ES');
+      expect(locale).toBe(defaultLocale);
       expect(currency).toBe('eur');
       assertions += 1;
       return 500.1;
@@ -309,13 +309,33 @@ describe('Money Input', () => {
     expect(assertions).toEqual(1);
   });
 
-  it('does not call onAmountChange with a parsed number if unable to parse', () => {
+  it('does call onAmountChange when input value is empty', () => {
+    const testValue = '';
     const onAmountChange = jest.fn();
     component.setProps({ onAmountChange });
-    numberFormatting.parseAmount = jest.fn(() => NaN);
-    enterAmount('cannot parse this yo');
-    expect(onAmountChange).not.toHaveBeenCalled();
+    numberFormatting.parseAmount = jest.fn();
+    enterAmount(testValue);
+    expect(numberFormatting.parseAmount).not.toHaveBeenCalled();
+    expect(onAmountChange).toHaveBeenCalledTimes(1);
+    expect(onAmountChange).toHaveBeenLastCalledWith(null);
   });
+
+  test.each(['cannot parse this yo', '  '])(
+    "does not call onAmountChange with a parsed number if unable to parse value '%s'",
+    (testValue) => {
+      const onAmountChange = jest.fn();
+      component.setProps({ onAmountChange });
+      numberFormatting.parseAmount = jest.fn(() => NaN);
+      enterAmount(testValue);
+      expect(onAmountChange).not.toHaveBeenCalled();
+      expect(numberFormatting.parseAmount).toHaveBeenCalledTimes(1);
+      expect(numberFormatting.parseAmount).toHaveBeenLastCalledWith(
+        testValue,
+        'eur',
+        defaultLocale,
+      );
+    },
+  );
 
   it('passes the id given to the input element', () => {
     expect(amountInput().prop('id')).toBeNull();
@@ -409,7 +429,7 @@ describe('Money Input', () => {
   });
 
   it('shows custom action last when onCustomAction prop is passed to MoneyInput', () => {
-    const currencies = [
+    currencies = [
       { value: 'GBP', searchable: 'Great Britain, United Kingdom' },
       { value: 'EUR', searchable: 'Europe' },
     ];
@@ -458,13 +478,57 @@ describe('Money Input', () => {
     });
 
     it('shows a formatted placeholder when provided', () => {
-      component.setProps({ placeholder: 12345.67, locale: 'en-US', numberFormatPrecision: 3 });
-      expect(amountInput().prop('placeholder')).toBe('formatted 12345.67, en-US, eur');
+      component.setProps({ placeholder: 12345.67, numberFormatPrecision: 3 });
+      expect(amountInput().prop('placeholder')).toBe('formatted 12345.67, en-GB, eur');
     });
 
     it('allows a placeholder of 0', () => {
-      component.setProps({ placeholder: 0, locale: 'en-US', numberFormatPrecision: 3 });
-      expect(amountInput().prop('placeholder')).toBe('formatted 0, en-US, eur');
+      component.setProps({ placeholder: 0, numberFormatPrecision: 3 });
+      expect(amountInput().prop('placeholder')).toBe('formatted 0, en-GB, eur');
+    });
+  });
+
+  describe('onSearchChange()', () => {
+    it('notifies the consumer when the search field is changed', () => {
+      const getCurrencyByValue = (searchValue) =>
+        currencies.find(({ value }) => value === searchValue);
+
+      const onSearchChange = jest.fn();
+      const onCustomAction = jest.fn();
+      component.setProps({
+        onSearchChange,
+        customActionLabel: 'customActionLabel',
+        onCustomAction,
+      });
+
+      searchCurrencies('e');
+      expect(onSearchChange).toHaveBeenLastCalledWith({
+        searchQuery: 'e',
+        filteredOptions: [
+          getCurrencyByValue('EUR'),
+          getCurrencyByValue('USD'),
+          getCurrencyByValue('GBP'),
+        ],
+      });
+
+      searchCurrencies('');
+      expect(onSearchChange).toHaveBeenLastCalledWith({
+        searchQuery: '',
+        filteredOptions: [...currencies],
+      });
+
+      searchCurrencies('eur');
+      expect(onSearchChange).toHaveBeenLastCalledWith({
+        searchQuery: 'eur',
+        filteredOptions: [getCurrencyByValue('EUR')],
+      });
+
+      currencySelect().prop('onChange')({ value: 'CUSTOM_ACTION' });
+      expect(onCustomAction).toHaveBeenCalledTimes(1);
+      expect(onSearchChange).toHaveBeenLastCalledWith({
+        searchQuery: '',
+        filteredOptions: [...currencies],
+      });
     });
   });
 });
