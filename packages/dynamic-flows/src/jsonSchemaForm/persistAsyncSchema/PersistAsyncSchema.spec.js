@@ -13,6 +13,7 @@ describe('Given a component for rendering persist async schemas', () => {
   const schema = {
     type: 'string',
     title: 'Text input',
+    pattern: '\\b(?!client_validation_failure\\b)\\w+',
     persistAsync: {
       method: 'GET',
       url: '/v1/foobar',
@@ -29,61 +30,59 @@ describe('Given a component for rendering persist async schemas', () => {
   const translations = {};
   const submitted = false;
 
-  const initialiseMockPersistAsyncEndpoint = () => {
-    jest.spyOn(global, 'fetch').mockImplementation((input, init) => {
-      let response;
+  global.fetch = jest.fn((input, init) => {
+    let response;
 
-      switch (JSON.parse(init.body)[param]) {
-        case '200--ok--fast-5ms':
-          response = getMockFetchPromise(
-            200,
-            () => Promise.resolve({ anIdProperty: 'response-from-200-fast' }),
-            5,
-            init.signal,
-          );
-          break;
-        case '200--ok--slow-100ms':
-          response = getMockFetchPromise(
-            200,
-            () => Promise.resolve({ anIdProperty: 'response-from-200-slow' }),
-            100,
-            init.signal,
-          );
-          break;
-        case '422--error':
-          response = getMockFetchPromise(
-            422,
-            () => Promise.resolve({ validation: { [param]: 'Invalid param! (422)' } }),
-            0,
-            init.signal,
-          );
-          break;
-        case '499--json-body':
-          response = getMockFetchPromise(
-            499,
-            () => Promise.resolve({ validation: { [param]: 'Invalid param! (499)' } }),
-            0,
-            init.signal,
-          );
-          break;
-        case '499--no-body':
-          response = getMockFetchPromise(499, () => Promise.reject(''), 0, init.signal);
-          break;
-        case '500--no-body':
-          response = getMockFetchPromise(500, () => Promise.reject(''), 0, init.signal);
-          break;
-        default:
-          response = getMockFetchPromise(500, () => Promise.reject(''), 0, init.signal);
-      }
-      return response;
-    });
-  };
+    switch (JSON.parse(init.body)[param]) {
+      case '200--ok--fast-5ms':
+        response = getMockFetchPromise(
+          200,
+          () => Promise.resolve({ anIdProperty: 'response-from-200-fast' }),
+          5,
+          init.signal,
+        );
+        break;
+      case '200--ok--slow-100ms':
+        response = getMockFetchPromise(
+          200,
+          () => Promise.resolve({ anIdProperty: 'response-from-200-slow' }),
+          100,
+          init.signal,
+        );
+        break;
+      case '422--error':
+        response = getMockFetchPromise(
+          422,
+          () => Promise.resolve({ validation: { [param]: 'Invalid param! (422)' } }),
+          0,
+          init.signal,
+        );
+        break;
+      case '499--json-body':
+        response = getMockFetchPromise(
+          499,
+          () => Promise.resolve({ validation: { [param]: 'Invalid param! (499)' } }),
+          0,
+          init.signal,
+        );
+        break;
+      case '499--no-body':
+        response = getMockFetchPromise(499, () => Promise.reject(''), 0, init.signal);
+        break;
+      case '500--no-body':
+        response = getMockFetchPromise(500, () => Promise.reject(''), 0, init.signal);
+        break;
+      default:
+        response = getMockFetchPromise(500, () => Promise.reject(''), 0, init.signal);
+    }
+    return response;
+  });
 
   beforeEach(() => {
     onChange = jest.fn();
     onPersistAsync = jest.fn();
 
-    initialiseMockPersistAsyncEndpoint();
+    fetch.mockClear();
 
     props = {
       schema,
@@ -133,6 +132,15 @@ describe('Given a component for rendering persist async schemas', () => {
     describe('when the field value is null', () => {
       it('should not trigger persist async on blur', () => {
         enterValueAndBlur(null);
+
+        expect(global.fetch).toHaveBeenCalledTimes(0);
+        expect(onPersistAsync).toHaveBeenCalledTimes(0);
+      });
+    });
+
+    describe('when the field value is invalid', () => {
+      it('should not trigger persist async', () => {
+        enterValueAndBlur('client_validation_failure');
 
         expect(global.fetch).toHaveBeenCalledTimes(0);
         expect(onPersistAsync).toHaveBeenCalledTimes(0);
@@ -228,6 +236,17 @@ describe('Given a component for rendering persist async schemas', () => {
                 'response-from-200-fast',
               );
             });
+          });
+        });
+
+        describe('when the field is blurred again but value did not change', () => {
+          it('should not trigger another persist async', async () => {
+            enterValueAndBlur('200--ok--fast-5ms');
+            await wait(5);
+
+            enterValueAndBlur('200--ok--fast-5ms');
+
+            expect(global.fetch).toHaveBeenCalledTimes(1);
           });
         });
       });

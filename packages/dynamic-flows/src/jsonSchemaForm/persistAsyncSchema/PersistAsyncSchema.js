@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Types from 'prop-types';
 import { isNull } from '@transferwise/neptune-validation';
 import { useIntl } from 'react-intl';
+import isEqual from 'lodash.isequal';
 import BasicTypeSchema from '../basicTypeSchema';
 import { isStatus2xx, isStatus422, QueryablePromise } from '../../common/api/utils';
 import messages from './PersistAsyncSchema.messages';
+import { isValidSchema } from '../../common/validation/schema-validators';
 
 const PersistAsyncSchema = (props) => {
   const intl = useIntl();
@@ -85,7 +87,10 @@ const PersistAsyncSchema = (props) => {
   const persistAsyncOnChange = (newPersistAsyncModel) => {
     // TODO: Add different handling for file upload, do persist async on change instead of onblur
     setPersistAsyncError(null);
-    setPersistAsyncModel(newPersistAsyncModel);
+
+    if (isValidSchema(newPersistAsyncModel, props.schema)) {
+      setPersistAsyncModel(newPersistAsyncModel);
+    }
   };
 
   return (

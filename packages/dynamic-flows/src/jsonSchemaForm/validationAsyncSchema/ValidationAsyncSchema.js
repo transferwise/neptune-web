@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Types from 'prop-types';
 import { isNull } from '@transferwise/neptune-validation';
+import isEqual from 'lodash.isequal';
 import BasicTypeSchema from '../basicTypeSchema';
+import { isValidSchema } from '../../common/validation/schema-validators';
 
 const ValidationAsyncSchema = (props) => {
   const [validationAsyncModel, setValidationAsyncModel] = useState(null);
@@ -60,7 +62,10 @@ const ValidationAsyncSchema = (props) => {
   const validationAsyncOnChange = (newValidationAsyncModel) => {
     setValidationAsyncErrors(null);
     setValidationAsyncSuccessMessage(null);
-    setValidationAsyncModel(newValidationAsyncModel);
+
+    if (isValidSchema(newValidationAsyncModel, props.schema)) {
+      setValidationAsyncModel(newValidationAsyncModel);
+    }
   };
 
   return (
