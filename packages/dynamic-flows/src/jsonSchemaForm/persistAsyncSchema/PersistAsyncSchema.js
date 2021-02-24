@@ -7,11 +7,13 @@ import BasicTypeSchema from '../basicTypeSchema';
 import { isStatus2xx, isStatus422, QueryablePromise } from '../../common/api/utils';
 import messages from './PersistAsyncSchema.messages';
 import { isValidSchema } from '../../common/validation/schema-validators';
+import usePrev from '../../common/hooks/usePrev';
 
 const PersistAsyncSchema = (props) => {
   const intl = useIntl();
 
   const [persistAsyncModel, setPersistAsyncModel] = useState(null);
+  const prevPersistAsyncModel = usePrev(persistAsyncModel);
   const [persistAsyncError, setPersistAsyncError] = useState(null);
   const [fieldSubmitted, setFieldSubmitted] = useState(false);
   const [abortController, setAbortController] = useState(null);
@@ -79,7 +81,7 @@ const PersistAsyncSchema = (props) => {
   const getErrorFromResponse = (errorProperty, response) => response.validation?.[errorProperty];
 
   const onBlur = () => {
-    if (!isNull(persistAsyncModel)) {
+    if (!isNull(persistAsyncModel) && !isEqual(persistAsyncModel, prevPersistAsyncModel)) {
       getPersistAsyncResponse(persistAsyncModel, props.schema.persistAsync);
     }
   };

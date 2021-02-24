@@ -4,9 +4,11 @@ import { isNull } from '@transferwise/neptune-validation';
 import isEqual from 'lodash.isequal';
 import BasicTypeSchema from '../basicTypeSchema';
 import { isValidSchema } from '../../common/validation/schema-validators';
+import usePrev from '../../common/hooks/usePrev';
 
 const ValidationAsyncSchema = (props) => {
   const [validationAsyncModel, setValidationAsyncModel] = useState(null);
+  const prevValidationAsyncModel = usePrev(validationAsyncModel);
   const [validationAsyncSuccessMessage, setValidationAsyncSuccessMessage] = useState(null);
   const [validationAsyncErrors, setValidationAsyncErrors] = useState(null);
   const [fieldSubmitted, setFieldSubmitted] = useState(false);
@@ -54,7 +56,7 @@ const ValidationAsyncSchema = (props) => {
   };
 
   const onBlur = () => {
-    if (!isNull(validationAsyncModel)) {
+    if (!isNull(validationAsyncModel) && !isEqual(validationAsyncModel, prevValidationAsyncModel)) {
       getValidationAsyncResponse(validationAsyncModel, props.schema.validationAsync);
     }
   };
