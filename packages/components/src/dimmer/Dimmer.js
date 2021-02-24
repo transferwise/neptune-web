@@ -3,6 +3,7 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import withNextPortal from '../withNextPortal/withNextPortal';
+import { addNoScrollBodyClass, removeNoScrollBodyClass } from '../common/DOMOperations';
 
 import './Dimmer.css';
 
@@ -23,6 +24,7 @@ const Dimmer = ({ open, children, scrollable, onClose, fadeContentOnExit, fadeCo
 
   const handleOnEnter = () => {
     document.addEventListener('keydown', handleOnKeyDown);
+    addNoScrollBodyClass();
   };
 
   const handleOnClick = (event) => {
@@ -41,6 +43,7 @@ const Dimmer = ({ open, children, scrollable, onClose, fadeContentOnExit, fadeCo
 
   const cleanup = () => {
     document.removeEventListener('keydown', handleOnKeyDown);
+    removeNoScrollBodyClass();
   };
 
   return (
