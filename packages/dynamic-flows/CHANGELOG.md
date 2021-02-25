@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@11.4.0...@transferwise/dynamic-flows@11.4.1) (2021-02-25)
+
+
+### Bug Fixes
+
+* trigger on change on validation async ([#824](https://github.com/transferwise/neptune-web/issues/824)) ([78c7626](https://github.com/transferwise/neptune-web/commit/78c7626a4881124dafe7b8fa55ef0aead19f6902))
+
+
+
+
+
 # [11.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@11.3.8...@transferwise/dynamic-flows@11.4.0) (2021-02-25)
 
 
