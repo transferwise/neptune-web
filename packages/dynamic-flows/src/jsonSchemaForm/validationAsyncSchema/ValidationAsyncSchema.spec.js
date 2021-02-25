@@ -139,9 +139,25 @@ describe('Given a component for rendering validation async schemas', () => {
 
         expect(global.fetch).toHaveBeenCalledTimes(0);
       });
+
+      it('should trigger onChange', () => {
+        enterValueAndBlur('client_validation_failure');
+
+        expect(onChange).toHaveBeenCalledWith(
+          'client_validation_failure',
+          schema,
+          'client_validation_failure',
+        );
+      });
     });
 
     describe('when the field value is valid', () => {
+      it('should trigger onChange', () => {
+        enterValueAndBlur('200--ok--fast-5ms');
+
+        expect(onChange).toHaveBeenCalledWith('200--ok--fast-5ms', schema, '200--ok--fast-5ms');
+      });
+
       describe('when a validation async has been triggered', () => {
         describe('when the request is successful with body', () => {
           it('should show the success message', async () => {
