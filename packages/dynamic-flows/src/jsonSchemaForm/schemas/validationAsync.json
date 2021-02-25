@@ -8,7 +8,7 @@
       "description": "IBAN is the international bank number.",
       "validationAsync": {
         "method": "POST",
-        "url": "http://localhost:3001/v1/iban/validate",
+        "url": "/v1/iban/validate",
         "param": "iban"
       }
     },
