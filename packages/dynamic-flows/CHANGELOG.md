@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@11.3.8...@transferwise/dynamic-flows@11.4.0) (2021-02-25)
+
+
+### Features
+
+* Dynamic flows async operations optimisation ([#823](https://github.com/transferwise/neptune-web/issues/823)) ([069a74d](https://github.com/transferwise/neptune-web/commit/069a74d4412ef4c28c6adb4d03a4cf97b4a17800))
+
+
+
+
+
 ## [11.3.8](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@11.3.7...@transferwise/dynamic-flows@11.3.8) (2021-02-22)
 
 **Note:** Version bump only for package @transferwise/dynamic-flows
