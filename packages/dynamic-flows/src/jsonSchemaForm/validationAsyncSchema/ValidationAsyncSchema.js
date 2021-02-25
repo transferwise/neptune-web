@@ -62,6 +62,7 @@ const ValidationAsyncSchema = (props) => {
   };
 
   const validationAsyncOnChange = (newValidationAsyncModel) => {
+    props.onChange(newValidationAsyncModel, props.schema, newValidationAsyncModel);
     setValidationAsyncErrors(null);
     setValidationAsyncSuccessMessage(null);
 
@@ -96,6 +97,7 @@ ValidationAsyncSchema.propTypes = {
       param: Types.string,
     }),
   }).isRequired,
+  onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
   required: Types.bool,
   errors: Types.oneOfType([Types.string, Types.array, Types.shape({})]),
