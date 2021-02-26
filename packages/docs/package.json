@@ -53,11 +53,14 @@
     "next-images": "^1.1.2",
     "next-transpile-modules": "^2.3.1",
     "prop-types": "^15.7.2",
+    "react-required-if": "^1.0.3",
     "raw-loader": "^4.0.0",
     "react-docgen": "^5.3.1",
     "react-docgen-external-proptypes-handler": "^2.0.0",
     "react-live": "^2.2.2",
-    "rehype-slug": "^3.0.0"
+    "rehype-slug": "^3.0.0",
+    "date-fns": "^2.17.0",
+    "classnames": "^2.2.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
