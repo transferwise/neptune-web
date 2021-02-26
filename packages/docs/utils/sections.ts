@@ -109,6 +109,16 @@ const sections: MainSection[] = [
     title: 'Lab',
     dir: 'lab',
   },
+  {
+    title: 'Blog',
+    dir: 'blog',
+    fileOrder: ['Home'],
+    badge: {
+      type: 'new',
+      expiryDate: '15-03-2021',
+    },
+    sidebar: false,
+  },
 ];
 
 export default sections;

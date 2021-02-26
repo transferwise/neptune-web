@@ -1,12 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { format, formatDistance } from 'date-fns';
+
+export function isExpired(endDate) {
+  return endDate?.getTime() <= Date.now();
+}
+
+export function printDate(date) {
+  return `${format(date, 'MMMM dd, yyyy')} (${formatDistance(date, Date.now(), {
+    addSuffix: true,
+  })})`;
+}
 
 const getPages = () => {
-  const req = require.context('../pages/', true, /mdx$/);
+  const req = require.context('../pages/', true, /mdx$|js$/);
 
   return req.keys().map((filePath) => {
-    // Chop off the ./ and the final .mdx
-    const pathParts = filePath.slice(2, filePath.length - 4).split('/');
+    // Chop off the './' and file extention
+    const pathParts = filePath.slice(2, filePath.lastIndexOf('.')).split('/');
     const path = `/${pathParts.join('/')}`;
     const slug = pathParts.pop();
 

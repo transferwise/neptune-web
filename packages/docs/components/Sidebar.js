@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
+import { parseISO } from 'date-fns';
 import Link from './Link';
+import Badge from './Badge';
 
 import { getPagesInSection } from '../utils/pageUtils';
 
@@ -19,14 +21,19 @@ const getLinks = ({ pathname, section }) => {
     }
     const isSelected = pathname === path;
     const name = component.meta.linkText || component.meta.name;
+    const { badge } = component.meta;
 
     return {
       content: (
         <li key={key}>
           <Link href={path}>
             <a className={`Nav__Link ${isSelected ? 'active' : ''}`}>
-              {name} {component.meta.isPlaceholder && '*'}
-              {component.meta.isBeta && <span className="badge badge-success">beta</span>}
+              {name}
+              {badge ? (
+                <Badge expiryDate={parseISO(badge.expiryDate)} className="m-l-1">
+                  {badge.type}
+                </Badge>
+              ) : null}
             </a>
           </Link>
         </li>

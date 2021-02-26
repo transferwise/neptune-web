@@ -14,6 +14,7 @@ describe('Given a component for rendering validation async schemas', () => {
     type: 'string',
     title: 'A title',
     description: 'IBAN is the international bank number.',
+    pattern: '\\b(?!client_validation_failure\\b)\\w+',
     validationAsync: {
       method: 'POST',
       url: '/v1/validate',
@@ -24,60 +25,58 @@ describe('Given a component for rendering validation async schemas', () => {
   const translations = {};
   const submitted = false;
 
-  const initialiseMockValidationAsyncEndpoint = () => {
-    jest.spyOn(global, 'fetch').mockImplementation((input, init) => {
-      let response;
+  global.fetch = jest.fn((input, init) => {
+    let response;
 
-      switch (JSON.parse(init.body)[param]) {
-        case '200--ok--fast-5ms':
-          response = getMockFetchPromise(
-            200,
-            () => Promise.resolve({ message: 'response-from-200-fast' }),
-            5,
-            init.signal,
-          );
-          break;
-        case '200--ok--slow-100ms':
-          response = getMockFetchPromise(
-            200,
-            () => Promise.resolve({ message: 'response-from-200-slow' }),
-            100,
-            init.signal,
-          );
-          break;
-        case '200--ok--fast-5ms-no-body':
-          response = getMockFetchPromise(200, () => Promise.resolve(), 5, init.signal);
-          break;
-        case '422--error':
-          response = getMockFetchPromise(
-            422,
-            () => Promise.resolve({ message: 'Invalid param! (422)' }),
-            0,
-            init.signal,
-          );
-          break;
-        case '499--json-body':
-          response = getMockFetchPromise(
-            499,
-            () => Promise.resolve({ message: 'Invalid param! (499)' }),
-            0,
-            init.signal,
-          );
-          break;
-        case '500--no-body':
-          response = getMockFetchPromise(500, () => Promise.reject(''), 0, init.signal);
-          break;
-        default:
-          response = getMockFetchPromise(500, () => Promise.reject(''), 0, init.signal);
-      }
-      return response;
-    });
-  };
+    switch (JSON.parse(init.body)[param]) {
+      case '200--ok--fast-5ms':
+        response = getMockFetchPromise(
+          200,
+          () => Promise.resolve({ message: 'response-from-200-fast' }),
+          5,
+          init.signal,
+        );
+        break;
+      case '200--ok--slow-100ms':
+        response = getMockFetchPromise(
+          200,
+          () => Promise.resolve({ message: 'response-from-200-slow' }),
+          100,
+          init.signal,
+        );
+        break;
+      case '200--ok--fast-5ms-no-body':
+        response = getMockFetchPromise(200, () => Promise.resolve(), 5, init.signal);
+        break;
+      case '422--error':
+        response = getMockFetchPromise(
+          422,
+          () => Promise.resolve({ message: 'Invalid param! (422)' }),
+          0,
+          init.signal,
+        );
+        break;
+      case '499--json-body':
+        response = getMockFetchPromise(
+          499,
+          () => Promise.resolve({ message: 'Invalid param! (499)' }),
+          0,
+          init.signal,
+        );
+        break;
+      case '500--no-body':
+        response = getMockFetchPromise(500, () => Promise.reject(''), 0, init.signal);
+        break;
+      default:
+        response = getMockFetchPromise(500, () => Promise.reject(''), 0, init.signal);
+    }
+    return response;
+  });
 
   beforeEach(() => {
     onChange = jest.fn();
 
-    initialiseMockValidationAsyncEndpoint();
+    fetch.mockClear();
 
     props = {
       schema,
@@ -134,7 +133,31 @@ describe('Given a component for rendering validation async schemas', () => {
       });
     });
 
+    describe('when the field value is invalid', () => {
+      it('should not trigger validation async', () => {
+        enterValueAndBlur('client_validation_failure');
+
+        expect(global.fetch).toHaveBeenCalledTimes(0);
+      });
+
+      it('should trigger onChange', () => {
+        enterValueAndBlur('client_validation_failure');
+
+        expect(onChange).toHaveBeenCalledWith(
+          'client_validation_failure',
+          schema,
+          'client_validation_failure',
+        );
+      });
+    });
+
     describe('when the field value is valid', () => {
+      it('should trigger onChange', () => {
+        enterValueAndBlur('200--ok--fast-5ms');
+
+        expect(onChange).toHaveBeenCalledWith('200--ok--fast-5ms', schema, '200--ok--fast-5ms');
+      });
+
       describe('when a validation async has been triggered', () => {
         describe('when the request is successful with body', () => {
           it('should show the success message', async () => {
@@ -203,6 +226,17 @@ describe('Given a component for rendering validation async schemas', () => {
 
             expect(getControlFeedbackProp('validationAsyncSuccessMessage')).toBeNull();
             expect(getControlFeedbackProp('errors')).toBeNull();
+          });
+
+          describe('when the new value is the same as before', () => {
+            it('should not trigger another validation async', async () => {
+              enterValueAndBlur('200--ok--fast-5ms');
+              await wait(5);
+
+              enterValueAndBlur('200--ok--fast-5ms');
+
+              expect(global.fetch).toHaveBeenCalledTimes(1);
+            });
           });
         });
       });
