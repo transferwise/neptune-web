@@ -14,7 +14,19 @@
  * Note that you cannot mix groups and individual files - if you decide to use groups, all children
  * files in that section must be in a group.
  */
-export default [
+interface SubSection {
+  title: string,
+  dir: string,
+  fileOrder?: string[],
+}
+
+interface MainSection extends SubSection {
+  children?: SubSection[],
+  searchable?: boolean,
+  hidden?: boolean,
+};
+
+const sections: MainSection[] = [
   {
     title: 'Getting started',
     dir: 'about',
@@ -98,3 +110,5 @@ export default [
     dir: 'lab',
   },
 ];
+
+export default sections;

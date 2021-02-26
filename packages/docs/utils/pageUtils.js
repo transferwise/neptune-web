@@ -84,6 +84,9 @@ export const getFirstPageInSection = (section) => {
   return pages.find((p) => p.path.indexOf(dir) === 1);
 };
 
+/**
+ * @param {string} url
+ */
 export const addBasePath = (url) =>
   `${process.env.ASSET_PREFIX}/${url.indexOf('/') === 0 ? url.slice(1) : url}`;
 
