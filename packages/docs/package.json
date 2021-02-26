@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-docs",
-  "version": "10.0.29",
+  "version": "10.0.30",
   "description": "TransferWise Design System",
   "main": "index.js",
   "private": true,
@@ -45,7 +45,9 @@
     "@transferwise/test-config": "^3.0.2",
     "@zeit/next-css": "^1.0.1",
     "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
+    "classnames": "^2.2.6",
     "currency-flags": "^2.1.1",
+    "date-fns": "^2.17.0",
     "glob": "^7.1.6",
     "husky": "^4.2.5",
     "lint-staged": "^9.4.2",
@@ -53,14 +55,12 @@
     "next-images": "^1.1.2",
     "next-transpile-modules": "^2.3.1",
     "prop-types": "^15.7.2",
-    "react-required-if": "^1.0.3",
     "raw-loader": "^4.0.0",
     "react-docgen": "^5.3.1",
     "react-docgen-external-proptypes-handler": "^2.0.0",
     "react-live": "^2.2.2",
-    "rehype-slug": "^3.0.0",
-    "date-fns": "^2.17.0",
-    "classnames": "^2.2.6"
+    "react-required-if": "^1.0.3",
+    "rehype-slug": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
