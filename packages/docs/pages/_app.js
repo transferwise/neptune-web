@@ -35,6 +35,7 @@ class MyApp extends App {
     const { pathname } = Router;
     if (pathname === '/' || pathname === '/_error') {
       Router.push(addBasePath('about/Home'));
+      Router.push(addBasePath(12));
     }
 
     // @TODO

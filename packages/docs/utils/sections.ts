@@ -14,16 +14,35 @@
  * Note that you cannot mix groups and individual files - if you decide to use groups, all children
  * files in that section must be in a group.
  */
+interface Badge {
+  type: string;
+  expiryDate?: string;
+}
+
+interface Author {
+  name: string;
+  githubUsername: string;
+}
+
+export type Meta = {
+  name: string;
+  date?: string,
+  authors?: Author[],
+  badge?: Badge;
+}
+
 interface SubSection {
   title: string,
   dir: string,
   fileOrder?: string[],
+  badge?: Badge,
 }
 
 interface MainSection extends SubSection {
   children?: SubSection[],
   searchable?: boolean,
   hidden?: boolean,
+  sidebar?: boolean,
 };
 
 const sections: MainSection[] = [

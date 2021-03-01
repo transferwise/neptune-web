@@ -11,20 +11,16 @@
     ],
     "fp/no-mutation": 0,
     // https://github.com/benmosher/eslint-plugin-import/issues/1615#issuecomment-577500405
-    "import/extensions": [
-      "error",
-      "always",
-      {
-        "js": "never",
-        "mjs": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
+    "import/extensions": ["error", "ignorePackages", {
+      "js": "never",
+      "ts": "never",
+      "tsx": "never"
+    }]
+  },
+  "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".ts", ".tsx"]
+        "extensions": [".js", ".ts", ".tsx", ".json"]
       }
     }
   }
