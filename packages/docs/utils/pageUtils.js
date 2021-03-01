@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { format, formatDistance } from 'date-fns';
 
+/**
+ * Check if date is past date
+ *
+ * @param {Date | null | undefined} endDate test date
+ */
 export function isExpired(endDate) {
   return endDate?.getTime() <= Date.now();
 }

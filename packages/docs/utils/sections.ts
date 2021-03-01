@@ -26,24 +26,24 @@ interface Author {
 
 export type Meta = {
   name: string;
-  date?: string,
-  authors?: Author[],
+  date?: string;
+  authors?: Author[];
+  badge?: Badge;
+};
+
+interface SubSection {
+  title: string;
+  dir: string;
+  fileOrder?: string[];
   badge?: Badge;
 }
 
-interface SubSection {
-  title: string,
-  dir: string,
-  fileOrder?: string[],
-  badge?: Badge,
-}
-
 interface MainSection extends SubSection {
-  children?: SubSection[],
-  searchable?: boolean,
-  hidden?: boolean,
-  sidebar?: boolean,
-};
+  children?: SubSection[];
+  searchable?: boolean;
+  hidden?: boolean;
+  sidebar?: boolean;
+}
 
 const sections: MainSection[] = [
   {

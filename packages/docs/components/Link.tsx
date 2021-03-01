@@ -11,5 +11,5 @@ export default function Link({ href, children }: LinkProps): ReactElement {
     <NextLink href={process.env.ASSET_PREFIX + href} prefetch={false}>
       {children}
     </NextLink>
-  )
-};
+  );
+}

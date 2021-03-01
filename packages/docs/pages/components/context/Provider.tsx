@@ -27,7 +27,7 @@ const localeOptions: { value: string; label: string }[] = [
   label: locale,
 }));
 
-export default () => {
+export default function PageContent() {
   return (
     <>
       Provides contextual data such as translations to components. See the{' '}
@@ -37,7 +37,7 @@ export default () => {
         code={code}
         scope={{
           getLangFromLocale,
-          ProviderComponent,
+          Provider: ProviderComponent,
           Select,
           Money,
           FormattedMessage,
@@ -50,7 +50,7 @@ export default () => {
       <GeneratePropsTable componentName="Provider" />
     </>
   );
-};
+}
 
 export const meta: Meta = {
   name: 'Provider',

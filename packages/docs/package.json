@@ -70,6 +70,7 @@
     "@types/node": "^14.14.31",
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.11",
+    "@types/classnames": "^2.2.11",
     "babel-plugin-inline-react-svg": "^1.1.1",
     "deploy-to-github-pages": "1.0.0-beta.7"
   },
