@@ -5,7 +5,7 @@ import Avatar from '.';
 
 describe('FlowNavigationAvatar', () => {
   it('renders as BUSINESS profile type', async () => {
-    const { container } = render(<Avatar url="https://transferwise.com" profileType="BUSINESS" />);
+    const { container } = render(<Avatar url="https://wise.com" profileType="BUSINESS" />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -17,7 +17,7 @@ describe('FlowNavigationAvatar', () => {
   });
 
   it('renders as PERSONAL profile type', async () => {
-    const { container } = render(<Avatar url="https://transferwise.com" profileType="PERSONAL" />);
+    const { container } = render(<Avatar url="https://wise.com" profileType="PERSONAL" />);
 
     expect(container.firstChild).toMatchSnapshot();
   });

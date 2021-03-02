@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "main": "./gulpfile.js",
   "keywords": [
-    "transferwise",
+    "wise",
     "gulp less"
   ],
   "repository": {

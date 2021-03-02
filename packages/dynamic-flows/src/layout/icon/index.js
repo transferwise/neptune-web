@@ -23,7 +23,7 @@ DynamicIcon.propTypes = {
 };
 
 DynamicIcon.defaultProps = {
-  type: 'transferwise',
+  type: 'wise',
 };
 
 export default DynamicIcon;

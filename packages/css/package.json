@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-css",
-  "description": "Neptune CSS is TransferWise's Design System CSS library",
+  "description": "Neptune CSS library for Wise",
   "version": "8.1.1",
   "license": "MIT",
   "repository": {
@@ -10,8 +10,8 @@
   },
   "keywords": [],
   "author": {
-    "name": "TransferWise",
-    "url": "https://transferwise.com/"
+    "name": "Wise",
+    "url": "https://wise.com/"
   },
   "bugs": {
     "url": "https://github.com/transferwise/neptune-web/issues"

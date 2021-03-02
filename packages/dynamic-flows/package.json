@@ -1,7 +1,7 @@
 {
   "name": "@transferwise/dynamic-flows",
   "version": "11.4.1",
-  "description": "Transferwise dynamic flows and forms",
+  "description": "Wise Dynamic Flows and Forms",
   "license": "Apache-2.0",
   "main": "./build/es/polyfill/index.js",
   "module": "./build/es/polyfill/index.js",

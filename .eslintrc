@@ -1,5 +1,3 @@
-// Check for eslint rules reasoning
-// https://transferwise.atlassian.net/browse/NP-101
 {
   "extends": "@transferwise",
   "rules": {
@@ -12,7 +10,6 @@
         }
       }
     ],
-    // New Rules to remove in NP-101
     "react/sort-comp": 0,
     "react/no-unused-state": 0,
     "import/no-cycle": 0,

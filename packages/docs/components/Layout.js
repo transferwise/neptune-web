@@ -25,10 +25,10 @@ const Layout = ({ children, router: { pathname } }) => {
       <Link href="/">
         <a className="Logo">
           <img
-            src={`${process.env.ASSET_PREFIX}/static/assets/img/logo_full_inverse.svg`}
-            alt="TransferWise Logo"
+            src={`${process.env.ASSET_PREFIX}/static/assets/img/wise_logo.svg`}
+            alt="Wise Logo"
           />
-          <span className="sr-only">TransferWise</span>
+          <span className="sr-only">Wise</span>
         </a>
       </Link>
       <ul className="Nav Nav--dark">

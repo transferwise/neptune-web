@@ -54,7 +54,7 @@ class MyApp extends App {
     return (
       <Provider i18n={{ locale, messages }}>
         <Head>
-          <title>Neptune Design System — TransferWise</title>
+          <title>Neptune Design System</title>
           <link rel="icon" href={`${process.env.ASSET_PREFIX}/static/assets/favicon.ico`} />
         </Head>
 

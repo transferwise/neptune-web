@@ -1,7 +1,7 @@
 {
   "name": "@transferwise/neptune-docs",
   "version": "10.0.30",
-  "description": "TransferWise Design System",
+  "description": "Neptune Design System Documentation",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -26,8 +26,8 @@
   },
   "keywords": [],
   "author": {
-    "name": "TransferWise",
-    "url": "https://transferwise.com/"
+    "name": "Wise",
+    "url": "https://wise.com/"
   },
   "bugs": {
     "url": "https://github.com/transferwise/neptune-web/issues"

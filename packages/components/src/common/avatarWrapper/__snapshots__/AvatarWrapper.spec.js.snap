@@ -9,7 +9,7 @@ exports[`FlowNavigationAvatar renders as BUSINESS profile type 1`] = `
   >
     <img
       alt="avatar"
-      src="https://transferwise.com"
+      src="https://wise.com"
     />
   </div>
 </div>
@@ -56,7 +56,7 @@ exports[`FlowNavigationAvatar renders as PERSONAL profile type 1`] = `
   >
     <img
       alt="avatar"
-      src="https://transferwise.com"
+      src="https://wise.com"
     />
   </div>
 </div>

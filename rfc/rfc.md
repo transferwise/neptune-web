@@ -24,7 +24,7 @@ Not every proposed change/idea should go through RFC process. But if e.g:
 
 - this is some common pattern/convention which affects all/most/many of our components (Web/Mobile)
 - introduction of new framework/library (of course this applies not to everything), but if this affects many things and requires some code rewrites or a bit of long migration path it's a good candidate (e.g "let's introduce css-in-js for our styles (Neptune CSS)").
-- big changes for our documentation (e.g [TW brand guidelines](https://brand.transferwise.com/) should be part of Neptune documentation).
+- big changes for our documentation (e.g [Wise brand guidelines](https://brand.wise.com/) should be part of Neptune documentation).
 - etc.
 
 When in doubt please contact us, either DM or raise a question in #design-system.
