@@ -6,6 +6,8 @@ import { format, formatDistance } from 'date-fns';
  * Check if date is past date
  *
  * @param {Date | null | undefined} endDate test date
+ * @return {boolean} `true` if date is less than today or `null` / `undefined`,
+ * otherwise return `false`
  */
 export function isExpired(endDate) {
   return endDate?.getTime() <= Date.now();
