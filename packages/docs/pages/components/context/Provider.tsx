@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Provider as ProviderComponent, Money, Select } from '@transferwise/components';
 import supportedLanguages from '@transferwise/components/build/i18n';
@@ -27,7 +27,7 @@ const localeOptions: { value: string; label: string }[] = [
   label: locale,
 }));
 
-export default function PageContent() {
+export default function PageContent(): ReactElement {
   return (
     <>
       Provides contextual data such as translations to components. See the{' '}

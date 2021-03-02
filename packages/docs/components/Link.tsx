@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, ReactElement } from 'react';
 import NextLink from 'next/link';
 
 type LinkProps = {
@@ -6,7 +6,7 @@ type LinkProps = {
   children: ReactNode;
 };
 
-export default function Link({ href, children }: LinkProps) {
+export default function Link({ href, children }: LinkProps): ReactElement {
   return (
     <NextLink href={process.env.ASSET_PREFIX + href} prefetch={false}>
       {children}

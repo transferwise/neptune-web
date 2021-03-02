@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, ReactElement } from 'react';
 import classNames from 'classnames';
 import { isExpired } from '../utils/pageUtils';
 
@@ -12,7 +12,7 @@ export default function Badge({
   children,
   expiryDate = undefined,
   className = undefined,
-}: BadgeProps) {
+}: BadgeProps): ReactElement {
   if (expiryDate !== undefined && isExpired(expiryDate)) {
     // eslint-disable-next-line no-console
     console.warn(`Please delete expired ('${expiryDate}') and redundant badge!`);
