@@ -12,7 +12,7 @@ export default function Badge({
   children,
   expiryDate = undefined,
   className = undefined,
-}: BadgeProps): JSX.Element {
+}: BadgeProps) {
   if (expiryDate !== undefined && isExpired(expiryDate)) {
     // eslint-disable-next-line no-console
     console.warn(`Please delete expired ('${expiryDate}') and redundant badge!`);
