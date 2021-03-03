@@ -15,9 +15,7 @@ export default function Input({ inputmode, disabled, icon, ...restProps }) {
       {icon ? (
         <>
           <div className="clearfix" />
-          <span className={classNames('input-group-addon', { disabled })} disabled={disabled}>
-            {icon}
-          </span>
+          <span className={classNames('input-group-addon', { disabled })}>{icon}</span>
         </>
       ) : (
         <></>
