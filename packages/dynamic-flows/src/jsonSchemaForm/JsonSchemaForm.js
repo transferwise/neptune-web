@@ -1,9 +1,16 @@
 import React from 'react';
 import Types from 'prop-types';
 import GenericSchema from './genericSchema';
+import { BaseUrlContext } from '../common/contexts/baseUrlContext/BaseUrlContext';
 
 const JsonSchemaForm = (props) => {
-  return <GenericSchema {...props} />;
+  const { baseUrl } = props;
+
+  return (
+    <BaseUrlContext.Provider value={{ baseUrl }}>
+      <GenericSchema {...props} />
+    </BaseUrlContext.Provider>
+  );
 };
 
 JsonSchemaForm.propTypes = {
@@ -47,6 +54,10 @@ JsonSchemaForm.propTypes = {
    * Provides a QueryablePromise of the persist async call.
    */
   onPersistAsync: Types.func.isRequired,
+  /**
+   * Specifies the baseUrl of persist async and validation async requests.
+   */
+  baseUrl: Types.string.isRequired,
 };
 
 JsonSchemaForm.defaultProps = {

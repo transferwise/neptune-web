@@ -10,6 +10,8 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
   let onPersistAsync;
   let props;
 
+  const baseUrl = 'some-test-base-url';
+
   const stringSchema = {
     title: 'String',
     type: 'string',
@@ -88,6 +90,7 @@ describe('E2E: Given a component for rendering a JSON schema form', () => {
       locale,
       disabled,
       onPersistAsync,
+      baseUrl,
     };
   });
 

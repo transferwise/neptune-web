@@ -81,6 +81,7 @@ export const basic = () => {
         onChange={action('onChange')}
         submitted={submitted}
         disabled={disabled}
+        baseUrl="http://localhost:3000"
         onPersistAsync={() => {}}
       />
     </Provider>
