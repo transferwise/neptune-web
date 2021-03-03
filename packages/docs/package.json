@@ -14,7 +14,7 @@
     "build:docs-gen": "node ./docgen.js && node ./utils/bundleSize/getBundleSize.js",
     "build:next": "next build",
     "docs:deploy": "npm-run-all deploy:*",
-    "deploy:gh-pages": "deploy-to-github-pages -d docs-build -m main -c 70 -b deploy-cleanup",
+    "deploy:gh-pages": "deploy-to-github-pages -d docs-build -m main -c 90 -b deploy-cleanup",
     "lint": "jest --maxWorkers=4 --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
     "lint:fix": "eslint components/ pages/ utils/ --fix"
   },
