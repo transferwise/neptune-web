@@ -42,6 +42,7 @@ describe('E2E: Given a component for rendering a dynamic layout', () => {
         submitted
         errors={errors}
         onPersistAsync={onPersistAsync}
+        baseUrl="dynamic-layout-base-url"
       />,
     );
   });
