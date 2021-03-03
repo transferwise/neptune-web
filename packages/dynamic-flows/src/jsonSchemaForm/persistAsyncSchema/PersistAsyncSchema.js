@@ -8,6 +8,7 @@ import { isStatus2xx, isStatus422, QueryablePromise } from '../../common/api/uti
 import messages from './PersistAsyncSchema.messages';
 import { isValidSchema } from '../../common/validation/schema-validators';
 import usePrev from '../../common/hooks/usePrev';
+import { useBaseUrl } from '../../common/contexts/baseUrlContext/BaseUrlContext';
 
 const PersistAsyncSchema = (props) => {
   const intl = useIntl();
@@ -17,6 +18,7 @@ const PersistAsyncSchema = (props) => {
   const [persistAsyncError, setPersistAsyncError] = useState(null);
   const [fieldSubmitted, setFieldSubmitted] = useState(false);
   const [abortController, setAbortController] = useState(null);
+  const baseUrl = useBaseUrl();
 
   if (props.schema.persistAsync.schema.format === 'base64url') {
     // TODO: Add support for base64url format
@@ -33,7 +35,7 @@ const PersistAsyncSchema = (props) => {
     setFieldSubmitted(true); // persist async initiated implied the field has been submitted
 
     const persistAsyncFetch = new QueryablePromise(
-      fetch(`${persistAsyncSpec.url}`, {
+      fetch(`${baseUrl}${persistAsyncSpec.url}`, {
         method: persistAsyncSpec.method,
         headers: {
           'Content-Type': 'application/json',

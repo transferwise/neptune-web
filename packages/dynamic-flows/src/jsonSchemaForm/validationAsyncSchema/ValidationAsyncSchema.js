@@ -5,6 +5,7 @@ import isEqual from 'lodash.isequal';
 import BasicTypeSchema from '../basicTypeSchema';
 import { isValidSchema } from '../../common/validation/schema-validators';
 import usePrev from '../../common/hooks/usePrev';
+import { useBaseUrl } from '../../common/contexts/baseUrlContext/BaseUrlContext';
 
 const ValidationAsyncSchema = (props) => {
   const [validationAsyncModel, setValidationAsyncModel] = useState(null);
@@ -13,6 +14,7 @@ const ValidationAsyncSchema = (props) => {
   const [validationAsyncErrors, setValidationAsyncErrors] = useState(null);
   const [fieldSubmitted, setFieldSubmitted] = useState(false);
   const [abortController, setAbortController] = useState(null);
+  const baseUrl = useBaseUrl();
 
   const getValidationAsyncResponse = async (currentValidationAsyncModel, validationAsyncSpec) => {
     const signal = abortCurrentRequestAndGetNewAbortSignal();
@@ -20,7 +22,7 @@ const ValidationAsyncSchema = (props) => {
     const requestBody = { [validationAsyncSpec.param]: currentValidationAsyncModel };
     setFieldSubmitted(true);
 
-    const validationAsyncFetch = fetch(`${validationAsyncSpec.url}`, {
+    const validationAsyncFetch = fetch(`${baseUrl}${validationAsyncSpec.url}`, {
       method: validationAsyncSpec.method,
       headers: {
         'Content-Type': 'application/json',

@@ -33,6 +33,8 @@ describe('Given a component for rendering persist async schemas', () => {
   global.fetch = jest.fn((input, init) => {
     let response;
 
+    expect(input).toBe('test-url/v1/foobar');
+
     switch (JSON.parse(init.body)[param]) {
       case '200--ok--fast-5ms':
         response = getMockFetchPromise(

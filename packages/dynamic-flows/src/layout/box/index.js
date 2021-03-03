@@ -39,6 +39,7 @@ const DynamicBox = (props) => {
           submitted={props.submitted}
           errors={props.errors}
           onPersistAsync={props.onPersistAsync}
+          baseUrl={props.baseUrl}
         />
       </div>
     );
@@ -55,6 +56,7 @@ const DynamicBox = (props) => {
             submitted={props.submitted}
             errors={props.errors}
             onPersistAsync={props.onPersistAsync}
+            baseUrl={props.baseUrl}
           />
         </div>
       </div>
@@ -74,6 +76,7 @@ DynamicBox.propTypes = {
   submitted: Types.bool.isRequired,
   errors: Types.oneOfType([Types.string, Types.number, Types.object, Types.array, Types.bool]),
   onPersistAsync: Types.func.isRequired,
+  baseUrl: Types.string.isRequired,
 };
 
 DynamicBox.defaultProps = {
