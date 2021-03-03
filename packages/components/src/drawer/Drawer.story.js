@@ -1,6 +1,5 @@
-import React from 'react';
-import { boolean, select } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import React, { useState } from 'react';
+import { select } from '@storybook/addon-knobs';
 import Drawer from './Drawer';
 import Button from '../button';
 
@@ -10,24 +9,28 @@ export default {
 };
 
 export const basic = () => {
-  const open = boolean('open', true);
+  const [open, setOpen] = useState(false);
   const position = select('position', Object.values(Drawer.Position), Drawer.Position.RIGHT);
 
   return (
-    <Drawer
-      open={open}
-      position={position}
-      onClose={action('closed')}
-      footerContent={
-        <Button onClick={action('button clicked')} block>
-          Action
-        </Button>
-      }
-      headerTitle="A title"
-    >
-      <label htmlFor="id">Label</label>
-      <input type="text" className="form-control" id="id" />
-      <p className="m-t-3">Cat ipsum dolor sit amet, purr when being pet.</p>
-    </Drawer>
+    <>
+      <Button disabled={false} block={false} onClick={() => setOpen(true)}>
+        Open drawer
+      </Button>
+      <Drawer
+        open={open}
+        position={position}
+        onClose={() => setOpen(false)}
+        footerContent={
+          <Button onClick={() => setOpen(false)} block>
+            Action
+          </Button>
+        }
+        headerTitle="A title"
+      >
+        <input type="text" className="form-control" />
+        <p className="m-t-3">Cat ipsum dolor sit amet, purr when being pet.</p>
+      </Drawer>
+    </>
   );
 };
