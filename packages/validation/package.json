@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-validation",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "Neptune Web validation",
   "license": "Apache-2.0",
   "main": "./build/umd/polyfill/main.js",
@@ -39,7 +39,7 @@
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.3",
-    "@transferwise/test-config": "^3.0.2",
+    "@transferwise/test-config": "^3.0.3",
     "babel-preset-minify": "^0.5.1",
     "rollup": "^2.34.0",
     "rollup-plugin-postcss": "^2.8.2",
