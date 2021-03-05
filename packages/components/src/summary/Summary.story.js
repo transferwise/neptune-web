@@ -67,6 +67,19 @@ export const basic = () => {
         title="We’re verifying your address"
         status={Summary.Status.PENDING}
       />
+      <Summary
+        action={{
+          text: 'Open in new tab',
+          href: '#change-address',
+          target: '_blank',
+          callback: () => {},
+        }}
+        as="li"
+        description="10 Downing Street, Westminster, London SW1A 2AA."
+        icon={<HomeIcon size={24} />}
+        title="We’re verifying your address"
+        status={Summary.Status.PENDING}
+      />
     </ul>
   );
 };
