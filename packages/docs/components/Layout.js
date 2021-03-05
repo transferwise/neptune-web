@@ -22,15 +22,17 @@ const Layout = ({ children, router: { pathname } }) => {
 
   const firstContent = (
     <div className="Header__Fixed" role="navigation" aria-label="Primary navigation">
-      <Link href="/">
-        <a className="Logo">
-          <img
-            src={`${process.env.ASSET_PREFIX}/static/assets/img/logo_full_inverse.svg`}
-            alt="TransferWise Logo"
-          />
-          <span className="sr-only">TransferWise</span>
-        </a>
-      </Link>
+      <div className="Header__Brand">
+        <Link href="/">
+          <a className="Logo">
+            <img
+              src={`${process.env.ASSET_PREFIX}/static/assets/img/wise_logo.svg`}
+              alt="Wise Logo"
+            />
+            <span className="sr-only">Wise</span>
+          </a>
+        </Link>
+      </div>
       <ul className="Nav Nav--dark">
         <li className="Nav__Group">Neptune</li>
         {sections

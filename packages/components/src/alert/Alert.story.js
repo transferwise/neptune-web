@@ -26,7 +26,7 @@ export const basic = () => {
   );
   return (
     <Alert
-      action={action ? { text: action, href: 'https://www.transferwise.com' } : null}
+      action={action ? { text: action, href: 'https://www.wise.com' } : null}
       icon={icon ? <Emoji /> : null}
       message={message}
       onDismiss={onDismiss ? () => alert('dismissed') : null}
@@ -53,7 +53,7 @@ export const withArrow = () => {
   return (
     <Alert
       arrow={arrow}
-      action={action ? { text: action, href: 'https://www.transferwise.com' } : null}
+      action={action ? { text: action, href: 'https://www.wise.com' } : null}
       icon={icon ? <Emoji /> : null}
       message={message}
       onDismiss={onDismiss ? () => alert('dismissed') : null}

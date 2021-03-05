@@ -10,7 +10,7 @@
         media: {
           block: (
             <img
-              src="https://transferwise.com/public-resources/assets/bank-details/bank-details-flow/finish.svg"
+              src="https://wise.com/public-resources/assets/bank-details/bank-details-flow/finish.svg"
               alt="alt"
             />
           ),
@@ -31,7 +31,7 @@
         media: {
           block: (
             <img
-              src="https://transferwise.com/public-resources/assets/bank-details/bank-details-flow/finish.svg"
+              src="https://wise.com/public-resources/assets/bank-details/bank-details-flow/finish.svg"
               alt="alt"
             />
           ),
@@ -51,7 +51,7 @@
         media: {
           block: (
             <img
-              src="https://transferwise.com/public-resources/assets/bank-details/bank-details-flow/finish.svg"
+              src="https://wise.com/public-resources/assets/bank-details/bank-details-flow/finish.svg"
               alt="alt"
             />
           ),

@@ -5,6 +5,7 @@ import FlowNavigation from './FlowNavigation';
 import OverlayHeader from '../overlayHeader';
 import Avatar from '../avatar';
 import demoLogo from '../../public/assets/logo_full.svg';
+import fastFlagLogo from '../../public/assets/fast_flag.svg';
 import AvatarWrapper from '../common/avatarWrapper';
 
 export default {
@@ -90,7 +91,7 @@ export const withCustomAvatarImage = () => {
       avatar={
         !showAvatar ? null : (
           <Avatar type={Avatar.Type.THUMBNAIL} size={Avatar.Size.MEDIUM}>
-            <img src="https://github.com/transferwise.png" alt="avatar" />
+            <img src={fastFlagLogo} alt="avatar" />
           </Avatar>
         )
       }
@@ -151,7 +152,7 @@ export const withAvatar = () => {
       avatar={
         !showAvatar ? null : (
           <Avatar type={Avatar.Type.THUMBNAIL} size={Avatar.Size.MEDIUM}>
-            <img src="https://github.com/transferwise.png" alt="avatar" />
+            <img src={fastFlagLogo} alt="avatar" />
           </Avatar>
         )
       }
