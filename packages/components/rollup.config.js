@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
+import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import { uglify } from 'rollup-plugin-uglify';
@@ -39,6 +40,7 @@ const plugins = [
     babelHelpers: 'runtime',
     exclude: [/node_modules/],
   }),
+  typescript(),
   // Convert CJ into ES6
   commonjs({ sourcemap: false, namedExports }),
   postcss({
