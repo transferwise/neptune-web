@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [34.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.3.4...@transferwise/components@34.4.0) (2021-03-05)
+
+
+### Features
+
+* add target and onClick for Summary ([#834](https://github.com/transferwise/neptune-web/issues/834)) ([5125375](https://github.com/transferwise/neptune-web/commit/5125375c0819e72f05aa9e54da16f5aa13808205))
+
+
+
+
+
 ## [34.3.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.3.3...@transferwise/components@34.3.4) (2021-03-05)
 
 **Note:** Version bump only for package @transferwise/components
