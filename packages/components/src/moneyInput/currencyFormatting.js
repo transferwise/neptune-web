@@ -68,7 +68,7 @@ export function parseAmount(number, currency, locale) {
   const validLocale = getValidLocale(locale);
 
   const precision = getCurrencyDecimals(currency);
-  const groupSeparator = isNumberLocaleSupported() ? (1000).toLocaleString(validLocale)[1] : ',';
+  const groupSeparator = isNumberLocaleSupported() ? (10000).toLocaleString(validLocale)[2] : ',';
   const decimalSeparator = getDecimalSeparator(validLocale);
   const trimmedNumber = number.replace(/\s/g, '');
   const numberWithoutGroupSeparator = trimmedNumber.replace(
