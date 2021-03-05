@@ -9,4 +9,6 @@ export default {
   TAB: 9,
   SPACE: 32,
   BACKSPACE: 8,
+  COMMA: 188,
+  PERIOD: 190,
 };

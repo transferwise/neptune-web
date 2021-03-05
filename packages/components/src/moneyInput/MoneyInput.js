@@ -6,6 +6,7 @@ import { isEmpty } from '@transferwise/neptune-validation';
 import Select from '../select';
 import './MoneyInput.css';
 import { Size } from '../common/propsValues/size';
+import keyCodes from '../common/keyCodes';
 
 import messages from './MoneyInput.messages';
 import { formatAmount, parseAmount } from './currencyFormatting';
@@ -52,6 +53,30 @@ class MoneyInput extends Component {
       });
     }
   }
+
+  handleKeyDown = (event) => {
+    const { keyCode, metaKey, key } = event;
+    const isNumberKey = !Number.isNaN(parseInt(key, 10)); // keyCode >= 48 && keyCode <= 57;
+
+    if (
+      !(
+        metaKey ||
+        keyCode === keyCodes.BACKSPACE ||
+        keyCode === keyCodes.COMMA ||
+        keyCode === keyCodes.PERIOD ||
+        keyCode === keyCodes.DOWN ||
+        keyCode === keyCodes.UP ||
+        keyCode === keyCodes.LEFT ||
+        keyCode === keyCodes.RIGHT ||
+        keyCode === keyCodes.ENTER ||
+        keyCode === keyCodes.ESCAPE ||
+        keyCode === keyCodes.TAB ||
+        isNumberKey
+      )
+    ) {
+      event.preventDefault();
+    }
+  };
 
   onAmountChange = (event) => {
     const { value } = event.target;
@@ -153,6 +178,7 @@ class MoneyInput extends Component {
           type="text"
           inputMode="decimal"
           className={classNames(this.style('form-control'))}
+          onKeyDown={this.handleKeyDown}
           onChange={this.onAmountChange}
           onFocus={this.onAmountFocus}
           onBlur={this.onAmountBlur}
