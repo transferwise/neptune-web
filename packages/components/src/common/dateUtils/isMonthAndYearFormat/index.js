@@ -1,1 +1,0 @@
-export { isMonthAndYearFormat } from './isMonthAndYearFormat';

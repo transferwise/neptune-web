@@ -1,9 +1,0 @@
-@custom-media --screen-xs (min-width: 480px);
-@custom-media --screen-xs-max (max-width: 575px); /* --screen-sm - 1 */
-@custom-media --screen-sm (min-width: 576px);
-@custom-media --screen-sm-max (max-width: 767px); /* --screen-md - 1 */
-@custom-media --screen-md (min-width: 768px);
-@custom-media --screen-md-max (max-width: 991px); /* --screen-lg - 1 */
-@custom-media --screen-lg (min-width: 992px);
-@custom-media --screen-lg-max (max-width: 1199px); /* --screen-xl - 1 */
-@custom-media --screen-xl (min-width: 1200px);

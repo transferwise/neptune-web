@@ -1,1 +1,0 @@
-export { getStartOfDay } from './getStartOfDay';

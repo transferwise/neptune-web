@@ -1,1 +1,0 @@
-export { getFileType } from './getFileType';

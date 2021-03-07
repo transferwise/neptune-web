@@ -1,1 +1,0 @@
-export { sortArrayByProperty } from './sortArrayByProperty';

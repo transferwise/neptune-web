@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[99],{yHrz:function(n){n.exports=JSON.parse('{"np.c9n.aria.lbl.close":"\u9589\u3058\u308b","neptune.drawer.close.btn.aria.lbl":"\u9589\u3058\u308b","neptune.pagination.nav.aria.label":"\u30da\u30fc\u30b8\u30cd\u30fc\u30b7\u30e7\u30f3\u30ca\u30d3\u30b2\u30fc\u30b7\u30e7\u30f3"}')}}]);
