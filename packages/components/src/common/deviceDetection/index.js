@@ -1,0 +1,1 @@
+export { isIosDevice } from './deviceDetection';

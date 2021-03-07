@@ -1,0 +1,1 @@
+(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[34],{"eD/Z":function(a){a.exports=JSON.parse('{"neptune.CloseButton.ariaLabel":"Chiudi","neptune.Pagination.ariaLabel":"Navigazione","neptune.PaginationLink.ariaLabel.active":"Via a pagina {pageNumber}","neptune.PaginationLink.ariaLabel.inactive":"Pagina corrente, pagina {pageNumber}"}')}}]);

@@ -1,0 +1,1 @@
+export { getDayNames } from './getDayNames';

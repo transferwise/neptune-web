@@ -1,0 +1,1 @@
+export { getMonthNames } from './getMonthNames';
