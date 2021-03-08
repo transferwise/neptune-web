@@ -1,9 +1,20 @@
 import React from 'react';
+import Types from 'prop-types';
 
-export const RTLContext = React.createContext('en');
+import { DEFAULT_LOCALE, SUPPORTED_RTL } from '../../common/locale';
 
-const RtlProvider = ({ locale, children }) => {
-  return <RTLContext.Provider value={locale === 'ae'}>{children}</RTLContext.Provider>;
+export const RTLContext = React.createContext(false);
+
+export const RTLProvider = ({ locale, children }) => (
+  <RTLContext.Provider value={SUPPORTED_RTL.indexOf(locale) > -1}>{children}</RTLContext.Provider>
+);
+
+RTLProvider.propTypes = {
+  children: Types.node,
+  locale: Types.string,
 };
 
-export default RtlProvider;
+RTLProvider.defaultProps = {
+  children: null,
+  locale: DEFAULT_LOCALE,
+};

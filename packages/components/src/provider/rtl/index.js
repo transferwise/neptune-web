@@ -1,1 +1,1 @@
-export { default } from './RtlProvider';
+export { RTLProvider, RTLContext } from './RTLProvider';
