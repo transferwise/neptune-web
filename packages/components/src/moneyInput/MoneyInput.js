@@ -54,26 +54,28 @@ class MoneyInput extends Component {
     }
   }
 
-  handleKeyDown = (event) => {
+  isInputAllowedForKeyEvent = (event) => {
     const { keyCode, metaKey, key } = event;
-    const isNumberKey = !Number.isNaN(parseInt(key, 10)); // keyCode >= 48 && keyCode <= 57;
+    const isNumberKey = !Number.isNaN(parseInt(key, 10));
 
-    if (
-      !(
-        metaKey ||
-        keyCode === keyCodes.BACKSPACE ||
-        keyCode === keyCodes.COMMA ||
-        keyCode === keyCodes.PERIOD ||
-        keyCode === keyCodes.DOWN ||
-        keyCode === keyCodes.UP ||
-        keyCode === keyCodes.LEFT ||
-        keyCode === keyCodes.RIGHT ||
-        keyCode === keyCodes.ENTER ||
-        keyCode === keyCodes.ESCAPE ||
-        keyCode === keyCodes.TAB ||
-        isNumberKey
-      )
-    ) {
+    return (
+      isNumberKey ||
+      metaKey ||
+      keyCode === keyCodes.BACKSPACE ||
+      keyCode === keyCodes.COMMA ||
+      keyCode === keyCodes.PERIOD ||
+      keyCode === keyCodes.DOWN ||
+      keyCode === keyCodes.UP ||
+      keyCode === keyCodes.LEFT ||
+      keyCode === keyCodes.RIGHT ||
+      keyCode === keyCodes.ENTER ||
+      keyCode === keyCodes.ESCAPE ||
+      keyCode === keyCodes.TAB
+    );
+  };
+
+  handleKeyDown = (event) => {
+    if (!this.isInputAllowedForKeyEvent(event)) {
       event.preventDefault();
     }
   };
