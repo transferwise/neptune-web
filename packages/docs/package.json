@@ -65,7 +65,7 @@
     "@babel/core": "^7.12.9",
     "@transferwise/less-config": "^3.0.0",
     "babel-plugin-inline-react-svg": "^1.1.1",
-    "deploy-to-github-pages": "1.0.0-beta.7"
+    "deploy-to-github-pages": "1.0.1"
   },
   "peerDependencies": {
     "react": "16.13.1",
