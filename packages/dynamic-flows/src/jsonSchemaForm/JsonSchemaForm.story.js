@@ -80,7 +80,9 @@ export const basic = () => {
         errors={errors}
         locale={locale}
         translations={translationsFromProps}
-        onChange={action('onChange')}
+        onChange={model => {
+          console.log(model, 'model')
+        }}
         submitted={submitted}
         disabled={disabled}
         baseUrl=""
