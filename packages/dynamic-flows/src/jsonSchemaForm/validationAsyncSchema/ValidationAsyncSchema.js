@@ -6,6 +6,7 @@ import BasicTypeSchema from '../basicTypeSchema';
 import { isValidSchema } from '../../common/validation/schema-validators';
 import usePrev from '../../common/hooks/usePrev';
 import { useBaseUrl } from '../../common/contexts/baseUrlContext/BaseUrlContext';
+import { getAsyncUrl } from '../../common/async/url';
 
 const ValidationAsyncSchema = (props) => {
   const [validationAsyncModel, setValidationAsyncModel] = useState(null);
@@ -22,7 +23,7 @@ const ValidationAsyncSchema = (props) => {
     const requestBody = { [validationAsyncSpec.param]: currentValidationAsyncModel };
     setFieldSubmitted(true);
 
-    const validationAsyncFetch = fetch(`${baseUrl}${validationAsyncSpec.url}`, {
+    const validationAsyncFetch = fetch(getAsyncUrl(validationAsyncSpec.url, baseUrl), {
       method: validationAsyncSpec.method,
       headers: {
         'Content-Type': 'application/json',
