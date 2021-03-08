@@ -1,4 +1,4 @@
-import React, { cloneElement, useState, useRef } from 'react';
+import React, { cloneElement, useState, useRef, useContext } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import requiredIf from 'react-required-if';
@@ -8,6 +8,8 @@ import CloseButton from '../common/closeButton';
 import withArrow, { ArrowPosition } from './withArrow';
 import InlineMarkdown from './inlineMarkdown';
 import { logActionRequiredIf, deprecated } from '../utilities';
+
+import { RTLContext } from '../provider/rtl/RtlProvider';
 
 const deprecatedTypeMap = {
   [Sentiment.SUCCESS]: Sentiment.POSITIVE,
@@ -23,6 +25,8 @@ const iconTypeMap = {
 };
 
 const Alert = (props) => {
+  const isRTL = useContext(RTLContext);
+  console.log(RTLContext);
   const [shouldFire, setShouldFire] = useState(false);
   const { arrow, action, children, className, icon, onDismiss, message, type } = props;
   const closeButtonRef = useRef(null);
@@ -66,7 +70,10 @@ const Alert = (props) => {
       onTouchMove={handleTouchMove}
     >
       {iconEl}
-      <div className="alert__message p-l-2 flex-grow-1">
+      {isRTL ? 'RTL' : 'LTR'}
+      <div className={classNames("alert__message p-l-2 flex-grow-1",{
+        'alert__message--rtl' : isRTL,
+      })>
         <div>{children || <InlineMarkdown>{message}</InlineMarkdown>}</div>
         {action && (
           <a
