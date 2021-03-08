@@ -3,6 +3,8 @@ export const DEFAULT_LOCALE = 'en-GB';
 
 const COUNTRY_ISO2_CODE_LENGTH = 2;
 
+export const SUPPORTED_RTL = ['ja-JP'];
+
 export const SUPPORTED_LANGUAGES = [
   DEFAULT_LANG,
   'ja',
