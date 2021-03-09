@@ -38,7 +38,7 @@ export const basic = () => {
     currency: currencySchema,
   };
 
-  const schema = select('schema', schemas, simpleSchema);
+  const schema = select('schema', schemas, promotedOneOfSchema);
 
   const model = {
     number: 3,
