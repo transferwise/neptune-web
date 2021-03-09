@@ -35,7 +35,7 @@ const LiveEditorBlock = ({ code, scope, display }) => (
 
 LiveEditorBlock.propTypes = {
   code: Types.node.isRequired,
-  scope: Types.objectOf(Types.func).isRequired,
+  scope: Types.shape({}).isRequired,
   display: Types.string,
 };
 

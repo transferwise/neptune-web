@@ -33,8 +33,8 @@ export default create({
   inputTextColor: 'black',
   inputBorderRadius: 4,
 
-  brandTitle: 'Transferwise',
-  brandUrl: 'https://transferwise.com',
+  brandTitle: 'Wise',
+  brandUrl: 'https://wise.com',
   brandImage: Logo,
 
   showSearchBox: false,

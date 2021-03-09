@@ -75,7 +75,13 @@ const Summary = ({
 
         {description && <div className="np-summary__description">{description}</div>}
         {action && (
-          <a href={action.href} className="np-summary__action" aria-label={action['aria-label']}>
+          <a
+            href={action.href}
+            target={action.target}
+            onClick={action.onClick}
+            className="np-summary__action"
+            aria-label={action['aria-label']}
+          >
             {action.text}
           </a>
         )}
@@ -106,6 +112,8 @@ Summary.propTypes = {
     text: Types.node.isRequired,
     href: Types.string.isRequired,
     'aria-label': Types.string,
+    target: Types.string,
+    onClick: Types.func,
   }),
   /** Decides which html element should wrap the Summary */
   as: Types.elementType,

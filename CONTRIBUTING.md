@@ -54,27 +54,6 @@ As said above, we recommend running most commands from within the package you're
 
 We use a combination of ESLint, Prettier and Stylelint to check our code for bugs. These tools have the option to run on save, which we recommend.
 
-### VSCode
-
-In `settings.json` (use the command `Open Settings (JSON)` to get there):
-
-```json
-{
-  "css.validate": false,
-  "less.validate": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true
-  },
-  "[css]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
-  },
-  "[less]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
-  }
-}
-```
-
 ## Testing
 
 ### Beta Releases

@@ -15,9 +15,8 @@ export const basic = () => {
   ]);
   const donts = array('donts', [
     <>
-      Paying extra{' '}
-      <a href="https://transferwise.com/gb/blog/why-we-care-about-hidden-fees">hidden fees</a> for
-      transfers
+      Paying extra <a href="https://wise.com/gb/blog/why-we-care-about-hidden-fees">hidden fees</a>{' '}
+      for transfers
     </>,
     'Use bad exchange rate',
   ]);

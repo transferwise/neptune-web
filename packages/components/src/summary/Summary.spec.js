@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../test-utils';
+import { render, fireEvent } from '../test-utils';
 import Summary from './Summary';
 
 describe('Summary', () => {
@@ -28,6 +28,35 @@ describe('Summary', () => {
       />,
     );
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  describe('action', () => {
+    const onClickStub = jest.fn();
+    const props = {
+      icon: <strong>icon</strong>,
+      title: 'Hello world',
+      action: {
+        text: 'text',
+        href: 'href',
+        target: '_blank',
+        onClick: onClickStub,
+      },
+    };
+
+    it('sets target on the link', () => {
+      const { getByText } = render(<Summary {...props} />);
+
+      const el = getByText('text');
+      expect(el).toHaveAttribute('target', props.action.target);
+    });
+
+    it('runs the onClick callback provided', () => {
+      const { container } = render(<Summary {...props} />);
+
+      fireEvent.click(container.querySelector('.np-summary__action'));
+
+      expect(onClickStub).toBeCalledTimes(1);
+    });
   });
 
   describe('statuses', () => {

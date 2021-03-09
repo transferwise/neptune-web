@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@8.1.2...@transferwise/neptune-css@8.1.3) (2021-03-05)
+
+**Note:** Version bump only for package @transferwise/neptune-css
+
+
+
+
+
+## [8.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@8.1.1...@transferwise/neptune-css@8.1.2) (2021-03-05)
+
+
+### Bug Fixes
+
+* update text-primary to use the same colour as tokens ([#831](https://github.com/transferwise/neptune-web/issues/831)) ([4115465](https://github.com/transferwise/neptune-web/commit/41154651ec3ffcad9d67fd453e14c470b1c11c26))
+
+
+
+
+
 ## [8.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@8.1.0...@transferwise/neptune-css@8.1.1) (2021-02-09)
 
 
