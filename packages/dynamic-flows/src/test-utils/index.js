@@ -28,7 +28,12 @@ const wait = (t) => {
   });
 };
 
-function mountWithProviders(component, locale = 'en-GB', messages = {}, baseUrl = 'test-url') {
+function mountWithProviders(
+  component,
+  locale = 'en-GB',
+  messages = {},
+  baseUrl = 'https://test-url',
+) {
   return mount(
     <Provider i18n={{ locale, messages }}>
       <BaseUrlContext.Provider value={{ baseUrl }}>{component}</BaseUrlContext.Provider>

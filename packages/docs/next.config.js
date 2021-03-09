@@ -9,7 +9,7 @@ const withMDX = require('@next/mdx')({
 });
 const withTM = require('next-transpile-modules');
 
-const pageExtensions = ['js', 'mdx'];
+const pageExtensions = ['js', 'mdx', 'tsx'];
 
 const branch = process.env.CIRCLE_BRANCH;
 const assetPrefix =

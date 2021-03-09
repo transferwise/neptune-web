@@ -58,7 +58,6 @@ storybook-static
 .idea
 *.iws
 *.iml
-.vscode
 
 temp-bundle-sizes.js
 temp-tabular-props.js
