@@ -54,7 +54,6 @@ describe('DateLookup (events)', () => {
       min,
       max,
       size: 'lg',
-      locale: 'xx',
       placeholder: 'Asd..',
       label: 'label',
       onChange: jest.fn(),

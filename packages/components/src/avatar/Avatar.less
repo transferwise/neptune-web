@@ -35,6 +35,7 @@
 
   &--dark &__content {
     background: @color-base-navy-mid;
+    color: @color-text-control;
   }
 
   &--thumbnail {
@@ -82,6 +83,7 @@
 }
 
 .avatar-dimension(@avatar-size, @mask-size) {
+  min-width: @avatar-size;
   width: @avatar-size;
   height: @avatar-size;
 

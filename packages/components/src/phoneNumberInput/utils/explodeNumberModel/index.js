@@ -4,7 +4,6 @@ import { findCountryByPrefix } from '../findCountryByPrefix';
  * Given a sting in a valid format ex:'+447573135343' it returns an object of shape
  * {prefix=+44 ,suffix=7573135343}
  * @param {string} number - a string that defines a phone number.
- * @param {string} locale - a sting that defines the current locale ex:es-ES.
  * @returns {{prefix: (string|*), suffix: string, format: string}}
  */
 export const explodeNumberModel = (number) => {

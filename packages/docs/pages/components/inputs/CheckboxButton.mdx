@@ -1,0 +1,14 @@
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import { CheckboxButton } from '@transferwise/components';
+import code from '../../../liveEditorCode/checkboxButton.code';
+
+If you are pairing a checkbox with a label (recommended), use the Checkbox component instead.
+
+Only use CheckboxButton on the rare occassion that you want a checkbox with no label (e.g. on a settings page with a matrix of options). Ensure you provide an `aria-label` to replace the absent label.
+
+<LiveEditorBlock code={code} scope={{ CheckboxButton }} />
+<GeneratePropsTable componentName="CheckboxButton" />
+
+export const meta = {
+  name: 'CheckboxButton',
+};

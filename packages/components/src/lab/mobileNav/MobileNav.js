@@ -26,7 +26,7 @@ const MobileNav = ({ items, activeItemPath }) => {
     /**
      * This attempts to reposition the Mobile Nav when iOS Safari "Open in App" Banner is visible.
      * The Banner appears due to Universal Links. https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html
-     * Essentially when a path matches in https://transferwise.com/.well-known/apple-app-site-association the banner is shown.
+     * Essentially when a path matches in https://wise.com/.well-known/apple-app-site-association the banner is shown.
      * The banner isn't injected into the page yet pushes the page frame down and thus the mobile nav is not visible due to its fixed positioning.
      * Luckily window.innerHeight changes when the banner is in view so we use this to calculate if we need to adjust the mobile nav positioning.
      */

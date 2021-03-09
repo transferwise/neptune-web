@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.11](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-validation@2.0.10...@transferwise/neptune-validation@2.0.11) (2021-03-05)
+
+**Note:** Version bump only for package @transferwise/neptune-validation
+
+
+
+
+
+## [2.0.10](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-validation@2.0.9...@transferwise/neptune-validation@2.0.10) (2021-02-09)
+
+**Note:** Version bump only for package @transferwise/neptune-validation
+
+
+
+
+
+## [2.0.9](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-validation@2.0.8...@transferwise/neptune-validation@2.0.9) (2021-02-08)
+
+**Note:** Version bump only for package @transferwise/neptune-validation
+
+
+
+
+
+## [2.0.8](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-validation@2.0.7...@transferwise/neptune-validation@2.0.8) (2021-02-08)
+
+**Note:** Version bump only for package @transferwise/neptune-validation
+
+
+
+
+
+## [2.0.7](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-validation@2.0.6...@transferwise/neptune-validation@2.0.7) (2021-01-29)
+
+**Note:** Version bump only for package @transferwise/neptune-validation
+
+
+
+
+
 ## [2.0.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-validation@2.0.5...@transferwise/neptune-validation@2.0.6) (2020-12-04)
 
 **Note:** Version bump only for package @transferwise/neptune-validation

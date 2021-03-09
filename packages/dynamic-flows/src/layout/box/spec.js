@@ -44,6 +44,7 @@ describe('Given a component for dynamically rendering a box of other components'
         submitted={false}
         errors={{}}
         onPersistAsync={onPersistAsync}
+        baseUrl="dynamic-box-base-url"
       />,
     );
   });

@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import { Cross as CrossIcon } from '@transferwise/icons';
 import SlidingPanel from '../slidingPanel';
 import Dimmer from '../dimmer';
-import { addNoScrollBodyClass, removeNoScrollBodyClass } from '../common';
 import './Drawer.css';
 import { Position } from '../common/propsValues/position';
 import { logActionRequiredIf } from '../utilities';
@@ -28,25 +27,9 @@ const Drawer = ({ children, footerContent, headerTitle, onClose, open, position 
     }
   };
 
-  useEffect(() => {
-    return () => {
-      if (open) {
-        removeNoScrollBodyClass();
-      }
-    };
-  }, []);
-
-  const handleOnEnter = () => {
-    addNoScrollBodyClass();
-  };
-
-  const handleOnExit = () => {
-    removeNoScrollBodyClass();
-  };
-
   return (
     <Dimmer open={open} onClose={onClose}>
-      <SlidingPanel open={open} position={position} onEnter={handleOnEnter} onExit={handleOnExit}>
+      <SlidingPanel open={open} position={position}>
         <div className="np-drawer">
           <div
             className={classNames('np-drawer-header', 'np-drawer-p-x', {

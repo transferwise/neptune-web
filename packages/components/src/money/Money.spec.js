@@ -1,21 +1,19 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { formatMoney } from '@transferwise/formatting';
+import { render } from '../test-utils';
 
 import Money from '.';
 
-jest.mock('@transferwise/formatting', () => ({
-  formatMoney: jest.fn(),
-}));
-
 describe('Money', () => {
   it('formats the string with amount, currency & default `en` locale', () => {
-    shallow(<Money amount={4.98} currency="GBP" />);
-    expect(formatMoney).toBeCalledWith(4.98, 'GBP', 'en');
+    const { container } = render(<Money amount={4.98} currency="GBP" />);
+    expect(container).toHaveTextContent('4.98 GBP');
   });
 
   it('formats the string with amount, currency & the passed in locale', () => {
-    shallow(<Money amount={4.98} currency="GBP" locale="pt" />);
-    expect(formatMoney).toBeCalledWith(4.98, 'GBP', 'pt');
+    const { container } = render(<Money amount={4.98} currency="GBP" />, {
+      locale: 'fr',
+      messages: {},
+    });
+    expect(container).toHaveTextContent('4,98 GBP');
   });
 });

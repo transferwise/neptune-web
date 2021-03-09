@@ -1,12 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { format, formatDistance } from 'date-fns';
+
+/**
+ * Check if date is past date
+ *
+ * @param {Date | null | undefined} endDate test date
+ * @return {boolean} `true` if date is less than today or equal `null` / `undefined`,
+ * otherwise returns `false`
+ */
+export function isExpired(endDate) {
+  return endDate?.getTime() <= Date.now();
+}
+
+export function printDate(date) {
+  return `${format(date, 'MMMM dd, yyyy')} (${formatDistance(date, Date.now(), {
+    addSuffix: true,
+  })})`;
+}
 
 const getPages = () => {
-  const req = require.context('../pages/', true, /mdx$/);
+  const req = require.context('../pages/', true, /mdx$|js$|tsx$/);
 
   return req.keys().map((filePath) => {
-    // Chop off the ./ and the final .mdx
-    const pathParts = filePath.slice(2, filePath.length - 4).split('/');
+    // Chop off the './' and file extention
+    const pathParts = filePath.slice(2, filePath.lastIndexOf('.')).split('/');
     const path = `/${pathParts.join('/')}`;
     const slug = pathParts.pop();
 
@@ -84,6 +102,9 @@ export const getFirstPageInSection = (section) => {
   return pages.find((p) => p.path.indexOf(dir) === 1);
 };
 
+/**
+ * @param {string} url
+ */
 export const addBasePath = (url) =>
   `${process.env.ASSET_PREFIX}/${url.indexOf('/') === 0 ? url.slice(1) : url}`;
 

@@ -3,6 +3,12 @@ import { mount } from 'enzyme';
 
 import DateLookup from '.';
 
+const defaultLocale = 'en-GB';
+jest.mock('react-intl', () => ({
+  injectIntl: (Component) => (props) => <Component {...props} intl={{ locale: defaultLocale }} />,
+  useIntl: () => ({ locale: defaultLocale }),
+}));
+
 describe('DateLookup (events)', () => {
   const date = new Date(2018, 11, 27);
   const min = new Date(2018, 11, 26);
@@ -22,7 +28,6 @@ describe('DateLookup (events)', () => {
       min,
       max,
       size: 'lg',
-      locale: 'xx',
       placeholder: 'Asd..',
       label: 'Date..',
       onChange: jest.fn(),

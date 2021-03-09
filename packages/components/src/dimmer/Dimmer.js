@@ -3,6 +3,7 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import withNextPortal from '../withNextPortal/withNextPortal';
+import { addNoScrollBodyClass, removeNoScrollBodyClass } from '../common';
 
 import './Dimmer.css';
 
@@ -11,18 +12,10 @@ import KEY_CODES from '../common/keyCodes';
 export const EXIT_ANIMATION = 350;
 
 const Dimmer = ({ open, children, scrollable, onClose, fadeContentOnExit, fadeContentOnEnter }) => {
-  useEffect(() => {
-    return () => cleanup();
-  }, []);
-
-  const handleOnKeyDown = (event) => {
-    if (event && (event.keyCode === KEY_CODES.ESCAPE || event.key === 'Escape')) {
-      handleOnClose(event);
+  const handleOnClose = (event) => {
+    if (onClose) {
+      onClose(event);
     }
-  };
-
-  const handleOnEnter = () => {
-    document.addEventListener('keydown', handleOnKeyDown);
   };
 
   const handleOnClick = (event) => {
@@ -32,25 +25,12 @@ const Dimmer = ({ open, children, scrollable, onClose, fadeContentOnExit, fadeCo
     }
   };
 
-  const handleOnClose = (event) => {
-    cleanup();
-    if (onClose) {
-      onClose(event);
-    }
-  };
-
-  const cleanup = () => {
-    document.removeEventListener('keydown', handleOnKeyDown);
-  };
-
   return (
     <CSSTransition
       in={open}
       appear
       // Wait for animation to finish before unmount.
       timeout={{ enter: 0, exit: EXIT_ANIMATION }}
-      onEnter={handleOnEnter}
-      onExited={handleOnClose}
       classNames={{
         enter: classNames({ 'dimmer--enter-fade': fadeContentOnEnter }),
         enterDone: classNames('dimmer--enter-done', { 'dimmer--enter-fade': fadeContentOnEnter }),
@@ -58,15 +38,36 @@ const Dimmer = ({ open, children, scrollable, onClose, fadeContentOnExit, fadeCo
       }}
       unmountOnExit
     >
-      <div
-        role="presentation"
-        className={classNames('dimmer', { 'dimmer--scrollable': scrollable })}
-        onClick={handleOnClick}
-      >
-        {children}
-      </div>
+      <DimmerContentWrapper handleOnClose={handleOnClose}>
+        <div
+          role="presentation"
+          className={classNames('dimmer', { 'dimmer--scrollable': scrollable })}
+          onClick={handleOnClick}
+        >
+          {children}
+        </div>
+      </DimmerContentWrapper>
     </CSSTransition>
   );
+};
+
+export const DimmerContentWrapper = ({ children, handleOnClose }) => {
+  useEffect(() => {
+    const handleOnKeyDown = (event) => {
+      if (event && (event.keyCode === KEY_CODES.ESCAPE || event.key === 'Escape')) {
+        handleOnClose(event);
+      }
+    };
+    addNoScrollBodyClass();
+    document.addEventListener('keydown', handleOnKeyDown);
+
+    return () => {
+      removeNoScrollBodyClass();
+      document.removeEventListener('keydown', handleOnKeyDown);
+    };
+  }, []);
+
+  return children;
 };
 
 Dimmer.propTypes = {

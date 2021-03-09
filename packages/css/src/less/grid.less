@@ -1,20 +1,144 @@
-// variables
-@import (reference) 'bootstrap/less/variables.less';
-
-// mixins
-@import (reference) 'bootstrap/less/mixins/grid.less';
-@import (reference) 'bootstrap/less/mixins/grid-framework.less';
-@import (reference) 'bootstrap/less/mixins/clearfix.less';
+@import (reference) '../variables/legacy-variables.less';
+@import (reference) './mixins/_clearfix.less';
 @import (reference) './mixins/_grid.less';
-@import 'bootstrap/less/grid.less';
+@import (reference) './mixins/_grid-framework.less';
 
-.container,
-.make-row {
+// Set the container width, and override it for fixed navbars in media queries.
+.container {
+  .container-fixed();
+  .clearfix ();
+
+  @media (min-width: @screen-xl-min) {
+    max-width: @container-xl;
+  }
+
+  padding-right: @spacing-1-mobile;
+  padding-left: @spacing-1-mobile;
+
+  @media (min-width: @screen-sm-min) {
+    padding-right: @spacing-1-tablet;
+    padding-left: @spacing-1-tablet;
+  }
+
+  @media (min-width: @screen-lg-min) {
+    padding-right: @spacing-1-desktop;
+    padding-left: @spacing-1-desktop;
+  }
+}
+
+// Utilizes the mixin meant for fixed width containers, but without any defined
+// width for fluid, full width layouts.
+.container-fluid {
+  .container-fixed();
+}
+
+// Rows contain and clear the floats of your columns.
+.row {
+  .make-row();
   .clearfix ();
 }
 
-.container-fluid {
-  .make-container();
+// Common styles for small and large grid columns
+.make-grid-columns();
+
+// Columns, offsets, pushes, and pulls for extra small devices like smartphones.
+.make-grid(xs);
+
+// Columns, offsets, pushes, and pulls for the small device range, from phones to tablets.
+@media (min-width: @screen-sm-min) {
+  .make-grid(sm);
+}
+
+// Columns, offsets, pushes, and pulls for the desktop device range.
+@media (min-width: @screen-md-min) {
+  .make-grid(md);
+}
+
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+@media (min-width: @screen-lg-min) {
+  .make-grid(lg);
+}
+
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+@media (min-width: @screen-xl-min) {
+  .make-grid(xl);
+}
+
+@media (max-width: @screen-xs-max) {
+  .container {
+    padding-right: @spacing-1-mobile;
+    padding-left: @spacing-1-mobile;
+  }
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  .container {
+    padding-right: @spacing-1-tablet;
+    padding-left: @spacing-1-tablet;
+  }
+}
+
+[class*='col-sm'],
+[class*='col-md'],
+[class*='col-lg'],
+[class*='col-xl'] {
+  margin-bottom: (@spacer-y * 2);
+}
+
+[class*='col-xs'] {
+  margin-bottom: 0;
+}
+
+@media (min-width: @screen-sm-min) {
+  [class*='col-sm'] {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: @screen-md-min) {
+  [class*='col-md'] {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: @screen-lg-min) {
+  [class*='col-lg'] {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: @screen-xl-min) {
+  [class*='col-xl'] {
+    margin-bottom: 0;
+  }
+}
+
+.row-equal-height {
+  display: flex;
+  flex-wrap: wrap;
+
+  > [class*='col-'] {
+    display: flex;
+  }
+
+  @media (max-width: @screen-xs-max) {
+    .col-xs-12 {
+      margin-bottom: 12px;
+    }
+  }
+}
+
+// Make grid gutters smaller on mobile
+@media (max-width: @screen-xs-max) {
+  .row {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+
+  [class*='col-'] {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
 }
 
 .make-grid-columns-wide(@gutter: @grid-gutter-width) {

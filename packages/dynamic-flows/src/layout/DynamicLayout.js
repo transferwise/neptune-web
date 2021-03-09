@@ -47,6 +47,7 @@ const DynamicLayout = (props) => {
             submitted={submitted}
             errors={errors}
             onPersistAsync={onPersistAsync}
+            baseUrl={props.baseUrl}
           />
         );
       case 'form':
@@ -58,6 +59,7 @@ const DynamicLayout = (props) => {
             submitted={submitted}
             errors={errors}
             onPersistAsync={onPersistAsync}
+            baseUrl={props.baseUrl}
           />
         );
       case 'button':
@@ -72,6 +74,7 @@ const DynamicLayout = (props) => {
             submitted={submitted}
             errors={errors}
             onPersistAsync={onPersistAsync}
+            baseUrl={props.baseUrl}
           />
         );
       case 'decision':
@@ -93,6 +96,7 @@ DynamicLayout.propTypes = {
   submitted: Types.bool.isRequired,
   errors: Types.oneOfType([Types.string, Types.object, Types.array]),
   onPersistAsync: Types.func.isRequired,
+  baseUrl: Types.string.isRequired,
 };
 
 DynamicLayout.defaultProps = {

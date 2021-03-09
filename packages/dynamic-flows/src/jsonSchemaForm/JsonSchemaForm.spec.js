@@ -30,6 +30,7 @@ describe('Given a component for rendering a JSON schema form', () => {
     const submitted = false;
     const errors = { a: 'b' };
     const translations = {};
+    const baseUrl = 'some-test-url';
 
     props = {
       schema,
@@ -40,6 +41,7 @@ describe('Given a component for rendering a JSON schema form', () => {
       errors,
       translations,
       onPersistAsync,
+      baseUrl,
     };
     component = shallow(<JsonSchemaForm {...props} />);
 

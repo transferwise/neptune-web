@@ -6,6 +6,7 @@ import BasicTypeSchema from '.';
 import SchemaFormControl from '../schemaFormControl';
 import ControlFeedback from '../controlFeedback';
 import DynamicAlert from '../../layout/alert';
+import Help from './help';
 
 describe('Given a component for rendering basic type schemas', () => {
   let component;
@@ -95,6 +96,31 @@ describe('Given a component for rendering basic type schemas', () => {
       });
     });
 
+    describe('when help exists', () => {
+      it('should render help popover', () => {
+        const help = {
+          markdown: 'some help',
+        };
+        const schemaWithHelp = { ...schema, help };
+
+        component = shallow(<BasicTypeSchema {...props} schema={schemaWithHelp} />);
+
+        const helpPopover = component.find(Help);
+
+        expect(helpPopover).toHaveLength(1);
+      });
+    });
+
+    describe('when help does not exist', () => {
+      it('should not render help popover', () => {
+        component = shallow(<BasicTypeSchema {...props} />);
+
+        const helpPopover = component.find(Help);
+
+        expect(helpPopover).toHaveLength(0);
+      });
+    });
+
     describe('when control is focused', () => {
       beforeEach(() => {
         formControl.simulate('focus');
@@ -180,6 +206,21 @@ describe('Given a component for rendering basic type schemas', () => {
 
       it('should pass the new value to the form control', () => {
         expect(formControl.prop('value')).toBe('f');
+      });
+    });
+
+    describe('when submitted changes to true without a change to the model', () => {
+      beforeEach(() => {
+        component = mount(<BasicTypeSchema {...props} required model={null} />);
+      });
+
+      it('should update validations using the current model', () => {
+        component.setProps({ submitted: true });
+
+        feedbackComponent = component.find(ControlFeedback);
+
+        expect(component.find('div.has-error')).toHaveLength(1);
+        expect(feedbackComponent.prop('validations')).toEqual(['required']);
       });
     });
 

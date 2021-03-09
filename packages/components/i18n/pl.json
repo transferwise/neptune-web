@@ -1,6 +1,17 @@
 {
-  "neptune.CloseButton.ariaLabel": "Close",
-  "neptune.Pagination.ariaLabel": "Pagination navigation",
-  "neptune.PaginationLink.ariaLabel.active": "Go to page {pageNumber}",
-  "neptune.PaginationLink.ariaLabel.inactive": "Current page, page {pageNumber}"
+  "neptune.CloseButton.ariaLabel": "Zamknij",
+  "neptune.MoneyInput.Select.placeholder": "Wybierz opcję...",
+  "neptune.Pagination.ariaLabel": "Nawigacja w paginacji",
+  "neptune.PaginationLink.ariaLabel.active": "Przejdź do strony {pageNumber}",
+  "neptune.PaginationLink.ariaLabel.inactive": "Obecna strona, strona {pageNumber}",
+  "neptune.Upload.csButtonText": "Prześlij kolejny plik?",
+  "neptune.Upload.csFailureText": "Przesyłanie nie powiodło się. Proszę spróbować ponownie",
+  "neptune.Upload.csSuccessText": "Przesyłanie zakończone!",
+  "neptune.Upload.csTooLargeMessage": "Proszę przesłać plik mniejszy niż 5MB",
+  "neptune.Upload.csWrongTypeMessage": "Nieobsługiwany typ pliku. Spróbuj ponownie z innym plikiem",
+  "neptune.Upload.psButtonText": "Anuluj",
+  "neptune.Upload.psProcessingText": "Przesyłanie...",
+  "neptune.Upload.usButtonText": "Lub wybierz plik",
+  "neptune.Upload.usDropMessage": "Upuść plik, aby rozpocząć przesyłanie",
+  "neptune.Upload.usPlaceholder": "Przeciągnij i upuść plik mniejszy niż 5MB"
 }

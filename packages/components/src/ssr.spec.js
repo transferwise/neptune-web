@@ -21,6 +21,9 @@ describe('Server side rendering', () => {
   const allProps = {
     currencies: [],
     steps: [],
+    stepper: {
+      steps: [],
+    },
     items: [],
     children: 'yo',
     id: '1',
@@ -70,12 +73,14 @@ describe('Server side rendering', () => {
     href: '#',
     description: 'description',
     'aria-label': 'a label',
+    logo: <svg />,
   };
 
   // Override props in case of name collision.
   const overrideProps = {
     Alert: { children: undefined, message: 'Fluffy kittens', size: undefined },
     Card: { isExpanded: true },
+    CheckboxButton: { children: undefined, onChange: jest.fn() },
     Typeahead: { size: 'md' },
     InputWithDisplayFormat: { displayPattern: '**-**' },
     TextareaWithDisplayFormat: { displayPattern: '**-**' },
@@ -117,7 +122,7 @@ describe('Server side rendering', () => {
       }
 
       const string = renderToString(
-        <Provider i18n={{ locale: 'en', messages: en }}>
+        <Provider i18n={{ locale: 'en-GB', messages: en }}>
           {componentName.endsWith('Context') ? (
             <Component.Provider {...newProps} />
           ) : (

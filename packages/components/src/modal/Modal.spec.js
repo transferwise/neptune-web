@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 
 import Modal from './Modal';
 import { fakeEvent } from '../common/fakeEvents';
-import { addNoScrollBodyClass, removeNoScrollBodyClass } from '../common';
 
 jest.useFakeTimers();
 jest.mock('../common');
@@ -22,28 +21,6 @@ describe('Modal', () => {
     expect(dimmer().prop('open')).toBe(false);
     component.setProps({ open: true });
     expect(dimmer().prop('open')).toBe(true);
-  });
-
-  it('removes no-scroll class upon removal', () => {
-    expect(removeNoScrollBodyClass).not.toHaveBeenCalled();
-    component.unmount();
-    expect(removeNoScrollBodyClass).toHaveBeenCalled();
-  });
-
-  it('adds and removes the no-scroll class upon enter and exit', () => {
-    component.setProps({ open: false });
-    expect(addNoScrollBodyClass).not.toBeCalled();
-
-    component.setProps({ open: true });
-    jest.runAllTimers();
-
-    expect(addNoScrollBodyClass).toBeCalled();
-    expect(removeNoScrollBodyClass).not.toBeCalled();
-
-    component.setProps({ open: false });
-    jest.runAllTimers();
-
-    expect(removeNoScrollBodyClass).toBeCalled();
   });
 
   describe('renders', () => {

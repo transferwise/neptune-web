@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import Types from 'prop-types';
 import { isArray } from '@transferwise/neptune-validation';
 import { Size } from '../common';
@@ -31,9 +32,9 @@ const PhoneNumberInput = (props) => {
     placeholder,
     onFocus,
     onBlur,
-    locale,
     countryCode,
   } = props;
+  const { locale } = useIntl();
 
   const getInitialValue = () => {
     const { initialValue } = props;
@@ -141,6 +142,7 @@ const PhoneNumberInput = (props) => {
         <div className={`input-group input-group-${size}`}>
           <input
             name="phoneNumber"
+            inputMode="numeric"
             value={suffix}
             type="text"
             className="form-control"
@@ -167,7 +169,6 @@ PhoneNumberInput.propTypes = {
   onFocus: Types.func,
   onBlur: Types.func,
   countryCode: Types.string,
-  locale: Types.string,
   searchPlaceholder: Types.string,
   size: Types.oneOf([
     PhoneNumberInput.Size.SMALL,
@@ -184,7 +185,6 @@ PhoneNumberInput.defaultProps = {
   onFocus() {},
   onBlur() {},
   countryCode: null,
-  locale: 'en-GB',
   searchPlaceholder: 'Prefix',
   size: PhoneNumberInput.Size.MEDIUM,
   placeholder: '',

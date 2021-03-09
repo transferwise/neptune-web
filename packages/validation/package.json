@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-validation",
-  "version": "2.0.6",
+  "version": "2.0.11",
   "description": "Neptune Web validation",
   "license": "Apache-2.0",
   "main": "./build/umd/polyfill/main.js",
@@ -9,7 +9,7 @@
     "build"
   ],
   "keywords": [
-    "transferwise",
+    "wise",
     "neptune-web-validation"
   ],
   "repository": {
@@ -18,11 +18,10 @@
     "url": "git+https://github.com/transferwise/neptune-web.git"
   },
   "scripts": {
-    "test": "jest --env=jsdom --runInBand --config=../../node_modules/@transferwise/test-config/jest.config.js && yarn test:lint",
-    "test:watch": "jest --watch --env=jsdom --config=../../node_modules/@transferwise/test-config/jest.config.js",
-    "test:lint": "jest --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
-    "lint": "eslint 'src/**/*.js'",
-    "lint:fix": "yarn lint --fix",
+    "test": "jest --env=node --maxWorkers=4 --config=../../node_modules/@transferwise/test-config/jest.config.js",
+    "test:watch": "jest --watch --env=node --config=../../node_modules/@transferwise/test-config/jest.config.js",
+    "lint": "jest --maxWorkers=4 --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
+    "lint:fix": "eslint 'src/**/*.js' --fix",
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf build",
     "build:umd": "NODE_ENV=umd rollup -c",
@@ -40,7 +39,7 @@
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.3",
-    "@transferwise/test-config": "^2.0.0",
+    "@transferwise/test-config": "^3.0.3",
     "babel-preset-minify": "^0.5.1",
     "rollup": "^2.34.0",
     "rollup-plugin-postcss": "^2.8.2",

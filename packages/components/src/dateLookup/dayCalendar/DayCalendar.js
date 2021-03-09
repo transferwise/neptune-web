@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { injectIntl } from 'react-intl';
 import Types from 'prop-types';
 import { formatDate } from '@transferwise/formatting';
 
@@ -30,7 +31,7 @@ class DayCalendar extends PureComponent {
       max,
       viewMonth,
       viewYear,
-      locale,
+      intl: { locale },
       monthFormat,
       onLabelClick,
       onSelect,
@@ -46,7 +47,7 @@ class DayCalendar extends PureComponent {
           onPreviousClick={this.selectPreviousMonth}
           onNextClick={this.selectNextMonth}
         />
-        <DayCalendarTable {...{ selectedDate, min, max, viewMonth, viewYear, locale, onSelect }} />
+        <DayCalendarTable {...{ selectedDate, min, max, viewMonth, viewYear, onSelect }} />
       </div>
     );
   }
@@ -58,7 +59,6 @@ DayCalendar.propTypes = {
   max: Types.instanceOf(Date),
   viewMonth: Types.number.isRequired,
   viewYear: Types.number.isRequired,
-  locale: Types.string.isRequired,
   monthFormat: Types.oneOf([MonthFormat.LONG, MonthFormat.SHORT]).isRequired,
   onSelect: Types.func.isRequired,
   onLabelClick: Types.func.isRequired,
@@ -71,4 +71,4 @@ DayCalendar.defaultProps = {
   max: null,
 };
 
-export default DayCalendar;
+export default injectIntl(DayCalendar);

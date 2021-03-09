@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { injectIntl } from 'react-intl';
 import Types from 'prop-types';
 import { formatDate } from '@transferwise/formatting';
 
@@ -45,9 +46,9 @@ class DayCalendarTable extends PureComponent {
     return weeks;
   };
 
-  days = getDayNames(this.props.locale, 'short');
+  days = getDayNames(this.props.intl.locale, 'short');
 
-  daysShort = getDayNames(this.props.locale, 'narrow');
+  daysShort = getDayNames(this.props.intl.locale, 'narrow');
 
   selectDay = (day) => {
     const { viewMonth, viewYear, onSelect } = this.props;
@@ -66,7 +67,11 @@ class DayCalendarTable extends PureComponent {
   };
 
   render() {
-    const { viewMonth, viewYear, locale } = this.props;
+    const {
+      viewMonth,
+      viewYear,
+      intl: { locale },
+    } = this.props;
     const weeks = this.getTableStructure();
     return (
       <table className="table table-condensed table-bordered tw-date-lookup-calendar m-b-0">
@@ -121,7 +126,6 @@ DayCalendarTable.propTypes = {
   max: Types.instanceOf(Date),
   viewMonth: Types.number.isRequired,
   viewYear: Types.number.isRequired,
-  locale: Types.string.isRequired,
   onSelect: Types.func.isRequired,
 };
 
@@ -131,4 +135,4 @@ DayCalendarTable.defaultProps = {
   max: null,
 };
 
-export default DayCalendarTable;
+export default injectIntl(DayCalendarTable);

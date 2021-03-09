@@ -1,7 +1,10 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { shallow } from 'enzyme';
 
 import DateLookup from '.';
+
+jest.mock('react-intl');
 
 // Tests for getDerivedStateFromProps results
 describe('DateLookup state', () => {
@@ -11,6 +14,7 @@ describe('DateLookup state', () => {
 
   beforeEach(() => {
     defaultProps = { onChange: jest.fn() };
+    useIntl.mockReturnValue({ locale: 'en-GB' });
     component = shallow(<DateLookup {...defaultProps} />);
   });
 

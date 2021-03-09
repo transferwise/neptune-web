@@ -1,88 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Types from 'prop-types';
-import CSSTransition from 'react-transition-group/CSSTransition';
+import classNames from 'classnames';
+import { ArrowLeft as ArrowLeftIcon } from '@transferwise/icons';
 
 import './BackButton.css';
 
-const BackArrow = () => (
-  <svg
-    width="20"
-    height="16"
-    viewBox="0 0 20 16"
-    xmlns="http://www.w3.org/2000/svg"
-    className="m-t-1"
+const BackButton = ({ label, className, onClick }) => (
+  <button
+    type="button"
+    className={classNames('np-back-button', 'align-items-center', 'btn-unstyled', className)}
+    onClick={onClick}
   >
-    <title>ICON: Back</title>
-    <path d="M0 8l8-8 1.5 1.5L4 7h16v2H4l5.5 5.5L8 16" fill="#00B9FF" fillRule="evenodd" />
-  </svg>
+    <ArrowLeftIcon size={24} />
+    {label}
+  </button>
 );
 
-/* eslint-disable react/no-array-index-key */
-class BackButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeStep: props.activeStep,
-      isMovingBackward: false,
-    };
-  }
-
-  static getDerivedStateFromProps = (nextProps, prevState) => ({
-    isMovingBackward: nextProps.activeStep < prevState.activeStep,
-    activeStep: nextProps.activeStep,
-  });
-
-  render() {
-    const { steps, activeStep, onGoBack } = this.props;
-
-    return (
-      <button
-        type="button"
-        className={`btn-unstyled visible-xs tw-flow-navigation__back-button ${
-          !onGoBack ? 'tw-flow-navigation__back-button--hidden' : ''
-        }`}
-        onClick={() => onGoBack && onGoBack()}
-      >
-        <div className="tw-flow-navigation__back-arrow">
-          <BackArrow />
-        </div>
-
-        {steps.map(({ label }, index) => (
-          <CSSTransition
-            key={index}
-            in={index === activeStep - 1}
-            timeout={450}
-            classNames="tw-flow-navigation__back-text"
-            unmountOnExit
-          >
-            <span
-              className={`tw-flow-navigation__back-text ${
-                this.state.isMovingBackward ? 'tw-flow-navigation__back-text--moving-backward' : ''
-              }`}
-              aria-hidden={index !== activeStep - 1}
-            >
-              {label}
-            </span>
-          </CSSTransition>
-        ))}
-      </button>
-    );
-  }
-}
-/* eslint-enable react/no-array-index-key */
-
 BackButton.propTypes = {
-  steps: Types.arrayOf(
-    Types.shape({
-      label: Types.node.isRequired,
-    }),
-  ).isRequired,
-  activeStep: Types.number.isRequired,
-  onGoBack: Types.func,
+  className: Types.string,
+  label: Types.element,
+  onClick: Types.func.isRequired,
 };
 
 BackButton.defaultProps = {
-  onGoBack: null,
+  className: undefined,
+  label: undefined,
 };
 
 export default BackButton;

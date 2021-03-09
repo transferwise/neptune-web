@@ -37,6 +37,7 @@ describe('Given a component for dynamically rendering forms', () => {
         submitted={submitted}
         errors={errors}
         onPersistAsync={onPersistAsync}
+        baseUrl="dynamic-form-spec-base-url"
       />,
     );
   });

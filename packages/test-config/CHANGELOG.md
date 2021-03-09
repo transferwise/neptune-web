@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/test-config@3.0.2...@transferwise/test-config@3.0.3) (2021-03-05)
+
+**Note:** Version bump only for package @transferwise/test-config
+
+
+
+
+
+## [3.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/test-config@3.0.1...@transferwise/test-config@3.0.2) (2021-02-09)
+
+**Note:** Version bump only for package @transferwise/test-config
+
+
+
+
+
+## [3.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/test-config@3.0.0...@transferwise/test-config@3.0.1) (2021-02-08)
+
+**Note:** Version bump only for package @transferwise/test-config
+
+
+
+
+
+# [3.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/test-config@2.0.0...@transferwise/test-config@3.0.0) (2021-01-29)
+
+
+* chore!: i18n follow up changes and fixes (#749) ([387cad7](https://github.com/transferwise/neptune-web/commit/387cad79018f4294fd9722eb613bce9e8cf41ac1)), closes [#749](https://github.com/transferwise/neptune-web/issues/749)
+
+
+### BREAKING CHANGES
+
+* - `mapLocale` and `LOCALES` don't exist anymore, use `getLangFromLocale` and `SUPPORTED_LANGUAGES` from same place accordingly
+- renamed translations file `zhHK.json` to `zh.json`
+- deleted locale prop from several components (`Money`, `MoneyInput`, `PhoneNumberInput`, `FormattedValue`, `DynamicFieldDefinitionList`, `DateLookup`, `DateInput`, `Upload`) the value now coming from i18n context
+
+
+
+
+
 # [2.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/test-config@1.0.5...@transferwise/test-config@2.0.0) (2020-09-04)
 
 
