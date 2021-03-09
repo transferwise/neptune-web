@@ -1,7 +1,7 @@
 {
   "name": "@transferwise/neptune-css",
-  "description": "Neptune CSS is TransferWise's Design System CSS library",
-  "version": "5.1.0",
+  "description": "Neptune CSS library",
+  "version": "8.1.3",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -10,8 +10,8 @@
   },
   "keywords": [],
   "author": {
-    "name": "TransferWise",
-    "url": "https://transferwise.com/"
+    "name": "Wise",
+    "url": "https://wise.com/"
   },
   "bugs": {
     "url": "https://github.com/transferwise/neptune-web/issues"
@@ -47,7 +47,7 @@
   "devDependencies": {
     "@mdx-js/loader": "^1.5.8",
     "@next/mdx": "^9.0.5",
-    "@transferwise/less-config": "^3.0.0",
+    "@transferwise/less-config": "^3.0.1",
     "@zeit/next-css": "^1.0.1",
     "next": "^9.5.5",
     "prop-types": "^15.7.2",

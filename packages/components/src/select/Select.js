@@ -270,8 +270,7 @@ export default class Select extends Component {
     document.removeEventListener('click', this.handleDocumentClick, false);
   }
 
-  handleButtonClick = (e) => {
-    stopPropagation(e);
+  handleButtonClick = () => {
     if (!this.props.disabled) {
       this.open();
     }

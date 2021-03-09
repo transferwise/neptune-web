@@ -1,6 +1,17 @@
 {
   "neptune.CloseButton.ariaLabel": "Закрыть",
-  "neptune.Pagination.ariaLabel": "Pagination navigation",
-  "neptune.PaginationLink.ariaLabel.active": "Go to page {pageNumber}",
-  "neptune.PaginationLink.ariaLabel.inactive": "Current page, page {pageNumber}"
+  "neptune.MoneyInput.Select.placeholder": "Выберите вариант...",
+  "neptune.Pagination.ariaLabel": "Постраничная навигация",
+  "neptune.PaginationLink.ariaLabel.active": "Перейти на страницу {pageNumber}",
+  "neptune.PaginationLink.ariaLabel.inactive": "Текущая страница, страница {pageNumber}",
+  "neptune.Upload.csButtonText": "Загрузить другой файл?",
+  "neptune.Upload.csFailureText": "Загрузка не удалась. Пожалуйста, попробуйте снова",
+  "neptune.Upload.csSuccessText": "Загрузка завершена!",
+  "neptune.Upload.csTooLargeMessage": "Пожалуйста, загрузите файл размером менее 5MB",
+  "neptune.Upload.csWrongTypeMessage": "Тип файла не поддерживается. Пожалуйста, попробуйте еще раз с другим файлом",
+  "neptune.Upload.psButtonText": "Отменить",
+  "neptune.Upload.psProcessingText": "Загружаем...",
+  "neptune.Upload.usButtonText": "Или выберите файл",
+  "neptune.Upload.usDropMessage": "Перетащите файл, чтобы начать загрузку",
+  "neptune.Upload.usPlaceholder": "Перетащите файл не больше 5MB"
 }

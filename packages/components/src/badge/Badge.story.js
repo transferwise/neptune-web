@@ -43,7 +43,7 @@ export const avatar = () => {
   return (
     <Badge badge={<div style={ExampleBadgeCss}>{BadgeText}</div>} border={border} size={size}>
       <Avatar type={Avatar.Type.INITIALS} size={Avatar.Size.LARGE}>
-        TW
+        AA
       </Avatar>
     </Badge>
   );

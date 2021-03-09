@@ -1,98 +1,90 @@
-.tw-flow-navigation {
-  border-bottom: 1px solid var(--color-border-neutral);
-  position: relative;
+@import (reference) '@transferwise/neptune-css/src/less/addons/_spacing-utilities.less';
 
-  &--done {
-    border-bottom: 0;
+@flag: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJ0cmFuc2Zlcndpc2UtZmxhZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IgoJIHk9IjBweCIgdmlld0JveD0iMCAwIDQ4IDUyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA0OCA1MiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIGZpbGw9IiMwMEM2RkYiIGQ9Ik01LjgsMGw4LjIsMTMuNkwwLjEsMjcuMmgyNC4xbDIuNi01LjRIMTNsOC4yLTguM2wtNS04aDIyLjZMMTkuMiw1Mmg2LjdsMjItNTJINS44eiIvPgo8L3N2Zz4=);
+
+.np-flow-navigation {
+  width: 100%;
+  // This prevents jumping when border disappears.
+  min-height: 97px;
+  &--border-bottom {
+    // This is the natural height of FlowNavigation when the Avatar is displayed.
+    min-height: 96px;
+    border-bottom: 1px solid var(--color-border-neutral);
   }
 
-  .flag {
-    margin-top: var(--size-4);
-    background-position: left center;
-    opacity: 1;
-    transform: rotate(0deg);
-    position: absolute;
-    transform-origin: 12px center;
-    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
-    z-index: 0;
-
-    &--hidden {
-      opacity: 0;
-      transform: rotate(90deg);
-    }
-  }
-
-  &__wrapper {
-    padding-bottom: 0;
-
-    @media (--screen-sm) {
-      padding-bottom: var(--size-24);
-    }
+  &__content {
+    width: 100%;
+    min-width: 320px;
+    max-width: 1164px;
   }
 
   &__stepper {
-    padding-right: var(--size-8);
-    padding-left: var(--size-8);
-
-    @media (--screen-sm) and (--screen-md-max) {
-      padding-right: 36px;
-      padding-left: 36px;
-    }
-
-    @media (--screen-lg) {
-      padding-right: var(--size-24);
-      padding-left: var(--size-24);
-    }
+    .p-b-0;
+    .p-x-0;
   }
 
-  &__avatar-with-close-button {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  & .circle {
-    display: inline-block;
-    width: 40px !important;
-    height: 40px !important;
-    line-height: 40px !important;
-    margin: 0px;
-
-    & img {
-      vertical-align: bottom;
-    }
-
-    & .tw-icon {
-      line-height: 40px !important;
+  &--xs-max {
+    .np-flow-navigation__stepper {
+      .tw-stepper-steps {
+        display: none;
+      }
+      .progress {
+        .m-b-0;
+      }
     }
   }
 
-  & .tw-avatar--with-image {
-    top: -8px;
+  &--sm {
+    .np-flow-navigation__stepper {
+      .p-x-3;
+      min-height: 56px;
+    }
   }
 
-  &__right-content {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  &--lg {
+    .np-flow-navigation__stepper {
+      max-width: 562px;
+    }
   }
 
-  &__right-content > .avatar-container {
-    display: flex;
+  .separator {
+    .m-x-2;
+    height: var(--size-32);
+    width: 1px;
+    min-width: 1px;
+    background-color: var(--color-border-neutral);
   }
 
-  &__right-content > .avatar-container > .circle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  &--hidden {
+    visibility: hidden;
   }
 
-  .m-lg-t-1 {
-    margin-top: 0;
+  &--flag {
+    width: var(--size-24);
+    height: var(--size-32);
 
-    @media (--screen-lg) {
-      margin-top: var(--size-8);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: @flag;
+
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+    &__hidden {
+      position: absolute;
+      opacity: 0;
+      transform: rotate(90deg);
+      margin-top: -24px;
+      z-index: -1;
+    }
+    &__display {
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+  }
+
+  &--xs-max {
+    .np-animated-label {
+      height: auto;
     }
   }
 }

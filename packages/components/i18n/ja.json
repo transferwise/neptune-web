@@ -1,6 +1,17 @@
 {
-  "neptune.CloseButton.ariaLabel": "Close",
-  "neptune.Pagination.ariaLabel": "Pagination navigation",
-  "neptune.PaginationLink.ariaLabel.active": "Go to page {pageNumber}",
-  "neptune.PaginationLink.ariaLabel.inactive": "Current page, page {pageNumber}"
+  "neptune.CloseButton.ariaLabel": "閉じる",
+  "neptune.MoneyInput.Select.placeholder": "選択してください...",
+  "neptune.Pagination.ariaLabel": "ページネーションナビゲーション",
+  "neptune.PaginationLink.ariaLabel.active": "{pageNumber}のページへ移動します",
+  "neptune.PaginationLink.ariaLabel.inactive": "現在のページ、{pageNumber}ページ",
+  "neptune.Upload.csButtonText": "別のファイルをアップロードしますか？",
+  "neptune.Upload.csFailureText": "アップロードに失敗しました。もう一度やり直してください。",
+  "neptune.Upload.csSuccessText": "アップロードが完了しました。",
+  "neptune.Upload.csTooLargeMessage": "5MBよりも小さいファイルをアップロードください",
+  "neptune.Upload.csWrongTypeMessage": "ファイルの種類はサポートされていません。別のファイルで再度お試しください",
+  "neptune.Upload.psButtonText": "キャンセル",
+  "neptune.Upload.psProcessingText": "アップロード中…",
+  "neptune.Upload.usButtonText": "または、ファイルを選択する",
+  "neptune.Upload.usDropMessage": "ファイルをドロップしてアップロードする",
+  "neptune.Upload.usPlaceholder": "5MB以下のファイルのみドラッグ&ドロップが可能です"
 }

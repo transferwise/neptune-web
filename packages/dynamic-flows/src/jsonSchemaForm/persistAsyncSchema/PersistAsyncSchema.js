@@ -2,17 +2,24 @@ import React, { useState } from 'react';
 import Types from 'prop-types';
 import { isNull } from '@transferwise/neptune-validation';
 import { useIntl } from 'react-intl';
+import isEqual from 'lodash.isequal';
 import BasicTypeSchema from '../basicTypeSchema';
 import { isStatus2xx, isStatus422, QueryablePromise } from '../../common/api/utils';
 import messages from './PersistAsyncSchema.messages';
+import { isValidSchema } from '../../common/validation/schema-validators';
+import usePrev from '../../common/hooks/usePrev';
+import { useBaseUrl } from '../../common/contexts/baseUrlContext/BaseUrlContext';
+import { getAsyncUrl } from '../../common/async/url';
 
 const PersistAsyncSchema = (props) => {
   const intl = useIntl();
 
   const [persistAsyncModel, setPersistAsyncModel] = useState(null);
+  const prevPersistAsyncModel = usePrev(persistAsyncModel);
   const [persistAsyncError, setPersistAsyncError] = useState(null);
   const [fieldSubmitted, setFieldSubmitted] = useState(false);
   const [abortController, setAbortController] = useState(null);
+  const baseUrl = useBaseUrl();
 
   if (props.schema.persistAsync.schema.format === 'base64url') {
     // TODO: Add support for base64url format
@@ -29,7 +36,7 @@ const PersistAsyncSchema = (props) => {
     setFieldSubmitted(true); // persist async initiated implied the field has been submitted
 
     const persistAsyncFetch = new QueryablePromise(
-      fetch(`${persistAsyncSpec.url}`, {
+      fetch(getAsyncUrl(persistAsyncSpec.url, baseUrl), {
         method: persistAsyncSpec.method,
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +84,7 @@ const PersistAsyncSchema = (props) => {
   const getErrorFromResponse = (errorProperty, response) => response.validation?.[errorProperty];
 
   const onBlur = () => {
-    if (!isNull(persistAsyncModel)) {
+    if (!isNull(persistAsyncModel) && !isEqual(persistAsyncModel, prevPersistAsyncModel)) {
       getPersistAsyncResponse(persistAsyncModel, props.schema.persistAsync);
     }
   };
@@ -85,7 +92,10 @@ const PersistAsyncSchema = (props) => {
   const persistAsyncOnChange = (newPersistAsyncModel) => {
     // TODO: Add different handling for file upload, do persist async on change instead of onblur
     setPersistAsyncError(null);
-    setPersistAsyncModel(newPersistAsyncModel);
+
+    if (isValidSchema(newPersistAsyncModel, props.schema)) {
+      setPersistAsyncModel(newPersistAsyncModel);
+    }
   };
 
   return (

@@ -13,6 +13,14 @@ import { isValidSchema } from '../../common/validation/schema-validators';
 
 import DynamicAlert from '../../layout/alert';
 
+function isConstSchema(schema) {
+  return !!schema && (schema.const || (schema.enum && schema.enum.length === 1));
+}
+
+function isNoNConstSchema(schema) {
+  return !!schema && !isConstSchema(schema);
+}
+
 const OneOfSchema = (props) => {
   const [changed, setChanged] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -29,16 +37,30 @@ const OneOfSchema = (props) => {
   const getModelPartsForSchemas = (model, schemas) =>
     schemas.map((schema) => getValidModelParts(model, schema));
 
+  const getValidIndexFromModel = (schema, model) =>
+    schema.oneOf.findIndex((childSchema) => isValidSchema(model, childSchema));
+
+  const getValidIndexFromDefault = (schema) =>
+    schema.oneOf.findIndex((childSchema) => isValidSchema(schema.default, childSchema));
+
   const getActiveSchemaIndex = (schema, model) => {
-    const index = schema.oneOf.findIndex((childSchema) => isValidSchema(model, childSchema));
+    const indexFromModel = getValidIndexFromModel(schema, model);
     // If our model satisfies one of the schemas, use that schema.
-    if (index >= 0) {
-      return index;
+    if (indexFromModel >= 0) {
+      return indexFromModel;
     }
 
     // If we have a non-const oneOf and there's only one, active index must be the first one
-    if (schema.oneOf.length === 1 && !isConstSchema(schema.oneOf[0])) {
+    if (schema.oneOf.length === 1 && isNoNConstSchema(schema.oneOf[0])) {
       return 0;
+    }
+
+    if (isConstSchema(schema.oneOf[0])) {
+      const indexFromDefault = getValidIndexFromDefault(schema);
+      // If the default value satisfies one of the schemas, use that schema.
+      if (indexFromDefault >= 0) {
+        return indexFromDefault;
+      }
     }
 
     // Otherwise do not default
@@ -78,10 +100,6 @@ const OneOfSchema = (props) => {
     }
   };
 
-  function isConstSchema(schema) {
-    return !!schema && (schema.const || (schema.enum && schema.enum.length === 1));
-  }
-
   const [id, setId] = useState('');
   const [schemaIndex, setSchemaIndex] = useState(getActiveSchemaIndex(props.schema, props.model));
   const [models, setModels] = useState(getModelPartsForSchemas(props.model, props.schema.oneOf));
@@ -90,6 +108,12 @@ const OneOfSchema = (props) => {
 
   // When the schema we receive from parent changes
   useEffect(() => {
+    const modelIndex = getValidIndexFromModel(props.schema, props.model);
+    const defaultIndex = getValidIndexFromDefault(props.schema);
+    if (modelIndex === -1 && defaultIndex >= 0) {
+      onChooseNewSchema(defaultIndex);
+    }
+
     setId(generateId());
   }, [props.schema]);
 
@@ -130,7 +154,7 @@ const OneOfSchema = (props) => {
 
   return (
     <>
-      {props.schema.oneOf.length > 1 && (
+      {(props.schema.oneOf.length > 1 || isConstSchema(props.schema.oneOf[0])) && (
         <>
           <div className={classNames(formGroupClasses)}>
             {props.schema.title && (
@@ -163,7 +187,7 @@ const OneOfSchema = (props) => {
         </>
       )}
 
-      {props.schema.oneOf[schemaIndex] && !isConstSchema(props.schema.oneOf[schemaIndex]) && (
+      {isNoNConstSchema(props.schema.oneOf[schemaIndex]) && (
         <GenericSchema
           schema={props.schema.oneOf[schemaIndex]}
           model={models[schemaIndex]}

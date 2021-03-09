@@ -182,6 +182,21 @@ describe('Given a component for rendering a form control based on a schema', () 
     });
   });
 
+  describe('when a schema with oneOf one const is supplied', () => {
+    beforeEach(() => {
+      component.setProps({
+        schema: {
+          oneOf: [{ const: 1, title: 'One' }],
+        },
+      });
+    });
+
+    it('should ask the FormControl for a select control', () => {
+      // Sometimes we want to force a conscious decision for the customer to select an option even when there is only 1
+      expect(component.find(FormControl).prop('type')).toEqual('select');
+    });
+  });
+
   describe('when a schema with oneOf two consts is supplied', () => {
     beforeEach(() => {
       component.setProps({

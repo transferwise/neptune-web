@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
+import { parseISO } from 'date-fns';
 import Link from './Link';
+import Badge from './Badge';
+import Meta from './Meta';
 
 import { getFirstPageInSection, getPageFromPath } from '../utils/pageUtils';
 import sections from '../utils/sections';
@@ -19,15 +22,17 @@ const Layout = ({ children, router: { pathname } }) => {
 
   const firstContent = (
     <div className="Header__Fixed" role="navigation" aria-label="Primary navigation">
-      <Link href="/">
-        <a className="Logo">
-          <img
-            src={`${process.env.ASSET_PREFIX}/static/assets/img/logo_full_inverse.svg`}
-            alt="TransferWise Logo"
-          />
-          <span className="sr-only">TransferWise</span>
-        </a>
-      </Link>
+      <div className="Header__Brand">
+        <Link href="/">
+          <a className="Logo">
+            <img
+              src={`${process.env.ASSET_PREFIX}/static/assets/img/wise_logo.svg`}
+              alt="Wise Logo"
+            />
+            <span className="sr-only">Wise</span>
+          </a>
+        </Link>
+      </div>
       <ul className="Nav Nav--dark">
         <li className="Nav__Group">Neptune</li>
         {sections
@@ -37,6 +42,11 @@ const Layout = ({ children, router: { pathname } }) => {
               <Link href={getFirstPageInSection(section).path}>
                 <a className={`Nav__Link ${rootDir === section.dir ? 'active' : ''}`}>
                   {section.title}
+                  {section.badge ? (
+                    <Badge expiryDate={parseISO(section.badge.expiryDate)} className="m-l-1">
+                      {section.badge.type}
+                    </Badge>
+                  ) : null}
                 </a>
               </Link>
             </li>
@@ -45,14 +55,24 @@ const Layout = ({ children, router: { pathname } }) => {
     </div>
   );
 
-  const secondContent = page && (
-    <Sidebar section={sections.find((section) => section.dir === rootDir)} />
-  );
+  let secondContent = null;
+  if (page) {
+    const section = sections.find(({ dir }) => dir === rootDir);
+    if (section.sidebar !== false) {
+      secondContent = <Sidebar {...{ section }} />;
+    }
+  }
 
   const thirdContent = (
     <div className="Content" role="main">
-      {page && <h1 className="colored-dot">{page.component.meta.name}</h1>}
-      {page && page.component.meta.isBeta && <span className="badge">beta</span>}
+      {page ? (
+        <>
+          <h1 className="colored-dot">{page.component.meta.name}</h1>
+          {page.component.meta.date ? (
+            <Meta {...{ date: page.component.meta.date, authors: page.component.meta.authors }} />
+          ) : null}
+        </>
+      ) : null}
       {children}
       <a className="btn btn-default m-t-4" href={editPath}>
         Edit these docs on Github

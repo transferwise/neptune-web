@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { injectIntl } from 'react-intl';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import { Plus as PlusIcon } from '@transferwise/icons';
@@ -13,6 +14,7 @@ import {
 } from './utils';
 import './Upload.css';
 import ProcessIndicator from '../processIndicator';
+import messages from './Upload.messages';
 
 const PROCESS_STATE = ['error', 'success'];
 const ACCEPTED_FORMAT = ['*', 'image/*', 'application/*', 'text/csv'];
@@ -35,11 +37,12 @@ const UPLOAD_STEP_COMPONENTS = {
 class Upload extends PureComponent {
   constructor(props) {
     super(props);
+    this.formatMessage = this.props.intl.formatMessage;
     this.dragCounter = 0;
     this.errorMessage = {
-      413: props.csTooLargeMessage || null,
-      415: props.csWrongTypeMessage || null,
-      unknownError: props.csFailureText || null,
+      413: props.csTooLargeMessage || this.formatMessage(messages.csTooLargeMessage),
+      415: props.csWrongTypeMessage || this.formatMessage(messages.csWrongTypeMessage),
+      unknownError: props.csFailureText || this.formatMessage(messages.csFailureText),
     };
     this.timeouts = null;
 
@@ -297,11 +300,11 @@ class Upload extends PureComponent {
             fileDropped={(file) => this.fileDropped(file)}
             isComplete={isComplete}
             usAccept={usAccept}
-            usButtonText={usButtonText}
+            usButtonText={usButtonText || this.formatMessage(messages.usButtonText)}
             usDisabled={usDisabled}
             usHelpImage={usHelpImage}
             usLabel={usLabel}
-            usPlaceholder={usPlaceholder}
+            usPlaceholder={usPlaceholder || this.formatMessage(messages.usPlaceholder)}
           />
         )}
 
@@ -312,8 +315,8 @@ class Upload extends PureComponent {
             isSuccess={isSuccess}
             onAnimationCompleted={(status) => this.onAnimationCompleted(status)}
             onClear={(e) => this.handleOnClear(e)}
-            psButtonText={psButtonText}
-            psProcessingText={psProcessingText}
+            psButtonText={psButtonText || this.formatMessage(messages.psButtonText)}
+            psProcessingText={psProcessingText || this.formatMessage(messages.psProcessingText)}
           />
         )}
         {/* Starts render the step when isSuccess or isError are true so markup is there when css transition kicks in
@@ -325,9 +328,9 @@ class Upload extends PureComponent {
             isError={isError}
             isImage={isImage}
             onClear={(e) => this.handleOnClear(e)}
-            csButtonText={csButtonText}
+            csButtonText={csButtonText || this.formatMessage(messages.csButtonText)}
             csFailureText={errorMessage}
-            csSuccessText={csSuccessText}
+            csSuccessText={csSuccessText || this.formatMessage(messages.csSuccessText)}
             uploadedImage={uploadedImage}
           />
         )}
@@ -337,7 +340,9 @@ class Upload extends PureComponent {
               <div className="circle circle-sm p-t-1 text-info">
                 <PlusIcon />
               </div>
-              {usDropMessage && <h4 className="m-t-3">{usDropMessage}</h4>}
+              <h4 className="m-t-3">
+                {usDropMessage || this.formatMessage(messages.usDropMessage)}
+              </h4>
             </div>
           </div>
         )}
@@ -387,30 +392,30 @@ Upload.propTypes = {
 
 Upload.defaultProps = {
   animationDelay: 700,
-  csButtonText: 'Select other file?',
-  csFailureText: 'Upload failed.Please, try again',
-  csSuccessText: 'Upload complete!',
-  csTooLargeMessage: 'Please provide a file smaller than 5MB',
-  csWrongTypeMessage: 'Please provide a supported format',
+  csButtonText: undefined,
+  csFailureText: undefined,
+  csSuccessText: undefined,
+  csTooLargeMessage: undefined,
+  csWrongTypeMessage: undefined,
   httpOptions: null,
   maxSize: MAX_SIZE_DEFAULT,
   onCancel: null,
   onFailure: null,
   onStart: null,
   onSuccess: null,
-  psButtonText: 'Cancel',
-  psProcessingText: 'Uploading...',
+  psButtonText: undefined,
+  psProcessingText: undefined,
   size: 'md',
   usAccept: 'image/*',
-  usButtonText: 'Or Select File',
+  usButtonText: undefined,
   usDisabled: false,
-  usDropMessage: 'Drop file to start upload',
+  usDropMessage: undefined,
   usHelpImage: '',
   usLabel: '',
-  usPlaceholder: 'Drag and drop a file less than 5MB',
+  usPlaceholder: undefined,
   uploadStep: Upload.UploadStep.UPLOAD_IMAGE_STEP,
 };
 
 Upload.CompleteStep = CompleteStep;
 
-export default Upload;
+export default injectIntl(Upload);

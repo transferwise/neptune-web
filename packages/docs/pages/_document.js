@@ -14,6 +14,10 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script type="text/javascript">
+            {/* The below is necessary to stop animations running on page load in Chrome
+          (https://bugs.chromium.org/p/chromium/issues/detail?id=332189) */}{' '}
+          </script>
         </body>
       </Html>
     );

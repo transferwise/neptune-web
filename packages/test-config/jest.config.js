@@ -17,7 +17,7 @@ module.exports = {
     '\\.css$': require.resolve('./config/style-mock.js'),
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
-  transformIgnorePatterns: ['^((?!src).)*$'],
-  testPathIgnorePatterns: ['^((?!src).)*$'],
+  transformIgnorePatterns: ['^((?!src|i18n).)*$'],
+  testPathIgnorePatterns: ['^((?!src|i18n).)*$'],
   testURL: 'http://localhost',
 };

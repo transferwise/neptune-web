@@ -1,5 +1,5 @@
 import React from 'react';
-import { text, select } from '@storybook/addon-knobs';
+import { text } from '@storybook/addon-knobs';
 
 import { Home as HomeIcon } from '@transferwise/icons';
 
@@ -14,7 +14,6 @@ export default {
 export const basic = () => {
   const actionText = text('ActionText', 'Change address');
 
-  const status = select('Status', [null, Summary.Status.DONE, Summary.Status.PENDING], null);
   const title = text('Title', 'Verify your address');
   const description = text('Description', '10 Downing Street, Westminster, London SW1A 2AA.');
 
@@ -30,7 +29,7 @@ export const basic = () => {
         description={description}
         icon={<HomeIcon size={24} />}
         title={title}
-        status={status}
+        status={Summary.Status.NOT_DONE}
       />
       <Summary
         action={{
@@ -64,6 +63,19 @@ export const basic = () => {
           presentation: Info.Presentation.MODAL,
           'aria-label': 'Please click here to know more about your address update status',
         }}
+        icon={<HomeIcon size={24} />}
+        title="We’re verifying your address"
+        status={Summary.Status.PENDING}
+      />
+      <Summary
+        action={{
+          text: 'Open in new tab',
+          href: '#change-address',
+          target: '_blank',
+          callback: () => {},
+        }}
+        as="li"
+        description="10 Downing Street, Westminster, London SW1A 2AA."
         icon={<HomeIcon size={24} />}
         title="We’re verifying your address"
         status={Summary.Status.PENDING}

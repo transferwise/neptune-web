@@ -1,7 +1,7 @@
 {
   "name": "@transferwise/neptune-docs",
-  "version": "8.3.7",
-  "description": "TransferWise Design System",
+  "version": "10.0.37",
+  "description": "Neptune Web",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -16,9 +16,8 @@
     "docs:deploy": "npm-run-all deploy:*",
     "deploy:export": "next export -o docs-build && touch docs-build/.nojekyll",
     "deploy:gh-pages": "deploy-to-github-pages -d docs-build -m main",
-    "lint": "eslint components/ pages/ utils/",
-    "lint:fix": "yarn lint --fix",
-    "test": "jest --config ../../node_modules/@transferwise/test-config/test/jest.lint.js"
+    "lint": "jest --maxWorkers=4 --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
+    "lint:fix": "eslint components/ pages/ utils/ --fix"
   },
   "repository": {
     "type": "git",
@@ -27,8 +26,8 @@
   },
   "keywords": [],
   "author": {
-    "name": "TransferWise",
-    "url": "https://transferwise.com/"
+    "name": "Wise",
+    "url": "https://wise.com/"
   },
   "bugs": {
     "url": "https://github.com/transferwise/neptune-web/issues"
@@ -39,14 +38,16 @@
     "@mapbox/rehype-prism": "^0.5.0",
     "@mdx-js/loader": "^1.5.8",
     "@next/mdx": "^9.0.5",
-    "@transferwise/components": "^32.0.3",
-    "@transferwise/dynamic-flows": "^9.0.1",
+    "@transferwise/components": "^34.4.1",
+    "@transferwise/dynamic-flows": "^12.1.0",
     "@transferwise/icons": "^2.6.0",
-    "@transferwise/neptune-css": "^5.1.0",
-    "@transferwise/test-config": "^2.0.0",
+    "@transferwise/neptune-css": "^8.1.3",
+    "@transferwise/test-config": "^3.0.3",
     "@zeit/next-css": "^1.0.1",
     "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
+    "classnames": "^2.2.6",
     "currency-flags": "^2.1.1",
+    "date-fns": "^2.17.0",
     "glob": "^7.1.6",
     "husky": "^4.2.5",
     "lint-staged": "^9.4.2",
@@ -57,14 +58,21 @@
     "raw-loader": "^4.0.0",
     "react-docgen": "^5.3.1",
     "react-docgen-external-proptypes-handler": "^2.0.0",
+    "react-intl": "^5.10.0",
     "react-live": "^2.2.2",
+    "react-required-if": "^1.0.3",
     "rehype-slug": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "@transferwise/less-config": "^3.0.0",
+    "@transferwise/less-config": "^3.0.1",
+    "@types/classnames": "^2.2.11",
+    "@types/node": "^14.14.31",
+    "@types/react": "16.9.11",
+    "@types/react-dom": "16.9.11",
     "babel-plugin-inline-react-svg": "^1.1.1",
-    "deploy-to-github-pages": "1.0.0-beta.7"
+    "deploy-to-github-pages": "1.0.0-beta.7",
+    "typescript": "^4.1.5"
   },
   "peerDependencies": {
     "react": "16.13.1",

@@ -9,7 +9,6 @@ export default {
 };
 
 export const basic = () => {
-  const locale = select('locale', ['en-GB', 'jp-JP'], 'en-GB');
   const disabled = boolean('disabled', false);
   const required = boolean('required', false);
   const size = select('size', ['sm', 'md', 'lg'], 'md');
@@ -18,7 +17,6 @@ export const basic = () => {
     <PhoneNumberInput
       onChange={(v) => action(v)}
       initialValue="+447573135343"
-      locale={locale}
       countryCode=""
       disabled={disabled}
       required={required}

@@ -1,6 +1,6 @@
 import { create } from '@storybook/theming';
 
-import Logo from './TransferWise.svg';
+import Logo from './wise_logo.svg';
 
 export default create({
   base: 'light',
@@ -33,8 +33,8 @@ export default create({
   inputTextColor: '#2e4369',
   inputBorderRadius: 3,
 
-  brandTitle: 'TransferWise',
-  brandUrl: 'https://transferwise.com',
+  brandTitle: 'Wise',
+  brandUrl: 'https://wise.com',
   brandImage: Logo,
 
   showSearchBox: false,

@@ -1,0 +1,86 @@
+import { DocLink } from '../../utils/pageUtils';
+
+_See the closely related <DocLink href="/blog/2020-12-15-flownavigation-upgrade-guide">FlowNavigation upgrade guide</DocLink>._
+
+OverlayHeader has gone through a major refactor, and there are some breaking changes. This upgrade guide will provide the necessary steps to switch to the new version.
+
+## API Changes
+
+<table className="docs-table table">
+  <thead>
+    <tr>
+      <th>Old API</th>
+      <th>New API</th>
+      <th>Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        avatar: Types.shape({'{'}url: Types.string{'}'})
+      </td>
+      <td>avatar: Types.element</td>
+      <td>
+        Instead of an object with a URL, we now expect an{' '}
+        <DocLink href="/components/content/Avatar">Avatar</DocLink>.
+      </td>
+    </tr>
+    <tr>
+      <td>onClose</td>
+      <td>onClose</td>
+      <td>No change</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>logo</td>
+      <td>
+        <b>@new</b> We used to display the logo within the component using CSS. We now expect you to
+        pass in a logo as an image. You will need to use a light logo if working on a dark screen.
+      </td>
+    </tr>
+    <tr>
+      <td>theme</td>
+      <td>-</td>
+      <td>
+        <b>@deprecated</b> Used to change logo appearances and borders. Now you can pass and manage
+        logo.
+      </td>
+    </tr>
+    <tr>
+      <td>profileType</td>
+      <td>-</td>
+      <td>
+        <b>@deprecated</b> It used to manage the type of Avatar. Since now avatar is provided from
+        outside you can decide which type of Avatar you’d like to pass (personal or business) in
+        your app.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Dependency requirements
+
+`@transferwise/components >= 34.2.3`
+
+`@transferwise/neptune-css>= 8.0.1`
+
+### CSS changes
+
+**Dimensions**
+
+OverlayHeader will now occupy 100% of its parent so please provide a container to make it fit to your design.
+
+**Border**
+
+Previously the bottom border was handled by the component, now consumers are required to provide it.
+
+export const meta = {
+  name: 'OverlayHeader Upgrade Guide',
+  date: '2021-01-22',
+  authors: [
+    {
+      name: 'Helen Durrant',
+      githubUsername: 'helendurranttw',
+    },
+  ],
+};

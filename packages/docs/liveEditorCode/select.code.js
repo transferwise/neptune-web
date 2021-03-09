@@ -19,18 +19,6 @@
       required={false}
       searchPlaceholder="Search placeholder"
       dropdownUp={false}
-      /**
-       * Search Parameter:
-       *
-       * if `true` default search functionality being enabled
-       * (not case sensitive search in option labels & currency props)
-       *
-       * if `function` you can define your own search function
-       * to implement custom search experience.
-       * This search function used while filtering the options array.
-       * The custom search function takes two parameters.
-       * First is the option the second is the keyword.
-       */
       search
       options={[
         { header: 'Basic' },
@@ -49,9 +37,6 @@
         {
           value: 8,
           label: 'A thing with searchable alternatives',
-          /**
-           * searchStrings is an array of strings that maps additional searchable terms to a given option.
-           */
           searchStrings: ['abbreviation', 'acronym', 'nickname'],
         },
       ]}

@@ -1,6 +1,0 @@
-{
-  "neptune.CloseButton.ariaLabel": "Close",
-  "neptune.Pagination.ariaLabel": "Pagination navigation",
-  "neptune.PaginationLink.ariaLabel.active": "前往第{pageNumber} 頁",
-  "neptune.PaginationLink.ariaLabel.inactive": "當前頁面，第{pageNumber} 頁"
-}

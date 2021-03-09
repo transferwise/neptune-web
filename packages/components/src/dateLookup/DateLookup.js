@@ -238,12 +238,12 @@ class DateLookup extends PureComponent {
 
   getCalendar = () => {
     const { selectedDate, min, max, viewMonth, viewYear, mode } = this.state;
-    const { locale, placeholder, monthFormat } = this.props;
+    const { placeholder, monthFormat } = this.props;
     return (
       <>
         {mode === MODE.DAY && (
           <DayCalendar
-            {...{ selectedDate, min, max, viewMonth, viewYear, locale, monthFormat }}
+            {...{ selectedDate, min, max, viewMonth, viewYear, monthFormat }}
             onSelect={this.handleSelectedDateUpdate}
             onLabelClick={this.switchToYears}
             onViewDateUpdate={this.handleViewDateUpdate}
@@ -251,7 +251,7 @@ class DateLookup extends PureComponent {
         )}
         {mode === MODE.MONTH && (
           <MonthCalendar
-            {...{ selectedDate, min, max, viewYear, locale, placeholder }}
+            {...{ selectedDate, min, max, viewYear, placeholder }}
             onSelect={this.switchToDays}
             onLabelClick={this.switchToYears}
             onViewDateUpdate={this.handleViewDateUpdate}
@@ -259,7 +259,7 @@ class DateLookup extends PureComponent {
         )}
         {mode === MODE.YEAR && (
           <YearCalendar
-            {...{ selectedDate, min, max, viewYear, locale, placeholder }}
+            {...{ selectedDate, min, max, viewYear, placeholder }}
             onSelect={this.switchToMonths}
             onViewDateUpdate={this.handleViewDateUpdate}
           />
@@ -271,7 +271,7 @@ class DateLookup extends PureComponent {
   render() {
     const { selectedDate, open, isMobile } = this.state;
 
-    const { size, locale, placeholder, label, monthFormat, disabled } = this.props;
+    const { size, placeholder, label, monthFormat, disabled } = this.props;
     return (
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
         ref={this.element}
@@ -279,7 +279,7 @@ class DateLookup extends PureComponent {
         onKeyDown={this.handleKeyDown}
       >
         <OpenButton
-          {...{ selectedDate, size, locale, placeholder, label, monthFormat, disabled }}
+          {...{ selectedDate, size, placeholder, label, monthFormat, disabled }}
           onClick={this.open}
         />
         {isMobile ? (
@@ -305,7 +305,6 @@ DateLookup.propTypes = {
   min: Types.instanceOf(Date),
   max: Types.instanceOf(Date),
   size: Types.oneOf([DateLookup.Size.SMALL, DateLookup.Size.MEDIUM, DateLookup.Size.LARGE]),
-  locale: Types.string,
   placeholder: Types.string,
   label: Types.string,
   monthFormat: Types.oneOf([DateLookup.MonthFormat.LONG, DateLookup.MonthFormat.SHORT]),
@@ -320,7 +319,6 @@ DateLookup.defaultProps = {
   min: null,
   max: null,
   size: DateLookup.Size.MEDIUM,
-  locale: 'en-GB',
   placeholder: '',
   label: '',
   monthFormat: DateLookup.MonthFormat.LONG,

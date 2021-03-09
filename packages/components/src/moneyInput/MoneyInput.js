@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { injectIntl } from 'react-intl';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import { isEmpty } from '@transferwise/neptune-validation';
@@ -6,6 +7,7 @@ import Select from '../select';
 import './MoneyInput.css';
 import { Size } from '../common/propsValues/size';
 
+import messages from './MoneyInput.messages';
 import { formatAmount, parseAmount } from './currencyFormatting';
 
 const Currency = Types.shape({
@@ -22,15 +24,17 @@ const formatAmountIfSet = (amount, currency, locale) => {
   return typeof amount === 'number' ? formatAmount(amount, currency, locale) : '';
 };
 
-export default class MoneyInput extends Component {
+class MoneyInput extends Component {
   constructor(props) {
     super(props);
+    this.locale = this.props.intl.locale;
+    this.formatMessage = this.props.intl.formatMessage;
     this.state = {
       searchQuery: '',
       formattedAmount: formatAmountIfSet(
         props.amount,
         props.selectedCurrency.currency,
-        props.locale,
+        this.locale,
       ),
     };
   }
@@ -42,7 +46,7 @@ export default class MoneyInput extends Component {
         formattedAmount: formatAmountIfSet(
           nextProps.amount,
           nextProps.selectedCurrency.currency,
-          nextProps.locale,
+          this.locale,
         ),
       });
     }
@@ -55,7 +59,7 @@ export default class MoneyInput extends Component {
     });
     const parsed = isEmpty(value)
       ? null
-      : parseAmount(value, this.props.selectedCurrency.currency, this.props.locale);
+      : parseAmount(value, this.props.selectedCurrency.currency, this.locale);
     if (!Number.isNaN(parsed)) {
       this.props.onAmountChange(parsed);
     }
@@ -85,7 +89,7 @@ export default class MoneyInput extends Component {
       const parsed = parseAmount(
         previousState.formattedAmount,
         this.props.selectedCurrency.currency,
-        this.props.locale,
+        this.locale,
       );
       if (Number.isNaN(parsed)) {
         return {
@@ -96,7 +100,7 @@ export default class MoneyInput extends Component {
         formattedAmount: formatAmountIfSet(
           parsed,
           this.props.selectedCurrency.currency,
-          this.props.locale,
+          this.locale,
         ),
       };
     });
@@ -154,7 +158,7 @@ export default class MoneyInput extends Component {
           placeholder={formatAmountIfSet(
             this.props.placeholder,
             this.props.selectedCurrency.currency,
-            this.props.locale,
+            this.locale,
           )}
           autoComplete="off"
         />
@@ -207,7 +211,7 @@ export default class MoneyInput extends Component {
               options={selectOptions}
               selected={{ ...selectedCurrency, note: null }}
               onChange={this.handleSelectChange}
-              placeholder="Select an option..."
+              placeholder={this.formatMessage(messages.selectPlaceholder)}
               searchPlaceholder={this.props.searchPlaceholder}
               onSearchChange={this.handleSearchChange}
               searchValue={this.state.searchQuery}
@@ -295,7 +299,6 @@ MoneyInput.propTypes = {
   amount: Types.number,
   size: Types.oneOf([MoneyInput.Size.SMALL, MoneyInput.Size.MEDIUM, MoneyInput.Size.LARGE]),
   onAmountChange: Types.func,
-  locale: Types.string,
   addon: Types.node,
   searchPlaceholder: Types.string,
   /**
@@ -310,7 +313,6 @@ MoneyInput.propTypes = {
 MoneyInput.defaultProps = {
   id: null,
   size: MoneyInput.Size.LARGE,
-  locale: 'en-GB',
   addon: null,
   searchPlaceholder: '',
   onSearchChange: undefined,
@@ -322,3 +324,5 @@ MoneyInput.defaultProps = {
   onCustomAction: null,
   classNames: {},
 };
+
+export default injectIntl(MoneyInput);

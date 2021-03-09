@@ -54,6 +54,7 @@ describe('Given a component for dynamically rendering columns', () => {
         submitted={false}
         errors={{}}
         onPersistAsync={onPersistAsync}
+        baseUrl="dynamic-columns-base-url"
       />,
     );
   });

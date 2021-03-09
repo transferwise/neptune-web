@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import OneOfSchema from '.';
 
@@ -119,11 +119,94 @@ describe('Given a oneOfSchema component', () => {
     });
 
     describe('when no model is present', () => {
-      it('should not render a generic schema', () => {
-        component = shallow(<OneOfSchema {...props} model={{}} />);
-        genericSchema = component.find(GenericSchema);
+      describe('and children schemas are non-const', () => {
+        it('should not render a generic schema', () => {
+          component = shallow(<OneOfSchema {...props} model={{}} />);
+          genericSchema = component.find(GenericSchema);
 
-        expect(genericSchema.length).toBe(0);
+          expect(genericSchema.length).toBe(0);
+        });
+      });
+
+      describe('and children schemas are const', () => {
+        const currencySchema = {
+          title: 'Currency',
+          type: 'string',
+          oneOf: [
+            { title: 'EUR', description: 'Euro', const: 'EUR' },
+            {
+              title: 'GBP',
+              description: 'British pound',
+              const: 'GBP',
+            },
+            {
+              title: 'USD',
+              description: 'United States dollar',
+              const: 'USD',
+            },
+            {
+              title: 'ARS',
+              description: 'Argentine peso',
+              const: 'ARS',
+            },
+            {
+              title: 'AUD',
+              description: 'Australian dollar',
+              const: 'AUD',
+            },
+          ],
+          validationMessages: { required: 'Please enter currency.' },
+          default: 'USD',
+        };
+
+        const defaultIndex = currencySchema.oneOf.findIndex(
+          (childSchema) => childSchema.const === currencySchema.default,
+        );
+
+        describe('and there is a valid default value', () => {
+          it('renders a SchemaFormControl with a value as expected', () => {
+            component = shallow(<OneOfSchema {...props} schema={currencySchema} model={{}} />);
+            const control = component.find(SchemaFormControl);
+            expect(control.prop('value')).toBe(defaultIndex);
+          });
+
+          it('broadcasts onChange with the default value', () => {
+            component = mount(
+              <OneOfSchema {...props} schema={currencySchema} model={{}} onChange={onChange} />,
+            );
+            expect(onChange).toHaveBeenLastCalledWith(
+              currencySchema.default,
+              currencySchema,
+              currencySchema.default,
+            );
+          });
+        });
+
+        describe('and there is no valid default value', () => {
+          it('renders a SchemaFormControl with a value of null  ', () => {
+            component = shallow(
+              <OneOfSchema
+                {...props}
+                schema={{ ...currencySchema, default: 'BANANA' }}
+                model={{}}
+              />,
+            );
+            const control = component.find(SchemaFormControl);
+            expect(control.prop('value')).toBe(null);
+          });
+
+          it('does not broadcast onChange callback', () => {
+            component = mount(
+              <OneOfSchema
+                {...props}
+                schema={{ ...currencySchema, default: 'BANANA' }}
+                model={{}}
+                onChange={onChange}
+              />,
+            );
+            expect(onChange).not.toHaveBeenCalled();
+          });
+        });
       });
     });
 
@@ -283,6 +366,27 @@ describe('Given a oneOfSchema component', () => {
 
       controlFeedback = component.find(ControlFeedback);
       expect(controlFeedback.prop('errors')).toBe(null);
+    });
+
+    describe('when one option is supplied', () => {
+      beforeEach(() => {
+        schema = {
+          title: 'Choose schema',
+          oneOf: [
+            {
+              title: 'One',
+              const: 1,
+            },
+          ],
+        };
+
+        props = { ...props, schema };
+        component = shallow(<OneOfSchema {...props} />);
+      });
+
+      it('should render a SchemaFormControl', () => {
+        expect(component.find(SchemaFormControl)).toHaveLength(1);
+      });
     });
 
     describe('when the user changes schema', () => {

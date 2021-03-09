@@ -1,10 +1,10 @@
 export const getFileType = (file, file64) => {
   if (!file && !file64) {
-    return null;
+    return '';
   }
 
   if (file && file.type && file.type !== '') {
-    return file.type;
+    return file.type ?? '';
   }
 
   if (file64) {
@@ -12,8 +12,8 @@ export const getFileType = (file, file64) => {
     const typeFromEncoded = file64.match(regex);
 
     if (typeFromEncoded && typeFromEncoded[1]) {
-      return typeFromEncoded[1];
+      return typeFromEncoded[1] ?? '';
     }
   }
-  return null;
+  return '';
 };

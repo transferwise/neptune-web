@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useIntl } from 'react-intl';
 import Types from 'prop-types';
 
 import '../common/polyfills/closest';
@@ -10,8 +11,6 @@ import { explodeDate, convertToLocalMidnight } from './utils';
 import { getMonthNames, isDateValid, isMonthAndYearFormat } from '../common/dateUtils';
 import './DateInput.css';
 
-const DEFAULT_LOCALE = 'en-GB';
-
 const MonthBeforeDay = ['en-US', 'ja-JP'];
 const INITIAL_DEFAULT_STATE = { year: null, month: null, day: null };
 
@@ -19,7 +18,6 @@ const DateInput = ({
   disabled,
   size,
   value,
-  locale,
   dayLabel,
   monthLabel,
   yearLabel,
@@ -31,6 +29,7 @@ const DateInput = ({
   placeholders,
   id,
 }) => {
+  const { locale } = useIntl();
   const getDateObject = () => {
     if (value && isDateValid(value)) {
       return typeof value === 'string' ? convertToLocalMidnight(value) : value;
@@ -286,7 +285,6 @@ DateInput.propTypes = {
   disabled: Types.bool,
   size: Types.oneOf([DateInput.Size.SMALL, DateInput.Size.MEDIUM, DateInput.Size.LARGE]),
   value: Types.oneOfType([Types.string, Types.instanceOf(Date)]),
-  locale: Types.string,
   onChange: Types.func.isRequired, // eslint-disable-line
   onFocus: Types.func,
   onBlur: Types.func,
@@ -307,7 +305,6 @@ DateInput.defaultProps = {
   disabled: false,
   size: DateInput.Size.MEDIUM,
   value: null,
-  locale: DEFAULT_LOCALE,
   onFocus: null,
   onBlur: null,
   dayLabel: 'Day',

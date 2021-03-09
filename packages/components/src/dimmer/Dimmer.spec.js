@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
-import DimmerAppendingToBody, { Dimmer, EXIT_ANIMATION } from './Dimmer';
+import DimmerAppendingToBody, { Dimmer, EXIT_ANIMATION, DimmerContentWrapper } from './Dimmer';
 
-const handleOnEnter = () => jest.fn();
-const handleOnClose = () => jest.fn();
 const handleOnClick = () => jest.fn();
 const handleOnKeyDown = () => jest.fn();
 
 jest.mock('react-dom');
-jest.mock('../common');
 
 describe('Dimmer', () => {
   let component;
@@ -75,17 +72,17 @@ describe('Dimmer', () => {
           enterDone: 'dimmer--enter-done',
           exit: 'dimmer--exit',
         },
-        onEnter: handleOnEnter,
-        onExited: handleOnClose,
         unmountOnExit: true,
         children: (
-          <div
-            role="presentation"
-            className="dimmer"
-            onClick={handleOnClick}
-            onKeyDown={handleOnKeyDown}
-            children={null} // eslint-disable-line react/no-children-prop
-          />
+          <DimmerContentWrapper handleOnClose={jest.fn()}>
+            <div
+              role="presentation"
+              className="dimmer"
+              onClick={handleOnClick}
+              onKeyDown={handleOnKeyDown}
+              children={null} // eslint-disable-line react/no-children-prop
+            />
+          </DimmerContentWrapper>
         ),
       }),
     );
@@ -137,7 +134,7 @@ describe('Dimmer', () => {
 
     it('closes on `esc` keypress', () => {
       expect(props.onClose).not.toBeCalled();
-      component.find('CSSTransition').simulate('enter');
+      component = mount(<Dimmer {...props} />);
 
       pressEscapeOnComponent();
       expect(props.onClose).toBeCalled();

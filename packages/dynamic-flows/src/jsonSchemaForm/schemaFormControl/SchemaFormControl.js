@@ -33,7 +33,7 @@ const SchemaFormControl = (props) => {
     }
 
     if (schema.oneOf) {
-      return schema.oneOf.length >= 3 ? 'select' : 'radio';
+      return schema.oneOf.length === 1 || schema.oneOf.length >= 3 ? 'select' : 'radio';
     }
 
     if (schema.type === 'string') {

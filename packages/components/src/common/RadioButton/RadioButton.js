@@ -16,16 +16,9 @@ const RadioButton = ({ id, value, name, checked, onChange, disabled, readOnly })
       onChange={() => (!checked ? onChange(value) : null)}
       disabled={disabled || readOnly}
     />
-    <button
-      type="button"
-      className={classNames('tw-radio-button', { checked })}
-      disabled={disabled || readOnly}
-      aria-pressed={checked}
-      tabIndex="-1"
-      onClick={() => (!checked ? onChange(value) : null)}
-    >
+    <span className={classNames('tw-radio-button', { checked, disabled: disabled || readOnly })}>
       <span className="tw-radio-check" />
-    </button>
+    </span>
   </>
 );
 

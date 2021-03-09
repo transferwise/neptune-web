@@ -343,6 +343,13 @@ describe('Tabs', () => {
       expect(getPanelWidth(component)).toBe('300px');
     });
   });
+
+  describe('handling prop updates', () => {
+    it(`when updating tabs prop to an empty array`, () => {
+      const newProps = { ...props, tabs: [] };
+      component.setProps({ ...newProps });
+    });
+  });
 });
 
 const defaultDisableds = [false, true, false];

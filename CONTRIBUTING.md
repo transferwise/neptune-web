@@ -54,26 +54,33 @@ As said above, we recommend running most commands from within the package you're
 
 We use a combination of ESLint, Prettier and Stylelint to check our code for bugs. These tools have the option to run on save, which we recommend.
 
-### VSCode
+## Testing
 
-In `settings.json` (use the command `Open Settings (JSON)` to get there):
+### Beta Releases
 
-```json
-{
-  "css.validate": false,
-  "less.validate": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true
-  },
-  "[css]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
-  },
-  "[less]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
-  }
-}
+If you wish to test your changes in some consumer codebase and `yarn link` is not so sufficient or/and convenient approach, then you can easily publish beta version(s) on NPM registry and use it in any NPM repository.
+
+Steps:
+1. push changes into your feature/fix branch
+2. find build on [CircleCI](https://app.circleci.com/pipelines/github/transferwise/neptune-web)
+3. approve `hold-beta-release` job
+4. Lerna will [publish](https://github.com/lerna/lerna/blob/main/commands/publish/README.md#--canary) affected packages [tagged as beta](https://docs.npmjs.com/adding-dist-tags-to-packages)
+
+---
+
+Note: set the exact beta version without any [update types or version ranges](https://docs.npmjs.com/cli/v6/configuring-npm/package-json#dependencies) (e.g `^`, `~`) as usually NPM clients tend to opt-out installing beta (unstable) versions, correct example:
+
+```js
+// in package.json
+"@transferwise/neptune-css": "4.0.4-beta.7",
+
+// or just `beta`, NPM client will pick up latest beta version
+"@transferwise/components": "beta",
 ```
+
+### Visual Testing
+
+(To be added)
 
 ## Versioning and commit lint
 
