@@ -1,1 +1,0 @@
-.tw-instructions{display:flex;flex-direction:column}.tw-instructions .instruction{display:flex}.tw-instructions .instruction .do,.tw-instructions .instruction .dont{flex-shrink:0}.tw-instructions .instruction .do{color:#2ed06e;color:var(--color-positive,#2ed06e)}.tw-instructions .instruction .dont{color:#f53636;color:var(--color-negative,#f53636)}

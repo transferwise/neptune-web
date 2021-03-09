@@ -1,1 +1,0 @@
-input[type=radio]:active+.tw-radio-button,input[type=radio]:focus+.tw-radio-button{border-color:#00b9ff;border-color:var(--color-border-focus,#00b9ff);outline:none}

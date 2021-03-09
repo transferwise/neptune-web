@@ -1,1 +1,0 @@
-_N_E=(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[21],{bbVs:function(n,_,s){(window.__NEXT_P=window.__NEXT_P||[]).push(["/styles/tokens/Sizes",function(){return s("NyDu")}])}},[["bbVs",0,1,2,4,3,6,5]]]);
