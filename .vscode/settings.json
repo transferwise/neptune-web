@@ -1,0 +1,19 @@
+{
+  // JestRunner configs
+  "jestrunner.configPath": "packages/test-config/jest.config.js",
+  "jestrunner.projectPath": "packages/components",
+  "jestrunner.jestPath": "../../node_modules/.bin/jest",
+  // Style linting configs
+  "css.validate": false,
+  "less.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  }
+}
