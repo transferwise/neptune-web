@@ -77,7 +77,7 @@ export const basic = () => {
       <JsonSchemaForm
         schema={schema}
         model={model}
-        errors={errors}
+        errors={{}}
         locale={locale}
         translations={translationsFromProps}
         onChange={model => {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Types from 'prop-types';
 import { RadioGroup } from '@transferwise/components';
-import OneOfSchema from '../oneOfSchema';
 import ObjectSchema from '../objectSchema';
+import GenericSchema from '../genericSchema';
 
 const isPromoted = (schema) => schema.promoted === true;
 
@@ -20,25 +20,35 @@ const PromotedOneOfSchema = (props) => {
     };
   };
 
+  const getOtherOneOf = (schema) => {
+    const other = schema.oneOf.filter((one) => !isPromoted(one));
+    const title = schema.promotion.other.heading.text;
+    if (other.length === 1) {
+      return { ...other[0], title };
+    }
+    if (other.length > 1) {
+      return {
+        title,
+        oneOf: other,
+      };
+    }
+    throw Error('Could not find other schemas for a promoted one of.');
+  };
+
   const promotedObjectSchema = getPromotedObjectSchema(promotedOneOf);
 
-  const otherOneOf = {
-    title: props.schema.promotion.other.heading.text,
-    oneOf: props.schema.oneOf.filter((one) => !isPromoted(one)),
-  };
+  const otherOneOf = getOtherOneOf(props.schema);
 
   const radios = [
     {
       value: 'promoted',
       label: promotedOneOf.title,
       secondary: promotedOneOf.description,
-      name: 'name',
     },
     {
       value: 'other',
       label: props.schema.promotion.other.title,
       secondary: props.schema.promotion.other.description,
-      name: 'name',
     },
   ];
 
@@ -54,7 +64,7 @@ const PromotedOneOfSchema = (props) => {
       </div>
 
       {selection === 'promoted' && <ObjectSchema {...props} schema={promotedObjectSchema} />}
-      {selection === 'other' && <OneOfSchema {...props} schema={otherOneOf} />}
+      {selection === 'other' && <GenericSchema {...props} schema={otherOneOf} />}
     </>
   );
 };
