@@ -1,0 +1,12 @@
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import { InlineAlert } from '@transferwise/components';
+import code from '../../../liveEditorCode/inlineAlert.code';
+
+The styling for the input (the coloured border) and the visibility of the inline alert is controlled through the use of <code>has-\*\*\*</code> classes which are applied to the <code>form-group</code> element. For example, to display an inline alert of type error, you must also apply the class <code>has-error</code> to the parent <code>form-group</code> element. The available classes are <code>has-error</code>, <code>has-info</code>, <code>has-warning</code> and <code>has-success</code>.
+
+<LiveEditorBlock code={code} scope={{ InlineAlert }} />
+<GeneratePropsTable componentName="InlineAlert" />
+
+export const meta = {
+  name: 'InlineAlert',
+};
