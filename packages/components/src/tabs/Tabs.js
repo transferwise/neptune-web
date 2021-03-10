@@ -68,7 +68,7 @@ class Tabs extends React.Component {
     window.addEventListener('resize', this.handleResize);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     const currentSelected = this.props.selected;
     const prevSelected = prevProps.selected;
     const currentSelectedTab = this.props.tabs[currentSelected];
@@ -81,6 +81,8 @@ class Tabs extends React.Component {
     const prevDisabledTabsLength = prevProps.tabs.filter(enabledTabsFilter).length;
     const currentHeaderWidth = this.props.headerWidth;
     const prevFullHeaderWidth = prevProps.headerWidth;
+    const { animatePanelsOnClick } = this.props;
+    const instantOnClick = !animatePanelsOnClick && !prevState.isSwiping;
 
     if (currentHeaderWidth !== prevFullHeaderWidth || currentTabsLength !== prevTabsLength) {
       this.setTabWidth();
@@ -93,7 +95,7 @@ class Tabs extends React.Component {
     ) {
       this.animateToTab(
         clamp(currentSelected, MIN_INDEX, this.MAX_INDEX),
-        currentSelected === prevSelected,
+        currentSelected === prevSelected || instantOnClick,
       );
     }
   }
@@ -561,6 +563,7 @@ Tabs.propTypes = {
   selected: PropTypes.number.isRequired,
   onTabSelect: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  animatePanelsOnClick: PropTypes.bool,
   changeTabOnSwipe: PropTypes.bool,
   className: PropTypes.string,
   transitionSpacing: PropTypes.oneOf([
@@ -574,6 +577,7 @@ Tabs.propTypes = {
 };
 
 Tabs.defaultProps = {
+  animatePanelsOnClick: false,
   changeTabOnSwipe: true,
   className: '',
   transitionSpacing: Tabs.SpacerSizes.NONE,
