@@ -7,16 +7,17 @@ import GenericSchema from '../genericSchema';
 const isPromoted = (schema) => schema.promoted === true;
 
 const PromotedOneOfSchema = (props) => {
-  const [selection, setSelection] = useState('promoted');
+  const defaultSelection = 'promoted';
+  const [selection, setSelection] = useState(defaultSelection);
 
   const promotedOneOf = props.schema.oneOf.find(isPromoted);
 
   const getPromotedObjectSchema = (promotedSchema) => {
-    // We don't need to show this anymore for the object schema
     return {
       ...promotedSchema,
-      title: null,
-      description: null,
+      // We don't need to show these anymore for the object schema
+      title: undefined,
+      description: undefined,
     };
   };
 
@@ -30,9 +31,11 @@ const PromotedOneOfSchema = (props) => {
       return {
         title,
         oneOf: other,
+        control: schema.control,
       };
     }
-    throw Error('Could not find other schemas for a promoted one of.');
+
+    return null;
   };
 
   const promotedObjectSchema = getPromotedObjectSchema(promotedOneOf);
@@ -58,7 +61,7 @@ const PromotedOneOfSchema = (props) => {
         <RadioGroup
           name="promoted-selection"
           onChange={(value) => setSelection(value)}
-          selectedValue="promoted"
+          selectedValue={selection}
           radios={radios}
         />
       </div>
