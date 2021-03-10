@@ -3,7 +3,7 @@
 exports[`Checkbox renders the given label 1`] = `
 <div>
   <div
-    class="checkbox"
+    class="checkbox checkbox--rtl"
   >
     <label>
       <b>

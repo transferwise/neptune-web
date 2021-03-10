@@ -4,6 +4,8 @@ import { render, fireEvent, screen } from '@testing-library/react';
 
 import Checkbox from '.';
 
+jest.mock('../common/hooks', () => ({ useRTL: () => true }));
+
 describe('Checkbox', () => {
   let props;
 
@@ -74,6 +76,11 @@ describe('Checkbox', () => {
     rerender(<Checkbox {...props} required />);
 
     expect(getCheckboxContainer()).toHaveClass('has-error');
+  });
+
+  it('has rtl class when isRTL is true', () => {
+    render(<Checkbox {...props} disabled />);
+    expect(getCheckboxContainer()).toHaveClass('checkbox--rtl');
   });
 
   it('ignores required if disabled or readOnly', () => {
