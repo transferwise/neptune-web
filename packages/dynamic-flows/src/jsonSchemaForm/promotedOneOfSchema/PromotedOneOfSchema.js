@@ -15,7 +15,7 @@ const PromotedOneOfSchema = (props) => {
   const getPromotedObjectSchema = (promotedSchema) => {
     return {
       ...promotedSchema,
-      // We don't need to show these anymore for the object schema
+      // We don't need to show these since they are already displayed in the radio option
       title: undefined,
       description: undefined,
     };

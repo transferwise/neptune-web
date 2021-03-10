@@ -1,272 +1,39 @@
 {
-  "title": "Recipient's bank details",
+  "title": "Details",
   "oneOf": [
     {
-      "title": "Local bank account",
+      "title": "Name details",
       "type": "object",
-      "displayOrder": [
-        "name",
-        "ownedByCustomer",
-        "details",
-        "type"
-      ],
       "properties": {
         "name": {
-          "type": "object",
-          "displayOrder": [
-            "fullName"
-          ],
-          "properties": {
-            "fullName": {
-              "title": "Full name of the account holder",
-              "type": "string",
-              "validationMessages": {
-                "minLength": "Name needs to be between 2 and 140 characters long, and contain both first and last name.",
-                "maxLength": "Recipient name cannot be longer than 140 characters.",
-                "pattern": "This recipient name contains invalid characters. Please use latin characters only.",
-                "required": "Name cannot be empty."
-              },
-              "autofillProvider": "contact",
-              "autofillKey": "contact.fullName",
-              "pattern": "^[0-9A-Za-zÀ-ÖØ-öø-ÿ-_()'*,.%#^@{}~<>+$\"\\[\\]\\\\ ]+$",
-              "minLength": 2,
-              "maxLength": 140
-            }
-          },
-          "required": [
-            "fullName"
-          ]
-        },
-        "ownedByCustomer": {
-          "title": "My own Account",
-          "type": "boolean",
-          "refreshFormOnChange": true
-        },
-        "details": {
-          "type": "object",
-          "displayOrder": [
-            "sortCode",
-            "accountNumber"
-          ],
-          "properties": {
-            "sortCode": {
-              "title": "UK Sort code",
-              "type": "string",
-              "placeholder": "40-30-20",
-              "displayFormat": "**-**-**",
-              "validationMessages": {
-                "pattern": "Please enter a valid bank code.",
-                "required": "Please select a bank."
-              },
-              "pattern": "^\\d{2}-?\\d{2}-?\\d{2}$",
-              "minLength": 6,
-              "maxLength": 8,
-              "format": "numeric"
-            },
-            "accountNumber": {
-              "title": "Account number",
-              "type": "string",
-              "placeholder": "12345678",
-              "validationMessages": {
-                "minLength": "Account number is too short. Please enter a valid account number.",
-                "maxLength": "Account number is too large. Please enter a valid account number.",
-                "pattern": "Please enter a valid account number.",
-                "required": "Please enter an account number."
-              },
-              "pattern": "[0-9]{8}",
-              "minLength": 8,
-              "maxLength": 8,
-              "format": "numeric"
-            }
-          },
-          "required": [
-            "sortCode",
-            "accountNumber"
-          ]
-        },
-        "type": {
-          "title": "Type",
-          "type": "string",
-          "hidden": true,
-          "const": "SortCode"
+          "title": "Name",
+          "type": "string"
         }
-      },
-      "required": [
-        "type",
-        "name",
-        "details"
-      ],
-      "icon": {
-        "name": "bank",
-        "type": "icon"
       }
     },
     {
-      "title": "IBAN",
+      "title": "Address details",
       "type": "object",
-      "displayOrder": [
-        "name",
-        "ownedByCustomer",
-        "details",
-        "type"
-      ],
       "properties": {
         "name": {
-          "type": "object",
-          "displayOrder": [
-            "fullName"
-          ],
-          "properties": {
-            "fullName": {
-              "title": "Full name of the account holder",
-              "type": "string",
-              "validationMessages": {
-                "minLength": "Name needs to be between 2 and 140 characters long, and contain both first and last name.",
-                "maxLength": "Recipient name cannot be longer than 140 characters.",
-                "pattern": "This recipient name contains invalid characters. Please use latin characters only.",
-                "required": "Name cannot be empty."
-              },
-              "autofillProvider": "contact",
-              "autofillKey": "contact.fullName",
-              "pattern": "^[0-9A-Za-zÀ-ÖØ-öø-ÿ-_()'*,.%#^@{}~<>+$\"\\[\\]\\\\ ]+$",
-              "minLength": 2,
-              "maxLength": 140
-            }
-          },
-          "required": [
-            "fullName"
-          ]
-        },
-        "ownedByCustomer": {
-          "title": "My own Account",
-          "type": "boolean",
-          "refreshFormOnChange": true
-        },
-        "details": {
-          "type": "object",
-          "displayOrder": [
-            "bic",
-            "iban"
-          ],
-          "properties": {
-            "bic": {
-              "title": "Bank code (BIC/SWIFT)",
-              "type": "string",
-              "placeholder": "Please choose recipient's bank",
-              "hidden": true,
-              "validationMessages": {
-                "minLength": "The BIC you have entered is too short.",
-                "maxLength": "The BIC you have entered is too long.",
-                "pattern": "Please specify a valid BIC."
-              },
-              "pattern": "^[A-Za-z]{6}[A-Za-z\\d]{2}([A-Za-z\\d]{3})?$",
-              "minLength": 8,
-              "maxLength": 11
-            },
-            "iban": {
-              "title": "IBAN",
-              "type": "string",
-              "placeholder": "DE89370400440532013000",
-              "help": {
-                "markdown": "IBANs are long account numbers used by banks for cross-border transfers. Each country structures this number differently, but it always starts with a 2 digit country code (e.g. DE for Germany)."
-              },
-              "validationMessages": {
-                "minLength": "The IBAN you have entered is too short.",
-                "maxLength": "The IBAN you have entered is too long.",
-                "pattern": "Please specify a valid IBAN.",
-                "required": "Please specify an IBAN."
-              },
-              "pattern": "^[a-zA-Z]{2}[a-zA-Z0-9 ]{12,40}$",
-              "minLength": 14,
-              "maxLength": 42
-            }
-          },
-          "required": [
-            "iban"
-          ]
-        },
-        "type": {
-          "title": "Type",
-          "type": "string",
-          "hidden": true,
-          "const": "Iban"
+          "title": "Address",
+          "type": "string"
         }
-      },
-      "required": [
-        "type",
-        "name",
-        "details"
-      ],
-      "icon": {
-        "name": "bank",
-        "type": "icon"
       }
     },
     {
-      "title": "Peter Parker is on Wise.",
-      "description": "We'll send to their Wise primary GBP account ending in 9523.",
+      "title": "General details",
+      "description": "Tell us about yourself",
       "type": "object",
       "promoted": true,
-      "displayOrder": [
-        "name",
-        "ownedByCustomer",
-        "details",
-        "type"
-      ],
       "properties": {
         "name": {
-          "type": "object",
-          "displayOrder": [
-            "fullName"
-          ],
-          "properties": {
-            "fullName": {
-              "title": "Full name of the account holder",
-              "type": "string",
-              "validationMessages": {
-                "maxLength": "Recipient name cannot be longer than 255 characters."
-              },
-              "autofillProvider": "contact",
-              "autofillKey": "contact.fullName",
-              "maxLength": 255
-            }
-          },
-          "required": []
-        },
-        "ownedByCustomer": {
-          "title": "My own Account",
-          "type": "boolean",
-          "hidden": true,
-          "refreshFormOnChange": true
-        },
-        "details": {
-          "type": "object",
-          "displayOrder": [
-            "targetUserId"
-          ],
-          "properties": {
-            "targetUserId": {
-              "title": "Target Recipient User ID",
-              "type": "string",
-              "hidden": true,
-              "const": "9859779"
-            }
-          },
-          "required": []
-        },
-        "type": {
-          "title": "Type",
-          "type": "string",
-          "hidden": true,
-          "const": "UniqueId"
+          "title": "Hobbies",
+          "type": "string"
         }
       },
-      "required": [
-        "type",
-        "details"
-      ],
       "image": {
-        "url": "https://tw-test-avatar-storage.s3.eu-west-1.amazonaws.com/953f9d0c-49e2-4ce8-8098-43d8698761b2",
+        "url": "https://picsum.photos/id/237/200/300",
         "type": "image"
       }
     }
@@ -274,16 +41,15 @@
   "control": "tab",
   "promotion": {
     "other": {
-      "title": "Send to a different account",
+      "title": "Select a different group",
       "icon": {
         "name": "bank",
         "type": "icon"
       },
       "heading": {
-        "text": "Recipient's bank details",
+        "text": "Other details",
         "type": "heading"
       }
     }
-  },
-  "placeholder": "Please select the recipient's bank account type..."
+  }
 }

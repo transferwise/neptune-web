@@ -38,7 +38,7 @@ export const basic = () => {
     currency: currencySchema,
   };
 
-  const schema = select('schema', schemas, promotedOneOfSchema);
+  const schema = select('schema', schemas, simpleSchema);
 
   const model = {
     number: 3,
@@ -77,12 +77,10 @@ export const basic = () => {
       <JsonSchemaForm
         schema={schema}
         model={model}
-        errors={{}}
+        errors={errors}
         locale={locale}
         translations={translationsFromProps}
-        onChange={model => {
-          console.log(model, 'model')
-        }}
+        onChange={action('onChange')}
         submitted={submitted}
         disabled={disabled}
         baseUrl=""
