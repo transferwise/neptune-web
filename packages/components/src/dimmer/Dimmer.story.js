@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { Dimmer } from './Dimmer';
+import { Button } from '..';
 
 export default {
   component: Dimmer,
@@ -9,16 +10,25 @@ export default {
 };
 
 export const basic = () => {
-  const open = boolean('open', false);
+  const [open, setOpen] = useState(false);
+
   const fadeContentOnExit = boolean('fadeContentOnExit', false);
   const fadeContentOnEnter = boolean('fadeContentOnEnter', false);
 
+  const handleClose = () => {
+    setOpen(false);
+    action('closed');
+  };
+
   return (
-    <Dimmer
-      open={open}
-      onClose={action('closed')}
-      fadeContentOnExit={fadeContentOnExit}
-      fadeContentOnEnter={fadeContentOnEnter}
-    />
+    <>
+      <Button onClick={() => setOpen((isOpen) => !isOpen)}>Toggle dimmer</Button>
+      <Dimmer
+        open={open}
+        onClose={handleClose}
+        fadeContentOnExit={fadeContentOnExit}
+        fadeContentOnEnter={fadeContentOnEnter}
+      />
+    </>
   );
 };

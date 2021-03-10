@@ -24,5 +24,13 @@
         "extensions": [".js", ".ts", ".tsx", ".json"]
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.tsx"],
+      "rules": {
+        "react/require-default-props": "off"
+      }
+    }
+  ]
 }

@@ -2,7 +2,7 @@
 
 # Neptune Web
 
-Neptune is the Design System built by and used at TransferWise. This is the Neptune framework for Web. The React components and CSS provide a way to build high quality, consistent user experiences on the web with ease.
+Neptune is the Design System built by and used at [Wise](https://wise.com). This is the Neptune framework for Web. The React components and CSS provide a way to build high quality, consistent user experiences on the web with ease.
 
 This is the Neptune Web monorepo, that houses our component library, CSS, documentation and more.
 

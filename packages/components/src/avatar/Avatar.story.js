@@ -35,7 +35,7 @@ export const basic = () => {
   const sampleImage = boolean('Use image as content?', false);
   const sampleImageUrl = text(
     'Image URL',
-    'https://transferwise.com/public-resources/assets/flags/square/gbp.svg',
+    'https://wise.com/public-resources/assets/flags/square/gbp.svg',
   );
 
   return (
@@ -55,7 +55,7 @@ export const table = () => {
   const theme = select('Theme', [Avatar.Theme.LIGHT, Avatar.Theme.DARK], Avatar.Theme.LIGHT);
   const flag = select('Flag', ['gbp', 'jpy', 'eur'], 'gbp');
 
-  const flagResource = `https://transferwise.com/public-resources/assets/flags/square/${flag}.svg`;
+  const flagResource = `https://wise.com/public-resources/assets/flags/square/${flag}.svg`;
   return (
     <div
       style={{
@@ -103,7 +103,7 @@ export const table = () => {
             <Avatar size={Avatar.Size.LARGE} type={Avatar.Type.EMOJI} theme={theme}>
               <img
                 style={{ width: 44, height: 44 }}
-                src="https://transferwise.com/public-resources/assets/balances/savings-emoji/google/✈️.png"
+                src="https://wise.com/public-resources/assets/balances/savings-emoji/google/✈️.png"
                 alt=""
               />
             </Avatar>
@@ -112,7 +112,7 @@ export const table = () => {
             <Avatar size={Avatar.Size.MEDIUM} type={Avatar.Type.EMOJI} theme={theme}>
               <img
                 style={{ width: 30, height: 30 }}
-                src="https://transferwise.com/public-resources/assets/balances/savings-emoji/google/✈️.png"
+                src="https://wise.com/public-resources/assets/balances/savings-emoji/google/✈️.png"
                 alt=""
               />
             </Avatar>
@@ -121,7 +121,7 @@ export const table = () => {
             <Avatar size={Avatar.Size.SMALL} type={Avatar.Type.EMOJI} theme={theme}>
               <img
                 style={{ width: 16, height: 16 }}
-                src="https://transferwise.com/public-resources/assets/balances/savings-emoji/google/✈️.png"
+                src="https://wise.com/public-resources/assets/balances/savings-emoji/google/✈️.png"
                 alt=""
               />
             </Avatar>
@@ -137,7 +137,7 @@ export const table = () => {
             >
               <img
                 style={{ width: 44, height: 44 }}
-                src="https://transferwise.com/public-resources/assets/balances/savings-emoji/google/🌱.png"
+                src="https://wise.com/public-resources/assets/balances/savings-emoji/google/🌱.png"
                 alt=""
               />
             </Avatar>
@@ -151,7 +151,7 @@ export const table = () => {
             >
               <img
                 style={{ width: 30, height: 30 }}
-                src="https://transferwise.com/public-resources/assets/balances/savings-emoji/google/🌱.png"
+                src="https://wise.com/public-resources/assets/balances/savings-emoji/google/🌱.png"
                 alt=""
               />
             </Avatar>
@@ -165,7 +165,7 @@ export const table = () => {
             >
               <img
                 style={{ width: 16, height: 16 }}
-                src="https://transferwise.com/public-resources/assets/balances/savings-emoji/google/🌱.png"
+                src="https://wise.com/public-resources/assets/balances/savings-emoji/google/🌱.png"
                 alt=""
               />
             </Avatar>

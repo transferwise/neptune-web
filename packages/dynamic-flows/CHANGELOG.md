@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@12.0.3...@transferwise/dynamic-flows@12.1.0) (2021-03-09)
+
+
+### Features
+
+* Conditionally prepend baseUrl ([#839](https://github.com/transferwise/neptune-web/issues/839)) ([da86d3b](https://github.com/transferwise/neptune-web/commit/da86d3bcc492b26ede1e3601f2594ce349852ab4))
+
+
+
+
+
+## [12.0.3](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@12.0.2...@transferwise/dynamic-flows@12.0.3) (2021-03-05)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [12.0.2](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@12.0.1...@transferwise/dynamic-flows@12.0.2) (2021-03-05)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+## [12.0.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@12.0.0...@transferwise/dynamic-flows@12.0.1) (2021-03-05)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
+# [12.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@11.4.2...@transferwise/dynamic-flows@12.0.0) (2021-03-03)
+
+
+* feat!: Add base url to dynamic flows (#830) ([4f88591](https://github.com/transferwise/neptune-web/commit/4f88591abbf6642f29337324a869b894d3a290ec)), closes [#830](https://github.com/transferwise/neptune-web/issues/830)
+
+
+### BREAKING CHANGES
+
+* JsonSchemaForm and Dynamic layouts now require baseUrl to be provided
+
+
+
+
+
+## [11.4.2](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@11.4.1...@transferwise/dynamic-flows@11.4.2) (2021-03-03)
+
+**Note:** Version bump only for package @transferwise/dynamic-flows
+
+
+
+
+
 ## [11.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/dynamic-flows@11.4.0...@transferwise/dynamic-flows@11.4.1) (2021-02-25)
 
 

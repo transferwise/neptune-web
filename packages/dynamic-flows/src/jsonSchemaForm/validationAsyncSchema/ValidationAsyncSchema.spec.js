@@ -28,6 +28,8 @@ describe('Given a component for rendering validation async schemas', () => {
   global.fetch = jest.fn((input, init) => {
     let response;
 
+    expect(input).toBe('https://test-url/v1/validate');
+
     switch (JSON.parse(init.body)[param]) {
       case '200--ok--fast-5ms':
         response = getMockFetchPromise(
