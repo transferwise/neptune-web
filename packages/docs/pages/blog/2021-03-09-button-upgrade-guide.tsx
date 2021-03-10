@@ -14,10 +14,11 @@ export const meta = {
   ],
 };
 
+/* eslint-disable react/jsx-curly-brace-presence */
 export default function PageContent(): ReactElement {
   return (
     <div>
-      <Alert message="These changes will be released in components **v35**. See the Button designs, the PR for these changes, play with a demo or try the beta release in your own repository by updating to @transferwise/components@31.4.2-beta.48+7f5c96183" />
+      <Alert message="These changes will be released in components **v35**. See the Button designs, the PR for these changes, play with a demo or try the beta release in your own repository by updating to @transferwise/components@31.4.2-beta.48" />
       <p>
         We have made some changes to our buttons to address inconsistencies across platforms, and to
         update our types to reflect our new standard of using semantic colours. This guide will
@@ -75,9 +76,9 @@ export default function PageContent(): ReactElement {
       <code>.btn-facebook</code> classes, you will now need to import{' '}
       <code>neptune-social-media.css</code> after <code>neptune.css</code>:
       <pre>
-        import '@transferwise/neptune-css/dist/css/neptune.css';
+        {`import '@transferwise/neptune-css/dist/css/neptune.css';`}
         <br />
-        import '@transferwise/neptune-css/dist/css/neptune-social-media.css';
+        {`import '@transferwise/neptune-css/dist/css/neptune-social-media.css';`}
       </pre>
       <h3>2: Update prop usage for Buttons</h3>
       <p>
