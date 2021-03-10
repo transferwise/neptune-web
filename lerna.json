@@ -15,7 +15,8 @@
         "packages/docs",
         "lerna.json",
         "**/CODEOWNERS",
-        "**/.gitignore"
+        "**/.gitignore",
+        ".vscode"
       ]
     }
   },

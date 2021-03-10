@@ -10,7 +10,7 @@ export default {
 };
 
 export const basic = () => {
-  const href = text('href', 'http://www.transferwise.com');
+  const href = text('href', 'http://www.wise.com');
   const title = text('title', 'Navigation option');
   const content = text('content', 'Button and icon are vertically centered.');
   const complex = boolean('complex', false);
@@ -36,7 +36,7 @@ export const basic = () => {
 };
 
 export const illustration = () => {
-  const href = text('href', 'http://www.transferwise.com');
+  const href = text('href', 'http://www.wise.com');
   const title = text('title', 'Navigation option');
   const content = text('content', 'Button and icon are vertically centered.');
   const complex = boolean('complex', false);

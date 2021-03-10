@@ -1,11 +1,11 @@
 {
   "name": "@transferwise/less-config",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Neptune Web shared gulp css config files and dependencies",
   "license": "Apache-2.0",
   "main": "./gulpfile.js",
   "keywords": [
-    "transferwise",
+    "wise",
     "gulp less"
   ],
   "repository": {

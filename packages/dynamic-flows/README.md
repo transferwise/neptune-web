@@ -1,12 +1,10 @@
-# Transferwise dynamic flows
+# Wise Dynamic Flows
 
 [![CircleCI](https://circleci.com/gh/transferwise/neptune-web.svg?style=shield)](https://circleci.com/gh/transferwise/neptune-web) [![NPM](https://badge.fury.io/js/%40transferwise%2Fcomponents.svg)](https://www.npmjs.com/package/@transferwise/dynamic-flows)
 
-# Neptune Web Dynamic flows
+Neptune is the Design System built by and used at Wise. Neptune Web is the Neptune framework for Web. Neptune Web provides a way to build high quality, consistent user experiences on the web with ease.
 
-Neptune is the Design System built by and used at TransferWise. Neptune Web is the Neptune framework for Web. Neptune Web provides a way to build high quality, consistent user experiences on the web with ease.
-
-This is the Neptune Web Dynamic flows React component library. It uses [Neptune CSS](https://github.com/transferwise/neptune-web/tree/main/packages/css).
+This is the Wise Web Dynamic flows React component library. It uses [Neptune CSS](https://github.com/transferwise/neptune-web/tree/main/packages/css).
 
 ## Usage
 
