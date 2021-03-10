@@ -3,6 +3,7 @@ import { select } from '@storybook/addon-knobs';
 
 import { Provider } from '../src';
 import '@transferwise/neptune-css/dist/css/neptune.css';
+import '@transferwise/neptune-css/dist/css/neptune-social-media.css';
 import '@transferwise/icons/lib/styles/main.min.css';
 import 'currency-flags/dist/currency-flags.min.css';
 
@@ -55,7 +56,17 @@ const CenterDecorator = (storyFn) => (
 
 // list is not exhaustive but should enough for testing diff edge cases
 // feel free to add more during development
-const severalExamplesOfSupportedLocales = [DEFAULT_LOCALE, 'en-US', 'ja-JP', 'zh-HK', 'es', 'fr', 'ru', 'de', 'tr'];
+const severalExamplesOfSupportedLocales = [
+  DEFAULT_LOCALE,
+  'en-US',
+  'ja-JP',
+  'zh-HK',
+  'es',
+  'fr',
+  'ru',
+  'de',
+  'tr',
+];
 
 const ProviderDecorator = (storyFn) => {
   const locale = select('locale (global)', severalExamplesOfSupportedLocales, DEFAULT_LOCALE);
