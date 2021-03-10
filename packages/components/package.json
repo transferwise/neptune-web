@@ -18,6 +18,7 @@
     "url": "git+https://github.com/transferwise/neptune-web.git"
   },
   "scripts": {
+    "dt": "node ./scripts/generate-dt.js",
     "dev": "npm-run-all --parallel dev:*",
     "dev:watch-less": "gulp watchLess --dest=src",
     "dev:storybook": "start-storybook -p 3001",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "typescript": "^4.2.3",
+    "react-to-typescript-definitions": "~2.0.0",
     "@types/node": "^14.14.31",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
