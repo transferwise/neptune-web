@@ -134,7 +134,7 @@ const sections: MainSection[] = [
     fileOrder: ['Home'],
     badge: {
       type: 'new',
-      expiryDate: '15-03-2021',
+      expiryDate: '2021-03-15',
     },
     sidebar: false,
   },

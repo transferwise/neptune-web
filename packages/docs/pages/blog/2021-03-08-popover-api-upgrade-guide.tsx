@@ -269,14 +269,19 @@ const simulateTriggerClick = () => {
         Its position gets recalculated only on open/close. The new version adapts to the container
         and calculates automatically the best placement on screen for both content and arrow
       </p>
-      <Image src={popover2} loading="lazy" stretch={false} />
+      <Image src={popover2} alt="Popover Adaptive Positioning" loading="lazy" stretch={false} />
       <h2>Mobile Behaviour</h2>
       <Alert type="warning" message="**VISUAL CHANGE**" />
       <p>
         In order to align mobile web with mobile behaviour, Popover will now open in a bottomSheet
         on Mobile size devices.
       </p>
-      <Image src={popover3} loading="lazy" stretch={false} />
+      <Image
+        src={popover3}
+        alt="Popover example of mobile behaviour"
+        loading="lazy"
+        stretch={false}
+      />
       <h2>Dependency requirements</h2>
       <pre>
         {'@transferwise/components >= 35.x.x'}

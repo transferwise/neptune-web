@@ -56,6 +56,6 @@ export const meta: Meta = {
   name: 'Provider',
   badge: {
     type: 'new',
-    expiryDate: '01-03-2021',
+    expiryDate: '2021-03-01',
   },
 };
