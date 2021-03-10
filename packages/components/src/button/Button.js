@@ -7,18 +7,7 @@ import './Button.css';
 
 import { Size, ControlType, Priority, Type } from '../common';
 import { establishNewPriority, establishNewType, logDeprecationNotices } from './legacyUtils';
-
-const typeClassMap = {
-  [ControlType.ACCENT]: 'btn-accent',
-  [ControlType.POSITIVE]: 'btn-positive',
-  [ControlType.NEGATIVE]: 'btn-negative',
-};
-
-const priorityClassMap = {
-  [Priority.PRIMARY]: 'btn-priority-1',
-  [Priority.SECONDARY]: 'btn-priority-2',
-  [Priority.TERTIARY]: 'btn-priority-3',
-};
+import { typeClassMap, priorityClassMap } from './classMap';
 
 const Button = (props) => {
   const {

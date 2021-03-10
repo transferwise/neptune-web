@@ -1,0 +1,62 @@
+@import './_button-label-states';
+
+.np-circular-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+
+  input[type="button"] {
+    min-height: var(--size-40);
+    width: var(--size-40);
+    height: var(--size-40);
+    padding: 0;
+    border-radius: 50%;
+    margin-bottom: var(--size-8);
+  }
+
+  .tw-icon {
+    position: absolute;
+    top: 8px;
+    pointer-events: none;
+    color: white;
+    transition: color 0.15s ease-in-out;
+  }
+}
+
+.np-circular-btn__label {
+  font-weight: 600;
+  font-family: inherit;
+  transition: color 0.15s ease-in-out;
+}
+
+._button-label-states(np-circular-btn, accent,
+var(--color-control-accent),
+var(--color-control-accent-hover),
+var(--color-control-accent-active));
+
+._button-label-states(np-circular-btn, positive,
+var(--color-control-positive),
+var(--color-control-positive-hover),
+var(--color-control-positive-active));
+
+._button-label-states(np-circular-btn, negative,
+var(--color-control-negative),
+var(--color-control-negative-hover),
+var(--color-control-negative-active));
+
+// Boost specificity to ensure rules apply to .secondary buttons
+.np-circular-btn.disabled.disabled {
+  cursor: not-allowed;
+
+  input[type="button"]:disabled + .tw-icon,
+  input[type="button"]:disabled ~ .np-circular-btn__label {
+    color: var(--color-text-inactive);
+  }
+
+  &.secondary input[type="button"] {
+    border-color: var(--color-text-inactive);
+  }
+}
