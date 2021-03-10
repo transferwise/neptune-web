@@ -30,6 +30,12 @@
       "rules": {
         "react/require-default-props": "off"
       }
+    },
+    {
+      "files": ["./pages/blog/**/*.tsx"],
+      "rules": {
+        "react/jsx-curly-brace-presence": "off"
+      }
     }
   ]
 }

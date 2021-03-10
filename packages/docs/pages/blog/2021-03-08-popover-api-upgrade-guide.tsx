@@ -15,7 +15,6 @@ export const meta = {
   ],
 };
 
-/* eslint-disable react/jsx-curly-brace-presence */
 export default function PageContent(): ReactElement {
   return (
     <div>
