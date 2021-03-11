@@ -114,7 +114,7 @@ export default function PageContent(): ReactElement {
       </table>
       <ul>
         <li>
-          <b>children</b>
+          <b>className</b>
         </li>
       </ul>
       <Alert type="warning" message="**BREAKING CHANGE**" />
@@ -138,16 +138,16 @@ export default function PageContent(): ReactElement {
       <p>Example: Avatar + choose an icons</p>
       <Image src={popover1} alt="Avatar + choose an icons" loading="lazy" stretch={false} shrink />
       <p>
-        The new API allows you to control if the popover will be open or close, so to achieve the
-        same behaviour you can do something similar
+        To achieve the same behavior you can do something similar:
       </p>
       <pre>
         {`// This is not the cleanest solution but still better to embed this logic in Popover for one use case.
 const simulateTriggerClick = () => {
+  // Do your stuff here
   triggerRef.current.click();
 };
 <Popover content={<IconElement onClick={()=>simulateTriggerClick()} …>
-  <button ...>
+  <button ref={triggerRef} ...>
     <Avatar ...>
       🧜🏼
     </Avatar>
@@ -161,7 +161,7 @@ const simulateTriggerClick = () => {
         </li>
       </ul>
       <Alert type="warning" message="**DEPRECATION**" />
-      <p>We did deprecate some of the preferredPlacement</p>
+      <p>We deprecated some of the preferredPlacement</p>
       <table className="docs-table table">
         <thead>
           <tr>
