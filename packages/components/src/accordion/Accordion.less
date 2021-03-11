@@ -10,6 +10,22 @@
     vertical-align: middle;
   }
 
+  .media {
+    flex-wrap: wrap;
+  }
+
+  .media-body {
+    white-space: normal;
+  }
+
+  .accordion-content {
+    transition-timing-function: ease;
+    transition-duration: 0.35s;
+    transition-property: all;
+    max-height: 300px;
+    overflow: auto;
+  }
+
   &.closed {
     .accordion-content {
       height: 0;
