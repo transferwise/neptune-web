@@ -1,11 +1,11 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { useRTL } from './useRTL';
+import { useDirection } from './useDirection';
 
-describe('useRTL', () => {
+describe('useDirection', () => {
   it('returns 0', () => {
     const {
       result: { current },
-    } = renderHook(() => useRTL());
+    } = renderHook(() => useDirection());
 
     expect(current).toEqual([false]);
   });
