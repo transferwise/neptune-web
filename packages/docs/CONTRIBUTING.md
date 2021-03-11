@@ -57,3 +57,14 @@ import { GeneratePropsTable } from '../../utils';
 ```
 
 This will read the component PropTypes and generate a table showing what is supported and the defaults.
+
+# TypeScript Support
+
+This package supports TypeScript, eventually we want all codebase be written on TS, so it's encouraged to at least create new files on TS (`.ts`, `.tsx`). Feel free to refactor files that you touch on TS as well.
+
+If you don't feel yourself quite confident with TypeScript it's okay to opt-out, but then you have to:
+
+- put [`// @ts-check`](https://www.typescriptlang.org/docs/handbook/intro-to-js-ts.html#ts-check) at the top of JavaScript files (this is the easiest way to enable TS checking per file)
+- and write [JSDoc](https://jsdoc.app/) (in particular [`@param` and `@return`](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)) for some API.
+
+This will help us build more reliable and consistent code to migrate to TypeScript faster.
