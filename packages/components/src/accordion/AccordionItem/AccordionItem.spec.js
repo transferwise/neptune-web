@@ -11,10 +11,17 @@ describe('AccordionItem', () => {
   const props = {
     title: 'Hello',
     content: 'world!',
-    isOpen: false,
-    index: 1,
+    isInitiallyOpen: false,
     onClick: jest.fn(),
   };
+
+  it('renders the icon', () => {
+    component = shallow(
+      <AccordionItem {...props} icon={<div className="test-icon">i am an icon</div>} />,
+    );
+
+    expect(component.find('.test-icon').text()).toBe('i am an icon');
+  });
 
   describe('when closed', () => {
     beforeEach(() => {
@@ -25,7 +32,7 @@ describe('AccordionItem', () => {
       expect(getTitle().text()).toBe(props.title);
     });
 
-    it(`does have class closed`, () => {
+    it('does have class closed', () => {
       expect(contentClosed()).toHaveLength(1);
     });
 
@@ -39,21 +46,22 @@ describe('AccordionItem', () => {
     });
 
     it('removes close class on click', () => {
+      expect(contentClosed()).toHaveLength(1);
       clickButton();
-      expect(props.onClick).toHaveBeenCalledWith(1);
+      expect(contentClosed()).toHaveLength(0);
     });
   });
 
   describe('when open', () => {
     beforeEach(() => {
-      component = shallow(<AccordionItem {...props} isOpen />);
+      component = shallow(<AccordionItem {...props} isInitiallyOpen />);
     });
 
     it('displays the title', () => {
       expect(getTitle().text()).toBe(props.title);
     });
 
-    it(`doesn't have class closed`, () => {
+    it('does not have class closed', () => {
       expect(contentClosed()).toHaveLength(0);
     });
 

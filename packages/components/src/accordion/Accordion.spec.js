@@ -65,35 +65,9 @@ describe('Accordion', () => {
       component = createComponent(props);
     });
 
-    it('onOpen event fires then onClose event fires', () => {
+    it('calls onClick when clicking on Accordion Item', () => {
       component.find(AccordionItem).simulate('click', 0);
       expect(onClickMock).toHaveBeenCalledWith(0);
-    });
-  });
-
-  describe('when it defaults closed', () => {
-    beforeEach(() => {
-      props = {
-        items: [
-          {
-            title: 'a',
-            content: 'b',
-          },
-          {
-            title: 'c',
-            content: <h1>I&apos;m a h1 element</h1>,
-          },
-        ],
-      };
-      component = createComponent(props);
-    });
-
-    it('opens no item', () => {
-      const firstItem = component.find(AccordionItem).first();
-      const secondItem = component.find(AccordionItem).at(1);
-      // eslint-disable-next-line eqeqeq
-      expect(firstItem.prop('isOpen')).toEqual(false);
-      expect(secondItem.prop('isOpen')).toEqual(false);
     });
   });
 
@@ -122,23 +96,8 @@ describe('Accordion', () => {
     it('opens the selected accordion item', () => {
       const firstItem = component.find(AccordionItem).first();
       const thirdItem = component.find(AccordionItem).at(2);
-      expect(firstItem.prop('isOpen')).toEqual(false);
-      expect(thirdItem.prop('isOpen')).toEqual(true);
-    });
-
-    it('opens the selected accordion item when prop changes too', () => {
-      const firstItem = component.find(AccordionItem).first();
-      const thirdItem = component.find(AccordionItem).at(2);
-      expect(firstItem.prop('isOpen')).toEqual(false);
-      expect(thirdItem.prop('isOpen')).toEqual(true);
-
-      props.indexOpen = 0;
-      component.setProps(props, () => {
-        const updatedFirstItem = component.find(AccordionItem).first();
-        const updatedThirdItem = component.find(AccordionItem).at(2);
-        expect(updatedFirstItem.prop('isOpen')).toEqual(true);
-        expect(updatedThirdItem.prop('isOpen')).toEqual(false);
-      });
+      expect(firstItem.prop('isInitiallyOpen')).toEqual(false);
+      expect(thirdItem.prop('isInitiallyOpen')).toEqual(true);
     });
   });
 
