@@ -4,6 +4,7 @@ export const schemaType = {
   PERSIST_ASYNC: 'persistAsync',
   VALIDATION_ASYNC: 'validationAsync',
   OBJECT: 'object',
+  PROMOTED_ONE_OF: 'promotedOneOf',
   ONE_OF: 'oneOf',
   ALL_OF: 'allOf',
   BASIC: 'basic',
@@ -14,6 +15,8 @@ export const isPersistAsyncSchema = (schema) => !!schema.persistAsync;
 export const isValidationAsyncSchema = (schema) => !!schema.validationAsync;
 
 export const isObjectSchema = (schema) => schema.type === 'object';
+
+export const isPromotedOneOfSchema = (schema) => !!schema.oneOf && !!schema.promotion;
 
 export const isOneOfSchema = (schema) => !!schema.oneOf;
 
@@ -32,6 +35,9 @@ export const getSchemaType = (schema) => {
   }
   if (isObjectSchema(schema)) {
     return schemaType.OBJECT;
+  }
+  if (isPromotedOneOfSchema(schema)) {
+    return schemaType.PROMOTED_ONE_OF;
   }
   if (isOneOfSchema(schema)) {
     return schemaType.ONE_OF;
