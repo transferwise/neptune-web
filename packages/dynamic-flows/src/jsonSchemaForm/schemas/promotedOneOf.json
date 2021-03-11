@@ -1,5 +1,10 @@
 {
   "title": "Details",
+  "alert": {
+    "context": "success",
+    "markdown": "Some alert here!",
+    "type": "alert"
+  },
   "oneOf": [
     {
       "title": "Name details",

@@ -3,6 +3,7 @@ import Types from 'prop-types';
 import { RadioGroup } from '@transferwise/components';
 import ObjectSchema from '../objectSchema';
 import GenericSchema from '../genericSchema';
+import DynamicAlert from '../../layout/alert';
 
 const isPromoted = (schema) => schema.promoted === true;
 
@@ -12,6 +13,7 @@ const PromotedOneOfSchema = (props) => {
 
   const promotedOneOf = props.schema.oneOf.find(isPromoted);
 
+  const promotedAlert = props.schema.alert;
   const getPromotedObjectSchema = (promotedSchema) => {
     return {
       ...promotedSchema,
@@ -57,6 +59,7 @@ const PromotedOneOfSchema = (props) => {
 
   return (
     <>
+      {promotedAlert && <DynamicAlert component={promotedAlert} />}
       <div className="form-group">
         <RadioGroup
           name="promoted-selection"
@@ -84,6 +87,7 @@ PromotedOneOfSchema.propTypes = {
         description: Types.string,
       }).isRequired,
     }),
+    alert: Types.shape({}),
   }).isRequired,
 };
 

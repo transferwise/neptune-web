@@ -6,6 +6,7 @@ import PromotedOneOfSchema from './PromotedOneOfSchema';
 import ObjectSchema from '../objectSchema';
 import OneOfSchema from '../oneOfSchema';
 import GenericSchema from '../genericSchema';
+import DynamicAlert from '../../layout/alert';
 
 describe('Given a PromotedOneOfSchema component', () => {
   let component;
@@ -92,6 +93,11 @@ describe('Given a PromotedOneOfSchema component', () => {
       schema = {
         title: 'Choose schema',
         oneOf: [promotedSchema, ...twoOtherOptions],
+        alert: {
+          context: 'success',
+          markdown: 'some alert',
+          type: 'alert',
+        },
         promotion,
         control: 'tab',
       };
@@ -125,7 +131,11 @@ describe('Given a PromotedOneOfSchema component', () => {
       expect(promoted).toHaveLength(1);
     });
 
-    it('should remove title and description from the promoted option as it is already displayed', () => {
+    it('should display alert when present', () => {
+      expect(component.find(DynamicAlert)).toHaveLength(1);
+    });
+
+    it("should remove title, description and alert from the promoted option as it's already displayed", () => {
       const promoted = component.find(ObjectSchema);
 
       expect(promoted.props().schema).toMatchObject({
