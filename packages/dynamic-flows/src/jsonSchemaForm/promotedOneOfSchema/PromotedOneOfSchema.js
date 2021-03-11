@@ -3,6 +3,7 @@ import Types from 'prop-types';
 import { RadioGroup } from '@transferwise/components';
 import ObjectSchema from '../objectSchema';
 import GenericSchema from '../genericSchema';
+import DynamicAlert from '../../layout/alert';
 
 const isPromoted = (schema) => schema.promoted === true;
 
@@ -12,12 +13,15 @@ const PromotedOneOfSchema = (props) => {
 
   const promotedOneOf = props.schema.oneOf.find(isPromoted);
 
+  const promotedAlert = promotedOneOf.alert;
   const getPromotedObjectSchema = (promotedSchema) => {
     return {
       ...promotedSchema,
       // We don't need to show these since they are already displayed in the radio option
       title: undefined,
       description: undefined,
+      // We need to remove alert because we will display it above the radio if it's present
+      alert: undefined,
     };
   };
 
@@ -57,6 +61,7 @@ const PromotedOneOfSchema = (props) => {
 
   return (
     <>
+      {promotedAlert && <DynamicAlert component={promotedAlert} />}
       <div className="form-group">
         <RadioGroup
           name="promoted-selection"

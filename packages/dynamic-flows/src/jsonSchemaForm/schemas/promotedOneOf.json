@@ -32,6 +32,11 @@
           "type": "string"
         }
       },
+      "alert": {
+        "context": "success",
+        "markdown": "Some alert here!",
+        "type": "alert"
+      },
       "image": {
         "url": "https://picsum.photos/id/237/200/300",
         "type": "image"
