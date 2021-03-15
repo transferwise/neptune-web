@@ -1,0 +1,112 @@
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import { Freeze, Plus, Bin } from '@transferwise/icons';
+import { CircularButton } from '@transferwise/components';
+import code from '../../../liveEditorCode/circularButton.code';
+
+<LiveEditorBlock code={code} scope={{ CircularButton, Freeze }} />
+<GeneratePropsTable componentName="CircularButton" />
+
+## Variants
+
+<div className="scroll-table">
+  <table className="docs-table table">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Priority</th>
+        <th>Preview</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Accent</td>
+        <td>Primary</td>
+        <td>
+          <CircularButton
+            icon={<Freeze />}
+            type={CircularButton.Type.ACCENT}
+            onClick={() => console.log('Button clicked')}
+          >
+            Freeze
+          </CircularButton>
+        </td>
+      </tr>
+      <tr>
+        <td>Accent</td>
+        <td>Secondary</td>
+        <td>
+          <CircularButton
+            icon={<Freeze />}
+            type={CircularButton.Type.ACCENT}
+            priority={CircularButton.Priority.SECONDARY}
+            onClick={() => console.log('Button clicked')}
+          >
+            Freeze
+          </CircularButton>
+        </td>
+      </tr>
+      <tr>
+        <td>Positive</td>
+        <td>Primary</td>
+        <td>
+          <CircularButton
+            icon={<Plus />}
+            type={CircularButton.Type.POSITIVE}
+            onClick={() => console.log('Button clicked')}
+          >
+            Add money
+          </CircularButton>
+        </td>
+      </tr>
+      <tr>
+        <td>Positive</td>
+        <td>Secondary</td>
+        <td>
+          <CircularButton
+            icon={<Plus />}
+            type={CircularButton.Type.POSITIVE}
+            priority={CircularButton.Priority.SECONDARY}
+            onClick={() => console.log('Button clicked')}
+          >
+            Add money
+          </CircularButton>
+        </td>
+      </tr>
+      <tr>
+        <td>Negative</td>
+        <td>Primary</td>
+        <td>
+          <CircularButton
+            icon={<Bin />}
+            type={CircularButton.Type.NEGATIVE}
+            onClick={() => console.log('Button clicked')}
+          >
+            Delete
+          </CircularButton>
+        </td>
+      </tr>
+      <tr>
+        <td>Negative</td>
+        <td>Secondary</td>
+        <td>
+          <CircularButton
+            icon={<Bin />}
+            type={CircularButton.Type.NEGATIVE}
+            priority={CircularButton.Priority.SECONDARY}
+            onClick={() => console.log('Button clicked')}
+          >
+            Delete
+          </CircularButton>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+export const meta = {
+  name: 'CircularButton',
+  badge: {
+    type: 'new',
+    expiryDate: '14-04-2021',
+  },
+};

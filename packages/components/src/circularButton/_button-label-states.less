@@ -1,0 +1,32 @@
+._button-label-states(@prefix, @type, @normal, @hover, @active) {
+  .@{prefix}.@{type} {
+    .@{prefix}__label {
+      color: @normal;
+    }
+
+    &:hover .@{prefix}__label,
+    input[type="button"]:focus ~ .@{prefix}__label {
+      color: @hover;
+    }
+
+    &:active .@{prefix}__label,
+    input[type="button"]:active ~ .@{prefix}__label {
+      color: @active;
+    }
+
+    &.secondary {
+      .tw-icon {
+        color: @normal;
+      }
+
+      &:hover .tw-icon,
+      input[type="button"]:focus + .tw-icon {
+        color: white;
+      }
+
+      &:active input[type="button"] + .tw-icon {
+        color: white;
+      }
+    }
+  }
+}

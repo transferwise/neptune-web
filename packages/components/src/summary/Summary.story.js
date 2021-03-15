@@ -4,7 +4,7 @@ import { text } from '@storybook/addon-knobs';
 import { Home as HomeIcon } from '@transferwise/icons';
 
 import Summary from './Summary';
-import Info from './info';
+import Info from '../info';
 
 export default {
   component: Summary,

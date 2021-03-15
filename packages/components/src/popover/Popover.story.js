@@ -1,7 +1,8 @@
 import React from 'react';
-import { select, text, boolean } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { select } from '@storybook/addon-knobs';
+
 import Popover from './Popover';
+
 import Button from '../button';
 
 export default {
@@ -10,24 +11,19 @@ export default {
 };
 
 export const basic = () => {
-  const title = text('title', 'I am the Popover title');
-  const content = text('content', 'Lorem ipsum dolor sit amet');
-  const containsFocusableElement = boolean('containsFocusableElement', false);
   const preferredPlacement = select(
     'preferredPlacement',
     Object.values(Popover.Placement),
-    Popover.Placement.BOTTOM,
+    Popover.Placement.TOP,
   );
 
   return (
     <Popover
-      title={title}
-      content={content}
-      containsFocusableElement={containsFocusableElement}
+      content="You’ll get this rate as long as we receive your 10 EUR within the next 51 hours."
       preferredPlacement={preferredPlacement}
-      key={preferredPlacement}
+      title="Guaranteed rate"
     >
-      <Button onClick={action('clicked')} disabled={false} block={false} size={Button.Size.Medium}>
+      <Button type={Button.Type.PRIMARY} onClick={() => console.log(`I'm also triggered`)}>
         Click here to Open Popover!
       </Button>
     </Popover>

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResponsivePanel on desktop renders Panel 1`] = `
+<div>
+  <div
+    class="np-size-swapper d-flex"
+    style="visibility: visible;"
+  >
+    <div
+      class="np-panel np-panel--open"
+    >
+      children
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ResponsivePanel on mobile renders bottomSheet 1`] = `
+<div>
+  <div
+    class="np-size-swapper d-flex"
+    style="visibility: visible;"
+  >
+    <div
+      class="np-bottom-sheet"
+    >
+      children
+    </div>
+  </div>
+</div>
+`;
