@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [35.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.4.1...@transferwise/components@35.0.0) (2021-03-15)
+
+
+* feat!: components v35 release (#849) ([7250476](https://github.com/transferwise/neptune-web/commit/725047641b4b086fd36cd70d4ccb92a3d805fdc1)), closes [#849](https://github.com/transferwise/neptune-web/issues/849) [#737](https://github.com/transferwise/neptune-web/issues/737) [#771](https://github.com/transferwise/neptune-web/issues/771) [#822](https://github.com/transferwise/neptune-web/issues/822) [#835](https://github.com/transferwise/neptune-web/issues/835) [#838](https://github.com/transferwise/neptune-web/issues/838) [#760](https://github.com/transferwise/neptune-web/issues/760) [#850](https://github.com/transferwise/neptune-web/issues/850)
+
+
+### BREAKING CHANGES
+
+* Read on for details.
+* Tabs no longer animate on click by default
+* aria-label is now mandatory
+* Popover has had extensive refactoring to use a new positioning engine (popper). There are several breaking changes.
+
+- children: changed type
+- classNames: changed type
+- containsFocusableElement: removed
+- content: changed type
+- open: addeed, component now stateless provide state
+- clickOutsideCallback: added
+- title: changed type
+
+
+
+
+
 ## [34.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@34.4.0...@transferwise/components@34.4.1) (2021-03-05)
 
 **Note:** Version bump only for package @transferwise/components
