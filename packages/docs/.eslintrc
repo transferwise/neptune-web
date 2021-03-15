@@ -1,7 +1,6 @@
 {
   "extends": "@transferwise",
   "rules": {
-    "react/require-default-props": [0],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
