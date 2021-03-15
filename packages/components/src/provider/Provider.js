@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 import { IntlProvider } from 'react-intl';
-import { RTLProvider } from './rtl';
+import { DirectionProvider } from './direction';
 import en from '../../i18n/en.json';
 import { DEFAULT_LOCALE, adjustLocale } from '../common/locale';
 import '../common/polyfills/intl';
@@ -21,7 +21,7 @@ function Provider({ i18n, children }) {
   }
 
   return (
-    <RTLProvider locale={intlConfig.locale}>
+    <DirectionProvider locale={intlConfig.locale}>
       <IntlProvider
         defaultLocale={DEFAULT_LOCALE}
         locale={intlConfig.locale}
@@ -30,7 +30,7 @@ function Provider({ i18n, children }) {
       >
         {children}
       </IntlProvider>
-    </RTLProvider>
+    </DirectionProvider>
   );
 }
 
