@@ -11,7 +11,7 @@ beforeEach(() => {
   React.useContext = jest.fn(() => direction);
   useContextMock = React.useContext;
 });
-// Cleanup mock
+
 afterEach(() => {
   React.useContext = realUseContext;
 });

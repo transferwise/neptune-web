@@ -55,7 +55,18 @@ const CenterDecorator = (storyFn) => (
 
 // list is not exhaustive but should enough for testing diff edge cases
 // feel free to add more during development
-const severalExamplesOfSupportedLocales = [DEFAULT_LOCALE, 'en-US', 'ja-JP', 'zh-HK', 'es', 'fr', 'ru', 'de', 'tr'];
+const severalExamplesOfSupportedLocales = [
+  DEFAULT_LOCALE,
+  'en-US',
+  'ja-JP',
+  'zh-HK',
+  'es',
+  'fr',
+  'ru',
+  'de',
+  'tr',
+  'he-IL',
+];
 
 const ProviderDecorator = (storyFn) => {
   const locale = select('locale (global)', severalExamplesOfSupportedLocales, DEFAULT_LOCALE);
