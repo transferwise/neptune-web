@@ -20,23 +20,28 @@ export function printDate(date) {
 }
 
 const getPages = () => {
-  const req = require.context('../pages/', true, /mdx$|js$|tsx$/);
+  const req = require.context('../pages/', true);
 
-  return req.keys().map((filePath) => {
-    // Chop off the './' and file extention
-    const pathParts = filePath.slice(2, filePath.lastIndexOf('.')).split('/');
-    const path = `/${pathParts.join('/')}`;
-    const slug = pathParts.pop();
+  return req
+    .keys()
+    .filter((filePath) => {
+      return filePath.endsWith('.js') || filePath.endsWith('.mdx') || filePath.endsWith('.tsx');
+    })
+    .map((filePath) => {
+      // Chop off the './' and file extention
+      const pathParts = filePath.slice(2, filePath.lastIndexOf('.')).split('/');
+      const path = `/${pathParts.join('/')}`;
+      const slug = pathParts.pop();
 
-    const obj = {
-      rootDir: pathParts[0],
-      component: req(filePath),
-      slug,
-      path,
-    };
+      const obj = {
+        rootDir: pathParts[0],
+        component: req(filePath),
+        slug,
+        path,
+      };
 
-    return obj;
-  });
+      return obj;
+    });
 };
 
 const pages = getPages();
