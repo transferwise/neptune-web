@@ -11,7 +11,7 @@ describe('AccordionItem', () => {
   const props = {
     title: 'Hello',
     content: 'world!',
-    isInitiallyOpen: false,
+    initiallyOpen: false,
     onClick: jest.fn(),
   };
 
@@ -54,7 +54,7 @@ describe('AccordionItem', () => {
 
   describe('when open', () => {
     beforeEach(() => {
-      component = shallow(<AccordionItem {...props} isInitiallyOpen />);
+      component = shallow(<AccordionItem {...props} initiallyOpen />);
     });
 
     it('displays the title', () => {
