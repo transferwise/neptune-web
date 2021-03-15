@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import { HelpCircle as HelpCircleIcon } from '@transferwise/icons';
-import Popover from '../../popover';
-import Modal from '../../modal';
+import Popover from '../popover';
+import Modal from '../modal';
 
-import { Size } from '../../common';
+import { Size } from '../common';
 import './Info.css';
 
 const Info = (props) => {
@@ -30,11 +30,11 @@ const Info = (props) => {
     >
       {isModal ? (
         <>
-          <button type="button" onClick={() => setOpen(true)} {...buttonProps} />
+          <button type="button" onClick={() => setOpen(!open)} {...buttonProps} />
           <Modal body={content} onClose={() => setOpen(false)} open={open} title={title} />
         </>
       ) : (
-        <Popover content={content} preferredPlacement={Popover.Placement.BOTTOM_LEFT} title={title}>
+        <Popover content={content} preferredPlacement={Popover.Placement.BOTTOM} title={title}>
           <button type="button" {...buttonProps} />
         </Popover>
       )}
@@ -50,7 +50,7 @@ Info.Presentation = {
 Info.Size = { SMALL: Size.SMALL, LARGE: Size.LARGE };
 
 Info.propTypes = {
-  'aria-label': Types.string,
+  'aria-label': Types.string.isRequired,
   /** Extra classes applied to Info */
   className: Types.string,
   /** Content displayed inside a Popover a Modal */
@@ -64,7 +64,6 @@ Info.propTypes = {
 };
 
 Info.defaultProps = {
-  'aria-label': undefined,
   className: undefined,
   content: undefined,
   presentation: Info.Presentation.POPOVER,

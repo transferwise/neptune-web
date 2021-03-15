@@ -2,11 +2,11 @@
   "files": [
     {
       "path": "./packages/components/build/umd/polyfill/main.js",
-      "maxSize": "127kB"
+      "maxSize": "135kB"
     },
     {
       "path": "./packages/components/build/umd/no-polyfill/main.js",
-      "maxSize": "111kB"
+      "maxSize": "120kB"
     },
     {
       "path": "./packages/components/build/main.css",

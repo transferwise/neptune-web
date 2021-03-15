@@ -10,7 +10,9 @@
     "*.css"
   ],
   "files": [
-    "build"
+    "build",
+    "bin",
+    "upgrades"
   ],
   "repository": {
     "type": "git",
@@ -42,6 +44,9 @@
     "lintless": "stylelint ./src/**/*.less",
     "lintless:fix": "yarn lintless --fix",
     "build-storybook": "yarn build && build-storybook -c .storybook -o ./dist/my-component/storybook/"
+  },
+  "bin": {
+    "neptune-upgrade-util": "bin/neptune-upgrader.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
@@ -90,17 +95,22 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
+    "@popperjs/core": "^2.6.0",
     "@formatjs/intl-locale": "^2.4.14",
     "@transferwise/formatting": "^2.1.0",
     "@transferwise/neptune-validation": "^2.0.11",
     "classnames": "^2.2.6",
     "commonmark": "0.29.1",
     "core-js": "^3.8.0",
+    "inquirer": "^7.3.3",
+    "inquirer-file-tree-selection-prompt": "^1.0.7",
+    "jscodeshift": "^0.11.0",
     "lodash.clamp": "^4.0.3",
     "lodash.debounce": "^4.0.8",
     "lodash.difference": "^4.5.0",
     "lodash.throttle": "^4.1.1",
     "lodash.topairs": "^4.3.0",
+    "react-popper": "^2.2.4",
     "react-required-if": "^1.0.3",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.2.1"

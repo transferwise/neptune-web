@@ -34,7 +34,7 @@ describe('Drawer', () => {
   });
 
   it('renders slidingPanel with right props', () => {
-    const slidingPanel = component.find('SlidingPanel');
+    const slidingPanel = component.find('ForwardRef');
     expect(slidingPanel).toHaveLength(1);
     expect(slidingPanel.prop('open')).toBe(props.open);
     expect(slidingPanel.prop('position')).toBe(props.position);
@@ -42,7 +42,7 @@ describe('Drawer', () => {
 
   it('renders dimmer  with right props', () => {
     // For some reasons Dimmer is rendered as Component
-    const dimmer = component.find('SlidingPanel').parent();
+    const dimmer = component.find('ForwardRef').parent();
     expect(dimmer).toHaveLength(1);
     expect(dimmer.prop('open')).toBe(props.open);
     expect(dimmer.prop('fadeContentOnExit')).toBe(props.fadeContentOnExit);

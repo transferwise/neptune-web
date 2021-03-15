@@ -30,6 +30,7 @@ describe('Tabs', () => {
 
   beforeEach(() => {
     props = {
+      animatePanelsOnClick: true,
       tabs: generateTabs(),
       changeTabOnSwipe: true,
       name: 'test',
@@ -171,6 +172,11 @@ describe('Tabs', () => {
     expect(component.state('isAnimating')).toBe(false);
 
     component.setProps({ tabs: generateTabs([false, false, false]) });
+    expect(component.state('isAnimating')).toBe(false);
+  });
+
+  it('does not animate when animatePanels is false', () => {
+    component.setProps({ animatePanelsOnClick: false, selected: 2 });
     expect(component.state('isAnimating')).toBe(false);
   });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '../test-utils';
+import { render, waitFor, fireEvent } from '../test-utils';
 import Summary from './Summary';
 
 describe('Summary', () => {
@@ -8,26 +8,30 @@ describe('Summary', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('renders full component', () => {
-    const { asFragment } = render(
-      <Summary
-        action={{
-          text: 'text',
-          href: 'href',
-          'aria-label': 'aria-label',
-        }}
-        description="description"
-        info={{
-          title: 'title',
-          content: 'description',
-          'aria-label': 'aria-label',
-        }}
-        icon={<strong>icon</strong>}
-        status={Summary.Status.DONE}
-        title="title"
-      />,
-    );
-    expect(asFragment()).toMatchSnapshot();
+  it('renders full component', async () => {
+    let container;
+    await waitFor(() => {
+      ({ container } = render(
+        <Summary
+          action={{
+            text: 'text',
+            href: 'href',
+            'aria-label': 'aria-label',
+          }}
+          description="description"
+          info={{
+            title: 'title',
+            content: 'description',
+            'aria-label': 'aria-label',
+          }}
+          icon={<strong>icon</strong>}
+          status={Summary.Status.DONE}
+          title="title"
+        />,
+      ));
+
+      expect(container).toMatchSnapshot();
+    });
   });
 
   describe('action', () => {
