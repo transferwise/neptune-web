@@ -27,8 +27,3 @@ export default function Home() {
     </>
   );
 }
-
-export const meta = {
-  name: 'The latest news about Neptune Web',
-  linkText: 'Home',
-};

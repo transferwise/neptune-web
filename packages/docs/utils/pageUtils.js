@@ -20,7 +20,7 @@ export function printDate(date) {
 }
 
 const getPages = () => {
-  const req = require.context('../pages/', true, /mdx$|js$|tsx$/);
+  const req = require.context('../pages/', true, /mdx$|tsx$/);
 
   return req.keys().map((filePath) => {
     // Chop off the './' and file extention
