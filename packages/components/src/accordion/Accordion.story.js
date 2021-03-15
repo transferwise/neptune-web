@@ -22,9 +22,11 @@ export const basic = () => {
       id: 'Item 2',
     },
     {
-      title: 'Item 3',
-      content: 'I can be text',
+      title: 'Item 3 can be with an icon',
+      content:
+        'I can be text long text I can be text long text I can be text long text I can be text long text',
       id: 'Item 3',
+      icon: <FastFlagIcon size={24} />,
     },
   ];
 

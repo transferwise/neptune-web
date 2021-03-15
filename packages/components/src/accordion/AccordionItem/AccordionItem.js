@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import { isString } from '@transferwise/neptune-validation';
 import Chevron from '../../chevron';
 
-const AccordionItem = ({ id, title, content, onClick, isInitiallyOpen, icon }) => {
-  const [isOpen, setIsOpen] = useState(isInitiallyOpen);
+const AccordionItem = ({ id, title, content, onClick, initiallyOpen, icon }) => {
+  const [isOpen, setIsOpen] = useState(initiallyOpen);
 
   return (
     <div id={id} className={classNames('tw-accordion-item decision p-a-0', { closed: !isOpen })}>
@@ -48,7 +48,7 @@ AccordionItem.propTypes = {
   title: Types.node.isRequired,
   content: Types.node.isRequired,
   onClick: Types.func.isRequired,
-  isInitiallyOpen: Types.bool.isRequired,
+  initiallyOpen: Types.bool.isRequired,
   icon: Types.node,
 };
 
