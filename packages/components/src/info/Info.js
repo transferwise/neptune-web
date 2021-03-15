@@ -34,7 +34,7 @@ const Info = (props) => {
           <Modal body={content} onClose={() => setOpen(false)} open={open} title={title} />
         </>
       ) : (
-        <Popover content={content} preferredPlacement={Popover.Placement.BOTTOM_LEFT} title={title}>
+        <Popover content={content} preferredPlacement={Popover.Placement.BOTTOM} title={title}>
           <button type="button" {...buttonProps} />
         </Popover>
       )}

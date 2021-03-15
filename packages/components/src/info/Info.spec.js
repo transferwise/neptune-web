@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, screen } from '../test-utils';
+import { render, fireEvent, waitFor, screen } from '../test-utils';
 import Info from './Info';
 
 jest.mock('../dimmer', () => {
@@ -19,54 +19,65 @@ describe('Info', () => {
     jest.clearAllMocks();
   });
 
-  it('renders small icon', () => {
-    render(<Info {...props} />);
+  it('renders small icon', async () => {
+    await waitFor(() => {
+      render(<Info {...props} />);
+    });
 
-    const svgElement = getSvgIcon();
-    expect(svgElement.getAttribute('height')).toBe('16');
+    expect(getSvgIcon().getAttribute('height')).toBe('16');
   });
 
-  it('renders large icon', () => {
-    render(<Info {...props} size={Info.Size.LARGE} />);
-    const svgElement = getSvgIcon();
+  it('renders large icon', async () => {
+    await waitFor(() => {
+      render(<Info {...props} size={Info.Size.LARGE} />);
+    });
 
-    expect(svgElement.getAttribute('height')).toBe('24');
+    expect(getSvgIcon().getAttribute('height')).toBe('24');
   });
 
   describe(`when in ${Info.Presentation.POPOVER} mode`, () => {
-    it('renders popover component', () => {
-      render(<Info {...props} />);
-      const helpIcon = getHelpIcon();
+    it('renders help button trigger', async () => {
+      await waitFor(() => {
+        render(<Info {...props} open />);
+      });
 
-      expect(helpIcon).toBeInTheDocument();
-      expect(helpIcon.getAttribute('data-toggle')).toEqual('popover');
+      expect(getTriggerButton()).toBeInTheDocument();
     });
 
-    it('opens popover onClick', () => {
-      render(<Info {...props} />);
+    it('opens popover onClick', async () => {
+      await waitFor(() => {
+        render(<Info {...props} />);
+      });
 
-      const helpIcon = getHelpIcon();
+      expect(getPopover()).not.toBeInTheDocument();
 
-      expect(helpIcon).toBeInTheDocument();
-      expect(helpIcon.getAttribute('aria-expanded')).toEqual('false');
+      fireEvent.click(getTriggerButton());
 
-      fireEvent.click(helpIcon);
-      expect(helpIcon.getAttribute('aria-expanded')).toEqual('true');
+      expect(getPopover()).toBeInTheDocument();
     });
   });
 
   describe(`when in ${Info.Presentation.MODAL} mode`, () => {
+    it('renders help button trigger', async () => {
+      await waitFor(() => {
+        render(<Info {...props} open />);
+      });
+
+      expect(getTriggerButton()).toBeInTheDocument();
+    });
     it('opens modal onClick', () => {
       render(<Info {...props} presentation={Info.Presentation.MODAL} />);
-      const helpIcon = getHelpIcon();
 
-      expect(helpIcon).toBeInTheDocument();
+      expect(getModal()).not.toBeInTheDocument();
 
-      fireEvent.click(helpIcon);
-      expect(document.querySelector('.tw-modal')).toBeInTheDocument();
+      fireEvent.click(getTriggerButton());
+
+      expect(getModal()).toBeInTheDocument();
     });
   });
 
-  const getHelpIcon = () => screen.getByLabelText('aria-label');
+  const getTriggerButton = () => screen.queryByLabelText('aria-label');
   const getSvgIcon = () => document.querySelector('.tw-icon-help-circle > svg');
+  const getPopover = () => screen.queryByRole('tooltip');
+  const getModal = () => screen.queryByRole('dialog');
 });
