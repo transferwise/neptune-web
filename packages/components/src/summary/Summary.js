@@ -8,7 +8,7 @@ import {
 } from '@transferwise/icons';
 import requiredIf from 'react-required-if';
 
-import Info from './info';
+import Info from '../info';
 import { Status } from '../common';
 import { deprecated } from '../utilities';
 
@@ -143,7 +143,7 @@ Summary.propTypes = {
   /** Infos displayed on help Icon click inside Popover or Modal */
   // eslint-disable-next-line
   info: Types.shape({
-    'aria-label': Types.string,
+    'aria-label': Types.string.isRequired,
     content: Types.node.isRequired,
     presentation: Types.oneOf([Info.Presentation.POPOVER, Info.Presentation.MODAL]),
     title: Types.node,

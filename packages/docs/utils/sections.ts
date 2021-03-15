@@ -70,6 +70,10 @@ const sections: MainSection[] = [
         dir: 'styles/tokens',
         fileOrder: ['Colors', 'Sizes', 'Breakpoints'],
       },
+      {
+        title: 'Extras',
+        dir: 'styles/extras',
+      },
     ],
   },
   {

@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button alternative states renders as block if block is true 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-block np-btn-block btn-accent btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button alternative states renders as loading if loading is true 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-loading btn-accent btn-priority-1"
+    disabled=""
+    type="button"
+  >
+    Send money
+    <span
+      class="btn-loader m-l-2"
+    />
+  </button>
+</div>
+`;
+
+exports[`Button by default renders a medium button of type accent and priority primary 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-accent btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button deprecated types renders danger as negative buttons with priority secondary and logs a warning 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-negative btn-priority-2"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button deprecated types renders link as accent buttons with priority tertiary and logs a warning 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-accent btn-priority-3"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button deprecated types renders pay as positive buttons and logs a warning 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-positive btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button deprecated types renders primary as accent buttons and logs a warning  1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-accent btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button priorities defaults tertiary buttons to secondary for positive buttons 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-positive btn-priority-2"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button priorities defaults tertiary buttons to secondary for positive buttons 2`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-negative btn-priority-2"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button priorities renders primary buttons 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-accent btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button priorities renders primary buttons 2`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-positive btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button priorities renders primary buttons 3`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-negative btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button priorities renders secondary buttons 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-accent btn-priority-2"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button priorities renders secondary buttons 2`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-positive btn-priority-2"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button priorities renders secondary buttons 3`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-negative btn-priority-2"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button priorities renders tertiary buttons 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-accent btn-priority-3"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button sizes renders large buttons 1`] = `
+<div>
+  <button
+    class="btn btn-lg np-btn np-btn-lg btn-accent btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button sizes renders medium buttons 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-accent btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button sizes renders small buttons 1`] = `
+<div>
+  <button
+    class="btn btn-sm np-btn np-btn-sm btn-accent btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button types renders accent buttons 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-accent btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button types renders negative buttons 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-negative btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;
+
+exports[`Button types renders positive buttons 1`] = `
+<div>
+  <button
+    class="btn btn-md np-btn np-btn-md btn-positive btn-priority-1"
+    type="button"
+  >
+    Send money
+  </button>
+</div>
+`;

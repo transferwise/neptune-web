@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { forwardRef, useRef } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
@@ -7,13 +7,14 @@ import { useClientWidth } from '../common/hooks';
 
 const Layout = { COLUMN: 'COLUMN' };
 
-const SizeSwapper = ({ items }) => {
+const SizeSwapper = forwardRef(({ items }, ref) => {
   if (!items || !items.length) {
     return null;
   }
-  const ref = useRef(null);
 
-  const [clientWidth] = useClientWidth({ ref });
+  const parentRef = useRef(null);
+
+  const [clientWidth] = useClientWidth({ ref: ref || parentRef });
 
   // If all breakpoints are specified and clientWidth never > breakpoint itemsToRender can be undefined.
   // Do not use deconstruct here to get items and layout.
@@ -39,12 +40,12 @@ const SizeSwapper = ({ items }) => {
         'flex-column': itemsToRender && itemsToRender.layout === Layout.COLUMN,
       })}
       style={{ visibility: clientWidth ? 'visible' : 'hidden' }}
-      ref={ref}
+      ref={parentRef}
     >
       {itemsToRender && itemsToRender.items}
     </div>
   );
-};
+});
 
 SizeSwapper.Breakpoint = Breakpoint;
 SizeSwapper.Layout = Layout;

@@ -2,59 +2,80 @@ import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
 import { Button } from '@transferwise/components';
 import code from '../../../liveEditorCode/button.code';
 
-Simple wrapper component for all button types and their states.
-
 <LiveEditorBlock code={code} scope={{ Button }} />
 <GeneratePropsTable componentName="Button" />
 
-## Types
+## Variants
 
 <div className="scroll-table">
   <table className="docs-table table ">
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Type</th>
+        <th>Priority</th>
         <th>Preview</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th scope="row">Primary</th>
+        <th>Accent</th>
+        <th>Primary</th>
         <td>
-          <Button size="md" type="primary" block={true}>
+          <Button block={true} onClick={() => {}}>
             Continue
           </Button>
         </td>
       </tr>
       <tr>
-        <th scope="row">Pay</th>
+        <th>Accent</th>
+        <th>Secondary</th>
         <td>
-          <Button size="md" type="pay" block={true}>
+          <Button priority="secondary" block={true} onClick={() => {}}>
+            Convert money
+          </Button>
+        </td>
+      </tr>
+      <tr>
+        <th>Accent</th>
+        <th>Tertiary</th>
+        <td>
+          <Button priority="tertiary" block={true} onClick={() => {}}>
+            Convert money
+          </Button>
+        </td>
+      </tr>
+      <tr>
+        <th>Positive</th>
+        <th>Primary</th>
+        <td>
+          <Button type="positive" block={true} onClick={() => {}}>
             Send money
           </Button>
         </td>
       </tr>
       <tr>
-        <th scope="row">Secondary</th>
+        <th>Positive</th>
+        <th>Secondary</th>
         <td>
-          <Button size="md" type="secondary" block={true}>
-            Manage my card
-          </Button>
-        </td>
-      </tr>{' '}
-      <tr>
-        <th scope="row">Danger</th>
-        <td>
-          <Button size="md" type="danger" block={true}>
-            Delete recipient
+          <Button type="positive" priority="secondary" block={true} onClick={() => {}}>
+            Confirm
           </Button>
         </td>
       </tr>
       <tr>
-        <th scope="row">Link</th>
+        <th>Negative</th>
+        <th>Primary</th>
         <td>
-          <Button size="md" type="link" block={true}>
-            Get help
+          <Button type="negative" block={true} onClick={() => {}}>
+            Delete
+          </Button>
+        </td>
+      </tr> <tr>
+        <th>Negative</th>
+        <th>Secondary</th>
+        <td>
+          <Button type="negative" priority="secondary" block={true} onClick={() => {}}>
+            Cancel
           </Button>
         </td>
       </tr>

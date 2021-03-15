@@ -2,6 +2,7 @@ export { default as HistoryNavigator } from './historyNavigator';
 export { addNoScrollBodyClass, removeNoScrollBodyClass } from './DOMOperations';
 export { Theme } from './theme';
 // Props
+export { Priority, Type as ControlType } from './propsValues/control';
 export { Breakpoint } from './propsValues/breakpoint';
 export { Size } from './propsValues/size';
 export { Type } from './propsValues/type';

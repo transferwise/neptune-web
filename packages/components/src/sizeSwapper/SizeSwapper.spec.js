@@ -72,4 +72,26 @@ describe('SizeSwapper', () => {
     expect(getByText(`element-1-${breakpoints[1]}`)).toBeInTheDocument();
     expect(getByText(`element-2-${breakpoints[1]}`)).toBeInTheDocument();
   });
+
+  describe('when ref is window', () => {
+    it('switches elements according to breakpoints', () => {
+      const { getByText, queryByText } = render(<SizeSwapper items={items} ref={window} />);
+      global.innerWidth = breakpoints[1] - 1;
+      fireEvent(window, new Event('resize'));
+
+      expect(getByText(`element-1-0`)).toBeInTheDocument();
+      expect(getByText(`element-2-0`)).toBeInTheDocument();
+      expect(queryByText(`element-1-${breakpoints[1]}`)).not.toBeInTheDocument();
+      expect(queryByText(`element-2-${breakpoints[1]}`)).not.toBeInTheDocument();
+
+      [, global.innerWidth] = breakpoints;
+
+      fireEvent(window, new Event('resize'));
+
+      expect(queryByText(`element-1-${breakpoints[0]}`)).not.toBeInTheDocument();
+      expect(queryByText(`element-2-${breakpoints[0]}`)).not.toBeInTheDocument();
+      expect(getByText(`element-1-${breakpoints[1]}`)).toBeInTheDocument();
+      expect(getByText(`element-2-${breakpoints[1]}`)).toBeInTheDocument();
+    });
+  });
 });

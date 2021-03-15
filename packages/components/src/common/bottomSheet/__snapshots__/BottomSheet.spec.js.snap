@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BottomSheet doesn't renders content when closed 1`] = `<div />`;
+
+exports[`BottomSheet renders content when open 1`] = `
+<div>
+  <div
+    class="dimmer"
+  >
+    <div
+      class="sliding-panel"
+    >
+      content
+    </div>
+  </div>
+</div>
+`;

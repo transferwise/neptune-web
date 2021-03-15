@@ -1,0 +1,57 @@
+import { DocLink } from '../../../utils/pageUtils';
+
+## Getting started
+
+To use these classes you need to include the `neptune-social-media.css` file after your import of `neptune.css`:
+
+```js
+import '@transferwise/neptune-css/dist/css/neptune.css';
+import '@transferwise/neptune-css/dist/css/neptune-social-media.css';
+```
+
+## Usage
+
+Simply apply the correct class to a button along with the `btn` class, as follows:
+
+```html
+<button type="button" className="btn btn-google">Login with Google</button>
+<button type="button" className="btn btn-facebook">Login with Facebook</button>
+```
+
+<table className="table table-bordered">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Class</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google</td>
+      <td>
+        <code>btn-google</code>
+      </td>
+      <td>
+        <button type="button" className="btn btn-google">
+          Login with Google
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>Facebook</td>
+      <td>
+        <code>btn-facebook</code>
+      </td>
+      <td>
+        <button type="button" className="btn btn-facebook">
+          Login with Facebook
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+export const meta = {
+  name: 'Social media buttons',
+};

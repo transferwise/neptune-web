@@ -1,0 +1,421 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CircularButton defaults renders a button of type accent and priority primary 1`] = `
+<div>
+  <label
+    class="np-circular-btn primary accent  "
+  >
+    <input
+      aria-label="Add money"
+      class="btn np-btn btn-accent btn-priority-1"
+      type="button"
+    />
+    <span
+      aria-hidden="true"
+      class="tw-icon tw-icon-plus "
+      role="presentation"
+    >
+      <svg
+        fill="currentColor"
+        focusable="false"
+        height="24"
+        width="24"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M11 22V2h2v20h-2z"
+          fill-rule="evenodd"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M22 13H2v-2h20v2z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <span
+      class="np-circular-btn__label"
+    >
+      Add money
+    </span>
+  </label>
+</div>
+`;
+
+exports[`CircularButton priorities renders primary buttons 1`] = `
+<div>
+  <label
+    class="np-circular-btn primary accent  "
+  >
+    <input
+      aria-label="Add money"
+      class="btn np-btn btn-accent btn-priority-1"
+      type="button"
+    />
+    <span
+      aria-hidden="true"
+      class="tw-icon tw-icon-plus "
+      role="presentation"
+    >
+      <svg
+        fill="currentColor"
+        focusable="false"
+        height="24"
+        width="24"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M11 22V2h2v20h-2z"
+          fill-rule="evenodd"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M22 13H2v-2h20v2z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <span
+      class="np-circular-btn__label"
+    >
+      Add money
+    </span>
+  </label>
+</div>
+`;
+
+exports[`CircularButton priorities renders primary buttons 2`] = `
+<div>
+  <label
+    class="np-circular-btn primary positive  "
+  >
+    <input
+      aria-label="Add money"
+      class="btn np-btn btn-positive btn-priority-1"
+      type="button"
+    />
+    <span
+      aria-hidden="true"
+      class="tw-icon tw-icon-plus "
+      role="presentation"
+    >
+      <svg
+        fill="currentColor"
+        focusable="false"
+        height="24"
+        width="24"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M11 22V2h2v20h-2z"
+          fill-rule="evenodd"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M22 13H2v-2h20v2z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <span
+      class="np-circular-btn__label"
+    >
+      Add money
+    </span>
+  </label>
+</div>
+`;
+
+exports[`CircularButton priorities renders primary buttons 3`] = `
+<div>
+  <label
+    class="np-circular-btn primary negative  "
+  >
+    <input
+      aria-label="Add money"
+      class="btn np-btn btn-negative btn-priority-1"
+      type="button"
+    />
+    <span
+      aria-hidden="true"
+      class="tw-icon tw-icon-plus "
+      role="presentation"
+    >
+      <svg
+        fill="currentColor"
+        focusable="false"
+        height="24"
+        width="24"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M11 22V2h2v20h-2z"
+          fill-rule="evenodd"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M22 13H2v-2h20v2z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <span
+      class="np-circular-btn__label"
+    >
+      Add money
+    </span>
+  </label>
+</div>
+`;
+
+exports[`CircularButton priorities renders secondary buttons 1`] = `
+<div>
+  <label
+    class="np-circular-btn secondary accent  "
+  >
+    <input
+      aria-label="Add money"
+      class="btn np-btn btn-accent btn-priority-2"
+      type="button"
+    />
+    <span
+      aria-hidden="true"
+      class="tw-icon tw-icon-plus "
+      role="presentation"
+    >
+      <svg
+        fill="currentColor"
+        focusable="false"
+        height="24"
+        width="24"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M11 22V2h2v20h-2z"
+          fill-rule="evenodd"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M22 13H2v-2h20v2z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <span
+      class="np-circular-btn__label"
+    >
+      Add money
+    </span>
+  </label>
+</div>
+`;
+
+exports[`CircularButton priorities renders secondary buttons 2`] = `
+<div>
+  <label
+    class="np-circular-btn secondary positive  "
+  >
+    <input
+      aria-label="Add money"
+      class="btn np-btn btn-positive btn-priority-2"
+      type="button"
+    />
+    <span
+      aria-hidden="true"
+      class="tw-icon tw-icon-plus "
+      role="presentation"
+    >
+      <svg
+        fill="currentColor"
+        focusable="false"
+        height="24"
+        width="24"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M11 22V2h2v20h-2z"
+          fill-rule="evenodd"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M22 13H2v-2h20v2z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <span
+      class="np-circular-btn__label"
+    >
+      Add money
+    </span>
+  </label>
+</div>
+`;
+
+exports[`CircularButton priorities renders secondary buttons 3`] = `
+<div>
+  <label
+    class="np-circular-btn secondary negative  "
+  >
+    <input
+      aria-label="Add money"
+      class="btn np-btn btn-negative btn-priority-2"
+      type="button"
+    />
+    <span
+      aria-hidden="true"
+      class="tw-icon tw-icon-plus "
+      role="presentation"
+    >
+      <svg
+        fill="currentColor"
+        focusable="false"
+        height="24"
+        width="24"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M11 22V2h2v20h-2z"
+          fill-rule="evenodd"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M22 13H2v-2h20v2z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <span
+      class="np-circular-btn__label"
+    >
+      Add money
+    </span>
+  </label>
+</div>
+`;
+
+exports[`CircularButton types renders accent buttons 1`] = `
+<div>
+  <label
+    class="np-circular-btn primary accent  "
+  >
+    <input
+      aria-label="Add money"
+      class="btn np-btn btn-accent btn-priority-1"
+      type="button"
+    />
+    <span
+      aria-hidden="true"
+      class="tw-icon tw-icon-plus "
+      role="presentation"
+    >
+      <svg
+        fill="currentColor"
+        focusable="false"
+        height="24"
+        width="24"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M11 22V2h2v20h-2z"
+          fill-rule="evenodd"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M22 13H2v-2h20v2z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <span
+      class="np-circular-btn__label"
+    >
+      Add money
+    </span>
+  </label>
+</div>
+`;
+
+exports[`CircularButton types renders negative buttons 1`] = `
+<div>
+  <label
+    class="np-circular-btn primary negative  "
+  >
+    <input
+      aria-label="Add money"
+      class="btn np-btn btn-negative btn-priority-1"
+      type="button"
+    />
+    <span
+      aria-hidden="true"
+      class="tw-icon tw-icon-plus "
+      role="presentation"
+    >
+      <svg
+        fill="currentColor"
+        focusable="false"
+        height="24"
+        width="24"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M11 22V2h2v20h-2z"
+          fill-rule="evenodd"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M22 13H2v-2h20v2z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <span
+      class="np-circular-btn__label"
+    >
+      Add money
+    </span>
+  </label>
+</div>
+`;
+
+exports[`CircularButton types renders positive buttons 1`] = `
+<div>
+  <label
+    class="np-circular-btn primary positive  "
+  >
+    <input
+      aria-label="Add money"
+      class="btn np-btn btn-positive btn-priority-1"
+      type="button"
+    />
+    <span
+      aria-hidden="true"
+      class="tw-icon tw-icon-plus "
+      role="presentation"
+    >
+      <svg
+        fill="currentColor"
+        focusable="false"
+        height="24"
+        width="24"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M11 22V2h2v20h-2z"
+          fill-rule="evenodd"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M22 13H2v-2h20v2z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <span
+      class="np-circular-btn__label"
+    >
+      Add money
+    </span>
+  </label>
+</div>
+`;

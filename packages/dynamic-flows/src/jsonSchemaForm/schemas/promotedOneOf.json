@@ -1,0 +1,60 @@
+{
+  "title": "Details",
+  "alert": {
+    "context": "success",
+    "markdown": "Some alert here!",
+    "type": "alert"
+  },
+  "oneOf": [
+    {
+      "title": "Name details",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        }
+      }
+    },
+    {
+      "title": "Address details",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Address",
+          "type": "string"
+        }
+      }
+    },
+    {
+      "title": "General details",
+      "description": "Tell us about yourself",
+      "type": "object",
+      "promoted": true,
+      "properties": {
+        "name": {
+          "title": "Hobbies",
+          "type": "string"
+        }
+      },
+      "image": {
+        "url": "https://picsum.photos/id/237/200/300",
+        "type": "image"
+      }
+    }
+  ],
+  "control": "tab",
+  "promotion": {
+    "other": {
+      "title": "Select a different group",
+      "icon": {
+        "name": "bank",
+        "type": "icon"
+      },
+      "heading": {
+        "text": "Other details",
+        "type": "heading"
+      }
+    }
+  }
+}
