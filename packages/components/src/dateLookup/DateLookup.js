@@ -301,7 +301,7 @@ class DateLookup extends PureComponent {
 }
 
 DateLookup.propTypes = {
-  value: Types.instanceOf(Date),
+  value: Types.instanceOf(Date).isRequired,
   min: Types.instanceOf(Date),
   max: Types.instanceOf(Date),
   size: Types.oneOf([DateLookup.Size.SMALL, DateLookup.Size.MEDIUM, DateLookup.Size.LARGE]),
@@ -315,7 +315,6 @@ DateLookup.propTypes = {
 };
 
 DateLookup.defaultProps = {
-  value: null,
   min: null,
   max: null,
   size: DateLookup.Size.MEDIUM,
