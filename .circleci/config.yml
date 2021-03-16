@@ -48,7 +48,9 @@ aliases:
 
   - &lint
     name: Perform code linting across all packages
-    command: yarn lint
+    command: |
+      yarn lint
+      yarn lintless
 
   - &bundlesize
     name: Pefrorm bundlesize check
