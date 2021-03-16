@@ -1,6 +1,5 @@
 @import (reference) '../variables/neptune-tokens.less';
 @import (reference) '../variables/legacy-variables.less';
-
 @import './mixins/_buttons.less';
 @import './mixins/_tab-focus.less';
 
@@ -24,6 +23,7 @@
     @border-radius-base;
     @btn-height
   );
+
   user-select: none;
 
   &:active,
@@ -31,6 +31,7 @@
   &:focus,
   &.focus {
     .tab-focus();
+
     outline-offset: -2px;
   }
 
@@ -62,29 +63,30 @@
 // @TODO Deprecate / Remove
 .btn-default {
   .button-variant(
-      @btn-default-color;
-      #FFF;
-      @btn-default-bg;
-      @btn-default-bg-hover;
-      @btn-default-bg-active;
-      @btn-default-border;
-      @btn-default-border-hover;
-      @btn-default-border-active;
-      #FFF
+    @btn-default-color;
+    #FFF;
+    @btn-default-bg;
+    @btn-default-bg-hover;
+    @btn-default-bg-active;
+    @btn-default-border;
+    @btn-default-border-hover;
+    @btn-default-border-active;
+    #FFF
   );
 }
 
 // @DEPRECATED: .btn-primary (use Button component with type Accent)
-.btn-accent, .btn-primary {
+.btn-accent,
+.btn-primary {
   .button-variant(
-      @color-text-control;
-      @color-text-control;
-      @color-control-accent;
-      @color-control-accent-hover;
-      @color-control-accent-active;
-      @color-control-accent;
-      @color-control-accent-hover;
-      @color-control-accent-active;
+    @color-text-control;
+    @color-text-control;
+    @color-control-accent;
+    @color-control-accent-hover;
+    @color-control-accent-active;
+    @color-control-accent;
+    @color-control-accent-hover;
+    @color-control-accent-active;
   );
 
   &.btn-priority-2 {
@@ -124,12 +126,15 @@
     text-decoration: @link-decoration;
     border-color: transparent;
   }
+
   &:active {
     color: @link-active-color;
   }
+
   &[disabled],
   fieldset[disabled] & {
     color: @link-disabled-color;
+
     &:hover,
     &:focus {
       color: @link-disabled-color;
@@ -138,16 +143,17 @@
 }
 
 // @DEPRECATED:.btn-success (use Button component with type Positive)
-.btn-positive, .btn-success {
+.btn-positive,
+.btn-success {
   .button-variant(
-      @color-text-control;
-      @color-text-control;
-      @color-control-positive;
-      @color-control-positive-hover;
-      @color-control-positive-active;
-      @color-control-positive;
-      @color-control-positive-hover;
-      @color-control-positive-active;
+    @color-text-control;
+    @color-text-control;
+    @color-control-positive;
+    @color-control-positive-hover;
+    @color-control-positive-active;
+    @color-control-positive;
+    @color-control-positive-hover;
+    @color-control-positive-active;
   );
 
   &.btn-priority-2 {
@@ -169,43 +175,43 @@
 // @TODO Deprecate / Remove
 .btn-info {
   .button-variant(
-      @btn-info-color;
-      #FFF;
-      @btn-info-bg;
-      @btn-info-bg-hover;
-      @btn-info-bg-active;
-      @btn-info-border;
-      @btn-info-border-hover;
-      @btn-info-border-active;
-      #FFF
+    @btn-info-color;
+    #FFF;
+    @btn-info-bg;
+    @btn-info-bg-hover;
+    @btn-info-bg-active;
+    @btn-info-border;
+    @btn-info-border-hover;
+    @btn-info-border-active;
+    #FFF
   );
 }
 
 // @TODO Deprecate / Remove
 .btn-warning {
   .button-variant(
-      @btn-warning-color;
-      #FFF;
-      @btn-warning-bg;
-      @btn-warning-bg-hover;
-      @btn-warning-bg-active;
-      @btn-warning-border;
-      @btn-warning-border-hover;
-      @btn-warning-border-active;
-      #FFF
+    @btn-warning-color;
+    #FFF;
+    @btn-warning-bg;
+    @btn-warning-bg-hover;
+    @btn-warning-bg-active;
+    @btn-warning-border;
+    @btn-warning-border-hover;
+    @btn-warning-border-active;
+    #FFF
   );
 }
 
 .btn-negative {
   .button-variant(
-      @color-text-control;
-      @color-text-control;
-      @color-control-negative;
-      @color-control-negative-hover;
-      @color-control-negative-active;
-      @color-control-negative;
-      @color-control-negative-hover;
-      @color-control-negative-active;
+    @color-text-control;
+    @color-text-control;
+    @color-control-negative;
+    @color-control-negative-hover;
+    @color-control-negative-active;
+    @color-control-negative;
+    @color-control-negative-hover;
+    @color-control-negative-active;
   );
 
   &.btn-priority-2 {
@@ -227,15 +233,15 @@
 // @DEPRECATED: .btn-danger (use Button component with type Negative)
 .btn-danger {
   .button-variant(
-      @btn-danger-color;
-      #FFF;
-      @btn-danger-bg;
-      @btn-danger-bg-hover;
-      @btn-danger-bg-active;
-      @btn-danger-border;
-      @btn-danger-border-hover;
-      @btn-danger-border-active;
-      #FFF
+    @btn-danger-color;
+    #FFF;
+    @btn-danger-bg;
+    @btn-danger-bg-hover;
+    @btn-danger-bg-active;
+    @btn-danger-border;
+    @btn-danger-border-hover;
+    @btn-danger-border-active;
+    #FFF
   );
 }
 
@@ -243,14 +249,14 @@
 .bootstrap-select .btn-default,
 .btn-input {
   .button-variant(
-      @input-color;
-      @input-color;
-      @input-bg;
-      @input-bg;
-      @input-bg;
-      @input-border;
-      @input-border;
-      @input-border-focus
+    @input-color;
+    @input-color;
+    @input-bg;
+    @input-bg;
+    @input-bg;
+    @input-border;
+    @input-border;
+    @input-border-focus
   );
 }
 
@@ -260,28 +266,29 @@
 
 // @TODO Deprecate / Remove
 .btn-image {
-    background-color: @brand-grey-plus-10;
-    background-color: rgba(255,255,255, 0.4);
-    color: @brand-white;
-    &:hover,
-    &:focus {
-        background-color: @brand-grey-plus-10;
-        background-color: rgba(24,33,56, 0.56);
-    }
+  background-color: @brand-grey-plus-10;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: @brand-white;
 
-    &:active,
-    &:hover:active {
-        background: @brand-grey-minus-20;
-    }
+  &:hover,
+  &:focus {
+    background-color: @brand-grey-plus-10;
+    background-color: rgba(24, 33, 56, 0.56);
+  }
+
+  &:active,
+  &:hover:active {
+    background: @brand-grey-minus-20;
+  }
 }
 
 // @TODO Deprecate / Remove
 .btn-inverse {
-    .button-outline(
-        @brand-white;
-        @brand-smoke-plus-10;
-        @brand-grey
-    );
+  .button-outline(
+    @brand-white;
+    @brand-smoke-plus-10;
+    @brand-grey
+  );
 }
 
 // Sizes
@@ -293,7 +300,12 @@
     @border-radius-large;
     @btn-lg-height
   );
+
+  .btn-loader {
+    margin-top: 2px;
+  }
 }
+
 .btn-sm,
 .navbar .btn {
   .button-size(
@@ -304,6 +316,7 @@
     @btn-sm-height
   );
 }
+
 .btn-xs {
   .button-size(
     @btn-xs-padding;
@@ -358,41 +371,45 @@ input[type="button"] {
   &:active,
   &.focus,
   &:focus {
-      border-color: @input-border-focus;
-      outline: 0px none !important;
+    border-color: @input-border-focus;
+    outline: 0 none !important;
   }
 
+  // stylelint-disable-next-line no-duplicate-selectors
   .caret {
-      color: @brand-light-blue;
+    color: @brand-light-blue;
   }
 
   &[disabled] {
+    background-color: @input-bg-disabled;
+    color: @input-color-disabled;
+
+    .caret {
+      color: @input-color-disabled;
+    }
+
+    &:hover,
+    &:focus {
       background-color: @input-bg-disabled;
       color: @input-color-disabled;
-
-      .caret {
-          color: @input-color-disabled;
-      }
-
-      &:hover,
-      &:focus {
-          background-color: @input-bg-disabled;
-          color: @input-color-disabled;
-      }
+    }
   }
 
   .form-control-placeholder {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      display: block;
-      width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    width: 100%;
   }
+
   &.btn-sm {
     padding-left: 12px;
     padding-right: 12px;
   }
+
   &.btn-lg {
     font-size: @input-font-size-large;
+
     &.btn-addon,
     &.btn-input-inverse {
       font-weight: @font-weight-semi-bold;
@@ -415,28 +432,30 @@ input[type="button"] {
     @brand-navy-minus-20;
     #FFF
   );
+
   &:focus {
-    outline: thin dotted rgba(255,255,255,0.7);
+    outline: thin dotted rgba(255, 255, 255, 0.7);
   }
 }
 
 // @TODO Deprecate / Remove
 // Remove bootstrap-select rules after checking tw-currency-select
 .form-group-sm {
-    .bootstrap-select .btn-default {
-      padding: @padding-small-vertical @padding-small-horizontal;
-    }
+  .bootstrap-select .btn-default {
+    padding: @padding-small-vertical @padding-small-horizontal;
+  }
 }
+
 .form-group-lg {
-    .bootstrap-select .btn-default {
-      padding: @padding-large-vertical @padding-large-horizontal;
-    }
+  .bootstrap-select .btn-default {
+    padding: @padding-large-vertical @padding-large-horizontal;
+  }
 }
 // @TODO Deprecate / Remove
 .bootstrap-select.open > .dropdown-toggle.btn-default {
-    border-color: @input-border-focus;
-    background-color:  @input-bg;
-    color: @input-color;
+  border-color: @input-border-focus;
+  background-color: @input-bg;
+  color: @input-color;
 }
 
 .btn-loader {
@@ -450,12 +469,6 @@ input[type="button"] {
   animation: rotating 0.4s linear infinite;
 }
 
-.btn-lg {
-  .btn-loader {
-    margin-top: 2px;
-  }
-}
-
 .btn-sm {
   .btn-loader {
     background-size: 16px 16px;
@@ -466,6 +479,7 @@ input[type="button"] {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -490,6 +504,7 @@ input[type="button"] {
   }
 }
 
+// stylelint-disable-next-line no-duplicate-selectors
 a.btn {
   text-decoration: none;
 }

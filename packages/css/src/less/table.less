@@ -13,6 +13,15 @@
 table {
   background-color: @table-bg;
   border-collapse: separate;
+
+  td,
+  th {
+    &[class*='col-'] {
+      position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
+      float: none;
+      display: table-cell;
+    }
+  }
 }
 
 caption {
@@ -199,17 +208,6 @@ table col[class*='col-'] {
   position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
   float: none;
   display: table-column;
-}
-
-table {
-  td,
-  th {
-    &[class*='col-'] {
-      position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
-      float: none;
-      display: table-cell;
-    }
-  }
 }
 
 // Table backgrounds

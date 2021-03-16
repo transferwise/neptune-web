@@ -1,5 +1,4 @@
 @import (reference) '../variables/legacy-variables.less';
-
 @import './mixins/_border-radius.less';
 @import './mixins/_clearfix.less';
 @import './mixins/_tab-focus.less';
@@ -10,6 +9,7 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
+
   > .btn {
     position: relative;
     float: left;
@@ -64,24 +64,29 @@
       .expand-toolbar();
     }
   }
+
   &.btn-toolbar-xs {
     .expand-toolbar();
   }
+
   @media (min-width: @screen-sm-min) {
     &.btn-toolbar-sm {
       .expand-toolbar();
     }
   }
+
   @media (min-width: @screen-md-min) {
     &.btn-toolbar-md {
       .expand-toolbar();
     }
   }
+
   @media (min-width: @screen-lg-min) {
     &.btn-toolbar-lg {
       .expand-toolbar();
     }
   }
+
   @media (min-width: @screen-xl-min) {
     &.btn-toolbar-xl {
       .expand-toolbar();
@@ -96,6 +101,7 @@
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
   margin-left: 0;
+
   &:not(:last-child):not(.dropdown-toggle) {
     .border-right-radius(0);
   }
@@ -110,15 +116,18 @@
 .btn-group > .btn-group {
   float: left;
 }
+
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
+
 .btn-group > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
     .border-right-radius(0);
   }
 }
+
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
   .border-left-radius(0);
 }
@@ -136,9 +145,11 @@
 .btn-group-xs > .btn {
   &:extend(.btn-xs);
 }
+
 .btn-group-sm > .btn {
   &:extend(.btn-sm);
 }
+
 .btn-group-lg > .btn {
   &:extend(.btn-lg);
 }
@@ -151,6 +162,7 @@
   padding-left: 12px;
   padding-right: 12px;
 }
+
 .btn-group > .btn-lg + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px;
@@ -172,10 +184,12 @@
   border-width: @caret-width-large @caret-width-large 0;
   border-bottom-width: 0;
 }
+
 .btn-sm .caret,
 .input-group-sm .btn .caret {
   top: 8px !important;
 }
+
 .btn-lg .caret,
 .input-group-lg .btn .caret {
   top: 27px !important;
@@ -202,6 +216,7 @@
   // Clear floats so dropdown menus can be properly placed
   > .btn-group {
     &:extend(.clearfix all);
+
     > .btn {
       float: none;
     }
@@ -220,27 +235,30 @@
   &:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
+
   &:first-child:not(:last-child) {
     border-top-right-radius: @border-radius-base;
     .border-bottom-radius(0);
   }
+
   &:last-child:not(:first-child) {
     border-bottom-left-radius: @border-radius-base;
     .border-top-radius(0);
   }
 }
+
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
+
 .btn-group-vertical > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
     .border-bottom-radius(0);
   }
 }
-.btn-group-vertical
-  > .btn-group:last-child:not(:first-child)
-  > .btn:first-child {
+
+.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
   .border-top-radius(0);
 }
 
@@ -253,12 +271,14 @@
   width: 100%;
   table-layout: fixed;
   border-collapse: separate;
+
   > .btn,
   > .btn-group {
     float: none;
     display: table-cell;
     width: 1%;
   }
+
   > .btn-group .btn {
     width: 100%;
   }
@@ -296,6 +316,7 @@
   + .btn-success {
     border-left: 1px solid @brand-green-minus-10;
   }
+
   + .btn-primary {
     border-left: 1px solid @brand-light-blue-minus-10;
   }
@@ -309,26 +330,20 @@
     display: block;
     width: 100%;
   }
+
   .btn-input.btn {
     text-align: left;
+
     .caret {
       position: absolute;
       right: 16px;
       top: 16px;
     }
+
     &.btn-sm .caret {
       right: 8px;
     }
-  }
-  .btn + .dropdown-toggle {
-    flex: 0;
-    .caret {
-      position: relative;
-      top: 0;
-      right: 0;
-    }
-  }
-  .btn-input.btn {
+
     &.dropdown-toggle {
       padding-right: 40px;
       overflow: hidden;
@@ -338,11 +353,23 @@
         padding-right: 48px;
       }
     }
+
     &.btn-sm.dropdown-toggle {
       padding-right: 33px;
     }
   }
+
+  .btn + .dropdown-toggle {
+    flex: 0;
+
+    .caret {
+      position: relative;
+      top: 0;
+      right: 0;
+    }
+  }
 }
+
 .btn-block {
   .dropdown-menu {
     width: 100%;
@@ -367,15 +394,7 @@
       white-space: normal;
     }
   }
-}
 
-@media (min-height: 592px) {
-  .btn-group .dropdown-menu {
-    max-height: 592px; // (12 * 48) + 16 = 592
-  }
-}
-
-.btn-group {
   .small {
     color: @text-secondary-color;
     line-height: (@line-height-computed - 1px);
@@ -383,6 +402,12 @@
     &.text-ellipsis {
       line-height: @line-height-computed;
     }
+  }
+}
+
+@media (min-height: 592px) {
+  .btn-group .dropdown-menu {
+    max-height: 592px; // (12 * 48) + 16 = 592
   }
 }
 

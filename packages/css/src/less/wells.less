@@ -2,13 +2,13 @@
   min-height: var(--size-24);
   margin-bottom: var(--size-24);
   border-radius: var(--radius-small);
-
   border: solid 1px var(--color-border-neutral);
   padding: var(--size-24);
   box-shadow: none;
 }
 
 .sized-well(@size) {
+  // stylelint-disable-next-line media-feature-name-no-unknown
   @media only screen and (@size) {
     .well();
   }

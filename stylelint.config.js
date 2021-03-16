@@ -8,6 +8,7 @@ module.exports = {
     'selector-no-vendor-prefix': true,
     'value-no-vendor-prefix': true,
     'no-descending-specificity': null,
+    'no-invalid-double-slash-comments': null,
     'csstools/value-no-unknown-custom-properties': [
       true,
       {

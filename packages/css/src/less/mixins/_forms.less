@@ -62,6 +62,7 @@
         border-color: @border-color;
         color: @input-color;
       }
+
       &:hover,
       &:focus-within {
         border-color: @border-hover !important;
@@ -94,6 +95,7 @@
 // contrast against a dark gray background.
 .form-control-focus(@color: @input-border-focus) {
   @color-rgba: rgba(red(@color), green(@color), blue(@color), 0.6);
+
   &:focus {
     border-color: @color;
     outline: 0;
@@ -121,6 +123,7 @@
   select[multiple]& {
     height: auto;
   }
+
   input& {
     .input-height-adjust(@input-height);
   }

@@ -1,16 +1,15 @@
 // Mixins to generate button styles and state variations
 .button-variant(
-    @color;
-    @color-hover;
-    @background;
-    @background-hover;
-    @background-active;
-    @border;
-    @border-hover;
-    @border-active;
-    @dropdown-background: @background;
-    @color-active: @color-hover) {
-
+@color;
+@color-hover;
+@background;
+@background-hover;
+@background-active;
+@border;
+@border-hover;
+@border-active;
+@dropdown-background: @background;
+@color-active: @color-hover) {
   color: @color;
   background-color: @background;
   border-color: @border;
@@ -21,33 +20,36 @@
   &.focus {
     color: @color-hover;
     background-color: @background-hover;
-        border-color: @border-hover;
+    border-color: @border-hover;
   }
+
   &:hover {
     color: @color-hover;
     background-color: @background-hover;
-        border-color: @border-hover;
+    border-color: @border-hover;
   }
+
   &:active,
   &.active,
   .open > .dropdown-toggle& {
     color: @color-active;
     background-color: @background-active;
-        border-color: @border-active;
+    border-color: @border-active;
 
     &:hover,
     &:focus,
     &.focus {
       color: @color-active;
       background-color: @background-active;
-          border-color: @border-active;
+      border-color: @border-active;
     }
   }
-  &:active,
+
   &.active,
   .open > .dropdown-toggle& {
     background-image: none;
   }
+
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
@@ -57,13 +59,14 @@
     &.focus,
     &:active,
     &.active {
-        background-color: @btn-disabled-bg;
-            border-color: @btn-disabled-bg;
-                   color: @btn-disabled-color;
+      background-color: @btn-disabled-bg;
+      border-color: @btn-disabled-bg;
+      color: @btn-disabled-color;
+
       &.btn-priority-2 {
         background-color: @background;
-            border-color: @btn-disabled-color;
-                   color: @btn-disabled-color;
+        border-color: @btn-disabled-color;
+        color: @btn-disabled-color;
       }
     }
   }
@@ -82,26 +85,26 @@
   min-height: @min-height;
 
   .dropdown-menu {
-      > li > a {
-          font-size: @font-size;
-          line-height: @line-height;
-      }
+    > li > a {
+      font-size: @font-size;
+      line-height: @line-height;
+    }
   }
 }
 
 // @TODO Deprecate
 .button-outline(@color, @active, @inverse) {
-    .button-variant(
-        @color;
-        @inverse;
-        transparent;
-        @color;
-        @active;
-        @color;
-        @color;
-        @active;
-        #FFF
-    );
+  .button-variant(
+    @color;
+    @inverse;
+    transparent;
+    @color;
+    @active;
+    @color;
+    @color;
+    @active;
+    #FFF
+  );
 }
 
 .btn-sm {

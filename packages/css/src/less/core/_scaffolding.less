@@ -195,8 +195,8 @@ textarea {
 
 input,
 textarea {
-  &:input-placeholder,
-  &::input-placeholder,
+  // stylelint-disable selector-no-vendor-prefix
+  &:-ms-input-placeholder,
   &::placeholder {
     color: var(--color-text-inactive);
   }
