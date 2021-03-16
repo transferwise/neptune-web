@@ -9,7 +9,7 @@
     {
       title: 'Item 2 with icon',
       content: <span>I can be a node</span>,
-      icon: <Delivery />,
+      icon: <Emoji />,
     },
     {
       title: 'Item 3',
