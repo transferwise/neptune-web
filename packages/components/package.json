@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "35.0.0",
+  "version": "35.0.1",
   "description": "Neptune React components",
   "license": "Apache-2.0",
   "main": "./build/umd/polyfill/main.js",

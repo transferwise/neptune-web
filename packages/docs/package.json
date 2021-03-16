@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/neptune-docs",
-  "version": "11.0.0",
+  "version": "11.0.1",
   "description": "Neptune Web",
   "main": "index.js",
   "private": true,
@@ -38,8 +38,8 @@
     "@mapbox/rehype-prism": "^0.5.0",
     "@mdx-js/loader": "^1.5.8",
     "@next/mdx": "^9.0.5",
-    "@transferwise/components": "^35.0.0",
-    "@transferwise/dynamic-flows": "^12.2.2",
+    "@transferwise/components": "^35.0.1",
+    "@transferwise/dynamic-flows": "^12.2.3",
     "@transferwise/icons": "^2.6.0",
     "@transferwise/neptune-css": "^9.0.0",
     "@transferwise/test-config": "^3.0.3",
