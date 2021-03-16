@@ -16,15 +16,17 @@
   // Sets z-index for <Layout/> // should be lower than title bar so that profile/notifications panels take over full screen on small screens
   z-index: 8;
   transition: transform 0.08s linear 0.12s; // delay stops iOS getting jittery
+
   @supports (transform: translate3d(0, calc(env(safe-area-inset-bottom) * -1), 0)) {
-    transform: translate3d(
-      0,
-      calc(env(safe-area-inset-bottom) * -1),
-      0
-    ); // use transform over bottom here because it stops safari paint issues
+    transform:
+      translate3d(
+        0,
+        calc(env(safe-area-inset-bottom) * -1),
+        0
+      ); // use transform over bottom here because it stops safari paint issues
   }
 
-  &:after {
+  &::after {
     content: '';
     display: block;
     background: var(--color-background-screen);
@@ -78,7 +80,7 @@
     .mobileNavItem__link {
       box-sizing: border-box;
 
-      &:before {
+      &::before {
         content: '';
         width: 48px;
         height: 24px;
@@ -93,7 +95,7 @@
         left: 0;
       }
 
-      &:after {
+      &::after {
         content: '';
         background: var(--color-background-screen);
         width: 100%;
@@ -111,7 +113,7 @@
       z-index: 2;
       margin-top: -45px;
 
-      &:before {
+      &::before {
         content: '';
         background: var(--color-positive);
         display: block;
@@ -126,7 +128,7 @@
     }
 
     &:hover {
-      .mobileNavItem__icon:before {
+      .mobileNavItem__icon::before {
         background: var(--color-control-positive-hover);
       }
     }
@@ -167,7 +169,7 @@
   flex: 0 0 auto;
   display: inline-block;
   width: 100%;
-  font-family: Averta;
+  font-family: Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;

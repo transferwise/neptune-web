@@ -23,6 +23,12 @@
 
   &.dimmer--enter-done {
     background: rgba(55, 81, 126, 0.6);
+
+    &.dimmer--enter-fade {
+      > * {
+        opacity: 1;
+      }
+    }
   }
 
   &.dimmer--exit-active {
@@ -54,14 +60,6 @@
     &.dimmer--exit-fade {
       > * {
         opacity: 0;
-      }
-    }
-  }
-
-  &.dimmer--enter-done {
-    &.dimmer--enter-fade {
-      > * {
-        opacity: 1;
       }
     }
   }

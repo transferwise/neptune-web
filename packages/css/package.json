@@ -36,7 +36,7 @@
     "copy:images": "cpx 'src/img/**' dist/img",
     "copy:fonts": "cpx 'src/fonts/*' dist/fonts",
     "prettier": "prettier --write src/less/*.less",
-    "lintless": "stylelint ./src/less",
+    "lintless": "stylelint './src/less/**/*.less'",
     "lintless:fix": "yarn lintless --fix"
   },
   "dependencies": {

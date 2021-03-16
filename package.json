@@ -71,6 +71,7 @@
     "clean:modules": " lerna exec -- rm -rf ./node_modules && rm -rf node_modules  && rm -rf .next",
     "clean:lock": "find . -name '*.lock' -or -name '*-lock.json' -type f -delete",
     "lint": "lerna run lint --parallel --since main --no-prefix",
+    "lintless": "lerna run lintless --parallel",
     "preinstall": "node enforce-yarn.js",
     "create-component": "files-scaffold",
     "test:visual": "lerna run test:visual --stream"

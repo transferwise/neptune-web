@@ -35,7 +35,7 @@
     "test:watch": "jest --watch --env=jsdom --config=../../node_modules/@transferwise/test-config/jest.config.js",
     "lint": "jest --maxWorkers=4 --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
     "lint:fix": "eslint 'src/**/*.js' --fix",
-    "lintless": "stylelint ./src/**/*.less",
+    "lintless": "stylelint --allow-empty-input './src/**/*.less'",
     "lintless:fix": "yarn lintless --fix"
   },
   "devDependencies": {

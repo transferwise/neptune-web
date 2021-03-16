@@ -8,18 +8,22 @@
   // layer.
   z-index: @zindex-popover;
   pointer-events: none;
+
   &__content {
     opacity: 0;
     visibility: hidden;
     background-color: var(--color-background-elevated);
     border-radius: var(--radius-small);
-    box-shadow: 0px 0px 40px rgba(34, 48, 73, 0.2);
-    transition: opacity 0.1s cubic-bezier(0.6, 0.2, 0.1, 1),
-    transform 0.1s cubic-bezier(0.6, 0.2, 0.1, 1),
-    visibility 0s linear 0.1s;
+    box-shadow: 0 0 40px rgba(34, 48, 73, 0.2);
+    transition:
+      opacity 0.1s cubic-bezier(0.6, 0.2, 0.1, 1),
+      transform 0.1s cubic-bezier(0.6, 0.2, 0.1, 1),
+      visibility 0s linear 0.1s;
   }
+
   &--open {
     pointer-events: auto;
+
     .np-panel__content {
       transition: opacity 0.1s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.1s cubic-bezier(0.6, 0.2, 0.1, 1), visibility 0s linear 0s;
       visibility: visible;
@@ -43,6 +47,7 @@
 
   &[data-popper-placement^='top'] > &__content {
     transform: translateY(10px) scale(0.95);
+
     .np-panel__arrow {
       bottom: -6px;
     }
@@ -50,6 +55,7 @@
 
   &[data-popper-placement^='right'] > &__content {
     transform: translateX(-10px) scale(0.95);
+
     .np-panel__arrow {
       left: -6px;
     }
@@ -57,6 +63,7 @@
 
   &[data-popper-placement^='bottom'] > &__content {
     transform: translateY(-10px) scale(0.95);
+
     .np-panel__arrow {
       top: -6px;
     }
@@ -64,6 +71,7 @@
 
   &[data-popper-placement^='left'] > &__content {
     transform: translateX(10px) scale(0.95);
+
     .np-panel__arrow {
       right: -6px;
     }

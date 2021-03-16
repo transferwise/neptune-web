@@ -94,10 +94,8 @@
 .tw-loader {
   overflow: hidden;
   border-radius: 50%;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 
   .for(@c: 1) when (@c <= length(@sizes)) {
     @size-name: extract(@size-names, @c);

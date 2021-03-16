@@ -83,9 +83,10 @@
 @media (--screen-xs-max) {
   .tw-modal-dialog {
     padding: var(--size-16);
-    max-width: calc(
-      576px - var(--size-40) * 2 + var(--size-16) * 2
-    ); // --size-40 provides a smooth transition to the next padding breakpoint
+    max-width:
+      calc(
+        576px - var(--size-40) * 2 + var(--size-16) * 2
+      ); // --size-40 provides a smooth transition to the next padding breakpoint
 
     &.tw-modal-sm {
       max-width: calc(300px + var(--size-16) * 2);
@@ -129,17 +130,21 @@
 @media (--screen-xs) {
   &.tw-modal--content {
     height: auto;
+
     .tw-modal-dialog {
       max-height: none;
+
       .tw-modal-content {
         max-height: none;
         overflow: visible;
+
         .tw-modal-body {
           overflow-y: visible;
         }
       }
     }
   }
+
   .tw-modal-dialog {
     &.tw-modal-sm {
       width: 300px;
@@ -183,9 +188,11 @@
 // In internet explorer 11 modal shows up always collapsed.
 @media all and (-ms-high-contrast: none) {
   /* IE11 */
+  /* stylelint-disable selector-no-vendor-prefix, selector-type-no-unknown */
   _:-ms-fullscreen,
   :root .tw-modal {
     height: 100%;
+
     .tw-modal-dialog {
       height: 100%;
     }

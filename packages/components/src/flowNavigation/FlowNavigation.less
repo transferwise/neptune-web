@@ -6,6 +6,7 @@
   width: 100%;
   // This prevents jumping when border disappears.
   min-height: 97px;
+
   &--border-bottom {
     // This is the natural height of FlowNavigation when the Avatar is displayed.
     min-height: 96px;
@@ -28,15 +29,21 @@
       .tw-stepper-steps {
         display: none;
       }
+
       .progress {
         .m-b-0;
       }
+    }
+
+    .np-animated-label {
+      height: auto;
     }
   }
 
   &--sm {
     .np-flow-navigation__stepper {
       .p-x-3;
+
       min-height: 56px;
     }
   }
@@ -49,6 +56,7 @@
 
   .separator {
     .m-x-2;
+
     height: var(--size-32);
     width: 1px;
     min-width: 1px;
@@ -62,11 +70,9 @@
   &--flag {
     width: var(--size-24);
     height: var(--size-32);
-
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-image: @flag;
-
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
     &__hidden {
@@ -76,15 +82,10 @@
       margin-top: -24px;
       z-index: -1;
     }
+
     &__display {
       opacity: 1;
       transform: rotate(0deg);
-    }
-  }
-
-  &--xs-max {
-    .np-animated-label {
-      height: auto;
     }
   }
 }

@@ -33,6 +33,11 @@
     &.sliding-panel--open-left {
       transform: translateX(0);
     }
+
+    &.sliding-panel--open-top,
+    &.sliding-panel--open-bottom {
+      transform: translateY(0);
+    }
   }
 
   &.sliding-panel--open-top,
@@ -50,13 +55,6 @@
   &.sliding-panel--open-bottom {
     transform: translateY(100%);
     bottom: 0;
-  }
-
-  &.sliding-panel-enter-done {
-    &.sliding-panel--open-top,
-    &.sliding-panel--open-bottom {
-      transform: translateY(0);
-    }
   }
 
   &.sliding-panel--border-top {

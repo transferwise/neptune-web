@@ -33,12 +33,13 @@
   }
 
   & > &__children {
-    mask-image: radial-gradient(
-      circle at top calc(100% - var(--badge-mask-offset)) left calc(100% - var(--badge-mask-offset)),
-      transparent 0,
-      transparent calc(var(--badge-size) / 2 + var(--badge-mask)),
-      black calc(var(--badge-size) / 2 + var(--badge-mask) + 0.5px)
-    );
+    mask-image:
+      radial-gradient(
+        circle at top calc(100% - var(--badge-mask-offset)) left calc(100% - var(--badge-mask-offset)),
+        transparent 0,
+        transparent calc(var(--badge-size) / 2 + var(--badge-mask)),
+        black calc(var(--badge-size) / 2 + var(--badge-mask) + 0.5px)
+      );
   }
 
   & > &__content {
