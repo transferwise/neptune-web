@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl';
 import { shallow } from 'enzyme';
 
 import DateLookup from '.';
+import { getStartOfDay } from './getStartOfDay';
 
 jest.mock('react-intl');
 
@@ -13,14 +14,15 @@ describe('DateLookup state', () => {
   const defaultState = { selectedDate: null, min: null, max: null };
 
   beforeEach(() => {
-    defaultProps = { onChange: jest.fn() };
+    defaultProps = { value: new Date(), onChange: jest.fn() };
     useIntl.mockReturnValue({ locale: 'en-GB' });
     component = shallow(<DateLookup {...defaultProps} />);
   });
 
   it('sets correct defaults', () => {
     const { selectedDate, min, max, viewMonth, viewYear, open, mode } = component.instance().state;
-    expect(selectedDate).toBeNull();
+    const { value } = component.instance().props;
+    expect(selectedDate).toEqual(getStartOfDay(value));
     expect(min).toBeNull();
     expect(max).toBeNull();
     expect(viewMonth).not.toBeNull();
