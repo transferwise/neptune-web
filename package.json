@@ -85,8 +85,8 @@
     "**/!(*.code).js": [
       "eslint --fix"
     ],
-    "*.{less,yaml,yml,json}": [
-      "prettier --find-config-path --write"
+    "*.{less}": [
+      "stylelint --fix"
     ]
   },
   "browserslist": [
