@@ -5,7 +5,6 @@ import { isString } from '@transferwise/neptune-validation';
 import Chevron from '../../chevron';
 
 const AccordionItem = ({ id, title, content, onClick, open, icon }) => {
-  console.log(open);
   return (
     <div
       id={id}

@@ -96,8 +96,8 @@ describe('Accordion', () => {
     it('opens the selected accordion item', () => {
       const firstItem = component.find(AccordionItem).first();
       const thirdItem = component.find(AccordionItem).at(2);
-      expect(firstItem.prop('initiallyOpen')).toEqual(false);
-      expect(thirdItem.prop('initiallyOpen')).toEqual(true);
+      expect(firstItem.prop('open')).toEqual(false);
+      expect(thirdItem.prop('open')).toEqual(true);
     });
   });
 
