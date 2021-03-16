@@ -81,6 +81,7 @@ describe('Server side rendering', () => {
     Alert: { children: undefined, message: 'Fluffy kittens', size: undefined },
     Card: { isExpanded: true },
     CheckboxButton: { children: undefined, onChange: jest.fn() },
+    DateLookup: { value: new Date() },
     Typeahead: { size: 'md' },
     InputWithDisplayFormat: { displayPattern: '**-**' },
     TextareaWithDisplayFormat: { displayPattern: '**-**' },
