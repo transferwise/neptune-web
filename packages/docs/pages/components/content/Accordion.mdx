@@ -1,8 +1,9 @@
 import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
 import { Accordion } from '@transferwise/components';
 import code from '../../../liveEditorCode/accordion.code';
+import { FastFlag } from '@transferwise/icons';
 
-<LiveEditorBlock code={code} scope={{ Accordion }} />
+<LiveEditorBlock code={code({icon: FastFlag})} scope={{ Accordion }} />
 <GeneratePropsTable componentName="Accordion" />
 
 export const meta = {
