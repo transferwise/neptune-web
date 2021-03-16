@@ -94,6 +94,9 @@ describe('Server side rendering', () => {
     SnackbarContext: {
       children: jest.fn(),
     },
+    Popover: {
+      children: <div />,
+    },
     Field: {
       model: 'a model',
       type: 'text',

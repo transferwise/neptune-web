@@ -19,11 +19,11 @@ export const basic = () => {
 
   return (
     <Info
+      aria-label="Click here for more details"
       content={content}
       presentation={presentation}
       size={size}
       title={title}
-      aria-label="Click here for more details"
     />
   );
 };

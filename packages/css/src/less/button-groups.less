@@ -1,0 +1,393 @@
+@import (reference) '../variables/legacy-variables.less';
+
+@import './mixins/_border-radius.less';
+@import './mixins/_clearfix.less';
+@import './mixins/_tab-focus.less';
+
+// Make the div behave like a button
+.btn-group,
+.btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  > .btn {
+    position: relative;
+    float: left;
+  }
+}
+
+// Prevent double borders when buttons are next to each other
+.btn-group {
+  .btn + .btn,
+  .btn + .btn-group,
+  .btn-group + .btn,
+  .btn-group + .btn-group {
+    margin-left: -1px;
+  }
+}
+
+.expand-toolbar() {
+  margin-left: -4px; // Offset the first child's margin
+  margin-right: -4px; // Offset the first child's margin
+
+  .btn,
+  .btn-group,
+  .input-group {
+    width: auto;
+    margin-bottom: 0;
+    float: left;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+}
+
+// Optional: Group multiple button groups together for a toolbar
+.btn-toolbar {
+  .clearfix();
+
+  .btn,
+  .btn-group,
+  .input-group {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .btn-group .btn,
+  .input-group .btn {
+    width: auto;
+    margin: 0 0 0 -1px;
+  }
+
+  @media (min-width: @screen-lg-min) {
+    &:not(.btn-toolbar-xl) {
+      // Default behaviour collapses on lg, over-ruled by modifiers
+      .expand-toolbar();
+    }
+  }
+  &.btn-toolbar-xs {
+    .expand-toolbar();
+  }
+  @media (min-width: @screen-sm-min) {
+    &.btn-toolbar-sm {
+      .expand-toolbar();
+    }
+  }
+  @media (min-width: @screen-md-min) {
+    &.btn-toolbar-md {
+      .expand-toolbar();
+    }
+  }
+  @media (min-width: @screen-lg-min) {
+    &.btn-toolbar-lg {
+      .expand-toolbar();
+    }
+  }
+  @media (min-width: @screen-xl-min) {
+    &.btn-toolbar-xl {
+      .expand-toolbar();
+    }
+  }
+}
+
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0;
+}
+
+// Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
+.btn-group > .btn:first-child {
+  margin-left: 0;
+  &:not(:last-child):not(.dropdown-toggle) {
+    .border-right-radius(0);
+  }
+}
+// Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
+.btn-group > .btn:last-child:not(:first-child),
+.btn-group > .dropdown-toggle:not(:first-child) {
+  .border-left-radius(0);
+}
+
+// Custom edits for including btn-groups within btn-groups (useful for including dropdown buttons within a btn-group)
+.btn-group > .btn-group {
+  float: left;
+}
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0;
+}
+.btn-group > .btn-group:first-child:not(:last-child) {
+  > .btn:last-child,
+  > .dropdown-toggle {
+    .border-right-radius(0);
+  }
+}
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
+  .border-left-radius(0);
+}
+
+// On active and open, don't show outline
+.btn-group .dropdown-toggle:active,
+.btn-group.open .dropdown-toggle {
+  outline: 0;
+}
+
+// Sizing
+//
+// Remix the default button sizing classes into new ones for easier manipulation.
+
+.btn-group-xs > .btn {
+  &:extend(.btn-xs);
+}
+.btn-group-sm > .btn {
+  &:extend(.btn-sm);
+}
+.btn-group-lg > .btn {
+  &:extend(.btn-lg);
+}
+
+// Split button dropdowns
+// ----------------------
+
+// Give the line between buttons some depth
+.btn-group > .btn + .dropdown-toggle {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.btn-group > .btn-lg + .dropdown-toggle {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+// The clickable button for toggling the menu
+// Remove the gradient and set the same inset shadow as the :active state
+.btn-group.open .dropdown-toggle {
+  box-shadow: none;
+
+  // Show no shadow for `.btn-link` since it has no other button styles.
+  &.btn-link {
+    box-shadow: none;
+  }
+}
+
+// Carets in other button sizes
+.btn-lg .caret {
+  border-width: @caret-width-large @caret-width-large 0;
+  border-bottom-width: 0;
+}
+.btn-sm .caret,
+.input-group-sm .btn .caret {
+  top: 8px !important;
+}
+.btn-lg .caret,
+.input-group-lg .btn .caret {
+  top: 27px !important;
+}
+// Upside down carets for .dropup
+.dropup .btn-lg .caret {
+  border-width: 0 @caret-width-large @caret-width-large;
+}
+
+// Vertical button groups
+// ----------------------
+
+// @TODO Deprecate / Remove
+.btn-group-vertical {
+  > .btn,
+  > .btn-group,
+  > .btn-group > .btn {
+    display: block;
+    float: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  // Clear floats so dropdown menus can be properly placed
+  > .btn-group {
+    &:extend(.clearfix all);
+    > .btn {
+      float: none;
+    }
+  }
+
+  > .btn + .btn,
+  > .btn + .btn-group,
+  > .btn-group + .btn,
+  > .btn-group + .btn-group {
+    margin-top: -1px;
+    margin-left: 0;
+  }
+}
+
+.btn-group-vertical > .btn {
+  &:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+  &:first-child:not(:last-child) {
+    border-top-right-radius: @border-radius-base;
+    .border-bottom-radius(0);
+  }
+  &:last-child:not(:first-child) {
+    border-bottom-left-radius: @border-radius-base;
+    .border-top-radius(0);
+  }
+}
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0;
+}
+.btn-group-vertical > .btn-group:first-child:not(:last-child) {
+  > .btn:last-child,
+  > .dropdown-toggle {
+    .border-bottom-radius(0);
+  }
+}
+.btn-group-vertical
+  > .btn-group:last-child:not(:first-child)
+  > .btn:first-child {
+  .border-top-radius(0);
+}
+
+// Justified button groups
+// ----------------------
+
+// @TODO Deprecate / Remove
+.btn-group-justified {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  > .btn,
+  > .btn-group {
+    float: none;
+    display: table-cell;
+    width: 1%;
+  }
+  > .btn-group .btn {
+    width: 100%;
+  }
+
+  > .btn-group .dropdown-menu {
+    left: auto;
+  }
+}
+
+// Checkbox and radio options
+//
+// In order to support the browser's form validation feedback, powered by the
+// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
+// `display: none;` or `visibility: hidden;` as that also hides the popover.
+// Simply visually hiding the inputs via `opacity` would leave them clickable in
+// certain cases which is prevented by using `clip` and `pointer-events`.
+// This way, we ensure a DOM element is visible to position the popover from.
+//
+// See https://github.com/twbs/bootstrap/pull/12794 and
+// https://github.com/twbs/bootstrap/pull/14559 for more information.
+
+[data-toggle="buttons"] {
+  > .btn,
+  > .btn-group > .btn {
+    input[type="radio"],
+    input[type="checkbox"] {
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+      pointer-events: none;
+    }
+  }
+}
+
+.btn-group .btn {
+  + .btn-success {
+    border-left: 1px solid @brand-green-minus-10;
+  }
+  + .btn-primary {
+    border-left: 1px solid @brand-light-blue-minus-10;
+  }
+}
+
+.btn-group.btn-block {
+  display: inline-flex;
+  .clearfix();
+
+  .btn {
+    display: block;
+    width: 100%;
+  }
+  .btn-input.btn {
+    text-align: left;
+    .caret {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+    }
+    &.btn-sm .caret {
+      right: 8px;
+    }
+  }
+  .btn + .dropdown-toggle {
+    flex: 0;
+    .caret {
+      position: relative;
+      top: 0;
+      right: 0;
+    }
+  }
+  .btn-input.btn {
+    &.dropdown-toggle {
+      padding-right: 40px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      @media (min-width: @screen-sm-min) {
+        padding-right: 48px;
+      }
+    }
+    &.btn-sm.dropdown-toggle {
+      padding-right: 33px;
+    }
+  }
+}
+.btn-block {
+  .dropdown-menu {
+    width: 100%;
+
+    > li > a {
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.btn-group {
+  .dropdown-menu {
+    max-height: 90vh;
+    overflow: auto;
+  }
+
+  // allow select input options to wrap into multiple lines
+  .btn-input + .dropdown-menu  {
+    > li > a {
+      white-space: normal;
+    }
+  }
+}
+
+@media (min-height: 592px) {
+  .btn-group .dropdown-menu {
+    max-height: 592px; // (12 * 48) + 16 = 592
+  }
+}
+
+.btn-group {
+  .small {
+    color: @text-secondary-color;
+    line-height: (@line-height-computed - 1px);
+
+    &.text-ellipsis {
+      line-height: @line-height-computed;
+    }
+  }
+}
+
+.btn-group .secondary {
+  font-size: @font-size-small;
+  color: @text-secondary-color;
+  line-height: 24px;
+}

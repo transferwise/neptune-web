@@ -6,8 +6,9 @@
       content: 'I can be text',
     },
     {
-      title: 'Item 2',
+      title: 'Item 2 with icon',
       content: <span>I can be a node</span>,
+      icon: <FastFlag />,
     },
     {
       title: 'Item 3',

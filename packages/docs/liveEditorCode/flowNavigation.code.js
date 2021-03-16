@@ -16,7 +16,6 @@
           alt="logo"
           src="./../../static/assets/img/wise_logo.svg"
           width="138"
-          width="138"
           height="24"
         />
       }
