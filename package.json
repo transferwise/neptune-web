@@ -85,7 +85,7 @@
     "**/!(*.code).js": [
       "eslint --fix"
     ],
-    "*.{less}": [
+    "**/*.{less}": [
       "stylelint --fix"
     ]
   },
