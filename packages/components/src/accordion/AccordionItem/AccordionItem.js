@@ -18,7 +18,7 @@ const AccordionItem = ({ id, title, content, onClick, open, icon }) => {
         aria-expanded={open}
         onClick={onClick}
         className={classNames('tw-accordion-item btn btn-link p-a-0 text-no-decoration p-t-3', {
-          'p-b-3 ': !open,
+          'p-b-3': !open,
           'p-b-2': open,
         })}
       >
@@ -33,7 +33,7 @@ const AccordionItem = ({ id, title, content, onClick, open, icon }) => {
         </div>
       </button>
       <div className="accordion-content media">
-        <div className={classNames('media-body m-r-5', { 'm-l-5 ': icon })}>{content}</div>
+        <div className={classNames('media-body m-r-5', { 'm-l-5': icon })}>{content}</div>
       </div>
     </div>
   );
