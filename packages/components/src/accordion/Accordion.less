@@ -1,9 +1,23 @@
+@import (reference) '@transferwise/neptune-css/src/less/addons/_spacing-utilities.less';
+
+@media (--screen-sm-max) {
+  .tw-accordion-item {
+    .accordion-content {
+      .media-body {
+        .m-x-0;
+      }
+    }
+  }
+}
+
 .tw-accordion-item {
   display: block;
   width: 100%;
-  padding: 10px 24px;
+
   &:hover {
-    background-color: #fff !important; // overrides bootstrap rule for .decision
+    background-color: var(
+      --color-background-screen
+    ) !important; // overrides bootstrap rule for .decision
   }
 
   .chevron {
@@ -11,6 +25,7 @@
   }
 
   .media {
+    color: var(--color-text-primary);
     flex-wrap: wrap;
   }
 
@@ -29,10 +44,9 @@
 
   &.closed {
     .accordion-content {
-      height: 0;
+      transition: max-height 0.15s ease;
       max-height: 0;
       overflow: hidden;
-      padding-bottom: 0 !important;
     }
   }
 }

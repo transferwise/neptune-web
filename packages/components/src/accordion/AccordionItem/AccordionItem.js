@@ -1,60 +1,56 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import { isString } from '@transferwise/neptune-validation';
 import Chevron from '../../chevron';
 
-const AccordionItem = ({ id, title, content, onClick, initiallyOpen, icon }) => {
-  const [isOpen, setIsOpen] = useState(initiallyOpen);
-
+const AccordionItem = ({ id, title, content, onClick, isOpen, icon }) => {
   return (
-    <div id={id} className={classNames('tw-accordion-item decision p-a-0', { closed: !isOpen })}>
+    <div
+      id={id}
+      className={classNames('tw-accordion-item decision p-a-0 ', {
+        closed: !isOpen,
+        'p-b-3': isOpen,
+      })}
+    >
       <button
         type="button"
         aria-expanded={isOpen}
-        onClick={() => {
-          setIsOpen(!isOpen);
-          onClick();
-        }}
-        className="tw-accordion-item btn btn-link p-l-0 text-no-decoration"
+        onClick={onClick}
+        className={classNames('tw-accordion-item btn btn-link p-a-0 text-no-decoration p-t-3', {
+          'p-b-3 ': !isOpen,
+          'p-b-2': isOpen,
+        })}
       >
-        <div className="media p-y-2">
-          {icon && <div className="media-left hidden-xs hidden-sm">{icon}</div>}
+        <div className="media">
+          {icon && <div className="media-left hidden-xs hidden-sm p-r-2">{icon}</div>}
           <div className="media-body text-xs-left">
             {isString(title) ? <span className="h5">{title}</span> : title}
           </div>
-          <div className="media-right media-middle">
+          <div className="media-right d-flex align-items-center">
             <Chevron orientation={isOpen ? Chevron.Orientation.TOP : Chevron.Orientation.BOTTOM} />
           </div>
         </div>
       </button>
-      <div className="p-b-3 accordion-content media">
-        {icon && (
-          <div className="media-left hidden-xs hidden-sm">
-            <div className="p-r-3" />
-          </div>
-        )}
-        <div className="media-body">{content}</div>
-        <div className="media-right">
-          <div className="p-l-3" />
-        </div>
+      <div className="accordion-content media">
+        <div className={classNames('media-body m-r-5', { 'm-l-5 ': icon })}>{content}</div>
       </div>
     </div>
   );
 };
 
 AccordionItem.propTypes = {
-  id: Types.string,
-  title: Types.node.isRequired,
   content: Types.node.isRequired,
-  onClick: Types.func.isRequired,
-  initiallyOpen: Types.bool.isRequired,
   icon: Types.node,
+  id: Types.string,
+  isOpen: Types.bool.isRequired,
+  onClick: Types.func.isRequired,
+  title: Types.node.isRequired,
 };
 
 AccordionItem.defaultProps = {
-  id: null,
   icon: null,
+  id: null,
 };
 
 export default AccordionItem;
