@@ -1,5 +1,5 @@
 import React from 'react';
-import { object, select } from '@storybook/addon-knobs';
+import { select } from '@storybook/addon-knobs';
 import { FastFlag as FastFlagIcon, Check } from '@transferwise/icons';
 import Accordion from './Accordion';
 import Modal from '../modal';
@@ -13,13 +13,43 @@ export const basic = () => {
   const items = [
     {
       title: 'Item 1',
-      content: 'I can be text',
+      content:
+        'Lauri Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry ever since the 1500s, when',
       id: 'Item 1',
     },
     {
       title: 'Item 2',
       content: 'I can be text',
       id: 'Item 2',
+    },
+    {
+      title: 'Item 3',
+      content:
+        'I can be text long text I can be text long text I can be text long text I can be text long text',
+      id: 'Item 3',
+    },
+  ];
+
+  const indexOpen = select('indexOpen', [0, 1, 2], 0);
+  // const value = object('items', items);
+
+  return <Accordion items={items} indexOpen={indexOpen} />;
+};
+
+export const withIcons = () => {
+  const items = [
+    {
+      title: 'Item 1',
+      content:
+        'Lauri Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry ever since the 1500s, when',
+      id: 'Item 1',
+      icon: <FastFlagIcon size={24} />,
+    },
+    {
+      title: 'Item 2',
+      content: 'I can be text',
+      id: 'Item 2',
+      icon: <FastFlagIcon size={24} />,
     },
     {
       title: 'Item 3 can be with an icon',
@@ -31,9 +61,9 @@ export const basic = () => {
   ];
 
   const indexOpen = select('indexOpen', [0, 1, 2], 0);
-  const value = object('items', items);
+  // const value = object('items', items);
 
-  return <Accordion items={value} indexOpen={indexOpen} />;
+  return <Accordion items={items} indexOpen={indexOpen} />;
 };
 
 export const inModal = () => {

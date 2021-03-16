@@ -1,32 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import Types from 'prop-types';
 import AccordionItem from './AccordionItem';
-
 import './Accordion.css';
 
 const Accordion = ({ items, onClick, indexOpen }) => {
+  const [itemsOpen, setItemsOpen] = useState(() => items.map((val, index) => index === indexOpen));
   const handleOnClick = (index) => {
     if (onClick) {
       onClick(index);
     }
+    const newItems = [...itemsOpen];
+    newItems[index] = !itemsOpen[index];
+    setItemsOpen(newItems);
   };
 
-  return (
-    <>
-      {items.map((item, index) => (
-        <AccordionItem
-          id={item.id}
-          key={item.id || index}
-          onClick={() => handleOnClick(index)}
-          initiallyOpen={indexOpen === index}
-          {...item}
-        />
-      ))}
-    </>
-  );
+  return items.map((item, index) => (
+    <AccordionItem
+      key={item.id || index}
+      onClick={() => handleOnClick(index)}
+      isOpen={itemsOpen[index]}
+      {...item}
+    />
+  ));
 };
 
 Accordion.propTypes = {
+  indexOpen: Types.number,
   items: Types.arrayOf(
     Types.shape({
       id: Types.string,
@@ -36,12 +36,11 @@ Accordion.propTypes = {
     }),
   ).isRequired,
   onClick: Types.func,
-  indexOpen: Types.number,
 };
 
 Accordion.defaultProps = {
-  onClick: null,
   indexOpen: -1,
+  onClick: null,
 };
 
 export default Accordion;
