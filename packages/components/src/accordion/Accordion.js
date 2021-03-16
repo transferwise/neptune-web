@@ -19,7 +19,7 @@ const Accordion = ({ items, onClick, indexOpen }) => {
     <AccordionItem
       key={item.id || index}
       onClick={() => handleOnClick(index)}
-      isOpen={itemsOpen[index]}
+      open={itemsOpen[index]}
       {...item}
     />
   ));

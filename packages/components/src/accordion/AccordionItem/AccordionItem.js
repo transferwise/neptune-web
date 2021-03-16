@@ -4,22 +4,23 @@ import classNames from 'classnames';
 import { isString } from '@transferwise/neptune-validation';
 import Chevron from '../../chevron';
 
-const AccordionItem = ({ id, title, content, onClick, isOpen, icon }) => {
+const AccordionItem = ({ id, title, content, onClick, open, icon }) => {
+  console.log(open);
   return (
     <div
       id={id}
-      className={classNames('tw-accordion-item decision p-a-0 ', {
-        closed: !isOpen,
-        'p-b-3': isOpen,
+      className={classNames('tw-accordion-item decision p-a-0', {
+        closed: !open,
+        'p-b-3': open,
       })}
     >
       <button
         type="button"
-        aria-expanded={isOpen}
+        aria-expanded={open}
         onClick={onClick}
         className={classNames('tw-accordion-item btn btn-link p-a-0 text-no-decoration p-t-3', {
-          'p-b-3 ': !isOpen,
-          'p-b-2': isOpen,
+          'p-b-3 ': !open,
+          'p-b-2': open,
         })}
       >
         <div className="media">
@@ -28,7 +29,7 @@ const AccordionItem = ({ id, title, content, onClick, isOpen, icon }) => {
             {isString(title) ? <span className="h5">{title}</span> : title}
           </div>
           <div className="media-right d-flex align-items-center">
-            <Chevron orientation={isOpen ? Chevron.Orientation.TOP : Chevron.Orientation.BOTTOM} />
+            <Chevron orientation={open ? Chevron.Orientation.TOP : Chevron.Orientation.BOTTOM} />
           </div>
         </div>
       </button>
@@ -43,7 +44,7 @@ AccordionItem.propTypes = {
   content: Types.node.isRequired,
   icon: Types.node,
   id: Types.string,
-  isOpen: Types.bool.isRequired,
+  open: Types.bool.isRequired,
   onClick: Types.func.isRequired,
   title: Types.node.isRequired,
 };

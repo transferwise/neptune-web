@@ -11,7 +11,7 @@ describe('AccordionItem', () => {
   const props = {
     title: 'Hello',
     content: 'world!',
-    initiallyOpen: false,
+    open: false,
     onClick: jest.fn(),
   };
 
@@ -45,16 +45,16 @@ describe('AccordionItem', () => {
       component.setProps({ content: htmlElement });
     });
 
-    it('removes close class on click', () => {
+    it('removes close class when open', () => {
       expect(contentClosed()).toHaveLength(1);
-      clickButton();
+      component.setProps({ open: true });
       expect(contentClosed()).toHaveLength(0);
     });
   });
 
   describe('when open', () => {
     beforeEach(() => {
-      component = shallow(<AccordionItem {...props} initiallyOpen />);
+      component = shallow(<AccordionItem {...props} open />);
     });
 
     it('displays the title', () => {
@@ -78,5 +78,4 @@ describe('AccordionItem', () => {
   const getTitle = () => component.find('.h5');
   const getChevron = () => component.find(Chevron);
   const contentClosed = () => component.find('.closed');
-  const clickButton = () => component.find('button').simulate('click');
 });
