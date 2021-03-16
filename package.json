@@ -82,10 +82,10 @@
     }
   },
   "lint-staged": {
-    "*.less": "stylelint --fix",
     "**/!(*.code).js": [
       "eslint --fix"
-    ]
+    ],
+    "*.less": "stylelint --fix"
   },
   "browserslist": [
     "Chrome >=71",
